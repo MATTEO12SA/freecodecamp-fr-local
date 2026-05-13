@@ -20,6 +20,12 @@ cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
 .\dev.ps1
 ```
 
+Si Gatsby affiche une erreur qui parle de `.cache`, `async-requires.js` ou d'une ancienne page `certification`, relance avec nettoyage :
+
+```powershell
+.\dev.ps1 -Clean
+```
+
 Puis ouvre :
 
 ```text
@@ -42,7 +48,7 @@ http://localhost:8000/cours-fr
 - Appels reseau backend neutralises.
 - Locale francaise ajoutee cote client.
 - Traductions du curriculum integrees directement dans le repo.
-- Script `dev.ps1` simplifie pour lancer seulement Gatsby.
+- Script `dev.ps1` simplifie pour lancer seulement Gatsby et nettoyer les vieux caches Gatsby.
 
 ## Curriculum francais inclus
 

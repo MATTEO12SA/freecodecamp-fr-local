@@ -35,6 +35,55 @@ function logSection(message) {
   log(`${'='.repeat(60)}\n`, 'cyan');
 }
 
+function removeProjectPath(relativePath) {
+  const targetPath = path.join(projectRoot, relativePath);
+
+  if (!fs.existsSync(targetPath)) {
+    return;
+  }
+
+  const resolvedPath = fs.realpathSync(targetPath);
+  const resolvedRoot = fs.realpathSync(projectRoot);
+
+  if (!resolvedPath.toLowerCase().startsWith(resolvedRoot.toLowerCase())) {
+    throw new Error(`Refus de supprimer en dehors du repo: ${resolvedPath}`);
+  }
+
+  fs.rmSync(resolvedPath, { recursive: true, force: true });
+}
+
+function hasStaleGatsbyCache() {
+  const cacheFiles = [
+    path.join(
+      projectRoot,
+      'client',
+      '.cache',
+      'async-requires.js'
+    ),
+    path.join(
+      projectRoot,
+      'client',
+      '.cache',
+      '_this_is_virtual_fs_path_',
+      '$virtual',
+      'async-requires.js'
+    ),
+  ];
+
+  return cacheFiles.some(
+    filePath =>
+      fs.existsSync(filePath) &&
+      fs.readFileSync(filePath, 'utf8').includes('src/pages/certification')
+  );
+}
+
+function clearGatsbyCache() {
+  log('Nettoyage du cache Gatsby...', 'cyan');
+  removeProjectPath(path.join('client', '.cache'));
+  removeProjectPath(path.join('client', 'public'));
+  log('Cache Gatsby nettoye', 'green');
+}
+
 /**
  * Exécuter une commande de manière synchrone
  */
@@ -86,6 +135,7 @@ function showInstructions() {
   log('  • Appuyez sur Ctrl+C pour arrêter tous les processus', 'gray');
   log('  • Les serveurs se relanceront automatiquement lors des changements de fichiers', 'gray');
   log('  • Ouvrez votre navigateur pour voir le projet', 'gray');
+  log('  • Lancez node dev.js --clean si Gatsby garde un vieux cache', 'gray');
   log('');
 }
 
@@ -118,11 +168,15 @@ function startDevelopment() {
       log('✅ Dépendances déjà installées', 'green');
     }
 
-    // Lancer pnpm develop
-    log('⚡ Lancement des serveurs de développement...', 'cyan');
+    if (process.argv.includes('--clean') || hasStaleGatsbyCache()) {
+      clearGatsbyCache();
+    }
+
+    // Lancer uniquement le client Gatsby standalone.
+    log('⚡ Lancement du client de développement...', 'cyan');
     showInstructions();
 
-    devProcess = spawn('pnpm', ['run', 'develop'], {
+    devProcess = spawn('pnpm', ['run', 'develop:client'], {
       cwd: projectRoot,
       stdio: 'inherit',
       shell: IS_WINDOWS,

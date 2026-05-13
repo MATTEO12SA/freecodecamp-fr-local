@@ -48,6 +48,49 @@ function Stop-AllProcesses {
     exit 0
 }
 
+function Remove-RepoPath {
+    param([string]$RelativePath)
+
+    $repoRoot = (Resolve-Path $PSScriptRoot).Path
+    $targetPath = Join-Path $repoRoot $RelativePath
+
+    if (-not (Test-Path $targetPath)) {
+        return
+    }
+
+    $resolvedPath = (Resolve-Path $targetPath).Path
+    if (-not $resolvedPath.StartsWith($repoRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Refus de supprimer en dehors du repo: $resolvedPath"
+    }
+
+    Remove-Item -LiteralPath $resolvedPath -Recurse -Force
+}
+
+function Test-StaleGatsbyCache {
+    $cacheFiles = @(
+        "client\.cache\async-requires.js",
+        "client\.cache\_this_is_virtual_fs_path_\`$virtual\async-requires.js"
+    )
+
+    foreach ($relativePath in $cacheFiles) {
+        $filePath = Join-Path $PSScriptRoot $relativePath
+        if ((Test-Path $filePath) -and (Select-String -LiteralPath $filePath -Pattern "src/pages/certification" -Quiet)) {
+            return $true
+        }
+    }
+
+    return $false
+}
+
+function Clear-GatsbyCache {
+    Write-Host "Nettoyage du cache Gatsby..." -ForegroundColor Cyan
+
+    Remove-RepoPath -RelativePath "client\.cache"
+    Remove-RepoPath -RelativePath "client\public"
+
+    Write-Host "Cache Gatsby nettoye" -ForegroundColor Green
+}
+
 $null = Register-EngineEvent -SourceIdentifier PowerShell.Exiting -Action {
     Stop-AllProcesses
 }
@@ -68,6 +111,10 @@ try {
     $env:NODE_OPTIONS = "--max-old-space-size=7168"
     $env:NODE_ENV = "development"
     Write-Host "Variables d'environnement configurees" -ForegroundColor Green
+
+    if ($Clean -or (Test-StaleGatsbyCache)) {
+        Clear-GatsbyCache
+    }
 
     Write-Host "Lancement du client de developpement..." -ForegroundColor Cyan
     Write-Host "Appuyez sur Ctrl+C pour arreter tous les processus" -ForegroundColor Yellow
