@@ -125,6 +125,21 @@ const CERTIFICATIONS: Certification[] = [
         translated: true
       },
       {
+        key: 'workshop-bookstore-page',
+        title: 'Créer une page de librairie',
+        translated: true
+      },
+      {
+        key: 'lecture-understanding-how-html-affects-seo',
+        title: 'Comprendre comment le HTML influence le SEO',
+        translated: true
+      },
+      {
+        key: 'lab-travel-agency-page',
+        title: "Construire une page d'agence de voyage",
+        translated: true
+      },
+      {
         key: 'workshop-cafe-menu',
         title: 'Apprendre le CSS de base en créant un menu de café',
         translated: true
@@ -2762,7 +2777,10 @@ const TOPICS: Topic[] = [
       'lecture-understanding-the-html-boilerplate',
       'workshop-cat-photo-app',
       'lab-recipe-page',
-      'lecture-html-fundamentals'
+      'lecture-html-fundamentals',
+      'workshop-bookstore-page',
+      'lecture-understanding-how-html-affects-seo',
+      'lab-travel-agency-page'
     ]
   },
   {
