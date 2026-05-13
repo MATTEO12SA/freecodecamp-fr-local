@@ -1,95 +1,101 @@
-[![freeCodeCamp Social Banner](https://cdn.freecodecamp.org/platform/universal/fcc_banner_new.png)](https://www.freecodecamp.org/)
+# freeCodeCamp FR Local
 
-[![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://www.firsttimersonly.com/)
-[![Discord](https://img.shields.io/discord/692816967895220344?logo=discord&label=Discord&color=5865F2)](https://discord.gg/PRyKn3Vbay)
-[![LFX Active Contributors](https://insights.linuxfoundation.org/api/badge/active-contributors?project=freecodecamp&repos=https://github.com/freeCodeCamp/freeCodeCamp)](https://insights.linuxfoundation.org/project/freecodecamp/repository/freecodecamp-freecodecamp)
+Version personnelle de freeCodeCamp transformee pour fonctionner en local, en francais, sans compte utilisateur et sans backend.
 
-## freeCodeCamp.org's open-source codebase and curriculum
+Ce repo est base sur le code open source de freeCodeCamp, mais il est adapte pour un usage personnel : tu lances le client, tu ouvres le site dans ton navigateur, et ta progression reste sauvegardee sur ton ordinateur.
 
-[freeCodeCamp.org](https://www.freecodecamp.org) is a friendly community where you can learn to code for free. It is run by a [donor-supported 501(c)(3) charity](https://www.freecodecamp.org/donate) to help millions of busy adults transition into tech. Our community has already helped more than 100,000 people get their first developer job.
+## Objectif
 
-Our full-stack web development and machine learning curriculum is completely free and self-paced. We have thousands of interactive coding challenges to help you expand your skills.
+- Apprendre a coder en francais.
+- Utiliser freeCodeCamp sans Auth0, MongoDB, API serveur, Stripe, donation ou services externes.
+- Garder la progression dans le navigateur avec `localStorage`.
+- Avoir un repo GitHub qui t'appartient et que tu peux modifier / commit / push comme tu veux.
 
-## Table of Contents
+## Lancer le projet
 
-- [Certifications](#certifications)
-- [The Learning Platform](#the-learning-platform)
-- [Reporting Bugs and Issues](#reporting-bugs-and-issues)
-- [Reporting Security Issues and Responsible Disclosure](#reporting-security-issues-and-responsible-disclosure)
-- [Contributing](#contributing)
-- [Platform, Build and Deployment Status](#platform-build-and-deployment-status)
-- [License](#license)
+Depuis PowerShell :
 
-### Certifications
+```powershell
+cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
+.\dev.ps1
+```
 
-freeCodeCamp.org offers several free developer certifications that make up the [Full-Stack Developer Curriculum](https://www.freecodecamp.org/learn/full-stack-developer-v9/):
+Puis ouvre :
 
-- [Responsive Web Design](https://www.freecodecamp.org/learn/responsive-web-design-v9/)
-- [JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)
-- [Front-End Development Libraries](https://www.freecodecamp.org/learn/front-end-development-libraries-v9/)
-- [Python](https://www.freecodecamp.org/learn/python-v9/)
-- [Relational Databases](https://www.freecodecamp.org/learn/relational-databases-v9/)
-- [Back-End Development and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/)
+```text
+http://localhost:8000
+```
 
-Each of these certifications involves completing interactive lessons, workshops, labs, reviews, and quizzes. Throughout the certification, you'll need to complete 5 required projects to qualify for the exam. Once you pass the exam, then you can claim the certification.
+Page principale des cours francais :
 
-freeCodeCamp.org also offers free language certifications designed around internationally recognized proficiency levels:
+```text
+http://localhost:8000/cours-fr
+```
 
-- [A2 English for Developers (Beta)](https://www.freecodecamp.org/learn/a2-english-for-developers/)
-- [B1 English for Developers (Beta)](https://www.freecodecamp.org/learn/b1-english-for-developers/)
-- [A1 Professional Spanish (Beta)](https://www.freecodecamp.org/learn/a1-professional-spanish/)
-- [A1 Professional Chinese (Beta)](https://www.freecodecamp.org/learn/a1-professional-chinese/)
+## Ce qui a ete change
 
-Each of these certifications is organized into modules, with sections for warm-ups, lessons, practice exercises, review pages, and quizzes to ensure you fully grasp the material before progressing to the next module. You'll need to complete all of the quizzes in order to qualify for the exam at the end of the certification.
+- Page d'accueil simplifiee avec un bouton direct vers les cours francais.
+- Nouvelle page `/cours-fr` avec navigation par langue, certification et theme.
+- Interface reduite pour un usage local : moins de liens externes, plus de compte, plus de donation.
+- Utilisateur local automatique au demarrage.
+- Progression sauvegardee dans `localStorage`.
+- Appels reseau backend neutralises.
+- Locale francaise ajoutee cote client.
+- Traductions du curriculum integrees directement dans le repo.
+- Script `dev.ps1` simplifie pour lancer seulement Gatsby.
 
-Once you've earned a certification, you will always have it. You will always be able to link to it from your LinkedIn or resume. And when your prospective employers or freelance clients click that link, they'll see a verified certification specific to you.
+## Curriculum francais inclus
 
-The one exception to this is if we discover violations of our [Academic Honesty Policy](https://www.freecodecamp.org/news/academic-honesty-policy/). When we catch people unambiguously plagiarizing (submitting other people's code or projects as their own without citation), we do what all rigorous institutions of learning should do - we revoke their certifications and ban those people.
+Le dossier francais se trouve ici :
 
-In addition, to help prepare for job interviews, freeCodeCamp.org includes The Odin Project (freeCodeCamp Remix), Coding Interview Prep, Project Euler, and Rosetta Code.
+```text
+curriculum/i18n-curriculum/curriculum/challenges/french/
+```
 
-A free, professional Foundational C# with Microsoft Certification is also available.
+Contenu traduit actuellement :
 
-### The Learning Platform
+- Premiers dossiers HTML de Responsive Web Design v9.
+- Cat Photo App complet.
+- Cafe Menu complet : 91 / 91 etapes.
 
-This code is running live at [freeCodeCamp.org](https://www.freecodecamp.org).
+Les autres contenus peuvent rester en anglais tant qu'ils ne sont pas traduits.
 
-Our community also has:
+## Tests et verification
 
-- A [forum](https://forum.freecodecamp.org) where you can usually get programming help or project feedback within hours.
-- A [YouTube channel](https://youtube.com/freecodecamp) with free courses on Python, SQL, Android, and a wide variety of other technologies.
-- A [technical publication](https://www.freecodecamp.org/news) with thousands of programming tutorials and articles about mathematics and computer science.
-- A [Discord server](https://discord.gg/Z7Fm39aNtZ) where you can hang out and talk with developers and people who are learning to code.
+Scripts utiles a la racine :
 
-> #### [Join the community here](https://www.freecodecamp.org/signin).
+```text
+smoke-test.mjs
+submit-test.mjs
+persist-test.mjs
+human-solve-test.mjs
+full-flow-test.mjs
+final-check.mjs
+```
 
-### Reporting Bugs and Issues
+Verification TypeScript deja utilisee :
 
-If you think you've found a bug, first read the [how to report a bug](https://forum.freecodecamp.org/t/how-to-report-a-bug/19543) article and follow its instructions.
+```powershell
+pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
+```
 
-If you're confident it's a new bug and have confirmed that someone else is facing the same issue, go ahead and create a new GitHub issue. Be sure to include as much information as possible so we can reproduce the bug.
+## Documentation
 
-### Reporting Security Issues and Responsible Disclosure
+Lis ces fichiers pour le detail complet :
 
-We appreciate responsible disclosure of vulnerabilities that might impact the integrity of our platforms and users.
+- `DOCS-FR.md` : explication detaillee de toutes les modifications.
+- `QUICKSTART.md` : commandes de demarrage rapide.
 
-> #### [Read our security policy and follow these steps to report a vulnerability](https://contribute.freecodecamp.org/#/security).
+## Notes GitHub
 
-### Contributing
+Ce repo est maintenant prevu pour etre pousse dans :
 
-The freeCodeCamp.org community is possible thanks to thousands of kind volunteers like you. We welcome all contributions to the community and are excited to welcome you aboard.
+```text
+https://github.com/MATTEO12SA/freecodecamp-fr-local
+```
 
-> #### [Please follow these steps to contribute](https://contribute.freecodecamp.org).
+Il ne depend plus du fork `MATTEO12SA/i18n-curriculum` : les fichiers francais du curriculum sont versionnes directement dans ce repo.
 
-Recent Contributions:
+## Licence
 
-![Alt](https://repobeats.axiom.co/api/embed/89be0a1a1c8f641c54f9234a7423e7755352c746.svg 'Repobeats analytics image')
-
-### License
-
-Copyright © 2014 freeCodeCamp.org
-
-The content of this repository is bound by the following licenses:
-
-- The computer software is licensed under the [BSD-3-Clause](LICENSE.md) license.
-- The learning resources in the [`/curriculum`](/curriculum) directory including their subdirectories therein are copyright © 2014 freeCodeCamp.org
+Le code original vient de freeCodeCamp et conserve sa licence d'origine. Voir `LICENSE.md`.
