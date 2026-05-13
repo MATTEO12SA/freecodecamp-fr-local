@@ -110,12 +110,12 @@ const CERTIFICATIONS: Certification[] = [
         translated: true
       },
       {
-        key: 'learn-html-by-building-a-cat-photo-app',
+        key: 'workshop-cat-photo-app',
         title: 'Apprendre HTML en créant une application de photos de chats',
         translated: true
       },
       {
-        key: 'learn-basic-css-by-building-a-cafe-menu',
+        key: 'workshop-cafe-menu',
         title: 'Apprendre le CSS de base en créant un menu de café',
         translated: true
       },
@@ -2750,14 +2750,14 @@ const TOPICS: Topic[] = [
       'lecture-understanding-html-attributes',
       'lab-debug-pet-adoption-page',
       'lecture-understanding-the-html-boilerplate',
-      'learn-html-by-building-a-cat-photo-app'
+      'workshop-cat-photo-app'
     ]
   },
   {
     key: 'css',
     label: 'CSS',
     blurb: 'Mettre en forme — couleurs, polices, marges, mise en page, design.',
-    blocks: ['learn-basic-css-by-building-a-cafe-menu']
+    blocks: ['workshop-cafe-menu']
   },
   {
     key: 'js',
