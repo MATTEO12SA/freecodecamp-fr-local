@@ -9,14 +9,11 @@ import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
 import Intro from '../components/Intro';
 import Map from '../components/Map';
 import LearnLayout from '../components/layouts/learn';
+import './cours-fr.css';
 import {
-  isSignedInSelector,
   userSelector,
   userFetchStateSelector
 } from '../redux/selectors';
-
-import callGA from '../analytics/call-ga';
-import { useClaimableCertsNotification } from '../components/helpers/use-claimable-certs-notification';
 
 interface FetchState {
   pending: boolean;
@@ -26,77 +23,43 @@ interface FetchState {
 
 type MaybeUser = {
   name: string;
-  username: string;
-  completedChallengeCount: number;
-  isDonating: boolean;
 } | null;
 
 const mapStateToProps = createSelector(
   userFetchStateSelector,
-  isSignedInSelector,
   userSelector,
-  (fetchState: FetchState, isSignedIn: boolean, user: MaybeUser) => ({
+  (fetchState: FetchState, user: MaybeUser) => ({
     fetchState,
-    isSignedIn,
     user
   })
 );
 
-interface Slug {
-  slug: string;
-}
-
 interface LearnPageProps {
-  isSignedIn: boolean;
   fetchState: FetchState;
-  state: Record<string, unknown>;
   user: MaybeUser;
-  data: {
-    challengeNode: {
-      challenge: {
-        fields: Slug;
-      };
-    } | null;
-  };
 }
-
-const EMPTY_USER = { name: '', completedChallengeCount: 0, isDonating: false };
 
 function LearnPage({
-  isSignedIn,
   fetchState: { pending, complete },
-  user,
-  data: { challengeNode }
+  user
 }: LearnPageProps) {
-  const { name, completedChallengeCount, isDonating } = user ?? EMPTY_USER;
-
+  const { name } = user ?? { name: '' };
   const { t } = useTranslation();
-  useClaimableCertsNotification();
 
-  const slug = challengeNode?.challenge?.fields?.slug || '';
-
-  const onLearnDonationAlertClick = () => {
-    callGA({
-      event: 'donation_related',
-      action: `Learn Donation Alert Click`
-    });
-  };
   return (
     <LearnLayout>
       <Helmet title={t('metaTags:title')} />
       <Container>
         <Row>
           <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
-            <Intro
-              complete={complete}
-              completedChallengeCount={completedChallengeCount}
-              isSignedIn={isSignedIn}
-              name={name}
-              pending={pending}
-              slug={slug}
-              onLearnDonationAlertClick={onLearnDonationAlertClick}
-              isDonating={isDonating}
-            />
+            <Intro complete={complete} name={name} pending={pending} />
+            <a href='/cours-fr' className='fr-banner'>
+              <span>
+                <strong>Cours en français</strong> — voir les cours déjà
+                traduits avec une explication de ce que chacun t’apprend.
+              </span>
+              <span className='fr-banner-cta'>Ouvrir le dossier FR →</span>
+            </a>
             <Map />
             <Spacer size='l' />
           </Col>

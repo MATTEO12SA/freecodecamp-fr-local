@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Button, Modal, Spacer } from '@freecodecamp/ui';
 
-import Login from '../../../components/Header/components/login';
 import {
   isSignedInSelector,
   completedChallengesIdsSelector
@@ -23,7 +22,6 @@ import Progress from '../../../components/Progress';
 import GreenPass from '../../../assets/icons/green-pass';
 import { MAX_MOBILE_WIDTH } from '../../../../config/misc';
 import './completion-modal.css';
-import callGA from '../../../analytics/call-ga';
 import { useSubmit } from '../utils/fetch-all-curriculum-data';
 
 const mapStateToProps = createSelector(
@@ -110,12 +108,6 @@ function CompletionModal({
     };
   }, [close]);
 
-  useEffect(() => {
-    if (isOpen) {
-      callGA({ event: 'pageview', pagePath: '/completion-modal' });
-    }
-  }, [isOpen]);
-
   const handleKeypress = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -173,12 +165,6 @@ function CompletionModal({
         </div>
       </Modal.Body>
       <Modal.Footer>
-        {isSignedIn ? null : (
-          <div className='completion-modal-login-btn'>
-            <Login block={true}>{t('learn.sign-in-save')}</Login>
-            <Spacer size='xxs' />
-          </div>
-        )}
         <Button
           block={true}
           size='large'

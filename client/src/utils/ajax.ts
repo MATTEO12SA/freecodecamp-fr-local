@@ -36,64 +36,59 @@ export interface ResponseWithData<T> {
   data: T;
 }
 
-// TODO: Might want to handle flash messages as close to the request as possible
-// to make use of the Response object (message, status, etc)
-async function get<T>(
-  path: string,
-  signal?: AbortSignal
-): Promise<ResponseWithData<T>> {
-  const response = await fetch(`${base}${path}`, {
-    ...defaultOptions,
-    headers: { 'CSRF-Token': getCSRFToken() },
-    signal
-  });
-
-  return combineDataWithResponse(response);
-}
-
-async function combineDataWithResponse<T>(response: Response) {
-  const data = (await response.json()) as T;
-  return { response, data };
-}
-
-export function post<T = void>(
-  path: string,
-  body: unknown
-): Promise<ResponseWithData<T>> {
-  return request('POST', path, body);
-}
-
-function put<T = void>(
-  path: string,
-  body: unknown
-): Promise<ResponseWithData<T>> {
-  return request('PUT', path, body);
-}
-
-function deleteRequest<T = void>(
-  path: string,
-  body: unknown
-): Promise<ResponseWithData<T>> {
-  return request('DELETE', path, body);
-}
-
-async function request<T>(
-  method: 'POST' | 'PUT' | 'DELETE',
-  path: string,
-  body: unknown
-): Promise<ResponseWithData<T>> {
-  const options: RequestInit = {
-    ...defaultOptions,
-    method,
-    headers: {
-      'CSRF-Token': getCSRFToken(),
-      'Content-Type': 'application/json'
+// All network calls are stubbed: this site runs as a standalone curriculum
+// browser with progress in localStorage and no backend API.
+function fakeResponse<T>(): ResponseWithData<T> {
+  const headers =
+    typeof Headers !== 'undefined' ? new Headers() : ({} as Headers);
+  const response = {
+    ok: true,
+    status: 200,
+    statusText: 'OK',
+    headers,
+    redirected: false,
+    type: 'basic',
+    url: '',
+    body: null,
+    bodyUsed: false,
+    clone() {
+      return this;
     },
-    body: JSON.stringify(body)
-  };
+    arrayBuffer: async () => new ArrayBuffer(0),
+    blob: async () => new Blob(),
+    formData: async () => new FormData(),
+    json: async () => ({}),
+    text: async () => ''
+  } as unknown as Response;
+  return { response, data: {} as T };
+}
 
-  const response = await fetch(`${base}${path}`, options);
-  return combineDataWithResponse(response);
+async function get<T>(
+  _path: string,
+  _signal?: AbortSignal
+): Promise<ResponseWithData<T>> {
+  return Promise.resolve(fakeResponse<T>());
+}
+
+export async function post<T = void>(
+  _path: string,
+  _body: unknown
+): Promise<ResponseWithData<T>> {
+  return Promise.resolve(fakeResponse<T>());
+}
+
+async function put<T = void>(
+  _path: string,
+  _body: unknown
+): Promise<ResponseWithData<T>> {
+  return Promise.resolve(fakeResponse<T>());
+}
+
+async function deleteRequest<T = void>(
+  _path: string,
+  _body: unknown
+): Promise<ResponseWithData<T>> {
+  return Promise.resolve(fakeResponse<T>());
 }
 
 /** GET **/

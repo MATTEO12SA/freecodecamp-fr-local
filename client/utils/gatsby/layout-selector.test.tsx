@@ -5,7 +5,6 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import { describe, test, expect, vi } from 'vitest';
 
 import FourOhFourPage from '../../src/pages/404';
-import Certification from '../../src/pages/certification';
 import Learn from '../../src/pages/learn';
 import { createStore } from '../../src/redux/create-store';
 import layoutSelector from './layout-selector';
@@ -15,6 +14,7 @@ vi.mock('../../src/analytics');
 vi.mock('../../src/utils/get-words');
 
 const store = createStore();
+const Certification = () => <div />;
 
 // TODO: rather than testing which props passed from layoutSelector to the
 // component it renders, test that the rendered component has the expected

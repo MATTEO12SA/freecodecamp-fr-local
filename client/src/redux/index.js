@@ -13,6 +13,7 @@ import { createDonationSaga } from './donation-saga';
 import failedUpdatesEpic from './failed-updates-epic';
 import { createFetchUserSaga } from './fetch-user-saga';
 import hardGoToEpic from './hard-go-to-epic';
+import localProgressEpic from './local-progress-epic';
 import { createReportUserSaga } from './report-user-saga';
 import { createSaveChallengeSaga } from './save-challenge-saga';
 import { savedChallengesSelector } from './selectors';
@@ -81,7 +82,12 @@ export const initialState = {
   }
 };
 
-export const epics = [hardGoToEpic, failedUpdatesEpic, updateCompleteEpic];
+export const epics = [
+  hardGoToEpic,
+  failedUpdatesEpic,
+  updateCompleteEpic,
+  localProgressEpic
+];
 
 export const sagas = [
   ...createThemeSaga(actionTypes),

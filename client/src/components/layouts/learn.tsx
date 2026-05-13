@@ -3,9 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { Loader } from '../../components/helpers';
-import { tryToShowDonationModal } from '../../redux/actions';
 import { userFetchStateSelector } from '../../redux/selectors';
-import DonateModal from '../Donation/donation-modal';
 
 import './prism.css';
 import './prism-night.css';
@@ -25,26 +23,12 @@ const mapStateToProps = createSelector(
   })
 );
 
-const mapDispatchToProps = {
-  tryToShowDonationModal
-};
-
 type LearnLayoutProps = {
   fetchState: FetchState;
-  tryToShowDonationModal: () => void;
   children?: React.ReactNode;
 };
 
-function LearnLayout({
-  fetchState,
-  tryToShowDonationModal,
-  children
-}: LearnLayoutProps): JSX.Element {
-  useEffect(() => {
-    tryToShowDonationModal();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+function LearnLayout({ fetchState, children }: LearnLayoutProps): JSX.Element {
   useEffect(() => {
     return () => {
       const metaTag = document.querySelector(`meta[name="robots"]`);
@@ -64,9 +48,8 @@ function LearnLayout({
         <meta content='noindex' name='robots' />
       </Helmet>
       <main id='learn-app-wrapper'>{children}</main>
-      <DonateModal />
     </>
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LearnLayout);
+export default connect(mapStateToProps)(LearnLayout);

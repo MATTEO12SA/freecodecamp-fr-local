@@ -16,17 +16,12 @@ import {
   SuperBlocks,
   certificationCollectionSuperBlocks
 } from '@freecodecamp/shared/config/curriculum';
-import DonateModal from '../../components/Donation/donation-modal';
-import Login from '../../components/Header/components/login';
 import Map from '../../components/Map';
-import callGA from '../../analytics/call-ga';
-import { tryToShowDonationModal } from '../../redux/actions';
 import {
   isSignedInSelector,
   userSelector,
   currentChallengeIdSelector,
-  userFetchStateSelector,
-  signInLoadingSelector
+  userFetchStateSelector
 } from '../../redux/selectors';
 import type {
   SuperBlockStructure,
@@ -78,14 +73,12 @@ type SuperBlockProps = {
   };
   fetchState: FetchState;
   isSignedIn: boolean;
-  signInLoading: boolean;
   location: WindowLocation<{ breadcrumbBlockClick: string }>;
   pageContext: {
     superBlock: SuperBlocks;
   };
   resetExpansion: () => void;
   toggleBlock: (arg0: string) => void;
-  tryToShowDonationModal: () => void;
   user: User | null;
 };
 
@@ -93,19 +86,16 @@ const mapStateToProps = (state: Record<string, unknown>) => {
   return createSelector(
     currentChallengeIdSelector,
     isSignedInSelector,
-    signInLoadingSelector,
     userFetchStateSelector,
     userSelector,
     (
       currentChallengeId: string,
       isSignedIn,
-      signInLoading: boolean,
       fetchState: FetchState,
       user: User | null
     ) => ({
       currentChallengeId,
       isSignedIn,
-      signInLoading,
       fetchState,
       user
     })
@@ -115,7 +105,6 @@ const mapStateToProps = (state: Record<string, unknown>) => {
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
-      tryToShowDonationModal,
       resetExpansion,
       toggleBlock: b => toggleBlock(b)
     },
@@ -136,7 +125,6 @@ const SuperBlockIntroductionPage = (props: SuperBlockProps) => {
   const { t } = useTranslation();
   useEffect(() => {
     initializeExpandedState();
-    props.tryToShowDonationModal();
 
     handleHashChange();
 
@@ -157,7 +145,6 @@ const SuperBlockIntroductionPage = (props: SuperBlockProps) => {
     },
     isSignedIn,
     currentChallengeId,
-    signInLoading,
     user,
     pageContext: { superBlock },
     location
@@ -244,12 +231,7 @@ const SuperBlockIntroductionPage = (props: SuperBlockProps) => {
 
   const initialExpandedBlock = getInitiallyExpandedBlock();
 
-  const onCertificationDonationAlertClick = () => {
-    callGA({
-      event: 'donation_related',
-      action: `Certification Donation Alert Click`
-    });
-  };
+  const onCertificationDonationAlertClick = () => {};
 
   const hasNotstarted = completedChallenges.length === 0;
   const nextChallengeSlug = useMemo(() => {
@@ -319,12 +301,6 @@ const SuperBlockIntroductionPage = (props: SuperBlockProps) => {
                 superBlockChallenges={superBlockChallenges}
                 user={user}
               />
-              {!isSignedIn && !signInLoading && (
-                <>
-                  <Spacer size='l' />
-                  <Login block={true}>{t('buttons.logged-out-cta-btn')}</Login>
-                </>
-              )}
               <Spacer size='l' />
               <h3
                 className='text-center big-block-title'
@@ -339,7 +315,6 @@ const SuperBlockIntroductionPage = (props: SuperBlockProps) => {
           </Row>
         </main>
       </Container>
-      <DonateModal location={props.location} />
     </>
   );
 };

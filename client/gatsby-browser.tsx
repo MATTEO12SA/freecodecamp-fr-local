@@ -15,6 +15,12 @@ import GrowthBookProvider from './src/components/growth-book/growth-book-wrapper
 
 const store = createStore();
 
+// Expose the Redux store for end-to-end tests (standalone-mode only).
+if (typeof window !== 'undefined') {
+  // @ts-expect-error debug-only handle
+  window.__store__ = store;
+}
+
 export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
   element
 }) => {

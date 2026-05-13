@@ -37,7 +37,14 @@ export const createStore = (preloadedState = {}) => {
     reducer: rootReducer,
     // @ts-expect-error RTK uses unknown, Redux uses any
     middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware()
+      // RTK's dev-only immutability and serializability checks recurse through
+      // the entire state on every action. With our local-progress payloads
+      // they hit "Maximum call stack size exceeded". They are dev-only safety
+      // nets and not needed in this standalone build.
+      return getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false
+      })
         .concat(examAttempts.middleware)
         .concat(examEnvironmentAuthorizationTokenApi.middleware)
         .concat(sagaMiddleware)

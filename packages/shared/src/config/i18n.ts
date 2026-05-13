@@ -1,15 +1,6 @@
 export enum Languages {
   English = 'english',
-  Espanol = 'espanol',
-  Chinese = 'chinese',
-  ChineseTraditional = 'chinese-traditional',
-  Italian = 'italian',
-  Portuguese = 'portuguese',
-  Ukrainian = 'ukrainian',
-  Japanese = 'japanese',
-  German = 'german',
-  Swahili = 'swahili',
-  Korean = 'korean'
+  French = 'french'
 }
 
 /*
@@ -21,32 +12,8 @@ export enum Languages {
  * from the .env file aren't found in their respective arrays below
  */
 export const availableLangs = {
-  client: [
-    Languages.English,
-    Languages.Espanol,
-    Languages.Chinese,
-    Languages.ChineseTraditional,
-    Languages.Italian,
-    Languages.Portuguese,
-    Languages.Ukrainian,
-    Languages.Japanese,
-    Languages.German,
-    Languages.Swahili,
-    Languages.Korean
-  ],
-  curriculum: [
-    Languages.English,
-    Languages.Espanol,
-    Languages.Chinese,
-    Languages.ChineseTraditional,
-    Languages.Italian,
-    Languages.Portuguese,
-    Languages.Ukrainian,
-    Languages.Japanese,
-    Languages.German,
-    Languages.Swahili,
-    Languages.Korean
-  ]
+  client: [Languages.English, Languages.French],
+  curriculum: [Languages.English, Languages.French]
 };
 
 // ---------------------------------------------------------------------------
@@ -59,31 +26,13 @@ export const availableLangs = {
  */
 export const i18nextCodes = {
   [Languages.English]: 'en',
-  [Languages.Espanol]: 'es',
-  [Languages.Chinese]: 'zh',
-  [Languages.ChineseTraditional]: 'zh-Hant',
-  [Languages.Italian]: 'it',
-  [Languages.Portuguese]: 'pt-BR',
-  [Languages.Ukrainian]: 'uk',
-  [Languages.Japanese]: 'ja',
-  [Languages.German]: 'de',
-  [Languages.Swahili]: 'sw',
-  [Languages.Korean]: 'ko'
+  [Languages.French]: 'fr'
 };
 
 // These are for the language selector dropdown menu in the footer
 export const LangNames: { [key: string]: string } = {
   [Languages.English]: 'English',
-  [Languages.Espanol]: 'Español',
-  [Languages.Chinese]: '中文（简体字）',
-  [Languages.ChineseTraditional]: '中文（繁體字）',
-  [Languages.Italian]: 'Italiano',
-  [Languages.Portuguese]: 'Português',
-  [Languages.Ukrainian]: 'Українська',
-  [Languages.Japanese]: '日本語',
-  [Languages.German]: 'Deutsch',
-  [Languages.Swahili]: 'Swahili',
-  [Languages.Korean]: '한국어'
+  [Languages.French]: 'Français'
 };
 
 /* These are for formatting dates and numbers. Used with JS .toLocaleString().
@@ -92,16 +41,7 @@ export const LangNames: { [key: string]: string } = {
  */
 export const LangCodes = {
   [Languages.English]: 'en-US',
-  [Languages.Espanol]: 'es-419',
-  [Languages.Chinese]: 'zh',
-  [Languages.ChineseTraditional]: 'zh-Hant',
-  [Languages.Italian]: 'it',
-  [Languages.Portuguese]: 'pt-BR',
-  [Languages.Ukrainian]: 'uk',
-  [Languages.Japanese]: 'ja',
-  [Languages.German]: 'de',
-  [Languages.Swahili]: 'sw',
-  [Languages.Korean]: 'ko'
+  [Languages.French]: 'fr-FR'
 };
 
 /**

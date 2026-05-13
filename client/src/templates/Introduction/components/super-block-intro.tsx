@@ -23,68 +23,9 @@ interface SuperBlockIntroProps extends ConditionalDonationAlertProps {
   nextChallengeSlug: string | null;
 }
 
-export const ConditionalDonationAlert = ({
-  superBlock,
-  onCertificationDonationAlertClick,
-  isDonating
-}: ConditionalDonationAlertProps): JSX.Element | null => {
-  const { t } = useTranslation();
-
-  const betaCertifications: SuperBlocks[] = [SuperBlocks.A2English];
-
-  const unfinishedCertifications = [
-    SuperBlocks.B1English,
-    SuperBlocks.A1Spanish,
-    SuperBlocks.A2Spanish,
-    SuperBlocks.A2Chinese,
-    SuperBlocks.A1Chinese,
-    SuperBlocks.FrontEndDevLibsV9,
-    SuperBlocks.BackEndDevApisV9,
-    SuperBlocks.FullStackDeveloperV9
-  ];
-
-  if (!isDonating && betaCertifications.includes(superBlock))
-    return (
-      <Callout
-        variant='note'
-        label={t('misc.note')}
-        className='annual-donation-alert'
-      >
-        <p>{t('donate.beta-certification')}</p>
-        <hr />
-        <p className='btn-container'>
-          <Link
-            className='btn donate-button'
-            key='donate'
-            sameTab={false}
-            to='/donate'
-            onClick={onCertificationDonationAlertClick}
-          >
-            {t('buttons.donate-now')}
-          </Link>
-        </p>
-      </Callout>
-    );
-
-  if (!isDonating && unfinishedCertifications.includes(superBlock))
-    return (
-      <Callout
-        variant='note'
-        label={t('misc.note')}
-        className='annual-donation-alert'
-      >
-        <p>
-          <Trans i18nKey='donate.consider-donating-2'>
-            <Link className='inline' to='/donate'>
-              placeholder
-            </Link>
-          </Trans>
-        </p>
-      </Callout>
-    );
-
-  return null;
-};
+export const ConditionalDonationAlert = (
+  _props: ConditionalDonationAlertProps
+): JSX.Element | null => null;
 
 function SuperBlockIntro({
   superBlock,

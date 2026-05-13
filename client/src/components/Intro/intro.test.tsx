@@ -21,53 +21,15 @@ function renderWithRedux(
 }
 
 describe('<Intro />', () => {
-  it('has no blockquotes when loggedOut', () => {
-    renderWithRedux(<Intro {...loggedOutProps} />);
-    expect(screen.queryByTestId('quote-block')).not.toBeInTheDocument();
+  it('renders a heading when no name is given', () => {
+    renderWithRedux(<Intro complete={true} pending={false} name='' />);
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
   });
 
-  it('has a blockquote when loggedIn', () => {
-    // Provide a minimal preloaded state so connected components expecting a
-    // sessionUser (e.g. EmailSignUpAlert) do not receive null.
-    const preloadedState = {
-      app: {
-        user: {
-          sessionUser: {
-            completedChallenges: [{}],
-            sendQuincyEmail: null
-          }
-        }
-      }
-    };
-    renderWithRedux(<Intro {...loggedInProps} />, preloadedState);
-    expect(screen.getByTestId('quote-block')).toBeInTheDocument();
+  it('renders a heading with the user name when provided', () => {
+    renderWithRedux(
+      <Intro complete={true} pending={false} name='Development User' />
+    );
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
   });
 });
-
-const loggedInProps = {
-  complete: true,
-  completedChallengeCount: 0,
-  isSignedIn: true,
-  name: 'Development User',
-  navigate: () => vi.fn(),
-  pending: false,
-  slug: '/',
-  username: 'DevelopmentUser',
-  isDonating: false,
-  onLearnDonationAlertClick: () => vi.fn()
-};
-
-const loggedOutProps = {
-  complete: true,
-  completedChallengeCount: 0,
-  isSignedIn: false,
-  name: '',
-  navigate: () => vi.fn(),
-  pending: false,
-  slug: '/',
-  username: '',
-  isDonating: false,
-  onLearnDonationAlertClick: () => vi.fn()
-};
