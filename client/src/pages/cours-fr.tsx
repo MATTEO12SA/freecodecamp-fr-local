@@ -63,6 +63,21 @@ type Topic = {
   blocks: string[];
 };
 
+type ExerciseBlockFolder = {
+  key: string;
+  title: string;
+  translated: boolean;
+  count: number;
+};
+
+type ExerciseSuperBlockFolder = {
+  key: string;
+  title: string;
+  blocks: ExerciseBlockFolder[];
+  count: number;
+  translatedBlocks: number;
+};
+
 const CERTIFICATIONS: Certification[] = [
   {
     key: 'responsive-web-design-v9',
@@ -2770,6 +2785,35 @@ const BLOCK_NAMES: Record<string, string> = Object.fromEntries(
   )
 );
 
+const SUPER_BLOCK_NAMES: Record<string, string> = Object.fromEntries(
+  CERTIFICATIONS.map(cert => [cert.key, cert.title])
+);
+
+function titleFromSlug(slug: string): string {
+  return slug
+    .replace(/^2022\//, '')
+    .split('-')
+    .filter(Boolean)
+    .map(word => {
+      const lower = word.toLowerCase();
+      if (['api', 'apis', 'css', 'html', 'js', 'sql'].includes(lower)) {
+        return lower.toUpperCase();
+      }
+      return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
+    })
+    .join(' ');
+}
+
+function getSuperBlockTitle(superBlock: SuperBlocks): string {
+  return SUPER_BLOCK_NAMES[superBlock] ?? titleFromSlug(superBlock);
+}
+
+function getBlockTitle(block: string, challenges: Challenge[] = []): string {
+  return (
+    BLOCK_NAMES[block] ?? challenges[0]?.blockLabel ?? titleFromSlug(block)
+  );
+}
+
 function renderRichText(md: string): string {
   let s = md;
   s = s.replace(
@@ -2806,11 +2850,13 @@ function isFrenchChallenge(challenge: Challenge): boolean {
   );
 }
 
-type From = 'cert' | 'topic';
+type From = 'cert' | 'topic' | 'all';
 
 type View =
   | { v: 'lang' }
   | { v: 'fr-home' }
+  | { v: 'all-home' }
+  | { v: 'all-super'; superBlock: string }
   | { v: 'fr-cert'; cert: string }
   | { v: 'fr-topic'; topic: string }
   | { v: 'fr-block'; block: string; from: From; parent: string }
@@ -2842,12 +2888,54 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
     }
     for (const b of Object.keys(m)) {
       m[b].sort(
-        (a, b) =>
-          a.order - b.order || a.challengeOrder - b.challengeOrder
+        (a, b) => a.order - b.order || a.challengeOrder - b.challengeOrder
       );
     }
     return m;
   }, [data]);
+
+  const allExerciseGroups = useMemo((): ExerciseSuperBlockFolder[] => {
+    const groups = new Map<string, ExerciseSuperBlockFolder>();
+
+    for (const challenges of Object.values(byBlock)) {
+      const first = challenges[0];
+      if (!first) continue;
+
+      const superBlock = first.superBlock;
+      const translated = challenges.some(isFrenchChallenge);
+      let group = groups.get(superBlock);
+
+      if (!group) {
+        group = {
+          key: superBlock,
+          title: getSuperBlockTitle(superBlock),
+          blocks: [],
+          count: 0,
+          translatedBlocks: 0
+        };
+        groups.set(superBlock, group);
+      }
+
+      group.blocks.push({
+        key: first.block,
+        title: getBlockTitle(first.block, challenges),
+        translated,
+        count: challenges.length
+      });
+      group.count += challenges.length;
+      if (translated) group.translatedBlocks += 1;
+    }
+
+    return Array.from(groups.values());
+  }, [byBlock]);
+
+  const totalExerciseCount = allExerciseGroups.reduce(
+    (sum, group) => sum + group.count,
+    0
+  );
+
+  const getAllExerciseGroup = (superBlock: string) =>
+    allExerciseGroups.find(group => group.key === superBlock);
 
   const countTranslatedBlocks = (blocks: string[]): number =>
     blocks.reduce(
@@ -2863,10 +2951,23 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
       0
     );
 
-  const goBackFromBlock = (v: { block: string; from: From; parent: string }) =>
-    v.from === 'cert'
-      ? setView({ v: 'fr-cert', cert: v.parent })
-      : setView({ v: 'fr-topic', topic: v.parent });
+  const goBackFromBlock = (v: {
+    block: string;
+    from: From;
+    parent: string;
+  }) => {
+    if (v.from === 'cert') {
+      setView({ v: 'fr-cert', cert: v.parent });
+      return;
+    }
+
+    if (v.from === 'topic') {
+      setView({ v: 'fr-topic', topic: v.parent });
+      return;
+    }
+
+    setView({ v: 'all-super', superBlock: v.parent });
+  };
 
   useEffect(() => {
     if (view.v !== 'fr-cert') return;
@@ -2915,6 +3016,23 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       anglais).
                     </span>
                   </a>
+                  <button
+                    type='button'
+                    className='cours-fr-folder-card'
+                    onClick={() => setView({ v: 'all-home' })}
+                  >
+                    <span className='cours-fr-folder-icon'>📁</span>
+                    <span className='cours-fr-folder-label'>
+                      Tous les exercices du site
+                    </span>
+                    <span className='cours-fr-folder-sub'>
+                      Tout le catalogue dans cette page, français quand il
+                      existe, anglais sinon.
+                    </span>
+                    <span className='cours-fr-folder-count'>
+                      {totalExerciseCount} exercices disponibles
+                    </span>
+                  </button>
                 </div>
               </>
             )}
@@ -2930,6 +3048,27 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                   Tu peux naviguer de deux façons : par certification (comme sur
                   la page d&apos;accueil officielle) ou par thème.
                 </p>
+
+                <h2 className='cours-fr-section-title'>Catalogue complet</h2>
+                <div className='cours-fr-grid'>
+                  <button
+                    type='button'
+                    className='cours-fr-folder-card'
+                    onClick={() => setView({ v: 'all-home' })}
+                  >
+                    <span className='cours-fr-folder-icon'>📁</span>
+                    <span className='cours-fr-folder-label'>
+                      Tous les exercices du site
+                    </span>
+                    <span className='cours-fr-folder-sub'>
+                      Ouvre tous les dossiers existants, même ceux qui sont
+                      encore en anglais.
+                    </span>
+                    <span className='cours-fr-folder-count'>
+                      {totalExerciseCount} exercices
+                    </span>
+                  </button>
+                </div>
 
                 <h2 className='cours-fr-section-title'>Par certification</h2>
                 <div className='cours-fr-grid'>
@@ -3008,6 +3147,107 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
               </>
             )}
 
+            {view.v === 'all-home' && (
+              <>
+                <BackBar
+                  onBack={() => setView({ v: 'lang' })}
+                  crumbs={['Tous les exercices du site']}
+                />
+                <h1 className='cours-fr-title'>
+                  📁 Tous les exercices du site
+                </h1>
+                <p className='cours-fr-intro'>
+                  Ce dossier contient tout le catalogue disponible dans le
+                  projet. Les exercices déjà traduits s&apos;ouvrent en
+                  français, les autres s&apos;ouvrent en anglais.
+                </p>
+
+                <div className='cours-fr-grid'>
+                  {allExerciseGroups.map(group => (
+                    <button
+                      key={group.key}
+                      type='button'
+                      className='cours-fr-folder-card'
+                      onClick={() =>
+                        setView({ v: 'all-super', superBlock: group.key })
+                      }
+                    >
+                      <span className='cours-fr-folder-icon'>📁</span>
+                      <span className='cours-fr-folder-label'>
+                        {group.title}
+                      </span>
+                      <span className='cours-fr-folder-sub'>
+                        {group.blocks.length} dossier
+                        {group.blocks.length > 1 ? 's' : ''} regroupé
+                        {group.blocks.length > 1 ? 's' : ''} dans ce parcours.
+                      </span>
+                      {group.translatedBlocks < group.blocks.length && (
+                        <span className='cours-fr-not-translated'>
+                          Traduction à venir sur certains dossiers
+                        </span>
+                      )}
+                      <span className='cours-fr-folder-count'>
+                        {group.count} exercice{group.count > 1 ? 's' : ''}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {view.v === 'all-super' &&
+              (() => {
+                const group = getAllExerciseGroup(view.superBlock);
+                if (!group) return <p>Catalogue introuvable.</p>;
+
+                return (
+                  <>
+                    <BackBar
+                      onBack={() => setView({ v: 'all-home' })}
+                      crumbs={['Tous les exercices du site', group.title]}
+                    />
+                    <h1 className='cours-fr-title'>📁 {group.title}</h1>
+                    <p className='cours-fr-intro'>
+                      Tous les dossiers de ce parcours sont listés ici. Les
+                      dossiers non traduits restent cliquables et ouvrent la
+                      version anglaise.
+                    </p>
+
+                    <div className='cours-fr-grid'>
+                      {group.blocks.map(block => (
+                        <button
+                          key={block.key}
+                          type='button'
+                          className='cours-fr-folder-card'
+                          onClick={() =>
+                            setView({
+                              v: 'fr-block',
+                              block: block.key,
+                              from: 'all',
+                              parent: group.key
+                            })
+                          }
+                        >
+                          <span className='cours-fr-folder-icon'>📁</span>
+                          <span className='cours-fr-folder-label'>
+                            {block.title}
+                          </span>
+                          {!block.translated && (
+                            <span className='cours-fr-not-translated'>
+                              En anglais — traduction à venir
+                            </span>
+                          )}
+                          <span className='cours-fr-folder-count'>
+                            {block.count} exercice
+                            {block.count > 1 ? 's' : ''}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
+
             {view.v === 'fr-cert' &&
               (() => {
                 const cert = CERTIFICATIONS.find(c => c.key === view.cert);
@@ -3033,9 +3273,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     </p>
                     {cert.overview && (
                       <section className='cours-fr-cert-overview'>
-                        <p className='cours-fr-cert-cta'>
-                          {cert.overview.cta}
-                        </p>
+                        <p className='cours-fr-cert-cta'>{cert.overview.cta}</p>
                         {cert.overview.paragraphs.map(paragraph => (
                           <p key={paragraph}>{paragraph}</p>
                         ))}
@@ -3136,22 +3374,29 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
               (() => {
                 const cert = CERTIFICATIONS.find(c => c.key === view.parent);
                 const topic = TOPICS.find(t => t.key === view.parent);
+                const allGroup = getAllExerciseGroup(view.parent);
                 const parentLabel =
                   view.from === 'cert'
                     ? (cert?.title ?? view.parent)
-                    : `Thème : ${topic?.label ?? view.parent}`;
+                    : view.from === 'topic'
+                      ? `Thème : ${topic?.label ?? view.parent}`
+                      : (allGroup?.title ?? view.parent);
+                const rootLabel =
+                  view.from === 'all'
+                    ? 'Tous les exercices du site'
+                    : 'Français';
                 return (
                   <>
                     <BackBar
                       onBack={() => goBackFromBlock(view)}
                       crumbs={[
-                        'Français',
+                        rootLabel,
                         parentLabel,
-                        BLOCK_NAMES[view.block] ?? view.block
+                        getBlockTitle(view.block, byBlock[view.block])
                       ]}
                     />
                     <h1 className='cours-fr-title'>
-                      📁 {BLOCK_NAMES[view.block] ?? view.block}
+                      📁 {getBlockTitle(view.block, byBlock[view.block])}
                     </h1>
                     <p className='cours-fr-intro'>
                       Chaque dossier ci-dessous est un exercice. Clique pour
@@ -3193,10 +3438,17 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                 const c = list[view.stepNum - 1];
                 const cert = CERTIFICATIONS.find(x => x.key === view.parent);
                 const topic = TOPICS.find(x => x.key === view.parent);
+                const allGroup = getAllExerciseGroup(view.parent);
                 const parentLabel =
                   view.from === 'cert'
                     ? (cert?.title ?? view.parent)
-                    : `Thème : ${topic?.label ?? view.parent}`;
+                    : view.from === 'topic'
+                      ? `Thème : ${topic?.label ?? view.parent}`
+                      : (allGroup?.title ?? view.parent);
+                const rootLabel =
+                  view.from === 'all'
+                    ? 'Tous les exercices du site'
+                    : 'Français';
                 const goBackToBlock = () =>
                   setView({
                     v: 'fr-block',
@@ -3210,9 +3462,9 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       <BackBar
                         onBack={goBackToBlock}
                         crumbs={[
-                          'Français',
+                          rootLabel,
                           parentLabel,
-                          BLOCK_NAMES[view.block] ?? view.block
+                          getBlockTitle(view.block, list)
                         ]}
                       />
                       <p>Exercice introuvable.</p>
@@ -3226,9 +3478,9 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     <BackBar
                       onBack={goBackToBlock}
                       crumbs={[
-                        'Français',
+                        rootLabel,
                         parentLabel,
-                        BLOCK_NAMES[view.block] ?? view.block,
+                        getBlockTitle(view.block, list),
                         `Exercice ${view.stepNum}`
                       ]}
                     />
