@@ -115,6 +115,16 @@ const CERTIFICATIONS: Certification[] = [
         translated: true
       },
       {
+        key: 'lab-recipe-page',
+        title: 'Créer une page de recette',
+        translated: true
+      },
+      {
+        key: 'lecture-html-fundamentals',
+        title: 'Comprendre les fondamentaux HTML',
+        translated: true
+      },
+      {
         key: 'workshop-cafe-menu',
         title: 'Apprendre le CSS de base en créant un menu de café',
         translated: true
@@ -2750,7 +2760,9 @@ const TOPICS: Topic[] = [
       'lecture-understanding-html-attributes',
       'lab-debug-pet-adoption-page',
       'lecture-understanding-the-html-boilerplate',
-      'workshop-cat-photo-app'
+      'workshop-cat-photo-app',
+      'lab-recipe-page',
+      'lecture-html-fundamentals'
     ]
   },
   {
@@ -3095,6 +3107,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                             🚧 Version anglaise — traduction à venir
                           </span>
                         ) : (
+                          // eslint-disable-next-line no-constant-binary-expression
                           false && (
                             <span className='cours-fr-folder-count'>
                               {total}dossier{total > 1 ? 's' : ''} FR
