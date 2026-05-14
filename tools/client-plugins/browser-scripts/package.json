@@ -28,7 +28,7 @@
   "author": "freeCodeCamp <team@freecodecamp.org>",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint --max-warnings 0",
+    "lint": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --max-warnings 0",
     "build": "pnpm copy-scripts && pnpm bundle",
     "bundle": "cross-env NODE_OPTIONS=\"--max-old-space-size=7168\" webpack -c webpack.config.cjs --env production",
     "copy-scripts": "tsx ./copy-scripts.ts"
