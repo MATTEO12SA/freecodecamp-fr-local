@@ -140,6 +140,16 @@ const CERTIFICATIONS: Certification[] = [
         translated: true
       },
       {
+        key: 'lecture-working-with-audio-and-video-elements',
+        title: 'Travailler avec les éléments audio et vidéo',
+        translated: true
+      },
+      {
+        key: 'workshop-html-music-player',
+        title: 'Créer un lecteur de musique HTML',
+        translated: true
+      },
+      {
         key: 'workshop-cafe-menu',
         title: 'Apprendre le CSS de base en créant un menu de café',
         translated: true
@@ -2780,7 +2790,9 @@ const TOPICS: Topic[] = [
       'lecture-html-fundamentals',
       'workshop-bookstore-page',
       'lecture-understanding-how-html-affects-seo',
-      'lab-travel-agency-page'
+      'lab-travel-agency-page',
+      'lecture-working-with-audio-and-video-elements',
+      'workshop-html-music-player'
     ]
   },
   {
