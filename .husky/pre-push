@@ -1,0 +1,13 @@
+CHANGED=$(git diff --name-only --diff-filter=ACMR @{u}.. 2>/dev/null | grep -E '\.(md|json|yml|yaml|js|jsx|ts|tsx|css|scss)$' | grep -vE '^(client|api|curriculum|tools|packages)/.*(\.test\.|/dist/|/build/|/node_modules/)')
+
+if [ -z "$CHANGED" ]; then
+  exit 0
+fi
+
+echo "Pre-push: prettier check sur fichiers modifies..."
+echo "$CHANGED" | xargs pnpm prettier --check
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "Prettier check echoue. Lance 'pnpm prettier --write <fichier>' pour corriger, puis commit/push."
+  exit 1
+fi

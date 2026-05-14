@@ -8,10 +8,18 @@ on:
       - 'renovate/**'
       - 'hotfix-**'
       - 'temp-**'
+    paths-ignore:
+      - 'curriculum/i18n-curriculum/**'
+      - 'curriculum/dictionaries/**'
+      - '**/*.md'
   pull_request:
     branches:
       - 'main'
       - 'temp-**' # Temporary branches allowed on Upstream
+    paths-ignore:
+      - 'curriculum/i18n-curriculum/**'
+      - 'curriculum/dictionaries/**'
+      - '**/*.md'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.event.workflow_run.head_branch || github.ref }}
