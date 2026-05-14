@@ -13,10 +13,13 @@ describe('<Link />', () => {
     expect(gatsbyLink).toBeTruthy();
   });
 
-  it('sets target for external links', () => {
+  it('disables external links in local mode', () => {
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    expect(externalLink.props.target).toEqual('_blank');
+    expect(externalLink.props.target).toBeFalsy();
+    // @ts-ignore
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    expect(externalLink.props['data-disabled-external-link']).toEqual('true');
   });
 
   it('does not specify target in gatsbyLink', () => {

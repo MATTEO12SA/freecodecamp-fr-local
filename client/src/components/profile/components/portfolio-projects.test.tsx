@@ -220,14 +220,16 @@ describe('<PortfolioProjects />', () => {
     expect(screen.queryByText('buttons.private')).not.toBeInTheDocument();
   });
 
-  it('renders project links with correct href', () => {
+  it('renders project titles without external links', () => {
     render(
       <PortfolioProjects
         portfolioProjects={samplePortfolio}
         isSessionUser={false}
       />
     );
-    const link = screen.getByRole('link', { name: /My Website/ });
-    expect(link).toHaveAttribute('href', 'https://example.com');
+    expect(screen.getByText('My Website')).toBeInTheDocument();
+    expect(
+      screen.queryByRole('link', { name: /My Website/ })
+    ).not.toBeInTheDocument();
   });
 });

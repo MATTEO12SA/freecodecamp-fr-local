@@ -67,12 +67,12 @@ describe('<IndependentLowerJaw />', () => {
     vi.resetAllMocks();
   });
 
-  it('shows share buttons when the block is completed on the last step', () => {
+  it('does not show share buttons when the block is completed on the last step', () => {
     render(<IndependentLowerJaw {...baseProps} />, createStore());
 
-    expect(screen.getByTestId('share-on-x')).toBeInTheDocument();
-    expect(screen.getByTestId('share-on-bluesky')).toBeInTheDocument();
-    expect(screen.getByTestId('share-on-threads')).toBeInTheDocument();
+    expect(screen.queryByTestId('share-on-x')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('share-on-bluesky')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('share-on-threads')).not.toBeInTheDocument();
   });
 
   it('does not show share buttons when the block is not completed', () => {

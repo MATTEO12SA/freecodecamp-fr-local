@@ -66,14 +66,14 @@ describe('<certification />', () => {
     });
   });
 
-  it('Render button when only solution is present', () => {
+  it('does not render external solution links', () => {
     renderWithRedux(<CertificationSettings {...propsForOnlySolution} />);
 
     expect(
-      screen.getByRole('link', {
+      screen.queryByRole('link', {
         name: 'buttons.view settings.labels.solution-for (aria.opens-new-window)'
       })
-    ).toHaveAttribute('href', 'https://github.com/freeCodeCamp/freeCodeCamp');
+    ).not.toBeInTheDocument();
   });
 });
 

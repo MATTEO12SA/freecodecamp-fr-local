@@ -107,24 +107,15 @@ describe('<Profile/>', () => {
     expect(reportButton).toHaveAttribute('href', '/user/string/report-user');
   });
 
-  it('renders profile heading and social links', () => {
+  it('renders profile heading and disables external social links', () => {
     // @ts-expect-error - quick hack to mollify TS.
     renderWithRedux(<Profile {...notMyProfileProps} />);
 
     expect(
       screen.getByRole('heading', { name: '@string' })
     ).toBeInTheDocument();
-    expect(screen.getByLabelText('aria.linkedin')).toHaveAttribute(
-      'href',
-      'string'
-    );
-    expect(screen.getByLabelText('aria.github')).toHaveAttribute(
-      'href',
-      'string'
-    );
-    expect(screen.getByLabelText('aria.website')).toHaveAttribute(
-      'href',
-      'string'
-    );
+    expect(screen.getByLabelText('aria.linkedin')).not.toHaveAttribute('href');
+    expect(screen.getByLabelText('aria.github')).not.toHaveAttribute('href');
+    expect(screen.getByLabelText('aria.website')).not.toHaveAttribute('href');
   });
 });

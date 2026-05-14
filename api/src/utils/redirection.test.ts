@@ -12,10 +12,10 @@ import { HOME_LOCATION } from './env.js';
 
 const validJWTSecret = 'this is a super secret string';
 const invalidJWTSecret = 'This is not correct secret';
-const validReturnTo = 'https://www.freecodecamp.org/settings';
+const validReturnTo = `${HOME_LOCATION}/settings`;
 const invalidReturnTo = 'https://www.freecodecamp.org.fake/settings';
-const defaultReturnTo = 'https://www.freecodecamp.org/learn';
-const defaultOrigin = 'https://www.freecodecamp.org';
+const defaultReturnTo = `${HOME_LOCATION}/learn`;
+const defaultOrigin = HOME_LOCATION;
 const defaultPrefix = '';
 
 const defaultObject = {
@@ -92,12 +92,13 @@ describe('redirection', () => {
     });
     test('should not change a known pathPrefix', () => {
       expect.assertions(1);
-      const spanishPrefix = {
+      const frenchPrefix = {
         ...defaultObject,
-        pathPrefix: 'espanol'
+        pathPrefix: 'french',
+        returnTo: `${HOME_LOCATION}/french/learn`
       };
-      expect(normalizeParams(spanishPrefix, defaultOrigin)).toEqual(
-        spanishPrefix
+      expect(normalizeParams(frenchPrefix, defaultOrigin)).toEqual(
+        frenchPrefix
       );
     });
     // we *could*, in principle, grab the path and send them to
@@ -152,14 +153,14 @@ describe('redirection', () => {
     test('should return origin, pathPrefix and returnTo given valid headers', () => {
       const req = {
         headers: {
-          referer: `https://www.freecodecamp.org/espanol/learn/rosetta-code/`
+          referer: `${HOME_LOCATION}/french/learn/rosetta-code/`
         }
       };
 
       const expectedReturn = {
-        origin: 'https://www.freecodecamp.org',
-        pathPrefix: 'espanol',
-        returnTo: 'https://www.freecodecamp.org/espanol/learn/rosetta-code/'
+        origin: HOME_LOCATION,
+        pathPrefix: 'french',
+        returnTo: `${HOME_LOCATION}/french/learn/rosetta-code/`
       };
 
       const result = getRedirectParams(req);
@@ -169,14 +170,14 @@ describe('redirection', () => {
     test('should strip off any query parameters from the referer', () => {
       const req = {
         headers: {
-          referer: `https://www.freecodecamp.org/espanol/learn/rosetta-code/?query=param`
+          referer: `${HOME_LOCATION}/french/learn/rosetta-code/?query=param`
         }
       };
 
       const expectedReturn = {
-        origin: 'https://www.freecodecamp.org',
-        pathPrefix: 'espanol',
-        returnTo: 'https://www.freecodecamp.org/espanol/learn/rosetta-code/'
+        origin: HOME_LOCATION,
+        pathPrefix: 'french',
+        returnTo: `${HOME_LOCATION}/french/learn/rosetta-code/`
       };
 
       const result = getRedirectParams(req);
@@ -220,15 +221,15 @@ describe('redirection', () => {
     test('should use the login-returnto cookie if present', () => {
       const mockReq = {
         cookies: {
-          'login-returnto': 'https://www.freecodecamp.org/espanol/learn'
+          'login-returnto': `${HOME_LOCATION}/french/learn`
         },
         unsignCookie: (rawValue: string) => ({ value: rawValue })
       };
 
       const expectedReturn = {
-        origin: 'https://www.freecodecamp.org',
-        pathPrefix: 'espanol',
-        returnTo: 'https://www.freecodecamp.org/espanol/learn'
+        origin: HOME_LOCATION,
+        pathPrefix: 'french',
+        returnTo: `${HOME_LOCATION}/french/learn`
       };
 
       const result = getLoginRedirectParams(mockReq);

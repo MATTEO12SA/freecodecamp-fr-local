@@ -56,28 +56,26 @@ beforeEach(() => {
 });
 
 describe('<TimeLine />', () => {
-  it('Render button when only solution is present', () => {
+  it('does not render external solution links', () => {
     // @ts-expect-error
     render(<TimeLine {...propsForOnlySolution} />, store);
-    const showViewButton = screen.getByRole('link', {
-      name: 'buttons.view settings.labels.solution-for (aria.opens-new-window)'
-    });
-    expect(showViewButton).toHaveAttribute(
-      'href',
-      'https://github.com/freeCodeCamp/freeCodeCamp'
-    );
+
+    expect(
+      screen.queryByRole('link', {
+        name: 'buttons.view settings.labels.solution-for (aria.opens-new-window)'
+      })
+    ).not.toBeInTheDocument();
   });
 
-  it('rendering the correct button when files is present', () => {
+  it('does not render solution buttons for local-only profiles', () => {
     // @ts-expect-error
     render(<TimeLine {...propsForOnlySolution} />, store);
 
-    const viewButtons = screen.getAllByRole('button', {
-      name: 'buttons.view settings.labels.solution-for'
-    });
-    viewButtons.forEach(button => {
-      expect(button).toBeInTheDocument();
-    });
+    expect(
+      screen.queryByRole('button', {
+        name: 'buttons.view settings.labels.solution-for'
+      })
+    ).not.toBeInTheDocument();
   });
 });
 

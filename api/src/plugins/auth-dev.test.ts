@@ -103,14 +103,12 @@ describe('dev login', () => {
         method: 'GET',
         url: '/signin',
         headers: {
-          referer: 'https://www.freecodecamp.org/some-path/or/other'
+          referer: `${HOME_LOCATION}/some-path/or/other`
         }
       });
 
       expect(res.statusCode).toBe(302);
-      expect(res.headers.location).toBe(
-        'https://www.freecodecamp.org/some-path/or/other'
-      );
+      expect(res.headers.location).toBe(`${HOME_LOCATION}/some-path/or/other`);
     });
 
     test('should redirect to /valid-language/learn when signing in from /valid-language', async () => {
@@ -118,14 +116,12 @@ describe('dev login', () => {
         method: 'GET',
         url: '/signin',
         headers: {
-          referer: 'https://www.freecodecamp.org/espanol'
+          referer: `${HOME_LOCATION}/french`
         }
       });
 
       expect(res.statusCode).toBe(302);
-      expect(res.headers.location).toBe(
-        'https://www.freecodecamp.org/espanol/learn'
-      );
+      expect(res.headers.location).toBe(`${HOME_LOCATION}/french/learn`);
     });
 
     test('should handle referers with trailing slahes', async () => {
@@ -133,14 +129,12 @@ describe('dev login', () => {
         method: 'GET',
         url: '/signin',
         headers: {
-          referer: 'https://www.freecodecamp.org/espanol/'
+          referer: `${HOME_LOCATION}/french/`
         }
       });
 
       expect(res.statusCode).toBe(302);
-      expect(res.headers.location).toBe(
-        'https://www.freecodecamp.org/espanol/learn'
-      );
+      expect(res.headers.location).toBe(`${HOME_LOCATION}/french/learn`);
     });
 
     test('should redirect to /learn by default', async () => {
