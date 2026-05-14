@@ -511,9 +511,7 @@ function ShowClassic({
             testOutput={
               <Output defaultOutput={defaultOutput} output={output} />
             }
-            toolPanel={
-              <ToolPanel isMobile videoUrl={videoUrl} />
-            }
+            toolPanel={<ToolPanel isMobile videoUrl={videoUrl} />}
             updateUsingKeyboardInTablist={updateUsingKeyboardInTablist}
             usesMultifileEditor={usesMultifileEditor}
             usesTerminal={usesTerminal}

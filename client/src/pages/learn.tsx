@@ -10,10 +10,7 @@ import Intro from '../components/Intro';
 import Map from '../components/Map';
 import LearnLayout from '../components/layouts/learn';
 import './cours-fr.css';
-import {
-  userSelector,
-  userFetchStateSelector
-} from '../redux/selectors';
+import { userSelector, userFetchStateSelector } from '../redux/selectors';
 
 interface FetchState {
   pending: boolean;

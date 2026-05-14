@@ -30,10 +30,7 @@ const SearchBarFooter = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <span
-        className='fcc_suggestion_item'
-        data-disabled-external-link='true'
-      >
+      <span className='fcc_suggestion_item' data-disabled-external-link='true'>
         <span className='hit-name'>
           {t('search.see-results', { searchQuery: query })}
         </span>

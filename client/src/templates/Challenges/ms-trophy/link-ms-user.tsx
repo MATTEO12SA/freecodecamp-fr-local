@@ -114,9 +114,7 @@ function LinkMsUser({
       <ol className='link-ms-user-ol'>
         <li>
           <Trans i18nKey='learn.ms.link-li-1'>
-            <span data-disabled-external-link='true'>
-              placeholder
-            </span>
+            <span data-disabled-external-link='true'>placeholder</span>
           </Trans>
         </li>
         <li>{t('learn.ms.link-li-2')}</li>

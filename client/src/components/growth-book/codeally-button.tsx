@@ -3,6 +3,8 @@ interface CodeAllyButtonProps {
   onClick: () => void;
 }
 
-export function CodeAllyButton(_props: CodeAllyButtonProps): JSX.Element | null {
+export function CodeAllyButton(
+  _props: CodeAllyButtonProps
+): JSX.Element | null {
   return null;
 }

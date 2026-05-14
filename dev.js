@@ -22,7 +22,7 @@ const colors = {
   green: '\x1b[32m',
   yellow: '\x1b[33m',
   red: '\x1b[31m',
-  gray: '\x1b[90m',
+  gray: '\x1b[90m'
 };
 
 function log(message, color = 'reset') {
@@ -54,12 +54,7 @@ function removeProjectPath(relativePath) {
 
 function hasStaleGatsbyCache() {
   const cacheFiles = [
-    path.join(
-      projectRoot,
-      'client',
-      '.cache',
-      'async-requires.js'
-    ),
+    path.join(projectRoot, 'client', '.cache', 'async-requires.js'),
     path.join(
       projectRoot,
       'client',
@@ -67,7 +62,7 @@ function hasStaleGatsbyCache() {
       '_this_is_virtual_fs_path_',
       '$virtual',
       'async-requires.js'
-    ),
+    )
   ];
 
   return cacheFiles.some(
@@ -92,7 +87,7 @@ function runCommand(command, args, options = {}) {
     const result = spawnSync(command, args, {
       cwd: projectRoot,
       stdio: 'inherit',
-      ...options,
+      ...options
     });
     return result.status === 0;
   } catch (error) {
@@ -133,7 +128,10 @@ function stopAllProcesses() {
 function showInstructions() {
   log('\n📋 Instructions:', 'cyan');
   log('  • Appuyez sur Ctrl+C pour arrêter tous les processus', 'gray');
-  log('  • Les serveurs se relanceront automatiquement lors des changements de fichiers', 'gray');
+  log(
+    '  • Les serveurs se relanceront automatiquement lors des changements de fichiers',
+    'gray'
+  );
   log('  • Ouvrez votre navigateur pour voir le projet', 'gray');
   log('  • Lancez node dev.js --clean si Gatsby garde un vieux cache', 'gray');
   log('');
@@ -152,7 +150,10 @@ function startDevelopment() {
       const version = execSync('pnpm --version', { encoding: 'utf8' });
       log(`✅ pnpm ${version.trim()} détecté`, 'green');
     } catch (error) {
-      log('❌ pnpm non trouvé. Installez pnpm avec: npm install -g pnpm', 'red');
+      log(
+        '❌ pnpm non trouvé. Installez pnpm avec: npm install -g pnpm',
+        'red'
+      );
       process.exit(1);
     }
 
@@ -160,7 +161,7 @@ function startDevelopment() {
     if (!fs.existsSync(path.join(projectRoot, 'node_modules'))) {
       log('📥 Installation des dépendances...', 'cyan');
       if (!runCommand('pnpm', ['install'])) {
-        log('❌ Erreur lors de l\'installation des dépendances', 'red');
+        log("❌ Erreur lors de l'installation des dépendances", 'red');
         process.exit(1);
       }
       log('✅ Dépendances installées', 'green');
@@ -179,15 +180,15 @@ function startDevelopment() {
     devProcess = spawn('pnpm', ['run', 'develop:client'], {
       cwd: projectRoot,
       stdio: 'inherit',
-      shell: IS_WINDOWS,
+      shell: IS_WINDOWS
     });
 
-    devProcess.on('error', (error) => {
+    devProcess.on('error', error => {
       log(`❌ Erreur: ${error.message}`, 'red');
       process.exit(1);
     });
 
-    devProcess.on('close', (code) => {
+    devProcess.on('close', code => {
       if (code !== 0 && code !== null) {
         log(`\n❌ Le processus s'est arrêté avec le code ${code}`, 'red');
       }

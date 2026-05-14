@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       updateChallengeMeta,
       challengeMounted,
       updateSolutionFormValues,
-      openCompletionModal: () => openModal('completion'),
+      openCompletionModal: () => openModal('completion')
     },
     dispatch
   );
