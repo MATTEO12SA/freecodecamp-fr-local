@@ -1,4 +1,4 @@
-import { chromium } from './node_modules/.pnpm/playwright@1.52.0/node_modules/playwright/index.mjs';
+import { chromium } from '@playwright/test';
 import { rmSync, existsSync } from 'fs';
 import { tmpdir } from 'os';
 import { join } from 'path';
@@ -15,9 +15,7 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
 
 // === Phase 1: open the browser with a persistent profile, write progress ===
 {
-  const ctx = await chromium.launchPersistentContext(PROFILE, {
-    channel: 'msedge'
-  });
+  const ctx = await chromium.launchPersistentContext(PROFILE);
   const page = await ctx.newPage();
   try {
     await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 });
@@ -47,9 +45,7 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
 
 // === Phase 2: re-open the SAME profile (simulating browser/PC restart) ===
 {
-  const ctx = await chromium.launchPersistentContext(PROFILE, {
-    channel: 'msedge'
-  });
+  const ctx = await chromium.launchPersistentContext(PROFILE);
   const page = await ctx.newPage();
   try {
     await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 });
@@ -63,7 +59,10 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
         `${stored.completedChallenges.length} entry/ies, latest=${stored.completedChallenges[0].id.slice(-15)}`
       );
     } else {
-      fail('phase 2: progress restored after profile reopen', JSON.stringify(stored));
+      fail(
+        'phase 2: progress restored after profile reopen',
+        JSON.stringify(stored)
+      );
     }
   } catch (e) {
     fail('phase 2: progress restored after profile reopen', e.message);
@@ -93,7 +92,10 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
       );
     }
   } catch (e) {
-    fail('phase 3: Redux store rehydrated from persisted localStorage', e.message);
+    fail(
+      'phase 3: Redux store rehydrated from persisted localStorage',
+      e.message
+    );
   }
 
   await ctx.close();
@@ -101,9 +103,7 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
 
 // === Phase 4: a third open just to be sure (multi-restart resilience) ===
 {
-  const ctx = await chromium.launchPersistentContext(PROFILE, {
-    channel: 'msedge'
-  });
+  const ctx = await chromium.launchPersistentContext(PROFILE);
   const page = await ctx.newPage();
   await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(2500);
@@ -115,7 +115,8 @@ const fail = (n, d = '') => results.push({ ok: false, n, d });
       'phase 4: still there after a 2nd reopen',
       `${stillThere.completedChallenges.length} entry/ies`
     );
-  else fail('phase 4: still there after a 2nd reopen', JSON.stringify(stillThere));
+  else
+    fail('phase 4: still there after a 2nd reopen', JSON.stringify(stillThere));
   await ctx.close();
 }
 

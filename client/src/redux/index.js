@@ -9,7 +9,6 @@ import {
 import { getIsDailyCodingChallenge } from '@freecodecamp/shared/config/challenge-types';
 import { actionTypes, ns as MainApp } from './action-types';
 import { createAppMountSaga } from './app-mount-saga';
-import { createDonationSaga } from './donation-saga';
 import failedUpdatesEpic from './failed-updates-epic';
 import { createFetchUserSaga } from './fetch-user-saga';
 import hardGoToEpic from './hard-go-to-epic';
@@ -92,7 +91,6 @@ export const epics = [
 export const sagas = [
   ...createThemeSaga(actionTypes),
   ...createAppMountSaga(actionTypes),
-  ...createDonationSaga(actionTypes),
   ...createFetchUserSaga(actionTypes),
   ...createShowCertSaga(actionTypes),
   ...createReportUserSaga(actionTypes),

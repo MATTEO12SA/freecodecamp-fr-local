@@ -1,17 +1,10 @@
 # freeCodeCamp FR Local
 
-Version personnelle de freeCodeCamp transformee pour fonctionner en local, en francais, sans compte utilisateur et sans backend.
+Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
 
-Ce repo est base sur le code open source de freeCodeCamp, mais il est adapte pour un usage personnel : tu lances le client, tu ouvres le site dans ton navigateur, et ta progression reste sauvegardee sur ton ordinateur.
+Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, et `/cours-fr` sert de dossier de cours local.
 
-## Objectif
-
-- Apprendre a coder en francais.
-- Utiliser freeCodeCamp sans Auth0, MongoDB, API serveur, Stripe, donation ou services externes.
-- Garder la progression dans le navigateur avec `localStorage`.
-- Avoir un repo GitHub qui t'appartient et que tu peux modifier / commit / push comme tu veux.
-
-## Lancer le projet
+## Demarrage
 
 Depuis PowerShell :
 
@@ -20,87 +13,71 @@ cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
 .\dev.ps1
 ```
 
-Si Gatsby affiche une erreur qui parle de `.cache`, `async-requires.js` ou d'une ancienne page `certification`, relance avec nettoyage :
+Si Gatsby garde une ancienne page en cache :
 
 ```powershell
 .\dev.ps1 -Clean
 ```
 
-Puis ouvre :
+Pages utiles :
 
 ```text
 http://localhost:8000
-```
-
-Page principale des cours francais :
-
-```text
 http://localhost:8000/cours-fr
+http://localhost:8000/learn
 ```
 
-## Ce qui a ete change
+## Ce Fork Change Quoi
 
-- Page d'accueil simplifiee avec un bouton direct vers les cours francais.
-- Nouvelle page `/cours-fr` avec navigation par langue, certification et theme.
-- Interface reduite pour un usage local : moins de liens externes, plus de compte, plus de donation.
-- Utilisateur local automatique au demarrage.
+- Utilisateur local automatique, sans Auth0 ni MongoDB.
 - Progression sauvegardee dans `localStorage`.
-- Appels reseau backend neutralises.
-- Locale francaise ajoutee cote client.
-- Traductions du curriculum integrees directement dans le repo.
-- Script `dev.ps1` simplifie pour lancer seulement Gatsby et nettoyer les vieux caches Gatsby.
+- API backend neutralisee pour le flux d'apprentissage local.
+- Interface francaise avec fallback anglais pour les contenus non traduits.
+- `/cours-fr` filtre les contenus non ouvrables localement.
+- Liens externes visibles desactives ou retires.
+- Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
 
-## Curriculum francais inclus
+## Curriculum FR
 
-Le dossier francais se trouve ici :
+Les traductions vivent dans :
 
 ```text
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Contenu traduit actuellement :
+Responsive Web Design v9 contient deja plusieurs blocs francais, dont le debut HTML, Cat Photo App, Cafe Menu, Recipe Page, Bookstore Page, SEO, Travel Agency, audio/video et Music Player. Les fichiers manquants tombent en anglais tant qu'ils ne sont pas traduits.
 
-- Premiers dossiers HTML de Responsive Web Design v9.
-- Cat Photo App complet.
-- Cafe Menu complet : 91 / 91 etapes.
+## Validation
 
-Les autres contenus peuvent rester en anglais tant qu'ils ne sont pas traduits.
+Commandes principales :
 
-## Tests et verification
+```powershell
+pnpm -C curriculum lint-challenges
+pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
+pnpm --filter @freecodecamp/shared type-check
+```
 
-Scripts utiles a la racine :
+Scripts locaux gardes :
 
 ```text
 smoke-test.mjs
 submit-test.mjs
 persist-test.mjs
-human-solve-test.mjs
 full-flow-test.mjs
-final-check.mjs
-```
-
-Verification TypeScript deja utilisee :
-
-```powershell
-pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 ```
 
 ## Documentation
 
-Lis ces fichiers pour le detail complet :
+- `QUICKSTART.md` : commandes courtes pour lancer et tester.
+- `DOCS-FR.md` : details techniques du fork local et du nettoyage strict.
 
-- `DOCS-FR.md` : explication detaillee de toutes les modifications.
-- `QUICKSTART.md` : commandes de demarrage rapide.
+## GitHub
 
-## Notes GitHub
-
-Ce repo est maintenant prevu pour etre pousse dans :
+Remote personnel :
 
 ```text
 https://github.com/MATTEO12SA/freecodecamp-fr-local
 ```
-
-Il ne depend plus du fork `MATTEO12SA/i18n-curriculum` : les fichiers francais du curriculum sont versionnes directement dans ce repo.
 
 ## Licence
 

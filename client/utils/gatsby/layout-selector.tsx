@@ -22,10 +22,7 @@ export default function layoutSelector({
     location: { pathname }
   } = props;
 
-  const isDailyChallenge = props.path === '/learn/daily-coding-challenge/*';
-  const dailyChallengeParam = props.params['*'];
-
-  const isChallenge = !!props.pageContext?.challengeMeta || isDailyChallenge;
+  const isChallenge = !!props.pageContext?.challengeMeta;
 
   // Return raw element for status endpoints without any layout
   if (/^\/status\//.test(pathname)) {
@@ -48,8 +45,6 @@ export default function layoutSelector({
         pathname={pathname}
         showFooter={false}
         isChallenge={true}
-        isDailyChallenge={isDailyChallenge}
-        dailyChallengeParam={dailyChallengeParam}
         usesMultifileEditor={
           props.data?.challengeNode?.challenge?.usesMultifileEditor
         }

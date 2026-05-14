@@ -1,14 +1,14 @@
-import { chromium } from './node_modules/.pnpm/playwright@1.52.0/node_modules/playwright/index.mjs';
+import { chromium } from '@playwright/test';
 
 const BASE = 'http://localhost:8000';
 const CHALLENGE =
-  '/learn/2022/responsive-web-design/learn-html-by-building-a-cat-photo-app/step-1';
+  '/learn/responsive-web-design-v9/workshop-cat-photo-app/step-1';
 
 const results = [];
 const pass = (n, d = '') => results.push({ ok: true, n, d });
 const fail = (n, d = '') => results.push({ ok: false, n, d });
 
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch();
 const ctx = await browser.newContext();
 const page = await ctx.newPage();
 
@@ -92,7 +92,10 @@ const submitResult = await page.evaluate(() => {
 });
 
 if (submitResult.ok)
-  pass('dispatched submitComplete via store', `id=${submitResult.challengeId.slice(-12)}`);
+  pass(
+    'dispatched submitComplete via store',
+    `id=${submitResult.challengeId.slice(-12)}`
+  );
 else fail('dispatched submitComplete via store', submitResult.why);
 
 // 5. Wait for the localStorage persistence epic to write
@@ -108,7 +111,10 @@ if (stored?.completedChallenges?.length > 0) {
     `${stored.completedChallenges.length} entry/ies, latest=${stored.completedChallenges[0].id?.slice(-12)}`
   );
 } else {
-  fail('localStorage persisted the completed challenge', JSON.stringify(stored));
+  fail(
+    'localStorage persisted the completed challenge',
+    JSON.stringify(stored)
+  );
 }
 
 // 6. Reload and verify the entry survived
@@ -119,7 +125,10 @@ const afterReload = await page.evaluate(() => {
   return raw ? JSON.parse(raw) : null;
 });
 if (afterReload?.completedChallenges?.length > 0)
-  pass('progress survives a page reload', `${afterReload.completedChallenges.length} entry/ies`);
+  pass(
+    'progress survives a page reload',
+    `${afterReload.completedChallenges.length} entry/ies`
+  );
 else fail('progress survives a page reload', JSON.stringify(afterReload));
 
 // 7. After reload, the Redux store should also reflect the completed challenge
@@ -134,7 +143,10 @@ const reloadedStore = await page.evaluate(() => {
   };
 });
 if (reloadedStore.ok && reloadedStore.completed > 0)
-  pass('Redux user rehydrated with completed list from localStorage', `${reloadedStore.completed}`);
+  pass(
+    'Redux user rehydrated with completed list from localStorage',
+    `${reloadedStore.completed}`
+  );
 else
   fail(
     'Redux user rehydrated with completed list from localStorage',
@@ -143,13 +155,18 @@ else
 
 // 8. No API calls to :3000
 if (apiCalls.length === 0) pass('no API calls to :3000 in the whole flow');
-else fail('no API calls to :3000 in the whole flow', apiCalls.slice(0, 3).join('; '));
+else
+  fail(
+    'no API calls to :3000 in the whole flow',
+    apiCalls.slice(0, 3).join('; ')
+  );
 
 await browser.close();
 
 const okN = results.filter(r => r.ok).length;
 const failN = results.length - okN;
 console.log('\n=== SUBMIT FLOW (Redux+localStorage) RESULTS ===');
-for (const r of results) console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.n}${r.d ? '  — ' + r.d : ''}`);
+for (const r of results)
+  console.log(`${r.ok ? 'PASS' : 'FAIL'}  ${r.n}${r.d ? '  — ' + r.d : ''}`);
 console.log(`\n${okN} passed, ${failN} failed`);
 process.exit(failN === 0 ? 0 : 1);

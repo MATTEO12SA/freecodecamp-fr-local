@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
+import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
 import type {
   BlockLabel,
   BlockLayouts
@@ -77,6 +78,35 @@ type ExerciseSuperBlockFolder = {
   count: number;
   translatedBlocks: number;
 };
+
+const UNSUPPORTED_LOCAL_SUPERBLOCKS = new Set<string>(['dev-playground']);
+
+const UNSUPPORTED_LOCAL_BLOCKS = new Set<string>([
+  'daily-coding-challenges-javascript',
+  'daily-coding-challenges-python'
+]);
+
+const UNSUPPORTED_LOCAL_CHALLENGE_TYPES = new Set<number>([
+  challengeTypes.backEndProject,
+  challengeTypes.pythonProject,
+  challengeTypes.codeAllyPractice,
+  challengeTypes.codeAllyCert,
+  challengeTypes.theOdinProject,
+  challengeTypes.colab,
+  challengeTypes.exam,
+  challengeTypes.msTrophy,
+  challengeTypes.dailyChallengeJs,
+  challengeTypes.dailyChallengePy,
+  challengeTypes.examDownload
+]);
+
+function isLocalChallenge(challenge: Challenge): boolean {
+  return (
+    !UNSUPPORTED_LOCAL_SUPERBLOCKS.has(challenge.superBlock) &&
+    !UNSUPPORTED_LOCAL_BLOCKS.has(challenge.block) &&
+    !UNSUPPORTED_LOCAL_CHALLENGE_TYPES.has(challenge.challengeType)
+  );
+}
 
 const CERTIFICATIONS: Certification[] = [
   {
@@ -2871,7 +2901,10 @@ function renderRichText(md: string): string {
   s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
   s = s.replace(
     /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noreferrer">$1</a>'
+    (_match: string, label: string, href: string) =>
+      /^(https?:)?\/\//i.test(href) || /^mailto:/i.test(href)
+        ? `<span class="cours-fr-disabled-link" title="Lien externe désactivé en local">${label}</span>`
+        : `<a href="${href}">${label}</a>`
   );
   s = s
     .split(/\n{2,}/)
@@ -2919,6 +2952,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
     const uniqueChallenges = new Map<string, Challenge>();
     for (const node of data.allChallengeNode.nodes) {
       const c = node.challenge;
+      if (!isLocalChallenge(c)) continue;
       const existing = uniqueChallenges.get(c.id);
       if (!existing || (!isFrenchChallenge(existing) && isFrenchChallenge(c))) {
         uniqueChallenges.set(c.id, c);
@@ -3016,7 +3050,8 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
 
     const superBlock = view.cert as SuperBlocks;
     const initialBlock = data.allChallengeNode.nodes.find(
-      ({ challenge }) => challenge.superBlock === superBlock
+      ({ challenge }) =>
+        challenge.superBlock === superBlock && isLocalChallenge(challenge)
     )?.challenge.block;
 
     dispatch(resetExpansion());
@@ -3251,9 +3286,9 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     />
                     <h1 className='cours-fr-title'>📁 {group.title}</h1>
                     <p className='cours-fr-intro'>
-                      Tous les dossiers de ce parcours sont listés ici. Les
-                      dossiers non traduits restent cliquables et ouvrent la
-                      version anglaise.
+                      Les dossiers listés ici sont ceux qui restent ouvrables
+                      dans cette version locale. Les contenus non traduits
+                      peuvent encore ouvrir la version anglaise.
                     </p>
 
                     <div className='cours-fr-grid'>
@@ -3301,7 +3336,11 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                 );
                 const superBlockChallenges = data.allChallengeNode.nodes
                   .map(({ challenge }) => challenge)
-                  .filter(challenge => challenge.superBlock === superBlock);
+                  .filter(
+                    challenge =>
+                      challenge.superBlock === superBlock &&
+                      isLocalChallenge(challenge)
+                  );
                 return (
                   <>
                     <BackBar
@@ -3311,8 +3350,8 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     <h1 className='cours-fr-title text-center'>Courses</h1>
                     <p className='cours-fr-intro cours-fr-cert-note'>
                       {cert.title} — architecture officielle freeCodeCamp. Les
-                      dossiers déjà traduits sont en français, les autres
-                      restent à traduire.
+                      dossiers incompatibles avec le mode local sont masqués.
+                      Les autres restent disponibles, en français ou en anglais.
                     </p>
                     {cert.overview && (
                       <section className='cours-fr-cert-overview'>

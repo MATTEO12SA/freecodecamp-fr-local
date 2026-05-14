@@ -6,7 +6,6 @@ import { getTargetEditor } from '../utils/get-target-editor';
 import { actionTypes, ns } from './action-types';
 import codeStorageEpic from './code-storage-epic';
 import completionEpic from './completion-epic';
-import createQuestionEpic from './create-question-epic';
 import { createCurrentChallengeSaga } from './current-challenge-saga';
 import { createAskSocratesSaga } from './ask-socrates-saga';
 import { createExecuteChallengeSaga } from './execute-challenge-saga';
@@ -71,7 +70,7 @@ const initialState = {
   }
 };
 
-export const epics = [completionEpic, createQuestionEpic, codeStorageEpic];
+export const epics = [completionEpic, codeStorageEpic];
 
 export const sagas = [
   ...createExecuteChallengeSaga(actionTypes),

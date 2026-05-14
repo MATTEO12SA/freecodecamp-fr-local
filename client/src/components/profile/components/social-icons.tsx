@@ -30,71 +30,66 @@ interface IconProps {
 
 function LinkedInIcon({ href, username }: IconProps): JSX.Element {
   const { t } = useTranslation();
+  void href;
   return (
-    <a
+    <span
       aria-label={t('aria.linkedin', { username })}
-      href={href}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <FontAwesomeIcon icon={faLinkedin} size='2x' />
-    </a>
+    </span>
   );
 }
 
 function GitHubIcon({ href, username }: IconProps): JSX.Element {
   const { t } = useTranslation();
+  void href;
   return (
-    <a
+    <span
       aria-label={t('aria.github', { username })}
-      href={href}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <FontAwesomeIcon icon={faGithub} size='2x' />
-    </a>
+    </span>
   );
 }
 
 function WebsiteIcon({ href, username }: IconProps): JSX.Element {
   const { t } = useTranslation();
+  void href;
   return (
-    <a
+    <span
       aria-label={t('aria.website', { username })}
-      href={href}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <FontAwesomeIcon icon={faLink} size='2x' />
-    </a>
+    </span>
   );
 }
 
 function TwitterIcon({ href, username }: IconProps): JSX.Element {
   const { t } = useTranslation();
+  void href;
   return (
-    <a
+    <span
       aria-label={t('aria.twitter', { username })}
-      href={href}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <FontAwesomeIcon icon={faXTwitter} size='2x' />
-    </a>
+    </span>
   );
 }
 
 function BlueskyIcon({ href, username }: IconProps): JSX.Element {
   const { t } = useTranslation();
+  void href;
   return (
-    <a
+    <span
       aria-label={t('aria.bluesky', { username })}
-      href={href}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <FontAwesomeIcon icon={faBluesky} size='2x' />
-    </a>
+    </span>
   );
 }
 

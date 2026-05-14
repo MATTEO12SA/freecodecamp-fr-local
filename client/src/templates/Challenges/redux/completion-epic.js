@@ -17,8 +17,6 @@ import {
 } from '../../../utils/error-messages';
 import {
   challengeTypes,
-  getIsDailyCodingChallenge,
-  getDailyCodingChallengeLanguage,
   submitTypes
 } from '@freecodecamp/shared/config/challenge-types';
 import { actionTypes as submitActionTypes } from '../../../redux/action-types';
@@ -123,37 +121,22 @@ function submitModern(type, state) {
 
       let update;
 
-      if (getIsDailyCodingChallenge(challengeType)) {
-        const language = getDailyCodingChallengeLanguage(challengeType);
+      const challengeFiles = challengeFilesSelector(state);
 
-        const body = {
-          id,
-          challengeType,
-          language
-        };
-
-        update = {
-          endpoint: '/daily-coding-challenge-completed',
-          payload: body
-        };
+      let body;
+      if (saveSubmissionToDB) {
+        body = standardizeRequestBody({ id, challengeType, challengeFiles });
       } else {
-        const challengeFiles = challengeFilesSelector(state);
-
-        let body;
-        if (saveSubmissionToDB) {
-          body = standardizeRequestBody({ id, challengeType, challengeFiles });
-        } else {
-          body = {
-            id,
-            challengeType
-          };
-        }
-
-        update = {
-          endpoint: '/encoded/modern-challenge-completed',
-          payload: body
+        body = {
+          id,
+          challengeType
         };
       }
+
+      update = {
+        endpoint: '/encoded/modern-challenge-completed',
+        payload: body
+      };
       return postChallenge(update);
     }
   }
@@ -280,11 +263,6 @@ export default function completionEpic(action$, state$) {
 
       if (isLastChallengeInBlock) {
         pathToNavigateTo = blockHashSlug;
-      }
-
-      // TODO: Navigate to the next daily challenge if it exists - archive if not.
-      if (getIsDailyCodingChallenge(challengeType)) {
-        pathToNavigateTo = '/learn/daily-coding-challenge/archive';
       }
 
       const canAllowDonationRequest = (state, action) => {

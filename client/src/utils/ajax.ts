@@ -17,12 +17,6 @@ import { DonationDuration } from '@freecodecamp/shared/config/donation-settings'
 
 const { apiLocation } = envData;
 
-const base = apiLocation;
-
-const defaultOptions: RequestInit = {
-  credentials: 'include'
-};
-
 // csrf_token is passed to the client as a cookie. The client must send
 // this back as a header.
 function getCSRFToken() {
@@ -54,11 +48,11 @@ function fakeResponse<T>(): ResponseWithData<T> {
     clone() {
       return this;
     },
-    arrayBuffer: async () => new ArrayBuffer(0),
-    blob: async () => new Blob(),
-    formData: async () => new FormData(),
-    json: async () => ({}),
-    text: async () => ''
+    arrayBuffer: () => Promise.resolve(new ArrayBuffer(0)),
+    blob: () => Promise.resolve(new Blob()),
+    formData: () => Promise.resolve(new FormData()),
+    json: () => Promise.resolve({}),
+    text: () => Promise.resolve('')
   } as unknown as Response;
   return { response, data: {} as T };
 }

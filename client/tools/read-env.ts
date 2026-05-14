@@ -36,14 +36,27 @@ const {
   DEPLOYMENT_VERSION: deploymentVersion
 } = process.env;
 
+const localHomeLocation = homeLocation || 'http://localhost:8000';
+
+function localOnlyLocation(location: string | undefined): string {
+  if (!location) return localHomeLocation;
+
+  try {
+    const { hostname } = new URL(location);
+    if (['localhost', '127.0.0.1', '::1'].includes(hostname)) return location;
+  } catch {
+    if (location.startsWith('/')) return location;
+  }
+
+  return localHomeLocation;
+}
+
 const locations = {
-  homeLocation,
+  homeLocation: localHomeLocation,
   apiLocation,
-  forumLocation,
-  newsLocation,
-  radioLocation: !radioLocation
-    ? 'https://coderadio.freecodecamp.org'
-    : radioLocation
+  forumLocation: localOnlyLocation(forumLocation),
+  newsLocation: localOnlyLocation(newsLocation),
+  radioLocation: localOnlyLocation(radioLocation)
 };
 
 export default Object.assign(locations, {

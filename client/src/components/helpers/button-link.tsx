@@ -46,6 +46,21 @@ export const ButtonLink = ({
   if (size === 'small') cls.push('btn-sm');
   if (className) cls.push(className);
   const gatsbyLinkCls = cls.join(' ');
+  const isExternalHttpLink = /^https?:\/\//i.test(href);
+
+  if (isExternalHttpLink) {
+    return (
+      <Button
+        variant='primary'
+        className={className}
+        size={size}
+        block={block}
+        disabled={true}
+      >
+        {children}
+      </Button>
+    );
+  }
 
   // Links cannot be disabled. So if `disabled` is true,
   // we pass the prop to `Button` in order to render a `<button>` instead of an `<a>`.

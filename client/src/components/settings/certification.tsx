@@ -59,7 +59,6 @@ type CertificationSettingsProps = {
 const LegacyFullStack = (props: CertificationSettingsProps) => {
   const {
     isFullStackCert,
-    username,
     isHonest,
     createFlashMessage,
     verifyCert,
@@ -81,7 +80,6 @@ const LegacyFullStack = (props: CertificationSettingsProps) => {
     isRespWebDesignCert;
 
   const certSlug = Certification.LegacyFullStack;
-  const certLocation = `/certification/${username}/${certSlug}`;
 
   const handleClaim =
     (certSlug: Certification) => (e: MouseEvent<HTMLButtonElement>) => {
@@ -125,9 +123,8 @@ const LegacyFullStack = (props: CertificationSettingsProps) => {
               size='small'
               variant='primary'
               block={true}
-              href={certLocation}
+              disabled={true}
               id={'button-' + certSlug}
-              target='_blank'
             >
               {t('buttons.show-cert')}{' '}
               <span className='sr-only'>

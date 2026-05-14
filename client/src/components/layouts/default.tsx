@@ -59,7 +59,6 @@ import './global.css';
 import './variables.css';
 import './rtl-layout.css';
 import { LocalStorageThemes } from '../../redux/types';
-import DailyChallengeBreadCrumb from '../../templates/Challenges/components/daily-challenge-bread-crumb';
 
 const mapStateToProps = createSelector(
   isSignedInSelector,
@@ -113,8 +112,6 @@ interface DefaultLayoutProps extends StateProps, DispatchProps {
   pathname: string;
   showFooter?: boolean;
   isChallenge?: boolean;
-  isDailyChallenge?: boolean;
-  dailyChallengeParam?: string;
   usesMultifileEditor?: boolean;
   block?: string;
   examInProgress: boolean;
@@ -133,8 +130,6 @@ function DefaultLayout({
   removeFlashMessage,
   showFooter = true,
   isChallenge = false,
-  isDailyChallenge = false,
-  dailyChallengeParam,
   usesMultifileEditor,
   block,
   superBlock,
@@ -164,11 +159,54 @@ function DefaultLayout({
     if (!isSignedIn) {
       fetchUser();
     }
+
+    const isAllowedLocalHref = (href: string) => {
+      try {
+        const url = new URL(href, window.location.origin);
+        return (
+          !/^https?:$/.test(url.protocol) ||
+          url.origin === window.location.origin ||
+          ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname)
+        );
+      } catch {
+        return true;
+      }
+    };
+
+    const disableExternalAnchors = () => {
+      document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || isAllowedLocalHref(href)) return;
+
+        link.removeAttribute('href');
+        link.removeAttribute('target');
+        link.setAttribute('aria-disabled', 'true');
+        link.setAttribute('data-disabled-external-link', 'true');
+        link.title = 'Lien externe désactivé en local';
+      });
+    };
+
+    const preventExternalNavigation = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement | null)?.closest?.('a[href]');
+      const href = link?.getAttribute('href');
+      if (!href || isAllowedLocalHref(href)) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+    };
+
+    disableExternalAnchors();
+    const observer = new MutationObserver(disableExternalAnchors);
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('click', preventExternalNavigation, true);
+
     window.addEventListener('online', updateOnlineStatus);
     window.addEventListener('offline', updateOnlineStatus);
 
     return () => {
       // componentWillUnmount.
+      observer.disconnect();
+      document.removeEventListener('click', preventExternalNavigation, true);
       window.removeEventListener('online', updateOnlineStatus);
       window.removeEventListener('offline', updateOnlineStatus);
     };
@@ -292,15 +330,7 @@ function DefaultLayout({
             />
           ) : null}
           <SignoutModal />
-          {isDailyChallenge ? (
-            <div className='breadcrumbs-demo'>
-              <DailyChallengeBreadCrumb
-                dailyChallengeParam={dailyChallengeParam}
-              />
-            </div>
-          ) : (
-            isChallenge &&
-            !isDailyChallenge &&
+          {isChallenge &&
             !examInProgress &&
             (isRenderBreadcrumb ? (
               <div className='breadcrumbs-demo'>
@@ -311,8 +341,7 @@ function DefaultLayout({
               </div>
             ) : (
               <Spacer size={isExSmallViewportHeight ? 'xxs' : 'xs'} />
-            ))
-          )}
+            ))}
           {fetchState.complete && children}
         </div>
         {showFooter && <Footer />}

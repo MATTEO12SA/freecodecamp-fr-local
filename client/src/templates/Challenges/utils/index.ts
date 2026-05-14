@@ -1,18 +1,12 @@
 import i18next from 'i18next';
-import envData from '../../../../config/env.json';
-
-const { forumLocation } = envData;
 
 interface GuideData {
   forumTopicId?: number;
   title?: string;
 }
 
-export function getGuideUrl({ forumTopicId, title = '' }: GuideData): string {
-  title = encodeURIComponent(title);
-  return forumTopicId
-    ? `https://forum.freecodecamp.org/t/${forumTopicId}`
-    : `${forumLocation}/search?q=${title}%20in%3Atitle%20order%3Aviews`;
+export function getGuideUrl(_guideData: GuideData): string {
+  return '';
 }
 
 export function isGoodXHRStatus(status?: string): boolean {
@@ -33,7 +27,6 @@ export function transformEditorLink(url: string): string {
     );
 }
 
-// Adds region role and accessible name to PrismJS code blocks
 export function enhancePrismAccessibility(
   prismEnv: Prism.hooks.ElementHighlightedEnvironment
 ): void {
@@ -82,7 +75,6 @@ export function enhancePrismAccessibility(
   );
 }
 
-// Make PrismJS code blocks collapsible
 export function makePrismCollapsible(
   prismEnv: Prism.hooks.ElementHighlightedEnvironment
 ): void {
@@ -112,17 +104,14 @@ export function makePrismCollapsible(
   sectionElem.replaceChild(details, preElem);
 }
 
-// Adjusts scrollbar arrows based on scrollbar width
 export function setScrollbarArrowStyles(scrollbarWidth: number): void {
   const root = document.documentElement;
 
-  // make the arrow box a square
   root.style.setProperty(
     '--monaco-scrollbar-arrow-box-size',
     `${scrollbarWidth}px`
   );
 
-  // adjust arrow icon size to fit arrow box
   const iconSize = scrollbarWidth < 11 ? scrollbarWidth : scrollbarWidth - 5;
   const iconFontSize =
     scrollbarWidth < 11 ? scrollbarWidth : scrollbarWidth - 5;
@@ -132,7 +121,6 @@ export function setScrollbarArrowStyles(scrollbarWidth: number): void {
     `${iconFontSize}px`
   );
 
-  // position arrow icon in arrow box
   const iconTopBottom =
     scrollbarWidth < 11 ? 0 : scrollbarWidth / 2 - iconFontSize / 2 - 1;
   const iconLeftPosition =

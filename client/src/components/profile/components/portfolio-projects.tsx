@@ -88,14 +88,12 @@ export const PortfolioProjects = ({
           <>
             <Spacer size='s' />
             {portfolioProjects.map(
-              ({ title, url, image, description, id }, index) => (
+              ({ title, image, description, id }, index) => (
                 <React.Fragment key={id}>
                   <div className='portfolio-item-wrapper'>
-                    <a
-                      href={url}
-                      rel='nofollow noopener noreferrer'
-                      target='_blank'
+                    <div
                       className='portfolio-card'
+                      data-disabled-external-link='true'
                     >
                       {image && (
                         <img
@@ -119,7 +117,7 @@ export const PortfolioProjects = ({
                           <p>{description}</p>
                         </div>
                       </div>
-                    </a>
+                    </div>
                     {isSessionUser && (
                       <Button
                         size='small'

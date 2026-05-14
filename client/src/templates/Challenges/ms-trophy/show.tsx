@@ -16,7 +16,6 @@ import Hotkeys from '../components/hotkeys';
 import ChallengeTitle from '../components/challenge-title';
 import CompletionModal from '../components/completion-modal';
 import { getChallengePaths } from '../utils/challenge-paths';
-import HelpModal from '../components/help-modal';
 import {
   challengeMounted,
   updateChallengeMeta,
@@ -57,7 +56,6 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       challengeMounted,
       updateSolutionFormValues,
       openCompletionModal: () => openModal('completion'),
-      openHelpModal: () => openModal('help'),
       setIsProcessing
     },
     dispatch
@@ -73,7 +71,6 @@ interface MsTrophyProps {
   setIsProcessing: (arg0: boolean) => void;
   msUsername: string | undefined | null;
   openCompletionModal: () => void;
-  openHelpModal: () => void;
   pageContext: {
     challengeMeta: ChallengeMeta;
   };
@@ -148,7 +145,6 @@ function MsTrophy(props: MsTrophyProps) {
     isChallengeCompleted,
     isProcessing,
     msUsername,
-    openHelpModal,
     t
   } = props;
 
@@ -190,24 +186,10 @@ function MsTrophy(props: MsTrophyProps) {
               >
                 {t('buttons.verify-trophy')}
               </Button>
-              <Spacer size='xxs' />
-              <Button
-                block={true}
-                variant='primary'
-                data-playwright-test-label='ask-for-help-button'
-                onClick={openHelpModal}
-              >
-                {t('buttons.ask-for-help')}
-              </Button>
               <br />
               <Spacer size='m' />
             </Col>
             <CompletionModal />
-            <HelpModal
-              challengeTitle={title}
-              challengeBlock={block}
-              superBlock={superBlock}
-            />
           </Row>
         </Container>
       </LearnLayout>

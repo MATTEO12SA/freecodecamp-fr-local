@@ -18,24 +18,37 @@ const Link = ({
   sameTab,
   ...other
 }: LinkProps): JSX.Element => {
+  const isExternalHttpLink = /^https?:\/\//i.test(to);
+  void sameTab;
+
   if (!external && /^\/(?!\/)/.test(to)) {
     return (
       <GatsbyLink to={to} {...other}>
         {children}
       </GatsbyLink>
     );
-  } else if (sameTab && external) {
+  } else if (isExternalHttpLink) {
     return (
-      <a href={to} {...other}>
+      <span
+        {...other}
+        aria-disabled='true'
+        data-disabled-external-link='true'
+        title='Lien externe désactivé en local'
+      >
         {children}
-      </a>
+      </span>
     );
   }
 
   return (
-    <a href={to} {...other} rel='noopener noreferrer' target='_blank'>
+    <span
+      {...other}
+      aria-disabled='true'
+      data-disabled-external-link='true'
+      title='Lien externe désactivé en local'
+    >
       {children}
-    </a>
+    </span>
   );
 };
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
 
 interface LegacyLinksProps {

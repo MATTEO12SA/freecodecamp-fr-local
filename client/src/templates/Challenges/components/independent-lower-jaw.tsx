@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { useTranslation } from 'react-i18next';
 import sanitizeHtml from 'sanitize-html';
-import { Button, Spacer } from '@freecodecamp/ui';
+import { Button } from '@freecodecamp/ui';
 import { useFeature } from '@growthbook/growthbook-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -16,7 +16,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Progress from '../../../components/Progress';
 import {
-  completedChallengesIdsSelector,
   isSignedInSelector,
   isSocratesOnSelector
 } from '../../../redux/selectors';
@@ -24,16 +23,10 @@ import { ChallengeMeta, Test } from '../../../redux/prop-types';
 import {
   challengeMetaSelector,
   challengeTestsSelector,
-  completedPercentageSelector,
-  currentBlockIdsSelector,
   socratesHintStateSelector
 } from '../redux/selectors';
-import { apiLocation } from '../../../../config/env.json';
 import { openModal, executeChallenge, askSocrates } from '../redux/actions';
 import { saveChallenge } from '../../../redux/actions';
-import Help from '../../../assets/icons/help';
-import callGA from '../../../analytics/call-ga';
-import { Share } from '../../../components/share';
 import { useSubmit } from '../utils/fetch-all-curriculum-data';
 
 import './independent-lower-jaw.css';
@@ -51,34 +44,24 @@ const mapStateToProps = createSelector(
   challengeTestsSelector,
   isSignedInSelector,
   challengeMetaSelector,
-  completedPercentageSelector,
-  completedChallengesIdsSelector,
-  currentBlockIdsSelector,
   socratesHintStateSelector,
   isSocratesOnSelector,
   (
     tests: Test[],
     isSignedIn: boolean,
     challengeMeta: ChallengeMeta,
-    completedPercent: number,
-    completedChallengeIds: string[],
-    currentBlockIds: string[],
     socratesHintState: SocratesHintState,
     hasSocratesAccess: boolean
   ) => ({
     tests,
     isSignedIn,
     challengeMeta,
-    completedPercent,
-    completedChallengeIds,
-    currentBlockIds,
     socratesHintState,
     hasSocratesAccess
   })
 );
 
 const mapDispatchToProps = {
-  openHelpModal: () => openModal('help'),
   openResetModal: () => openModal('reset'),
   askSocrates: () => askSocrates(),
   executeChallenge,
@@ -86,7 +69,7 @@ const mapDispatchToProps = {
 };
 
 interface IndependentLowerJawProps {
-  openHelpModal: () => void;
+  openHelpModal?: () => void;
   openResetModal: () => void;
   executeChallenge: () => void;
   askSocrates: () => void;
@@ -94,14 +77,13 @@ interface IndependentLowerJawProps {
   tests: Test[];
   isSignedIn: boolean;
   challengeMeta: ChallengeMeta;
-  completedPercent: number;
-  completedChallengeIds: string[];
-  currentBlockIds: string[];
+  completedPercent?: number;
+  completedChallengeIds?: string[];
+  currentBlockIds?: string[];
   socratesHintState: SocratesHintState;
   hasSocratesAccess: boolean;
 }
 export function IndependentLowerJaw({
-  openHelpModal,
   openResetModal,
   askSocrates,
   executeChallenge,
@@ -109,9 +91,6 @@ export function IndependentLowerJaw({
   tests,
   isSignedIn,
   challengeMeta,
-  completedPercent,
-  completedChallengeIds,
-  currentBlockIds,
   socratesHintState,
   hasSocratesAccess
 }: IndependentLowerJawProps): JSX.Element {
@@ -123,27 +102,11 @@ export function IndependentLowerJaw({
   const [showHint, setShowHint] = React.useState(false);
   const [showSocratesResults, setShowSocratesResults] = React.useState(false);
   const [showSubmissionHint, setShowSubmissionHint] = React.useState(true);
-  const signInLinkRef = React.useRef<HTMLAnchorElement>(null);
   const submitButtonRef = React.useRef<HTMLButtonElement>(null);
   const [wasCheckButtonClicked, setWasCheckButtonClicked] =
     React.useState(false);
 
   const isChallengeComplete = tests.every(test => test.pass);
-  const hasBlockIds = currentBlockIds.length > 0;
-  const isLastStepInBlock =
-    hasBlockIds &&
-    currentBlockIds[currentBlockIds.length - 1] === challengeMeta.id;
-  const isBlockCompletedByIds =
-    hasBlockIds &&
-    currentBlockIds.every(challengeId =>
-      completedChallengeIds.includes(challengeId)
-    );
-  const hasCompletedPercent = Number.isFinite(completedPercent);
-  const isBlockCompleted =
-    isBlockCompletedByIds || (hasCompletedPercent && completedPercent === 100);
-  const showShareButton =
-    isChallengeComplete && isLastStepInBlock && isBlockCompleted;
-
   React.useEffect(() => {
     setShowHint(!!hint);
   }, [hint]);
@@ -151,12 +114,9 @@ export function IndependentLowerJaw({
   React.useEffect(() => {
     if (!isChallengeComplete || !wasCheckButtonClicked) return;
 
-    const focusTarget = isSignedIn
-      ? submitButtonRef.current
-      : signInLinkRef.current;
-    focusTarget?.focus();
+    submitButtonRef.current?.focus();
     setWasCheckButtonClicked(false);
-  }, [isChallengeComplete, isSignedIn, wasCheckButtonClicked]);
+  }, [isChallengeComplete, wasCheckButtonClicked]);
 
   const handleCheckButtonClick = () => {
     setWasCheckButtonClicked(true);
@@ -271,36 +231,6 @@ export function IndependentLowerJaw({
           <div className='progress-bar-container'>
             <Progress minified={true} />
           </div>
-          {isSignedIn && showShareButton && (
-            <div
-              className='share-button-wrapper'
-              data-testid='share-button-wrapper'
-            >
-              <Share
-                superBlock={challengeMeta.superBlock}
-                block={challengeMeta.block}
-                minified={true}
-              />
-            </div>
-          )}
-          {!isSignedIn && (
-            <>
-              <Spacer size='xxs' />
-              <a
-                href={`${apiLocation}/signin`}
-                className='btn-cta btn btn-block'
-                data-playwright-test-label='independentLowerJaw-signin-link'
-                ref={signInLinkRef}
-                onClick={() => {
-                  callGA({
-                    event: 'sign_in'
-                  });
-                }}
-              >
-                {t('learn.sign-in-save')}
-              </a>
-            </>
-          )}
         </div>
       )}
 
@@ -382,16 +312,6 @@ export function IndependentLowerJaw({
               <span className='tooltiptext'> {t('buttons.reset')}</span>
             </button>
           )}
-          <button
-            type='button'
-            className='icon-button tooltip'
-            data-playwright-test-label='independentLowerJaw-help-button'
-            aria-label={t('buttons.help')}
-            onClick={openHelpModal}
-          >
-            <Help />
-            <span className='tooltiptext'> {t('buttons.help')}</span>
-          </button>
         </div>
       </div>
     </div>

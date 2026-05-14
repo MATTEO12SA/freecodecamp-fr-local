@@ -1,11 +1,11 @@
-import { chromium } from './node_modules/.pnpm/playwright@1.52.0/node_modules/playwright/index.mjs';
+import { chromium } from '@playwright/test';
 
 const BASE = 'http://localhost:8000';
-const START = `${BASE}/learn/2022/responsive-web-design/learn-html-by-building-a-cat-photo-app/step-1`;
+const START = `${BASE}/learn/responsive-web-design-v9/workshop-cat-photo-app/step-1`;
 
 const log = (...a) => console.log(...a);
 
-const browser = await chromium.launch({ channel: 'msedge' });
+const browser = await chromium.launch();
 const ctx = await browser.newContext();
 const page = await ctx.newPage();
 
@@ -52,14 +52,23 @@ async function checkAndSubmit() {
   try {
     await submitBtn.waitFor({ state: 'visible', timeout: 15000 });
   } catch {
-    return { passed: false, hint: await page.locator('body').innerText().catch(() => '').then(t => t.replace(/\s+/g, ' ').slice(0, 200)) };
+    return {
+      passed: false,
+      hint: await page
+        .locator('body')
+        .innerText()
+        .catch(() => '')
+        .then(t => t.replace(/\s+/g, ' ').slice(0, 200))
+    };
   }
   await submitBtn.click({ force: true });
   return { passed: true };
 }
 
 // === Step 1 ===
-await ctx.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: BASE });
+await ctx.grantPermissions(['clipboard-read', 'clipboard-write'], {
+  origin: BASE
+});
 await page.goto(START, { waitUntil: 'domcontentloaded', timeout: 60000 });
 log('Loaded step-1.');
 await typeSolution('<html><body><h1>CatPhotoApp</h1></body></html>');
@@ -77,7 +86,10 @@ await page.locator('.monaco-editor').first().click({ force: true });
 await page.keyboard.press('Control+A');
 await page.keyboard.press('Delete');
 await page.waitForTimeout(150);
-await page.evaluate(text => navigator.clipboard.writeText(text), '<html><body><h1>CatPhotoApp</h1><h2>Cat Photos</h2></body></html>');
+await page.evaluate(
+  text => navigator.clipboard.writeText(text),
+  '<html><body><h1>CatPhotoApp</h1><h2>Cat Photos</h2></body></html>'
+);
 await page.keyboard.press('Control+V');
 await page.waitForTimeout(600);
 const r2 = await checkAndSubmit();
@@ -87,10 +99,15 @@ await page.screenshot({ path: 'screenshots/flow-step2-after-submit.png' });
 log('URL after step-2 submit:', page.url());
 
 // localStorage check
-const stored = await page.evaluate(() => window.localStorage.getItem('fcc-local-user'));
+const stored = await page.evaluate(() =>
+  window.localStorage.getItem('fcc-local-user')
+);
 const parsed = JSON.parse(stored || '{}');
 log('Completed challenges count:', parsed.completedChallenges?.length);
-log('Latest IDs:', (parsed.completedChallenges || []).slice(0, 3).map(c => c.id));
+log(
+  'Latest IDs:',
+  (parsed.completedChallenges || []).slice(0, 3).map(c => c.id)
+);
 
 log('\n--- Failed requests during flow ---');
 if (failedRequests.length === 0) log('(none)');

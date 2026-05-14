@@ -114,13 +114,9 @@ function LinkMsUser({
       <ol className='link-ms-user-ol'>
         <li>
           <Trans i18nKey='learn.ms.link-li-1'>
-            <a
-              href='https://learn.microsoft.com/users/me/transcript'
-              rel='noreferrer'
-              target='_blank'
-            >
+            <span data-disabled-external-link='true'>
               placeholder
-            </a>
+            </span>
           </Trans>
         </li>
         <li>{t('learn.ms.link-li-2')}</li>

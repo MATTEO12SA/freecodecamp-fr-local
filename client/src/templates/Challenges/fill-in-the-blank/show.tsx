@@ -15,14 +15,12 @@ import { ChallengeLang } from '@freecodecamp/shared/config/curriculum';
 
 // Local Utilities
 import ShortcutsModal from '../components/shortcuts-modal';
-import MobileAppModal from '../components/mobile-app-modal';
 import LearnLayout from '../../../components/layouts/learn';
 import { ChallengeNode, ChallengeMeta, Test } from '../../../redux/prop-types';
 import Hotkeys from '../components/hotkeys';
 import ChallengeTitle from '../components/challenge-title';
 import ChallegeExplanation from '../components/challenge-explanation';
 import CompletionModal from '../components/completion-modal';
-import HelpModal from '../components/help-modal';
 import FillInTheBlanks from '../components/fill-in-the-blanks';
 import ChallengeTranscript from '../components/challenge-transcript';
 import PrismFormatted from '../components/prism-formatted';
@@ -57,7 +55,6 @@ const mapDispatchToProps = (dispatch: Dispatch) =>
       challengeMounted,
       updateSolutionFormValues,
       openCompletionModal: () => openModal('completion'),
-      openHelpModal: () => openModal('help')
     },
     dispatch
   );
@@ -69,7 +66,6 @@ interface ShowFillInTheBlankProps {
   isChallengeCompleted: boolean;
   initTests: (xs: Test[]) => void;
   openCompletionModal: () => void;
-  openHelpModal: () => void;
   pageContext: {
     challengeMeta: ChallengeMeta;
   };
@@ -100,7 +96,6 @@ const ShowFillInTheBlank = ({
     }
   },
   challengeMounted,
-  openHelpModal,
   updateChallengeMeta,
   openCompletionModal,
   pageContext: { challengeMeta },
@@ -324,22 +319,12 @@ const ShowFillInTheBlank = ({
               >
                 {t('buttons.check-answer')}
               </Button>
-              <Spacer size='xxs' />
-              <Button block={true} variant='primary' onClick={openHelpModal}>
-                {t('buttons.ask-for-help')}
-              </Button>
               <Spacer size='l' />
             </Col>
             <CompletionModal />
-            <HelpModal
-              challengeTitle={title}
-              challengeBlock={block}
-              superBlock={superBlock}
-            />
           </Row>
         </Container>
         <ShortcutsModal />
-        <MobileAppModal superBlock={superBlock} />
       </LearnLayout>
     </Hotkeys>
   );

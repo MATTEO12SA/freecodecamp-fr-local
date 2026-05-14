@@ -90,6 +90,11 @@ const GrowthBookWrapper = ({
   );
 
   useEffect(() => {
+    if (!parsedUrl) {
+      void growthbook.setPayload({ features: defaultGrowthBookFeatures });
+      return;
+    }
+
     void growthbook
       .init({ timeout: 1000 })
       .then(res => {
@@ -106,7 +111,7 @@ const GrowthBookWrapper = ({
         console.error('Error initializing GrowthBook:', error);
         void growthbook.setPayload({ features: defaultGrowthBookFeatures });
       });
-  }, [growthbook]);
+  }, [growthbook, parsedUrl]);
 
   useEffect(() => {
     function setGrowthBookFeatures() {

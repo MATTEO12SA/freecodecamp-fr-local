@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Magnifier from '../../../assets/icons/magnifier';
 import InputReset from '../../../assets/icons/input-reset';
-import { searchPageUrl } from '../../../utils/algolia-locale-setup';
 
 const SearchBarOptimized = ({
   innerRef
@@ -16,7 +15,6 @@ const SearchBarOptimized = ({
   )
     ? t('search.placeholder')
     : t('search-bar:placeholder');
-  const searchUrl = searchPageUrl;
   const [value, setValue] = useState('');
   const inputElementRef = useRef<HTMLInputElement>(null);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -24,7 +22,6 @@ const SearchBarOptimized = ({
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value && value.length > 1) {
-      window.open(`${searchUrl}?query=${encodeURIComponent(value)}`, '_blank');
       setValue('');
       // Blur the input to remove the selection
       inputElementRef.current?.blur();

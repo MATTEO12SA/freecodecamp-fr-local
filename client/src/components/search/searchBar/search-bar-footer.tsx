@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { searchPageUrl } from '../../../utils/algolia-locale-setup';
 import NoHitsSuggestion from './no-hits-suggestion';
 
 interface SearchBarFooterProps {
@@ -31,16 +30,14 @@ const SearchBarFooter = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <a
+      <span
         className='fcc_suggestion_item'
-        href={searchPageUrl + '?query=' + encodeURIComponent(query ?? '')}
-        rel='noopener noreferrer'
-        target='_blank'
+        data-disabled-external-link='true'
       >
         <span className='hit-name'>
           {t('search.see-results', { searchQuery: query })}
         </span>
-      </a>
+      </span>
     </li>
   ) : (
     <NoHitsSuggestion title={title} />

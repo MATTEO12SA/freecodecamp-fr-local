@@ -14,18 +14,16 @@ const Suggestion = ({
   handleMouseLeave
 }: SuggestionProps): JSX.Element => {
   return (
-    <a
+    <span
       className={'fcc_suggestion_item'}
-      href={hit.url}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      rel='noopener noreferrer'
-      target='_blank'
+      data-disabled-external-link='true'
     >
       <span className='hit-name'>
         <Highlight attribute='title' hit={hit} />
       </span>
-    </a>
+    </span>
   );
 };
 

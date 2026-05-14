@@ -29,10 +29,6 @@ vi.mock('react-scroll', () => ({
   scroller: { scrollTo: vi.fn() }
 }));
 
-vi.mock('../../components/Donation/donation-modal', () => ({
-  default: () => null
-}));
-
 vi.mock('../../components/Header/components/login', () => ({
   default: ({ children }: { children?: React.ReactNode }) => (
     <span>{children}</span>
