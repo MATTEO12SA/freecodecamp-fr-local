@@ -428,7 +428,8 @@ export function buildExtCurriculumDataV2(
                       // consumers that have not migrated to intro-based titles.
                       meta: getLocalizedBlockMeta(
                         omit(blockData.meta, ['chapter', 'module']),
-                        blockIntro
+                        blockIntro,
+                        blockData.challenges
                       )
                     };
                   })
@@ -455,7 +456,11 @@ export function buildExtCurriculumDataV2(
         intro: blockIntro.intro,
         // Keep `meta.name` for backward compatibility with
         // consumers that have not migrated to intro-based titles.
-        meta: getLocalizedBlockMeta(blockData.meta, blockIntro)
+        meta: getLocalizedBlockMeta(
+          blockData.meta,
+          blockIntro,
+          blockData.challenges
+        )
       };
     });
 
@@ -515,7 +520,8 @@ export function buildExtCurriculumDataV2(
 
   function getLocalizedBlockMeta(
     meta: Record<string, unknown>,
-    blockIntro: BlockIntro
+    blockIntro: BlockIntro,
+    challenges: ChallengeNode['challenge'][] = []
   ) {
     const localizedMeta: Record<string, unknown> = {
       ...meta,
@@ -523,21 +529,38 @@ export function buildExtCurriculumDataV2(
     };
     const challengeOrder = localizedMeta.challengeOrder;
 
-    if (
-      localizedMeta.blockLayout === 'link' &&
-      Array.isArray(challengeOrder) &&
-      challengeOrder.length === 1
-    ) {
-      const [challenge] = challengeOrder;
+    if (Array.isArray(challengeOrder)) {
+      const titleByChallengeId = new Map<string, string>();
+      for (const challenge of challenges) {
+        if (challenge?.id && typeof challenge.title === 'string') {
+          titleByChallengeId.set(challenge.id, challenge.title);
+        }
+      }
 
-      if (
-        challenge &&
-        typeof challenge === 'object' &&
-        !Array.isArray(challenge)
-      ) {
-        localizedMeta.challengeOrder = [
-          { ...challenge, title: blockIntro.title }
-        ];
+      if (localizedMeta.blockLayout === 'link' && challengeOrder.length === 1) {
+        const [challenge] = challengeOrder;
+        if (
+          challenge &&
+          typeof challenge === 'object' &&
+          !Array.isArray(challenge)
+        ) {
+          localizedMeta.challengeOrder = [
+            { ...challenge, title: blockIntro.title }
+          ];
+        }
+      } else {
+        localizedMeta.challengeOrder = challengeOrder.map(entry => {
+          if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
+            const entryRecord = entry as Record<string, unknown>;
+            if (typeof entryRecord.id === 'string') {
+              const localizedTitle = titleByChallengeId.get(entryRecord.id);
+              if (localizedTitle) {
+                return { ...entryRecord, title: localizedTitle };
+              }
+            }
+          }
+          return entry;
+        });
       }
     }
 
