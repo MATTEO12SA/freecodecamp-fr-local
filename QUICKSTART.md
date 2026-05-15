@@ -7,6 +7,14 @@ cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
 .\dev.ps1
 ```
 
+Pour relancer plus vite apres un premier demarrage complet :
+
+```powershell
+.\dev.ps1 -Fast
+```
+
+Le mode rapide saute `turbo setup` et relance directement Gatsby. Utilise-le pour les changements d'interface ou de texte deja generes. Si tu modifies le curriculum, les dependances ou si des titres restent en cache, relance en mode normal.
+
 Si Gatsby affiche une erreur de cache :
 
 ```powershell

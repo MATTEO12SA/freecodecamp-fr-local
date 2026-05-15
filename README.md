@@ -13,6 +13,12 @@ cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
 .\dev.ps1
 ```
 
+Relance rapide apres un premier demarrage complet :
+
+```powershell
+.\dev.ps1 -Fast
+```
+
 Si Gatsby garde une ancienne page en cache :
 
 ```powershell
@@ -33,6 +39,7 @@ http://localhost:8000/learn
 - Progression sauvegardee dans `localStorage`.
 - API backend neutralisee pour le flux d'apprentissage local.
 - Interface francaise avec fallback anglais pour les contenus non traduits.
+- Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
 - `/cours-fr` filtre les contenus non ouvrables localement.
 - Liens externes visibles desactives ou retires.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.

@@ -1,8 +1,10 @@
 # Script de developpement pour freeCodeCamp standalone
 # Usage: .\dev.ps1
+#        .\dev.ps1 -Fast
 
 param(
-    [switch]$Clean = $false
+    [switch]$Clean = $false,
+    [switch]$Fast = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -91,6 +93,42 @@ function Clear-GatsbyCache {
     Write-Host "Cache Gatsby nettoye" -ForegroundColor Green
 }
 
+function Test-FastClientReady {
+    $requiredPaths = @(
+        "client\config\env.json",
+        "client\static\curriculum-data\v2\responsive-web-design-v9.json",
+        "client\static\js"
+    )
+
+    foreach ($relativePath in $requiredPaths) {
+        if (-not (Test-Path (Join-Path $PSScriptRoot $relativePath))) {
+            return $false
+        }
+    }
+
+    return $true
+}
+
+function Start-Client {
+    param([bool]$UseFast)
+
+    if ($UseFast) {
+        Write-Host "Mode rapide: lancement direct de Gatsby, sans turbo setup." -ForegroundColor Green
+        Write-Host "Utilise .\dev.ps1 ou .\dev.ps1 -Clean si tu as modifie le curriculum ou les dependances." -ForegroundColor Yellow
+
+        Push-Location (Join-Path $PSScriptRoot "client")
+        try {
+            & pnpm.cmd run develop
+        } finally {
+            Pop-Location
+        }
+
+        return
+    }
+
+    & pnpm.cmd run develop:client
+}
+
 $null = Register-EngineEvent -SourceIdentifier PowerShell.Exiting -Action {
     Stop-AllProcesses
 }
@@ -110,10 +148,23 @@ try {
     Write-Host "Configuration de l'environnement..." -ForegroundColor Cyan
     $env:NODE_OPTIONS = "--max-old-space-size=7168"
     $env:NODE_ENV = "development"
+    if (-not $env:CLIENT_LOCALE) {
+        $env:CLIENT_LOCALE = "french"
+    }
+    if (-not $env:CURRICULUM_LOCALE) {
+        $env:CURRICULUM_LOCALE = "french"
+    }
     Write-Host "Variables d'environnement configurees" -ForegroundColor Green
 
     if ($Clean -or (Test-StaleGatsbyCache)) {
         Clear-GatsbyCache
+    }
+
+    $useFast = [bool]$Fast
+    if ($useFast -and -not (Test-FastClientReady)) {
+        Write-Host "Mode rapide indisponible: les fichiers generes ne sont pas encore prets." -ForegroundColor Yellow
+        Write-Host "Demarrage normal pour generer les donnees necessaires." -ForegroundColor Yellow
+        $useFast = $false
     }
 
     Write-Host "Lancement du client de developpement..." -ForegroundColor Cyan
@@ -123,7 +174,7 @@ try {
     Write-Host "   Client : http://localhost:8000" -ForegroundColor White
     Write-Host ""
 
-    & pnpm.cmd run develop:client
+    Start-Client -UseFast $useFast
 } catch {
     Write-Host "Erreur: $_" -ForegroundColor Red
     Stop-AllProcesses

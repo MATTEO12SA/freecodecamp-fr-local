@@ -5,11 +5,13 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 ## Architecture Locale
 
 - `dev.ps1` lance le client sur `http://localhost:8000`.
+- `dev.ps1 -Fast` relance directement Gatsby quand les fichiers generes existent deja, sans repasser par `turbo setup`.
 - `client/src/redux/fetch-user-saga.js` cree un utilisateur local au lieu d'appeler une session serveur.
 - `client/src/utils/local-progress.ts` lit et ecrit la progression dans `localStorage`.
 - `client/src/redux/local-progress-epic.js` persiste les challenges termines apres `submitComplete`.
 - `client/src/utils/ajax.ts` garde les signatures HTTP attendues par le code, mais renvoie des reponses locales pour eviter la dependance backend.
 - `CLIENT_LOCALE=french` et `CURRICULUM_LOCALE=french` pilotent l'interface et le curriculum francais.
+- `client/tools/external-curriculum/build-external-curricula-data-v2.ts` lit l'intro locale disponible pour generer les titres statiques du plan avec les traductions francaises.
 
 ## Interface Et Navigation
 
@@ -80,7 +82,7 @@ pnpm --filter @freecodecamp/shared type-check
 
 Verification manuelle :
 
-1. Lancer `.\dev.ps1 -Clean`.
+1. Lancer `.\dev.ps1 -Clean` apres une modification de curriculum, ou `.\dev.ps1 -Fast` pour une relance rapide sans regeneration.
 2. Ouvrir `/`, `/learn` et `/cours-fr`.
 3. Verifier que le defi du jour n'apparait plus.
 4. Ouvrir un exercice Responsive Web Design traduit.
