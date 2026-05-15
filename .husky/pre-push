@@ -1,4 +1,4 @@
-CHANGED=$(git diff --name-only --diff-filter=ACMR @{u}.. 2>/dev/null | grep -E '\.(md|json|yml|yaml|js|jsx|ts|tsx|css|scss)$' | grep -vE '^(client|api|curriculum|tools|packages)/.*(\.test\.|/dist/|/build/|/node_modules/)')
+CHANGED=$(git diff --name-only --diff-filter=ACMR @{u}.. 2>/dev/null | { grep -E '\.(md|json|yml|yaml|js|jsx|ts|tsx|css|scss)$' || true; } | { grep -vE '^(client|api|curriculum|tools|packages)/.*(\.test\.|/dist/|/build/|/node_modules/)' || true; })
 
 if [ -z "$CHANGED" ]; then
   exit 0
