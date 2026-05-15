@@ -1,6 +1,6 @@
-import { mkdirSync, writeFileSync, readFileSync } from 'fs';
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { omit } from 'lodash';
+import { mergeWith, omit } from 'lodash';
 import { submitTypes } from '@freecodecamp/shared/config/challenge-types';
 import { type ChallengeNode } from '../../src/redux/prop-types';
 import {
@@ -96,6 +96,11 @@ interface GeneratedBlock {
   meta: Record<string, unknown>;
 }
 
+interface BlockIntro {
+  title: string;
+  intro: string[];
+}
+
 // This enum is based on the `SuperBlockStage` enum in shared/config,
 // but with string value instead of number.
 enum SuperBlockStage {
@@ -117,13 +122,53 @@ const ver = 'v2';
 
 const staticFolderPath = resolve(__dirname, '../../../client/static');
 const dataPath = `${staticFolderPath}/curriculum-data/`;
-const blockIntroPath = resolve(
+const englishIntroPath = resolve(
   __dirname,
   '../../../client/i18n/locales/english/intro.json'
 );
-const intros = JSON.parse(
-  readFileSync(blockIntroPath, 'utf-8')
+const envConfigPath = resolve(__dirname, '../../../client/config/env.json');
+
+function getConfiguredCurriculumLocale() {
+  if (process.env.CURRICULUM_LOCALE) return process.env.CURRICULUM_LOCALE;
+  if (process.env.CLIENT_LOCALE) return process.env.CLIENT_LOCALE;
+
+  if (!existsSync(envConfigPath)) return 'english';
+
+  try {
+    const { curriculumLocale, clientLocale } = JSON.parse(
+      readFileSync(envConfigPath, 'utf-8')
+    ) as { curriculumLocale?: string; clientLocale?: string };
+
+    return curriculumLocale ?? clientLocale ?? 'english';
+  } catch {
+    return 'english';
+  }
+}
+
+export const curriculumIntroLocale = getConfiguredCurriculumLocale();
+export const curriculumIntroPath = resolve(
+  __dirname,
+  `../../../client/i18n/locales/${curriculumIntroLocale}/intro.json`
+);
+
+const englishIntros = JSON.parse(
+  readFileSync(englishIntroPath, 'utf-8')
 ) as CurriculumIntros;
+const localizedIntros = existsSync(curriculumIntroPath)
+  ? (JSON.parse(
+      readFileSync(curriculumIntroPath, 'utf-8')
+    ) as Partial<CurriculumIntros>)
+  : {};
+
+export const curriculumIntros = mergeWith(
+  {},
+  englishIntros,
+  localizedIntros,
+  (_objectValue: unknown, sourceValue: unknown) =>
+    Array.isArray(sourceValue) ? sourceValue : undefined
+);
+
+const intros = curriculumIntros;
 
 export const orderedSuperBlockInfo: OrderedSuperBlocks = {
   [SuperBlockStage.Core]: [
@@ -381,10 +426,10 @@ export function buildExtCurriculumDataV2(
                       intro: blockIntro.intro,
                       // Keep `meta.name` for backward compatibility with
                       // consumers that have not migrated to intro-based titles.
-                      meta: {
-                        ...omit(blockData.meta, ['chapter', 'module']),
-                        name: blockIntro.title
-                      }
+                      meta: getLocalizedBlockMeta(
+                        omit(blockData.meta, ['chapter', 'module']),
+                        blockIntro
+                      )
                     };
                   })
           }))
@@ -410,7 +455,7 @@ export function buildExtCurriculumDataV2(
         intro: blockIntro.intro,
         // Keep `meta.name` for backward compatibility with
         // consumers that have not migrated to intro-based titles.
-        meta: { ...blockData.meta, name: blockIntro.title }
+        meta: getLocalizedBlockMeta(blockData.meta, blockIntro)
       };
     });
 
@@ -466,5 +511,36 @@ export function buildExtCurriculumDataV2(
       `${dataPath}/${ver}/scene-assets.json`,
       JSON.stringify(sceneAssets, null, 2)
     );
+  }
+
+  function getLocalizedBlockMeta(
+    meta: Record<string, unknown>,
+    blockIntro: BlockIntro
+  ) {
+    const localizedMeta: Record<string, unknown> = {
+      ...meta,
+      name: blockIntro.title
+    };
+    const challengeOrder = localizedMeta.challengeOrder;
+
+    if (
+      localizedMeta.blockLayout === 'link' &&
+      Array.isArray(challengeOrder) &&
+      challengeOrder.length === 1
+    ) {
+      const [challenge] = challengeOrder;
+
+      if (
+        challenge &&
+        typeof challenge === 'object' &&
+        !Array.isArray(challenge)
+      ) {
+        localizedMeta.challengeOrder = [
+          { ...challenge, title: blockIntro.title }
+        ];
+      }
+    }
+
+    return localizedMeta;
   }
 }
