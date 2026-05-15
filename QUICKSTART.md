@@ -29,7 +29,9 @@ Lance ce script dans un second terminal pour voir tes traductions en live sans r
 .\watch-translations.ps1
 ```
 
-A chaque sauvegarde d'un fichier `.md` francais ou de `client/i18n/locales/french/intro.json`, il regenere la curriculum-data. Rafraichis le navigateur avec `Ctrl+F5` apres le rebuild (~5-10s).
+A chaque sauvegarde d'un fichier `.md` francais ou de `client/i18n/locales/french/intro.json`, il regenere la curriculum-data. Le rebuild prend `~90s` (curriculum.json fait 110 MB), puis rafraichis le navigateur avec `Ctrl+F5`.
+
+Les ecritures sont atomiques (`.tmp` + rename) donc Gatsby ne crashe plus pendant le rebuild. Avant ce fix, Gatsby plantait avec `Couldn't find temp query result` ou `ENOENT chmod` quand il lisait un JSON partiellement ecrit.
 
 ## Logs Serveur
 

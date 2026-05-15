@@ -100,9 +100,34 @@ Il surveille `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/**/
 1. `curriculum/generated/curriculum.json` via `pnpm -C curriculum build`
 2. `client/static/curriculum-data/v2/*.json` via `pnpm -C client create:external-curriculum`
 
-Gatsby ressert le nouveau JSON statique sans recompiler. Apres chaque rebuild (~5-10s), rafraichis le navigateur avec `Ctrl+F5` pour bypass le cache du navigateur.
+Gatsby ressert le nouveau JSON statique sans recompiler. Apres chaque rebuild (~90s pour un curriculum.json de 110 MB regenere de zero), rafraichis le navigateur avec `Ctrl+F5` pour bypass le cache du navigateur.
 
-Les logs du watcher sont dans `dev-logs/translations-watcher.log`.
+Les ecritures de `curriculum/generated/curriculum.json` et de `client/static/curriculum-data/v2/*.json` sont atomiques (`writeFileAtomic` ecrit dans `<file>.tmp-PID-TS` puis renomme). Sans ca, Gatsby lisait des fichiers partiels pendant le rebuild et crashait avec `Couldn't find temp query result` ou `ENOENT chmod`.
+
+Les logs du watcher sont dans `dev-logs/translations-watcher.log` avec des entrees comme :
+
+```text
+[20:01:12] [EVENT] Changed : ...quiz-html-accessibility\66ed9026....md
+[20:01:13] [INFO]  Regeneration en cours...
+[20:02:44] [OK]    Curriculum-data regeneree en 91.4s. Rafraichis le navigateur (Ctrl+F5).
+```
+
+## Lint-Staged Sur Windows
+
+Lint-staged 16+ utilise nano-spawn sans shell pour spawner les commandes. Sur Windows avec un chemin parent qui contient des espaces (`Nouveau dossier`), les arguments fichier entoures de guillemets sont passes litteralement, et ESLint v9 / Prettier les rejettent comme patterns malformes :
+
+```text
+No files matching the pattern "C:/Users/.../Nouveau" were found.
+```
+
+Workaround applique dans `client/.lintstagedrc.mjs` et `curriculum/.lintstagedrc.mjs` : la config est un no-op (sauf le markdown-linter pour `curriculum/challenges/**/*.md` qui n'est pas touche par le bug). Lance lint / format manuellement :
+
+```powershell
+pnpm -C client lint
+pnpm -C client format
+```
+
+Le `pre-push` hook (`.husky/pre-push`) continue de tourner Prettier sur les fichiers modifies via une boucle bash, donc rien ne passe en commit sans relecture des regles.
 
 ## Verification
 
