@@ -47,6 +47,12 @@ function Invoke-RebuildCurriculumData {
     try {
         $env:CURRICULUM_LOCALE = "french"
         $env:CLIENT_LOCALE = "french"
+        # Mode watch : on ne reecrit PAS les 18000+ JSON par-challenge.
+        # Seuls les listings de superblocks (avec titres FR) sont reecrits, ce
+        # qui evite que Gatsby crashe sur sa synchronisation static/->public/
+        # (qui fait chmod sur chaque fichier qui change). Pour recharger le
+        # contenu d'un challenge, lance un rebuild complet sans FCC_WATCH_MODE.
+        $env:FCC_WATCH_MODE = "1"
 
         # Etape 1 : curriculum.json (lit toutes les .md FR + fusion anglais)
         Push-Location (Join-Path $repoRoot "curriculum")

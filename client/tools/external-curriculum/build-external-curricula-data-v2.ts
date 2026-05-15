@@ -385,6 +385,13 @@ export function buildExtCurriculumDataV2(
       superblocks: orderedSuperBlockInfo
     });
 
+    // In watch mode, skip writing the 18,000+ per-challenge JSON files. Only
+    // the per-superblock listings (with localized titles) get rewritten, so
+    // Gatsby's static/->public/ sync (which does chmod on every changed
+    // file) doesn't get overwhelmed and crash with "ENOENT chmod". Run a
+    // full rebuild manually when you need challenge content updates to land.
+    const skipChallengeFiles = process.env.FCC_WATCH_MODE === '1';
+
     for (const superBlockKey of superBlockKeys) {
       if (chapterBasedSuperBlocks.includes(superBlockKey)) {
         buildChapterBasedCurriculum(superBlockKey);
@@ -392,7 +399,9 @@ export function buildExtCurriculumDataV2(
         buildBlockBasedCurriculum(superBlockKey);
       }
 
-      buildChallengeFiles(superBlockKey);
+      if (!skipChallengeFiles) {
+        buildChallengeFiles(superBlockKey);
+      }
     }
   }
 
