@@ -21,6 +21,16 @@ Si Gatsby affiche une erreur de cache :
 .\dev.ps1 -Clean
 ```
 
+## Watcher De Traductions
+
+Lance ce script dans un second terminal pour voir tes traductions en live sans redemarrer Gatsby :
+
+```powershell
+.\watch-translations.ps1
+```
+
+A chaque sauvegarde d'un fichier `.md` francais ou de `client/i18n/locales/french/intro.json`, il regenere la curriculum-data. Rafraichis le navigateur avec `Ctrl+F5` apres le rebuild (~5-10s).
+
 ## Logs Serveur
 
 Le dossier permanent `dev-logs/` est mis a jour par `dev.ps1` :

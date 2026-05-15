@@ -87,6 +87,23 @@ dev-logs/errors.log
 - `server.log` garde les memes evenements en JSON Lines pour analyser proprement les erreurs.
 - `errors.log` regroupe les avertissements et erreurs detectes, avec une action conseillee quand le script reconnait le probleme.
 
+## Watcher De Traductions
+
+Pour voir tes modifications de traduction sans redemarrer Gatsby, lance le watcher dans un second terminal en parallele de `.\dev.ps1` :
+
+```powershell
+.\watch-translations.ps1
+```
+
+Il surveille `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/**/*.md` et `client/i18n/locales/french/intro.json`. A chaque sauvegarde, il regenere automatiquement :
+
+1. `curriculum/generated/curriculum.json` via `pnpm -C curriculum build`
+2. `client/static/curriculum-data/v2/*.json` via `pnpm -C client create:external-curriculum`
+
+Gatsby ressert le nouveau JSON statique sans recompiler. Apres chaque rebuild (~5-10s), rafraichis le navigateur avec `Ctrl+F5` pour bypass le cache du navigateur.
+
+Les logs du watcher sont dans `dev-logs/translations-watcher.log`.
+
 ## Verification
 
 Commandes recommandees :
