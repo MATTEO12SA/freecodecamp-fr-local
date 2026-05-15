@@ -21,7 +21,7 @@ $watcherLog = Join-Path $logsDir "translations-watcher.log"
 
 function Write-WatchLog {
     param(
-        [ValidateSet("INFO", "WARN", "ERROR", "OK")]
+        [ValidateSet("INFO", "WARN", "ERROR", "OK", "EVENT")]
         [string]$Level,
         [string]$Message
     )
@@ -32,6 +32,7 @@ function Write-WatchLog {
         "WARN" { "Yellow" }
         "ERROR" { "Red" }
         "OK" { "Green" }
+        "EVENT" { "Magenta" }
     }
     $line = "[$timestamp] [$Level] $Message"
     Write-Host $line -ForegroundColor $color
@@ -39,7 +40,7 @@ function Write-WatchLog {
 }
 
 function Invoke-RebuildCurriculumData {
-    Write-WatchLog -Level "INFO" -Message "Changement detecte, regeneration en cours..."
+    Write-WatchLog -Level "INFO" -Message "Regeneration en cours..."
 
     $startTime = Get-Date
 
@@ -47,7 +48,7 @@ function Invoke-RebuildCurriculumData {
         $env:CURRICULUM_LOCALE = "french"
         $env:CLIENT_LOCALE = "french"
 
-        # Etape 1 : curriculum.json (lit toutes les .md FR et les fusionne avec l'anglais)
+        # Etape 1 : curriculum.json (lit toutes les .md FR + fusion anglais)
         Push-Location (Join-Path $repoRoot "curriculum")
         try {
             $curriculumOutput = & pnpm.cmd build 2>&1
@@ -60,7 +61,7 @@ function Invoke-RebuildCurriculumData {
             Pop-Location
         }
 
-        # Etape 2 : client/static/curriculum-data/v2/*.json (servi par Gatsby au navigateur)
+        # Etape 2 : client/static/curriculum-data/v2/*.json
         Push-Location (Join-Path $repoRoot "client")
         try {
             $clientOutput = & pnpm.cmd create:external-curriculum 2>&1
@@ -88,52 +89,72 @@ if (-not (Test-Path $frBlocksDir)) {
 New-Item -ItemType Directory -Path $logsDir -Force | Out-Null
 Set-Content -LiteralPath $watcherLog -Value "=== Watcher demarre le $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ===" -Encoding UTF8
 
-Write-WatchLog -Level "INFO" -Message "Surveillance de $frBlocksDir"
+Write-WatchLog -Level "INFO" -Message "Surveillance de $frBlocksDir (recursif, *.md)"
 Write-WatchLog -Level "INFO" -Message "Surveillance de $introJsonPath"
 Write-WatchLog -Level "INFO" -Message "Logs : dev-logs\translations-watcher.log"
 Write-WatchLog -Level "INFO" -Message "Appuie sur Ctrl+C pour arreter."
-
-# Debouncer : agrege les rafales d'evenements (un Ctrl+S declenche plusieurs Changed)
-$script:pendingRebuild = $false
-$script:lastEventAt = [DateTime]::MinValue
-$debounceMs = 800
 
 $blocksWatcher = New-Object System.IO.FileSystemWatcher
 $blocksWatcher.Path = $frBlocksDir
 $blocksWatcher.Filter = "*.md"
 $blocksWatcher.IncludeSubdirectories = $true
+$blocksWatcher.NotifyFilter = [System.IO.NotifyFilters]::LastWrite -bor [System.IO.NotifyFilters]::FileName -bor [System.IO.NotifyFilters]::Size
 $blocksWatcher.EnableRaisingEvents = $true
-$blocksWatcher.NotifyFilter = [System.IO.NotifyFilters]::LastWrite -bor [System.IO.NotifyFilters]::FileName
 
 $introWatcher = New-Object System.IO.FileSystemWatcher
 $introWatcher.Path = $introJsonDir
 $introWatcher.Filter = "intro.json"
+$introWatcher.NotifyFilter = [System.IO.NotifyFilters]::LastWrite -bor [System.IO.NotifyFilters]::Size
 $introWatcher.EnableRaisingEvents = $true
-$introWatcher.NotifyFilter = [System.IO.NotifyFilters]::LastWrite
 
-$action = {
-    $script:pendingRebuild = $true
-    $script:lastEventAt = Get-Date
+$srcBlocks = "WatcherBlocks"
+$srcIntro = "WatcherIntro"
+
+# Pas de -Action : on receptionne les events via Get-Event dans le thread principal,
+# pour eviter le piege classique du runspace separe (les $script: vars ne sont pas partagees).
+Register-ObjectEvent -InputObject $blocksWatcher -EventName "Changed" -SourceIdentifier "$srcBlocks-Changed" | Out-Null
+Register-ObjectEvent -InputObject $blocksWatcher -EventName "Created" -SourceIdentifier "$srcBlocks-Created" | Out-Null
+Register-ObjectEvent -InputObject $blocksWatcher -EventName "Renamed" -SourceIdentifier "$srcBlocks-Renamed" | Out-Null
+Register-ObjectEvent -InputObject $introWatcher -EventName "Changed" -SourceIdentifier "$srcIntro-Changed" | Out-Null
+
+$debounceMs = 800
+$allSourceIds = @("$srcBlocks-Changed", "$srcBlocks-Created", "$srcBlocks-Renamed", "$srcIntro-Changed")
+
+function Drain-AllEvents {
+    foreach ($sid in $allSourceIds) {
+        Get-Event -SourceIdentifier $sid -ErrorAction SilentlyContinue | ForEach-Object {
+            Remove-Event -EventIdentifier $_.EventIdentifier
+        }
+    }
 }
-
-Register-ObjectEvent -InputObject $blocksWatcher -EventName "Changed" -Action $action | Out-Null
-Register-ObjectEvent -InputObject $blocksWatcher -EventName "Created" -Action $action | Out-Null
-Register-ObjectEvent -InputObject $blocksWatcher -EventName "Renamed" -Action $action | Out-Null
-Register-ObjectEvent -InputObject $introWatcher -EventName "Changed" -Action $action | Out-Null
 
 try {
     while ($true) {
-        Start-Sleep -Milliseconds 200
-        if ($script:pendingRebuild) {
-            $elapsedMs = ((Get-Date) - $script:lastEventAt).TotalMilliseconds
-            if ($elapsedMs -ge $debounceMs) {
-                $script:pendingRebuild = $false
-                Invoke-RebuildCurriculumData
-            }
+        $event = $null
+        foreach ($sid in $allSourceIds) {
+            $pending = Get-Event -SourceIdentifier $sid -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($pending) { $event = $pending; break }
         }
+
+        if (-not $event) {
+            Start-Sleep -Milliseconds 200
+            continue
+        }
+
+        $changedPath = $event.SourceEventArgs.FullPath
+        $changeType = $event.SourceEventArgs.ChangeType
+        Write-WatchLog -Level "EVENT" -Message "$changeType : $changedPath"
+
+        # Debounce : on attend que la rafale d'events se calme
+        Start-Sleep -Milliseconds $debounceMs
+        Drain-AllEvents
+
+        Invoke-RebuildCurriculumData
     }
 } finally {
-    Get-EventSubscriber | Unregister-Event -ErrorAction SilentlyContinue
+    foreach ($sid in $allSourceIds) {
+        Unregister-Event -SourceIdentifier $sid -ErrorAction SilentlyContinue
+    }
     $blocksWatcher.Dispose()
     $introWatcher.Dispose()
     Write-WatchLog -Level "INFO" -Message "Watcher arrete."
