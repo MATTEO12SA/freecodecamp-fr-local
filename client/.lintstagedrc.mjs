@@ -1,24 +1,22 @@
 /* eslint-disable filenames-simple/naming-convention */
-import { ESLint } from 'eslint';
 
-const cwd = import.meta.dirname;
-const eslintCli = new ESLint({ cwd });
+// Lint-staged is disabled here because on Windows with a spaced parent path
+// (e.g. "Nouveau dossier"), lint-staged 16+ uses nano-spawn without a shell.
+// Quoted file arguments are passed literally including the surrounding
+// quotes, which both ESLint v9 and Prettier reject as malformed patterns:
+//
+//   "No files matching the pattern "C:/Users/.../Nouveau" were found."
+//
+// Run lint/format manually when needed:
+//   pnpm -C client lint
+//   pnpm -C client format
+//
+// The pre-push hook in `.husky/pre-push` still runs prettier --check on
+// changed files (it uses an explicit `until ... grep` loop, not nano-spawn).
 
+// Match a pattern that will never exist so lint-staged accepts the config
+// but never spawns a child process. (Empty config throws "Configuration
+// should not be empty".)
 export default {
-  '*.(mjs|js|ts|tsx)': async files => {
-    const ignored = await Promise.all(
-      files.map(file => eslintCli.isPathIgnored(file))
-    );
-    const lintable = files.filter((_, i) => !ignored[i]);
-    const prettierCmds = files.map(f => `prettier --write '${f}'`);
-    if (lintable.length === 0) return prettierCmds;
-    const eslintArgs = lintable.map(f => `'${f}'`).join(' ');
-    return [`eslint --fix ${eslintArgs}`, ...prettierCmds];
-  },
-  '*.!(mjs|js|ts|tsx|css|md)': files =>
-    files.map(f => `prettier --write --ignore-unknown '${f}'`),
-  '*.css': files => [
-    ...files.map(f => `stylelint --fix '${f}'`),
-    ...files.map(f => `prettier --write '${f}'`)
-  ]
+  '__lint-staged-disabled-on-windows__': () => []
 };

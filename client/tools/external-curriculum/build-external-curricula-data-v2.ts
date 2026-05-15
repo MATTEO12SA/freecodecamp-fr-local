@@ -1,4 +1,11 @@
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import {
+  existsSync,
+  mkdirSync,
+  renameSync,
+  unlinkSync,
+  writeFileSync,
+  readFileSync
+} from 'fs';
 import { resolve, dirname } from 'path';
 import { mergeWith, omit } from 'lodash';
 import { submitTypes } from '@freecodecamp/shared/config/challenge-types';
@@ -489,14 +496,28 @@ export function buildExtCurriculumDataV2(
     }
   }
 
+  // Atomic write : ecrit dans .tmp puis renomme. Evite que Gatsby (qui sert
+  // ces JSON via le dossier `static/`) ne lise un fichier partiel pendant un
+  // rebuild declenche par le watcher de traductions.
+  function writeFileAtomic(filePath: string, content: string): void {
+    const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
+    writeFileSync(tmpPath, content);
+    try {
+      renameSync(tmpPath, filePath);
+    } catch {
+      if (existsSync(filePath)) unlinkSync(filePath);
+      renameSync(tmpPath, filePath);
+    }
+  }
+
   function writeToFile(fileName: string, data: Record<string, unknown>): void {
     const filePath = `${dataPath}/${ver}/${fileName}.json`;
     mkdirSync(dirname(filePath), { recursive: true });
-    writeFileSync(filePath, JSON.stringify(data, null, 2));
+    writeFileAtomic(filePath, JSON.stringify(data, null, 2));
   }
 
   function getSubmitTypes() {
-    writeFileSync(
+    writeFileAtomic(
       `${dataPath}/${ver}/submit-types.json`,
       JSON.stringify(submitTypes, null, 2)
     );
@@ -512,7 +533,7 @@ export function buildExtCurriculumDataV2(
       characterAssets
     };
 
-    writeFileSync(
+    writeFileAtomic(
       `${dataPath}/${ver}/scene-assets.json`,
       JSON.stringify(sceneAssets, null, 2)
     );
