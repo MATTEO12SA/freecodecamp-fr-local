@@ -519,10 +519,26 @@ export function buildExtCurriculumDataV2(
     }
   }
 
+  // Skip writing the file when its content is unchanged. This is critical in
+  // watch mode : without this, every rebuild rewrites 18 000+ unchanged JSON
+  // files, which makes Gatsby's static/->public/ sync crash with ENOENT chmod
+  // (too many chmod calls on files that briefly disappear during atomic
+  // rename). With this check, only the JSON for the actually-changed
+  // challenge or superblock is rewritten, so Gatsby has at most a handful of
+  // file events to process.
+  function writeIfChanged(filePath: string, content: string): boolean {
+    if (existsSync(filePath)) {
+      const current = readFileSync(filePath, 'utf-8');
+      if (current === content) return false;
+    }
+    writeFileAtomic(filePath, content);
+    return true;
+  }
+
   function writeToFile(fileName: string, data: Record<string, unknown>): void {
     const filePath = `${dataPath}/${ver}/${fileName}.json`;
     mkdirSync(dirname(filePath), { recursive: true });
-    writeFileAtomic(filePath, JSON.stringify(data, null, 2));
+    writeIfChanged(filePath, JSON.stringify(data, null, 2));
   }
 
   function getSubmitTypes() {
