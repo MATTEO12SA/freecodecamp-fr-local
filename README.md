@@ -25,6 +25,16 @@ Si Gatsby garde une ancienne page en cache :
 .\dev.ps1 -Clean
 ```
 
+Logs serveur :
+
+```text
+dev-logs/status.json
+dev-logs/latest.log
+dev-logs/errors.log
+```
+
+`status.json` indique le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.
+
 Pages utiles :
 
 ```text

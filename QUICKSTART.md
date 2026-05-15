@@ -21,6 +21,19 @@ Si Gatsby affiche une erreur de cache :
 .\dev.ps1 -Clean
 ```
 
+## Logs Serveur
+
+Le dossier permanent `dev-logs/` est mis a jour par `dev.ps1` :
+
+```text
+dev-logs/status.json
+dev-logs/latest.log
+dev-logs/server.log
+dev-logs/errors.log
+```
+
+Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`. Regarde `errors.log` pour les avertissements et erreurs resumes.
+
 Ouvre ensuite :
 
 ```text

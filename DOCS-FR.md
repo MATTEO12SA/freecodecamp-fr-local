@@ -6,6 +6,7 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 
 - `dev.ps1` lance le client sur `http://localhost:8000`.
 - `dev.ps1 -Fast` relance directement Gatsby quand les fichiers generes existent deja, sans repasser par `turbo setup`.
+- `dev-logs/` garde le statut du serveur et les logs du dernier lancement.
 - `client/src/redux/fetch-user-saga.js` cree un utilisateur local au lieu d'appeler une session serveur.
 - `client/src/utils/local-progress.ts` lit et ecrit la progression dans `localStorage`.
 - `client/src/redux/local-progress-epic.js` persiste les challenges termines apres `submitComplete`.
@@ -69,6 +70,22 @@ full-flow-test.mjs
 Ces scripts utilisent `playwright` directement, sans chemin `.pnpm` fragile et sans dependance a Edge.
 
 Scripts supprimes : anciens diagnostics, scripts de traduction ponctuelle, captures isolees et tests humains non maintenus.
+
+## Logs De Developpement
+
+`dev.ps1` cree et met a jour le dossier permanent `dev-logs/` :
+
+```text
+dev-logs/status.json
+dev-logs/latest.log
+dev-logs/server.log
+dev-logs/errors.log
+```
+
+- `status.json` donne le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`, le mode `normal`/`fast`, l'URL attendue et le dernier probleme detecte.
+- `latest.log` garde le transcript lisible du dernier lancement.
+- `server.log` garde les memes evenements en JSON Lines pour analyser proprement les erreurs.
+- `errors.log` regroupe les avertissements et erreurs detectes, avec une action conseillee quand le script reconnait le probleme.
 
 ## Verification
 
