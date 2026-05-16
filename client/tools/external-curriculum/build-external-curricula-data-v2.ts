@@ -512,7 +512,7 @@ export function buildExtCurriculumDataV2(
       characterAssets
     };
 
-    writeFileAtomic(
+    writeFileSync(
       `${dataPath}/${ver}/scene-assets.json`,
       JSON.stringify(sceneAssets, null, 2)
     );
