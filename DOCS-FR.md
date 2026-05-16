@@ -162,13 +162,38 @@ Sur ce setup (Windows + chemin avec espace `Nouveau dossier` + curriculum.i18n e
 
 Le JSON statique est a jour (regenere par `create:external-curriculum`), mais Gatsby ne re-source pas le node depuis le `.md`. C'est ce niveau-la qui ne se met pas a jour.
 
-### Hypotheses A Tester
+### Cause Identifiee : Chokidar Ne Detecte Pas Les Edits Sur Cette Machine
 
-1. **Chokidar et chemins avec espaces sur Windows** : possible mais peu probable, chokidar gere normalement les espaces.
-2. **Chokidar et chemins en submodule** : `curriculum/i18n-curriculum` est un submodule git. Chokidar pourrait avoir un comportement different sur les submodules.
-3. **`useFsEvents` / `awaitWriteFinish` config** : la config par defaut de chokidar peut rater des events sur certains FS.
-4. **Multiple instances de Gatsby** : plusieurs `node.exe` zombie pouvent posseder le port 8000 sans avoir le bon watcher attache.
-5. **Gatsby v5 cache HMR** : la query cache de Gatsby (`.cache/query-results`) peut cacher l'ancien resultat meme apres un node update.
+Test isole avec un script qui watche `client/i18n/locales/french/` (chemin standard, pas un submodule) et touche `intro.json` depuis le meme processus Node :
+
+```js
+// test-chokidar.mjs
+const watcher = chokidar.watch(watchPath, {
+  ignored: /(^|[/\\])\../,
+  ignoreInitial: true,
+  persistent: true,
+  cwd: watchPath,
+  usePolling: true,
+  interval: 500
+});
+watcher.on('ready', () => {
+  console.log('[ready]');
+  // Touche intro.json apres ready
+  setTimeout(() => writeFileSync(testFile, content), 2000);
+});
+watcher.on('change', p => console.log('[change]', p));
+```
+
+Resultat : `[ready]` puis `[touched intro.json]` mais **aucun `[change]` event** n'est emis, meme avec polling. Le test repete sur le submodule `curriculum/i18n-curriculum/.../french` donne le meme resultat.
+
+Donc chokidar lui-meme echoue a detecter les writes sur ce setup, independamment du plugin Gatsby. Causes probables :
+
+1. **Windows Defender / antivirus** intercepte les events fs et les retarde au-dela du timeout du watcher.
+2. **OneDrive / cloud sync** sur le dossier projet introduit une couche de virtualisation qui masque les events.
+3. **Bug node 24 + chokidar + FAT/NTFS atypique** sur le volume.
+4. **VS Code ou un autre processus** garde un lock sur le fichier au moment de l'ecriture.
+
+Pour verifier, lance `node test-chokidar.mjs` (script dans le repo, voir l'historique git) en debranchant temporairement Defender / OneDrive / autre IDE et observe si `[change]` apparait. Si oui, c'est l'un de ces processus. Sinon, c'est plus profond (driver fs, junction NTFS, etc.).
 
 ### Diagnostic Recommande
 
