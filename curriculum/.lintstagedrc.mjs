@@ -1,12 +1,10 @@
 /* eslint-disable filenames-simple/naming-convention */
 import path from 'node:path';
 
-// Lint-staged is mostly disabled here because on Windows with a spaced
-// parent path ("Nouveau dossier"), lint-staged 16+ uses nano-spawn without
-// a shell and passes quoted file arguments literally, which ESLint v9 and
-// Prettier reject. We keep the per-challenge markdown linter because it
-// uses single quotes consistently and the path-with-spaces issue does not
-// trigger for `pnpm challenge-linter` invocations on this machine.
+// Lint-staged is mostly disabled here for the same Windows nano-spawn reason
+// documented in client/.lintstagedrc.mjs. We keep the per-challenge markdown
+// linter because pnpm wraps the call in a way that survives the quoting on
+// this machine. Run other lint/format commands manually when needed.
 
 const linterConfigPath = path.resolve(
   import.meta.dirname,

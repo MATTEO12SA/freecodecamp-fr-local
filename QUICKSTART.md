@@ -21,17 +21,17 @@ Si Gatsby affiche une erreur de cache :
 .\dev.ps1 -Clean
 ```
 
-## Watcher De Traductions
+## Hot-Reload Des Traductions
 
-Lance ce script dans un second terminal pour voir tes traductions en live sans redemarrer Gatsby :
+Le plugin Gatsby `gatsby-source-challenges` (upstream) surveille deja les `.md` traduits. Edite un fichier dans `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/...`, sauvegarde, attends quelques secondes, puis Ctrl+F5 dans le navigateur.
+
+Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs, modules, chapitres), regenere manuellement :
 
 ```powershell
-.\watch-translations.ps1
+$env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'
+pnpm -C curriculum build
+pnpm -C client create:external-curriculum
 ```
-
-A chaque sauvegarde d'un fichier `.md` francais ou de `client/i18n/locales/french/intro.json`, il regenere la curriculum-data. Le rebuild prend `~90s` (curriculum.json fait 110 MB), puis rafraichis le navigateur avec `Ctrl+F5`.
-
-Les ecritures sont atomiques (`.tmp` + rename) donc Gatsby ne crashe plus pendant le rebuild. Avant ce fix, Gatsby plantait avec `Couldn't find temp query result` ou `ENOENT chmod` quand il lisait un JSON partiellement ecrit.
 
 ## Logs Serveur
 

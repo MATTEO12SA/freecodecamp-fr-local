@@ -1,11 +1,4 @@
-import {
-  existsSync,
-  mkdirSync,
-  renameSync,
-  unlinkSync,
-  writeFileSync,
-  readFileSync
-} from 'fs';
+import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { mergeWith, omit } from 'lodash';
 import { submitTypes } from '@freecodecamp/shared/config/challenge-types';
@@ -385,13 +378,6 @@ export function buildExtCurriculumDataV2(
       superblocks: orderedSuperBlockInfo
     });
 
-    // In watch mode, skip writing the 18,000+ per-challenge JSON files. Only
-    // the per-superblock listings (with localized titles) get rewritten, so
-    // Gatsby's static/->public/ sync (which does chmod on every changed
-    // file) doesn't get overwhelmed and crash with "ENOENT chmod". Run a
-    // full rebuild manually when you need challenge content updates to land.
-    const skipChallengeFiles = process.env.FCC_WATCH_MODE === '1';
-
     for (const superBlockKey of superBlockKeys) {
       if (chapterBasedSuperBlocks.includes(superBlockKey)) {
         buildChapterBasedCurriculum(superBlockKey);
@@ -399,9 +385,7 @@ export function buildExtCurriculumDataV2(
         buildBlockBasedCurriculum(superBlockKey);
       }
 
-      if (!skipChallengeFiles) {
-        buildChallengeFiles(superBlockKey);
-      }
+      buildChallengeFiles(superBlockKey);
     }
   }
 
@@ -505,44 +489,14 @@ export function buildExtCurriculumDataV2(
     }
   }
 
-  // Atomic write : ecrit dans .tmp puis renomme. Evite que Gatsby (qui sert
-  // ces JSON via le dossier `static/`) ne lise un fichier partiel pendant un
-  // rebuild declenche par le watcher de traductions.
-  function writeFileAtomic(filePath: string, content: string): void {
-    const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
-    writeFileSync(tmpPath, content);
-    try {
-      renameSync(tmpPath, filePath);
-    } catch {
-      if (existsSync(filePath)) unlinkSync(filePath);
-      renameSync(tmpPath, filePath);
-    }
-  }
-
-  // Skip writing the file when its content is unchanged. This is critical in
-  // watch mode : without this, every rebuild rewrites 18 000+ unchanged JSON
-  // files, which makes Gatsby's static/->public/ sync crash with ENOENT chmod
-  // (too many chmod calls on files that briefly disappear during atomic
-  // rename). With this check, only the JSON for the actually-changed
-  // challenge or superblock is rewritten, so Gatsby has at most a handful of
-  // file events to process.
-  function writeIfChanged(filePath: string, content: string): boolean {
-    if (existsSync(filePath)) {
-      const current = readFileSync(filePath, 'utf-8');
-      if (current === content) return false;
-    }
-    writeFileAtomic(filePath, content);
-    return true;
-  }
-
   function writeToFile(fileName: string, data: Record<string, unknown>): void {
     const filePath = `${dataPath}/${ver}/${fileName}.json`;
     mkdirSync(dirname(filePath), { recursive: true });
-    writeIfChanged(filePath, JSON.stringify(data, null, 2));
+    writeFileSync(filePath, JSON.stringify(data, null, 2));
   }
 
   function getSubmitTypes() {
-    writeFileAtomic(
+    writeFileSync(
       `${dataPath}/${ver}/submit-types.json`,
       JSON.stringify(submitTypes, null, 2)
     );

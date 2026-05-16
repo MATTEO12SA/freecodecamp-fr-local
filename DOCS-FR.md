@@ -87,95 +87,25 @@ dev-logs/errors.log
 - `server.log` garde les memes evenements en JSON Lines pour analyser proprement les erreurs.
 - `errors.log` regroupe les avertissements et erreurs detectes, avec une action conseillee quand le script reconnait le probleme.
 
-## Watcher De Traductions
+## Hot-Reload Des Traductions
 
-Pour voir tes modifications de traduction sans redemarrer Gatsby, lance le watcher dans un second terminal en parallele de `.\dev.ps1` :
+Le plugin upstream `tools/client-plugins/gatsby-source-challenges/gatsby-node.js` a deja un watcher chokidar qui surveille les fichiers `.md` du repertoire `curriculumPath` (cote `curriculum/i18n-curriculum/curriculum/challenges/french/` quand `CURRICULUM_LOCALE=french`). Quand tu modifies un fichier `.md` traduit, le plugin :
 
-```powershell
-.\watch-translations.ps1
-```
+1. Detecte le `change` event via chokidar.
+2. Appelle `handleChallengeUpdate` qui recharge juste ce challenge via `onSourceChange(filePath)`.
+3. Remplace le node Gatsby existant par le nouveau.
+4. Gatsby regenere automatiquement le `page-data.json` correspondant.
 
-Il surveille `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/**/*.md` et `client/i18n/locales/french/intro.json`. A chaque sauvegarde, il regenere automatiquement :
+Pas besoin d'un script externe : edite ton `.md` FR, sauvegarde, attends quelques secondes, puis rafraichis le navigateur (Ctrl+F5 pour bypasser le cache).
 
-1. `curriculum/generated/curriculum.json` via `pnpm -C curriculum build`
-2. `client/static/curriculum-data/v2/*.json` via `pnpm -C client create:external-curriculum`
-
-Gatsby ressert le nouveau JSON statique sans recompiler. Apres chaque rebuild (~90s pour un curriculum.json de 110 MB regenere de zero), rafraichis le navigateur avec `Ctrl+F5` pour bypass le cache du navigateur.
-
-Les logs du watcher sont dans `dev-logs/translations-watcher.log` avec des entrees comme :
-
-```text
-[20:01:12] [EVENT] Changed : ...quiz-html-accessibility\66ed9026....md
-[20:01:13] [INFO]  Regeneration en cours...
-[20:02:44] [OK]    Curriculum-data regeneree en 91.4s. Rafraichis le navigateur (Ctrl+F5).
-```
-
-### Pourquoi Gatsby Crashait
-
-Le pipeline de build est en 3 couches :
-
-```text
-.md FR / intro.json
-        |
-        v
-curriculum/generated/curriculum.json    (110 MB)
-        |
-        v
-client/static/curriculum-data/v2/
-   |- responsive-web-design-v9.json     (listings + titres FR)
-   |- ...
-   `- challenges/<superblock>/<block>/<id>.json   (18 686 fichiers, 1 par challenge)
-        |
-        v Gatsby copie static/ -> public/ et fait chmod sur chaque fichier qui change
-        v
-client/public/curriculum-data/v2/...
-```
-
-Le script `create:external-curriculum` reecrivait par defaut **tous les 18 686 fichiers** sur chaque rebuild. Gatsby essayait alors de chmod chacun d'eux en parallele et crashait sur le premier qui etait brievement absent (entre suppression et renommage) :
-
-```text
-ENOENT: no such file or directory, chmod 'client\public\curriculum-data\v2\challenges\2022\
-responsive-web-design\learn-the-css-box-model-by-building-a-rothko-painting\60a3e33...json'
-```
-
-### Deux Couches De Fix
-
-1. **Ecritures atomiques** (`writeFileAtomic` dans `build-curriculum.ts` et `build-external-curricula-data-v2.ts`) : on ecrit dans `<file>.tmp-PID-TS` puis on renomme. Le rename est atomique sur NTFS, donc Gatsby voit toujours un fichier complet, pas un fichier en cours d'ecriture.
-
-2. **Skip des per-challenge files en watch mode** : quand `FCC_WATCH_MODE=1` (mis par `watch-translations.ps1`), le build reecrit uniquement les listings de superblocks (~80 fichiers) et zappe les 18 686 fichiers par-challenge. Gatsby a peu de chmod a faire et ne crashe plus.
-
-### Limite Connue
-
-En mode watch, seuls les **titres de blocs et de leçons** dans les listings se mettent a jour en live. Le **contenu d'un challenge** (description, hints, seed code) ne se met PAS a jour parce que les fichiers `challenges/<sb>/<block>/<id>.json` ne sont pas reecrits.
-
-Pour recharger le contenu, fais un rebuild complet :
+Si tu modifies `client/i18n/locales/french/intro.json` (titres de blocs / chapitres / modules), Gatsby ne re-source pas automatiquement. Pour ces changements, lance manuellement :
 
 ```powershell
-$env:CURRICULUM_LOCALE='french'
-$env:CLIENT_LOCALE='french'
-Remove-Item Env:FCC_WATCH_MODE -ErrorAction SilentlyContinue
+pnpm -C curriculum run setup
+$env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'
 pnpm -C curriculum build
 pnpm -C client create:external-curriculum
 ```
-
-Cette commande prend ~3 min mais elle met tout a jour. Lance-la quand tu veux verifier le contenu des challenges, pas juste les listings.
-
-## Lint-Staged Sur Windows
-
-Lint-staged 16+ utilise nano-spawn sans shell pour spawner les commandes. Sur Windows avec un chemin parent qui contient des espaces (`Nouveau dossier`), les arguments fichier entoures de guillemets sont passes litteralement, et ESLint v9 / Prettier les rejettent comme patterns malformes :
-
-```text
-No files matching the pattern "C:/Users/.../Nouveau" were found.
-```
-
-Workaround applique dans `client/.lintstagedrc.mjs` et `curriculum/.lintstagedrc.mjs` : la config est un no-op (sauf le markdown-linter pour `curriculum/challenges/**/*.md` qui n'est pas touche par le bug). Lance lint / format manuellement :
-
-```powershell
-pnpm -C client lint
-pnpm -C client format
-```
-
-Le `pre-push` hook (`.husky/pre-push`) continue de tourner Prettier sur les fichiers modifies via une boucle bash, donc rien ne passe en commit sans relecture des regles.
 
 ## Verification
 
