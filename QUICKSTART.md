@@ -21,16 +21,23 @@ Si Gatsby affiche une erreur de cache :
 .\dev.ps1 -Clean
 ```
 
-## Hot-Reload Des Traductions
+## Voir Une Traduction Apres Edit
 
-Le plugin Gatsby `gatsby-source-challenges` (upstream) surveille deja les `.md` traduits. Edite un fichier dans `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/...`, sauvegarde, attends quelques secondes, puis Ctrl+F5 dans le navigateur.
+Le hot-reload upstream (chokidar dans `gatsby-source-challenges`) est cense surveiller les `.md` FR mais n'a pas reagi sur ce setup Windows. En attendant qu'on le debug (voir `DOCS-FR.md` section "Hot-Reload Des Traductions"), redemarre Gatsby apres une edit :
 
-Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs, modules, chapitres), regenere manuellement :
+```powershell
+.\dev.ps1 -Fast
+```
+
+`-Fast` skip le `turbo setup` initial et redemarre Gatsby en ~2 min. Ouvre `dev-logs/status.json` pour voir quand le serveur est `UP`, puis Ctrl+F5 dans le browser.
+
+Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs, modules, chapitres), regenere d'abord les fichiers statiques :
 
 ```powershell
 $env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'
 pnpm -C curriculum build
 pnpm -C client create:external-curriculum
+.\dev.ps1 -Fast
 ```
 
 ## Logs Serveur
