@@ -23,15 +23,17 @@ Si Gatsby affiche une erreur de cache :
 
 ## Voir Une Traduction Apres Edit
 
-Le hot-reload upstream (chokidar dans `gatsby-source-challenges`) est cense surveiller les `.md` FR mais n'a pas reagi sur ce setup Windows. En attendant qu'on le debug (voir `DOCS-FR.md` section "Hot-Reload Des Traductions"), redemarre Gatsby apres une edit :
+Le hot-reload des `.md` FR fonctionne. Edite ton fichier dans `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/...`, sauvegarde, attends ~5 secondes, puis **Ctrl + Shift + R** dans le navigateur.
+
+Le plugin Gatsby utilise `chokidar` (qui ne fire pas sur ce Windows + Defender) ET un fallback `fs.watchFile` (qui marche). Voir `DOCS-FR.md` section "Hot-Reload Des Traductions" pour les details.
+
+Pour verifier qu'un edit a bien ete pris en compte :
 
 ```powershell
-.\dev.ps1 -Fast
+Select-String -Path dev-logs\latest.log -Pattern "fs.watchFile change|Challenge file changed" | Select-Object -Last 3
 ```
 
-`-Fast` skip le `turbo setup` initial et redemarre Gatsby en ~2 min. Ouvre `dev-logs/status.json` pour voir quand le serveur est `UP`, puis Ctrl+F5 dans le browser.
-
-Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs, modules, chapitres), regenere d'abord les fichiers statiques :
+Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs / modules / chapitres), regenere d'abord les fichiers statiques :
 
 ```powershell
 $env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'

@@ -89,36 +89,35 @@ dev-logs/errors.log
 
 ## Hot-Reload Des Traductions
 
-### Le Pipeline De Donnees Du Build
+**TL;DR** : edite un `.md` FR, sauvegarde, attends ~5 secondes, fais Ctrl+Shift+R dans le navigateur, le nouveau contenu apparait. Pas besoin de redemarrer Gatsby.
 
-Quand tu lances `dev.ps1`, Gatsby utilise un plugin custom pour transformer les fichiers `.md` du curriculum en pages web. Le pipeline complet est :
+### Le Pipeline De Donnees
+
+Quand tu lances `dev.ps1`, Gatsby transforme les `.md` du curriculum en pages web via un plugin custom. Le pipeline :
 
 ```text
 .md FR (curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<block>/<id>.md)
    |
-   v 1. Au demarrage : pnpm setup -> tsc compile la lib curriculum
-   v 2. Au demarrage : node build-curriculum genere curriculum/generated/curriculum.json (110 MB)
-   v 3. client/utils/build-challenges.js lit curriculum.json -> retourne tous les challenges
+   v 1. Demarrage : pnpm setup -> tsc compile la lib curriculum
+   v 2. Demarrage : build-curriculum genere curriculum/generated/curriculum.json (110 MB)
+   v 3. client/utils/build-challenges.js lit curriculum.json -> tous les challenges
    |
    v
 gatsby-source-challenges (tools/client-plugins/gatsby-source-challenges/gatsby-node.js)
    |
-   v 4. sourceNodes() : creee un node Gatsby par challenge, source = buildChallenges
-   v 5. chokidar.watch(curriculumPath) : surveille les .md FR pour les changements
-   v 6. createPagesStatefully() : cree une page par challengeNode via la query GraphQL
+   v 4. sourceNodes() : 1 node Gatsby par challenge
+   v 5. WATCHER : chokidar + fs.watchFile fallback surveillent les .md FR
+   v 6. createPagesStatefully() : 1 page par node via GraphQL
    |
    v
 client/public/page-data/.../page-data.json
    |
-   v 7. Le navigateur fetch ce JSON quand on visite la page du challenge
-   |
-   v
-React rendu dans le navigateur
+   v 7. Le navigateur fetch ce JSON quand on visite la page
 ```
 
-### Hot-Reload Upstream
+### Probleme : Le Watcher Upstream Ne Marchait Pas
 
-Le plugin a deja un watcher chokidar pour ne pas avoir a redemarrer Gatsby a chaque edit :
+Le plugin freeCodeCamp upstream a deja un watcher `chokidar` qui surveille les `.md` :
 
 ```js
 // tools/client-plugins/gatsby-source-challenges/gatsby-node.js
@@ -128,107 +127,90 @@ const watcher = chokidar.watch(curriculumPath, {
   persistent: true,
   cwd: curriculumPath
 });
-
 watcher.on('change', filePath =>
   /\.md?$/.test(filePath) ? handleChallengeUpdate(filePath, 'changed') : null
 );
 ```
 
-`curriculumPath` est resolu via `client/utils/build-challenges.js:24` qui appelle `getContentDir(curriculumLocale)`. Quand `CURRICULUM_LOCALE=french`, ca pointe vers `curriculum/i18n-curriculum/curriculum/challenges/french/` -- exactement la ou nous editons les .md FR.
+Quand un `.md` change, `handleChallengeUpdate` -> `replaceChallengeNodes` -> parse le fichier modifie -> remplace le node Gatsby -> Gatsby regenere `page-data.json` -> navigateur prend la nouvelle valeur. En theorie, parfait.
 
-Quand chokidar detecte un changement :
+**Mais sur ce setup Windows (chemin `Nouveau dossier`, Defender actif), chokidar ne firait AUCUN event.** Tests isoles :
 
-1. `handleChallengeUpdate(filePath, 'changed')` est appelle.
-2. La fonction supprime l'ancien node Gatsby et appelle `onSourceChange(filePath)` (alias `replaceChallengeNodes`).
-3. `replaceChallengeNodes` parse le fichier .md modifie via `blockCreator.createChallenge` et retourne une nouvelle version du challenge.
-4. Le plugin remplace le node Gatsby existant par le nouveau.
-5. Gatsby detecte le node update et regenere `page-data.json` pour la page de ce challenge.
-6. Le browser fetch le nouveau `page-data.json` au prochain rafraichissement.
+- `[ready]` event fire correctement (chokidar voit le dossier)
+- Aucun `[change]` / `[add]` / `[unlink]` apres modification d'un `.md`
+- Meme avec `usePolling: true` + `interval: 500`
+- Meme sur un chemin non-submodule (`client/i18n/locales/french/`)
+- Meme avec un write provenant du meme processus Node que le watcher
 
-En theorie : edite un .md FR, sauvegarde, attends quelques secondes, Ctrl+F5 -> nouveau contenu.
+Donc chokidar 3.6.0 est cassé sur ce setup, independamment de la config. Cause probable : Defender ou un autre layer de virtualisation FS masque les events `fs.watch` ET le polling de chokidar.
 
-### Le Probleme Concret Sur Cette Machine
+### Resolution : Fallback `fs.watchFile`
 
-Sur ce setup (Windows + chemin avec espace `Nouveau dossier` + curriculum.i18n en sous-dossier), le watcher upstream ne reagit PAS aux edits. Tests effectues :
-
-- Lancer `dev.ps1 -Fast` avec `CURRICULUM_LOCALE=french`. Le serveur demarre sur `:8000` et sert les pages FR.
-- Editer `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/lab-checkout-page/66da326c....md` (changer le titre).
-- Sauvegarder le fichier (mtime modifie, vrai write fs).
-- Attendre 30 s puis chercher `Challenge file changed` dans `dev-logs/latest.log`.
-- Resultat : aucun event. Gatsby n'a pas reagi.
-- HTTP 200 sur la page, mais le titre affiche reste l'ancien.
-- Verification du JSON par-challenge servi par Gatsby (`curl http://localhost:8000/curriculum-data/v2/challenges/.../<id>.json`) : nouveau titre present.
-- Verification du `page-data.json` que la page utilise reellement : ancien titre.
-
-Le JSON statique est a jour (regenere par `create:external-curriculum`), mais Gatsby ne re-source pas le node depuis le `.md`. C'est ce niveau-la qui ne se met pas a jour.
-
-### Cause Identifiee : Chokidar Ne Detecte Pas Les Edits Sur Cette Machine
-
-Test isole avec un script qui watche `client/i18n/locales/french/` (chemin standard, pas un submodule) et touche `intro.json` depuis le meme processus Node :
+Solution appliquee dans [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](tools/client-plugins/gatsby-source-challenges/gatsby-node.js) : on garde le watcher chokidar (pour les setups Linux/macOS / Windows ou il marche) et on ajoute un **fallback Node natif `fs.watchFile`** qui surveille chaque `.md` individuellement.
 
 ```js
-// test-chokidar.mjs
-const watcher = chokidar.watch(watchPath, {
-  ignored: /(^|[/\\])\../,
-  ignoreInitial: true,
-  persistent: true,
-  cwd: watchPath,
-  usePolling: true,
-  interval: 500
-});
-watcher.on('ready', () => {
-  console.log('[ready]');
-  // Touche intro.json apres ready
-  setTimeout(() => writeFileSync(testFile, content), 2000);
-});
-watcher.on('change', p => console.log('[change]', p));
+function attachFsWatchFileFallback() {
+  function walkDir(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('.')) continue;
+      const full = nodePath.join(dir, entry.name);
+      if (entry.isDirectory()) walkDir(full);
+      else if (/\.md?$/.test(entry.name)) attachWatchFile(full);
+    }
+  }
+  function attachWatchFile(absPath) {
+    fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+      if (curr.mtimeMs === prev.mtimeMs) return;
+      const relPath = nodePath.relative(curriculumPath, absPath);
+      reporter.info(`[fcc-source-challenges fs.watchFile] change ${relPath}`);
+      handleChallengeUpdate(relPath, 'changed');
+    });
+  }
+  walkDir(curriculumPath);
+}
 ```
 
-Resultat : `[ready]` puis `[touched intro.json]` mais **aucun `[change]` event** n'est emis, meme avec polling. Le test repete sur le submodule `curriculum/i18n-curriculum/.../french` donne le meme resultat.
+`fs.watchFile` utilise un mecanisme different de chokidar (stat-polling natif Node) qui passe outre les soucis de FS layer / antivirus. Coût : 551 polling cycles par seconde (1 par `.md` FR), absolument negligeable.
 
-Donc chokidar lui-meme echoue a detecter les writes sur ce setup, independamment du plugin Gatsby. Causes probables :
+### Resultat Mesure
 
-1. **Windows Defender / antivirus** intercepte les events fs et les retarde au-dela du timeout du watcher.
-2. **OneDrive / cloud sync** sur le dossier projet introduit une couche de virtualisation qui masque les events.
-3. **Bug node 24 + chokidar + FAT/NTFS atypique** sur le volume.
-4. **VS Code ou un autre processus** garde un lock sur le fichier au moment de l'ecriture.
+Sequence reelle apres une edit :
 
-Pour verifier, lance `node test-chokidar.mjs` (script dans le repo, voir l'historique git) en debranchant temporairement Defender / OneDrive / autre IDE et observe si `[change]` apparait. Si oui, c'est l'un de ces processus. Sinon, c'est plus profond (driver fs, junction NTFS, etc.).
+```text
+14:21:07 - touch .md (changement de titre)
+14:21:08 - [fs.watchFile] change detecte (~1s)
+14:21:08 - Challenge file changed -> handleChallengeUpdate appelle
+14:21:09 - replaceChallengeNodes re-parse le .md
+14:21:09 - Gatsby regenere page-data.json
+14:21:12 - Ctrl+Shift+R dans le navigateur -> nouveau titre affiche
+```
 
-### Diagnostic Recommande
+**Latence : ~5 s entre sauvegarde et affichage.**
 
-Au prochain test, executer dans cet ordre apres la modification d'un `.md` :
+### Diagnostic Si Le Hot-Reload Casse
+
+Si tu edits un `.md` et le navigateur ne suit pas :
 
 ```powershell
-# 1. Verifier que le fichier .md a bien le nouveau contenu
+# 1. Le fichier .md a-t-il bien le nouveau contenu ?
 Get-Content "curriculum\i18n-curriculum\curriculum\challenges\french\blocks\<block>\<id>.md" | Select-Object -First 5
 
-# 2. Chercher la trace du watcher dans les logs Gatsby
-Select-String -Path dev-logs\latest.log -Pattern "Challenge file changed|fcc-replace-challenge" | Select-Object -Last 10
+# 2. Le watcher a-t-il detecte ? Cherche dans les logs Gatsby
+Select-String -Path dev-logs\latest.log -Pattern "fs.watchFile|chokidar|Challenge file changed" | Select-Object -Last 10
 
-# 3. Verifier ce que Gatsby sert dans page-data.json (ancien vs nouveau)
+# 3. page-data.json est-il a jour ? (ce que le navigateur fetch reellement)
 $slug = "/learn/responsive-web-design-v9/<block>/<dashed-name>"
-Invoke-WebRequest "http://localhost:8000/page-data$slug/page-data.json" | Select-Object -ExpandProperty Content | Select-String -Pattern '"title"' -SimpleMatch
+curl "http://localhost:8000/page-data$slug/page-data.json" | python -c "import json,sys; d=json.load(sys.stdin); print(d['result']['data']['challengeNode']['challenge']['title'])"
 
-# 4. Si page-data.json a l'ancien titre, redemarrer Gatsby pour forcer un nouveau sourceNodes
-.\dev.ps1 -Fast
+# 4. Hard refresh du navigateur (force bypass du cache)
+# Ctrl + Shift + R sur Chrome/Edge/Firefox
 ```
 
-### Workaround : Redemarrer Gatsby
+Si l'etape 2 ne montre aucun `fs.watchFile change`, le fallback est cassé : verifier que le plugin a bien charge avec `grep "fs.watchFile" dev-logs/latest.log` au boot — tu dois voir `watching 551 .md files`.
 
-Tant que le watcher chokidar upstream n'est pas debug sur ce setup, la facon fiable de voir une edit traduction :
+### Cas Particulier : Modification De `intro.json`
 
-```powershell
-# 1. Edite tes .md FR.
-# 2. Redemarre Gatsby :
-.\dev.ps1 -Fast
-# 3. Attends "UP" dans dev-logs/status.json (~2 min).
-# 4. Ctrl+F5 dans le browser.
-```
-
-`-Fast` evite de regenerer curriculum.json ; il sert juste les fichiers existants. Le redemarrage prend ~2 min mais le hot-reload custom qu'on avait essaye d'ajouter (et qui crashait Gatsby avec `ENOENT chmod`) etait pire.
-
-Si tu modifies `client/i18n/locales/french/intro.json` (titres de blocs / chapitres / modules), regenere d'abord les fichiers statiques avant de redemarrer Gatsby :
+`client/i18n/locales/french/intro.json` contient les titres de blocs / modules / chapitres (pas les titres de challenges individuels). Il n'est PAS surveille par le plugin. Pour ces changements :
 
 ```powershell
 $env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'

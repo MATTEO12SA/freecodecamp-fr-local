@@ -1,4 +1,6 @@
 const chokidar = require('chokidar');
+const fs = require('fs');
+const nodePath = require('path');
 
 const { sortBy } = require('lodash');
 
@@ -50,11 +52,36 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     `);
   }
   const { createNode, deleteNode, deletePage } = actions;
+  // Windows-friendly chokidar config: native fs.watch is unreliable on Windows
+  // (especially with antivirus active). Polling + awaitWriteFinish + atomic
+  // make detection reliable across editors that use temp-file rename or
+  // partial writes. The defaults still apply on Linux/macOS where fs.watch
+  // works fine since polling is best-effort additional, not exclusive.
   const watcher = chokidar.watch(curriculumPath, {
     ignored: /(^|[/\\])\../,
     ignoreInitial: true,
     persistent: true,
-    cwd: curriculumPath
+    cwd: curriculumPath,
+    usePolling: true,
+    interval: 1000,
+    binaryInterval: 1500,
+    awaitWriteFinish: { stabilityThreshold: 200, pollInterval: 100 },
+    atomic: 100
+  });
+
+  // Diagnostic logs so we can see in dev-logs/latest.log whether the watcher
+  // fires events at all on a given setup.
+  ['ready', 'error'].forEach(evt => {
+    watcher.on(evt, payload =>
+      reporter.info(
+        `[fcc-source-challenges chokidar] ${evt}${payload ? ' ' + payload : ''}`
+      )
+    );
+  });
+  ['change', 'add', 'unlink'].forEach(evt => {
+    watcher.on(evt, p =>
+      reporter.info(`[fcc-source-challenges chokidar] ${evt} ${p}`)
+    );
   });
 
   function deletePages(filePath) {
@@ -172,6 +199,45 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     if (!/\.md?$/.test(filePath)) return;
     handleChallengeUpdate(filePath, 'deleted');
   });
+
+  // Fallback : on this Windows setup chokidar's polling sometimes misses
+  // events (suspected antivirus interference). fs.watchFile uses Node's
+  // built-in stat-poll which goes through a different code path and reliably
+  // fires when mtime changes. We register one watcher per .md file.
+  function attachFsWatchFileFallback() {
+    let attached = 0;
+    function walkDir(dir) {
+      let entries;
+      try {
+        entries = fs.readdirSync(dir, { withFileTypes: true });
+      } catch {
+        return;
+      }
+      for (const entry of entries) {
+        if (entry.name.startsWith('.')) continue;
+        const full = nodePath.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walkDir(full);
+        } else if (/\.md?$/.test(entry.name)) {
+          attachWatchFile(full);
+          attached += 1;
+        }
+      }
+    }
+    function attachWatchFile(absPath) {
+      fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+        if (curr.mtimeMs === prev.mtimeMs) return;
+        const relPath = nodePath.relative(curriculumPath, absPath);
+        reporter.info(`[fcc-source-challenges fs.watchFile] change ${relPath}`);
+        handleChallengeUpdate(relPath, 'changed');
+      });
+    }
+    walkDir(curriculumPath);
+    reporter.info(
+      `[fcc-source-challenges fs.watchFile] watching ${attached} .md files in ${curriculumPath}`
+    );
+  }
+  attachFsWatchFileFallback();
 
   function sourceAndCreateNodes() {
     return source()
