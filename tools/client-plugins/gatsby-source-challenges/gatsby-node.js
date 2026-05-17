@@ -239,6 +239,57 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   }
   attachFsWatchFileFallback();
 
+  // Detect .md files CREATED after server startup (which fs.watchFile cannot
+  // see, since it only watches paths registered at boot). fs.watch on
+  // directories with { recursive: true } fires on rename events for
+  // creation/deletion, and on Windows is implemented via ReadDirectoryChangesW
+  // (native + reliable). When a new .md appears, we attach a fs.watchFile on
+  // it AND immediately trigger an "added" update so Gatsby sources the node.
+  const watchedNewFiles = new Set();
+  function watchForNewFiles() {
+    try {
+      fs.watch(
+        curriculumPath,
+        { recursive: true, persistent: true },
+        (eventType, filename) => {
+          if (!filename || !/\.md$/.test(filename)) return;
+          const absPath = nodePath.join(curriculumPath, filename);
+          // rename event covers both creation and deletion. We only act on
+          // creation (file exists now) and only if we haven't seen this path.
+          if (eventType !== 'rename') return;
+          if (watchedNewFiles.has(absPath)) return;
+          if (!fs.existsSync(absPath)) return;
+          watchedNewFiles.add(absPath);
+          try {
+            fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+              if (curr.mtimeMs === prev.mtimeMs) return;
+              reporter.info(
+                `[fcc-source-challenges fs.watchFile] change ${filename}`
+              );
+              handleChallengeUpdate(filename, 'changed');
+            });
+            reporter.info(
+              `[fcc-source-challenges fs.watch] new file detected ${filename}`
+            );
+            handleChallengeUpdate(filename, 'added');
+          } catch (e) {
+            reporter.warn(
+              `[fcc-source-challenges fs.watch] failed to attach: ${e.message}`
+            );
+          }
+        }
+      );
+      reporter.info(
+        `[fcc-source-challenges fs.watch] recursive watcher armed on ${curriculumPath}`
+      );
+    } catch (e) {
+      reporter.warn(
+        `[fcc-source-challenges fs.watch] failed to start recursive watcher: ${e.message}`
+      );
+    }
+  }
+  watchForNewFiles();
+
   function sourceAndCreateNodes() {
     return source()
       .then(challenges => Promise.all(challenges))
