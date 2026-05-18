@@ -170,7 +170,44 @@ function attachFsWatchFileFallback() {
 }
 ```
 
-`fs.watchFile` utilise un mecanisme different de chokidar (stat-polling natif Node) qui passe outre les soucis de FS layer / antivirus. Coût : 551 polling cycles par seconde (1 par `.md` FR), absolument negligeable.
+`fs.watchFile` utilise un mecanisme different de chokidar (stat-polling natif Node) qui passe outre les soucis de FS layer / antivirus. Coût : ~600 polling cycles par seconde (1 par `.md` FR existant au demarrage), absolument negligeable.
+
+### Probleme Secondaire : Nouveaux Fichiers Crees Apres Le Demarrage
+
+`fs.watchFile` enregistre un watcher par chemin precis au moment du boot. Tout `.md` FR ajoute apres le demarrage du serveur n'est PAS surveille — donc une nouvelle traduction n'apparaitrait jamais sans relancer Gatsby.
+
+### Resolution : `fs.watch` Recursif Sur Le Dossier Racine
+
+Ajoute apres `attachFsWatchFileFallback()` dans le meme fichier : un `fs.watch` recursif qui ecoute les events `rename` (creation/suppression) sur le dossier curriculum. Quand un nouveau `.md` est detecte, on lui attache un `fs.watchFile` ET on declenche `handleChallengeUpdate(..., 'added')`.
+
+```js
+const watchedNewFiles = new Set();
+function watchForNewFiles() {
+  fs.watch(
+    curriculumPath,
+    { recursive: true, persistent: true },
+    (eventType, filename) => {
+      if (!filename || !/\.md$/.test(filename)) return;
+      if (eventType !== 'rename') return;
+      const absPath = nodePath.join(curriculumPath, filename);
+      if (watchedNewFiles.has(absPath)) return;
+      if (!fs.existsSync(absPath)) return;
+      watchedNewFiles.add(absPath);
+      fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+        if (curr.mtimeMs === prev.mtimeMs) return;
+        handleChallengeUpdate(filename, 'changed');
+      });
+      reporter.info(
+        `[fcc-source-challenges fs.watch] new file detected ${filename}`
+      );
+      handleChallengeUpdate(filename, 'added');
+    }
+  );
+}
+watchForNewFiles();
+```
+
+`fs.watch` recursif sur Windows utilise `ReadDirectoryChangesW` (natif + performant). Resultat : on peut creer des dizaines de `.md` FR en cours de session sans jamais redemarrer Gatsby — le navigateur affiche le nouveau contenu apres `Ctrl + Shift + R`.
 
 ### Resultat Mesure
 

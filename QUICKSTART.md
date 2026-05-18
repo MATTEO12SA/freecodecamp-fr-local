@@ -25,7 +25,7 @@ Si Gatsby affiche une erreur de cache :
 
 Le hot-reload des `.md` FR fonctionne. Edite ton fichier dans `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/...`, sauvegarde, attends ~5 secondes, puis **Ctrl + Shift + R** dans le navigateur.
 
-Le plugin Gatsby utilise `chokidar` (qui ne fire pas sur ce Windows + Defender) ET un fallback `fs.watchFile` (qui marche). Voir `DOCS-FR.md` section "Hot-Reload Des Traductions" pour les details.
+Le plugin Gatsby utilise `chokidar` (qui ne fire pas sur ce Windows + Defender), un fallback `fs.watchFile` pour les `.md` existants au demarrage, ET un `fs.watch` recursif pour les `.md` crees apres le demarrage. Voir `DOCS-FR.md` section "Hot-Reload Des Traductions" pour les details.
 
 Pour verifier qu'un edit a bien ete pris en compte :
 
