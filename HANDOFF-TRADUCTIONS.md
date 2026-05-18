@@ -28,7 +28,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 - ✅ Module `pseudo-classes-and-elements` — 10 fichiers pédagogiques (lectures + lab + review + quiz). **Workshops non traduits** : `workshop-greeting-card` (27) + `workshop-parent-teacher-conference-form` (37) = 64 fichiers restants
 - ✅ Module `css-colors` — 9 fichiers pédagogiques. **Workshop non traduit** : `workshop-colored-markers` (89 fichiers)
 - ✅ Module `styling-forms` — 7 fichiers pédagogiques. **Workshops non traduits** : `workshop-registration-form` (61) + `workshop-game-settings-panel` (16) = 77 fichiers
-- 🟡 Module `css-box-model` — **PARTIEL** : seuls review + quiz faits. **À faire** : 7 lectures du bloc `lecture-working-with-css-transforms-overflow-and-filters` + lab `lab-confidential-email-page` + workshop `workshop-rothko-painting` (44)
+- ✅ Module `css-box-model` — 10 fichiers pédagogiques complets (7 lectures + lab + review + quiz). **Workshop non traduit** : `workshop-rothko-painting` (44)
+- ✅ Module `css-flexbox` — 5 fichiers pédagogiques complets (2 lectures + lab + review + quiz). **Workshops non traduits** : `workshop-flexbox-photo-gallery` (22) + `workshop-colorful-boxes` (43)
+- ✅ Module `lab-page-of-playing-cards` — 1 lab complet
 
 ### Infrastructure
 
@@ -44,28 +46,25 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### Chapitre CSS — Modules restants (dans l'ordre du superblock)
 
-| #                                         | Module                                     | Lectures                       | Workshops à skip                                                  | Lab/Review/Quiz            | Total pédagogique |
-| ----------------------------------------- | ------------------------------------------ | ------------------------------ | ----------------------------------------------------------------- | -------------------------- | ----------------- |
-| 1                                         | `css-box-model` (finir)                    | 7 fichiers                     | workshop-rothko-painting (44)                                     | 1 lab                      | 8 fichiers        |
-| 2                                         | `css-flexbox`                              | 2                              | workshop-flexbox-photo-gallery (22), workshop-colorful-boxes (43) | 1 lab + 1 review + 1 quiz  | 5                 |
-| 3                                         | `lab-page-of-playing-cards`                | —                              | —                                                                 | 1 lab                      | 1                 |
-| 4                                         | `css-typography`                           | 7                              | workshop-nutritional-label (68)                                   | 1 lab + 1 review + 1 quiz  | 10                |
-| 5                                         | `css-and-accessibility`                    | 2                              | workshop-accessibility-quiz (67)                                  | 1 lab + 1 review + 1 quiz  | 5                 |
-| 6                                         | `css-positioning`                          | 5                              | workshop-cat-painting (80)                                        | 1 lab + 1 review + 1 quiz  | 8                 |
-| 7                                         | `attribute-selectors`                      | 3                              | workshop-balance-sheet (66)                                       | 1 review + 1 quiz          | 5                 |
-| 8                                         | `lab-book-inventory-app`                   | —                              | —                                                                 | 1 lab                      | 1                 |
-| 9                                         | `responsive-design`                        | 4                              | workshop-piano (31)                                               | 1 review + 1 quiz          | 6                 |
-| 10                                        | `lab-technical-documentation-page`         | —                              | —                                                                 | 1 lab                      | 1                 |
-| 11                                        | `css-variables`                            | 2                              | workshop-city-skyline (115)                                       | 1 lab + 1 review + 1 quiz  | 5                 |
-| 12                                        | `css-grid`                                 | 8 (dont lecture-debugging-css) | workshop-magazine (79)                                            | 1 lab + 1 review + 1 quiz  | 11                |
-| 13                                        | `lab-product-landing-page`                 | —                              | —                                                                 | 1 lab                      | 1                 |
-| 14                                        | `css-animations`                           | 2                              | workshop-ferris-wheel (29), workshop-flappy-penguin (104)         | 2 labs + 1 review + 1 quiz | 6                 |
-| 15                                        | `review-css`                               | —                              | —                                                                 | 1 review                   | 1                 |
-| 16                                        | `exam-responsive-web-design-certification` | —                              | —                                                                 | 1 exam                     | 1                 |
-| **TOTAL contenu pédagogique**             |                                            |                                |                                                                   | **75 fichiers**            |
-| **TOTAL workshops à skip pour l'instant** |                                            |                                |                                                                   | **~620 fichiers**          |
+| #                                         | Module                                     | Lectures                       | Workshops à skip                                          | Lab/Review/Quiz            | Total pédagogique |
+| ----------------------------------------- | ------------------------------------------ | ------------------------------ | --------------------------------------------------------- | -------------------------- | ----------------- |
+| 1                                         | `css-typography`                           | 7                              | workshop-nutritional-label (68)                           | 1 lab + 1 review + 1 quiz  | 10                |
+| 2                                         | `css-and-accessibility`                    | 2                              | workshop-accessibility-quiz (67)                          | 1 lab + 1 review + 1 quiz  | 5                 |
+| 3                                         | `css-positioning`                          | 5                              | workshop-cat-painting (80)                                | 1 lab + 1 review + 1 quiz  | 8                 |
+| 4                                         | `attribute-selectors`                      | 3                              | workshop-balance-sheet (66)                               | 1 review + 1 quiz          | 5                 |
+| 5                                         | `lab-book-inventory-app`                   | —                              | —                                                         | 1 lab                      | 1                 |
+| 6                                         | `responsive-design`                        | 4                              | workshop-piano (31)                                       | 1 review + 1 quiz          | 6                 |
+| 7                                         | `lab-technical-documentation-page`         | —                              | —                                                         | 1 lab                      | 1                 |
+| 8                                         | `css-variables`                            | 2                              | workshop-city-skyline (115)                               | 1 lab + 1 review + 1 quiz  | 5                 |
+| 9                                         | `css-grid`                                 | 8 (dont lecture-debugging-css) | workshop-magazine (79)                                    | 1 lab + 1 review + 1 quiz  | 11                |
+| 10                                        | `lab-product-landing-page`                 | —                              | —                                                         | 1 lab                      | 1                 |
+| 11                                        | `css-animations`                           | 2                              | workshop-ferris-wheel (29), workshop-flappy-penguin (104) | 2 labs + 1 review + 1 quiz | 6                 |
+| 12                                        | `review-css`                               | —                              | —                                                         | 1 review                   | 1                 |
+| 13                                        | `exam-responsive-web-design-certification` | —                              | —                                                         | 1 exam                     | 1                 |
+| **TOTAL contenu pédagogique**             |                                            |                                |                                                           | **61 fichiers**            |
+| **TOTAL workshops à skip pour l'instant** |                                            |                                |                                                           | **~620 fichiers**          |
 
-**Priorité : faire d'abord les 75 fichiers de contenu pédagogique, puis attaquer les workshops si l'utilisateur le demande.**
+**Priorité : faire d'abord les 61 fichiers de contenu pédagogique restants, puis attaquer les workshops si l'utilisateur le demande.**
 
 ## Pattern De Traduction (Règles Strictes)
 
@@ -202,7 +201,7 @@ done
 ## Comment Démarrer La Prochaine Session
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier
-2. Continuer par finir le module `css-box-model` (7 lectures + 1 lab manquants)
+2. Continuer par le module `css-typography` (7 lectures + lab + review + quiz)
 3. Puis enchaîner les modules dans l'ordre du tableau ci-dessus
 4. À la fin de chaque module : commit + push + mettre à jour `intro.json` si le titre du bloc/module est encore en anglais
 5. À la fin de tous les modules pédagogiques : régénérer la curriculum-data (commande ci-dessus)
@@ -224,4 +223,4 @@ Select-String -Path dev-logs\latest.log -Pattern "fs.watchFile change|fs.watch.*
 
 ---
 
-**Dernière session** : ~120 fichiers FR traduits + 40+ commits poussés. Total fichiers FR actuellement dans le repo : ~700+ sur ~1700 dans la cert RWD v9.
+**Dernière session** : modules pédagogiques `css-box-model`, `css-flexbox` et `lab-page-of-playing-cards` traduits, commits poussés jusqu'à `7dd5323be9`. Total fichiers FR actuellement dans le repo : ~700+ sur ~1700 dans la cert RWD v9.
