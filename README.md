@@ -70,7 +70,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-positioning` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'au positionnement CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
 
 ## Validation
 
