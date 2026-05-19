@@ -18,6 +18,77 @@ import GrowthBookProvider from './src/components/growth-book/growth-book-wrapper
 
 const store = createStore();
 
+const devConsoleNoiseFilterScript = `
+(function() {
+  if (window.__fccDevConsoleNoiseFilterInstalled) {
+    return;
+  }
+
+  window.__fccDevConsoleNoiseFilterInstalled = true;
+
+  var noisyPatterns = [
+    'Download the React DevTools',
+    'i18next is made possible by our own product, Locize',
+    '[HMR] connected',
+    "[HMR] bundle 'develop' has",
+    'Should not import the named export',
+    'Critical dependency: the request of a dependency is an expression'
+  ];
+
+  var stringifyArg = function(arg) {
+    if (typeof arg === 'string') {
+      return arg;
+    }
+
+    if (arg && arg.message) {
+      return arg.message;
+    }
+
+    try {
+      return JSON.stringify(arg);
+    } catch (error) {
+      return String(arg);
+    }
+  };
+
+  var shouldHideMessage = function(args) {
+    var text = Array.prototype.map.call(args, stringifyArg).join(' ');
+
+    return noisyPatterns.some(function(pattern) {
+      return text.indexOf(pattern) !== -1;
+    });
+  };
+
+  ['log', 'info', 'warn'].forEach(function(method) {
+    var original = console[method];
+
+    if (typeof original !== 'function') {
+      return;
+    }
+
+    console[method] = function() {
+      if (shouldHideMessage(arguments)) {
+        return;
+      }
+
+      original.apply(console, arguments);
+    };
+  });
+})();
+`;
+
+const getDevConsoleNoiseFilterScript = (): JSX.Element[] =>
+  process.env.NODE_ENV === 'development'
+    ? [
+        <script
+          dangerouslySetInnerHTML={{
+            __html: devConsoleNoiseFilterScript
+          }}
+          key='fcc-dev-console-noise-filter'
+        />
+      ]
+    : [];
+
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => {
   return (
     <Provider store={store}>
@@ -39,7 +110,10 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setPostBodyComponents
 }) => {
   setHeadComponents([...getheadTagComponents(), ...webmanifestComponents]);
-  setPreBodyComponents(getPreBodyThemeScript());
+  setPreBodyComponents([
+    ...getPreBodyThemeScript(),
+    ...getDevConsoleNoiseFilterScript()
+  ]);
   setPostBodyComponents(getPostBodyComponents(pathname));
 };
 

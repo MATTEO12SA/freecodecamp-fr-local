@@ -3347,7 +3347,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       onBack={() => setView({ v: 'fr-home' })}
                       crumbs={['Français', cert.title]}
                     />
-                    <h1 className='cours-fr-title text-center'>Courses</h1>
+                    <h1 className='cours-fr-title text-center'>Cours</h1>
                     <p className='cours-fr-intro cours-fr-cert-note'>
                       {cert.title} — architecture officielle freeCodeCamp. Les
                       dossiers incompatibles avec le mode local sont masqués.

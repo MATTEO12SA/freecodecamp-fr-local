@@ -220,6 +220,8 @@ function DefaultLayout({
   };
 
   const isJapanese = clientLocale === 'japanese';
+  const fontResourceHint =
+    envData.environment === 'development' ? 'prefetch' : 'preload';
 
   if (!fetchState.complete) {
     return <Loader fullScreen={true} messageDelay={5000} />;
@@ -244,21 +246,21 @@ function DefaultLayout({
             as='font'
             crossOrigin='anonymous'
             href={latoRegularURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
           <link
             as='font'
             crossOrigin='anonymous'
             href={latoLightURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
           <link
             as='font'
             crossOrigin='anonymous'
             href={latoBoldURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
           {isJapanese && (
@@ -266,7 +268,7 @@ function DefaultLayout({
               as='font'
               crossOrigin='anonymous'
               href={jpSansRegularURL}
-              rel='preload'
+              rel={fontResourceHint}
               type='font/woff'
             />
           )}
@@ -275,7 +277,7 @@ function DefaultLayout({
               as='font'
               crossOrigin='anonymous'
               href={jpSansLightURL}
-              rel='preload'
+              rel={fontResourceHint}
               type='font/woff'
             />
           )}
@@ -284,7 +286,7 @@ function DefaultLayout({
               as='font'
               crossOrigin='anonymous'
               href={jpSansBoldURL}
-              rel='preload'
+              rel={fontResourceHint}
               type='font/woff'
             />
           )}
@@ -293,21 +295,21 @@ function DefaultLayout({
             as='font'
             crossOrigin='anonymous'
             href={hackZeroSlashRegularURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
           <link
             as='font'
             crossOrigin='anonymous'
             href={hackZeroSlashBoldURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
           <link
             as='font'
             crossOrigin='anonymous'
             href={hackZeroSlashItalicURL}
-            rel='preload'
+            rel={fontResourceHint}
             type='font/woff'
           />
         </Helmet>
