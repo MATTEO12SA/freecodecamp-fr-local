@@ -1,3 +1,5 @@
+/* global preval */
+
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { i18nextCodes } from '@freecodecamp/shared/config/i18n';
@@ -10,11 +12,9 @@ import englishLinks from './locales/english/links.json';
 import englishSearchBar from './locales/english/search-bar.json';
 
 import frenchTranslations from './locales/french/translations.json';
-import frenchTrending from './locales/french/trending.json';
 import frenchIntro from './locales/french/intro.json';
 import frenchMetaTags from './locales/french/meta-tags.json';
 import frenchLinks from './locales/french/links.json';
-import frenchSearchBar from './locales/french/search-bar.json';
 
 import envData from '../config/env.json';
 
@@ -33,11 +33,23 @@ const englishResources = {
 
 const frenchResources = {
   translations: frenchTranslations,
-  trending: frenchTrending,
+  trending: preval`
+    const envData = require('../config/env.json');
+    const { clientLocale } = envData;
+    if (clientLocale !== 'english') {
+      module.exports = require('./locales/' + clientLocale + '/trending.json');
+    }
+  `,
   intro: frenchIntro,
   metaTags: frenchMetaTags,
   links: frenchLinks,
-  'search-bar': frenchSearchBar
+  'search-bar': preval`
+    const envData = require('../config/env.json');
+    const { clientLocale } = envData;
+    if (clientLocale !== 'english') {
+      module.exports = require('./locales/' + clientLocale + '/search-bar.json');
+    }
+  `
 };
 
 const localizedResources =
