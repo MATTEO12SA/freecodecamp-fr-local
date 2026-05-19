@@ -489,17 +489,25 @@ export function buildExtCurriculumDataV2(
     }
   }
 
-  function writeToFile(fileName: string, data: Record<string, unknown>): void {
-    const filePath = `${dataPath}/${ver}/${fileName}.json`;
+  function writeJsonIfChanged(
+    filePath: string,
+    data: Record<string, unknown>
+  ): void {
+    const json = JSON.stringify(data, null, 2);
+    if (existsSync(filePath) && readFileSync(filePath, 'utf-8') === json) {
+      return;
+    }
+
     mkdirSync(dirname(filePath), { recursive: true });
-    writeFileSync(filePath, JSON.stringify(data, null, 2));
+    writeFileSync(filePath, json);
+  }
+
+  function writeToFile(fileName: string, data: Record<string, unknown>): void {
+    writeJsonIfChanged(`${dataPath}/${ver}/${fileName}.json`, data);
   }
 
   function getSubmitTypes() {
-    writeFileSync(
-      `${dataPath}/${ver}/submit-types.json`,
-      JSON.stringify(submitTypes, null, 2)
-    );
+    writeJsonIfChanged(`${dataPath}/${ver}/submit-types.json`, submitTypes);
   }
 
   function getSceneAssets() {
@@ -512,10 +520,7 @@ export function buildExtCurriculumDataV2(
       characterAssets
     };
 
-    writeFileSync(
-      `${dataPath}/${ver}/scene-assets.json`,
-      JSON.stringify(sceneAssets, null, 2)
-    );
+    writeJsonIfChanged(`${dataPath}/${ver}/scene-assets.json`, sceneAssets);
   }
 
   function getLocalizedBlockMeta(

@@ -62,7 +62,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 contient deja plusieurs blocs francais, dont le debut HTML, Cat Photo App, Cafe Menu, Recipe Page, Bookstore Page, SEO, Travel Agency, audio/video et Music Player. Les fichiers manquants tombent en anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-and-accessibility` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a l'accessibilite CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
 
 ## Validation
 

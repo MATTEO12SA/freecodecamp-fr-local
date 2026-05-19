@@ -1,6 +1,6 @@
 ---
 id: 5f46ede1ff8fec5ba656b44c
-title: Étape 77
+title: Étape 74
 challengeType: 0
 dashedName: step-74
 ---

@@ -50,7 +50,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Plusieurs blocs sont deja en francais : plan du curriculum, debogage Camperbot, attributs HTML, adoption d'animaux, boilerplate, Cat Photo App, Recipe Page, Bookstore Page, SEO, Travel Agency, audio/video, Music Player et Cafe Menu.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-and-accessibility` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a l'accessibilite CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
 
 Regles de traduction :
 
@@ -255,6 +255,8 @@ pnpm -C curriculum build
 pnpm -C client create:external-curriculum
 .\dev.ps1 -Fast
 ```
+
+`client/tools/external-curriculum/build-external-curricula-data-v2.ts` evite de reecrire les fichiers JSON inchanges. Cela reduit les events sur `client/static/curriculum-data` et evite que Gatsby tombe sur un fichier `client/public/curriculum-data` en cours de remplacement pendant le dev server.
 
 ## Verification
 
