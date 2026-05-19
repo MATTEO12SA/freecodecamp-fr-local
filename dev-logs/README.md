@@ -9,4 +9,18 @@ Fichiers crees au lancement :
 - `server.log` : logs structures en JSON Lines, une entree par ligne.
 - `errors.log` : avertissements et erreurs detectes avec une action conseillee.
 
-Les fichiers generes sont ignores par Git. Garde ce dossier ouvert pendant le dev pour voir rapidement si le serveur est pret ou si une erreur bloque le lancement.
+Pour suivre le serveur et les traductions dans le log principal :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
+```
+
+- `status.up` : Gatsby repond sur `http://localhost:8000`.
+- `watcher.ready` : le watcher de traductions est arme.
+- `watcher.changed` : un `.md` FR existant a ete modifie.
+- `watcher.added` : un nouveau `.md` FR a ete detecte.
+- `challenge.integrating` : Gatsby commence a reintegrer le fichier.
+- `challenge.integrated` : Gatsby a reintegre le fichier et va reconstruire les donnees de page.
+- `challenge.error` : l'integration a echoue, regarder la ligne d'erreur juste apres.
+
+Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.

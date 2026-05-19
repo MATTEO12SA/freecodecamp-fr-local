@@ -50,7 +50,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-and-accessibility` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a l'accessibilite CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-positioning` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'au positionnement CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
 
 Regles de traduction :
 
@@ -86,6 +86,14 @@ dev-logs/errors.log
 - `latest.log` garde le transcript lisible du dernier lancement.
 - `server.log` garde les memes evenements en JSON Lines pour analyser proprement les erreurs.
 - `errors.log` regroupe les avertissements et erreurs detectes, avec une action conseillee quand le script reconnait le probleme.
+
+Pour voir en direct quand le serveur est pret et quand Gatsby integre les traductions :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
+```
+
+Les lignes `status.up` dans `latest.log` confirment que Gatsby repond sur `http://localhost:8000`. Les lignes `watcher.changed` et `watcher.added` confirment que le watcher a vu un `.md` FR modifie ou ajoute. Les lignes `challenge.integrating` puis `challenge.integrated` confirment que Gatsby a lance puis termine la reintegration de la page.
 
 ## Hot-Reload Des Traductions
 
@@ -232,8 +240,8 @@ Si tu edits un `.md` et le navigateur ne suit pas :
 # 1. Le fichier .md a-t-il bien le nouveau contenu ?
 Get-Content "curriculum\i18n-curriculum\curriculum\challenges\french\blocks\<block>\<id>.md" | Select-Object -First 5
 
-# 2. Le watcher a-t-il detecte ? Cherche dans les logs Gatsby
-Select-String -Path dev-logs\latest.log -Pattern "fs.watchFile|chokidar|Challenge file changed" | Select-Object -Last 10
+# 2. Le watcher a-t-il detecte ? Cherche dans le log serveur principal
+Select-String -Path dev-logs\latest.log -Pattern "watcher.|challenge.integrating|challenge.integrated|challenge.error" | Select-Object -Last 10
 
 # 3. page-data.json est-il a jour ? (ce que le navigateur fetch reellement)
 $slug = "/learn/responsive-web-design-v9/<block>/<dashed-name>"
@@ -243,7 +251,7 @@ curl "http://localhost:8000/page-data$slug/page-data.json" | python -c "import j
 # Ctrl + Shift + R sur Chrome/Edge/Firefox
 ```
 
-Si l'etape 2 ne montre aucun `fs.watchFile change`, le fallback est cassé : verifier que le plugin a bien charge avec `grep "fs.watchFile" dev-logs/latest.log` au boot — tu dois voir `watching 551 .md files`.
+Si l'etape 2 ne montre aucun `watcher.changed`, le fallback est cassé : verifier que le plugin a bien charge avec `Select-String -Path dev-logs\latest.log -Pattern "watcher.ready"` au boot — tu dois voir `watching ... .md files`.
 
 ### Cas Particulier : Modification De `intro.json`
 

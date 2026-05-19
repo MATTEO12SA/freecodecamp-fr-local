@@ -35,6 +35,14 @@ dev-logs/errors.log
 
 `status.json` indique le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.
 
+Pour suivre en direct quand le serveur est prêt et quand Gatsby intègre les traductions :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
+```
+
+`watcher.added` / `watcher.changed` indiquent que le `.md` FR est détecté. `challenge.integrating` puis `challenge.integrated` indiquent que Gatsby réintègre la page.
+
 Pages utiles :
 
 ```text
@@ -62,7 +70,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-and-accessibility` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a l'accessibilite CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-positioning` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'au positionnement CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
 
 ## Validation
 

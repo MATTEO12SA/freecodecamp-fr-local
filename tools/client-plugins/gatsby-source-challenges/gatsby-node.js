@@ -27,6 +27,38 @@ const filePathToCreatedNodes = new Map();
 const idToFilepath = new Map();
 // recently overwritten files
 const idToOverwrittenFile = new Map();
+const latestLogFile = nodePath.resolve(
+  __dirname,
+  '../../../dev-logs/latest.log'
+);
+
+function writeLatestLog(level, event, message) {
+  try {
+    fs.mkdirSync(nodePath.dirname(latestLogFile), { recursive: true });
+    fs.appendFileSync(
+      latestLogFile,
+      `${new Date().toISOString()} [${level}] [${event}] ${message}\n`,
+      'utf8'
+    );
+  } catch {
+    // Logging must never break Gatsby's watcher.
+  }
+}
+
+function logWatcherInfo(reporter, event, message) {
+  reporter.info(message);
+  writeLatestLog('INFO', event, message);
+}
+
+function logWatcherWarn(reporter, event, message) {
+  reporter.warn(message);
+  writeLatestLog('WARN', event, message);
+}
+
+function logWatcherError(reporter, event, message) {
+  reporter.error(message);
+  writeLatestLog('ERROR', event, message);
+}
 
 exports.sourceNodes = function sourceChallengesSourceNodes(
   { actions, reporter, createNodeId, createContentDigest },
@@ -69,19 +101,23 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     atomic: 100
   });
 
-  // Diagnostic logs so we can see in dev-logs/latest.log whether the watcher
-  // fires events at all on a given setup.
+  // Diagnostic logs are mirrored into dev-logs/latest.log so the launcher log
+  // shows both server readiness and translation integration events.
   ['ready', 'error'].forEach(evt => {
-    watcher.on(evt, payload =>
-      reporter.info(
-        `[fcc-source-challenges chokidar] ${evt}${payload ? ' ' + payload : ''}`
-      )
-    );
+    watcher.on(evt, payload => {
+      const message = `[fcc-source-challenges chokidar] ${evt}${payload ? ' ' + payload : ''}`;
+      if (evt === 'error') {
+        logWatcherError(reporter, 'watcher.error', message);
+      } else {
+        logWatcherInfo(reporter, 'watcher.ready', message);
+      }
+    });
   });
   ['change', 'add', 'unlink'].forEach(evt => {
-    watcher.on(evt, p =>
-      reporter.info(`[fcc-source-challenges chokidar] ${evt} ${p}`)
-    );
+    watcher.on(evt, p => {
+      const message = `[fcc-source-challenges chokidar] ${evt} ${p}`;
+      logWatcherInfo(reporter, `watcher.${evt}`, message);
+    });
   });
 
   function deletePages(filePath) {
@@ -133,6 +169,11 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   }
 
   function handleChallengeUpdate(filePath, action = 'changed') {
+    writeLatestLog(
+      'INFO',
+      'challenge.integrating',
+      `Challenge file ${action}: ${filePath}`
+    );
     // This has to be a blunt instrument, since we're not watching the structure
     // files. If a .md file changes, we have to assume the structure may have
     // changed too and update the structure nodes accordingly.
@@ -146,9 +187,8 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     return onSourceChange(filePath)
       .then(challenges => {
         const actionText = action === 'added' ? 'creating' : 'replacing';
-        reporter.info(
-          `Challenge file ${action}: ${filePath}, ${actionText} challengeNodes with ids ${challenges.map(({ id }) => id).join(', ')}`
-        );
+        const message = `Challenge file ${action}: ${filePath}, ${actionText} challengeNodes with ids ${challenges.map(({ id }) => id).join(', ')}`;
+        reporter.info(message);
 
         if (action === 'changed') {
           tryToDeletePages(filePath);
@@ -175,12 +215,16 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
         // we always need to track the created nodes to ensure the pages get
         // recreated.
         filePathToCreatedNodes.set(filePath, challengeNodes);
+        writeLatestLog(
+          'INFO',
+          'challenge.integrated',
+          `${message}; Gatsby will rebuild page-data.`
+        );
       })
-      .catch(e =>
-        reporter.error(
-          `fcc-replace-challenge\nattempting to replace ${filePath}\n\n${e.message}\n${e.stack ? `  ${e.stack}` : ''}`
-        )
-      );
+      .catch(e => {
+        const message = `fcc-replace-challenge\nattempting to replace ${filePath}\n\n${e.message}\n${e.stack ? `  ${e.stack}` : ''}`;
+        logWatcherError(reporter, 'challenge.error', message);
+      });
   }
 
   // On file change, replace only the changed challenge. The key is ensuring
@@ -228,12 +272,18 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
         if (curr.mtimeMs === prev.mtimeMs) return;
         const relPath = nodePath.relative(curriculumPath, absPath);
-        reporter.info(`[fcc-source-challenges fs.watchFile] change ${relPath}`);
+        logWatcherInfo(
+          reporter,
+          'watcher.changed',
+          `[fcc-source-challenges fs.watchFile] change ${relPath}`
+        );
         handleChallengeUpdate(relPath, 'changed');
       });
     }
     walkDir(curriculumPath);
-    reporter.info(
+    logWatcherInfo(
+      reporter,
+      'watcher.ready',
       `[fcc-source-challenges fs.watchFile] watching ${attached} .md files in ${curriculumPath}`
     );
   }
@@ -263,27 +313,37 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
           try {
             fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
               if (curr.mtimeMs === prev.mtimeMs) return;
-              reporter.info(
+              logWatcherInfo(
+                reporter,
+                'watcher.changed',
                 `[fcc-source-challenges fs.watchFile] change ${filename}`
               );
               handleChallengeUpdate(filename, 'changed');
             });
-            reporter.info(
+            logWatcherInfo(
+              reporter,
+              'watcher.added',
               `[fcc-source-challenges fs.watch] new file detected ${filename}`
             );
             handleChallengeUpdate(filename, 'added');
           } catch (e) {
-            reporter.warn(
+            logWatcherWarn(
+              reporter,
+              'watcher.error',
               `[fcc-source-challenges fs.watch] failed to attach: ${e.message}`
             );
           }
         }
       );
-      reporter.info(
+      logWatcherInfo(
+        reporter,
+        'watcher.ready',
         `[fcc-source-challenges fs.watch] recursive watcher armed on ${curriculumPath}`
       );
     } catch (e) {
-      reporter.warn(
+      logWatcherWarn(
+        reporter,
+        'watcher.error',
         `[fcc-source-challenges fs.watch] failed to start recursive watcher: ${e.message}`
       );
     }
