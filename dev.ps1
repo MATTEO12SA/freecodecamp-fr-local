@@ -1,9 +1,13 @@
 # Script de developpement pour freeCodeCamp standalone
 # Usage: .\dev.ps1
-#        .\dev.ps1 -Fast
+#        .\dev.ps1 -Clean
+#        .\dev.ps1 -Full
 
 param(
     [switch]$Clean = $false,
+    [switch]$Full = $false,
+    # Compatibilite avec les anciens raccourcis. Le mode rapide est maintenant
+    # le comportement par defaut de .\dev.ps1.
     [switch]$Fast = $false
 )
 
@@ -1367,14 +1371,14 @@ function Start-Client {
     if ($UseFast) {
         $script:RunMode = "fast"
         Write-Host "Mode rapide: lancement direct de Gatsby, sans turbo setup ni debugger Node." -ForegroundColor Green
-        Write-Host "Utilise .\dev.ps1 ou .\dev.ps1 -Clean si tu as modifie le curriculum ou les dependances." -ForegroundColor Yellow
+        Write-Host "C'est le mode par defaut. Utilise .\dev.ps1 -Clean pour vider le cache Gatsby, ou .\dev.ps1 -Full pour forcer le setup complet." -ForegroundColor Yellow
 
         Invoke-DetachedCommand -FilePath "pnpm.cmd" -Arguments @("exec", "gatsby", "develop") -WorkingDirectory (Join-Path $PSScriptRoot "client") -ServiceName "client" -Port $script:ServerPort
 
         return
     }
 
-    $script:RunMode = "normal"
+    $script:RunMode = "full"
     Invoke-LoggedCommand -FilePath "pnpm.cmd" -Arguments @("run", "develop:client") -WorkingDirectory $PSScriptRoot -ServiceName "client" -Port $script:ServerPort
 }
 
@@ -1461,16 +1465,26 @@ try {
         Clear-GatsbyCache
     }
 
-    $useFast = [bool]$Fast
+    if ($Fast) {
+        Write-Host "Option -Fast acceptee pour compatibilite: .\dev.ps1 utilise deja le mode rapide par defaut." -ForegroundColor Yellow
+        Write-LogEvent -Level "INFO" -Event "option.deprecated" -Message "Option -Fast ignoree: le mode rapide est le defaut"
+    }
+
+    $useFast = -not [bool]$Full
+    if ($Full) {
+        Write-Host "Mode complet force: turbo setup puis develop:client." -ForegroundColor Yellow
+        Write-LogEvent -Level "INFO" -Event "mode.full" -Message "Mode complet force par -Full"
+    }
+
     if ($useFast -and -not (Test-FastClientReady)) {
         Write-Host "Mode rapide indisponible: les fichiers generes ne sont pas encore prets." -ForegroundColor Yellow
-        Write-Host "Demarrage normal pour generer les donnees necessaires." -ForegroundColor Yellow
+        Write-Host "Demarrage complet pour generer les donnees necessaires." -ForegroundColor Yellow
         $useFast = $false
     }
 
     Write-Host "Lancement du client de developpement..." -ForegroundColor Cyan
-    $script:RunMode = if ($useFast) { "fast" } else { "normal" }
-    Set-ServerStatus -Status "STARTING" -Message "Lancement du client de developpement" -Data @{ fast = $useFast }
+    $script:RunMode = if ($useFast) { "fast" } else { "full" }
+    Set-ServerStatus -Status "STARTING" -Message "Lancement du client de developpement" -Data @{ fast = $useFast; full = (-not $useFast) }
     if (-not $useFast) {
         Start-PortStatusWatcher -HostName $script:ServerHost -Port $script:ServerPort
     }

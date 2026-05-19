@@ -2,6 +2,14 @@
 
 Ce dossier reste toujours au meme endroit pour suivre le serveur lance par `dev.ps1`.
 
+Commandes utiles :
+
+```powershell
+.\dev.ps1        # lancement quotidien: Gatsby direct
+.\dev.ps1 -Clean # vide le cache Gatsby puis relance
+.\dev.ps1 -Full  # force le setup complet
+```
+
 Fichiers crees au lancement :
 
 - `status.json` : statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.

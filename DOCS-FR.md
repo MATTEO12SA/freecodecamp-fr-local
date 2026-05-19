@@ -5,7 +5,9 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 ## Architecture Locale
 
 - `dev.ps1` lance le client sur `http://localhost:8000`.
-- `dev.ps1 -Fast` relance directement Gatsby quand les fichiers generes existent deja, sans repasser par `turbo setup`.
+- `dev.ps1` relance directement Gatsby quand les fichiers generes existent deja, sans repasser par `turbo setup`.
+- `dev.ps1 -Clean` vide le cache Gatsby avant de relancer.
+- `dev.ps1 -Full` force l'ancien chemin complet avec `turbo setup`.
 - `dev-logs/` garde le statut du serveur et les logs du dernier lancement.
 - `client/src/redux/fetch-user-saga.js` cree un utilisateur local au lieu d'appeler une session serveur.
 - `client/src/utils/local-progress.ts` lit et ecrit la progression dans `localStorage`.
@@ -289,7 +291,7 @@ pnpm --filter @freecodecamp/shared type-check
 
 Verification manuelle :
 
-1. Lancer `.\dev.ps1 -Clean` apres une modification de curriculum, ou `.\dev.ps1 -Fast` pour une relance rapide sans regeneration.
+1. Lancer `.\dev.ps1` pour le mode rapide par defaut, `.\dev.ps1 -Clean` si Gatsby garde un cache incoherent, ou `.\dev.ps1 -Full` pour forcer le setup complet.
 2. Ouvrir `/`, `/learn` et `/cours-fr`.
 3. Verifier que le defi du jour n'apparait plus.
 4. Ouvrir un exercice Responsive Web Design traduit.

@@ -168,9 +168,9 @@ git push standalone main
 ### Dev server
 
 ```powershell
-.\dev.ps1 -Fast            # relance rapide Gatsby
-.\dev.ps1                  # relance complète avec turbo setup
-.\dev.ps1 -Clean           # avec wipe cache Gatsby
+.\dev.ps1                  # lancement quotidien: Gatsby direct, hot-reload des traductions
+.\dev.ps1 -Clean           # vide le cache Gatsby puis relance
+.\dev.ps1 -Full            # force l'ancien chemin complet avec turbo setup
 ```
 
 ### Statut serveur

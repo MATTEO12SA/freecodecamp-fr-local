@@ -13,16 +13,18 @@ cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
 .\dev.ps1
 ```
 
-Relance rapide apres un premier demarrage complet :
-
-```powershell
-.\dev.ps1 -Fast
-```
+`.\dev.ps1` lance maintenant Gatsby directement en mode rapide. Si les fichiers generes manquent, le script bascule automatiquement sur le setup complet.
 
 Si Gatsby garde une ancienne page en cache :
 
 ```powershell
 .\dev.ps1 -Clean
+```
+
+Si tu veux forcer l'ancien chemin complet avec `turbo setup` :
+
+```powershell
+.\dev.ps1 -Full
 ```
 
 Logs serveur :
