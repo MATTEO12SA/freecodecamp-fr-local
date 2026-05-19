@@ -1,4 +1,10 @@
-import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
+import {
+  appendFileSync,
+  existsSync,
+  mkdirSync,
+  writeFileSync,
+  readFileSync
+} from 'fs';
 import { resolve, dirname } from 'path';
 import { mergeWith, omit } from 'lodash';
 import { submitTypes } from '@freecodecamp/shared/config/challenge-types';
@@ -127,6 +133,7 @@ const englishIntroPath = resolve(
   '../../../client/i18n/locales/english/intro.json'
 );
 const envConfigPath = resolve(__dirname, '../../../client/config/env.json');
+const latestDevLogPath = resolve(__dirname, '../../../dev-logs/latest.log');
 
 function getConfiguredCurriculumLocale() {
   if (process.env.CURRICULUM_LOCALE) return process.env.CURRICULUM_LOCALE;
@@ -150,6 +157,23 @@ export const curriculumIntroPath = resolve(
   __dirname,
   `../../../client/i18n/locales/${curriculumIntroLocale}/intro.json`
 );
+
+function writeLatestDevLog(
+  level: 'INFO' | 'WARN' | 'ERROR',
+  event: string,
+  message: string
+) {
+  try {
+    mkdirSync(dirname(latestDevLogPath), { recursive: true });
+    appendFileSync(
+      latestDevLogPath,
+      `${new Date().toISOString()} [${level}] [${event}] ${message}\n`,
+      'utf-8'
+    );
+  } catch {
+    // Development logging must never break curriculum generation.
+  }
+}
 
 const englishIntros = JSON.parse(
   readFileSync(englishIntroPath, 'utf-8')
@@ -364,10 +388,29 @@ export function buildExtCurriculumDataV2(
   curriculum: Curriculum<CurriculumProps>
 ): void {
   mkdirSync(dataPath, { recursive: true });
+  const writeResults = new Map<string, 'changed' | 'unchanged'>();
+
+  writeLatestDevLog(
+    'INFO',
+    'intro.integrating',
+    `Loading ${curriculumIntroLocale} intro.json from ${curriculumIntroPath}; generating Gatsby static curriculum data in ${dataPath}${ver}`
+  );
 
   parseCurriculumData();
   getSubmitTypes();
   getSceneAssets();
+
+  const responsiveWebDesignStatus =
+    writeResults.get(SuperBlocks.RespWebDesignV9) ?? 'not-written';
+  const changedCount = Array.from(writeResults.values()).filter(
+    status => status === 'changed'
+  ).length;
+
+  writeLatestDevLog(
+    'INFO',
+    'intro.integrated',
+    `Integrated ${curriculumIntroLocale} intro.json into Gatsby static curriculum data; responsive-web-design-v9.json=${responsiveWebDesignStatus}; changedFiles=${changedCount}; serverPath=/curriculum-data/${ver}/${SuperBlocks.RespWebDesignV9}.json`
+  );
 
   function parseCurriculumData() {
     const superBlockKeys = Object.values(SuperBlocks).filter(x =>
@@ -492,18 +535,22 @@ export function buildExtCurriculumDataV2(
   function writeJsonIfChanged(
     filePath: string,
     data: Record<string, unknown>
-  ): void {
+  ): 'changed' | 'unchanged' {
     const json = JSON.stringify(data, null, 2);
     if (existsSync(filePath) && readFileSync(filePath, 'utf-8') === json) {
-      return;
+      return 'unchanged';
     }
 
     mkdirSync(dirname(filePath), { recursive: true });
     writeFileSync(filePath, json);
+    return 'changed';
   }
 
   function writeToFile(fileName: string, data: Record<string, unknown>): void {
-    writeJsonIfChanged(`${dataPath}/${ver}/${fileName}.json`, data);
+    writeResults.set(
+      fileName,
+      writeJsonIfChanged(`${dataPath}/${ver}/${fileName}.json`, data)
+    );
   }
 
   function getSubmitTypes() {

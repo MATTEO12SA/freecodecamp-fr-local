@@ -23,4 +23,15 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 - `challenge.integrated` : Gatsby a reintegre le fichier et va reconstruire les donnees de page.
 - `challenge.error` : l'integration a echoue, regarder la ligne d'erreur juste apres.
 
+Pour voir aussi l'integration de `client/i18n/locales/french/intro.json` dans les titres de modules/blocs :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"
+```
+
+- `intro.integrating` : le generateur charge `intro.json` et regenere les `curriculum-data`.
+- `intro.integrated` : les donnees statiques sont a jour. La ligne indique notamment `responsive-web-design-v9.json=changed` ou `unchanged`.
+- `intro.changed` : `intro.json` a ete modifie pendant que le serveur tourne.
+- `intro.integrated` avec `logSource=dev-logs/client.stdout.log` : Gatsby a reconstruit le bundle `/learn` apres cette modification.
+
 Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.

@@ -44,6 +44,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 - ✅ Fix doublons titres `Étape 60`/`Étape 76` dans `workshop-cafe-menu`
 - ✅ Fix titres `workshop-cafe-menu` alignés sur les `dashedName: step-X` (supprime les doublons `Étape 52`/`Étape 70` pendant `create:external-curriculum`)
 - ✅ Fix `create:external-curriculum` stable avec Gatsby dev server : le générateur ne réécrit plus les JSON inchangés, ce qui évite les crashs `ENOENT ... chmod client/public/curriculum-data/...`
+- ✅ Logs `intro.integrating` / `intro.integrated` dans `dev-logs/latest.log` pour confirmer l'intégration de `intro.json` dans les `curriculum-data`
+- ✅ Watcher `intro.json` dans `dev.ps1` : un edit direct écrit `intro.changed` puis `intro.integrated` dans `latest.log` avec `sourceJson`, `curriculumData` et `serverPath=/learn/responsive-web-design-v9/`
+- ✅ Fix hot-reload des titres `/learn` : `client/i18n/config.js` garde les fichiers i18n FR dans le graphe Webpack au lieu de les figer via `preval`
 - ✅ `client/i18n/locales/french/intro.json` à jour pour tous les modules traduits (titres + intros des blocs ET du module)
 - ✅ Curriculum-data régénéré (à refaire après chaque modif d'`intro.json`)
 - ✅ `DOCS-FR.md` et `QUICKSTART.md` documentent le fix `fs.watch` recursive
@@ -145,7 +148,7 @@ git push standalone main
    pnpm -C client create:external-curriculum
    ```
 
-   Sinon les titres des blocs sur `/cours-fr` restent en anglais (ils sont mis en cache dans `client/static/curriculum-data/v2/responsive-web-design-v9.json`).
+   Le générateur écrit `intro.integrating` puis `intro.integrated` dans `dev-logs/latest.log`. Sinon les titres des blocs sur `/cours-fr` restent en anglais (ils sont mis en cache dans `client/static/curriculum-data/v2/responsive-web-design-v9.json`). Sur `/learn`, `client/i18n/config.js` permet maintenant à Gatsby de voir les changements `intro.json` et `dev.ps1` écrit `intro.changed` puis `intro.integrated` quand le fichier est sauvegardé ; si un onglet garde l'ancien texte, faire `Ctrl + Shift + R`.
 
 3. **Pre-push hook prettier** : peut bloquer le push si un fichier `.md` a un problème de formatage. Corriger avec :
 
@@ -175,7 +178,7 @@ git push standalone main
 ```powershell
 Get-Content dev-logs\status.json   # voir si UP/STARTING/DOWN/ERROR
 Get-Content dev-logs\latest.log -Tail 50
-Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"
 ```
 
 ### Vérifier un push
@@ -221,11 +224,11 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 Pour vérifier qu'un edit a bien été pris en compte :
 
 ```powershell
-Select-String -Path dev-logs\latest.log -Pattern "watcher.|challenge.integrating|challenge.integrated|challenge.error" | Select-Object -Last 10
+Select-String -Path dev-logs\latest.log -Pattern "watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated" | Select-Object -Last 10
 ```
 
-Pour surveiller en direct : `Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"`. `status.up` = serveur prêt ; `watcher.changed` / `watcher.added` = modification ou nouveau `.md` détecté ; `challenge.integrating` / `challenge.integrated` = Gatsby relance puis termine l'intégration de la page.
+Pour surveiller en direct : `Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"`. `status.up` = serveur prêt ; `watcher.changed` / `watcher.added` = modification ou nouveau `.md` détecté ; `challenge.integrating` / `challenge.integrated` = Gatsby relance puis termine l'intégration de la page ; `intro.changed` / `intro.integrated` = edit direct de `intro.json` vu par Gatsby ; `intro.integrating` / `intro.integrated` = `intro.json` repris dans les données statiques.
 
 ---
 
-**Dernière session** : module pédagogique `attribute-selectors` traduit (3 lectures + review + quiz), `intro.json` mis à jour et curriculum-data régénéré. Prochain module : `lab-book-inventory-app`. Total fichiers FR actuellement dans le repo : ~728+ sur ~1700 dans la cert RWD v9.
+**Dernière session** : module pédagogique `attribute-selectors` traduit (3 lectures + review + quiz), `intro.json` mis à jour, curriculum-data régénéré, logs `intro.*` ajoutés et affichage `/learn` vérifié en français (`Sélecteurs d'attributs`). Prochain module : `lab-book-inventory-app`. Total fichiers FR actuellement dans le repo : ~728+ sur ~1700 dans la cert RWD v9.

@@ -30,7 +30,7 @@ Le plugin Gatsby utilise `chokidar` (qui ne fire pas sur ce Windows + Defender),
 Pour verifier qu'un edit a bien ete pris en compte :
 
 ```powershell
-Select-String -Path dev-logs\latest.log -Pattern "fs.watchFile change|Challenge file changed" | Select-Object -Last 3
+Select-String -Path dev-logs\latest.log -Pattern "watcher.|challenge.integrating|challenge.integrated|challenge.error" | Select-Object -Last 10
 ```
 
 Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs / modules / chapitres), regenere d'abord les fichiers statiques :
@@ -39,8 +39,23 @@ Pour les changements de `client/i18n/locales/french/intro.json` (titres de blocs
 $env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'
 pnpm -C curriculum build
 pnpm -C client create:external-curriculum
-.\dev.ps1 -Fast
 ```
+
+Puis verifie `latest.log` :
+
+```powershell
+Select-String -Path dev-logs\latest.log -Pattern "intro.integrating|intro.integrated" | Select-Object -Last 4
+```
+
+`intro.integrated` doit indiquer `responsive-web-design-v9.json=changed` ou `unchanged` et `serverPath=/curriculum-data/v2/responsive-web-design-v9.json`.
+
+Si tu modifies `intro.json` directement pendant que le serveur tourne, `latest.log` doit aussi montrer :
+
+```powershell
+Select-String -Path dev-logs\latest.log -Pattern "intro.changed|intro.integrated" | Select-Object -Last 4
+```
+
+La ligne doit contenir `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/responsive-web-design-v9.json` et `serverPath=/learn/responsive-web-design-v9/`.
 
 ## Logs Serveur
 

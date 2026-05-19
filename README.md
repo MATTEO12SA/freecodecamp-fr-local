@@ -43,6 +43,14 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 
 `watcher.added` / `watcher.changed` indiquent que le `.md` FR est détecté. `challenge.integrating` puis `challenge.integrated` indiquent que Gatsby réintègre la page.
 
+Pour les titres de modules et de blocs venant de `client/i18n/locales/french/intro.json`, surveille aussi :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"
+```
+
+`intro.changed` puis `intro.integrated` indiquent qu'une modification directe de `intro.json` a été vue par le serveur et reprise dans le bundle `/learn`. `intro.integrating` puis `intro.integrated` indiquent que `create:external-curriculum` a repris `intro.json` dans les fichiers `curriculum-data` statiques servis par Gatsby.
+
 Pages utiles :
 
 ```text

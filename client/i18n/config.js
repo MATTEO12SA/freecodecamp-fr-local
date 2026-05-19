@@ -1,15 +1,20 @@
-/* global preval */
-
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { i18nextCodes } from '@freecodecamp/shared/config/i18n';
 
-import translations from './locales/english/translations.json';
-import trending from './locales/english/trending.json';
-import intro from './locales/english/intro.json';
-import metaTags from './locales/english/meta-tags.json';
-import links from './locales/english/links.json';
-import searchBar from './locales/english/search-bar.json';
+import englishTranslations from './locales/english/translations.json';
+import englishTrending from './locales/english/trending.json';
+import englishIntro from './locales/english/intro.json';
+import englishMetaTags from './locales/english/meta-tags.json';
+import englishLinks from './locales/english/links.json';
+import englishSearchBar from './locales/english/search-bar.json';
+
+import frenchTranslations from './locales/french/translations.json';
+import frenchTrending from './locales/french/trending.json';
+import frenchIntro from './locales/french/intro.json';
+import frenchMetaTags from './locales/french/meta-tags.json';
+import frenchLinks from './locales/french/links.json';
+import frenchSearchBar from './locales/french/search-bar.json';
 
 import envData from '../config/env.json';
 
@@ -17,66 +22,36 @@ const { clientLocale } = envData;
 
 const i18nextCode = i18nextCodes[clientLocale];
 
+const englishResources = {
+  translations: englishTranslations,
+  trending: englishTrending,
+  intro: englishIntro,
+  metaTags: englishMetaTags,
+  links: englishLinks,
+  'search-bar': englishSearchBar
+};
+
+const frenchResources = {
+  translations: frenchTranslations,
+  trending: frenchTrending,
+  intro: frenchIntro,
+  metaTags: frenchMetaTags,
+  links: frenchLinks,
+  'search-bar': frenchSearchBar
+};
+
+const localizedResources =
+  clientLocale === 'french' ? frenchResources : englishResources;
+
 i18n.use(initReactI18next).init({
   fallbackLng: 'en',
   lng: i18nextCode,
-  // we only load one language since each language will have it's own server
-  // They need to be evaluated ahead of time, to prevent Webpack from bundling
-  // the entire locales directory. To avoid double imports when the locale is
-  // english, we simply export nothing from the preval
+  // Keep the local French files in Webpack's dependency graph. The previous
+  // preval dynamic require embedded intro.json at startup, so Gatsby did not
+  // rebuild module titles when translations changed during development.
   resources: {
-    [i18nextCode]: {
-      translations: preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/translations.json');
-      }
-    `,
-      trending: preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/trending.json');
-      }
-    `,
-      intro: preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/intro.json');
-      }
-    `,
-      metaTags: preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/meta-tags.json');
-      }
-    `,
-      links: preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/links.json');
-      }
-    `,
-      'search-bar': preval`
-      const envData = require('../config/env.json');
-      const { clientLocale } = envData;
-      if (clientLocale !== 'english') {
-        module.exports = require('./locales/' + clientLocale + '/search-bar.json');
-      }
-    `
-    },
-    en: {
-      translations,
-      trending,
-      intro,
-      metaTags,
-      links,
-      'search-bar': searchBar
-    }
+    [i18nextCode]: localizedResources,
+    en: englishResources
   },
   ns: ['translations', 'trending', 'intro', 'metaTags', 'links', 'search-bar'],
   defaultNS: 'translations',

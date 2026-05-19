@@ -95,6 +95,14 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 
 Les lignes `status.up` dans `latest.log` confirment que Gatsby repond sur `http://localhost:8000`. Les lignes `watcher.changed` et `watcher.added` confirment que le watcher a vu un `.md` FR modifie ou ajoute. Les lignes `challenge.integrating` puis `challenge.integrated` confirment que Gatsby a lance puis termine la reintegration de la page.
 
+Pour les changements de `client/i18n/locales/french/intro.json`, surveille aussi `intro.integrating` et `intro.integrated` :
+
+```powershell
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"
+```
+
+`intro.changed` puis `intro.integrated` confirment qu'une modification directe de `intro.json` a ete vue par le serveur et reprise dans le bundle `/learn`. `intro.integrating` puis `intro.integrated` confirment que les titres de blocs/modules ont ete repris dans `client/static/curriculum-data/v2/*.json` et servis sur `/curriculum-data/v2/*.json`.
+
 ## Hot-Reload Des Traductions
 
 **TL;DR** : edite un `.md` FR, sauvegarde, attends ~5 secondes, fais Ctrl+Shift+R dans le navigateur, le nouveau contenu apparait. Pas besoin de redemarrer Gatsby.
@@ -261,10 +269,13 @@ Si l'etape 2 ne montre aucun `watcher.changed`, le fallback est cassé : verifie
 $env:CURRICULUM_LOCALE='french'; $env:CLIENT_LOCALE='french'
 pnpm -C curriculum build
 pnpm -C client create:external-curriculum
-.\dev.ps1 -Fast
 ```
 
-`client/tools/external-curriculum/build-external-curricula-data-v2.ts` evite de reecrire les fichiers JSON inchanges. Cela reduit les events sur `client/static/curriculum-data` et evite que Gatsby tombe sur un fichier `client/public/curriculum-data` en cours de remplacement pendant le dev server.
+`dev.ps1` surveille aussi `intro.json` pendant que Gatsby tourne. Quand tu sauvegardes ce fichier, `latest.log` doit afficher `intro.changed`, puis `intro.integrated` avec `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/responsive-web-design-v9.json` et `serverPath=/learn/responsive-web-design-v9/`.
+
+Le generateur ecrit `intro.integrating` puis `intro.integrated` dans `dev-logs/latest.log`. `client/tools/external-curriculum/build-external-curricula-data-v2.ts` evite de reecrire les fichiers JSON inchanges. Cela reduit les events sur `client/static/curriculum-data` et evite que Gatsby tombe sur un fichier `client/public/curriculum-data` en cours de remplacement pendant le dev server.
+
+Le client garde aussi les fichiers i18n francais dans le graphe Webpack via `client/i18n/config.js`. Quand `intro.json` change pendant que Gatsby tourne, le bundle `/learn` peut donc etre reconstruit sans relancer le serveur. Si l'ancien libelle reste visible dans un onglet deja ouvert, fais `Ctrl+Shift+R`.
 
 ## Verification
 
