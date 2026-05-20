@@ -77,6 +77,8 @@ http://localhost:8000/cours-fr
 http://localhost:8000/catalog
 ```
 
+Dans `/catalog`, ouvre le menu `Theme` puis coche `Francais` pour afficher les niveaux deja disponibles en francais. Ce filtre se met a jour automatiquement avec `client/i18n/locales/french/intro.json`, et tu peux encore le combiner avec `Niveau : Debutant`, `Intermediaire` ou `Avance`.
+
 ## Configuration Locale
 
 Le fork est prevu pour fonctionner sans API, sans MongoDB et sans Auth0.

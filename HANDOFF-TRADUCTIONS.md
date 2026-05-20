@@ -178,6 +178,7 @@ git push standalone main
 - `/cours-fr` reste la page des certifications francaises.
 - `/learn` reste le parcours complet local.
 - `/catalog` est le catalogue global avec les filtres par niveau et par theme.
+- Dans `/catalog`, `Theme > Francais` est un filtre synthetique automatique : il compare les entrees `intro` FR et EN du catalogue, puis affiche les niveaux dont le titre ou le summary est deja traduit tout en gardant leurs themes techniques HTML/CSS/etc.
 
 ### Statut serveur
 

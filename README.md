@@ -2,7 +2,7 @@
 
 Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
 
-Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres.
+Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher automatiquement les niveaux deja disponibles en francais.
 
 ## Demarrage
 
@@ -70,6 +70,7 @@ http://localhost:8000/learn
 - Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
 - `/cours-fr` affiche les certifications francaises et renvoie vers `/catalog` pour le catalogue global filtre.
+- `/catalog` propose le filtre `Theme > Francais` pour afficher uniquement les niveaux deja traduits. Le filtre se met a jour automatiquement quand `client/i18n/locales/french/intro.json` recoit les titres/summaries FR d'un niveau.
 - Liens externes visibles desactives ou retires.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
 
@@ -81,7 +82,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-grid` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a CSS Grid. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
 ## Validation
 

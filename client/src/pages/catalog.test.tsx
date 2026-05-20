@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
 import { catalog } from '@freecodecamp/shared/config/catalog';
-import CatalogPage from './catalog';
+import CatalogPage, { hasFrenchCatalogIntro } from './catalog';
 
 vi.mock('../components/catalog-item', () => ({
   default: ({ superBlock }: { superBlock: string }) => (
@@ -40,5 +40,32 @@ describe('CatalogPage', () => {
     expect(
       screen.getByText(/curriculum.catalog.filter-topic/)
     ).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText(/curriculum.catalog.filter-topic/));
+
+    expect(
+      screen.getByText('curriculum.catalog.topic.french')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('checkbox', {
+        name: 'curriculum.catalog.filter-topic curriculum.catalog.topic.french'
+      })
+    ).toBeInTheDocument();
+  });
+
+  test('filters the catalog to French-translated entries', () => {
+    render(<CatalogPage />);
+
+    fireEvent.click(screen.getByText(/curriculum.catalog.filter-topic/));
+    fireEvent.click(screen.getByText('curriculum.catalog.topic.french'));
+
+    const expectedCourses = catalog
+      .filter(course => hasFrenchCatalogIntro(course.superBlock))
+      .map(course => course.superBlock);
+    const items = screen
+      .getAllByTestId('catalog-item')
+      .map(item => item.textContent);
+
+    expect(items).toEqual(expectedCourses);
   });
 });

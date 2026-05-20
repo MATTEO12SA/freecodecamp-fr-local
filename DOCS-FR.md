@@ -20,9 +20,10 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 
 - La home pointe vers `/cours-fr`.
 - `/cours-fr` affiche les certifications francaises et pointe vers `/catalog` pour le catalogue global filtre.
+- `/catalog` ajoute un theme synthetique `Francais` qui filtre automatiquement les niveaux dont les titres/summaries existent deja en francais dans `client/i18n/locales/french/intro.json`, sans remplacer leur theme technique HTML/CSS/etc.
 - Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, examens serveur, MS Trophy et projets qui exigent des services externes.
 - Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local.
-- `/catalog` garde les filtres par niveau et par theme, donc `/cours-fr` ne duplique plus cette navigation.
+- `/catalog` garde les filtres par niveau et par theme, donc `/cours-fr` ne duplique plus cette navigation. Le filtre `Theme > Francais` sert de raccourci automatique pour voir uniquement les niveaux deja traduits.
 
 ## Nettoyage Strict Effectue
 
@@ -52,7 +53,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `css-grid` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'a CSS Grid. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
 Regles de traduction :
 
@@ -292,11 +293,12 @@ pnpm --filter @freecodecamp/shared type-check
 Verification manuelle :
 
 1. Lancer `.\dev.ps1` pour le mode rapide par defaut, `.\dev.ps1 -Clean` si Gatsby garde un cache incoherent, ou `.\dev.ps1 -Full` pour forcer le setup complet.
-2. Ouvrir `/`, `/learn` et `/cours-fr`.
+2. Ouvrir `/`, `/learn`, `/cours-fr` et `/catalog`.
 3. Verifier que le defi du jour n'apparait plus.
 4. Ouvrir un exercice Responsive Web Design traduit.
-5. Ouvrir un exercice compatible dont le fichier FR manque encore.
-6. Confirmer qu'aucun lien visible ne sort vers forum, donation, app mobile, social, CodeAlly, Ona, GitHub externe ou Okta.
+5. Dans `/catalog`, verifier que `Theme > Francais` affiche les niveaux traduits automatiquement depuis `intro.json` et peut se combiner avec le filtre `Niveau`.
+6. Ouvrir un exercice compatible dont le fichier FR manque encore.
+7. Confirmer qu'aucun lien visible ne sort vers forum, donation, app mobile, social, CodeAlly, Ona, GitHub externe ou Okta.
 
 ## Limites Connues
 

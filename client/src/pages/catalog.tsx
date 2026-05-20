@@ -2,9 +2,38 @@ import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Col, Spacer, Dropdown, MenuItem, Alert } from '@freecodecamp/ui';
 import { catalog } from '@freecodecamp/shared/config/catalog';
+import englishIntro from '../../i18n/locales/english/intro.json';
+import frenchIntro from '../../i18n/locales/french/intro.json';
 import CatalogItem from '../components/catalog-item';
 
 import './catalog.css';
+
+const frenchTopic = 'french' as const;
+
+type CatalogIntro = Record<string, unknown>;
+
+const getCatalogIntroSignature = (intros: CatalogIntro, superBlock: string) => {
+  const intro = intros[superBlock];
+  const courseIntro =
+    intro && typeof intro === 'object'
+      ? (intro as { title?: unknown; summary?: unknown })
+      : {};
+
+  return JSON.stringify({
+    title:
+      typeof courseIntro.title === 'string' ? courseIntro.title : undefined,
+    summary: Array.isArray(courseIntro.summary)
+      ? courseIntro.summary
+      : undefined
+  });
+};
+
+export const hasFrenchCatalogIntro = (superBlock: string) =>
+  getCatalogIntroSignature(frenchIntro, superBlock) !==
+  getCatalogIntroSignature(englishIntro, superBlock);
+
+const getCheckboxLabel = (filterLabel: string, optionLabel: string) =>
+  `${filterLabel} ${optionLabel}`.replace(/\s+/g, ' ').trim();
 
 const CatalogPage = () => {
   const { t } = useTranslation();
@@ -61,8 +90,13 @@ const CatalogPage = () => {
     return catalog.filter(course => {
       const levelMatch =
         selectedLevels.includes('all') || selectedLevels.includes(course.level);
+      const translatedMatch =
+        selectedTopics.includes(frenchTopic) &&
+        hasFrenchCatalogIntro(course.superBlock);
       const topicMatch =
-        selectedTopics.includes('all') || selectedTopics.includes(course.topic);
+        selectedTopics.includes('all') ||
+        selectedTopics.includes(course.topic) ||
+        translatedMatch;
       return levelMatch && topicMatch;
     });
   }, [selectedLevels, selectedTopics]);
@@ -71,6 +105,9 @@ const CatalogPage = () => {
     selected.includes('all')
       ? t('curriculum.catalog.all')
       : t('curriculum.catalog.selected-count', { count: selected.length });
+
+  const levelFilterLabel = t('curriculum.catalog.filter-level');
+  const topicFilterLabel = t('curriculum.catalog.filter-topic');
 
   return (
     <main>
@@ -82,14 +119,21 @@ const CatalogPage = () => {
         <div className='catalog-filters'>
           <Dropdown block={true}>
             <Dropdown.Toggle id='level-filter-dropdown'>
-              {t('curriculum.catalog.filter-level')}{' '}
-              {getSelectionLabel(selectedLevels)}
+              {levelFilterLabel} {getSelectionLabel(selectedLevels)}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <MenuItem onClick={() => handleLevelChange('all')}>
                 <input
                   type='checkbox'
                   checked={selectedLevels.includes('all')}
+                  aria-label={getCheckboxLabel(
+                    levelFilterLabel,
+                    t('curriculum.catalog.all')
+                  )}
+                  title={getCheckboxLabel(
+                    levelFilterLabel,
+                    t('curriculum.catalog.all')
+                  )}
                   onChange={() => {}}
                   className='filter-checkbox'
                 />
@@ -100,6 +144,14 @@ const CatalogPage = () => {
                   <input
                     type='checkbox'
                     checked={selectedLevels.includes(level)}
+                    aria-label={getCheckboxLabel(
+                      levelFilterLabel,
+                      t(`curriculum.catalog.levels.${level}`)
+                    )}
+                    title={getCheckboxLabel(
+                      levelFilterLabel,
+                      t(`curriculum.catalog.levels.${level}`)
+                    )}
                     onChange={() => {}}
                     className='filter-checkbox'
                   />
@@ -110,24 +162,56 @@ const CatalogPage = () => {
           </Dropdown>
           <Dropdown block={true}>
             <Dropdown.Toggle id='topic-filter-dropdown'>
-              {t('curriculum.catalog.filter-topic')}{' '}
-              {getSelectionLabel(selectedTopics)}
+              {topicFilterLabel} {getSelectionLabel(selectedTopics)}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <MenuItem onClick={() => handleTopicChange('all')}>
                 <input
                   type='checkbox'
                   checked={selectedTopics.includes('all')}
+                  aria-label={getCheckboxLabel(
+                    topicFilterLabel,
+                    t('curriculum.catalog.all')
+                  )}
+                  title={getCheckboxLabel(
+                    topicFilterLabel,
+                    t('curriculum.catalog.all')
+                  )}
                   onChange={() => {}}
                   className='filter-checkbox'
                 />
                 {t('curriculum.catalog.all')}
+              </MenuItem>
+              <MenuItem onClick={() => handleTopicChange(frenchTopic)}>
+                <input
+                  type='checkbox'
+                  checked={selectedTopics.includes(frenchTopic)}
+                  aria-label={getCheckboxLabel(
+                    topicFilterLabel,
+                    t('curriculum.catalog.topic.french')
+                  )}
+                  title={getCheckboxLabel(
+                    topicFilterLabel,
+                    t('curriculum.catalog.topic.french')
+                  )}
+                  onChange={() => {}}
+                  className='filter-checkbox'
+                />
+                {t('curriculum.catalog.topic.french')}
               </MenuItem>
               {uniqueTopics.map(topic => (
                 <MenuItem key={topic} onClick={() => handleTopicChange(topic)}>
                   <input
                     type='checkbox'
                     checked={selectedTopics.includes(topic)}
+                    aria-label={getCheckboxLabel(
+                      topicFilterLabel,
+                      t(`curriculum.catalog.topic.${topic}`)
+                    )}
+                    title={getCheckboxLabel(
+                      topicFilterLabel,
+                      t(`curriculum.catalog.topic.${topic}`)
+                    )}
                     onChange={() => {}}
                     className='filter-checkbox'
                   />
