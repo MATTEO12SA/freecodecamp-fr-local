@@ -5,7 +5,7 @@ import {
   writeFileSync,
   readFileSync
 } from 'fs';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, relative } from 'path';
 import { mergeWith, omit } from 'lodash';
 import { submitTypes } from '@freecodecamp/shared/config/challenge-types';
 import { type ChallengeNode } from '../../src/redux/prop-types';
@@ -127,6 +127,7 @@ export type OrderedSuperBlocks = Record<
 const ver = 'v2';
 
 const staticFolderPath = resolve(__dirname, '../../../client/static');
+const publicFolderPath = resolve(__dirname, '../../../client/public');
 const dataPath = `${staticFolderPath}/curriculum-data/`;
 const englishIntroPath = resolve(
   __dirname,
@@ -538,12 +539,40 @@ export function buildExtCurriculumDataV2(
   ): 'changed' | 'unchanged' {
     const json = JSON.stringify(data, null, 2);
     if (existsSync(filePath) && readFileSync(filePath, 'utf-8') === json) {
+      mirrorStaticJsonToPublic(filePath, json);
       return 'unchanged';
     }
 
     mkdirSync(dirname(filePath), { recursive: true });
     writeFileSync(filePath, json);
+    mirrorStaticJsonToPublic(filePath, json);
     return 'changed';
+  }
+
+  function mirrorStaticJsonToPublic(filePath: string, json: string): void {
+    if (!existsSync(publicFolderPath)) return;
+
+    const relativeStaticPath = relative(staticFolderPath, filePath);
+    if (relativeStaticPath.startsWith('..')) return;
+
+    const publicPath = resolve(publicFolderPath, relativeStaticPath);
+    try {
+      if (
+        existsSync(publicPath) &&
+        readFileSync(publicPath, 'utf-8') === json
+      ) {
+        return;
+      }
+
+      mkdirSync(dirname(publicPath), { recursive: true });
+      writeFileSync(publicPath, json);
+    } catch (error) {
+      writeLatestDevLog(
+        'WARN',
+        'intro.public_mirror.warning',
+        `Could not mirror ${filePath} to Gatsby public directory: ${String(error)}`
+      );
+    }
   }
 
   function writeToFile(fileName: string, data: Record<string, unknown>): void {
