@@ -2,35 +2,14 @@ import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Col, Spacer, Dropdown, MenuItem, Alert } from '@freecodecamp/ui';
 import { catalog } from '@freecodecamp/shared/config/catalog';
-import englishIntro from '../../i18n/locales/english/intro.json';
-import frenchIntro from '../../i18n/locales/french/intro.json';
 import CatalogItem from '../components/catalog-item';
+import { hasFrenchIntro } from '../utils/has-french-intro';
 
 import './catalog.css';
 
 const frenchTopic = 'french' as const;
 
-type CatalogIntro = Record<string, unknown>;
-
-const getCatalogIntroSignature = (intros: CatalogIntro, superBlock: string) => {
-  const intro = intros[superBlock];
-  const courseIntro =
-    intro && typeof intro === 'object'
-      ? (intro as { title?: unknown; summary?: unknown })
-      : {};
-
-  return JSON.stringify({
-    title:
-      typeof courseIntro.title === 'string' ? courseIntro.title : undefined,
-    summary: Array.isArray(courseIntro.summary)
-      ? courseIntro.summary
-      : undefined
-  });
-};
-
-export const hasFrenchCatalogIntro = (superBlock: string) =>
-  getCatalogIntroSignature(frenchIntro, superBlock) !==
-  getCatalogIntroSignature(englishIntro, superBlock);
+export const hasFrenchCatalogIntro = hasFrenchIntro;
 
 const getCheckboxLabel = (filterLabel: string, optionLabel: string) =>
   `${filterLabel} ${optionLabel}`.replace(/\s+/g, ' ').trim();
@@ -92,7 +71,7 @@ const CatalogPage = () => {
         selectedLevels.includes('all') || selectedLevels.includes(course.level);
       const translatedMatch =
         selectedTopics.includes(frenchTopic) &&
-        hasFrenchCatalogIntro(course.superBlock);
+        hasFrenchIntro(course.superBlock);
       const topicMatch =
         selectedTopics.includes('all') ||
         selectedTopics.includes(course.topic) ||

@@ -4,6 +4,8 @@ import { describe, expect, test, vi } from 'vitest';
 import { catalog } from '@freecodecamp/shared/config/catalog';
 import CatalogPage, { hasFrenchCatalogIntro } from './catalog';
 
+vi.mock('../utils/has-french-intro');
+
 vi.mock('../components/catalog-item', () => ({
   default: ({ superBlock }: { superBlock: string }) => (
     <a data-testid='catalog-item' href={`/learn/${superBlock}`}>
