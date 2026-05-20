@@ -67,7 +67,7 @@ http://localhost:8000/learn
 - Utilisateur local automatique, sans Auth0 ni MongoDB.
 - Progression sauvegardee dans `localStorage`.
 - API backend neutralisee pour le flux d'apprentissage local.
-- Interface francaise avec fallback anglais pour les contenus non traduits.
+- Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
 - `/cours-fr` affiche les certifications francaises et renvoie vers `/catalog` pour le catalogue global filtre.
 - Liens externes visibles desactives ou retires.
@@ -81,7 +81,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
 ## Validation
 

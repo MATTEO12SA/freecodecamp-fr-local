@@ -2811,10 +2811,10 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
 
             {view.v === 'lang' && (
               <>
-                <h1 className='cours-fr-title'>Choisis ta langue</h1>
+                <h1 className='cours-fr-title'>Choisis ton parcours</h1>
                 <p className='cours-fr-intro'>
-                  Les cours en français sont prêts à être faits. Les autres
-                  restent disponibles en anglais.
+                  Ouvre les certifications françaises, le parcours complet ou le
+                  catalogue filtré.
                 </p>
                 <div className='cours-fr-grid'>
                   <button
@@ -2823,17 +2823,21 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     onClick={() => setView({ v: 'fr-home' })}
                   >
                     <span className='cours-fr-folder-icon'>📁</span>
-                    <span className='cours-fr-folder-label'>Français</span>
+                    <span className='cours-fr-folder-label'>
+                      Certifications françaises
+                    </span>
                     <span className='cours-fr-folder-sub'>
                       Certifications françaises disponibles.
                     </span>
                   </button>
                   <a className='cours-fr-folder-card' href='/learn'>
                     <span className='cours-fr-folder-icon'>📁</span>
-                    <span className='cours-fr-folder-label'>Anglais</span>
+                    <span className='cours-fr-folder-label'>
+                      Parcours complet
+                    </span>
                     <span className='cours-fr-folder-sub'>
-                      Tous les cours d&apos;origine (catalogue complet, en
-                      anglais).
+                      Tous les cours locaux, avec les traductions quand elles
+                      existent.
                     </span>
                   </a>
                   <a className='cours-fr-folder-card' href='/catalog'>
@@ -2851,9 +2855,9 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
               <>
                 <BackBar
                   onBack={() => setView({ v: 'lang' })}
-                  crumbs={['Français']}
+                  crumbs={['Certifications françaises']}
                 />
-                <h1 className='cours-fr-title'>📁 Français</h1>
+                <h1 className='cours-fr-title'>📁 Certifications françaises</h1>
                 <p className='cours-fr-intro'>
                   Choisis une certification française, ou ouvre le catalogue
                   global pour utiliser tous les filtres du site.
@@ -2894,7 +2898,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                         </span>
                         {!hasTranslatedContent ? (
                           <span className='cours-fr-not-translated'>
-                            🚧 Version anglaise — traduction à venir
+                            🚧 Traduction à venir
                           </span>
                         ) : null}
                       </button>
@@ -2929,7 +2933,8 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     <p className='cours-fr-intro cours-fr-cert-note'>
                       {cert.title} — architecture officielle freeCodeCamp. Les
                       dossiers incompatibles avec le mode local sont masqués.
-                      Les autres restent disponibles, en français ou en anglais.
+                      Les autres restent disponibles selon leur état de
+                      traduction.
                     </p>
                     {cert.overview && (
                       <section className='cours-fr-cert-overview'>

@@ -67,6 +67,11 @@ const CatalogPage = () => {
     });
   }, [selectedLevels, selectedTopics]);
 
+  const getSelectionLabel = (selected: string[]) =>
+    selected.includes('all')
+      ? t('curriculum.catalog.all')
+      : t('curriculum.catalog.selected-count', { count: selected.length });
+
   return (
     <main>
       <Spacer size='l' />
@@ -77,10 +82,8 @@ const CatalogPage = () => {
         <div className='catalog-filters'>
           <Dropdown block={true}>
             <Dropdown.Toggle id='level-filter-dropdown'>
-              Level:{' '}
-              {selectedLevels.includes('all')
-                ? 'All'
-                : `${selectedLevels.length} selected`}
+              {t('curriculum.catalog.filter-level')}{' '}
+              {getSelectionLabel(selectedLevels)}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <MenuItem onClick={() => handleLevelChange('all')}>
@@ -90,7 +93,7 @@ const CatalogPage = () => {
                   onChange={() => {}}
                   className='filter-checkbox'
                 />
-                All
+                {t('curriculum.catalog.all')}
               </MenuItem>
               {uniqueLevels.map(level => (
                 <MenuItem key={level} onClick={() => handleLevelChange(level)}>
@@ -107,10 +110,8 @@ const CatalogPage = () => {
           </Dropdown>
           <Dropdown block={true}>
             <Dropdown.Toggle id='topic-filter-dropdown'>
-              Topic:{' '}
-              {selectedTopics.includes('all')
-                ? 'All'
-                : `${selectedTopics.length} selected`}
+              {t('curriculum.catalog.filter-topic')}{' '}
+              {getSelectionLabel(selectedTopics)}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <MenuItem onClick={() => handleTopicChange('all')}>
@@ -120,7 +121,7 @@ const CatalogPage = () => {
                   onChange={() => {}}
                   className='filter-checkbox'
                 />
-                All
+                {t('curriculum.catalog.all')}
               </MenuItem>
               {uniqueTopics.map(topic => (
                 <MenuItem key={topic} onClick={() => handleTopicChange(topic)}>

@@ -40,7 +40,7 @@ Fonctionnalites retirees ou neutralisees :
 Ce qui reste volontairement :
 
 - Les constantes et types daily challenge partages peuvent rester quand ils protegent la compatibilite du build.
-- Les templates upstream non visibles peuvent rester si les supprimer casserait Gatsby, TypeScript ou le fallback anglais.
+- Les templates upstream non visibles peuvent rester si les supprimer casserait Gatsby, TypeScript ou l'acces aux contenus d'origine.
 - Les URLs techniques necessaires aux exercices, images, medias, CDN ou exemples de code ne sont pas traitees comme des liens de navigation.
 - `preview-portal.tsx` utilise `window.open('', ...)` pour ouvrir une fenetre locale d'aperçu du code, pas un site externe.
 
@@ -52,13 +52,13 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en fallback anglais tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique est traduit jusqu'au module CSS `attribute-selectors` inclus : chapitre HTML complet, `computer-basics`, puis les modules CSS de base jusqu'aux selecteurs d'attribut CSS. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
 Regles de traduction :
 
 - Ne jamais traduire les tests, selecteurs, variables, URLs techniques et chaines exigees par les tests.
 - Traduire les textes utilisateur en francais simple.
-- Garder le fallback anglais pour les fichiers manquants.
+- Garder le contenu d'origine pour les fichiers FR manquants.
 
 ## Scripts Gardes
 
@@ -295,7 +295,7 @@ Verification manuelle :
 2. Ouvrir `/`, `/learn` et `/cours-fr`.
 3. Verifier que le defi du jour n'apparait plus.
 4. Ouvrir un exercice Responsive Web Design traduit.
-5. Ouvrir un exercice en fallback anglais compatible.
+5. Ouvrir un exercice compatible dont le fichier FR manque encore.
 6. Confirmer qu'aucun lien visible ne sort vers forum, donation, app mobile, social, CodeAlly, Ona, GitHub externe ou Okta.
 
 ## Limites Connues

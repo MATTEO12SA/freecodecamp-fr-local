@@ -34,7 +34,11 @@ describe('CatalogPage', () => {
 
   test('renders level and topic filter dropdowns', () => {
     render(<CatalogPage />);
-    expect(screen.getByText(/Level:/)).toBeInTheDocument();
-    expect(screen.getByText(/Topic:/)).toBeInTheDocument();
+    expect(
+      screen.getByText(/curriculum.catalog.filter-level/)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/curriculum.catalog.filter-topic/)
+    ).toBeInTheDocument();
   });
 });
