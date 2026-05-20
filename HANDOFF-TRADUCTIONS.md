@@ -40,6 +40,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 - ✅ Module `lab-technical-documentation-page` — 1 lab complet
 - ✅ Module `css-variables` — 5 fichiers pédagogiques complets (2 lectures + lab + review + quiz). **Workshop non traduit** : `workshop-city-skyline` (115)
 - ✅ Module `css-grid` — 12 fichiers pédagogiques complets (8 lectures + lab + lecture-debugging-css + review + quiz). **Workshop non traduit** : `workshop-magazine` (79)
+- ✅ Module `lab-product-landing-page` — 1 lab complet
 
 ### Infrastructure
 
@@ -62,14 +63,13 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 | #                                         | Module                                     | Lectures | Workshops à skip                                          | Lab/Review/Quiz            | Total pédagogique |
 | ----------------------------------------- | ------------------------------------------ | -------- | --------------------------------------------------------- | -------------------------- | ----------------- |
-| 1                                         | `lab-product-landing-page`                 | —        | —                                                         | 1 lab                      | 1                 |
-| 2                                         | `css-animations`                           | 2        | workshop-ferris-wheel (29), workshop-flappy-penguin (104) | 2 labs + 1 review + 1 quiz | 6                 |
-| 3                                         | `review-css`                               | —        | —                                                         | 1 review                   | 1                 |
-| 4                                         | `exam-responsive-web-design-certification` | —        | —                                                         | 1 exam                     | 1                 |
-| **TOTAL contenu pédagogique**             |                                            |          |                                                           | **9 fichiers**             |
+| 1                                         | `css-animations`                           | 2        | workshop-ferris-wheel (29), workshop-flappy-penguin (104) | 2 labs + 1 review + 1 quiz | 6                 |
+| 2                                         | `review-css`                               | —        | —                                                         | 1 review                   | 1                 |
+| 3                                         | `exam-responsive-web-design-certification` | —        | —                                                         | 1 exam                     | 1                 |
+| **TOTAL contenu pédagogique**             |                                            |          |                                                           | **8 fichiers**             |
 | **TOTAL workshops à skip pour l'instant** |                                            |          |                                                           | **~407 fichiers**          |
 
-**Priorité : faire d'abord les 9 fichiers de contenu pédagogique restants, puis attaquer les workshops si l'utilisateur le demande.**
+**Priorité : faire d'abord les 8 fichiers de contenu pédagogique restants, puis attaquer les workshops si l'utilisateur le demande.**
 
 ## Pattern De Traduction (Règles Strictes)
 
@@ -214,7 +214,7 @@ done
 ## Comment Démarrer La Prochaine Session
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier
-2. Continuer par `lab-product-landing-page`, puis `css-animations`, `review-css` et l'examen RWD
+2. Continuer par `css-animations`, puis `review-css` et l'examen RWD
 3. Puis enchaîner les modules dans l'ordre du tableau ci-dessus
 4. À la fin de chaque module : commit + push + mettre à jour `intro.json` si le titre du bloc/module est encore en anglais
 5. À la fin de tous les modules pédagogiques : régénérer la curriculum-data (commande ci-dessus)
@@ -238,4 +238,4 @@ Pour surveiller en direct : `Get-Content dev-logs\latest.log -Wait | Select-Stri
 
 ---
 
-**Dernière session** : module `css-grid` terminé (8 lectures + lab + lecture-debugging-css + review + quiz), serveur UP, `intro.json` mis à jour et logs `watcher.added` / `challenge.integrated` vérifiés. Prochain module : `lab-product-landing-page`. Total fichiers FR actuellement dans le repo : ~753+ sur ~1700 dans la cert RWD v9.
+**Dernière session** : module `lab-product-landing-page` terminé, serveur UP, `intro.json` mis à jour et logs `watcher.added` / `challenge.integrated` vérifiés. Prochain module : `css-animations`. Total fichiers FR actuellement dans le repo : ~754+ sur ~1700 dans la cert RWD v9.
