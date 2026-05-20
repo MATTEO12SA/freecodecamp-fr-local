@@ -1446,7 +1446,7 @@ try {
     Write-LogEvent -Level "INFO" -Event "tool.detected" -Message "pnpm detecte" -Data @{ version = $pnpmVersion }
 
     Write-Host "Configuration de l'environnement..." -ForegroundColor Cyan
-    $env:NODE_OPTIONS = "--max-old-space-size=7168"
+    $env:NODE_OPTIONS = "--max-old-space-size=7168 --no-deprecation"
     $env:NODE_ENV = "development"
     if (-not $env:CLIENT_LOCALE) {
         $env:CLIENT_LOCALE = "french"

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
@@ -55,28 +55,6 @@ type Certification = {
     requirements: string[];
   };
   blocks: CertificationBlock[];
-};
-
-type Topic = {
-  key: string;
-  label: string;
-  blurb: string;
-  blocks: string[];
-};
-
-type ExerciseBlockFolder = {
-  key: string;
-  title: string;
-  translated: boolean;
-  count: number;
-};
-
-type ExerciseSuperBlockFolder = {
-  key: string;
-  title: string;
-  blocks: ExerciseBlockFolder[];
-  count: number;
-  translatedBlocks: number;
 };
 
 const UNSUPPORTED_LOCAL_SUPERBLOCKS = new Set<string>(['dev-playground']);
@@ -2804,246 +2782,11 @@ const CERTIFICATIONS: Certification[] = [
   }
 ];
 
-const TOPICS: Topic[] = [
-  {
-    key: 'html',
-    label: 'HTML',
-    blurb: 'Structurer une page — balises, titres, liens, images, formulaires.',
-    blocks: [
-      'workshop-curriculum-outline',
-      'lab-debug-camperbots-profile-page',
-      'lecture-understanding-html-attributes',
-      'lab-debug-pet-adoption-page',
-      'lecture-understanding-the-html-boilerplate',
-      'workshop-cat-photo-app',
-      'lab-recipe-page',
-      'lecture-html-fundamentals',
-      'workshop-bookstore-page',
-      'lecture-understanding-how-html-affects-seo',
-      'lab-travel-agency-page',
-      'lecture-working-with-audio-and-video-elements',
-      'workshop-html-music-player'
-    ]
-  },
-  {
-    key: 'css',
-    label: 'CSS',
-    blurb: 'Mettre en forme — couleurs, polices, marges, mise en page, design.',
-    blocks: ['workshop-cafe-menu']
-  },
-  {
-    key: 'js',
-    label: 'JavaScript',
-    blurb: 'Rendre une page interactive — variables, fonctions, événements.',
-    blocks: []
-  },
-  {
-    key: 'python',
-    label: 'Python',
-    blurb: 'Un langage simple et puissant pour débuter la programmation.',
-    blocks: []
-  },
-  {
-    key: 'sql',
-    label: 'SQL',
-    blurb: 'Interroger et structurer des bases de données relationnelles.',
-    blocks: []
-  }
-];
-
-const BLOCK_NAMES: Record<string, string> = Object.fromEntries(
-  CERTIFICATIONS.flatMap(cert =>
-    cert.blocks.map(block => [block.key, block.title])
-  )
-);
-
-const SUPER_BLOCK_NAMES: Record<string, string> = Object.fromEntries(
-  CERTIFICATIONS.map(cert => [cert.key, cert.title])
-);
-
-function titleFromSlug(slug: string): string {
-  return slug
-    .replace(/^2022\//, '')
-    .split('-')
-    .filter(Boolean)
-    .map(word => {
-      const lower = word.toLowerCase();
-      if (['api', 'apis', 'css', 'html', 'js', 'sql'].includes(lower)) {
-        return lower.toUpperCase();
-      }
-      return `${word.charAt(0).toUpperCase()}${word.slice(1)}`;
-    })
-    .join(' ');
-}
-
-function getSuperBlockTitle(superBlock: SuperBlocks): string {
-  return SUPER_BLOCK_NAMES[superBlock] ?? titleFromSlug(superBlock);
-}
-
-function getBlockTitle(block: string, challenges: Challenge[] = []): string {
-  return (
-    BLOCK_NAMES[block] ?? challenges[0]?.blockLabel ?? titleFromSlug(block)
-  );
-}
-
-function renderRichText(md: string): string {
-  let s = md;
-  s = s.replace(
-    /```[a-z]*\n([\s\S]*?)```/g,
-    (_match: string, code: string) =>
-      `<pre class="cours-fr-pre"><code>${code
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')}</code></pre>`
-  );
-  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
-  s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  s = s.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  s = s.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    (_match: string, label: string, href: string) =>
-      /^(https?:)?\/\//i.test(href) || /^mailto:/i.test(href)
-        ? `<span class="cours-fr-disabled-link" title="Lien externe désactivé en local">${label}</span>`
-        : `<a href="${href}">${label}</a>`
-  );
-  s = s
-    .split(/\n{2,}/)
-    .map(p =>
-      p.startsWith('<pre') ? p : `<p>${p.replace(/\n/g, '<br/>')}</p>`
-    )
-    .join('');
-  return s;
-}
-
-function isFrenchChallenge(challenge: Challenge): boolean {
-  const text = `${challenge.title} ${challenge.description ?? ''}`;
-  return (
-    /[àâäéèêëîïôöùûüçœÀÂÄÉÈÊËÎÏÔÖÙÛÜÇŒ]/.test(text) ||
-    /\b(Tu|ton|ta|tes|dois|doit|clique|vérifie|quel|quelle|que|créer|comprendre|déboguer)\b/i.test(
-      text
-    )
-  );
-}
-
-type From = 'cert' | 'topic' | 'all';
-
-type View =
-  | { v: 'lang' }
-  | { v: 'fr-home' }
-  | { v: 'all-home' }
-  | { v: 'all-super'; superBlock: string }
-  | { v: 'fr-cert'; cert: string }
-  | { v: 'fr-topic'; topic: string }
-  | { v: 'fr-block'; block: string; from: From; parent: string }
-  | {
-      v: 'fr-step';
-      block: string;
-      stepNum: number;
-      from: From;
-      parent: string;
-    };
+type View = { v: 'lang' } | { v: 'fr-home' } | { v: 'fr-cert'; cert: string };
 
 function CoursFrPage({ data }: { data: PageData }): JSX.Element {
   const [view, setView] = useState<View>({ v: 'lang' });
   const dispatch = useDispatch();
-
-  const byBlock = useMemo(() => {
-    const m: Record<string, Challenge[]> = {};
-    const uniqueChallenges = new Map<string, Challenge>();
-    for (const node of data.allChallengeNode.nodes) {
-      const c = node.challenge;
-      if (!isLocalChallenge(c)) continue;
-      const existing = uniqueChallenges.get(c.id);
-      if (!existing || (!isFrenchChallenge(existing) && isFrenchChallenge(c))) {
-        uniqueChallenges.set(c.id, c);
-      }
-    }
-    for (const c of uniqueChallenges.values()) {
-      if (!m[c.block]) m[c.block] = [];
-      m[c.block].push(c);
-    }
-    for (const b of Object.keys(m)) {
-      m[b].sort(
-        (a, b) => a.order - b.order || a.challengeOrder - b.challengeOrder
-      );
-    }
-    return m;
-  }, [data]);
-
-  const allExerciseGroups = useMemo((): ExerciseSuperBlockFolder[] => {
-    const groups = new Map<string, ExerciseSuperBlockFolder>();
-
-    for (const challenges of Object.values(byBlock)) {
-      const first = challenges[0];
-      if (!first) continue;
-
-      const superBlock = first.superBlock;
-      const translated = challenges.some(isFrenchChallenge);
-      let group = groups.get(superBlock);
-
-      if (!group) {
-        group = {
-          key: superBlock,
-          title: getSuperBlockTitle(superBlock),
-          blocks: [],
-          count: 0,
-          translatedBlocks: 0
-        };
-        groups.set(superBlock, group);
-      }
-
-      group.blocks.push({
-        key: first.block,
-        title: getBlockTitle(first.block, challenges),
-        translated,
-        count: challenges.length
-      });
-      group.count += challenges.length;
-      if (translated) group.translatedBlocks += 1;
-    }
-
-    return Array.from(groups.values());
-  }, [byBlock]);
-
-  const totalExerciseCount = allExerciseGroups.reduce(
-    (sum, group) => sum + group.count,
-    0
-  );
-
-  const getAllExerciseGroup = (superBlock: string) =>
-    allExerciseGroups.find(group => group.key === superBlock);
-
-  const countTranslatedBlocks = (blocks: string[]): number =>
-    blocks.reduce(
-      (sum, block) => sum + ((byBlock[block]?.length ?? 0) > 0 ? 1 : 0),
-      0
-    );
-
-  const countTranslatedCertification = (blocks: CertificationBlock[]): number =>
-    blocks.reduce(
-      (sum, block) =>
-        sum +
-        (block.translated && (byBlock[block.key]?.length ?? 0) > 0 ? 1 : 0),
-      0
-    );
-
-  const goBackFromBlock = (v: {
-    block: string;
-    from: From;
-    parent: string;
-  }) => {
-    if (v.from === 'cert') {
-      setView({ v: 'fr-cert', cert: v.parent });
-      return;
-    }
-
-    if (v.from === 'topic') {
-      setView({ v: 'fr-topic', topic: v.parent });
-      return;
-    }
-
-    setView({ v: 'all-super', superBlock: v.parent });
-  };
 
   useEffect(() => {
     if (view.v !== 'fr-cert') return;
@@ -3082,7 +2825,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     <span className='cours-fr-folder-icon'>📁</span>
                     <span className='cours-fr-folder-label'>Français</span>
                     <span className='cours-fr-folder-sub'>
-                      Certifications et thèmes traduits en français.
+                      Certifications françaises disponibles.
                     </span>
                   </button>
                   <a className='cours-fr-folder-card' href='/learn'>
@@ -3093,23 +2836,13 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       anglais).
                     </span>
                   </a>
-                  <button
-                    type='button'
-                    className='cours-fr-folder-card'
-                    onClick={() => setView({ v: 'all-home' })}
-                  >
+                  <a className='cours-fr-folder-card' href='/catalog'>
                     <span className='cours-fr-folder-icon'>📁</span>
-                    <span className='cours-fr-folder-label'>
-                      Tous les exercices du site
-                    </span>
+                    <span className='cours-fr-folder-label'>Catalogue</span>
                     <span className='cours-fr-folder-sub'>
-                      Tout le catalogue dans cette page, français quand il
-                      existe, anglais sinon.
+                      Catalogue global avec les filtres du site.
                     </span>
-                    <span className='cours-fr-folder-count'>
-                      {totalExerciseCount} exercices disponibles
-                    </span>
-                  </button>
+                  </a>
                 </div>
               </>
             )}
@@ -3122,35 +2855,27 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                 />
                 <h1 className='cours-fr-title'>📁 Français</h1>
                 <p className='cours-fr-intro'>
-                  Tu peux naviguer de deux façons : par certification (comme sur
-                  la page d&apos;accueil officielle) ou par thème.
+                  Choisis une certification française, ou ouvre le catalogue
+                  global pour utiliser tous les filtres du site.
                 </p>
 
-                <h2 className='cours-fr-section-title'>Catalogue complet</h2>
+                <h2 className='cours-fr-section-title'>Catalogue global</h2>
                 <div className='cours-fr-grid'>
-                  <button
-                    type='button'
-                    className='cours-fr-folder-card'
-                    onClick={() => setView({ v: 'all-home' })}
-                  >
+                  <a className='cours-fr-folder-card' href='/catalog'>
                     <span className='cours-fr-folder-icon'>📁</span>
-                    <span className='cours-fr-folder-label'>
-                      Tous les exercices du site
-                    </span>
+                    <span className='cours-fr-folder-label'>Catalogue</span>
                     <span className='cours-fr-folder-sub'>
-                      Ouvre tous les dossiers existants, même ceux qui sont
-                      encore en anglais.
+                      Ouvre le catalogue complet avec les filtres globaux.
                     </span>
-                    <span className='cours-fr-folder-count'>
-                      {totalExerciseCount} exercices
-                    </span>
-                  </button>
+                  </a>
                 </div>
 
                 <h2 className='cours-fr-section-title'>Par certification</h2>
                 <div className='cours-fr-grid'>
                   {CERTIFICATIONS.map(cert => {
-                    const total = countTranslatedCertification(cert.blocks);
+                    const hasTranslatedContent = cert.blocks.some(
+                      block => block.translated
+                    );
                     return (
                       <button
                         key={cert.key}
@@ -3167,164 +2892,17 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                         <span className='cours-fr-folder-sub'>
                           {cert.subtitle}
                         </span>
-                        {total === 0 ? (
+                        {!hasTranslatedContent ? (
                           <span className='cours-fr-not-translated'>
                             🚧 Version anglaise — traduction à venir
                           </span>
-                        ) : (
-                          // eslint-disable-next-line no-constant-binary-expression
-                          false && (
-                            <span className='cours-fr-folder-count'>
-                              {total}dossier{total > 1 ? 's' : ''} FR
-                            </span>
-                          )
-                        )}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                <Spacer size='m' />
-
-                <h2 className='cours-fr-section-title'>Par thème</h2>
-                <div className='cours-fr-grid'>
-                  {TOPICS.map(topic => {
-                    const total = countTranslatedBlocks(topic.blocks);
-                    const disabled = total === 0;
-                    return (
-                      <button
-                        key={topic.key}
-                        type='button'
-                        disabled={disabled}
-                        className='cours-fr-folder-card'
-                        onClick={() =>
-                          setView({ v: 'fr-topic', topic: topic.key })
-                        }
-                      >
-                        <span className='cours-fr-folder-icon'>📁</span>
-                        <span className='cours-fr-folder-label'>
-                          {topic.label}
-                        </span>
-                        <span className='cours-fr-folder-sub'>
-                          {topic.blurb}
-                        </span>
-                        {disabled ? (
-                          <span className='cours-fr-not-translated'>
-                            🚧 Pas encore traduit
-                          </span>
-                        ) : (
-                          <span className='cours-fr-folder-count'>
-                            {total} exercice{total > 1 ? 's' : ''} traduit
-                            {total > 1 ? 's' : ''}
-                          </span>
-                        )}
+                        ) : null}
                       </button>
                     );
                   })}
                 </div>
               </>
             )}
-
-            {view.v === 'all-home' && (
-              <>
-                <BackBar
-                  onBack={() => setView({ v: 'lang' })}
-                  crumbs={['Tous les exercices du site']}
-                />
-                <h1 className='cours-fr-title'>
-                  📁 Tous les exercices du site
-                </h1>
-                <p className='cours-fr-intro'>
-                  Ce dossier contient tout le catalogue disponible dans le
-                  projet. Les exercices déjà traduits s&apos;ouvrent en
-                  français, les autres s&apos;ouvrent en anglais.
-                </p>
-
-                <div className='cours-fr-grid'>
-                  {allExerciseGroups.map(group => (
-                    <button
-                      key={group.key}
-                      type='button'
-                      className='cours-fr-folder-card'
-                      onClick={() =>
-                        setView({ v: 'all-super', superBlock: group.key })
-                      }
-                    >
-                      <span className='cours-fr-folder-icon'>📁</span>
-                      <span className='cours-fr-folder-label'>
-                        {group.title}
-                      </span>
-                      <span className='cours-fr-folder-sub'>
-                        {group.blocks.length} dossier
-                        {group.blocks.length > 1 ? 's' : ''} regroupé
-                        {group.blocks.length > 1 ? 's' : ''} dans ce parcours.
-                      </span>
-                      {group.translatedBlocks < group.blocks.length && (
-                        <span className='cours-fr-not-translated'>
-                          Traduction à venir sur certains dossiers
-                        </span>
-                      )}
-                      <span className='cours-fr-folder-count'>
-                        {group.count} exercice{group.count > 1 ? 's' : ''}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-
-            {view.v === 'all-super' &&
-              (() => {
-                const group = getAllExerciseGroup(view.superBlock);
-                if (!group) return <p>Catalogue introuvable.</p>;
-
-                return (
-                  <>
-                    <BackBar
-                      onBack={() => setView({ v: 'all-home' })}
-                      crumbs={['Tous les exercices du site', group.title]}
-                    />
-                    <h1 className='cours-fr-title'>📁 {group.title}</h1>
-                    <p className='cours-fr-intro'>
-                      Les dossiers listés ici sont ceux qui restent ouvrables
-                      dans cette version locale. Les contenus non traduits
-                      peuvent encore ouvrir la version anglaise.
-                    </p>
-
-                    <div className='cours-fr-grid'>
-                      {group.blocks.map(block => (
-                        <button
-                          key={block.key}
-                          type='button'
-                          className='cours-fr-folder-card'
-                          onClick={() =>
-                            setView({
-                              v: 'fr-block',
-                              block: block.key,
-                              from: 'all',
-                              parent: group.key
-                            })
-                          }
-                        >
-                          <span className='cours-fr-folder-icon'>📁</span>
-                          <span className='cours-fr-folder-label'>
-                            {block.title}
-                          </span>
-                          {!block.translated && (
-                            <span className='cours-fr-not-translated'>
-                              En anglais — traduction à venir
-                            </span>
-                          )}
-                          <span className='cours-fr-folder-count'>
-                            {block.count} exercice
-                            {block.count > 1 ? 's' : ''}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                  </>
-                );
-              })()}
 
             {view.v === 'fr-cert' &&
               (() => {
@@ -3385,238 +2963,6 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                         />
                       </div>
                     )}
-                  </>
-                );
-              })()}
-
-            {view.v === 'fr-topic' &&
-              (() => {
-                const topic = TOPICS.find(t => t.key === view.topic);
-                if (!topic) return <p>Thème introuvable.</p>;
-                return (
-                  <>
-                    <BackBar
-                      onBack={() => setView({ v: 'fr-home' })}
-                      crumbs={['Français', `Thème : ${topic.label}`]}
-                    />
-                    <h1 className='cours-fr-title'>📁 Thème : {topic.label}</h1>
-                    <p className='cours-fr-intro'>
-                      Tous les dossiers traduits de {topic.label}, du plus
-                      simple au plus avancé. Clique sur un dossier pour voir les
-                      étapes.
-                    </p>
-
-                    {topic.blocks.length === 0 ? (
-                      <div className='cours-fr-empty'>
-                        🚧 Aucun exercice encore traduit pour ce thème.
-                      </div>
-                    ) : (
-                      <div className='cours-fr-grid'>
-                        {topic.blocks.map(block => {
-                          const total = byBlock[block]?.length ?? 0;
-                          const disabled = total === 0;
-                          return (
-                            <button
-                              key={block}
-                              type='button'
-                              disabled={disabled}
-                              className='cours-fr-folder-card'
-                              onClick={() =>
-                                setView({
-                                  v: 'fr-block',
-                                  block,
-                                  from: 'topic',
-                                  parent: topic.key
-                                })
-                              }
-                            >
-                              <span className='cours-fr-folder-icon'>📁</span>
-                              <span className='cours-fr-folder-label'>
-                                {BLOCK_NAMES[block] ?? block}
-                              </span>
-                              {disabled ? (
-                                <span className='cours-fr-not-translated'>
-                                  🚧 Pas encore traduit
-                                </span>
-                              ) : (
-                                <span className='cours-fr-folder-count'>
-                                  {total} étape{total > 1 ? 's' : ''}
-                                </span>
-                              )}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </>
-                );
-              })()}
-
-            {view.v === 'fr-block' &&
-              (() => {
-                const cert = CERTIFICATIONS.find(c => c.key === view.parent);
-                const topic = TOPICS.find(t => t.key === view.parent);
-                const allGroup = getAllExerciseGroup(view.parent);
-                const parentLabel =
-                  view.from === 'cert'
-                    ? (cert?.title ?? view.parent)
-                    : view.from === 'topic'
-                      ? `Thème : ${topic?.label ?? view.parent}`
-                      : (allGroup?.title ?? view.parent);
-                const rootLabel =
-                  view.from === 'all'
-                    ? 'Tous les exercices du site'
-                    : 'Français';
-                return (
-                  <>
-                    <BackBar
-                      onBack={() => goBackFromBlock(view)}
-                      crumbs={[
-                        rootLabel,
-                        parentLabel,
-                        getBlockTitle(view.block, byBlock[view.block])
-                      ]}
-                    />
-                    <h1 className='cours-fr-title'>
-                      📁 {getBlockTitle(view.block, byBlock[view.block])}
-                    </h1>
-                    <p className='cours-fr-intro'>
-                      Chaque dossier ci-dessous est un exercice. Clique pour
-                      voir ce qu&apos;il faut faire.
-                    </p>
-                    <div className='cours-fr-exos-grid'>
-                      {(byBlock[view.block] ?? []).map((c, idx) => {
-                        const n = idx + 1;
-                        return (
-                          <button
-                            key={c.id}
-                            type='button'
-                            className='cours-fr-exo-card'
-                            onClick={() =>
-                              setView({
-                                v: 'fr-step',
-                                block: view.block,
-                                stepNum: n,
-                                from: view.from,
-                                parent: view.parent
-                              })
-                            }
-                          >
-                            <span className='cours-fr-exo-icon'>📁</span>
-                            <span className='cours-fr-exo-name'>
-                              Exercice {n}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </>
-                );
-              })()}
-
-            {view.v === 'fr-step' &&
-              (() => {
-                const list = byBlock[view.block] ?? [];
-                const c = list[view.stepNum - 1];
-                const cert = CERTIFICATIONS.find(x => x.key === view.parent);
-                const topic = TOPICS.find(x => x.key === view.parent);
-                const allGroup = getAllExerciseGroup(view.parent);
-                const parentLabel =
-                  view.from === 'cert'
-                    ? (cert?.title ?? view.parent)
-                    : view.from === 'topic'
-                      ? `Thème : ${topic?.label ?? view.parent}`
-                      : (allGroup?.title ?? view.parent);
-                const rootLabel =
-                  view.from === 'all'
-                    ? 'Tous les exercices du site'
-                    : 'Français';
-                const goBackToBlock = () =>
-                  setView({
-                    v: 'fr-block',
-                    block: view.block,
-                    from: view.from,
-                    parent: view.parent
-                  });
-                if (!c) {
-                  return (
-                    <>
-                      <BackBar
-                        onBack={goBackToBlock}
-                        crumbs={[
-                          rootLabel,
-                          parentLabel,
-                          getBlockTitle(view.block, list)
-                        ]}
-                      />
-                      <p>Exercice introuvable.</p>
-                    </>
-                  );
-                }
-                const hasNext = view.stepNum < list.length;
-                const hasPrev = view.stepNum > 1;
-                return (
-                  <>
-                    <BackBar
-                      onBack={goBackToBlock}
-                      crumbs={[
-                        rootLabel,
-                        parentLabel,
-                        getBlockTitle(view.block, list),
-                        `Exercice ${view.stepNum}`
-                      ]}
-                    />
-                    <h1 className='cours-fr-title'>
-                      📁 Exercice {view.stepNum}
-                    </h1>
-                    <div
-                      className='cours-fr-step-desc'
-                      dangerouslySetInnerHTML={{
-                        __html: renderRichText(c.description ?? '')
-                      }}
-                    />
-
-                    <a
-                      href={c.fields.slug}
-                      className='cours-fr-start-btn cours-fr-start-btn-big'
-                    >
-                      Commencer l&apos;exercice →
-                    </a>
-
-                    <div className='cours-fr-prev-next'>
-                      <button
-                        type='button'
-                        disabled={!hasPrev}
-                        onClick={() =>
-                          hasPrev &&
-                          setView({
-                            v: 'fr-step',
-                            block: view.block,
-                            stepNum: view.stepNum - 1,
-                            from: view.from,
-                            parent: view.parent
-                          })
-                        }
-                      >
-                        ← Exercice précédent
-                      </button>
-                      <button
-                        type='button'
-                        disabled={!hasNext}
-                        onClick={() =>
-                          hasNext &&
-                          setView({
-                            v: 'fr-step',
-                            block: view.block,
-                            stepNum: view.stepNum + 1,
-                            from: view.from,
-                            parent: view.parent
-                          })
-                        }
-                      >
-                        Exercice suivant →
-                      </button>
-                    </div>
                   </>
                 );
               })()}

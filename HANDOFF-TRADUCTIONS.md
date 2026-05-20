@@ -173,6 +173,11 @@ git push standalone main
 .\dev.ps1 -Full            # force l'ancien chemin complet avec turbo setup
 ```
 
+### Navigation locale
+
+- `/cours-fr` reste la page des certifications francaises.
+- `/catalog` est le catalogue global avec les filtres par niveau et par theme.
+
 ### Statut serveur
 
 ```powershell

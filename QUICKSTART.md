@@ -74,6 +74,7 @@ Ouvre ensuite :
 
 ```text
 http://localhost:8000/cours-fr
+http://localhost:8000/catalog
 ```
 
 ## Configuration Locale

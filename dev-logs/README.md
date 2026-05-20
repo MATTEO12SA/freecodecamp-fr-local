@@ -43,3 +43,5 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 - `intro.integrated` avec `logSource=dev-logs/client.stdout.log` : Gatsby a reconstruit le bundle `/learn` apres cette modification.
 
 Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
+
+Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere ligne `status.down`. Dans ce cas, relance simplement `.\dev.ps1` : `latest.log` et `status.json` sont recrees au debut du lancement.

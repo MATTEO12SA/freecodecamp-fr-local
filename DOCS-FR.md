@@ -19,10 +19,10 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 ## Interface Et Navigation
 
 - La home pointe vers `/cours-fr`.
-- `/cours-fr` affiche les cours en francais et garde un fallback anglais pour les exercices compatibles localement.
+- `/cours-fr` affiche les certifications francaises et pointe vers `/catalog` pour le catalogue global filtre.
 - Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, examens serveur, MS Trophy et projets qui exigent des services externes.
 - Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local.
-- Les liens Markdown externes dans `/cours-fr` sont rendus comme texte desactive.
+- `/catalog` garde les filtres par niveau et par theme, donc `/cours-fr` ne duplique plus cette navigation.
 
 ## Nettoyage Strict Effectue
 

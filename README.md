@@ -2,7 +2,7 @@
 
 Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
 
-Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, et `/cours-fr` sert de dossier de cours local.
+Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres.
 
 ## Demarrage
 
@@ -58,6 +58,7 @@ Pages utiles :
 ```text
 http://localhost:8000
 http://localhost:8000/cours-fr
+http://localhost:8000/catalog
 http://localhost:8000/learn
 ```
 
@@ -68,7 +69,7 @@ http://localhost:8000/learn
 - API backend neutralisee pour le flux d'apprentissage local.
 - Interface francaise avec fallback anglais pour les contenus non traduits.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
-- `/cours-fr` filtre les contenus non ouvrables localement.
+- `/cours-fr` affiche les certifications francaises et renvoie vers `/catalog` pour le catalogue global filtre.
 - Liens externes visibles desactives ou retires.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
 
