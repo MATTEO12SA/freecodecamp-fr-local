@@ -289,6 +289,48 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   }
   attachFsWatchFileFallback();
 
+  // has-french-intro.ts uses a preval that scans this directory at compile
+  // time. When a brand-new block is translated (first .md appears under
+  // blocks/<new-block>/), we touch the source file so Webpack re-runs the
+  // preval and the new block enters the Set without a server restart.
+  const hasFrenchIntroPath = nodePath.resolve(
+    __dirname,
+    '../../../client/src/utils/has-french-intro.ts'
+  );
+  const knownTranslatedBlocks = new Set();
+  function initKnownTranslatedBlocks() {
+    const blocksRoot = nodePath.join(curriculumPath, 'blocks');
+    if (!fs.existsSync(blocksRoot)) return;
+    for (const entry of fs.readdirSync(blocksRoot)) {
+      try {
+        if (fs.statSync(nodePath.join(blocksRoot, entry)).isDirectory()) {
+          knownTranslatedBlocks.add(entry);
+        }
+      } catch {
+        // ignore unreadable entries
+      }
+    }
+  }
+  initKnownTranslatedBlocks();
+  function touchHasFrenchIntro(reason) {
+    if (!fs.existsSync(hasFrenchIntroPath)) return;
+    try {
+      const now = new Date();
+      fs.utimesSync(hasFrenchIntroPath, now, now);
+      logWatcherInfo(
+        reporter,
+        'watcher.touched',
+        `[fcc-source-challenges] touched has-french-intro.ts (${reason})`
+      );
+    } catch (e) {
+      logWatcherWarn(
+        reporter,
+        'watcher.error',
+        `[fcc-source-challenges] failed to touch has-french-intro.ts: ${e.message}`
+      );
+    }
+  }
+
   // Detect .md files CREATED after server startup (which fs.watchFile cannot
   // see, since it only watches paths registered at boot). fs.watch on
   // directories with { recursive: true } fires on rename events for
@@ -326,6 +368,17 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
               `[fcc-source-challenges fs.watch] new file detected ${filename}`
             );
             handleChallengeUpdate(filename, 'added');
+            // If the new file belongs to a block that wasn't translated at
+            // startup, touch has-french-intro.ts so Webpack re-evaluates the
+            // preval and refreshes the translated-superblocks Set live.
+            const parts = filename.split(/[/\\]/);
+            if (parts.length >= 3 && parts[0] === 'blocks') {
+              const blockName = parts[1];
+              if (!knownTranslatedBlocks.has(blockName)) {
+                knownTranslatedBlocks.add(blockName);
+                touchHasFrenchIntro(`new block ${blockName}`);
+              }
+            }
           } catch (e) {
             logWatcherWarn(
               reporter,
