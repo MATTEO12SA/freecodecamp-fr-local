@@ -44,6 +44,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 - ✅ Module `css-animations` — 6 fichiers pédagogiques complets (2 lectures + 2 labs + review + quiz). **Workshops non traduits** : `workshop-ferris-wheel` (29), `workshop-flappy-penguin` (104)
 - ✅ Module `exam-responsive-web-design-certification` — 1 exam
 - ✅ Module `review-css` — 1 review
+- ✅ Métadonnées certification `responsive-web-design-v9.yml` — titre certification + titre examen traduits
 
 ### Infrastructure
 
