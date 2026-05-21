@@ -39,6 +39,19 @@ type PreparedQuestion = {
   sourceBlock: string;
 };
 
+function getAccessibleChoiceText(html: string, fallback: string): string {
+  const text = html
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  return text || fallback;
+}
+
 const CERT_TITLES: Record<string, string> = {
   'responsive-web-design-v9': 'Responsive Web Design',
   'javascript-v9': 'JavaScript',
@@ -256,9 +269,14 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                 <ul className='exam-fr-choices'>
                   {questions[currentIndex].choices.map((choice, idx) => {
                     const checked = answers[currentIndex] === idx;
+                    const accessibleChoiceText = getAccessibleChoiceText(
+                      choice.text,
+                      `Réponse ${idx + 1}`
+                    );
                     return (
                       <li key={idx}>
                         <label
+                          aria-label={accessibleChoiceText}
                           className={
                             checked
                               ? 'exam-fr-choice exam-fr-choice-selected'

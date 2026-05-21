@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-import {
-  Button,
-  Callout,
-  Dropdown,
-  MenuItem,
-  Spacer,
-  Container,
-  Row,
-  Col
-} from '@freecodecamp/ui';
+import { Button, Callout, Spacer, Container, Row, Col } from '@freecodecamp/ui';
 import { Trans, useTranslation, withTranslation } from 'react-i18next';
 import { createSelector } from 'reselect';
 import { connect } from 'react-redux';
 
 import LearnLayout from '../../../components/layouts/learn';
 import ChallengeTitle from '../components/challenge-title';
-import useDetectOS, { type UserOSState } from '../utils/use-detect-os';
+import type { UserOSState } from '../utils/use-detect-os';
 import type {
   ChallengeNode,
   CompletedChallenge,
@@ -31,25 +22,10 @@ import {
 import { examAttempts } from '../../../utils/ajax';
 import MissingPrerequisites from '../exam/components/missing-prerequisites';
 import { isChallengeCompletedSelector } from '../redux/selectors';
-import envData from '../../../../config/env.json';
-import { Attempts } from './attempts';
-import ExamTokenControls from './exam-token-controls';
 
 import './show.css';
 import { Link, Loader } from '../../../components/helpers';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
-
-const { deploymentEnv } = envData;
-
-interface GitProps {
-  tag_name: string;
-  assets: {
-    browser_download_url: string;
-  }[];
-  name: string;
-  draft: boolean;
-  prerelease: boolean;
-}
 
 function PrerequisitesCallout({
   id,
@@ -270,67 +246,6 @@ function ShowExamDownload({
   isSignedIn,
   user
 }: ShowExamDownloadProps): JSX.Element {
-  const [latestVersion, setLatestVersion] = useState<string | null>(null);
-
-  const [downloadLink, setDownloadLink] = useState<string | undefined>('');
-  const [downloadLinks, setDownloadLinks] = useState<string[]>([]);
-
-  const userOSState = useDetectOS();
-
-  const { t } = useTranslation();
-
-  useEffect(() => {
-    async function checkLatestVersion() {
-      try {
-        let latest: GitProps;
-
-        if (deploymentEnv !== 'production') {
-          const response = await fetch(
-            'https://api.github.com/repos/freeCodeCamp/exam-env/releases'
-          );
-
-          if (!response.ok) {
-            setLatestVersion(null);
-            return;
-          }
-
-          const data = (await response.json()) as GitProps[];
-          if (!data || data.length === 0) {
-            setLatestVersion(null);
-            return;
-          }
-          latest = getLatest(data);
-        } else {
-          const response = await fetch(
-            'https://api.github.com/repos/freeCodeCamp/exam-env/releases/latest'
-          );
-          if (!response.ok) {
-            setLatestVersion(null);
-            return;
-          }
-          const data = (await response.json()) as GitProps;
-          if (!data) {
-            setLatestVersion(null);
-            return;
-          }
-          latest = data;
-        }
-
-        const { tag_name, assets } = latest;
-        setLatestVersion(tag_name);
-        const urls = assets.map(link => link.browser_download_url);
-        setDownloadLink(handleDownloadLink(userOSState, urls));
-        setDownloadLinks(urls);
-      } catch {
-        setLatestVersion(null);
-      }
-    }
-
-    if (userOSState.os) {
-      void checkLatestVersion();
-    }
-  }, [userOSState]);
-
   return (
     <LearnLayout>
       <Helmet>
@@ -375,57 +290,6 @@ function ShowExamDownload({
       </Container>
     </LearnLayout>
   );
-}
-
-function getRecommendedOs({
-  arch,
-  ext
-}: {
-  arch: string;
-  ext: string;
-}): string {
-  const osToExt = {
-    MacOS: ['.dmg', '.app', '.app.tar.gz'],
-    Linux: ['.deb', '.rpm', '.AppImage', '.tar.gz', '.AppImage.tar.gz'],
-    Windows: ['.exe', '.msi']
-  } as const;
-  const archToHuman: Record<string, string> = {
-    x64: '64-bit',
-    aarch64: 'ARM64',
-    arm64: 'ARM64',
-    amd64: '64-bit',
-    i386: '32-bit',
-    x86: '32-bit',
-    arm: 'ARM'
-  };
-
-  const os = Object.entries(osToExt).find(([_, exts]) => exts.includes(ext));
-
-  return `${archToHuman[arch] ?? arch} ${os ? os[0] : ''}`;
-}
-
-function getLatest(releases: GitProps[]): GitProps {
-  switch (deploymentEnv) {
-    case 'staging':
-      return (
-        releases.find(r => {
-          return !r.draft && r.name.endsWith('/staging');
-        }) || releases[0]
-      );
-    // Currently, this is never the case
-    case 'development':
-      return (
-        releases.find(r => {
-          return !r.draft && r.name.endsWith('/development');
-        }) || releases[0]
-      );
-    default:
-      return (
-        releases.find(r => {
-          return !r.prerelease && !r.draft && r.name.endsWith('/production');
-        }) || releases[0]
-      );
-  }
 }
 
 export default connect(mapStateToProps)(withTranslation()(ShowExamDownload));
