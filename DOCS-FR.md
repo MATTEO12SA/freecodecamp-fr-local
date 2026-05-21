@@ -19,11 +19,12 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 ## Interface Et Navigation
 
 - La home pointe vers `/cours-fr`.
-- `/cours-fr` affiche les certifications francaises et pointe vers `/catalog` pour le catalogue global filtre.
-- `/catalog` ajoute un theme synthetique `Francais` qui filtre automatiquement les niveaux dont les titres/summaries existent deja en francais dans `client/i18n/locales/french/intro.json`, sans remplacer leur theme technique HTML/CSS/etc.
-- Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, examens serveur, MS Trophy et projets qui exigent des services externes.
+- `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte un badge `🚧 Traduction à venir`, calcule automatiquement via `client/src/utils/has-french-intro.ts` (voir section dediee).
+- `/cours-fr` ouvre l'accordeon officiel d'un cert qui contient ses chapitres, modules, blocs et l'examen (l'examen est cliquable, il route vers la page exam-download nettoyee).
+- `/catalog` ajoute un theme synthetique `Francais`. Mecanisme identique a celui de `/cours-fr` : `hasFrenchIntro(superBlock)` est partagee entre les deux pages.
+- `/exam-fr?cert=<superblock>` est une page d'examen locale 100% francaise (voir section dediee).
+- Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, MS Trophy et projets qui exigent des services externes. Note : `challengeTypes.exam` et `challengeTypes.examDownload` sont **autorises** maintenant pour que l'examen apparaisse dans l'accordeon.
 - Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local.
-- `/catalog` garde les filtres par niveau et par theme, donc `/cours-fr` ne duplique plus cette navigation. Le filtre `Theme > Francais` sert de raccourci automatique pour voir uniquement les niveaux deja traduits.
 
 ## Nettoyage Strict Effectue
 
@@ -105,6 +106,68 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 ```
 
 `intro.changed` puis `intro.integrated` confirment qu'une modification directe de `intro.json` a ete vue par le serveur et reprise dans le bundle `/learn`. `intro.integrating` puis `intro.integrated` confirment que les titres de blocs/modules ont ete repris dans `client/static/curriculum-data/v2/*.json` et servis sur `/curriculum-data/v2/*.json`.
+
+## Detection Automatique Des Certs Et Modules Traduits
+
+`/cours-fr` et `/catalog` partagent une seule source de verite : [client/src/utils/has-french-intro.ts](client/src/utils/has-french-intro.ts). La fonction `hasFrenchIntro(superBlock)` renvoie `true` si le cert ou module a au moins un challenge `.md` traduit.
+
+La liste est **generee au build via `preval`** (macro Babel) qui scanne :
+
+1. `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<block>/*.md` pour la liste des blocs traduits.
+2. `curriculum/structure/superblocks/*.json` pour mapper chaque bloc a son cert et a son module.
+
+Resultat : aucun maintenance manuelle a faire. Quand un nouveau bloc est traduit, le filtre `/catalog` et le badge `/cours-fr` se mettent a jour automatiquement.
+
+### Mise A Jour Live (Sans Restart)
+
+`preval` s'evalue au demarrage du serveur. Pour eviter de devoir redemarrer chaque fois qu'un nouveau bloc apparait, le plugin Gatsby a un crochet : `tools/client-plugins/gatsby-source-challenges/gatsby-node.js` ecoute les events `fs.watch` recursive sur le dossier curriculum FR. Quand un `.md` est cree dans un bloc jamais vu au boot, le plugin :
+
+1. Memorise le nom du bloc (cache local `knownTranslatedBlocks`).
+2. Appelle `fs.utimesSync` sur `client/src/utils/has-french-intro.ts` (touch).
+3. Webpack detecte la modif, re-evalue le `preval` -> la `FRENCH_TRANSLATED_SUPERBLOCKS` Set est mise a jour.
+4. HMR push le nouveau bundle au navigateur, le filtre/badge se mettent a jour live (~1s).
+
+Les logs dans `dev-logs/latest.log` :
+
+```text
+watcher.added [fcc-source-challenges fs.watch] new file detected blocks\<block>\<id>.md
+watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <block>)
+```
+
+Suivi par dans `client.stdout.log` :
+
+```text
+success Re-building development bundle - 0.892s
+```
+
+### Test Mocks
+
+`has-french-intro.ts` utilise `preval` qui ne s'execute pas sous vitest. Pour les tests, [client/src/utils/**mocks**/has-french-intro.ts](client/src/utils/__mocks__/has-french-intro.ts) fournit un mock simple. `catalog.test.tsx` declare `vi.mock('../utils/has-french-intro')` pour l'utiliser.
+
+## Examen Local FR
+
+freeCodeCamp officiel exige un client desktop Tauri (`exam-environment://`) + un token JWT genere par l'API + Auth0 pour passer un examen de certification. Aucun de ces composants n'existe dans le fork local.
+
+[client/src/pages/exam-fr.tsx](client/src/pages/exam-fr.tsx) remplace ce flux par un examen 100% local :
+
+- URL : `/exam-fr?cert=<superblock>` (ex: `/exam-fr?cert=responsive-web-design-v9`).
+- GraphQL query sur tous les `quiz-*` du superblock cible.
+- 80 questions tirees au hasard parmi le pool. Chaque question a 4 choix (3 distractors + 1 reponse correcte) melanges.
+- Score a la fin, 70% pour reussir, vue de revision detaillee.
+- Pas de timer (l'utilisateur est seul juge dans le fork local).
+
+Le pool de questions vient directement des `.md` quizzes traduits (`# --quizzes-- > ## --quiz-- > ### --question-- > #### --text-- + #### --distractors-- + #### --answer--`). Gatsby les expose via GraphQL `quizzes[].questions[]`.
+
+Tant que les modules d'un cert n'ont aucun quiz traduit, l'examen affiche `🚧 Aucun quiz FR n'est encore traduit pour cette certification.`
+
+### Bouton D'Acces
+
+[client/src/templates/Challenges/exam-download/show.tsx](client/src/templates/Challenges/exam-download/show.tsx) a ete nettoye : tous les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. Il ne reste que :
+
+- `ChallengeTitle` avec checkmark de completion.
+- `PrerequisitesCallout` (utile : detecte via localStorage les challenges restants).
+- Un paragraphe d'explication FR.
+- Le bouton `Passer l'examen en francais` qui pointe sur `/exam-fr?cert=<examSuperBlock>`.
 
 ## Hot-Reload Des Traductions
 

@@ -2,7 +2,7 @@
 
 Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
 
-Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher automatiquement les niveaux deja disponibles en francais.
+Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher automatiquement les niveaux deja disponibles en francais. `/exam-fr?cert=<superblock>` lance un examen local 100% FR qui tire 80 questions parmi les quizzes traduits.
 
 ## Demarrage
 
@@ -60,6 +60,7 @@ http://localhost:8000
 http://localhost:8000/cours-fr
 http://localhost:8000/catalog
 http://localhost:8000/learn
+http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 ```
 
 ## Ce Fork Change Quoi
@@ -69,8 +70,10 @@ http://localhost:8000/learn
 - API backend neutralisee pour le flux d'apprentissage local.
 - Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
-- `/cours-fr` affiche les certifications francaises et renvoie vers `/catalog` pour le catalogue global filtre.
-- `/catalog` propose le filtre `Theme > Francais` pour afficher uniquement les niveaux deja traduits. Le filtre se met a jour automatiquement quand `client/i18n/locales/french/intro.json` recoit les titres/summaries FR d'un niveau.
+- `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte automatiquement un badge `🚧 Traduction a venir`, calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem). L'accordeon contient l'examen qui pointe sur la page locale `/exam-fr`.
+- `/catalog` propose le filtre `Theme > Francais`. Meme source de verite que `/cours-fr` : la fonction `hasFrenchIntro` est partagee.
+- `/exam-fr?cert=<superblock>` lance l'examen local : 80 questions tirees au hasard parmi les `quiz-*` traduits du superblock. 70% pour reussir. Pas besoin du `.exe` officiel de freeCodeCamp ni de compte Auth0.
+- **Live detection** : creer un nouveau dossier `blocks/<x>/` avec un `.md` FR met a jour automatiquement le filtre catalog et le badge cours-fr sans redemarrer le serveur (voir `dev-logs/latest.log` -> `watcher.touched`).
 - Liens externes visibles desactives ou retires.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
 

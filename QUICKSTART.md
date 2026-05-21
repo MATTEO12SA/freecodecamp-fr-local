@@ -75,9 +75,24 @@ Ouvre ensuite :
 ```text
 http://localhost:8000/cours-fr
 http://localhost:8000/catalog
+http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 ```
 
-Dans `/catalog`, ouvre le menu `Theme` puis coche `Francais` pour afficher les niveaux deja disponibles en francais. Ce filtre se met a jour automatiquement avec `client/i18n/locales/french/intro.json`, et tu peux encore le combiner avec `Niveau : Debutant`, `Intermediaire` ou `Avance`.
+`/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build).
+
+Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules dont au moins un challenge `.md` FR existe. Tu peux le combiner avec `Niveau : Debutant/Intermediaire/Avance`.
+
+`/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au hasard parmi les quizzes traduits, 70% pour reussir.
+
+### Live Update Quand Tu Traduis Un Nouveau Bloc
+
+Quand tu crees le premier `.md` FR d'un block jamais traduit, le plugin Gatsby touche automatiquement `has-french-intro.ts` pour forcer Webpack a re-evaluer le preval. Verification :
+
+```powershell
+Select-String -Path dev-logs\latest.log -Pattern "watcher.touched" | Select-Object -Last 3
+```
+
+Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <name>)`. Puis `success Re-building development bundle - <X>s` dans `dev-logs/client.stdout.log`. Le filtre `/catalog` et le badge `/cours-fr` se mettent a jour live.
 
 ## Configuration Locale
 
