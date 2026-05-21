@@ -127,25 +127,30 @@ Si le titre EN contient `:`, entourer le titre FR de guillemets doubles :
 title: 'Quand devrais-tu utiliser appearance: none pour...'
 ```
 
-## Workflow Type Par Module
+## Workflow Type Par Workshop
 
-```bash
-# 1. Lister les fichiers du module
-ls curriculum/challenges/english/blocks/<bloc>/
+Pour les workshops RWD restants, utiliser le pipeline ajoute dans `tools/translate-workshop.js`. Il evite de recopier les blocs techniques et verifie automatiquement que code/tests/seeds restent intacts.
 
-# 2. Lire les fichiers EN (4 max en parallèle, pour préserver le contexte)
-# (Read tool sur 4 fichiers en parallèle)
+```powershell
+# 1. Extraire uniquement la prose a traduire
+node tools/translate-workshop.js extract <workshop>
 
-# 3. Écrire les versions FR (Write tool sur 4 fichiers en parallèle)
-# Cible : curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md
+# 2. Traduire et relire manuellement
+# tools/translations/<workshop>.json doit passer a reviewed: true
 
-# 4. Commit + push à la fin du module
-git add curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/
-git commit -m "translate <bloc-slug>"
+# 3. Appliquer, verifier et valider
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
+pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+git diff --check
+
+# 4. Commit + push a la fin du workshop
+git add tools/translations/<workshop>.json curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<workshop>/
+git commit -m "translate <workshop>"
 git push standalone main
 ```
 
-**Note** : si tu modifies plusieurs blocs dans le même module, fais un seul commit groupé à la fin.
+Pour les modules non-workshop, le workflow manuel reste possible, mais les workshops doivent passer par `extract/apply/verify` pour reduire le risque de modifier les parties techniques.
 
 ## Pièges Connus (Ne Pas Refaire)
 
@@ -204,6 +209,16 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 ```bash
 git log --oneline -5
 ```
+
+### Pipeline workshops
+
+```powershell
+node tools/translate-workshop.js extract <workshop>
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
+```
+
+Prochaine cible recommandee : `workshop-ferris-wheel`.
 
 ### Lister ce qui manque dans un module
 

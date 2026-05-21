@@ -6,7 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 15 workshops RWD à traduire, soit environ 940 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 14 workshops RWD à traduire, soit 913 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+
+Le premier passage du pipeline est terminé : `workshop-greeting-card` a été extrait, traduit, appliqué, vérifié, commit et pushé. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -26,7 +28,7 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 
 ## Pipeline Recommandé
 
-Créer `tools/translate-workshop.js` en Node CommonJS avec trois commandes.
+Utiliser `tools/translate-workshop.js` en Node CommonJS avec trois commandes.
 
 ### `extract <workshop>`
 
@@ -61,7 +63,7 @@ Le script écrit les fichiers FR dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<workshop>/
 ```
 
-Toutes les sections techniques sont copiées depuis EN sans modification.
+Toutes les sections techniques sont copiées depuis EN sans modification sémantique. Le script nettoie seulement les espaces blancs non sémantiques au moment d'écrire les fichiers FR, pour éviter les échecs `git diff --check`.
 
 ### `verify <workshop>`
 
@@ -102,11 +104,11 @@ Exemples :
 
 Important : le phrasebook sert à gagner du temps sur les phrases mécaniques, mais Codex relit tout le JSON avant application.
 
-## Première Exécution
+## Première Exécution — Terminée
 
-Tester le pipeline sur `workshop-greeting-card`, le plus petit workshop restant.
+Le test réel sur `workshop-greeting-card` est terminé et pushé dans le commit `translate workshop greeting card`.
 
-Ordre exact :
+Ordre exécuté :
 
 1. Créer `tools/translate-workshop.js`.
 2. Créer `tools/translations/phrasebook.json`.
@@ -132,6 +134,23 @@ Ordre exact :
    git commit -m "translate workshop greeting card"
    git push standalone main
    ```
+
+Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `lint-challenges` OK, serveur UP et `latest.log` avec `watcher.added`, `watcher.touched`, `challenge.integrating`, `challenge.integrated`.
+
+## Prochaine Exécution
+
+Prochaine cible recommandée : `workshop-ferris-wheel`.
+
+```powershell
+node tools/translate-workshop.js extract workshop-ferris-wheel
+# traduire et relire tools/translations/workshop-ferris-wheel.json
+node tools/translate-workshop.js apply workshop-ferris-wheel
+node tools/translate-workshop.js verify workshop-ferris-wheel
+pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+git diff --check
+git commit -m "translate ferris wheel workshop"
+git push standalone main
+```
 
 ## Validations Obligatoires
 
@@ -165,7 +184,6 @@ Ordre recommandé, du plus petit au plus gros :
 
 | Workshop                                  | Fichiers |
 | ----------------------------------------- | -------- |
-| `workshop-greeting-card`                  | 27       |
 | `workshop-ferris-wheel`                   | 29       |
 | `workshop-piano`                          | 31       |
 | `workshop-parent-teacher-conference-form` | 37       |

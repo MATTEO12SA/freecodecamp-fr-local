@@ -94,6 +94,26 @@ Select-String -Path dev-logs\latest.log -Pattern "watcher.touched" | Select-Obje
 
 Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <name>)`. Puis `success Re-building development bundle - <X>s` dans `dev-logs/client.stdout.log`. Le filtre `/catalog` et le badge `/cours-fr` se mettent a jour live.
 
+## Traduire Le Prochain Workshop
+
+Etat actuel RWD v9 : 144 blocs FR sur 158. Il reste 14 workshops, 913 fichiers. Prochaine cible recommandee : `workshop-ferris-wheel`.
+
+Workflow rapide mais relu manuellement :
+
+```powershell
+node tools/translate-workshop.js extract workshop-ferris-wheel
+```
+
+Traduis et relis `tools/translations/workshop-ferris-wheel.json`, puis applique :
+
+```powershell
+node tools/translate-workshop.js apply workshop-ferris-wheel
+node tools/translate-workshop.js verify workshop-ferris-wheel
+pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+```
+
+Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`.
+
 ## Configuration Locale
 
 Le fork est prevu pour fonctionner sans API, sans MongoDB et sans Auth0.
@@ -111,8 +131,10 @@ Le backend peut rester eteint. Le client construit un utilisateur local et sauve
 
 ```powershell
 pnpm -C curriculum lint-challenges
+node tools/translate-workshop.js verify <workshop>
 pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 pnpm --filter @freecodecamp/shared type-check
+pnpm lint-root
 ```
 
 Tests navigateur locaux, avec le serveur deja lance :

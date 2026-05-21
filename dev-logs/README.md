@@ -45,3 +45,22 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
 
 Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere ligne `status.down`. Dans ce cas, relance simplement `.\dev.ps1` : `latest.log` et `status.json` sont recrees au debut du lancement.
+
+## Pendant Une Traduction De Workshop
+
+Quand `node tools/translate-workshop.js apply <workshop>` cree des `.md` FR pendant que le serveur tourne, `latest.log` doit montrer le cycle suivant :
+
+```text
+watcher.added
+challenge.integrating
+challenge.integrated
+watcher.touched
+```
+
+`watcher.touched` apparait seulement si le workshop etait un nouveau bloc FR au demarrage du serveur. Il force la mise a jour live de `Theme > Francais` dans `/catalog` et des badges de `/cours-fr`.
+
+Pour verifier vite :
+
+```powershell
+Select-String -Path dev-logs\latest.log -Pattern "watcher.added|watcher.touched|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrated" | Select-Object -Last 30
+```

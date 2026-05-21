@@ -54,13 +54,35 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Etat actuel : 144 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery` et `workshop-greeting-card` sont traduits. Il reste 14 workshops, soit 913 fichiers.
 
 Regles de traduction :
 
 - Ne jamais traduire les tests, selecteurs, variables, URLs techniques et chaines exigees par les tests.
 - Traduire les textes utilisateur en francais simple.
 - Garder le contenu d'origine pour les fichiers FR manquants.
+
+## Pipeline De Traduction Des Workshops
+
+Les workshops RWD restants doivent passer par [tools/translate-workshop.js](tools/translate-workshop.js). Le script est un outil de securite, pas un traducteur automatique :
+
+```powershell
+node tools/translate-workshop.js extract <workshop>
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
+```
+
+`extract` lit les fichiers EN et ecrit `tools/translations/<workshop>.json` avec uniquement les titres, descriptions et hints hors code. Codex traduit et relit ce JSON manuellement. `apply` reconstruit les `.md` FR depuis les templates EN. `verify` compare EN/FR et echoue si un bloc technique a bouge.
+
+Regles specifiques au pipeline :
+
+- `reviewed: true` est obligatoire dans le JSON avant `apply`.
+- `Step N` devient `Étape N`, avec le meme `N` que `dashedName: step-N`.
+- Code fences, assertions, selectors, IDs, URLs, frontmatter technique, `seed-contents`, `solutions` et marqueurs restent copies depuis EN.
+- Le script normalise seulement les espaces blancs non semantiques des fichiers generes pour eviter les echecs `git diff --check`.
+- Le phrasebook `tools/translations/phrasebook.json` aide sur les hints repetitifs, mais chaque phrase doit etre relue.
+
+Prochaine cible recommandee : `workshop-ferris-wheel`.
 
 ## Scripts Gardes
 
@@ -349,8 +371,11 @@ Commandes recommandees :
 
 ```powershell
 pnpm -C curriculum lint-challenges
+node tools/translate-workshop.js verify <workshop>
 pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 pnpm --filter @freecodecamp/shared type-check
+pnpm -C client lint
+pnpm lint-root
 ```
 
 Verification manuelle :

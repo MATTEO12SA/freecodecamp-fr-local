@@ -87,14 +87,29 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
+Etat actuel RWD v9 : 144 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery` et `workshop-greeting-card` sont traduits. Il reste 14 workshops, soit 913 fichiers.
+
+Pour continuer les workshops sans toucher au code technique :
+
+```powershell
+node tools/translate-workshop.js extract <workshop>
+# traduire et relire tools/translations/<workshop>.json
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
+```
+
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. La prochaine cible recommandee est `workshop-ferris-wheel`.
+
 ## Validation
 
 Commandes principales :
 
 ```powershell
 pnpm -C curriculum lint-challenges
+node tools/translate-workshop.js verify <workshop>
 pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 pnpm --filter @freecodecamp/shared type-check
+pnpm lint-root
 ```
 
 Scripts locaux gardes :
@@ -110,6 +125,9 @@ full-flow-test.mjs
 
 - `QUICKSTART.md` : commandes courtes pour lancer et tester.
 - `DOCS-FR.md` : details techniques du fork local et du nettoyage strict.
+- `HANDOFF-TRADUCTIONS.md` : etat exact des traductions et prochaine cible.
+- `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops.
+- `dev-logs/README.md` : lecture des logs serveur et des events de traduction.
 
 ## GitHub
 
