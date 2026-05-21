@@ -357,79 +357,18 @@ function ShowExamDownload({
               completedChallenges={completedChallenges}
               examSuperBlock={examSuperBlock}
             />
-            <h2>{t('exam.download-header')}</h2>
-            <p>{t('exam.explanation')}</p>
-            <Spacer size='l' />
-            {isSignedIn && (
-              <>
-                <h2>{t('exam.attempts')}</h2>
-                <Attempts examChallengeId={id} />
-                <Spacer size='l' />
-                <ExamTokenControls email={user!.email} />
-              </>
-            )}
+            <Spacer size='m' />
             <p>
-              {t('exam.version', {
-                version: latestVersion || '...'
-              })}
+              Cet examen est passé directement dans le navigateur, en français.
+              Il tire au hasard 80 questions parmi les quizzes traduits de cette
+              certification, et il faut 70% de bonnes réponses pour le réussir.
             </p>
+            <Spacer size='s' />
             <Button
               href={`/exam-fr?cert=${encodeURIComponent(examSuperBlock)}`}
             >
               Passer l&apos;examen en français
             </Button>
-            <Spacer size='xs' />
-            <details>
-              <summary>{t('exam.open-exam-application')}</summary>
-              <Spacer size='xs' />
-              <Button href={'exam-environment://'}>
-                {t('exam.open-exam-application')}
-              </Button>
-            </details>
-            <Spacer size='s' />
-            <div className='exam-download-buttons'>
-              {downloadLink ? (
-                <Button href={downloadLink} download={downloadLink}>
-                  {t('buttons.download-latest-version')}
-                </Button>
-              ) : (
-                <strong>{t('exam.unable-to-detect-os')}</strong>
-              )}
-            </div>
-            <Spacer size='xs' />
-            <Dropdown block={true} dropup>
-              <Dropdown.Toggle>{t('exam.download-details')}</Dropdown.Toggle>
-              <Dropdown.Menu>
-                {downloadLinks
-                  .filter(link => !link.match(/\.sig|\.json/))
-                  .map((link, index) => {
-                    const urlEnd = link.split('/').pop() ?? '';
-                    // App naming scheme is <app_name>_<version>?_<arch>(-setup)?(-debug)?.<ext>
-                    const urlParts = urlEnd.split('_');
-                    const archAndExt = urlParts.at(urlParts.length - 1);
-                    const arch = archAndExt?.split('-')?.at(0);
-                    const ext = archAndExt?.slice(archAndExt?.indexOf('.'));
-
-                    const recommendedOs =
-                      arch && ext ? getRecommendedOs({ arch, ext }) : '';
-                    return (
-                      <MenuItem
-                        href={link}
-                        download={link}
-                        key={index}
-                        variant='primary'
-                      >
-                        {urlEnd} {recommendedOs && `(${recommendedOs})`}
-                      </MenuItem>
-                    );
-                  })}
-              </Dropdown.Menu>
-            </Dropdown>
-            <Spacer size='l' />
-            <strong>{t('exam.download-trouble')}</strong>{' '}
-            <a href='mailto: support@freecodecamp.org'>
-              support@freecodecamp.org
-            </a>
             <Spacer size='l' />
           </Col>
         </Row>
