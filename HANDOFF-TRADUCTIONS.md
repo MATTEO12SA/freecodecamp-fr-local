@@ -14,33 +14,33 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### RWD v9 — Contenu Pédagogique Complet ✅
 
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres dans `intro.json` sont traduits.** 141 blocs FR sur 158 totaux (~89%).
+**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 143 blocs FR sur 158 totaux (~90%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### RWD v9 — Reste À Traduire : 17 Workshops (978 fichiers)
+### RWD v9 — Reste À Traduire : 15 Workshops (940 fichiers)
 
 Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
 
-| Workshop                                | Fichiers |
-| --------------------------------------- | -------- |
-| workshop-game-settings-panel            | 16       |
-| workshop-flexbox-photo-gallery          | 22       |
-| workshop-greeting-card                  | 27       |
-| workshop-ferris-wheel                   | 29       |
-| workshop-piano                          | 31       |
-| workshop-parent-teacher-conference-form | 37       |
-| workshop-colorful-boxes                 | 43       |
-| workshop-rothko-painting                | 44       |
-| workshop-registration-form              | 61       |
-| workshop-balance-sheet                  | 66       |
-| workshop-accessibility-quiz             | 67       |
-| workshop-nutritional-label              | 68       |
-| workshop-magazine                       | 79       |
-| workshop-cat-painting                   | 80       |
-| workshop-colored-markers                | 89       |
-| workshop-flappy-penguin                 | 104      |
-| workshop-city-skyline                   | 115      |
+| Workshop                                | Fichiers | Statut  |
+| --------------------------------------- | -------- | ------- |
+| workshop-game-settings-panel            | 16       | ✅ done |
+| workshop-flexbox-photo-gallery          | 22       | ✅ done |
+| workshop-greeting-card                  | 27       | pending |
+| workshop-ferris-wheel                   | 29       | pending |
+| workshop-piano                          | 31       | pending |
+| workshop-parent-teacher-conference-form | 37       | pending |
+| workshop-colorful-boxes                 | 43       | pending |
+| workshop-rothko-painting                | 44       | pending |
+| workshop-registration-form              | 61       | pending |
+| workshop-balance-sheet                  | 66       | pending |
+| workshop-accessibility-quiz             | 67       | pending |
+| workshop-nutritional-label              | 68       | pending |
+| workshop-magazine                       | 79       | pending |
+| workshop-cat-painting                   | 80       | pending |
+| workshop-colored-markers                | 89       | pending |
+| workshop-flappy-penguin                 | 104      | pending |
+| workshop-city-skyline                   | 115      | pending |
 
 Pour vérifier en live :
 
@@ -241,4 +241,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : nettoyage majeur (`cours-fr.tsx` 3014→357 lignes, `dev.ps1` -226 lignes), création de la page `/exam-fr` et du bouton dans l'accordéon de cours-fr, détection auto live des certs traduites, page exam-download nettoyée. Serveur UP testé OK. Reste 17 workshops RWD à traduire avant de passer à JS v9.
+**Dernière session** : nettoyage majeur (`cours-fr.tsx` 3014→357 lignes, `dev.ps1` -226 lignes), création de la page `/exam-fr` et du bouton dans l'accordéon de cours-fr, détection auto live des certs traduites, page exam-download nettoyée. Traduction des titres de modules + blocs RWD dans `intro.json` (5 modules + 23 blocs, regen curriculum-data faite). Workshops `workshop-game-settings-panel` (16) et `workshop-flexbox-photo-gallery` (22) traduits et pushés. Serveur UP testé OK. **Reste 15 workshops RWD à traduire** (940 fichiers) — voir tableau ci-dessus, du plus petit au plus grand. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
