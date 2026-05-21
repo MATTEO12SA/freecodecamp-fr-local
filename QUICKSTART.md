@@ -96,19 +96,19 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Le Prochain Workshop
 
-Etat actuel RWD v9 : 146 blocs FR sur 158. Il reste 12 workshops, 853 fichiers. Prochaine cible recommandee : `workshop-parent-teacher-conference-form`.
+Etat actuel RWD v9 : 147 blocs FR sur 158. Il reste 11 workshops, 816 fichiers. Prochaine cible recommandee : `workshop-colorful-boxes`.
 
 Workflow rapide mais relu manuellement :
 
 ```powershell
-node tools/translate-workshop.js extract workshop-parent-teacher-conference-form
+node tools/translate-workshop.js extract workshop-colorful-boxes
 ```
 
-Traduis et relis `tools/translations/workshop-parent-teacher-conference-form.json`, puis applique :
+Traduis et relis `tools/translations/workshop-colorful-boxes.json`, puis applique :
 
 ```powershell
-node tools/translate-workshop.js apply workshop-parent-teacher-conference-form
-node tools/translate-workshop.js verify workshop-parent-teacher-conference-form
+node tools/translate-workshop.js apply workshop-colorful-boxes
+node tools/translate-workshop.js verify workshop-colorful-boxes
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 

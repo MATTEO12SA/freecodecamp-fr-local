@@ -46,7 +46,8 @@ function normalizeCopiedWhitespace(text) {
         .replace(/^[ \t]+/, indent => indent.replace(/ +(?=\t)/g, ''))
         .replace(/[ \t]+$/g, '')
     )
-    .join('\n');
+    .join('\n')
+    .replace(/\n+$/u, '\n');
 }
 
 function writeText(filePath, text, options = {}) {

@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 12 workshops RWD à traduire, soit 853 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 11 workshops RWD à traduire, soit 816 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel` et `workshop-piano` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano` et `workshop-parent-teacher-conference-form` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -139,13 +139,13 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-parent-teacher-conference-form`.
+Prochaine cible recommandée : `workshop-colorful-boxes`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-parent-teacher-conference-form
-# traduire et relire tools/translations/workshop-parent-teacher-conference-form.json
-node tools/translate-workshop.js apply workshop-parent-teacher-conference-form
-node tools/translate-workshop.js verify workshop-parent-teacher-conference-form
+node tools/translate-workshop.js extract workshop-colorful-boxes
+# traduire et relire tools/translations/workshop-colorful-boxes.json
+node tools/translate-workshop.js apply workshop-colorful-boxes
+node tools/translate-workshop.js verify workshop-colorful-boxes
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
 git commit -m "translate parent teacher conference form workshop"
@@ -182,20 +182,19 @@ Avancer workshop par workshop, avec commit + push à chaque fin de workshop.
 
 Ordre recommandé, du plus petit au plus gros :
 
-| Workshop                                  | Fichiers |
-| ----------------------------------------- | -------- |
-| `workshop-parent-teacher-conference-form` | 37       |
-| `workshop-colorful-boxes`                 | 43       |
-| `workshop-rothko-painting`                | 44       |
-| `workshop-registration-form`              | 61       |
-| `workshop-balance-sheet`                  | 66       |
-| `workshop-accessibility-quiz`             | 67       |
-| `workshop-nutritional-label`              | 68       |
-| `workshop-magazine`                       | 79       |
-| `workshop-cat-painting`                   | 80       |
-| `workshop-colored-markers`                | 89       |
-| `workshop-flappy-penguin`                 | 104      |
-| `workshop-city-skyline`                   | 115      |
+| Workshop                      | Fichiers |
+| ----------------------------- | -------- |
+| `workshop-colorful-boxes`     | 43       |
+| `workshop-rothko-painting`    | 44       |
+| `workshop-registration-form`  | 61       |
+| `workshop-balance-sheet`      | 66       |
+| `workshop-accessibility-quiz` | 67       |
+| `workshop-nutritional-label`  | 68       |
+| `workshop-magazine`           | 79       |
+| `workshop-cat-painting`       | 80       |
+| `workshop-colored-markers`    | 89       |
+| `workshop-flappy-penguin`     | 104      |
+| `workshop-city-skyline`       | 115      |
 
 ## Ce Qu'On N'Utilise Pas Comme Source Finale
 
