@@ -96,19 +96,19 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Le Prochain Workshop
 
-Etat actuel RWD v9 : 151 blocs FR sur 158. Il reste 7 workshops, 602 fichiers. Prochaine cible recommandee : `workshop-accessibility-quiz`.
+Etat actuel RWD v9 : 152 blocs FR sur 158. Il reste 6 workshops, 535 fichiers. Prochaine cible recommandee : `workshop-nutritional-label`.
 
 Workflow rapide mais relu manuellement :
 
 ```powershell
-node tools/translate-workshop.js extract workshop-accessibility-quiz
+node tools/translate-workshop.js extract workshop-nutritional-label
 ```
 
-Traduis et relis `tools/translations/workshop-accessibility-quiz.json`, puis applique :
+Traduis et relis `tools/translations/workshop-nutritional-label.json`, puis applique :
 
 ```powershell
-node tools/translate-workshop.js apply workshop-accessibility-quiz
-node tools/translate-workshop.js verify workshop-accessibility-quiz
+node tools/translate-workshop.js apply workshop-nutritional-label
+node tools/translate-workshop.js verify workshop-nutritional-label
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 

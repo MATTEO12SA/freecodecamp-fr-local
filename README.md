@@ -87,7 +87,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
-Etat actuel RWD v9 : 151 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form` et `workshop-balance-sheet` sont traduits. Il reste 7 workshops, soit 602 fichiers.
+Etat actuel RWD v9 : 152 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet` et `workshop-accessibility-quiz` sont traduits. Il reste 6 workshops, soit 535 fichiers.
 
 Pour continuer les workshops sans toucher au code technique :
 
@@ -98,7 +98,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. La prochaine cible recommandee est `workshop-accessibility-quiz`.
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. La prochaine cible recommandee est `workshop-nutritional-label`.
 
 ## Validation
 

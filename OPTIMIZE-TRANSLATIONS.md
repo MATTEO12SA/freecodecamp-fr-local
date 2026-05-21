@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 7 workshops RWD à traduire, soit 602 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 6 workshops RWD à traduire, soit 535 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form` et `workshop-balance-sheet` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet` et `workshop-accessibility-quiz` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -199,16 +199,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-accessibility-quiz`.
+Prochaine cible recommandée : `workshop-nutritional-label`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-accessibility-quiz
-# traduire et relire tools/translations/workshop-accessibility-quiz.json
-node tools/translate-workshop.js apply workshop-accessibility-quiz
-node tools/translate-workshop.js verify workshop-accessibility-quiz
+node tools/translate-workshop.js extract workshop-nutritional-label
+# traduire et relire tools/translations/workshop-nutritional-label.json
+node tools/translate-workshop.js apply workshop-nutritional-label
+node tools/translate-workshop.js verify workshop-nutritional-label
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate accessibility quiz workshop"
+git commit -m "translate nutritional label workshop"
 git push standalone main
 ```
 
@@ -244,15 +244,14 @@ Avancer workshop par workshop, avec commit + push à chaque fin de workshop.
 
 Ordre recommandé, du plus petit au plus gros :
 
-| Workshop                      | Fichiers |
-| ----------------------------- | -------- |
-| `workshop-accessibility-quiz` | 67       |
-| `workshop-nutritional-label`  | 68       |
-| `workshop-magazine`           | 79       |
-| `workshop-cat-painting`       | 80       |
-| `workshop-colored-markers`    | 89       |
-| `workshop-flappy-penguin`     | 104      |
-| `workshop-city-skyline`       | 115      |
+| Workshop                     | Fichiers |
+| ---------------------------- | -------- |
+| `workshop-nutritional-label` | 68       |
+| `workshop-magazine`          | 79       |
+| `workshop-cat-painting`      | 80       |
+| `workshop-colored-markers`   | 89       |
+| `workshop-flappy-penguin`    | 104      |
+| `workshop-city-skyline`      | 115      |
 
 ## Ce Qu'On N'Utilise Pas Comme Source Finale
 
