@@ -19,15 +19,20 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 
 ## Retour D'Expérience Des Workshops Déjà Traduits
 
-Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'à `workshop-registration-form` :
+Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'à `workshop-nutritional-label` :
 
 - Le bon rythme est **un workshop complet par tranche** : extraction, traduction JSON, application, vérification, docs, commit, push.
 - Le pipeline fait gagner du temps parce qu'il évite de relire des milliers de lignes de `seed`, `solutions`, asserts et HTML/CSS répétés. Exemples concrets : `workshop-parent-teacher-conference-form` a généré 37 fichiers et 5824 lignes FR à partir d'un JSON relu de 1517 lignes ; `workshop-registration-form` a généré 61 fichiers en ne traduisant que 322 chaînes de prose.
 - La qualité vient de la relecture humaine du JSON, pas du script. Le script protège la technique ; il ne garantit pas le style, le ton ni la justesse pédagogique.
+- Sur les gros workshops de 60+ fichiers, un helper Node temporaire peut accélérer le pré-remplissage du JSON, mais il doit rester un brouillon local : ne jamais le commit, ne jamais lui faire confiance sans relecture et le supprimer avant le commit final.
+- Les hints mécaniques peuvent produire des phrases grammaticalement cassées même quand tous les champs `fr` sont remplis. Après génération, lancer un scan ciblé sur les artefacts anglais ou hybrides : `the`, `should`, `Your`, `hovered`, `matching the`, `undefined`, `a doit`, accords singulier/pluriel et vieux restes comme `devrait`.
+- Le scan anti-anglais doit être interprété intelligemment : les valeurs en backticks exigées par les tests restent souvent en anglais (`HTML/CSS Quiz`, `Select an option`, `Calories`, `Total Fat`, etc.).
+- Toujours échantillonner plusieurs familles d'étapes après remplissage : premières étapes HTML, étapes de formulaire, étapes CSS, dernière étape. Les erreurs de sujet comme `the first...` ou `Les éléments ... doit` se voient vite sur ces échantillons.
 - Le premier fichier ajouté d'un nouveau workshop doit apparaître dans `dev-logs/latest.log` avec `watcher.added`, puis `watcher.touched` si le bloc FR n'existait pas encore, puis `challenge.integrating` et `challenge.integrated`.
 - Quand `intro.json` change, `latest.log` doit aussi montrer `intro.changed` puis `intro.integrated`.
 - `client/i18n/locales/french/intro.json` contient souvent deux entrées pour le même workshop : une entrée module et une entrée superblock. Il faut mettre à jour les deux, sinon `/learn` et les vues module peuvent diverger.
 - Les compteurs docs doivent être mis à jour à chaque workshop : nombre de blocs FR, nombre de workshops restants, nombre total de fichiers restants et prochaine cible.
+- Le hook `.husky/pre-push` doit garder `xargs -n 50`. Sans découpage, Windows peut échouer avec "ligne de commande trop longue" quand un workshop ajoute 60+ fichiers.
 
 ## Ce Qu'Il Faut Faire À Chaque Workshop
 
@@ -36,6 +41,7 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Extraire avec `node tools/translate-workshop.js extract <workshop>`.
 - Traduire **tous** les champs `fr` dans `tools/translations/<workshop>.json`.
 - Relire le JSON comme un vrai texte pédagogique : phrases naturelles, tutoiement, cohérence avec les workshops précédents.
+- Lancer un scan qualité sur le JSON avant `apply` pour repérer les fragments anglais ou hybrides.
 - Passer `reviewed` à `true` seulement quand aucun champ `fr` n'est vide et que la relecture est faite.
 - Appliquer avec `node tools/translate-workshop.js apply <workshop>`.
 - Vérifier immédiatement avec `node tools/translate-workshop.js verify <workshop>`.
@@ -50,6 +56,8 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Ne pas modifier `seed-contents`, `solutions`, asserts JS, sélecteurs CSS, IDs, classes, URLs, noms de fichiers, `dashedName`, `challengeType`, `demoType` ou marqueurs `# --...--`.
 - Ne pas traduire une chaîne visible si elle est testée par assertion. Si un hint dit que le texte doit être `Parent Teacher Conference Form`, la chaîne en backticks reste en anglais.
 - Ne pas faire confiance au phrasebook sans relecture. Il accélère les phrases répétitives, mais il peut produire une phrase correcte grammaticalement et mauvaise pédagogiquement.
+- Ne pas committer les scripts temporaires de remplissage (`fill-*.js`). Ils servent seulement pendant un workshop et doivent disparaître avant `git add`.
+- Ne pas corriger une mauvaise sortie générée directement dans les `.md` si elle vient d'un patron. Corriger le JSON ou le helper, régénérer avec `apply`, puis vérifier.
 - Ne pas utiliser Argos, upstream ou une regex comme source finale. Ces sources peuvent aider à comprendre, mais la livraison doit être relue et harmonisée ici.
 - Ne pas oublier `intro.json`. Un workshop peut être traduit dans le curriculum et rester affiché en anglais dans `/learn` si l'intro n'est pas mise à jour.
 - Ne pas oublier les docs. Sinon le prochain démarrage repart avec de mauvais compteurs ou une mauvaise prochaine cible.
@@ -64,6 +72,7 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Dire `élément label` plutôt que `un label` quand la phrase parle de HTML, en gardant `label` formaté comme du code dans la traduction.
 - Dire `élément input` ou `champ de formulaire` plutôt que `input` seul dans une phrase générale, en gardant `input` formaté comme du code dans la traduction.
 - Garder les valeurs imposées en anglais dans les backticks si les tests les exigent : `Email: `, `Phone: `, `Parent Teacher Conference Form`.
+- Dans les workshops de type page réelle, beaucoup de textes visibles sont testés. Garder en anglais les chaînes imposées par les assertions même si la consigne autour est en français.
 - Traduire les titres d'étape en `Étape N`, exactement aligné avec `dashedName: step-N`.
 - Garder les titres de workshops cohérents avec `/learn` : `Créer ...` ou `Construire ...`, mais ne pas mélanger plusieurs versions pour le même bloc.
 
@@ -76,6 +85,29 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - `latest.log` peut montrer seulement le premier fichier ajouté d'un bloc, puis des changements ultérieurs. C'est normal : le signal important est la chaîne `watcher.added` → `challenge.integrating` → `challenge.integrated`.
 - Le serveur peut être UP sans que les données statiques soient reconstruites. Pour une vérification locale robuste, lancer `pnpm -C curriculum build` puis `pnpm -C client create:external-curriculum`.
 - Les pages existent parfois sous deux chemins : `/learn/responsive-web-design-v9/...` et `/learn/<module>/...`. Tester au moins le chemin superblock du workshop traduit.
+- Un hook pre-push qui échoue sur Windows avec "ligne de commande trop longue" n'est pas un problème de traduction. La correction durable est de découper la liste de fichiers avec `xargs -n 50`, pas de réduire le workshop.
+
+## Scan Qualité JSON Avant Application
+
+Avant `apply`, faire au minimum :
+
+```powershell
+rg -n '"fr": ""|undefined|Hint non traduit|devrait|devrais|should|Your|The |the |matching the| a doit| un règle' tools/translations/<workshop>.json
+```
+
+Puis lire quelques étapes complètes :
+
+```powershell
+node -e "const fs=require('fs');const d=JSON.parse(fs.readFileSync('tools/translations/<workshop>.json','utf8'));for(const i of [0,1,Math.floor(d.files.length/2),d.files.length-1]){const f=d.files[i];console.log('\n'+f.dashedName);console.log(f.description.map(x=>x.fr).join('\n'));console.log(f.hints.slice(0,8).map(x=>x.fr).join('\n'));}"
+```
+
+Objectif : repérer les phrases qui passent techniquement mais sonnent faux. Le `verify` protège le code ; ce scan protège la qualité du français.
+
+Après `apply`, lancer immédiatement :
+
+```powershell
+node tools/translate-workshop.js verify <workshop>
+```
 
 ## Règle De Qualité
 

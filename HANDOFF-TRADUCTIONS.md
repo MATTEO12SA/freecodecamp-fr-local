@@ -137,6 +137,7 @@ node tools/translate-workshop.js extract <workshop>
 
 # 2. Traduire et relire manuellement
 # tools/translations/<workshop>.json doit passer a reviewed: true
+# scanner le JSON contre les restes anglais/hybrides avant apply
 
 # 3. Appliquer, verifier et valider
 node tools/translate-workshop.js apply <workshop>
@@ -151,6 +152,14 @@ git push standalone main
 ```
 
 Pour les modules non-workshop, le workflow manuel reste possible, mais les workshops doivent passer par `extract/apply/verify` pour reduire le risque de modifier les parties techniques.
+
+### Controle Qualite Appris Sur Les Gros Workshops
+
+- Un helper temporaire peut aider a remplir un JSON de 300+ chaines, mais il doit etre relu comme un brouillon et supprime avant commit.
+- Chercher les artefacts apres traduction : `undefined`, `Hint non traduit`, `should`, `Your`, `The`, `the`, `hovered`, `matching the`, `a doit`, `un règle`, accords singulier/pluriel.
+- Les textes exacts exiges par les tests restent en anglais dans les backticks ou dans les consignes : ne pas traduire `HTML/CSS Quiz`, `Select an option`, `Calories`, `Total Fat`, etc. si les assertions les attendent.
+- Relire plusieurs familles d'etapes, pas seulement le debut : premiere etape, formulaire, CSS, derniere etape. Les patrons fautifs apparaissent souvent seulement au milieu du workshop.
+- Apres `apply`, ne jamais corriger les fichiers `.md` au hasard si l'erreur vient d'un patron. Corriger le JSON ou le helper, regenerer, puis relancer `verify`.
 
 ## Pièges Connus (Ne Pas Refaire)
 
@@ -175,7 +184,9 @@ Pour les modules non-workshop, le workflow manuel reste possible, mais les works
    git push standalone main
    ```
 
-4. **PowerShell quoting** : les paths contiennent un espace (`Nouveau dossier`). Toujours utiliser des chemins absolus entre guillemets.
+4. **Pre-push Windows "ligne de commande trop longue"** : le hook `.husky/pre-push` doit garder `xargs -n 50`. Sans ca, les gros workshops de 60+ fichiers peuvent echouer avant le push meme si les validations passent.
+
+5. **PowerShell quoting** : les paths contiennent un espace (`Nouveau dossier`). Toujours utiliser des chemins absolus entre guillemets.
 
 ## Commandes Utiles
 

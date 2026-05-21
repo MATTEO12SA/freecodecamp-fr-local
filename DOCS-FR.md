@@ -81,6 +81,10 @@ Regles specifiques au pipeline :
 - Code fences, assertions, selectors, IDs, URLs, frontmatter technique, `seed-contents`, `solutions` et marqueurs restent copies depuis EN.
 - Le script normalise seulement les espaces blancs non semantiques des fichiers generes pour eviter les echecs `git diff --check`.
 - Le phrasebook `tools/translations/phrasebook.json` aide sur les hints repetitifs, mais chaque phrase doit etre relue.
+- Les helpers temporaires de remplissage sont autorises pendant un workshop, mais ils ne doivent pas etre commit. Ils servent a accelerer, pas a valider.
+- Avant `apply`, scanner le JSON contre les restes anglais ou hybrides : `undefined`, `Hint non traduit`, `should`, `Your`, `The`, `the`, `matching the`, `a doit`, `un règle`. Les valeurs techniques en backticks peuvent rester en anglais si les tests les exigent.
+- Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
+- Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
 Prochaine cible recommandee : `workshop-magazine`.
 

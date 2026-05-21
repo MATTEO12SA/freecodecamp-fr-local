@@ -98,7 +98,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. La prochaine cible recommandee est `workshop-magazine`.
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. La prochaine cible recommandee est `workshop-magazine`.
 
 ## Validation
 
@@ -126,7 +126,7 @@ full-flow-test.mjs
 - `QUICKSTART.md` : commandes courtes pour lancer et tester.
 - `DOCS-FR.md` : details techniques du fork local et du nettoyage strict.
 - `HANDOFF-TRADUCTIONS.md` : etat exact des traductions et prochaine cible.
-- `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops.
+- `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
 - `dev-logs/README.md` : lecture des logs serveur et des events de traduction.
 
 ## GitHub

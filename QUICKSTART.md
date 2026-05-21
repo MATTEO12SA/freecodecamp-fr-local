@@ -114,6 +114,14 @@ pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 
 Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`.
 
+Controle qualite rapide avant `apply` :
+
+```powershell
+rg -n '"fr": ""|undefined|Hint non traduit|should|Your|The |the |matching the| a doit| un règle' tools/translations/workshop-magazine.json
+```
+
+Si un helper temporaire a servi a pre-remplir le JSON, supprime-le avant commit. Seuls le JSON relu, les `.md` FR, les docs et les changements de tooling maintenus doivent etre pushés.
+
 ## Configuration Locale
 
 Le fork est prevu pour fonctionner sans API, sans MongoDB et sans Auth0.
