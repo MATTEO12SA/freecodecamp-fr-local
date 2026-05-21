@@ -373,9 +373,19 @@ function ShowExamDownload({
                 version: latestVersion || '...'
               })}
             </p>
-            <Button href={'exam-environment://'}>
-              {t('exam.open-exam-application')}
+            <Button
+              href={`/exam-fr?cert=${encodeURIComponent(examSuperBlock)}`}
+            >
+              Passer l&apos;examen en français
             </Button>
+            <Spacer size='xs' />
+            <details>
+              <summary>{t('exam.open-exam-application')}</summary>
+              <Spacer size='xs' />
+              <Button href={'exam-environment://'}>
+                {t('exam.open-exam-application')}
+              </Button>
+            </details>
             <Spacer size='s' />
             <div className='exam-download-buttons'>
               {downloadLink ? (
