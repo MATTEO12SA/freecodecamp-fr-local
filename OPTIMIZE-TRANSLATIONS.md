@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 3 workshops RWD à traduire, soit 308 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 2 workshops RWD à traduire, soit 219 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine` et `workshop-cat-painting` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting` et `workshop-colored-markers` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -231,16 +231,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-colored-markers`.
+Prochaine cible recommandée : `workshop-flappy-penguin`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-colored-markers
-# traduire et relire tools/translations/workshop-colored-markers.json
-node tools/translate-workshop.js apply workshop-colored-markers
-node tools/translate-workshop.js verify workshop-colored-markers
+node tools/translate-workshop.js extract workshop-flappy-penguin
+# traduire et relire tools/translations/workshop-flappy-penguin.json
+node tools/translate-workshop.js apply workshop-flappy-penguin
+node tools/translate-workshop.js verify workshop-flappy-penguin
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate colored markers workshop"
+git commit -m "translate flappy penguin workshop"
 git push standalone main
 ```
 
@@ -276,11 +276,10 @@ Avancer workshop par workshop, avec commit + push à chaque fin de workshop.
 
 Ordre recommandé, du plus petit au plus gros :
 
-| Workshop                   | Fichiers |
-| -------------------------- | -------- |
-| `workshop-colored-markers` | 89       |
-| `workshop-flappy-penguin`  | 104      |
-| `workshop-city-skyline`    | 115      |
+| Workshop                  | Fichiers |
+| ------------------------- | -------- |
+| `workshop-flappy-penguin` | 104      |
+| `workshop-city-skyline`   | 115      |
 
 ## Ce Qu'On N'Utilise Pas Comme Source Finale
 

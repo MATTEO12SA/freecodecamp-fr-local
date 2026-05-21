@@ -54,7 +54,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Etat actuel : 155 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine` et `workshop-cat-painting` sont traduits. Il reste 3 workshops, soit 308 fichiers.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Etat actuel : 156 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting` et `workshop-colored-markers` sont traduits. Il reste 2 workshops, soit 219 fichiers.
 
 Regles de traduction :
 
@@ -86,7 +86,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Prochaine cible recommandee : `workshop-colored-markers`.
+Prochaine cible recommandee : `workshop-flappy-penguin`.
 
 ## Scripts Gardes
 
