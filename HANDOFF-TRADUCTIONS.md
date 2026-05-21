@@ -14,11 +14,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### RWD v9 — Contenu Pédagogique Complet ✅
 
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 152 blocs FR sur 158 totaux (~96%).
+**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 153 blocs FR sur 158 totaux (~97%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### RWD v9 — Reste À Traduire : 6 Workshops (535 fichiers)
+### RWD v9 — Reste À Traduire : 5 Workshops (467 fichiers)
 
 Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
 
@@ -35,7 +35,7 @@ Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls,
 | workshop-registration-form              | 61       | ✅ done |
 | workshop-balance-sheet                  | 66       | ✅ done |
 | workshop-accessibility-quiz             | 67       | ✅ done |
-| workshop-nutritional-label              | 68       | pending |
+| workshop-nutritional-label              | 68       | ✅ done |
 | workshop-magazine                       | 79       | pending |
 | workshop-cat-painting                   | 80       | pending |
 | workshop-colored-markers                | 89       | pending |
@@ -218,7 +218,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Prochaine cible recommandee : `workshop-nutritional-label`.
+Prochaine cible recommandee : `workshop-magazine`.
 
 ### Lister ce qui manque dans un module
 
@@ -256,4 +256,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : `workshop-accessibility-quiz` (67 fichiers) finalisé via pipeline et pushé. Le hook `.husky/pre-push` a été corrigé avec `xargs -n 50` pour éviter le bug Windows "ligne de commande trop longue" quand un workshop touche 60+ fichiers. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66) et `workshop-accessibility-quiz` (67) traduits et pushés. **Reste 6 workshops RWD à traduire** (535 fichiers) — prochaine cible `workshop-nutritional-label`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
+**Dernière session** : `workshop-nutritional-label` (68 fichiers) finalisé via pipeline et pushé après une traduction manuelle complète du JSON (relue chaîne par chaîne, pas de script auto). Le hook `.husky/pre-push` a été corrigé avec `xargs -n 50` pour éviter le bug Windows "ligne de commande trop longue" quand un workshop touche 60+ fichiers. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67) et `workshop-nutritional-label` (68) traduits et pushés. **Reste 5 workshops RWD à traduire** (467 fichiers) — prochaine cible `workshop-magazine`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
