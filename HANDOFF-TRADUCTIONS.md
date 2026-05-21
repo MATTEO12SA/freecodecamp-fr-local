@@ -14,11 +14,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### RWD v9 — Contenu Pédagogique Complet ✅
 
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 144 blocs FR sur 158 totaux (~91%).
+**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 145 blocs FR sur 158 totaux (~92%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### RWD v9 — Reste À Traduire : 14 Workshops (913 fichiers)
+### RWD v9 — Reste À Traduire : 13 Workshops (884 fichiers)
 
 Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
 
@@ -27,7 +27,7 @@ Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls,
 | workshop-game-settings-panel            | 16       | ✅ done |
 | workshop-flexbox-photo-gallery          | 22       | ✅ done |
 | workshop-greeting-card                  | 27       | ✅ done |
-| workshop-ferris-wheel                   | 29       | pending |
+| workshop-ferris-wheel                   | 29       | ✅ done |
 | workshop-piano                          | 31       | pending |
 | workshop-parent-teacher-conference-form | 37       | pending |
 | workshop-colorful-boxes                 | 43       | pending |
@@ -218,7 +218,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Prochaine cible recommandee : `workshop-ferris-wheel`.
+Prochaine cible recommandee : `workshop-piano`.
 
 ### Lister ce qui manque dans un module
 
@@ -256,4 +256,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : pipeline `tools/translate-workshop.js` ajouté (extract/apply/verify), phrasebook créé, workshop `workshop-greeting-card` (27 fichiers) traduit et vérifié avec préservation du code/tests/seeds. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22) et `workshop-greeting-card` (27) traduits et pushés. Serveur UP testé OK. **Reste 14 workshops RWD à traduire** (913 fichiers) — voir tableau ci-dessus, du plus petit au plus grand. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
+**Dernière session** : pipeline `tools/translate-workshop.js` utilisé (extract/apply/verify), workshop `workshop-ferris-wheel` (29 fichiers) traduit et vérifié avec préservation du code/tests/seeds. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27) et `workshop-ferris-wheel` (29) traduits et pushés. Serveur UP testé OK. **Reste 13 workshops RWD à traduire** (884 fichiers) — prochaine cible `workshop-piano`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.

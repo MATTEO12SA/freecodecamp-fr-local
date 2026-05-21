@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 14 workshops RWD à traduire, soit 913 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 13 workshops RWD à traduire, soit 884 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Le premier passage du pipeline est terminé : `workshop-greeting-card` a été extrait, traduit, appliqué, vérifié, commit et pushé. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card` et `workshop-ferris-wheel` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -139,16 +139,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-ferris-wheel`.
+Prochaine cible recommandée : `workshop-piano`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-ferris-wheel
-# traduire et relire tools/translations/workshop-ferris-wheel.json
-node tools/translate-workshop.js apply workshop-ferris-wheel
-node tools/translate-workshop.js verify workshop-ferris-wheel
+node tools/translate-workshop.js extract workshop-piano
+# traduire et relire tools/translations/workshop-piano.json
+node tools/translate-workshop.js apply workshop-piano
+node tools/translate-workshop.js verify workshop-piano
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate ferris wheel workshop"
+git commit -m "translate piano workshop"
 git push standalone main
 ```
 
@@ -184,7 +184,6 @@ Ordre recommandé, du plus petit au plus gros :
 
 | Workshop                                  | Fichiers |
 | ----------------------------------------- | -------- |
-| `workshop-ferris-wheel`                   | 29       |
 | `workshop-piano`                          | 31       |
 | `workshop-parent-teacher-conference-form` | 37       |
 | `workshop-colorful-boxes`                 | 43       |
