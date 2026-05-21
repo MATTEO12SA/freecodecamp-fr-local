@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 9 workshops RWD à traduire, soit 729 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 8 workshops RWD à traduire, soit 668 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes` et `workshop-rothko-painting` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting` et `workshop-registration-form` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -19,10 +19,10 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 
 ## Retour D'Expérience Des Workshops Déjà Traduits
 
-Ce qui a été validé sur les workshops `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano` et `workshop-parent-teacher-conference-form` :
+Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'à `workshop-registration-form` :
 
 - Le bon rythme est **un workshop complet par tranche** : extraction, traduction JSON, application, vérification, docs, commit, push.
-- Le pipeline fait gagner du temps parce qu'il évite de relire des milliers de lignes de `seed`, `solutions`, asserts et HTML/CSS répétés. Exemple concret : `workshop-parent-teacher-conference-form` a généré 37 fichiers et 5824 lignes FR à partir d'un JSON relu de 1517 lignes.
+- Le pipeline fait gagner du temps parce qu'il évite de relire des milliers de lignes de `seed`, `solutions`, asserts et HTML/CSS répétés. Exemples concrets : `workshop-parent-teacher-conference-form` a généré 37 fichiers et 5824 lignes FR à partir d'un JSON relu de 1517 lignes ; `workshop-registration-form` a généré 61 fichiers en ne traduisant que 322 chaînes de prose.
 - La qualité vient de la relecture humaine du JSON, pas du script. Le script protège la technique ; il ne garantit pas le style, le ton ni la justesse pédagogique.
 - Le premier fichier ajouté d'un nouveau workshop doit apparaître dans `dev-logs/latest.log` avec `watcher.added`, puis `watcher.touched` si le bloc FR n'existait pas encore, puis `challenge.integrating` et `challenge.integrated`.
 - Quand `intro.json` change, `latest.log` doit aussi montrer `intro.changed` puis `intro.integrated`.
@@ -199,16 +199,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-registration-form`.
+Prochaine cible recommandée : `workshop-balance-sheet`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-registration-form
-# traduire et relire tools/translations/workshop-registration-form.json
-node tools/translate-workshop.js apply workshop-registration-form
-node tools/translate-workshop.js verify workshop-registration-form
+node tools/translate-workshop.js extract workshop-balance-sheet
+# traduire et relire tools/translations/workshop-balance-sheet.json
+node tools/translate-workshop.js apply workshop-balance-sheet
+node tools/translate-workshop.js verify workshop-balance-sheet
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate registration form workshop"
+git commit -m "translate balance sheet workshop"
 git push standalone main
 ```
 
@@ -246,7 +246,6 @@ Ordre recommandé, du plus petit au plus gros :
 
 | Workshop                      | Fichiers |
 | ----------------------------- | -------- |
-| `workshop-registration-form`  | 61       |
 | `workshop-balance-sheet`      | 66       |
 | `workshop-accessibility-quiz` | 67       |
 | `workshop-nutritional-label`  | 68       |
