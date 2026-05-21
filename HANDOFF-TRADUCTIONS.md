@@ -14,11 +14,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### RWD v9 — Contenu Pédagogique Complet ✅
 
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 154 blocs FR sur 158 totaux (~97%).
+**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 155 blocs FR sur 158 totaux (~98%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### RWD v9 — Reste À Traduire : 4 Workshops (388 fichiers)
+### RWD v9 — Reste À Traduire : 3 Workshops (308 fichiers)
 
 Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
 
@@ -37,7 +37,7 @@ Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls,
 | workshop-accessibility-quiz             | 67       | ✅ done |
 | workshop-nutritional-label              | 68       | ✅ done |
 | workshop-magazine                       | 79       | ✅ done |
-| workshop-cat-painting                   | 80       | pending |
+| workshop-cat-painting                   | 80       | ✅ done |
 | workshop-colored-markers                | 89       | pending |
 | workshop-flappy-penguin                 | 104      | pending |
 | workshop-city-skyline                   | 115      | pending |
@@ -229,7 +229,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Prochaine cible recommandee : `workshop-cat-painting`.
+Prochaine cible recommandee : `workshop-colored-markers`.
 
 ### Lister ce qui manque dans un module
 
@@ -267,4 +267,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : `workshop-magazine` (79 fichiers) finalisé via pipeline et pushé après une traduction manuelle complète du JSON (381 chaînes relues : 124 descriptions + 257 hints). Les textes visibles exigés par les tests sont restés en anglais dans les backticks, et le helper temporaire de remplissage a été supprimé avant commit. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68) et `workshop-magazine` (79) traduits et pushés. **Reste 4 workshops RWD à traduire** (388 fichiers) — prochaine cible `workshop-cat-painting`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
+**Dernière session** : `workshop-cat-painting` (80 fichiers) finalisé via pipeline et pushé après une traduction manuelle complète du JSON (379 chaînes relues : 111 descriptions + 268 hints). Les textes techniques et valeurs exigées par les tests sont restés en anglais dans les backticks, et le helper temporaire de remplissage a été supprimé avant commit. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79) et `workshop-cat-painting` (80) traduits et pushés. **Reste 3 workshops RWD à traduire** (308 fichiers) — prochaine cible `workshop-colored-markers`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
