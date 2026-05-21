@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 10 workshops RWD à traduire, soit 773 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 9 workshops RWD à traduire, soit 729 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form` et `workshop-colorful-boxes` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes` et `workshop-rothko-painting` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -199,16 +199,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-rothko-painting`.
+Prochaine cible recommandée : `workshop-registration-form`.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-rothko-painting
-# traduire et relire tools/translations/workshop-rothko-painting.json
-node tools/translate-workshop.js apply workshop-rothko-painting
-node tools/translate-workshop.js verify workshop-rothko-painting
+node tools/translate-workshop.js extract workshop-registration-form
+# traduire et relire tools/translations/workshop-registration-form.json
+node tools/translate-workshop.js apply workshop-registration-form
+node tools/translate-workshop.js verify workshop-registration-form
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate rothko painting workshop"
+git commit -m "translate registration form workshop"
 git push standalone main
 ```
 
@@ -246,7 +246,6 @@ Ordre recommandé, du plus petit au plus gros :
 
 | Workshop                      | Fichiers |
 | ----------------------------- | -------- |
-| `workshop-rothko-painting`    | 44       |
 | `workshop-registration-form`  | 61       |
 | `workshop-balance-sheet`      | 66       |
 | `workshop-accessibility-quiz` | 67       |
