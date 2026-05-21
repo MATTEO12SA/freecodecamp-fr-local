@@ -17,6 +17,66 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 - réassemble les `.md` FR à partir des fichiers EN ;
 - vérifie automatiquement que seules les zones de prose autorisées ont changé.
 
+## Retour D'Expérience Des Workshops Déjà Traduits
+
+Ce qui a été validé sur les workshops `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano` et `workshop-parent-teacher-conference-form` :
+
+- Le bon rythme est **un workshop complet par tranche** : extraction, traduction JSON, application, vérification, docs, commit, push.
+- Le pipeline fait gagner du temps parce qu'il évite de relire des milliers de lignes de `seed`, `solutions`, asserts et HTML/CSS répétés. Exemple concret : `workshop-parent-teacher-conference-form` a généré 37 fichiers et 5824 lignes FR à partir d'un JSON relu de 1517 lignes.
+- La qualité vient de la relecture humaine du JSON, pas du script. Le script protège la technique ; il ne garantit pas le style, le ton ni la justesse pédagogique.
+- Le premier fichier ajouté d'un nouveau workshop doit apparaître dans `dev-logs/latest.log` avec `watcher.added`, puis `watcher.touched` si le bloc FR n'existait pas encore, puis `challenge.integrating` et `challenge.integrated`.
+- Quand `intro.json` change, `latest.log` doit aussi montrer `intro.changed` puis `intro.integrated`.
+- `client/i18n/locales/french/intro.json` contient souvent deux entrées pour le même workshop : une entrée module et une entrée superblock. Il faut mettre à jour les deux, sinon `/learn` et les vues module peuvent diverger.
+- Les compteurs docs doivent être mis à jour à chaque workshop : nombre de blocs FR, nombre de workshops restants, nombre total de fichiers restants et prochaine cible.
+
+## Ce Qu'Il Faut Faire À Chaque Workshop
+
+- Lire `HANDOFF-TRADUCTIONS.md` avant de commencer pour confirmer la prochaine cible et le contexte.
+- Vérifier que le repo est propre avec `git status --short`.
+- Extraire avec `node tools/translate-workshop.js extract <workshop>`.
+- Traduire **tous** les champs `fr` dans `tools/translations/<workshop>.json`.
+- Relire le JSON comme un vrai texte pédagogique : phrases naturelles, tutoiement, cohérence avec les workshops précédents.
+- Passer `reviewed` à `true` seulement quand aucun champ `fr` n'est vide et que la relecture est faite.
+- Appliquer avec `node tools/translate-workshop.js apply <workshop>`.
+- Vérifier immédiatement avec `node tools/translate-workshop.js verify <workshop>`.
+- Mettre à jour `intro.json` pour le titre et l'intro du workshop.
+- Mettre à jour les docs : `README.md`, `QUICKSTART.md`, `DOCS-FR.md`, `HANDOFF-TRADUCTIONS.md` et ce fichier.
+- Lancer les validations listées plus bas avant commit.
+- Commit + push tout de suite après un workshop terminé.
+
+## Ce Qu'Il Ne Faut Pas Faire
+
+- Ne pas traduire directement les fichiers `.md` FR à la main quand le workshop passe par le pipeline. Le risque est trop élevé de casser un bloc technique ou une fin de ligne.
+- Ne pas modifier `seed-contents`, `solutions`, asserts JS, sélecteurs CSS, IDs, classes, URLs, noms de fichiers, `dashedName`, `challengeType`, `demoType` ou marqueurs `# --...--`.
+- Ne pas traduire une chaîne visible si elle est testée par assertion. Si un hint dit que le texte doit être `Parent Teacher Conference Form`, la chaîne en backticks reste en anglais.
+- Ne pas faire confiance au phrasebook sans relecture. Il accélère les phrases répétitives, mais il peut produire une phrase correcte grammaticalement et mauvaise pédagogiquement.
+- Ne pas utiliser Argos, upstream ou une regex comme source finale. Ces sources peuvent aider à comprendre, mais la livraison doit être relue et harmonisée ici.
+- Ne pas oublier `intro.json`. Un workshop peut être traduit dans le curriculum et rester affiché en anglais dans `/learn` si l'intro n'est pas mise à jour.
+- Ne pas oublier les docs. Sinon le prochain démarrage repart avec de mauvais compteurs ou une mauvaise prochaine cible.
+- Ne pas pousser si `verify`, `lint-challenges`, `git diff --check` ou les tests ciblés échouent.
+- Ne pas prendre un `HTTP 200` sur `/learn` comme preuve suffisante. Il faut aussi vérifier le JSON curriculum, les logs serveur et les validations.
+
+## Style FR À Garder
+
+- Tutoiement partout : `tu`, `ton`, `ta`, `tes`.
+- Privilégier des consignes simples : `Ajoute`, `Définis`, `Cible`, `Assure-toi`, `Crée`.
+- Garder les noms techniques en backticks : `input`, `label`, `fieldset`, `border-radius`, `display`, `::before`.
+- Dire `élément label` plutôt que `un label` quand la phrase parle de HTML, en gardant `label` formaté comme du code dans la traduction.
+- Dire `élément input` ou `champ de formulaire` plutôt que `input` seul dans une phrase générale, en gardant `input` formaté comme du code dans la traduction.
+- Garder les valeurs imposées en anglais dans les backticks si les tests les exigent : `Email: `, `Phone: `, `Parent Teacher Conference Form`.
+- Traduire les titres d'étape en `Étape N`, exactement aligné avec `dashedName: step-N`.
+- Garder les titres de workshops cohérents avec `/learn` : `Créer ...` ou `Construire ...`, mais ne pas mélanger plusieurs versions pour le même bloc.
+
+## Pièges Techniques Déjà Rencontrés
+
+- Les fichiers EN peuvent contenir des lignes vides finales dans des sections techniques. `git diff --check` refuse parfois ces lignes sur de nouveaux fichiers. Le script normalise maintenant les espaces blancs copiés et les retours ligne finaux non sémantiques.
+- Une réécriture PowerShell peut convertir des fichiers en CRLF ou retirer un espace technique volontaire. Si `verify` échoue après une correction mécanique, régénérer avec `apply`, puis corriger le script si nécessaire plutôt que bricoler les `.md`.
+- Un `verify` qui échoue sur `section technique ... modifiee` signifie qu'il faut inspecter les espaces, fins de ligne ou blocs copiés, pas seulement la prose.
+- `prettier --write` ne traite pas forcément les `.md` de curriculum comme attendu si le glob PowerShell ne matche pas. Toujours garder `verify` et `git diff --check` comme garde-fous finaux.
+- `latest.log` peut montrer seulement le premier fichier ajouté d'un bloc, puis des changements ultérieurs. C'est normal : le signal important est la chaîne `watcher.added` → `challenge.integrating` → `challenge.integrated`.
+- Le serveur peut être UP sans que les données statiques soient reconstruites. Pour une vérification locale robuste, lancer `pnpm -C curriculum build` puis `pnpm -C client create:external-curriculum`.
+- Les pages existent parfois sous deux chemins : `/learn/responsive-web-design-v9/...` et `/learn/<module>/...`. Tester au moins le chemin superblock du workshop traduit.
+
 ## Règle De Qualité
 
 - Tutoiement partout : « tu », jamais « vous ».
@@ -148,7 +208,7 @@ node tools/translate-workshop.js apply workshop-colorful-boxes
 node tools/translate-workshop.js verify workshop-colorful-boxes
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate parent teacher conference form workshop"
+git commit -m "translate colorful boxes workshop"
 git push standalone main
 ```
 
@@ -160,6 +220,8 @@ Après chaque workshop :
 pnpm exec prettier --check tools/translate-workshop.js tools/translations/phrasebook.json
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 node tools/translate-workshop.js verify <workshop>
+pnpm -C client test catalog
+pnpm lint-root
 git diff --check
 ```
 
