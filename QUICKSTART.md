@@ -96,19 +96,19 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Le Prochain Workshop
 
-Etat actuel RWD v9 : 153 blocs FR sur 158. Il reste 5 workshops, 467 fichiers. Prochaine cible recommandee : `workshop-magazine`.
+Etat actuel RWD v9 : 154 blocs FR sur 158. Il reste 4 workshops, 388 fichiers. Prochaine cible recommandee : `workshop-cat-painting`.
 
 Workflow rapide mais relu manuellement :
 
 ```powershell
-node tools/translate-workshop.js extract workshop-magazine
+node tools/translate-workshop.js extract workshop-cat-painting
 ```
 
-Traduis et relis `tools/translations/workshop-magazine.json`, puis applique :
+Traduis et relis `tools/translations/workshop-cat-painting.json`, puis applique :
 
 ```powershell
-node tools/translate-workshop.js apply workshop-magazine
-node tools/translate-workshop.js verify workshop-magazine
+node tools/translate-workshop.js apply workshop-cat-painting
+node tools/translate-workshop.js verify workshop-cat-painting
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 
@@ -117,7 +117,7 @@ Le script ne traduit pas a ta place : il protege le code, les tests, les seeds e
 Controle qualite rapide avant `apply` :
 
 ```powershell
-rg -n '"fr": ""|undefined|Hint non traduit|should|Your|The |the |matching the| a doit| un règle' tools/translations/workshop-magazine.json
+rg -n '"fr": ""|undefined|Hint non traduit|should|Your|The |the |matching the| a doit| un règle' tools/translations/workshop-cat-painting.json
 ```
 
 Si un helper temporaire a servi a pre-remplir le JSON, supprime-le avant commit. Seuls le JSON relu, les `.md` FR, les docs et les changements de tooling maintenus doivent etre pushés.

@@ -87,7 +87,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Les gros workshops CSS non prioritaires restent en contenu d'origine tant qu'ils ne sont pas traduits.
 
-Etat actuel RWD v9 : 153 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz` et `workshop-nutritional-label` sont traduits. Il reste 5 workshops, soit 467 fichiers.
+Etat actuel RWD v9 : 154 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label` et `workshop-magazine` sont traduits. Il reste 4 workshops, soit 388 fichiers.
 
 Pour continuer les workshops sans toucher au code technique :
 
@@ -98,7 +98,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. La prochaine cible recommandee est `workshop-magazine`.
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. La prochaine cible recommandee est `workshop-cat-painting`.
 
 ## Validation
 
