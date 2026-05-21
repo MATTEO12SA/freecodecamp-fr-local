@@ -300,22 +300,6 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       </section>
                     )}
 
-                    <div className='cours-fr-exam-cta'>
-                      <a
-                        className='cours-fr-folder-card cours-fr-exam-card'
-                        href={`/exam-fr?cert=${encodeURIComponent(cert.key)}`}
-                      >
-                        <span className='cours-fr-folder-icon'>🎓</span>
-                        <span className='cours-fr-folder-label'>
-                          Passer l&apos;examen en français
-                        </span>
-                        <span className='cours-fr-folder-sub'>
-                          Quiz de 80 questions tirées des quizzes traduits de
-                          cette certification.
-                        </span>
-                      </a>
-                    </div>
-
                     {!structure ? (
                       <div className='cours-fr-empty'>
                         🚧 Structure de certification introuvable.
