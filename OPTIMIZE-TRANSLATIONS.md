@@ -6,9 +6,9 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 1 workshop RWD à traduire, soit 115 fichiers. Ces fichiers contiennent beaucoup de code HTML/CSS/JS répété dans les sections `seed`, `solutions` et `hints`.
+Il reste 0 workshop RWD à traduire. Les 16 workshops RWD sont maintenant passés par le pipeline et ont été relus.
 
-Les premiers passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers` et `workshop-flappy-penguin` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
+Les passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
 Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un pipeline qui :
 
@@ -19,7 +19,7 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 
 ## Retour D'Expérience Des Workshops Déjà Traduits
 
-Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'à `workshop-flappy-penguin` :
+Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'à `workshop-city-skyline` :
 
 - Le bon rythme est **un workshop complet par tranche** : extraction, traduction JSON, application, vérification, docs, commit, push.
 - Le pipeline fait gagner du temps parce qu'il évite de relire des milliers de lignes de `seed`, `solutions`, asserts et HTML/CSS répétés. Exemples concrets : `workshop-parent-teacher-conference-form` a généré 37 fichiers et 5824 lignes FR à partir d'un JSON relu de 1517 lignes ; `workshop-registration-form` a généré 61 fichiers en ne traduisant que 322 chaînes de prose.
@@ -33,6 +33,7 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - `client/i18n/locales/french/intro.json` contient souvent deux entrées pour le même workshop : une entrée module et une entrée superblock. Il faut mettre à jour les deux, sinon `/learn` et les vues module peuvent diverger.
 - Les compteurs docs doivent être mis à jour à chaque workshop : nombre de blocs FR, nombre de workshops restants, nombre total de fichiers restants et prochaine cible.
 - Le hook `.husky/pre-push` doit garder `xargs -n 50`. Sans découpage, Windows peut échouer avec "ligne de commande trop longue" quand un workshop ajoute 60+ fichiers.
+- `workshop-city-skyline` a confirmé un piège des helpers temporaires : les remplacements trop larges comme `utilise -> utilisé` cassent des verbes au présent (`qui utilise`, `elle utilise`). Les corrections doivent être ciblées, puis rescannees sur un échantillon de plusieurs étapes.
 
 ## Ce Qu'Il Faut Faire À Chaque Workshop
 
@@ -231,16 +232,16 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-Prochaine cible recommandée : `workshop-city-skyline`.
+RWD est terminé : 158 blocs FR sur 158, 0 workshop restant. Pour la suite, passer à JavaScript v9 ou attendre les instructions utilisateur.
 
 ```powershell
-node tools/translate-workshop.js extract workshop-city-skyline
-# traduire et relire tools/translations/workshop-city-skyline.json
-node tools/translate-workshop.js apply workshop-city-skyline
-node tools/translate-workshop.js verify workshop-city-skyline
+node tools/translate-workshop.js extract <workshop>
+# traduire et relire tools/translations/<workshop>.json
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 git diff --check
-git commit -m "translate city skyline workshop"
+git commit -m "translate <workshop-name> workshop"
 git push standalone main
 ```
 
@@ -272,13 +273,7 @@ Les lignes attendues sont :
 
 ## Workshops Restants
 
-Avancer workshop par workshop, avec commit + push à chaque fin de workshop.
-
-Ordre recommandé, du plus petit au plus gros :
-
-| Workshop                | Fichiers |
-| ----------------------- | -------- |
-| `workshop-city-skyline` | 115      |
+Aucun workshop RWD restant.
 
 ## Ce Qu'On N'Utilise Pas Comme Source Finale
 

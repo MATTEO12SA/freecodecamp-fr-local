@@ -94,21 +94,21 @@ Select-String -Path dev-logs\latest.log -Pattern "watcher.touched" | Select-Obje
 
 Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <name>)`. Puis `success Re-building development bundle - <X>s` dans `dev-logs/client.stdout.log`. Le filtre `/catalog` et le badge `/cours-fr` se mettent a jour live.
 
-## Traduire Le Prochain Workshop
+## Traduire Un Prochain Bloc
 
-Etat actuel RWD v9 : 157 blocs FR sur 158. Il reste 1 workshop, 115 fichiers. Prochaine cible recommandee : `workshop-city-skyline`.
+Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. Pour continuer, passer a JavaScript v9 ou attendre la prochaine priorite utilisateur.
 
 Workflow rapide mais relu manuellement :
 
 ```powershell
-node tools/translate-workshop.js extract workshop-city-skyline
+node tools/translate-workshop.js extract <workshop>
 ```
 
-Traduis et relis `tools/translations/workshop-city-skyline.json`, puis applique :
+Traduis et relis `tools/translations/<workshop>.json`, puis applique :
 
 ```powershell
-node tools/translate-workshop.js apply workshop-city-skyline
-node tools/translate-workshop.js verify workshop-city-skyline
+node tools/translate-workshop.js apply <workshop>
+node tools/translate-workshop.js verify <workshop>
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 
@@ -117,7 +117,7 @@ Le script ne traduit pas a ta place : il protege le code, les tests, les seeds e
 Controle qualite rapide avant `apply` :
 
 ```powershell
-rg -n '"fr": ""|undefined|Hint non traduit|should|Your|The |the |matching the|but found| a doit| un règle' tools/translations/workshop-city-skyline.json
+rg -n '"fr": ""|undefined|Hint non traduit|should|Your|The |the |matching the|but found| a doit| un règle' tools/translations/<workshop>.json
 ```
 
 Si un helper temporaire a servi a pre-remplir le JSON, supprime-le avant commit. Seuls le JSON relu, les `.md` FR, les docs et les changements de tooling maintenus doivent etre pushés.

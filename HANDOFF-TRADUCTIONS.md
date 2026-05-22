@@ -6,7 +6,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : `c:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : Traduire le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp en français. Les autres certifications (JS, Python, BDD, Back-End, Front-End Libs, Full-Stack) sont prévues mais commenceront seulement après que RWD soit 100% terminé.
+- **Objectif** : Le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp est traduit en français. Prochaine suite logique : JavaScript v9, ou attendre les instructions utilisateur avant d'ouvrir une autre certification.
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
@@ -14,11 +14,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### RWD v9 — Contenu Pédagogique Complet ✅
 
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert et titres + intros dans `intro.json` sont traduits.** 157 blocs FR sur 158 totaux (~99%).
+**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert, titres + intros dans `intro.json` et workshops sont traduits.** 158 blocs FR sur 158 totaux (100%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### RWD v9 — Reste À Traduire : 1 Workshop (115 fichiers)
+### RWD v9 — Workshops Traduits : 16/16 ✅
 
 Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
 
@@ -40,7 +40,7 @@ Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls,
 | workshop-cat-painting                   | 80       | ✅ done |
 | workshop-colored-markers                | 89       | ✅ done |
 | workshop-flappy-penguin                 | 104      | ✅ done |
-| workshop-city-skyline                   | 115      | pending |
+| workshop-city-skyline                   | 115      | ✅ done |
 
 Pour vérifier en live :
 
@@ -129,7 +129,7 @@ title: 'Quand devrais-tu utiliser appearance: none pour...'
 
 ## Workflow Type Par Workshop
 
-Pour les workshops RWD restants, utiliser le pipeline ajoute dans `tools/translate-workshop.js`. Il evite de recopier les blocs techniques et verifie automatiquement que code/tests/seeds restent intacts.
+Pour les gros workshops futurs, utiliser le pipeline ajoute dans `tools/translate-workshop.js`. Il evite de recopier les blocs techniques et verifie automatiquement que code/tests/seeds restent intacts.
 
 ```powershell
 # 1. Extraire uniquement la prose a traduire
@@ -229,7 +229,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Prochaine cible recommandee : `workshop-city-skyline`.
+RWD est termine. Prochaine suite logique : JavaScript v9, ou attendre les instructions utilisateur.
 
 ### Lister ce qui manque dans un module
 
@@ -252,9 +252,9 @@ done
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer les workshops RWD restants dans l'ordre du tableau, du plus petit au plus grand.
-4. À la fin de chaque workshop : commit + push immédiats.
-5. Quand RWD = 158/158 : passer à JavaScript v9, ou attendre les instructions utilisateur.
+3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
+4. Pour une nouvelle certification, reprendre le même pipeline si le bloc est un workshop step-by-step.
+5. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock
 
@@ -267,4 +267,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : `workshop-flappy-penguin` (104 fichiers) finalisé via pipeline et pushé après une traduction manuelle complète du JSON (430 chaînes relues : 120 descriptions + 310 hints). Les valeurs testées comme `Flappy Penguin`, `I CSS`, `--penguin-picorna`, `--penguin-skin`, sélecteurs CSS, classes et propriétés CSS sont restées intactes dans les backticks, les deux entrées `intro.json` du workshop ont été traduites, et le helper temporaire de remplissage a été supprimé avant commit. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79), `workshop-cat-painting` (80), `workshop-colored-markers` (89) et `workshop-flappy-penguin` (104) traduits et pushés. **Reste 1 workshop RWD à traduire** (115 fichiers) — prochaine cible `workshop-city-skyline`. Une fois RWD à 158/158, passer à JS v9 ou attendre l'utilisateur.
+**Dernière session** : `workshop-city-skyline` (115 fichiers) finalisé via pipeline après une traduction complète du JSON (512 chaînes relues : 127 descriptions + 385 hints). Les valeurs testées comme `--building-color1`, `--window-color1`, `background`, `linear-gradient`, sélecteurs CSS, classes et propriétés CSS sont restées intactes dans les backticks, les deux entrées `intro.json` du workshop ont été traduites, et le helper temporaire de remplissage a été supprimé avant commit. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79), `workshop-cat-painting` (80), `workshop-colored-markers` (89), `workshop-flappy-penguin` (104) et `workshop-city-skyline` (115) traduits. **RWD v9 est terminé : 158/158 blocs FR, 0 workshop restant.**
