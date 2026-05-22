@@ -54,7 +54,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Etat actuel : 156 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting` et `workshop-colored-markers` sont traduits. Il reste 2 workshops, soit 219 fichiers.
+Responsive Web Design v9 est la priorite. Le contenu pedagogique prioritaire est traduit : chapitre HTML complet, `computer-basics`, les modules CSS pedagogiques, les labs autonomes, les revisions, les quiz et l'examen RWD. Etat actuel : 157 blocs FR sur 158. Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers` et `workshop-flappy-penguin` sont traduits. Il reste 1 workshop, soit 115 fichiers.
 
 Regles de traduction :
 
@@ -82,11 +82,11 @@ Regles specifiques au pipeline :
 - Le script normalise seulement les espaces blancs non semantiques des fichiers generes pour eviter les echecs `git diff --check`.
 - Le phrasebook `tools/translations/phrasebook.json` aide sur les hints repetitifs, mais chaque phrase doit etre relue.
 - Les helpers temporaires de remplissage sont autorises pendant un workshop, mais ils ne doivent pas etre commit. Ils servent a accelerer, pas a valider.
-- Avant `apply`, scanner le JSON contre les restes anglais ou hybrides : `undefined`, `Hint non traduit`, `should`, `Your`, `The`, `the`, `matching the`, `a doit`, `un règle`. Les valeurs techniques en backticks peuvent rester en anglais si les tests les exigent.
+- Avant `apply`, scanner le JSON contre les restes anglais ou hybrides : `undefined`, `Hint non traduit`, `should`, `Your`, `The`, `the`, `matching the`, `but found`, `a doit`, `un règle`. Les valeurs techniques en backticks peuvent rester en anglais si les tests les exigent.
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Prochaine cible recommandee : `workshop-flappy-penguin`.
+Prochaine cible recommandee : `workshop-city-skyline`.
 
 ## Scripts Gardes
 
@@ -123,7 +123,7 @@ Pour voir en direct quand le serveur est pret et quand Gatsby integre les traduc
 Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
 ```
 
-Les lignes `status.up` dans `latest.log` confirment que Gatsby repond sur `http://localhost:8000`. Les lignes `watcher.changed` et `watcher.added` confirment que le watcher a vu un `.md` FR modifie ou ajoute. Les lignes `challenge.integrating` puis `challenge.integrated` confirment que Gatsby a lance puis termine la reintegration de la page.
+Les lignes `status.up` dans `latest.log` confirment que Gatsby repond sur `http://localhost:8000`. Le watcher teste maintenant l'URL HTTP avant le fallback TCP, parce que Gatsby peut ecouter seulement sur `::1` sous Windows alors que `127.0.0.1:8000` refuse la connexion. Les lignes `watcher.changed` et `watcher.added` confirment que le watcher a vu un `.md` FR modifie ou ajoute. Les lignes `challenge.integrating` puis `challenge.integrated` confirment que Gatsby a lance puis termine la reintegration de la page.
 
 Pour les changements de `client/i18n/locales/french/intro.json`, surveille aussi `intro.integrating` et `intro.integrated` :
 

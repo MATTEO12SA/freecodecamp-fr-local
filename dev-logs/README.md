@@ -23,7 +23,7 @@ Pour suivre le serveur et les traductions dans le log principal :
 Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
 ```
 
-- `status.up` : Gatsby repond sur `http://localhost:8000`.
+- `status.up` : Gatsby repond sur `http://localhost:8000`. Le watcher teste d'abord l'URL HTTP, puis le port TCP en fallback, parce que Gatsby peut ecouter sur `::1` sous Windows.
 - `watcher.ready` : le watcher de traductions est arme.
 - `watcher.changed` : un `.md` FR existant a ete modifie.
 - `watcher.added` : un nouveau `.md` FR a ete detecte.
@@ -45,6 +45,8 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
 
 Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere ligne `status.down`. Dans ce cas, relance simplement `.\dev.ps1` : `latest.log` et `status.json` sont recrees au debut du lancement.
+
+Si le navigateur ouvre `http://localhost:8000` mais que `status.json` reste en `STARTING` ou passe en `ERROR`, verifier que `dev.ps1` contient bien le probe HTTP dans `Start-PortStatusWatcher`. L'ancien test TCP seul pouvait rater Gatsby quand le port 8000 etait ouvert uniquement sur IPv6 (`::1`).
 
 ## Pendant Une Traduction De Workshop
 

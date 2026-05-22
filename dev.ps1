@@ -276,10 +276,25 @@ param(
 function Test-LoopbackPort {
     param([string]$HostName, [int]$Port)
 
+    foreach ($loopbackUrl in @("http://$HostName`:$Port/", "http://localhost`:$Port/")) {
+        try {
+            $response = Invoke-WebRequest -UseBasicParsing -Uri $loopbackUrl -TimeoutSec 2
+            if ($response.StatusCode -ge 200 -and $response.StatusCode -lt 600) {
+                return $true
+            }
+        } catch {
+            # Try the TCP fallback below.
+        }
+    }
+
     foreach ($loopbackHost in @($HostName, "localhost", "127.0.0.1", "::1")) {
         $tcpClient = $null
         try {
-            $tcpClient = New-Object System.Net.Sockets.TcpClient
+            if ($loopbackHost -like "*:*") {
+                $tcpClient = [System.Net.Sockets.TcpClient]::new([System.Net.Sockets.AddressFamily]::InterNetworkV6)
+            } else {
+                $tcpClient = New-Object System.Net.Sockets.TcpClient
+            }
             $connectTask = $tcpClient.ConnectAsync($loopbackHost, $Port)
             if ($connectTask.Wait(1000) -and $tcpClient.Connected) {
                 return $true
