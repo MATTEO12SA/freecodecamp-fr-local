@@ -6,7 +6,7 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Il reste 0 workshop RWD à traduire. Les 16 workshops RWD sont maintenant passés par le pipeline et ont été relus.
+Il reste 0 workshop RWD à traduire. Les 17 workshops RWD listés dans le tableau du HANDOFF sont maintenant traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
 
 Les passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
