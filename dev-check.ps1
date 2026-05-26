@@ -65,13 +65,18 @@ function Get-ServerCheck {
     $portOpen = Test-Port -Port $Port
     $httpStatus = if ($portOpen) { Test-Http -Port $Port } else { 0 }
 
+    # La verite vient du port + HTTP. status.json peut mentir (zombie apres
+    # crash) ou etre prematurement UP pendant que Gatsby ecrit les page-data.
     $verdict = if ($portOpen -and $httpStatus -gt 0) {
         'UP'
     } elseif ($portOpen) {
         'PORT_OPEN_NO_HTTP'
-    } elseif ($nodes.Count -gt 0 -and $reportedStatus -in @('STARTING')) {
+    } elseif ($nodes.Count -gt 0) {
+        # Au moins un node tourne -> Gatsby est encore en train de bosser,
+        # peu importe ce que status.json annonce. C'est du STARTING reel.
         'STARTING'
-    } elseif ($reportedStatus -in @('UP', 'STARTING') -and $nodes.Count -eq 0) {
+    } elseif ($reportedStatus -in @('UP', 'STARTING')) {
+        # status.json dit UP/STARTING mais plus aucun node ne tourne -> zombie.
         'ZOMBIE'
     } else {
         'DOWN'
