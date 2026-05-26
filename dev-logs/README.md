@@ -48,6 +48,17 @@ Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere l
 
 Si le navigateur ouvre `http://localhost:8000` mais que `status.json` reste en `STARTING` ou passe en `ERROR`, verifier que `dev.ps1` contient bien le probe HTTP dans `Start-PortStatusWatcher`. L'ancien test TCP seul pouvait rater Gatsby quand le port 8000 etait ouvert uniquement sur IPv6 (`::1`).
 
+### Verifier Sans Faire Confiance A `status.json`
+
+`status.json` peut rester figé en `STARTING` ou `UP` apres un crash (process node morts mais le fichier n'a pas eu le temps d'etre mis a jour) ; il peut aussi annoncer `UP` pendant qu'un rebuild Gatsby ferme temporairement le port. Pour un verdict reel :
+
+```powershell
+.\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN / PORT_OPEN_NO_HTTP
+.\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
+```
+
+Le script ne se fie pas a `status.json` : il combine processus node + port TCP 8000 + HTTP HEAD `/`. Il detecte explicitement le cas `ZOMBIE` (status dit UP mais plus aucun node ne tourne).
+
 ## Pendant Une Traduction De Workshop
 
 Quand `node tools/translate-workshop.js apply <workshop>` cree des `.md` FR pendant que le serveur tourne, `latest.log` doit montrer le cycle suivant :

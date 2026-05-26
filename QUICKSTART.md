@@ -70,6 +70,24 @@ dev-logs/errors.log
 
 Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`. Regarde `errors.log` pour les avertissements et erreurs resumes.
 
+### Verifier Que Le Serveur Est Vraiment UP
+
+`status.json` peut mentir : crash brutal sans cleanup (reste figé en `STARTING` ou `UP`), ou rebuild Gatsby qui ferme temporairement le port 8000. Pour un check fiable :
+
+```powershell
+.\dev-check.ps1                    # snapshot instantane
+.\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
+.\dev-check.ps1 -Quiet             # n'affiche que le verdict final
+```
+
+Le script combine `status.json` + processus node + port TCP + HTTP HEAD `/`. Verdicts possibles :
+
+- `UP` : port 8000 ouvert ET HTTP repond. Exit 0.
+- `STARTING` : au moins un process node tourne mais le port n'est pas pret. Exit 3.
+- `ZOMBIE` : `status.json` dit UP/STARTING mais aucun process node. Crash sans cleanup. Exit 2.
+- `DOWN` : aucun process, status DOWN. Exit 1.
+- `PORT_OPEN_NO_HTTP` : port ouvert mais HTTP rejette. Cas rare.
+
 Ouvre ensuite :
 
 ```text

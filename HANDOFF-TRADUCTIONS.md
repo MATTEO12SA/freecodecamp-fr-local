@@ -215,6 +215,15 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 
 `watcher.touched` indique que `has-french-intro.ts` a été touché car un nouveau block a apparu — Webpack va rebuild et l'UI catalog/cours-fr se met à jour live.
 
+**Pour un vrai check serveur** (au-delà de `status.json` qui peut mentir après crash ou rebuild) :
+
+```powershell
+.\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN
+.\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'à UP
+```
+
+Le script combine processus node + port TCP 8000 + HTTP HEAD `/`. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
+
 ### Vérifier un push
 
 ```bash
@@ -267,4 +276,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : `workshop-city-skyline` (115 fichiers) finalisé via pipeline après une traduction complète du JSON (512 chaînes relues : 127 descriptions + 385 hints). Les valeurs testées comme `--building-color1`, `--window-color1`, `background`, `linear-gradient`, sélecteurs CSS, classes et propriétés CSS sont restées intactes dans les backticks, les deux entrées `intro.json` du workshop ont été traduites, et le helper temporaire de remplissage a été supprimé avant commit. Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79), `workshop-cat-painting` (80), `workshop-colored-markers` (89), `workshop-flappy-penguin` (104) et `workshop-city-skyline` (115) traduits. **RWD v9 est terminé : 158/158 blocs FR, 0 workshop restant.**
+**Dernière session** : nettoyage post-RWD. Compteur HANDOFF corrigé de `16/16` à `17/17` (cohérent avec le tableau des workshops). OPTIMIZE-TRANSLATIONS clarifié : 17 workshops listés, dont 15 passés par le pipeline (game-settings-panel et flexbox-photo-gallery faits avant). Ajout de [dev-check.ps1](dev-check.ps1), un script qui vérifie le **vrai** état du serveur (processus node + port 8000 + HTTP HEAD), parce que `dev-logs/status.json` peut mentir : reste figé en `STARTING` ou `UP` après un crash sans cleanup (cas observé : status zombie pendant 2 jours après extinction PC), ou annonce `UP` pendant qu'un rebuild Gatsby ferme temporairement le port. Le script supporte `-Wait` pour boucler jusqu'à UP, et distingue explicitement `STARTING` réel (nodes vivants, port pas encore ouvert) de `ZOMBIE` (status dit UP mais plus aucun node). Docs README, QUICKSTART, dev-logs/README et ce fichier mentionnent maintenant `dev-check.ps1`. État précédent : `workshop-city-skyline` (115 fichiers) finalisé via pipeline après une traduction complète du JSON (512 chaînes relues : 127 descriptions + 385 hints). Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79), `workshop-cat-painting` (80), `workshop-colored-markers` (89), `workshop-flappy-penguin` (104) et `workshop-city-skyline` (115) traduits. **RWD v9 est terminé : 158/158 blocs FR, 0 workshop restant.**

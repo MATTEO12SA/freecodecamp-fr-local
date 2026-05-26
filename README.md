@@ -35,7 +35,14 @@ dev-logs/latest.log
 dev-logs/errors.log
 ```
 
-`status.json` indique le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.
+`status.json` indique le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`. Attention : il peut mentir en cas de crash sans cleanup, ou pendant un rebuild Gatsby qui ferme temporairement le port. Pour un vrai check :
+
+```powershell
+.\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN
+.\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP
+```
+
+Le script combine `status.json` + process node + port 8000 + HTTP HEAD. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
 
 Pour suivre en direct quand le serveur est prêt et quand Gatsby intègre les traductions :
 
@@ -85,7 +92,7 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops CSS.
+Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock.
 
 Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
