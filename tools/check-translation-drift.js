@@ -37,17 +37,51 @@ const frBlocksDir = path.join(
 
 const onlyBlock = process.argv[2] || null;
 
-function lastCommitTimestamp(filePath) {
+function normalizeGitPath(filePath) {
+  return filePath.replace(/\\/g, '/');
+}
+
+function buildLastCommitMap() {
+  const map = new Map();
+  let output = '';
   try {
-    const out = execFileSync(
+    output = execFileSync(
       'git',
-      ['log', '-1', '--format=%cI', '--', filePath],
+      [
+        'log',
+        '--format=@@%cI',
+        '--name-only',
+        '--',
+        'curriculum/challenges/english/blocks',
+        'curriculum/i18n-curriculum/curriculum/challenges/french/blocks'
+      ],
       { cwd: rootDir, encoding: 'utf8' }
     ).trim();
-    return out ? new Date(out).getTime() : null;
   } catch {
-    return null;
+    return map;
   }
+
+  let currentTime = null;
+  for (const line of output.split('\n')) {
+    if (!line) continue;
+    if (line.startsWith('@@')) {
+      currentTime = new Date(line.slice(2)).getTime();
+      continue;
+    }
+
+    const normalized = normalizeGitPath(line);
+    if (currentTime !== null && !map.has(normalized)) {
+      map.set(normalized, currentTime);
+    }
+  }
+
+  return map;
+}
+
+const lastCommitMap = buildLastCommitMap();
+
+function lastCommitTimestamp(filePath) {
+  return lastCommitMap.get(normalizeGitPath(path.relative(rootDir, filePath)));
 }
 
 function listMdFiles(dir) {

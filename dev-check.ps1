@@ -115,7 +115,8 @@ function Write-Verdict {
         default    { 'Yellow' }
     }
     Write-Host "Verdict          : $($Check.Verdict)" -ForegroundColor $color
-    Write-Host "status.json      : $($Check.ReportedStatus) (mis a jour il y a $($Check.ReportedAgeMin) min)"
+    $ageText = if ($null -eq $Check.ReportedAgeMin) { "inconnu" } else { "$($Check.ReportedAgeMin) min" }
+    Write-Host "status.json      : $($Check.ReportedStatus) (mis a jour il y a $ageText)"
     Write-Host "Process node     : $($Check.NodeProcesses)"
     Write-Host "Port $Port ouvert : $($Check.PortOpen)"
     Write-Host "HTTP /           : $($Check.HttpStatus)"
