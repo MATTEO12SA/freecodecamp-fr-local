@@ -56,6 +56,8 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock. Etat actuel : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
+JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers, 2 blocs FR sur 230). Les lectures JS utilisent les sections `interactive`, `questions`, `answers` et `feedback`; elles doivent rester manuelles tant que le pipeline workshop ne couvre pas ces sections.
+
 Regles de traduction :
 
 - Ne jamais traduire les tests, selecteurs, variables, URLs techniques et chaines exigees par les tests.
@@ -86,7 +88,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-RWD est termine. Prochaine suite logique : JavaScript v9 ou attendre les instructions utilisateur.
+RWD est termine. Suite en cours : JavaScript v9, prochain bloc logique `lecture-understanding-code-clarity`.
 
 ## Scripts Gardes
 

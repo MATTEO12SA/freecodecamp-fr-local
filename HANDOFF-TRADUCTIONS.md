@@ -6,7 +6,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : `c:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : Le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp est traduit en français. Prochaine suite logique : JavaScript v9, ou attendre les instructions utilisateur avant d'ouvrir une autre certification.
+- **Objectif** : Le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp est traduit en français. La suite est maintenant `javascript-v9`, demarree par les blocs `lecture-introduction-to-javascript` et `lecture-introduction-to-strings`.
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
@@ -17,6 +17,12 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 **Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert, titres + intros dans `intro.json` et workshops sont traduits.** 158 blocs FR sur 158 totaux (100%).
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
+
+### JavaScript v9 — Démarré
+
+État actuel : 2 blocs FR sur 230. Blocs traduits : `lecture-introduction-to-javascript` (4 fichiers) et `lecture-introduction-to-strings` (3 fichiers). Prochaine cible logique : `lecture-understanding-code-clarity`.
+
+Attention : les lectures JS utilisent surtout `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Le pipeline `tools/translate-workshop.js` ne couvre pas encore ces sections; traduire ces blocs manuellement et verifier que les blocs de code restent verbatim.
 
 ### RWD v9 — Workshops Traduits : 17/17 ✅
 
@@ -238,7 +244,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Prochaine suite logique : JavaScript v9, ou attendre les instructions utilisateur.
+RWD est termine. Suite en cours : JavaScript v9. Prochaine cible recommandee : `lecture-understanding-code-clarity`.
 
 ### Lister ce qui manque dans un module
 
@@ -262,8 +268,9 @@ done
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Pour une nouvelle certification, reprendre le même pipeline si le bloc est un workshop step-by-step.
-5. Commit + push immédiats à la fin de chaque module.
+4. Continuer JavaScript v9 avec `lecture-understanding-code-clarity`.
+5. Pour un workshop step-by-step, reprendre le pipeline `extract/apply/verify`; pour une lecture `interactive/questions`, traduire manuellement.
+6. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock
 
@@ -276,4 +283,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : nettoyage post-RWD. Compteur HANDOFF corrigé de `16/16` à `17/17` (cohérent avec le tableau des workshops). OPTIMIZE-TRANSLATIONS clarifié : 17 workshops listés, dont 15 passés par le pipeline (game-settings-panel et flexbox-photo-gallery faits avant). Ajout de [dev-check.ps1](dev-check.ps1), un script qui vérifie le **vrai** état du serveur (processus node + port 8000 + HTTP HEAD), parce que `dev-logs/status.json` peut mentir : reste figé en `STARTING` ou `UP` après un crash sans cleanup (cas observé : status zombie pendant 2 jours après extinction PC), ou annonce `UP` pendant qu'un rebuild Gatsby ferme temporairement le port. Le script supporte `-Wait` pour boucler jusqu'à UP, et distingue explicitement `STARTING` réel (nodes vivants, port pas encore ouvert) de `ZOMBIE` (status dit UP mais plus aucun node). Docs README, QUICKSTART, dev-logs/README et ce fichier mentionnent maintenant `dev-check.ps1`. État précédent : `workshop-city-skyline` (115 fichiers) finalisé via pipeline après une traduction complète du JSON (512 chaînes relues : 127 descriptions + 385 hints). Workshops `workshop-game-settings-panel` (16), `workshop-flexbox-photo-gallery` (22), `workshop-greeting-card` (27), `workshop-ferris-wheel` (29), `workshop-piano` (31), `workshop-parent-teacher-conference-form` (37), `workshop-colorful-boxes` (43), `workshop-rothko-painting` (44), `workshop-registration-form` (61), `workshop-balance-sheet` (66), `workshop-accessibility-quiz` (67), `workshop-nutritional-label` (68), `workshop-magazine` (79), `workshop-cat-painting` (80), `workshop-colored-markers` (89), `workshop-flappy-penguin` (104) et `workshop-city-skyline` (115) traduits. **RWD v9 est terminé : 158/158 blocs FR, 0 workshop restant.**
+**Dernière session** : serveur relance avec `.\dev.ps1` après detection d'un status zombie (`status.json` disait UP mais `localhost:8000` refusait la connexion). Gatsby est revenu UP et `latest.log` montre `status.up`. Ajout de [TOOLS-REPORT.md](TOOLS-REPORT.md), rapport complet sur le dossier `tools`. JavaScript v9 demarre : `lecture-introduction-to-javascript` traduit (4 fichiers) et `lecture-introduction-to-strings` traduit (3 fichiers), `intro.json` mis a jour pour la cert JavaScript et les blocs. RWD reste termine : 158/158 blocs FR, 0 workshop restant. Prochaine cible : `lecture-understanding-code-clarity`.

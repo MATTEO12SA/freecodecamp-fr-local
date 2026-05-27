@@ -96,6 +96,8 @@ Responsive Web Design v9 est la priorite et il est maintenant entierement tradui
 
 Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
+JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers au total, 2 blocs FR sur 230). Les lectures JS utilisent `interactive/questions`, donc elles sont traduites manuellement tant que le pipeline workshop ne gere pas ces sections.
+
 Pour continuer les workshops sans toucher au code technique :
 
 ```powershell
@@ -105,7 +107,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `but found`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. RWD est termine ; prochaine suite logique : JavaScript v9 ou attendre les instructions utilisateur.
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `but found`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. Pour les lectures JavaScript v9, traduire manuellement et verifier que les blocs de code restent identiques.
 
 ## Validation
 
@@ -135,6 +137,7 @@ full-flow-test.mjs
 - `HANDOFF-TRADUCTIONS.md` : etat exact des traductions et prochaine cible.
 - `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
 - `dev-logs/README.md` : lecture des logs serveur et des events de traduction.
+- `TOOLS-REPORT.md` : role des scripts et dossiers sous `tools/`.
 
 ## GitHub
 

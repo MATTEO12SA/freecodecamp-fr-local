@@ -114,7 +114,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. Pour continuer, passer a JavaScript v9 ou attendre la prochaine priorite utilisateur.
+Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. JavaScript v9 est demarre avec `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` traduits (7 fichiers, 2 blocs FR sur 230).
 
 Workflow rapide mais relu manuellement :
 
@@ -130,7 +130,7 @@ node tools/translate-workshop.js verify <workshop>
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 
-Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`.
+Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`. Pour les lectures JS en `interactive/questions`, traduire manuellement tant que le script n'est pas etendu a ces sections.
 
 Controle qualite rapide avant `apply` :
 
