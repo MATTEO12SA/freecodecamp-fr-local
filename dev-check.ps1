@@ -7,6 +7,8 @@
 #   .\dev-check.ps1 -Wait            # boucle jusqu'a UP (timeout 5 min par defaut)
 #   .\dev-check.ps1 -Wait -Timeout 600  # boucle 10 min max
 #   .\dev-check.ps1 -Quiet           # n'affiche que le verdict final
+#   .\dev-check.ps1 -Open            # ouvre /cours-fr dans le navigateur des que UP
+#   .\dev-check.ps1 -Wait -Open      # attend UP puis ouvre le navigateur
 #
 # Codes de sortie:
 #   0  = serveur UP (port + HTTP repondent)
@@ -18,7 +20,8 @@ param(
     [switch]$Wait = $false,
     [int]$Timeout = 300,
     [switch]$Quiet = $false,
-    [int]$Port = 8000
+    [int]$Port = 8000,
+    [switch]$Open = $false
 )
 
 $ErrorActionPreference = 'Stop'
@@ -92,6 +95,16 @@ function Get-ServerCheck {
     }
 }
 
+function Open-Browser {
+    $url = "http://localhost:$Port/cours-fr"
+    try {
+        Start-Process $url | Out-Null
+        if (-not $Quiet) { Write-Host "Navigateur ouvert sur $url" -ForegroundColor Cyan }
+    } catch {
+        if (-not $Quiet) { Write-Host "Impossible d'ouvrir le navigateur: $($_.Exception.Message)" -ForegroundColor Yellow }
+    }
+}
+
 function Write-Verdict {
     param($Check)
     $color = switch ($Check.Verdict) {
@@ -115,6 +128,7 @@ if ($Wait) {
         $check = Get-ServerCheck
         if ($check.Verdict -eq 'UP') {
             if (-not $Quiet) { Write-Verdict $check }
+            if ($Open) { Open-Browser }
             exit 0
         }
         if ($check.Verdict -in @('DOWN', 'ZOMBIE')) {
@@ -136,6 +150,7 @@ if ($Wait) {
 
 $check = Get-ServerCheck
 if (-not $Quiet) { Write-Verdict $check }
+if ($Open -and $check.Verdict -eq 'UP') { Open-Browser }
 switch ($check.Verdict) {
     'UP'       { exit 0 }
     'STARTING' { exit 3 }
