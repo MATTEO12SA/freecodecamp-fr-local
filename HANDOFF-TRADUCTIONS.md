@@ -82,6 +82,12 @@ Test bout-en-bout vérifié : créer un nouveau dossier `blocks/<x>/` avec un `.
 
 [client/src/pages/exam-fr.tsx](client/src/pages/exam-fr.tsx) — page d'examen 100% locale, accessible via `/exam-fr?cert=<superblock>`. Tire au hasard 80 questions parmi tous les `quiz-*` traduits de la cert, distractors mélangés, score à la fin, 70% pour réussir.
 
+L'examen a une mémoire locale (tout dans `localStorage`, aucune API) :
+
+- **Historique** : chaque examen complet est enregistré via [client/src/utils/exam-history.ts](client/src/utils/exam-history.ts) (clé `fcc-exam-history`). L'écran d'intro affiche les 5 dernières tentatives (date + score + %). Les révisions ne sont pas enregistrées.
+- **Stats par module** : l'écran résultats regroupe les questions par bloc source (`sourceBlock`) et affiche un tableau « Réussite par module » trié du plus faible au plus fort.
+- **Révision ciblée** : un bouton « Réviser mes erreurs » relance un mini-examen composé uniquement des questions ratées (réutilise les `PreparedQuestion` en mémoire, pas de nouveau tirage du pool).
+
 [client/src/templates/Challenges/exam-download/show.tsx](client/src/templates/Challenges/exam-download/show.tsx) a été nettoyé : seul le bouton "Passer l'examen en français" est gardé. Les boutons cassés (`Open Exam Environment`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimés — ils dépendent de l'API + Auth0 freeCodeCamp qui n'existent pas dans le fork.
 
 L'examen apparaît dans l'accordéon `/cours-fr` (filtre `examDownload` retiré de [client/src/pages/cours-fr.tsx](client/src/pages/cours-fr.tsx)).
@@ -89,6 +95,8 @@ L'examen apparaît dans l'accordéon `/cours-fr` (filtre `examDownload` retiré 
 ### `cours-fr.tsx` Refactoré
 
 Passé de 3014 lignes → 357 lignes. La grosse liste `CERTIFICATIONS[].blocks: [...]` codée en dur (~2700 lignes de boilerplate stale) a été supprimée. Le badge "🚧 Traduction à venir" se calcule via `hasFrenchIntro(cert.key)`.
+
+**Progression réelle** : la vue d'une certification lit les challenges complétés depuis `localStorage` (`getLocalCompletedChallenges` de [client/src/utils/local-progress.ts](client/src/utils/local-progress.ts)) et les passe à `SuperBlockAccordion` (coches ✓) + affiche une barre « X/Y challenges terminés » avec le %. Lecture après montage (`useEffect`) pour éviter un mismatch SSR.
 
 ### `dev.ps1` Nettoyé
 
@@ -226,6 +234,7 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 ```powershell
 .\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'à UP
+.\dev-check.ps1 -Open              # ouvre /cours-fr dans le navigateur quand UP
 ```
 
 Le script combine processus node + port TCP 8000 + HTTP HEAD `/`. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
@@ -256,6 +265,21 @@ for b in <bloc1> <bloc2> ...; do
 done
 ```
 
+### Outils de suivi
+
+Deux scripts Node autonomes (lecture seule) remplacent les commandes ad-hoc tapées à chaque session :
+
+```powershell
+node tools/translation-status.js                 # avancement FR par superblock v9 (barre + %)
+node tools/translation-status.js responsive-web-design-v9   # un seul superblock
+
+node tools/check-translation-drift.js            # tous les blocs FR
+node tools/check-translation-drift.js <block>    # un seul bloc
+```
+
+- [tools/translation-status.js](tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 2/230.
+- [tools/check-translation-drift.js](tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
+
 ## Mémoire Utilisateur (Important)
 
 - **« Dis oui tout le temps »** : enchaîner les opérations sans demander confirmation.
@@ -283,4 +307,11 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : serveur relance avec `.\dev.ps1` après detection d'un status zombie (`status.json` disait UP mais `localhost:8000` refusait la connexion). Gatsby est revenu UP et `latest.log` montre `status.up`. Ajout de [TOOLS-REPORT.md](TOOLS-REPORT.md), rapport complet sur le dossier `tools`. JavaScript v9 demarre : `lecture-introduction-to-javascript` traduit (4 fichiers) et `lecture-introduction-to-strings` traduit (3 fichiers), `intro.json` mis a jour pour la cert JavaScript et les blocs. RWD reste termine : 158/158 blocs FR, 0 workshop restant. Prochaine cible : `lecture-understanding-code-clarity`.
+**Dernière session** : 4 lots d'amélioration hors traduction, tous pushés (aucun fichier de curriculum touché, persistance `localStorage` uniquement).
+
+1. **Confort dev** — `dev-check.ps1 -Open` ouvre `/cours-fr` quand le serveur passe UP.
+2. **Outils de suivi** — ajout de `tools/translation-status.js` (avancement FR par superblock) et `tools/check-translation-drift.js` (drift EN→FR via git). 0 drift sur 1722 fichiers.
+3. **Progression visible** — `/cours-fr` lit la progression `localStorage` : coches ✓ dans l'accordéon + barre « X/Y challenges terminés » par cert (barre décorative `aria-hidden`, le texte porte la valeur).
+4. **Examen avec mémoire** — `/exam-fr` gagne l'historique des tentatives, les stats par module et la révision ciblée des erreurs (`exam-history.ts`, clé `fcc-exam-history`).
+
+Vérifs OK : `tsc` client 0 erreur, smoke/submit/persist/full-flow 10+8+4+2 PASS, 3 pages en HTTP 200, captures des nouvelles UI validées. RWD reste 158/158, JS 2/230. Prochaine cible traduction : `lecture-understanding-code-clarity`.

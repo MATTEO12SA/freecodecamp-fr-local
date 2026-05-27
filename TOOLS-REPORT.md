@@ -29,6 +29,8 @@ Le reste sert surtout au developpement upstream freeCodeCamp ou a des workflows 
 | `tools/translate-workshop.js`                    | Extrait uniquement `title`, descriptions et hints d'un bloc, applique les traductions FR, puis verifie que frontmatter technique, code, seeds, solutions et marqueurs n'ont pas bouge.   | Oui, pour les workshops step-by-step. Pas adapte aux lectures `interactive` + quiz sans extension du script. |
 | `tools/translate-challenges.py`                  | Ancien script de traduction automatique via Argos Translate.                                                                                                                             | Non comme source finale. A eviter pour la qualite demandee.                                                  |
 | `tools/translations/`                            | Stocke les JSON relus des workshops et le `phrasebook`.                                                                                                                                  | Oui. Les JSON gardent une trace du travail et permettent de regenerer/verifier.                              |
+| `tools/translation-status.js`                    | Compte les blocs FR traduits par superblock `*-v9.json` et affiche une barre + %. Lecture seule.                                                                                         | Oui. Remplace les comptages PowerShell ad-hoc tapes a chaque session.                                        |
+| `tools/check-translation-drift.js`               | Compare la date du dernier commit git de chaque `.md` EN vs son equivalent FR et signale les FR potentiellement obsoletes. Exit 1 si drift.                                              | Oui. Controle qualite anti-drift, utilisable en pre-commit.                                                  |
 | `tools/challenge-helper-scripts/`                | Scripts upstream pour creer/renommer/supprimer des challenges, steps, tasks, quizzes et projets.                                                                                         | Rarement. Utile si on cree du curriculum, pas pour traduire un bloc existant.                                |
 | `tools/challenge-parser/`                        | Parser Markdown du curriculum : frontmatter, sections, quizzes, seeds, solutions, tests, directives.                                                                                     | Indirectement crucial. Les validations et builds s'appuient dessus.                                          |
 | `tools/client-plugins/gatsby-source-challenges/` | Plugin Gatsby qui transforme les challenges en nodes Gatsby. Dans ce fork, il surveille aussi les fichiers FR et logge `watcher.added`, `challenge.integrating`, `challenge.integrated`. | Tres important pour voir les traductions arriver dans `latest.log`.                                          |
@@ -57,6 +59,17 @@ node tools/translate-workshop.js verify <block>
 Il protege la technique, mais il ne traduit pas a notre place. Le JSON doit etre relu, corrige et marque `reviewed: true`.
 
 Pour les lectures JavaScript v9, le script n'est pas suffisant aujourd'hui, car elles utilisent surtout `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Tant que le script n'est pas etendu, ces blocs doivent etre traduits manuellement avec une verification stricte.
+
+### Suivi Et Anti-Drift
+
+Deux scripts Node autonomes, en lecture seule, evitent de retaper des commandes a chaque session :
+
+```powershell
+node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
+node tools/check-translation-drift.js   # .md EN modifie apres son FR -> a relire
+```
+
+`check-translation-drift.js` sort en code 1 s'il detecte un drift, donc il peut servir de garde-fou avant un commit. Aucun des deux n'ecrit quoi que ce soit ni n'a besoin du serveur.
 
 ### Serveur Dev Et Logs
 

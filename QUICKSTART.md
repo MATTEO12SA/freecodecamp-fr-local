@@ -78,6 +78,7 @@ Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`. 
 .\dev-check.ps1                    # snapshot instantane
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
 .\dev-check.ps1 -Quiet             # n'affiche que le verdict final
+.\dev-check.ps1 -Open              # ouvre /cours-fr dans le navigateur quand UP
 ```
 
 Le script combine `status.json` + processus node + port TCP + HTTP HEAD `/`. Verdicts possibles :
@@ -96,11 +97,11 @@ http://localhost:8000/catalog
 http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 ```
 
-`/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build).
+`/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build). En ouvrant une certification, une barre « X/Y challenges termines » et les coches ✓ refletent la progression sauvegardee dans `localStorage`.
 
 Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules dont au moins un challenge `.md` FR existe. Tu peux le combiner avec `Niveau : Debutant/Intermediaire/Avance`.
 
-`/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au hasard parmi les quizzes traduits, 70% pour reussir.
+`/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au hasard parmi les quizzes traduits, 70% pour reussir. L'examen garde un historique des tentatives (intro), affiche les stats par module et un bouton « Reviser mes erreurs » sur l'ecran resultats (tout dans `localStorage`).
 
 ### Live Update Quand Tu Traduis Un Nouveau Bloc
 
@@ -161,6 +162,13 @@ node tools/translate-workshop.js verify <workshop>
 pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 pnpm --filter @freecodecamp/shared type-check
 pnpm lint-root
+```
+
+Suivi de l'avancement et detection du drift (lecture seule, pas besoin du serveur) :
+
+```powershell
+node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
+node tools/check-translation-drift.js   # .md EN modifie apres son equivalent FR
 ```
 
 Tests navigateur locaux, avec le serveur deja lance :

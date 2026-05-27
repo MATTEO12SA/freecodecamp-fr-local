@@ -188,6 +188,16 @@ Le pool de questions vient directement des `.md` quizzes traduits (`# --quizzes-
 
 Tant que les modules d'un cert n'ont aucun quiz traduit, l'examen affiche `🚧 Aucun quiz FR n'est encore traduit pour cette certification.`
 
+### Memoire Locale De L'Examen
+
+Comme le reste du fork, l'examen n'a pas de backend : tout est dans `localStorage`. [client/src/utils/exam-history.ts](client/src/utils/exam-history.ts) gere une cle dediee `fcc-exam-history` (separee de la progression `fcc-local-user`), structuree par cert.
+
+- **Historique** : a l'entree dans l'ecran resultats, un `useEffect` enregistre la tentative `{ cert, date, score, total, pct }` (examen complet uniquement — les revisions ne polluent pas l'historique). L'ecran d'intro affiche les 5 dernieres tentatives, date FR + score colore selon reussite.
+- **Stats par module** : les questions portent leur `sourceBlock` (le bloc `quiz-*` d'origine). L'ecran resultats regroupe les reponses par bloc, calcule le % de reussite et affiche un tableau « Reussite par module » trie du plus faible au plus fort (libelle nettoye : `quiz-css-colors` -> `Css colors`).
+- **Revision ciblee** : le bouton « Reviser mes erreurs » relance un mini-examen compose uniquement des questions ratees. Un flag `mode: 'full' | 'review'` fait pointer le `useMemo` `questions` sur les `PreparedQuestion` deja en memoire au lieu de re-tirer 80 questions du pool. La revision n'est pas enregistree dans l'historique.
+
+La lecture de `localStorage` se fait apres montage (les valeurs sont vides cote SSR), donc pas de mismatch d'hydratation.
+
 ### Bouton D'Acces
 
 [client/src/templates/Challenges/exam-download/show.tsx](client/src/templates/Challenges/exam-download/show.tsx) a ete nettoye : tous les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. Il ne reste que :
@@ -384,6 +394,15 @@ pnpm -C client lint
 pnpm lint-root
 ```
 
+Suivi des traductions (lecture seule, sans serveur) :
+
+```powershell
+node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
+node tools/check-translation-drift.js   # .md EN modifie apres son equivalent FR (drift)
+```
+
+`check-translation-drift.js` sort en code 1 s'il trouve un drift, donc utilisable en pre-commit. Etat actuel : 0 drift sur 1722 fichiers compares.
+
 Verification manuelle :
 
 1. Lancer `.\dev.ps1` pour le mode rapide par defaut, `.\dev.ps1 -Clean` si Gatsby garde un cache incoherent, ou `.\dev.ps1 -Full` pour forcer le setup complet.
@@ -393,6 +412,8 @@ Verification manuelle :
 5. Dans `/catalog`, verifier que `Theme > Francais` affiche les niveaux traduits automatiquement depuis `intro.json` et peut se combiner avec le filtre `Niveau`.
 6. Ouvrir un exercice compatible dont le fichier FR manque encore.
 7. Confirmer qu'aucun lien visible ne sort vers forum, donation, app mobile, social, CodeAlly, Ona, GitHub externe ou Okta.
+8. Dans `/cours-fr`, ouvrir une certification : la barre « X/Y challenges termines » et les coches ✓ refletent la progression `localStorage`.
+9. Sur `/exam-fr?cert=...`, finir un examen : verifier l'historique sur l'intro, le tableau « Reussite par module » et le bouton « Reviser mes erreurs ».
 
 ## Limites Connues
 

@@ -77,9 +77,9 @@ http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 - API backend neutralisee pour le flux d'apprentissage local.
 - Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
-- `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte automatiquement un badge `🚧 Traduction a venir`, calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem). L'accordeon contient l'examen qui pointe sur la page locale `/exam-fr`.
+- `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte automatiquement un badge `🚧 Traduction a venir`, calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem). L'accordeon contient l'examen qui pointe sur la page locale `/exam-fr`. En ouvrant une cert, une barre « X/Y challenges termines » et les coches ✓ refletent la progression `localStorage`.
 - `/catalog` propose le filtre `Theme > Francais`. Meme source de verite que `/cours-fr` : la fonction `hasFrenchIntro` est partagee.
-- `/exam-fr?cert=<superblock>` lance l'examen local : 80 questions tirees au hasard parmi les `quiz-*` traduits du superblock. 70% pour reussir. Pas besoin du `.exe` officiel de freeCodeCamp ni de compte Auth0.
+- `/exam-fr?cert=<superblock>` lance l'examen local : 80 questions tirees au hasard parmi les `quiz-*` traduits du superblock. 70% pour reussir. Pas besoin du `.exe` officiel de freeCodeCamp ni de compte Auth0. L'examen garde un historique local des tentatives, affiche les stats par module et permet de reviser uniquement les questions ratees.
 - **Live detection** : creer un nouveau dossier `blocks/<x>/` avec un `.md` FR met a jour automatiquement le filtre catalog et le badge cours-fr sans redemarrer le serveur (voir `dev-logs/latest.log` -> `watcher.touched`).
 - Liens externes visibles desactives ou retires.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
@@ -119,6 +119,13 @@ node tools/translate-workshop.js verify <workshop>
 pnpm exec tsc --noEmit --pretty false -p client/tsconfig.json
 pnpm --filter @freecodecamp/shared type-check
 pnpm lint-root
+```
+
+Suivi des traductions (lecture seule) :
+
+```powershell
+node tools/translation-status.js        # avancement FR par superblock v9
+node tools/check-translation-drift.js   # drift EN -> FR (exit 1 si drift)
 ```
 
 Scripts locaux gardes :
