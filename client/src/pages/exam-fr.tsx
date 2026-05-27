@@ -4,6 +4,7 @@ import type { PageProps } from 'gatsby';
 import { Container, Col, Row, Spacer, Button } from '@freecodecamp/ui';
 import LearnLayout from '../components/layouts/learn';
 import SEO from '../components/seo';
+import { getAttempts, saveAttempt } from '../utils/exam-history';
 
 import './exam-fr.css';
 
@@ -82,6 +83,27 @@ function getCertFromSearch(search: string): string | null {
   return params.get('cert');
 }
 
+// `quiz-css-colors` -> `Css colors` : libelle lisible pour les stats par module.
+function prettyBlock(block: string): string {
+  const label = block
+    .replace(/^quiz-/, '')
+    .replace(/-/g, ' ')
+    .trim();
+  return label ? label.charAt(0).toUpperCase() + label.slice(1) : block;
+}
+
+function formatAttemptDate(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+
 function prepareQuestions(
   challenges: QuizChallenge[],
   cert: string,
@@ -119,19 +141,32 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
+  // 'full' = examen complet tire du pool ; 'review' = revision des erreurs.
+  const [mode, setMode] = useState<'full' | 'review'>('full');
+  const [reviewQuestions, setReviewQuestions] = useState<PreparedQuestion[]>(
+    []
+  );
+  // Bumpe apres une sauvegarde pour rafraichir l'historique affiche.
+  const [historyVersion, setHistoryVersion] = useState(0);
 
   useEffect(() => {
     setCert(getCertFromSearch(location.search));
   }, [location.search]);
 
   const questions = useMemo(() => {
+    if (mode === 'review') return reviewQuestions;
     if (!cert || phase === 'intro') return [];
     return prepareQuestions(
       data.allChallengeNode.nodes.map(n => n.challenge),
       cert,
       seed
     );
-  }, [data.allChallengeNode.nodes, cert, seed, phase]);
+  }, [data.allChallengeNode.nodes, cert, seed, phase, mode, reviewQuestions]);
+
+  const attempts = useMemo(
+    () => (cert ? getAttempts(cert) : []),
+    [cert, historyVersion]
+  );
 
   const availableCount = useMemo(() => {
     if (!cert) return 0;
@@ -149,6 +184,8 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   const certTitle = cert ? CERT_TITLES[cert] || cert : '';
 
   function startExam(): void {
+    setMode('full');
+    setReviewQuestions([]);
     setSeed(Date.now());
     setAnswers(new Array(Math.min(EXAM_LENGTH, availableCount)).fill(null));
     setCurrentIndex(0);
@@ -174,9 +211,26 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   }
 
   function restart(): void {
+    setMode('full');
+    setReviewQuestions([]);
     setPhase('intro');
     setCurrentIndex(0);
     setAnswers([]);
+  }
+
+  // Relance un mini-examen compose uniquement des questions ratees de la
+  // tentative qui vient de se terminer. On reutilise les PreparedQuestion deja
+  // en memoire (pas de nouveau tirage dans le pool global).
+  function startReview(): void {
+    const failed = questions.filter(
+      (q, i) => answers[i] !== q.correctChoiceIndex
+    );
+    if (failed.length === 0) return;
+    setReviewQuestions(failed);
+    setMode('review');
+    setAnswers(new Array(failed.length).fill(null));
+    setCurrentIndex(0);
+    setPhase('inprogress');
   }
 
   const score = useMemo(() => {
@@ -191,6 +245,46 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   const totalQuestions = questions.length;
   const scorePct = totalQuestions ? score / totalQuestions : 0;
   const passed = scorePct >= PASSING_SCORE;
+
+  // Reussite par module (block source de chaque question), du plus faible au
+  // plus fort, pour montrer ou reviser en priorite.
+  const moduleStats = useMemo(() => {
+    if (phase !== 'results') return [];
+    const map = new Map<string, { total: number; correct: number }>();
+    for (let i = 0; i < questions.length; i++) {
+      const block = questions[i].sourceBlock;
+      const entry = map.get(block) || { total: 0, correct: 0 };
+      entry.total++;
+      if (answers[i] === questions[i].correctChoiceIndex) entry.correct++;
+      map.set(block, entry);
+    }
+    return Array.from(map.entries())
+      .map(([block, s]) => ({
+        block,
+        total: s.total,
+        correct: s.correct,
+        pct: Math.round((s.correct / s.total) * 100)
+      }))
+      .sort((a, b) => a.pct - b.pct || a.block.localeCompare(b.block));
+  }, [phase, questions, answers]);
+
+  const wrongCount = totalQuestions - score;
+
+  // Sauvegarde la tentative a l'entree dans l'ecran resultats (examen complet
+  // seulement : on ne pollue pas l'historique avec les revisions).
+  useEffect(() => {
+    if (phase !== 'results' || mode !== 'full' || !cert || totalQuestions === 0)
+      return;
+    saveAttempt({
+      cert,
+      date: new Date().toISOString(),
+      score,
+      total: totalQuestions,
+      pct: Math.round(scorePct * 100)
+    });
+    setHistoryVersion(v => v + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, mode, cert]);
 
   return (
     <LearnLayout>
@@ -247,6 +341,29 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                     <Button onClick={startExam}>Commencer l&apos;examen</Button>
                   </>
                 )}
+                {attempts.length > 0 && (
+                  <div className='exam-fr-history'>
+                    <h2>Tes dernières tentatives</h2>
+                    <ul className='exam-fr-history-list'>
+                      {attempts.slice(0, 5).map((a, i) => (
+                        <li key={i} className='exam-fr-history-item'>
+                          <span className='exam-fr-history-date'>
+                            {formatAttemptDate(a.date)}
+                          </span>
+                          <span
+                            className={
+                              a.pct >= Math.round(PASSING_SCORE * 100)
+                                ? 'exam-fr-history-pct exam-fr-history-pass'
+                                : 'exam-fr-history-pct exam-fr-history-fail'
+                            }
+                          >
+                            {a.score}/{a.total} ({a.pct}%)
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <Spacer size='m' />
                 <p>
                   <a href='/cours-fr'>← Retour aux certifications</a>
@@ -256,7 +373,9 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
 
             {cert && phase === 'inprogress' && questions.length > 0 && (
               <>
-                <h1 className='text-center'>Examen — {certTitle}</h1>
+                <h1 className='text-center'>
+                  {mode === 'review' ? 'Révision' : 'Examen'} — {certTitle}
+                </h1>
                 <p className='exam-fr-progress'>
                   Question {currentIndex + 1} / {questions.length}
                 </p>
@@ -312,7 +431,9 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
 
             {cert && phase === 'results' && (
               <>
-                <h1 className='text-center'>Résultats — {certTitle}</h1>
+                <h1 className='text-center'>
+                  {mode === 'review' ? 'Révision' : 'Résultats'} — {certTitle}
+                </h1>
                 <div
                   className={
                     passed ? 'exam-fr-result-passed' : 'exam-fr-result-failed'
@@ -330,6 +451,32 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   </p>
                 </div>
                 <Spacer size='m' />
+                {moduleStats.length > 1 && (
+                  <>
+                    <h2>Réussite par module</h2>
+                    <table className='exam-fr-modules'>
+                      <thead>
+                        <tr>
+                          <th>Module</th>
+                          <th>Score</th>
+                          <th>%</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {moduleStats.map(m => (
+                          <tr key={m.block}>
+                            <td>{prettyBlock(m.block)}</td>
+                            <td>
+                              {m.correct}/{m.total}
+                            </td>
+                            <td className='exam-fr-modules-pct'>{m.pct}%</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <Spacer size='m' />
+                  </>
+                )}
                 <h2>Détail des réponses</h2>
                 <ol className='exam-fr-review'>
                   {questions.map((q, i) => {
@@ -377,6 +524,11 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                 </ol>
                 <Spacer size='m' />
                 <div className='exam-fr-nav'>
+                  {wrongCount > 0 && (
+                    <Button onClick={startReview}>
+                      Réviser mes erreurs ({wrongCount})
+                    </Button>
+                  )}
                   <Button onClick={restart}>Recommencer</Button>
                   <a className='exam-fr-back-link' href='/cours-fr'>
                     ← Retour aux certifications
