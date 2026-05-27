@@ -20,7 +20,7 @@ function readStore(): Store {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return {};
-    const parsed = JSON.parse(raw) as unknown;
+    const parsed: unknown = JSON.parse(raw);
     return parsed && typeof parsed === 'object' ? (parsed as Store) : {};
   } catch {
     return {};

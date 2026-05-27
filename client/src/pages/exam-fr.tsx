@@ -163,10 +163,10 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
     );
   }, [data.allChallengeNode.nodes, cert, seed, phase, mode, reviewQuestions]);
 
-  const attempts = useMemo(
-    () => (cert ? getAttempts(cert) : []),
-    [cert, historyVersion]
-  );
+  const attempts = useMemo(() => {
+    void historyVersion;
+    return cert ? getAttempts(cert) : [];
+  }, [cert, historyVersion]);
 
   const availableCount = useMemo(() => {
     if (!cert) return 0;
