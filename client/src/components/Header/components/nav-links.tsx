@@ -74,15 +74,6 @@ function NavLinks({
           Catalogue
         </Link>
       </li>
-      <li key='exam-fr'>
-        <Link
-          className='nav-link'
-          onKeyDown={handleMenuKeyDown}
-          to='/exam-fr?cert=responsive-web-design-v9'
-        >
-          Examen RWD
-        </Link>
-      </li>
       <li className='nav-line' key='dev-fr'>
         <Link className='nav-link' onKeyDown={handleMenuKeyDown} to='/dev-fr'>
           Dev FR

@@ -70,4 +70,18 @@ describe('CatalogPage', () => {
 
     expect(items).toEqual(expectedCourses);
   });
+
+  test('filters the catalog with search text', () => {
+    render(<CatalogPage />);
+
+    fireEvent.change(screen.getByLabelText('curriculum.catalog.search-label'), {
+      target: { value: catalog[0].superBlock }
+    });
+
+    const items = screen
+      .getAllByTestId('catalog-item')
+      .map(item => item.textContent);
+
+    expect(items).toEqual([catalog[0].superBlock]);
+  });
 });

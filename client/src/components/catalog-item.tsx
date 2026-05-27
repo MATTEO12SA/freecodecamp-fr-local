@@ -10,6 +10,10 @@ interface CatalogItemProps {
   hours: number;
   topic: string;
   showAllSummaries?: boolean;
+  completedCount?: number;
+  totalCount?: number;
+  actionHref?: string;
+  actionLabel?: string;
 }
 
 const CatalogItem: React.FC<CatalogItemProps> = ({
@@ -17,16 +21,22 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
   level,
   hours,
   topic,
-  showAllSummaries = false
+  showAllSummaries = false,
+  completedCount = 0,
+  totalCount = 0,
+  actionHref,
+  actionLabel
 }) => {
   const { t } = useTranslation();
 
-  const { title, summary } = t(`intro:${superBlock}`, {
+  const intro = t(`intro:${superBlock}`, {
     returnObjects: true
-  }) as {
+  }) as Partial<{
     title: string;
     summary: string[];
-  };
+  }>;
+  const title = intro.title || superBlock;
+  const summary = Array.isArray(intro.summary) ? intro.summary : [];
 
   const duration =
     hours === 1
@@ -34,12 +44,16 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
       : t('curriculum.catalog.duration', { duration: hours });
 
   return (
-    <Link to={`/learn/${superBlock}`} key={superBlock} className='catalog-item'>
+    <article className='catalog-item'>
       <div className='catalog-item-top'>
-        <div className={`block-label block-label-${topic}`}>
-          {t(`curriculum.catalog.topic.${topic}`)}
+        <div className='catalog-item-labels'>
+          <div className={`block-label block-label-${topic}`}>
+            {t(`curriculum.catalog.topic.${topic}`)}
+          </div>
         </div>
-        <h3>{title}</h3>
+        <h3>
+          <Link to={`/learn/${superBlock}`}>{title}</Link>
+        </h3>
         {showAllSummaries ? (
           summary.map((text, i) => <p key={i}>{text}</p>)
         ) : summary && summary.length > 0 ? (
@@ -56,7 +70,21 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
           &nbsp; {duration}
         </div>
       </div>
-    </Link>
+      {totalCount > 0 && (
+        <p className='catalog-item-progress'>
+          {t('curriculum.catalog.progress', {
+            completed: completedCount,
+            total: totalCount
+          })}
+        </p>
+      )}
+      <Link
+        className='catalog-item-cta'
+        to={actionHref || `/learn/${superBlock}`}
+      >
+        {actionLabel || t('curriculum.catalog.start')}
+      </Link>
+    </article>
   );
 };
 

@@ -1,9 +1,12 @@
-import React, { useState, useMemo } from 'react';
+import { graphql } from 'gatsby';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Col, Spacer, Dropdown, MenuItem, Alert } from '@freecodecamp/ui';
 import { catalog } from '@freecodecamp/shared/config/catalog';
+import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
 import CatalogItem from '../components/catalog-item';
 import { hasFrenchIntro } from '../utils/has-french-intro';
+import { getLocalCompletedChallenges } from '../utils/local-progress';
 
 import './catalog.css';
 
@@ -11,14 +14,79 @@ const frenchTopic = 'french' as const;
 
 export const hasFrenchCatalogIntro = hasFrenchIntro;
 
+type CatalogChallenge = {
+  id: string;
+  block: string;
+  challengeType: number;
+  order: number;
+  challengeOrder: number;
+  superBlock: string;
+  fields: { slug: string };
+};
+
+type CatalogChallengeNode = { challenge: CatalogChallenge };
+
+type CatalogPageData = {
+  allChallengeNode?: { nodes: CatalogChallengeNode[] };
+};
+
+const UNSUPPORTED_LOCAL_BLOCKS = new Set<string>([
+  'daily-coding-challenges-javascript',
+  'daily-coding-challenges-python'
+]);
+
+const UNSUPPORTED_LOCAL_CHALLENGE_TYPES = new Set<number>([
+  challengeTypes.backEndProject,
+  challengeTypes.pythonProject,
+  challengeTypes.codeAllyPractice,
+  challengeTypes.codeAllyCert,
+  challengeTypes.theOdinProject,
+  challengeTypes.colab,
+  challengeTypes.msTrophy,
+  challengeTypes.dailyChallengeJs,
+  challengeTypes.dailyChallengePy
+]);
+
+function isLocalChallenge(challenge: CatalogChallenge): boolean {
+  return (
+    !UNSUPPORTED_LOCAL_BLOCKS.has(challenge.block) &&
+    !UNSUPPORTED_LOCAL_CHALLENGE_TYPES.has(challenge.challengeType)
+  );
+}
+
 const getCheckboxLabel = (filterLabel: string, optionLabel: string) =>
   `${filterLabel} ${optionLabel}`.replace(/\s+/g, ' ').trim();
 
-const CatalogPage = () => {
+const CatalogPage = ({ data }: { data?: CatalogPageData }) => {
   const { t } = useTranslation();
 
   const [selectedLevels, setSelectedLevels] = useState<string[]>(['all']);
   const [selectedTopics, setSelectedTopics] = useState<string[]>(['all']);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [completedChallengeIds, setCompletedChallengeIds] = useState<string[]>(
+    []
+  );
+
+  useEffect(() => {
+    setCompletedChallengeIds(getLocalCompletedChallenges().map(c => c.id));
+  }, []);
+
+  const completedSet = useMemo(
+    () => new Set(completedChallengeIds),
+    [completedChallengeIds]
+  );
+
+  const challengesBySuperBlock = useMemo(() => {
+    const map = new Map<string, CatalogChallenge[]>();
+    const nodes = data?.allChallengeNode?.nodes || [];
+    for (const { challenge } of nodes) {
+      if (!isLocalChallenge(challenge)) continue;
+      const list = map.get(challenge.superBlock) || [];
+      list.push(challenge);
+      map.set(challenge.superBlock, list);
+    }
+    return map;
+  }, [data?.allChallengeNode?.nodes]);
 
   // Extract unique levels and topics from catalog
   const uniqueLevels = useMemo(() => {
@@ -66,19 +134,42 @@ const CatalogPage = () => {
   };
 
   const filteredCatalog = useMemo(() => {
+    const normalizedSearch = searchQuery.trim().toLowerCase();
+
     return catalog.filter(course => {
+      const intro = t(`intro:${course.superBlock}`, {
+        returnObjects: true
+      }) as Partial<{
+        title: string;
+        summary: string[];
+      }>;
+      const title = intro.title || course.superBlock;
+      const summary = Array.isArray(intro.summary) ? intro.summary : [];
+      const hasFrenchContent = hasFrenchIntro(course.superBlock);
       const levelMatch =
         selectedLevels.includes('all') || selectedLevels.includes(course.level);
       const translatedMatch =
-        selectedTopics.includes(frenchTopic) &&
-        hasFrenchIntro(course.superBlock);
+        selectedTopics.includes(frenchTopic) && hasFrenchContent;
       const topicMatch =
         selectedTopics.includes('all') ||
         selectedTopics.includes(course.topic) ||
         translatedMatch;
-      return levelMatch && topicMatch;
+      const searchable = [
+        course.superBlock,
+        course.level,
+        course.topic,
+        title,
+        ...summary,
+        t(`curriculum.catalog.levels.${course.level}`),
+        t(`curriculum.catalog.topic.${course.topic}`)
+      ]
+        .join(' ')
+        .toLowerCase();
+      const searchMatch =
+        normalizedSearch.length === 0 || searchable.includes(normalizedSearch);
+      return levelMatch && topicMatch && searchMatch;
     });
-  }, [selectedLevels, selectedTopics]);
+  }, [searchQuery, selectedLevels, selectedTopics, t]);
 
   const getSelectionLabel = (selected: string[]) =>
     selected.includes('all')
@@ -95,6 +186,18 @@ const CatalogPage = () => {
       <Spacer size='l' />
 
       <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+        <div className='catalog-search'>
+          <label htmlFor='catalog-search-input'>
+            {t('curriculum.catalog.search-label')}
+          </label>
+          <input
+            id='catalog-search-input'
+            type='search'
+            value={searchQuery}
+            onChange={event => setSearchQuery(event.target.value)}
+            placeholder={t('curriculum.catalog.search-placeholder')}
+          />
+        </div>
         <div className='catalog-filters'>
           <Dropdown block={true}>
             <Dropdown.Toggle id='level-filter-dropdown'>
@@ -209,6 +312,15 @@ const CatalogPage = () => {
           <section className='catalog-wrap'>
             {filteredCatalog.map(course => {
               const { superBlock, level, hours, topic } = course;
+              const courseChallenges =
+                challengesBySuperBlock.get(superBlock) || [];
+              const completedCount = courseChallenges.filter(challenge =>
+                completedSet.has(challenge.id)
+              ).length;
+              const firstUnfinished = courseChallenges.find(
+                challenge => !completedSet.has(challenge.id)
+              );
+              const hasStarted = completedCount > 0;
 
               return (
                 <CatalogItem
@@ -218,6 +330,14 @@ const CatalogPage = () => {
                   hours={hours}
                   topic={topic}
                   showAllSummaries={true}
+                  completedCount={completedCount}
+                  totalCount={courseChallenges.length}
+                  actionHref={firstUnfinished?.fields.slug}
+                  actionLabel={t(
+                    hasStarted
+                      ? 'curriculum.catalog.continue'
+                      : 'curriculum.catalog.start'
+                  )}
                 />
               );
             })}
@@ -230,3 +350,29 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage;
+
+export const query = graphql`
+  query CatalogPageQuery {
+    allChallengeNode(
+      sort: [
+        { challenge: { superOrder: ASC } }
+        { challenge: { order: ASC } }
+        { challenge: { challengeOrder: ASC } }
+      ]
+    ) {
+      nodes {
+        challenge {
+          id
+          block
+          challengeType
+          order
+          challengeOrder
+          superBlock
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
