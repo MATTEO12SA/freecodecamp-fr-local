@@ -66,6 +66,7 @@ Pages utiles :
 http://localhost:8000
 http://localhost:8000/cours-fr
 http://localhost:8000/catalog
+http://localhost:8000/dev-fr
 http://localhost:8000/learn
 http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 ```
@@ -78,7 +79,8 @@ http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 - Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
 - `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte automatiquement un badge `🚧 Traduction a venir`, calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem). L'accordeon contient l'examen qui pointe sur la page locale `/exam-fr`. En ouvrant une cert, une barre « X/Y challenges termines » et les coches ✓ refletent la progression `localStorage`.
-- `/catalog` propose le filtre `Theme > Francais`. Meme source de verite que `/cours-fr` : la fonction `hasFrenchIntro` est partagee.
+- `/catalog` propose recherche texte, filtres niveau/theme, `Theme > Francais`, progression locale par certification et bouton `Continuer` vers le prochain challenge.
+- `/dev-fr` regroupe serveur, logs, traduction, drift, git, liens rapides et progression navigateur via un snapshot genere par `pnpm local:report`.
 - `/exam-fr?cert=<superblock>` lance l'examen local : 80 questions tirees au hasard parmi les `quiz-*` traduits du superblock. 70% pour reussir. Pas besoin du `.exe` officiel de freeCodeCamp ni de compte Auth0. L'examen garde un historique local des tentatives, affiche les stats par module et permet de reviser uniquement les questions ratees.
 - **Live detection** : creer un nouveau dossier `blocks/<x>/` avec un `.md` FR met a jour automatiquement le filtre catalog et le badge cours-fr sans redemarrer le serveur (voir `dev-logs/latest.log` -> `watcher.touched`).
 - Liens externes visibles desactives ou retires.
@@ -96,7 +98,7 @@ Responsive Web Design v9 est la priorite et il est maintenant entierement tradui
 
 Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
-JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers au total, 2 blocs FR sur 230). Les lectures JS utilisent `interactive/questions`, donc elles sont traduites manuellement tant que le pipeline workshop ne gere pas ces sections.
+JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers au total, 2 blocs FR sur 230). Le pipeline `tools/translate-workshop.js` sait maintenant extraire/verifier les lectures JS avec `description/interactive/questions/answers/feedback`.
 
 Pour continuer les workshops sans toucher au code technique :
 
@@ -107,7 +109,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `but found`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas. Pour les lectures JavaScript v9, traduire manuellement et verifier que les blocs de code restent identiques.
+Le script extrait seulement la prose, reconstruit les `.md` FR depuis les fichiers EN et verifie que les blocs de code, tests, seeds, marqueurs et frontmatter technique restent intacts. Avant `apply`, relire le JSON et scanner les restes anglais/hybrides (`should`, `Your`, `the`, `matching the`, `but found`, `undefined`, accords casses). Les helpers temporaires de remplissage ne se commit pas.
 
 ## Validation
 
@@ -126,6 +128,9 @@ Suivi des traductions (lecture seule) :
 ```powershell
 node tools/translation-status.js        # avancement FR par superblock v9
 node tools/check-translation-drift.js   # drift EN -> FR (exit 1 si drift)
+pnpm local:report                       # genere le snapshot /dev-fr
+pnpm local:check                        # verdict local rapide
+pnpm local:check:full                   # checks longs avant push final
 ```
 
 Scripts locaux gardes :
@@ -145,6 +150,7 @@ full-flow-test.mjs
 - `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
 - `dev-logs/README.md` : lecture des logs serveur et des events de traduction.
 - `TOOLS-REPORT.md` : role des scripts et dossiers sous `tools/`.
+- `DOCS-INDEX.md` : index rapide des docs, commandes et pages locales.
 
 ## GitHub
 

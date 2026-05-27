@@ -79,6 +79,7 @@ Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`. 
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
 .\dev-check.ps1 -Quiet             # n'affiche que le verdict final
 .\dev-check.ps1 -Open              # ouvre /cours-fr dans le navigateur quand UP
+.\dev-check.ps1 -OpenDev           # ouvre /dev-fr dans le navigateur quand UP
 ```
 
 Le script combine `status.json` + processus node + port TCP + HTTP HEAD `/`. Verdicts possibles :
@@ -94,12 +95,15 @@ Ouvre ensuite :
 ```text
 http://localhost:8000/cours-fr
 http://localhost:8000/catalog
+http://localhost:8000/dev-fr
 http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 ```
 
 `/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build). En ouvrant une certification, une barre « X/Y challenges termines » et les coches ✓ refletent la progression sauvegardee dans `localStorage`.
 
-Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules dont au moins un challenge `.md` FR existe. Tu peux le combiner avec `Niveau : Debutant/Intermediaire/Avance`.
+Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules dont au moins un challenge `.md` FR existe. Tu peux le combiner avec `Niveau : Debutant/Intermediaire/Avance` et la recherche texte. Les cartes affichent aussi la progression locale et un bouton `Continuer`.
+
+`/dev-fr` affiche le hub local. Lance `pnpm local:report` si la page indique que le snapshot manque.
 
 `/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au hasard parmi les quizzes traduits, 70% pour reussir. L'examen garde un historique des tentatives (intro), affiche les stats par module et un bouton « Reviser mes erreurs » sur l'ecran resultats (tout dans `localStorage`).
 
@@ -131,7 +135,7 @@ node tools/translate-workshop.js verify <workshop>
 pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
 ```
 
-Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`. Pour les lectures JS en `interactive/questions`, traduire manuellement tant que le script n'est pas etendu a ces sections.
+Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`. Pour les lectures JS, le JSON sort en `kind: "lecture"` et extrait aussi `description/interactive/questions/answers/feedback`.
 
 Controle qualite rapide avant `apply` :
 
@@ -169,6 +173,9 @@ Suivi de l'avancement et detection du drift (lecture seule, pas besoin du serveu
 ```powershell
 node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
 node tools/check-translation-drift.js   # .md EN modifie apres son equivalent FR
+pnpm local:report                       # snapshot local pour /dev-fr
+pnpm local:check                        # HTTP + status + drift + tests catalogue + lint JS v9
+pnpm local:check:full                   # ajoute lint client/root + smoke tests si serveur UP
 ```
 
 Tests navigateur locaux, avec le serveur deja lance :

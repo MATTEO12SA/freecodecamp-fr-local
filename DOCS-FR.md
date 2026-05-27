@@ -21,8 +21,10 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 - La home pointe vers `/cours-fr`.
 - `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte un badge `🚧 Traduction à venir`, calcule automatiquement via `client/src/utils/has-french-intro.ts` (voir section dediee).
 - `/cours-fr` ouvre l'accordeon officiel d'un cert qui contient ses chapitres, modules, blocs et l'examen (l'examen est cliquable, il route vers la page exam-download nettoyee).
-- `/catalog` ajoute un theme synthetique `Francais`. Mecanisme identique a celui de `/cours-fr` : `hasFrenchIntro(superBlock)` est partagee entre les deux pages.
+- `/catalog` ajoute un theme synthetique `Francais`, une recherche texte, la progression locale par certification et un bouton `Continuer`. Mecanisme identique a celui de `/cours-fr` : `hasFrenchIntro(superBlock)` est partagee entre les deux pages.
+- `/dev-fr` affiche le hub dev local : etat serveur, derniers logs, progression traduction, drift EN->FR, git, liens rapides et progression navigateur. Il lit `client/static/local-dev/report.json`, genere par `pnpm local:report`.
 - `/exam-fr?cert=<superblock>` est une page d'examen locale 100% francaise (voir section dediee).
+- Le menu principal expose `/learn`, `/cours-fr`, `/catalog` et `/dev-fr`. L'examen reste accessible depuis `/cours-fr` et `/dev-fr`, pas depuis le menu.
 - Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, MS Trophy et projets qui exigent des services externes. Note : `challengeTypes.exam` et `challengeTypes.examDownload` sont **autorises** maintenant pour que l'examen apparaisse dans l'accordeon.
 - Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local.
 
@@ -56,7 +58,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock. Etat actuel : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
-JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers, 2 blocs FR sur 230). Les lectures JS utilisent les sections `interactive`, `questions`, `answers` et `feedback`; elles doivent rester manuelles tant que le pipeline workshop ne couvre pas ces sections.
+JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers, 2 blocs FR sur 230). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie maintenant avec `kind: "lecture"`.
 
 Regles de traduction :
 
@@ -75,6 +77,8 @@ node tools/translate-workshop.js verify <workshop>
 ```
 
 `extract` lit les fichiers EN et ecrit `tools/translations/<workshop>.json` avec uniquement les titres, descriptions et hints hors code. Codex traduit et relit ce JSON manuellement. `apply` reconstruit les `.md` FR depuis les templates EN. `verify` compare EN/FR et echoue si un bloc technique a bouge.
+
+Le meme script sait aussi traiter les lectures JavaScript v9. Dans ce cas, `extract` produit `kind: "lecture"` et extrait la prose des sections `description`, `interactive`, `questions`, `answers` et `feedback`. Les blocs de code, marqueurs, `video-solution` et frontmatter technique restent copies depuis EN.
 
 Regles specifiques au pipeline :
 
@@ -399,6 +403,9 @@ Suivi des traductions (lecture seule, sans serveur) :
 ```powershell
 node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
 node tools/check-translation-drift.js   # .md EN modifie apres son equivalent FR (drift)
+pnpm local:report                       # snapshot /dev-fr
+pnpm local:check                        # verification locale rapide
+pnpm local:check:full                   # verification locale longue avant push
 ```
 
 `check-translation-drift.js` sort en code 1 s'il trouve un drift, donc utilisable en pre-commit. Etat actuel : 0 drift sur 1722 fichiers compares.

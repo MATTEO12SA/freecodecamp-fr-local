@@ -22,7 +22,7 @@ Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-
 
 État actuel : 2 blocs FR sur 230. Blocs traduits : `lecture-introduction-to-javascript` (4 fichiers) et `lecture-introduction-to-strings` (3 fichiers). Prochaine cible logique : `lecture-understanding-code-clarity`.
 
-Attention : les lectures JS utilisent surtout `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Le pipeline `tools/translate-workshop.js` ne couvre pas encore ces sections; traduire ces blocs manuellement et verifier que les blocs de code restent verbatim.
+Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Le pipeline `tools/translate-workshop.js` couvre maintenant ces sections avec `kind: "lecture"`; traduire le JSON manuellement, puis appliquer/verifier.
 
 ### RWD v9 — Workshops Traduits : 17/17 ✅
 
@@ -235,6 +235,7 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 .\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'à UP
 .\dev-check.ps1 -Open              # ouvre /cours-fr dans le navigateur quand UP
+.\dev-check.ps1 -OpenDev           # ouvre /dev-fr dans le navigateur quand UP
 ```
 
 Le script combine processus node + port TCP 8000 + HTTP HEAD `/`. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
@@ -275,10 +276,16 @@ node tools/translation-status.js responsive-web-design-v9   # un seul superblock
 
 node tools/check-translation-drift.js            # tous les blocs FR
 node tools/check-translation-drift.js <block>    # un seul bloc
+pnpm local:report                                # genere le snapshot /dev-fr
+pnpm local:check                                 # verdict local rapide
+pnpm local:check:full                            # checks longs avant push final
 ```
 
 - [tools/translation-status.js](tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 2/230.
 - [tools/check-translation-drift.js](tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
+- [tools/local-dev-report.js](tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
+- [tools/local-check.js](tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
+- [tools/translate-workshop.js](tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
 
 ## Mémoire Utilisateur (Important)
 
@@ -293,7 +300,7 @@ node tools/check-translation-drift.js <block>    # un seul bloc
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
 4. Continuer JavaScript v9 avec `lecture-understanding-code-clarity`.
-5. Pour un workshop step-by-step, reprendre le pipeline `extract/apply/verify`; pour une lecture `interactive/questions`, traduire manuellement.
+5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 6. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock
@@ -307,11 +314,13 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session** : 4 lots d'amélioration hors traduction, tous pushés (aucun fichier de curriculum touché, persistance `localStorage` uniquement).
+**Dernière session** : hub dev local + checks + catalogue + pipeline JS + docs, tous pushés par lots.
 
-1. **Confort dev** — `dev-check.ps1 -Open` ouvre `/cours-fr` quand le serveur passe UP.
-2. **Outils de suivi** — ajout de `tools/translation-status.js` (avancement FR par superblock) et `tools/check-translation-drift.js` (drift EN→FR via git). 0 drift sur 1722 fichiers.
-3. **Progression visible** — `/cours-fr` lit la progression `localStorage` : coches ✓ dans l'accordéon + barre « X/Y challenges terminés » par cert (barre décorative `aria-hidden`, le texte porte la valeur).
-4. **Examen avec mémoire** — `/exam-fr` gagne l'historique des tentatives, les stats par module et la révision ciblée des erreurs (`exam-history.ts`, clé `fcc-exam-history`).
+1. **Checks locaux** — ajout de `pnpm local:report`, `pnpm local:check`, `pnpm local:check:full`; drift optimise en ~1s.
+2. **Hub `/dev-fr`** — page locale avec serveur, logs, traduction, drift, git, liens rapides et progression navigateur. `dev-check.ps1 -OpenDev` ouvre cette page quand le serveur est UP.
+3. **Menu local** — navigation principale expose `/learn`, `/cours-fr`, `/catalog`, `/dev-fr`. L'examen n'est pas dans le menu, il reste accessible depuis `/cours-fr` et `/dev-fr`.
+4. **Catalogue** — recherche texte, `Theme > Francais`, progression locale et bouton `Continuer`; le label separe "Disponible en français" a ete retire pour eviter le doublon.
+5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
+6. **Docs** — ajout de [DOCS-INDEX.md](DOCS-INDEX.md) et mise a jour des docs principales.
 
-Vérifs OK : `tsc` client 0 erreur, smoke/submit/persist/full-flow 10+8+4+2 PASS, 3 pages en HTTP 200, captures des nouvelles UI validées. RWD reste 158/158, JS 2/230. Prochaine cible traduction : `lecture-understanding-code-clarity`.
+Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 2/230. Prochaine cible traduction : `lecture-understanding-code-clarity`.
