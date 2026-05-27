@@ -14,6 +14,7 @@ import type { ChapterBasedSuperBlockStructure } from '../redux/prop-types';
 import { SuperBlockAccordion } from '../templates/Introduction/components/super-block-accordion';
 import { resetExpansion, toggleBlock } from '../templates/Introduction/redux';
 import { hasFrenchIntro } from '../utils/has-french-intro';
+import { getLocalCompletedChallenges } from '../utils/local-progress';
 
 import './cours-fr.css';
 
@@ -135,7 +136,16 @@ type View = { v: 'lang' } | { v: 'fr-home' } | { v: 'fr-cert'; cert: string };
 
 function CoursFrPage({ data }: { data: PageData }): JSX.Element {
   const [view, setView] = useState<View>({ v: 'lang' });
+  // localStorage n'existe pas au build (SSR) : on charge la progression apres
+  // le montage pour eviter un mismatch d'hydratation.
+  const [completedChallengeIds, setCompletedChallengeIds] = useState<string[]>(
+    []
+  );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setCompletedChallengeIds(getLocalCompletedChallenges().map(c => c.id));
+  }, []);
 
   useEffect(() => {
     if (view.v !== 'fr-cert') return;
@@ -270,6 +280,15 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       challenge.superBlock === superBlock &&
                       isLocalChallenge(challenge)
                   );
+                const completedSet = new Set(completedChallengeIds);
+                const totalChallenges = superBlockChallenges.length;
+                const doneChallenges = superBlockChallenges.filter(challenge =>
+                  completedSet.has(challenge.id)
+                ).length;
+                const progressPct =
+                  totalChallenges > 0
+                    ? Math.round((doneChallenges / totalChallenges) * 100)
+                    : 0;
                 return (
                   <>
                     <BackBar
@@ -300,6 +319,33 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       </section>
                     )}
 
+                    {totalChallenges > 0 && (
+                      <div
+                        className='cours-fr-progress'
+                        role='progressbar'
+                        aria-valuenow={progressPct}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-label={`Progression ${cert.title}`}
+                      >
+                        <div className='cours-fr-progress-head'>
+                          <span className='cours-fr-progress-label'>
+                            {doneChallenges}/{totalChallenges} challenges
+                            terminés
+                          </span>
+                          <span className='cours-fr-progress-pct'>
+                            {progressPct}%
+                          </span>
+                        </div>
+                        <div className='cours-fr-progress-track'>
+                          <div
+                            className='cours-fr-progress-fill'
+                            style={{ width: `${progressPct}%` }}
+                          />
+                        </div>
+                      </div>
+                    )}
+
                     {!structure ? (
                       <div className='cours-fr-empty'>
                         🚧 Structure de certification introuvable.
@@ -311,7 +357,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                           superBlock={superBlock}
                           structure={structure}
                           chosenBlock={superBlockChallenges[0]?.block ?? ''}
-                          completedChallengeIds={[]}
+                          completedChallengeIds={completedChallengeIds}
                         />
                       </div>
                     )}
