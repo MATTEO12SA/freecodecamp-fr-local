@@ -26,6 +26,13 @@ const translationsDir = path.join(rootDir, 'tools', 'translations');
 const markerPattern = /^#{1,6}\s+--[a-z0-9-]+--\s*$/;
 const codeFencePattern = /```[\s\S]*?```/g;
 const proseChunkPattern = /[^\S\n]*[^\n]+(?:\n[^\S\n]*[^\n]+)*/g;
+const lectureProseMarkers = new Set([
+  '# --description--',
+  '# --interactive--',
+  '## --text--',
+  '## --answers--',
+  '### --feedback--'
+]);
 
 function usage() {
   console.error(
@@ -178,6 +185,21 @@ function splitAroundCodeFences(text) {
 }
 
 function extractProseChunks(text) {
+  return extractChunks(text, () => true);
+}
+
+function isLectureChunkTranslatable(text) {
+  const value = text.trim();
+  if (!value || value === '---') return false;
+  if (/^`[^`]+`$/.test(value)) return false;
+  return /[A-Za-zÀ-ÿ]/.test(value);
+}
+
+function extractLectureChunks(text) {
+  return extractChunks(text, isLectureChunkTranslatable);
+}
+
+function extractChunks(text, shouldInclude) {
   const chunks = [];
   for (const part of splitAroundCodeFences(text)) {
     if (part.type !== 'prose') continue;
@@ -186,13 +208,26 @@ function extractProseChunks(text) {
     proseChunkPattern.lastIndex = 0;
     while ((match = proseChunkPattern.exec(part.value))) {
       const value = match[0].trim();
-      if (value) chunks.push(value);
+      if (shouldInclude(value)) chunks.push(value);
     }
   }
   return chunks;
 }
 
 function replaceProseChunks(text, translations) {
+  return replaceChunks(text, translations, () => true, 'hint');
+}
+
+function replaceLectureChunks(text, translations) {
+  return replaceChunks(
+    text,
+    translations,
+    isLectureChunkTranslatable,
+    'lecture'
+  );
+}
+
+function replaceChunks(text, translations, shouldReplace, label) {
   const parts = splitAroundCodeFences(text);
   let index = 0;
 
@@ -202,9 +237,11 @@ function replaceProseChunks(text, translations) {
     return part.value.replace(proseChunkPattern, match => {
       const original = match.trim();
       if (!original) return match;
+      if (!shouldReplace(original)) return match;
+
       const translated = translations[index++];
       if (!translated) {
-        throw new Error(`Traduction de hint manquante pour: ${original}`);
+        throw new Error(`Traduction ${label} manquante pour: ${original}`);
       }
 
       const leading = match.match(/^\s*/)[0];
@@ -215,11 +252,22 @@ function replaceProseChunks(text, translations) {
 
   if (index !== translations.length) {
     throw new Error(
-      `Nombre de hints incoherent: ${index} utilises, ${translations.length} fournis.`
+      `Nombre de traductions ${label} incoherent: ${index} utilisees, ${translations.length} fournies.`
     );
   }
 
   return output.join('');
+}
+
+function detectKind(sections) {
+  if (
+    sections.some(section =>
+      ['# --interactive--', '# --questions--'].includes(section.marker)
+    )
+  ) {
+    return 'lecture';
+  }
+  return 'workshop';
 }
 
 function sortByStep(files) {
@@ -292,17 +340,47 @@ function extract(workshop) {
       .map(file => path.join(sourceDir, file))
   );
 
+  const firstFile = sourceFiles[0] ? readText(sourceFiles[0]) : '';
+  const kind = firstFile
+    ? detectKind(splitSections(parseFrontmatter(firstFile).body))
+    : 'workshop';
+
   const files = sourceFiles.map(filePath => {
     const raw = readText(filePath);
     const { metadata, body } = parseFrontmatter(raw);
     const sections = splitSections(body);
+    const title = metadata.title ?? '';
+
+    if (kind === 'lecture') {
+      return {
+        file: path.basename(filePath),
+        id: metadata.id,
+        dashedName: metadata.dashedName,
+        title: {
+          en: title,
+          fr: ''
+        },
+        sections: sections
+          .map((section, index) => ({
+            index,
+            marker: section.marker,
+            chunks: lectureProseMarkers.has(section.marker)
+              ? extractLectureChunks(section.content).map(text => ({
+                  en: text,
+                  fr: ''
+                }))
+              : []
+          }))
+          .filter(section => section.chunks.length > 0)
+      };
+    }
+
     const description = getSection(sections, '# --description--');
     const hints = getSection(sections, '# --hints--');
     const descriptionTexts = description
       ? extractProseChunks(description.content)
       : [];
     const hintTexts = hints ? extractProseChunks(hints.content) : [];
-    const title = metadata.title ?? '';
 
     return {
       file: path.basename(filePath),
@@ -325,8 +403,12 @@ function extract(workshop) {
 
   const output = {
     workshop,
+    kind,
     reviewed: false,
-    note: 'Les champs fr pre-remplis par phrasebook sont des brouillons: relire et corriger avant de passer reviewed a true.',
+    note:
+      kind === 'lecture'
+        ? 'Mode lecture: traduire manuellement title.fr et chaque chunk.fr. Les blocs de code, marqueurs, solutions video et frontmatter technique restent copies depuis EN.'
+        : 'Les champs fr pre-remplis par phrasebook sont des brouillons: relire et corriger avant de passer reviewed a true.',
     files
   };
 
@@ -352,6 +434,23 @@ function ensureAllTranslationsPresent(fileData) {
   }
 }
 
+function ensureLectureTranslationsPresent(fileData) {
+  if (!fileData.title?.fr?.trim()) {
+    throw new Error(`Titre FR manquant: ${fileData.file}`);
+  }
+  for (const section of fileData.sections ?? []) {
+    for (const [index, chunk] of (section.chunks ?? []).entries()) {
+      if (!chunk.fr?.trim()) {
+        throw new Error(
+          `Traduction FR manquante: ${fileData.file} ${section.marker} #${
+            index + 1
+          }`
+        );
+      }
+    }
+  }
+}
+
 function apply(workshop) {
   const { sourceDir, outputDir, translationPath } = getWorkshopPaths(workshop);
   const data = loadTranslations(translationPath);
@@ -359,7 +458,41 @@ function apply(workshop) {
 
   const byFile = new Map(data.files.map(file => [file.file, file]));
 
+  const kind = data.kind || 'workshop';
+
   for (const fileData of data.files) {
+    if (kind === 'lecture') {
+      ensureLectureTranslationsPresent(fileData);
+
+      const sourcePath = path.join(sourceDir, fileData.file);
+      const raw = readText(sourcePath);
+      const parsed = parseFrontmatter(raw);
+      const sections = splitSections(parsed.body);
+
+      for (const sectionData of fileData.sections ?? []) {
+        const section = sections[sectionData.index];
+        if (!section || section.marker !== sectionData.marker) {
+          throw new Error(
+            `${fileData.file}: section ${sectionData.marker} introuvable a l'index ${sectionData.index}.`
+          );
+        }
+        section.content = replaceLectureChunks(
+          section.content,
+          sectionData.chunks.map(chunk => chunk.fr.trim())
+        );
+      }
+
+      const frontmatter = setFrontmatterTitle(
+        parsed.frontmatter,
+        fileData.title.fr.trim()
+      );
+      const output = reassemble(frontmatter, sections);
+      writeText(path.join(outputDir, fileData.file), output, {
+        cleanWhitespace: true
+      });
+      continue;
+    }
+
     ensureAllTranslationsPresent(fileData);
 
     const sourcePath = path.join(sourceDir, fileData.file);
@@ -448,7 +581,12 @@ function verifySections(enSections, frSections, file) {
     const fr = frSections[index];
     assertEqual(fr.marker, en.marker, `${file}: ordre des sections modifie.`);
 
-    if (en.marker === '# --description--' || en.marker === '# --hints--') {
+    const isTranslatableSection =
+      en.marker === '# --description--' ||
+      en.marker === '# --hints--' ||
+      lectureProseMarkers.has(en.marker);
+
+    if (isTranslatableSection) {
       const enCode = codeBlocks(en.content);
       const frCode = codeBlocks(fr.content);
       assertEqual(
@@ -464,8 +602,14 @@ function verifySections(enSections, frSections, file) {
         );
       }
       assertEqual(
-        extractProseChunks(fr.content).length,
-        extractProseChunks(en.content).length,
+        (lectureProseMarkers.has(en.marker)
+          ? extractLectureChunks(fr.content)
+          : extractProseChunks(fr.content)
+        ).length,
+        (lectureProseMarkers.has(en.marker)
+          ? extractLectureChunks(en.content)
+          : extractProseChunks(en.content)
+        ).length,
         `${file}: nombre de blocs de prose dans ${en.marker} modifie.`
       );
       continue;
