@@ -320,14 +320,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                     )}
 
                     {totalChallenges > 0 && (
-                      <div
-                        className='cours-fr-progress'
-                        role='progressbar'
-                        aria-valuenow={progressPct}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                        aria-label={`Progression ${cert.title}`}
-                      >
+                      <div className='cours-fr-progress'>
                         <div className='cours-fr-progress-head'>
                           <span className='cours-fr-progress-label'>
                             {doneChallenges}/{totalChallenges} challenges
@@ -337,7 +330,12 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                             {progressPct}%
                           </span>
                         </div>
-                        <div className='cours-fr-progress-track'>
+                        {/* Barre purement visuelle : la valeur est deja
+                            annoncee par le texte ci-dessus. */}
+                        <div
+                          className='cours-fr-progress-track'
+                          aria-hidden='true'
+                        >
                           <div
                             className='cours-fr-progress-fill'
                             style={{ width: `${progressPct}%` }}
