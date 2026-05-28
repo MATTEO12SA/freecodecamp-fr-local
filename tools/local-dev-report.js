@@ -89,7 +89,15 @@ function getTranslationStatus() {
       }
       const pctFiles =
         totalFiles > 0 ? Math.round((translatedFiles / totalFiles) * 100) : 0;
-      return { key, translated, total, pct, translatedFiles, totalFiles, pctFiles };
+      return {
+        key,
+        translated,
+        total,
+        pct,
+        translatedFiles,
+        totalFiles,
+        pctFiles
+      };
     })
     .sort((a, b) => b.pctFiles - a.pctFiles || a.key.localeCompare(b.key));
 }

@@ -79,9 +79,7 @@ function listSuperblockFiles(suffix) {
 
 function readStructure(file) {
   try {
-    return JSON.parse(
-      fs.readFileSync(path.join(superblocksDir, file), 'utf8')
-    );
+    return JSON.parse(fs.readFileSync(path.join(superblocksDir, file), 'utf8'));
   } catch {
     return null;
   }

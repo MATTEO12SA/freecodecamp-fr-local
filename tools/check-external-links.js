@@ -19,7 +19,11 @@ const path = require('path');
 
 const rootDir = path.resolve(__dirname, '..');
 const scanDir = path.join(rootDir, 'client', 'src');
-const allowlistPath = path.join(rootDir, 'tools', 'external-links-allowlist.json');
+const allowlistPath = path.join(
+  rootDir,
+  'tools',
+  'external-links-allowlist.json'
+);
 const isUpdate = process.argv.includes('--update');
 
 const EXT = new Set(['.ts', '.tsx', '.js', '.jsx']);
@@ -96,11 +100,15 @@ function main() {
 
   console.log(`Fichiers client/src scannes pour liens de navigation externes.`);
   console.log(`Liens externes trouves : ${findings.length}`);
-  console.log(`Allowlistes            : ${findings.length - violations.length}`);
+  console.log(
+    `Allowlistes            : ${findings.length - violations.length}`
+  );
   console.log(`Non allowlistes        : ${violations.length}`);
 
   if (violations.length > 0) {
-    console.log('\n--- Nouveaux liens de navigation externes (a retirer ou allowlister) ---');
+    console.log(
+      '\n--- Nouveaux liens de navigation externes (a retirer ou allowlister) ---'
+    );
     for (const v of violations) {
       console.log(`  ${v.file}  -> ${v.url}`);
     }
