@@ -67,7 +67,22 @@ async function main() {
       'lint-challenges',
       '--superblock',
       'javascript-v9'
-    ])
+    ]),
+    runStep('client typecheck', 'pnpm', [
+      'exec',
+      'tsc',
+      '--noEmit',
+      '--pretty',
+      'false',
+      '-p',
+      'client/tsconfig.json'
+    ]),
+    runStep('shared type-check', 'pnpm', [
+      '--filter',
+      '@freecodecamp/shared',
+      'type-check'
+    ]),
+    runStep('external link guard', 'node', ['tools/check-external-links.js'])
   ];
 
   if (isFull) {
@@ -78,7 +93,8 @@ async function main() {
         'smoke-test.mjs',
         'submit-test.mjs',
         'persist-test.mjs',
-        'full-flow-test.mjs'
+        'full-flow-test.mjs',
+        'axe-test.mjs'
       ]) {
         steps.push(runStep(script, 'node', [script]));
       }

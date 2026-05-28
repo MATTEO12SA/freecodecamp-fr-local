@@ -3,6 +3,7 @@
 // localStorage. Cle dediee `fcc-exam-history`, separee de la progression.
 
 const STORAGE_KEY = 'fcc-exam-history';
+const STORAGE_VERSION = 1;
 const MAX_PER_CERT = 50;
 
 export type ExamAttempt = {
@@ -14,6 +15,17 @@ export type ExamAttempt = {
 };
 
 type Store = Record<string, ExamAttempt[]>;
+type VersionedStore = { version: number; byCert: Store };
+
+function isValidAttempt(a: unknown): a is ExamAttempt {
+  return (
+    !!a &&
+    typeof a === 'object' &&
+    typeof (a as ExamAttempt).cert === 'string' &&
+    typeof (a as ExamAttempt).score === 'number' &&
+    typeof (a as ExamAttempt).total === 'number'
+  );
+}
 
 function readStore(): Store {
   if (typeof window === 'undefined') return {};
@@ -21,7 +33,20 @@ function readStore(): Store {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return {};
     const parsed: unknown = JSON.parse(raw);
-    return parsed && typeof parsed === 'object' ? (parsed as Store) : {};
+    if (!parsed || typeof parsed !== 'object') return {};
+    // Nouvelle forme : { version, byCert }. Ancienne forme : Record<cert,
+    // attempts[]> directement. On accepte les deux et on filtre les tentatives
+    // corrompues.
+    const versioned = parsed as Partial<VersionedStore>;
+    const rawByCert: Record<string, unknown> =
+      typeof versioned.version === 'number' && versioned.byCert
+        ? versioned.byCert
+        : (parsed as Record<string, unknown>);
+    const clean: Store = {};
+    for (const [cert, list] of Object.entries(rawByCert)) {
+      if (Array.isArray(list)) clean[cert] = list.filter(isValidAttempt);
+    }
+    return clean;
   } catch {
     return {};
   }
@@ -30,7 +55,10 @@ function readStore(): Store {
 function writeStore(store: Store): void {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ version: STORAGE_VERSION, byCert: store })
+    );
   } catch {
     // localStorage plein ou desactive : on ignore.
   }

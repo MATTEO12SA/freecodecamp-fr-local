@@ -11,6 +11,10 @@ type TranslationRow = {
   translated: number;
   total: number;
   pct: number;
+  // Niveau fichier (.md FR/EN) — present dans les rapports recents.
+  translatedFiles?: number;
+  totalFiles?: number;
+  pctFiles?: number;
 };
 
 type DriftReport = {
@@ -315,25 +319,37 @@ function DevFrPage(): JSX.Element {
                         <thead>
                           <tr>
                             <th>Certification</th>
-                            <th>Traduit</th>
+                            <th>Blocs</th>
+                            <th>Fichiers</th>
                             <th>Progression</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {report.translations.map(row => (
-                            <tr key={row.key}>
-                              <td>{row.key}</td>
-                              <td>
-                                {row.translated}/{row.total}
-                              </td>
-                              <td>
-                                <div className='dev-fr-bar' aria-hidden='true'>
-                                  <span style={{ width: `${row.pct}%` }} />
-                                </div>
-                                <span>{row.pct}%</span>
-                              </td>
-                            </tr>
-                          ))}
+                          {report.translations.map(row => {
+                            const pct = row.pctFiles ?? row.pct;
+                            return (
+                              <tr key={row.key}>
+                                <td>{row.key}</td>
+                                <td>
+                                  {row.translated}/{row.total}
+                                </td>
+                                <td>
+                                  {row.totalFiles != null
+                                    ? `${row.translatedFiles}/${row.totalFiles}`
+                                    : '—'}
+                                </td>
+                                <td>
+                                  <div
+                                    className='dev-fr-bar'
+                                    aria-hidden='true'
+                                  >
+                                    <span style={{ width: `${pct}%` }} />
+                                  </div>
+                                  <span>{pct}%</span>
+                                </td>
+                              </tr>
+                            );
+                          })}
                         </tbody>
                       </table>
                     </div>

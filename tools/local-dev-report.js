@@ -5,32 +5,22 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 const { execFileSync } = require('child_process');
+const {
+  superblocksDir,
+  enBlocksDir,
+  frBlocksDir,
+  listMdFiles,
+  frBlockHasContent,
+  countBlockFiles,
+  listFrBlockDirs,
+  listSuperblockFiles,
+  readStructure,
+  listBlocksInStructure
+} = require('./lib/curriculum-fr');
 
 const rootDir = path.resolve(__dirname, '..');
 const statusFile = path.join(rootDir, 'dev-logs', 'status.json');
 const latestLogFile = path.join(rootDir, 'dev-logs', 'latest.log');
-const superblocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'structure',
-  'superblocks'
-);
-const enBlocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'challenges',
-  'english',
-  'blocks'
-);
-const frBlocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'i18n-curriculum',
-  'curriculum',
-  'challenges',
-  'french',
-  'blocks'
-);
 const reportPath = path.join(
   rootDir,
   'client',
@@ -76,46 +66,32 @@ function normalizeGitPath(filePath) {
   return filePath.replace(/\\/g, '/');
 }
 
-function listBlocks(structure) {
-  const blocks = [];
-  for (const chapter of structure.chapters || []) {
-    for (const mod of chapter.modules || []) {
-      for (const block of mod.blocks || []) {
-        blocks.push(block);
-      }
-    }
-  }
-  return blocks;
-}
-
-function frBlockHasContent(block) {
-  const dir = path.join(frBlocksDir, block);
-  if (!fs.existsSync(dir)) return false;
-  return fs.readdirSync(dir).some(file => file.endsWith('.md'));
-}
-
 function getTranslationStatus() {
   if (!fs.existsSync(superblocksDir)) return [];
 
-  return fs
-    .readdirSync(superblocksDir)
-    .filter(file => file.endsWith('-v9.json'))
+  return listSuperblockFiles('-v9.json')
     .sort()
     .map(file => {
       const key = file.replace(/\.json$/, '');
-      const structure = readJson(path.join(superblocksDir, file));
-      const blocks = structure ? listBlocks(structure) : [];
+      const structure = readStructure(file);
+      const blocks = structure ? listBlocksInStructure(structure) : [];
+      // Niveau bloc (presence) — conserve pour la compat du schema /dev-fr.
       const translated = blocks.filter(frBlockHasContent).length;
       const total = blocks.length;
       const pct = total > 0 ? Math.round((translated / total) * 100) : 0;
-      return { key, translated, total, pct };
+      // Niveau fichier (vraie completude) — champs additifs.
+      let translatedFiles = 0;
+      let totalFiles = 0;
+      for (const block of blocks) {
+        const counts = countBlockFiles(block);
+        translatedFiles += counts.translated;
+        totalFiles += counts.total;
+      }
+      const pctFiles =
+        totalFiles > 0 ? Math.round((translatedFiles / totalFiles) * 100) : 0;
+      return { key, translated, total, pct, translatedFiles, totalFiles, pctFiles };
     })
-    .sort((a, b) => b.pct - a.pct || a.key.localeCompare(b.key));
-}
-
-function listMdFiles(dir) {
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+    .sort((a, b) => b.pctFiles - a.pctFiles || a.key.localeCompare(b.key));
 }
 
 function getLastCommitMap(paths) {
@@ -144,16 +120,25 @@ function getLastCommitMap(paths) {
   return map;
 }
 
+// Date de reference d'un fichier : dernier commit git, sinon mtime disque.
+function fileTimestamp(lastCommitMap, filePath) {
+  const fromGit = lastCommitMap.get(
+    normalizeGitPath(path.relative(rootDir, filePath))
+  );
+  if (typeof fromGit === 'number') return fromGit;
+  try {
+    return fs.statSync(filePath).mtimeMs;
+  } catch {
+    return null;
+  }
+}
+
 function getTranslationDrift(limit = 30) {
   if (!fs.existsSync(frBlocksDir)) {
     return { blocks: 0, comparedFiles: 0, missingEnglish: 0, drifted: [] };
   }
 
-  const blocks = fs
-    .readdirSync(frBlocksDir, { withFileTypes: true })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name)
-    .sort();
+  const blocks = listFrBlockDirs().sort();
   const drifted = [];
   let comparedFiles = 0;
   let missingEnglish = 0;
@@ -175,12 +160,8 @@ function getTranslationDrift(limit = 30) {
       }
 
       comparedFiles++;
-      const enTime = lastCommitMap.get(
-        normalizeGitPath(path.relative(rootDir, enPath))
-      );
-      const frTime = lastCommitMap.get(
-        normalizeGitPath(path.relative(rootDir, frPath))
-      );
+      const enTime = fileTimestamp(lastCommitMap, enPath);
+      const frTime = fileTimestamp(lastCommitMap, frPath);
       if (enTime !== null && frTime !== null && enTime > frTime) {
         drifted.push({
           block,

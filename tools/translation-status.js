@@ -3,58 +3,37 @@
 // Remplace les commandes PowerShell ad-hoc tapees a chaque session pour
 // savoir combien de blocs sont traduits.
 //
-// Pour chaque curriculum/structure/superblocks/*-v9.json, compte les blocs
-// dont le dossier FR existe sous
-// curriculum/i18n-curriculum/curriculum/challenges/french/blocks/.
+// Affiche DEUX mesures par certification :
+//   - fichiers : .md FR presents / .md EN attendus (vraie completude, sert
+//     de barre principale) ;
+//   - blocs    : blocs avec au moins un .md FR / total des blocs (signal de
+//     presence, utilise par le filtre /catalog).
+// Un bloc a moitie traduit ne compte donc plus comme "100%".
 //
 // Usage:
 //   node tools/translation-status.js          # tous les superblocks v9
 //   node tools/translation-status.js <key>    # un seul (ex: responsive-web-design-v9)
 'use strict';
 
+const {
+  frBlockHasContent,
+  countBlockFiles,
+  listSuperblockFiles,
+  readStructure,
+  listBlocksInStructure,
+  superblocksDir
+} = require('./lib/curriculum-fr');
+
 const fs = require('fs');
-const path = require('path');
-
-const rootDir = path.resolve(__dirname, '..');
-const superblocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'structure',
-  'superblocks'
-);
-const frBlocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'i18n-curriculum',
-  'curriculum',
-  'challenges',
-  'french',
-  'blocks'
-);
-
 const onlyKey = process.argv[2] || null;
-
-function listBlocks(structure) {
-  const blocks = [];
-  for (const chapter of structure.chapters || []) {
-    for (const mod of chapter.modules || []) {
-      for (const block of mod.blocks || []) {
-        blocks.push(block);
-      }
-    }
-  }
-  return blocks;
-}
-
-function frBlockHasContent(block) {
-  const dir = path.join(frBlocksDir, block);
-  if (!fs.existsSync(dir)) return false;
-  return fs.readdirSync(dir).some(file => file.endsWith('.md'));
-}
 
 function bar(pct, width = 24) {
   const filled = Math.round((pct / 100) * width);
   return '[' + '#'.repeat(filled) + '-'.repeat(width - filled) + ']';
+}
+
+function pctOf(part, total) {
+  return total > 0 ? Math.round((part / total) * 100) : 0;
 }
 
 function main() {
@@ -63,9 +42,7 @@ function main() {
     process.exit(1);
   }
 
-  let files = fs
-    .readdirSync(superblocksDir)
-    .filter(file => file.endsWith('-v9.json'));
+  let files = listSuperblockFiles('-v9.json');
   if (onlyKey) {
     files = files.filter(file => file.replace(/\.json$/, '') === onlyKey);
     if (files.length === 0) {
@@ -73,41 +50,56 @@ function main() {
       process.exit(1);
     }
   }
-
   files.sort();
 
   const rows = [];
   for (const file of files) {
     const key = file.replace(/\.json$/, '');
-    let structure;
-    try {
-      structure = JSON.parse(
-        fs.readFileSync(path.join(superblocksDir, file), 'utf8')
-      );
-    } catch {
-      continue;
+    const structure = readStructure(file);
+    if (!structure) continue;
+    const blocks = listBlocksInStructure(structure);
+
+    let translatedBlocks = 0;
+    let translatedFiles = 0;
+    let totalFiles = 0;
+    for (const block of blocks) {
+      if (frBlockHasContent(block)) translatedBlocks += 1;
+      const { translated, total } = countBlockFiles(block);
+      translatedFiles += translated;
+      totalFiles += total;
     }
-    const blocks = listBlocks(structure);
-    const translated = blocks.filter(frBlockHasContent).length;
-    const total = blocks.length;
-    const pct = total > 0 ? Math.round((translated / total) * 100) : 0;
-    rows.push({ key, translated, total, pct });
+
+    rows.push({
+      key,
+      translatedBlocks,
+      totalBlocks: blocks.length,
+      translatedFiles,
+      totalFiles,
+      pctFiles: pctOf(translatedFiles, totalFiles)
+    });
   }
 
-  rows.sort((a, b) => b.pct - a.pct || a.key.localeCompare(b.key));
+  rows.sort((a, b) => b.pctFiles - a.pctFiles || a.key.localeCompare(b.key));
 
   const keyWidth = Math.max(...rows.map(r => r.key.length), 12);
   console.log('Avancement des traductions FR par certification v9\n');
   for (const row of rows) {
     const label = row.key.padEnd(keyWidth);
-    const count = `${row.translated}/${row.total}`.padStart(8);
+    const pct = String(row.pctFiles).padStart(3);
+    const fileCount = `${row.translatedFiles}/${row.totalFiles}`.padStart(9);
+    const blockCount = `${row.translatedBlocks}/${row.totalBlocks}`;
     console.log(
-      `${label}  ${bar(row.pct)} ${String(row.pct).padStart(3)}%  ${count}`
+      `${label}  ${bar(row.pctFiles)} ${pct}%  fichiers ${fileCount}  ` +
+        `(blocs ${blockCount})`
     );
   }
 
-  const fullyDone = rows.filter(r => r.pct === 100).map(r => r.key);
-  const started = rows.filter(r => r.pct > 0 && r.pct < 100);
+  const fullyDone = rows
+    .filter(r => r.totalFiles > 0 && r.translatedFiles === r.totalFiles)
+    .map(r => r.key);
+  const started = rows.filter(
+    r => r.translatedFiles > 0 && r.translatedFiles < r.totalFiles
+  );
   console.log('');
   console.log(
     `Certifications 100% : ${fullyDone.length ? fullyDone.join(', ') : 'aucune'}`
@@ -115,7 +107,7 @@ function main() {
   if (started.length) {
     console.log(
       `En cours            : ${started
-        .map(r => `${r.key} (${r.pct}%)`)
+        .map(r => `${r.key} (${r.pctFiles}%)`)
         .join(', ')}`
     );
   }

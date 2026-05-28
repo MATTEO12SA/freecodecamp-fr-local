@@ -117,8 +117,10 @@ function Initialize-DevLogs {
         ""
     )
     [System.IO.File]::WriteAllText($script:LatestLogFile, ($header -join [Environment]::NewLine), $utf8NoBom)
-    [System.IO.File]::WriteAllText($script:StructuredLogFile, "", $utf8NoBom)
-    [System.IO.File]::WriteAllText($script:ErrorsLogFile, "", $utf8NoBom)
+    # [FR-local] server.log / errors.log desactives : doublons de latest.log,
+    # consommes par aucun outil. latest.log + status.json suffisent.
+    # [System.IO.File]::WriteAllText($script:StructuredLogFile, "", $utf8NoBom)
+    # [System.IO.File]::WriteAllText($script:ErrorsLogFile, "", $utf8NoBom)
 }
 
 function Format-JsonText {
@@ -560,13 +562,15 @@ function Write-DevLog {
             message = $Message
             data = $Data
         }
-        Add-Content -LiteralPath $StructuredLogFile -Value ($record | ConvertTo-Json -Compress -Depth 8) -Encoding UTF8
+        # [FR-local] server.log desactive (doublon de latest.log).
+        # Add-Content -LiteralPath $StructuredLogFile -Value ($record | ConvertTo-Json -Compress -Depth 8) -Encoding UTF8
     } catch {
         # Logging must never stop the watcher.
     }
 
     if ($Level -eq "ERROR") {
-        Add-Content -LiteralPath $ErrorsLogFile -Value $humanLine -Encoding UTF8
+        # [FR-local] errors.log desactive (sous-ensemble de latest.log).
+        # Add-Content -LiteralPath $ErrorsLogFile -Value $humanLine -Encoding UTF8
     }
 }
 
@@ -715,7 +719,8 @@ function Write-LogEvent {
     }
 
     $json = $record | ConvertTo-Json -Compress -Depth 8
-    Add-Content -LiteralPath $script:StructuredLogFile -Value $json -Encoding UTF8
+    # [FR-local] server.log desactive (doublon JSON de latest.log).
+    # Add-Content -LiteralPath $script:StructuredLogFile -Value $json -Encoding UTF8
 
     $details = ""
     if ($Data.Count -gt 0) {
@@ -728,7 +733,8 @@ function Write-LogEvent {
     Add-Content -LiteralPath $script:LatestLogFile -Value $humanLine -Encoding UTF8
 
     if ($Level -eq "ERROR") {
-        Add-Content -LiteralPath $script:ErrorsLogFile -Value $humanLine -Encoding UTF8
+        # [FR-local] errors.log desactive (sous-ensemble de latest.log).
+        # Add-Content -LiteralPath $script:ErrorsLogFile -Value $humanLine -Encoding UTF8
     }
 }
 

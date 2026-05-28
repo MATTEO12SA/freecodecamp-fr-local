@@ -68,7 +68,7 @@ Regles de traduction :
 
 ## Pipeline De Traduction Des Workshops
 
-Les gros workshops doivent passer par [tools/translate-workshop.js](tools/translate-workshop.js). Le script est un outil de securite, pas un traducteur automatique :
+Les gros workshops doivent passer par [tools/translate-workshop.js](../tools/translate-workshop.js). Le script est un outil de securite, pas un traducteur automatique :
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>
@@ -141,7 +141,7 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 
 ## Detection Automatique Des Certs Et Modules Traduits
 
-`/cours-fr` et `/catalog` partagent une seule source de verite : [client/src/utils/has-french-intro.ts](client/src/utils/has-french-intro.ts). La fonction `hasFrenchIntro(superBlock)` renvoie `true` si le cert ou module a au moins un challenge `.md` traduit.
+`/cours-fr` et `/catalog` partagent une seule source de verite : [client/src/utils/has-french-intro.ts](../client/src/utils/has-french-intro.ts). La fonction `hasFrenchIntro(superBlock)` renvoie `true` si le cert ou module a au moins un challenge `.md` traduit.
 
 La liste est **generee au build via `preval`** (macro Babel) qui scanne :
 
@@ -174,13 +174,13 @@ success Re-building development bundle - 0.892s
 
 ### Test Mocks
 
-`has-french-intro.ts` utilise `preval` qui ne s'execute pas sous vitest. Pour les tests, [client/src/utils/**mocks**/has-french-intro.ts](client/src/utils/__mocks__/has-french-intro.ts) fournit un mock simple. `catalog.test.tsx` declare `vi.mock('../utils/has-french-intro')` pour l'utiliser.
+`has-french-intro.ts` utilise `preval` qui ne s'execute pas sous vitest. Pour les tests, [client/src/utils/**mocks**/has-french-intro.ts](../client/src/utils/__mocks__/has-french-intro.ts) fournit un mock simple. `catalog.test.tsx` declare `vi.mock('../utils/has-french-intro')` pour l'utiliser.
 
 ## Examen Local FR
 
 freeCodeCamp officiel exige un client desktop Tauri (`exam-environment://`) + un token JWT genere par l'API + Auth0 pour passer un examen de certification. Aucun de ces composants n'existe dans le fork local.
 
-[client/src/pages/exam-fr.tsx](client/src/pages/exam-fr.tsx) remplace ce flux par un examen 100% local :
+[client/src/pages/exam-fr.tsx](../client/src/pages/exam-fr.tsx) remplace ce flux par un examen 100% local :
 
 - URL : `/exam-fr?cert=<superblock>` (ex: `/exam-fr?cert=responsive-web-design-v9`).
 - GraphQL query sur tous les `quiz-*` du superblock cible.
@@ -194,7 +194,7 @@ Tant que les modules d'un cert n'ont aucun quiz traduit, l'examen affiche `🚧 
 
 ### Memoire Locale De L'Examen
 
-Comme le reste du fork, l'examen n'a pas de backend : tout est dans `localStorage`. [client/src/utils/exam-history.ts](client/src/utils/exam-history.ts) gere une cle dediee `fcc-exam-history` (separee de la progression `fcc-local-user`), structuree par cert.
+Comme le reste du fork, l'examen n'a pas de backend : tout est dans `localStorage`. [client/src/utils/exam-history.ts](../client/src/utils/exam-history.ts) gere une cle dediee `fcc-exam-history` (separee de la progression `fcc-local-user`), structuree par cert.
 
 - **Historique** : a l'entree dans l'ecran resultats, un `useEffect` enregistre la tentative `{ cert, date, score, total, pct }` (examen complet uniquement — les revisions ne polluent pas l'historique). L'ecran d'intro affiche les 5 dernieres tentatives, date FR + score colore selon reussite.
 - **Stats par module** : les questions portent leur `sourceBlock` (le bloc `quiz-*` d'origine). L'ecran resultats regroupe les reponses par bloc, calcule le % de reussite et affiche un tableau « Reussite par module » trie du plus faible au plus fort (libelle nettoye : `quiz-css-colors` -> `Css colors`).
@@ -204,7 +204,7 @@ La lecture de `localStorage` se fait apres montage (les valeurs sont vides cote 
 
 ### Bouton D'Acces
 
-[client/src/templates/Challenges/exam-download/show.tsx](client/src/templates/Challenges/exam-download/show.tsx) a ete nettoye : tous les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. Il ne reste que :
+[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx) a ete nettoye : tous les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. Il ne reste que :
 
 - `ChallengeTitle` avec checkmark de completion.
 - `PrerequisitesCallout` (utile : detecte via localStorage les challenges restants).
@@ -270,7 +270,7 @@ Donc chokidar 3.6.0 est cassé sur ce setup, independamment de la config. Cause 
 
 ### Resolution : Fallback `fs.watchFile`
 
-Solution appliquee dans [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](tools/client-plugins/gatsby-source-challenges/gatsby-node.js) : on garde le watcher chokidar (pour les setups Linux/macOS / Windows ou il marche) et on ajoute un **fallback Node natif `fs.watchFile`** qui surveille chaque `.md` individuellement.
+Solution appliquee dans [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](../tools/client-plugins/gatsby-source-challenges/gatsby-node.js) : on garde le watcher chokidar (pour les setups Linux/macOS / Windows ou il marche) et on ajoute un **fallback Node natif `fs.watchFile`** qui surveille chaque `.md` individuellement.
 
 ```js
 function attachFsWatchFileFallback() {
@@ -294,7 +294,7 @@ function attachFsWatchFileFallback() {
 }
 ```
 
-`fs.watchFile` utilise un mecanisme different de chokidar (stat-polling natif Node) qui passe outre les soucis de FS layer / antivirus. Coût : ~600 polling cycles par seconde (1 par `.md` FR existant au demarrage), absolument negligeable.
+`fs.watchFile` utilise un mecanisme different de chokidar (stat-polling natif Node) qui passe outre les soucis de FS layer / antivirus. Coût : 1 cycle de stat par `.md` FR existant au demarrage (~1715 fichiers aujourd'hui), a l'intervalle `FCC_WATCH_INTERVAL` (defaut 1000 ms).
 
 ### Probleme Secondaire : Nouveaux Fichiers Crees Apres Le Demarrage
 
@@ -332,6 +332,21 @@ watchForNewFiles();
 ```
 
 `fs.watch` recursif sur Windows utilise `ReadDirectoryChangesW` (natif + performant). Resultat : on peut creer des dizaines de `.md` FR en cours de session sans jamais redemarrer Gatsby — le navigateur affiche le nouveau contenu apres `Ctrl + Shift + R`.
+
+### Comportement Actuel (Selon La Plateforme)
+
+Le plugin choisit son watcher selon l'OS, pour ne pas faire tourner deux mecanismes en parallele (overhead + double traitement) :
+
+- **Windows** : chokidar tourne en `usePolling: false` (silencieux/econome, il ratait les events de toute facon) ; les fallbacks natifs `fs.watchFile` + `fs.watch` recursif font le vrai travail.
+- **Linux/macOS** : chokidar (fs.watch natif) est le watcher principal ; les fallbacks natifs sont desactives.
+
+Garde-fous ajoutes :
+
+- **Debounce** (`CHANGE_DEBOUNCE_MS`, 700 ms) : un meme fichier `changed` plusieurs fois en moins de 700 ms (watchers qui se chevauchent, editeur qui sauve deux fois) n'est traite qu'une fois.
+- **Structure** : `createSuperBlockStructureNodes()` n'est plus rejoue sur une simple edition de contenu (la structure vient de `curriculum/structure/*.json`, pas du `.md`), seulement a l'ajout/suppression d'un fichier.
+- **Nouveau bloc → `has-french-intro.ts`** : la logique de touch est partagee (`maybeTouchForNewBlock`) entre le handler chokidar `add` et le handler `fs.watch`, donc le rafraichissement live du filtre `/catalog` marche aussi hors Windows.
+
+Variables d'environnement : `FCC_WATCH_INTERVAL` (intervalle `fs.watchFile`, defaut 1000 ms), `FCC_FORCE_NATIVE_WATCH=true` (force les fallbacks natifs sur toute plateforme).
 
 ### Resultat Mesure
 

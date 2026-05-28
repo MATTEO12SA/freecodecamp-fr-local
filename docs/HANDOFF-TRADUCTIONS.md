@@ -63,14 +63,14 @@ pwsh -Command "
 
 ### Détection Automatique Des Certifications Traduites
 
-[client/src/utils/has-french-intro.ts](client/src/utils/has-french-intro.ts) — fonction `hasFrenchIntro(superBlock)` qui sait si un cert ou module a au moins un challenge FR. **Liste générée au build via `preval`** qui scanne `curriculum/i18n-curriculum/.../french/blocks/` et croise avec `curriculum/structure/superblocks/*.json`. Zéro maintenance manuelle.
+[client/src/utils/has-french-intro.ts](../client/src/utils/has-french-intro.ts) — fonction `hasFrenchIntro(superBlock)` qui sait si un cert ou module a au moins un challenge FR. **Liste générée au build via `preval`** qui scanne `curriculum/i18n-curriculum/.../french/blocks/` et croise avec `curriculum/structure/superblocks/*.json`. Zéro maintenance manuelle.
 
 Utilisé par :
 
-- [client/src/pages/cours-fr.tsx](client/src/pages/cours-fr.tsx) — affiche le badge "🚧 Traduction à venir" sur les certs non traduites.
-- [client/src/pages/catalog.tsx](client/src/pages/catalog.tsx) — filtre `Theme > Francais` du catalogue.
+- [client/src/pages/cours-fr.tsx](../client/src/pages/cours-fr.tsx) — affiche le badge "🚧 Traduction à venir" sur les certs non traduites.
+- [client/src/pages/catalog.tsx](../client/src/pages/catalog.tsx) — filtre `Theme > Francais` du catalogue.
 
-**Live update (sans restart)** : [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](tools/client-plugins/gatsby-source-challenges/gatsby-node.js) détecte les nouveaux blocs FR via `fs.watch` recursive. Quand un block FR jamais vu apparaît, il `fs.utimesSync` sur `has-french-intro.ts` pour forcer Webpack à ré-évaluer le preval. Confirmation dans `dev-logs/latest.log` :
+**Live update (sans restart)** : [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](../tools/client-plugins/gatsby-source-challenges/gatsby-node.js) détecte les nouveaux blocs FR via `fs.watch` recursive. Quand un block FR jamais vu apparaît, il `fs.utimesSync` sur `has-french-intro.ts` pour forcer Webpack à ré-évaluer le preval. Confirmation dans `dev-logs/latest.log` :
 
 ```
 watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <name>)
@@ -80,23 +80,23 @@ Test bout-en-bout vérifié : créer un nouveau dossier `blocks/<x>/` avec un `.
 
 ### Examen Local FR
 
-[client/src/pages/exam-fr.tsx](client/src/pages/exam-fr.tsx) — page d'examen 100% locale, accessible via `/exam-fr?cert=<superblock>`. Tire au hasard 80 questions parmi tous les `quiz-*` traduits de la cert, distractors mélangés, score à la fin, 70% pour réussir.
+[client/src/pages/exam-fr.tsx](../client/src/pages/exam-fr.tsx) — page d'examen 100% locale, accessible via `/exam-fr?cert=<superblock>`. Tire au hasard 80 questions parmi tous les `quiz-*` traduits de la cert, distractors mélangés, score à la fin, 70% pour réussir.
 
 L'examen a une mémoire locale (tout dans `localStorage`, aucune API) :
 
-- **Historique** : chaque examen complet est enregistré via [client/src/utils/exam-history.ts](client/src/utils/exam-history.ts) (clé `fcc-exam-history`). L'écran d'intro affiche les 5 dernières tentatives (date + score + %). Les révisions ne sont pas enregistrées.
+- **Historique** : chaque examen complet est enregistré via [client/src/utils/exam-history.ts](../client/src/utils/exam-history.ts) (clé `fcc-exam-history`). L'écran d'intro affiche les 5 dernières tentatives (date + score + %). Les révisions ne sont pas enregistrées.
 - **Stats par module** : l'écran résultats regroupe les questions par bloc source (`sourceBlock`) et affiche un tableau « Réussite par module » trié du plus faible au plus fort.
 - **Révision ciblée** : un bouton « Réviser mes erreurs » relance un mini-examen composé uniquement des questions ratées (réutilise les `PreparedQuestion` en mémoire, pas de nouveau tirage du pool).
 
-[client/src/templates/Challenges/exam-download/show.tsx](client/src/templates/Challenges/exam-download/show.tsx) a été nettoyé : seul le bouton "Passer l'examen en français" est gardé. Les boutons cassés (`Open Exam Environment`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimés — ils dépendent de l'API + Auth0 freeCodeCamp qui n'existent pas dans le fork.
+[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx) a été nettoyé : seul le bouton "Passer l'examen en français" est gardé. Les boutons cassés (`Open Exam Environment`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimés — ils dépendent de l'API + Auth0 freeCodeCamp qui n'existent pas dans le fork.
 
-L'examen apparaît dans l'accordéon `/cours-fr` (filtre `examDownload` retiré de [client/src/pages/cours-fr.tsx](client/src/pages/cours-fr.tsx)).
+L'examen apparaît dans l'accordéon `/cours-fr` (filtre `examDownload` retiré de [client/src/pages/cours-fr.tsx](../client/src/pages/cours-fr.tsx)).
 
 ### `cours-fr.tsx` Refactoré
 
 Passé de 3014 lignes → 357 lignes. La grosse liste `CERTIFICATIONS[].blocks: [...]` codée en dur (~2700 lignes de boilerplate stale) a été supprimée. Le badge "🚧 Traduction à venir" se calcule via `hasFrenchIntro(cert.key)`.
 
-**Progression réelle** : la vue d'une certification lit les challenges complétés depuis `localStorage` (`getLocalCompletedChallenges` de [client/src/utils/local-progress.ts](client/src/utils/local-progress.ts)) et les passe à `SuperBlockAccordion` (coches ✓) + affiche une barre « X/Y challenges terminés » avec le %. Lecture après montage (`useEffect`) pour éviter un mismatch SSR.
+**Progression réelle** : la vue d'une certification lit les challenges complétés depuis `localStorage` (`getLocalCompletedChallenges` de [client/src/utils/local-progress.ts](../client/src/utils/local-progress.ts)) et les passe à `SuperBlockAccordion` (coches ✓) + affiche une barre « X/Y challenges terminés » avec le %. Lecture après montage (`useEffect`) pour éviter un mismatch SSR.
 
 ### `dev.ps1` Nettoyé
 
@@ -281,11 +281,11 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 2/230.
-- [tools/check-translation-drift.js](tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
-- [tools/local-dev-report.js](tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
-- [tools/local-check.js](tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
-- [tools/translate-workshop.js](tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 2/230.
+- [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
+- [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
+- [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
+- [tools/translate-workshop.js](../tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
 
 ## Mémoire Utilisateur (Important)
 
@@ -321,6 +321,6 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 3. **Menu local** — navigation principale expose `/learn`, `/cours-fr`, `/catalog`, `/dev-fr`. L'examen n'est pas dans le menu, il reste accessible depuis `/cours-fr` et `/dev-fr`.
 4. **Catalogue** — recherche texte, `Theme > Francais`, progression locale et bouton `Continuer`; le label separe "Disponible en français" a ete retire pour eviter le doublon.
 5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
-6. **Docs** — ajout de [DOCS-INDEX.md](DOCS-INDEX.md) et mise a jour des docs principales.
+6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
 
 Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 2/230. Prochaine cible traduction : `lecture-understanding-code-clarity`.

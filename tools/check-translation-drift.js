@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 // Detecte le "drift" des traductions FR : un fichier .md EN qui a ete modifie
-// APRES la derniere modification de son equivalent FR. Dans ce cas, la
-// traduction FR est potentiellement obsolete et merite une relecture.
+// APRES son equivalent FR. Dans ce cas, la traduction FR est potentiellement
+// obsolete et merite une relecture.
 //
-// Compare la date du dernier commit git touchant chaque fichier (EN vs FR),
-// par chemin relatif identique (meme bloc, meme nom de fichier = meme id).
+// Mesure : date du dernier commit git touchant chaque fichier (EN vs FR), par
+// chemin relatif identique (meme bloc, meme nom = meme id). Si un fichier n'a
+// PAS d'historique git (jamais commit, ou checkout sans .git), on retombe sur
+// la date de modification disque (mtime) pour ne pas l'ignorer silencieusement.
 //
 // Usage:
 //   node tools/check-translation-drift.js            # tous les blocs FR
@@ -16,26 +18,16 @@
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
-
-const rootDir = path.resolve(__dirname, '..');
-const enBlocksDir = path.join(
+const {
   rootDir,
-  'curriculum',
-  'challenges',
-  'english',
-  'blocks'
-);
-const frBlocksDir = path.join(
-  rootDir,
-  'curriculum',
-  'i18n-curriculum',
-  'curriculum',
-  'challenges',
-  'french',
-  'blocks'
-);
+  enBlocksDir,
+  frBlocksDir,
+  listMdFiles,
+  listFrBlockDirs
+} = require('./lib/curriculum-fr');
 
 const onlyBlock = process.argv[2] || null;
+let usedMtimeFallback = false;
 
 function normalizeGitPath(filePath) {
   return filePath.replace(/\\/g, '/');
@@ -68,33 +60,32 @@ function buildLastCommitMap() {
       currentTime = new Date(line.slice(2)).getTime();
       continue;
     }
-
     const normalized = normalizeGitPath(line);
     if (currentTime !== null && !map.has(normalized)) {
       map.set(normalized, currentTime);
     }
   }
-
   return map;
 }
 
 const lastCommitMap = buildLastCommitMap();
 
-function lastCommitTimestamp(filePath) {
-  return lastCommitMap.get(normalizeGitPath(path.relative(rootDir, filePath)));
-}
-
-function listMdFiles(dir) {
-  if (!fs.existsSync(dir)) return [];
-  return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+// Date de reference d'un fichier : dernier commit git, sinon mtime disque.
+function fileTimestamp(filePath) {
+  const fromGit = lastCommitMap.get(
+    normalizeGitPath(path.relative(rootDir, filePath))
+  );
+  if (typeof fromGit === 'number') return fromGit;
+  try {
+    usedMtimeFallback = true;
+    return fs.statSync(filePath).mtimeMs;
+  } catch {
+    return null;
+  }
 }
 
 function getBlocks() {
-  if (!fs.existsSync(frBlocksDir)) return [];
-  const all = fs
-    .readdirSync(frBlocksDir, { withFileTypes: true })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name);
+  const all = listFrBlockDirs();
   return onlyBlock ? all.filter(name => name === onlyBlock) : all;
 }
 
@@ -127,8 +118,8 @@ function main() {
       }
 
       comparedFiles++;
-      const enTime = lastCommitTimestamp(enPath);
-      const frTime = lastCommitTimestamp(frPath);
+      const enTime = fileTimestamp(enPath);
+      const frTime = fileTimestamp(frPath);
       if (enTime === null || frTime === null) continue;
 
       if (enTime > frTime) {
@@ -148,6 +139,11 @@ function main() {
     console.log(`Sans equivalent EN : ${missingEn} (ignores)`);
   }
   console.log(`En drift           : ${drifted.length}`);
+  console.log(
+    `Reference          : dernier commit git${
+      usedMtimeFallback ? ' (mtime disque en repli pour les non-commit)' : ''
+    }`
+  );
 
   if (drifted.length > 0) {
     console.log(

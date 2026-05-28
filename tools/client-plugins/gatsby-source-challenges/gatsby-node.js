@@ -84,19 +84,30 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     `);
   }
   const { createNode, deleteNode, deletePage } = actions;
-  // Windows-friendly chokidar config: native fs.watch is unreliable on Windows
-  // (especially with antivirus active). Polling + awaitWriteFinish + atomic
-  // make detection reliable across editors that use temp-file rename or
-  // partial writes. The defaults still apply on Linux/macOS where fs.watch
-  // works fine since polling is best-effort additional, not exclusive.
+
+  // Platform-aware watching. On this Windows + Defender setup chokidar's
+  // polling reliably MISSED .md events anyway while still costing one stat()
+  // per watched file per interval (1700+ files), so on Windows we keep
+  // polling OFF (chokidar stays cheap/best-effort) and let the Node-native
+  // fallbacks below do the real work. On Linux/macOS chokidar is the primary
+  // watcher and the native fallbacks are disabled to avoid processing every
+  // change twice.
+  const isWindows = process.platform === 'win32';
+  const useNativeWatch =
+    isWindows || process.env.FCC_FORCE_NATIVE_WATCH === 'true';
+  const watchInterval = Number(process.env.FCC_WATCH_INTERVAL) || 1000;
+  // Debounce identical 'changed' events: overlapping watchers, or editors that
+  // write a file twice on save, would otherwise run the integration pipeline
+  // more than once per edit.
+  const CHANGE_DEBOUNCE_MS = 700;
+  const lastHandledAt = new Map();
+
   const watcher = chokidar.watch(curriculumPath, {
     ignored: /(^|[/\\])\../,
     ignoreInitial: true,
     persistent: true,
     cwd: curriculumPath,
-    usePolling: true,
-    interval: 1000,
-    binaryInterval: 1500,
+    usePolling: false,
     awaitWriteFinish: { stabilityThreshold: 200, pollInterval: 100 },
     atomic: 100
   });
@@ -169,15 +180,24 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   }
 
   function handleChallengeUpdate(filePath, action = 'changed') {
+    // Drop duplicate 'changed' events for the same file within a short window
+    // (overlapping watchers / double-save editors).
+    if (action === 'changed') {
+      const now = Date.now();
+      const previous = lastHandledAt.get(filePath);
+      if (previous && now - previous < CHANGE_DEBOUNCE_MS) return;
+      lastHandledAt.set(filePath, now);
+    }
     writeLatestLog(
       'INFO',
       'challenge.integrating',
       `Challenge file ${action}: ${filePath}`
     );
-    // This has to be a blunt instrument, since we're not watching the structure
-    // files. If a .md file changes, we have to assume the structure may have
-    // changed too and update the structure nodes accordingly.
-    createSuperBlockStructureNodes();
+    // Superblock structure comes from curriculum/structure/*.json, not from the
+    // challenge .md being edited, so a pure content change can't alter it. Only
+    // rebuild structure nodes when a file is added or removed (which can change
+    // a block's set of challenges).
+    if (action !== 'changed') createSuperBlockStructureNodes();
     if (action === 'deleted') {
       // We have to return before calling onSourceChange, since the file is
       // gone.
@@ -236,6 +256,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   // On file add, replace just the new challenge.
   watcher.on('add', filePath => {
     if (!/\.md?$/.test(filePath)) return;
+    maybeTouchForNewBlock(filePath);
     handleChallengeUpdate(filePath, 'added');
   });
 
@@ -269,7 +290,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       }
     }
     function attachWatchFile(absPath) {
-      fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+      fs.watchFile(absPath, { interval: watchInterval }, (curr, prev) => {
         if (curr.mtimeMs === prev.mtimeMs) return;
         const relPath = nodePath.relative(curriculumPath, absPath);
         logWatcherInfo(
@@ -287,7 +308,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       `[fcc-source-challenges fs.watchFile] watching ${attached} .md files in ${curriculumPath}`
     );
   }
-  attachFsWatchFileFallback();
+  if (useNativeWatch) attachFsWatchFileFallback();
 
   // has-french-intro.ts uses a preval that scans this directory at compile
   // time. When a brand-new block is translated (first .md appears under
@@ -331,6 +352,21 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     }
   }
 
+  // When the first .md of a never-before-seen block appears, touch
+  // has-french-intro.ts so Webpack re-evaluates its preval and the new block
+  // enters the translated-superblocks Set live (no server restart). Shared by
+  // the chokidar 'add' handler and the native fs.watch handler.
+  function maybeTouchForNewBlock(relFilename) {
+    const parts = relFilename.split(/[/\\]/);
+    if (parts.length >= 3 && parts[0] === 'blocks') {
+      const blockName = parts[1];
+      if (!knownTranslatedBlocks.has(blockName)) {
+        knownTranslatedBlocks.add(blockName);
+        touchHasFrenchIntro(`new block ${blockName}`);
+      }
+    }
+  }
+
   // Detect .md files CREATED after server startup (which fs.watchFile cannot
   // see, since it only watches paths registered at boot). fs.watch on
   // directories with { recursive: true } fires on rename events for
@@ -353,7 +389,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
           if (!fs.existsSync(absPath)) return;
           watchedNewFiles.add(absPath);
           try {
-            fs.watchFile(absPath, { interval: 1000 }, (curr, prev) => {
+            fs.watchFile(absPath, { interval: watchInterval }, (curr, prev) => {
               if (curr.mtimeMs === prev.mtimeMs) return;
               logWatcherInfo(
                 reporter,
@@ -368,17 +404,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
               `[fcc-source-challenges fs.watch] new file detected ${filename}`
             );
             handleChallengeUpdate(filename, 'added');
-            // If the new file belongs to a block that wasn't translated at
-            // startup, touch has-french-intro.ts so Webpack re-evaluates the
-            // preval and refreshes the translated-superblocks Set live.
-            const parts = filename.split(/[/\\]/);
-            if (parts.length >= 3 && parts[0] === 'blocks') {
-              const blockName = parts[1];
-              if (!knownTranslatedBlocks.has(blockName)) {
-                knownTranslatedBlocks.add(blockName);
-                touchHasFrenchIntro(`new block ${blockName}`);
-              }
-            }
+            maybeTouchForNewBlock(filename);
           } catch (e) {
             logWatcherWarn(
               reporter,
@@ -401,7 +427,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       );
     }
   }
-  watchForNewFiles();
+  if (useNativeWatch) watchForNewFiles();
 
   function sourceAndCreateNodes() {
     return source()

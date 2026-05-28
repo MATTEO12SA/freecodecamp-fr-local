@@ -142,15 +142,17 @@ persist-test.mjs
 full-flow-test.mjs
 ```
 
-## Documentation
+Toute la documentation detaillee est dans `docs/` (ce `README.md` et `LICENSE.md` restent a la racine) :
 
-- `QUICKSTART.md` : commandes courtes pour lancer et tester.
-- `DOCS-FR.md` : details techniques du fork local et du nettoyage strict.
-- `HANDOFF-TRADUCTIONS.md` : etat exact des traductions et prochaine cible.
-- `OPTIMIZE-TRANSLATIONS.md` : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
-- `dev-logs/README.md` : lecture des logs serveur et des events de traduction.
-- `TOOLS-REPORT.md` : role des scripts et dossiers sous `tools/`.
-- `DOCS-INDEX.md` : index rapide des docs, commandes et pages locales.
+- [`docs/README.md`](docs/README.md) : index rapide des docs, commandes et pages locales.
+- [`docs/QUICKSTART.md`](docs/QUICKSTART.md) : commandes courtes pour lancer et tester.
+- [`docs/DOCS-FR.md`](docs/DOCS-FR.md) : details techniques du fork local et du nettoyage strict.
+- [`docs/HANDOFF-TRADUCTIONS.md`](docs/HANDOFF-TRADUCTIONS.md) : etat exact des traductions et prochaine cible.
+- [`docs/OPTIMIZE-TRANSLATIONS.md`](docs/OPTIMIZE-TRANSLATIONS.md) : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
+- [`docs/TOOLS-REPORT.md`](docs/TOOLS-REPORT.md) : role des scripts et dossiers sous `tools/`.
+- [`dev-logs/README.md`](dev-logs/README.md) : lecture des logs serveur et des events de traduction.
+
+Le `CLAUDE.md` (racine) reste le point d'entree pour Claude Code.
 
 ## GitHub
 

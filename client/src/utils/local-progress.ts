@@ -1,31 +1,52 @@
 import type { CompletedChallenge, User } from '../redux/prop-types';
 
 const STORAGE_KEY = 'fcc-local-user';
+const STORAGE_VERSION = 1;
 
 type StoredLocalUser = {
+  version: number;
   completedChallenges: CompletedChallenge[];
 };
 
+function empty(): StoredLocalUser {
+  return { version: STORAGE_VERSION, completedChallenges: [] };
+}
+
+// Une entree valide doit au moins porter un id (sinon elle casserait le rendu
+// de progression). Les entrees corrompues sont filtrees a la lecture.
+function isValidCompleted(entry: unknown): entry is CompletedChallenge {
+  return (
+    !!entry &&
+    typeof entry === 'object' &&
+    typeof (entry as { id?: unknown }).id === 'string'
+  );
+}
+
 function readStored(): StoredLocalUser {
-  if (typeof window === 'undefined') return { completedChallenges: [] };
+  if (typeof window === 'undefined') return empty();
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { completedChallenges: [] };
+    if (!raw) return empty();
     const parsed = JSON.parse(raw) as Partial<StoredLocalUser>;
-    return {
-      completedChallenges: Array.isArray(parsed.completedChallenges)
-        ? parsed.completedChallenges
-        : []
-    };
+    // Les anciennes versions stockaient la forme sans champ `version`. On migre
+    // a la lecture en filtrant les entrees invalides ; writeStored reecrira la
+    // forme versionnee au prochain enregistrement.
+    const completedChallenges = Array.isArray(parsed.completedChallenges)
+      ? parsed.completedChallenges.filter(isValidCompleted)
+      : [];
+    return { version: STORAGE_VERSION, completedChallenges };
   } catch {
-    return { completedChallenges: [] };
+    return empty();
   }
 }
 
-function writeStored(data: StoredLocalUser): void {
+function writeStored(completedChallenges: CompletedChallenge[]): void {
   if (typeof window === 'undefined') return;
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ version: STORAGE_VERSION, completedChallenges })
+    );
   } catch {
     // localStorage may be full or disabled; ignore.
   }
@@ -38,13 +59,13 @@ export function getLocalCompletedChallenges(): CompletedChallenge[] {
 export function ensureLocalUserInitialized(): void {
   if (typeof window === 'undefined') return;
   if (window.localStorage.getItem(STORAGE_KEY)) return;
-  writeStored({ completedChallenges: [] });
+  writeStored([]);
 }
 
 export function setLocalCompletedChallenges(
   completedChallenges: CompletedChallenge[]
 ): void {
-  writeStored({ completedChallenges });
+  writeStored(completedChallenges);
 }
 
 export function buildLocalUser(): User {
