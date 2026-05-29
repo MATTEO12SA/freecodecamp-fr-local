@@ -2,7 +2,7 @@
 
 Ce document définit la méthode pour finir les workshops Responsive Web Design v9 plus vite **sans baisser la qualité**.
 
-Principe non négociable : les traductions finales sont rédigées et relues par Codex. Les scripts servent seulement à éviter de recopier le code et à vérifier que les parties techniques restent intactes.
+Principe non négociable : les traductions finales sont rédigées et relues par Claude. Les scripts servent seulement à éviter de recopier le code et à vérifier que les parties techniques restent intactes.
 
 ## Objectif
 
@@ -16,6 +16,27 @@ Le gain attendu ne doit pas venir d'une traduction automatique brute, mais d'un 
 - laisse le code, les tests et les marqueurs hors du contexte de traduction ;
 - réassemble les `.md` FR à partir des fichiers EN ;
 - vérifie automatiquement que seules les zones de prose autorisées ont changé.
+
+## Workflow Optimisé — Traduction Par Claude (Chantier 0)
+
+Depuis le Chantier 0, le système est calé sur un principe unique : **c'est Claude qui rédige chaque traduction**, jamais un dictionnaire de phrases.
+
+Changements par rapport à avant :
+
+- `extract` ne **pré-remplit plus** les champs `fr` (le `phrasebook.json` n'est plus appliqué par défaut). Tous les `fr` sortent **vides** : Claude les traduit. Le pré-remplissage reste possible en brouillon avec `--phrasebook`, mais ce n'est jamais la traduction finale.
+- `tools/translations/lexique-fr.md` est la **référence de style** (terminologie, tutoiement, ce qui reste en anglais). Claude le consulte ; aucun outil ne l'applique automatiquement.
+- `tools/check-translation-quality.js <block>` est la **QA automatique** : il remplace le scan manuel « should / Your / the… ». Il détecte les chunks non traduits, les restes anglais, et l'intégrité des placeholders `$n` et des spans de code inline. Erreur bloquante = `fr` vide, `$n` incohérents, ou drift du nombre de chunks.
+
+Boucle complète :
+
+```text
+node tools/translate-workshop.js extract <block>     # fr vides
+# Claude traduit tous les fr du JSON (lexique-fr.md en référence)
+# passer "reviewed": true dans le JSON
+node tools/translate-workshop.js apply <block>
+node tools/translate-workshop.js verify <block>      # intégrité technique
+node tools/check-translation-quality.js <block>      # qualité FR
+```
 
 ## Retour D'Expérience Des Workshops Déjà Traduits
 

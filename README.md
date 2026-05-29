@@ -156,6 +156,7 @@ Toute la documentation detaillee est dans `docs/` (ce `README.md` et `LICENSE.md
 - [`docs/HANDOFF-TRADUCTIONS.md`](docs/HANDOFF-TRADUCTIONS.md) : etat exact des traductions et prochaine cible.
 - [`docs/OPTIMIZE-TRANSLATIONS.md`](docs/OPTIMIZE-TRANSLATIONS.md) : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
 - [`docs/TOOLS-REPORT.md`](docs/TOOLS-REPORT.md) : role des scripts et dossiers sous `tools/`.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) : audit complet et plan d'action (vagues 1/2/3) pour faire evoluer le projet.
 - [`dev-logs/README.md`](dev-logs/README.md) : lecture des logs serveur et des events de traduction.
 
 Le `CLAUDE.md` (racine) reste le point d'entree pour Claude Code.

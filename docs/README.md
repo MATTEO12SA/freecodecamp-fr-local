@@ -11,6 +11,7 @@ racine pour le demarrage.
 - [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md) : etat exact des traductions, prochaine cible, pieges connus.
 - [OPTIMIZE-TRANSLATIONS.md](OPTIMIZE-TRANSLATIONS.md) : retour d'experience et workflow qualite des workshops.
 - [TOOLS-REPORT.md](TOOLS-REPORT.md) : role de chaque script sous `tools/`.
+- [ROADMAP.md](ROADMAP.md) : audit senior + plan d'action detaille (vagues 1/2/3) pour passer en qualite produit.
 
 A la racine (hors `docs/`) :
 

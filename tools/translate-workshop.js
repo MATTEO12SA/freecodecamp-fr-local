@@ -330,9 +330,11 @@ function validateTranslationFile(data, workshop) {
   }
 }
 
-function extract(workshop) {
+function extract(workshop, options = {}) {
   const { sourceDir, translationPath } = getWorkshopPaths(workshop);
-  const phrasebook = readPhrasebook();
+  // Par defaut AUCUNE phrase predefinie : Claude redige chaque champ `fr`.
+  // Le phrasebook ne sert qu'en option explicite (`--phrasebook`).
+  const phrasebook = options.usePhrasebook ? readPhrasebook() : [];
   const sourceFiles = sortByStep(
     fs
       .readdirSync(sourceDir)
@@ -407,8 +409,8 @@ function extract(workshop) {
     reviewed: false,
     note:
       kind === 'lecture'
-        ? 'Mode lecture: traduire manuellement title.fr et chaque chunk.fr. Les blocs de code, marqueurs, solutions video et frontmatter technique restent copies depuis EN.'
-        : 'Les champs fr pre-remplis par phrasebook sont des brouillons: relire et corriger avant de passer reviewed a true.',
+        ? 'Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.'
+        : 'Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.',
     files
   };
 
@@ -655,18 +657,37 @@ function verify(workshop) {
 }
 
 function main() {
-  const [command, workshop] = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  const usePhrasebook = args.includes('--phrasebook');
+  const [command, workshop] = args.filter(arg => !arg.startsWith('--'));
   if (!command || !workshop) usage();
 
-  if (command === 'extract') return extract(workshop);
+  if (command === 'extract') return extract(workshop, { usePhrasebook });
   if (command === 'apply') return apply(workshop);
   if (command === 'verify') return verify(workshop);
   usage();
 }
 
-try {
-  main();
-} catch (error) {
-  console.error(error.message);
-  process.exit(1);
+// Helpers reutilises par tools/check-translation-quality.js. Le pipeline ne
+// s'execute en CLI que lorsqu'il est lance directement (pas a l'import).
+module.exports = {
+  parseFrontmatter,
+  splitSections,
+  splitAroundCodeFences,
+  extractProseChunks,
+  extractLectureChunks,
+  isLectureChunkTranslatable,
+  lectureProseMarkers,
+  getSection,
+  getWorkshopPaths,
+  readText
+};
+
+if (require.main === module) {
+  try {
+    main();
+  } catch (error) {
+    console.error(error.message);
+    process.exit(1);
+  }
 }
