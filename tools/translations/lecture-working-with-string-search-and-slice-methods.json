@@ -1,0 +1,488 @@
+{
+  "workshop": "lecture-working-with-string-search-and-slice-methods",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67326c0d7bef01c539120766.md",
+      "id": "67326c0d7bef01c539120766",
+      "dashedName": "how-can-you-test-if-a-string-contains-a-substring",
+      "title": {
+        "en": "How Can You Test if a String Contains a Substring?",
+        "fr": "Comment tester si une chaîne contient une sous-chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with strings in JavaScript, there are many cases where you might need to check whether a string contains a specific substring, which is a smaller part of that string.",
+              "fr": "Quand tu travailles avec des chaînes en JavaScript, il existe de nombreux cas où tu pourrais avoir besoin de vérifier si une chaîne contient une sous-chaîne précise, c'est-à-dire une partie plus petite de cette chaîne."
+            },
+            {
+              "en": "For example, you might want to check if a user's input includes a specific word or character before performing some action. One way to achieve this is by using the `includes()` method.",
+              "fr": "Par exemple, tu pourrais vouloir vérifier si la saisie d'un utilisateur contient un mot ou un caractère précis avant d'effectuer une action. Une façon d'y parvenir est d'utiliser la méthode `includes()`."
+            },
+            {
+              "en": "The `includes()` method is used to check if a string contains a specific substring. If the substring is found within the string, the method returns `true` otherwise, it returns `false`.",
+              "fr": "La méthode `includes()` sert à vérifier si une chaîne contient une sous-chaîne précise. Si la sous-chaîne est trouvée dans la chaîne, la méthode renvoie `true` ; sinon, elle renvoie `false`."
+            },
+            {
+              "en": "Here's the basic syntax:",
+              "fr": "Voici la syntaxe de base :"
+            },
+            {
+              "en": "For the syntax, the `searchValue` is the substring you want to look for within the string. And here's an example:",
+              "fr": "Dans cette syntaxe, `searchValue` est la sous-chaîne que tu veux rechercher dans la chaîne. Et voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the word `awesome` is found within the string `JavaScript is awesome!`, so the `includes()` method returns `true`.",
+              "fr": "Dans cet exemple, le mot `awesome` est trouvé dans la chaîne `JavaScript is awesome!`, donc la méthode `includes()` renvoie `true`."
+            },
+            {
+              "en": "It's important to note that the `includes()` method is case-sensitive. This means that the exact match of the characters is required, including their case.",
+              "fr": "Il est important de noter que la méthode `includes()` est sensible à la casse. Cela signifie qu'une correspondance exacte des caractères est requise, y compris leur casse."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since `Awesome` (with an uppercase `A`) does not match `awesome` (with a lowercase `a`), the result is `false`.",
+              "fr": "Comme `Awesome` (avec un `A` majuscule) ne correspond pas à `awesome` (avec un `a` minuscule), le résultat est `false`."
+            },
+            {
+              "en": "You can also use the `includes()` method to check for a substring starting at a specific index in the string by providing a second parameter:",
+              "fr": "Tu peux aussi utiliser la méthode `includes()` pour rechercher une sous-chaîne à partir d'un indice précis de la chaîne en fournissant un second paramètre :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, the search for the substring `JavaScript` starts from the 7th position in the string, ensuring it skips any characters before this position.",
+              "fr": "Ici, la recherche de la sous-chaîne `JavaScript` commence à la 7ᵉ position de la chaîne, ce qui garantit qu'elle ignore tous les caractères situés avant cette position."
+            },
+            {
+              "en": "The `includes()` method only returns a `true` or `false` result. It does not provide information on where the substring is located in the string or how many times it occurs. If you need that level of detail, other methods, such as the `indexOf()` method might be more suitable.",
+              "fr": "La méthode `includes()` renvoie uniquement un résultat `true` ou `false`. Elle ne fournit aucune information sur l'endroit où se trouve la sous-chaîne dans la chaîne ni sur le nombre de fois où elle apparaît. Si tu as besoin de ce niveau de détail, d'autres méthodes, comme la méthode `indexOf()`, pourraient être plus adaptées."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `includes()` method return when a substring is found in a string?",
+              "fr": "Que renvoie la méthode `includes()` quand une sous-chaîne est trouvée dans une chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The index of the substring.",
+              "fr": "L'indice de la sous-chaîne."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the method does when it detects the substring.",
+              "fr": "Réfléchis à ce que fait la méthode quand elle détecte la sous-chaîne."
+            },
+            {
+              "en": "The length of the substring.",
+              "fr": "La longueur de la sous-chaîne."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the method does when it detects the substring.",
+              "fr": "Réfléchis à ce que fait la méthode quand elle détecte la sous-chaîne."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the method does when it detects the substring.",
+              "fr": "Réfléchis à ce que fait la méthode quand elle détecte la sous-chaîne."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements about the `includes()` method is correct?",
+              "fr": "Laquelle des affirmations suivantes à propos de la méthode `includes()` est correcte ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is case-insensitive.",
+              "fr": "Elle est insensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether it distinguishes between uppercase and lowercase characters.",
+              "fr": "Réfléchis à savoir si elle fait la distinction entre les caractères majuscules et minuscules."
+            },
+            {
+              "en": "It is case-sensitive.",
+              "fr": "Elle est sensible à la casse."
+            },
+            {
+              "en": "It replaces the found substring with another value.",
+              "fr": "Elle remplace la sous-chaîne trouvée par une autre valeur."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether it distinguishes between uppercase and lowercase characters.",
+              "fr": "Réfléchis à savoir si elle fait la distinction entre les caractères majuscules et minuscules."
+            },
+            {
+              "en": "It returns the number of occurrences of the substring.",
+              "fr": "Elle renvoie le nombre d'occurrences de la sous-chaîne."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether it distinguishes between uppercase and lowercase characters.",
+              "fr": "Réfléchis à savoir si elle fait la distinction entre les caractères majuscules et minuscules."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Qu'affichera le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on whether `includes()` is case-sensitive.",
+              "fr": "Concentre-toi sur le fait de savoir si `includes()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on whether `includes()` is case-sensitive.",
+              "fr": "Concentre-toi sur le fait de savoir si `includes()` est sensible à la casse."
+            },
+            {
+              "en": "Throws an error.",
+              "fr": "Génère une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on whether `includes()` is case-sensitive.",
+              "fr": "Concentre-toi sur le fait de savoir si `includes()` est sensible à la casse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67326c15b3b2f0c5827927cc.md",
+      "id": "67326c15b3b2f0c5827927cc",
+      "dashedName": "how-can-you-extract-a-substring-from-a-string",
+      "title": {
+        "en": "How Can You Extract a Substring from a String?",
+        "fr": "Comment extraire une sous-chaîne d'une chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with strings in JavaScript, you often need to extract a portion or substring from a larger string.",
+              "fr": "Quand tu travailles avec des chaînes en JavaScript, tu as souvent besoin d'extraire une portion ou une sous-chaîne d'une chaîne plus grande."
+            },
+            {
+              "en": "For example, you may want to extract part of a word, a specific character sequence, or just a fragment of a sentence.",
+              "fr": "Par exemple, tu pourrais vouloir extraire une partie d'un mot, une séquence de caractères précise, ou simplement un fragment de phrase."
+            },
+            {
+              "en": "JavaScript provides several methods for this task, one of the most commonly used being the `slice()` method.",
+              "fr": "JavaScript propose plusieurs méthodes pour cette tâche, l'une des plus couramment utilisées étant la méthode `slice()`."
+            },
+            {
+              "en": "The `slice()` method allows you to extract a portion of a string and returns a new string, without modifying the original string. It takes two parameters: the starting index and the optional ending index.",
+              "fr": "La méthode `slice()` te permet d'extraire une portion d'une chaîne et renvoie une nouvelle chaîne, sans modifier la chaîne d'origine. Elle prend deux paramètres : l'indice de départ et l'indice de fin facultatif."
+            },
+            {
+              "en": "Here's the basic syntax:",
+              "fr": "Voici la syntaxe de base :"
+            },
+            {
+              "en": "`startIndex` is the position where the extraction starts. `endIndex` is where the extraction ends. If not provided, `slice()` extracts until the end of the string.",
+              "fr": "`startIndex` est la position où l'extraction commence. `endIndex` est l'endroit où l'extraction se termine. S'il n'est pas fourni, `slice()` extrait jusqu'à la fin de la chaîne."
+            },
+            {
+              "en": "Let's look at a simple example of extracting part of a string:",
+              "fr": "Regardons un exemple simple d'extraction d'une partie d'une chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `slice(0, 5)` extracts characters starting from index `0` up to but not including index `5`. As a result, the word `Hello` is extracted.",
+              "fr": "Dans cet exemple, `slice(0, 5)` extrait les caractères à partir de l'indice `0` jusqu'à l'indice `5` exclu. Résultat : le mot `Hello` est extrait."
+            },
+            {
+              "en": "If you omit the second parameter, `slice()` will extract everything from the start index to the end of the string:",
+              "fr": "Si tu omets le second paramètre, `slice()` extraira tout, de l'indice de départ jusqu'à la fin de la chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, `slice(7)` extracts the string from index `7` to the end of the string, resulting in `world!`.",
+              "fr": "Ici, `slice(7)` extrait la chaîne de l'indice `7` jusqu'à la fin de la chaîne, ce qui donne `world!`."
+            },
+            {
+              "en": "You can also use negative numbers as indexes. When you use a negative number, it counts backward from the end of the string:",
+              "fr": "Tu peux aussi utiliser des nombres négatifs comme indices. Quand tu utilises un nombre négatif, le décompte se fait à rebours depuis la fin de la chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, `slice(-4)` extracts the last four characters from the string, giving us `fun!`.",
+              "fr": "Dans ce cas, `slice(-4)` extrait les quatre derniers caractères de la chaîne, ce qui nous donne `fun!`."
+            },
+            {
+              "en": "Let's say you want to extract a section from the middle of a string. You can provide both the starting and ending indexes to precisely control which part of the string you want:",
+              "fr": "Disons que tu veux extraire une section au milieu d'une chaîne. Tu peux fournir à la fois l'indice de départ et l'indice de fin pour contrôler précisément quelle partie de la chaîne tu veux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, `slice(7, 17)` extracts the substring starting at index 7 and ending right before index `17`, which is the word `JavaScript`.",
+              "fr": "Ici, `slice(7, 17)` extrait la sous-chaîne qui commence à l'indice 7 et se termine juste avant l'indice `17`, c'est-à-dire le mot `JavaScript`."
+            },
+            {
+              "en": "The `slice()` method is a powerful tool for extracting parts of a string in JavaScript.",
+              "fr": "La méthode `slice()` est un outil puissant pour extraire des parties d'une chaîne en JavaScript."
+            },
+            {
+              "en": "You specify the start and end indexes, and the method returns a new string that contains the extracted portion.",
+              "fr": "Tu spécifies les indices de début et de fin, et la méthode renvoie une nouvelle chaîne qui contient la portion extraite."
+            },
+            {
+              "en": "With options for positive, negative, and omitted indexes, you can adapt it to various situations without altering the original string.",
+              "fr": "Avec la possibilité d'utiliser des indices positifs, négatifs ou omis, tu peux l'adapter à diverses situations sans modifier la chaîne d'origine."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Qu'affichera le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `slice()` handles the starting and ending indexes.",
+              "fr": "Réfléchis à la façon dont `slice()` gère les indices de début et de fin."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `slice()` handles the starting and ending indexes.",
+              "fr": "Réfléchis à la façon dont `slice()` gère les indices de début et de fin."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `slice()` handles the starting and ending indexes.",
+              "fr": "Réfléchis à la façon dont `slice()` gère les indices de début et de fin."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements about the `slice()` method is correct?",
+              "fr": "Laquelle des affirmations suivantes à propos de la méthode `slice()` est correcte ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It modifies the original string.",
+              "fr": "Elle modifie la chaîne d'origine."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what happens to the original string and the returned value.",
+              "fr": "Concentre-toi sur ce qui arrive à la chaîne d'origine et à la valeur renvoyée."
+            },
+            {
+              "en": "It returns a new string containing the extracted portion.",
+              "fr": "Elle renvoie une nouvelle chaîne contenant la portion extraite."
+            },
+            {
+              "en": "It includes the ending index in the extracted substring.",
+              "fr": "Elle inclut l'indice de fin dans la sous-chaîne extraite."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what happens to the original string and the returned value.",
+              "fr": "Concentre-toi sur ce qui arrive à la chaîne d'origine et à la valeur renvoyée."
+            },
+            {
+              "en": "It cannot work with negative indexes.",
+              "fr": "Elle ne peut pas fonctionner avec des indices négatifs."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what happens to the original string and the returned value.",
+              "fr": "Concentre-toi sur ce qui arrive à la chaîne d'origine et à la valeur renvoyée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code return?",
+              "fr": "Que renverra le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how negative indexes are handled in the `slice()` method.",
+              "fr": "Réfléchis à la façon dont les indices négatifs sont gérés dans la méthode `slice()`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how negative indexes are handled in the `slice()` method.",
+              "fr": "Réfléchis à la façon dont les indices négatifs sont gérés dans la méthode `slice()`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how negative indexes are handled in the `slice()` method.",
+              "fr": "Réfléchis à la façon dont les indices négatifs sont gérés dans la méthode `slice()`."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

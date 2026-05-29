@@ -1,0 +1,277 @@
+{
+  "workshop": "lecture-working-with-string-character-methods",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d266034b5242126271995.md",
+      "id": "672d266034b5242126271995",
+      "dashedName": "what-is-ascii-and-how-does-it-work-with-charcodeat-and-fromcharcode",
+      "title": {
+        "en": "What Is ASCII, and How Does It Work with charCodeAt() and fromCharCode()?",
+        "fr": "Qu'est-ce que l'ASCII, et comment fonctionne-t-il avec charCodeAt() et fromCharCode() ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In programming, understanding how characters are represented as numbers is fundamental. This is where ASCII comes in. ASCII, short for American Standard Code for Information Interchange, is a character encoding standard used in computers to represent text. It assigns a numeric value to each character, which is universally recognized by machines.",
+              "fr": "En programmation, comprendre comment les caractères sont représentés sous forme de nombres est fondamental. C'est là qu'intervient l'ASCII. L'ASCII, abréviation d'American Standard Code for Information Interchange, est une norme d'encodage de caractères utilisée par les ordinateurs pour représenter du texte. Elle attribue une valeur numérique à chaque caractère, valeur universellement reconnue par les machines."
+            },
+            {
+              "en": "In this lesson, we will explore what ASCII is, how it works, and how JavaScript methods like `charCodeAt()` and `fromCharCode()` relate to character encoding. While JavaScript strings use Unicode (UTF-16) internally, ASCII values match the first 128 Unicode characters, which is why ASCII-based examples work in JavaScript.",
+              "fr": "Dans cette leçon, nous allons explorer ce qu'est l'ASCII, comment il fonctionne, et comment des méthodes JavaScript comme `charCodeAt()` et `fromCharCode()` sont liées à l'encodage des caractères. Même si les chaînes JavaScript utilisent Unicode (UTF-16) en interne, les valeurs ASCII correspondent aux 128 premiers caractères Unicode, ce qui explique pourquoi les exemples basés sur l'ASCII fonctionnent en JavaScript."
+            },
+            {
+              "en": "ASCII is a system for encoding characters such as letters, digits, and symbols into numerical values. Each character is mapped to a specific number.",
+              "fr": "L'ASCII est un système qui encode des caractères tels que les lettres, les chiffres et les symboles en valeurs numériques. Chaque caractère est associé à un nombre précis."
+            },
+            {
+              "en": "For example, the capital letter `A` is represented by the number `65` in ASCII, while the lowercase `a` is represented by `97`. This encoding allows computers to store and manipulate text.",
+              "fr": "Par exemple, la lettre majuscule `A` est représentée par le nombre `65` en ASCII, tandis que la minuscule `a` est représentée par `97`. Cet encodage permet aux ordinateurs de stocker et de manipuler du texte."
+            },
+            {
+              "en": "The ASCII standard covers 128 characters including:",
+              "fr": "La norme ASCII couvre 128 caractères, dont :"
+            },
+            {
+              "en": "- Uppercase and lowercase English letters (A-Z, a-z).\n- Numbers (0-9).  \n- Common punctuation marks and symbols (!, @, #, and so on).\n- Control characters (such as newline and tab).",
+              "fr": "- Les lettres anglaises majuscules et minuscules (A-Z, a-z).\n- Les chiffres (0-9).  \n- Les signes de ponctuation et symboles courants (!, @, #, etc.).\n- Les caractères de contrôle (comme le retour à la ligne et la tabulation)."
+            },
+            {
+              "en": "In JavaScript, you can access the numeric code of a character using the `charCodeAt()` method. This method returns the UTF-16 code unit of the character at a specified index. For the first 128 characters, this value matches the ASCII code.",
+              "fr": "En JavaScript, tu peux accéder au code numérique d'un caractère à l'aide de la méthode `charCodeAt()`. Cette méthode renvoie l'unité de code UTF-16 du caractère situé à un indice donné. Pour les 128 premiers caractères, cette valeur correspond au code ASCII."
+            },
+            {
+              "en": "Let’s take a look at an example:",
+              "fr": "Regardons un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `A` is the first character of the string, and calling `charCodeAt(0)` returns its numeric code (which matches its ASCII value for basic Latin characters), `65`.",
+              "fr": "Dans cet exemple, `A` est le premier caractère de la chaîne, et appeler `charCodeAt(0)` renvoie son code numérique (qui correspond à sa valeur ASCII pour les caractères latins de base), `65`."
+            },
+            {
+              "en": "You can also use this method with other characters to find their numeric code values:",
+              "fr": "Tu peux aussi utiliser cette méthode avec d'autres caractères pour trouver leurs valeurs de code numérique :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, the numeric code for the exclamation mark `!` is returned as `33` (which matches its ASCII value).",
+              "fr": "Ici, le code numérique du point d'exclamation `!` est renvoyé comme `33` (qui correspond à sa valeur ASCII)."
+            },
+            {
+              "en": "While `charCodeAt()` helps you retrieve the numeric code of a character, the `fromCharCode()` method allows you to do the opposite: convert a UTF-16 code unit (which matches ASCII for basic characters) into its corresponding character.",
+              "fr": "Alors que `charCodeAt()` t'aide à récupérer le code numérique d'un caractère, la méthode `fromCharCode()` te permet de faire l'inverse : convertir une unité de code UTF-16 (qui correspond à l'ASCII pour les caractères de base) en son caractère correspondant."
+            },
+            {
+              "en": "Let's see this in action:",
+              "fr": "Voyons cela en action :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `fromCharCode(65)` converts the numeric code `65` (which matches the ASCII value for `A`) back to the character `A`.",
+              "fr": "Dans cet exemple, `fromCharCode(65)` reconvertit le code numérique `65` (qui correspond à la valeur ASCII de `A`) en le caractère `A`."
+            },
+            {
+              "en": "Another example would be converting the number `97` to its corresponding lowercase letter:",
+              "fr": "Un autre exemple serait de convertir le nombre `97` en sa lettre minuscule correspondante :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "These methods are particularly useful when you need to manipulate or compare characters based on their numeric code values.",
+              "fr": "Ces méthodes sont particulièrement utiles quand tu as besoin de manipuler ou de comparer des caractères en fonction de leurs valeurs de code numérique."
+            },
+            {
+              "en": "For instance, you might use `charCodeAt()` to check if a character is uppercase, lowercase, or a digit by comparing its ASCII value.",
+              "fr": "Par exemple, tu pourrais utiliser `charCodeAt()` pour vérifier si un caractère est une majuscule, une minuscule ou un chiffre en comparant sa valeur ASCII."
+            },
+            {
+              "en": "On the other hand, `fromCharCode()` can be used to dynamically generate characters from their ASCII codes.",
+              "fr": "À l'inverse, `fromCharCode()` peut servir à générer dynamiquement des caractères à partir de leurs codes ASCII."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `charCodeAt()` method return when used on a string in JavaScript?",
+              "fr": "Que renvoie la méthode `charCodeAt()` lorsqu'elle est utilisée sur une chaîne en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The number of characters in the string.",
+              "fr": "Le nombre de caractères de la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how characters are represented as numeric code values in JavaScript.",
+              "fr": "Réfléchis à la façon dont les caractères sont représentés par des valeurs de code numérique en JavaScript."
+            },
+            {
+              "en": "The index of a character in the string.",
+              "fr": "L'indice d'un caractère dans la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how characters are represented as numeric code values in JavaScript.",
+              "fr": "Réfléchis à la façon dont les caractères sont représentés par des valeurs de code numérique en JavaScript."
+            },
+            {
+              "en": "The UTF-16 code unit of a character at a specified index.",
+              "fr": "L'unité de code UTF-16 d'un caractère situé à un indice donné."
+            },
+            {
+              "en": "The hexadecimal representation of a character.",
+              "fr": "La représentation hexadécimale d'un caractère."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how characters are represented as numeric code values in JavaScript.",
+              "fr": "Réfléchis à la façon dont les caractères sont représentés par des valeurs de code numérique en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Qu'affichera le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the section of the lesson that discusses `fromCharCode()`.",
+              "fr": "Reporte-toi à la section de la leçon qui traite de `fromCharCode()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the section of the lesson that discusses `fromCharCode()`.",
+              "fr": "Reporte-toi à la section de la leçon qui traite de `fromCharCode()`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the section of the lesson that discusses `fromCharCode()`.",
+              "fr": "Reporte-toi à la section de la leçon qui traite de `fromCharCode()`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of how character encoding is useful in programming?",
+              "fr": "Laquelle des propositions suivantes est un exemple de l'utilité de l'encodage des caractères en programmation ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To check whether a value is `null` or `undefined`.",
+              "fr": "Pour vérifier si une valeur est `null` ou `undefined`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you can do when characters are represented by their numeric code values.",
+              "fr": "Réfléchis à ce que tu peux faire quand les caractères sont représentés par leurs valeurs de code numérique."
+            },
+            {
+              "en": "To calculate the length of a string.",
+              "fr": "Pour calculer la longueur d'une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you can do when characters are represented by their numeric code values.",
+              "fr": "Réfléchis à ce que tu peux faire quand les caractères sont représentés par leurs valeurs de code numérique."
+            },
+            {
+              "en": "To convert a number into a floating-point value.",
+              "fr": "Pour convertir un nombre en valeur à virgule flottante."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you can do when characters are represented by their numeric code values.",
+              "fr": "Réfléchis à ce que tu peux faire quand les caractères sont représentés par leurs valeurs de code numérique."
+            },
+            {
+              "en": "To manipulate characters based on their numerical values.",
+              "fr": "Pour manipuler des caractères en fonction de leurs valeurs numériques."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

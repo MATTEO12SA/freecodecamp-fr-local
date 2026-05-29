@@ -1,0 +1,1241 @@
+{
+  "workshop": "lecture-working-with-strings-in-javascript",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d2654f78cbf20e0ba4501.md",
+      "id": "672d2654f78cbf20e0ba4501",
+      "dashedName": "what-is-bracket-notation-and-how-do-you-access-characters-from-a-string",
+      "title": {
+        "en": "What Is Bracket Notation, and How Do You Access Characters from a String?",
+        "fr": "Qu'est-ce que la notation entre crochets, et comment accéder aux caractères d'une chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, strings are treated as sequences of characters, and each character in a string can be accessed using bracket notation. This allows you to retrieve a specific character from a string based on its position, which is called its index.",
+              "fr": "En JavaScript, les chaînes sont traitées comme des suites de caractères, et on peut accéder à chaque caractère d'une chaîne à l'aide de la notation entre crochets. Cela te permet de récupérer un caractère précis d'une chaîne en fonction de sa position, qu'on appelle son indice."
+            },
+            {
+              "en": "An index is the position of a character within a string, and it is zero-based. This means that the first character of a string has an index of `0`, the second character has an index of `1`, and so on.",
+              "fr": "Un indice est la position d'un caractère dans une chaîne, et il commence à zéro. Cela signifie que le premier caractère d'une chaîne a l'indice `0`, le deuxième caractère a l'indice `1`, et ainsi de suite."
+            },
+            {
+              "en": "For example, in the string `hello`, the character `h` is at index `0`, `e` is at index `1`, `l` is at index `2`, and so on.",
+              "fr": "Par exemple, dans la chaîne `hello`, le caractère `h` est à l'indice `0`, `e` à l'indice `1`, `l` à l'indice `2`, et ainsi de suite."
+            },
+            {
+              "en": "Bracket notation uses square brackets (`[]`) and the index of the character you want to access. Let’s look at an example:",
+              "fr": "La notation entre crochets utilise des crochets (`[]`) et l'indice du caractère auquel tu veux accéder. Regardons un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we can access the character at index `1`, which is `e`.",
+              "fr": "Dans cet exemple, nous pouvons accéder au caractère à l'indice `1`, qui est `e`."
+            },
+            {
+              "en": "To get the last character of a string, you can use the length of the string minus one.\nThe `length` property of a string tells you how many characters it contains, so to access the last character, you would subtract one from the length:",
+              "fr": "Pour obtenir le dernier caractère d'une chaîne, tu peux utiliser la longueur de la chaîne moins un. La propriété `length` d'une chaîne t'indique combien de caractères elle contient ; donc, pour accéder au dernier caractère, tu soustrais un à la longueur :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, the `length` of `hello` is `5`, and the last character (`o`) is at index `4` which is `5 - 1`.",
+              "fr": "Dans ce cas, la `length` de `hello` est `5`, et le dernier caractère (`o`) est à l'indice `4`, c'est-à-dire `5 - 1`."
+            },
+            {
+              "en": "If you want to get multiple characters, you can use bracket notation like this:",
+              "fr": "Si tu veux obtenir plusieurs caractères, tu peux utiliser la notation entre crochets comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we are concatenating the first and second characters using bracket notation to form the string `he`.",
+              "fr": "Dans cet exemple, nous concaténons le premier et le deuxième caractère à l'aide de la notation entre crochets pour former la chaîne `he`."
+            },
+            {
+              "en": "Bracket notation is useful when you need to access specific characters in a string, such as extracting initials from a name or checking a specific letter for validation.",
+              "fr": "La notation entre crochets est utile quand tu as besoin d'accéder à des caractères précis d'une chaîne, par exemple pour extraire les initiales d'un nom ou vérifier une lettre particulière à des fins de validation."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the index of the character `\"r\"` in the string `\"JavaScript\"`?",
+              "fr": "Quel est l'indice du caractère `\"r\"` dans la chaîne `\"JavaScript\"` ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that index numbers start from `0`.",
+              "fr": "Souviens-toi que les indices commencent à `0`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that index numbers start from `0`.",
+              "fr": "Souviens-toi que les indices commencent à `0`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that index numbers start from `0`.",
+              "fr": "Souviens-toi que les indices commencent à `0`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How would you access the last character of a string using bracket notation?",
+              "fr": "Comment accéderais-tu au dernier caractère d'une chaîne avec la notation entre crochets ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to find the index of the last character.",
+              "fr": "Réfléchis à la façon de trouver l'indice du dernier caractère."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to find the index of the last character.",
+              "fr": "Réfléchis à la façon de trouver l'indice du dernier caractère."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to find the index of the last character.",
+              "fr": "Réfléchis à la façon de trouver l'indice du dernier caractère."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does bracket notation allow you to do with strings in JavaScript?",
+              "fr": "Que te permet de faire la notation entre crochets avec les chaînes en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Add new characters to the string.",
+              "fr": "Ajouter de nouveaux caractères à la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how bracket notation interacts with individual characters.",
+              "fr": "Concentre-toi sur la façon dont la notation entre crochets interagit avec les caractères individuels."
+            },
+            {
+              "en": "Change the data type of the string.",
+              "fr": "Changer le type de données de la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how bracket notation interacts with individual characters.",
+              "fr": "Concentre-toi sur la façon dont la notation entre crochets interagit avec les caractères individuels."
+            },
+            {
+              "en": "Access specific characters in the string using their index.",
+              "fr": "Accéder à des caractères précis de la chaîne à l'aide de leur indice."
+            },
+            {
+              "en": "Convert the string into an array of characters.",
+              "fr": "Convertir la chaîne en un tableau de caractères."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how bracket notation interacts with individual characters.",
+              "fr": "Concentre-toi sur la façon dont la notation entre crochets interagit avec les caractères individuels."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673263d58da27ea7809963bf.md",
+      "id": "673263d58da27ea7809963bf",
+      "dashedName": "what-are-template-literals-and-what-is-string-interpolation",
+      "title": {
+        "en": "What Are Template Literals, and What Is String Interpolation?",
+        "fr": "Que sont les littéraux de modèle, et qu'est-ce que l'interpolation de chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, template literals are a powerful and flexible way to work with strings. Unlike regular strings, which use single (`'`) or double (`\"`) quotes, template literals are defined with backticks (`` ` ``).",
+              "fr": "En JavaScript, les littéraux de modèle sont une façon puissante et souple de travailler avec les chaînes. Contrairement aux chaînes classiques, qui utilisent des apostrophes simples (`'`) ou des guillemets doubles (`\"`), les littéraux de modèle se définissent avec des accents graves (`` ` ``)."
+            },
+            {
+              "en": "They allow for easier string manipulation, including embedding variables directly inside a string, a feature known as string interpolation.",
+              "fr": "Ils facilitent la manipulation des chaînes, notamment en permettant d'intégrer des variables directement à l'intérieur d'une chaîne, une fonctionnalité appelée interpolation de chaîne."
+            },
+            {
+              "en": "Template literals make it easier to create strings that span multiple lines or include expressions (like variables or even JavaScript code) directly within the string.",
+              "fr": "Les littéraux de modèle facilitent la création de chaînes qui s'étendent sur plusieurs lignes ou qui incluent des expressions (comme des variables, voire du code JavaScript) directement dans la chaîne."
+            },
+            {
+              "en": "Here's an example of a template literal:",
+              "fr": "Voici un exemple de littéral de modèle :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Notice the use of backticks instead of single or double quotes. The `${name}` syntax is an example of string interpolation, where the value of the variable `name` is directly inserted into the string.",
+              "fr": "Remarque l'utilisation des accents graves à la place des apostrophes simples ou des guillemets doubles. La syntaxe `${name}` est un exemple d'interpolation de chaîne, où la valeur de la variable `name` est insérée directement dans la chaîne."
+            },
+            {
+              "en": "String interpolation allows you to embed variables and expressions inside a string. This is a significant improvement over the older method, where you would concatenate strings and variables using the `+` operator.",
+              "fr": "L'interpolation de chaîne te permet d'intégrer des variables et des expressions dans une chaîne. C'est une nette amélioration par rapport à l'ancienne méthode, où l'on concaténait chaînes et variables à l'aide de l'opérateur `+`."
+            },
+            {
+              "en": "Here is an example using string concatenation and the plus (`+`) operator:",
+              "fr": "Voici un exemple utilisant la concaténation de chaînes et l'opérateur plus (`+`) :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "And here is an example using template literals and string interpolation:",
+              "fr": "Et voici un exemple utilisant les littéraux de modèle et l'interpolation de chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you can see, string interpolation with template literals is much cleaner and easier to read, especially when you're working with multiple variables.",
+              "fr": "Comme tu peux le voir, l'interpolation de chaîne avec les littéraux de modèle est bien plus claire et plus facile à lire, surtout quand tu travailles avec plusieurs variables."
+            },
+            {
+              "en": "Another great feature of template literals is that they support multiline strings. With regular strings, you would need to use escape characters (`\\n`) to create new lines. With template literals, you can simply write the string across multiple lines, and the formatting is preserved:",
+              "fr": "Une autre excellente fonctionnalité des littéraux de modèle est qu'ils prennent en charge les chaînes multilignes. Avec les chaînes classiques, tu devrais utiliser des caractères d'échappement (`\\n`) pour créer des retours à la ligne. Avec les littéraux de modèle, tu peux simplement écrire la chaîne sur plusieurs lignes, et la mise en forme est conservée :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Another feature of template literals is that they allow you to embed JavaScript expressions directly within the string, like in this example:",
+              "fr": "Une autre fonctionnalité des littéraux de modèle est qu'ils te permettent d'intégrer des expressions JavaScript directement dans la chaîne, comme dans cet exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Template literals are particularly useful when you need to include variables or expressions in strings, format complex strings, or work with multiline text. They are more concise and readable compared to traditional string concatenation.",
+              "fr": "Les littéraux de modèle sont particulièrement utiles quand tu as besoin d'inclure des variables ou des expressions dans des chaînes, de mettre en forme des chaînes complexes ou de travailler avec du texte multiligne. Ils sont plus concis et plus lisibles que la concaténation de chaînes traditionnelle."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following symbols is used to define a template literal?",
+              "fr": "Lequel des symboles suivants sert à définir un littéral de modèle ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Single quotes (`'`)",
+              "fr": "Apostrophes simples (`'`)"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Template literals require a special symbol not used in regular strings.",
+              "fr": "Les littéraux de modèle nécessitent un symbole spécial qui n'est pas utilisé dans les chaînes classiques."
+            },
+            {
+              "en": "Double quotes (`\"`)",
+              "fr": "Guillemets doubles (`\"`)"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Template literals require a special symbol not used in regular strings.",
+              "fr": "Les littéraux de modèle nécessitent un symbole spécial qui n'est pas utilisé dans les chaînes classiques."
+            },
+            {
+              "en": "Backticks (`` ` ``)",
+              "fr": "Accents graves (`` ` ``)"
+            },
+            {
+              "en": "Square brackets (`[]`)",
+              "fr": "Crochets (`[]`)"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Template literals require a special symbol not used in regular strings.",
+              "fr": "Les littéraux de modèle nécessitent un symbole spécial qui n'est pas utilisé dans les chaînes classiques."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is string interpolation used for in template literals?",
+              "fr": "À quoi sert l'interpolation de chaîne dans les littéraux de modèle ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Combining multiple strings without any variables.",
+              "fr": "Combiner plusieurs chaînes sans aucune variable."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "String interpolation helps you avoid concatenation.",
+              "fr": "L'interpolation de chaîne t'aide à éviter la concaténation."
+            },
+            {
+              "en": "Inserting variables and expressions directly into a string.",
+              "fr": "Insérer des variables et des expressions directement dans une chaîne."
+            },
+            {
+              "en": "Changing the type of a string to a number.",
+              "fr": "Changer le type d'une chaîne en nombre."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "String interpolation helps you avoid concatenation.",
+              "fr": "L'interpolation de chaîne t'aide à éviter la concaténation."
+            },
+            {
+              "en": "Creating functions that manipulate strings.",
+              "fr": "Créer des fonctions qui manipulent les chaînes."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "String interpolation helps you avoid concatenation.",
+              "fr": "L'interpolation de chaîne t'aide à éviter la concaténation."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a feature of template literals that makes them better suited for writing multiline strings compared to regular strings?",
+              "fr": "Laquelle des propositions suivantes est une fonctionnalité des littéraux de modèle qui les rend plus adaptés à l'écriture de chaînes multilignes que les chaînes classiques ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Template literals automatically capitalize all letters.",
+              "fr": "Les littéraux de modèle mettent automatiquement toutes les lettres en majuscules."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how regular strings handle new lines.",
+              "fr": "Réfléchis à la façon dont les chaînes classiques gèrent les retours à la ligne."
+            },
+            {
+              "en": "Template literals preserve line breaks without needing escape characters.",
+              "fr": "Les littéraux de modèle conservent les retours à la ligne sans nécessiter de caractères d'échappement."
+            },
+            {
+              "en": "Template literals allow for mathematical operations on strings.",
+              "fr": "Les littéraux de modèle permettent des opérations mathématiques sur les chaînes."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how regular strings handle new lines.",
+              "fr": "Réfléchis à la façon dont les chaînes classiques gèrent les retours à la ligne."
+            },
+            {
+              "en": "Template literals require less memory to store strings.",
+              "fr": "Les littéraux de modèle nécessitent moins de mémoire pour stocker les chaînes."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how regular strings handle new lines.",
+              "fr": "Réfléchis à la façon dont les chaînes classiques gèrent les retours à la ligne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673263df0eb568a7b450f2fc.md",
+      "id": "673263df0eb568a7b450f2fc",
+      "dashedName": "how-do-you-create-a-newline-in-strings-and-escape-strings",
+      "title": {
+        "en": "How Do You Create a Newline in Strings and Escape Strings?",
+        "fr": "Comment créer un retour à la ligne dans les chaînes et échapper les chaînes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with strings in JavaScript, there are times when you need to include special characters that the JavaScript engine might otherwise misinterpret.",
+              "fr": "Quand tu travailles avec des chaînes en JavaScript, il arrive que tu aies besoin d'inclure des caractères spéciaux que le moteur JavaScript pourrait sinon mal interpréter."
+            },
+            {
+              "en": "Two common tasks involve creating a newline within a string and escaping certain characters (like quotes) to make sure they appear correctly.",
+              "fr": "Deux tâches courantes consistent à créer un retour à la ligne dans une chaîne et à échapper certains caractères (comme les guillemets) pour s'assurer qu'ils s'affichent correctement."
+            },
+            {
+              "en": "In many programming languages, including JavaScript, you can create a newline in a string using a special character called an escape sequence. The most common escape sequence for newlines is `\\n`.",
+              "fr": "Dans de nombreux langages de programmation, dont JavaScript, tu peux créer un retour à la ligne dans une chaîne à l'aide d'un caractère spécial appelé séquence d'échappement. La séquence d'échappement la plus courante pour les retours à la ligne est `\\n`."
+            },
+            {
+              "en": "For example, if you want to break a string into multiple lines, you would use `\\n` where you want the new line to begin:",
+              "fr": "Par exemple, si tu veux découper une chaîne sur plusieurs lignes, tu utiliserais `\\n` à l'endroit où tu veux que la nouvelle ligne commence :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `\\n` escape sequence tells JavaScript to insert a line break at that point, which results in the string being displayed across multiple lines.",
+              "fr": "La séquence d'échappement `\\n` indique à JavaScript d'insérer un retour à la ligne à cet endroit, ce qui fait que la chaîne s'affiche sur plusieurs lignes."
+            },
+            {
+              "en": "Another important concept when working with strings is escaping characters. Sometimes, you need to include characters in your string that JavaScript normally uses for something else, such as quotes.",
+              "fr": "Un autre concept important lorsqu'on travaille avec les chaînes est l'échappement des caractères. Parfois, tu as besoin d'inclure dans ta chaîne des caractères que JavaScript utilise normalement pour autre chose, comme les guillemets."
+            },
+            {
+              "en": "If you simply use quotes inside a string without escaping them, it can cause an error because JavaScript will think you're trying to end the string.",
+              "fr": "Si tu utilises simplement des guillemets à l'intérieur d'une chaîne sans les échapper, cela peut provoquer une erreur, car JavaScript pensera que tu essaies de terminer la chaîne."
+            },
+            {
+              "en": "For example, this will cause an error:",
+              "fr": "Par exemple, ceci provoquera une erreur :"
+            },
+            {
+              "en": "JavaScript gets confused because it thinks the string ends after the word `\"said,\"` but, you want the quotes around `\"Hello!\"` to be part of the string.",
+              "fr": "JavaScript est désorienté car il pense que la chaîne se termine après le mot `\"said,\"`, alors que tu veux que les guillemets autour de `\"Hello!\"` fassent partie de la chaîne."
+            },
+            {
+              "en": "To fix this, you can escape the inner quotes by placing a backslash (`\\`) before them:",
+              "fr": "Pour corriger cela, tu peux échapper les guillemets intérieurs en plaçant une barre oblique inverse (`\\`) devant eux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The backslash tells JavaScript to treat the quotes as literal characters, so they appear correctly in the output.",
+              "fr": "La barre oblique inverse indique à JavaScript de traiter les guillemets comme des caractères littéraux, de sorte qu'ils s'affichent correctement dans la sortie."
+            },
+            {
+              "en": "You can also escape other special characters, such as the backslash itself (`\\\\`), or single quotes within a string surrounded by single quotes (`\\'`).",
+              "fr": "Tu peux aussi échapper d'autres caractères spéciaux, comme la barre oblique inverse elle-même (`\\\\`), ou les apostrophes simples à l'intérieur d'une chaîne entourée d'apostrophes simples (`\\'`)."
+            },
+            {
+              "en": "Here's another example using single quotes:",
+              "fr": "Voici un autre exemple utilisant des apostrophes simples :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "By escaping the single quote with `\\'`, JavaScript knows to include it as part of the string rather than ending the string early.",
+              "fr": "En échappant l'apostrophe simple avec `\\'`, JavaScript sait qu'il doit l'inclure dans la chaîne plutôt que de terminer la chaîne prématurément."
+            },
+            {
+              "en": "Escaping and creating newlines are essential when you’re formatting output or handling special characters in strings. These techniques help you prevent errors and ensure your text appears exactly as intended.",
+              "fr": "L'échappement et la création de retours à la ligne sont essentiels quand tu mets en forme une sortie ou que tu gères des caractères spéciaux dans des chaînes. Ces techniques t'aident à éviter les erreurs et à garantir que ton texte s'affiche exactement comme prévu."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following escape sequences would you use to create a new line in a string?",
+              "fr": "Laquelle des séquences d'échappement suivantes utiliserais-tu pour créer un retour à la ligne dans une chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would break a string into multiple lines.",
+              "fr": "Réfléchis à la façon dont tu découperais une chaîne sur plusieurs lignes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would break a string into multiple lines.",
+              "fr": "Réfléchis à la façon dont tu découperais une chaîne sur plusieurs lignes."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would break a string into multiple lines.",
+              "fr": "Réfléchis à la façon dont tu découperais une chaîne sur plusieurs lignes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it necessary to escape certain characters within a string?",
+              "fr": "Pourquoi est-il nécessaire d'échapper certains caractères dans une chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To perform mathematical operations on the string.",
+              "fr": "Pour effectuer des opérations mathématiques sur la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript misinterprets special characters without escaping them.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète mal les caractères spéciaux s'ils ne sont pas échappés."
+            },
+            {
+              "en": "To avoid syntax errors and ensure special characters are included in the string.",
+              "fr": "Pour éviter les erreurs de syntaxe et garantir que les caractères spéciaux sont inclus dans la chaîne."
+            },
+            {
+              "en": "To combine two different strings into one.",
+              "fr": "Pour combiner deux chaînes différentes en une seule."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript misinterprets special characters without escaping them.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète mal les caractères spéciaux s'ils ne sont pas échappés."
+            },
+            {
+              "en": "To change the string to uppercase.",
+              "fr": "Pour mettre la chaîne en majuscules."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript misinterprets special characters without escaping them.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète mal les caractères spéciaux s'ils ne sont pas échappés."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How would you correctly include single quotes within a string that is already wrapped in single quotes?",
+              "fr": "Comment inclure correctement des apostrophes simples dans une chaîne déjà entourée d'apostrophes simples ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Use single quotes inside double quotes.",
+              "fr": "Utiliser des apostrophes simples à l'intérieur de guillemets doubles."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell JavaScript to treat the inner quotes as part of the string.",
+              "fr": "Réfléchis à la façon dont tu peux indiquer à JavaScript de traiter les guillemets intérieurs comme faisant partie de la chaîne."
+            },
+            {
+              "en": "Use the `\\` character before the quotes you want to include.",
+              "fr": "Utiliser le caractère `\\` devant les guillemets que tu veux inclure."
+            },
+            {
+              "en": "Use `\\n` to break the string.",
+              "fr": "Utiliser `\\n` pour découper la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell JavaScript to treat the inner quotes as part of the string.",
+              "fr": "Réfléchis à la façon dont tu peux indiquer à JavaScript de traiter les guillemets intérieurs comme faisant partie de la chaîne."
+            },
+            {
+              "en": "JavaScript doesn't allow quotes inside other quotes.",
+              "fr": "JavaScript n'autorise pas les guillemets à l'intérieur d'autres guillemets."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell JavaScript to treat the inner quotes as part of the string.",
+              "fr": "Réfléchis à la façon dont tu peux indiquer à JavaScript de traiter les guillemets intérieurs comme faisant partie de la chaîne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673263e80dd43da7df3ae565.md",
+      "id": "673263e80dd43da7df3ae565",
+      "dashedName": "how-can-you-find-the-position-of-a-substring-in-a-string",
+      "title": {
+        "en": "How Can You Find the Position of a Substring in a String?",
+        "fr": "Comment trouver la position d'une sous-chaîne dans une chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with strings in JavaScript, there may be times when you need to locate the position of a specific substring within a larger string.",
+              "fr": "Quand tu travailles avec des chaînes en JavaScript, il peut arriver que tu aies besoin de localiser la position d'une sous-chaîne précise dans une chaîne plus grande."
+            },
+            {
+              "en": "A substring is a sequence of characters that appears within a larger string. For example, in the string `hello world`, `hello` and `world` are substrings.",
+              "fr": "Une sous-chaîne est une suite de caractères qui apparaît à l'intérieur d'une chaîne plus grande. Par exemple, dans la chaîne `hello world`, `hello` et `world` sont des sous-chaînes."
+            },
+            {
+              "en": "To locate the position of a substring inside of a string, you can use the `indexOf()` method.\nThe `indexOf()` method in JavaScript allows you to search for a substring within a string.",
+              "fr": "Pour localiser la position d'une sous-chaîne à l'intérieur d'une chaîne, tu peux utiliser la méthode `indexOf()`. La méthode `indexOf()` en JavaScript te permet de rechercher une sous-chaîne dans une chaîne."
+            },
+            {
+              "en": "If the substring is found, `indexOf()` returns the index (or position) of the first occurrence of that substring. If the substring is not found, `indexOf()` returns `-1`, which indicates that the search was unsuccessful.",
+              "fr": "Si la sous-chaîne est trouvée, `indexOf()` renvoie l'indice (ou la position) de la première occurrence de cette sous-chaîne. Si la sous-chaîne n'est pas trouvée, `indexOf()` renvoie `-1`, ce qui indique que la recherche a échoué."
+            },
+            {
+              "en": "The `indexOf()` method takes two arguments: the first is the substring you want to find within the larger string, and the second is an option starting position for the search. If you don’t provide a starting position, the search will begin at the start of the string.",
+              "fr": "La méthode `indexOf()` prend deux arguments : le premier est la sous-chaîne que tu veux trouver dans la chaîne plus grande, et le second est une position de départ facultative pour la recherche. Si tu ne fournis pas de position de départ, la recherche commencera au début de la chaîne."
+            },
+            {
+              "en": "In this context, an **argument** is a value you give to a function or method when you call it, enabling that function or method to perform its task using the specific information you provide. You will learn more about arguments in future lessons.",
+              "fr": "Dans ce contexte, un **argument** est une valeur que tu donnes à une fonction ou à une méthode lorsque tu l'appelles, ce qui permet à cette fonction ou méthode d'accomplir sa tâche en utilisant les informations précises que tu fournis. Tu en apprendras davantage sur les arguments dans de prochaines leçons."
+            },
+            {
+              "en": "Here is an example of using the `indexOf()` method to find the position for the string `awesome`:",
+              "fr": "Voici un exemple d'utilisation de la méthode `indexOf()` pour trouver la position de la chaîne `awesome` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the word `awesome` starts at index `14` in the string `JavaScript is awesome!`, so the `indexOf()` method returns `14`.",
+              "fr": "Dans cet exemple, le mot `awesome` commence à l'indice `14` dans la chaîne `JavaScript is awesome!`, donc la méthode `indexOf()` renvoie `14`."
+            },
+            {
+              "en": "Now, let's see what happens when the substring isn't found:",
+              "fr": "Maintenant, voyons ce qui se passe quand la sous-chaîne n'est pas trouvée :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since the word `fantastic` does not appear in the string, the method returns `-1`.",
+              "fr": "Comme le mot `fantastic` n'apparaît pas dans la chaîne, la méthode renvoie `-1`."
+            },
+            {
+              "en": "You can also specify where to begin searching within the string by providing a second argument to `indexOf()`. Here's an example:",
+              "fr": "Tu peux aussi préciser où commencer la recherche dans la chaîne en fournissant un second argument à `indexOf()`. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, the search for `JavaScript` begins after the 10th character, and so the second occurrence of `JavaScript` is found at index `27`.",
+              "fr": "Dans ce cas, la recherche de `JavaScript` commence après le 10ᵉ caractère, et la deuxième occurrence de `JavaScript` est donc trouvée à l'indice `27`."
+            },
+            {
+              "en": "It is important to note that the `indexOf()` method is case sensitive.",
+              "fr": "Il est important de noter que la méthode `indexOf()` est sensible à la casse."
+            },
+            {
+              "en": "In this example, the following would return `-1` because the capital letter `F` is not found in the string `freeCodeCamp`.",
+              "fr": "Dans cet exemple, ce qui suit renverrait `-1` car la lettre majuscule `F` ne se trouve pas dans la chaîne `freeCodeCamp`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Using `indexOf()` can be very useful when you need to check if a substring is present in a string and to determine its position for further operations.",
+              "fr": "Utiliser `indexOf()` peut être très utile quand tu as besoin de vérifier si une sous-chaîne est présente dans une chaîne et de déterminer sa position pour des opérations ultérieures."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `indexOf` method return if the substring is not found in the string?",
+              "fr": "Que renvoie la méthode `indexOf` si la sous-chaîne n'est pas trouvée dans la chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special value that indicates an unsuccessful search.",
+              "fr": "Pense à la valeur spéciale qui indique une recherche infructueuse."
+            },
+            {
+              "en": "The length of the string.",
+              "fr": "La longueur de la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special value that indicates an unsuccessful search.",
+              "fr": "Pense à la valeur spéciale qui indique une recherche infructueuse."
+            },
+            {
+              "en": "The position of the first character.",
+              "fr": "La position du premier caractère."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special value that indicates an unsuccessful search.",
+              "fr": "Pense à la valeur spéciale qui indique une recherche infructueuse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you use `indexOf` to search for a substring starting at a specific position within the string?",
+              "fr": "Comment utiliser `indexOf` pour rechercher une sous-chaîne à partir d'une position précise dans la chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the first argument to specify the starting position.",
+              "fr": "En utilisant le premier argument pour préciser la position de départ."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember, you can pass a second argument to the method to control where the search starts.",
+              "fr": "Souviens-toi que tu peux passer un second argument à la méthode pour contrôler l'endroit où la recherche commence."
+            },
+            {
+              "en": "By using the second argument to specify the starting position.",
+              "fr": "En utilisant le second argument pour préciser la position de départ."
+            },
+            {
+              "en": "By using an additional method.",
+              "fr": "En utilisant une méthode supplémentaire."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember, you can pass a second argument to the method to control where the search starts.",
+              "fr": "Souviens-toi que tu peux passer un second argument à la méthode pour contrôler l'endroit où la recherche commence."
+            },
+            {
+              "en": "By changing the string first.",
+              "fr": "En modifiant d'abord la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember, you can pass a second argument to the method to control where the search starts.",
+              "fr": "Souviens-toi que tu peux passer un second argument à la méthode pour contrôler l'endroit où la recherche commence."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will `indexOf()` return in this example?",
+              "fr": "Que renverra `indexOf()` dans cet exemple ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `indexOf()` method is case sensitive.",
+              "fr": "Souviens-toi que la méthode `indexOf()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `indexOf()` method is case sensitive.",
+              "fr": "Souviens-toi que la méthode `indexOf()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `indexOf()` method is case sensitive.",
+              "fr": "Souviens-toi que la méthode `indexOf()` est sensible à la casse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673263f4a5899da8124542fd.md",
+      "id": "673263f4a5899da8124542fd",
+      "dashedName": "what-is-the-prompt-method-and-how-does-it-work",
+      "title": {
+        "en": "What Is the prompt() Method, and How Does It Work?",
+        "fr": "Qu'est-ce que la méthode prompt(), et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `prompt()` method is an important part of JavaScript's interaction with the user. It’s one of the simplest ways to get input from a user through a small pop-up dialog box.",
+              "fr": "La méthode `prompt()` est un élément important de l'interaction de JavaScript avec l'utilisateur. C'est l'un des moyens les plus simples d'obtenir une saisie de l'utilisateur via une petite boîte de dialogue contextuelle."
+            },
+            {
+              "en": "You'll often see it used in cases where the webpage needs a piece of information from the user, such as a name or some other form of text input.",
+              "fr": "Tu la verras souvent utilisée dans les cas où la page web a besoin d'une information de la part de l'utilisateur, comme un nom ou une autre forme de saisie de texte."
+            },
+            {
+              "en": "So, what exactly does the `prompt()` method do? It opens a dialog box that asks the user for some input, and then it returns the text entered by the user as a string.",
+              "fr": "Alors, que fait exactement la méthode `prompt()` ? Elle ouvre une boîte de dialogue qui demande une saisie à l'utilisateur, puis elle renvoie le texte saisi par l'utilisateur sous forme de chaîne."
+            },
+            {
+              "en": "The `prompt()` method takes two arguments: The first one is the message which will appear inside the dialog box, typically prompting the user to enter information. And the second one is a default value which is optional and will fill the input field initially.",
+              "fr": "La méthode `prompt()` prend deux arguments : le premier est le message qui apparaîtra dans la boîte de dialogue, invitant généralement l'utilisateur à saisir une information. Et le second est une valeur par défaut, facultative, qui remplira initialement le champ de saisie."
+            },
+            {
+              "en": "Here's an example of how it works.",
+              "fr": "Voici un exemple de son fonctionnement."
+            },
+            {
+              "en": "**NOTE**: This example includes code you have not learned yet. Don't worry about trying to understand everything in the code. This is just to illustrate how the `prompt()` method works and ensure that the prompt doesn't appear immediately when the page loads which can be seen as intrusive. If you have the interactive editor enabled, you can try it out yourself.",
+              "fr": "**REMARQUE** : Cet exemple inclut du code que tu n'as pas encore appris. Ne t'inquiète pas de tout comprendre dans ce code. Il sert juste à illustrer le fonctionnement de la méthode `prompt()` et à éviter que l'invite n'apparaisse immédiatement au chargement de la page, ce qui pourrait être perçu comme intrusif. Si l'éditeur interactif est activé, tu peux l'essayer toi-même."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, when the user clicks on the button, the `prompt()` method displays a dialog box with the message `What is your name?` and an input field that initially contains the value `Guest`.",
+              "fr": "Dans cet exemple, quand l'utilisateur clique sur le bouton, la méthode `prompt()` affiche une boîte de dialogue avec le message `What is your name?` et un champ de saisie qui contient initialement la valeur `Guest`."
+            },
+            {
+              "en": "If the user types their name and presses \"OK\", the `userName` variable will store the entered value. If the user presses \"Cancel,\" the `userName` variable will be set to `null`. `null` signifies that the user did not provide any input. The output paragraph will then display a greeting message using the provided name or `null` if the user canceled. You will learn techniques to avoid displaying `null` when a user cancels the prompt in future lessons.",
+              "fr": "Si l'utilisateur saisit son nom et appuie sur \"OK\", la variable `userName` stockera la valeur saisie. Si l'utilisateur appuie sur \"Annuler\", la variable `userName` sera définie à `null`. `null` signifie que l'utilisateur n'a fourni aucune saisie. Le paragraphe de sortie affichera alors un message de salutation en utilisant le nom fourni, ou `null` si l'utilisateur a annulé. Tu apprendras dans de prochaines leçons des techniques pour éviter d'afficher `null` quand un utilisateur annule l'invite."
+            },
+            {
+              "en": "Keep in mind that the `prompt()` method will halt the execution of the script until the user interacts with the dialog box.",
+              "fr": "Garde à l'esprit que la méthode `prompt()` interrompra l'exécution du script jusqu'à ce que l'utilisateur interagisse avec la boîte de dialogue."
+            },
+            {
+              "en": "This means the rest of your JavaScript code won’t run until the user either provides input and clicks \"OK\", or cancels the prompt.",
+              "fr": "Cela signifie que le reste de ton code JavaScript ne s'exécutera pas tant que l'utilisateur n'aura pas fourni une saisie et cliqué sur \"OK\", ou annulé l'invite."
+            },
+            {
+              "en": "One other point to consider is that while `prompt()` is useful for quick testing or small applications, it's generally avoided in modern, complex web applications due to its disruptive nature and inconsistent behavior across different browsers.",
+              "fr": "Un autre point à prendre en compte est que, même si `prompt()` est utile pour des tests rapides ou de petites applications, on l'évite généralement dans les applications web modernes et complexes en raison de son caractère perturbateur et de son comportement incohérent d'un navigateur à l'autre."
+            },
+            {
+              "en": "By understanding the `prompt()` method, you gain a simple way to interact with users and retrieve information directly through the browser, even though it may not be widely used in modern web applications.",
+              "fr": "En comprenant la méthode `prompt()`, tu disposes d'un moyen simple d'interagir avec les utilisateurs et de récupérer des informations directement via le navigateur, même si elle n'est peut-être pas très utilisée dans les applications web modernes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `prompt()` method do in JavaScript?",
+              "fr": "Que fait la méthode `prompt()` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Displays a pop-up asking for user input and returns the input as a string.",
+              "fr": "Elle affiche une fenêtre contextuelle demandant une saisie à l'utilisateur et renvoie cette saisie sous forme de chaîne."
+            },
+            {
+              "en": "Logs a message to the console.",
+              "fr": "Elle affiche un message dans la console."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the method interacts with the user.",
+              "fr": "Réfléchis à la façon dont la méthode interagit avec l'utilisateur."
+            },
+            {
+              "en": "Opens a new browser window.",
+              "fr": "Elle ouvre une nouvelle fenêtre de navigateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the method interacts with the user.",
+              "fr": "Réfléchis à la façon dont la méthode interagit avec l'utilisateur."
+            },
+            {
+              "en": "Stops the script from executing.",
+              "fr": "Elle empêche le script de s'exécuter."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the method interacts with the user.",
+              "fr": "Réfléchis à la façon dont la méthode interagit avec l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if the user cancels the prompt dialog box?",
+              "fr": "Que se passe-t-il si l'utilisateur annule la boîte de dialogue de l'invite ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The script breaks.",
+              "fr": "Le script plante."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `prompt()` does when the user doesn't provide input.",
+              "fr": "Réfléchis à ce que fait `prompt()` quand l'utilisateur ne fournit aucune saisie."
+            },
+            {
+              "en": "The prompt method returns `null`.",
+              "fr": "La méthode prompt renvoie `null`."
+            },
+            {
+              "en": "The prompt method returns an empty string.",
+              "fr": "La méthode prompt renvoie une chaîne vide."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `prompt()` does when the user doesn't provide input.",
+              "fr": "Réfléchis à ce que fait `prompt()` quand l'utilisateur ne fournit aucune saisie."
+            },
+            {
+              "en": "The script continues with the default value.",
+              "fr": "Le script continue avec la valeur par défaut."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `prompt()` does when the user doesn't provide input.",
+              "fr": "Réfléchis à ce que fait `prompt()` quand l'utilisateur ne fournit aucune saisie."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the second, optional argument of the `prompt()` method used for?",
+              "fr": "À quoi sert le second argument facultatif de la méthode `prompt()` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Specifying the text of the cancel button.",
+              "fr": "À préciser le texte du bouton d'annulation."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what can be pre-filled for the user before they start typing.",
+              "fr": "Réfléchis à ce qui peut être pré-rempli pour l'utilisateur avant qu'il ne commence à taper."
+            },
+            {
+              "en": "Setting a default value in the input field.",
+              "fr": "À définir une valeur par défaut dans le champ de saisie."
+            },
+            {
+              "en": "Setting a time limit for the input.",
+              "fr": "À définir une limite de temps pour la saisie."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what can be pre-filled for the user before they start typing.",
+              "fr": "Réfléchis à ce qui peut être pré-rempli pour l'utilisateur avant qu'il ne commence à taper."
+            },
+            {
+              "en": "Changing the color of the dialog box.",
+              "fr": "À changer la couleur de la boîte de dialogue."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what can be pre-filled for the user before they start typing.",
+              "fr": "Réfléchis à ce qui peut être pré-rempli pour l'utilisateur avant qu'il ne commence à taper."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

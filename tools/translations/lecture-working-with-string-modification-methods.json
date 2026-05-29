@@ -1,0 +1,470 @@
+{
+  "workshop": "lecture-working-with-string-modification-methods",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67326c29dcd98fc5ecc49779.md",
+      "id": "67326c29dcd98fc5ecc49779",
+      "dashedName": "how-can-you-replace-parts-of-a-string-with-another",
+      "title": {
+        "en": "How Can You Replace Parts of a String with Another?",
+        "fr": "Comment remplacer des parties d'une chaîne par une autre ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, there are many scenarios where you may need to replace a portion of a string with another string.",
+              "fr": "En JavaScript, il existe de nombreux scénarios où tu pourrais avoir besoin de remplacer une portion d'une chaîne par une autre chaîne."
+            },
+            {
+              "en": "For instance, you might need to update user information in a URL, change the formatting of dates, or correct errors in user-generated content.",
+              "fr": "Par exemple, tu pourrais avoir besoin de mettre à jour des informations utilisateur dans une URL, de changer le format des dates, ou de corriger des erreurs dans du contenu généré par les utilisateurs."
+            },
+            {
+              "en": "The `replace()` method in JavaScript allows you to find a specified value (like a word or character) in a string and replace it with another value. The method returns a new string with the replacement and leaves the original unchanged because JavaScript strings are immutable.",
+              "fr": "La méthode `replace()` en JavaScript te permet de trouver une valeur précise (comme un mot ou un caractère) dans une chaîne et de la remplacer par une autre valeur. La méthode renvoie une nouvelle chaîne avec le remplacement et laisse l'originale inchangée, car les chaînes JavaScript sont immutables."
+            },
+            {
+              "en": "Here is the basic syntax:",
+              "fr": "Voici la syntaxe de base :"
+            },
+            {
+              "en": "`searchValue` is the value you want to search for in the string. It can be either a string or a regular expression (regex), which describes patterns in text. This allows you to search for and manipulate strings in a flexible and powerful way. You'll learn more about regular expressions in future lessons.",
+              "fr": "`searchValue` est la valeur que tu veux rechercher dans la chaîne. Il peut s'agir soit d'une chaîne, soit d'une expression régulière (regex), qui décrit des motifs dans le texte. Cela te permet de rechercher et de manipuler des chaînes de façon souple et puissante. Tu en apprendras davantage sur les expressions régulières dans de prochaines leçons."
+            },
+            {
+              "en": "The `newValue` is the value that will replace the `searchValue`. Here's a simple example:",
+              "fr": "`newValue` est la valeur qui remplacera `searchValue`. Voici un exemple simple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the word `JavaScript` is found within the string and is replaced with `coding`.",
+              "fr": "Dans cet exemple, le mot `JavaScript` est trouvé dans la chaîne et est remplacé par `coding`."
+            },
+            {
+              "en": "The `replace()` method is case-sensitive, meaning that it will only find exact matches of the `searchValue`. For example:",
+              "fr": "La méthode `replace()` est sensible à la casse, ce qui signifie qu'elle ne trouvera que des correspondances exactes de `searchValue`. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, since `javascript` (with lowercase `j`) does not match `JavaScript` (with uppercase `J`), the replacement is not made.",
+              "fr": "Ici, comme `javascript` (avec un `j` minuscule) ne correspond pas à `JavaScript` (avec un `J` majuscule), le remplacement n'est pas effectué."
+            },
+            {
+              "en": "By default, the `replace()` method will only replace the first occurrence of the `searchValue`. If the value appears multiple times in the string, only the first one will be replaced:",
+              "fr": "Par défaut, la méthode `replace()` ne remplacera que la première occurrence de `searchValue`. Si la valeur apparaît plusieurs fois dans la chaîne, seule la première sera remplacée :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Notice that only the first occurrence of `world` is replaced with `universe`.",
+              "fr": "Remarque que seule la première occurrence de `world` est remplacée par `universe`."
+            },
+            {
+              "en": "The `replace()` method in JavaScript is a powerful and flexible tool for string manipulation.",
+              "fr": "La méthode `replace()` en JavaScript est un outil puissant et souple pour la manipulation de chaînes."
+            },
+            {
+              "en": "It lets you replace specific parts of a string, whether you're dealing with individual characters, words, or complex patterns using regular expressions.",
+              "fr": "Elle te permet de remplacer des parties précises d'une chaîne, que tu travailles avec des caractères individuels, des mots ou des motifs complexes à l'aide d'expressions régulières."
+            },
+            {
+              "en": "While it's ideal for straightforward replacements, understanding its case sensitivity and default behavior (like replacing only the first occurrence) can help you use it more effectively.",
+              "fr": "Même si elle est idéale pour des remplacements simples, comprendre sa sensibilité à la casse et son comportement par défaut (comme ne remplacer que la première occurrence) peut t'aider à l'utiliser plus efficacement."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the default behavior of the `replace()` method in JavaScript?",
+              "fr": "Quel est le comportement par défaut de la méthode `replace()` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It replaces all occurrences of the search value.",
+              "fr": "Elle remplace toutes les occurrences de la valeur recherchée."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when there are multiple instances of the word you are trying to replace.",
+              "fr": "Réfléchis à ce qui se passe quand il y a plusieurs occurrences du mot que tu essaies de remplacer."
+            },
+            {
+              "en": "It replaces only the first occurrence of the search value.",
+              "fr": "Elle ne remplace que la première occurrence de la valeur recherchée."
+            },
+            {
+              "en": "It does nothing if the search value is not found.",
+              "fr": "Elle ne fait rien si la valeur recherchée n'est pas trouvée."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when there are multiple instances of the word you are trying to replace.",
+              "fr": "Réfléchis à ce qui se passe quand il y a plusieurs occurrences du mot que tu essaies de remplacer."
+            },
+            {
+              "en": "It replaces every other occurrence of the search value.",
+              "fr": "Elle remplace une occurrence sur deux de la valeur recherchée."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when there are multiple instances of the word you are trying to replace.",
+              "fr": "Réfléchis à ce qui se passe quand il y a plusieurs occurrences du mot que tu essaies de remplacer."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Qu'affichera le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `replace()` method is case-sensitive.",
+              "fr": "Souviens-toi que la méthode `replace()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `replace()` method is case-sensitive.",
+              "fr": "Souviens-toi que la méthode `replace()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `replace()` method is case-sensitive.",
+              "fr": "Souviens-toi que la méthode `replace()` est sensible à la casse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Qu'affichera le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how the `replace()` method handles the first occurrence of the search value.",
+              "fr": "Concentre-toi sur la façon dont la méthode `replace()` gère la première occurrence de la valeur recherchée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how the `replace()` method handles the first occurrence of the search value.",
+              "fr": "Concentre-toi sur la façon dont la méthode `replace()` gère la première occurrence de la valeur recherchée."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on how the `replace()` method handles the first occurrence of the search value.",
+              "fr": "Concentre-toi sur la façon dont la méthode `replace()` gère la première occurrence de la valeur recherchée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67326c3392068ec6184a0c95.md",
+      "id": "67326c3392068ec6184a0c95",
+      "dashedName": "how-can-you-repeat-a-string-x-number-of-times",
+      "title": {
+        "en": "How Can You Repeat a String x Number of Times?",
+        "fr": "Comment répéter une chaîne x fois ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with JavaScript, you may encounter situations where you need to repeat a string a specific number of times.",
+              "fr": "Quand tu travailles avec JavaScript, tu peux rencontrer des situations où tu as besoin de répéter une chaîne un nombre précis de fois."
+            },
+            {
+              "en": "Whether you're generating repeated patterns or simply duplicating text, the `repeat()` method provides a simple and effective way to achieve this.",
+              "fr": "Que tu génères des motifs répétés ou que tu dupliques simplement du texte, la méthode `repeat()` offre un moyen simple et efficace d'y parvenir."
+            },
+            {
+              "en": "The `repeat()` method is a built-in function in JavaScript that allows you to repeat a string a specified number of times. Here is the basic syntax:",
+              "fr": "La méthode `repeat()` est une fonction intégrée de JavaScript qui te permet de répéter une chaîne un nombre de fois précis. Voici la syntaxe de base :"
+            },
+            {
+              "en": "`string` is the string that you want to repeat, and `count` is the number of times you want the string to be repeated. Here's an example:",
+              "fr": "`string` est la chaîne que tu veux répéter, et `count` est le nombre de fois où tu veux que la chaîne soit répétée. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, the string `Hello!` is repeated three times, resulting in `Hello!Hello!Hello!`.",
+              "fr": "Dans ce cas, la chaîne `Hello!` est répétée trois fois, ce qui donne `Hello!Hello!Hello!`."
+            },
+            {
+              "en": "While the `repeat()` method is useful, there are a few exceptions and limitations to keep in mind.",
+              "fr": "Même si la méthode `repeat()` est utile, il y a quelques exceptions et limitations à garder à l'esprit."
+            },
+            {
+              "en": "The `count` parameter must be a non-negative number. If you pass a negative number, JavaScript will throw a `RangeError`.",
+              "fr": "Le paramètre `count` doit être un nombre non négatif. Si tu passes un nombre négatif, JavaScript générera une `RangeError`."
+            },
+            {
+              "en": "The `count` must be a finite number. If you try to repeat a string an infinite number of times or use `Infinity` as the count, you will also get a `RangeError`.",
+              "fr": "Le `count` doit être un nombre fini. Si tu essaies de répéter une chaîne un nombre infini de fois ou que tu utilises `Infinity` comme valeur, tu obtiendras également une `RangeError`."
+            },
+            {
+              "en": "In JavaScript, `Infinity` is a special value that represents an infinite quantity. It's used to denote numbers that are larger than any finite number.",
+              "fr": "En JavaScript, `Infinity` est une valeur spéciale qui représente une quantité infinie. Elle sert à désigner des nombres plus grands que n'importe quel nombre fini."
+            },
+            {
+              "en": "If the count is not an integer (such as a decimal like `2.5`), the `repeat()` method will round it down to the nearest integer.",
+              "fr": "Si le nombre n'est pas un entier (comme un décimal tel que `2.5`), la méthode `repeat()` l'arrondira à l'entier inférieur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you pass `0` as the count, the `repeat()` method will return an empty string.",
+              "fr": "Si tu passes `0` comme valeur, la méthode `repeat()` renverra une chaîne vide."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `repeat()` method can simplify tasks that involve string duplication, making your code more concise and readable.",
+              "fr": "La méthode `repeat()` peut simplifier les tâches qui impliquent la duplication de chaînes, rendant ton code plus concis et plus lisible."
+            },
+            {
+              "en": "Whether you're generating repeated text patterns or filling a space with characters, `repeat()` can save you from writing loops or more complex code.",
+              "fr": "Que tu génères des motifs de texte répétés ou que tu remplisses un espace avec des caractères, `repeat()` peut t'éviter d'écrire des boucles ou du code plus complexe."
+            },
+            {
+              "en": "You are not limited to passing a number directly into the `repeat()` method. You can also pass a variable that stores a number value.",
+              "fr": "Tu n'es pas obligé de passer un nombre directement dans la méthode `repeat()`. Tu peux aussi passer une variable qui stocke une valeur numérique."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the `count` variable stores the number of repetitions. This can be useful when the number of repetitions depends on user input or other dynamic values in your program.",
+              "fr": "Dans cet exemple, la variable `count` stocke le nombre de répétitions. Cela peut être utile quand le nombre de répétitions dépend de la saisie de l'utilisateur ou d'autres valeurs dynamiques de ton programme."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the result of calling `\"Hello\".repeat(3);` in JavaScript?",
+              "fr": "Quel est le résultat de l'appel `\"Hello\".repeat(3);` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `repeat()` method concatenates the repeated string.",
+              "fr": "Réfléchis à la façon dont la méthode `repeat()` concatène la chaîne répétée."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `repeat()` method concatenates the repeated string.",
+              "fr": "Réfléchis à la façon dont la méthode `repeat()` concatène la chaîne répétée."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `repeat()` method concatenates the repeated string.",
+              "fr": "Réfléchis à la façon dont la méthode `repeat()` concatène la chaîne répétée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you try to call `repeat()` with a negative number?",
+              "fr": "Que se passe-t-il si tu essaies d'appeler `repeat()` avec un nombre négatif ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The string is repeated once.",
+              "fr": "La chaîne est répétée une fois."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `repeat()` handles invalid count values.",
+              "fr": "Réfléchis à la façon dont `repeat()` gère les valeurs invalides."
+            },
+            {
+              "en": "The string is repeated the absolute value of the negative number.",
+              "fr": "La chaîne est répétée selon la valeur absolue du nombre négatif."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `repeat()` handles invalid count values.",
+              "fr": "Réfléchis à la façon dont `repeat()` gère les valeurs invalides."
+            },
+            {
+              "en": "A `RangeError` is thrown.",
+              "fr": "Une `RangeError` est générée."
+            },
+            {
+              "en": "An empty string is returned.",
+              "fr": "Une chaîne vide est renvoyée."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `repeat()` handles invalid count values.",
+              "fr": "Réfléchis à la façon dont `repeat()` gère les valeurs invalides."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If you call `\"*\".repeat(0)`, what is the output?",
+              "fr": "Si tu appelles `\"*\".repeat(0)`, quel est le résultat ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you ask to repeat something zero times.",
+              "fr": "Réfléchis à ce qui se passe quand tu demandes de répéter quelque chose zéro fois."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you ask to repeat something zero times.",
+              "fr": "Réfléchis à ce qui se passe quand tu demandes de répéter quelque chose zéro fois."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you ask to repeat something zero times.",
+              "fr": "Réfléchis à ce qui se passe quand tu demandes de répéter quelque chose zéro fois."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
