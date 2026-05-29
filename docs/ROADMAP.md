@@ -262,7 +262,7 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
 - **DoD :** `pnpm -F @freecodecamp/client test` couvre le coeur ; refactor sans
   regression.
 
-## 2.2 — CI taillee pour le fork 🟠
+## 2.2 — CI taillee pour le fork 🟠 — ✅ FINI
 
 - **Objectif :** valider automatiquement les systemes du fork ; arreter les
   workflows fCC inutiles maintenant que le repo est public.
@@ -529,7 +529,7 @@ seul traducteur**, encadre par le pipeline et la QA. Voir **CHANTIER 0**.
 ### Vague 2 — semaines
 
 - [ ] 2.1 Logique pure + tests vitest
-- [ ] 2.2 CI taillee fork + elagage workflows herites
+- [x] 2.2 CI taillee fork + elagage workflows herites — ✅ FINI (21 workflows herites desactives en `*.yml.disabled` ; `fork-ci.yml` ajoute : typecheck shared + drift trad + garde liens externes)
 - [ ] 2.3 Persistance erreurs + SRS
 - [ ] 2.4 XP / niveaux / series / heatmap
 - [ ] 2.5 Explications de reponse

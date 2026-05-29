@@ -1,0 +1,53 @@
+name: Fork CI
+
+# CI taillee pour le fork local FR (roadmap 2.2). Les workflows herites de
+# freeCodeCamp (deploy/docker/crowdin/e2e/i18n/node.js-tests/bots PR) sont
+# desactives (renommes *.yml.disabled) car ils dependent de secrets et d'une
+# infra qui n'existent pas ici. Cette CI valide uniquement les systemes du fork,
+# sans serveur, sans build Gatsby, sans e2e.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Fork checks
+    runs-on: ubuntu-24.04
+    env:
+      HUSKY: 0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # historique complet pour check-translation-drift
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck shared
+        run: pnpm --filter @freecodecamp/shared type-check
+
+      - name: Translation drift (EN -> FR)
+        run: node tools/check-translation-drift.js
+
+      - name: External navigation links guard
+        run: node tools/check-external-links.js
