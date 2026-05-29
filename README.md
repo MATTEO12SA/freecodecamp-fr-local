@@ -104,7 +104,7 @@ Responsive Web Design v9 est la priorite et il est maintenant entierement tradui
 
 Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
-JavaScript v9 est demarre : `lecture-introduction-to-javascript` et `lecture-introduction-to-strings` sont traduits (7 fichiers au total, 2 blocs FR sur 230). Le pipeline `tools/translate-workshop.js` sait maintenant extraire/verifier les lectures JS avec `description/interactive/questions/answers/feedback`.
+JavaScript v9 est en cours : 10 blocs FR sur 230 (38 fichiers) — toutes les lectures du module `javascript-variables-and-strings` plus `workshop-greeting-bot`. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS avec `description/interactive/questions/answers/feedback` (`kind: "lecture"`) et les workshops step-by-step (`kind: "workshop"`).
 
 Pour continuer les workshops sans toucher au code technique :
 

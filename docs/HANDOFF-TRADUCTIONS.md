@@ -20,7 +20,7 @@ Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-
 
 ### JavaScript v9 — Démarré
 
-État actuel : 9 blocs FR sur 230. Blocs traduits : les 9 lectures du module `javascript-variables-and-strings` — `lecture-introduction-to-javascript` (4 fichiers), `lecture-introduction-to-strings` (3), `lecture-understanding-code-clarity` (2), `lecture-working-with-data-types` (2), `lecture-working-with-strings-in-javascript` (5), `lecture-working-with-string-character-methods` (1), `lecture-working-with-string-search-and-slice-methods` (2), `lecture-working-with-string-formatting-methods` (2), `lecture-working-with-string-modification-methods` (2). Titres + intros de ces blocs traduits dans `intro.json`. Restent dans ce module : workshops, labs, reviews, quiz. Prochaine cible logique : `workshop-greeting-bot` (premier workshop du module, 15 fichiers).
+État actuel : 10 blocs FR sur 230 (38 fichiers). Blocs traduits dans le module `javascript-variables-and-strings` : les 9 lectures — `lecture-introduction-to-javascript` (4 fichiers), `lecture-introduction-to-strings` (3), `lecture-understanding-code-clarity` (2), `lecture-working-with-data-types` (2), `lecture-working-with-strings-in-javascript` (5), `lecture-working-with-string-character-methods` (1), `lecture-working-with-string-search-and-slice-methods` (2), `lecture-working-with-string-formatting-methods` (2), `lecture-working-with-string-modification-methods` (2) — plus le premier workshop `workshop-greeting-bot` (15). Titres + intros de ces blocs traduits dans `intro.json`. Restent dans ce module : labs (`lab-javascript-trivia-bot`, `lab-sentence-maker`), reviews, quiz, et workshops (`workshop-teacher-chatbot`, `workshop-string-inspector`, `workshop-string-formatter`, `workshop-string-transformer`). Prochaine cible logique : `lab-javascript-trivia-bot`.
 
 Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Le pipeline `tools/translate-workshop.js` couvre maintenant ces sections avec `kind: "lecture"`; traduire le JSON manuellement, puis appliquer/verifier.
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Suite en cours : JavaScript v9 (9/230 blocs). Toutes les lectures du module 1 (`javascript-variables-and-strings`) sont faites. Prochaine cible recommandee : `workshop-greeting-bot`.
+RWD est termine. Suite en cours : JavaScript v9 (10/230 blocs). Toutes les lectures du module 1 (`javascript-variables-and-strings`) + `workshop-greeting-bot` sont faites. Prochaine cible recommandee : `lab-javascript-trivia-bot`.
 
 ### Lister ce qui manque dans un module
 
@@ -281,7 +281,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 9/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 10/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -299,7 +299,7 @@ pnpm local:check:full                            # checks longs avant push final
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Continuer JavaScript v9 : les 9 lectures du module `javascript-variables-and-strings` sont faites ; prochaine cible `workshop-greeting-bot`.
+4. Continuer JavaScript v9 : les 9 lectures du module `javascript-variables-and-strings` + `workshop-greeting-bot` sont faites ; prochaine cible `lab-javascript-trivia-bot`.
 5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 6. Commit + push immédiats à la fin de chaque module.
 
@@ -314,7 +314,7 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session (2026-05-29, traduction JS)** : traduit les 7 lectures restantes du module `javascript-variables-and-strings` (16 fichiers) via le pipeline `extract/apply/verify` en mode `lecture` — `understanding-code-clarity`, `working-with-data-types`, `working-with-strings-in-javascript`, et les 4 lectures `working-with-string-*-methods`. Titres + intros de ces blocs traduits dans `intro.json` (chacun présent 2× : map `blocks` + arbre `chapters/modules`). QA verte sur les 7 blocs, drift 0. JS passe de 2/230 à 9/230 blocs. Régénération curriculum-data faite pour afficher les titres. Prochaine cible : `workshop-greeting-bot`.
+**Dernière session (2026-05-29, traduction JS)** : traduit les 7 lectures restantes du module `javascript-variables-and-strings` (16 fichiers, mode `lecture`) + le premier workshop `workshop-greeting-bot` (15 fichiers, mode `workshop`) via le pipeline `extract/apply/verify` — soit 31 fichiers, 8 nouveaux blocs. Lectures : `understanding-code-clarity`, `working-with-data-types`, `working-with-strings-in-javascript`, et les 4 lectures `working-with-string-*-methods`. Titres + intros de tous ces blocs traduits dans `intro.json` (chacun présent 2× : map `blocks` + arbre `chapters/modules`). QA verte partout, drift 0, prettier clean. JS passe de 2/230 à 10/230 blocs. Régénération curriculum-data faite pour afficher les titres. Prochaine cible : `lab-javascript-trivia-bot`.
 
 **Session précédente** : hub dev local + checks + catalogue + pipeline JS + docs, tous pushés par lots.
 
@@ -325,4 +325,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
 6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
 
-Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 9/230. Prochaine cible traduction : `workshop-greeting-bot`.
+Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 10/230. Prochaine cible traduction : `lab-javascript-trivia-bot`.

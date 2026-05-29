@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 2/230 blocs (`lecture-introduction-to-javascript`, `lecture-introduction-to-strings`). Prochaine cible logique : `lecture-understanding-code-clarity`.
+- **JavaScript v9** : 10/230 blocs (toutes les lectures du module `javascript-variables-and-strings` + `workshop-greeting-bot`). Prochaine cible logique : `lab-javascript-trivia-bot`.
 
 ## Pièges
 

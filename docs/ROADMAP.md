@@ -36,7 +36,7 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
    et aucune repetition espacee n'est possible.
 4. **Pipeline de traduction 100 % manuel.** `translate-workshop.js` extrait la
    prose en JSON ; un humain traduit. `phrasebook.json` ne contient que 12 regles.
-   C'est le goulot qui bloque tout le reste du curriculum (JS v9 : 2/230).
+   C'est le goulot qui bloque tout le reste du curriculum (JS v9 : 10/230 au 2026-05-29 ; diagnostic initial : 2/230).
 5. **Navigation sans URL.** `cours-fr.tsx` change d'ecran via un `useState`
    (`{v:'lang'|'fr-home'|'fr-cert'}`) → bouton retour casse, pas de partage/
    bookmark, etat perdu au reload.
@@ -116,7 +116,7 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
 
 # VAGUE 1 — Quick wins a fort effet (echelle : jours)
 
-## 1.1 — Persister l'examen en cours (anti-F5) 🟠
+## 1.1 — Persister l'examen en cours (anti-F5) 🟠 — 🔄 EN COURS
 
 - **Objectif :** ne plus jamais perdre un examen au rechargement/fermeture.
 - **Impact :** 🟠 Eleve · **Difficulte :** Faible.
@@ -517,7 +517,7 @@ seul traducteur**, encadre par le pipeline et la QA. Voir **CHANTIER 0**.
 
 ### Vague 1 — jours
 
-- [ ] 1.1 Persister l'examen en cours
+- [ ] 1.1 Persister l'examen en cours — 🔄 EN COURS
 - [ ] 1.2 Routing URL `cours-fr`
 - [ ] 1.3 Celebration confetti (lib deja presente)
 - [ ] 1.4 Export / Import du profil
