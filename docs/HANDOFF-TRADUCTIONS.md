@@ -4,7 +4,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## Contexte Projet
 
-- **Repo local** : `c:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp`
+- **Repo local** : racine du depot `freecodecamp-fr-local`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
 - **Objectif** : Le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp est traduit en français. La suite est maintenant `javascript-v9`, demarree par les blocs `lecture-introduction-to-javascript` et `lecture-introduction-to-strings`.
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`

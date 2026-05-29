@@ -2,14 +2,20 @@
 
 Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
 
+> **Projet personnel et non officiel.** Ce depot est un fork educatif a usage personnel. Il n'est ni affilie a, ni soutenu par freeCodeCamp.org. « freeCodeCamp » est une marque de freeCodeCamp.org, Inc. Le code et le curriculum d'origine restent sous leurs licences respectives (voir [Licence](#licence)).
+
 Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher automatiquement les niveaux deja disponibles en francais. `/exam-fr?cert=<superblock>` lance un examen local 100% FR qui tire 80 questions parmi les quizzes traduits.
 
 ## Demarrage
 
+Prerequis : Node.js >= 24 et pnpm >= 10 (voir `.nvmrc` et `package.json`).
+
 Depuis PowerShell :
 
 ```powershell
-cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
+git clone https://github.com/MATTEO12SA/freecodecamp-fr-local.git
+cd freecodecamp-fr-local
+pnpm install
 .\dev.ps1
 ```
 
@@ -164,4 +170,9 @@ https://github.com/MATTEO12SA/freecodecamp-fr-local
 
 ## Licence
 
-Le code original vient de freeCodeCamp et conserve sa licence d'origine. Voir `LICENSE.md`.
+Ce projet derive de [freeCodeCamp](https://github.com/freeCodeCamp/freeCodeCamp) :
+
+- **Code source** : BSD-3-Clause (voir `LICENSE.md`).
+- **Curriculum et contenus pedagogiques** (y compris les traductions FR de ce depot) : [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/), comme chez freeCodeCamp.
+
+Les modifications et traductions francaises de ce fork sont publiees sous les memes licences que les fichiers d'origine correspondants.

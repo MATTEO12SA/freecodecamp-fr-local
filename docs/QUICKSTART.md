@@ -3,7 +3,7 @@
 ## Lancer Le Site
 
 ```powershell
-cd "C:\Users\Erazer\.vscode\code\Nouveau dossier\freeCodeCamp"
+cd freecodecamp-fr-local
 .\dev.ps1
 ```
 
