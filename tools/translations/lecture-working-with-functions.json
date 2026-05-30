@@ -1,0 +1,651 @@
+{
+  "workshop": "lecture-working-with-functions",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d269da46786225e3fe3fd.md",
+      "id": "672d269da46786225e3fe3fd",
+      "dashedName": "what-is-the-purpose-of-functions-and-how-do-they-work",
+      "title": {
+        "en": "What Is the Purpose of Functions, and How Do They Work?",
+        "fr": "À quoi servent les fonctions et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Functions are reusable pieces of code that perform a specific task or calculate a value. Think of functions as a machine that takes some input, does some operations on it, and then produces an output. Here is an example of declaring a function:",
+              "fr": "Les fonctions sont des morceaux de code réutilisables qui effectuent une tâche précise ou calculent une valeur. Imagine une fonction comme une machine qui prend une entrée, effectue des opérations dessus, puis produit une sortie. Voici un exemple de déclaration d'une fonction :"
+            },
+            {
+              "en": "In this example, we have declared a function called `greet`.  Inside that function, we have a `console.log` that logs the message `Hello, Jessica!`. If we tried to run this code, we would not see the message appear in the console. This is because we need to call the function.",
+              "fr": "Dans cet exemple, nous avons déclaré une fonction appelée `greet`. À l'intérieur de cette fonction, nous avons un `console.log` qui affiche le message `Hello, Jessica!`. Si nous essayions d'exécuter ce code, nous ne verrions pas le message apparaître dans la console. C'est parce que nous devons appeler la fonction."
+            },
+            {
+              "en": "A function call, or invocation, is when we actually use or execute the function. To call a function, you will need to reference the function name followed by a set of parentheses:",
+              "fr": "Un appel de fonction, ou invocation, c'est lorsqu'on utilise ou exécute réellement la fonction. Pour appeler une fonction, tu devras référencer le nom de la fonction suivi d'une paire de parenthèses :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Now the message of `Hello, Jessica!` will be logged to the console. But what if we wanted the message to say `Hello, Nick!` or `Hello, Anna!`? We don't want to write a new function each time we greet a different user. Instead, we can create a reusable function that uses function parameters and arguments.",
+              "fr": "Maintenant, le message `Hello, Jessica!` sera affiché dans la console. Mais que faire si nous voulions que le message dise `Hello, Nick!` ou `Hello, Anna!` ? Nous ne voulons pas écrire une nouvelle fonction chaque fois que nous saluons un utilisateur différent. À la place, nous pouvons créer une fonction réutilisable qui utilise des paramètres et des arguments de fonction."
+            },
+            {
+              "en": "Parameters act as placeholders for the values that will be passed to the function when it is called. They allow functions to accept input and work with that input. Arguments are the actual values passed to the function when it is called. Here is an updated version of the `greet` function that uses parameters and arguments:",
+              "fr": "Les paramètres servent d'espaces réservés pour les valeurs qui seront passées à la fonction lorsqu'elle est appelée. Ils permettent aux fonctions d'accepter une entrée et de travailler avec cette entrée. Les arguments sont les valeurs réelles passées à la fonction lorsqu'elle est appelée. Voici une version mise à jour de la fonction `greet` qui utilise des paramètres et des arguments :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `name` serves as the parameter while the strings `Alice` and `Nick` serve as the arguments. Now we have a reusable function that can be used dozens of times throughout our code with different arguments.",
+              "fr": "Le `name` sert de paramètre tandis que les chaînes `Alice` et `Nick` servent d'arguments. Nous avons maintenant une fonction réutilisable qui peut être utilisée des dizaines de fois dans notre code avec des arguments différents."
+            },
+            {
+              "en": "When a function finishes its execution, it will always return a value. By default, the return value will be `undefined`. Here is an example:",
+              "fr": "Lorsqu'une fonction termine son exécution, elle retourne toujours une valeur. Par défaut, la valeur retournée sera `undefined`. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you need your function to return a specific value, then you will need to use the `return` statement. Here is an example of using a `return` statement to return the sum of two values:",
+              "fr": "Si tu as besoin que ta fonction retourne une valeur précise, tu devras alors utiliser l'instruction `return`. Voici un exemple d'utilisation d'une instruction `return` pour retourner la somme de deux valeurs :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Often times you will be using the `return` statement, because you can use that value that was output from the function later on in your code.",
+              "fr": "Souvent, tu utiliseras l'instruction `return`, car tu peux réutiliser cette valeur produite par la fonction plus loin dans ton code."
+            },
+            {
+              "en": "So far, we've been working with named functions, but you can also create what's called an anonymous function. An anonymous function is a function without a name that can be assigned to a variable like this:",
+              "fr": "Jusqu'ici, nous avons travaillé avec des fonctions nommées, mais tu peux aussi créer ce qu'on appelle une fonction anonyme. Une fonction anonyme est une fonction sans nom qui peut être affectée à une variable comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a `const` variable called `sum` and we are assigning it an anonymous function that returns the sum of `num1` and `num2`. We are then able to call `sum` and pass in the numbers `3` and `4` to get the result of `7`.",
+              "fr": "Dans cet exemple, nous avons une variable `const` appelée `sum` et nous lui affectons une fonction anonyme qui retourne la somme de `num1` et `num2`. Nous pouvons ensuite appeler `sum` et passer les nombres `3` et `4` pour obtenir le résultat `7`."
+            },
+            {
+              "en": "Functions support default parameters, allowing you to set default values for parameters. These default values are used if the function is called without an argument for that parameter. Here's an example:",
+              "fr": "Les fonctions prennent en charge les paramètres par défaut, ce qui te permet de définir des valeurs par défaut pour les paramètres. Ces valeurs par défaut sont utilisées si la fonction est appelée sans argument pour ce paramètre. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, if no argument is provided for `name`, it defaults to `Guest`.",
+              "fr": "Dans cet exemple, si aucun argument n'est fourni pour `name`, il prend par défaut la valeur `Guest`."
+            },
+            {
+              "en": "In summary, functions allow you to write reusable and organized code. They can take inputs (parameters), perform actions, and return outputs.",
+              "fr": "En résumé, les fonctions te permettent d'écrire du code réutilisable et organisé. Elles peuvent prendre des entrées (paramètres), effectuer des actions et retourner des sorties."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the output of the following code?",
+              "fr": "Quelle est la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the default parameter and how many arguments are passed to the function.",
+              "fr": "Fais attention au paramètre par défaut et au nombre d'arguments passés à la fonction."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the default parameter and how many arguments are passed to the function.",
+              "fr": "Fais attention au paramètre par défaut et au nombre d'arguments passés à la fonction."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the default parameter and how many arguments are passed to the function.",
+              "fr": "Fais attention au paramètre par défaut et au nombre d'arguments passés à la fonction."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to call (or invoke) the `sum` function?",
+              "fr": "Laquelle des propositions suivantes est la bonne façon d'appeler (ou d'invoquer) la fonction `sum` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the section where function calls were discussed.",
+              "fr": "Relis la section où les appels de fonction ont été abordés."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the section where function calls were discussed.",
+              "fr": "Relis la section où les appels de fonction ont été abordés."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the section where function calls were discussed.",
+              "fr": "Relis la section où les appels de fonction ont été abordés."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the default return value of a function if no `return` statement is specified?",
+              "fr": "Quelle est la valeur de retour par défaut d'une fonction si aucune instruction `return` n'est spécifiée ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about functions that don't explicitly return a value.",
+              "fr": "Souviens-toi de ce que nous avons dit à propos des fonctions qui ne retournent pas explicitement une valeur."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about functions that don't explicitly return a value.",
+              "fr": "Souviens-toi de ce que nous avons dit à propos des fonctions qui ne retournent pas explicitement une valeur."
+            },
+            {
+              "en": "An empty string.",
+              "fr": "Une chaîne vide."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about functions that don't explicitly return a value.",
+              "fr": "Souviens-toi de ce que nous avons dit à propos des fonctions qui ne retournent pas explicitement une valeur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673284d5e52ef81a2169b097.md",
+      "id": "673284d5e52ef81a2169b097",
+      "dashedName": "what-are-arrow-functions-and-how-do-they-work",
+      "title": {
+        "en": "What Are Arrow Functions, and How Do They Work?",
+        "fr": "Que sont les fonctions fléchées et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you learned how to work with functions, which are reusable pieces of code that help make your code more modular, easier to maintain, and more efficient. All previous examples used the regular function syntax, like this:",
+              "fr": "Dans la leçon précédente, tu as appris à travailler avec les fonctions, qui sont des morceaux de code réutilisables permettant de rendre ton code plus modulaire, plus facile à maintenir et plus efficace. Tous les exemples précédents utilisaient la syntaxe de fonction classique, comme ceci :"
+            },
+            {
+              "en": "But another way to write functions in JavaScript is to create an arrow function expression. Here is how you can refactor the previous example to use arrow function syntax instead:",
+              "fr": "Mais une autre façon d'écrire des fonctions en JavaScript consiste à créer une expression de fonction fléchée. Voici comment tu peux réécrire l'exemple précédent pour utiliser plutôt la syntaxe de fonction fléchée :"
+            },
+            {
+              "en": "In this revised example, we are creating a `const` variable called `greetings` and assigning it an anonymous function. Most of the syntax will look familiar to you except for the missing `function` keyword and the addition of the arrow (`=>`) between the `name` parameter and the function body. If your parameter list only has one parameter in it, then you can remove the parentheses like this:",
+              "fr": "Dans cet exemple révisé, nous créons une variable `const` appelée `greetings` et nous lui affectons une fonction anonyme. La plupart de la syntaxe te semblera familière, à l'exception du mot-clé `function` qui est absent et de l'ajout de la flèche (`=>`) entre le paramètre `name` et le corps de la fonction. Si ta liste de paramètres ne contient qu'un seul paramètre, alors tu peux retirer les parenthèses comme ceci :"
+            },
+            {
+              "en": "If your arrow function has no parameters, then you must use the parentheses like this:",
+              "fr": "Si ta fonction fléchée n'a aucun paramètre, alors tu dois utiliser les parenthèses comme ceci :"
+            },
+            {
+              "en": "When first learning about functions, you had to wrap the function body in curly braces. But if your function body only contains a single line of code, you can remove the curly braces like this:",
+              "fr": "Quand tu as découvert les fonctions, tu devais entourer le corps de la fonction d'accolades. Mais si le corps de ta fonction ne contient qu'une seule ligne de code, tu peux retirer les accolades comme ceci :"
+            },
+            {
+              "en": "It is important to note that removing the parentheses and curly braces for regular function syntax will not work. You will get errors if you tried to do something like this:",
+              "fr": "Il est important de noter que retirer les parenthèses et les accolades dans la syntaxe de fonction classique ne fonctionnera pas. Tu obtiendrais des erreurs si tu essayais de faire quelque chose comme ceci :"
+            },
+            {
+              "en": "These types of one line functions only work if you are using the arrow function syntax. Another key concept is the `return` statement. Here is an example of using the arrow function syntax to calculate the area:",
+              "fr": "Ce type de fonctions sur une seule ligne ne fonctionne que si tu utilises la syntaxe de fonction fléchée. Un autre concept clé est l'instruction `return`. Voici un exemple d'utilisation de la syntaxe de fonction fléchée pour calculer l'aire :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "We are creating a variable inside the function called `area` and then returning that variable. But we could clean up our code a bit and return the calculation itself:",
+              "fr": "Nous créons une variable à l'intérieur de la fonction appelée `area`, puis nous retournons cette variable. Mais nous pourrions alléger un peu notre code et retourner directement le calcul lui-même :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you tried to remove the curly braces and place the calculation on the same line, then you would get an `Uncaught SyntaxError: Unexpected token 'return'` message:",
+              "fr": "Si tu essayais de retirer les accolades et de placer le calcul sur la même ligne, tu obtiendrais un message `Uncaught SyntaxError: Unexpected token 'return'` :"
+            },
+            {
+              "en": "The reason why you are getting this error, is because you need to remove the `return` statement. When you remove that `return` statement, the error will disappear and the function will still implicitly return the calculation.",
+              "fr": "La raison pour laquelle tu obtiens cette erreur, c'est que tu dois retirer l'instruction `return`. Lorsque tu retires cette instruction `return`, l'erreur disparaît et la fonction retourne toujours implicitement le calcul."
+            },
+            {
+              "en": "So when should you use the arrow function syntax? Well, it depends. Many developers use it consistently in their personal projects. However, when working on a team, the choice usually depends on whether the existing codebase uses regular functions or arrow functions. In future lessons, we'll cover when to use arrow functions and when to avoid them.",
+              "fr": "Alors, quand devrais-tu utiliser la syntaxe de fonction fléchée ? Eh bien, ça dépend. Beaucoup de développeurs l'utilisent systématiquement dans leurs projets personnels. Cependant, lorsqu'on travaille en équipe, le choix dépend généralement du fait que la base de code existante utilise des fonctions classiques ou des fonctions fléchées. Dans de futures leçons, nous verrons quand utiliser les fonctions fléchées et quand les éviter."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct way to write an arrow function that takes two parameters and returns their sum?",
+              "fr": "Quelle est la bonne façon d'écrire une fonction fléchée qui prend deux paramètres et retourne leur somme ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for implicit returns in arrow functions.",
+              "fr": "Souviens-toi de la syntaxe des retours implicites dans les fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for implicit returns in arrow functions.",
+              "fr": "Souviens-toi de la syntaxe des retours implicites dans les fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for implicit returns in arrow functions.",
+              "fr": "Souviens-toi de la syntaxe des retours implicites dans les fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct way to write an arrow function that takes no parameters and returns the string `\"Hello\"`?",
+              "fr": "Quelle est la bonne façon d'écrire une fonction fléchée qui ne prend aucun paramètre et retourne la chaîne `\"Hello\"` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for arrow functions with no parameters and a single expression return.",
+              "fr": "Souviens-toi de la syntaxe des fonctions fléchées sans paramètre et avec un retour d'une seule expression."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for arrow functions with no parameters and a single expression return.",
+              "fr": "Souviens-toi de la syntaxe des fonctions fléchées sans paramètre et avec un retour d'une seule expression."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the syntax for arrow functions with no parameters and a single expression return.",
+              "fr": "Souviens-toi de la syntaxe des fonctions fléchées sans paramètre et avec un retour d'une seule expression."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how default parameters work in arrow functions.",
+              "fr": "Réfléchis à la façon dont les paramètres par défaut fonctionnent dans les fonctions fléchées."
+            },
+            {
+              "en": "`undefined`, `10`",
+              "fr": "`undefined`, `10`"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how default parameters work in arrow functions.",
+              "fr": "Réfléchis à la façon dont les paramètres par défaut fonctionnent dans les fonctions fléchées."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how default parameters work in arrow functions.",
+              "fr": "Réfléchis à la façon dont les paramètres par défaut fonctionnent dans les fonctions fléchées."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673284e7244c0c1a649121b9.md",
+      "id": "673284e7244c0c1a649121b9",
+      "dashedName": "what-is-scope-in-programming-and-how-does-global-local-and-block-scope-work",
+      "title": {
+        "en": "What Is Scope in Programming, and How Does Global, Local, and Block Scope Work?",
+        "fr": "Qu'est-ce que la portée en programmation, et comment fonctionnent les portées globale, locale et de bloc ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Scope in programming refers to the visibility and accessibility of variables in different parts of your code. It determines where variables can be accessed or modified. In JavaScript, understanding scope is crucial for writing clean, efficient, and bug-free code. There are three main types of scope: global scope, local scope, and block scope.",
+              "fr": "La portée en programmation désigne la visibilité et l'accessibilité des variables dans différentes parties de ton code. Elle détermine où les variables peuvent être consultées ou modifiées. En JavaScript, comprendre la portée est crucial pour écrire un code propre, efficace et sans bug. Il existe trois grands types de portée : la portée globale, la portée locale et la portée de bloc."
+            },
+            {
+              "en": "Global scope is the outermost scope in a JavaScript program. Variables declared in the global scope are accessible from anywhere in your code, including within functions and blocks. These variables are often called global variables. While global variables can be convenient, they should be used sparingly as they can lead to naming conflicts and make your code harder to maintain. Here's an example of a global variable:",
+              "fr": "La portée globale est la portée la plus externe d'un programme JavaScript. Les variables déclarées dans la portée globale sont accessibles depuis n'importe où dans ton code, y compris à l'intérieur des fonctions et des blocs. Ces variables sont souvent appelées variables globales. Même si les variables globales peuvent être pratiques, il faut les utiliser avec parcimonie car elles peuvent entraîner des conflits de noms et rendre ton code plus difficile à maintenir. Voici un exemple de variable globale :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `globalVar` is declared in the global scope and can be accessed inside the `printGlobalVar` function.",
+              "fr": "Dans cet exemple, `globalVar` est déclarée dans la portée globale et peut être consultée à l'intérieur de la fonction `printGlobalVar`."
+            },
+            {
+              "en": "Local scope, on the other hand, refers to variables that are only accessible within a function. Here's an example of local scope:",
+              "fr": "La portée locale, en revanche, désigne les variables qui ne sont accessibles qu'à l'intérieur d'une fonction. Voici un exemple de portée locale :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this code, `message` is a local variable within the `greet` function. It can be used inside the function, but trying to access it outside the function will result in an error.",
+              "fr": "Dans ce code, `message` est une variable locale à la fonction `greet`. Elle peut être utilisée à l'intérieur de la fonction, mais essayer d'y accéder en dehors de la fonction provoquera une erreur."
+            },
+            {
+              "en": "Block scope is a concept introduced with the `let` and `const` keywords in ES6. A block is any code section within curly braces, `{}`, such as in `if` statements, `for` loops, or `while` loops. The concept of loops will be taught in an upcoming lesson.",
+              "fr": "La portée de bloc est un concept introduit avec les mots-clés `let` et `const` dans ES6. Un bloc est toute section de code entre accolades, `{}`, comme dans les instructions `if`, les boucles `for` ou les boucles `while`. Le concept de boucles sera enseigné dans une prochaine leçon."
+            },
+            {
+              "en": "Variables declared with `let` or `const` inside a block are only accessible within that block. Here's an example of block scope:",
+              "fr": "Les variables déclarées avec `let` ou `const` à l'intérieur d'un bloc ne sont accessibles qu'à l'intérieur de ce bloc. Voici un exemple de portée de bloc :"
+            },
+            {
+              "en": "In this example, `blockVar` is only accessible within the `if` block. Trying to access it outside the block will result in an error. Understanding these different types of scope is essential for managing variable accessibility and avoiding unintended side effects in your code.",
+              "fr": "Dans cet exemple, `blockVar` n'est accessible qu'à l'intérieur du bloc `if`. Essayer d'y accéder en dehors du bloc provoquera une erreur. Comprendre ces différents types de portée est essentiel pour gérer l'accessibilité des variables et éviter les effets de bord involontaires dans ton code."
+            },
+            {
+              "en": "Global variables should be used sparingly, as they can lead to naming conflicts and make your code harder to maintain. Local variables help to keep different parts of your code isolated, which is especially useful in larger programs. Block scoping with `let` and `const` provides even finer control over variable accessibility, helping to prevent errors and make your code more predictable. Mastering these basic concepts of global, local, and block scope will provide a solid foundation for understanding more advanced topics.",
+              "fr": "Les variables globales doivent être utilisées avec parcimonie, car elles peuvent entraîner des conflits de noms et rendre ton code plus difficile à maintenir. Les variables locales aident à garder différentes parties de ton code isolées, ce qui est particulièrement utile dans les programmes plus volumineux. La portée de bloc avec `let` et `const` offre un contrôle encore plus fin sur l'accessibilité des variables, ce qui aide à prévenir les erreurs et à rendre ton code plus prévisible. Maîtriser ces concepts de base que sont la portée globale, locale et de bloc te donnera une base solide pour comprendre des sujets plus avancés."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how local scope works within functions and how it interacts with variables in the global scope.",
+              "fr": "Réfléchis à la façon dont la portée locale fonctionne à l'intérieur des fonctions et à la manière dont elle interagit avec les variables de la portée globale."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how local scope works within functions and how it interacts with variables in the global scope.",
+              "fr": "Réfléchis à la façon dont la portée locale fonctionne à l'intérieur des fonctions et à la manière dont elle interagit avec les variables de la portée globale."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how local scope works within functions and how it interacts with variables in the global scope.",
+              "fr": "Réfléchis à la façon dont la portée locale fonctionne à l'intérieur des fonctions et à la manière dont elle interagit avec les variables de la portée globale."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result of trying to access `blockVar` outside its block in the following code?",
+              "fr": "Quel sera le résultat d'une tentative d'accès à `blockVar` en dehors de son bloc dans le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It will print `\"Hello\"`.",
+              "fr": "Cela affichera `\"Hello\"`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how block scope works with variables declared using `let`.",
+              "fr": "Souviens-toi de la façon dont la portée de bloc fonctionne avec les variables déclarées avec `let`."
+            },
+            {
+              "en": "It will print `undefined`.",
+              "fr": "Cela affichera `undefined`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how block scope works with variables declared using `let`.",
+              "fr": "Souviens-toi de la façon dont la portée de bloc fonctionne avec les variables déclarées avec `let`."
+            },
+            {
+              "en": "It will throw a `ReferenceError`.",
+              "fr": "Cela déclenchera une `ReferenceError`."
+            },
+            {
+              "en": "It will print `null`.",
+              "fr": "Cela affichera `null`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how block scope works with variables declared using `let`.",
+              "fr": "Souviens-toi de la façon dont la portée de bloc fonctionne avec les variables déclarées avec `let`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following correctly describes the scope of a variable declared with `let` at the top level of a script (outside any function or block)?",
+              "fr": "Laquelle des propositions suivantes décrit correctement la portée d'une variable déclarée avec `let` au niveau racine d'un script (en dehors de toute fonction ou bloc) ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Function scope.",
+              "fr": "Portée de fonction."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a variable declared at the top level of a script would be accessible.",
+              "fr": "Réfléchis à l'endroit où une variable déclarée au niveau racine d'un script serait accessible."
+            },
+            {
+              "en": "Block scope.",
+              "fr": "Portée de bloc."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a variable declared at the top level of a script would be accessible.",
+              "fr": "Réfléchis à l'endroit où une variable déclarée au niveau racine d'un script serait accessible."
+            },
+            {
+              "en": "Global scope.",
+              "fr": "Portée globale."
+            },
+            {
+              "en": "Local scope.",
+              "fr": "Portée locale."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a variable declared at the top level of a script would be accessible.",
+              "fr": "Réfléchis à l'endroit où une variable déclarée au niveau racine d'un script serait accessible."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
