@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 20/230 blocs — module `javascript-variables-and-strings` **100 % complet** (9 lectures + 5 workshops + 2 labs + 2 reviews + 2 quizzes). Le pipeline gère maintenant les quizzes (`kind: "quiz"`) et les reviews (kind lecture + `# --assignment--`). Prochaine cible : module suivant `javascript-booleans-and-numbers`.
+- **JavaScript v9** : 36/230 blocs — modules `javascript-variables-and-strings` et `javascript-booleans-and-numbers` **100 % complets**. Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 3 `javascript-functions`.
 
 ## Pièges
 

@@ -18,9 +18,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### JavaScript v9 — Module 1 Terminé (20/230)
+### JavaScript v9 — Modules 1-2 Terminés (36/230)
 
-État actuel : 20 blocs FR sur 230 (101 fichiers). Le module `javascript-variables-and-strings` est **100 % traduit (20/20 blocs)** : les 9 lectures, les 5 workshops (`workshop-greeting-bot`, `workshop-teacher-chatbot`, `workshop-string-inspector`, `workshop-string-formatter`, `workshop-string-transformer`), les 2 labs (`lab-javascript-trivia-bot`, `lab-sentence-maker`), les 2 reviews (`review-javascript-variables-and-data-types`, `review-javascript-strings`) et les 2 quizzes (`quiz-javascript-variables-and-data-types`, `quiz-javascript-strings`). Titres + intros de tous ces blocs traduits dans `intro.json`. Prochaine cible : module 2 `javascript-booleans-and-numbers`.
+État actuel : 36 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20) et `javascript-booleans-and-numbers` (16/16) sont **100 % traduits**. Module 2 = 7 lectures + 2 workshops (`workshop-logic-checker-app`, `workshop-mathbot`) + 3 labs (`lab-debug-type-coercion-errors`, `lab-debug-increment-and-decrement-operator-errors`, `lab-fortune-teller`) + 2 reviews (`review-javascript-math`, `review-javascript-comparisons-and-conditionals`) + 2 quizzes (`quiz-javascript-math`, `quiz-javascript-comparisons-and-conditionals`). Titres + intros des blocs traduits dans `intro.json` (les titres de module/chapitre du `chapters/modules` tree restent en anglais, comme pour le module 1). Prochaine cible : module 3 `javascript-functions`.
 
 Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--` (`kind: "lecture"`). Les reviews (`challengeType 31`) passent par le même mode lecture, avec `# --assignment--` ajouté aux marqueurs de prose. Les quizzes (`challengeType 8`) utilisent `kind: "quiz"` : seuls `# --description--`, `#### --text--`, `#### --distractors--` et `#### --answer--` sont traduits ; distracteurs en code/backticks et séparateurs `---` restent verbatim. Traduire le JSON manuellement, puis `apply`/`verify`/`check-translation-quality`.
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Suite en cours : JavaScript v9 (20/230 blocs). Module 1 (`javascript-variables-and-strings`) **100 % complet** : 9 lectures + 5 workshops + 2 labs + 2 reviews + 2 quizzes. Pipeline etendu pour reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 2 `javascript-booleans-and-numbers`.
+RWD est termine. Suite en cours : JavaScript v9 (36/230 blocs). Modules 1-2 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`) **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 3 `javascript-functions`.
 
 ### Lister ce qui manque dans un module
 
@@ -281,7 +281,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 20/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 36/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -299,7 +299,7 @@ pnpm local:check:full                            # checks longs avant push final
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Continuer JavaScript v9 : module 1 (`javascript-variables-and-strings`) **100 % complet** (20/20 blocs) ; prochaine cible = module 2 `javascript-booleans-and-numbers`.
+4. Continuer JavaScript v9 : modules 1-2 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`) **100 % complets** (36/230) ; prochaine cible = module 3 `javascript-functions`.
 5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 6. Commit + push immédiats à la fin de chaque module.
 
