@@ -1,0 +1,779 @@
+{
+  "workshop": "lecture-working-with-numbers-and-arithmetic-operators",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d266e014ef8216df987d2.md",
+      "id": "672d266e014ef8216df987d2",
+      "dashedName": "what-is-the-number-type-in-javascript-and-what-are-the-different-types-of-numbers-available",
+      "title": {
+        "en": "What Is the Number Type in JavaScript, and What Are the Different Types of Numbers Available?",
+        "fr": "Qu'est-ce que le type Number en JavaScript, et quels sont les différents types de nombres disponibles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `Number` type is one of the most used data types in JavaScript and other programming languages. Numbers might seem simple, but there's a lot to explore when it comes to numbers in JavaScript. So, let's take a deeper look. In JavaScript, the `Number` data type represents a numeric value.",
+              "fr": "Le type `Number` est l'un des types de données les plus utilisés en JavaScript et dans d'autres langages de programmation. Les nombres peuvent sembler simples, mais il y a beaucoup à explorer en ce qui concerne les nombres en JavaScript. Alors, regardons cela de plus près. En JavaScript, le type de données `Number` représente une valeur numérique."
+            },
+            {
+              "en": "Unlike many other programming languages that separate integers and floating-point numbers into different types, JavaScript uses one unified `Number` type to account for numbers. This means you can work with whole numbers, decimals, and even special numeric values all under the same `Number` data type umbrella.",
+              "fr": "Contrairement à beaucoup d'autres langages de programmation qui séparent les entiers et les nombres à virgule flottante en types différents, JavaScript utilise un seul type `Number` unifié pour gérer les nombres. Cela signifie que tu peux travailler avec des nombres entiers, des décimaux, et même des valeurs numériques spéciales, le tout sous la même bannière du type de données `Number`."
+            },
+            {
+              "en": "Here's a basic example showing you integers, floating point numbers, and negative numbers are all of type number:",
+              "fr": "Voici un exemple basique qui te montre que les entiers, les nombres à virgule flottante et les nombres négatifs sont tous de type number :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "JavaScript's `Number` type includes various kinds of numeric values, ranging from simple integers and floating-point numbers to special cases like `Infinity` and `NaN`, or \"Not a Number\". Let's break down the main types you'll encounter. Integers are whole numbers without any fractional or decimal part. They can be positive, negative, or zero. Here are some examples:",
+              "fr": "Le type `Number` de JavaScript inclut différentes sortes de valeurs numériques, allant des simples entiers et nombres à virgule flottante à des cas spéciaux comme `Infinity` et `NaN`, ou \"Not a Number\". Décomposons les principaux types que tu rencontreras. Les entiers sont des nombres entiers sans aucune partie fractionnaire ou décimale. Ils peuvent être positifs, négatifs ou nuls. Voici quelques exemples :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Floating point numbers are numbers with decimal points. They're often referred to as just \"floats\" by JavaScript developers. Floats are useful when you need more precision, such as when you're dealing with measurements or currencies. Here are some examples:",
+              "fr": "Les nombres à virgule flottante sont des nombres avec une virgule décimale. Les développeurs JavaScript les appellent souvent simplement \"floats\". Les floats sont utiles quand tu as besoin de plus de précision, par exemple lorsque tu manipules des mesures ou des devises. Voici quelques exemples :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "JavaScript can represent numbers that are beyond the maximum limit with `Infinity`. You'll encounter this when you try to divide a number by zero or on rare occasions, exceed the upper boundary of the `Number` type. Here's an example:",
+              "fr": "JavaScript peut représenter les nombres qui dépassent la limite maximale avec `Infinity`. Tu rencontreras cela quand tu essaies de diviser un nombre par zéro ou, dans de rares cas, quand tu dépasses la limite supérieure du type `Number`. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Sometimes in JavaScript, some mathematical operations don't result in a valid number. For instance, if you try to perform a mathematical operation on something that isn't a number, you'll get `NaN`, which stands for \"Not a Number\":",
+              "fr": "Parfois en JavaScript, certaines opérations mathématiques ne produisent pas un nombre valide. Par exemple, si tu essaies d'effectuer une opération mathématique sur quelque chose qui n'est pas un nombre, tu obtiendras `NaN`, qui signifie \"Not a Number\" (pas un nombre) :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Surprisingly, the type of `NaN` is also `Number`:",
+              "fr": "Étonnamment, le type de `NaN` est lui aussi `Number` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Apart from the standard decimal system (base 10), JavaScript also supports numbers in different bases such as binary, octal, and hexadecimal. Binary is a base-2 system that uses only digits 1 and 0. Octal is a base-8 system that uses only digits 0 to 7. Hexadecimal is a base-16 system that uses digits 0 to 9 and letters a to f, like you see in CSS hex colors.",
+              "fr": "En dehors du système décimal standard (base 10), JavaScript prend aussi en charge les nombres dans différentes bases comme le binaire, l'octal et l'hexadécimal. Le binaire est un système en base 2 qui n'utilise que les chiffres 1 et 0. L'octal est un système en base 8 qui n'utilise que les chiffres 0 à 7. L'hexadécimal est un système en base 16 qui utilise les chiffres 0 à 9 et les lettres a à f, comme tu le vois dans les couleurs hexadécimales CSS."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these best describes the JavaScript `Number` type?",
+              "fr": "Laquelle de ces propositions décrit le mieux le type `Number` de JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It only includes integers.",
+              "fr": "Il n'inclut que les entiers."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider all the different kinds of numeric values JavaScript can handle.",
+              "fr": "Pense à toutes les différentes sortes de valeurs numériques que JavaScript peut gérer."
+            },
+            {
+              "en": "It covers both integers and floating-point numbers, as well as special cases like `infinity` and `NaN`.",
+              "fr": "Il couvre à la fois les entiers et les nombres à virgule flottante, ainsi que des cas spéciaux comme `infinity` et `NaN`."
+            },
+            {
+              "en": "It is limited to simple arithmetic operations.",
+              "fr": "Il est limité aux opérations arithmétiques simples."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider all the different kinds of numeric values JavaScript can handle.",
+              "fr": "Pense à toutes les différentes sortes de valeurs numériques que JavaScript peut gérer."
+            },
+            {
+              "en": "It excludes special values like `infinity` and `NaN`.",
+              "fr": "Il exclut les valeurs spéciales comme `infinity` et `NaN`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider all the different kinds of numeric values JavaScript can handle.",
+              "fr": "Pense à toutes les différentes sortes de valeurs numériques que JavaScript peut gérer."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When are floating point numbers most useful in JavaScript?",
+              "fr": "Quand les nombres à virgule flottante sont-ils les plus utiles en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When dealing with whole numbers.",
+              "fr": "Quand on manipule des nombres entiers."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider situations where exact values are crucial.",
+              "fr": "Pense aux situations où des valeurs exactes sont cruciales."
+            },
+            {
+              "en": "When you need to perform simple arithmetic.",
+              "fr": "Quand tu as besoin d'effectuer des calculs arithmétiques simples."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider situations where exact values are crucial.",
+              "fr": "Pense aux situations où des valeurs exactes sont cruciales."
+            },
+            {
+              "en": "When you need more precision, such as in measurements or currencies.",
+              "fr": "Quand tu as besoin de plus de précision, comme pour des mesures ou des devises."
+            },
+            {
+              "en": "When working exclusively with integers.",
+              "fr": "Quand on travaille exclusivement avec des entiers."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider situations where exact values are crucial.",
+              "fr": "Pense aux situations où des valeurs exactes sont cruciales."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When might you encounter the value `Infinity` in JavaScript?",
+              "fr": "Quand pourrais-tu rencontrer la valeur `Infinity` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When multiplying any two numbers.",
+              "fr": "En multipliant deux nombres quelconques."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about extreme cases involving large numbers or impossible calculations.",
+              "fr": "Pense aux cas extrêmes impliquant de grands nombres ou des calculs impossibles."
+            },
+            {
+              "en": "When a number exceeds the lower boundary of the `Number` type.",
+              "fr": "Quand un nombre dépasse la limite inférieure du type `Number`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about extreme cases involving large numbers or impossible calculations.",
+              "fr": "Pense aux cas extrêmes impliquant de grands nombres ou des calculs impossibles."
+            },
+            {
+              "en": "When performing string concatenation.",
+              "fr": "Lors d'une concaténation de chaînes."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about extreme cases involving large numbers or impossible calculations.",
+              "fr": "Pense aux cas extrêmes impliquant de grands nombres ou des calculs impossibles."
+            },
+            {
+              "en": "When dividing a number by zero or exceeding the upper boundary of the `Number` type.",
+              "fr": "Quand on divise un nombre par zéro ou qu'on dépasse la limite supérieure du type `Number`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673271884bf678d8b9c64f56.md",
+      "id": "673271884bf678d8b9c64f56",
+      "dashedName": "what-are-the-different-arithmetic-operators-in-javascript",
+      "title": {
+        "en": "What Are the Different Arithmetic Operators in JavaScript?",
+        "fr": "Quels sont les différents opérateurs arithmétiques en JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "JavaScript provides tools to perform basic arithmetic operations on numbers, such as addition, subtraction, multiplication, and division. JavaScript also includes operators for more complex arithmetic operations, such as remainder and exponentiation.",
+              "fr": "JavaScript fournit des outils pour effectuer des opérations arithmétiques de base sur les nombres, comme l'addition, la soustraction, la multiplication et la division. JavaScript inclut aussi des opérateurs pour des opérations arithmétiques plus complexes, comme le reste et l'exponentiation."
+            },
+            {
+              "en": "All these tools are called arithmetic operators. Let's look at these operators in detail, how to use them and how to combine them.",
+              "fr": "Tous ces outils sont appelés opérateurs arithmétiques. Examinons ces opérateurs en détail, comment les utiliser et comment les combiner."
+            },
+            {
+              "en": "The addition operator is a plus sign (`+`). The addition operator allows you to find the total of two or more numbers. In addition operations, the order of the numbers doesn't matter:",
+              "fr": "L'opérateur d'addition est un signe plus (`+`). L'opérateur d'addition te permet de trouver le total de deux nombres ou plus. Dans les opérations d'addition, l'ordre des nombres n'a pas d'importance :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The subtraction operator is a minus sign (`-`). It allows you to find the difference between two numbers. Use the minus sign when you want to subtract a number from another number, usually a smaller one from a bigger one:",
+              "fr": "L'opérateur de soustraction est un signe moins (`-`). Il te permet de trouver la différence entre deux nombres. Utilise le signe moins quand tu veux soustraire un nombre d'un autre, généralement un plus petit d'un plus grand :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If a smaller number comes first, you'll get a negative result:",
+              "fr": "Si un nombre plus petit vient en premier, tu obtiendras un résultat négatif :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can also assign the numbers to variables and do the subtraction with the variable names:",
+              "fr": "Tu peux aussi affecter les nombres à des variables et faire la soustraction avec les noms de variables :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In JavaScript, the multiplication operator is represented by an asterisk (`*`) and is used to find the product of two or more numbers. The order of the numbers you're multiplying does not matter:",
+              "fr": "En JavaScript, l'opérateur de multiplication est représenté par un astérisque (`*`) et sert à trouver le produit de deux nombres ou plus. L'ordre des nombres que tu multiplies n'a pas d'importance :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In JavaScript, the division operator is a slash (`/`), which differs from the division symbol used in traditional math (`÷`). You perform division operations with the division operator. The order of the numbers you're dividing matters in this case:",
+              "fr": "En JavaScript, l'opérateur de division est une barre oblique (`/`), qui diffère du symbole de division utilisé en mathématiques traditionnelles (`÷`). Tu effectues les opérations de division avec l'opérateur de division. L'ordre des nombres que tu divises a de l'importance dans ce cas :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "It's important to note that if you try to divide by zero, JavaScript will return `Infinity`:",
+              "fr": "Il est important de noter que si tu essaies de diviser par zéro, JavaScript renverra `Infinity` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Make sure to avoid those types of calculations so you don't end up with unexpected results in your code.",
+              "fr": "Veille à éviter ce genre de calculs pour ne pas te retrouver avec des résultats inattendus dans ton code."
+            },
+            {
+              "en": "The remainder operator, represented by a percentage sign (`%`), returns the remainder of a division. The remainder in math is the leftover value after performing division:",
+              "fr": "L'opérateur de reste, représenté par un signe pourcentage (`%`), renvoie le reste d'une division. Le reste, en mathématiques, est la valeur qui subsiste après avoir effectué une division :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The exponentiation operator, represented by a double asterisk (`**`), raises one number to the power of another:",
+              "fr": "L'opérateur d'exponentiation, représenté par un double astérisque (`**`), élève un nombre à la puissance d'un autre :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "It's possible to mix operators in a single operation or expression:",
+              "fr": "Il est possible de mélanger des opérateurs dans une seule opération ou expression :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When you mix different operators in a single expression, the JavaScript engine follows a system called operator precedence to determine the order of operations. Operator precedence determines the order in which operations are executed in expressions. You will learn more about operator precedence in future lessons.",
+              "fr": "Quand tu mélanges différents opérateurs dans une même expression, le moteur JavaScript suit un système appelé précédence des opérateurs pour déterminer l'ordre des opérations. La précédence des opérateurs détermine l'ordre dans lequel les opérations sont exécutées dans les expressions. Tu en apprendras davantage sur la précédence des opérateurs dans de prochaines leçons."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following operators should you use to subtract one number from another?",
+              "fr": "Lequel des opérateurs suivants devrais-tu utiliser pour soustraire un nombre d'un autre ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the symbol typically used for subtraction.",
+              "fr": "Pense au symbole habituellement utilisé pour la soustraction."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the symbol typically used for subtraction.",
+              "fr": "Pense au symbole habituellement utilisé pour la soustraction."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the symbol typically used for subtraction.",
+              "fr": "Pense au symbole habituellement utilisé pour la soustraction."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What’s the output of the following code?",
+              "fr": "Quelle est la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the special value JavaScript returns when you divide by zero.",
+              "fr": "Rappelle-toi la valeur spéciale que JavaScript renvoie quand tu divises par zéro."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the special value JavaScript returns when you divide by zero.",
+              "fr": "Rappelle-toi la valeur spéciale que JavaScript renvoie quand tu divises par zéro."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the special value JavaScript returns when you divide by zero.",
+              "fr": "Rappelle-toi la valeur spéciale que JavaScript renvoie quand tu divises par zéro."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What’s the output of the following code?",
+              "fr": "Quelle est la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `%` is the remainder operator, so another way to think of the equation is, after `3` goes into `5` once, what’s left?",
+              "fr": "Souviens-toi que `%` est l'opérateur de reste ; une autre façon de voir l'équation est : après que `3` entre une fois dans `5`, que reste-t-il ?"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `%` is the remainder operator, so another way to think of the equation is, after `3` goes into `5` once, what’s left?",
+              "fr": "Souviens-toi que `%` est l'opérateur de reste ; une autre façon de voir l'équation est : après que `3` entre une fois dans `5`, que reste-t-il ?"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `%` is the remainder operator, so another way to think of the equation is, after `3` goes into `5` once, what’s left?",
+              "fr": "Souviens-toi que `%` est l'opérateur de reste ; une autre façon de voir l'équation est : après que `3` entre une fois dans `5`, que reste-t-il ?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67327195e77b1bd90bdd49d7.md",
+      "id": "67327195e77b1bd90bdd49d7",
+      "dashedName": "what-happens-when-you-try-to-do-calculations-with-numbers-and-strings",
+      "title": {
+        "en": "What Happens When You Try to Do Calculations with Numbers and Strings?",
+        "fr": "Que se passe-t-il quand tu essaies de faire des calculs avec des nombres et des chaînes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "JavaScript is a language where things sometimes work in surprising, or even weird, ways. One such surprise occurs when you mix numbers and strings in calculations. The first thing you'll probably try is to add a number and a string. In JavaScript, the `+` operator does double duty. It handles both addition and string concatenation, which is a way to join two strings together.",
+              "fr": "JavaScript est un langage où les choses fonctionnent parfois de manière surprenante, voire bizarre. Une de ces surprises survient quand tu mélanges des nombres et des chaînes dans des calculs. La première chose que tu essaieras probablement est d'additionner un nombre et une chaîne. En JavaScript, l'opérateur `+` joue un double rôle. Il gère à la fois l'addition et la concaténation de chaînes, qui est une façon de joindre deux chaînes ensemble."
+            },
+            {
+              "en": "When you use `+` with a number and a string, JavaScript decides to treat them both as strings and joins them together. If you check the type of the result with the `typeof` operator, you'd see it's indeed a string:",
+              "fr": "Quand tu utilises `+` avec un nombre et une chaîne, JavaScript décide de les traiter tous les deux comme des chaînes et les joint ensemble. Si tu vérifies le type du résultat avec l'opérateur `typeof`, tu verrais que c'est bien une chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "What do you think will happen if you switch the order of `5` and `'10'`?",
+              "fr": "Que penses-tu qu'il se passera si tu inverses l'ordre de `5` et `'10'` ?"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can see the same thing happened. JavaScript sees a string in `'10'` and a number in `5`, so it converts the number to a string and concatenates them. This is known as type coercion. Type coercion is when a value from one data type is converted into another.",
+              "fr": "Tu peux voir que la même chose s'est produite. JavaScript voit une chaîne dans `'10'` et un nombre dans `5`, donc il convertit le nombre en chaîne et les concatène. C'est ce qu'on appelle la coercition de type. La coercition de type, c'est quand une valeur d'un type de données est convertie en un autre."
+            },
+            {
+              "en": "Things get more interesting when you try to perform other arithmetic operations like subtraction, multiplication, or division with a string and number. In these cases, JavaScript tries to convert the string into a number before doing the math – another type coercion! Here's what happens:",
+              "fr": "Les choses deviennent plus intéressantes quand tu essaies d'effectuer d'autres opérations arithmétiques comme la soustraction, la multiplication ou la division avec une chaîne et un nombre. Dans ces cas, JavaScript essaie de convertir la chaîne en nombre avant de faire le calcul — encore une coercition de type ! Voici ce qui se passe :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the examples above, JavaScript successfully converts the string `'10'` or `'20'` to a number and then performs the calculation. As a result, `'10' - 5` yields `5`, `'10' * 2` gives `20`, and `'20' / 2` results in `10`.",
+              "fr": "Dans les exemples ci-dessus, JavaScript convertit avec succès la chaîne `'10'` ou `'20'` en nombre, puis effectue le calcul. Résultat : `'10' - 5` donne `5`, `'10' * 2` donne `20`, et `'20' / 2` donne `10`."
+            },
+            {
+              "en": "But what if the string doesn't look like a number? Let's see what happens in that case:",
+              "fr": "Mais que se passe-t-il si la chaîne ne ressemble pas à un nombre ? Voyons ce qui se passe dans ce cas :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the examples above, the string `'abc'` does not represent a valid numeric value, so JavaScript cannot convert it into a meaningful number. When such conversion fails, JavaScript returns `NaN`, which stands for \"Not a Number\". `NaN` is a special value of the `Number` type that represents an invalid or unrepresentable number.",
+              "fr": "Dans les exemples ci-dessus, la chaîne `'abc'` ne représente pas une valeur numérique valide, donc JavaScript ne peut pas la convertir en un nombre significatif. Quand une telle conversion échoue, JavaScript renvoie `NaN`, qui signifie \"Not a Number\" (pas un nombre). `NaN` est une valeur spéciale du type `Number` qui représente un nombre invalide ou non représentable."
+            },
+            {
+              "en": "What if you perform arithmetic operations with a boolean (`true` or `false`)? Let's see what happens. JavaScript treats booleans as numbers in mathematical operations: `true` becomes `1`, and `false` becomes `0`.",
+              "fr": "Et si tu effectues des opérations arithmétiques avec un booléen (`true` ou `false`) ? Voyons ce qui se passe. JavaScript traite les booléens comme des nombres dans les opérations mathématiques : `true` devient `1`, et `false` devient `0`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the first two examples, `true + 1` resulted in `2`, and `false + 1` resulted in `1`. In the third example, `'Hello' + true`, JavaScript converted `true` to a string and concatenates it with `'Hello'`, resulting in `'Hellotrue'`, which is a string.",
+              "fr": "Dans les deux premiers exemples, `true + 1` a donné `2`, et `false + 1` a donné `1`. Dans le troisième exemple, `'Hello' + true`, JavaScript a converti `true` en chaîne et l'a concaténée avec `'Hello'`, ce qui donne `'Hellotrue'`, qui est une chaîne."
+            },
+            {
+              "en": "For `null` and `undefined`, JavaScript treats `null` as `0` and `undefined` as `NaN` in mathematical operations:",
+              "fr": "Pour `null` et `undefined`, JavaScript traite `null` comme `0` et `undefined` comme `NaN` dans les opérations mathématiques :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "JavaScript often performs type coercion, automatically converting data types such as numbers, strings, and booleans in sometimes unexpected ways. Understanding these conversions is crucial for avoiding bugs and writing robust code in your projects.",
+              "fr": "JavaScript effectue souvent une coercition de type, convertissant automatiquement des types de données comme les nombres, les chaînes et les booléens de manières parfois inattendues. Comprendre ces conversions est crucial pour éviter les bugs et écrire du code robuste dans tes projets."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you run the following code?",
+              "fr": "Que se passe-t-il quand tu exécutes le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "JavaScript ignores the string and only performs the operation on the number.",
+              "fr": "JavaScript ignore la chaîne et n'effectue l'opération que sur le nombre."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for addition operations, and how you use the same symbol to combine strings.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour les opérations d'addition, et comment tu utilises le même symbole pour combiner des chaînes."
+            },
+            {
+              "en": "JavaScript throws an error when you try to mix strings and numbers in arithmetic.",
+              "fr": "JavaScript déclenche une erreur quand tu essaies de mélanger des chaînes et des nombres dans un calcul arithmétique."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for addition operations, and how you use the same symbol to combine strings.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour les opérations d'addition, et comment tu utilises le même symbole pour combiner des chaînes."
+            },
+            {
+              "en": "JavaScript converts the number `3` into the string `\"3\"`, concatenates the two strings, and assigns the value `\"319\"` to `result`.",
+              "fr": "JavaScript convertit le nombre `3` en la chaîne `\"3\"`, concatène les deux chaînes, et affecte la valeur `\"319\"` à `result`."
+            },
+            {
+              "en": "JavaScript converts the string `\"19\"` into the number `19`, performs the operation, and assigns the value `22` to `result`.",
+              "fr": "JavaScript convertit la chaîne `\"19\"` en le nombre `19`, effectue l'opération, et affecte la valeur `22` à `result`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for addition operations, and how you use the same symbol to combine strings.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour les opérations d'addition, et comment tu utilises le même symbole pour combiner des chaînes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you run the following code?",
+              "fr": "Que se passe-t-il quand tu exécutes le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Conversion fails and JavaScript returns `NaN`.",
+              "fr": "La conversion échoue et JavaScript renvoie `NaN`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for subtraction, multiplication, division, and other kinds of operations.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour la soustraction, la multiplication, la division et d'autres sortes d'opérations."
+            },
+            {
+              "en": "JavaScript converts the number `4` into the string `\"4\"`, concatenates the two strings, and assigns the value `\"64\"` to `result`.",
+              "fr": "JavaScript convertit le nombre `4` en la chaîne `\"4\"`, concatène les deux chaînes, et affecte la valeur `\"64\"` à `result`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for subtraction, multiplication, division, and other kinds of operations.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour la soustraction, la multiplication, la division et d'autres sortes d'opérations."
+            },
+            {
+              "en": "The value `Infinity` is assigned to `result`.",
+              "fr": "La valeur `Infinity` est affectée à `result`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how type coercion works for subtraction, multiplication, division, and other kinds of operations.",
+              "fr": "Rappelle-toi comment fonctionne la coercition de type pour la soustraction, la multiplication, la division et d'autres sortes d'opérations."
+            },
+            {
+              "en": "JavaScript converts the string `\"6\"` into the number `6`, performs the operation, and assigns the value `2` to `result`.",
+              "fr": "JavaScript convertit la chaîne `\"6\"` en le nombre `6`, effectue l'opération, et affecte la valeur `2` à `result`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you perform arithmetic operations with a boolean (`true` or `false`) in JavaScript?",
+              "fr": "Que se passe-t-il quand tu effectues des opérations arithmétiques avec un booléen (`true` ou `false`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "JavaScript throws an error.",
+              "fr": "JavaScript déclenche une erreur."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript interprets `true` and `false` in numerical contexts.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète `true` et `false` dans des contextes numériques."
+            },
+            {
+              "en": "JavaScript ignores the boolean and only performs the operation on numbers.",
+              "fr": "JavaScript ignore le booléen et n'effectue l'opération que sur les nombres."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript interprets `true` and `false` in numerical contexts.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète `true` et `false` dans des contextes numériques."
+            },
+            {
+              "en": "JavaScript treats `true` as `1` and `false` as `0` in arithmetic operations.",
+              "fr": "JavaScript traite `true` comme `1` et `false` comme `0` dans les opérations arithmétiques."
+            },
+            {
+              "en": "JavaScript converts the boolean to a string before performing the operation.",
+              "fr": "JavaScript convertit le booléen en chaîne avant d'effectuer l'opération."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how JavaScript interprets `true` and `false` in numerical contexts.",
+              "fr": "Réfléchis à la façon dont JavaScript interprète `true` et `false` dans des contextes numériques."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

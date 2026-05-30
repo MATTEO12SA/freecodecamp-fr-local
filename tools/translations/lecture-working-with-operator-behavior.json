@@ -1,0 +1,837 @@
+{
+  "workshop": "lecture-working-with-operator-behavior",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6732719e2e3ad4d947410b65.md",
+      "id": "6732719e2e3ad4d947410b65",
+      "dashedName": "how-does-operator-precedence-work",
+      "title": {
+        "en": "How Does Operator Precedence Work?",
+        "fr": "Comment fonctionne la précédence des opérateurs ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "If you write an expression with several operators in JavaScript, how does JavaScript decide which one to evaluate first? This is where operator precedence comes in. Let's explore operator precedence in detail with code examples, and also what happens when operators have the same precedence.",
+              "fr": "Si tu écris une expression comportant plusieurs opérateurs en JavaScript, comment JavaScript décide-t-il lequel évaluer en premier ? C'est là qu'intervient la précédence des opérateurs. Explorons la précédence des opérateurs en détail avec des exemples de code, ainsi que ce qui se passe quand des opérateurs ont la même précédence."
+            },
+            {
+              "en": "Operator precedence determines the order in which operations are evaluated in an expression. Operators with higher precedence are evaluated before those with lower precedence. Think of operator precedence like in math, where division and multiplication happen before addition and subtraction.",
+              "fr": "La précédence des opérateurs détermine l'ordre dans lequel les opérations sont évaluées dans une expression. Les opérateurs ayant une précédence plus élevée sont évalués avant ceux ayant une précédence plus faible. Vois la précédence des opérateurs comme en mathématiques, où la division et la multiplication s'effectuent avant l'addition et la soustraction."
+            },
+            {
+              "en": "Without following this rule, basic equations would give you the wrong answer. JavaScript works the same way. It has its own rules for which operators come first, second, and so on. For example, take a look at the expression below:",
+              "fr": "Sans suivre cette règle, des équations basiques te donneraient un mauvais résultat. JavaScript fonctionne de la même manière. Il a ses propres règles pour déterminer quels opérateurs viennent en premier, en deuxième, et ainsi de suite. Par exemple, regarde l'expression ci-dessous :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If JavaScript evaluated this expression from left to right, you'd expect `2 + 3 = 5`, then `5 * 4 = 20`. But because multiplication has a higher precedence than addition, JavaScript evaluates the `3 * 4` part first, resulting in `2 + 12 = 14`.",
+              "fr": "Si JavaScript évaluait cette expression de gauche à droite, tu t'attendrais à `2 + 3 = 5`, puis `5 * 4 = 20`. Mais comme la multiplication a une précédence plus élevée que l'addition, JavaScript évalue d'abord la partie `3 * 4`, ce qui donne `2 + 12 = 14`."
+            },
+            {
+              "en": "Sometimes, you may want certain parts of your expression to run first, regardless of precedence rules. You can use parentheses, `()`, to do this. Anything inside parentheses is evaluated first, no matter what. Let's make the `2 + 3` part of the previous example evaluate first:",
+              "fr": "Parfois, tu peux vouloir que certaines parties de ton expression s'exécutent en premier, indépendamment des règles de précédence. Tu peux utiliser des parenthèses, `()`, pour cela. Tout ce qui se trouve à l'intérieur des parenthèses est évalué en premier, quoi qu'il arrive. Faisons en sorte que la partie `2 + 3` de l'exemple précédent soit évaluée en premier :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the example above, the parentheses force JavaScript to evaluate `2 + 3` first, and then multiply the result by `4`. This gives you `20` instead of `14`.",
+              "fr": "Dans l'exemple ci-dessus, les parenthèses forcent JavaScript à évaluer `2 + 3` en premier, puis à multiplier le résultat par `4`. Cela te donne `20` au lieu de `14`."
+            },
+            {
+              "en": "The division operator has more precedence than addition or subtraction too:",
+              "fr": "L'opérateur de division a lui aussi plus de précédence que l'addition ou la soustraction :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If JavaScript evaluated this expression from left to right, you might expect `2 + 6 = 8`, then `8 / 3 = 2.67`. But since division has a higher precedence than addition, JavaScript evaluates the division first: `6 / 3 = 2`, and then adds `2 + 2`, giving the result `4`.",
+              "fr": "Si JavaScript évaluait cette expression de gauche à droite, tu pourrais t'attendre à `2 + 6 = 8`, puis `8 / 3 = 2.67`. Mais comme la division a une précédence plus élevée que l'addition, JavaScript évalue d'abord la division : `6 / 3 = 2`, puis additionne `2 + 2`, donnant le résultat `4`."
+            },
+            {
+              "en": "So, in both multiplication and division, those operations will always take place before addition and subtraction unless you use parentheses to change the order. So what happens if the operators have the same precedence? JavaScript uses associativity to figure out the order to evaluate them.",
+              "fr": "Ainsi, pour la multiplication comme pour la division, ces opérations auront toujours lieu avant l'addition et la soustraction, sauf si tu utilises des parenthèses pour changer l'ordre. Alors que se passe-t-il si les opérateurs ont la même précédence ? JavaScript utilise l'associativité pour déterminer l'ordre dans lequel les évaluer."
+            },
+            {
+              "en": "Associativity is what tells JavaScript whether to evaluate operators from left to right or right to left. For most operators like addition and multiplication, associativity is left to right. So, JavaScript processes these from the leftmost side of the expression to the right:",
+              "fr": "L'associativité, c'est ce qui indique à JavaScript s'il faut évaluer les opérateurs de gauche à droite ou de droite à gauche. Pour la plupart des opérateurs comme l'addition et la multiplication, l'associativité va de gauche à droite. JavaScript les traite donc depuis l'extrême gauche de l'expression vers la droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "First, `10 - 2 = 8`, then `8 + 3 = 11`. JavaScript moves left to right in this case. Some operators, like assignment (`=`), are right-to-left associative. This means the right side of the expression gets evaluated first:",
+              "fr": "D'abord, `10 - 2 = 8`, puis `8 + 3 = 11`. JavaScript va de gauche à droite dans ce cas. Certains opérateurs, comme l'affectation (`=`), sont associatifs de droite à gauche. Cela signifie que le côté droit de l'expression est évalué en premier :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the example above, JavaScript assigns `5` to `b` first, then assigns `b` (which is now `5`) to `a`.",
+              "fr": "Dans l'exemple ci-dessus, JavaScript affecte d'abord `5` à `b`, puis affecte `b` (qui vaut maintenant `5`) à `a`."
+            },
+            {
+              "en": "The exponent operator is also right-to-left associative:",
+              "fr": "L'opérateur d'exposant est lui aussi associatif de droite à gauche :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "First, JavaScript evaluates `3 ** 2`, which equals `9`, then, it evaluates `2 ** 9`, which equals `512`. If the exponent operator had left-to-right associativity, JavaScript would have calculated `2 ** 3` first to get `8`, then `8 ** 2` to get `64`.",
+              "fr": "D'abord, JavaScript évalue `3 ** 2`, qui vaut `9`, puis il évalue `2 ** 9`, qui vaut `512`. Si l'opérateur d'exposant avait une associativité de gauche à droite, JavaScript aurait d'abord calculé `2 ** 3` pour obtenir `8`, puis `8 ** 2` pour obtenir `64`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does operator precedence in JavaScript compare to mathematics?",
+              "fr": "Comment la précédence des opérateurs en JavaScript se compare-t-elle aux mathématiques ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Addition happens before multiplication and division.",
+              "fr": "L'addition s'effectue avant la multiplication et la division."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order of operations you follow in math equations.",
+              "fr": "Pense à l'ordre des opérations que tu suis dans les équations mathématiques."
+            },
+            {
+              "en": "Division and multiplication happen before addition and subtraction, just like in mathematics.",
+              "fr": "La division et la multiplication s'effectuent avant l'addition et la soustraction, tout comme en mathématiques."
+            },
+            {
+              "en": "All operations are performed in the order they appear.",
+              "fr": "Toutes les opérations sont effectuées dans l'ordre où elles apparaissent."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order of operations you follow in math equations.",
+              "fr": "Pense à l'ordre des opérations que tu suis dans les équations mathématiques."
+            },
+            {
+              "en": "Subtraction takes precedence over all other operations.",
+              "fr": "La soustraction a la priorité sur toutes les autres opérations."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order of operations you follow in math equations.",
+              "fr": "Pense à l'ordre des opérations que tu suis dans les équations mathématiques."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you override operator precedence in JavaScript?",
+              "fr": "Comment peux-tu outrepasser la précédence des opérateurs en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the addition operator (`+`) to change the order of operations.",
+              "fr": "En utilisant l'opérateur d'addition (`+`) pour changer l'ordre des opérations."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you change the order of operations in math equations.",
+              "fr": "Pense à la façon dont tu changes l'ordre des opérations dans les équations mathématiques."
+            },
+            {
+              "en": "By using parentheses to force certain parts of the expression to be evaluated first.",
+              "fr": "En utilisant des parenthèses pour forcer certaines parties de l'expression à être évaluées en premier."
+            },
+            {
+              "en": "By reversing the operators in the expression.",
+              "fr": "En inversant les opérateurs dans l'expression."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you change the order of operations in math equations.",
+              "fr": "Pense à la façon dont tu changes l'ordre des opérations dans les équations mathématiques."
+            },
+            {
+              "en": "By performing all operations left to right, regardless of precedence.",
+              "fr": "En effectuant toutes les opérations de gauche à droite, indépendamment de la précédence."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you change the order of operations in math equations.",
+              "fr": "Pense à la façon dont tu changes l'ordre des opérations dans les équations mathématiques."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does JavaScript evaluate expressions with the exponent operator (`**`)?",
+              "fr": "Comment JavaScript évalue-t-il les expressions avec l'opérateur d'exposant (`**`) ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "From left to right.",
+              "fr": "De gauche à droite."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which exponentiation occurs in the expression.",
+              "fr": "Pense à l'ordre dans lequel l'exponentiation se produit dans l'expression."
+            },
+            {
+              "en": "From right to left, meaning it evaluates the rightmost exponentiation first.",
+              "fr": "De droite à gauche, c'est-à-dire qu'il évalue d'abord l'exponentiation la plus à droite."
+            },
+            {
+              "en": "By multiplying the base by itself the number of times indicated.",
+              "fr": "En multipliant la base par elle-même le nombre de fois indiqué."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which exponentiation occurs in the expression.",
+              "fr": "Pense à l'ordre dans lequel l'exponentiation se produit dans l'expression."
+            },
+            {
+              "en": "By adding the exponents together first, then calculating the result.",
+              "fr": "En additionnant d'abord les exposants, puis en calculant le résultat."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which exponentiation occurs in the expression.",
+              "fr": "Pense à l'ordre dans lequel l'exponentiation se produit dans l'expression."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673271a8998ddfd97578d095.md",
+      "id": "673271a8998ddfd97578d095",
+      "dashedName": "how-do-the-increment-and-decrement-operators-work",
+      "title": {
+        "en": "How Do the Increment and Decrement Operators Work?",
+        "fr": "Comment fonctionnent les opérateurs d'incrémentation et de décrémentation ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "If you're working with numbers and need to increase or decrease a value by one, the increment and decrement operators make the job easier. Let's break it down in a simple way.",
+              "fr": "Si tu travailles avec des nombres et que tu as besoin d'augmenter ou de diminuer une valeur de un, les opérateurs d'incrémentation et de décrémentation facilitent la tâche. Décomposons cela de manière simple."
+            },
+            {
+              "en": "The increment and decrement operators are represented by `++` and `--`, respectively. They both allow you to adjust the value of a variable by `1`.",
+              "fr": "Les opérateurs d'incrémentation et de décrémentation sont représentés respectivement par `++` et `--`. Tous deux te permettent d'ajuster la valeur d'une variable de `1`."
+            },
+            {
+              "en": "Instead of writing something like `x = x + 1` or `x = x - 1`, you can simply use `x++` to add `1`, or `x--` to subtract `1`. It's faster, cleaner, and easier to read.",
+              "fr": "Au lieu d'écrire quelque chose comme `x = x + 1` ou `x = x - 1`, tu peux simplement utiliser `x++` pour ajouter `1`, ou `x--` pour soustraire `1`. C'est plus rapide, plus propre et plus facile à lire."
+            },
+            {
+              "en": "There's a twist to how the increment and decrement operators work: they come in two forms, prefix and postfix, with the difference being when the value gets updated. For the increment operator, prefix is `++x` and postfix is `x++`.",
+              "fr": "Il y a une subtilité dans le fonctionnement des opérateurs d'incrémentation et de décrémentation : ils existent sous deux formes, préfixe et postfixe, la différence résidant dans le moment où la valeur est mise à jour. Pour l'opérateur d'incrémentation, le préfixe est `++x` et le postfixe est `x++`."
+            },
+            {
+              "en": "Prefix (`++x`) increases the value of the variable first, then returns a new value. Postfix (`x++`) returns the current value of the variable first, then increases it:",
+              "fr": "Le préfixe (`++x`) augmente d'abord la valeur de la variable, puis renvoie une nouvelle valeur. Le postfixe (`x++`) renvoie d'abord la valeur actuelle de la variable, puis l'augmente :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the code above, `++x` means \"increment `x` first, then use it\". So when you log `++x`, you immediately get the incremented value, which is `6`.",
+              "fr": "Dans le code ci-dessus, `++x` signifie « incrémenter `x` d'abord, puis l'utiliser ». Donc quand tu affiches `++x`, tu obtiens immédiatement la valeur incrémentée, c'est-à-dire `6`."
+            },
+            {
+              "en": "Now, let's take a look at an example using the postfix:",
+              "fr": "Maintenant, regardons un exemple utilisant le postfixe :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `y++` means \"use `y` first, then increment it\". When you log `y++`, you get `5`, but `y` becomes `6` after that line of code.",
+              "fr": "Dans cet exemple, `y++` signifie « utiliser `y` d'abord, puis l'incrémenter ». Quand tu affiches `y++`, tu obtiens `5`, mais `y` devient `6` après cette ligne de code."
+            },
+            {
+              "en": "The decrement operator does the same thing as increment, except it decreases the value by `1`. Again, there are two forms: prefix (`--x`) decreases the value of the variable first, then returns the new value. And postfix (`x--`) returns the current value first, then decreases it:",
+              "fr": "L'opérateur de décrémentation fait la même chose que l'incrémentation, sauf qu'il diminue la valeur de `1`. Là encore, il existe deux formes : le préfixe (`--x`) diminue d'abord la valeur de la variable, puis renvoie la nouvelle valeur. Et le postfixe (`x--`) renvoie d'abord la valeur actuelle, puis la diminue :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "So, which should you use: prefix or postfix? In many cases, it doesn't matter which one you use. Both get the job done. However, if you're using the value immediately in an expression, the difference becomes important. Let's take a look at this example:",
+              "fr": "Alors, lequel devrais-tu utiliser : le préfixe ou le postfixe ? Dans bien des cas, peu importe lequel tu utilises. Les deux font le travail. Cependant, si tu utilises la valeur immédiatement dans une expression, la différence devient importante. Regardons cet exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "So, if you need the updated value right away, use prefix. If you want the current value first and you don’t care about the increment until later, go with postfix.",
+              "fr": "Donc, si tu as besoin de la valeur mise à jour tout de suite, utilise le préfixe. Si tu veux d'abord la valeur actuelle et que l'incrémentation ne t'importe que plus tard, opte pour le postfixe."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which operators in JavaScript allow you to adjust the value of a variable by 1?",
+              "fr": "Quels opérateurs en JavaScript te permettent d'ajuster la valeur d'une variable de 1 ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`+` and `-`.",
+              "fr": "`+` et `-`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that increase or decrease a value by exactly 1.",
+              "fr": "Pense aux opérateurs qui augmentent ou diminuent une valeur d'exactement 1."
+            },
+            {
+              "en": "`*` and `/`.",
+              "fr": "`*` et `/`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that increase or decrease a value by exactly 1.",
+              "fr": "Pense aux opérateurs qui augmentent ou diminuent une valeur d'exactement 1."
+            },
+            {
+              "en": "`++` and `--`.",
+              "fr": "`++` et `--`."
+            },
+            {
+              "en": "`&&` and `||`.",
+              "fr": "`&&` et `||`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that increase or decrease a value by exactly 1.",
+              "fr": "Pense aux opérateurs qui augmentent ou diminuent une valeur d'exactement 1."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which form of the increment or decrement operator should you use if you need the updated value immediately in an expression?",
+              "fr": "Quelle forme de l'opérateur d'incrémentation ou de décrémentation devrais-tu utiliser si tu as besoin de la valeur mise à jour immédiatement dans une expression ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Postfix (`value++` or `value--`).",
+              "fr": "Le postfixe (`value++` ou `value--`)."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which form updates the value before the expression is evaluated.",
+              "fr": "Pense à la forme qui met à jour la valeur avant que l'expression ne soit évaluée."
+            },
+            {
+              "en": "Prefix (`++value` or `--value`).",
+              "fr": "Le préfixe (`++value` ou `--value`)."
+            },
+            {
+              "en": "Either prefix or postfix, it doesn't matter.",
+              "fr": "Le préfixe ou le postfixe, peu importe."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which form updates the value before the expression is evaluated.",
+              "fr": "Pense à la forme qui met à jour la valeur avant que l'expression ne soit évaluée."
+            },
+            {
+              "en": "Neither, you should use addition or subtraction instead.",
+              "fr": "Ni l'un ni l'autre, tu devrais plutôt utiliser l'addition ou la soustraction."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which form updates the value before the expression is evaluated.",
+              "fr": "Pense à la forme qui met à jour la valeur avant que l'expression ne soit évaluée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which forms do the increment and decrement operators come in JavaScript?",
+              "fr": "Sous quelles formes les opérateurs d'incrémentation et de décrémentation se présentent-ils en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Prefix and postfix.",
+              "fr": "Préfixe et postfixe."
+            },
+            {
+              "en": "Addition and subtraction.",
+              "fr": "Addition et soustraction."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different ways these operators can be applied.",
+              "fr": "Pense aux deux façons différentes d'appliquer ces opérateurs."
+            },
+            {
+              "en": "Multiplication and division.",
+              "fr": "Multiplication et division."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different ways these operators can be applied.",
+              "fr": "Pense aux deux façons différentes d'appliquer ces opérateurs."
+            },
+            {
+              "en": "Left and right.",
+              "fr": "Gauche et droite."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different ways these operators can be applied.",
+              "fr": "Pense aux deux façons différentes d'appliquer ces opérateurs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673271b4213033d9b661c70e.md",
+      "id": "673271b4213033d9b661c70e",
+      "dashedName": "what-are-compound-assignment-operators-in-javascript-and-how-do-they-work",
+      "title": {
+        "en": "What Are Compound Assignment Operators in JavaScript, and How Do They Work?",
+        "fr": "Que sont les opérateurs d'affectation composée en JavaScript, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, all arithmetic operators have a compound assignment form. Compound assignment operators provide a concise shorthand for an operation on a variable followed by storing the result in that same variable. They combine the operation and assignment into a shorter form like `x += y`, which is equivalent to writing `x = x + y` but without repeating the variable name. Instead of writing something like this:",
+              "fr": "En JavaScript, tous les opérateurs arithmétiques ont une forme d'affectation composée. Les opérateurs d'affectation composée offrent un raccourci concis pour effectuer une opération sur une variable, puis stocker le résultat dans cette même variable. Ils combinent l'opération et l'affectation en une forme plus courte comme `x += y`, qui équivaut à écrire `x = x + y` mais sans répéter le nom de la variable. Au lieu d'écrire quelque chose comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can write something like this:",
+              "fr": "Tu peux écrire quelque chose comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Notice how `num += 2` combines both the addition and assignment steps into one. This saves time and reduces clutter in your code. Let's dive deeper into the most common compound assignment operators in JavaScript.",
+              "fr": "Remarque comment `num += 2` combine en une seule étape l'addition et l'affectation. Cela fait gagner du temps et réduit l'encombrement dans ton code. Plongeons plus en détail dans les opérateurs d'affectation composée les plus courants en JavaScript."
+            },
+            {
+              "en": "As you've already seen, the `+=` operator lets you add a value to an existing variable. It is known as the addition assignment operator. The addition assignment operator takes the current value of the variable, adds the specified number to it, and then assigns the result back to the variable:",
+              "fr": "Comme tu l'as déjà vu, l'opérateur `+=` te permet d'ajouter une valeur à une variable existante. Il est connu sous le nom d'opérateur d'affectation par addition. L'opérateur d'affectation par addition prend la valeur actuelle de la variable, y ajoute le nombre spécifié, puis réaffecte le résultat à la variable :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you might guess, there's a subtraction assignment operator denoted by `-=`. The subtraction assignment operator subtracts the specified value from the current value of the variable and assigns the new value back to the variable:",
+              "fr": "Comme tu peux le deviner, il existe un opérateur d'affectation par soustraction noté `-=`. L'opérateur d'affectation par soustraction soustrait la valeur spécifiée de la valeur actuelle de la variable et réaffecte la nouvelle valeur à la variable :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you didn't use the subtraction assignment, you'd have done something like this:",
+              "fr": "Si tu n'utilisais pas l'affectation par soustraction, tu aurais fait quelque chose comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The multiplication assignment operator is represented by `*=`. It multiplies the current value of the variable by the specified number and reassigns it back to the variable:",
+              "fr": "L'opérateur d'affectation par multiplication est représenté par `*=`. Il multiplie la valeur actuelle de la variable par le nombre spécifié et la réaffecte à la variable :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Lastly, there's a division assignment operator denoted by `/=`. Just like others before it, it lets you divide the current value of a variable by a number you specify, then assign the result back to the variable:",
+              "fr": "Enfin, il existe un opérateur d'affectation par division noté `/=`. Comme les autres avant lui, il te permet de diviser la valeur actuelle d'une variable par un nombre que tu spécifies, puis de réaffecter le résultat à la variable :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Remember there's a compound assignment operator for every operator in JavaScript. So, apart from the four already mentioned, we also have:",
+              "fr": "Souviens-toi qu'il existe un opérateur d'affectation composée pour chaque opérateur en JavaScript. Donc, en dehors des quatre déjà mentionnés, nous avons aussi :"
+            },
+            {
+              "en": "- Remainder assignment operator (`%=`), which divides a variable by the specified number and assigns the remainder to the variable.",
+              "fr": "- L'opérateur d'affectation par reste (`%=`), qui divise une variable par le nombre spécifié et affecte le reste à la variable."
+            },
+            {
+              "en": "- Exponent assignment operator (`**=`), which raises a variable to the power of the specified number and reassigns the result to the variable.",
+              "fr": "- L'opérateur d'affectation par exposant (`**=`), qui élève une variable à la puissance du nombre spécifié et réaffecte le résultat à la variable."
+            },
+            {
+              "en": "- Bitwise AND assignment operator (`&=`), which performs a bitwise AND operation with the specified number and reassigns the result to the variable.",
+              "fr": "- L'opérateur d'affectation ET bit à bit (`&=`), qui effectue une opération ET bit à bit avec le nombre spécifié et réaffecte le résultat à la variable."
+            },
+            {
+              "en": "- Bitwise OR assignment operator (`|=`), which performs a bitwise OR operation with the specified number and reassigns the result to the variable.",
+              "fr": "- L'opérateur d'affectation OU bit à bit (`|=`), qui effectue une opération OU bit à bit avec le nombre spécifié et réaffecte le résultat à la variable."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What do compound assignment operators in JavaScript allow you to do?",
+              "fr": "Que te permettent de faire les opérateurs d'affectation composée en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Perform a mathematical operation without changing the variable's value.",
+              "fr": "Effectuer une opération mathématique sans changer la valeur de la variable."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to combine mathematical operations and reassignment.",
+              "fr": "Pense à la façon de combiner les opérations mathématiques et la réaffectation."
+            },
+            {
+              "en": "Provide a shorter way to perform an operation on a variable and assign the result back to that same variable.",
+              "fr": "Fournir une façon plus courte d'effectuer une opération sur une variable et de réaffecter le résultat à cette même variable."
+            },
+            {
+              "en": "Perform two different operations at once.",
+              "fr": "Effectuer deux opérations différentes en même temps."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to combine mathematical operations and reassignment.",
+              "fr": "Pense à la façon de combiner les opérations mathématiques et la réaffectation."
+            },
+            {
+              "en": "Only perform addition and subtraction in one line of code.",
+              "fr": "Effectuer uniquement l'addition et la soustraction en une seule ligne de code."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to combine mathematical operations and reassignment.",
+              "fr": "Pense à la façon de combiner les opérations mathématiques et la réaffectation."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the remainder assignment operator (`%=`) do in JavaScript?",
+              "fr": "Que fait l'opérateur d'affectation par reste (`%=`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Divides a variable by the specified number and assigns the quotient to the variable.",
+              "fr": "Il divise une variable par le nombre spécifié et affecte le quotient à la variable."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the remainder operator works in a normal arithmetic operation.",
+              "fr": "Pense à la façon dont l'opérateur de reste fonctionne dans une opération arithmétique normale."
+            },
+            {
+              "en": "Multiplies a variable by the specified number and assigns the product to the variable.",
+              "fr": "Il multiplie une variable par le nombre spécifié et affecte le produit à la variable."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the remainder operator works in a normal arithmetic operation.",
+              "fr": "Pense à la façon dont l'opérateur de reste fonctionne dans une opération arithmétique normale."
+            },
+            {
+              "en": "Divides a variable by the specified number and assigns the remainder back to the variable.",
+              "fr": "Il divise une variable par le nombre spécifié et réaffecte le reste à la variable."
+            },
+            {
+              "en": "Adds the remainder of a division to the variable.",
+              "fr": "Il ajoute le reste d'une division à la variable."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the remainder operator works in a normal arithmetic operation.",
+              "fr": "Pense à la façon dont l'opérateur de reste fonctionne dans une opération arithmétique normale."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you run the code `let points = 5; points *= 3;`?",
+              "fr": "Que se passe-t-il quand tu exécutes le code `let points = 5; points *= 3;` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`points` is multiplied by `3`, and the result is added to the original value of `points`.",
+              "fr": "`points` est multiplié par `3`, et le résultat est ajouté à la valeur d'origine de `points`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the `*=` compound assignment operator works.",
+              "fr": "Pense à la façon dont fonctionne l'opérateur d'affectation composée `*=`."
+            },
+            {
+              "en": "`points` is divided by `3`.",
+              "fr": "`points` est divisé par `3`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the `*=` compound assignment operator works.",
+              "fr": "Pense à la façon dont fonctionne l'opérateur d'affectation composée `*=`."
+            },
+            {
+              "en": "`points` is multiplied by `3`, and the result (`15`) is assigned back to `points`.",
+              "fr": "`points` est multiplié par `3`, et le résultat (`15`) est réaffecté à `points`."
+            },
+            {
+              "en": "`points` remains unchanged.",
+              "fr": "`points` reste inchangé."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the `*=` compound assignment operator works.",
+              "fr": "Pense à la façon dont fonctionne l'opérateur d'affectation composée `*=`."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
