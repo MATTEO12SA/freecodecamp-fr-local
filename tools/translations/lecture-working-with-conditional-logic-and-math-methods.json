@@ -1,0 +1,937 @@
+{
+  "workshop": "lecture-working-with-conditional-logic-and-math-methods",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "673271fd11d063daf0cf8d20.md",
+      "id": "673271fd11d063daf0cf8d20",
+      "dashedName": "what-are-conditional-statements-and-how-do-if-else-if-else-statements-work",
+      "title": {
+        "en": "What Are Conditional Statements, and How Do If/Else If/Else Statements Work?",
+        "fr": "Que sont les instructions conditionnelles, et comment fonctionnent les instructions If/Else If/Else ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Conditional statements let you make decisions in your JavaScript code. They allow your program to flow in a particular way based on certain conditions. Let's take a look at how `if`, `else if`, `else`, and the ternary operator work to let you control the flow of your code.",
+              "fr": "Les instructions conditionnelles te permettent de prendre des décisions dans ton code JavaScript. Elles permettent à ton programme de se dérouler d'une manière particulière en fonction de certaines conditions. Voyons comment `if`, `else if`, `else` et l'opérateur ternaire fonctionnent pour te permettre de contrôler le déroulement de ton code."
+            },
+            {
+              "en": "An `if` statement takes a condition and runs a block of code if that condition is truthy. Truthy values are any values that result in `true` when evaluated in a Boolean context like an `if` statement. Here are examples of truthy values:",
+              "fr": "Une instruction `if` prend une condition et exécute un bloc de code si cette condition est truthy. Les valeurs truthy sont toutes les valeurs qui donnent `true` lorsqu'elles sont évaluées dans un contexte booléen comme une instruction `if`. Voici des exemples de valeurs truthy :"
+            },
+            {
+              "en": "- non-empty strings, for example, `hello`",
+              "fr": "- les chaînes non vides, par exemple, `hello`"
+            },
+            {
+              "en": "- any number other than `0` and `-0`, for example, `4`, `-5`, and others",
+              "fr": "- tout nombre autre que `0` et `-0`, par exemple, `4`, `-5`, et d'autres"
+            },
+            {
+              "en": "- arrays",
+              "fr": "- les tableaux"
+            },
+            {
+              "en": "- objects",
+              "fr": "- les objets"
+            },
+            {
+              "en": "- the boolean `true`",
+              "fr": "- le booléen `true`"
+            },
+            {
+              "en": "On the other hand, falsy values are values that evaluate to `false` in a boolean context. JavaScript has few falsy values, which makes them easy to remember. Here are a few falsy values:",
+              "fr": "En revanche, les valeurs falsy sont des valeurs qui s'évaluent à `false` dans un contexte booléen. JavaScript a peu de valeurs falsy, ce qui les rend faciles à retenir. Voici quelques valeurs falsy :"
+            },
+            {
+              "en": "- boolean `false`",
+              "fr": "- le booléen `false`"
+            },
+            {
+              "en": "- `0` (zero)",
+              "fr": "- `0` (zéro)"
+            },
+            {
+              "en": "- `\"\"` (empty string)",
+              "fr": "- `\"\"` (chaîne vide)"
+            },
+            {
+              "en": "- `null`",
+              "fr": "- `null`"
+            },
+            {
+              "en": "- `undefined`",
+              "fr": "- `undefined`"
+            },
+            {
+              "en": "- `NaN` (Not a Number)",
+              "fr": "- `NaN` (Not a Number)"
+            },
+            {
+              "en": "Now, that we have a basic understanding of truthy and falsy values, let's see how it works with `if` statements. In this first example, we are using a couple of `if` statements to check against truthy and falsy values:",
+              "fr": "Maintenant que nous avons une compréhension de base des valeurs truthy et falsy, voyons comment cela fonctionne avec les instructions `if`. Dans ce premier exemple, nous utilisons deux instructions `if` pour effectuer une vérification par rapport à des valeurs truthy et falsy :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since `null` is a falsy value, the message inside the block will never be logged to the console. But for the second `if` statement, the string `freeCodeCamp` is a truthy value, and will be considered `true` in this boolean context of the `if` statement. As a result, the message `This will run.` will be logged to the console.",
+              "fr": "Comme `null` est une valeur falsy, le message à l'intérieur du bloc ne sera jamais affiché dans la console. Mais pour la deuxième instruction `if`, la chaîne `freeCodeCamp` est une valeur truthy, et sera considérée comme `true` dans ce contexte booléen de l'instruction `if`. Par conséquent, le message `This will run.` sera affiché dans la console."
+            },
+            {
+              "en": "Let's take a look at a few more examples on how `if` statements work with different comparison operators. Here is an example of using an `if` statement to check if the user is eligible to vote:",
+              "fr": "Examinons quelques exemples supplémentaires sur la façon dont les instructions `if` fonctionnent avec différents opérateurs de comparaison. Voici un exemple d'utilisation d'une instruction `if` pour vérifier si l'utilisateur est en droit de voter :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, since `age` is currently `22`, this means the condition will evaluate to `true` because `22` is greater than or equal to `18`. So the message `You're eligible to vote` will be logged to the console. If we change the example so `age` is now `15`, then the condition will evaluate to `false` and the message will not be logged to the console:",
+              "fr": "Dans cet exemple, comme `age` vaut actuellement `22`, cela signifie que la condition s'évaluera à `true` car `22` est supérieur ou égal à `18`. Donc le message `You're eligible to vote` sera affiché dans la console. Si nous changeons l'exemple pour que `age` vaille maintenant `15`, alors la condition s'évaluera à `false` et le message ne sera pas affiché dans la console :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When a condition is `false`, then you can use an `else` clause:",
+              "fr": "Quand une condition est `false`, tu peux utiliser une clause `else` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `15` is not greater than or equal to `18`, so the condition would be `false`. The code inside the `else` block will run in this case.",
+              "fr": "Dans cet exemple, `15` n'est pas supérieur ou égal à `18`, donc la condition serait `false`. Le code à l'intérieur du bloc `else` s'exécutera dans ce cas."
+            },
+            {
+              "en": "If you want to check multiple conditions, you can use an `else if` block. This allows your program to choose between more than two paths.",
+              "fr": "Si tu veux vérifier plusieurs conditions, tu peux utiliser un bloc `else if`. Cela permet à ton programme de choisir entre plus de deux chemins."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since the `score` is currently `87`, then the message of `You got a B` would be logged to the console.",
+              "fr": "Comme `score` vaut actuellement `87`, le message `You got a B` serait affiché dans la console."
+            },
+            {
+              "en": "The ternary operator is a compact way to write simple `if/else` statements. It has three parts: a condition, a result if the condition is true, and a result if it is false. Here's the basic syntax:",
+              "fr": "L'opérateur ternaire est une façon compacte d'écrire de simples instructions `if/else`. Il comporte trois parties : une condition, un résultat si la condition est vraie, et un résultat si elle est fausse. Voici la syntaxe de base :"
+            },
+            {
+              "en": "Here's an example dealing with weather temperatures in Celsius:",
+              "fr": "Voici un exemple qui traite des températures météo en Celsius :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If `temperature` is greater than `25`, the code above logs `It's a sunny day!`. If `temperature` is ever less than or equal to `25`, it logs `It's a cool day!`.",
+              "fr": "Si `temperature` est supérieure à `25`, le code ci-dessus affiche `It's a sunny day!`. Si `temperature` est inférieure ou égale à `25`, il affiche `It's a cool day!`."
+            },
+            {
+              "en": "So, which should you use between an if statement and a ternary? Use a ternary while dealing with a single condition or single expressions, or when you want a compact syntax for simple logic. Use `if/else` statements when you're dealing with complex conditions and multiple statements, as things become unreadable if you nest ternaries.",
+              "fr": "Alors, lequel utiliser entre une instruction if et un ternaire ? Utilise un ternaire quand tu traites une seule condition ou de simples expressions, ou quand tu veux une syntaxe compacte pour une logique simple. Utilise les instructions `if/else` quand tu traites des conditions complexes et plusieurs instructions, car les choses deviennent illisibles si tu imbriques des ternaires."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What's a compact way to write simple `if`/`else` statements?",
+              "fr": "Quelle est une façon compacte d'écrire de simples instructions `if`/`else` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Using the `switch` statement.",
+              "fr": "Utiliser l'instruction `switch`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of a one-liner for conditional logic.",
+              "fr": "Pense à une ligne unique pour la logique conditionnelle."
+            },
+            {
+              "en": "Using a `while` loop.",
+              "fr": "Utiliser une boucle `while`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of a one-liner for conditional logic.",
+              "fr": "Pense à une ligne unique pour la logique conditionnelle."
+            },
+            {
+              "en": "Using multiple `if` statements.",
+              "fr": "Utiliser plusieurs instructions `if`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of a one-liner for conditional logic.",
+              "fr": "Pense à une ligne unique pour la logique conditionnelle."
+            },
+            {
+              "en": "Using the ternary operator.",
+              "fr": "Utiliser l'opérateur ternaire."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you check for multiple conditions in an `if` statement?",
+              "fr": "Comment peux-tu vérifier plusieurs conditions dans une instruction `if` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using a `switch` statement only.",
+              "fr": "En utilisant uniquement une instruction `switch`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to handle more than two possible outcomes.",
+              "fr": "Réfléchis à la façon de gérer plus de deux résultats possibles."
+            },
+            {
+              "en": "By using a `while` loop.",
+              "fr": "En utilisant une boucle `while`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to handle more than two possible outcomes.",
+              "fr": "Réfléchis à la façon de gérer plus de deux résultats possibles."
+            },
+            {
+              "en": "By using an `else if` block to choose between more than two paths.",
+              "fr": "En utilisant un bloc `else if` pour choisir entre plus de deux chemins."
+            },
+            {
+              "en": "By using the ternary operator.",
+              "fr": "En utilisant l'opérateur ternaire."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to handle more than two possible outcomes.",
+              "fr": "Réfléchis à la façon de gérer plus de deux résultats possibles."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `else` block in an `if` statement?",
+              "fr": "Quel est le but du bloc `else` dans une instruction `if` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It runs when the condition in the `if` statement is `true`.",
+              "fr": "Il s'exécute quand la condition de l'instruction `if` est `true`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when the `if` condition is `false`.",
+              "fr": "Réfléchis à ce qui se passe quand la condition `if` est `false`."
+            },
+            {
+              "en": "It runs a block of code when the condition in the `if` statement is not `true`.",
+              "fr": "Il exécute un bloc de code quand la condition de l'instruction `if` n'est pas `true`."
+            },
+            {
+              "en": "It checks if multiple conditions are `true`.",
+              "fr": "Il vérifie si plusieurs conditions sont `true`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when the `if` condition is `false`.",
+              "fr": "Réfléchis à ce qui se passe quand la condition `if` est `false`."
+            },
+            {
+              "en": "It always runs before the `if` block.",
+              "fr": "Il s'exécute toujours avant le bloc `if`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when the `if` condition is `false`.",
+              "fr": "Réfléchis à ce qui se passe quand la condition `if` est `false`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732720e95f6a0db526a2e4d.md",
+      "id": "6732720e95f6a0db526a2e4d",
+      "dashedName": "what-are-binary-logical-operators-and-how-do-they-work",
+      "title": {
+        "en": "What Are Binary Logical Operators, and How Do They Work?",
+        "fr": "Que sont les opérateurs logiques binaires, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Binary logical operators help you evaluate two expressions and return a result based on their truthiness. Let's look at the three most common binary logical operators: logical AND, logical OR, and the nullish coalescing operator.",
+              "fr": "Les opérateurs logiques binaires t'aident à évaluer deux expressions et à renvoyer un résultat en fonction de leur caractère truthy ou falsy. Examinons les trois opérateurs logiques binaires les plus courants : le ET logique, le OU logique, et l'opérateur de coalescence des nuls."
+            },
+            {
+              "en": "The logical AND operator is represented by a double ampersand (`&&`). It checks if both operands are true and returns a result. If both operands are truthy, it returns the second value, that is, the one on the right:",
+              "fr": "L'opérateur ET logique est représenté par une double esperluette (`&&`). Il vérifie si les deux opérandes sont vrais et renvoie un résultat. Si les deux opérandes sont truthy, il renvoie la deuxième valeur, c'est-à-dire celle de droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the example above, the text `hello` is logged to the console because both operands are `true`. If either operand is falsy, it returns the falsy value:",
+              "fr": "Dans l'exemple ci-dessus, le texte `hello` est affiché dans la console car les deux opérandes sont `true`. Si l'un des opérandes est falsy, il renvoie la valeur falsy :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since `0` is a falsy value, the number `0` is logged to the console. And if both operands are falsy, it returns the first falsy value:",
+              "fr": "Comme `0` est une valeur falsy, le nombre `0` est affiché dans la console. Et si les deux opérandes sont falsy, il renvoie la première valeur falsy :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since `false` is a falsy value, then `false` is logged to the console. The logical AND operator is useful when you want to check multiple conditions and ensure that all are true before proceeding. Here is an example:",
+              "fr": "Comme `false` est une valeur falsy, `false` est affiché dans la console. L'opérateur ET logique est utile quand tu veux vérifier plusieurs conditions et t'assurer qu'elles sont toutes vraies avant de continuer. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the condition, since `2` is less than `3` AND `3` is less than `4`, then the sentence `The if block runs` will be logged to the console.",
+              "fr": "Dans la condition, comme `2` est inférieur à `3` ET `3` est inférieur à `4`, la phrase `The if block runs` sera affichée dans la console."
+            },
+            {
+              "en": "The logical OR operator checks if at least one of the operands is truthy. If the first operand is truthy, it returns that value:",
+              "fr": "L'opérateur OU logique vérifie si au moins l'un des opérandes est truthy. Si le premier opérande est truthy, il renvoie cette valeur :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If the first operand is falsy but the second is truthy, the second value will be logged to the console:",
+              "fr": "Si le premier opérande est falsy mais que le second est truthy, la deuxième valeur sera affichée dans la console :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "It is common to use the logical OR operator in `if/else` statements like this:",
+              "fr": "Il est courant d'utiliser l'opérateur OU logique dans les instructions `if/else` comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since we didn't assign a value to the `userInput` variable, it is currently `undefined`. The condition in the `if` statement checks if either the `userInput` variable or the string `Guest` are truthy. Since the string `Guest` is true in a boolean context like this, the string `A user is present` will be logged to the console.",
+              "fr": "Comme nous n'avons pas affecté de valeur à la variable `userInput`, elle vaut actuellement `undefined`. La condition de l'instruction `if` vérifie si la variable `userInput` ou la chaîne `Guest` est truthy. Comme la chaîne `Guest` est vraie dans un contexte booléen comme celui-ci, la chaîne `A user is present` sera affichée dans la console."
+            },
+            {
+              "en": "The nullish coalescing operator is more sophisticated than logical OR and logical AND. Represented by a double question mark (`??`), it helps in scenarios where you want to return a value only if the first one is `null` or `undefined`. Here is an example of working with the nullish coalescing operator:",
+              "fr": "L'opérateur de coalescence des nuls est plus sophistiqué que le OU logique et le ET logique. Représenté par un double point d'interrogation (`??`), il est utile dans les scénarios où tu veux renvoyer une valeur uniquement si la première est `null` ou `undefined`. Voici un exemple d'utilisation de l'opérateur de coalescence des nuls :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since `null` is a nullish value, the string `default` would be logged to the console. The nullish coalescing operator is incredibly useful in situations where `null` or `undefined` are the only values that should trigger a fallback or default value. Here is an example of dealing with a user's preference settings:",
+              "fr": "Comme `null` est une valeur nulle (nullish), la chaîne `default` serait affichée dans la console. L'opérateur de coalescence des nuls est incroyablement utile dans les situations où `null` ou `undefined` sont les seules valeurs qui devraient déclencher une valeur de repli ou par défaut. Voici un exemple qui traite des réglages de préférences d'un utilisateur :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the example above, we have an object called `userSettings` that contains `theme`, `volume` and `notifications` properties. We are accessing the `theme` using dot notation like `userSettings.theme`. You will learn more about how to work with objects in a future lesson. Since the user's `theme` is currently set to `null`, then the string `light` will be logged to the console.",
+              "fr": "Dans l'exemple ci-dessus, nous avons un objet appelé `userSettings` qui contient les propriétés `theme`, `volume` et `notifications`. Nous accédons au `theme` à l'aide de la notation par point comme `userSettings.theme`. Tu en apprendras davantage sur la façon de travailler avec les objets dans une prochaine leçon. Comme le `theme` de l'utilisateur est actuellement défini à `null`, la chaîne `light` sera affichée dans la console."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the logical AND (`&&`) operator work?",
+              "fr": "Comment fonctionne l'opérateur ET logique (`&&`) ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It checks if both operands are `false`.",
+              "fr": "Il vérifie si les deux opérandes sont `false`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when both conditions need to be `true`.",
+              "fr": "Réfléchis aux cas où les deux conditions doivent être `true`."
+            },
+            {
+              "en": "It checks if both operands are `true` and returns a result",
+              "fr": "Il vérifie si les deux opérandes sont `true` et renvoie un résultat"
+            },
+            {
+              "en": "It returns `true` if one operand is `true`.",
+              "fr": "Il renvoie `true` si un opérande est `true`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when both conditions need to be `true`.",
+              "fr": "Réfléchis aux cas où les deux conditions doivent être `true`."
+            },
+            {
+              "en": "It ignores the second operand.",
+              "fr": "Il ignore le second opérande."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when both conditions need to be `true`.",
+              "fr": "Réfléchis aux cas où les deux conditions doivent être `true`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the nullish coalescing (`??`) operator do?",
+              "fr": "Que fait l'opérateur de coalescence des nuls (`??`) ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It returns the first value, regardless of whether it is `null` or `undefined`.",
+              "fr": "Il renvoie la première valeur, qu'elle soit `null` ou `undefined` ou non."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you want to provide a fallback value.",
+              "fr": "Réfléchis aux cas où tu veux fournir une valeur de repli."
+            },
+            {
+              "en": "It returns the second value only if the first is `null` or `undefined`.",
+              "fr": "Il renvoie la deuxième valeur uniquement si la première est `null` ou `undefined`."
+            },
+            {
+              "en": "It checks if both values are equal.",
+              "fr": "Il vérifie si les deux valeurs sont égales."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you want to provide a fallback value.",
+              "fr": "Réfléchis aux cas où tu veux fournir une valeur de repli."
+            },
+            {
+              "en": "It compares two values for type coercion.",
+              "fr": "Il compare deux valeurs pour la coercition de type."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you want to provide a fallback value.",
+              "fr": "Réfléchis aux cas où tu veux fournir une valeur de repli."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the logical OR (`||`) operator work in JavaScript?",
+              "fr": "Comment fonctionne l'opérateur OU logique (`||`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It checks if both operands are truthy.",
+              "fr": "Il vérifie si les deux opérandes sont truthy."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need just one condition to be `true`.",
+              "fr": "Réfléchis aux cas où tu as besoin qu'une seule condition soit `true`."
+            },
+            {
+              "en": "It returns `true` only if both operands are `false`.",
+              "fr": "Il renvoie `true` uniquement si les deux opérandes sont `false`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need just one condition to be `true`.",
+              "fr": "Réfléchis aux cas où tu as besoin qu'une seule condition soit `true`."
+            },
+            {
+              "en": "It checks if at least one of the operands is truthy.",
+              "fr": "Il vérifie si au moins l'un des opérandes est truthy."
+            },
+            {
+              "en": "It returns `true` only if both operands are truthy.",
+              "fr": "Il renvoie `true` uniquement si les deux opérandes sont truthy."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need just one condition to be `true`.",
+              "fr": "Réfléchis aux cas où tu as besoin qu'une seule condition soit `true`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67327217e70ee0db7913b255.md",
+      "id": "67327217e70ee0db7913b255",
+      "dashedName": "what-is-the-math-object-in-javascript-and-what-are-some-common-methods",
+      "title": {
+        "en": "What Is the Math Object in JavaScript, and What Are Some Common Methods?",
+        "fr": "Qu'est-ce que l'objet Math en JavaScript, et quelles sont quelques méthodes courantes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When diving into JavaScript, you'll quickly discover that performing mathematical operations is a common task. While basic arithmetic operators can handle simple calculations, JavaScript offers a built-in `Math` object to tackle more complex math challenges.",
+              "fr": "Quand tu plonges dans JavaScript, tu découvres rapidement qu'effectuer des opérations mathématiques est une tâche courante. Si les opérateurs arithmétiques de base peuvent gérer des calculs simples, JavaScript offre un objet `Math` intégré pour relever des défis mathématiques plus complexes."
+            },
+            {
+              "en": "This handy tool provides a variety of methods that make it easier to perform advanced calculations and manipulate numbers. Let's explore these methods and see how they can simplify your coding experience.",
+              "fr": "Cet outil pratique fournit une variété de méthodes qui facilitent l'exécution de calculs avancés et la manipulation des nombres. Explorons ces méthodes et voyons comment elles peuvent simplifier ton expérience de programmation."
+            },
+            {
+              "en": "The `Math.random()` method generates a random floating-point number between `0` (inclusive) and `1` (exclusive). This means the possible output can be `0`, but it will never actually reach `1`. Here is an example working with the `Math.random()` method:",
+              "fr": "La méthode `Math.random()` génère un nombre à virgule flottante aléatoire entre `0` (inclus) et `1` (exclu). Cela signifie que la sortie possible peut être `0`, mais elle n'atteindra jamais réellement `1`. Voici un exemple d'utilisation de la méthode `Math.random()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Math.min()` and `Math.max()` both take a set of numbers and return the minimum and maximum value, respectively. Here is an example of working both of those methods:",
+              "fr": "`Math.min()` et `Math.max()` prennent toutes deux un ensemble de nombres et renvoient respectivement la valeur minimale et la valeur maximale. Voici un exemple d'utilisation de ces deux méthodes :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The first `console.log()` will log the number `1`, since `1` is the smallest in that list of numbers. And the second `console.log()` will log the number `9`, since `9` is the largest numbers in that list.",
+              "fr": "Le premier `console.log()` affichera le nombre `1`, car `1` est le plus petit de cette liste de nombres. Et le second `console.log()` affichera le nombre `9`, car `9` est le plus grand de cette liste."
+            },
+            {
+              "en": "If you wanted to round numbers up or down to the nearest whole integer, you could use the `Math.ceil()` and `Math.floor()` methods.  Here is an example of working with `Math.ceil()`:",
+              "fr": "Si tu voulais arrondir des nombres vers le haut ou vers le bas à l'entier le plus proche, tu pourrais utiliser les méthodes `Math.ceil()` et `Math.floor()`. Voici un exemple d'utilisation de `Math.ceil()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Math.ceil()` will round `4.3` up to the nearest whole integer, which is `5` in this case. Now, let's take a look at rounding a number down:",
+              "fr": "`Math.ceil()` arrondira `4.3` vers le haut à l'entier le plus proche, qui est `5` dans ce cas. Maintenant, regardons comment arrondir un nombre vers le bas :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Math.floor()` will round `4.7` down to the nearest whole integer, which is `4` in this case. `Math.round()` is the hybrid of `Math.ceil()` and `Math.floor()`. It rounds a number to its nearest integer, taking the decimal point into account:",
+              "fr": "`Math.floor()` arrondira `4.7` vers le bas à l'entier le plus proche, qui est `4` dans ce cas. `Math.round()` est l'hybride de `Math.ceil()` et `Math.floor()`. Elle arrondit un nombre à son entier le plus proche, en tenant compte de la virgule décimale :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "So, if the decimal point is less than `5`, the number is rounded down. And if the decimal point is `5` or greater, the number is rounded up. A practical application of `Math.floor()` and `Math.random()` is to generate a random number between two whole numbers. Here's the syntax for that:",
+              "fr": "Donc, si la décimale est inférieure à `5`, le nombre est arrondi vers le bas. Et si la décimale est égale ou supérieure à `5`, le nombre est arrondi vers le haut. Une application pratique de `Math.floor()` et `Math.random()` consiste à générer un nombre aléatoire entre deux nombres entiers. Voici la syntaxe pour cela :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Generating a random number between `20` and `1` would look like this:",
+              "fr": "Générer un nombre aléatoire entre `20` et `1` ressemblerait à ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Another helpful `Math` method would be the `Math.trunc()` method. `Math.trunc()` removes the decimal part of a number, returning only the integer portion, without rounding:",
+              "fr": "Une autre méthode utile de `Math` serait la méthode `Math.trunc()`. `Math.trunc()` supprime la partie décimale d'un nombre, ne renvoyant que la partie entière, sans arrondir :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you need to get the square root or cube root of a number, you can use the `Math.sqrt()` and `Math.cbrt()` methods, respectively:",
+              "fr": "Si tu as besoin d'obtenir la racine carrée ou la racine cubique d'un nombre, tu peux utiliser respectivement les méthodes `Math.sqrt()` et `Math.cbrt()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The first log statement, will log `9` because the square root of `81` is `9`, while the second log statement will log `3` because the cube root of `27` is `3`. If you need to get the absolute value of a number, you can use the `Math.abs()` method:",
+              "fr": "La première instruction d'affichage affichera `9` car la racine carrée de `81` est `9`, tandis que la seconde affichera `3` car la racine cubique de `27` est `3`. Si tu as besoin d'obtenir la valeur absolue d'un nombre, tu peux utiliser la méthode `Math.abs()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Math.abs()` returns the absolute value of a number, turning negatives into positives. The last method we will look at will be the `Math.pow()` method:",
+              "fr": "`Math.abs()` renvoie la valeur absolue d'un nombre, transformant les négatifs en positifs. La dernière méthode que nous examinerons sera la méthode `Math.pow()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Math.pow()` takes two numbers and raise the first to the power of the second. There are many more methods that belong to the `Math` object, that you can explore on your own. However, these are just a few of the more commonly used ones found in JavaScript codebases.",
+              "fr": "`Math.pow()` prend deux nombres et élève le premier à la puissance du second. Il existe bien d'autres méthodes appartenant à l'objet `Math`, que tu peux explorer par toi-même. Cependant, celles-ci ne sont que quelques-unes des plus couramment utilisées que l'on trouve dans les bases de code JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `Math.floor()` function do?",
+              "fr": "Que fait la fonction `Math.floor()` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Rounds a number up to the nearest integer.",
+              "fr": "Elle arrondit un nombre vers le haut à l'entier le plus proche."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how this function always rounds towards the lower integer.",
+              "fr": "Réfléchis au fait que cette fonction arrondit toujours vers l'entier inférieur."
+            },
+            {
+              "en": "Rounds a number down, regardless of the decimal point.",
+              "fr": "Elle arrondit un nombre vers le bas, quelle que soit la décimale."
+            },
+            {
+              "en": "Rounds a number to the nearest even integer.",
+              "fr": "Elle arrondit un nombre à l'entier pair le plus proche."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how this function always rounds towards the lower integer.",
+              "fr": "Réfléchis au fait que cette fonction arrondit toujours vers l'entier inférieur."
+            },
+            {
+              "en": "Rounds a number based on the value of the decimal point.",
+              "fr": "Elle arrondit un nombre en fonction de la valeur de la décimale."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how this function always rounds towards the lower integer.",
+              "fr": "Réfléchis au fait que cette fonction arrondit toujours vers l'entier inférieur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is `Math.round()` considered a hybrid of `Math.ceil()` and `Math.floor()`?",
+              "fr": "Pourquoi `Math.round()` est-elle considérée comme un hybride de `Math.ceil()` et `Math.floor()` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It only rounds numbers up like `Math.ceil()`.",
+              "fr": "Elle arrondit uniquement les nombres vers le haut comme `Math.ceil()`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it chooses to round up or down based on the decimal value.",
+              "fr": "Réfléchis à la façon dont elle choisit d'arrondir vers le haut ou vers le bas en fonction de la valeur décimale."
+            },
+            {
+              "en": "It rounds numbers down like `Math.floor()`.",
+              "fr": "Elle arrondit les nombres vers le bas comme `Math.floor()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it chooses to round up or down based on the decimal value.",
+              "fr": "Réfléchis à la façon dont elle choisit d'arrondir vers le haut ou vers le bas en fonction de la valeur décimale."
+            },
+            {
+              "en": "It rounds numbers to the nearest integer, using both rounding up and down depending on the decimal.",
+              "fr": "Elle arrondit les nombres à l'entier le plus proche, en arrondissant à la fois vers le haut et vers le bas selon la décimale."
+            },
+            {
+              "en": "It ignores the decimal point.",
+              "fr": "Elle ignore la décimale."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it chooses to round up or down based on the decimal value.",
+              "fr": "Réfléchis à la façon dont elle choisit d'arrondir vers le haut ou vers le bas en fonction de la valeur décimale."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What's the difference between `Math.min()` and `Math.max()`?",
+              "fr": "Quelle est la différence entre `Math.min()` et `Math.max()` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`Math.min()` returns the maximum value, and `Math.max()` returns the minimum value.",
+              "fr": "`Math.min()` renvoie la valeur maximale, et `Math.max()` renvoie la valeur minimale."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how these functions work with a set of numbers.",
+              "fr": "Réfléchis à la façon dont ces fonctions fonctionnent avec un ensemble de nombres."
+            },
+            {
+              "en": "`Math.min()` returns the smallest number, and `Math.max()` returns the largest number from a set.",
+              "fr": "`Math.min()` renvoie le plus petit nombre, et `Math.max()` renvoie le plus grand nombre d'un ensemble."
+            },
+            {
+              "en": "Both return the same value.",
+              "fr": "Les deux renvoient la même valeur."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how these functions work with a set of numbers.",
+              "fr": "Réfléchis à la façon dont ces fonctions fonctionnent avec un ensemble de nombres."
+            },
+            {
+              "en": "`Math.min()` rounds numbers down, and `Math.max()` rounds numbers up.",
+              "fr": "`Math.min()` arrondit les nombres vers le bas, et `Math.max()` arrondit les nombres vers le haut."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how these functions work with a set of numbers.",
+              "fr": "Réfléchis à la façon dont ces fonctions fonctionnent avec un ensemble de nombres."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
