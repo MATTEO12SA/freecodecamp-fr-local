@@ -1,0 +1,247 @@
+{
+  "workshop": "review-javascript-math",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723c463e51a2d9b747d7529.md",
+      "id": "6723c463e51a2d9b747d7529",
+      "dashedName": "review-javascript-math",
+      "title": {
+        "en": "JavaScript Math Review",
+        "fr": "Révision des mathématiques JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Working with the Number Data Type",
+              "fr": "## Travailler avec le type de données Number"
+            },
+            {
+              "en": "- **Definition**: JavaScript's `Number` type includes integers, floating-point numbers, `Infinity` and `NaN`. Floating-point numbers are numbers with a decimal point. Positive `Infinity` is a number greater than any other number while `-Infinity` is a number smaller than any other number. `NaN` (`Not a Number`) represents an invalid numeric value like the string `\"Jessica\"`.",
+              "fr": "- **Définition** : le type `Number` de JavaScript inclut les entiers, les nombres à virgule flottante, `Infinity` et `NaN`. Les nombres à virgule flottante sont des nombres avec une virgule décimale. `Infinity` positif est un nombre supérieur à tout autre nombre, tandis que `-Infinity` est un nombre inférieur à tout autre nombre. `NaN` (`Not a Number`) représente une valeur numérique invalide comme la chaîne `\"Jessica\"`."
+            },
+            {
+              "en": "## Common Arithmetic Operations",
+              "fr": "## Les opérations arithmétiques courantes"
+            },
+            {
+              "en": "- **Addition Operator**: This operator (`+`) is used to calculate the sum of two or more numbers. \n- **Subtraction Operator**: This operator (`-`) is used to calculate the difference between two numbers.\n- **Multiplication Operator**: This operator (`*`) is used to calculate the product of two or more numbers. \n- **Division Operator**: This operator (`/`) is used to calculate the quotient between two numbers\n- **Division By Zero**: If you try to divide by zero, JavaScript will return `Infinity`.\n- **Remainder Operator**: This operator(`%`) returns the remainder of a division. \n- **Exponentiation Operator**: This operator (`**`) raises one number to the power of another.",
+              "fr": "- **Opérateur d'addition** : cet opérateur (`+`) est utilisé pour calculer la somme de deux nombres ou plus.\n- **Opérateur de soustraction** : cet opérateur (`-`) est utilisé pour calculer la différence entre deux nombres.\n- **Opérateur de multiplication** : cet opérateur (`*`) est utilisé pour calculer le produit de deux nombres ou plus.\n- **Opérateur de division** : cet opérateur (`/`) est utilisé pour calculer le quotient entre deux nombres\n- **Division par zéro** : si tu essaies de diviser par zéro, JavaScript renverra `Infinity`.\n- **Opérateur de reste** : cet opérateur (`%`) renvoie le reste d'une division.\n- **Opérateur d'exponentiation** : cet opérateur (`**`) élève un nombre à la puissance d'un autre."
+            },
+            {
+              "en": "## Calculations with Numbers and Strings",
+              "fr": "## Les calculs avec des nombres et des chaînes"
+            },
+            {
+              "en": "- **Explanation**: When you use the `+` operator with a number and a string, JavaScript will coerce the number into a string and concatenate the two values.  When you use the `-`, `*` or `/` operators with a string and number, JavaScript will coerce the string into a number and the result will be a number. For `null` and `undefined`, JavaScript treats `null` as 0 and undefined as `NaN` in mathematical operations.",
+              "fr": "- **Explication** : quand tu utilises l'opérateur `+` avec un nombre et une chaîne, JavaScript convertit le nombre en chaîne et concatène les deux valeurs. Quand tu utilises les opérateurs `-`, `*` ou `/` avec une chaîne et un nombre, JavaScript convertit la chaîne en nombre et le résultat sera un nombre. Pour `null` et `undefined`, JavaScript traite `null` comme 0 et undefined comme `NaN` dans les opérations mathématiques."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Operator Precedence",
+              "fr": "## La précédence des opérateurs"
+            },
+            {
+              "en": "- **Definition**: Operator precedence determines the order in which operations are evaluated in an expression. Operators with higher precedence are evaluated before those with lower precedence. Values inside the parenthesis will be evaluated first and multiplication/division will have higher precedence than addition/subtraction. If the operators have the same precedence, then JavaScript will use associativity.",
+              "fr": "- **Définition** : la précédence des opérateurs détermine l'ordre dans lequel les opérations sont évaluées dans une expression. Les opérateurs ayant une précédence plus élevée sont évalués avant ceux ayant une précédence plus faible. Les valeurs à l'intérieur des parenthèses seront évaluées en premier et la multiplication/division aura une précédence plus élevée que l'addition/soustraction. Si les opérateurs ont la même précédence, alors JavaScript utilisera l'associativité."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Definition**: Associativity informs us the direction in which an expression is evaluated when multiple operators of the same type exist. It defines whether the expression should be evaluated from left-to-right (`left-associative`) or right-to-left (`right-associative`). For example, the exponent operator is also right to left associative:",
+              "fr": "- **Définition** : l'associativité nous indique la direction dans laquelle une expression est évaluée quand plusieurs opérateurs du même type existent. Elle définit si l'expression doit être évaluée de gauche à droite (`left-associative`) ou de droite à gauche (`right-associative`). Par exemple, l'opérateur d'exposant est lui aussi associatif de droite à gauche :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Increment and Decrement Operators",
+              "fr": "## Les opérateurs d'incrémentation et de décrémentation"
+            },
+            {
+              "en": "- **Increment Operator**: This operator is used to increase the value by one. The prefix notation `++num` increases the value of the variable first, then returns a new value. The postfix notation `num++` returns the current value of the variable first, then increases it.",
+              "fr": "- **Opérateur d'incrémentation** : cet opérateur est utilisé pour augmenter la valeur de un. La notation préfixe `++num` augmente d'abord la valeur de la variable, puis renvoie une nouvelle valeur. La notation postfixe `num++` renvoie d'abord la valeur actuelle de la variable, puis l'augmente."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Decrement Operator**: This operator is used to decrease the value by one. The prefix notation and postfix notation work the same way as earlier with the increment operator.",
+              "fr": "- **Opérateur de décrémentation** : cet opérateur est utilisé pour diminuer la valeur de un. La notation préfixe et la notation postfixe fonctionnent de la même manière que précédemment avec l'opérateur d'incrémentation."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Compound Assignment Operators",
+              "fr": "## Les opérateurs d'affectation composée"
+            },
+            {
+              "en": "- **Addition Assignment (`+=`) Operator**: This operator performs addition on the values and assigns the result to the variable.\n- **Subtraction Assignment (`-=`) Operator**: This operator performs subtraction on the values and assigns the result to the variable.\n- **Multiplication Assignment (`*=`) Operator**: This operator performs multiplication on the values and assigns the result to the variable.\n- **Division Assignment (`/=`) Operator**: This operator performs division on the values and assigns the result to the variable.\n- **Remainder Assignment (`%=`) Operator**: This operator divides a variable by the specified number and assigns the remainder to the variable.\n- **Exponentiation Assignment (`**=`) Operator**: This operator raises a variable to the power of the specified number and reassigns the result to the variable.",
+              "fr": "- **Opérateur d'affectation par addition (`+=`)** : cet opérateur effectue une addition sur les valeurs et affecte le résultat à la variable.\n- **Opérateur d'affectation par soustraction (`-=`)** : cet opérateur effectue une soustraction sur les valeurs et affecte le résultat à la variable.\n- **Opérateur d'affectation par multiplication (`*=`)** : cet opérateur effectue une multiplication sur les valeurs et affecte le résultat à la variable.\n- **Opérateur d'affectation par division (`/=`)** : cet opérateur effectue une division sur les valeurs et affecte le résultat à la variable.\n- **Opérateur d'affectation par reste (`%=`)** : cet opérateur divise une variable par le nombre spécifié et affecte le reste à la variable.\n- **Opérateur d'affectation par exponentiation (`**=`)** : cet opérateur élève une variable à la puissance du nombre spécifié et réaffecte le résultat à la variable."
+            },
+            {
+              "en": "## Booleans and Equality",
+              "fr": "## Les booléens et l'égalité"
+            },
+            {
+              "en": "- **Boolean Definition**: A boolean is a data type that can only have two values: `true` or `false`. \n- **Equality (`==`) Operator**: This operator uses type coercion before checking if the values are equal.",
+              "fr": "- **Définition d'un booléen** : un booléen est un type de données qui ne peut avoir que deux valeurs : `true` ou `false`.\n- **Opérateur d'égalité (`==`)** : cet opérateur utilise la coercition de type avant de vérifier si les valeurs sont égales."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Strict Equality (`===`) Operator**: This operator does not perform type coercion and checks if both the types and values are equal.",
+              "fr": "- **Opérateur d'égalité stricte (`===`)** : cet opérateur n'effectue pas de coercition de type et vérifie si les types et les valeurs sont égaux."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Inequality (`!=`) Operator**: This operator uses type coercion before checking if the values are not equal.\n- **Strict  Inequality (`!==`) Operator**: This operator does not perform type coercion and checks if both the types and values are not equal.",
+              "fr": "- **Opérateur d'inégalité (`!=`)** : cet opérateur utilise la coercition de type avant de vérifier si les valeurs ne sont pas égales.\n- **Opérateur d'inégalité stricte (`!==`)** : cet opérateur n'effectue pas de coercition de type et vérifie si les types et les valeurs ne sont pas égaux."
+            },
+            {
+              "en": "## Comparison Operators",
+              "fr": "## Les opérateurs de comparaison"
+            },
+            {
+              "en": "- **Greater Than (`>`) Operator**: This operator checks if the value on the left is greater than the one on the right.\n- **Greater Than (`>=`) or Equal Operator**: This operator checks if the value on the left is greater than or equal to the one on the right.\n- **Less Than (`<`) Operator**: This operator checks if the value on the left is less than the one on the right.\n- **Less Than (`<=`) or Equal Operator**: This operator checks if the value on the left is less than or equal to the one on the right.",
+              "fr": "- **Opérateur supérieur à (`>`)** : cet opérateur vérifie si la valeur de gauche est supérieure à celle de droite.\n- **Opérateur supérieur ou égal (`>=`)** : cet opérateur vérifie si la valeur de gauche est supérieure ou égale à celle de droite.\n- **Opérateur inférieur à (`<`)** : cet opérateur vérifie si la valeur de gauche est inférieure à celle de droite.\n- **Opérateur inférieur ou égal (`<=`)** : cet opérateur vérifie si la valeur de gauche est inférieure ou égale à celle de droite."
+            },
+            {
+              "en": "## Unary Operators",
+              "fr": "## Les opérateurs unaires"
+            },
+            {
+              "en": "- **Unary Plus Operator**: This operator converts its operand into a number. If the operand is already a number, it remains unchanged.",
+              "fr": "- **Opérateur plus unaire** : cet opérateur convertit son opérande en nombre. Si l'opérande est déjà un nombre, il reste inchangé."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Unary Negation (`-`) Operator**: This operator negates the operand.",
+              "fr": "- **Opérateur de négation unaire (`-`)** : cet opérateur inverse le signe de l'opérande."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Logical NOT (`!`) Operator**: This operator flips the boolean value of its operand. So, if the operand is `true`, it becomes `false`, and if it's `false`, it becomes `true`.",
+              "fr": "- **Opérateur NON logique (`!`)** : cet opérateur inverse la valeur booléenne de son opérande. Donc, si l'opérande est `true`, il devient `false`, et s'il est `false`, il devient `true`."
+            },
+            {
+              "en": "## Bitwise Operators",
+              "fr": "## Les opérateurs bit à bit"
+            },
+            {
+              "en": "- **Bitwise AND (`&`) Operator**: This operator returns a 1 in each bit position for which the corresponding bits of both operands are 1. \n- **Bitwise AND Assignment (`&=`) Operator**: This operator performs a `bitwise AND` operation with the specified number and reassigns the result to the variable.\n- **Bitwise OR (`|`) Operator**: This operator returns a 1 in each bit position for which the corresponding bits of either or both operands are 1. \n- **Bitwise OR Assignment (`|=`) Operator**: This operator performs a `bitwise OR` operation with the specified number and reassigns the result to the variable.\n- **Bitwise XOR (`^`) Operator**: This operator returns a 1 in each bit position for which the corresponding bits of either, but not both, operands are 1. \n- **Bitwise NOT (`~`) Operator**: This operator inverts the binary representation of a number.\n- **Left Shift (`<<`) Operator**: This operator shifts all bits to the left by a specified number of positions. \n- **Right Shift (`>>`) Operator**: This operator shifts all bits to the right.",
+              "fr": "- **Opérateur ET bit à bit (`&`)** : cet opérateur renvoie un 1 à chaque position de bit pour laquelle les bits correspondants des deux opérandes sont à 1.\n- **Opérateur d'affectation ET bit à bit (`&=`)** : cet opérateur effectue une opération `ET bit à bit` avec le nombre spécifié et réaffecte le résultat à la variable.\n- **Opérateur OU bit à bit (`|`)** : cet opérateur renvoie un 1 à chaque position de bit pour laquelle les bits correspondants de l'un ou des deux opérandes sont à 1.\n- **Opérateur d'affectation OU bit à bit (`|=`)** : cet opérateur effectue une opération `OU bit à bit` avec le nombre spécifié et réaffecte le résultat à la variable.\n- **Opérateur OU exclusif bit à bit (`^`)** : cet opérateur renvoie un 1 à chaque position de bit pour laquelle les bits correspondants de l'un, mais pas des deux, opérandes sont à 1.\n- **Opérateur NON bit à bit (`~`)** : cet opérateur inverse la représentation binaire d'un nombre.\n- **Opérateur de décalage à gauche (`<<`)** : cet opérateur décale tous les bits vers la gauche d'un nombre de positions spécifié.\n- **Opérateur de décalage à droite (`>>`)** : cet opérateur décale tous les bits vers la droite."
+            },
+            {
+              "en": "## Conditional Statements, Truthy Values, Falsy Values and the Ternary Operator",
+              "fr": "## Les instructions conditionnelles, les valeurs truthy, les valeurs falsy et l'opérateur ternaire"
+            },
+            {
+              "en": "- **`if/else if/else`**: An `if` statement takes a condition and runs a block of code if that condition is `truthy`. If the condition is `false`, then it moves to the `else if` block. If none of those conditions are `true`, then it will execute the `else` clause. `Truthy` values are any values that result in `true` when evaluated in a Boolean context like an `if` statement. `Falsy` values are values that evaluate to `false` in a Boolean context.",
+              "fr": "- **`if/else if/else`** : une instruction `if` prend une condition et exécute un bloc de code si cette condition est `truthy`. Si la condition est `false`, alors elle passe au bloc `else if`. Si aucune de ces conditions n'est `true`, alors elle exécutera la clause `else`. Les valeurs `truthy` sont toutes les valeurs qui donnent `true` lorsqu'elles sont évaluées dans un contexte booléen comme une instruction `if`. Les valeurs `falsy` sont des valeurs qui s'évaluent à `false` dans un contexte booléen."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Ternary Operator**: This operator is often used as a shorter way to write `if else` statements.",
+              "fr": "- **Opérateur ternaire** : cet opérateur est souvent utilisé comme une façon plus courte d'écrire des instructions `if else`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Binary Logical Operators",
+              "fr": "## Les opérateurs logiques binaires"
+            },
+            {
+              "en": "- **Logical AND (`&&`) Operator**: This operator checks if both operands are `true`. If both are `true`, then it will return the second value. If either operand is `falsy`, then it will return the `falsy` value. If both operands are `falsy`, it will return the first `falsy` value.",
+              "fr": "- **Opérateur ET logique (`&&`)** : cet opérateur vérifie si les deux opérandes sont `true`. Si les deux sont `true`, alors il renverra la deuxième valeur. Si l'un des opérandes est `falsy`, alors il renverra la valeur `falsy`. Si les deux opérandes sont `falsy`, il renverra la première valeur `falsy`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Logical OR (`||`) Operator**: This operator checks if at least one of the operands is truthy. \n- **Nullish Coalescing (`??`) Operator**: This operator will return a value only if the first one is `null` or `undefined`.",
+              "fr": "- **Opérateur OU logique (`||`)** : cet opérateur vérifie si au moins l'un des opérandes est truthy.\n- **Opérateur de coalescence des nuls (`??`)** : cet opérateur ne renverra une valeur que si la première est `null` ou `undefined`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## The `Math` Object",
+              "fr": "## L'objet `Math`"
+            },
+            {
+              "en": "- **The `Math.random()` Method**: This method generates a random floating-point number between 0 (inclusive) and 1 (exclusive). This means the possible output can be 0, but it will never actually reach 1. \n- **The `Math.max()` Method**: This method takes a set of numbers and returns the maximum value.\n- **The `Math.min()` Method**: This method takes a set of numbers and returns the minimum value.\n- **The `Math.ceil()` Method**: This method rounds a value up to the nearest whole integer. \n- **The `Math.floor()` Method**: This method rounds a value down to the nearest whole integer. \n- **The `Math.round()` Method**: This method rounds a value to the nearest whole integer.",
+              "fr": "- **La méthode `Math.random()`** : cette méthode génère un nombre à virgule flottante aléatoire entre 0 (inclus) et 1 (exclu). Cela signifie que la sortie possible peut être 0, mais elle n'atteindra jamais réellement 1.\n- **La méthode `Math.max()`** : cette méthode prend un ensemble de nombres et renvoie la valeur maximale.\n- **La méthode `Math.min()`** : cette méthode prend un ensemble de nombres et renvoie la valeur minimale.\n- **La méthode `Math.ceil()`** : cette méthode arrondit une valeur vers le haut à l'entier le plus proche.\n- **La méthode `Math.floor()`** : cette méthode arrondit une valeur vers le bas à l'entier le plus proche.\n- **La méthode `Math.round()`** : cette méthode arrondit une valeur à l'entier le plus proche."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **The `Math.trunc()` Method**: This method removes the decimal part of a number, returning only the integer portion, without rounding.\n- **The `Math.sqrt()` Method**: This method will return the square root of a number.\n- **The `Math.cbrt()` Method**: This method will return the cube root of a number.\n- **The `Math.abs()` Method**: This method will return the absolute value of a number.\n- **The `Math.pow()` Method**: This method takes two numbers and raises the first to the power of the second.",
+              "fr": "- **La méthode `Math.trunc()`** : cette méthode supprime la partie décimale d'un nombre, ne renvoyant que la partie entière, sans arrondir.\n- **La méthode `Math.sqrt()`** : cette méthode renverra la racine carrée d'un nombre.\n- **La méthode `Math.cbrt()`** : cette méthode renverra la racine cubique d'un nombre.\n- **La méthode `Math.abs()`** : cette méthode renverra la valeur absolue d'un nombre.\n- **La méthode `Math.pow()`** : cette méthode prend deux nombres et élève le premier à la puissance du second."
+            },
+            {
+              "en": "## Common Number Methods",
+              "fr": "## Les méthodes de nombre courantes"
+            },
+            {
+              "en": "- **`isNaN()`**: `NaN` stands for \"Not-a-Number\". It's a special value that represents an unrepresentable or undefined numerical result. The `isNaN()` function property is used to determine whether a value is `NaN` or not.  `Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where type coercion might lead to unexpected results with the global `isNaN()` function.",
+              "fr": "- **`isNaN()`** : `NaN` signifie \"Not-a-Number\" (pas un nombre). C'est une valeur spéciale qui représente un résultat numérique non représentable ou indéfini. La propriété fonction `isNaN()` est utilisée pour déterminer si une valeur est `NaN` ou non. `Number.isNaN()` offre une façon plus fiable de vérifier les valeurs `NaN`, surtout dans les cas où la coercition de type pourrait conduire à des résultats inattendus avec la fonction globale `isNaN()`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **The `parseFloat()` Method**: This method parses a string argument and returns a floating-point number. It's designed to extract a number from the beginning of a string, even if the string contains non-numeric characters later on.\n- **The `parseInt()` Method**: This method parses a string argument and returns an integer. `parseInt()` stops parsing at the first non-digit it encounters. For floating-point numbers, it returns only the integer part. If it can't find a valid integer at the start of the string, it returns `NaN`.\n- **The `toFixed()` Method**: This method is called on a number and takes one optional argument, which is the number of digits to appear after the decimal point. It returns a string representation of the number with the specified number of decimal places.",
+              "fr": "- **La méthode `parseFloat()`** : cette méthode analyse un argument de type chaîne et renvoie un nombre à virgule flottante. Elle est conçue pour extraire un nombre depuis le début d'une chaîne, même si la chaîne contient des caractères non numériques par la suite.\n- **La méthode `parseInt()`** : cette méthode analyse un argument de type chaîne et renvoie un entier. `parseInt()` arrête l'analyse au premier caractère non numérique qu'elle rencontre. Pour les nombres à virgule flottante, elle ne renvoie que la partie entière. Si elle ne trouve pas d'entier valide au début de la chaîne, elle renvoie `NaN`.\n- **La méthode `toFixed()`** : cette méthode est appelée sur un nombre et prend un argument facultatif, qui est le nombre de chiffres à faire apparaître après la virgule décimale. Elle renvoie une représentation sous forme de chaîne du nombre avec le nombre de décimales spécifié."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Math topics and concepts.",
+              "fr": "Revois les sujets et les concepts des mathématiques JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
