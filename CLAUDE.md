@@ -76,7 +76,7 @@ node tools/translate-workshop.js apply <block>     # Reconstruit le .md FR depui
 node tools/translate-workshop.js verify <block>    # Diff des blocs techniques EN/FR
 ```
 
-Le JSON a deux modes : `kind: "workshop"` (description/hints) et `kind: "lecture"` (description/interactive/questions/answers/feedback pour les lectures JS).
+Le JSON a trois modes : `kind: "workshop"` (description/hints), `kind: "lecture"` (description/interactive/questions/answers/feedback pour les lectures JS ; les reviews `challengeType 31` ajoutent `# --assignment--`) et `kind: "quiz"` (`challengeType 8` : `#### --text--`/`--distractors--`/`--answer--`). Les distracteurs en code ou backticks et les separateurs `---` restent verbatim.
 
 Avant `apply`, scanner le JSON contre les restes anglais/hybrides — `undefined`, `Hint non traduit`, `should`, `Your`, `The/the`, `matching the`, `but found`, `a doit`, `un règle`. Les chaînes techniques en backticks peuvent rester en anglais si les tests l'exigent.
 
@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 16/230 blocs — module `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes. Prochaine cible : étendre le pipeline pour reviews (`--assignment--`) et quizzes (`--quizzes--`/`--quiz--`), ou passer au module suivant.
+- **JavaScript v9** : 20/230 blocs — module `javascript-variables-and-strings` **100 % complet** (9 lectures + 5 workshops + 2 labs + 2 reviews + 2 quizzes). Le pipeline gère maintenant les quizzes (`kind: "quiz"`) et les reviews (kind lecture + `# --assignment--`). Prochaine cible : module suivant `javascript-booleans-and-numbers`.
 
 ## Pièges
 

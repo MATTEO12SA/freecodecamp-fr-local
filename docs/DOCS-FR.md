@@ -58,7 +58,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock. Etat actuel : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
-JavaScript v9 est en cours : 16 blocs FR sur 230 (97 fichiers) — module `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie maintenant avec `kind: "lecture"`.
+JavaScript v9 est en cours : 20 blocs FR sur 230 (101 fichiers) — module `javascript-variables-and-strings` **100 % complet** (9 lectures + 5 workshops + 2 labs + 2 reviews + 2 quizzes). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -78,7 +78,7 @@ node tools/translate-workshop.js verify <workshop>
 
 `extract` lit les fichiers EN et ecrit `tools/translations/<workshop>.json` avec uniquement les titres, descriptions et hints hors code. Codex traduit et relit ce JSON manuellement. `apply` reconstruit les `.md` FR depuis les templates EN. `verify` compare EN/FR et echoue si un bloc technique a bouge.
 
-Le meme script sait aussi traiter les lectures JavaScript v9. Dans ce cas, `extract` produit `kind: "lecture"` et extrait la prose des sections `description`, `interactive`, `questions`, `answers` et `feedback`. Les blocs de code, marqueurs, `video-solution` et frontmatter technique restent copies depuis EN.
+Le meme script sait aussi traiter les lectures JavaScript v9. Dans ce cas, `extract` produit `kind: "lecture"` et extrait la prose des sections `description`, `interactive`, `questions`, `answers` et `feedback`. Les blocs de code, marqueurs, `video-solution` et frontmatter technique restent copies depuis EN. Les **reviews** (`challengeType 31`) passent par le meme mode lecture, avec `# --assignment--` ajoute aux marqueurs de prose. Les **quizzes** (`challengeType 8`) utilisent `kind: "quiz"` : seuls `# --description--`, `#### --text--`, `#### --distractors--` et `#### --answer--` sont traduits ; les distracteurs en code/backticks et les separateurs `---` restent verbatim.
 
 Regles specifiques au pipeline :
 
@@ -92,7 +92,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-RWD est termine. Suite en cours : JavaScript v9 (16/230), module 1 complet sauf reviews/quizzes (besoin extension pipeline).
+RWD est termine. Suite en cours : JavaScript v9 (20/230), module 1 `javascript-variables-and-strings` 100 % complet. Prochaine cible : module 2 `javascript-booleans-and-numbers`.
 
 ## Scripts Gardes
 

@@ -36,7 +36,7 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
    et aucune repetition espacee n'est possible.
 4. **Pipeline de traduction 100 % manuel.** `translate-workshop.js` extrait la
    prose en JSON ; un humain traduit. `phrasebook.json` ne contient que 12 regles.
-   C'est le goulot qui bloque tout le reste du curriculum (JS v9 : 16/230 au 2026-05-29 ; diagnostic initial : 2/230).
+   C'est le goulot qui bloque tout le reste du curriculum (JS v9 : 20/230 au 2026-05-30, module 1 complet ; diagnostic initial : 2/230).
 5. **Navigation sans URL.** `cours-fr.tsx` change d'ecran via un `useState`
    (`{v:'lang'|'fr-home'|'fr-cert'}`) → bouton retour casse, pas de partage/
    bookmark, etat perdu au reload.

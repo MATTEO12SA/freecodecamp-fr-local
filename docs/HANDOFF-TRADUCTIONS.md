@@ -18,11 +18,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
-### JavaScript v9 — Démarré
+### JavaScript v9 — Module 1 Terminé (20/230)
 
-État actuel : 10 blocs FR sur 230 (38 fichiers). Blocs traduits dans le module `javascript-variables-and-strings` : les 9 lectures — `lecture-introduction-to-javascript` (4 fichiers), `lecture-introduction-to-strings` (3), `lecture-understanding-code-clarity` (2), `lecture-working-with-data-types` (2), `lecture-working-with-strings-in-javascript` (5), `lecture-working-with-string-character-methods` (1), `lecture-working-with-string-search-and-slice-methods` (2), `lecture-working-with-string-formatting-methods` (2), `lecture-working-with-string-modification-methods` (2) — plus le premier workshop `workshop-greeting-bot` (15). Titres + intros de ces blocs traduits dans `intro.json`. Restent dans ce module : labs (`lab-javascript-trivia-bot`, `lab-sentence-maker`), reviews, quiz, et workshops (`workshop-teacher-chatbot`, `workshop-string-inspector`, `workshop-string-formatter`, `workshop-string-transformer`). Prochaine cible logique : `lab-javascript-trivia-bot`.
+État actuel : 20 blocs FR sur 230 (101 fichiers). Le module `javascript-variables-and-strings` est **100 % traduit (20/20 blocs)** : les 9 lectures, les 5 workshops (`workshop-greeting-bot`, `workshop-teacher-chatbot`, `workshop-string-inspector`, `workshop-string-formatter`, `workshop-string-transformer`), les 2 labs (`lab-javascript-trivia-bot`, `lab-sentence-maker`), les 2 reviews (`review-javascript-variables-and-data-types`, `review-javascript-strings`) et les 2 quizzes (`quiz-javascript-variables-and-data-types`, `quiz-javascript-strings`). Titres + intros de tous ces blocs traduits dans `intro.json`. Prochaine cible : module 2 `javascript-booleans-and-numbers`.
 
-Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--`. Le pipeline `tools/translate-workshop.js` couvre maintenant ces sections avec `kind: "lecture"`; traduire le JSON manuellement, puis appliquer/verifier.
+Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--` (`kind: "lecture"`). Les reviews (`challengeType 31`) passent par le même mode lecture, avec `# --assignment--` ajouté aux marqueurs de prose. Les quizzes (`challengeType 8`) utilisent `kind: "quiz"` : seuls `# --description--`, `#### --text--`, `#### --distractors--` et `#### --answer--` sont traduits ; distracteurs en code/backticks et séparateurs `---` restent verbatim. Traduire le JSON manuellement, puis `apply`/`verify`/`check-translation-quality`.
 
 ### RWD v9 — Workshops Traduits : 17/17 ✅
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Suite en cours : JavaScript v9 (16/230 blocs). Module 1 (`javascript-variables-and-strings`) complet : 9 lectures + 5 workshops + 2 labs. Restent 2 reviews + 2 quizzes (besoin extension pipeline). Prochaine cible : etendre le pipeline pour reviews/quizzes, ou module 2.
+RWD est termine. Suite en cours : JavaScript v9 (20/230 blocs). Module 1 (`javascript-variables-and-strings`) **100 % complet** : 9 lectures + 5 workshops + 2 labs + 2 reviews + 2 quizzes. Pipeline etendu pour reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 2 `javascript-booleans-and-numbers`.
 
 ### Lister ce qui manque dans un module
 
@@ -281,7 +281,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 16/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 20/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -299,7 +299,7 @@ pnpm local:check:full                            # checks longs avant push final
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Continuer JavaScript v9 : module 1 (`javascript-variables-and-strings`) complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes ; prochaine cible = etendre le pipeline pour reviews (`--assignment--`)/quizzes (`--quizzes--`), ou module 2.
+4. Continuer JavaScript v9 : module 1 (`javascript-variables-and-strings`) **100 % complet** (20/20 blocs) ; prochaine cible = module 2 `javascript-booleans-and-numbers`.
 5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 6. Commit + push immédiats à la fin de chaque module.
 
@@ -314,7 +314,9 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session (2026-05-29, traduction JS)** : traduit les 7 lectures restantes du module `javascript-variables-and-strings` (16 fichiers, mode `lecture`) + le premier workshop `workshop-greeting-bot` (15 fichiers, mode `workshop`) via le pipeline `extract/apply/verify` — soit 31 fichiers, 8 nouveaux blocs. Lectures : `understanding-code-clarity`, `working-with-data-types`, `working-with-strings-in-javascript`, et les 4 lectures `working-with-string-*-methods`. Titres + intros de tous ces blocs traduits dans `intro.json` (chacun présent 2× : map `blocks` + arbre `chapters/modules`). QA verte partout, drift 0, prettier clean. JS passe de 2/230 à 10/230 blocs. Régénération curriculum-data faite pour afficher les titres. Prochaine cible : `lab-javascript-trivia-bot`.
+**Dernière session (2026-05-30, quizzes + reviews)** : module `javascript-variables-and-strings` terminé à 100 % (20/20 blocs, JS 16→20/230). Pipeline `translate-workshop.js` étendu pour deux types : les **quizzes** (`kind: "quiz"`, challengeType 8 — extrait `# --description--`, `#### --text--`, `#### --distractors--`, `#### --answer--` ; distracteurs en code/backticks et séparateurs `---` laissés verbatim) et les **reviews** (challengeType 31, mode lecture + `# --assignment--` ajouté à `lectureProseMarkers`). `check-translation-quality.js` rendu kind-aware en parallèle (`detectKind` + `proseMarkersForKind` exportés depuis `translate-workshop.js`). Traduit les 4 derniers blocs du module via `extract/apply/verify` : `review-javascript-variables-and-data-types`, `review-javascript-strings`, `quiz-javascript-variables-and-data-types`, `quiz-javascript-strings`. Titres + intros ajoutés dans `intro.json` (2× chacun). `verify` vert sur les 4, `lint-challenges --superblock javascript-v9` exit 0, drift 0, prettier clean. Les avertissements `check-translation-quality` restants sont volontaires (termes gardés en anglais : `Camel case` et ses distracteurs `X case`, expansions de l'acronyme ASCII, exemples de littéraux `` `Hello, ${user}!` ``). Prochaine cible : module 2 `javascript-booleans-and-numbers`. ⚠️ Push vers `standalone main` bloqué par le classifieur de permissions Claude cette session : commits locaux faits, à pousser manuellement via `git push standalone main`.
+
+**Session du 2026-05-29 (lectures + greeting-bot)** : traduit les 7 lectures restantes du module `javascript-variables-and-strings` (16 fichiers, mode `lecture`) + le premier workshop `workshop-greeting-bot` (15 fichiers, mode `workshop`) via le pipeline `extract/apply/verify` — soit 31 fichiers, 8 nouveaux blocs. Lectures : `understanding-code-clarity`, `working-with-data-types`, `working-with-strings-in-javascript`, et les 4 lectures `working-with-string-*-methods`. Titres + intros de tous ces blocs traduits dans `intro.json` (chacun présent 2× : map `blocks` + arbre `chapters/modules`). QA verte partout, drift 0, prettier clean. JS passe de 2/230 à 10/230 blocs. Régénération curriculum-data faite pour afficher les titres. Prochaine cible : `lab-javascript-trivia-bot`.
 
 **Session précédente** : hub dev local + checks + catalogue + pipeline JS + docs, tous pushés par lots.
 
@@ -326,3 +328,5 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
 
 Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 16/230. Prochaine cible traduction : reviews/quizzes du module 1 (besoin extension pipeline) ou module 2.
+
+(Mis à jour la session suivante : JS désormais 20/230, module 1 terminé, pipeline étendu — voir la note de session 2026-05-30 ci-dessous.)

@@ -1,0 +1,223 @@
+{
+  "workshop": "review-javascript-variables-and-data-types",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723be264695fb7e619fe1fa.md",
+      "id": "6723be264695fb7e619fe1fa",
+      "dashedName": "review-javascript-variables-and-data-types",
+      "title": {
+        "en": "JavaScript Variables and Data Types Review",
+        "fr": "Révision des variables et types de données JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Working with HTML, CSS, and JavaScript",
+              "fr": "## Travailler avec HTML, CSS et JavaScript"
+            },
+            {
+              "en": "While HTML and CSS provide website structure, JavaScript brings interactivity to websites by enabling complex functionality, such as handling user input, animating elements, and even building full web applications.",
+              "fr": "Alors que HTML et CSS fournissent la structure d'un site web, JavaScript apporte de l'interactivité aux sites web en permettant des fonctionnalités complexes, comme la gestion des saisies de l'utilisateur, l'animation d'éléments, et même la création d'applications web complètes."
+            },
+            {
+              "en": "## Data Types in JavaScript",
+              "fr": "## Les types de données en JavaScript"
+            },
+            {
+              "en": "Data types help the program understand the kind of data it's working with, whether it's a number, text, or something else.",
+              "fr": "Les types de données aident le programme à comprendre le genre de données qu'il manipule, qu'il s'agisse d'un nombre, de texte ou d'autre chose."
+            },
+            {
+              "en": "- **Number**: A number represents both integers and floating-point values. Examples of integers include 7, 19, and 90. \n- **Floating point**: A floating point number is a number with a decimal point. Examples include 3.14, 0.5, and 0.0001.\n- **String**: A string is a sequence of characters, or text, enclosed in quotes. `\"I like coding\"` and `'JavaScript is fun'` are examples of strings.\n- **Boolean**: A boolean represents one of two possible values: `true` or `false`. You can use a boolean to represent a condition, such as `isLoggedIn = true`.\n- **Undefined and Null**: An `undefined` value is a variable that has been declared but not assigned a value. A `null` value is an empty value, or a variable that has intentionally been assigned a value of `null`.\n- **Object**: An object is a collection of key-value pairs. The key is the property name, and the value is the property value.",
+              "fr": "- **Number** : un nombre représente à la fois les entiers et les valeurs à virgule flottante. Des exemples d'entiers incluent 7, 19 et 90.\n- **Floating point** : un nombre à virgule flottante est un nombre comportant une virgule décimale. Des exemples incluent 3.14, 0.5 et 0.0001.\n- **String** : une chaîne est une séquence de caractères, ou du texte, entourée de guillemets. `\"I like coding\"` et `'JavaScript is fun'` sont des exemples de chaînes.\n- **Boolean** : un booléen représente l'une de deux valeurs possibles : `true` ou `false`. Tu peux utiliser un booléen pour représenter une condition, comme `isLoggedIn = true`.\n- **Undefined and Null** : une valeur `undefined` est une variable qui a été déclarée mais à laquelle aucune valeur n'a été affectée. Une valeur `null` est une valeur vide, ou une variable à laquelle on a intentionnellement affecté la valeur `null`.\n- **Object** : un objet est une collection de paires clé-valeur. La clé est le nom de la propriété, et la valeur est la valeur de la propriété."
+            },
+            {
+              "en": "Here, the `pet` object has three properties or keys: `name`, `age`, and `type`. The values are `Fluffy`, `3`, and `dog`, respectively.",
+              "fr": "Ici, l'objet `pet` a trois propriétés ou clés : `name`, `age` et `type`. Les valeurs sont respectivement `Fluffy`, `3` et `dog`."
+            },
+            {
+              "en": "- **Symbol**: The Symbol data type is a unique and immutable value that may be used as an identifier for object properties.",
+              "fr": "- **Symbol** : le type de données Symbol est une valeur unique et immuable qui peut être utilisée comme identifiant pour les propriétés d'un objet."
+            },
+            {
+              "en": "In this example below, two symbols are created with the same description, but they are not equal.",
+              "fr": "Dans l'exemple ci-dessous, deux symboles sont créés avec la même description, mais ils ne sont pas égaux."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **BigInt**: When the number is too large for the `Number` data type, you can use the BigInt data type to represent integers of arbitrary length.",
+              "fr": "- **BigInt** : quand le nombre est trop grand pour le type de données `Number`, tu peux utiliser le type de données BigInt pour représenter des entiers d'une longueur arbitraire."
+            },
+            {
+              "en": "By adding an `n` to the end of the number, you can create a BigInt.",
+              "fr": "En ajoutant un `n` à la fin du nombre, tu peux créer un BigInt."
+            },
+            {
+              "en": "## Variables in JavaScript",
+              "fr": "## Les variables en JavaScript"
+            },
+            {
+              "en": "- Variables can be declared using the `let` keyword.",
+              "fr": "- Les variables peuvent être déclarées à l'aide du mot-clé `let`."
+            },
+            {
+              "en": "- To assign a value to a variable, you can use the assignment operator `=`.",
+              "fr": "- Pour affecter une valeur à une variable, tu peux utiliser l'opérateur d'affectation `=`."
+            },
+            {
+              "en": "- Variables declared using `let` can be reassigned a new value.",
+              "fr": "- Les variables déclarées avec `let` peuvent être réaffectées à une nouvelle valeur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- Apart from `let`, you can also use `const` to declare a variable. However, a `const` variable cannot be reassigned a new value.",
+              "fr": "- En dehors de `let`, tu peux aussi utiliser `const` pour déclarer une variable. Cependant, une variable `const` ne peut pas être réaffectée à une nouvelle valeur."
+            },
+            {
+              "en": "- Variables declared using `const` find uses in declaring constants, that are not allowed to change throughout the code, such as `PI` or `MAX_SIZE`.",
+              "fr": "- Les variables déclarées avec `const` servent à déclarer des constantes, qui ne sont pas autorisées à changer tout au long du code, comme `PI` ou `MAX_SIZE`."
+            },
+            {
+              "en": "## Variable Naming Conventions",
+              "fr": "## Les conventions de nommage des variables"
+            },
+            {
+              "en": "- Variable names should be descriptive and meaningful.\n- Variable names should be camelCase like `cityName`, `isLoggedIn`, and `veryBigNumber`.\n- Variable names should not start with a number. They must begin with a letter, `_`, or `$`.\n- Variable names should not contain spaces or special characters, except for `_` and `$`.\n- Variable names should not be reserved keywords.\n- Variable names are case-sensitive. `age` and `Age` are different variables.",
+              "fr": "- Les noms de variables doivent être descriptifs et significatifs.\n- Les noms de variables doivent être en camelCase, comme `cityName`, `isLoggedIn` et `veryBigNumber`.\n- Les noms de variables ne doivent pas commencer par un chiffre. Ils doivent commencer par une lettre, `_` ou `$`.\n- Les noms de variables ne doivent pas contenir d'espaces ni de caractères spéciaux, à l'exception de `_` et `$`.\n- Les noms de variables ne doivent pas être des mots-clés réservés.\n- Les noms de variables sont sensibles à la casse. `age` et `Age` sont des variables différentes."
+            },
+            {
+              "en": "## Strings and String immutability in JavaScript",
+              "fr": "## Les chaînes et l'immuabilité des chaînes en JavaScript"
+            },
+            {
+              "en": "- Strings are sequences of characters enclosed in quotes. They can be created using single quotes and double quotes.",
+              "fr": "- Les chaînes sont des séquences de caractères entourées de guillemets. Elles peuvent être créées avec des guillemets simples ou des guillemets doubles."
+            },
+            {
+              "en": "- Strings are immutable in JavaScript. This means that once a string is created, you cannot change the characters in the string. However, you can still reassign strings to a new value.",
+              "fr": "- Les chaînes sont immuables en JavaScript. Cela signifie qu'une fois qu'une chaîne est créée, tu ne peux pas modifier les caractères de la chaîne. Cependant, tu peux quand même réaffecter une chaîne à une nouvelle valeur."
+            },
+            {
+              "en": "## String Concatenation in JavaScript",
+              "fr": "## La concaténation de chaînes en JavaScript"
+            },
+            {
+              "en": "- Concatenation is the process of joining multiple strings or combining strings with variables that hold text. The `+` operator is one of the simplest and most frequently used methods to concatenate strings.",
+              "fr": "- La concaténation est le procédé qui consiste à joindre plusieurs chaînes ou à combiner des chaînes avec des variables qui contiennent du texte. L'opérateur `+` est l'une des méthodes les plus simples et les plus fréquemment utilisées pour concaténer des chaînes."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- If you need to add or append to an existing string, then you can use the  `+=` operator. This is helpful when you want to build upon a string by adding more text to it over time.",
+              "fr": "- Si tu as besoin d'ajouter du texte à une chaîne existante, tu peux utiliser l'opérateur `+=`. C'est utile quand tu veux enrichir une chaîne en lui ajoutant davantage de texte au fil du temps."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- Another way you can concatenate strings is to use the `concat()` method. This method joins two or more strings together.",
+              "fr": "- Une autre façon de concaténer des chaînes est d'utiliser la méthode `concat()`. Cette méthode joint deux chaînes ou plus ensemble."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Logging Messages with `console.log()`",
+              "fr": "## Afficher des messages avec `console.log()`"
+            },
+            {
+              "en": "- The `console.log()` method is used to log messages to the console. It's a helpful tool for debugging and testing your code.",
+              "fr": "- La méthode `console.log()` est utilisée pour afficher des messages dans la console. C'est un outil utile pour déboguer et tester ton code."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Semicolons in JavaScript",
+              "fr": "## Les points-virgules en JavaScript"
+            },
+            {
+              "en": "- Semicolons are primarily used to mark the end of a statement. This helps the JavaScript engine understand the separation of individual instructions, which is crucial for correct execution.",
+              "fr": "- Les points-virgules servent principalement à marquer la fin d'une instruction. Cela aide le moteur JavaScript à comprendre la séparation entre les instructions individuelles, ce qui est crucial pour une exécution correcte."
+            },
+            {
+              "en": "- Semicolons help prevent ambiguities in code execution and ensure that statements are correctly terminated.",
+              "fr": "- Les points-virgules aident à éviter les ambiguïtés dans l'exécution du code et garantissent que les instructions sont correctement terminées."
+            },
+            {
+              "en": "## Comments in JavaScript",
+              "fr": "## Les commentaires en JavaScript"
+            },
+            {
+              "en": "- Any line of code that is commented out is ignored by the JavaScript engine. Comments are used to explain code, make notes, or temporarily disable code.\n- Single-line comments are created using `//`.",
+              "fr": "- Toute ligne de code mise en commentaire est ignorée par le moteur JavaScript. Les commentaires servent à expliquer le code, à prendre des notes ou à désactiver temporairement du code.\n- Les commentaires sur une seule ligne se créent avec `//`."
+            },
+            {
+              "en": "- Multi-line comments are created using `/*` to start the comment and `*/` to end the comment.",
+              "fr": "- Les commentaires multilignes se créent avec `/*` pour commencer le commentaire et `*/` pour le terminer."
+            },
+            {
+              "en": "## JavaScript as a Dynamically Typed Language",
+              "fr": "## JavaScript, un langage à typage dynamique"
+            },
+            {
+              "en": "- JavaScript is a dynamically typed language, which means that you don't have to specify the data type of a variable when you declare it. The JavaScript engine automatically determines the data type based on the value assigned to the variable.",
+              "fr": "- JavaScript est un langage à typage dynamique, ce qui signifie que tu n'as pas besoin de préciser le type de données d'une variable quand tu la déclares. Le moteur JavaScript détermine automatiquement le type de données en fonction de la valeur affectée à la variable."
+            },
+            {
+              "en": "- Other languages, like C#, that are not dynamically typed would result in an error:",
+              "fr": "- D'autres langages, comme C#, qui ne sont pas à typage dynamique généreraient une erreur :"
+            },
+            {
+              "en": "## Using the `typeof` Operator",
+              "fr": "## Utiliser l'opérateur `typeof`"
+            },
+            {
+              "en": "- The `typeof` operator is used to check the data type of a variable. It returns a string indicating the type of the variable.",
+              "fr": "- L'opérateur `typeof` est utilisé pour vérifier le type de données d'une variable. Il renvoie une chaîne indiquant le type de la variable."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- However, there's a well-known quirk in JavaScript when it comes to `null`. The `typeof` operator returns `\"object\"` for `null` values.",
+              "fr": "- Cependant, il existe une bizarrerie bien connue en JavaScript en ce qui concerne `null`. L'opérateur `typeof` renvoie `\"object\"` pour les valeurs `null`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Variables and Data Types topics and concepts.",
+              "fr": "Revois les sujets et les concepts des variables et types de données JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -29,10 +29,27 @@ const proseChunkPattern = /[^\S\n]*[^\n]+(?:\n[^\S\n]*[^\n]+)*/g;
 const lectureProseMarkers = new Set([
   '# --description--',
   '# --interactive--',
+  '# --assignment--',
   '## --text--',
   '## --answers--',
   '### --feedback--'
 ]);
+// Marqueurs de prose des quiz (challengeType 8). La structure --quizzes--/
+// --quiz--/--question-- ne porte pas de texte ; seuls la consigne, l'enonce,
+// les distracteurs et la reponse sont traduits. Les separateurs `---` entre
+// distracteurs et le code en backticks sont ignores par extractLectureChunks.
+const quizProseMarkers = new Set([
+  '# --description--',
+  '#### --text--',
+  '#### --distractors--',
+  '#### --answer--'
+]);
+
+// Jeu de marqueurs traduisibles selon le type de bloc. Lectures et reviews
+// partagent lectureProseMarkers (les reviews ajoutent --assignment--).
+function proseMarkersForKind(kind) {
+  return kind === 'quiz' ? quizProseMarkers : lectureProseMarkers;
+}
 
 function usage() {
   console.error(
@@ -260,6 +277,9 @@ function replaceChunks(text, translations, shouldReplace, label) {
 }
 
 function detectKind(sections) {
+  if (sections.some(section => section.marker === '# --quizzes--')) {
+    return 'quiz';
+  }
   if (
     sections.some(section =>
       ['# --interactive--', '# --questions--'].includes(section.marker)
@@ -346,6 +366,7 @@ function extract(workshop, options = {}) {
   const kind = firstFile
     ? detectKind(splitSections(parseFrontmatter(firstFile).body))
     : 'workshop';
+  const proseMarkers = proseMarkersForKind(kind);
 
   const files = sourceFiles.map(filePath => {
     const raw = readText(filePath);
@@ -353,7 +374,7 @@ function extract(workshop, options = {}) {
     const sections = splitSections(body);
     const title = metadata.title ?? '';
 
-    if (kind === 'lecture') {
+    if (kind === 'lecture' || kind === 'quiz') {
       return {
         file: path.basename(filePath),
         id: metadata.id,
@@ -366,7 +387,7 @@ function extract(workshop, options = {}) {
           .map((section, index) => ({
             index,
             marker: section.marker,
-            chunks: lectureProseMarkers.has(section.marker)
+            chunks: proseMarkers.has(section.marker)
               ? extractLectureChunks(section.content).map(text => ({
                   en: text,
                   fr: ''
@@ -408,8 +429,8 @@ function extract(workshop, options = {}) {
     kind,
     reviewed: false,
     note:
-      kind === 'lecture'
-        ? 'Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs, solutions video et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.'
+      kind === 'lecture' || kind === 'quiz'
+        ? `Mode ${kind}: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.`
         : 'Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.',
     files
   };
@@ -463,7 +484,7 @@ function apply(workshop) {
   const kind = data.kind || 'workshop';
 
   for (const fileData of data.files) {
-    if (kind === 'lecture') {
+    if (kind === 'lecture' || kind === 'quiz') {
       ensureLectureTranslationsPresent(fileData);
 
       const sourcePath = path.join(sourceDir, fileData.file);
@@ -571,7 +592,7 @@ function verifyFrontmatter(en, fr, file) {
   }
 }
 
-function verifySections(enSections, frSections, file) {
+function verifySections(enSections, frSections, file, proseMarkers) {
   assertEqual(
     frSections.length,
     enSections.length,
@@ -586,7 +607,7 @@ function verifySections(enSections, frSections, file) {
     const isTranslatableSection =
       en.marker === '# --description--' ||
       en.marker === '# --hints--' ||
-      lectureProseMarkers.has(en.marker);
+      proseMarkers.has(en.marker);
 
     if (isTranslatableSection) {
       const enCode = codeBlocks(en.content);
@@ -603,12 +624,13 @@ function verifySections(enSections, frSections, file) {
           `${file}: bloc de code ${en.marker} #${codeIndex + 1} modifie.`
         );
       }
+      const useLectureExtractor = proseMarkers.has(en.marker);
       assertEqual(
-        (lectureProseMarkers.has(en.marker)
+        (useLectureExtractor
           ? extractLectureChunks(fr.content)
           : extractProseChunks(fr.content)
         ).length,
-        (lectureProseMarkers.has(en.marker)
+        (useLectureExtractor
           ? extractLectureChunks(en.content)
           : extractProseChunks(en.content)
         ).length,
@@ -650,7 +672,12 @@ function verify(workshop) {
     const en = parseComparable(path.join(sourceDir, file));
     const fr = parseComparable(path.join(outputDir, file));
     verifyFrontmatter(en, fr, file);
-    verifySections(en.sections, fr.sections, file);
+    verifySections(
+      en.sections,
+      fr.sections,
+      file,
+      proseMarkersForKind(detectKind(en.sections))
+    );
   }
 
   console.log(`Verified ${sourceFiles.length} files for ${workshop}`);
@@ -678,6 +705,9 @@ module.exports = {
   extractLectureChunks,
   isLectureChunkTranslatable,
   lectureProseMarkers,
+  quizProseMarkers,
+  proseMarkersForKind,
+  detectKind,
   getSection,
   getWorkshopPaths,
   readText

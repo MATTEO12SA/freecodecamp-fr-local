@@ -23,7 +23,8 @@ const {
   splitSections,
   extractProseChunks,
   extractLectureChunks,
-  lectureProseMarkers,
+  proseMarkersForKind,
+  detectKind,
   getWorkshopPaths,
   readText
 } = require('./translate-workshop');
@@ -58,14 +59,16 @@ function countInlineCode(text) {
 // Chunks de prose des sections traduisibles (description / hints / lecture),
 // dans l'ordre — meme logique que translate-workshop pour pouvoir apparier EN/FR.
 function translatableChunks(body) {
+  const sections = splitSections(body);
+  const proseMarkers = proseMarkersForKind(detectKind(sections));
   const chunks = [];
-  for (const section of splitSections(body)) {
+  for (const section of sections) {
     const isTranslatable =
       section.marker === '# --description--' ||
       section.marker === '# --hints--' ||
-      lectureProseMarkers.has(section.marker);
+      proseMarkers.has(section.marker);
     if (!isTranslatable) continue;
-    const extracted = lectureProseMarkers.has(section.marker)
+    const extracted = proseMarkers.has(section.marker)
       ? extractLectureChunks(section.content)
       : extractProseChunks(section.content);
     for (const text of extracted) chunks.push({ marker: section.marker, text });
