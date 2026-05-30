@@ -1,0 +1,474 @@
+{
+  "workshop": "lecture-understanding-comparisons-and-conditionals",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d26917a8ab3220c038a42.md",
+      "id": "672d26917a8ab3220c038a42",
+      "dashedName": "how-do-comparisons-work-with-null-and-undefined-data-types",
+      "title": {
+        "en": "How Do Comparisons Work with Null and Undefined Data Types?",
+        "fr": "Comment les comparaisons fonctionnent-elles avec les types de données Null et Undefined ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, `null` and `undefined` are two distinct data types that represent the absence of a value, but they behave differently in comparisons. Understanding how these types interact in various comparison scenarios is crucial for writing robust and bug-free code.",
+              "fr": "En JavaScript, `null` et `undefined` sont deux types de données distincts qui représentent l'absence de valeur, mais ils se comportent différemment dans les comparaisons. Comprendre comment ces types interagissent dans divers scénarios de comparaison est crucial pour écrire un code robuste et sans bugs."
+            },
+            {
+              "en": "Let's start with the `undefined` type. A variable is `undefined` when it has been declared but hasn't been assigned a value. It's the default value of uninitialized variables and function parameters that weren't provided an argument.",
+              "fr": "Commençons par le type `undefined`. Une variable est `undefined` quand elle a été déclarée mais qu'aucune valeur ne lui a été affectée. C'est la valeur par défaut des variables non initialisées et des paramètres de fonction auxquels aucun argument n'a été fourni."
+            },
+            {
+              "en": "The `null` type, on the other hand, is an assignment value that represents a deliberate non-value. It's often used to indicate that a variable intentionally has no value.",
+              "fr": "Le type `null`, en revanche, est une valeur d'affectation qui représente une non-valeur délibérée. Il est souvent utilisé pour indiquer qu'une variable n'a intentionnellement aucune valeur."
+            },
+            {
+              "en": "When comparing `null` and `undefined` using the equality operator (`==`), JavaScript performs type coercion. This means it tries to convert the operands to the same type before making the comparison. In this case, `null` and `undefined` are considered equal:",
+              "fr": "Quand on compare `null` et `undefined` à l'aide de l'opérateur d'égalité (`==`), JavaScript effectue une coercition de type. Cela signifie qu'il essaie de convertir les opérandes vers le même type avant de faire la comparaison. Dans ce cas, `null` et `undefined` sont considérés comme égaux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "However, when using the strict equality operator (`===`), which checks both value and type without performing type coercion, `null` and `undefined` are not equal:",
+              "fr": "Cependant, quand on utilise l'opérateur d'égalité stricte (`===`), qui vérifie à la fois la valeur et le type sans effectuer de coercition de type, `null` et `undefined` ne sont pas égaux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This difference is important to keep in mind when writing conditional statements or performing equality checks in your code. When comparing `null` or `undefined` with other values using the equality operator (`==`), the behavior can be unexpected. For example:",
+              "fr": "Cette différence est importante à garder à l'esprit quand tu écris des instructions conditionnelles ou que tu effectues des vérifications d'égalité dans ton code. Quand on compare `null` ou `undefined` avec d'autres valeurs à l'aide de l'opérateur d'égalité (`==`), le comportement peut être inattendu. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "These comparisons return `false` because `null` and `undefined` are only equal to each other (and themselves) when using the equality operator. The behavior of `null` in other comparisons is particularly tricky:",
+              "fr": "Ces comparaisons renvoient `false` car `null` et `undefined` ne sont égaux qu'entre eux (et à eux-mêmes) lorsqu'on utilise l'opérateur d'égalité. Le comportement de `null` dans d'autres comparaisons est particulièrement délicat :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`undefined`, on the other hand, always converts to `NaN` in numeric contexts, which makes all numeric comparisons with `undefined` return `false`:",
+              "fr": "`undefined`, en revanche, se convertit toujours en `NaN` dans les contextes numériques, ce qui fait que toutes les comparaisons numériques avec `undefined` renvoient `false` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Given these nuances, it's generally recommended to use the strict equality operator when comparing values, especially when dealing with `null` and `undefined`. This approach helps avoid unexpected type coercion and makes your code's behavior more predictable.",
+              "fr": "Compte tenu de ces nuances, il est généralement recommandé d'utiliser l'opérateur d'égalité stricte lors de la comparaison de valeurs, surtout quand on manipule `null` et `undefined`. Cette approche aide à éviter une coercition de type inattendue et rend le comportement de ton code plus prévisible."
+            },
+            {
+              "en": "In summary, while `null` and `undefined` are both used to represent the absence of a value, they behave differently in comparisons. Understanding these differences is key to writing clear and error-free JavaScript code.",
+              "fr": "En résumé, bien que `null` et `undefined` soient tous deux utilisés pour représenter l'absence de valeur, ils se comportent différemment dans les comparaisons. Comprendre ces différences est essentiel pour écrire un code JavaScript clair et sans erreurs."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the result of the expression: `null === undefined`?",
+              "fr": "Quel est le résultat de l'expression : `null === undefined` ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the strict equality operator (`===`) checks for.",
+              "fr": "Réfléchis à ce que vérifie l'opérateur d'égalité stricte (`===`)."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the strict equality operator (`===`) checks for.",
+              "fr": "Réfléchis à ce que vérifie l'opérateur d'égalité stricte (`===`)."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the strict equality operator (`===`) checks for.",
+              "fr": "Réfléchis à ce que vérifie l'opérateur d'égalité stricte (`===`)."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In JavaScript, what is the result of the comparison: `null >= 0`?",
+              "fr": "En JavaScript, quel est le résultat de la comparaison : `null >= 0` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `null` behaves in numeric comparisons.",
+              "fr": "Réfléchis à la façon dont `null` se comporte dans les comparaisons numériques."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `null` behaves in numeric comparisons.",
+              "fr": "Réfléchis à la façon dont `null` se comporte dans les comparaisons numériques."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `null` behaves in numeric comparisons.",
+              "fr": "Réfléchis à la façon dont `null` se comporte dans les comparaisons numériques."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements about `undefined` is correct?",
+              "fr": "Laquelle des affirmations suivantes à propos de `undefined` est correcte ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`undefined == null` evaluates to `false`.",
+              "fr": "`undefined == null` s'évalue à `false`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `undefined` behaves in different types of comparisons.",
+              "fr": "Réfléchis à la façon dont `undefined` se comporte dans différents types de comparaisons."
+            },
+            {
+              "en": "`undefined === null` evaluates to `true`.",
+              "fr": "`undefined === null` s'évalue à `true`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `undefined` behaves in different types of comparisons.",
+              "fr": "Réfléchis à la façon dont `undefined` se comporte dans différents types de comparaisons."
+            },
+            {
+              "en": "`undefined < 0` evaluates to `true`.",
+              "fr": "`undefined < 0` s'évalue à `true`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `undefined` behaves in different types of comparisons.",
+              "fr": "Réfléchis à la façon dont `undefined` se comporte dans différents types de comparaisons."
+            },
+            {
+              "en": "`undefined == 0` evaluates to `false`.",
+              "fr": "`undefined == 0` s'évalue à `false`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673282bea35dbf129efb63d6.md",
+      "id": "673282bea35dbf129efb63d6",
+      "dashedName": "what-are-switch-statements-and-how-do-they-differ-from-if-else-chains",
+      "title": {
+        "en": "What Are Switch Statements and How Do They Differ from If/Else Chains?",
+        "fr": "Que sont les instructions Switch et en quoi diffèrent-elles des chaînes If/Else ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "`switch` statements and `if/else if/else` chains are both control flow structures in programming that allow us to execute different code blocks based on certain conditions. However, they have distinct characteristics and use cases.",
+              "fr": "Les instructions `switch` et les chaînes `if/else if/else` sont toutes deux des structures de flux de contrôle en programmation qui nous permettent d'exécuter différents blocs de code en fonction de certaines conditions. Cependant, elles ont des caractéristiques et des cas d'usage distincts."
+            },
+            {
+              "en": "A `switch` statement evaluates an expression and matches its value against a series of `case` clauses. When a match is found, the code block associated with that `case` is executed. Here's a basic structure of a `switch` statement:",
+              "fr": "Une instruction `switch` évalue une expression et compare sa valeur à une série de clauses `case`. Quand une correspondance est trouvée, le bloc de code associé à ce `case` est exécuté. Voici une structure de base d'une instruction `switch` :"
+            },
+            {
+              "en": "The `break` statement at the end of each `case` is crucial. It tells the program to exit the switch block once a matching `case` has been executed. Without it, the program would continue executing subsequent cases, a behavior known as \"fall-through\".",
+              "fr": "L'instruction `break` à la fin de chaque `case` est cruciale. Elle indique au programme de sortir du bloc switch une fois qu'un `case` correspondant a été exécuté. Sans elle, le programme continuerait à exécuter les cas suivants, un comportement connu sous le nom de « fall-through » (enchaînement)."
+            },
+            {
+              "en": "`switch` statements are typically used when you're comparing a single variable against multiple possible values. They're especially useful when you have many potential conditions to check against a single variable. Here is an example using a `switch` statement for the days of the week:",
+              "fr": "Les instructions `switch` sont généralement utilisées quand tu compares une seule variable à plusieurs valeurs possibles. Elles sont particulièrement utiles quand tu as de nombreuses conditions potentielles à vérifier par rapport à une seule variable. Voici un exemple utilisant une instruction `switch` pour les jours de la semaine :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`switch` statements can be more readable and concise when dealing with many possible values for a single variable.",
+              "fr": "Les instructions `switch` peuvent être plus lisibles et concises quand on traite de nombreuses valeurs possibles pour une seule variable."
+            },
+            {
+              "en": "`if/else if` statements on the other hand are more flexible. They can evaluate complex conditions and different variables in each clause. This makes them suitable for a wider range of scenarios. Here is an example of when you might use an `if/else` statement over a `switch` statement:",
+              "fr": "Les instructions `if/else if`, en revanche, sont plus flexibles. Elles peuvent évaluer des conditions complexes et différentes variables dans chaque clause. Cela les rend adaptées à un plus large éventail de scénarios. Voici un exemple de cas où tu pourrais utiliser une instruction `if/else` plutôt qu'une instruction `switch` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a person’s annual income and credit score and checking what types of loan they would qualify for. Since we are dealing with more complex logical evaluations and multiple variables, it is better to use an `if/else` statement here versus a `switch` statement.",
+              "fr": "Dans cet exemple, nous avons le revenu annuel et le score de crédit d'une personne et nous vérifions à quels types de prêt elle serait admissible. Comme nous traitons des évaluations logiques plus complexes et plusieurs variables, il est préférable d'utiliser ici une instruction `if/else` plutôt qu'une instruction `switch`."
+            },
+            {
+              "en": "It's worth noting that `switch` statements in JavaScript use strict comparison (`===`), which means they don't perform type coercion. This can be an advantage in terms of predictability and avoiding subtle bugs.",
+              "fr": "Il convient de noter que les instructions `switch` en JavaScript utilisent la comparaison stricte (`===`), ce qui signifie qu'elles n'effectuent pas de coercition de type. Cela peut être un avantage en termes de prévisibilité et pour éviter les bugs subtils."
+            },
+            {
+              "en": "In summary, while both `switch` statements and `if/else if` chains allow for multiple-branch logic in your code, they have different strengths. `switch` statements excel at handling multiple possible values for a single variable, while `if/else if` chains offer more flexibility for complex conditions. The choice between them often comes down to the specific requirements of your code and personal or team coding style preferences.",
+              "fr": "En résumé, bien que les instructions `switch` et les chaînes `if/else if` permettent toutes deux une logique à branches multiples dans ton code, elles ont des forces différentes. Les instructions `switch` excellent dans la gestion de plusieurs valeurs possibles pour une seule variable, tandis que les chaînes `if/else if` offrent plus de flexibilité pour les conditions complexes. Le choix entre les deux dépend souvent des exigences spécifiques de ton code et des préférences de style de codage personnelles ou de l'équipe."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you omit the `break` statement in a `switch` case?",
+              "fr": "Que se passe-t-il si tu omets l'instruction `break` dans un `case` de `switch` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The `switch` statement will throw an error.",
+              "fr": "L'instruction `switch` déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of \"fall-through\" in `switch` statements.",
+              "fr": "Réfléchis au concept de « fall-through » dans les instructions `switch`."
+            },
+            {
+              "en": "The program will exit the `switch` block immediately.",
+              "fr": "Le programme sortira immédiatement du bloc `switch`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of \"fall-through\" in `switch` statements.",
+              "fr": "Réfléchis au concept de « fall-through » dans les instructions `switch`."
+            },
+            {
+              "en": "The code will continue to the next case, regardless of whether it matches.",
+              "fr": "Le code continuera jusqu'au cas suivant, qu'il corresponde ou non."
+            },
+            {
+              "en": "Nothing, `break` is optional in `switch` statements.",
+              "fr": "Rien, `break` est facultatif dans les instructions `switch`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of \"fall-through\" in `switch` statements.",
+              "fr": "Réfléchis au concept de « fall-through » dans les instructions `switch`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a key advantage of using a `switch` statement over an `if`/`else` chain?",
+              "fr": "Lequel des éléments suivants est un avantage clé de l'utilisation d'une instruction `switch` plutôt qu'une chaîne `if`/`else` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`switch` statements can handle more complex conditions.",
+              "fr": "Les instructions `switch` peuvent gérer des conditions plus complexes."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the typical use case for `switch` statements and what they're designed to handle efficiently.",
+              "fr": "Réfléchis au cas d'usage typique des instructions `switch` et à ce qu'elles sont conçues pour gérer efficacement."
+            },
+            {
+              "en": "`switch` statements can compare multiple variables.",
+              "fr": "Les instructions `switch` peuvent comparer plusieurs variables."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the typical use case for `switch` statements and what they're designed to handle efficiently.",
+              "fr": "Réfléchis au cas d'usage typique des instructions `switch` et à ce qu'elles sont conçues pour gérer efficacement."
+            },
+            {
+              "en": "`switch` statements are typically more concise for comparing a single variable against many values.",
+              "fr": "Les instructions `switch` sont généralement plus concises pour comparer une seule variable à de nombreuses valeurs."
+            },
+            {
+              "en": "`switch` statements always perform faster than `if`/`else` chains.",
+              "fr": "Les instructions `switch` s'exécutent toujours plus vite que les chaînes `if`/`else`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the typical use case for `switch` statements and what they're designed to handle efficiently.",
+              "fr": "Réfléchis au cas d'usage typique des instructions `switch` et à ce qu'elles sont conçues pour gérer efficacement."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In JavaScript, what type of comparison does a `switch` statement use?",
+              "fr": "En JavaScript, quel type de comparaison une instruction `switch` utilise-t-elle ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Loose equality (`==`).",
+              "fr": "L'égalité faible (`==`)."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether `switch` statements in JavaScript perform type coercion during comparisons.",
+              "fr": "Réfléchis à savoir si les instructions `switch` en JavaScript effectuent une coercition de type lors des comparaisons."
+            },
+            {
+              "en": "Strict equality (`===`).",
+              "fr": "L'égalité stricte (`===`)."
+            },
+            {
+              "en": "Greater than or equal to (`>=`).",
+              "fr": "Supérieur ou égal à (`>=`)."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether `switch` statements in JavaScript perform type coercion during comparisons.",
+              "fr": "Réfléchis à savoir si les instructions `switch` en JavaScript effectuent une coercition de type lors des comparaisons."
+            },
+            {
+              "en": "Less than or equal to (`<=`).",
+              "fr": "Inférieur ou égal à (`<=`)."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether `switch` statements in JavaScript perform type coercion during comparisons.",
+              "fr": "Réfléchis à savoir si les instructions `switch` en JavaScript effectuent une coercition de type lors des comparaisons."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

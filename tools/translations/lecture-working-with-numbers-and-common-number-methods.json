@@ -1,0 +1,593 @@
+{
+  "workshop": "lecture-working-with-numbers-and-common-number-methods",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672d26809d388621ad1ecd43.md",
+      "id": "672d26809d388621ad1ecd43",
+      "dashedName": "how-does-isnan-work",
+      "title": {
+        "en": "How Does isNaN Work?",
+        "fr": "Comment fonctionne isNaN ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, `NaN` stands for \"Not a Number\". It's a special value that represents an unrepresentable or undefined numerical result. `NaN` is a property of the global object, and it's also considered a type of number in JavaScript, which might seem counterintuitive at first.",
+              "fr": "En JavaScript, `NaN` signifie \"Not a Number\" (pas un nombre). C'est une valeur spéciale qui représente un résultat numérique non représentable ou indéfini. `NaN` est une propriété de l'objet global, et il est aussi considéré comme un type de nombre en JavaScript, ce qui peut sembler contre-intuitif au premier abord."
+            },
+            {
+              "en": "`NaN` is typically the result of operations that should return a number but can't produce a meaningful numerical value. For example:",
+              "fr": "`NaN` est généralement le résultat d'opérations qui devraient renvoyer un nombre mais ne peuvent pas produire de valeur numérique significative. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, dividing zero by zero is mathematically undefined, so JavaScript returns `NaN`. One peculiar property of `NaN` is that it's not equal to anything, including itself:",
+              "fr": "Dans ce cas, diviser zéro par zéro est mathématiquement indéfini, donc JavaScript renvoie `NaN`. Une propriété particulière de `NaN` est qu'il n'est égal à rien, pas même à lui-même :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This unique behavior makes it challenging to check if a value is `NaN` using standard comparison operators. To address this, JavaScript provides the `isNaN()` function. The `isNaN()` function property is used to determine whether a value is `NaN` or not. However, it's important to understand how `isNaN()` works, as it can sometimes produce unexpected results. Here's how `isNaN()` behaves:",
+              "fr": "Ce comportement unique rend difficile la vérification qu'une valeur est `NaN` à l'aide des opérateurs de comparaison standard. Pour résoudre ce problème, JavaScript fournit la fonction `isNaN()`. La propriété fonction `isNaN()` est utilisée pour déterminer si une valeur est `NaN` ou non. Cependant, il est important de comprendre comment `isNaN()` fonctionne, car elle peut parfois produire des résultats inattendus. Voici comment `isNaN()` se comporte :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you can see, `isNaN()` first attempts to convert the parameter to a number. If it can't be converted, it returns `true`. This behavior can lead to some surprising results, especially when dealing with strings that can be coerced into numbers.",
+              "fr": "Comme tu peux le voir, `isNaN()` tente d'abord de convertir le paramètre en nombre. S'il ne peut pas être converti, elle renvoie `true`. Ce comportement peut conduire à des résultats surprenants, surtout quand on manipule des chaînes qui peuvent être converties en nombres."
+            },
+            {
+              "en": "Due to these potential inconsistencies, ES6 (the sixth edition of JavaScript, released in 2015) introduced `Number.isNaN()`. This method does not attempt to convert the parameter to a number before testing. It only returns `true` if the value is exactly `NaN`:",
+              "fr": "En raison de ces incohérences potentielles, ES6 (la sixième édition de JavaScript, publiée en 2015) a introduit `Number.isNaN()`. Cette méthode ne tente pas de convertir le paramètre en nombre avant de le tester. Elle ne renvoie `true` que si la valeur est exactement `NaN` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`Number.isNaN()` provides a more reliable way to check for `NaN` values, especially in cases where type coercion might lead to unexpected results with the global `isNaN()` function. In practice, when dealing with numerical operations or user inputs that should be numbers, it's often necessary to check for `NaN` to handle errors or unexpected inputs gracefully. For example:",
+              "fr": "`Number.isNaN()` offre une façon plus fiable de vérifier les valeurs `NaN`, surtout dans les cas où la coercition de type pourrait conduire à des résultats inattendus avec la fonction globale `isNaN()`. En pratique, quand on manipule des opérations numériques ou des saisies utilisateur qui devraient être des nombres, il est souvent nécessaire de vérifier la présence de `NaN` pour gérer les erreurs ou les saisies inattendues avec élégance. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we're using `Number.isNaN()` to catch cases where the division operation results in `NaN`, allowing us to handle this scenario appropriately. Understanding `NaN` and how to properly check for it is crucial for writing robust JavaScript code, especially when dealing with mathematical operations or parsing user inputs.",
+              "fr": "Dans cet exemple, nous utilisons `Number.isNaN()` pour intercepter les cas où l'opération de division aboutit à `NaN`, ce qui nous permet de gérer ce scénario de manière appropriée. Comprendre `NaN` et savoir comment le vérifier correctement est crucial pour écrire du code JavaScript robuste, surtout quand on manipule des opérations mathématiques ou qu'on analyse des saisies utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `isNaN()` treats strings that can be converted to numbers.",
+              "fr": "Réfléchis à la façon dont `isNaN()` traite les chaînes qui peuvent être converties en nombres."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `isNaN()` treats strings that can be converted to numbers.",
+              "fr": "Réfléchis à la façon dont `isNaN()` traite les chaînes qui peuvent être converties en nombres."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `isNaN()` treats strings that can be converted to numbers.",
+              "fr": "Réfléchis à la façon dont `isNaN()` traite les chaînes qui peuvent être converties en nombres."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following correctly checks if a value is exactly `NaN`?",
+              "fr": "Laquelle des propositions suivantes vérifie correctement si une valeur est exactement `NaN` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which method doesn't attempt to convert the value before checking.",
+              "fr": "Réfléchis à la méthode qui ne tente pas de convertir la valeur avant de la vérifier."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which method doesn't attempt to convert the value before checking.",
+              "fr": "Réfléchis à la méthode qui ne tente pas de convertir la valeur avant de la vérifier."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which method doesn't attempt to convert the value before checking.",
+              "fr": "Réfléchis à la méthode qui ne tente pas de convertir la valeur avant de la vérifier."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the result of `NaN === NaN`?",
+              "fr": "Quel est le résultat de `NaN === NaN` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the unique property of `NaN` in comparisons.",
+              "fr": "Souviens-toi de la propriété unique de `NaN` dans les comparaisons."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the unique property of `NaN` in comparisons.",
+              "fr": "Souviens-toi de la propriété unique de `NaN` dans les comparaisons."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the unique property of `NaN` in comparisons.",
+              "fr": "Souviens-toi de la propriété unique de `NaN` dans les comparaisons."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732808f3221720adc833e81.md",
+      "id": "6732808f3221720adc833e81",
+      "dashedName": "how-do-the-parsefloat-and-parseint-methods-work",
+      "title": {
+        "en": "How Do the parseFloat() and parseInt() Methods Work?",
+        "fr": "Comment fonctionnent les méthodes parseFloat() et parseInt() ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "`parseFloat()` and `parseInt()` are two essential methods in JavaScript for converting strings to numbers. These methods are particularly useful when dealing with user input or processing data that comes in string format but needs to be treated as numerical values.",
+              "fr": "`parseFloat()` et `parseInt()` sont deux méthodes essentielles en JavaScript pour convertir des chaînes en nombres. Ces méthodes sont particulièrement utiles quand on manipule des saisies utilisateur ou qu'on traite des données qui arrivent au format chaîne mais doivent être traitées comme des valeurs numériques."
+            },
+            {
+              "en": "Let's start with `parseFloat()`. This method parses a string argument and returns a floating-point number. It's designed to extract a number from the beginning of a string, even if the string contains non-numeric characters later on. Remember that floats are numbers with decimal points. Here's how `parseFloat()` works:",
+              "fr": "Commençons par `parseFloat()`. Cette méthode analyse un argument de type chaîne et renvoie un nombre à virgule flottante. Elle est conçue pour extraire un nombre depuis le début d'une chaîne, même si la chaîne contient des caractères non numériques par la suite. Souviens-toi que les floats sont des nombres avec une virgule décimale. Voici comment `parseFloat()` fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you can see, `parseFloat()` starts parsing from the beginning of the string and continues until it encounters a character that can't be part of a floating-point number. If it can't find a valid number at the start of the string, it returns `NaN` (Not a Number).",
+              "fr": "Comme tu peux le voir, `parseFloat()` commence à analyser depuis le début de la chaîne et continue jusqu'à rencontrer un caractère qui ne peut pas faire partie d'un nombre à virgule flottante. Si elle ne trouve pas de nombre valide au début de la chaîne, elle renvoie `NaN` (Not a Number)."
+            },
+            {
+              "en": "`parseInt()`, on the other hand, parses a string argument and returns an integer. Like `parseFloat()`, it starts from the beginning of the string, but it stops at the first non-digit character. Here's how `parseInt()` works:",
+              "fr": "`parseInt()`, en revanche, analyse un argument de type chaîne et renvoie un entier. Comme `parseFloat()`, elle commence depuis le début de la chaîne, mais elle s'arrête au premier caractère non numérique. Voici comment `parseInt()` fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "`parseInt()` stops parsing at the first non-digit it encounters. For floating-point numbers, it returns only the integer part. If it can't find a valid integer at the start of the string, it returns `NaN`.",
+              "fr": "`parseInt()` arrête l'analyse au premier caractère non numérique qu'elle rencontre. Pour les nombres à virgule flottante, elle ne renvoie que la partie entière. Si elle ne trouve pas d'entier valide au début de la chaîne, elle renvoie `NaN`."
+            },
+            {
+              "en": "Both methods have some noteworthy behaviors. They ignore leading whitespace:",
+              "fr": "Les deux méthodes ont des comportements remarquables. Elles ignorent les espaces de début :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "They handle plus and minus signs at the beginning of the string:",
+              "fr": "Elles gèrent les signes plus et moins au début de la chaîne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "It's worth noting that while these methods are powerful, they have some limitations. For instance, they don't handle all number formats, such as scientific notation, directly. For more complex parsing needs, you might need to use additional techniques or libraries.",
+              "fr": "Il convient de noter que, bien que ces méthodes soient puissantes, elles ont quelques limites. Par exemple, elles ne gèrent pas directement tous les formats de nombres, comme la notation scientifique. Pour des besoins d'analyse plus complexes, tu pourrais avoir besoin d'utiliser des techniques ou des bibliothèques supplémentaires."
+            },
+            {
+              "en": "In conclusion, `parseFloat()` and `parseInt()` are valuable tools for converting strings to numbers in JavaScript. Understanding how they work and their specific behaviors allows you to handle numeric data more effectively in your applications, especially when dealing with user inputs or external data sources.",
+              "fr": "En conclusion, `parseFloat()` et `parseInt()` sont des outils précieux pour convertir des chaînes en nombres en JavaScript. Comprendre leur fonctionnement et leurs comportements spécifiques te permet de gérer les données numériques plus efficacement dans tes applications, surtout quand on manipule des saisies utilisateur ou des sources de données externes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles decimal points.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les virgules décimales."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles decimal points.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les virgules décimales."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles decimal points.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les virgules décimales."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles leading whitespace and non-digit characters.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les espaces de début et les caractères non numériques."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles leading whitespace and non-digit characters.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les espaces de début et les caractères non numériques."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `Number.parseInt()` handles leading whitespace and non-digit characters.",
+              "fr": "Réfléchis à la façon dont `Number.parseInt()` gère les espaces de début et les caractères non numériques."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will `parseFloat(\"3.14.15\")` return?",
+              "fr": "Que renverra `parseFloat(\"3.14.15\")` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `parseFloat()` handles multiple decimal points in a string.",
+              "fr": "Réfléchis à la façon dont `parseFloat()` gère plusieurs virgules décimales dans une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `parseFloat()` handles multiple decimal points in a string.",
+              "fr": "Réfléchis à la façon dont `parseFloat()` gère plusieurs virgules décimales dans une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `parseFloat()` handles multiple decimal points in a string.",
+              "fr": "Réfléchis à la façon dont `parseFloat()` gère plusieurs virgules décimales dans une chaîne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673280a1c29d0a0b17316e56.md",
+      "id": "673280a1c29d0a0b17316e56",
+      "dashedName": "what-is-the-tofixed-method-and-how-does-it-work",
+      "title": {
+        "en": "What Is the toFixed() Method, and How Does It Work?",
+        "fr": "Qu'est-ce que la méthode toFixed(), et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `.toFixed()` method is a built-in JavaScript function that formats a number using fixed-point notation. It's particularly useful when you need to control the number of decimal places in a number, especially for displaying currency values or when working with precise measurements.",
+              "fr": "La méthode `.toFixed()` est une fonction JavaScript intégrée qui formate un nombre en utilisant la notation à virgule fixe. Elle est particulièrement utile quand tu as besoin de contrôler le nombre de décimales d'un nombre, surtout pour afficher des valeurs monétaires ou quand tu travailles avec des mesures précises."
+            },
+            {
+              "en": "The `.toFixed()` method is called on a number and takes one optional argument, which is the number of digits to appear after the decimal point. It returns a string representation of the number with the specified number of decimal places. Here's a basic example of how `.toFixed()` works:",
+              "fr": "La méthode `.toFixed()` est appelée sur un nombre et prend un argument facultatif, qui est le nombre de chiffres à faire apparaître après la virgule décimale. Elle renvoie une représentation sous forme de chaîne du nombre avec le nombre de décimales spécifié. Voici un exemple basique du fonctionnement de `.toFixed()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, we're limiting the number of decimal places to two. So, `3.14159` becomes `3.14`. It's important to note that `.toFixed()` returns a string, not a number. This is because the method is primarily intended for formatting numbers for display, not for further calculations.",
+              "fr": "Dans ce cas, nous limitons le nombre de décimales à deux. Ainsi, `3.14159` devient `3.14`. Il est important de noter que `.toFixed()` renvoie une chaîne, pas un nombre. C'est parce que la méthode est principalement destinée au formatage des nombres pour l'affichage, et non pour des calculs ultérieurs."
+            },
+            {
+              "en": "The `.toFixed()` method rounds the number to the nearest value that can be represented with the specified number of decimal places. This rounding behavior is important to understand:",
+              "fr": "La méthode `.toFixed()` arrondit le nombre à la valeur la plus proche pouvant être représentée avec le nombre de décimales spécifié. Ce comportement d'arrondi est important à comprendre :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you can see, `.toFixed()` rounds up when the next digit is `5` or greater, and rounds down otherwise. If you call `.toFixed()` without arguments, it defaults to `0` decimal places:",
+              "fr": "Comme tu peux le voir, `.toFixed()` arrondit vers le haut quand le chiffre suivant est `5` ou plus, et vers le bas sinon. Si tu appelles `.toFixed()` sans arguments, elle utilise par défaut `0` décimale :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `.toFixed()` method can be particularly useful when working with financial calculations or displaying prices:",
+              "fr": "La méthode `.toFixed()` peut être particulièrement utile quand on travaille avec des calculs financiers ou qu'on affiche des prix :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `.toFixed(2)` ensures that the total is always displayed with two decimal places, which is standard for currency in many countries.",
+              "fr": "Dans cet exemple, `.toFixed(2)` garantit que le total est toujours affiché avec deux décimales, ce qui est la norme pour la monnaie dans de nombreux pays."
+            },
+            {
+              "en": "In conclusion, the `.toFixed()` method is a powerful tool for formatting numbers in JavaScript, particularly when you need to control the display of decimal places. While it's primarily used for formatting output, remember its behavior, especially when precise calculations are needed.",
+              "fr": "En conclusion, la méthode `.toFixed()` est un outil puissant pour formater les nombres en JavaScript, en particulier quand tu as besoin de contrôler l'affichage des décimales. Bien qu'elle soit principalement utilisée pour formater la sortie, souviens-toi de son comportement, surtout quand des calculs précis sont nécessaires."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `toFixed()` rounds numbers and what type of value it returns.",
+              "fr": "Réfléchis à la façon dont `toFixed()` arrondit les nombres et au type de valeur qu'elle renvoie."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `toFixed()` rounds numbers and what type of value it returns.",
+              "fr": "Réfléchis à la façon dont `toFixed()` arrondit les nombres et au type de valeur qu'elle renvoie."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `toFixed()` rounds numbers and what type of value it returns.",
+              "fr": "Réfléchis à la façon dont `toFixed()` arrondit les nombres et au type de valeur qu'elle renvoie."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `toFixed()` rounds the result based on the third decimal digit.",
+              "fr": "Souviens-toi que `toFixed()` arrondit le résultat en fonction de la troisième décimale."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `toFixed()` rounds the result based on the third decimal digit.",
+              "fr": "Souviens-toi que `toFixed()` arrondit le résultat en fonction de la troisième décimale."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `toFixed()` rounds the result based on the third decimal digit.",
+              "fr": "Souviens-toi que `toFixed()` arrondit le résultat en fonction de la troisième décimale."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you call `toFixed()` without any arguments?",
+              "fr": "Que se passe-t-il si tu appelles `toFixed()` sans aucun argument ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It throws an error.",
+              "fr": "Elle déclenche une erreur."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the default behavior might be when no decimal place count is specified.",
+              "fr": "Réfléchis à ce que pourrait être le comportement par défaut quand aucun nombre de décimales n'est spécifié."
+            },
+            {
+              "en": "It returns the original number without any changes.",
+              "fr": "Elle renvoie le nombre d'origine sans aucun changement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the default behavior might be when no decimal place count is specified.",
+              "fr": "Réfléchis à ce que pourrait être le comportement par défaut quand aucun nombre de décimales n'est spécifié."
+            },
+            {
+              "en": "It returns the number rounded to the nearest integer.",
+              "fr": "Elle renvoie le nombre arrondi à l'entier le plus proche."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what the default behavior might be when no decimal place count is specified.",
+              "fr": "Réfléchis à ce que pourrait être le comportement par défaut quand aucun nombre de décimales n'est spécifié."
+            },
+            {
+              "en": "It returns a string representation of the number with no decimal places.",
+              "fr": "Elle renvoie une représentation sous forme de chaîne du nombre sans aucune décimale."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
