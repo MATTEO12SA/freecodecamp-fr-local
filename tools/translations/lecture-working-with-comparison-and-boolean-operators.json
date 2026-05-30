@@ -1,0 +1,522 @@
+{
+  "workshop": "lecture-working-with-comparison-and-boolean-operators",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "673271c7581a27d9dd78f6d6.md",
+      "id": "673271c7581a27d9dd78f6d6",
+      "dashedName": "what-are-booleans-and-how-do-they-work-with-equality-and-inequality-operators",
+      "title": {
+        "en": "What Are Booleans, and How Do They Work with Equality and Inequality Operators?",
+        "fr": "Que sont les booléens, et comment fonctionnent-ils avec les opérateurs d'égalité et d'inégalité ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In an earlier lesson, you were first introduced to the concept of booleans, but in this lesson, we will dive deeper into how booleans work and how the equality and inequality operators work.",
+              "fr": "Dans une leçon précédente, on t'a présenté pour la première fois le concept de booléens, mais dans cette leçon, nous allons approfondir le fonctionnement des booléens ainsi que celui des opérateurs d'égalité et d'inégalité."
+            },
+            {
+              "en": "Booleans are a data type with only `true` and `false` values. They're useful because they allow you to do something based on some conditions. Booleans are essential when you want to evaluate whether something should happen or not, like deciding if someone can access a certain feature in your app. Here is an example of setting the value `true` to a variable called `isOldEnoughToDrive`:",
+              "fr": "Les booléens sont un type de données qui n'a que les valeurs `true` et `false`. Ils sont utiles car ils te permettent de faire quelque chose en fonction de certaines conditions. Les booléens sont essentiels quand tu veux évaluer si quelque chose doit se produire ou non, comme décider si une personne peut accéder à une certaine fonctionnalité de ton application. Voici un exemple d'affectation de la valeur `true` à une variable appelée `isOldEnoughToDrive` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can use this variable inside a conditional like this:",
+              "fr": "Tu peux utiliser cette variable à l'intérieur d'une condition comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "A conditional helps you make decisions in your code based on a condition. This example uses what is called an `if/else` statement.",
+              "fr": "Une condition t'aide à prendre des décisions dans ton code en fonction d'une condition. Cet exemple utilise ce qu'on appelle une instruction `if/else`."
+            },
+            {
+              "en": "If `isOldEnoughToDrive` is `true`, then the sentence `You're old enough to drive` will be logged to the console. Otherwise, if the `isOldEnoughToDrive` is `false`, then the sentence `Sorry, you are not old enough to drive` will be logged to the console. Since the `isOldEnoughToDrive` variable is set to `true`, the first sentence will be logged to the console. You will learn more about `if/else` statements in a future lesson.",
+              "fr": "Si `isOldEnoughToDrive` vaut `true`, alors la phrase `You're old enough to drive` sera affichée dans la console. Sinon, si `isOldEnoughToDrive` vaut `false`, alors la phrase `Sorry, you are not old enough to drive` sera affichée dans la console. Comme la variable `isOldEnoughToDrive` est définie à `true`, c'est la première phrase qui sera affichée dans la console. Tu en apprendras davantage sur les instructions `if/else` dans une prochaine leçon."
+            },
+            {
+              "en": "To compare two values, you can use either the equality or strict equality operator. The result of the comparison will be a boolean of either `true` or `false`. Here is an example of using the equality operator to compare a string and a number. The equality operator is represented by a double equals sign (`==`).",
+              "fr": "Pour comparer deux valeurs, tu peux utiliser soit l'opérateur d'égalité, soit l'opérateur d'égalité stricte. Le résultat de la comparaison sera un booléen, soit `true`, soit `false`. Voici un exemple d'utilisation de l'opérateur d'égalité pour comparer une chaîne et un nombre. L'opérateur d'égalité est représenté par un double signe égal (`==`)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, JavaScript converts the string `\"5\"` into the number `5` and then checks if they are equal. Since both values are now the same, the result is true. The equality operator uses type coercion before checking if each value is equal.",
+              "fr": "Dans cet exemple, JavaScript convertit la chaîne `\"5\"` en le nombre `5`, puis vérifie s'ils sont égaux. Comme les deux valeurs sont désormais identiques, le résultat est true. L'opérateur d'égalité utilise la coercition de type avant de vérifier si chaque valeur est égale."
+            },
+            {
+              "en": "This differs from the strict equality operator, which does not perform type coercion. The strict equality operator will check if the types are the same and if the values are the same. Here is an example using the strict equality operator to compare a number and string. This operator is represented by a triple equals sign (`===`).",
+              "fr": "Cela diffère de l'opérateur d'égalité stricte, qui n'effectue pas de coercition de type. L'opérateur d'égalité stricte vérifie si les types sont identiques et si les valeurs sont identiques. Voici un exemple utilisant l'opérateur d'égalité stricte pour comparer un nombre et une chaîne. Cet opérateur est représenté par un triple signe égal (`===`)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The following comparison will be `false`, because a string data type is not the same as a number data type. If you need to check if something is not equal to another value, then you can use the inequality or strict inequality operators. Here is an example of using the inequality operator (`!=`) to compare a number with a string.",
+              "fr": "La comparaison suivante sera `false`, car un type de données chaîne n'est pas identique à un type de données nombre. Si tu as besoin de vérifier si quelque chose n'est pas égal à une autre valeur, tu peux utiliser les opérateurs d'inégalité ou d'inégalité stricte. Voici un exemple d'utilisation de l'opérateur d'inégalité (`!=`) pour comparer un nombre avec une chaîne."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the result would be `false` because the inequality operator first converts the string value to a number and then compares the values. Since the values would be the same it will return `false`. If you tried to use the strict inequality operator, then you would get a different result. The strict inequality operator is represented by an exclamation mark followed by two equal signs (`!==`).",
+              "fr": "Dans cet exemple, le résultat serait `false` car l'opérateur d'inégalité convertit d'abord la valeur chaîne en nombre, puis compare les valeurs. Comme les valeurs seraient identiques, il renverra `false`. Si tu essayais d'utiliser l'opérateur d'inégalité stricte, tu obtiendrais un résultat différent. L'opérateur d'inégalité stricte est représenté par un point d'exclamation suivi de deux signes égal (`!==`)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The result would be `true` because the strict inequality operator does not perform any type coercion. Since the number `5` is not equal to the string `\"5\"`, then the result is `true`.",
+              "fr": "Le résultat serait `true` car l'opérateur d'inégalité stricte n'effectue aucune coercition de type. Comme le nombre `5` n'est pas égal à la chaîne `\"5\"`, le résultat est `true`."
+            },
+            {
+              "en": "It is considered best practice to use strict inequality and equality operators whenever possible, as they do not perform type coercion. Most of the time in professional projects, you will see codebases that usually prefer these two operators over the inequality and equality operators.",
+              "fr": "Il est considéré comme une bonne pratique d'utiliser les opérateurs d'égalité et d'inégalité strictes chaque fois que possible, car ils n'effectuent pas de coercition de type. La plupart du temps dans les projets professionnels, tu verras des bases de code qui préfèrent généralement ces deux opérateurs aux opérateurs d'égalité et d'inégalité."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary use of booleans in JavaScript?",
+              "fr": "Quelle est l'utilité principale des booléens en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To store numbers and strings.",
+              "fr": "Stocker des nombres et des chaînes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about values that help determine outcomes in code.",
+              "fr": "Pense aux valeurs qui aident à déterminer les résultats dans le code."
+            },
+            {
+              "en": "To perform arithmetic operations.",
+              "fr": "Effectuer des opérations arithmétiques."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about values that help determine outcomes in code.",
+              "fr": "Pense aux valeurs qui aident à déterminer les résultats dans le code."
+            },
+            {
+              "en": "To represent `true` or `false` values and make decisions based on conditions",
+              "fr": "Représenter des valeurs `true` ou `false` et prendre des décisions en fonction de conditions"
+            },
+            {
+              "en": "To loop through arrays.",
+              "fr": "Parcourir des tableaux en boucle."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about values that help determine outcomes in code.",
+              "fr": "Pense aux valeurs qui aident à déterminer les résultats dans le code."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it a good idea to use strict equality (`===`) instead of regular equality (`==`) in JavaScript?",
+              "fr": "Pourquoi est-ce une bonne idée d'utiliser l'égalité stricte (`===`) plutôt que l'égalité normale (`==`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It converts data types automatically.",
+              "fr": "Elle convertit automatiquement les types de données."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how strict equality handles data types compared to regular equality.",
+              "fr": "Pense à la façon dont l'égalité stricte gère les types de données par rapport à l'égalité normale."
+            },
+            {
+              "en": "It allows you to compare different types without issues.",
+              "fr": "Elle te permet de comparer différents types sans problème."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how strict equality handles data types compared to regular equality.",
+              "fr": "Pense à la façon dont l'égalité stricte gère les types de données par rapport à l'égalité normale."
+            },
+            {
+              "en": "It checks both value and type, providing more predictable results.",
+              "fr": "Elle vérifie à la fois la valeur et le type, offrant des résultats plus prévisibles."
+            },
+            {
+              "en": "It is faster than regular equality.",
+              "fr": "Elle est plus rapide que l'égalité normale."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how strict equality handles data types compared to regular equality.",
+              "fr": "Pense à la façon dont l'égalité stricte gère les types de données par rapport à l'égalité normale."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you use regular equality (`==`) in JavaScript?",
+              "fr": "Que se passe-t-il quand tu utilises l'égalité normale (`==`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It only compares the values without any type conversion.",
+              "fr": "Elle compare uniquement les valeurs sans aucune conversion de type."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript handles different types with regular equality.",
+              "fr": "Pense à la façon dont JavaScript gère les différents types avec l'égalité normale."
+            },
+            {
+              "en": "It performs type coercion, converting values to the same type before comparing them.",
+              "fr": "Elle effectue une coercition de type, convertissant les valeurs vers le même type avant de les comparer."
+            },
+            {
+              "en": "It checks both value and type, like strict equality (`===`).",
+              "fr": "Elle vérifie à la fois la valeur et le type, comme l'égalité stricte (`===`)."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript handles different types with regular equality.",
+              "fr": "Pense à la façon dont JavaScript gère les différents types avec l'égalité normale."
+            },
+            {
+              "en": "It throws an error if the types don't match.",
+              "fr": "Elle déclenche une erreur si les types ne correspondent pas."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript handles different types with regular equality.",
+              "fr": "Pense à la façon dont JavaScript gère les différents types avec l'égalité normale."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673271dffbc34fda31da9515.md",
+      "id": "673271dffbc34fda31da9515",
+      "dashedName": "what-are-comparison-operators-and-how-do-they-work",
+      "title": {
+        "en": "What Are Comparison Operators, and How Do They Work?",
+        "fr": "Que sont les opérateurs de comparaison, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Comparison operators allow you to compare two values and return a `true` or `false` result. You can then use the result to make a decision or control the flow of your program. You use comparisons in `if` statements, loops, and many other situations where you need to make decisions based on certain conditions. Let's dive into the most common comparison operators and see how they work.",
+              "fr": "Les opérateurs de comparaison te permettent de comparer deux valeurs et de renvoyer un résultat `true` ou `false`. Tu peux ensuite utiliser le résultat pour prendre une décision ou contrôler le déroulement de ton programme. Tu utilises les comparaisons dans les instructions `if`, les boucles et bien d'autres situations où tu dois prendre des décisions en fonction de certaines conditions. Plongeons dans les opérateurs de comparaison les plus courants et voyons comment ils fonctionnent."
+            },
+            {
+              "en": "The greater than operator, represented by a right-angle bracket (`>`), checks if the value on the left is greater than the one on the right:",
+              "fr": "L'opérateur supérieur à, représenté par un chevron droit (`>`), vérifie si la valeur de gauche est supérieure à celle de droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The greater than or equal operator, represented by a right-angle bracket and the equals sign (`>=`), checks if the value on the left is either greater than or equal to the one on the right:",
+              "fr": "L'opérateur supérieur ou égal, représenté par un chevron droit et le signe égal (`>=`), vérifie si la valeur de gauche est supérieure ou égale à celle de droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The lesser than operator, represented by a left-angle bracket (`<`) works similarly to `>`, but in reverse. It checks if the value on the left is smaller than the one on the right:",
+              "fr": "L'opérateur inférieur à, représenté par un chevron gauche (`<`), fonctionne de manière similaire à `>`, mais à l'inverse. Il vérifie si la valeur de gauche est plus petite que celle de droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The less than or equal operator, represented by a left-angle bracket and the equals sign (`<=`) checks if the value on the left is smaller than or equal to the one on the right:",
+              "fr": "L'opérateur inférieur ou égal, représenté par un chevron gauche et le signe égal (`<=`), vérifie si la valeur de gauche est inférieure ou égale à celle de droite :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the greater than or equals (`>=`) operator do in JavaScript?",
+              "fr": "Que fait l'opérateur supérieur ou égal (`>=`) en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It checks if the value on the left is strictly greater than the one on the right.",
+              "fr": "Il vérifie si la valeur de gauche est strictement supérieure à celle de droite."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the greater than or equals operator combines two comparisons into one.",
+              "fr": "Pense à la façon dont l'opérateur supérieur ou égal combine deux comparaisons en une seule."
+            },
+            {
+              "en": "It checks if the value on the left is either greater than or equal to the one on the right.",
+              "fr": "Il vérifie si la valeur de gauche est supérieure ou égale à celle de droite."
+            },
+            {
+              "en": "It checks if the value on the right is greater than the one on the left.",
+              "fr": "Il vérifie si la valeur de droite est supérieure à celle de gauche."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the greater than or equals operator combines two comparisons into one.",
+              "fr": "Pense à la façon dont l'opérateur supérieur ou égal combine deux comparaisons en une seule."
+            },
+            {
+              "en": "It checks if both values are equal.",
+              "fr": "Il vérifie si les deux valeurs sont égales."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the greater than or equals operator combines two comparisons into one.",
+              "fr": "Pense à la façon dont l'opérateur supérieur ou égal combine deux comparaisons en une seule."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Where would you typically use comparison operators in JavaScript?",
+              "fr": "Où utiliserais-tu généralement les opérateurs de comparaison en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Only in arithmetic operations.",
+              "fr": "Uniquement dans les opérations arithmétiques."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need to check conditions in your code.",
+              "fr": "Pense aux moments où tu as besoin de vérifier des conditions dans ton code."
+            },
+            {
+              "en": "In if statements, loops, and other situations requiring decisions based on conditions.",
+              "fr": "Dans les instructions if, les boucles et d'autres situations nécessitant des décisions en fonction de conditions."
+            },
+            {
+              "en": "Only when working with strings.",
+              "fr": "Uniquement quand on travaille avec des chaînes."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need to check conditions in your code.",
+              "fr": "Pense aux moments où tu as besoin de vérifier des conditions dans ton code."
+            },
+            {
+              "en": "When defining functions.",
+              "fr": "Quand on définit des fonctions."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you need to check conditions in your code.",
+              "fr": "Pense aux moments où tu as besoin de vérifier des conditions dans ton code."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which two operators in JavaScript avoid type coercion?",
+              "fr": "Quels sont les deux opérateurs en JavaScript qui évitent la coercition de type ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`==` and `!=`.",
+              "fr": "`==` et `!=`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that compare both value and type.",
+              "fr": "Pense aux opérateurs qui comparent à la fois la valeur et le type."
+            },
+            {
+              "en": "`===` and `!==`.",
+              "fr": "`===` et `!==`."
+            },
+            {
+              "en": "`>` and `<`.",
+              "fr": "`>` et `<`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that compare both value and type.",
+              "fr": "Pense aux opérateurs qui comparent à la fois la valeur et le type."
+            },
+            {
+              "en": "`<=` and `>=`.",
+              "fr": "`<=` et `>=`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operators that compare both value and type.",
+              "fr": "Pense aux opérateurs qui comparent à la fois la valeur et le type."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
