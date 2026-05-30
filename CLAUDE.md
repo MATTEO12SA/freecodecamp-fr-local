@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 10/230 blocs (toutes les lectures du module `javascript-variables-and-strings` + `workshop-greeting-bot`). Prochaine cible logique : `lab-javascript-trivia-bot`.
+- **JavaScript v9** : 16/230 blocs — module `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes. Prochaine cible : étendre le pipeline pour reviews (`--assignment--`) et quizzes (`--quizzes--`/`--quiz--`), ou passer au module suivant.
 
 ## Pièges
 

@@ -58,7 +58,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock. Etat actuel : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
 
-JavaScript v9 est en cours : 10 blocs FR sur 230 (38 fichiers) — toutes les lectures du module `javascript-variables-and-strings` plus `workshop-greeting-bot`. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie maintenant avec `kind: "lecture"`.
+JavaScript v9 est en cours : 16 blocs FR sur 230 (97 fichiers) — module `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie maintenant avec `kind: "lecture"`.
 
 Regles de traduction :
 
@@ -92,7 +92,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-RWD est termine. Suite en cours : JavaScript v9 (10/230), prochain bloc logique `lab-javascript-trivia-bot`.
+RWD est termine. Suite en cours : JavaScript v9 (16/230), module 1 complet sauf reviews/quizzes (besoin extension pipeline).
 
 ## Scripts Gardes
 

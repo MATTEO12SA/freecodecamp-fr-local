@@ -119,7 +119,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. JavaScript v9 : 10 blocs FR sur 230 (38 fichiers) — toutes les lectures du module `javascript-variables-and-strings` + `workshop-greeting-bot`. Prochaine cible : `lab-javascript-trivia-bot`.
+Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. JavaScript v9 : 16 blocs FR sur 230 (97 fichiers) — module `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes (besoin extension pipeline).
 
 Workflow rapide mais relu manuellement :
 

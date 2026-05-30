@@ -253,7 +253,7 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD est terminé : 158 blocs FR sur 158, 0 workshop restant. JavaScript v9 est en cours : 10 blocs FR sur 230 (toutes les lectures du module 1 `javascript-variables-and-strings` + `workshop-greeting-bot`). Prochaine cible : `lab-javascript-trivia-bot`.
+RWD est terminé : 158 blocs FR sur 158, 0 workshop restant. JavaScript v9 est en cours : 16 blocs FR sur 230 — module 1 `javascript-variables-and-strings` complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes (besoin extension pipeline).
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>

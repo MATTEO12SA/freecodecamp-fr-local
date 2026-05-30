@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Suite en cours : JavaScript v9 (10/230 blocs). Toutes les lectures du module 1 (`javascript-variables-and-strings`) + `workshop-greeting-bot` sont faites. Prochaine cible recommandee : `lab-javascript-trivia-bot`.
+RWD est termine. Suite en cours : JavaScript v9 (16/230 blocs). Module 1 (`javascript-variables-and-strings`) complet : 9 lectures + 5 workshops + 2 labs. Restent 2 reviews + 2 quizzes (besoin extension pipeline). Prochaine cible : etendre le pipeline pour reviews/quizzes, ou module 2.
 
 ### Lister ce qui manque dans un module
 
@@ -281,7 +281,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 10/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 16/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -299,7 +299,7 @@ pnpm local:check:full                            # checks longs avant push final
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
 3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Continuer JavaScript v9 : les 9 lectures du module `javascript-variables-and-strings` + `workshop-greeting-bot` sont faites ; prochaine cible `lab-javascript-trivia-bot`.
+4. Continuer JavaScript v9 : module 1 (`javascript-variables-and-strings`) complet (9 lectures + 5 workshops + 2 labs) sauf reviews/quizzes ; prochaine cible = etendre le pipeline pour reviews (`--assignment--`)/quizzes (`--quizzes--`), ou module 2.
 5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 6. Commit + push immédiats à la fin de chaque module.
 
@@ -325,4 +325,4 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
 6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
 
-Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 10/230. Prochaine cible traduction : `lab-javascript-trivia-bot`.
+Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 16/230. Prochaine cible traduction : reviews/quizzes du module 1 (besoin extension pipeline) ou module 2.
