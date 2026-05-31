@@ -1,0 +1,307 @@
+{
+  "workshop": "workshop-loan-qualification-checker",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66c8ba41a77db20a93f9d7a1.md",
+      "id": "66c8ba41a77db20a93f9d7a1",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll review JavaScript conditionals by building a loan qualification checker app.",
+          "fr": "Dans ce workshop, tu vas réviser les conditionnels JavaScript en construisant une application de vérification d'éligibilité à un prêt."
+        },
+        {
+          "en": "The app will check whether the user is eligible for a duplex, car, and condo loan based on their annual income and credit score. A credit score is a number that represents how good you are at managing borrowed money.",
+          "fr": "L'application vérifiera si l'utilisateur est éligible à un prêt pour un duplex, une voiture et un appartement en fonction de son revenu annuel et de son score de crédit. Un score de crédit est un nombre qui représente ta capacité à gérer l'argent emprunté."
+        },
+        {
+          "en": "To get started, create the following variables and values.",
+          "fr": "Pour commencer, crée les variables et valeurs suivantes."
+        },
+        {
+          "en": "| Variable Name | Value   |\n| ----------- | ------- |\n| `minIncomeForDuplex`       | `60000` |\n| `minCreditScoreForDuplex`   | `700`   |\n| `minIncomeForCondo`   | `45000`   |\n| `minCreditScoreForCondo`    | `680`   |\n| `minIncomeForCar`   | `30000`   |\n| `minCreditScoreForCar`   | `650`   |",
+          "fr": "| Nom de la variable | Valeur   |\n| ----------- | ------- |\n| `minIncomeForDuplex`       | `60000` |\n| `minCreditScoreForDuplex`   | `700`   |\n| `minIncomeForCondo`   | `45000`   |\n| `minCreditScoreForCondo`    | `680`   |\n| `minIncomeForCar`   | `30000`   |\n| `minCreditScoreForCar`   | `650`   |"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `minIncomeForDuplex` variable set to `60000`.",
+          "fr": "Tu dois créer une variable `minIncomeForDuplex` définie à `60000`."
+        },
+        {
+          "en": "You should create a `minCreditScoreForDuplex` set to `700`.",
+          "fr": "Tu dois créer une variable `minCreditScoreForDuplex` définie à `700`."
+        },
+        {
+          "en": "You should create a `minIncomeForCar` variable set to `30000`.",
+          "fr": "Tu dois créer une variable `minIncomeForCar` définie à `30000`."
+        },
+        {
+          "en": "You should create a `minCreditScoreForCar` variable set to `650`.",
+          "fr": "Tu dois créer une variable `minCreditScoreForCar` définie à `650`."
+        },
+        {
+          "en": "You should create a `minIncomeForCondo` variable set to `45000`.",
+          "fr": "Tu dois créer une variable `minIncomeForCondo` définie à `45000`."
+        },
+        {
+          "en": "You should create a `minCreditScoreForCondo` variable set to `680`.",
+          "fr": "Tu dois créer une variable `minCreditScoreForCondo` définie à `680`."
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4ac.md",
+      "id": "66c8ba975ee7230e29f6c4ac",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "When the user is eligible for a loan, you'll want to display a message to them in the console.",
+          "fr": "Lorsque l'utilisateur est éligible à un prêt, tu voudras lui afficher un message dans la console."
+        },
+        {
+          "en": "For that, you'll build out a function inside which you'll have some checks that'll return what loan the applicant is eligible for.",
+          "fr": "Pour cela, tu vas construire une fonction à l'intérieur de laquelle tu auras des vérifications qui retourneront le prêt auquel le demandeur est éligible."
+        },
+        {
+          "en": "Create an empty `getLoanMessage` function with an `annualIncome` and `creditScore` parameters.",
+          "fr": "Crée une fonction vide `getLoanMessage` avec les paramètres `annualIncome` et `creditScore`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `getLoanMessage` function",
+          "fr": "Tu dois créer une fonction `getLoanMessage`"
+        },
+        {
+          "en": "Your `getLoanMessage` function should have an `annualIncome` and `creditScore` as parameters.",
+          "fr": "Ta fonction `getLoanMessage` doit avoir `annualIncome` et `creditScore` comme paramètres."
+        },
+        {
+          "en": "`getLoanMessage` should be an empty function.",
+          "fr": "`getLoanMessage` doit être une fonction vide."
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4ad.md",
+      "id": "66c8ba975ee7230e29f6c4ad",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "To check which loan a user is qualified for based on the `annualIncome` and `creditScore`, you have to use `if/else if` statement or a ternary right inside the `getLoanMessage` function. You'll then return the appropriate message in the block of each condition.",
+          "fr": "Pour vérifier à quel prêt un utilisateur est éligible en fonction de `annualIncome` et `creditScore`, tu dois utiliser une instruction `if/else if` ou un ternaire directement à l'intérieur de la fonction `getLoanMessage`. Tu retourneras ensuite le message approprié dans le bloc de chaque condition."
+        },
+        {
+          "en": "Starting with the duplex loan, check if `annualIncome` is greater than or equal to `minIncomeForDuplex` AND if `creditScore` is greater than or equal to `minCreditScoreForDuplex`.",
+          "fr": "En commençant par le prêt pour le duplex, vérifie si `annualIncome` est supérieur ou égal à `minIncomeForDuplex` ET si `creditScore` est supérieur ou égal à `minCreditScoreForDuplex`."
+        },
+        {
+          "en": "If that condition is true, then the applicant is eligible for a duplex loan and the other loans. So, inside the check, return the string `\"You qualify for a duplex, condo, and car loan.\"`",
+          "fr": "Si cette condition est vraie, alors le demandeur est éligible au prêt pour le duplex et aux autres prêts. Donc, à l'intérieur de la vérification, retourne la chaîne `\"You qualify for a duplex, condo, and car loan.\"`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getLoanMessage` function should return a string.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner une chaîne."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return the string `\"You qualify for a duplex, condo, and car loan.\"`.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner la chaîne `\"You qualify for a duplex, condo, and car loan.\"`."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return `undefined` if the applicant's annual income and credit score do not meet the requirements for a duplex loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner `undefined` si le revenu annuel et le score de crédit du demandeur ne remplissent pas les conditions du prêt pour le duplex."
+        },
+        {
+          "en": "",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4af.md",
+      "id": "66c8ba975ee7230e29f6c4af",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "If the applicant's annual income is greater than or equal to `minIncomeForCondo`, AND if their credit score is greater than or equal to `minCreditScoreForCondo`, then they qualify for a condo and car loan.",
+          "fr": "Si le revenu annuel du demandeur est supérieur ou égal à `minIncomeForCondo`, ET si son score de crédit est supérieur ou égal à `minCreditScoreForCondo`, alors il est éligible à un prêt pour un appartement et une voiture."
+        },
+        {
+          "en": "Check if that's true in the `getLoanMessage` function. If it is, return the string `\"You qualify for a condo and car loan.\"`",
+          "fr": "Vérifie si c'est vrai dans la fonction `getLoanMessage`. Si c'est le cas, retourne la chaîne `\"You qualify for a condo and car loan.\"`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getLoanMessage` function should return a string if the applicant qualifies for a condo and car loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner une chaîne si le demandeur est éligible à un prêt pour un appartement et une voiture."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return the string `\"You qualify for a condo and car loan.\"`.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner la chaîne `\"You qualify for a condo and car loan.\"`."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return `undefined` if the applicant's annual income and credit score do not meet the requirements for a condo loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner `undefined` si le revenu annuel et le score de crédit du demandeur ne remplissent pas les conditions du prêt pour un appartement."
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4b0.md",
+      "id": "66c8ba975ee7230e29f6c4b0",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Now, you should check if the applicant is qualified for a car loan only. If they are, return the string `\"You qualify for a car loan.\"`.",
+          "fr": "Maintenant, tu dois vérifier si le demandeur est éligible à un prêt pour une voiture uniquement. Si c'est le cas, retourne la chaîne `\"You qualify for a car loan.\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getLoanMessage` function should return a string if the applicant qualifies for a car loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner une chaîne si le demandeur est éligible à un prêt pour une voiture."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return the string `\"You qualify for a car loan.\"`.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner la chaîne `\"You qualify for a car loan.\"`."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return `undefined` if the applicant's annual income and credit score do not meet the requirements for a car loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner `undefined` si le revenu annuel et le score de crédit du demandeur ne remplissent pas les conditions du prêt pour une voiture."
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4b1.md",
+      "id": "66c8ba975ee7230e29f6c4b1",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "If the applicant's annual income and credit score fall below `minIncomeForCar` and `minCreditScoreForCar`, then they don't qualify for any loan. So, return the string `\"You don't qualify for any loans.\"`",
+          "fr": "Si le revenu annuel et le score de crédit du demandeur sont inférieurs à `minIncomeForCar` et `minCreditScoreForCar`, alors il n'est éligible à aucun prêt. Donc, retourne la chaîne `\"You don't qualify for any loans.\"`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getLoanMessage` function should return a string if the applicant doesn't qualify for any loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner une chaîne si le demandeur n'est éligible à aucun prêt."
+        },
+        {
+          "en": "Your `getLoanMessage` function should return the string `\"You don't qualify for any loans.\"` if the applicant does not meet the requirements for any loan.",
+          "fr": "Ta fonction `getLoanMessage` doit retourner la chaîne `\"You don't qualify for any loans.\"` si le demandeur ne remplit les conditions d'aucun prêt."
+        }
+      ]
+    },
+    {
+      "file": "66c8ba975ee7230e29f6c4b2.md",
+      "id": "66c8ba975ee7230e29f6c4b2",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now, it is time to test out your `getLoanMessage` function.",
+          "fr": "Maintenant, il est temps de tester ta fonction `getLoanMessage`."
+        },
+        {
+          "en": "Use the table below to create `4` variables and their values:",
+          "fr": "Utilise le tableau ci-dessous pour créer `4` variables et leurs valeurs :"
+        },
+        {
+          "en": "| Variable Name | Value   |\n| ----------- | ------- |\n| `duplexLoanMsg`       | `getLoanMessage(85000, 850)` |\n| `condoLoanMsg`   | `getLoanMessage(65000, 690)`   |\n| `carLoanMsg`   | `getLoanMessage(45000, 660)`   |\n| `noLoanMsg`   | `getLoanMessage(25000, 550)`   |",
+          "fr": "| Nom de la variable | Valeur   |\n| ----------- | ------- |\n| `duplexLoanMsg`       | `getLoanMessage(85000, 850)` |\n| `condoLoanMsg`   | `getLoanMessage(65000, 690)`   |\n| `carLoanMsg`   | `getLoanMessage(45000, 660)`   |\n| `noLoanMsg`   | `getLoanMessage(25000, 550)`   |"
+        },
+        {
+          "en": "After that, log each variable to the console to see the messages.",
+          "fr": "Ensuite, affiche chaque variable dans la console pour voir les messages."
+        },
+        {
+          "en": "With that, your loan qualification checker project is complete!",
+          "fr": "Avec ça, ton projet de vérification d'éligibilité à un prêt est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `duplexLoanMsg`.",
+          "fr": "Tu dois avoir une variable appelée `duplexLoanMsg`."
+        },
+        {
+          "en": "Your `duplexLoanMsg` variable should be set to the result of `getLoanMessage(85000, 850)`.",
+          "fr": "Ta variable `duplexLoanMsg` doit être définie sur le résultat de `getLoanMessage(85000, 850)`."
+        },
+        {
+          "en": "You should log the `duplexLoanMsg` variable to the console.",
+          "fr": "Tu dois afficher la variable `duplexLoanMsg` dans la console."
+        },
+        {
+          "en": "You should have a variable called `condoLoanMsg`.",
+          "fr": "Tu dois avoir une variable appelée `condoLoanMsg`."
+        },
+        {
+          "en": "Your `condoLoanMsg` variable should be set to the result of `getLoanMessage(65000, 690)`.",
+          "fr": "Ta variable `condoLoanMsg` doit être définie sur le résultat de `getLoanMessage(65000, 690)`."
+        },
+        {
+          "en": "You should log the `condoLoanMsg` variable to the console.",
+          "fr": "Tu dois afficher la variable `condoLoanMsg` dans la console."
+        },
+        {
+          "en": "You should have a variable called `carLoanMsg`.",
+          "fr": "Tu dois avoir une variable appelée `carLoanMsg`."
+        },
+        {
+          "en": "Your `carLoanMsg` variable should be set to the result of `getLoanMessage(45000, 660)`.",
+          "fr": "Ta variable `carLoanMsg` doit être définie sur le résultat de `getLoanMessage(45000, 660)`."
+        },
+        {
+          "en": "You should log the `carLoanMsg` variable to the console.",
+          "fr": "Tu dois afficher la variable `carLoanMsg` dans la console."
+        },
+        {
+          "en": "You should have a variable called `noLoanMsg`.",
+          "fr": "Tu dois avoir une variable appelée `noLoanMsg`."
+        },
+        {
+          "en": "Your `noLoanMsg` variable should be set to the result of `getLoanMessage(25000, 550)`.",
+          "fr": "Ta variable `noLoanMsg` doit être définie sur le résultat de `getLoanMessage(25000, 550)`."
+        },
+        {
+          "en": "You should log the `noLoanMsg` variable to the console.",
+          "fr": "Tu dois afficher la variable `noLoanMsg` dans la console."
+        }
+      ]
+    }
+  ]
+}
