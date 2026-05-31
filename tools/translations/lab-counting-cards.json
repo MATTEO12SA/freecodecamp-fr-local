@@ -1,0 +1,81 @@
+{
+  "workshop": "lab-counting-cards",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "68a23004e96a105df3a21fc4.md",
+      "id": "68a23004e96a105df3a21fc4",
+      "dashedName": "lab-counting-cards",
+      "title": {
+        "en": "Build a Card Counting Assistant",
+        "fr": "Crée un assistant de comptage de cartes"
+      },
+      "description": [
+        {
+          "en": "In the casino game Blackjack, a player can determine whether they have an advantage on the next hand over the house by keeping track of the relative number of high and low cards remaining in the deck. This is called Card Counting.",
+          "fr": "Dans le jeu de casino Blackjack, un joueur peut déterminer s'il a un avantage sur la maison pour la prochaine main en gardant la trace du nombre relatif de cartes hautes et basses restant dans le paquet. C'est ce qu'on appelle le comptage de cartes."
+        },
+        {
+          "en": "Having more high cards remaining in the deck favors the player. When the count is positive, the player should bet high. When the count is zero or negative, the player should bet low.",
+          "fr": "Avoir plus de cartes hautes restantes dans le paquet favorise le joueur. Lorsque le compte est positif, le joueur devrait miser haut. Lorsque le compte est nul ou négatif, le joueur devrait miser bas."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should use `let` to declare a global variable named `count` and set it to `0`.\n1. You should have a function called `cardCounter`.\n1. The `cardCounter` function should receive a `card` parameter which can either be a number or string.\n    - For values between `2` to `10`, the `card` parameter will be a number.\n    - For all other values, the `card` parameter will be a string.\n1. The `cardCounter` function should modify the global `count` variable based on certain criteria.\n1. The global `count` variable should be increased by `1` for the cards `2`, `3`,`4`, `5`, or `6`\n1. The global `count` variable should remain unchanged for the cards `7`, `8`, `9`.\n1. The global `count` variable should be decreased by `1` for the cards `10`, `\"J\"`, `\"Q\"`, `\"K\"`, `\"A\"`\n1. The `cardCounter` function should return a string with current count and the string `Bet` if the count is positive.\n1. The `cardCounter` function should return a string with current count and the string `Hold` if the count is less than or equal to `0`.\n1. In the function output, the current count and the player's decision (`Bet` or `Hold`) should be separated by a space. For example, `-3 Hold`.",
+          "fr": "1. Tu dois utiliser `let` pour déclarer une variable globale nommée `count` et la définir à `0`.\n1. Tu dois avoir une fonction appelée `cardCounter`.\n1. La fonction `cardCounter` doit recevoir un paramètre `card` qui peut être soit un nombre, soit une chaîne.\n    - Pour les valeurs entre `2` et `10`, le paramètre `card` sera un nombre.\n    - Pour toutes les autres valeurs, le paramètre `card` sera une chaîne.\n1. La fonction `cardCounter` doit modifier la variable globale `count` selon certains critères.\n1. La variable globale `count` doit être augmentée de `1` pour les cartes `2`, `3`,`4`, `5` ou `6`\n1. La variable globale `count` doit rester inchangée pour les cartes `7`, `8`, `9`.\n1. La variable globale `count` doit être diminuée de `1` pour les cartes `10`, `\"J\"`, `\"Q\"`, `\"K\"`, `\"A\"`\n1. La fonction `cardCounter` doit retourner une chaîne avec le compte actuel et la chaîne `Bet` si le compte est positif.\n1. La fonction `cardCounter` doit retourner une chaîne avec le compte actuel et la chaîne `Hold` si le compte est inférieur ou égal à `0`.\n1. Dans la sortie de la fonction, le compte actuel et la décision du joueur (`Bet` ou `Hold`) doivent être séparés par un espace. Par exemple, `-3 Hold`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to declare a global variable named `count` and set it to `0`.",
+          "fr": "Tu dois utiliser `let` pour déclarer une variable globale nommée `count` et la définir à `0`."
+        },
+        {
+          "en": "You should have a function named `cardCounter`.",
+          "fr": "Tu dois avoir une fonction nommée `cardCounter`."
+        },
+        {
+          "en": "Your function should return the value of `count` and the text (`Bet` or `Hold`) with one space character between them.",
+          "fr": "Ta fonction doit retourner la valeur de `count` et le texte (`Bet` ou `Hold`) avec un seul caractère espace entre les deux."
+        },
+        {
+          "en": "After the cards `2`, `3`, `4`, `5`, then calling `cardCounter(6)` should return the string `5 Bet`.",
+          "fr": "Après les cartes `2`, `3`, `4`, `5`, l'appel de `cardCounter(6)` doit retourner la chaîne `5 Bet`."
+        },
+        {
+          "en": "After the cards `7`, `8`, then calling `cardCounter(9)` should return the string `0 Hold`.",
+          "fr": "Après les cartes `7`, `8`, l'appel de `cardCounter(9)` doit retourner la chaîne `0 Hold`."
+        },
+        {
+          "en": "After the cards `10`, `\"J\"`, `\"Q\"`, `\"K\"`, then calling `cardCounter(\"A\")` should return the string `-5 Hold`.",
+          "fr": "Après les cartes `10`, `\"J\"`, `\"Q\"`, `\"K\"`, l'appel de `cardCounter(\"A\")` doit retourner la chaîne `-5 Hold`."
+        },
+        {
+          "en": "After the cards `3`, `7`, `\"Q\"`, `8`, then calling `cardCounter(\"A\")` should return the string `-1 Hold`.",
+          "fr": "Après les cartes `3`, `7`, `\"Q\"`, `8`, l'appel de `cardCounter(\"A\")` doit retourner la chaîne `-1 Hold`."
+        },
+        {
+          "en": "After the cards `2`, `\"J\"`, `9`, `2`, then calling `cardCounter(7)` should return the string `1 Bet`.",
+          "fr": "Après les cartes `2`, `\"J\"`, `9`, `2`, l'appel de `cardCounter(7)` doit retourner la chaîne `1 Bet`."
+        },
+        {
+          "en": "After the cards `2`, `2`, then calling `cardCounter(10)` should return the string `1 Bet`.",
+          "fr": "Après les cartes `2`, `2`, l'appel de `cardCounter(10)` doit retourner la chaîne `1 Bet`."
+        },
+        {
+          "en": "After the cards `3`, `2`, `\"A\"`, `10`, then calling `cardCounter(\"K\")` should return the string `-1 Hold`.",
+          "fr": "Après les cartes `3`, `2`, `\"A\"`, `10`, l'appel de `cardCounter(\"K\")` doit retourner la chaîne `-1 Hold`."
+        }
+      ]
+    }
+  ]
+}
