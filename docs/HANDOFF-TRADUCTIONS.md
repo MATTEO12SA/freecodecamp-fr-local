@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-RWD est termine. Suite en cours : JavaScript v9 (36/230 blocs). Modules 1-2 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`) **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 3 `javascript-functions`.
+Suite en cours : JavaScript v9 (48/230 blocs). Modules 1-3 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`) **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 4 `introduction-to-arrays-in-javascript`.
 
 ### Lister ce qui manque dans un module
 
@@ -281,7 +281,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. RWD = 158/158, JS = 36/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 48/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -298,10 +298,9 @@ pnpm local:check:full                            # checks longs avant push final
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Comme RWD = 158/158, ne plus chercher de workshop RWD restant.
-4. Continuer JavaScript v9 : modules 1-2 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`) **100 % complets** (36/230) ; prochaine cible = module 3 `javascript-functions`.
-5. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
-6. Commit + push immédiats à la fin de chaque module.
+3. Continuer JavaScript v9 : modules 1-3 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`) **100 % complets** (48/230) ; prochaine cible = module 4 `introduction-to-arrays-in-javascript`.
+4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
+5. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock
 
