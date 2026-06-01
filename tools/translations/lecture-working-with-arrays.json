@@ -1,0 +1,1268 @@
+{
+  "workshop": "lecture-working-with-arrays",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329f508a6ec45b046700b3.md",
+      "id": "67329f508a6ec45b046700b3",
+      "dashedName": "what-are-the-key-characteristics-of-javascript-arrays",
+      "title": {
+        "en": "What Are the Key Characteristics of JavaScript Arrays?",
+        "fr": "Quelles sont les caractéristiques clés des tableaux JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "An array in JavaScript is an ordered collection of values, each identified by a numeric index. The values in a JavaScript array can be of different data types, including numbers, strings, booleans, objects, and even other arrays.",
+              "fr": "Un tableau en JavaScript est une collection ordonnée de valeurs, chacune identifiée par un index numérique. Les valeurs d'un tableau JavaScript peuvent être de différents types de données, y compris des nombres, des chaînes, des booléens, des objets, et même d'autres tableaux."
+            },
+            {
+              "en": "To create an array in JavaScript, you can use square brackets, `[]`, and separate the values with commas. Here's an example:",
+              "fr": "Pour créer un tableau en JavaScript, tu peux utiliser des crochets, `[]`, et séparer les valeurs par des virgules. Voici un exemple :"
+            },
+            {
+              "en": "In this example, we declare a variable `fruits` and assign it an array containing three string values: `apple`, `banana`, and `orange`.",
+              "fr": "Dans cet exemple, nous déclarons une variable `fruits` et lui affectons un tableau contenant trois valeurs de type chaîne : `apple`, `banana` et `orange`."
+            },
+            {
+              "en": "One of the key characteristics of arrays is that they are zero-indexed, meaning that the first element in an array has an index of `0`, the second element has an index of `1`, and so on. You can access individual elements in an array using their index. For example:",
+              "fr": "L'une des caractéristiques clés des tableaux est qu'ils sont indexés à partir de zéro, ce qui signifie que le premier élément d'un tableau a un index de `0`, le deuxième élément a un index de `1`, et ainsi de suite. Tu peux accéder aux éléments individuels d'un tableau en utilisant leur index. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we use the index `0` to access the first element (`apple`) and the index `2` to access the third element (`orange`).",
+              "fr": "Dans cet exemple, nous utilisons l'index `0` pour accéder au premier élément (`apple`) et l'index `2` pour accéder au troisième élément (`orange`)."
+            },
+            {
+              "en": "Arrays in JavaScript have a special `length` property that returns the number of elements in the array. You can access this property using the `length` keyword. For example:",
+              "fr": "Les tableaux en JavaScript ont une propriété spéciale `length` qui retourne le nombre d'éléments du tableau. Tu peux accéder à cette propriété en utilisant le mot-clé `length`. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Another key characteristic of arrays in JavaScript is that they are dynamic, meaning that their size can change after they are created. You can add or remove elements from an array using various array methods, such as `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, and more. These methods will be taught in upcoming lessons.",
+              "fr": "Une autre caractéristique clé des tableaux en JavaScript est qu'ils sont dynamiques, ce qui signifie que leur taille peut changer après leur création. Tu peux ajouter ou supprimer des éléments d'un tableau en utilisant diverses méthodes de tableau, comme `push()`, `pop()`, `shift()`, `unshift()`, `splice()`, et bien d'autres. Ces méthodes seront enseignées dans les prochaines leçons."
+            },
+            {
+              "en": "JavaScript arrays are versatile and useful when it comes to data storage inside your programs. Throughout this module, you'll get to see firsthand how working with arrays will help you efficiently manage and manipulate collections of data.",
+              "fr": "Les tableaux JavaScript sont polyvalents et utiles lorsqu'il s'agit de stocker des données dans tes programmes. Tout au long de ce module, tu verras par toi-même comment le travail avec les tableaux t'aidera à gérer et à manipuler efficacement des collections de données."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT true about JavaScript arrays?",
+              "fr": "Laquelle des propositions suivantes n'est PAS vraie à propos des tableaux JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They are zero-indexed.",
+              "fr": "Ils sont indexés à partir de zéro."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how each value in an array is numerically indexed, and how that affects the way values are stored.",
+              "fr": "Rappelle-toi comment chaque valeur d'un tableau est indexée numériquement, et comment cela affecte la façon dont les valeurs sont stockées."
+            },
+            {
+              "en": "They are an unordered collection of values.",
+              "fr": "Ils sont une collection non ordonnée de valeurs."
+            },
+            {
+              "en": "They can contain another array as a value.",
+              "fr": "Ils peuvent contenir un autre tableau comme valeur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how each value in an array is numerically indexed, and how that affects the way values are stored.",
+              "fr": "Rappelle-toi comment chaque valeur d'un tableau est indexée numériquement, et comment cela affecte la façon dont les valeurs sont stockées."
+            },
+            {
+              "en": "They are dynamic, and their size can change after they're created.",
+              "fr": "Ils sont dynamiques, et leur taille peut changer après leur création."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how each value in an array is numerically indexed, and how that affects the way values are stored.",
+              "fr": "Rappelle-toi comment chaque valeur d'un tableau est indexée numériquement, et comment cela affecte la façon dont les valeurs sont stockées."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that arrays in JavaScript are zero-indexed.",
+              "fr": "Souviens-toi que les tableaux en JavaScript sont indexés à partir de zéro."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that arrays in JavaScript are zero-indexed.",
+              "fr": "Souviens-toi que les tableaux en JavaScript sont indexés à partir de zéro."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that arrays in JavaScript are zero-indexed.",
+              "fr": "Souviens-toi que les tableaux en JavaScript sont indexés à partir de zéro."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The length property of an array returns the number of elements it contains.",
+              "fr": "La propriété length d'un tableau retourne le nombre d'éléments qu'il contient."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The length property of an array returns the number of elements it contains.",
+              "fr": "La propriété length d'un tableau retourne le nombre d'éléments qu'il contient."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The length property of an array returns the number of elements it contains.",
+              "fr": "La propriété length d'un tableau retourne le nombre d'éléments qu'il contient."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732aebaa8abb9086a9bb17a.md",
+      "id": "6732aebaa8abb9086a9bb17a",
+      "dashedName": "how-do-you-access-and-update-elements-in-an-array",
+      "title": {
+        "en": "How Do You Access and Update Elements in an Array?",
+        "fr": "Comment accéder aux éléments d'un tableau et les mettre à jour ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you were first introduced to working with arrays and accessing different elements from arrays. Here is a reminder on how to access the second element from an array:",
+              "fr": "Dans la leçon précédente, tu as découvert pour la première fois le travail avec les tableaux et l'accès aux différents éléments d'un tableau. Voici un rappel de comment accéder au deuxième élément d'un tableau :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since arrays are zero based indexed, the first element will be at index `0`, the second index will be at index `1`, etc. It's important to note that if you try to access an index that doesn't exist in the array, JavaScript will return `undefined`.",
+              "fr": "Comme les tableaux sont indexés à partir de zéro, le premier élément sera à l'index `0`, le deuxième à l'index `1`, etc. Il est important de noter que si tu essaies d'accéder à un index qui n'existe pas dans le tableau, JavaScript retournera `undefined`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, there is no index `3` for the `fruits` array. So the log will show `undefined`. Now, let's look at how to update elements in an array. You can update an element by assigning a new value to a specific index.",
+              "fr": "Dans cet exemple, il n'y a pas d'index `3` pour le tableau `fruits`. Donc l'affichage montrera `undefined`. Maintenant, regardons comment mettre à jour les éléments d'un tableau. Tu peux mettre à jour un élément en affectant une nouvelle valeur à un index précis."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we've replaced `banana` with `blueberry` at index `1`. This method allows you to change any element in the array, as long as you know its index. You can also add new elements to an array by assigning a value to an index that doesn't yet exist:",
+              "fr": "Dans cet exemple, nous avons remplacé `banana` par `blueberry` à l'index `1`. Cette méthode te permet de modifier n'importe quel élément du tableau, tant que tu connais son index. Tu peux aussi ajouter de nouveaux éléments à un tableau en affectant une valeur à un index qui n'existe pas encore :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "However, exercise caution when doing this. If you assign a value to an index that is much larger than the current length of the array, you will create undefined elements for the indices in between, which can lead to unexpected behavior. As you continue to work with JavaScript, you'll find that these ways of accessing and updating array elements are fundamental to many programming tasks. Whether you're building a simple todo list or processing complex data structures, these skills will be invaluable.",
+              "fr": "Cependant, sois prudent en faisant cela. Si tu affectes une valeur à un index bien plus grand que la longueur actuelle du tableau, tu créeras des éléments undefined pour les indices intermédiaires, ce qui peut entraîner un comportement inattendu. Au fur et à mesure que tu continueras à travailler avec JavaScript, tu constateras que ces façons d'accéder aux éléments d'un tableau et de les mettre à jour sont fondamentales pour de nombreuses tâches de programmation. Que tu construises une simple liste de tâches ou que tu traites des structures de données complexes, ces compétences seront précieuses."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If you have an array `let numbers = [10, 20, 30, 40, 50]`, what will `numbers[2]` return?",
+              "fr": "Si tu as un tableau `let numbers = [10, 20, 30, 40, 50]`, que retournera `numbers[2]` ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that array indexing starts at `0`.",
+              "fr": "Souviens-toi que l'indexation des tableaux commence à `0`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that array indexing starts at `0`.",
+              "fr": "Souviens-toi que l'indexation des tableaux commence à `0`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that array indexing starts at `0`.",
+              "fr": "Souviens-toi que l'indexation des tableaux commence à `0`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you try to access an array element at an index that doesn't exist?",
+              "fr": "Que se passe-t-il si tu essaies d'accéder à un élément d'un tableau à un index qui n'existe pas ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It throws an error.",
+              "fr": "Cela déclenche une erreur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript does when it can't find a value at a specified index.",
+              "fr": "Réfléchis à ce que fait JavaScript lorsqu'il ne trouve pas de valeur à un index spécifié."
+            },
+            {
+              "en": "It returns `null`.",
+              "fr": "Cela retourne `null`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript does when it can't find a value at a specified index.",
+              "fr": "Réfléchis à ce que fait JavaScript lorsqu'il ne trouve pas de valeur à un index spécifié."
+            },
+            {
+              "en": "It returns `undefined`.",
+              "fr": "Cela retourne `undefined`."
+            },
+            {
+              "en": "It returns the last element of the array.",
+              "fr": "Cela retourne le dernier élément du tableau."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript does when it can't find a value at a specified index.",
+              "fr": "Réfléchis à ce que fait JavaScript lorsqu'il ne trouve pas de valeur à un index spécifié."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the index number used to represent the first element of an array?",
+              "fr": "Quel est le numéro d'index utilisé pour représenter le premier élément d'un tableau ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember we don't start counting at `1`. We start counting at a different number when dealing with arrays.",
+              "fr": "Souviens-toi qu'on ne commence pas à compter à `1`. On commence à compter à un nombre différent lorsqu'on travaille avec des tableaux."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember we don't start counting at `1`. We start counting at a different number when dealing with arrays.",
+              "fr": "Souviens-toi qu'on ne commence pas à compter à `1`. On commence à compter à un nombre différent lorsqu'on travaille avec des tableaux."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember we don't start counting at `1`. We start counting at a different number when dealing with arrays.",
+              "fr": "Souviens-toi qu'on ne commence pas à compter à `1`. On commence à compter à un nombre différent lorsqu'on travaille avec des tableaux."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732aec982904608b637716b.md",
+      "id": "6732aec982904608b637716b",
+      "dashedName": "how-do-you-add-and-remove-elements-from-the-beginning-and-end-of-an-array",
+      "title": {
+        "en": "How Do You Add and Remove Elements from the Beginning and End of an Array?",
+        "fr": "Comment ajouter et supprimer des éléments au début et à la fin d'un tableau ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Arrays in JavaScript are dynamic, which means you can easily add or remove elements from them. There are four main methods for adding and removing elements from the beginning and end of an array: `push()`, `pop()`, `shift()`, and `unshift()`. Let's explore each of these methods in detail.",
+              "fr": "Les tableaux en JavaScript sont dynamiques, ce qui signifie que tu peux facilement y ajouter ou en supprimer des éléments. Il existe quatre méthodes principales pour ajouter et supprimer des éléments au début et à la fin d'un tableau : `push()`, `pop()`, `shift()` et `unshift()`. Explorons chacune de ces méthodes en détail."
+            },
+            {
+              "en": "The `push()` method is used to add one or more elements to the end of an array. The return value for the `push()` method is the new length of the array. Here's an example of adding a new fruit to the existing `fruits` array:",
+              "fr": "La méthode `push()` est utilisée pour ajouter un ou plusieurs éléments à la fin d'un tableau. La valeur retournée par la méthode `push()` est la nouvelle longueur du tableau. Voici un exemple d'ajout d'un nouveau fruit au tableau `fruits` existant :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we start with an array called `fruits` which contains two elements. We then use the `push()` method to add the string `orange` to the end of the array.",
+              "fr": "Dans cet exemple, nous partons d'un tableau appelé `fruits` qui contient deux éléments. Nous utilisons ensuite la méthode `push()` pour ajouter la chaîne `orange` à la fin du tableau."
+            },
+            {
+              "en": "You might have noticed that we are using `const` when declaring the `fruits` array. But why is it possible to add more elements to this `fruits` array when `fruits` is a constant? This is possible because declaring an array with the `const` keyword creates a reference to the array. While the array itself is mutable and can be modified, you cannot reassign a new value to the `fruits` constant, like this:",
+              "fr": "Tu as peut-être remarqué que nous utilisons `const` lors de la déclaration du tableau `fruits`. Mais pourquoi est-il possible d'ajouter d'autres éléments à ce tableau `fruits` alors que `fruits` est une constante ? C'est possible parce que déclarer un tableau avec le mot-clé `const` crée une référence vers le tableau. Bien que le tableau lui-même soit mutable et puisse être modifié, tu ne peux pas réaffecter une nouvelle valeur à la constante `fruits`, comme ceci :"
+            },
+            {
+              "en": "The next method we will look at is the `pop()` method. The `pop()` method removes the last element from an array and returns that element. It also modifies the original array. Here's how it works:",
+              "fr": "La méthode suivante que nous allons examiner est la méthode `pop()`. La méthode `pop()` supprime le dernier élément d'un tableau et retourne cet élément. Elle modifie aussi le tableau d'origine. Voici comment elle fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we start with an array of three fruits. The `pop()` method removes the last element (`orange`) from the array and returns it. The original `fruits` array is modified and contains only two elements.",
+              "fr": "Dans cet exemple, nous partons d'un tableau de trois fruits. La méthode `pop()` supprime le dernier élément (`orange`) du tableau et le retourne. Le tableau `fruits` d'origine est modifié et ne contient plus que deux éléments."
+            },
+            {
+              "en": "The `unshift()` method adds one or more elements to the beginning of an array and returns its new length. It works similarly to `push()`, but modifies the start of the array instead of the end. Here's an example:",
+              "fr": "La méthode `unshift()` ajoute un ou plusieurs éléments au début d'un tableau et retourne sa nouvelle longueur. Elle fonctionne de manière similaire à `push()`, mais modifie le début du tableau plutôt que la fin. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we use `unshift()` to add the number `1` to the beginning of the `numbers` array. The method returns the new length of the array, which is `3`.",
+              "fr": "Dans cet exemple, nous utilisons `unshift()` pour ajouter le nombre `1` au début du tableau `numbers`. La méthode retourne la nouvelle longueur du tableau, qui est `3`."
+            },
+            {
+              "en": "Finally, the `shift()` method removes the first element from an array and returns that element. It's similar to `pop()`, but it works at the beginning of the array instead of the end. Here's how it works:",
+              "fr": "Enfin, la méthode `shift()` supprime le premier élément d'un tableau et retourne cet élément. Elle est similaire à `pop()`, mais elle agit au début du tableau plutôt qu'à la fin. Voici comment elle fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we start with an array of three colors. The `shift()` method removes the first element (`red`) from the array and returns it. The original `colors` array is modified to contain only two elements.",
+              "fr": "Dans cet exemple, nous partons d'un tableau de trois couleurs. La méthode `shift()` supprime le premier élément (`red`) du tableau et le retourne. Le tableau `colors` d'origine est modifié pour ne plus contenir que deux éléments."
+            },
+            {
+              "en": "Note that while `push()` and `unshift()` can add multiple elements at once, `pop()` and `shift()` remove only one element at a time.",
+              "fr": "Note que si `push()` et `unshift()` peuvent ajouter plusieurs éléments à la fois, `pop()` et `shift()` ne suppriment qu'un seul élément à la fois."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the order of operations and what each method does to the array.",
+              "fr": "Réfléchis à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the order of operations and what each method does to the array.",
+              "fr": "Réfléchis à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the order of operations and what each method does to the array.",
+              "fr": "Réfléchis à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `shift()` removes from the beginning and `pop()` removes from the end.",
+              "fr": "Souviens-toi que `shift()` supprime au début et `pop()` supprime à la fin."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `shift()` removes from the beginning and `pop()` removes from the end.",
+              "fr": "Souviens-toi que `shift()` supprime au début et `pop()` supprime à la fin."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `shift()` removes from the beginning and `pop()` removes from the end.",
+              "fr": "Souviens-toi que `shift()` supprime au début et `pop()` supprime à la fin."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result of the following code?",
+              "fr": "Quel sera le résultat du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the order of operations and what each method does to the array.",
+              "fr": "Fais attention à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the order of operations and what each method does to the array.",
+              "fr": "Fais attention à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the order of operations and what each method does to the array.",
+              "fr": "Fais attention à l'ordre des opérations et à ce que chaque méthode fait au tableau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732aed2ac3d3c08f6149dd6.md",
+      "id": "6732aed2ac3d3c08f6149dd6",
+      "dashedName": "what-is-the-difference-between-one-dimensional-and-two-dimensional-arrays",
+      "title": {
+        "en": "What Is the Difference Between One-Dimensional and Two-Dimensional Arrays?",
+        "fr": "Quelle est la différence entre les tableaux à une dimension et à deux dimensions ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In programming, arrays are fundamental data structures used to store collections of elements. Understanding the difference between one-dimensional and two-dimensional arrays is crucial for organizing and manipulating data effectively. Let's explore these concepts in a way that's easy for beginners to grasp.",
+              "fr": "En programmation, les tableaux sont des structures de données fondamentales utilisées pour stocker des collections d'éléments. Comprendre la différence entre les tableaux à une dimension et à deux dimensions est crucial pour organiser et manipuler les données efficacement. Explorons ces concepts d'une façon facile à saisir pour les débutants."
+            },
+            {
+              "en": "A one-dimensional array, often called an array, is like a single row of boxes. Imagine you have a line of storage lockers at a train station. Each locker can hold one item, and you can access any locker directly if you know its number.",
+              "fr": "Un tableau à une dimension, souvent appelé simplement tableau, est comme une seule rangée de boîtes. Imagine que tu as une rangée de casiers de consigne dans une gare. Chaque casier peut contenir un objet, et tu peux accéder directement à n'importe quel casier si tu connais son numéro."
+            },
+            {
+              "en": "In programming terms, each item in a one-dimensional array is accessed using a single index. For example, in JavaScript, you might create and use a one-dimensional array like this:",
+              "fr": "En termes de programmation, chaque élément d'un tableau à une dimension est accédé à l'aide d'un seul index. Par exemple, en JavaScript, tu pourrais créer et utiliser un tableau à une dimension comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, `fruits` is a one-dimensional array. You can think of it as a single row of fruit names. To access any fruit, you use one number (the index) inside square brackets.",
+              "fr": "Ici, `fruits` est un tableau à une dimension. Tu peux le voir comme une seule rangée de noms de fruits. Pour accéder à un fruit, tu utilises un seul nombre (l'index) entre crochets."
+            },
+            {
+              "en": "Now, let's move on to two-dimensional arrays. If a one-dimensional array is like a single row of lockers, a two-dimensional array is like a grid of lockers – multiple rows and columns. In programming, a two-dimensional array is essentially an array of arrays. It's used to represent data that has a natural grid-like structure, such as a chessboard, a spreadsheet, or pixels in an image.",
+              "fr": "Maintenant, passons aux tableaux à deux dimensions. Si un tableau à une dimension est comme une seule rangée de casiers, un tableau à deux dimensions est comme une grille de casiers – plusieurs rangées et colonnes. En programmation, un tableau à deux dimensions est essentiellement un tableau de tableaux. Il est utilisé pour représenter des données qui ont une structure naturelle en grille, comme un échiquier, un tableur, ou les pixels d'une image."
+            },
+            {
+              "en": "To access an element in a two-dimensional array, you need two indices: one for the row and one for the column. Here's an example of how you might create and use a two-dimensional array in JavaScript:",
+              "fr": "Pour accéder à un élément d'un tableau à deux dimensions, tu as besoin de deux indices : un pour la ligne et un pour la colonne. Voici un exemple de la façon dont tu pourrais créer et utiliser un tableau à deux dimensions en JavaScript :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `chessboard` is a two-dimensional array representing a chess game's initial setup. To access the queen (`Q`) in the top row, we use two indices: `[0][3]`. The first index, `0`, selects the first row, and the second index, `3`, selects the fourth column in that row.",
+              "fr": "Dans cet exemple, `chessboard` est un tableau à deux dimensions représentant la disposition initiale d'une partie d'échecs. Pour accéder à la reine (`Q`) de la rangée du haut, nous utilisons deux indices : `[0][3]`. Le premier index, `0`, sélectionne la première ligne, et le second index, `3`, sélectionne la quatrième colonne de cette ligne."
+            },
+            {
+              "en": "The key difference between one-dimensional and two-dimensional arrays lies in how you access and organize the data. One-dimensional arrays use a single index and are suitable for linear data like lists or sequences. Two-dimensional arrays use two indices and are ideal for grid-like data structures.",
+              "fr": "La différence clé entre les tableaux à une dimension et à deux dimensions réside dans la façon dont tu accèdes aux données et les organises. Les tableaux à une dimension utilisent un seul index et conviennent aux données linéaires comme les listes ou les séquences. Les tableaux à deux dimensions utilisent deux indices et sont idéaux pour les structures de données en grille."
+            },
+            {
+              "en": "It's worth noting that in JavaScript, two-dimensional arrays are actually arrays of arrays. This means each element of the outer array is itself an array. This nested structure allows for great flexibility but also requires careful handling to avoid errors.",
+              "fr": "Il est utile de noter qu'en JavaScript, les tableaux à deux dimensions sont en réalité des tableaux de tableaux. Cela signifie que chaque élément du tableau externe est lui-même un tableau. Cette structure imbriquée offre une grande flexibilité mais nécessite aussi une manipulation soignée pour éviter les erreurs."
+            },
+            {
+              "en": "As you progress in your programming journey, you'll find that choosing between one-dimensional and two-dimensional arrays depends on the nature of your data and how you need to manipulate it.",
+              "fr": "Au fur et à mesure que tu progresseras dans ton parcours de programmation, tu constateras que le choix entre les tableaux à une dimension et à deux dimensions dépend de la nature de tes données et de la façon dont tu dois les manipuler."
+            },
+            {
+              "en": "One-dimensional arrays are simpler and sufficient for many tasks, while two-dimensional arrays become invaluable when dealing with more complex, structured data.",
+              "fr": "Les tableaux à une dimension sont plus simples et suffisants pour de nombreuses tâches, tandis que les tableaux à deux dimensions deviennent précieux lorsqu'on traite des données plus complexes et structurées."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How many indices do you need to access an element in a two-dimensional array?",
+              "fr": "Combien d'indices te faut-il pour accéder à un élément d'un tableau à deux dimensions ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "One.",
+              "fr": "Un."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we accessed the chess piece in our example.",
+              "fr": "Réfléchis à la façon dont nous avons accédé à la pièce d'échecs dans notre exemple."
+            },
+            {
+              "en": "Two.",
+              "fr": "Deux."
+            },
+            {
+              "en": "Three.",
+              "fr": "Trois."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we accessed the chess piece in our example.",
+              "fr": "Réfléchis à la façon dont nous avons accédé à la pièce d'échecs dans notre exemple."
+            },
+            {
+              "en": "It depends on the size of the array.",
+              "fr": "Cela dépend de la taille du tableau."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we accessed the chess piece in our example.",
+              "fr": "Réfléchis à la façon dont nous avons accédé à la pièce d'échecs dans notre exemple."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What kind of data structure is best represented by a one-dimensional array?",
+              "fr": "Quel type de structure de données est le mieux représenté par un tableau à une dimension ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A grid of numbers.",
+              "fr": "Une grille de nombres."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we compared a one-dimensional array to in the lesson.",
+              "fr": "Réfléchis à ce à quoi nous avons comparé un tableau à une dimension dans la leçon."
+            },
+            {
+              "en": "A list of items.",
+              "fr": "Une liste d'éléments."
+            },
+            {
+              "en": "A table of information.",
+              "fr": "Un tableau d'informations."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we compared a one-dimensional array to in the lesson.",
+              "fr": "Réfléchis à ce à quoi nous avons comparé un tableau à une dimension dans la leçon."
+            },
+            {
+              "en": "A 3D model.",
+              "fr": "Un modèle 3D."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we compared a one-dimensional array to in the lesson.",
+              "fr": "Réfléchis à ce à quoi nous avons comparé un tableau à une dimension dans la leçon."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In JavaScript, what is a two-dimensional array, essentially?",
+              "fr": "En JavaScript, qu'est-ce qu'un tableau à deux dimensions, essentiellement ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A special data type built into the language",
+              "fr": "Un type de données spécial intégré au langage"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how we described the structure of a two-dimensional array in JavaScript.",
+              "fr": "Rappelle-toi comment nous avons décrit la structure d'un tableau à deux dimensions en JavaScript."
+            },
+            {
+              "en": "An array of arrays.",
+              "fr": "Un tableau de tableaux."
+            },
+            {
+              "en": "A linked list of arrays.",
+              "fr": "Une liste chaînée de tableaux."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how we described the structure of a two-dimensional array in JavaScript.",
+              "fr": "Rappelle-toi comment nous avons décrit la structure d'un tableau à deux dimensions en JavaScript."
+            },
+            {
+              "en": "A matrix object.",
+              "fr": "Un objet matrice."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall how we described the structure of a two-dimensional array in JavaScript.",
+              "fr": "Rappelle-toi comment nous avons décrit la structure d'un tableau à deux dimensions en JavaScript."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732aedd2d92e30923b9bc24.md",
+      "id": "6732aedd2d92e30923b9bc24",
+      "dashedName": "what-is-array-destructuring-and-how-does-it-work",
+      "title": {
+        "en": "What Is Array Destructuring, and How Does It Work?",
+        "fr": "Qu'est-ce que la déstructuration de tableaux et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Array destructuring is a feature in JavaScript that allows you to extract values from arrays and assign them to variables in a more concise and readable way. It provides a convenient syntax for unpacking array elements into distinct variables.",
+              "fr": "La déstructuration de tableaux est une fonctionnalité de JavaScript qui te permet d'extraire des valeurs des tableaux et de les affecter à des variables d'une façon plus concise et lisible. Elle offre une syntaxe pratique pour décomposer les éléments d'un tableau en variables distinctes."
+            },
+            {
+              "en": "This technique is particularly useful when working with arrays and functions that return multiple values. Here is an example of using array destructuring:",
+              "fr": "Cette technique est particulièrement utile lorsqu'on travaille avec des tableaux et des fonctions qui retournent plusieurs valeurs. Voici un exemple d'utilisation de la déstructuration de tableaux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have an array called `fruits` with three elements. Using array destructuring, we assign the first element to the variable `first`, the second element to `second`, and the third element to `third`. This allows us to easily access individual elements of the array without using index notation.",
+              "fr": "Dans cet exemple, nous avons un tableau appelé `fruits` avec trois éléments. En utilisant la déstructuration de tableaux, nous affectons le premier élément à la variable `first`, le deuxième élément à `second`, et le troisième élément à `third`. Cela nous permet d'accéder facilement aux éléments individuels du tableau sans utiliser la notation par index."
+            },
+            {
+              "en": "Here is what it would look like if you accessed each of those elements by their index instead of using array destructuring:",
+              "fr": "Voici à quoi cela ressemblerait si tu accédais à chacun de ces éléments par leur index au lieu d'utiliser la déstructuration de tableaux :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Array destructuring also allows you to skip elements you're not interested in by using commas. For instance:",
+              "fr": "La déstructuration de tableaux te permet aussi d'ignorer les éléments qui ne t'intéressent pas en utilisant des virgules. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we skip the second element of the `colors` array by using an extra comma. This assigns `red` to `firstColor` and `blue` to `thirdColor`, effectively ignoring `green`.",
+              "fr": "Dans cet exemple, nous ignorons le deuxième élément du tableau `colors` en utilisant une virgule supplémentaire. Cela affecte `red` à `firstColor` et `blue` à `thirdColor`, en ignorant de fait `green`."
+            },
+            {
+              "en": "Another powerful feature of array destructuring is the ability to use default values. If the array has fewer elements than the variables you're trying to assign, you can provide default values:",
+              "fr": "Une autre fonctionnalité puissante de la déstructuration de tableaux est la possibilité d'utiliser des valeurs par défaut. Si le tableau a moins d'éléments que les variables que tu essaies d'affecter, tu peux fournir des valeurs par défaut :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here, we assign default value `3` to `c` because the `numbers` array doesn't have a third element.",
+              "fr": "Ici, nous affectons la valeur par défaut `3` à `c` car le tableau `numbers` n'a pas de troisième élément."
+            },
+            {
+              "en": "Now, let's discuss the rest syntax, denoted by three dots (`...`). It allows you to capture the remaining elements of an array that haven’t been destructured into a new array. Here's how it works:",
+              "fr": "Maintenant, parlons de la syntaxe rest, désignée par trois points (`...`). Elle te permet de capturer dans un nouveau tableau les éléments restants d'un tableau qui n'ont pas été déstructurés. Voici comment elle fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `first` and `second` capture the first two elements of the `fruits` array, and `rest` captures all remaining elements as a new array. The rest syntax must be the last element in the destructuring pattern.",
+              "fr": "Dans cet exemple, `first` et `second` capturent les deux premiers éléments du tableau `fruits`, et `rest` capture tous les éléments restants sous forme de nouveau tableau. La syntaxe rest doit être le dernier élément du motif de déstructuration."
+            },
+            {
+              "en": "Array destructuring is a powerful feature that can make your code more concise and easier to read. It's especially useful when working with arrays, and when you need to extract specific elements from an array.",
+              "fr": "La déstructuration de tableaux est une fonctionnalité puissante qui peut rendre ton code plus concis et plus facile à lire. Elle est particulièrement utile lorsqu'on travaille avec des tableaux, et lorsque tu as besoin d'extraire des éléments précis d'un tableau."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the comma placement in the destructuring assignment and remember what the rest syntax does.",
+              "fr": "Fais attention au placement des virgules dans l'affectation par déstructuration et souviens-toi de ce que fait la syntaxe rest."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the comma placement in the destructuring assignment and remember what the rest syntax does.",
+              "fr": "Fais attention au placement des virgules dans l'affectation par déstructuration et souviens-toi de ce que fait la syntaxe rest."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the comma placement in the destructuring assignment and remember what the rest syntax does.",
+              "fr": "Fais attention au placement des virgules dans l'affectation par déstructuration et souviens-toi de ce que fait la syntaxe rest."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you try to destructure more variables than there are elements in the array, and remember the concept of default values.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies de déstructurer plus de variables qu'il n'y a d'éléments dans le tableau, et souviens-toi du concept de valeurs par défaut."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you try to destructure more variables than there are elements in the array, and remember the concept of default values.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies de déstructurer plus de variables qu'il n'y a d'éléments dans le tableau, et souviens-toi du concept de valeurs par défaut."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you try to destructure more variables than there are elements in the array, and remember the concept of default values.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies de déstructurer plus de variables qu'il n'y a d'éléments dans le tableau, et souviens-toi du concept de valeurs par défaut."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the placement of the rest syntax in the destructuring assignment and think about whether this is a valid use of the rest syntax.",
+              "fr": "Réfléchis au placement de la syntaxe rest dans l'affectation par déstructuration et demande-toi si c'est une utilisation valide de la syntaxe rest."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the placement of the rest syntax in the destructuring assignment and think about whether this is a valid use of the rest syntax.",
+              "fr": "Réfléchis au placement de la syntaxe rest dans l'affectation par déstructuration et demande-toi si c'est une utilisation valide de la syntaxe rest."
+            },
+            {
+              "en": "This will throw a `SyntaxError`.",
+              "fr": "Cela déclenchera une `SyntaxError`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the placement of the rest syntax in the destructuring assignment and think about whether this is a valid use of the rest syntax.",
+              "fr": "Réfléchis au placement de la syntaxe rest dans l'affectation par déstructuration et demande-toi si c'est une utilisation valide de la syntaxe rest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b2a6de5a1c15edf05b75.md",
+      "id": "6732b2a6de5a1c15edf05b75",
+      "dashedName": "how-can-you-use-string-and-array-methods-to-reverse-a-string",
+      "title": {
+        "en": "How Can You Use String and Array Methods to Reverse a String?",
+        "fr": "Comment utiliser les méthodes de chaîne et de tableau pour inverser une chaîne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Reversing a string is a common programming task that can be accomplished in JavaScript using a combination of string and array methods. The process involves three main steps:",
+              "fr": "Inverser une chaîne est une tâche de programmation courante qui peut être réalisée en JavaScript en combinant des méthodes de chaîne et de tableau. Le processus comporte trois étapes principales :"
+            },
+            {
+              "en": "- Splitting the string into an array of characters.\n- Reversing the array.\n- Joining the characters back into a string.",
+              "fr": "- Diviser la chaîne en un tableau de caractères.\n- Inverser le tableau.\n- Rassembler les caractères en une chaîne."
+            },
+            {
+              "en": "Let's explore each of these steps using the `split()`, `reverse()`, and `join()` methods.",
+              "fr": "Explorons chacune de ces étapes en utilisant les méthodes `split()`, `reverse()` et `join()`."
+            },
+            {
+              "en": "The first step in reversing a string is to convert it into an array of individual characters. We can do this using the `split()` method. The `split()` method divides a string into an array of substrings and specifies where each split should happen based on a given separator. If no separator is provided, the method returns an array containing the original string as a single element. Examples of common separators include:",
+              "fr": "La première étape pour inverser une chaîne est de la convertir en un tableau de caractères individuels. Nous pouvons le faire avec la méthode `split()`. La méthode `split()` divise une chaîne en un tableau de sous-chaînes et indique où chaque division doit se produire en fonction d'un séparateur donné. Si aucun séparateur n'est fourni, la méthode retourne un tableau contenant la chaîne d'origine comme élément unique. Voici des exemples de séparateurs courants :"
+            },
+            {
+              "en": "- An empty string (`\"\"`), which splits the string into individual characters.",
+              "fr": "- Une chaîne vide (`\"\"`), qui divise la chaîne en caractères individuels."
+            },
+            {
+              "en": "- A single space (`\" \"`), which splits the string wherever spaces occur.",
+              "fr": "- Un espace simple (`\" \"`), qui divise la chaîne partout où des espaces apparaissent."
+            },
+            {
+              "en": "- A dash (`\"-\"`), which splits the string at each dash.",
+              "fr": "- Un tiret (`\"-\"`), qui divise la chaîne à chaque tiret."
+            },
+            {
+              "en": "Here's an example of using the split method to create an array of characters:",
+              "fr": "Voici un exemple d'utilisation de la méthode split pour créer un tableau de caractères :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we use `split(\"\")` (with an empty string pass to it) to convert the string `hello` into an array of its individual characters. Once we have an array of characters, we can use the `reverse()` method to reverse the order of elements in the array.",
+              "fr": "Dans cet exemple, nous utilisons `split(\"\")` (en lui passant une chaîne vide) pour convertir la chaîne `hello` en un tableau de ses caractères individuels. Une fois que nous avons un tableau de caractères, nous pouvons utiliser la méthode `reverse()` pour inverser l'ordre des éléments du tableau."
+            },
+            {
+              "en": "The `reverse()` method is an array method that reverses an array in place. This means it modifies the original array rather than creating a new one. Here's how we can use it:",
+              "fr": "La méthode `reverse()` est une méthode de tableau qui inverse un tableau sur place. Cela signifie qu'elle modifie le tableau d'origine plutôt que d'en créer un nouveau. Voici comment nous pouvons l'utiliser :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `reverse()` changes the order of elements in `charArray`, reversing it from `[\"h\", \"e\", \"l\", \"l\", \"o\"]` to `[\"o\", \"l\", \"l\", \"e\", \"h\"]`.",
+              "fr": "Dans cet exemple, `reverse()` change l'ordre des éléments de `charArray`, l'inversant de `[\"h\", \"e\", \"l\", \"l\", \"o\"]` à `[\"o\", \"l\", \"l\", \"e\", \"h\"]`."
+            },
+            {
+              "en": "The final step is to convert the reversed array of characters back into a string. We can accomplish this using the `join()` method. The `join()` method creates and returns a new string by concatenating all of the elements in an array, separated by a specified separator string. If you want to join the characters without any separator, you can use an empty string as the argument. Here's an example:",
+              "fr": "La dernière étape consiste à reconvertir le tableau de caractères inversé en une chaîne. Nous pouvons y parvenir avec la méthode `join()`. La méthode `join()` crée et retourne une nouvelle chaîne en concaténant tous les éléments d'un tableau, séparés par une chaîne de séparation spécifiée. Si tu veux joindre les caractères sans aucun séparateur, tu peux utiliser une chaîne vide comme argument. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `join(\"\")` (with an empty string pass to it as an argument) combines all the characters in the array into a single string without any separator between them.",
+              "fr": "Dans cet exemple, `join(\"\")` (en lui passant une chaîne vide comme argument) combine tous les caractères du tableau en une seule chaîne sans aucun séparateur entre eux."
+            },
+            {
+              "en": "Remember that strings in JavaScript are immutable, which means you can't directly reverse a string by modifying it. That's why we need to convert it to an array, reverse the array, and then convert it back to a string. This combination of string and array methods provides a powerful and flexible way to manipulate strings in JavaScript.",
+              "fr": "Souviens-toi que les chaînes en JavaScript sont immuables, ce qui signifie que tu ne peux pas inverser directement une chaîne en la modifiant. C'est pourquoi nous devons la convertir en tableau, inverser le tableau, puis le reconvertir en chaîne. Cette combinaison de méthodes de chaîne et de tableau offre un moyen puissant et flexible de manipuler les chaînes en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the order of operations: `split`, `reverse`, then `join`.",
+              "fr": "Souviens-toi de l'ordre des opérations : `split`, `reverse`, puis `join`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the order of operations: `split`, `reverse`, then `join`.",
+              "fr": "Souviens-toi de l'ordre des opérations : `split`, `reverse`, puis `join`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the order of operations: `split`, `reverse`, then `join`.",
+              "fr": "Souviens-toi de l'ordre des opérations : `split`, `reverse`, puis `join`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result of `\"hello\".split(\"\")`?",
+              "fr": "Quel sera le résultat de `\"hello\".split(\"\")` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `split(\"\")` method splits a string into an array of individual characters.",
+              "fr": "La méthode `split(\"\")` divise une chaîne en un tableau de caractères individuels."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `split(\"\")` method splits a string into an array of individual characters.",
+              "fr": "La méthode `split(\"\")` divise une chaîne en un tableau de caractères individuels."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `split(\"\")` method splits a string into an array of individual characters.",
+              "fr": "La méthode `split(\"\")` divise une chaîne en un tableau de caractères individuels."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the separator used in the `join()` method.",
+              "fr": "Fais attention au séparateur utilisé dans la méthode `join()`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the separator used in the `join()` method.",
+              "fr": "Fais attention au séparateur utilisé dans la méthode `join()`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay attention to the separator used in the `join()` method.",
+              "fr": "Fais attention au séparateur utilisé dans la méthode `join()`."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
