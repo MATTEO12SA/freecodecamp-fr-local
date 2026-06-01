@@ -1,0 +1,137 @@
+{
+  "workshop": "lab-golf-score-translator",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "689f7996426c1534fa5bea66.md",
+      "id": "689f7996426c1534fa5bea66",
+      "dashedName": "build-a-golf-score-translator",
+      "title": {
+        "en": "Build a Golf Score Translator",
+        "fr": "Crée un traducteur de score de golf"
+      },
+      "description": [
+        {
+          "en": "In the game of Golf, each hole has a `par`, meaning the average number of `strokes` a golfer is expected to make in order to sink the ball in the hole to complete the play. Depending on how far above or below `par` your `strokes` are, there is a different nickname.",
+          "fr": "Au golf, chaque trou possède un `par`, c'est-à-dire le nombre moyen de `strokes` (coups) qu'un golfeur est censé jouer pour faire entrer la balle dans le trou et terminer le jeu. Selon que tes `strokes` sont au-dessus ou en dessous du `par`, il existe un surnom différent."
+        },
+        {
+          "en": "In this lab, you will write a function that converts the `par` and `strokes` to their nickname.",
+          "fr": "Dans ce lab, tu vas écrire une fonction qui convertit le `par` et les `strokes` en leur surnom."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should create a function named `golfScore`.\n1. `golfScore` should take two numeric arguments, which are the par for the course and the amount of strokes made.\n1. `golfScore` should return a string.\n1. `golfScore` should return `\"Hole-in-one!\"` if `strokes` is `1`. \n1. `golfScore` should return `\"Eagle\"` if `strokes` is less than or equal to `par` minus `2`.\n1. `golfScore` should return `\"Birdie\"` if `strokes` is equal to `par` minus `1`.\n1. `golfScore` should return `\"Par\"` if `strokes` is equal to `par`. \n1. `golfScore` should return `\"Bogey\"` if `strokes` is equal to `par` plus `1`. \n1. `golfScore` should return `\"Double Bogey\"` if `strokes` is equal to `par` plus `2`. \n1. `golfScore` should return `\"Go Home!\"` if `strokes` is greater than or equal to `par` plus `3`.",
+          "fr": "1. Tu dois créer une fonction nommée `golfScore`.\n1. `golfScore` doit prendre deux arguments numériques, qui sont le par du parcours et le nombre de coups joués.\n1. `golfScore` doit retourner une chaîne.\n1. `golfScore` doit retourner `\"Hole-in-one!\"` si `strokes` vaut `1`. \n1. `golfScore` doit retourner `\"Eagle\"` si `strokes` est inférieur ou égal à `par` moins `2`.\n1. `golfScore` doit retourner `\"Birdie\"` si `strokes` est égal à `par` moins `1`.\n1. `golfScore` doit retourner `\"Par\"` si `strokes` est égal à `par`. \n1. `golfScore` doit retourner `\"Bogey\"` si `strokes` est égal à `par` plus `1`. \n1. `golfScore` doit retourner `\"Double Bogey\"` si `strokes` est égal à `par` plus `2`. \n1. `golfScore` doit retourner `\"Go Home!\"` si `strokes` est supérieur ou égal à `par` plus `3`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `golfScore`.",
+          "fr": "Tu dois créer une fonction nommée `golfScore`."
+        },
+        {
+          "en": "`golfScore` should take two parameters.",
+          "fr": "`golfScore` doit prendre deux paramètres."
+        },
+        {
+          "en": "`golfScore` should return a string",
+          "fr": "`golfScore` doit retourner une chaîne"
+        },
+        {
+          "en": "`golfScore(1, 1)` should return the string `Hole-in-one!`",
+          "fr": "`golfScore(1, 1)` doit retourner la chaîne `Hole-in-one!`"
+        },
+        {
+          "en": "`golfScore(3, 1)` should return the string `Hole-in-one!`",
+          "fr": "`golfScore(3, 1)` doit retourner la chaîne `Hole-in-one!`"
+        },
+        {
+          "en": "`golfScore(4, 1)` should return the string `Hole-in-one!`",
+          "fr": "`golfScore(4, 1)` doit retourner la chaîne `Hole-in-one!`"
+        },
+        {
+          "en": "`golfScore(5, 1)` should return the string `Hole-in-one!`",
+          "fr": "`golfScore(5, 1)` doit retourner la chaîne `Hole-in-one!`"
+        },
+        {
+          "en": "`golfScore(4, 2)` should return the string `Eagle`",
+          "fr": "`golfScore(4, 2)` doit retourner la chaîne `Eagle`"
+        },
+        {
+          "en": "`golfScore(5, 2)` should return the string `Eagle`",
+          "fr": "`golfScore(5, 2)` doit retourner la chaîne `Eagle`"
+        },
+        {
+          "en": "`golfScore(3, 2)` should return the string `Birdie`",
+          "fr": "`golfScore(3, 2)` doit retourner la chaîne `Birdie`"
+        },
+        {
+          "en": "`golfScore(4, 3)` should return the string `Birdie`",
+          "fr": "`golfScore(4, 3)` doit retourner la chaîne `Birdie`"
+        },
+        {
+          "en": "`golfScore(5, 4)` should return the string `Birdie`",
+          "fr": "`golfScore(5, 4)` doit retourner la chaîne `Birdie`"
+        },
+        {
+          "en": "`golfScore(3, 3)` should return the string `Par`",
+          "fr": "`golfScore(3, 3)` doit retourner la chaîne `Par`"
+        },
+        {
+          "en": "`golfScore(4, 4)` should return the string `Par`",
+          "fr": "`golfScore(4, 4)` doit retourner la chaîne `Par`"
+        },
+        {
+          "en": "`golfScore(5, 5)` should return the string `Par`",
+          "fr": "`golfScore(5, 5)` doit retourner la chaîne `Par`"
+        },
+        {
+          "en": "`golfScore(3, 4)` should return the string `Bogey`",
+          "fr": "`golfScore(3, 4)` doit retourner la chaîne `Bogey`"
+        },
+        {
+          "en": "`golfScore(4, 5)` should return the string `Bogey`",
+          "fr": "`golfScore(4, 5)` doit retourner la chaîne `Bogey`"
+        },
+        {
+          "en": "`golfScore(5, 6)` should return the string `Bogey`",
+          "fr": "`golfScore(5, 6)` doit retourner la chaîne `Bogey`"
+        },
+        {
+          "en": "`golfScore(3, 5)` should return the string `Double Bogey`",
+          "fr": "`golfScore(3, 5)` doit retourner la chaîne `Double Bogey`"
+        },
+        {
+          "en": "`golfScore(4, 6)` should return the string `Double Bogey`",
+          "fr": "`golfScore(4, 6)` doit retourner la chaîne `Double Bogey`"
+        },
+        {
+          "en": "`golfScore(5, 7)` should return the string `Double Bogey`",
+          "fr": "`golfScore(5, 7)` doit retourner la chaîne `Double Bogey`"
+        },
+        {
+          "en": "`golfScore(3, 7)` should return the string `Go Home!`",
+          "fr": "`golfScore(3, 7)` doit retourner la chaîne `Go Home!`"
+        },
+        {
+          "en": "`golfScore(4, 8)` should return the string `Go Home!`",
+          "fr": "`golfScore(4, 8)` doit retourner la chaîne `Go Home!`"
+        },
+        {
+          "en": "`golfScore(5, 9)` should return the string `Go Home!`",
+          "fr": "`golfScore(5, 9)` doit retourner la chaîne `Go Home!`"
+        }
+      ]
+    }
+  ]
+}

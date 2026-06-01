@@ -1,0 +1,181 @@
+{
+  "workshop": "lab-lunch-picker-program",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66db529d37ad966480ebb633.md",
+      "id": "66db529d37ad966480ebb633",
+      "dashedName": "build-a-lunch-picker-program",
+      "title": {
+        "en": "Build a Lunch Picker Program",
+        "fr": "Crée un programme de sélection de déjeuner"
+      },
+      "description": [
+        {
+          "en": "In this lab, you'll build a program that helps in managing lunch options. You'll work with an array of lunches, add and remove items from the array, and randomly select a lunch option.",
+          "fr": "Dans ce lab, tu vas créer un programme qui aide à gérer des options de déjeuner. Tu travailleras avec un tableau de déjeuners, tu ajouteras et supprimeras des éléments du tableau, et tu sélectionneras une option de déjeuner au hasard."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should create a `lunches` variable and assign it an empty array that will be used to store lunch items.",
+          "fr": "1. Tu dois créer une variable `lunches` et lui affecter un tableau vide qui servira à stocker les éléments de déjeuner."
+        },
+        {
+          "en": "2. You should create a function `addLunchToEnd` that takes an array as the first argument and a string as the second argument. The function should:\n    - Add the string to the end of the array.\n    - Log the string `[Lunch Item] added to the end of the lunch menu.` to the console, where `[Lunch Item]` is the string passed to the function.\n    - Return the updated array.",
+          "fr": "2. Tu dois créer une fonction `addLunchToEnd` qui prend un tableau comme premier argument et une chaîne comme second argument. La fonction doit :\n    - Ajouter la chaîne à la fin du tableau.\n    - Afficher la chaîne `[Lunch Item] added to the end of the lunch menu.` dans la console, où `[Lunch Item]` est la chaîne passée à la fonction.\n    - Retourner le tableau mis à jour."
+        },
+        {
+          "en": "3. You should create a function `addLunchToStart` that takes an array as the first argument and a string as the second argument. The function should:\n    - Add the string to the start of the array.\n    - Log the string `[Lunch Item] added to the start of the lunch menu.` to the console, where `[Lunch Item]` is the string passed to the function.\n    - Return the updated array.",
+          "fr": "3. Tu dois créer une fonction `addLunchToStart` qui prend un tableau comme premier argument et une chaîne comme second argument. La fonction doit :\n    - Ajouter la chaîne au début du tableau.\n    - Afficher la chaîne `[Lunch Item] added to the start of the lunch menu.` dans la console, où `[Lunch Item]` est la chaîne passée à la fonction.\n    - Retourner le tableau mis à jour."
+        },
+        {
+          "en": "4. You should create a function `removeLastLunch` that takes an array as its argument. The function should:\n   - Remove the last element from the array.\n   - If  the removal is successful, log the string `[Lunch Item] removed from the end of the lunch menu.` to the console, where `[Lunch Item]` is the element removed from the array.\n   - If the array is empty, log the string `\"No lunches to remove.\"` to the console.\n   - Return the updated array.",
+          "fr": "4. Tu dois créer une fonction `removeLastLunch` qui prend un tableau comme argument. La fonction doit :\n   - Supprimer le dernier élément du tableau.\n   - Si la suppression réussit, afficher la chaîne `[Lunch Item] removed from the end of the lunch menu.` dans la console, où `[Lunch Item]` est l'élément supprimé du tableau.\n   - Si le tableau est vide, afficher la chaîne `\"No lunches to remove.\"` dans la console.\n   - Retourner le tableau mis à jour."
+        },
+        {
+          "en": "5. You should create a function `removeFirstLunch` that takes an array as its argument. The function should:\n   - Remove the first element from the array.\n   - If the removal is successful, log the string `[Lunch Item] removed from the start of the lunch menu.` to the console, where `[Lunch Item]` is the element removed from the array.\n   - If the array is empty, log the string `\"No lunches to remove.\"` to the console.\n   - Return the updated array.",
+          "fr": "5. Tu dois créer une fonction `removeFirstLunch` qui prend un tableau comme argument. La fonction doit :\n   - Supprimer le premier élément du tableau.\n   - Si la suppression réussit, afficher la chaîne `[Lunch Item] removed from the start of the lunch menu.` dans la console, où `[Lunch Item]` est l'élément supprimé du tableau.\n   - Si le tableau est vide, afficher la chaîne `\"No lunches to remove.\"` dans la console.\n   - Retourner le tableau mis à jour."
+        },
+        {
+          "en": "6. You should create a function `getRandomLunch` that takes an array as its argument. The function should:\n   - Select a random element from the array.\n   - If successful, log the string `Randomly selected lunch: [Lunch Item]` to the console, where `[Lunch Item]` is a random element in the array.\n   - If the array is empty, log the string `\"No lunches available.\"` to the console.",
+          "fr": "6. Tu dois créer une fonction `getRandomLunch` qui prend un tableau comme argument. La fonction doit :\n   - Sélectionner un élément au hasard dans le tableau.\n   - Si elle réussit, afficher la chaîne `Randomly selected lunch: [Lunch Item]` dans la console, où `[Lunch Item]` est un élément aléatoire du tableau.\n   - Si le tableau est vide, afficher la chaîne `\"No lunches available.\"` dans la console."
+        },
+        {
+          "en": "7. You should create a function `showLunchMenu` that takes an array as its argument and:\n   - If there are elements in the array, logs the string `Menu items: [Lunch Item], [Lunch Item]...` to the console, where each `[Lunch item]` is one of the elements in the array, in order.\n   - If the array is empty, logs the string `\"The menu is empty.\"` to the console.",
+          "fr": "7. Tu dois créer une fonction `showLunchMenu` qui prend un tableau comme argument et :\n   - S'il y a des éléments dans le tableau, affiche la chaîne `Menu items: [Lunch Item], [Lunch Item]...` dans la console, où chaque `[Lunch item]` est l'un des éléments du tableau, dans l'ordre.\n   - Si le tableau est vide, affiche la chaîne `\"The menu is empty.\"` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable `lunches` and assign it an empty array to store the lunch items.",
+          "fr": "Tu dois déclarer une variable `lunches` et lui affecter un tableau vide pour stocker les éléments de déjeuner."
+        },
+        {
+          "en": "You should define a function `addLunchToEnd`.",
+          "fr": "Tu dois définir une fonction `addLunchToEnd`."
+        },
+        {
+          "en": "The function `addLunchToEnd` should have two parameters.",
+          "fr": "La fonction `addLunchToEnd` doit avoir deux paramètres."
+        },
+        {
+          "en": "`addLunchToEnd(lunches, \"Tacos\")` should log the string `\"Tacos added to the end of the lunch menu.\"` to the console.",
+          "fr": "`addLunchToEnd(lunches, \"Tacos\")` doit afficher la chaîne `\"Tacos added to the end of the lunch menu.\"` dans la console."
+        },
+        {
+          "en": "`addLunchToEnd([\"Pizza\", \"Tacos\"], \"Burger\")` should return `[\"Pizza\", \"Tacos\", \"Burger\"]`.",
+          "fr": "`addLunchToEnd([\"Pizza\", \"Tacos\"], \"Burger\")` doit retourner `[\"Pizza\", \"Tacos\", \"Burger\"]`."
+        },
+        {
+          "en": "You should define a function `addLunchToStart`.",
+          "fr": "Tu dois définir une fonction `addLunchToStart`."
+        },
+        {
+          "en": "The function `addLunchToStart` should have two parameters.",
+          "fr": "La fonction `addLunchToStart` doit avoir deux paramètres."
+        },
+        {
+          "en": "`addLunchToStart(lunches, \"Sushi\")` should log the string `\"Sushi added to the start of the lunch menu.\"` to the console.",
+          "fr": "`addLunchToStart(lunches, \"Sushi\")` doit afficher la chaîne `\"Sushi added to the start of the lunch menu.\"` dans la console."
+        },
+        {
+          "en": "`addLunchToStart([\"Burger\", \"Sushi\"], \"Pizza\")` should return `[\"Pizza\", \"Burger\", \"Sushi\"]`.",
+          "fr": "`addLunchToStart([\"Burger\", \"Sushi\"], \"Pizza\")` doit retourner `[\"Pizza\", \"Burger\", \"Sushi\"]`."
+        },
+        {
+          "en": "You should define a function `removeLastLunch`.",
+          "fr": "Tu dois définir une fonction `removeLastLunch`."
+        },
+        {
+          "en": "The function `removeLastLunch` should have one parameter.",
+          "fr": "La fonction `removeLastLunch` doit avoir un paramètre."
+        },
+        {
+          "en": "When the input array is empty, the function `removeLastLunch` should log the string `\"No lunches to remove.\"` to the console.",
+          "fr": "Lorsque le tableau d'entrée est vide, la fonction `removeLastLunch` doit afficher la chaîne `\"No lunches to remove.\"` dans la console."
+        },
+        {
+          "en": "`removeLastLunch([\"Stew\", \"Soup\", \"Toast\"])` should log the string `\"Toast removed from the end of the lunch menu.\"` to the console.",
+          "fr": "`removeLastLunch([\"Stew\", \"Soup\", \"Toast\"])` doit afficher la chaîne `\"Toast removed from the end of the lunch menu.\"` dans la console."
+        },
+        {
+          "en": "`removeLastLunch([\"Sushi\", \"Pizza\", \"Noodles\"])` should return `[\"Sushi\", \"Pizza\"]`.",
+          "fr": "`removeLastLunch([\"Sushi\", \"Pizza\", \"Noodles\"])` doit retourner `[\"Sushi\", \"Pizza\"]`."
+        },
+        {
+          "en": "You should define a function `removeFirstLunch`.",
+          "fr": "Tu dois définir une fonction `removeFirstLunch`."
+        },
+        {
+          "en": "The function `removeFirstLunch` should have a single parameter.",
+          "fr": "La fonction `removeFirstLunch` doit avoir un seul paramètre."
+        },
+        {
+          "en": "When the input array is empty, the function `removeFirstLunch` should log the string `\"No lunches to remove.\"` to the console.",
+          "fr": "Lorsque le tableau d'entrée est vide, la fonction `removeFirstLunch` doit afficher la chaîne `\"No lunches to remove.\"` dans la console."
+        },
+        {
+          "en": "`removeFirstLunch([\"Salad\", \"Eggs\", \"Cheese\"])` should log the string `\"Salad removed from the start of the lunch menu.\"` to the console.",
+          "fr": "`removeFirstLunch([\"Salad\", \"Eggs\", \"Cheese\"])` doit afficher la chaîne `\"Salad removed from the start of the lunch menu.\"` dans la console."
+        },
+        {
+          "en": "`removeFirstLunch([\"Sushi\", \"Pizza\", \"Burger\"])` should return `[\"Pizza\", \"Burger\"]`.",
+          "fr": "`removeFirstLunch([\"Sushi\", \"Pizza\", \"Burger\"])` doit retourner `[\"Pizza\", \"Burger\"]`."
+        },
+        {
+          "en": "`addLunchToEnd`, `addLunchToStart`, `removeLastLunch`, and `removeFirstLunch` should return the same array passed as an argument after updating it.",
+          "fr": "`addLunchToEnd`, `addLunchToStart`, `removeLastLunch` et `removeFirstLunch` doivent retourner le même tableau passé en argument après l'avoir mis à jour."
+        },
+        {
+          "en": "You should define a function `getRandomLunch`.",
+          "fr": "Tu dois définir une fonction `getRandomLunch`."
+        },
+        {
+          "en": "The function `getRandomLunch` should have a single parameter.",
+          "fr": "La fonction `getRandomLunch` doit avoir un seul paramètre."
+        },
+        {
+          "en": "When the input array is empty, the function `getRandomLunch` should log the string `\"No lunches available.\"` to the console.",
+          "fr": "Lorsque le tableau d'entrée est vide, la fonction `getRandomLunch` doit afficher la chaîne `\"No lunches available.\"` dans la console."
+        },
+        {
+          "en": "When the input array is not empty, the function `getRandomLunch` should log a string in the format `Randomly selected lunch: [Lunch Item]` to the console.",
+          "fr": "Lorsque le tableau d'entrée n'est pas vide, la fonction `getRandomLunch` doit afficher dans la console une chaîne au format `Randomly selected lunch: [Lunch Item]`."
+        },
+        {
+          "en": "The `getRandomLunch` function should not change the array passed to it as argument.",
+          "fr": "La fonction `getRandomLunch` ne doit pas modifier le tableau qui lui est passé en argument."
+        },
+        {
+          "en": "You should define a function `showLunchMenu`.",
+          "fr": "Tu dois définir une fonction `showLunchMenu`."
+        },
+        {
+          "en": "The function `showLunchMenu` should have a single parameter.",
+          "fr": "La fonction `showLunchMenu` doit avoir un seul paramètre."
+        },
+        {
+          "en": "When the input array is empty, the function `showLunchMenu` should log the string `\"The menu is empty.\"` to the console.",
+          "fr": "Lorsque le tableau d'entrée est vide, la fonction `showLunchMenu` doit afficher la chaîne `\"The menu is empty.\"` dans la console."
+        },
+        {
+          "en": "`showLunchMenu([\"Greens\", \"Corns\", \"Beans\"])` should log `\"Menu items: Greens, Corns, Beans\"` to the console.",
+          "fr": "`showLunchMenu([\"Greens\", \"Corns\", \"Beans\"])` doit afficher `\"Menu items: Greens, Corns, Beans\"` dans la console."
+        },
+        {
+          "en": "`showLunchMenu([\"Pizza\", \"Burger\", \"Fries\", \"Salad\"])` should log `\"Menu items: Pizza, Burger, Fries, Salad\"` to the console.",
+          "fr": "`showLunchMenu([\"Pizza\", \"Burger\", \"Fries\", \"Salad\"])` doit afficher `\"Menu items: Pizza, Burger, Fries, Salad\"` dans la console."
+        }
+      ]
+    }
+  ]
+}
