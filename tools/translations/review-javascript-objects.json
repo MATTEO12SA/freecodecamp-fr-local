@@ -1,0 +1,191 @@
+{
+  "workshop": "review-javascript-objects",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723c77d1a44b8a7599277dd.md",
+      "id": "6723c77d1a44b8a7599277dd",
+      "dashedName": "review-javascript-objects",
+      "title": {
+        "en": "JavaScript Objects Review",
+        "fr": "Révision des objets JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Object Basics",
+              "fr": "## Les bases des objets"
+            },
+            {
+              "en": "- **Definition**: An object is a data structure that is made up of properties. A property consists of a key and a value. To access data from an object you can use either dot notation or bracket notation.",
+              "fr": "- **Définition** : un objet est une structure de données constituée de propriétés. Une propriété se compose d'une clé et d'une valeur. Pour accéder aux données d'un objet, tu peux utiliser soit la notation par point, soit la notation par crochets."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "To set a property of an existing object you can use either dot notation or bracket notation together with the assignment operator.",
+              "fr": "Pour définir une propriété d'un objet existant, tu peux utiliser soit la notation par point, soit la notation par crochets, avec l'opérateur d'affectation."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Removing Properties From an Object",
+              "fr": "## Supprimer des propriétés d'un objet"
+            },
+            {
+              "en": "- **`delete` Operator**: This operator is used to remove a property from an object.",
+              "fr": "- **Opérateur `delete`** : cet opérateur est utilisé pour supprimer une propriété d'un objet."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Checking if an Object has a Property",
+              "fr": "## Vérifier si un objet possède une propriété"
+            },
+            {
+              "en": "- **`hasOwnProperty()` Method**: This method returns a boolean indicating whether the object has the specified property as its own property.",
+              "fr": "- **Méthode `hasOwnProperty()`** : cette méthode retourne un booléen indiquant si l'objet possède la propriété spécifiée comme propriété propre."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`Object.hasOwn()` Method**: This is the modern, recommended way to check if an object has a property as its own (not inherited). The syntax is `Object.hasOwn(object, propertyName)`. It returns `true` if the property exists on the object and `false` if it does not — regardless of the property's value. This makes it safer than `hasOwnProperty()` and more reliable than `if (obj.prop)` when values can be `0`, `false`, `null`, or `undefined`.",
+              "fr": "- **Méthode `Object.hasOwn()`** : c'est la façon moderne et recommandée de vérifier si un objet possède une propriété comme propriété propre (non héritée). La syntaxe est `Object.hasOwn(object, propertyName)`. Elle retourne `true` si la propriété existe sur l'objet et `false` sinon — quelle que soit la valeur de la propriété. Cela la rend plus sûre que `hasOwnProperty()` et plus fiable que `if (obj.prop)` lorsque les valeurs peuvent être `0`, `false`, `null` ou `undefined`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here is a more detailed example showing why `Object.hasOwn()` is more reliable than checking the value directly:",
+              "fr": "Voici un exemple plus détaillé montrant pourquoi `Object.hasOwn()` est plus fiable que vérifier la valeur directement :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`in` Operator**: This operator will return `true` if the property exists in the object.",
+              "fr": "- **Opérateur `in`** : cet opérateur retourne `true` si la propriété existe dans l'objet."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Accessing Properties From Nested Objects",
+              "fr": "## Accéder aux propriétés d'objets imbriqués"
+            },
+            {
+              "en": "- **Accessing Data**: Accessing properties from nested objects involves using the dot notation or bracket notation, much like accessing properties from simple objects. However, you'll need to chain these accessors to drill down into the nested structure.",
+              "fr": "- **Accéder aux données** : accéder aux propriétés d'objets imbriqués implique d'utiliser la notation par point ou la notation par crochets, tout comme pour accéder aux propriétés d'objets simples. Cependant, tu devras enchaîner ces accesseurs pour descendre dans la structure imbriquée."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Primitive and Non Primitive Data Types",
+              "fr": "## Les types de données primitifs et non primitifs"
+            },
+            {
+              "en": "- **Primitive Data Types**: These data types include numbers, strings, booleans, `null`, `undefined`, and symbols. These types are called \"primitive\" because they represent single values and are not objects. Primitive values are immutable, which means once they are created, their value cannot be changed. \n- **Non Primitive Data Types**: In JavaScript, these are objects, which include regular objects, arrays, and functions. Unlike primitives, non-primitive types can hold multiple values as properties or elements.",
+              "fr": "- **Types de données primitifs** : ces types de données incluent les nombres, les chaînes, les booléens, `null`, `undefined` et les symboles. Ces types sont appelés « primitifs » parce qu'ils représentent des valeurs uniques et ne sont pas des objets. Les valeurs primitives sont immuables, ce qui signifie qu'une fois créées, leur valeur ne peut pas être modifiée. \n- **Types de données non primitifs** : en JavaScript, ce sont les objets, qui incluent les objets classiques, les tableaux et les fonctions. Contrairement aux primitifs, les types non primitifs peuvent contenir plusieurs valeurs sous forme de propriétés ou d'éléments."
+            },
+            {
+              "en": "## Object Methods",
+              "fr": "## Les méthodes d'objet"
+            },
+            {
+              "en": "- **Definition**: Object methods are functions that are associated with an object. They are defined as properties of an object and can access and manipulate the object's data. The `this` keyword inside the method refers to the object itself, enabling access to its properties.",
+              "fr": "- **Définition** : les méthodes d'objet sont des fonctions associées à un objet. Elles sont définies comme des propriétés d'un objet et peuvent accéder aux données de l'objet et les manipuler. Le mot-clé `this` à l'intérieur de la méthode fait référence à l'objet lui-même, permettant d'accéder à ses propriétés."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Object Constructor",
+              "fr": "## Le constructeur d'objet"
+            },
+            {
+              "en": "- **Definition**: In JavaScript, a constructor is a special type of function used to create and initialize objects. It is invoked with the `new` keyword and can initialize properties and methods on the newly created object. The `Object()` constructor creates a new empty object.",
+              "fr": "- **Définition** : en JavaScript, un constructeur est un type spécial de fonction utilisé pour créer et initialiser des objets. Il est invoqué avec le mot-clé `new` et peut initialiser des propriétés et des méthodes sur l'objet nouvellement créé. Le constructeur `Object()` crée un nouvel objet vide."
+            },
+            {
+              "en": "## Working with the Optional Chaining Operator (`?.`)",
+              "fr": "## Travailler avec l'opérateur de chaînage optionnel (`?.`)"
+            },
+            {
+              "en": "- **Definition**: This operator lets you safely access object properties or call methods without worrying whether they exist.",
+              "fr": "- **Définition** : cet opérateur te permet d'accéder en toute sécurité aux propriétés d'un objet ou d'appeler des méthodes sans te soucier de savoir si elles existent."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Object Destructuring",
+              "fr": "## La déstructuration d'objets"
+            },
+            {
+              "en": "- **Definition**: Object destructuring allows you to extract values from objects and assign them to variables in a more concise and readable way.",
+              "fr": "- **Définition** : la déstructuration d'objets te permet d'extraire des valeurs des objets et de les affecter à des variables d'une façon plus concise et lisible."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Working with JSON",
+              "fr": "## Travailler avec le JSON"
+            },
+            {
+              "en": "- **Definition**: JSON stands for JavaScript Object Notation. It is a lightweight, text-based data format that is commonly used to exchange data between a server and a web application.",
+              "fr": "- **Définition** : JSON signifie JavaScript Object Notation. C'est un format de données léger, basé sur du texte, couramment utilisé pour échanger des données entre un serveur et une application web."
+            },
+            {
+              "en": "- **`JSON.stringify()`**: This method is used to convert a JavaScript object into a JSON string. This is useful when you want to store or transmit data in a format that can be easily shared or transferred between systems.",
+              "fr": "- **`JSON.stringify()`** : cette méthode est utilisée pour convertir un objet JavaScript en une chaîne JSON. C'est utile lorsque tu veux stocker ou transmettre des données dans un format qui peut être facilement partagé ou transféré entre des systèmes."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`JSON.parse()`**: This method converts a JSON string back into a JavaScript object. This is useful when you retrieve JSON data from a web server or localStorage and you need to manipulate the data in your application.",
+              "fr": "- **`JSON.parse()`** : cette méthode reconvertit une chaîne JSON en un objet JavaScript. C'est utile lorsque tu récupères des données JSON depuis un serveur web ou le localStorage et que tu as besoin de manipuler les données dans ton application."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Objects topics and concepts.",
+              "fr": "Révise les sujets et concepts des objets JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

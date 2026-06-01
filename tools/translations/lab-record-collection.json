@@ -1,0 +1,81 @@
+{
+  "workshop": "lab-record-collection",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "56533eb9ac21ba0edf2244cf.md",
+      "id": "56533eb9ac21ba0edf2244cf",
+      "dashedName": "build-a-record-collection",
+      "title": {
+        "en": "Build a Record Collection",
+        "fr": "Crée une collection de disques"
+      },
+      "description": [
+        {
+          "en": "You are creating a function that aids in the maintenance of a musical album collection. The collection is organized as an object that contains multiple albums which are also objects. Each album is represented in the collection with a unique `id` as the property name. Within each album object, there are various properties describing information about the album. Not all albums have complete information.",
+          "fr": "Tu crées une fonction qui aide à la maintenance d'une collection d'albums de musique. La collection est organisée sous forme d'objet qui contient plusieurs albums, qui sont eux-mêmes des objets. Chaque album est représenté dans la collection avec un `id` unique comme nom de propriété. À l'intérieur de chaque objet album, il y a diverses propriétés décrivant des informations sur l'album. Tous les albums n'ont pas des informations complètes."
+        },
+        {
+          "en": "The `updateRecords` function takes 4 arguments represented by the following function parameters:",
+          "fr": "La fonction `updateRecords` prend 4 arguments représentés par les paramètres de fonction suivants :"
+        },
+        {
+          "en": "-   `records` - an object containing several individual albums\n-   `id` - a number representing a specific album in the `records` object\n-   `prop` - a string representing the name of the album’s property to update\n-   `value` - a string containing the information used to update the album’s property",
+          "fr": "-   `records` - un objet contenant plusieurs albums individuels\n-   `id` - un nombre représentant un album précis dans l'objet `records`\n-   `prop` - une chaîne représentant le nom de la propriété de l'album à mettre à jour\n-   `value` - une chaîne contenant l'information utilisée pour mettre à jour la propriété de l'album"
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. Your function must always return the entire `records` object.\n2. If `value` is an empty string, delete the given `prop` property from the album.\n3. If `prop` isn't `tracks` and `value` isn't an empty string, assign the `value` to that album's `prop`.\n4. If `prop` is `tracks` and `value` isn't an empty string, but the album doesn't have a `tracks` property, create an empty array and add `value` to it.\n5. If prop is `tracks` and `value` isn't an empty string, add `value` to the end of the album's existing `tracks` array.",
+          "fr": "1. Ta fonction doit toujours retourner l'objet `records` entier.\n2. Si `value` est une chaîne vide, supprime la propriété `prop` donnée de l'album.\n3. Si `prop` n'est pas `tracks` et que `value` n'est pas une chaîne vide, affecte la `value` à la propriété `prop` de cet album.\n4. Si `prop` est `tracks` et que `value` n'est pas une chaîne vide, mais que l'album n'a pas de propriété `tracks`, crée un tableau vide et ajoute-lui `value`.\n5. Si `prop` est `tracks` et que `value` n'est pas une chaîne vide, ajoute `value` à la fin du tableau `tracks` existant de l'album."
+        },
+        {
+          "en": "**Note:** A copy of the `recordCollection` object is used for the tests. Your function should not directly refer to the `recordCollection` object, only the function parameter.",
+          "fr": "**Note :** une copie de l'objet `recordCollection` est utilisée pour les tests. Ta fonction ne doit pas se référer directement à l'objet `recordCollection`, seulement au paramètre de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `updateRecords` function.",
+          "fr": "Tu dois avoir une fonction `updateRecords`."
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 5439, \"artist\", \"ABBA\")`, `artist` should be the string `ABBA`",
+          "fr": "Après `updateRecords(recordCollection, 5439, \"artist\", \"ABBA\")`, `artist` doit être la chaîne `ABBA`"
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 5439, \"tracks\", \"Take a Chance on Me\")`, `tracks` should have the string `Take a Chance on Me` as the last and only element.",
+          "fr": "Après `updateRecords(recordCollection, 5439, \"tracks\", \"Take a Chance on Me\")`, `tracks` doit avoir la chaîne `Take a Chance on Me` comme dernier et unique élément."
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 2548, \"artist\", \"\")`, `artist` should not be set",
+          "fr": "Après `updateRecords(recordCollection, 2548, \"artist\", \"\")`, `artist` ne doit pas être défini"
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 1245, \"tracks\", \"Addicted to Love\")`, `tracks` should have the string `Addicted to Love` as the last element.",
+          "fr": "Après `updateRecords(recordCollection, 1245, \"tracks\", \"Addicted to Love\")`, `tracks` doit avoir la chaîne `Addicted to Love` comme dernier élément."
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 2468, \"tracks\", \"Free\")`, `tracks` should have the string `1999` as the first element.",
+          "fr": "Après `updateRecords(recordCollection, 2468, \"tracks\", \"Free\")`, `tracks` doit avoir la chaîne `1999` comme premier élément."
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 2548, \"tracks\", \"\")`, `tracks` should not be set",
+          "fr": "Après `updateRecords(recordCollection, 2548, \"tracks\", \"\")`, `tracks` ne doit pas être défini"
+        },
+        {
+          "en": "After `updateRecords(recordCollection, 1245, \"albumTitle\", \"Riptide\")`, `albumTitle` should be the string `Riptide`",
+          "fr": "Après `updateRecords(recordCollection, 1245, \"albumTitle\", \"Riptide\")`, `albumTitle` doit être la chaîne `Riptide`"
+        }
+      ]
+    }
+  ]
+}
