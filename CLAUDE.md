@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 39/230 blocs — modules `javascript-variables-and-strings` et `javascript-booleans-and-numbers` **100 % complets**. Module 3 `introduction-functions-in-javascript` **en cours (3/12 blocs)** : `lecture-working-with-functions` (3 leçons : fonctions, fonctions fléchées, portée), `review-javascript-functions` et `quiz-javascript-functions` traduits + vérifiés. Restent 9 blocs : `workshop-calculator`, `workshop-loan-qualification-checker`, et 7 labs (`lab-boolean-check`, `lab-email-masker`, `lab-celsius-to-fahrenheit-converter`, `lab-counting-cards`, `lab-leap-year-calculator`, `lab-truncate-string`, `lab-string-ending-checker`). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`).
+- **JavaScript v9** : 55/230 blocs — modules 1-4 **100 % complets** : `javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript` et `introduction-to-arrays-in-javascript` (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 5 `javascript-objects` (clé intro.json `introduction-to-objects-in-javascript`).
 
 ## Pièges
 
