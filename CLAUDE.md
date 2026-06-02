@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 55/230 blocs — modules 1-4 **100 % complets** : `javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript` et `introduction-to-arrays-in-javascript` (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 5 `javascript-objects` (clé intro.json `introduction-to-objects-in-javascript`).
+- **JavaScript v9** : 65/230 blocs — modules 1-5 **100 % complets** : `javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript` et `introduction-to-objects-in-javascript` (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 6 `javascript-loops` (clé intro.json `introduction-to-loops-in-javascript`).
 
 ## Pièges
 
