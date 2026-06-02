@@ -1,0 +1,1537 @@
+{
+  "workshop": "lecture-introduction-to-javascript-objects-and-their-properties",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329f737126b75bcb949e13.md",
+      "id": "67329f737126b75bcb949e13",
+      "dashedName": "what-is-an-object-in-javascript-and-how-can-you-access-properties-from-an-object",
+      "title": {
+        "en": "What Is an Object in JavaScript, and How Can You Access Properties from an Object?",
+        "fr": "Qu'est-ce qu'un objet en JavaScript, et comment accéder aux propriétés d'un objet ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, an object is a fundamental data structure that allows you to store and organize related data and functionality.",
+              "fr": "En JavaScript, un objet est une structure de données fondamentale qui te permet de stocker et d'organiser des données et des fonctionnalités liées."
+            },
+            {
+              "en": "You can think of an object as a container that holds various pieces of information, much like a filing cabinet holds different folders and documents.",
+              "fr": "Tu peux voir un objet comme un conteneur qui contient diverses informations, un peu comme un classeur contient différents dossiers et documents."
+            },
+            {
+              "en": "These pieces of information are called properties, and they consist of a name (or key) and a value.",
+              "fr": "Ces informations sont appelées propriétés, et elles se composent d'un nom (ou clé) et d'une valeur."
+            },
+            {
+              "en": "Objects are incredibly versatile and form the backbone of JavaScript. In fact, almost everything in JavaScript is an object or can be treated as one. This includes arrays, functions, and even primitive data types like strings and numbers when used in certain ways.",
+              "fr": "Les objets sont incroyablement polyvalents et constituent l'épine dorsale de JavaScript. En fait, presque tout en JavaScript est un objet ou peut être traité comme tel. Cela inclut les tableaux, les fonctions, et même les types de données primitifs comme les chaînes et les nombres lorsqu'ils sont utilisés de certaines façons."
+            },
+            {
+              "en": "This object-centric nature of JavaScript is one of the reasons it's such a flexible and powerful language. Let's look at how you can create an object:",
+              "fr": "Cette nature centrée sur les objets de JavaScript est l'une des raisons pour lesquelles c'est un langage si flexible et puissant. Voyons comment tu peux créer un objet :"
+            },
+            {
+              "en": "In this example, we've created an object called `person` with three properties: `name`, `age`, and `city`. Each property has a name and a value, separated by a colon.",
+              "fr": "Dans cet exemple, nous avons créé un objet appelé `person` avec trois propriétés : `name`, `age` et `city`. Chaque propriété a un nom et une valeur, séparés par deux-points."
+            },
+            {
+              "en": "Now, let's explore how you can access these properties. There are two main ways to access object properties in JavaScript: dot notation and bracket notation.",
+              "fr": "Maintenant, explorons comment tu peux accéder à ces propriétés. Il existe deux façons principales d'accéder aux propriétés d'un objet en JavaScript : la notation par point et la notation par crochets."
+            },
+            {
+              "en": "Dot notation is the most common and straightforward way to access object properties. Here is the basic syntax for dot notation:",
+              "fr": "La notation par point est la façon la plus courante et la plus simple d'accéder aux propriétés d'un objet. Voici la syntaxe de base de la notation par point :"
+            },
+            {
+              "en": "Here's how you would use dot notation with our `person` object:",
+              "fr": "Voici comment tu utiliserais la notation par point avec notre objet `person` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Dot notation is concise and easy to read, making it the preferred choice when you know the exact name of the property you want to access and that name is a valid JavaScript identifier (meaning it doesn't start with a number and doesn't contain special characters or spaces).",
+              "fr": "La notation par point est concise et facile à lire, ce qui en fait le choix préféré lorsque tu connais le nom exact de la propriété à laquelle tu veux accéder et que ce nom est un identifiant JavaScript valide (c'est-à-dire qu'il ne commence pas par un chiffre et ne contient pas de caractères spéciaux ni d'espaces)."
+            },
+            {
+              "en": "Bracket notation, on the other hand, allows you to access object properties using a string inside square brackets. Here's how you would use bracket notation:",
+              "fr": "La notation par crochets, en revanche, te permet d'accéder aux propriétés d'un objet en utilisant une chaîne entre crochets. Voici comment tu utiliserais la notation par crochets :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Bracket notation is more flexible than dot notation because it allows you to use property names that aren't valid JavaScript identifiers. For example, if you had a property name with spaces or that starts with a number, you'd need to use bracket notation:",
+              "fr": "La notation par crochets est plus flexible que la notation par point car elle te permet d'utiliser des noms de propriété qui ne sont pas des identifiants JavaScript valides. Par exemple, si tu avais un nom de propriété avec des espaces ou qui commence par un chiffre, tu devrais utiliser la notation par crochets :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Another advantage of bracket notation is that it allows you to use variables to access properties dynamically:",
+              "fr": "Un autre avantage de la notation par crochets est qu'elle te permet d'utiliser des variables pour accéder aux propriétés de manière dynamique :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This flexibility makes bracket notation particularly useful when you don't know the exact property name at the time you're writing the code, or when you're working with property names that come from user input or some other dynamic source.",
+              "fr": "Cette flexibilité rend la notation par crochets particulièrement utile lorsque tu ne connais pas le nom exact de la propriété au moment où tu écris le code, ou lorsque tu travailles avec des noms de propriété qui proviennent d'une saisie utilisateur ou d'une autre source dynamique."
+            },
+            {
+              "en": "It's worth noting that objects in JavaScript are incredibly powerful and versatile. They can contain not just simple values like strings and numbers, but also arrays, or other objects.",
+              "fr": "Il est utile de noter que les objets en JavaScript sont incroyablement puissants et polyvalents. Ils peuvent contenir non seulement des valeurs simples comme des chaînes et des nombres, mais aussi des tableaux, ou d'autres objets."
+            },
+            {
+              "en": "Understanding objects and how to work with them is crucial in JavaScript because they're used extensively throughout the language and in many JavaScript libraries and frameworks.",
+              "fr": "Comprendre les objets et comment travailler avec eux est crucial en JavaScript car ils sont largement utilisés dans tout le langage ainsi que dans de nombreuses bibliothèques et frameworks JavaScript."
+            },
+            {
+              "en": "As you continue to learn and work with JavaScript, you'll find that mastering objects opens up a world of possibilities for creating complex and powerful applications.",
+              "fr": "Au fur et à mesure que tu continueras à apprendre et à travailler avec JavaScript, tu constateras que maîtriser les objets ouvre un monde de possibilités pour créer des applications complexes et puissantes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which notation would you use to access a property of an object if the property name contains spaces?",
+              "fr": "Quelle notation utiliserais-tu pour accéder à une propriété d'un objet si le nom de la propriété contient des espaces ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Dot notation",
+              "fr": "La notation par point"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which notation allows for more flexibility in property names.",
+              "fr": "Réfléchis à quelle notation offre plus de flexibilité dans les noms de propriété."
+            },
+            {
+              "en": "Bracket notation",
+              "fr": "La notation par crochets"
+            },
+            {
+              "en": "Both dot and bracket notation",
+              "fr": "À la fois la notation par point et par crochets"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which notation allows for more flexibility in property names.",
+              "fr": "Réfléchis à quelle notation offre plus de flexibilité dans les noms de propriété."
+            },
+            {
+              "en": "Neither, it's not possible to have property names with spaces",
+              "fr": "Aucune des deux, il n'est pas possible d'avoir des noms de propriété avec des espaces"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which notation allows for more flexibility in property names.",
+              "fr": "Réfléchis à quelle notation offre plus de flexibilité dans les noms de propriété."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What's an advantage of using bracket notation over dot notation when accessing object properties?",
+              "fr": "Quel est un avantage de l'utilisation de la notation par crochets plutôt que de la notation par point pour accéder aux propriétés d'un objet ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It's faster to type.",
+              "fr": "Elle est plus rapide à taper."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using dynamic property names.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation de noms de propriété dynamiques."
+            },
+            {
+              "en": "It allows you to use variables as property names.",
+              "fr": "Elle te permet d'utiliser des variables comme noms de propriété."
+            },
+            {
+              "en": "It's the only way to access nested properties.",
+              "fr": "C'est la seule façon d'accéder aux propriétés imbriquées."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using dynamic property names.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation de noms de propriété dynamiques."
+            },
+            {
+              "en": "It automatically converts property names to uppercase.",
+              "fr": "Elle convertit automatiquement les noms de propriété en majuscules."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using dynamic property names.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation de noms de propriété dynamiques."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it said that most things in JavaScript are objects?",
+              "fr": "Pourquoi dit-on que la plupart des choses en JavaScript sont des objets ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Because everything in JavaScript has properties and methods.",
+              "fr": "Parce que tout en JavaScript a des propriétés et des méthodes."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we mentioned about the nature of different data types in JavaScript.",
+              "fr": "Rappelle-toi ce que nous avons mentionné à propos de la nature des différents types de données en JavaScript."
+            },
+            {
+              "en": "Because JavaScript was originally designed for object-oriented programming.",
+              "fr": "Parce que JavaScript a été conçu à l'origine pour la programmation orientée objet."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we mentioned about the nature of different data types in JavaScript.",
+              "fr": "Rappelle-toi ce que nous avons mentionné à propos de la nature des différents types de données en JavaScript."
+            },
+            {
+              "en": "Because objects are the only data type in JavaScript.",
+              "fr": "Parce que les objets sont le seul type de données en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we mentioned about the nature of different data types in JavaScript.",
+              "fr": "Rappelle-toi ce que nous avons mentionné à propos de la nature des différents types de données en JavaScript."
+            },
+            {
+              "en": "Because even primitive data types can be treated as objects in certain contexts.",
+              "fr": "Parce que même les types de données primitifs peuvent être traités comme des objets dans certains contextes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b721eb98f224868b44a6.md",
+      "id": "6732b721eb98f224868b44a6",
+      "dashedName": "how-can-you-remove-properties-from-an-object",
+      "title": {
+        "en": "How Can You Remove Properties from an Object?",
+        "fr": "Comment supprimer des propriétés d'un objet ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "There are several ways to remove properties from an object, with the `delete` operator being the most straightforward and commonly used method.",
+              "fr": "Il existe plusieurs façons de supprimer des propriétés d'un objet, l'opérateur `delete` étant la méthode la plus simple et la plus couramment utilisée."
+            },
+            {
+              "en": "When you use `delete`, it removes the selected property from the object. Here's an example of how to use the `delete` operator:",
+              "fr": "Lorsque tu utilises `delete`, il supprime la propriété sélectionnée de l'objet. Voici un exemple de comment utiliser l'opérateur `delete` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we start with a `person` object that has three properties: `name`, `age`, and `job`. Then, we use the `delete` operator to remove the `job` property. After the deletion, the `person` object no longer has the `job` property.",
+              "fr": "Dans cet exemple, nous partons d'un objet `person` qui a trois propriétés : `name`, `age` et `job`. Ensuite, nous utilisons l'opérateur `delete` pour supprimer la propriété `job`. Après la suppression, l'objet `person` n'a plus la propriété `job`."
+            },
+            {
+              "en": "Another way to remove properties is by using destructuring assignment with rest parameters. This approach doesn't actually delete the property, but it creates a new object without the specified properties:",
+              "fr": "Une autre façon de supprimer des propriétés consiste à utiliser l'affectation par déstructuration avec des paramètres rest. Cette approche ne supprime pas réellement la propriété, mais elle crée un nouvel objet sans les propriétés spécifiées :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we use destructuring to extract `job` and `city` from the `person` object, and collect the remaining properties into a new object called `remainingProperties`. This creates a new object without the `job` and `city` properties.",
+              "fr": "Dans cet exemple, nous utilisons la déstructuration pour extraire `job` et `city` de l'objet `person`, et collecter les propriétés restantes dans un nouvel objet appelé `remainingProperties`. Cela crée un nouvel objet sans les propriétés `job` et `city`."
+            },
+            {
+              "en": "Understanding how to remove properties from objects is an important skill in JavaScript programming. It allows you to manipulate objects dynamically, and clean up unnecessary data.",
+              "fr": "Comprendre comment supprimer des propriétés des objets est une compétence importante en programmation JavaScript. Cela te permet de manipuler les objets de manière dynamique, et de nettoyer les données inutiles."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `delete` operator affects object properties.",
+              "fr": "Réfléchis à la façon dont l'opérateur `delete` affecte les propriétés d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `delete` operator affects object properties.",
+              "fr": "Réfléchis à la façon dont l'opérateur `delete` affecte les propriétés d'un objet."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the `delete` operator affects object properties.",
+              "fr": "Réfléchis à la façon dont l'opérateur `delete` affecte les propriétés d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you try to access a property that has been deleted.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies d'accéder à une propriété qui a été supprimée."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you try to access a property that has been deleted.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies d'accéder à une propriété qui a été supprimée."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you try to access a property that has been deleted.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu essaies d'accéder à une propriété qui a été supprimée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which operator is commonly used to remove properties from an object in JavaScript?",
+              "fr": "Quel opérateur est couramment utilisé pour supprimer des propriétés d'un objet en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the standard JavaScript operator for removing object properties.",
+              "fr": "Réfléchis à l'opérateur JavaScript standard pour supprimer les propriétés d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the standard JavaScript operator for removing object properties.",
+              "fr": "Réfléchis à l'opérateur JavaScript standard pour supprimer les propriétés d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the standard JavaScript operator for removing object properties.",
+              "fr": "Réfléchis à l'opérateur JavaScript standard pour supprimer les propriétés d'un objet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b72961f94324bd6390de.md",
+      "id": "6732b72961f94324bd6390de",
+      "dashedName": "how-to-check-if-an-object-has-a-property",
+      "title": {
+        "en": "How to Check If an Object Has a Property?",
+        "fr": "Comment vérifier si un objet possède une propriété ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, there are several ways to check if an object has a specific property. Understanding these methods is important for working effectively with objects, especially when you're dealing with data from external sources or when you need to ensure certain properties exist before using them.",
+              "fr": "En JavaScript, il existe plusieurs façons de vérifier si un objet possède une propriété précise. Comprendre ces méthodes est important pour travailler efficacement avec les objets, surtout lorsque tu traites des données provenant de sources externes ou lorsque tu dois t'assurer que certaines propriétés existent avant de les utiliser."
+            },
+            {
+              "en": "We'll explore some common approaches: the `hasOwnProperty()` method, the `Object.hasOwn()` method, the `in` operator, and checking against `undefined`.",
+              "fr": "Nous allons explorer quelques approches courantes : la méthode `hasOwnProperty()`, la méthode `Object.hasOwn()`, l'opérateur `in`, et la vérification par rapport à `undefined`."
+            },
+            {
+              "en": "Let's start with the `hasOwnProperty()` method. This method returns a boolean indicating whether the object has the specified property as its own property. Here's an example:",
+              "fr": "Commençons par la méthode `hasOwnProperty()`. Cette méthode retourne un booléen indiquant si l'objet possède la propriété spécifiée comme propriété propre. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have an object called `person` with two properties: `name` and `age`. To check if `name` is a property in the `person` object, we use the `hasOwnProperty()` method. Since `name` is a property, it will return `true`. But when we use the `hasOwnProperty()` to check if `job` is a property, it will return `false` because it does not exist in the object.",
+              "fr": "Dans cet exemple, nous avons un objet appelé `person` avec deux propriétés : `name` et `age`. Pour vérifier si `name` est une propriété de l'objet `person`, nous utilisons la méthode `hasOwnProperty()`. Comme `name` est une propriété, elle retournera `true`. Mais lorsque nous utilisons `hasOwnProperty()` pour vérifier si `job` est une propriété, elle retournera `false` car elle n'existe pas dans l'objet."
+            },
+            {
+              "en": "`Object.hasOwn()` is the modern, recommended way to check if an object has a property as its own (not inherited). Think of it as an upgraded, safer version of `hasOwnProperty()`. The syntax is `Object.hasOwn(object, propertyName)` — you pass the object as the first argument and the property name as the second.",
+              "fr": "`Object.hasOwn()` est la façon moderne et recommandée de vérifier si un objet possède une propriété comme propriété propre (non héritée). Vois-la comme une version améliorée et plus sûre de `hasOwnProperty()`. La syntaxe est `Object.hasOwn(object, propertyName)` — tu passes l'objet comme premier argument et le nom de la propriété comme second."
+            },
+            {
+              "en": "Here is a basic example:",
+              "fr": "Voici un exemple de base :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `Object.hasOwn(person, \"name\")` returns `true` because `name` exists directly on the `person` object. `Object.hasOwn(person, \"job\")` returns `false` because `job` was never added to the object.",
+              "fr": "Dans cet exemple, `Object.hasOwn(person, \"name\")` retourne `true` car `name` existe directement sur l'objet `person`. `Object.hasOwn(person, \"job\")` retourne `false` car `job` n'a jamais été ajouté à l'objet."
+            },
+            {
+              "en": "A very important thing to understand is that `Object.hasOwn()` only checks if the property **exists** — it does not care about the property's value. This means it still returns `true` even when the value is `0`, `false`, `null`, or `undefined`:",
+              "fr": "Une chose très importante à comprendre est que `Object.hasOwn()` vérifie uniquement si la propriété **existe** — elle ne se soucie pas de la valeur de la propriété. Cela signifie qu'elle retourne quand même `true` même lorsque la valeur est `0`, `false`, `null` ou `undefined` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Another way to check for the existence of a property in an object is to use the `in` operator. Like `hasOwnProperty()`, the `in` operator will return `true` if the property exists on the object. Here's how you can use it:",
+              "fr": "Une autre façon de vérifier l'existence d'une propriété dans un objet est d'utiliser l'opérateur `in`. Comme `hasOwnProperty()`, l'opérateur `in` retournera `true` si la propriété existe sur l'objet. Voici comment tu peux l'utiliser :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `\"name\" in person` returns `true` because `name` is a property of `person`.",
+              "fr": "Dans cet exemple, `\"name\" in person` retourne `true` car `name` est une propriété de `person`."
+            },
+            {
+              "en": "The third method involves checking if a property is `undefined`. This approach can be useful, but it has some limitations. Here's an example:",
+              "fr": "La troisième méthode consiste à vérifier si une propriété est `undefined`. Cette approche peut être utile, mais elle a quelques limites. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this code, we check if `car.brand` and `car.color` are not `undefined`. This works because accessing a non-existent property on an object returns `undefined`. However, this method can give false negatives if a property explicitly has the value `undefined`.",
+              "fr": "Dans ce code, nous vérifions si `car.brand` et `car.color` ne sont pas `undefined`. Cela fonctionne parce qu'accéder à une propriété inexistante sur un objet retourne `undefined`. Cependant, cette méthode peut donner des faux négatifs si une propriété a explicitement la valeur `undefined`."
+            },
+            {
+              "en": "In practice, the choice between these methods often depends on the specific requirements of your code. Understanding the differences between them will help you make the right choice in different scenarios.",
+              "fr": "En pratique, le choix entre ces méthodes dépend souvent des besoins spécifiques de ton code. Comprendre les différences entre elles t'aidera à faire le bon choix dans différents scénarios."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`hasOwnProperty()` checks if the property exists directly on the object, regardless of its value.",
+              "fr": "`hasOwnProperty()` vérifie si la propriété existe directement sur l'objet, quelle que soit sa valeur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`hasOwnProperty()` checks if the property exists directly on the object, regardless of its value.",
+              "fr": "`hasOwnProperty()` vérifie si la propriété existe directement sur l'objet, quelle que soit sa valeur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`hasOwnProperty()` checks if the property exists directly on the object, regardless of its value.",
+              "fr": "`hasOwnProperty()` vérifie si la propriété existe directement sur l'objet, quelle que soit sa valeur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `in` operator checks if the property exists in the object.",
+              "fr": "L'opérateur `in` vérifie si la propriété existe dans l'objet."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `in` operator checks if the property exists in the object.",
+              "fr": "L'opérateur `in` vérifie si la propriété existe dans l'objet."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `in` operator checks if the property exists in the object.",
+              "fr": "L'opérateur `in` vérifie si la propriété existe dans l'objet."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when a property exists but has the value `undefined`.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'une propriété existe mais a la valeur `undefined`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when a property exists but has the value `undefined`.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'une propriété existe mais a la valeur `undefined`."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when a property exists but has the value `undefined`.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'une propriété existe mais a la valeur `undefined`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b73509f71f24ef05e86e.md",
+      "id": "6732b73509f71f24ef05e86e",
+      "dashedName": "how-do-you-work-with-accessing-properties-from-nested-objects-and-arrays-in-objects",
+      "title": {
+        "en": "How Do You Work with Accessing Properties from Nested Objects and Arrays in Objects?",
+        "fr": "Comment accéder aux propriétés d'objets imbriqués et de tableaux dans des objets ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "When working with JavaScript, you'll often encounter complex data structures that involve nested objects and arrays within objects. These structures can represent rich, hierarchical data, but they also require a clear understanding of how to access and manipulate the data within them. Let's explore how to navigate these nested structures effectively.",
+              "fr": "Lorsque tu travailles avec JavaScript, tu rencontreras souvent des structures de données complexes qui impliquent des objets imbriqués et des tableaux à l'intérieur d'objets. Ces structures peuvent représenter des données riches et hiérarchiques, mais elles nécessitent aussi une compréhension claire de la façon d'accéder aux données qu'elles contiennent et de les manipuler. Explorons comment naviguer efficacement dans ces structures imbriquées."
+            },
+            {
+              "en": "Accessing properties from nested objects involves using the dot notation or bracket notation, much like accessing properties from simple objects. However, you'll need to chain these accessors to drill down into the nested structure.",
+              "fr": "Accéder aux propriétés d'objets imbriqués implique d'utiliser la notation par point ou la notation par crochets, tout comme pour accéder aux propriétés d'objets simples. Cependant, tu devras enchaîner ces accesseurs pour descendre dans la structure imbriquée."
+            },
+            {
+              "en": "For example, let's consider a nested object representing a person with contact information:",
+              "fr": "Par exemple, considérons un objet imbriqué représentant une personne avec ses informations de contact :"
+            },
+            {
+              "en": "To access `Alice`'s work phone number, you would chain the property accessors like this:",
+              "fr": "Pour accéder au numéro de téléphone professionnel d'`Alice`, tu enchaînerais les accesseurs de propriété comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can also use bracket notation, which is particularly useful when property names include spaces or special characters, or when you're using variables to access properties:",
+              "fr": "Tu peux aussi utiliser la notation par crochets, qui est particulièrement utile lorsque les noms de propriété incluent des espaces ou des caractères spéciaux, ou lorsque tu utilises des variables pour accéder aux propriétés :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Now, let’s take a look at how we can access data where one of the object properties has the value of an array. Here is a modified `person` object that includes an array of addresses:",
+              "fr": "Maintenant, regardons comment nous pouvons accéder aux données lorsque l'une des propriétés de l'objet a pour valeur un tableau. Voici un objet `person` modifié qui inclut un tableau d'adresses :"
+            },
+            {
+              "en": "Here is an example of how to access `Alice`'s work address city:",
+              "fr": "Voici un exemple de comment accéder à la ville de l'adresse professionnelle d'`Alice` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `person.addresses` refers to the array of addresses. To access the second address in that array, we use bracket notation and index `1`. Then, we use dot notation to access the `city` from that address object.",
+              "fr": "Dans cet exemple, `person.addresses` fait référence au tableau d'adresses. Pour accéder à la deuxième adresse de ce tableau, nous utilisons la notation par crochets et l'index `1`. Ensuite, nous utilisons la notation par point pour accéder à la `city` de cet objet adresse."
+            },
+            {
+              "en": "Understanding how to access properties in nested objects and arrays is essential when working with complex data structures. In future workshops and labs, you will have the opportunity to practice working with these types of data structures.",
+              "fr": "Comprendre comment accéder aux propriétés d'objets et de tableaux imbriqués est essentiel lorsqu'on travaille avec des structures de données complexes. Dans de futurs workshops et labs, tu auras l'occasion de t'entraîner à travailler avec ce type de structures de données."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How would you access the `work` phone number from this object?",
+              "fr": "Comment accéderais-tu au numéro de téléphone `work` de cet objet ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we need to navigate through each level of the nested object.",
+              "fr": "Réfléchis à la façon dont nous devons naviguer à travers chaque niveau de l'objet imbriqué."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we need to navigate through each level of the nested object.",
+              "fr": "Réfléchis à la façon dont nous devons naviguer à travers chaque niveau de l'objet imbriqué."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how we need to navigate through each level of the nested object.",
+              "fr": "Réfléchis à la façon dont nous devons naviguer à travers chaque niveau de l'objet imbriqué."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how to access elements in an array that is nested within an object.",
+              "fr": "Réfléchis à la façon d'accéder aux éléments d'un tableau imbriqué dans un objet."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how to access elements in an array that is nested within an object.",
+              "fr": "Réfléchis à la façon d'accéder aux éléments d'un tableau imbriqué dans un objet."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how to access elements in an array that is nested within an object.",
+              "fr": "Réfléchis à la façon d'accéder aux éléments d'un tableau imbriqué dans un objet."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the following code, what will be logged to the console?",
+              "fr": "Dans le code suivant, qu'est-ce qui sera affiché dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the structure of the data object and how we access elements in an array.",
+              "fr": "Réfléchis à la structure de l'objet de données et à la façon dont nous accédons aux éléments d'un tableau."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the structure of the data object and how we access elements in an array.",
+              "fr": "Réfléchis à la structure de l'objet de données et à la façon dont nous accédons aux éléments d'un tableau."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the structure of the data object and how we access elements in an array.",
+              "fr": "Réfléchis à la structure de l'objet de données et à la façon dont nous accédons aux éléments d'un tableau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b73d25cc01251b778043.md",
+      "id": "6732b73d25cc01251b778043",
+      "dashedName": "what-is-the-difference-between-primitive-and-non-primitive-data-types",
+      "title": {
+        "en": "What Is the Difference Between Primitive and Non-Primitive Data Types?",
+        "fr": "Quelle est la différence entre les types de données primitifs et non primitifs ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, understanding the difference between primitive and non-primitive data types is important for writing efficient and bug-free code.",
+              "fr": "En JavaScript, comprendre la différence entre les types de données primitifs et non primitifs est important pour écrire un code efficace et sans bug."
+            },
+            {
+              "en": "These two categories of data types behave differently in terms of how they are stored in memory and how they are manipulated in your programs.",
+              "fr": "Ces deux catégories de types de données se comportent différemment en termes de stockage en mémoire et de manipulation dans tes programmes."
+            },
+            {
+              "en": "Primitive data types are the simplest form of data in JavaScript. They include number, bigint, string, boolean, `null`, `undefined`, and symbol. These types are called \"primitive\" because they represent single values and are not objects.",
+              "fr": "Les types de données primitifs sont la forme la plus simple de données en JavaScript. Ils incluent number, bigint, string, boolean, `null`, `undefined` et symbol. Ces types sont appelés « primitifs » parce qu'ils représentent des valeurs uniques et ne sont pas des objets."
+            },
+            {
+              "en": "When you work with primitive data types, you're dealing directly with their values. For example, when you create a variable with a primitive value, that value is stored directly in the variable.",
+              "fr": "Lorsque tu travailles avec des types de données primitifs, tu manipules directement leurs valeurs. Par exemple, lorsque tu crées une variable avec une valeur primitive, cette valeur est stockée directement dans la variable."
+            },
+            {
+              "en": "Primitive values are immutable, which means once they are created, their value cannot be changed. However, you can reassign a new value to the variable. Here's an example of working with primitive data types:",
+              "fr": "Les valeurs primitives sont immuables, ce qui signifie qu'une fois créées, leur valeur ne peut pas être modifiée. Cependant, tu peux réaffecter une nouvelle valeur à la variable. Voici un exemple de travail avec des types de données primitifs :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we are assigning a primitive value (`5`) from `num1` to `num2`. This creates an independent copy of the value. As a result, any changes made to the original variable (`num1`) do not affect the copy (`num2`).",
+              "fr": "Dans cet exemple, nous affectons une valeur primitive (`5`) de `num1` à `num2`. Cela crée une copie indépendante de la valeur. Par conséquent, toute modification apportée à la variable d'origine (`num1`) n'affecte pas la copie (`num2`)."
+            },
+            {
+              "en": "Non-primitive data types, on the other hand, are more complex. In JavaScript, these are objects, which include regular objects, arrays, and functions. Unlike primitives, non-primitive types can hold multiple values as properties or elements.",
+              "fr": "Les types de données non primitifs, en revanche, sont plus complexes. En JavaScript, ce sont les objets, qui incluent les objets classiques, les tableaux et les fonctions. Contrairement aux primitifs, les types non primitifs peuvent contenir plusieurs valeurs sous forme de propriétés ou d'éléments."
+            },
+            {
+              "en": "When you create a variable with a non-primitive value, what's stored in the variable is actually a reference to the location in memory where the object is stored, not the object itself. This leads to some important differences in behavior. Here's an example with non-primitive types:",
+              "fr": "Lorsque tu crées une variable avec une valeur non primitive, ce qui est stocké dans la variable est en réalité une référence vers l'emplacement en mémoire où l'objet est stocké, pas l'objet lui-même. Cela entraîne quelques différences importantes de comportement. Voici un exemple avec des types non primitifs :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example we have an object called `originalPerson` with two properties of `name` and `age`. We then assign the `originalPerson` object to a variable called `copiedPerson`.",
+              "fr": "Dans cet exemple, nous avons un objet appelé `originalPerson` avec deux propriétés `name` et `age`. Nous affectons ensuite l'objet `originalPerson` à une variable appelée `copiedPerson`."
+            },
+            {
+              "en": "Then we update the `age` value for the `originalPerson` object. When we log the `age` property of `copiedPerson` object it shows the updated value.",
+              "fr": "Ensuite, nous mettons à jour la valeur `age` de l'objet `originalPerson`. Lorsque nous affichons la propriété `age` de l'objet `copiedPerson`, elle montre la valeur mise à jour."
+            },
+            {
+              "en": "But why is that happening? This occurs because both `originalPerson` and `copiedPerson` are referencing the same object in memory.",
+              "fr": "Mais pourquoi cela se produit-il ? Cela arrive parce que `originalPerson` et `copiedPerson` font tous deux référence au même objet en mémoire."
+            },
+            {
+              "en": "In JavaScript, when you assign an object to another variable, you're copying the reference to the object, not the object itself. This is known as shallow copying by reference. As a result, any changes made to the object through one reference are reflected in all references to that object.",
+              "fr": "En JavaScript, lorsque tu affectes un objet à une autre variable, tu copies la référence vers l'objet, pas l'objet lui-même. C'est ce qu'on appelle la copie superficielle par référence. Par conséquent, toute modification apportée à l'objet via une référence se répercute sur toutes les références vers cet objet."
+            },
+            {
+              "en": "As you continue to work with JavaScript, you'll encounter many situations where understanding the difference between primitive and non-primitive types is important. It's a fundamental concept that underlies many aspects of the language and is key to writing efficient and correct code.",
+              "fr": "Au fur et à mesure que tu continueras à travailler avec JavaScript, tu rencontreras de nombreuses situations où comprendre la différence entre les types primitifs et non primitifs est important. C'est un concept fondamental qui sous-tend de nombreux aspects du langage et qui est essentiel pour écrire un code efficace et correct."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a primitive data type in JavaScript?",
+              "fr": "Lequel des éléments suivants n'est PAS un type de données primitif en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which data type can hold multiple values.",
+              "fr": "Réfléchis à quel type de données peut contenir plusieurs valeurs."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which data type can hold multiple values.",
+              "fr": "Réfléchis à quel type de données peut contenir plusieurs valeurs."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which data type can hold multiple values.",
+              "fr": "Réfléchis à quel type de données peut contenir plusieurs valeurs."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you assign a primitive value to a new variable?",
+              "fr": "Que se passe-t-il lorsque tu affectes une valeur primitive à une nouvelle variable ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The new variable gets a reference to the original value.",
+              "fr": "La nouvelle variable obtient une référence vers la valeur d'origine."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how we said primitive values are stored and copied.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la façon dont les valeurs primitives sont stockées et copiées."
+            },
+            {
+              "en": "The value is copied to the new variable.",
+              "fr": "La valeur est copiée dans la nouvelle variable."
+            },
+            {
+              "en": "Both variables share the same memory location.",
+              "fr": "Les deux variables partagent le même emplacement mémoire."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how we said primitive values are stored and copied.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la façon dont les valeurs primitives sont stockées et copiées."
+            },
+            {
+              "en": "The original variable becomes `null`.",
+              "fr": "La variable d'origine devient `null`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how we said primitive values are stored and copied.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la façon dont les valeurs primitives sont stockées et copiées."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how primitive data types are copied when assigned to a new variable.",
+              "fr": "Souviens-toi de la façon dont les types de données primitifs sont copiés lorsqu'ils sont affectés à une nouvelle variable."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how primitive data types are copied when assigned to a new variable.",
+              "fr": "Souviens-toi de la façon dont les types de données primitifs sont copiés lorsqu'ils sont affectés à une nouvelle variable."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how primitive data types are copied when assigned to a new variable.",
+              "fr": "Souviens-toi de la façon dont les types de données primitifs sont copiés lorsqu'ils sont affectés à une nouvelle variable."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b749b8aad125523dcda5.md",
+      "id": "6732b749b8aad125523dcda5",
+      "dashedName": "what-is-the-difference-between-functions-and-object-methods",
+      "title": {
+        "en": "What Is the Difference Between Functions and Object Methods?",
+        "fr": "Quelle est la différence entre les fonctions et les méthodes d'objet ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, functions and object methods are both ways to encapsulate reusable code, but they have some key differences in how they are defined, used, and the context in which they operate. Understanding these differences is crucial for writing effective and organized JavaScript code.",
+              "fr": "En JavaScript, les fonctions et les méthodes d'objet sont deux façons d'encapsuler du code réutilisable, mais elles présentent quelques différences clés dans la façon dont elles sont définies, utilisées, et dans le contexte dans lequel elles opèrent. Comprendre ces différences est crucial pour écrire un code JavaScript efficace et organisé."
+            },
+            {
+              "en": "As you learned in earlier modules, functions are reusable blocks of code that perform a specific task:",
+              "fr": "Comme tu l'as appris dans les modules précédents, les fonctions sont des blocs de code réutilisables qui effectuent une tâche précise :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Object methods, on the other hand, are functions that are associated with an object. They are defined as properties of an object and can access and manipulate the object's data. Here's an example of an object with a method:",
+              "fr": "Les méthodes d'objet, en revanche, sont des fonctions associées à un objet. Elles sont définies comme des propriétés d'un objet et peuvent accéder aux données de l'objet et les manipuler. Voici un exemple d'objet avec une méthode :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `sayHello` is a method of the `person` object. The `this` keyword allows the `sayHello` method to access the properties of the object named `person`. You will learn more about the `this` keyword in future lessons.",
+              "fr": "Dans cet exemple, `sayHello` est une méthode de l'objet `person`. Le mot-clé `this` permet à la méthode `sayHello` d'accéder aux propriétés de l'objet nommé `person`. Tu en apprendras davantage sur le mot-clé `this` dans de futures leçons."
+            },
+            {
+              "en": "A difference between functions and methods is how they are invoked. Functions are called by their name, while methods are called using dot notation on the object they belong to. For example, we call the `greet` function as `greet(\"Alice\")`, but we call the `sayHello` method as `person.sayHello()`.",
+              "fr": "Une différence entre les fonctions et les méthodes réside dans la façon dont elles sont invoquées. Les fonctions sont appelées par leur nom, tandis que les méthodes sont appelées en utilisant la notation par point sur l'objet auquel elles appartiennent. Par exemple, nous appelons la fonction `greet` avec `greet(\"Alice\")`, mais nous appelons la méthode `sayHello` avec `person.sayHello()`."
+            },
+            {
+              "en": "Another important difference is the context in which they operate. Regular functions have their own scope, but they don't have a built-in reference to any particular object. Methods, however, are bound to their object and can access its properties and other methods using the `this` keyword.",
+              "fr": "Une autre différence importante est le contexte dans lequel elles opèrent. Les fonctions classiques ont leur propre portée, mais elles n'ont pas de référence intégrée vers un objet particulier. Les méthodes, en revanche, sont liées à leur objet et peuvent accéder à ses propriétés et à ses autres méthodes en utilisant le mot-clé `this`."
+            },
+            {
+              "en": "A key point to note is that, methods help in organizing code into logical objects, while functions are used for more general, reusable code.",
+              "fr": "Un point clé à retenir est que les méthodes aident à organiser le code en objets logiques, tandis que les fonctions sont utilisées pour du code plus général et réutilisable."
+            },
+            {
+              "en": "Understanding the difference between functions and object methods is important as you progress in your JavaScript journey. While they may seem similar at first, recognizing when to use each will help you write more organized, efficient, and better code.",
+              "fr": "Comprendre la différence entre les fonctions et les méthodes d'objet est important au fur et à mesure que tu progresses dans ton parcours JavaScript. Bien qu'elles puissent sembler similaires au premier abord, reconnaître quand utiliser chacune t'aidera à écrire un code plus organisé, plus efficace et de meilleure qualité."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference between a function and an object method?",
+              "fr": "Quelle est la principale différence entre une fonction et une méthode d'objet ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Functions can take parameters, but methods cannot.",
+              "fr": "Les fonctions peuvent prendre des paramètres, mais pas les méthodes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how functions and methods are defined and their relationship to objects.",
+              "fr": "Réfléchis à la façon dont les fonctions et les méthodes sont définies et à leur relation avec les objets."
+            },
+            {
+              "en": "Methods are associated with objects, while functions are standalone.",
+              "fr": "Les méthodes sont associées à des objets, tandis que les fonctions sont autonomes."
+            },
+            {
+              "en": "Functions can return values, but methods cannot.",
+              "fr": "Les fonctions peuvent retourner des valeurs, mais pas les méthodes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how functions and methods are defined and their relationship to objects.",
+              "fr": "Réfléchis à la façon dont les fonctions et les méthodes sont définies et à leur relation avec les objets."
+            },
+            {
+              "en": "Methods can use the `this` keyword, but functions cannot.",
+              "fr": "Les méthodes peuvent utiliser le mot-clé `this`, mais pas les fonctions."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how functions and methods are defined and their relationship to objects.",
+              "fr": "Réfléchis à la façon dont les fonctions et les méthodes sont définies et à leur relation avec les objets."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Given the following code, how would you correctly call the `greet` method?",
+              "fr": "Étant donné le code suivant, comment appellerais-tu correctement la méthode `greet` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how methods are called on objects using dot notation.",
+              "fr": "Souviens-toi de la façon dont les méthodes sont appelées sur les objets en utilisant la notation par point."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how methods are called on objects using dot notation.",
+              "fr": "Souviens-toi de la façon dont les méthodes sont appelées sur les objets en utilisant la notation par point."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how methods are called on objects using dot notation.",
+              "fr": "Souviens-toi de la façon dont les méthodes sont appelées sur les objets en utilisant la notation par point."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider that the function and the method have the same name but are defined and called differently.",
+              "fr": "Réfléchis au fait que la fonction et la méthode ont le même nom mais sont définies et appelées différemment."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider that the function and the method have the same name but are defined and called differently.",
+              "fr": "Réfléchis au fait que la fonction et la méthode ont le même nom mais sont définies et appelées différemment."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider that the function and the method have the same name but are defined and called differently.",
+              "fr": "Réfléchis au fait que la fonction et la méthode ont le même nom mais sont définies et appelées différemment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732b758194c97257d23fc72.md",
+      "id": "6732b758194c97257d23fc72",
+      "dashedName": "what-is-the-object-constructor-and-when-should-you-use-it",
+      "title": {
+        "en": "What Is the Object() Constructor, and When Should You Use It?",
+        "fr": "Qu'est-ce que le constructeur Object() et quand devrais-tu l'utiliser ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In JavaScript, a constructor is a special type of function used to create and initialize objects. It is invoked with the `new` keyword and can initialize properties and methods on the newly created object.",
+              "fr": "En JavaScript, un constructeur est un type spécial de fonction utilisé pour créer et initialiser des objets. Il est invoqué avec le mot-clé `new` et peut initialiser des propriétés et des méthodes sur l'objet nouvellement créé."
+            },
+            {
+              "en": "In this lesson, we will take a look at how to work with the `Object()` constructor. The `Object()` constructor creates a new empty object. Here is an example:",
+              "fr": "Dans cette leçon, nous allons voir comment travailler avec le constructeur `Object()`. Le constructeur `Object()` crée un nouvel objet vide. Voici un exemple :"
+            },
+            {
+              "en": "When you call `new Object()`, it returns a new object that can be used to store values.",
+              "fr": "Lorsque tu appelles `new Object()`, il retourne un nouvel objet qui peut être utilisé pour stocker des valeurs."
+            },
+            {
+              "en": "The `Object()` constructor can be used with or without the `new` keyword. When called as a function without `new`, it behaves differently depending on the type of value passed to it. Here's an example of using the `Object()` constructor without the `new` keyword:",
+              "fr": "Le constructeur `Object()` peut être utilisé avec ou sans le mot-clé `new`. Lorsqu'il est appelé comme une fonction sans `new`, il se comporte différemment selon le type de valeur qui lui est passé. Voici un exemple d'utilisation du constructeur `Object()` sans le mot-clé `new` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As you can see in the second `console.log`, `numObj` is an object. This is happening because we used the `Object()` constructor to turn that input of a number into an object.",
+              "fr": "Comme tu peux le voir dans le second `console.log`, `numObj` est un objet. Cela se produit parce que nous avons utilisé le constructeur `Object()` pour transformer cette entrée numérique en objet."
+            },
+            {
+              "en": "What happens if we try to pass `null` or `undefined` to the `Object()` constructor?",
+              "fr": "Que se passe-t-il si nous essayons de passer `null` ou `undefined` au constructeur `Object()` ?"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Well, the result will be an empty object. Another use case for the `Object()` constructor is when you're working with a value of unknown type and you need to ensure it's an object. Let’s take a look at the following example:",
+              "fr": "Eh bien, le résultat sera un objet vide. Un autre cas d'usage du constructeur `Object()` est lorsque tu travailles avec une valeur de type inconnu et que tu dois t'assurer que c'est un objet. Regardons l'exemple suivant :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a function called `toObject`. The second condition will check if the value is a type of object and will return the value if the condition is `true`. This condition will check for objects as well as arrays since arrays are special types of objects.",
+              "fr": "Dans cet exemple, nous avons une fonction appelée `toObject`. La deuxième condition vérifie si la valeur est de type objet et retourne la valeur si la condition est `true`. Cette condition vérifie les objets ainsi que les tableaux, car les tableaux sont des types spéciaux d'objets."
+            },
+            {
+              "en": "If neither of the conditions is true, the function returns `Object(value)`, which converts the input into an object. This works for values like numbers, strings, and booleans",
+              "fr": "Si aucune des conditions n'est vraie, la fonction retourne `Object(value)`, qui convertit l'entrée en objet. Cela fonctionne pour des valeurs comme les nombres, les chaînes et les booléens"
+            },
+            {
+              "en": "Most of the time you will not be using the `Object()` constructor to create new objects because you will be using object literal syntax instead (e.g., `const objectLiteral = { name: \"Beau\" }`). But it is still good to understand the basics of working with the Object constructor.",
+              "fr": "La plupart du temps, tu n'utiliseras pas le constructeur `Object()` pour créer de nouveaux objets car tu utiliseras plutôt la syntaxe de littéral d'objet (par exemple, `const objectLiteral = { name: \"Beau\" }`). Mais il est tout de même utile de comprendre les bases du travail avec le constructeur Object."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `Object()` constructor creates an object wrapper for primitive values.",
+              "fr": "Souviens-toi que le constructeur `Object()` crée un wrapper d'objet pour les valeurs primitives."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `Object()` constructor creates an object wrapper for primitive values.",
+              "fr": "Souviens-toi que le constructeur `Object()` crée un wrapper d'objet pour les valeurs primitives."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela déclenchera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the `Object()` constructor creates an object wrapper for primitive values.",
+              "fr": "Souviens-toi que le constructeur `Object()` crée un wrapper d'objet pour les valeurs primitives."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What's the difference between `new Object()` and `{}`?",
+              "fr": "Quelle est la différence entre `new Object()` et `{}` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`new Object()` creates an empty object, while `{}` does not.",
+              "fr": "`new Object()` crée un objet vide, contrairement à `{}`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the functionality and the common usage of both methods in creating objects.",
+              "fr": "Réfléchis à la fonctionnalité et à l'usage courant de ces deux méthodes pour créer des objets."
+            },
+            {
+              "en": "`{}` creates an empty object, while `new Object()` does not.",
+              "fr": "`{}` crée un objet vide, contrairement à `new Object()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the functionality and the common usage of both methods in creating objects.",
+              "fr": "Réfléchis à la fonctionnalité et à l'usage courant de ces deux méthodes pour créer des objets."
+            },
+            {
+              "en": "There is no difference, they both create an empty object.",
+              "fr": "Il n'y a aucune différence, les deux créent un objet vide."
+            },
+            {
+              "en": "`new Object()` is faster than `{}`.",
+              "fr": "`new Object()` est plus rapide que `{}`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the functionality and the common usage of both methods in creating objects.",
+              "fr": "Réfléchis à la fonctionnalité et à l'usage courant de ces deux méthodes pour créer des objets."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When might you use the `Object()` constructor instead of object literal notation?",
+              "fr": "Dans quel cas pourrais-tu utiliser le constructeur `Object()` au lieu de la notation de littéral d'objet ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When you need better performance.",
+              "fr": "Lorsque tu as besoin de meilleures performances."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special capabilities of the `Object()` constructor that we discussed in the lesson.",
+              "fr": "Réfléchis aux capacités spéciales du constructeur `Object()` dont nous avons parlé dans la leçon."
+            },
+            {
+              "en": "When you want to create an object wrapper for a primitive value.",
+              "fr": "Lorsque tu veux créer un wrapper d'objet pour une valeur primitive."
+            },
+            {
+              "en": "When you're working with JSON data.",
+              "fr": "Lorsque tu travailles avec des données JSON."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special capabilities of the `Object()` constructor that we discussed in the lesson.",
+              "fr": "Réfléchis aux capacités spéciales du constructeur `Object()` dont nous avons parlé dans la leçon."
+            },
+            {
+              "en": "When you're creating nested objects.",
+              "fr": "Lorsque tu crées des objets imbriqués."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the special capabilities of the `Object()` constructor that we discussed in the lesson.",
+              "fr": "Réfléchis aux capacités spéciales du constructeur `Object()` dont nous avons parlé dans la leçon."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
