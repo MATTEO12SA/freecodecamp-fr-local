@@ -196,7 +196,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
 - **RWD v9** : 158/158 blocs (100 %), dont les 17 workshops.
-- **JavaScript v9** : 65/230 blocs — modules 1-5 **100 % complets** : `javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript` et `introduction-to-objects-in-javascript` (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 6 `javascript-loops` (clé intro.json `introduction-to-loops-in-javascript`).
+- **JavaScript v9** : 74/230 blocs — modules 1-5 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`). Module 6 `javascript-loops` **en cours (9/15)** : les 7 labs + review + quiz sont traduits (contenu + intro.json aux deux occurrences). **Restent 6 gros blocs** : `lecture-working-with-loops` (5), `workshop-word-counter` (11), `workshop-sentence-analyzer` (8), `workshop-space-mission-roster` (32), `workshop-heritage-library-catalog` (30), `workshop-festival-crowd-flow-simulator` (33). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`).
 
 ## Pièges
 
