@@ -6,17 +6,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : racine du depot `freecodecamp-fr-local`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : Le superblock `responsive-web-design-v9` (cert RWD v9) du curriculum freeCodeCamp est traduit en français. La suite est maintenant `javascript-v9`, demarree par les blocs `lecture-introduction-to-javascript` et `lecture-introduction-to-strings`.
+- **Objectif** : traduire le superblock `javascript-v9` du curriculum freeCodeCamp en français (le cert RWD v9 est déjà 100 % traduit et n'est plus suivi ici).
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
 ## État Actuel — Ce Qui Est Fait
-
-### RWD v9 — Contenu Pédagogique Complet ✅
-
-**Tous les lectures, labs autonomes, reviews, quizzes, examen, métadonnées de cert, titres + intros dans `intro.json` et workshops sont traduits.** 158 blocs FR sur 158 totaux (100%).
-
-Modules pédagogiques complets : `semantic-html`, `basic-html`, `html-forms-and-tables`, `html-and-accessibility`, `computer-basics`, `basic-css`, `design-for-developers`, `absolute-and-relative-units`, `pseudo-classes-and-elements`, `css-colors`, `styling-forms`, `css-box-model`, `css-flexbox`, `css-typography`, `css-and-accessibility`, `css-positioning`, `attribute-selectors`, `responsive-design`, `css-variables`, `css-grid`, `css-animations`, plus `review-css`, `exam-responsive-web-design-certification` et la cert YAML.
 
 ### JavaScript v9 — Modules 1-5 Terminés + Module 6 en cours (74/230)
 
@@ -28,35 +22,11 @@ Note pièges connus du pipeline (vus module 3) : le `verify` custom de `translat
 
 Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--` (`kind: "lecture"`). Les reviews (`challengeType 31`) passent par le même mode lecture, avec `# --assignment--` ajouté aux marqueurs de prose. Les quizzes (`challengeType 8`) utilisent `kind: "quiz"` : seuls `# --description--`, `#### --text--`, `#### --distractors--` et `#### --answer--` sont traduits ; distracteurs en code/backticks et séparateurs `---` restent verbatim. Traduire le JSON manuellement, puis `apply`/`verify`/`check-translation-quality`.
 
-### RWD v9 — Workshops Traduits : 17/17 ✅
-
-Les "workshops" sont les ateliers step-by-step (`Build a XYZ`). Lourds, formuls, mais chaque step a une description courte + hints. Le code (seed-contents, asserts) reste verbatim.
-
-| Workshop                                | Fichiers | Statut  |
-| --------------------------------------- | -------- | ------- |
-| workshop-game-settings-panel            | 16       | ✅ done |
-| workshop-flexbox-photo-gallery          | 22       | ✅ done |
-| workshop-greeting-card                  | 27       | ✅ done |
-| workshop-ferris-wheel                   | 29       | ✅ done |
-| workshop-piano                          | 31       | ✅ done |
-| workshop-parent-teacher-conference-form | 37       | ✅ done |
-| workshop-colorful-boxes                 | 43       | ✅ done |
-| workshop-rothko-painting                | 44       | ✅ done |
-| workshop-registration-form              | 61       | ✅ done |
-| workshop-balance-sheet                  | 66       | ✅ done |
-| workshop-accessibility-quiz             | 67       | ✅ done |
-| workshop-nutritional-label              | 68       | ✅ done |
-| workshop-magazine                       | 79       | ✅ done |
-| workshop-cat-painting                   | 80       | ✅ done |
-| workshop-colored-markers                | 89       | ✅ done |
-| workshop-flappy-penguin                 | 104      | ✅ done |
-| workshop-city-skyline                   | 115      | ✅ done |
-
-Pour vérifier en live :
+Pour vérifier en live quels blocs d'un superblock restent à traduire :
 
 ```powershell
 pwsh -Command "
-  \$structure = Get-Content -Raw curriculum/structure/superblocks/responsive-web-design-v9.json | ConvertFrom-Json
+  \$structure = Get-Content -Raw curriculum/structure/superblocks/javascript-v9.json | ConvertFrom-Json
   \$allBlocks = @()
   foreach (\$c in \$structure.chapters) { foreach (\$m in \$c.modules) { foreach (\$b in \$m.blocks) { \$allBlocks += \$b }}}
   \$fr = (Get-ChildItem -Directory 'curriculum/i18n-curriculum/curriculum/challenges/french/blocks/').Name
@@ -160,7 +130,7 @@ node tools/translate-workshop.js extract <workshop>
 # 3. Appliquer, verifier et valider
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
-pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+pnpm -C curriculum lint-challenges --superblock javascript-v9
 git diff --check
 
 # 4. Commit + push a la fin du workshop
@@ -276,7 +246,7 @@ Deux scripts Node autonomes (lecture seule) remplacent les commandes ad-hoc tap�
 
 ```powershell
 node tools/translation-status.js                 # avancement FR par superblock v9 (barre + %)
-node tools/translation-status.js responsive-web-design-v9   # un seul superblock
+node tools/translation-status.js javascript-v9   # un seul superblock
 
 node tools/check-translation-drift.js            # tous les blocs FR
 node tools/check-translation-drift.js <block>    # un seul bloc
@@ -309,7 +279,7 @@ pnpm local:check:full                            # checks longs avant push final
 ## Fichier De Structure Du Superblock
 
 Pour vérifier l'ordre exact des blocs/modules :
-`curriculum/structure/superblocks/responsive-web-design-v9.json`
+`curriculum/structure/superblocks/javascript-v9.json`
 
 ## Hot-Reload Des Traductions
 
@@ -330,6 +300,6 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
 6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
 
-Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. RWD reste 158/158, JS 16/230. Prochaine cible traduction : reviews/quizzes du module 1 (besoin extension pipeline) ou module 2.
+Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. JS 16/230. Prochaine cible traduction : reviews/quizzes du module 1 (besoin extension pipeline) ou module 2.
 
 (Mis à jour la session suivante : JS désormais 20/230, module 1 terminé, pipeline étendu — voir la note de session 2026-05-30 ci-dessous.)
