@@ -1,0 +1,1331 @@
+{
+  "workshop": "lecture-working-with-loops",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329f7f3d1bd75c17896c66.md",
+      "id": "67329f7f3d1bd75c17896c66",
+      "dashedName": "how-do-loops-and-iteration-work-in-javascript",
+      "title": {
+        "en": "How Do Loops and Iteration Work in JavaScript?",
+        "fr": "Comment fonctionnent les boucles et l'itération en JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Loops in programming are used to repeat a block of code multiple times.",
+              "fr": "Les boucles en programmation sont utilisées pour répéter un bloc de code plusieurs fois."
+            },
+            {
+              "en": "An example of a loop would be when you are designing a program that needs to print out a list of items. You could use a loop to print out each one of the items in the list.",
+              "fr": "Un exemple de boucle serait lorsque tu conçois un programme qui doit afficher une liste d'éléments. Tu pourrais utiliser une boucle pour afficher chacun des éléments de la liste."
+            },
+            {
+              "en": "Another example would be when you are designing a game and you want to move a character across the screen. You could use a loop to move the character a certain number of pixels each time the loop runs.",
+              "fr": "Un autre exemple serait lorsque tu conçois un jeu et que tu veux déplacer un personnage à travers l'écran. Tu pourrais utiliser une boucle pour déplacer le personnage d'un certain nombre de pixels à chaque exécution de la boucle."
+            },
+            {
+              "en": "In JavaScript, there are several types of loops that you can use. In this lesson, we will cover the `for` loop. Here is the basic syntax for a `for` loop:",
+              "fr": "En JavaScript, il existe plusieurs types de boucles que tu peux utiliser. Dans cette leçon, nous allons couvrir la boucle `for`. Voici la syntaxe de base d'une boucle `for` :"
+            },
+            {
+              "en": "The initialization statement is executed before the loop starts. It is typically used to initialize a counter variable. A counter variable is a variable that is used to keep track of how many times the loop has run.",
+              "fr": "L'instruction d'initialisation est exécutée avant le début de la boucle. Elle est généralement utilisée pour initialiser une variable compteur. Une variable compteur est une variable utilisée pour garder la trace du nombre de fois que la boucle a été exécutée."
+            },
+            {
+              "en": "The condition statement is evaluated before each iteration of the loop. An iteration is a single pass through the loop.",
+              "fr": "L'instruction de condition est évaluée avant chaque itération de la boucle. Une itération est un seul passage à travers la boucle."
+            },
+            {
+              "en": "If the condition is true, the code block inside the loop is executed. If the condition is false, the loop stops and you move on to the next block of code.",
+              "fr": "Si la condition est vraie, le bloc de code à l'intérieur de la boucle est exécuté. Si la condition est fausse, la boucle s'arrête et tu passes au bloc de code suivant."
+            },
+            {
+              "en": "The last part of the loop is the increment/decrement statement. This statement is executed after each iteration of the loop. It is typically used to increment or decrement the counter variable.",
+              "fr": "La dernière partie de la boucle est l'instruction d'incrémentation/décrémentation. Cette instruction est exécutée après chaque itération de la boucle. Elle est généralement utilisée pour incrémenter ou décrémenter la variable compteur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the first part of the example above, we initialize a counter variable `i` to `0`. It is common convention to use `i` as the counter variable in a `for` loop.",
+              "fr": "Dans la première partie de l'exemple ci-dessus, nous initialisons une variable compteur `i` à `0`. C'est une convention courante d'utiliser `i` comme variable compteur dans une boucle `for`."
+            },
+            {
+              "en": "The next part is to check the condition. In this case, the condition is checking if `i` is less than `5`. Since `i` is `0`, the condition is true, and the code block inside the loop is executed.",
+              "fr": "L'étape suivante consiste à vérifier la condition. Dans ce cas, la condition vérifie si `i` est inférieur à `5`. Comme `i` vaut `0`, la condition est vraie, et le bloc de code à l'intérieur de la boucle est exécuté."
+            },
+            {
+              "en": "The code block inside the loop is to log the value of `i` to the console. The value of `i` is `0`, so the console will show the value of `0`.",
+              "fr": "Le bloc de code à l'intérieur de la boucle consiste à afficher la valeur de `i` dans la console. La valeur de `i` est `0`, donc la console affichera la valeur `0`."
+            },
+            {
+              "en": "Then the increment statement is executed. In this case, we are incrementing `i` by `1`. So `i` is now `1`.",
+              "fr": "Ensuite, l'instruction d'incrémentation est exécutée. Dans ce cas, nous incrémentons `i` de `1`. Donc `i` vaut maintenant `1`."
+            },
+            {
+              "en": "Then we check the condition again which is to check if `i` is less than `5`. Since `i` is now `1`, the condition is still true, and the code block inside the loop is executed again.",
+              "fr": "Ensuite, nous vérifions à nouveau la condition, qui consiste à vérifier si `i` est inférieur à `5`. Comme `i` vaut maintenant `1`, la condition est toujours vraie, et le bloc de code à l'intérieur de la boucle est exécuté à nouveau."
+            },
+            {
+              "en": "We keep repeating this process until the condition is false. In this case, when `i` is `5`, the condition is false, and the loop stops.",
+              "fr": "Nous continuons de répéter ce processus jusqu'à ce que la condition soit fausse. Dans ce cas, lorsque `i` vaut `5`, la condition est fausse, et la boucle s'arrête."
+            },
+            {
+              "en": "When you're working with loops you should be careful not to create a condition that is always true. If you do, the loop will run forever and your program will crash. This is known as an infinite loop.",
+              "fr": "Lorsque tu travailles avec des boucles, tu dois faire attention à ne pas créer une condition qui est toujours vraie. Si tu le fais, la boucle s'exécutera indéfiniment et ton programme plantera. C'est ce qu'on appelle une boucle infinie."
+            },
+            {
+              "en": "It is possible to create nested `for` loops. A nested loop is when you place one loop inside of another. We will see examples of when you might want to do this later on.",
+              "fr": "Il est possible de créer des boucles `for` imbriquées. Une boucle imbriquée, c'est lorsque tu places une boucle à l'intérieur d'une autre. Nous verrons plus tard des exemples de cas où tu pourrais vouloir le faire."
+            },
+            {
+              "en": "Loops can be beneficial in programming when you need to repeat a block of code a certain number of times. Even though working with `for` loops can be tricky at first,  with practice you will get the hang of it.",
+              "fr": "Les boucles peuvent être bénéfiques en programmation lorsque tu as besoin de répéter un bloc de code un certain nombre de fois. Même si travailler avec les boucles `for` peut être délicat au début, avec de la pratique tu finiras par les maîtriser."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the initialization statement in a `for` loop?",
+              "fr": "Quel est le rôle de l'instruction d'initialisation dans une boucle `for` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To execute code repeatedly.",
+              "fr": "Exécuter du code de façon répétée."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when the loop should start counting at.",
+              "fr": "Réfléchis à partir de quand la boucle doit commencer à compter."
+            },
+            {
+              "en": "To check if the loop should continue running.",
+              "fr": "Vérifier si la boucle doit continuer à s'exécuter."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when the loop should start counting at.",
+              "fr": "Réfléchis à partir de quand la boucle doit commencer à compter."
+            },
+            {
+              "en": "To set up a counter variable before the loop starts.",
+              "fr": "Mettre en place une variable compteur avant le début de la boucle."
+            },
+            {
+              "en": "To increment or decrement the counter variable.",
+              "fr": "Incrémenter ou décrémenter la variable compteur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when the loop should start counting at.",
+              "fr": "Réfléchis à partir de quand la boucle doit commencer à compter."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if the condition in a `for` loop is always `true`?",
+              "fr": "Que se passe-t-il si la condition d'une boucle `for` est toujours `true` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The loop will run a limited number of times.",
+              "fr": "La boucle s'exécutera un nombre limité de fois."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what an infinite loop is.",
+              "fr": "Réfléchis à ce qu'est une boucle infinie."
+            },
+            {
+              "en": "The loop will run once and then stop.",
+              "fr": "La boucle s'exécutera une fois puis s'arrêtera."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what an infinite loop is.",
+              "fr": "Réfléchis à ce qu'est une boucle infinie."
+            },
+            {
+              "en": "The loop will never execute.",
+              "fr": "La boucle ne s'exécutera jamais."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what an infinite loop is.",
+              "fr": "Réfléchis à ce qu'est une boucle infinie."
+            },
+            {
+              "en": "The loop will run forever and may cause the program to crash.",
+              "fr": "La boucle s'exécutera indéfiniment et pourrait faire planter le programme."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the following `for` loop example, what will be the output?",
+              "fr": "Dans l'exemple de boucle `for` suivant, quelle sera la sortie ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay close attention to the condition and increment statements.",
+              "fr": "Fais bien attention aux instructions de condition et d'incrémentation."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay close attention to the condition and increment statements.",
+              "fr": "Fais bien attention aux instructions de condition et d'incrémentation."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Pay close attention to the condition and increment statements.",
+              "fr": "Fais bien attention aux instructions de condition et d'incrémentation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c04638420641dcca2e6e.md",
+      "id": "6732c04638420641dcca2e6e",
+      "dashedName": "how-does-the-for-of-loop-work-and-when-should-you-use-it",
+      "title": {
+        "en": "How Does the For...of Loop Work, and When Should You Use It?",
+        "fr": "Comment fonctionne la boucle For...of, et quand devrais-tu l'utiliser ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "A `for...of` loop is used when you need to loop over values from an iterable. Examples of iterables would be arrays, and strings.",
+              "fr": "Une boucle `for...of` est utilisée lorsque tu as besoin de parcourir les valeurs d'un itérable. Les tableaux et les chaînes sont des exemples d'itérables."
+            },
+            {
+              "en": "Here is the basic syntax for a `for...of` loop:",
+              "fr": "Voici la syntaxe de base d'une boucle `for...of` :"
+            },
+            {
+              "en": "The variable in the example represents the current value of the iterable that is being looped over.",
+              "fr": "La variable dans l'exemple représente la valeur courante de l'itérable qui est parcouru."
+            },
+            {
+              "en": "If you have an array of numbers, the variable would be the current number in the array. If you have a string, the variable would be the current character in the string.",
+              "fr": "Si tu as un tableau de nombres, la variable serait le nombre courant du tableau. Si tu as une chaîne, la variable serait le caractère courant de la chaîne."
+            },
+            {
+              "en": "Let's take a look at a few examples so you can better understand how the `for...of` loop works.",
+              "fr": "Regardons quelques exemples pour que tu comprennes mieux comment fonctionne la boucle `for...of`."
+            },
+            {
+              "en": "In this first example we have an array of numbers and we want to loop over each number and log it to the console.",
+              "fr": "Dans ce premier exemple, nous avons un tableau de nombres et nous voulons parcourir chaque nombre et l'afficher dans la console."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "We have created a variable called `num` that will represent the current number in the array. For iteration 1, `num` will be `1`, for iteration 2, `num` will be `2`, and so on.",
+              "fr": "Nous avons créé une variable appelée `num` qui représentera le nombre courant du tableau. Pour l'itération 1, `num` sera `1`, pour l'itération 2, `num` sera `2`, et ainsi de suite."
+            },
+            {
+              "en": "Inside the loop, we are logging the current number to the console.",
+              "fr": "À l'intérieur de la boucle, nous affichons le nombre courant dans la console."
+            },
+            {
+              "en": "Here is another example where we have a string and we want to loop over each character and log it to the console.",
+              "fr": "Voici un autre exemple où nous avons une chaîne et nous voulons parcourir chaque caractère et l'afficher dans la console."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have created a variable called `char` that will represent the current character in the string.",
+              "fr": "Dans cet exemple, nous avons créé une variable appelée `char` qui représentera le caractère courant de la chaîne."
+            },
+            {
+              "en": "For each iteration, the loop will log the current character to the console.",
+              "fr": "À chaque itération, la boucle affichera le caractère courant dans la console."
+            },
+            {
+              "en": "It is important to note that you can use `let`, or `const` when declaring the variable in a `for...of` loop.",
+              "fr": "Il est important de noter que tu peux utiliser `let` ou `const` lors de la déclaration de la variable dans une boucle `for...of`."
+            },
+            {
+              "en": "If you are going to use `const` though, make sure that the value of the variable does not change inside the loop. If it does, you will get an error.",
+              "fr": "Cependant, si tu vas utiliser `const`, assure-toi que la valeur de la variable ne change pas à l'intérieur de la boucle. Si elle change, tu obtiendras une erreur."
+            },
+            {
+              "en": "Here is an example of using `const` that results in an error:",
+              "fr": "Voici un exemple d'utilisation de `const` qui provoque une erreur :"
+            },
+            {
+              "en": "In this example, we are trying to change the value of `num` inside the loop. Since we declared `num` with `const`, we will get an error. So, if you need to change the value of the variable inside the loop, use `let` instead.",
+              "fr": "Dans cet exemple, nous essayons de changer la valeur de `num` à l'intérieur de la boucle. Comme nous avons déclaré `num` avec `const`, nous obtiendrons une erreur. Donc, si tu as besoin de changer la valeur de la variable à l'intérieur de la boucle, utilise `let` à la place."
+            },
+            {
+              "en": "Let's take a look at one last example dealing with an array of objects.",
+              "fr": "Regardons un dernier exemple qui traite d'un tableau d'objets."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have an array of objects called `people`. Each object has a `name` and `age` property.",
+              "fr": "Dans cet exemple, nous avons un tableau d'objets appelé `people`. Chaque objet a une propriété `name` et une propriété `age`."
+            },
+            {
+              "en": "When we loop through the array, we create a variable called `person` that will represent the current object in the array.",
+              "fr": "Lorsque nous parcourons le tableau, nous créons une variable appelée `person` qui représentera l'objet courant du tableau."
+            },
+            {
+              "en": "Inside the loop, we are outputting a message to the console.",
+              "fr": "À l'intérieur de la boucle, nous affichons un message dans la console."
+            },
+            {
+              "en": "The first message will be `John is 30 years old`, the second message will be `Jane is 25 years old`, and the third message will be `Jim is 40 years old`.",
+              "fr": "Le premier message sera `John is 30 years old`, le deuxième message sera `Jane is 25 years old`, et le troisième message sera `Jim is 40 years old`."
+            },
+            {
+              "en": "`for...of` loops are really useful when you need to loop over values from an iterable like an array or a string. They are also easy to read and can make your code more concise.",
+              "fr": "Les boucles `for...of` sont vraiment utiles lorsque tu as besoin de parcourir les valeurs d'un itérable comme un tableau ou une chaîne. Elles sont aussi faciles à lire et peuvent rendre ton code plus concis."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the `color` variable represents in the loop.",
+              "fr": "Réfléchis à ce que représente la variable `color` dans la boucle."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the `color` variable represents in the loop.",
+              "fr": "Réfléchis à ce que représente la variable `color` dans la boucle."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the `color` variable represents in the loop.",
+              "fr": "Réfléchis à ce que représente la variable `color` dans la boucle."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you try to reassign a value to a variable declared with `const` inside a `for...of` loop?",
+              "fr": "Que se passe-t-il si tu essaies de réaffecter une valeur à une variable déclarée avec `const` à l'intérieur d'une boucle `for...of` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The value is reassigned successfully.",
+              "fr": "La valeur est réaffectée avec succès."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `const` means and how it relates to reassigning values.",
+              "fr": "Réfléchis à ce que signifie `const` et à son rapport avec la réaffectation de valeurs."
+            },
+            {
+              "en": "The loop will skip the iteration where the reassignment occurs.",
+              "fr": "La boucle sautera l'itération où la réaffectation se produit."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `const` means and how it relates to reassigning values.",
+              "fr": "Réfléchis à ce que signifie `const` et à son rapport avec la réaffectation de valeurs."
+            },
+            {
+              "en": "An error will occur.",
+              "fr": "Une erreur se produira."
+            },
+            {
+              "en": "The loop will terminate immediately.",
+              "fr": "La boucle se terminera immédiatement."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `const` means and how it relates to reassigning values.",
+              "fr": "Réfléchis à ce que signifie `const` et à son rapport avec la réaffectation de valeurs."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the following code snippet, what is logged to the console?",
+              "fr": "Dans l'extrait de code suivant, qu'est-ce qui est affiché dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the fruit variable represents in the loop and how the `toUpperCase` method works.",
+              "fr": "Réfléchis à ce que représente la variable fruit dans la boucle et à la façon dont fonctionne la méthode `toUpperCase`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the fruit variable represents in the loop and how the `toUpperCase` method works.",
+              "fr": "Réfléchis à ce que représente la variable fruit dans la boucle et à la façon dont fonctionne la méthode `toUpperCase`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the fruit variable represents in the loop and how the `toUpperCase` method works.",
+              "fr": "Réfléchis à ce que représente la variable fruit dans la boucle et à la façon dont fonctionne la méthode `toUpperCase`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c05595ca7d422b9e55ff.md",
+      "id": "6732c05595ca7d422b9e55ff",
+      "dashedName": "what-is-the-for-in-loop-and-when-should-you-use-it",
+      "title": {
+        "en": "What Is the For...in Loop, and When Should You Use It?",
+        "fr": "Qu'est-ce que la boucle For...in, et quand devrais-tu l'utiliser ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "A `for...in` loop is best used when you need to loop over the properties of an object. This loop will iterate over all enumerable properties of an object, including inherited properties and non-numeric properties.",
+              "fr": "Une boucle `for...in` est le mieux adaptée lorsque tu as besoin de parcourir les propriétés d'un objet. Cette boucle itérera sur toutes les propriétés énumérables d'un objet, y compris les propriétés héritées et les propriétés non numériques."
+            },
+            {
+              "en": "An inherited property is a property that is inherited from the object's prototype chain. A non-numeric property is a property that is not a number or a string that can be converted to a number.",
+              "fr": "Une propriété héritée est une propriété qui est héritée de la chaîne de prototypes de l'objet. Une propriété non numérique est une propriété qui n'est pas un nombre ni une chaîne pouvant être convertie en nombre."
+            },
+            {
+              "en": "Here is the basic syntax of a `for...in` loop:",
+              "fr": "Voici la syntaxe de base d'une boucle `for...in` :"
+            },
+            {
+              "en": "The variable in the example represents the current property of the object that is being looped over.",
+              "fr": "La variable dans l'exemple représente la propriété courante de l'objet qui est parcouru."
+            },
+            {
+              "en": "Let's take a look at a few examples so you can better understand how the `for...in` loop works.",
+              "fr": "Regardons quelques exemples pour que tu comprennes mieux comment fonctionne la boucle `for...in`."
+            },
+            {
+              "en": "In this first example we have a `fruit` object and we want to loop over each property and log the value to the console.",
+              "fr": "Dans ce premier exemple, nous avons un objet `fruit` et nous voulons parcourir chaque propriété et afficher la valeur dans la console."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `prop` variable represents the current property of the object. `fruit[prop]` is used to access the value of each property.",
+              "fr": "La variable `prop` représente la propriété courante de l'objet. `fruit[prop]` est utilisé pour accéder à la valeur de chaque propriété."
+            },
+            {
+              "en": "For the first iteration, `prop` will be `name`. For the second iteration, `prop` will be `color`, and so on.",
+              "fr": "Pour la première itération, `prop` sera `name`. Pour la deuxième itération, `prop` sera `color`, et ainsi de suite."
+            },
+            {
+              "en": "The results logged to the console will be `apple`, `red`, and `0.99`.",
+              "fr": "Les résultats affichés dans la console seront `apple`, `red` et `0.99`."
+            },
+            {
+              "en": "In this second example, we have a nested object and we want to loop over each property and log the value to the console.",
+              "fr": "Dans ce deuxième exemple, nous avons un objet imbriqué et nous voulons parcourir chaque propriété et afficher la valeur dans la console."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `address` property is an object itself. The `for...in` loop will also loop over the properties of the `person` object and log the entire `address` object to the console.",
+              "fr": "La propriété `address` est elle-même un objet. La boucle `for...in` parcourra aussi les propriétés de l'objet `person` et affichera l'objet `address` entier dans la console."
+            },
+            {
+              "en": "Here is what the result will look like in the console:",
+              "fr": "Voici à quoi ressemblera le résultat dans la console :"
+            },
+            {
+              "en": "If you want to loop over the properties of the `address` object, you can nest another `for...in` loop inside the first one.",
+              "fr": "Si tu veux parcourir les propriétés de l'objet `address`, tu peux imbriquer une autre boucle `for...in` à l'intérieur de la première."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a custom function `isObject` that checks if the value is an object.",
+              "fr": "Dans cet exemple, nous avons une fonction personnalisée `isObject` qui vérifie si la valeur est un objet."
+            },
+            {
+              "en": "The `Array.isArray` method is used to check if the value is an array. By placing the logical NOT operator (`!`) in front of the method, we are checking if the value is not an array.",
+              "fr": "La méthode `Array.isArray` est utilisée pour vérifier si la valeur est un tableau. En plaçant l'opérateur logique NON (`!`) devant la méthode, nous vérifions si la valeur n'est pas un tableau."
+            },
+            {
+              "en": "The reason why we can't just use `typeof` equals `'object'` is because arrays are also considered objects in JavaScript. We want to exclude arrays from the check.",
+              "fr": "La raison pour laquelle nous ne pouvons pas simplement utiliser `typeof` égal à `'object'` est que les tableaux sont aussi considérés comme des objets en JavaScript. Nous voulons exclure les tableaux de la vérification."
+            },
+            {
+              "en": "Also, due to a historical bug in JavaScript, `typeof null` returns `'object'`. So we want to also exclude `null` values from the check.",
+              "fr": "De plus, à cause d'un bug historique en JavaScript, `typeof null` retourne `'object'`. Nous voulons donc aussi exclure les valeurs `null` de la vérification."
+            },
+            {
+              "en": "If the condition is true, we nest another `for...in` loop that will loop over the properties of the nested object and log the value to the console.",
+              "fr": "Si la condition est vraie, nous imbriquons une autre boucle `for...in` qui parcourra les propriétés de l'objet imbriqué et affichera la valeur dans la console."
+            },
+            {
+              "en": "The `nestedProp` variable represents the current property of the nested object.",
+              "fr": "La variable `nestedProp` représente la propriété courante de l'objet imbriqué."
+            },
+            {
+              "en": "Here is what the modified result will look like in the console:",
+              "fr": "Voici à quoi ressemblera le résultat modifié dans la console :"
+            },
+            {
+              "en": "A `for...in` loop is useful when you need to loop over the properties of an object.",
+              "fr": "Une boucle `for...in` est utile lorsque tu as besoin de parcourir les propriétés d'un objet."
+            },
+            {
+              "en": "It is not recommended to use a `for...in` loop to loop over the elements of an array. Instead, use a `for...of` loop or other array methods like `forEach`, `map`, `filter`, and `reduce`, which you will learn about in future lessons.",
+              "fr": "Il n'est pas recommandé d'utiliser une boucle `for...in` pour parcourir les éléments d'un tableau. À la place, utilise une boucle `for...of` ou d'autres méthodes de tableau comme `forEach`, `map`, `filter` et `reduce`, que tu découvriras dans de futures leçons."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson to learn what the `for...in` loop does.",
+              "fr": "Revois le début de la leçon pour découvrir ce que fait la boucle `for...in`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson to learn what the `for...in` loop does.",
+              "fr": "Revois le début de la leçon pour découvrir ce que fait la boucle `for...in`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson to learn what the `for...in` loop does.",
+              "fr": "Revois le début de la leçon pour découvrir ce que fait la boucle `for...in`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it generally not recommended to use a `for...in` loop to iterate over the elements of an array?",
+              "fr": "Pourquoi n'est-il généralement pas recommandé d'utiliser une boucle `for...in` pour itérer sur les éléments d'un tableau ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`for...in` only iterates over array methods, not elements.",
+              "fr": "`for...in` n'itère que sur les méthodes du tableau, pas sur les éléments."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of properties and indices `for...in` can access.",
+              "fr": "Réfléchis aux types de propriétés et d'indices auxquels `for...in` peut accéder."
+            },
+            {
+              "en": "`for...in` iterates over all enumerable properties, including inherited properties and non-numeric properties, which may lead to unexpected results.",
+              "fr": "`for...in` itère sur toutes les propriétés énumérables, y compris les propriétés héritées et les propriétés non numériques, ce qui peut entraîner des résultats inattendus."
+            },
+            {
+              "en": "`for...in` loops are slower compared to other array iteration methods.",
+              "fr": "Les boucles `for...in` sont plus lentes que les autres méthodes d'itération de tableau."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of properties and indices `for...in` can access.",
+              "fr": "Réfléchis aux types de propriétés et d'indices auxquels `for...in` peut accéder."
+            },
+            {
+              "en": "`for...in` cannot handle arrays with non-numeric indices.",
+              "fr": "`for...in` ne peut pas gérer les tableaux ayant des indices non numériques."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of properties and indices `for...in` can access.",
+              "fr": "Réfléchis aux types de propriétés et d'indices auxquels `for...in` peut accéder."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is the `isObject` function necessary in the nested loop example?",
+              "fr": "Pourquoi la fonction `isObject` est-elle nécessaire dans l'exemple de boucle imbriquée ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To check if the value is a string.",
+              "fr": "Pour vérifier si la valeur est une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the additional checks needed to check if the value is an object literal.",
+              "fr": "Réfléchis aux vérifications supplémentaires nécessaires pour vérifier si la valeur est un littéral d'objet."
+            },
+            {
+              "en": "To ensure that the value is neither an array nor `null`.",
+              "fr": "Pour s'assurer que la valeur n'est ni un tableau ni `null`."
+            },
+            {
+              "en": "To verify that the value is an integer.",
+              "fr": "Pour vérifier que la valeur est un entier."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the additional checks needed to check if the value is an object literal.",
+              "fr": "Réfléchis aux vérifications supplémentaires nécessaires pour vérifier si la valeur est un littéral d'objet."
+            },
+            {
+              "en": "To convert the value to an object.",
+              "fr": "Pour convertir la valeur en objet."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the additional checks needed to check if the value is an object literal.",
+              "fr": "Réfléchis aux vérifications supplémentaires nécessaires pour vérifier si la valeur est un littéral d'objet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c06654ea3442724284fe.md",
+      "id": "6732c06654ea3442724284fe",
+      "dashedName": "what-is-a-while-loop-and-how-does-it-differ-from-the-do-while-loop",
+      "title": {
+        "en": "What Is a While Loop, and How Does It Differ from the Do...while Loop?",
+        "fr": "Qu'est-ce qu'une boucle While, et en quoi diffère-t-elle de la boucle Do...while ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In previous lessons, you learned how to work with `for` loops, `for...in` loops and `for...of` loops. In this lesson, you will learn about the `while` loop and the `do...while` loop.",
+              "fr": "Dans les leçons précédentes, tu as appris à travailler avec les boucles `for`, les boucles `for...in` et les boucles `for...of`. Dans cette leçon, tu découvriras la boucle `while` et la boucle `do...while`."
+            },
+            {
+              "en": "A `while` loop will run a block of code as long as the condition is true. Here is the basic syntax for a `while` loop:",
+              "fr": "Une boucle `while` exécute un bloc de code tant que la condition est vraie. Voici la syntaxe de base d'une boucle `while` :"
+            },
+            {
+              "en": "The condition is checked before the block of code is executed. If the condition is false, the block of code will not be executed.",
+              "fr": "La condition est vérifiée avant l'exécution du bloc de code. Si la condition est fausse, le bloc de code ne sera pas exécuté."
+            },
+            {
+              "en": "`while` loops are useful when you do not know how many times you need to run the block of code. Here is an example of using a `while` loop:",
+              "fr": "Les boucles `while` sont utiles lorsque tu ne sais pas combien de fois tu dois exécuter le bloc de code. Voici un exemple d'utilisation d'une boucle `while` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a variable called `counter` that is initialized to `0`. The `while` loop will continue to run as long as the value of `counter` is less than `5`. Inside the loop, we log the value of `counter` to the console and then increment `counter` by `1`.",
+              "fr": "Dans cet exemple, nous avons une variable appelée `counter` qui est initialisée à `0`. La boucle `while` continuera de s'exécuter tant que la valeur de `counter` est inférieure à `5`. À l'intérieur de la boucle, nous affichons la valeur de `counter` dans la console puis nous incrémentons `counter` de `1`."
+            },
+            {
+              "en": "Another loop similar to the `while` loop would be the `do...while` loop. Here is the basic syntax:",
+              "fr": "Une autre boucle similaire à la boucle `while` serait la boucle `do...while`. Voici la syntaxe de base :"
+            },
+            {
+              "en": "One key difference between a `do...while` loop and a `while` loop is that the `do...while` loop will execute the block of code at least once before checking the condition.",
+              "fr": "Une différence clé entre une boucle `do...while` et une boucle `while` est que la boucle `do...while` exécutera le bloc de code au moins une fois avant de vérifier la condition."
+            },
+            {
+              "en": "If the condition is true, the block of code will continue to execute. If the condition is false, the block of code will stop executing.",
+              "fr": "Si la condition est vraie, le bloc de code continuera de s'exécuter. Si la condition est fausse, le bloc de code cessera de s'exécuter."
+            },
+            {
+              "en": "Here is an example of using a `do...while` loop:",
+              "fr": "Voici un exemple d'utilisation d'une boucle `do...while` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have a variable called `counter` that is initialized to `0`. The `do...while` loop will log the value of `counter` to the console and then increment `counter` by `1`. After executing the block of code, it checks if the value of `counter` is less than `5`. If it is, the loop will continue to run. If not, the loop will stop.",
+              "fr": "Dans cet exemple, nous avons une variable appelée `counter` qui est initialisée à `0`. La boucle `do...while` affichera la valeur de `counter` dans la console puis incrémentera `counter` de `1`. Après l'exécution du bloc de code, elle vérifie si la valeur de `counter` est inférieure à `5`. Si c'est le cas, la boucle continuera de s'exécuter. Sinon, la boucle s'arrêtera."
+            },
+            {
+              "en": "In most cases, you will probably use the `while` loop more often than the `do...while` loop. However, it is good to know both types of loops and when to use them.",
+              "fr": "Dans la plupart des cas, tu utiliseras probablement la boucle `while` plus souvent que la boucle `do...while`. Cependant, il est bon de connaître les deux types de boucles et de savoir quand les utiliser."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference between a `while` loop and a `do...while` loop?",
+              "fr": "Quelle est la principale différence entre une boucle `while` et une boucle `do...while` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A `while` loop executes the code block at least once, whereas a `do...while` loop does not.",
+              "fr": "Une boucle `while` exécute le bloc de code au moins une fois, contrairement à une boucle `do...while`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which loop executes its code block before checking the condition.",
+              "fr": "Réfléchis à quelle boucle exécute son bloc de code avant de vérifier la condition."
+            },
+            {
+              "en": "A `do...while` loop executes the code block at least once, whereas a `while` loop does not.",
+              "fr": "Une boucle `do...while` exécute le bloc de code au moins une fois, contrairement à une boucle `while`."
+            },
+            {
+              "en": "A `while` loop and a `do...while` loop are exactly the same and have no differences.",
+              "fr": "Une boucle `while` et une boucle `do...while` sont exactement identiques et n'ont aucune différence."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which loop executes its code block before checking the condition.",
+              "fr": "Réfléchis à quelle boucle exécute son bloc de code avant de vérifier la condition."
+            },
+            {
+              "en": "A `while` loop checks the condition after executing the code block, whereas a `do...while` loop checks the condition before.",
+              "fr": "Une boucle `while` vérifie la condition après avoir exécuté le bloc de code, tandis qu'une boucle `do...while` vérifie la condition avant."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which loop executes its code block before checking the condition.",
+              "fr": "Réfléchis à quelle boucle exécute son bloc de code avant de vérifier la condition."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which situation would you prefer to use a `do...while` loop over a `while` loop?",
+              "fr": "Dans quelle situation préférerais-tu utiliser une boucle `do...while` plutôt qu'une boucle `while` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When you need to execute a block of code zero or more times.",
+              "fr": "Lorsque tu as besoin d'exécuter un bloc de code zéro fois ou plus."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which loop guarantees at least one execution of its code block.",
+              "fr": "Réfléchis à quelle boucle garantit au moins une exécution de son bloc de code."
+            },
+            {
+              "en": "When you need to execute a block of code at least once before checking the condition.",
+              "fr": "Lorsque tu as besoin d'exécuter un bloc de code au moins une fois avant de vérifier la condition."
+            },
+            {
+              "en": "When the number of iterations is known beforehand.",
+              "fr": "Lorsque le nombre d'itérations est connu à l'avance."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which loop guarantees at least one execution of its code block.",
+              "fr": "Réfléchis à quelle boucle garantit au moins une exécution de son bloc de code."
+            },
+            {
+              "en": "When you want to ensure the loop never executes.",
+              "fr": "Lorsque tu veux t'assurer que la boucle ne s'exécute jamais."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which loop guarantees at least one execution of its code block.",
+              "fr": "Réfléchis à quelle boucle garantit au moins une exécution de son bloc de code."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if the condition in a `while` loop is initially `false`?",
+              "fr": "Que se passe-t-il si la condition d'une boucle `while` est initialement `false` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The code block inside the loop will execute once and then stop.",
+              "fr": "Le bloc de code à l'intérieur de la boucle s'exécutera une fois puis s'arrêtera."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review what occurs if the condition is not met at the start of a `while` loop.",
+              "fr": "Revois ce qui se produit si la condition n'est pas remplie au début d'une boucle `while`."
+            },
+            {
+              "en": "The code block inside the loop will not execute at all.",
+              "fr": "Le bloc de code à l'intérieur de la boucle ne s'exécutera pas du tout."
+            },
+            {
+              "en": "The code block inside the loop will execute indefinitely.",
+              "fr": "Le bloc de code à l'intérieur de la boucle s'exécutera indéfiniment."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review what occurs if the condition is not met at the start of a `while` loop.",
+              "fr": "Revois ce qui se produit si la condition n'est pas remplie au début d'une boucle `while`."
+            },
+            {
+              "en": "The loop will terminate immediately and produce an error.",
+              "fr": "La boucle se terminera immédiatement et produira une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review what occurs if the condition is not met at the start of a `while` loop.",
+              "fr": "Revois ce qui se produit si la condition n'est pas remplie au début d'une boucle `while`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c07238355642a9781dfb.md",
+      "id": "6732c07238355642a9781dfb",
+      "dashedName": "what-are-the-break-and-continue-statements-used-for-in-loops",
+      "title": {
+        "en": "What Are the Break and Continue Statements Used for in Loops?",
+        "fr": "À quoi servent les instructions Break et Continue dans les boucles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "A `break` statement is used to exit a loop early, while a `continue` statement is used to skip the current iteration of a loop and move to the next one.",
+              "fr": "Une instruction `break` est utilisée pour sortir d'une boucle de façon anticipée, tandis qu'une instruction `continue` est utilisée pour passer l'itération courante d'une boucle et passer à la suivante."
+            },
+            {
+              "en": "Here is an example of using a `break` statement in a `for` loop:",
+              "fr": "Voici un exemple d'utilisation d'une instruction `break` dans une boucle `for` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In the example above, the loop starts counting at `0` and while `i` is less than `10`, the loop will continue to run.",
+              "fr": "Dans l'exemple ci-dessus, la boucle commence à compter à `0` et tant que `i` est inférieur à `10`, la boucle continuera de s'exécuter."
+            },
+            {
+              "en": "Inside the loop, we check if `i` is equal to `5`. If it is, we use the `break` statement to exit the loop early. If not, we log the value of `i` to the console. So the output of the code will print the numbers `0`, `1`, `2`, `3`, and `4`.",
+              "fr": "À l'intérieur de la boucle, nous vérifions si `i` est égal à `5`. Si c'est le cas, nous utilisons l'instruction `break` pour sortir de la boucle de façon anticipée. Sinon, nous affichons la valeur de `i` dans la console. Donc la sortie du code affichera les nombres `0`, `1`, `2`, `3` et `4`."
+            },
+            {
+              "en": "The `break` statement is useful when you want to exit a loop early based on a certain condition. For example, if you are searching for a specific value in an array, you can use a `break` statement to exit the loop once you find the value.",
+              "fr": "L'instruction `break` est utile lorsque tu veux sortir d'une boucle de façon anticipée en fonction d'une certaine condition. Par exemple, si tu recherches une valeur précise dans un tableau, tu peux utiliser une instruction `break` pour sortir de la boucle une fois que tu as trouvé la valeur."
+            },
+            {
+              "en": "Sometimes you may want to skip a particular iteration of a loop without exiting the loop entirely. This is where the `continue` statement comes in. Here is an example of using a `continue` statement in a `for` loop:",
+              "fr": "Parfois, tu peux vouloir sauter une itération particulière d'une boucle sans sortir entièrement de la boucle. C'est là qu'intervient l'instruction `continue`. Voici un exemple d'utilisation d'une instruction `continue` dans une boucle `for` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Just like before, we have initialized `i` to `0` and have a condition that will run the loop as long as `i` is less than `10`.",
+              "fr": "Comme précédemment, nous avons initialisé `i` à `0` et nous avons une condition qui exécutera la boucle tant que `i` est inférieur à `10`."
+            },
+            {
+              "en": "Inside the loop, when `i` is equal to `5`, we use the `continue` statement to skip the current iteration and move to the next one.",
+              "fr": "À l'intérieur de la boucle, lorsque `i` est égal à `5`, nous utilisons l'instruction `continue` pour sauter l'itération courante et passer à la suivante."
+            },
+            {
+              "en": "The output of this code will print the numbers `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8`, and `9`. The number `5` is skipped because of the `continue` statement.",
+              "fr": "La sortie de ce code affichera les nombres `0`, `1`, `2`, `3`, `4`, `6`, `7`, `8` et `9`. Le nombre `5` est sauté à cause de l'instruction `continue`."
+            },
+            {
+              "en": "Another thing you can do with both the `break` and `continue` statements is to use labels to specify which loop you want to break or continue.",
+              "fr": "Une autre chose que tu peux faire avec les instructions `break` et `continue` est d'utiliser des étiquettes (labels) pour spécifier de quelle boucle tu veux sortir ou continuer."
+            },
+            {
+              "en": "This is useful when you have nested loops and you want to control the flow of the outer loop from within the inner loop.",
+              "fr": "C'est utile lorsque tu as des boucles imbriquées et que tu veux contrôler le déroulement de la boucle externe depuis l'intérieur de la boucle interne."
+            },
+            {
+              "en": "Here is an example of using labels with the `break` statement:",
+              "fr": "Voici un exemple d'utilisation des étiquettes avec l'instruction `break` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, we have an outer `for` loop labeled `outerLoop` and an inner `for` loop labeled `innerLoop`.",
+              "fr": "Dans cet exemple, nous avons une boucle `for` externe étiquetée `outerLoop` et une boucle `for` interne étiquetée `innerLoop`."
+            },
+            {
+              "en": "When `i` is equal to `1` and `j` is equal to `1`, we use the `break` statement with the `outerLoop` label to exit the outer loop early. This will exit both the inner and outer loops.",
+              "fr": "Lorsque `i` est égal à `1` et `j` est égal à `1`, nous utilisons l'instruction `break` avec l'étiquette `outerLoop` pour sortir de la boucle externe de façon anticipée. Cela fera sortir à la fois de la boucle interne et de la boucle externe."
+            },
+            {
+              "en": "The output of this code will log the following to the console:",
+              "fr": "La sortie de ce code affichera ce qui suit dans la console :"
+            },
+            {
+              "en": "Most of the time you will not find the need to use labels with the `break` and `continue` statements, but it is good to know that you have that option if you ever need it.",
+              "fr": "La plupart du temps, tu n'auras pas besoin d'utiliser les étiquettes avec les instructions `break` et `continue`, mais il est bon de savoir que tu disposes de cette option si jamais tu en as besoin."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `break` statement in a loop?",
+              "fr": "Quel est le rôle de l'instruction `break` dans une boucle ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To skip the current iteration and continue with the next one.",
+              "fr": "Sauter l'itération courante et continuer avec la suivante."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The name implies that it allows you to \"break\" out of the loop.",
+              "fr": "Le nom suggère qu'elle te permet de « casser » (break) la boucle pour en sortir."
+            },
+            {
+              "en": "To exit the loop immediately.",
+              "fr": "Sortir de la boucle immédiatement."
+            },
+            {
+              "en": "To stop the program execution.",
+              "fr": "Arrêter l'exécution du programme."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The name implies that it allows you to \"break\" out of the loop.",
+              "fr": "Le nom suggère qu'elle te permet de « casser » (break) la boucle pour en sortir."
+            },
+            {
+              "en": "To restart the loop from the beginning.",
+              "fr": "Redémarrer la boucle depuis le début."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The name implies that it allows you to \"break\" out of the loop.",
+              "fr": "Le nom suggère qu'elle te permet de « casser » (break) la boucle pour en sortir."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when the `continue` statement is encountered inside a loop?",
+              "fr": "Que se passe-t-il lorsque l'instruction `continue` est rencontrée à l'intérieur d'une boucle ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The loop exits immediately.",
+              "fr": "La boucle se termine immédiatement."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you might want to skip an iteration of a loop.",
+              "fr": "Réfléchis aux cas où tu pourrais vouloir sauter une itération d'une boucle."
+            },
+            {
+              "en": "The loop starts over from the beginning.",
+              "fr": "La boucle recommence depuis le début."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you might want to skip an iteration of a loop.",
+              "fr": "Réfléchis aux cas où tu pourrais vouloir sauter une itération d'une boucle."
+            },
+            {
+              "en": "The current iteration is skipped and the next iteration starts.",
+              "fr": "L'itération courante est sautée et l'itération suivante commence."
+            },
+            {
+              "en": "The loop is paused.",
+              "fr": "La boucle est mise en pause."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when you might want to skip an iteration of a loop.",
+              "fr": "Réfléchis aux cas où tu pourrais vouloir sauter une itération d'une boucle."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of using labels with `break` and `continue` statements?",
+              "fr": "Quel est le but d'utiliser des étiquettes avec les instructions `break` et `continue` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To specify which loop to exit or skip when dealing with nested loops.",
+              "fr": "Spécifier de quelle boucle sortir ou quelle itération sauter lorsqu'on traite des boucles imbriquées."
+            },
+            {
+              "en": "To name the loops for easier debugging.",
+              "fr": "Nommer les boucles pour faciliter le débogage."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Labels are used to control the flow of execution in nested loops.",
+              "fr": "Les étiquettes sont utilisées pour contrôler le déroulement de l'exécution dans les boucles imbriquées."
+            },
+            {
+              "en": "To restart the loop from a specific point.",
+              "fr": "Redémarrer la boucle à partir d'un point précis."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Labels are used to control the flow of execution in nested loops.",
+              "fr": "Les étiquettes sont utilisées pour contrôler le déroulement de l'exécution dans les boucles imbriquées."
+            },
+            {
+              "en": "To allow multiple break and `continue` statements within the same loop.",
+              "fr": "Permettre plusieurs instructions break et `continue` au sein de la même boucle."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Labels are used to control the flow of execution in nested loops.",
+              "fr": "Les étiquettes sont utilisées pour contrôler le déroulement de l'exécution dans les boucles imbriquées."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
