@@ -1,0 +1,717 @@
+{
+  "workshop": "workshop-heritage-library-catalog",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "699d1f8e51fcdc8230f779fb.md",
+      "id": "699d1f8e51fcdc8230f779fb",
+      "dashedName": "step-1",
+      "title": { "en": "Step 1", "fr": "Étape 1" },
+      "description": [
+        {
+          "en": "In this workshop, you will build a heritage library catalog system. You will parse raw book data, search and group entries, validate data quality, and export results to different formats.",
+          "fr": "Dans ce workshop, tu vas construire un système de catalogue pour une bibliothèque patrimoniale. Tu analyseras des données brutes de livres, tu rechercheras et regrouperas des entrées, tu valideras la qualité des données, et tu exporteras les résultats vers différents formats."
+        },
+        {
+          "en": "Each catalog card is stored as a single string in the format `\"Title | Author | Year | Location\"`, with fields separated by the pipe character (`|`).",
+          "fr": "Chaque fiche de catalogue est stockée sous forme d'une seule chaîne au format `\"Title | Author | Year | Location\"`, avec des champs séparés par le caractère pipe (`|`)."
+        },
+        {
+          "en": "You will use an array of these strings throughout the workshop to build and test your catalog functions. Create an array named `rawCatalogCards` and add the following two strings to it:",
+          "fr": "Tu utiliseras un tableau de ces chaînes tout au long du workshop pour construire et tester tes fonctions de catalogue. Crée un tableau nommé `rawCatalogCards` et ajoute-lui les deux chaînes suivantes :"
+        }
+      ],
+      "hints": [
+        { "en": "You should declare a variable named `rawCatalogCards`.", "fr": "Tu dois déclarer une variable nommée `rawCatalogCards`." },
+        { "en": "`rawCatalogCards` should be an array.", "fr": "`rawCatalogCards` doit être un tableau." },
+        { "en": "The first element of `rawCatalogCards` should be `\"From a Buick 8 | King, Stephen | 2002 | Shelf K7\"`.", "fr": "Le premier élément de `rawCatalogCards` doit être `\"From a Buick 8 | King, Stephen | 2002 | Shelf K7\"`." },
+        { "en": "The second element of `rawCatalogCards` should be `\"The Shining | King, Stephen | 1977 | Shelf K1\"`.", "fr": "Le deuxième élément de `rawCatalogCards` doit être `\"The Shining | King, Stephen | 1977 | Shelf K1\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885450.md",
+      "id": "699d20623e57e8ffee885450",
+      "dashedName": "step-2",
+      "title": { "en": "Step 2", "fr": "Étape 2" },
+      "description": [
+        {
+          "en": "The rest of the catalog cards have been added. Notice the three entries near the end with missing fields; you will handle those in a later step.",
+          "fr": "Le reste des fiches de catalogue a été ajouté. Remarque les trois entrées proches de la fin auxquelles il manque des champs ; tu les géreras dans une étape ultérieure."
+        },
+        {
+          "en": "`parseCard` will take a raw catalog string and return a structured object with four properties: `title`, `author`, `year`, and `location`. For now, create a function `parseCard` with a parameter named `rawString`.",
+          "fr": "`parseCard` prendra une chaîne brute de catalogue et retournera un objet structuré avec quatre propriétés : `title`, `author`, `year` et `location`. Pour l'instant, crée une fonction `parseCard` avec un paramètre nommé `rawString`."
+        }
+      ],
+      "hints": [
+        { "en": "You should have a function named `parseCard`.", "fr": "Tu dois avoir une fonction nommée `parseCard`." },
+        { "en": "`parseCard` should be a function with a parameter named `rawString`.", "fr": "`parseCard` doit être une fonction avec un paramètre nommé `rawString`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885451.md",
+      "id": "699d20623e57e8ffee885451",
+      "dashedName": "step-3",
+      "title": { "en": "Step 3", "fr": "Étape 3" },
+      "description": [
+        {
+          "en": "The `parseCard` function will take a raw catalog string and return a structured object. Before building out your function, set up a way to see its output as you work.",
+          "fr": "La fonction `parseCard` prendra une chaîne brute de catalogue et retournera un objet structuré. Avant de développer ta fonction, mets en place un moyen de voir sa sortie au fur et à mesure que tu travailles."
+        },
+        {
+          "en": "Call `parseCard` with `rawCatalogCards[2]` as the argument, assign the result to a variable named `cardResult`, and log `cardResult` to the console.",
+          "fr": "Appelle `parseCard` avec `rawCatalogCards[2]` comme argument, affecte le résultat à une variable nommée `cardResult`, et affiche `cardResult` dans la console."
+        },
+        {
+          "en": "Right now `parseCard` has no body, so it returns `undefined`. As you add code to the function over the next steps, the logged output will show you exactly what the function is returning at each stage.",
+          "fr": "Pour l'instant, `parseCard` n'a pas de corps, donc elle retourne `undefined`. Au fur et à mesure que tu ajouteras du code à la fonction dans les prochaines étapes, la sortie affichée te montrera exactement ce que la fonction retourne à chaque étape."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `parseCard` with `rawCatalogCards[2]` as the argument.", "fr": "Tu dois appeler `parseCard` avec `rawCatalogCards[2]` comme argument." },
+        { "en": "You should assign the result of calling `parseCard` with `rawCatalogCards[2]` to a variable named `cardResult`.", "fr": "Tu dois affecter le résultat de l'appel de `parseCard` avec `rawCatalogCards[2]` à une variable nommée `cardResult`." },
+        { "en": "You should log `cardResult` to the console.", "fr": "Tu dois afficher `cardResult` dans la console." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885454.md",
+      "id": "699d20623e57e8ffee885454",
+      "dashedName": "step-4",
+      "title": { "en": "Step 4", "fr": "Étape 4" },
+      "description": [
+        {
+          "en": "The first step in parsing a catalog card is separating the four fields. The `.split()` method breaks a string into an array of substrings at every occurrence of the separator you provide.",
+          "fr": "La première étape de l'analyse d'une fiche de catalogue consiste à séparer les quatre champs. La méthode `.split()` découpe une chaîne en un tableau de sous-chaînes à chaque occurrence du séparateur que tu fournis."
+        },
+        { "en": "For example:", "fr": "Par exemple :" },
+        {
+          "en": "Inside `parseCard`, call `.split(\"|\")` on `rawString` and return the result. After this step, the console should show an array of four strings.",
+          "fr": "À l'intérieur de `parseCard`, appelle `.split(\"|\")` sur `rawString` et retourne le résultat. Après cette étape, la console doit afficher un tableau de quatre chaînes."
+        },
+        {
+          "en": "**Note:** You may notice extra whitespace around the values. You will clean that up in the next step.",
+          "fr": "**Note :** tu peux remarquer des espaces superflus autour des valeurs. Tu nettoieras cela à l'étape suivante."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `.split(\"|\")` on `rawString` within your `parseCard` function.", "fr": "Tu dois appeler `.split(\"|\")` sur `rawString` dans ta fonction `parseCard`." },
+        { "en": "`parseCard` should return an array.", "fr": "`parseCard` doit retourner un tableau." },
+        { "en": "When called with `\"A | B | C | D\"`, `parseCard` should return an array with four elements.", "fr": "Lorsqu'elle est appelée avec `\"A | B | C | D\"`, `parseCard` doit retourner un tableau de quatre éléments." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885455.md",
+      "id": "699d20623e57e8ffee885455",
+      "dashedName": "step-5",
+      "title": { "en": "Step 5", "fr": "Étape 5" },
+      "description": [
+        {
+          "en": "As you can see from the output in the console, after splitting, each part still has extra leading and/or trailing whitespace. To clean every element, you need to process each one individually.",
+          "fr": "Comme tu peux le voir dans la sortie de la console, après le découpage, chaque partie a encore des espaces superflus au début et/ou à la fin. Pour nettoyer chaque élément, tu dois traiter chacun d'eux individuellement."
+        },
+        {
+          "en": "This is a perfect use case for a `for` loop, which repeats a block of code once for each element in an iterable, such as an array:",
+          "fr": "C'est un cas d'usage parfait pour une boucle `for`, qui répète un bloc de code une fois pour chaque élément d'un itérable, comme un tableau :"
+        },
+        {
+          "en": "`i` starts at `0` (the first index), the loop continues while `i` is less than the array's length, and `i++` increases `i` by one after each iteration.",
+          "fr": "`i` commence à `0` (le premier index), la boucle continue tant que `i` est inférieur à la longueur du tableau, et `i++` augmente `i` de un après chaque itération."
+        },
+        {
+          "en": "Inside `parseCard`, declare an empty array named `trimmedParts`. Then add a `for` loop that iterates over `parts`. Leave the loop body empty for now, as you'll fill it in the next step.",
+          "fr": "À l'intérieur de `parseCard`, déclare un tableau vide nommé `trimmedParts`. Puis ajoute une boucle `for` qui itère sur `parts`. Laisse le corps de la boucle vide pour l'instant, car tu le rempliras à l'étape suivante."
+        }
+      ],
+      "hints": [
+        { "en": "You should declare a variable named `trimmedParts` set to an empty array.", "fr": "Tu dois déclarer une variable nommée `trimmedParts` définie sur un tableau vide." },
+        { "en": "You should use a `for` loop to iterate over `parts`.", "fr": "Tu dois utiliser une boucle `for` pour itérer sur `parts`." }
+      ]
+    },
+    {
+      "file": "69aa11c2584523e6e991330c.md",
+      "id": "69aa11c2584523e6e991330c",
+      "dashedName": "step-6",
+      "title": { "en": "Step 6", "fr": "Étape 6" },
+      "description": [
+        {
+          "en": "The `.trim()` method removes whitespace from both ends of a string. For example, `\" hello \".trim()` returns `\"hello\"`.",
+          "fr": "La méthode `.trim()` supprime les espaces aux deux extrémités d'une chaîne. Par exemple, `\" hello \".trim()` retourne `\"hello\"`."
+        },
+        {
+          "en": "Inside the loop body, push `parts[i].trim()` into `trimmedParts`. Then update the existing `return` statement to return `trimmedParts` instead of `parts`.",
+          "fr": "À l'intérieur du corps de la boucle, ajoute `parts[i].trim()` dans `trimmedParts`. Puis mets à jour l'instruction `return` existante pour retourner `trimmedParts` au lieu de `parts`."
+        },
+        {
+          "en": "After this step, the logged output should show clean values without extra spaces.",
+          "fr": "Après cette étape, la sortie affichée doit montrer des valeurs propres sans espaces superflus."
+        }
+      ],
+      "hints": [
+        { "en": "You should push `parts[i].trim()` into `trimmedParts` inside the loop.", "fr": "Tu dois ajouter `parts[i].trim()` dans `trimmedParts` à l'intérieur de la boucle." },
+        { "en": "`parseCard` should return `trimmedParts`.", "fr": "`parseCard` doit retourner `trimmedParts`." },
+        { "en": "`parseCard` should return an array where each element has no leading or trailing whitespace.", "fr": "`parseCard` doit retourner un tableau où chaque élément n'a pas d'espaces au début ni à la fin." },
+        { "en": "When called with `\"  A  |  B  |  C  |  D  \"`, the first element of the returned array should be `\"A\"`.", "fr": "Lorsqu'elle est appelée avec `\"  A  |  B  |  C  |  D  \"`, le premier élément du tableau retourné doit être `\"A\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885456.md",
+      "id": "699d20623e57e8ffee885456",
+      "dashedName": "step-7",
+      "title": { "en": "Step 7", "fr": "Étape 7" },
+      "description": [
+        {
+          "en": "Now that the parts are clean, you can transform them into a structured object. In JavaScript, objects use curly braces with \"key: value\" pairs. For example, `{ title: \"Dune\", year: 1965 }`.",
+          "fr": "Maintenant que les parties sont propres, tu peux les transformer en un objet structuré. En JavaScript, les objets utilisent des accolades avec des paires « clé : valeur ». Par exemple, `{ title: \"Dune\", year: 1965 }`."
+        },
+        {
+          "en": "Declare four variables: `title`, `author`, `year`, and `location`. Assign to each of them the corresponding element from `trimmedParts`. Then update the `return` statement to return an object with those four properties.",
+          "fr": "Déclare quatre variables : `title`, `author`, `year` et `location`. Affecte à chacune d'elles l'élément correspondant de `trimmedParts`. Puis mets à jour l'instruction `return` pour retourner un objet avec ces quatre propriétés."
+        }
+      ],
+      "hints": [
+        { "en": "`parseCard` should return an object with `title`, `author`, `year`, and `location` properties.", "fr": "`parseCard` doit retourner un objet avec les propriétés `title`, `author`, `year` et `location`." },
+        { "en": "The `title` property of the object returned by `parseCard(\"The Stand | King, Stephen | 1978 | Shelf K2\")` should have the value `\"The Stand\"`.", "fr": "La propriété `title` de l'objet retourné par `parseCard(\"The Stand | King, Stephen | 1978 | Shelf K2\")` doit avoir la valeur `\"The Stand\"`." },
+        { "en": "The `author` property of the object returned by `parseCard(\"The Stand | King, Stephen | 1978 | Shelf K2\")` should have the value `\"King, Stephen\"`.", "fr": "La propriété `author` de l'objet retourné par `parseCard(\"The Stand | King, Stephen | 1978 | Shelf K2\")` doit avoir la valeur `\"King, Stephen\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885457.md",
+      "id": "699d20623e57e8ffee885457",
+      "dashedName": "step-8",
+      "title": { "en": "Step 8", "fr": "Étape 8" },
+      "description": [
+        {
+          "en": "Some catalog cards have missing fields. For example, entry 16 has a blank author, so `parseCard` currently returns an empty string for that field.",
+          "fr": "Certaines fiches de catalogue ont des champs manquants. Par exemple, l'entrée 16 a un auteur vide, donc `parseCard` retourne actuellement une chaîne vide pour ce champ."
+        },
+        {
+          "en": "The `||` operator provides a fallback: `a || b` evaluates to `a` when `a` is truthy, and `b` otherwise. Since an empty string is falsy, `\"\" || \"Unknown\"` evaluates to `\"Unknown\"`.",
+          "fr": "L'opérateur `||` fournit une valeur de repli : `a || b` vaut `a` lorsque `a` est truthy, et `b` sinon. Comme une chaîne vide est falsy, `\"\" || \"Unknown\"` vaut `\"Unknown\"`."
+        },
+        {
+          "en": "Update `title`, `author`, and `location` in the return statement to use `|| \"Unknown\"` as a fallback. Leave `year` for the next step.",
+          "fr": "Mets à jour `title`, `author` et `location` dans l'instruction return pour utiliser `|| \"Unknown\"` comme valeur de repli. Laisse `year` pour l'étape suivante."
+        }
+      ],
+      "hints": [
+        { "en": "When called with a string that has a blank author field, the `author` property of the returned object should be `\"Unknown\"`.", "fr": "Lorsqu'elle est appelée avec une chaîne ayant un champ author vide, la propriété `author` de l'objet retourné doit être `\"Unknown\"`." },
+        { "en": "When called with a string that has a blank title field, the `title` property of the returned object should be `\"Unknown\"`.", "fr": "Lorsqu'elle est appelée avec une chaîne ayant un champ title vide, la propriété `title` de l'objet retourné doit être `\"Unknown\"`." },
+        { "en": "When called with a string that has a blank location field, the `location` property of the returned object should be `\"Unknown\"`.", "fr": "Lorsqu'elle est appelée avec une chaîne ayant un champ location vide, la propriété `location` de l'objet retourné doit être `\"Unknown\"`." },
+        { "en": "You should not add a fallback for `year` yet.", "fr": "Tu ne dois pas encore ajouter de valeur de repli pour `year`." },
+        { "en": "When all fields are present, `parseCard` should return their actual values and not `\"Unknown\"`.", "fr": "Lorsque tous les champs sont présents, `parseCard` doit retourner leurs valeurs réelles et non `\"Unknown\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885458.md",
+      "id": "699d20623e57e8ffee885458",
+      "dashedName": "step-9",
+      "title": { "en": "Step 9", "fr": "Étape 9" },
+      "description": [
+        {
+          "en": "The year field arrives as a string, but you need it as a number for a later calculation. Use `parseInt()` to convert it.",
+          "fr": "Le champ year arrive sous forme de chaîne, mais tu en as besoin sous forme de nombre pour un calcul ultérieur. Utilise `parseInt()` pour le convertir."
+        },
+        {
+          "en": "The year can also be blank, so you need a fallback. The ternary operator `condition ? valueIfTrue : valueIfFalse` returns one of two values based on a condition.",
+          "fr": "Le year peut aussi être vide, donc tu as besoin d'une valeur de repli. L'opérateur ternaire `condition ? valueIfTrue : valueIfFalse` retourne l'une de deux valeurs en fonction d'une condition."
+        },
+        {
+          "en": "Update the `year` property in the return statement to:",
+          "fr": "Mets à jour la propriété `year` dans l'instruction return pour :"
+        }
+      ],
+      "hints": [
+        { "en": "When called with a card that has a valid year, the `year` property of the returned object should be a number, not a string.", "fr": "Lorsqu'elle est appelée avec une fiche ayant une année valide, la propriété `year` de l'objet retourné doit être un nombre, pas une chaîne." },
+        { "en": "When called with `\"The Shining | King, Stephen | 1977 | Shelf K1\"`, the `year` property should be `1977`.", "fr": "Lorsqu'elle est appelée avec `\"The Shining | King, Stephen | 1977 | Shelf K1\"`, la propriété `year` doit être `1977`." },
+        { "en": "When called with a string that has a blank year field, the `year` property should be `\"Unknown\"`.", "fr": "Lorsqu'elle est appelée avec une chaîne ayant un champ year vide, la propriété `year` doit être `\"Unknown\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885459.md",
+      "id": "699d20623e57e8ffee885459",
+      "dashedName": "step-10",
+      "title": { "en": "Step 10", "fr": "Étape 10" },
+      "description": [
+        {
+          "en": "`parseCard` has been tested and works correctly. The `cardResult` variable is no longer needed.",
+          "fr": "`parseCard` a été testée et fonctionne correctement. La variable `cardResult` n'est plus nécessaire."
+        },
+        {
+          "en": "Start by removing the `const cardResult` line and `console.log(cardResult)` line. Then create a function named `parseCatalog` that takes `rawCards` as a parameter. For now, declare an empty array named `catalog` inside the function and return it.",
+          "fr": "Commence par supprimer la ligne `const cardResult` et la ligne `console.log(cardResult)`. Puis crée une fonction nommée `parseCatalog` qui prend `rawCards` comme paramètre. Pour l'instant, déclare un tableau vide nommé `catalog` à l'intérieur de la fonction et retourne-le."
+        },
+        {
+          "en": "Below the function, call `parseCatalog(rawCatalogCards)`, assign the result to a variable named `catalog`, and log `catalog.length`.",
+          "fr": "En dessous de la fonction, appelle `parseCatalog(rawCatalogCards)`, affecte le résultat à une variable nommée `catalog`, et affiche `catalog.length`."
+        }
+      ],
+      "hints": [
+        { "en": "`parseCatalog` should be a function that returns an array.", "fr": "`parseCatalog` doit être une fonction qui retourne un tableau." },
+        { "en": "`catalog` should be defined and set to `parseCatalog(rawCatalogCards)`.", "fr": "`catalog` doit être défini et défini sur `parseCatalog(rawCatalogCards)`." },
+        { "en": "You should delete the `cardResult` variable and the related `console.log()` call.", "fr": "Tu dois supprimer la variable `cardResult` et l'appel `console.log()` associé." },
+        { "en": "You should log `catalog.length` to the console.", "fr": "Tu dois afficher `catalog.length` dans la console." }
+      ]
+    },
+    {
+      "file": "69b8f3a2c1d4e5f6a7b8c9d0.md",
+      "id": "69b8f3a2c1d4e5f6a7b8c9d0",
+      "dashedName": "step-11",
+      "title": { "en": "Step 11", "fr": "Étape 11" },
+      "description": [
+        {
+          "en": "`parseCatalog` currently returns an empty array. To fill it, add a `for` loop inside the function that iterates over `rawCards`. Inside the loop, call `parseCard` on each element and push the result into `catalog`.",
+          "fr": "`parseCatalog` retourne actuellement un tableau vide. Pour le remplir, ajoute une boucle `for` à l'intérieur de la fonction qui itère sur `rawCards`. À l'intérieur de la boucle, appelle `parseCard` sur chaque élément et ajoute le résultat dans `catalog`."
+        }
+      ],
+      "hints": [
+        { "en": "`parseCatalog(rawCatalogCards).length` should be `19`.", "fr": "`parseCatalog(rawCatalogCards).length` doit valoir `19`." },
+        { "en": "`parseCatalog` should use a `for` loop to iterate over `rawCards`.", "fr": "`parseCatalog` doit utiliser une boucle `for` pour itérer sur `rawCards`." },
+        { "en": "You should call `parseCard` inside the loop.", "fr": "Tu dois appeler `parseCard` à l'intérieur de la boucle." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545a.md",
+      "id": "699d20623e57e8ffee88545a",
+      "dashedName": "step-12",
+      "title": { "en": "Step 12", "fr": "Étape 12" },
+      "description": [
+        {
+          "en": "With the catalog parsed, you can search it by field. `findByAuthor` will filter entries whose author contains a search term.",
+          "fr": "Une fois le catalogue analysé, tu peux le rechercher par champ. `findByAuthor` filtrera les entrées dont l'auteur contient un terme de recherche."
+        },
+        {
+          "en": "Create a function named `findByAuthor` that takes `catalog` and `author` as parameters. Inside, declare a variable named `searchTerm` and set it to the lowercase version of `author` to enable case-insensitive matching later.",
+          "fr": "Crée une fonction nommée `findByAuthor` qui prend `catalog` et `author` comme paramètres. À l'intérieur, déclare une variable nommée `searchTerm` et définis-la sur la version en minuscules de `author` pour permettre plus tard une correspondance insensible à la casse."
+        },
+        {
+          "en": "Also declare a variable named `results` and assign it an empty array to hold the matches.",
+          "fr": "Déclare aussi une variable nommée `results` et affecte-lui un tableau vide pour contenir les correspondances."
+        }
+      ],
+      "hints": [
+        { "en": "You should have a function named `findByAuthor` with `catalog` and `author` as parameters.", "fr": "Tu dois avoir une fonction nommée `findByAuthor` avec `catalog` et `author` comme paramètres." },
+        { "en": "You should declare a variable named `searchTerm` set to `author.toLowerCase()`.", "fr": "Tu dois déclarer une variable nommée `searchTerm` définie sur `author.toLowerCase()`." },
+        { "en": "You should declare a variable named `results` set to an empty array.", "fr": "Tu dois déclarer une variable nommée `results` définie sur un tableau vide." }
+      ]
+    },
+    {
+      "file": "69a9de737382f5b679d7e169.md",
+      "id": "69a9de737382f5b679d7e169",
+      "dashedName": "step-13",
+      "title": { "en": "Step 13", "fr": "Étape 13" },
+      "description": [
+        {
+          "en": "To find matching authors, check each catalog entry one by one.",
+          "fr": "Pour trouver les auteurs correspondants, vérifie chaque entrée du catalogue une par une."
+        },
+        {
+          "en": "Add an empty `for` loop inside `findByAuthor` to iterate over `catalog`. You will add the loop body in the next step.",
+          "fr": "Ajoute une boucle `for` vide à l'intérieur de `findByAuthor` pour itérer sur `catalog`. Tu ajouteras le corps de la boucle à l'étape suivante."
+        }
+      ],
+      "hints": [
+        { "en": "You should use a `for` loop to iterate over `catalog`.", "fr": "Tu dois utiliser une boucle `for` pour itérer sur `catalog`." }
+      ]
+    },
+    {
+      "file": "69a9de7ceb9b18f4fc988306.md",
+      "id": "69a9de7ceb9b18f4fc988306",
+      "dashedName": "step-14",
+      "title": { "en": "Step 14", "fr": "Étape 14" },
+      "description": [
+        {
+          "en": "Inside the loop, check whether the current entry's author (converted to lowercase) includes `searchTerm`. The `.includes()` method returns `true` if a string contains another string as a substring. If the condition is true, push the entry into `results`. After the loop, return `results`.",
+          "fr": "À l'intérieur de la boucle, vérifie si l'auteur de l'entrée courante (converti en minuscules) inclut `searchTerm`. La méthode `.includes()` retourne `true` si une chaîne contient une autre chaîne comme sous-chaîne. Si la condition est vraie, ajoute l'entrée dans `results`. Après la boucle, retourne `results`."
+        }
+      ],
+      "hints": [
+        { "en": "`findByAuthor(catalog, \"king\").length` should be `6`.", "fr": "`findByAuthor(catalog, \"king\").length` doit valoir `6`." },
+        { "en": "`findByAuthor(catalog, \"asimov\").length` should be `2`.", "fr": "`findByAuthor(catalog, \"asimov\").length` doit valoir `2`." },
+        { "en": "`findByAuthor(catalog, \"xyz\").length` should be `0`.", "fr": "`findByAuthor(catalog, \"xyz\").length` doit valoir `0`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545b.md",
+      "id": "699d20623e57e8ffee88545b",
+      "dashedName": "step-15",
+      "title": { "en": "Step 15", "fr": "Étape 15" },
+      "description": [
+        {
+          "en": "Let's verify the search works. Stephen King has six books in the catalog.",
+          "fr": "Vérifions que la recherche fonctionne. Stephen King a six livres dans le catalogue."
+        },
+        {
+          "en": "Call `findByAuthor(catalog, \"king\")` and assign the result to a variable named `kingBooks`. Log `kingBooks.length` to confirm the count.",
+          "fr": "Appelle `findByAuthor(catalog, \"king\")` et affecte le résultat à une variable nommée `kingBooks`. Affiche `kingBooks.length` pour confirmer le décompte."
+        },
+        {
+          "en": "Then use a `for` loop to log each result. Use a template literal to include the title and year, like `` `${kingBooks[i].title} (${kingBooks[i].year})` ``.",
+          "fr": "Puis utilise une boucle `for` pour afficher chaque résultat. Utilise un littéral de gabarit pour inclure le titre et l'année, comme `` `${kingBooks[i].title} (${kingBooks[i].year})` ``."
+        }
+      ],
+      "hints": [
+        { "en": "`kingBooks` should have a length of `6`.", "fr": "`kingBooks` doit avoir une longueur de `6`." },
+        { "en": "You should log `kingBooks.length` to the console.", "fr": "Tu dois afficher `kingBooks.length` dans la console." },
+        { "en": "You should use a `for` loop to log each book's title and year.", "fr": "Tu dois utiliser une boucle `for` pour afficher le titre et l'année de chaque livre." }
+      ]
+    },
+    {
+      "file": "69c2a3b4d5e6f7a8b9c0d1e2.md",
+      "id": "69c2a3b4d5e6f7a8b9c0d1e2",
+      "dashedName": "step-16",
+      "title": { "en": "Step 16", "fr": "Étape 16" },
+      "description": [
+        {
+          "en": "The `kingBooks` test code confirmed that `findByAuthor` works correctly. Before moving on to `groupByDecade`, clean up the console output by removing it.",
+          "fr": "Le code de test `kingBooks` a confirmé que `findByAuthor` fonctionne correctement. Avant de passer à `groupByDecade`, nettoie la sortie de la console en la supprimant."
+        },
+        {
+          "en": "Remove the `const kingBooks = ...` line, `console.log(kingBooks.length)`, and the `for` loop that displays the book titles and years.",
+          "fr": "Supprime la ligne `const kingBooks = ...`, `console.log(kingBooks.length)`, et la boucle `for` qui affiche les titres et les années des livres."
+        }
+      ],
+      "hints": [
+        { "en": "The `kingBooks` variable, the `console.log(kingBooks.length)` statement, and the `for` loop should all be removed.", "fr": "La variable `kingBooks`, l'instruction `console.log(kingBooks.length)` et la boucle `for` doivent toutes être supprimées." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545c.md",
+      "id": "699d20623e57e8ffee88545c",
+      "dashedName": "step-17",
+      "title": { "en": "Step 17", "fr": "Étape 17" },
+      "description": [
+        {
+          "en": "Now you'll build `groupByDecade`, which organizes the catalog by decade. Each key will be a string like `\"1970s\"` and each value an array of books from that period.",
+          "fr": "Maintenant, tu vas construire `groupByDecade`, qui organise le catalogue par décennie. Chaque clé sera une chaîne comme `\"1970s\"` et chaque valeur un tableau de livres de cette période."
+        },
+        {
+          "en": "Create a function named `groupByDecade` that takes `catalog` as a parameter. Inside, declare `const grouped = {}`. Add a `for` loop to iterate over `catalog`, and inside the loop declare `const book = catalog[i]`.",
+          "fr": "Crée une fonction nommée `groupByDecade` qui prend `catalog` comme paramètre. À l'intérieur, déclare `const grouped = {}`. Ajoute une boucle `for` pour itérer sur `catalog`, et à l'intérieur de la boucle déclare `const book = catalog[i]`."
+        }
+      ],
+      "hints": [
+        { "en": "You should have a function named `groupByDecade` with a `catalog` parameter.", "fr": "Tu dois avoir une fonction nommée `groupByDecade` avec un paramètre `catalog`." },
+        { "en": "You should declare a variable named `grouped` set to an empty object.", "fr": "Tu dois déclarer une variable nommée `grouped` définie sur un objet vide." },
+        { "en": "You should use a `for` loop to iterate over `catalog`.", "fr": "Tu dois utiliser une boucle `for` pour itérer sur `catalog`." },
+        { "en": "You should declare a variable named `book` set to the current catalog entry.", "fr": "Tu dois déclarer une variable nommée `book` définie sur l'entrée courante du catalogue." }
+      ]
+    },
+    {
+      "file": "69a9de82b435a1310aff57c2.md",
+      "id": "69a9de82b435a1310aff57c2",
+      "dashedName": "step-18",
+      "title": { "en": "Step 18", "fr": "Étape 18" },
+      "description": [
+        {
+          "en": "Some books have `\"Unknown\"` as their year. We will handle that edge case first.",
+          "fr": "Certains livres ont `\"Unknown\"` comme année. Nous allons d'abord gérer ce cas particulier."
+        },
+        {
+          "en": "Inside the loop, check if `book.year` is equal to the string `\"Unknown\"`. Then, check if `grouped[\"Unknown\"]` doesn't exist yet and initialize it as an empty array. Push `book` into `grouped[\"Unknown\"]`.",
+          "fr": "À l'intérieur de la boucle, vérifie si `book.year` est égal à la chaîne `\"Unknown\"`. Ensuite, vérifie si `grouped[\"Unknown\"]` n'existe pas encore et initialise-le comme un tableau vide. Ajoute `book` dans `grouped[\"Unknown\"]`."
+        },
+        {
+          "en": "Finally, use `continue` to skip the rest of the loop body. The `continue` statement jumps directly to the next iteration.",
+          "fr": "Enfin, utilise `continue` pour sauter le reste du corps de la boucle. L'instruction `continue` passe directement à l'itération suivante."
+        }
+      ],
+      "hints": [
+        { "en": "You should check if `book.year` is equal to `\"Unknown\"`.", "fr": "Tu dois vérifier si `book.year` est égal à `\"Unknown\"`." },
+        { "en": "You should check if `grouped[\"Unknown\"]` doesn't exist yet and initialize it as an empty array.", "fr": "Tu dois vérifier si `grouped[\"Unknown\"]` n'existe pas encore et l'initialiser comme un tableau vide." },
+        { "en": "You should push `book` into `grouped[\"Unknown\"]`.", "fr": "Tu dois ajouter `book` dans `grouped[\"Unknown\"]`." },
+        { "en": "You should use `continue` to skip to the next iteration after handling an unknown year.", "fr": "Tu dois utiliser `continue` pour passer à l'itération suivante après avoir géré une année inconnue." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545d.md",
+      "id": "699d20623e57e8ffee88545d",
+      "dashedName": "step-19",
+      "title": { "en": "Step 19", "fr": "Étape 19" },
+      "description": [
+        {
+          "en": "After the `\"Unknown\"` check, add the decade-grouping logic for books with numeric years. Declare `const decade = Math.floor(book.year / 10) * 10`. For example, `Math.floor(1977 / 10)` gives `197`, times `10` gives `1970`.",
+          "fr": "Après la vérification `\"Unknown\"`, ajoute la logique de regroupement par décennie pour les livres ayant des années numériques. Déclare `const decade = Math.floor(book.year / 10) * 10`. Par exemple, `Math.floor(1977 / 10)` donne `197`, fois `10` donne `1970`."
+        },
+        {
+          "en": "Then declare `const decadeKey =` `` `${decade}s` `` to produce a string like `\"1970s\"`.",
+          "fr": "Puis déclare `const decadeKey =` `` `${decade}s` `` pour produire une chaîne comme `\"1970s\"`."
+        },
+        {
+          "en": "Use bracket notation to group the book: check if `grouped[decadeKey]` doesn't exist yet and initialize it as an empty array, then push `book` into it. Bracket notation is required here because the key is stored in a variable.",
+          "fr": "Utilise la notation par crochets pour regrouper le livre : vérifie si `grouped[decadeKey]` n'existe pas encore et initialise-le comme un tableau vide, puis ajoute `book` dedans. La notation par crochets est requise ici parce que la clé est stockée dans une variable."
+        }
+      ],
+      "hints": [
+        { "en": "You should declare a variable named `decade` set to `Math.floor(book.year / 10) * 10`.", "fr": "Tu dois déclarer une variable nommée `decade` définie sur `Math.floor(book.year / 10) * 10`." },
+        { "en": "You should declare a variable named `decadeKey` that includes `decade` and the letter `\"s\"`.", "fr": "Tu dois déclarer une variable nommée `decadeKey` qui inclut `decade` et la lettre `\"s\"`." },
+        { "en": "You should check if `grouped[decadeKey]` doesn't exist yet and initialize it as an empty array.", "fr": "Tu dois vérifier si `grouped[decadeKey]` n'existe pas encore et l'initialiser comme un tableau vide." },
+        { "en": "You should push `book` into `grouped[decadeKey]`.", "fr": "Tu dois ajouter `book` dans `grouped[decadeKey]`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545e.md",
+      "id": "699d20623e57e8ffee88545e",
+      "dashedName": "step-20",
+      "title": { "en": "Step 20", "fr": "Étape 20" },
+      "description": [
+        {
+          "en": "The loop is complete. Return `grouped` from the function.",
+          "fr": "La boucle est terminée. Retourne `grouped` depuis la fonction."
+        },
+        {
+          "en": "Then, below the function, call `groupByDecade(catalog)` and assign the result to a variable named `byDecade`. Log `byDecade` to inspect the grouped result, and you should see an object with keys like `\"1950s\"`, `\"1960s\"`, `\"1970s\"`, and so on, each pointing to an array of books from that decade.",
+          "fr": "Puis, en dessous de la fonction, appelle `groupByDecade(catalog)` et affecte le résultat à une variable nommée `byDecade`. Affiche `byDecade` pour inspecter le résultat regroupé, et tu devrais voir un objet avec des clés comme `\"1950s\"`, `\"1960s\"`, `\"1970s\"`, et ainsi de suite, chacune pointant vers un tableau de livres de cette décennie."
+        }
+      ],
+      "hints": [
+        { "en": "`groupByDecade` should return an object.", "fr": "`groupByDecade` doit retourner un objet." },
+        { "en": "`byDecade[\"1980s\"].length` should be `5`.", "fr": "`byDecade[\"1980s\"].length` doit valoir `5`." },
+        { "en": "`byDecade[\"Unknown\"].length` should be `1`.", "fr": "`byDecade[\"Unknown\"].length` doit valoir `1`." },
+        { "en": "You should assign the result of `groupByDecade(catalog)` to a variable named `byDecade`.", "fr": "Tu dois affecter le résultat de `groupByDecade(catalog)` à une variable nommée `byDecade`." },
+        { "en": "You should log `byDecade` to the console.", "fr": "Tu dois afficher `byDecade` dans la console." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee88545f.md",
+      "id": "699d20623e57e8ffee88545f",
+      "dashedName": "step-21",
+      "title": { "en": "Step 21", "fr": "Étape 21" },
+      "description": [
+        {
+          "en": "The `byDecade` log has served its purpose. Remove `console.log(byDecade)` from your code.",
+          "fr": "L'affichage de `byDecade` a rempli son rôle. Supprime `console.log(byDecade)` de ton code."
+        },
+        {
+          "en": "Then, to make catalog entries easier to scan, create a function named `renderEntry` that takes `entry` as a parameter. Leave the function body empty for now. Below the function, log `renderEntry(catalog[0])`.",
+          "fr": "Ensuite, pour rendre les entrées du catalogue plus faciles à parcourir, crée une fonction nommée `renderEntry` qui prend `entry` comme paramètre. Laisse le corps de la fonction vide pour l'instant. En dessous de la fonction, affiche `renderEntry(catalog[0])`."
+        }
+      ],
+      "hints": [
+        { "en": "`renderEntry` should be a function.", "fr": "`renderEntry` doit être une fonction." },
+        { "en": "`renderEntry` should be a function with an `entry` parameter.", "fr": "`renderEntry` doit être une fonction avec un paramètre `entry`." },
+        { "en": "The `console.log(byDecade)` call should be removed.", "fr": "L'appel `console.log(byDecade)` doit être supprimé." },
+        { "en": "You should log `renderEntry(catalog[0])`.", "fr": "Tu dois afficher `renderEntry(catalog[0])`." }
+      ]
+    },
+    {
+      "file": "69d5e6f7a8b9c0d1e2f3a4b5.md",
+      "id": "69d5e6f7a8b9c0d1e2f3a4b5",
+      "dashedName": "step-22",
+      "title": { "en": "Step 22", "fr": "Étape 22" },
+      "description": [
+        {
+          "en": "Now fill in `renderEntry`. Declare a fallback constant for each field: `const title = entry.title || \"Unknown\"`, and apply the same pattern for `author`, `year`, and `location`.",
+          "fr": "Maintenant, remplis `renderEntry`. Déclare une constante de repli pour chaque champ : `const title = entry.title || \"Unknown\"`, et applique le même schéma pour `author`, `year` et `location`."
+        },
+        {
+          "en": "Return a multi-line template literal that formats the entry as a library card. Use `\"-\".repeat(25)` for the top and bottom border, and include labeled lines for `Title`, `Author`, `Year`, and `Location`. For example, a labeled line for the title would look like `Title: ${title}`.",
+          "fr": "Retourne un littéral de gabarit multi-lignes qui formate l'entrée comme une fiche de bibliothèque. Utilise `\"-\".repeat(25)` pour les bordures du haut et du bas, et inclus des lignes étiquetées pour `Title`, `Author`, `Year` et `Location`. Par exemple, une ligne étiquetée pour le titre ressemblerait à `Title: ${title}`."
+        }
+      ],
+      "hints": [
+        { "en": "`renderEntry` should return a string.", "fr": "`renderEntry` doit retourner une chaîne." },
+        { "en": "When called with `catalog[0]`, the returned string should contain `\"From a Buick 8\"`.", "fr": "Lorsqu'elle est appelée avec `catalog[0]`, la chaîne retournée doit contenir `\"From a Buick 8\"`." },
+        { "en": "When called with `catalog[0]`, the returned string should contain `\"King, Stephen\"`.", "fr": "Lorsqu'elle est appelée avec `catalog[0]`, la chaîne retournée doit contenir `\"King, Stephen\"`." },
+        { "en": "When called with `catalog[0]`, the returned string should contain the year `2002`.", "fr": "Lorsqu'elle est appelée avec `catalog[0]`, la chaîne retournée doit contenir l'année `2002`." },
+        { "en": "When called with `catalog[0]`, the returned string should contain `\"Shelf K7\"`.", "fr": "Lorsqu'elle est appelée avec `catalog[0]`, la chaîne retournée doit contenir `\"Shelf K7\"`." },
+        { "en": "The returned string should include a top and bottom border using `\"-\".repeat(25)`.", "fr": "La chaîne retournée doit inclure une bordure en haut et en bas en utilisant `\"-\".repeat(25)`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885460.md",
+      "id": "699d20623e57e8ffee885460",
+      "dashedName": "step-23",
+      "title": { "en": "Step 23", "fr": "Étape 23" },
+      "description": [
+        {
+          "en": "Before trusting parsed data, start by validating required fields.",
+          "fr": "Avant de faire confiance aux données analysées, commence par valider les champs requis."
+        },
+        {
+          "en": "Create a function named `validateEntry` that takes `entry` as a parameter. Declare `let isValid = true`.",
+          "fr": "Crée une fonction nommée `validateEntry` qui prend `entry` comme paramètre. Déclare `let isValid = true`."
+        },
+        {
+          "en": "Add a validation check for `title`: set `isValid = false` if `title` is missing, falsy, or equals `\"Unknown\"`.",
+          "fr": "Ajoute une vérification de validation pour `title` : définis `isValid = false` si `title` est manquant, falsy, ou égal à `\"Unknown\"`."
+        },
+        {
+          "en": "Return `isValid`. You will add checks for the other fields in the next steps.",
+          "fr": "Retourne `isValid`. Tu ajouteras les vérifications pour les autres champs dans les prochaines étapes."
+        }
+      ],
+      "hints": [
+        { "en": "`validateEntry` should return a boolean.", "fr": "`validateEntry` doit retourner un booléen." },
+        { "en": "`validateEntry({ title: \"T\", author: \"A\", year: 2000, location: \"L\" })` should return `true`.", "fr": "`validateEntry({ title: \"T\", author: \"A\", year: 2000, location: \"L\" })` doit retourner `true`." },
+        { "en": "`validateEntry({})` should return `false`.", "fr": "`validateEntry({})` doit retourner `false`." },
+        { "en": "`validateEntry({ title: \"\", author: \"A\", year: 2000, location: \"L\" })` should return `false`.", "fr": "`validateEntry({ title: \"\", author: \"A\", year: 2000, location: \"L\" })` doit retourner `false`." },
+        { "en": "`validateEntry({ title: \"Unknown\", author: \"A\", year: 2000, location: \"L\" })` should return `false`.", "fr": "`validateEntry({ title: \"Unknown\", author: \"A\", year: 2000, location: \"L\" })` doit retourner `false`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885461.md",
+      "id": "699d20623e57e8ffee885461",
+      "dashedName": "step-24",
+      "title": { "en": "Step 24", "fr": "Étape 24" },
+      "description": [
+        {
+          "en": "The same pattern applies to the other three fields. Add equivalent checks for `author`, `year`, and `location`.",
+          "fr": "Le même schéma s'applique aux trois autres champs. Ajoute des vérifications équivalentes pour `author`, `year` et `location`."
+        },
+        {
+          "en": "Note that `isValid` accumulates across all four checks: if any field fails, it becomes `false` and stays `false` even if the remaining checks pass. This means the function always inspects every field rather than stopping at the first problem.",
+          "fr": "Note que `isValid` s'accumule sur les quatre vérifications : si un champ échoue, il devient `false` et reste `false` même si les vérifications restantes réussissent. Cela signifie que la fonction inspecte toujours chaque champ au lieu de s'arrêter au premier problème."
+        }
+      ],
+      "hints": [
+        { "en": "`validateEntry(catalog[0])` should return `true`.", "fr": "`validateEntry(catalog[0])` doit retourner `true`." },
+        { "en": "`validateEntry(catalog[16])` should return `false`.", "fr": "`validateEntry(catalog[16])` doit retourner `false`." },
+        { "en": "`validateEntry(catalog[17])` should return `false`.", "fr": "`validateEntry(catalog[17])` doit retourner `false`." },
+        { "en": "`validateEntry(catalog[18])` should return `false` because the location is `\"Unknown\"`.", "fr": "`validateEntry(catalog[18])` doit retourner `false` car la location est `\"Unknown\"`." }
+      ]
+    },
+    {
+      "file": "699d20623e57e8ffee885462.md",
+      "id": "699d20623e57e8ffee885462",
+      "dashedName": "step-25",
+      "title": { "en": "Step 25", "fr": "Étape 25" },
+      "description": [
+        {
+          "en": "Let's see the validator catch a real problem. `catalog[0]` is \"From a Buick 8\" by Stephen King, which has all four fields populated. `catalog[16]` is \"Unknown Title\", which has a blank author field.",
+          "fr": "Voyons le validateur détecter un vrai problème. `catalog[0]` est « From a Buick 8 » de Stephen King, dont les quatre champs sont remplis. `catalog[16]` est « Unknown Title », dont le champ author est vide."
+        },
+        {
+          "en": "Log `validateEntry(catalog[0])` and `validateEntry(catalog[16])`. The first should return `true`; the second should return `false`.",
+          "fr": "Affiche `validateEntry(catalog[0])` et `validateEntry(catalog[16])`. Le premier doit retourner `true` ; le second doit retourner `false`."
+        }
+      ],
+      "hints": [
+        { "en": "You should log `validateEntry(catalog[0])` to the console.", "fr": "Tu dois afficher `validateEntry(catalog[0])` dans la console." },
+        { "en": "You should log `validateEntry(catalog[16])` to the console.", "fr": "Tu dois afficher `validateEntry(catalog[16])` dans la console." }
+      ]
+    },
+    {
+      "file": "69a65722a69bc6f8d87a9952.md",
+      "id": "69a65722a69bc6f8d87a9952",
+      "dashedName": "step-26",
+      "title": { "en": "Step 26", "fr": "Étape 26" },
+      "description": [
+        {
+          "en": "JSON (JavaScript Object Notation) is a standard format for sharing data between systems. `JSON.stringify` converts a JavaScript value into a JSON-formatted string.",
+          "fr": "JSON (JavaScript Object Notation) est un format standard pour partager des données entre des systèmes. `JSON.stringify` convertit une valeur JavaScript en une chaîne au format JSON."
+        },
+        {
+          "en": "Start by removing the two `validateEntry` console.log calls, as they were only needed for testing. Then create a function named `exportToJSON` that takes `catalog` as a parameter. Return `JSON.stringify(catalog, null, 2)`. The first argument is the data to convert. The second argument (`null`) means no custom filtering. The third (`2`) adds two-space indentation, making the output readable.",
+          "fr": "Commence par supprimer les deux appels console.log de `validateEntry`, car ils n'étaient nécessaires que pour les tests. Puis crée une fonction nommée `exportToJSON` qui prend `catalog` comme paramètre. Retourne `JSON.stringify(catalog, null, 2)`. Le premier argument est la donnée à convertir. Le deuxième argument (`null`) signifie aucun filtrage personnalisé. Le troisième (`2`) ajoute une indentation de deux espaces, ce qui rend la sortie lisible."
+        },
+        {
+          "en": "Below the function, log `exportToJSON(catalog.slice(0, 2))` to preview the JSON output for the first two entries.",
+          "fr": "En dessous de la fonction, affiche `exportToJSON(catalog.slice(0, 2))` pour prévisualiser la sortie JSON des deux premières entrées."
+        }
+      ],
+      "hints": [
+        { "en": "You should remove the `validateEntry` console.log calls.", "fr": "Tu dois supprimer les appels console.log de `validateEntry`." },
+        { "en": "`exportToJSON` should return a string.", "fr": "`exportToJSON` doit retourner une chaîne." },
+        { "en": "`JSON.parse(exportToJSON(catalog))` should produce a valid array.", "fr": "`JSON.parse(exportToJSON(catalog))` doit produire un tableau valide." },
+        { "en": "You should use `JSON.stringify` with `null` and `2` as the second and third arguments.", "fr": "Tu dois utiliser `JSON.stringify` avec `null` et `2` comme deuxième et troisième arguments." },
+        { "en": "You should log `exportToJSON(catalog.slice(0, 2))` to the console.", "fr": "Tu dois afficher `exportToJSON(catalog.slice(0, 2))` dans la console." }
+      ]
+    },
+    {
+      "file": "69a65722a69bc6f8d87a9953.md",
+      "id": "69a65722a69bc6f8d87a9953",
+      "dashedName": "step-27",
+      "title": { "en": "Step 27", "fr": "Étape 27" },
+      "description": [
+        {
+          "en": "CSV (Comma-Separated Values) is a format used for spreadsheets and data import. Each line represents one entry with fields separated by commas.",
+          "fr": "CSV (Comma-Separated Values, valeurs séparées par des virgules) est un format utilisé pour les tableurs et l'import de données. Chaque ligne représente une entrée avec des champs séparés par des virgules."
+        },
+        {
+          "en": "Start by removing the `console.log(exportToJSON(...))` call, as it was only needed for testing. Then create a function named `exportToCSV` that takes `catalog` as a parameter. Inside, declare `const header = \"Title,Author,Year,Location\"` and `const rows = []`.",
+          "fr": "Commence par supprimer l'appel `console.log(exportToJSON(...))`, car il n'était nécessaire que pour les tests. Puis crée une fonction nommée `exportToCSV` qui prend `catalog` comme paramètre. À l'intérieur, déclare `const header = \"Title,Author,Year,Location\"` et `const rows = []`."
+        }
+      ],
+      "hints": [
+        { "en": "You should remove the `exportToJSON` console.log call.", "fr": "Tu dois supprimer l'appel console.log de `exportToJSON`." },
+        { "en": "You should have a function named `exportToCSV` with a `catalog` parameter.", "fr": "Tu dois avoir une fonction nommée `exportToCSV` avec un paramètre `catalog`." },
+        { "en": "You should declare a variable named `header` with value `\"Title,Author,Year,Location\"`.", "fr": "Tu dois déclarer une variable nommée `header` avec la valeur `\"Title,Author,Year,Location\"`." },
+        { "en": "You should declare a variable named `rows` set to an empty array.", "fr": "Tu dois déclarer une variable nommée `rows` définie sur un tableau vide." }
+      ]
+    },
+    {
+      "file": "69a9de8abda299f753b1afe4.md",
+      "id": "69a9de8abda299f753b1afe4",
+      "dashedName": "step-28",
+      "title": { "en": "Step 28", "fr": "Étape 28" },
+      "description": [
+        {
+          "en": "Add a `for` loop over `catalog`. Inside the loop, declare `const entry = catalog[i]`. Build a row string with the four fields separated by commas and push it into `rows`.",
+          "fr": "Ajoute une boucle `for` sur `catalog`. À l'intérieur de la boucle, déclare `const entry = catalog[i]`. Construis une chaîne de ligne avec les quatre champs séparés par des virgules et ajoute-la dans `rows`."
+        },
+        {
+          "en": "String fields need literal double-quote characters in the output (e.g. `\"King, Stephen\"`), so that commas inside values don't break the CSV format. Since `year` is a number, it doesn't need them.",
+          "fr": "Les champs de type chaîne ont besoin de guillemets doubles littéraux dans la sortie (par exemple `\"King, Stephen\"`), pour que les virgules à l'intérieur des valeurs ne cassent pas le format CSV. Comme `year` est un nombre, il n'en a pas besoin."
+        }
+      ],
+      "hints": [
+        { "en": "You should use a `for` loop to iterate over `catalog`.", "fr": "Tu dois utiliser une boucle `for` pour itérer sur `catalog`." },
+        { "en": "Each row should have the entry's fields separated by commas.", "fr": "Chaque ligne doit avoir les champs de l'entrée séparés par des virgules." },
+        { "en": "String fields should be wrapped in double quotes.", "fr": "Les champs de type chaîne doivent être entourés de guillemets doubles." }
+      ]
+    },
+    {
+      "file": "69a9de93aa714a3b0105b051.md",
+      "id": "69a9de93aa714a3b0105b051",
+      "dashedName": "step-29",
+      "title": { "en": "Step 29", "fr": "Étape 29" },
+      "description": [
+        {
+          "en": "Now combine all rows into one CSV string you can export or share.",
+          "fr": "Maintenant, combine toutes les lignes en une seule chaîne CSV que tu peux exporter ou partager."
+        },
+        {
+          "en": "After the first loop, declare `let csv = header`. Add another `for` loop to append each row to `csv` with a newline: `csv = csv + \"\\n\" + rows[i]`. Return `csv`. Then, below the function, log `exportToCSV(catalog)` to preview the formatted output.",
+          "fr": "Après la première boucle, déclare `let csv = header`. Ajoute une autre boucle `for` pour ajouter chaque ligne à `csv` avec un saut de ligne : `csv = csv + \"\\n\" + rows[i]`. Retourne `csv`. Puis, en dessous de la fonction, affiche `exportToCSV(catalog)` pour prévisualiser la sortie formatée."
+        }
+      ],
+      "hints": [
+        { "en": "`exportToCSV` should return a string.", "fr": "`exportToCSV` doit retourner une chaîne." },
+        { "en": "The first line of the returned string should be `\"Title,Author,Year,Location\"`.", "fr": "La première ligne de la chaîne retournée doit être `\"Title,Author,Year,Location\"`." },
+        { "en": "The output should contain `\"King, Stephen\"` (quoted to handle the comma).", "fr": "La sortie doit contenir `\"King, Stephen\"` (entre guillemets pour gérer la virgule)." },
+        { "en": "You should log `exportToCSV(catalog)` to the console.", "fr": "Tu dois afficher `exportToCSV(catalog)` dans la console." }
+      ]
+    },
+    {
+      "file": "69a65722a69bc6f8d87a9954.md",
+      "id": "69a65722a69bc6f8d87a9954",
+      "dashedName": "step-30",
+      "title": { "en": "Step 30", "fr": "Étape 30" },
+      "description": [
+        {
+          "en": "Let's finish with a summary. Log `catalog.length` and `Object.keys(byDecade).length` to see total books and decade groups.",
+          "fr": "Terminons par un résumé. Affiche `catalog.length` et `Object.keys(byDecade).length` pour voir le total des livres et le nombre de groupes par décennie."
+        },
+        {
+          "en": "Declare `let oldestYear = Infinity` and `let newestYear = 0`. Use a `for` loop over `catalog`: for each entry where the year is not `\"Unknown\"`, update `oldestYear` if the year is smaller and `newestYear` if it is larger. Log both values.",
+          "fr": "Déclare `let oldestYear = Infinity` et `let newestYear = 0`. Utilise une boucle `for` sur `catalog` : pour chaque entrée dont l'année n'est pas `\"Unknown\"`, mets à jour `oldestYear` si l'année est plus petite et `newestYear` si elle est plus grande. Affiche les deux valeurs."
+        },
+        {
+          "en": "You have completed the Heritage Library Catalog workshop!",
+          "fr": "Tu as terminé le workshop Heritage Library Catalog !"
+        }
+      ],
+      "hints": [
+        { "en": "You should log `catalog.length` to the console.", "fr": "Tu dois afficher `catalog.length` dans la console." },
+        { "en": "You should log `Object.keys(byDecade).length` to the console.", "fr": "Tu dois afficher `Object.keys(byDecade).length` dans la console." },
+        { "en": "You should use a `for` loop over `catalog` to find the oldest and newest years.", "fr": "Tu dois utiliser une boucle `for` sur `catalog` pour trouver l'année la plus ancienne et la plus récente." },
+        { "en": "The oldest year in the catalog should be `850`.", "fr": "L'année la plus ancienne du catalogue doit être `850`." },
+        { "en": "The newest year in the catalog should be `2011`.", "fr": "L'année la plus récente du catalogue doit être `2011`." },
+        { "en": "You should log `oldestYear` to the console.", "fr": "Tu dois afficher `oldestYear` dans la console." },
+        { "en": "You should log `newestYear` to the console.", "fr": "Tu dois afficher `newestYear` dans la console." }
+      ]
+    }
+  ]
+}
