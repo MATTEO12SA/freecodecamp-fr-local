@@ -1,0 +1,595 @@
+{
+  "workshop": "workshop-space-mission-roster",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "694c40d86fe6a78d20b6559c.md",
+      "id": "694c40d86fe6a78d20b6559c",
+      "dashedName": "step-1",
+      "title": { "en": "Step 1", "fr": "Étape 1" },
+      "description": [
+        {
+          "en": "In this workshop, you will leverage JavaScript to build a roster of astronauts for a space mission.",
+          "fr": "Dans ce workshop, tu vas utiliser JavaScript pour construire une liste d'astronautes pour une mission spatiale."
+        },
+        {
+          "en": "To begin, create an empty array for your roster named `squad`.",
+          "fr": "Pour commencer, crée un tableau vide pour ta liste, nommé `squad`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a `squad` variable.", "fr": "Tu dois créer une variable `squad`." },
+        { "en": "Your `squad` variable should be an array.", "fr": "Ta variable `squad` doit être un tableau." },
+        { "en": "Your `squad` array should be empty.", "fr": "Ton tableau `squad` doit être vide." }
+      ]
+    },
+    {
+      "file": "694c84106e9023f289c03b84.md",
+      "id": "694c84106e9023f289c03b84",
+      "dashedName": "step-2",
+      "title": { "en": "Step 2", "fr": "Étape 2" },
+      "description": [
+        {
+          "en": "Your roster begins with a single commander astronaut. Create an object named `firstAstronaut` with the following properties:",
+          "fr": "Ta liste commence avec un seul astronaute commandant. Crée un objet nommé `firstAstronaut` avec les propriétés suivantes :"
+        },
+        {
+          "en": "| Key | Value |\n| ----------- | ------- |\n|`id`|`1`|\n|`name`|`\"Andy\"`|\n|`role`|`\"Commander\"`|\n|`isEVAEligible`|`true`|\n|`priority`|`3`|",
+          "fr": "| Clé | Valeur |\n| ----------- | ------- |\n|`id`|`1`|\n|`name`|`\"Andy\"`|\n|`role`|`\"Commander\"`|\n|`isEVAEligible`|`true`|\n|`priority`|`3`|"
+        }
+      ],
+      "hints": [
+        { "en": "You should create a `firstAstronaut` variable.", "fr": "Tu dois créer une variable `firstAstronaut`." },
+        { "en": "Your `firstAstronaut` should be an object.", "fr": "Ton `firstAstronaut` doit être un objet." },
+        { "en": "Your `firstAstronaut` object should include the correct property values.", "fr": "Ton objet `firstAstronaut` doit inclure les bonnes valeurs de propriété." }
+      ]
+    },
+    {
+      "file": "694c84330cbe604821b9deef.md",
+      "id": "694c84330cbe604821b9deef",
+      "dashedName": "step-3",
+      "title": { "en": "Step 3", "fr": "Étape 3" },
+      "description": [
+        {
+          "en": "Mission control requires a method for adding new members to the roster. Create an empty function named `addCrewMember` that accepts two parameters, `crew` and `astronaut`.",
+          "fr": "Le contrôle de mission a besoin d'une méthode pour ajouter de nouveaux membres à la liste. Crée une fonction vide nommée `addCrewMember` qui accepte deux paramètres, `crew` et `astronaut`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `addCrewMember`.", "fr": "Tu dois créer une fonction nommée `addCrewMember`." },
+        { "en": "Your `addCrewMember` function should have parameters `crew` and `astronaut`.", "fr": "Ta fonction `addCrewMember` doit avoir les paramètres `crew` et `astronaut`." }
+      ]
+    },
+    {
+      "file": "694c9c186c089f7bdff0f3c6.md",
+      "id": "694c9c186c089f7bdff0f3c6",
+      "dashedName": "step-4",
+      "title": { "en": "Step 4", "fr": "Étape 4" },
+      "description": [
+        {
+          "en": "Generally, it is good practice to validate your input(s) inside a function. Use a `for` loop to iterate through the `crew` array and check whether any member already has the same `id` as the input `astronaut`. If a duplicate is found, log the error message `console.log(\"Duplicate ID: \" + astronaut.id)` and then call `return` to exit the function early.",
+          "fr": "En général, c'est une bonne pratique de valider tes entrées à l'intérieur d'une fonction. Utilise une boucle `for` pour parcourir le tableau `crew` et vérifier si un membre a déjà le même `id` que l'`astronaut` fourni. Si un doublon est trouvé, affiche le message d'erreur `console.log(\"Duplicate ID: \" + astronaut.id)` puis appelle `return` pour sortir de la fonction de façon anticipée."
+        },
+        {
+          "en": "Here is an example of this commonly used technique:",
+          "fr": "Voici un exemple de cette technique couramment utilisée :"
+        }
+      ],
+      "hints": [
+        { "en": "Your function should use a `for` loop to scan existing `crew` members (any valid `for (...)` form is fine).", "fr": "Ta fonction doit utiliser une boucle `for` pour parcourir les membres existants de `crew` (toute forme valide de `for (...)` convient)." },
+        { "en": "Inside the `for` loop, you should check for a duplicate `id`. If one is found, log `\"Duplicate ID: \" + astronaut.id\"` to the console and then call `return` to exit the function.", "fr": "À l'intérieur de la boucle `for`, tu dois vérifier s'il y a un `id` en double. Si c'en est le cas, affiche `\"Duplicate ID: \" + astronaut.id\"` dans la console puis appelle `return` pour sortir de la fonction." },
+        { "en": "When given valid inputs, your `addCrewMember` function should not invoke a `console.log()` error message or an early `return` exit.", "fr": "Lorsqu'on lui fournit des entrées valides, ta fonction `addCrewMember` ne doit pas déclencher de message d'erreur `console.log()` ni de sortie anticipée par `return`." }
+      ]
+    },
+    {
+      "file": "694ca14c8ef00056ad146e51.md",
+      "id": "694ca14c8ef00056ad146e51",
+      "dashedName": "step-5",
+      "title": { "en": "Step 5", "fr": "Étape 5" },
+      "description": [
+        {
+          "en": "Push the `astronaut` object into the `crew` array and log `Added ${astronaut.name} as ${astronaut.role}` to the console. You can use either template literals or string concatenation for the log message.",
+          "fr": "Ajoute l'objet `astronaut` au tableau `crew` et affiche `Added ${astronaut.name} as ${astronaut.role}` dans la console. Tu peux utiliser soit des littéraux de gabarit, soit la concaténation de chaînes pour le message affiché."
+        }
+      ],
+      "hints": [
+        { "en": "You should push the `astronaut` into the `crew` array.", "fr": "Tu dois ajouter l'`astronaut` au tableau `crew`." },
+        { "en": "You should log the astronaut's `name` in the following format, `Added {astronaut.name} as {astronaut.role}`.", "fr": "Tu dois afficher le `name` de l'astronaute au format suivant, `Added {astronaut.name} as {astronaut.role}`." }
+      ]
+    },
+    {
+      "file": "694cabb9f1afa9446f36ffc0.md",
+      "id": "694cabb9f1afa9446f36ffc0",
+      "dashedName": "step-6",
+      "title": { "en": "Step 6", "fr": "Étape 6" },
+      "description": [
+        {
+          "en": "Now you can start building your roster. Use `addCrewMember()` to add the `firstAstronaut` to your `squad`.",
+          "fr": "Maintenant, tu peux commencer à construire ta liste. Utilise `addCrewMember()` pour ajouter le `firstAstronaut` à ton `squad`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `addCrewMember()` with `squad` and `firstAstronaut`.", "fr": "Tu dois appeler `addCrewMember()` avec `squad` et `firstAstronaut`." }
+      ]
+    },
+    {
+      "file": "694cada4bc0242600b5f21ea.md",
+      "id": "694cada4bc0242600b5f21ea",
+      "dashedName": "step-7",
+      "title": { "en": "Step 7", "fr": "Étape 7" },
+      "description": [
+        {
+          "en": "The rest of your crew has been created in an array named `remainingCrew` with the following data:",
+          "fr": "Le reste de ton équipage a été créé dans un tableau nommé `remainingCrew` avec les données suivantes :"
+        },
+        {
+          "en": "| id | name | role | isEVAEligible | priority |\n| -- | ---- | ---- | ------------- | -------- |\n|`2`|`\"Bart\"`|`\"Pilot\"`|`false`|`8`|\n|`3`|`\"Caroline\"`|`\"Engineer\"`|`true`|`4`|\n|`4`|`\"Diego\"`|`\"Scientist\"`|`false`|`1`|\n|`5`|`\"Elise\"`|`\"Medic\"`|`true`|`7`|\n|`6`|`\"Felix\"`|`\"Navigator\"`|`true`|`6`|\n|`7`|`\"Gertrude\"`|`\"Communications\"`|`false`|`4`|\n|`8`|`\"Hank\"`|`\"Mechanic\"`|`true`|`2`|\n|`9`|`\"Irene\"`|`\"Specialist\"`|`true`|`5`|\n|`10`|`\"Joan\"`|`\"Technician\"`|`false`|`1`|",
+          "fr": "| id | name | role | isEVAEligible | priority |\n| -- | ---- | ---- | ------------- | -------- |\n|`2`|`\"Bart\"`|`\"Pilot\"`|`false`|`8`|\n|`3`|`\"Caroline\"`|`\"Engineer\"`|`true`|`4`|\n|`4`|`\"Diego\"`|`\"Scientist\"`|`false`|`1`|\n|`5`|`\"Elise\"`|`\"Medic\"`|`true`|`7`|\n|`6`|`\"Felix\"`|`\"Navigator\"`|`true`|`6`|\n|`7`|`\"Gertrude\"`|`\"Communications\"`|`false`|`4`|\n|`8`|`\"Hank\"`|`\"Mechanic\"`|`true`|`2`|\n|`9`|`\"Irene\"`|`\"Specialist\"`|`true`|`5`|\n|`10`|`\"Joan\"`|`\"Technician\"`|`false`|`1`|"
+        },
+        {
+          "en": "Loop through the `remainingCrew` array and add each astronaut to `squad` using the `addCrewMember()` function.",
+          "fr": "Parcours le tableau `remainingCrew` et ajoute chaque astronaute à `squad` en utilisant la fonction `addCrewMember()`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use a `for` loop to call `addCrewMember()` with each astronaut in `remainingCrew`.", "fr": "Tu dois utiliser une boucle `for` pour appeler `addCrewMember()` avec chaque astronaute de `remainingCrew`." }
+      ]
+    },
+    {
+      "file": "6951cfd4955dbb84cb9b8b22.md",
+      "id": "6951cfd4955dbb84cb9b8b22",
+      "dashedName": "step-8",
+      "title": { "en": "Step 8", "fr": "Étape 8" },
+      "description": [
+        {
+          "en": "You had previously added a `console.log()` call to your `addCrewMember` function to validate its behavior, and now the call is no longer needed. To prevent the terminal from getting cluttered in future steps, go ahead and remove the current `console.log()` call.",
+          "fr": "Tu avais précédemment ajouté un appel `console.log()` à ta fonction `addCrewMember` pour valider son comportement, et maintenant cet appel n'est plus nécessaire. Pour éviter que le terminal ne s'encombre dans les prochaines étapes, supprime l'appel `console.log()` actuel."
+        }
+      ],
+      "hints": [
+        { "en": "Remove the `console.log()` call from your `addCrewMember` function. You should delete the entire line.", "fr": "Supprime l'appel `console.log()` de ta fonction `addCrewMember`. Tu dois supprimer la ligne entière." }
+      ]
+    },
+    {
+      "file": "694ce8609fb805ba21cebc02.md",
+      "id": "694ce8609fb805ba21cebc02",
+      "dashedName": "step-9",
+      "title": { "en": "Step 9", "fr": "Étape 9" },
+      "description": [
+        {
+          "en": "Mission control needs a method to swap the positions of two crew members in a roster. Create an empty function named `swapCrewMembers` with three parameters:",
+          "fr": "Le contrôle de mission a besoin d'une méthode pour échanger les positions de deux membres d'équipage dans une liste. Crée une fonction vide nommée `swapCrewMembers` avec trois paramètres :"
+        },
+        { "en": "- `crew`: an array of astronaut objects", "fr": "- `crew` : un tableau d'objets astronaute" },
+        { "en": "- `fromIndex`: the index of the first astronaut to swap", "fr": "- `fromIndex` : l'index du premier astronaute à échanger" },
+        { "en": "- `toIndex`: the index of the second astronaut to swap", "fr": "- `toIndex` : l'index du second astronaute à échanger" }
+      ],
+      "hints": [
+        { "en": "You should create a function named `swapCrewMembers`.", "fr": "Tu dois créer une fonction nommée `swapCrewMembers`." },
+        { "en": "Your `swapCrewMembers` function should have parameters `crew`, `fromIndex`, and `toIndex`.", "fr": "Ta fonction `swapCrewMembers` doit avoir les paramètres `crew`, `fromIndex` et `toIndex`." }
+      ]
+    },
+    {
+      "file": "694d8c16f3672c498d4656ac.md",
+      "id": "694d8c16f3672c498d4656ac",
+      "dashedName": "step-10",
+      "title": { "en": "Step 10", "fr": "Étape 10" },
+      "description": [
+        {
+          "en": "As before, start by validating the input inside the `swapCrewMembers` function. Specifically, you must validate the indices of the astronauts to be swapped.",
+          "fr": "Comme précédemment, commence par valider l'entrée à l'intérieur de la fonction `swapCrewMembers`. Plus précisément, tu dois valider les indices des astronautes à échanger."
+        },
+        { "en": "If any of the following are true:", "fr": "Si l'une des conditions suivantes est vraie :" },
+        { "en": "- `fromIndex` is negative", "fr": "- `fromIndex` est négatif" },
+        { "en": "- `fromIndex` is greater than or equal to `crew.length`", "fr": "- `fromIndex` est supérieur ou égal à `crew.length`" },
+        { "en": "- `toIndex` is negative", "fr": "- `toIndex` est négatif" },
+        { "en": "- `toIndex` is greater than or equal to `crew.length`", "fr": "- `toIndex` est supérieur ou égal à `crew.length`" },
+        {
+          "en": "then, you should log `\"Invalid crew indices\"` to the console and call `return` to exit the function.",
+          "fr": "alors, tu dois afficher `\"Invalid crew indices\"` dans la console et appeler `return` pour sortir de la fonction."
+        },
+        {
+          "en": "You can use the OR operator `||` to check multiple conditions at once:",
+          "fr": "Tu peux utiliser l'opérateur OU `||` pour vérifier plusieurs conditions à la fois :"
+        }
+      ],
+      "hints": [
+        { "en": "You should validate indices using an `if` statement.", "fr": "Tu dois valider les indices à l'aide d'une instruction `if`." },
+        { "en": "You should first validate indices and, if invalid, log the message `\"Invalid crew indices\"` before exiting the function using `return`.", "fr": "Tu dois d'abord valider les indices et, s'ils sont invalides, afficher le message `\"Invalid crew indices\"` avant de sortir de la fonction avec `return`." },
+        { "en": "Immediately after logging the message in the validation check, invoke `return` to exit the function early.", "fr": "Immédiatement après avoir affiché le message dans la vérification de validation, invoque `return` pour sortir de la fonction de façon anticipée." },
+        { "en": "When given valid inputs, your `swapCrewMembers` function should not log any error messages and should not exit early.", "fr": "Lorsqu'on lui fournit des entrées valides, ta fonction `swapCrewMembers` ne doit afficher aucun message d'erreur et ne doit pas sortir de façon anticipée." }
+      ]
+    },
+    {
+      "file": "694d8ddbfc4bb6940b921bbc.md",
+      "id": "694d8ddbfc4bb6940b921bbc",
+      "dashedName": "step-11",
+      "title": { "en": "Step 11", "fr": "Étape 11" },
+      "description": [
+        {
+          "en": "You should create a shallow copy of the `crew` array using the `slice()` method. Name the new array `updatedCrew`.",
+          "fr": "Tu dois créer une copie superficielle du tableau `crew` en utilisant la méthode `slice()`. Nomme le nouveau tableau `updatedCrew`."
+        },
+        {
+          "en": "Recall that calling `slice()` without arguments returns a copy of the entire array:",
+          "fr": "Rappelle-toi qu'appeler `slice()` sans arguments retourne une copie du tableau entier :"
+        }
+      ],
+      "hints": [
+        { "en": "You should use the `slice()` method to copy the input `crew` array and store the result in a new variable named `updatedCrew`.", "fr": "Tu dois utiliser la méthode `slice()` pour copier le tableau `crew` fourni et stocker le résultat dans une nouvelle variable nommée `updatedCrew`." }
+      ]
+    },
+    {
+      "file": "694d8ddd106340237efb0c80.md",
+      "id": "694d8ddd106340237efb0c80",
+      "dashedName": "step-12",
+      "title": { "en": "Step 12", "fr": "Étape 12" },
+      "description": [
+        {
+          "en": "The `splice()` method can modify arrays by adding or removing elements at any position, including the middle. Since `splice()` returns an array containing the removed elements, you can use it to swap two elements in an array without mutating the original. This can be done in one line using the following technique:",
+          "fr": "La méthode `splice()` peut modifier les tableaux en ajoutant ou en supprimant des éléments à n'importe quelle position, y compris au milieu. Comme `splice()` retourne un tableau contenant les éléments supprimés, tu peux l'utiliser pour échanger deux éléments d'un tableau sans modifier l'original. Cela peut se faire en une ligne en utilisant la technique suivante :"
+        },
+        { "en": "Here is an example:", "fr": "Voici un exemple :" },
+        { "en": "The technique, applied in the third line, works as follows:", "fr": "La technique, appliquée à la troisième ligne, fonctionne comme suit :" },
+        { "en": "- `splice(3, 1, copyArray[1])` removes the element at index `3` (`55`)", "fr": "- `splice(3, 1, copyArray[1])` supprime l'élément à l'index `3` (`55`)" },
+        { "en": "- It inserts the element from `copyArray[1]` (`97`) into index `3`", "fr": "- Elle insère l'élément de `copyArray[1]` (`97`) à l'index `3`" },
+        { "en": "- `splice()` returns `[55]`, an array containing the removed element", "fr": "- `splice()` retourne `[55]`, un tableau contenant l'élément supprimé" },
+        { "en": "- `[0]` extracts `55` from that array", "fr": "- `[0]` extrait `55` de ce tableau" },
+        { "en": "- That value (`55`) is assigned back to `copyArray[1]`, completing the swap", "fr": "- Cette valeur (`55`) est réaffectée à `copyArray[1]`, ce qui complète l'échange" },
+        { "en": "Use this technique with the `updatedCrew` array to swap the astronauts at `fromIndex` and `toIndex`.", "fr": "Utilise cette technique avec le tableau `updatedCrew` pour échanger les astronautes situés à `fromIndex` et `toIndex`." }
+      ],
+      "hints": [
+        { "en": "You should perform the swap by calling the `splice()` method.", "fr": "Tu dois effectuer l'échange en appelant la méthode `splice()`." },
+        { "en": "You should call `splice()` with the `updatedCrew` array to perform the swap. You should use the one-line technique.", "fr": "Tu dois appeler `splice()` avec le tableau `updatedCrew` pour effectuer l'échange. Tu dois utiliser la technique en une ligne." },
+        { "en": "Your `swapCrewMembers` function should not mutate the original input `crew` array.", "fr": "Ta fonction `swapCrewMembers` ne doit pas modifier le tableau `crew` fourni en entrée." }
+      ]
+    },
+    {
+      "file": "694d98a87c2a7a33ca92cfa9.md",
+      "id": "694d98a87c2a7a33ca92cfa9",
+      "dashedName": "step-13",
+      "title": { "en": "Step 13", "fr": "Étape 13" },
+      "description": [
+        {
+          "en": "Use a `for` loop to log the `name` of every astronaut in the `updatedCrew` array. After the loop, return the `updatedCrew` array to complete your `swapCrewMembers` function.",
+          "fr": "Utilise une boucle `for` pour afficher le `name` de chaque astronaute du tableau `updatedCrew`. Après la boucle, retourne le tableau `updatedCrew` pour compléter ta fonction `swapCrewMembers`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use a `for` loop to iterate through the `updatedCrew` array and log the `name` of each astronaut.", "fr": "Tu dois utiliser une boucle `for` pour parcourir le tableau `updatedCrew` et afficher le `name` de chaque astronaute." },
+        { "en": "You should return the `updatedCrew` array after logging its astronauts' names.", "fr": "Tu dois retourner le tableau `updatedCrew` après avoir affiché les noms de ses astronautes." }
+      ]
+    },
+    {
+      "file": "694dfd604c32cfe8e298784c.md",
+      "id": "694dfd604c32cfe8e298784c",
+      "dashedName": "step-14",
+      "title": { "en": "Step 14", "fr": "Étape 14" },
+      "description": [
+        {
+          "en": "Mission control has requested you to swap the positions of two astronauts in your `squad` array, specifically members at indices `2` and `5`. Use your `swapCrewMembers()` function to perform the swap and store the result in a new variable named `updatedSquad`.",
+          "fr": "Le contrôle de mission t'a demandé d'échanger les positions de deux astronautes dans ton tableau `squad`, plus précisément les membres aux indices `2` et `5`. Utilise ta fonction `swapCrewMembers()` pour effectuer l'échange et stocke le résultat dans une nouvelle variable nommée `updatedSquad`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use `swapCrewMembers()` to swap `squad` members at indices `2` and `5` and store the resulting array in a new variable named `updatedSquad`.", "fr": "Tu dois utiliser `swapCrewMembers()` pour échanger les membres de `squad` aux indices `2` et `5` et stocker le tableau résultant dans une nouvelle variable nommée `updatedSquad`." }
+      ]
+    },
+    {
+      "file": "6951d46955d890de029fdc30.md",
+      "id": "6951d46955d890de029fdc30",
+      "dashedName": "step-15",
+      "title": { "en": "Step 15", "fr": "Étape 15" },
+      "description": [
+        {
+          "en": "You had previously added a `console.log()` call to your `swapCrewMembers` function to validate its behavior, and now the call is no longer needed. To prevent the terminal from getting cluttered in future steps, go ahead and remove the current `for` loop that logs to the console.",
+          "fr": "Tu avais précédemment ajouté un appel `console.log()` à ta fonction `swapCrewMembers` pour valider son comportement, et maintenant cet appel n'est plus nécessaire. Pour éviter que le terminal ne s'encombre dans les prochaines étapes, supprime la boucle `for` actuelle qui affiche dans la console."
+        }
+      ],
+      "hints": [
+        { "en": "Remove the `for` loop from the `swapCrewMembers` function. You should delete the whole loop block.", "fr": "Supprime la boucle `for` de la fonction `swapCrewMembers`. Tu dois supprimer le bloc entier de la boucle." }
+      ]
+    },
+    {
+      "file": "694e0952a3742f2898aef517.md",
+      "id": "694e0952a3742f2898aef517",
+      "dashedName": "step-16",
+      "title": { "en": "Step 16", "fr": "Étape 16" },
+      "description": [
+        {
+          "en": "Mission control requires a method for copying EVA-eligible astronauts from a crew. Create an empty function named `getEVAReadyCrew` that accepts a `crew` parameter.",
+          "fr": "Le contrôle de mission a besoin d'une méthode pour copier les astronautes éligibles à l'EVA depuis un équipage. Crée une fonction vide nommée `getEVAReadyCrew` qui accepte un paramètre `crew`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `getEVAReadyCrew`.", "fr": "Tu dois créer une fonction nommée `getEVAReadyCrew`." },
+        { "en": "Your `getEVAReadyCrew` function should have a `crew` parameter.", "fr": "Ta fonction `getEVAReadyCrew` doit avoir un paramètre `crew`." }
+      ]
+    },
+    {
+      "file": "694e0c6e2cf8b9b45755f0f5.md",
+      "id": "694e0c6e2cf8b9b45755f0f5",
+      "dashedName": "step-17",
+      "title": { "en": "Step 17", "fr": "Étape 17" },
+      "description": [
+        {
+          "en": "First, create an empty array named `eligible`. Then loop through every astronaut in the input `crew` array and, if they are EVA-eligible (meaning their `isEVAEligible` property is `true`), push them into the `eligible` array. After the loop, return the `eligible` array.",
+          "fr": "D'abord, crée un tableau vide nommé `eligible`. Ensuite, parcours chaque astronaute du tableau `crew` fourni et, s'il est éligible à l'EVA (c'est-à-dire que sa propriété `isEVAEligible` vaut `true`), ajoute-le au tableau `eligible`. Après la boucle, retourne le tableau `eligible`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create an array named `eligible`.", "fr": "Tu dois créer un tableau nommé `eligible`." },
+        { "en": "You should use a `for` loop to iterate through the input `crew` array.", "fr": "Tu dois utiliser une boucle `for` pour parcourir le tableau `crew` fourni." },
+        { "en": "You should return the `eligible` array.", "fr": "Tu dois retourner le tableau `eligible`." },
+        { "en": "After calling `getEVAReadyCrew()`, the returned array should contain only EVA-eligible astronauts from the input array `crew`.", "fr": "Après l'appel de `getEVAReadyCrew()`, le tableau retourné ne doit contenir que les astronautes éligibles à l'EVA du tableau `crew` fourni." }
+      ]
+    },
+    {
+      "file": "694e1931f6509ae16aa1c36f.md",
+      "id": "694e1931f6509ae16aa1c36f",
+      "dashedName": "step-18",
+      "title": { "en": "Step 18", "fr": "Étape 18" },
+      "description": [
+        {
+          "en": "Mission control has alerted you that the list of EVA-eligible astronauts should also be sorted by priority descending. There are a few ways to sort an array - perhaps the most basic is `bubble sort`.",
+          "fr": "Le contrôle de mission t'a alerté que la liste des astronautes éligibles à l'EVA doit aussi être triée par priorité décroissante. Il existe plusieurs façons de trier un tableau — la plus basique est peut-être le tri à bulles (`bubble sort`)."
+        },
+        {
+          "en": "`Bubble sort` works by repeatedly stepping through a list, comparing neighboring items, and swapping them if they’re in the wrong order. After each pass, the item that should come first based on your sort criteria moves closer to (or “bubbles” toward) its correct position in the array. Here is how you can sort `crew` by priority descending using `bubble sort`:",
+          "fr": "Le tri à bulles (`bubble sort`) fonctionne en parcourant la liste de façon répétée, en comparant les éléments voisins et en les échangeant s'ils sont dans le mauvais ordre. Après chaque passage, l'élément qui devrait venir en premier selon tes critères de tri se rapproche (ou « remonte comme une bulle » vers) sa position correcte dans le tableau. Voici comment tu peux trier `crew` par priorité décroissante en utilisant le `bubble sort` :"
+        },
+        {
+          "en": "Create a new helper function named `sortByPriorityDescending` that accepts a `crew` parameter. This function should directly sort the input `crew` array by priority descending, use two nested `for` loops, and should not return anything.",
+          "fr": "Crée une nouvelle fonction utilitaire nommée `sortByPriorityDescending` qui accepte un paramètre `crew`. Cette fonction doit trier directement le tableau `crew` fourni par priorité décroissante, utiliser deux boucles `for` imbriquées, et ne rien retourner."
+        }
+      ],
+      "hints": [
+        { "en": "You should have a function named `sortByPriorityDescending` with a `crew` parameter.", "fr": "Tu dois avoir une fonction nommée `sortByPriorityDescending` avec un paramètre `crew`." },
+        { "en": "Your `sortByPriorityDescending` function should use two nested `for` loops to perform the sort.", "fr": "Ta fonction `sortByPriorityDescending` doit utiliser deux boucles `for` imbriquées pour effectuer le tri." },
+        { "en": "Your `sortByPriorityDescending` function should sort the input `crew` by `priority` in descending order.", "fr": "Ta fonction `sortByPriorityDescending` doit trier le `crew` fourni par `priority` dans l'ordre décroissant." },
+        { "en": "Your `sortByPriorityDescending` function should directly sort the input `crew` array in-place and not return a new array.", "fr": "Ta fonction `sortByPriorityDescending` doit trier directement le tableau `crew` fourni sur place et ne pas retourner un nouveau tableau." }
+      ]
+    },
+    {
+      "file": "694eeb57faae3b2331add3e7.md",
+      "id": "694eeb57faae3b2331add3e7",
+      "dashedName": "step-19",
+      "title": { "en": "Step 19", "fr": "Étape 19" },
+      "description": [
+        {
+          "en": "Back inside the `getEVAReadyCrew` function, call `sortByPriorityDescending()` with the local `eligible` array so that it is sorted before being returned.",
+          "fr": "De retour à l'intérieur de la fonction `getEVAReadyCrew`, appelle `sortByPriorityDescending()` avec le tableau local `eligible` afin qu'il soit trié avant d'être retourné."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `sortByPriorityDescending()` with the local `eligible` array.", "fr": "Tu dois appeler `sortByPriorityDescending()` avec le tableau local `eligible`." }
+      ]
+    },
+    {
+      "file": "694eef2a7aa196d5f4fa96b9.md",
+      "id": "694eef2a7aa196d5f4fa96b9",
+      "dashedName": "step-20",
+      "title": { "en": "Step 20", "fr": "Étape 20" },
+      "description": [
+        {
+          "en": "Invoke `getEVAReadyCrew()` with your `updatedSquad` roster and store the result in a new variable named `EVAReadySquad`. Then, use a `for` loop to log the `name` of every astronaut in the `EVAReadySquad` array.",
+          "fr": "Invoque `getEVAReadyCrew()` avec ta liste `updatedSquad` et stocke le résultat dans une nouvelle variable nommée `EVAReadySquad`. Ensuite, utilise une boucle `for` pour afficher le `name` de chaque astronaute du tableau `EVAReadySquad`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `getEVAReadyCrew()` with `updatedSquad` and store the result in a new variable named `EVAReadySquad`.", "fr": "Tu dois appeler `getEVAReadyCrew()` avec `updatedSquad` et stocker le résultat dans une nouvelle variable nommée `EVAReadySquad`." },
+        { "en": "You should use a `for` loop to iterate through the `EVAReadySquad` array and log the `name` of each astronaut.", "fr": "Tu dois utiliser une boucle `for` pour parcourir le tableau `EVAReadySquad` et afficher le `name` de chaque astronaute." }
+      ]
+    },
+    {
+      "file": "6951d764550f436087782b6c.md",
+      "id": "6951d764550f436087782b6c",
+      "dashedName": "step-21",
+      "title": { "en": "Step 21", "fr": "Étape 21" },
+      "description": [
+        {
+          "en": "You added a `console.log()` call to your script to validate your `EVAReadySquad` array, and now the call is no longer needed. To prevent the terminal from getting cluttered in future steps, go ahead and remove the current `for` loop that logs `EVAReadySquad` astronauts to the console.",
+          "fr": "Tu as ajouté un appel `console.log()` à ton script pour valider ton tableau `EVAReadySquad`, et maintenant cet appel n'est plus nécessaire. Pour éviter que le terminal ne s'encombre dans les prochaines étapes, supprime la boucle `for` actuelle qui affiche les astronautes de `EVAReadySquad` dans la console."
+        }
+      ],
+      "hints": [
+        { "en": "Remove the `for` loop that logs `EVAReadySquad` astronauts to the console. You should delete the whole loop block.", "fr": "Supprime la boucle `for` qui affiche les astronautes de `EVAReadySquad` dans la console. Tu dois supprimer le bloc entier de la boucle." }
+      ]
+    },
+    {
+      "file": "694f55431c34fe3ab17c482f.md",
+      "id": "694f55431c34fe3ab17c482f",
+      "dashedName": "step-22",
+      "title": { "en": "Step 22", "fr": "Étape 22" },
+      "description": [
+        {
+          "en": "Mission control has requested a new function for breaking down a crew into chunks of variable sizes. Create an empty function named `chunkCrew` that accepts two parameters, `crew` and `size`.",
+          "fr": "Le contrôle de mission a demandé une nouvelle fonction pour découper un équipage en morceaux de tailles variables. Crée une fonction vide nommée `chunkCrew` qui accepte deux paramètres, `crew` et `size`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `chunkCrew`.", "fr": "Tu dois créer une fonction nommée `chunkCrew`." },
+        { "en": "Your `chunkCrew` function should have `crew` and `size` parameters.", "fr": "Ta fonction `chunkCrew` doit avoir les paramètres `crew` et `size`." }
+      ]
+    },
+    {
+      "file": "694f7cae8b5aa1f91cb33c8b.md",
+      "id": "694f7cae8b5aa1f91cb33c8b",
+      "dashedName": "step-23",
+      "title": { "en": "Step 23", "fr": "Étape 23" },
+      "description": [
+        {
+          "en": "As before, you should validate your input. Specifically, if `size` is less than `1`, you should log `\"Chunk size must be >= 1\"` to the console and then call `return` to exit the function.",
+          "fr": "Comme précédemment, tu dois valider ton entrée. Plus précisément, si `size` est inférieur à `1`, tu dois afficher `\"Chunk size must be >= 1\"` dans la console puis appeler `return` pour sortir de la fonction."
+        }
+      ],
+      "hints": [
+        { "en": "If the input `size` is invalid, you should log the following error message to the console, `\"Chunk size must be >= 1\"`.", "fr": "Si la `size` fournie est invalide, tu dois afficher le message d'erreur suivant dans la console, `\"Chunk size must be >= 1\"`." },
+        { "en": "After logging the error message, you should immediately call `return` to exit the function early.", "fr": "Après avoir affiché le message d'erreur, tu dois immédiatement appeler `return` pour sortir de la fonction de façon anticipée." },
+        { "en": "Your `chunkCrew` function should pass validation without errors when `size` is greater than or equal to 1.", "fr": "Ta fonction `chunkCrew` doit passer la validation sans erreurs lorsque `size` est supérieur ou égal à 1." }
+      ]
+    },
+    {
+      "file": "694f8510e8a0a3d89e146a01.md",
+      "id": "694f8510e8a0a3d89e146a01",
+      "dashedName": "step-24",
+      "title": { "en": "Step 24", "fr": "Étape 24" },
+      "description": [
+        {
+          "en": "To create chunks of size `n` from an `array` without changing it, you can combine a `for` loop with the `slice()` method as such:",
+          "fr": "Pour créer des morceaux de taille `n` à partir d'un `array` sans le modifier, tu peux combiner une boucle `for` avec la méthode `slice()` comme ceci :"
+        },
+        { "en": "The example above:", "fr": "L'exemple ci-dessus :" },
+        { "en": "- creates an empty array named `result`", "fr": "- crée un tableau vide nommé `result`" },
+        { "en": "- loops through the original `array` in steps of size `n`", "fr": "- parcourt l'`array` d'origine par pas de taille `n`" },
+        { "en": "- creates chunks from `array` of size `n` and pushes them into `result` using `slice()`", "fr": "- crée des morceaux de l'`array` de taille `n` et les ajoute à `result` en utilisant `slice()`" },
+        { "en": "To complete the `chunkCrew` function, you must:", "fr": "Pour compléter la fonction `chunkCrew`, tu dois :" },
+        { "en": "- create an array named `chunks`", "fr": "- créer un tableau nommé `chunks`" },
+        { "en": "- loop through `crew` in steps of size `size`, creating and pushing chunks from `crew` into `chunks` using `slice()`", "fr": "- parcourir `crew` par pas de taille `size`, en créant et en ajoutant des morceaux de `crew` dans `chunks` en utilisant `slice()`" },
+        { "en": "- return the `chunks` array", "fr": "- retourner le tableau `chunks`" }
+      ],
+      "hints": [
+        { "en": "You should create an empty array named `chunks`.", "fr": "Tu dois créer un tableau vide nommé `chunks`." },
+        { "en": "You should use a `for` loop to build chunks.", "fr": "Tu dois utiliser une boucle `for` pour construire les morceaux." },
+        { "en": "Inside the `for` loop, you should call `push()` on the `chunks` array to insert every sliced chunk (which must be created by calling `slice()` on the `crew` array).", "fr": "À l'intérieur de la boucle `for`, tu dois appeler `push()` sur le tableau `chunks` pour insérer chaque morceau découpé (qui doit être créé en appelant `slice()` sur le tableau `crew`)." },
+        { "en": "After the loop, you should return the `chunks` array.", "fr": "Après la boucle, tu dois retourner le tableau `chunks`." },
+        { "en": "Your `chunkCrew` function should return chunks of length `size` from the input array `crew` without mutating it.", "fr": "Ta fonction `chunkCrew` doit retourner des morceaux de longueur `size` à partir du tableau `crew` fourni sans le modifier." }
+      ]
+    },
+    {
+      "file": "69504214cbcb33319a1fa506.md",
+      "id": "69504214cbcb33319a1fa506",
+      "dashedName": "step-25",
+      "title": { "en": "Step 25", "fr": "Étape 25" },
+      "description": [
+        {
+          "en": "Use your `chunkCrew()` function to create chunks of size `3` from your `EVAReadySquad` array and store them in a new variable named `EVAChunks`.",
+          "fr": "Utilise ta fonction `chunkCrew()` pour créer des morceaux de taille `3` à partir de ton tableau `EVAReadySquad` et stocke-les dans une nouvelle variable nommée `EVAChunks`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `chunkCrew()` with `EVAReadySquad` and `3` and store the result in a new variable named `EVAChunks`.", "fr": "Tu dois appeler `chunkCrew()` avec `EVAReadySquad` et `3` et stocker le résultat dans une nouvelle variable nommée `EVAChunks`." }
+      ]
+    },
+    {
+      "file": "69504c249850e861921dca82.md",
+      "id": "69504c249850e861921dca82",
+      "dashedName": "step-26",
+      "title": { "en": "Step 26", "fr": "Étape 26" },
+      "description": [
+        {
+          "en": "You may have noticed that `EVAChunks` is essentially an array with arrays inside of it, or a two-dimensional (2D) array. A nested `for` loop can be used to log data from a 2D array:",
+          "fr": "Tu as peut-être remarqué que `EVAChunks` est essentiellement un tableau contenant des tableaux, c'est-à-dire un tableau à deux dimensions (2D). Une boucle `for` imbriquée peut être utilisée pour afficher les données d'un tableau 2D :"
+        },
+        {
+          "en": "In the example above, `rootArray` is the main array, `rootArray[i]` is a sub-array inside of the main array, and `rootArray[i][j]` is one object inside of that sub-array and `.property` accesses a value in that object.",
+          "fr": "Dans l'exemple ci-dessus, `rootArray` est le tableau principal, `rootArray[i]` est un sous-tableau à l'intérieur du tableau principal, et `rootArray[i][j]` est un objet à l'intérieur de ce sous-tableau, et `.property` accède à une valeur de cet objet."
+        },
+        {
+          "en": "Use a nested `for` loop to iterate through `EVAChunks` and log the `name` of every astronaut in each chunk. Be sure to:",
+          "fr": "Utilise une boucle `for` imbriquée pour parcourir `EVAChunks` et afficher le `name` de chaque astronaute de chaque morceau. Veille à :"
+        },
+        {
+          "en": "- use `EVAChunks` as your root array\n- log `Chunk ${i+1}:` between chunks",
+          "fr": "- utiliser `EVAChunks` comme tableau racine\n- afficher `Chunk ${i+1}:` entre les morceaux"
+        }
+      ],
+      "hints": [
+        { "en": "You should use a nested `for` loop to iterate through `EVAChunks` and log the `name` of every astronaut in each chunk. Log `Chunk ${i+1}:` between chunks.", "fr": "Tu dois utiliser une boucle `for` imbriquée pour parcourir `EVAChunks` et afficher le `name` de chaque astronaute de chaque morceau. Affiche `Chunk ${i+1}:` entre les morceaux." }
+      ]
+    },
+    {
+      "file": "695a43cc94b29c92227efd46.md",
+      "id": "695a43cc94b29c92227efd46",
+      "dashedName": "step-27",
+      "title": { "en": "Step 27", "fr": "Étape 27" },
+      "description": [
+        {
+          "en": "You added a `console.log()` call to your script to validate your `EVAChunks` array, and now the call is no longer needed. To keep the terminal clean for the next steps, delete the `for loop` block that logs data from `EVAChunks`.",
+          "fr": "Tu as ajouté un appel `console.log()` à ton script pour valider ton tableau `EVAChunks`, et maintenant cet appel n'est plus nécessaire. Pour garder le terminal propre pour les prochaines étapes, supprime le bloc de boucle `for` qui affiche les données de `EVAChunks`."
+        }
+      ],
+      "hints": [
+        { "en": "You should remove the `for loop` block that logs data from `EVAChunks`. Delete the whole block containing both loops.", "fr": "Tu dois supprimer le bloc de boucle `for` qui affiche les données de `EVAChunks`. Supprime le bloc entier contenant les deux boucles." }
+      ]
+    },
+    {
+      "file": "695a4676b22517fd225b2497.md",
+      "id": "695a4676b22517fd225b2497",
+      "dashedName": "step-28",
+      "title": { "en": "Step 28", "fr": "Étape 28" },
+      "description": [
+        {
+          "en": "Mission Control requires one more function for logging a summary of your crew. Create an empty function named `printCrewSummary` that accepts a `crew` parameter.",
+          "fr": "Le contrôle de mission a besoin d'une fonction de plus pour afficher un résumé de ton équipage. Crée une fonction vide nommée `printCrewSummary` qui accepte un paramètre `crew`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `printCrewSummary`.", "fr": "Tu dois créer une fonction nommée `printCrewSummary`." },
+        { "en": "Your `printCrewSummary` function should have a `crew` parameter.", "fr": "Ta fonction `printCrewSummary` doit avoir un paramètre `crew`." }
+      ]
+    },
+    {
+      "file": "695a4886b85613bdcd8dfc3f.md",
+      "id": "695a4886b85613bdcd8dfc3f",
+      "dashedName": "step-29",
+      "title": { "en": "Step 29", "fr": "Étape 29" },
+      "description": [
+        {
+          "en": "First, create a shallow copy of the input `crew` array using `slice()` and assign it to a variable named `sorted`.",
+          "fr": "D'abord, crée une copie superficielle du tableau `crew` fourni en utilisant `slice()` et affecte-la à une variable nommée `sorted`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use the `slice()` method to copy the input `crew` array into a new variable named `sorted`.", "fr": "Tu dois utiliser la méthode `slice()` pour copier le tableau `crew` fourni dans une nouvelle variable nommée `sorted`." }
+      ]
+    },
+    {
+      "file": "695a4a70d5843b7f18c1050f.md",
+      "id": "695a4a70d5843b7f18c1050f",
+      "dashedName": "step-30",
+      "title": { "en": "Step 30", "fr": "Étape 30" },
+      "description": [
+        {
+          "en": "Directly sort the local `sorted` array by using your helper function `sortByPriorityDescending()`.",
+          "fr": "Trie directement le tableau local `sorted` en utilisant ta fonction utilitaire `sortByPriorityDescending()`."
+        }
+      ],
+      "hints": [
+        { "en": "You should invoke `sortByPriorityDescending()` with the `sorted` array.", "fr": "Tu dois invoquer `sortByPriorityDescending()` avec le tableau `sorted`." }
+      ]
+    },
+    {
+      "file": "695a4b4afad548377ea2f146.md",
+      "id": "695a4b4afad548377ea2f146",
+      "dashedName": "step-31",
+      "title": { "en": "Step 31", "fr": "Étape 31" },
+      "description": [
+        {
+          "en": "Use a `for` loop to log the `name` of every astronaut in the `sorted` array.",
+          "fr": "Utilise une boucle `for` pour afficher le `name` de chaque astronaute du tableau `sorted`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use a `for` loop to iterate through the `sorted` array and log the `name` of each astronaut.", "fr": "Tu dois utiliser une boucle `for` pour parcourir le tableau `sorted` et afficher le `name` de chaque astronaute." }
+      ]
+    },
+    {
+      "file": "695a4c4742aa88ce805940ac.md",
+      "id": "695a4c4742aa88ce805940ac",
+      "dashedName": "step-32",
+      "title": { "en": "Step 32", "fr": "Étape 32" },
+      "description": [
+        {
+          "en": "To complete preparation for your space mission, call `printCrewSummary()` with your `updatedSquad` array!",
+          "fr": "Pour finaliser la préparation de ta mission spatiale, appelle `printCrewSummary()` avec ton tableau `updatedSquad` !"
+        }
+      ],
+      "hints": [
+        { "en": "You should call your `printCrewSummary()` function with `updatedSquad`.", "fr": "Tu dois appeler ta fonction `printCrewSummary()` avec `updatedSquad`." }
+      ]
+    }
+  ]
+}
