@@ -1,0 +1,682 @@
+{
+  "workshop": "workshop-festival-crowd-flow-simulator",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69baafd6d683dd9921b75db3.md",
+      "id": "69baafd6d683dd9921b75db3",
+      "dashedName": "step-1",
+      "title": { "en": "Step 1", "fr": "Étape 1" },
+      "description": [
+        {
+          "en": "In this workshop, you will use JavaScript to simulate the flow of attendees at a music festival.",
+          "fr": "Dans ce workshop, tu vas utiliser JavaScript pour simuler le flux des participants à un festival de musique."
+        },
+        {
+          "en": "You will work with two datasets that describe the festival gates during morning and night shifts:",
+          "fr": "Tu travailleras avec deux jeux de données qui décrivent les portes du festival pendant les créneaux du matin et de la nuit :"
+        },
+        {
+          "en": "Each gate object contains the following properties:",
+          "fr": "Chaque objet porte contient les propriétés suivantes :"
+        },
+        {
+          "en": "- `id`: A string that identifies the gate.\n- `capacity`: The number of attendees the gate can process per tick.\n- `queue`: An array of numbers representing how many attendees arrive at the gate during a specific tick.",
+          "fr": "- `id` : une chaîne qui identifie la porte.\n- `capacity` : le nombre de participants que la porte peut traiter par tick.\n- `queue` : un tableau de nombres représentant combien de participants arrivent à la porte pendant un tick précis."
+        },
+        {
+          "en": "To begin, create an empty function named `initializeThroughput` that accepts a parameter named `gates`.",
+          "fr": "Pour commencer, crée une fonction vide nommée `initializeThroughput` qui accepte un paramètre nommé `gates`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `initializeThroughput`.", "fr": "Tu dois créer une fonction nommée `initializeThroughput`." },
+        { "en": "Your `initializeThroughput` function should have a `gates` parameter.", "fr": "Ta fonction `initializeThroughput` doit avoir un paramètre `gates`." }
+      ]
+    },
+    {
+      "file": "69bab8292750d84cac5b52a0.md",
+      "id": "69bab8292750d84cac5b52a0",
+      "dashedName": "step-2",
+      "title": { "en": "Step 2", "fr": "Étape 2" },
+      "description": [
+        {
+          "en": "In this workshop, throughput refers to the total number of attendees processed by a gate across all ticks in a single simulation (morning or night). Your `initializeThroughput` function will prepare an object to track how many attendees each gate processes.",
+          "fr": "Dans ce workshop, le débit (throughput) désigne le nombre total de participants traités par une porte sur l'ensemble des ticks d'une seule simulation (matin ou nuit). Ta fonction `initializeThroughput` préparera un objet pour suivre combien de participants chaque porte traite."
+        },
+        {
+          "en": "First, create an empty object named `summary`.",
+          "fr": "D'abord, crée un objet vide nommé `summary`."
+        }
+      ],
+      "hints": [
+        { "en": "Inside your `initializeThroughput` function, create an empty object and assign it to a variable named `summary`.", "fr": "À l'intérieur de ta fonction `initializeThroughput`, crée un objet vide et affecte-le à une variable nommée `summary`." }
+      ]
+    },
+    {
+      "file": "69cfdc80443b715a8aa452a7.md",
+      "id": "69cfdc80443b715a8aa452a7",
+      "dashedName": "step-3",
+      "title": { "en": "Step 3", "fr": "Étape 3" },
+      "description": [
+        {
+          "en": "To complete your `initializeThroughput` function:",
+          "fr": "Pour compléter ta fonction `initializeThroughput` :"
+        },
+        {
+          "en": "- Loop through each gate in the input `gates` array. For each gate, add a property to `summary` where:\n  - The key is the gate's `id`.\n  - The value is `0`.\n- After the loop, return the `summary` object.",
+          "fr": "- Parcours chaque porte du tableau `gates` fourni. Pour chaque porte, ajoute une propriété à `summary` où :\n  - La clé est l'`id` de la porte.\n  - La valeur est `0`.\n- Après la boucle, retourne l'objet `summary`."
+        },
+        {
+          "en": "Your `initializeThroughput` function should not mutate the source input array `gates`.",
+          "fr": "Ta fonction `initializeThroughput` ne doit pas modifier le tableau `gates` fourni en entrée."
+        }
+      ],
+      "hints": [
+        { "en": "Calling `initializeThroughput()` with `[]` should return `{}` without mutating the source input.", "fr": "Appeler `initializeThroughput()` avec `[]` doit retourner `{}` sans modifier l'entrée source." },
+        { "en": "Calling `initializeThroughput()` with `[{ id: \"North\", capacity: 5, queue: [1, 2, 3] }]` should return `{ North: 0 }` without mutating the source input.", "fr": "Appeler `initializeThroughput()` avec `[{ id: \"North\", capacity: 5, queue: [1, 2, 3] }]` doit retourner `{ North: 0 }` sans modifier l'entrée source." },
+        { "en": "Calling `initializeThroughput()` with `[{ id: \"North\", capacity: 5, queue: [] }, { id: \"East\", capacity: 3, queue: [] }, { id: \"South\", capacity: 4, queue: [] }]` should return `{ North: 0, East: 0, South: 0}` without mutating the source input.", "fr": "Appeler `initializeThroughput()` avec `[{ id: \"North\", capacity: 5, queue: [] }, { id: \"East\", capacity: 3, queue: [] }, { id: \"South\", capacity: 4, queue: [] }]` doit retourner `{ North: 0, East: 0, South: 0}` sans modifier l'entrée source." },
+        { "en": "You should use a `for` loop to iterate through each gate object inside of the input `gates` array.", "fr": "Tu dois utiliser une boucle `for` pour parcourir chaque objet porte à l'intérieur du tableau `gates` fourni." },
+        { "en": "After the loop, you should return `summary`. This should be the final line in the function.", "fr": "Après la boucle, tu dois retourner `summary`. Cela doit être la dernière ligne de la fonction." },
+        { "en": "Your `initializeThroughput` function should not mutate the source input array `gates`.", "fr": "Ta fonction `initializeThroughput` ne doit pas modifier le tableau `gates` fourni en entrée." }
+      ]
+    },
+    {
+      "file": "69babdf3f896711c11516373.md",
+      "id": "69babdf3f896711c11516373",
+      "dashedName": "step-4",
+      "title": { "en": "Step 4", "fr": "Étape 4" },
+      "description": [
+        {
+          "en": "During each simulation tick:",
+          "fr": "Pendant chaque tick de simulation :"
+        },
+        {
+          "en": "- A certain number of attendees arrive at the gate (from its `queue`).\n- The gate processes attendees based on its `capacity`.\n- If more attendees arrive than the gate can handle, some will remain (overflow).",
+          "fr": "- Un certain nombre de participants arrivent à la porte (depuis sa `queue`).\n- La porte traite les participants en fonction de sa `capacity`.\n- Si plus de participants arrivent que la porte ne peut en gérer, certains resteront (débordement, overflow)."
+        },
+        {
+          "en": "You will now build a function that handles this logic for one gate at a single tick.",
+          "fr": "Tu vas maintenant construire une fonction qui gère cette logique pour une porte à un seul tick."
+        },
+        {
+          "en": "Create an empty function named `processGateFlow` that accepts two parameters:",
+          "fr": "Crée une fonction vide nommée `processGateFlow` qui accepte deux paramètres :"
+        },
+        {
+          "en": "- `gate`: The gate object being processed.\n- `tickIndex`: The current simulation tick position in the `queue` array.",
+          "fr": "- `gate` : l'objet porte en cours de traitement.\n- `tickIndex` : la position du tick de simulation courant dans le tableau `queue`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `processGateFlow`.", "fr": "Tu dois créer une fonction nommée `processGateFlow`." },
+        { "en": "Your function `processGateFlow` should have parameters `gate` and `tickIndex`.", "fr": "Ta fonction `processGateFlow` doit avoir les paramètres `gate` et `tickIndex`." }
+      ]
+    },
+    {
+      "file": "69babea99725b43a01adb6d1.md",
+      "id": "69babea99725b43a01adb6d1",
+      "dashedName": "step-5",
+      "title": { "en": "Step 5", "fr": "Étape 5" },
+      "description": [
+        {
+          "en": "First, you need to get the number of attendees arriving during the current tick. Access the value in the input gate's `queue` array at index `tickIndex`, and assign it to a variable named `currentTickQueue`.",
+          "fr": "D'abord, tu dois obtenir le nombre de participants arrivant pendant le tick courant. Accède à la valeur du tableau `queue` de la porte fournie à l'index `tickIndex`, et affecte-la à une variable nommée `currentTickQueue`."
+        }
+      ],
+      "hints": [
+        { "en": "You should assign the element at `gate.queue[tickIndex]` to a variable named `currentTickQueue`.", "fr": "Tu dois affecter l'élément situé à `gate.queue[tickIndex]` à une variable nommée `currentTickQueue`." }
+      ]
+    },
+    {
+      "file": "69babf2bf78bade75fda0326.md",
+      "id": "69babf2bf78bade75fda0326",
+      "dashedName": "step-6",
+      "title": { "en": "Step 6", "fr": "Étape 6" },
+      "description": [
+        {
+          "en": "Next, you need a way to track how many attendees are processed by the gate during the tick. Create a variable named `processed` and initialize it to `0`.",
+          "fr": "Ensuite, tu as besoin d'un moyen de suivre combien de participants sont traités par la porte pendant le tick. Crée une variable nommée `processed` et initialise-la à `0`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a variable named `processed` and assign it a value of `0`.", "fr": "Tu dois créer une variable nommée `processed` et lui affecter la valeur `0`." }
+      ]
+    },
+    {
+      "file": "69babf3f446433af8d065bb5.md",
+      "id": "69babf3f446433af8d065bb5",
+      "dashedName": "step-7",
+      "title": { "en": "Step 7", "fr": "Étape 7" },
+      "description": [
+        {
+          "en": "Create an empty `while` loop that continues as long as there are attendees waiting (`currentTickQueue > 0`) and the gate has remaining capacity (`processed < gate.capacity`).",
+          "fr": "Crée une boucle `while` vide qui continue tant qu'il y a des participants en attente (`currentTickQueue > 0`) et que la porte a encore de la capacité (`processed < gate.capacity`)."
+        }
+      ],
+      "hints": [
+        { "en": "Your `while` loop's condition should be `currentTickQueue > 0` and `processed < gate.capacity`.", "fr": "La condition de ta boucle `while` doit être `currentTickQueue > 0` et `processed < gate.capacity`." }
+      ]
+    },
+    {
+      "file": "69d048937c7bb4b4c22ebb18.md",
+      "id": "69d048937c7bb4b4c22ebb18",
+      "dashedName": "step-8",
+      "title": { "en": "Step 8", "fr": "Étape 8" },
+      "description": [
+        {
+          "en": "Now it is time to process attendees through the gate. Inside the `while` loop:",
+          "fr": "Maintenant, il est temps de faire passer les participants par la porte. À l'intérieur de la boucle `while` :"
+        },
+        {
+          "en": "- Decrement `currentTickQueue` by 1 to show one attendee has passed. Use the decrement operator (`--`).\n- Increment `processed` by 1 to track how many attendees were processed. Use the increment operator (`++`).",
+          "fr": "- Décrémente `currentTickQueue` de 1 pour indiquer qu'un participant est passé. Utilise l'opérateur de décrémentation (`--`).\n- Incrémente `processed` de 1 pour suivre combien de participants ont été traités. Utilise l'opérateur d'incrémentation (`++`)."
+        }
+      ],
+      "hints": [
+        { "en": "Inside your `while` loop, you should decrement `currentTickQueue` using the decrement operator `--` and increment `processed` using the increment operator `++`.", "fr": "À l'intérieur de ta boucle `while`, tu dois décrémenter `currentTickQueue` en utilisant l'opérateur de décrémentation `--` et incrémenter `processed` en utilisant l'opérateur d'incrémentation `++`." }
+      ]
+    },
+    {
+      "file": "69babfc35c3c58d0993d404d.md",
+      "id": "69babfc35c3c58d0993d404d",
+      "dashedName": "step-9",
+      "title": { "en": "Step 9", "fr": "Étape 9" },
+      "description": [
+        {
+          "en": "To complete your `processGateFlow` function, return an object containing two properties:",
+          "fr": "Pour compléter ta fonction `processGateFlow`, retourne un objet contenant deux propriétés :"
+        },
+        {
+          "en": "- `processed`: The number of attendees the gate was able to process during this tick.\n- `overflow`: The number of attendees left in the queue after processing (which is `currentTickQueue` after the loop).",
+          "fr": "- `processed` : le nombre de participants que la porte a pu traiter pendant ce tick.\n- `overflow` : le nombre de participants restant dans la file après traitement (c'est-à-dire `currentTickQueue` après la boucle)."
+        },
+        {
+          "en": "You should directly return the object as such:",
+          "fr": "Tu dois retourner directement l'objet ainsi :"
+        }
+      ],
+      "hints": [
+        { "en": "You should return an object with properties `processed` and `overflow`. Directly return the object without assignment to a variable.", "fr": "Tu dois retourner un objet avec les propriétés `processed` et `overflow`. Retourne directement l'objet sans l'affecter à une variable." },
+        { "en": "Your returned object's `processed` property should have the value `processed`.", "fr": "La propriété `processed` de ton objet retourné doit avoir la valeur `processed`." },
+        { "en": "Your returned object's `overflow` property should have the value `currentTickQueue`.", "fr": "La propriété `overflow` de ton objet retourné doit avoir la valeur `currentTickQueue`." }
+      ]
+    },
+    {
+      "file": "69babfd65c4c4632a0c76f63.md",
+      "id": "69babfd65c4c4632a0c76f63",
+      "dashedName": "step-10",
+      "title": { "en": "Step 10", "fr": "Étape 10" },
+      "description": [
+        {
+          "en": "When a gate cannot process all attendees during a tick, some attendees remain in the queue. To handle this overflow, you will build a function that reroutes overflow attendees to another gate.",
+          "fr": "Lorsqu'une porte ne peut pas traiter tous les participants pendant un tick, certains participants restent dans la file. Pour gérer ce débordement, tu vas construire une fonction qui redirige les participants en débordement vers une autre porte."
+        },
+        {
+          "en": "Create an empty function named `rerouteOverflow` with the following parameters:",
+          "fr": "Crée une fonction vide nommée `rerouteOverflow` avec les paramètres suivants :"
+        },
+        {
+          "en": "- `gates`: The full array of gate objects.\n- `currentGate`: The gate where the overflow occurred.\n- `tickIndex`: The current tick position in the queue.\n- `overflowAmount`: The number of attendees that could not be processed.",
+          "fr": "- `gates` : le tableau complet des objets porte.\n- `currentGate` : la porte où le débordement s'est produit.\n- `tickIndex` : la position du tick courant dans la file.\n- `overflowAmount` : le nombre de participants qui n'ont pas pu être traités."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `rerouteOverflow`.", "fr": "Tu dois créer une fonction nommée `rerouteOverflow`." },
+        { "en": "Your `rerouteOverflow` function should have parameters `gates`, `currentGate`, `tickIndex`, and `overflowAmount`.", "fr": "Ta fonction `rerouteOverflow` doit avoir les paramètres `gates`, `currentGate`, `tickIndex` et `overflowAmount`." }
+      ]
+    },
+    {
+      "file": "69bac013466bd9bad0b809b1.md",
+      "id": "69bac013466bd9bad0b809b1",
+      "dashedName": "step-11",
+      "title": { "en": "Step 11", "fr": "Étape 11" },
+      "description": [
+        {
+          "en": "First, you will find the position of a specific gate within the `gates` array.",
+          "fr": "D'abord, tu vas trouver la position d'une porte précise au sein du tableau `gates`."
+        },
+        {
+          "en": "Use the `indexOf()` method on `gates` to locate the `currentGate` element and assign the result to a variable named `currentIndex`.",
+          "fr": "Utilise la méthode `indexOf()` sur `gates` pour localiser l'élément `currentGate` et affecte le résultat à une variable nommée `currentIndex`."
+        },
+        {
+          "en": "Here is a refresher on how this can be done:",
+          "fr": "Voici un rappel de comment cela peut se faire :"
+        }
+      ],
+      "hints": [
+        { "en": "You should use `indexOf()` on the `gates` array to access the index of `currentGate` and assign it to a variable named `currentIndex`. This should be done in one line.", "fr": "Tu dois utiliser `indexOf()` sur le tableau `gates` pour accéder à l'index de `currentGate` et l'affecter à une variable nommée `currentIndex`. Cela doit se faire en une ligne." }
+      ]
+    },
+    {
+      "file": "69bac027df64d4433c708d44.md",
+      "id": "69bac027df64d4433c708d44",
+      "dashedName": "step-12",
+      "title": { "en": "Step 12", "fr": "Étape 12" },
+      "description": [
+        {
+          "en": "When rerouting overflow, you should send attendees to the next gate in the `gates` array. To do this, you need to find the index of the next gate. Normally, you could add 1 to the current index. However, if the current gate is the last one in the array, you need to wrap back to the first gate.",
+          "fr": "Lors de la redirection du débordement, tu dois envoyer les participants vers la porte suivante du tableau `gates`. Pour ce faire, tu dois trouver l'index de la porte suivante. Normalement, tu pourrais ajouter 1 à l'index courant. Cependant, si la porte courante est la dernière du tableau, tu dois revenir à la première porte."
+        },
+        {
+          "en": "You can use the modulo operator (`%`) to handle this:",
+          "fr": "Tu peux utiliser l'opérateur modulo (`%`) pour gérer cela :"
+        },
+        {
+          "en": "This works because when `currentIndex + 1` equals the `array.length`, the result becomes 0.",
+          "fr": "Cela fonctionne parce que lorsque `currentIndex + 1` est égal à `array.length`, le résultat devient 0."
+        },
+        {
+          "en": "Using this approach, create a variable named `nextGateIndex` that stores the index of the next gate in the `gates` array.",
+          "fr": "En utilisant cette approche, crée une variable nommée `nextGateIndex` qui stocke l'index de la porte suivante dans le tableau `gates`."
+        }
+      ],
+      "hints": [
+        { "en": "You should use the modulo technique to access and assign the next index from `currentIndex` in the `gates` array to a variable named `nextGateIndex`. Follow the same one-line pattern in the example.", "fr": "Tu dois utiliser la technique du modulo pour accéder à l'index suivant à partir de `currentIndex` dans le tableau `gates` et l'affecter à une variable nommée `nextGateIndex`. Suis le même schéma en une ligne que dans l'exemple." }
+      ]
+    },
+    {
+      "file": "69bac03ae5faf2979a3339ff.md",
+      "id": "69bac03ae5faf2979a3339ff",
+      "dashedName": "step-13",
+      "title": { "en": "Step 13", "fr": "Étape 13" },
+      "description": [
+        {
+          "en": "Now that you know which gate to reroute to, you can move the overflow attendees.",
+          "fr": "Maintenant que tu sais vers quelle porte rediriger, tu peux déplacer les participants en débordement."
+        },
+        {
+          "en": "Take the `overflowAmount` and add it to the next gate’s queue at the same `tickIndex`.",
+          "fr": "Prends l'`overflowAmount` et ajoute-le à la file de la porte suivante au même `tickIndex`."
+        },
+        {
+          "en": "Specifically, you must:",
+          "fr": "Plus précisément, tu dois :"
+        },
+        {
+          "en": "- Access the next gate using `nextGateIndex`.\n- Access its `queue`.\n- Add the `overflowAmount` to the value at position `tickIndex`.",
+          "fr": "- Accéder à la porte suivante en utilisant `nextGateIndex`.\n- Accéder à sa `queue`.\n- Ajouter l'`overflowAmount` à la valeur à la position `tickIndex`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `rerouteOverflow` function should add `overflowAmount` to the value at `tickIndex` in the `queue` of the next gate.", "fr": "Ta fonction `rerouteOverflow` doit ajouter `overflowAmount` à la valeur située à `tickIndex` dans la `queue` de la porte suivante." }
+      ]
+    },
+    {
+      "file": "69bac047282614c7ef87d370.md",
+      "id": "69bac047282614c7ef87d370",
+      "dashedName": "step-14",
+      "title": { "en": "Step 14", "fr": "Étape 14" },
+      "description": [
+        {
+          "en": "To help track how attendees move through the system, log the following message to the console: `overflowAmount + \" attendees rerouted to \" + gates[nextGateIndex].id`. You can use either string concatenation or template literals.",
+          "fr": "Pour aider à suivre comment les participants se déplacent dans le système, affiche le message suivant dans la console : `overflowAmount + \" attendees rerouted to \" + gates[nextGateIndex].id`. Tu peux utiliser soit la concaténation de chaînes, soit les littéraux de gabarit."
+        }
+      ],
+      "hints": [
+        { "en": "Your `rerouteOverflow` function should log the following message to the console `overflowAmount + \" attendees rerouted to \" + gates[nextGateIndex].id`.", "fr": "Ta fonction `rerouteOverflow` doit afficher le message suivant dans la console `overflowAmount + \" attendees rerouted to \" + gates[nextGateIndex].id`." }
+      ]
+    },
+    {
+      "file": "69bac067cd15c4685d07906d.md",
+      "id": "69bac067cd15c4685d07906d",
+      "dashedName": "step-15",
+      "title": { "en": "Step 15", "fr": "Étape 15" },
+      "description": [
+        {
+          "en": "Now that you have functions to process individual ticks and handle overflow, it’s time to create a controller function for a single gate. This function will handle all the actions for one gate during a single tick of the simulation.",
+          "fr": "Maintenant que tu as des fonctions pour traiter les ticks individuels et gérer le débordement, il est temps de créer une fonction contrôleur pour une seule porte. Cette fonction gérera toutes les actions d'une porte pendant un seul tick de la simulation."
+        },
+        {
+          "en": "Create an empty function named `handleGateAtTick` with parameters:",
+          "fr": "Crée une fonction vide nommée `handleGateAtTick` avec les paramètres :"
+        },
+        {
+          "en": "- `gates`: The full array of gate objects.\n- `gate`: The current gate being processed.\n- `tickIndex`: The current tick index for the simulation.\n- `throughputSummary`: An object tracking total processed attendees per gate.",
+          "fr": "- `gates` : le tableau complet des objets porte.\n- `gate` : la porte courante en cours de traitement.\n- `tickIndex` : l'index du tick courant pour la simulation.\n- `throughputSummary` : un objet suivant le total des participants traités par porte."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `handleGateAtTick`.", "fr": "Tu dois créer une fonction nommée `handleGateAtTick`." },
+        { "en": "Your `handleGateAtTick` function should have parameters `gates`, `gate`, `tickIndex`, and `throughputSummary`.", "fr": "Ta fonction `handleGateAtTick` doit avoir les paramètres `gates`, `gate`, `tickIndex` et `throughputSummary`." }
+      ]
+    },
+    {
+      "file": "69bac073b1de8b484bbccc94.md",
+      "id": "69bac073b1de8b484bbccc94",
+      "dashedName": "step-16",
+      "title": { "en": "Step 16", "fr": "Étape 16" },
+      "description": [
+        {
+          "en": "First, log the following message to the console: `\"\\nProcessing \" + gate.id + \"...\"`.",
+          "fr": "D'abord, affiche le message suivant dans la console : `\"\\nProcessing \" + gate.id + \"...\"`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `handleGateAtTick` function should first log the following message to the console, `\"\\nProcessing \" + gate.id + \"...\"`.", "fr": "Ta fonction `handleGateAtTick` doit d'abord afficher le message suivant dans la console, `\"\\nProcessing \" + gate.id + \"...\"`." },
+        { "en": "Your `handleGateAtTick` function should log the correct gate ID in the message.", "fr": "Ta fonction `handleGateAtTick` doit afficher le bon ID de porte dans le message." }
+      ]
+    },
+    {
+      "file": "69bac08105bec16db267dcbf.md",
+      "id": "69bac08105bec16db267dcbf",
+      "dashedName": "step-17",
+      "title": { "en": "Step 17", "fr": "Étape 17" },
+      "description": [
+        {
+          "en": "Next, log the following message to the console: `gate.queue[tickIndex] + \" attendees arriving.\"`.",
+          "fr": "Ensuite, affiche le message suivant dans la console : `gate.queue[tickIndex] + \" attendees arriving.\"`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `handleGateAtTick` function should log the following message to the console: `gate.queue[tickIndex] + \" attendees arriving.\"`.", "fr": "Ta fonction `handleGateAtTick` doit afficher le message suivant dans la console : `gate.queue[tickIndex] + \" attendees arriving.\"`." },
+        { "en": "Your `handleGateAtTick` function should log the correct number of attendees based on the gate's queue at the given tickIndex.", "fr": "Ta fonction `handleGateAtTick` doit afficher le bon nombre de participants en fonction de la file de la porte au tickIndex donné." }
+      ]
+    },
+    {
+      "file": "69bac0a011a9c1f735d306c2.md",
+      "id": "69bac0a011a9c1f735d306c2",
+      "dashedName": "step-18",
+      "title": { "en": "Step 18", "fr": "Étape 18" },
+      "description": [
+        {
+          "en": "Process the input gate for the current tick by calling `processGateFlow()` with `gate` and `tickIndex` and assigning the result to a variable named `result`.",
+          "fr": "Traite la porte fournie pour le tick courant en appelant `processGateFlow()` avec `gate` et `tickIndex` et en affectant le résultat à une variable nommée `result`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `handleGateAtTick` function should call the `processGateFlow()` method.", "fr": "Ta fonction `handleGateAtTick` doit appeler la méthode `processGateFlow()`." },
+        { "en": "You should call `processGateFlow()` with `gate` and `tickIndex` and assign the result to a variable named `result`.", "fr": "Tu dois appeler `processGateFlow()` avec `gate` et `tickIndex` et affecter le résultat à une variable nommée `result`." }
+      ]
+    },
+    {
+      "file": "69bac0d5a0b16122a2a938a4.md",
+      "id": "69bac0d5a0b16122a2a938a4",
+      "dashedName": "step-19",
+      "title": { "en": "Step 19", "fr": "Étape 19" },
+      "description": [
+        {
+          "en": "Next, update the input `throughputSummary` object to reflect how many attendees were successfully processed by this gate at the current tick. Specifically, take the value of `processed` in `result` and add it to the element in `throughputSummary` at index `gate.id`.",
+          "fr": "Ensuite, mets à jour l'objet `throughputSummary` fourni pour refléter combien de participants ont été traités avec succès par cette porte au tick courant. Plus précisément, prends la valeur de `processed` dans `result` et ajoute-la à l'élément de `throughputSummary` à l'index `gate.id`."
+        },
+        {
+          "en": "This step ensures that the throughput summary accumulates attendees over multiple ticks.",
+          "fr": "Cette étape garantit que le résumé de débit accumule les participants sur plusieurs ticks."
+        }
+      ],
+      "hints": [
+        { "en": "You should add `result.processed` to `throughputSummary[gate.id]`.", "fr": "Tu dois ajouter `result.processed` à `throughputSummary[gate.id]`." },
+        { "en": "Your `handleGateAtTick` function should accumulate processed attendees over multiple ticks.", "fr": "Ta fonction `handleGateAtTick` doit accumuler les participants traités sur plusieurs ticks." },
+        { "en": "Your `handleGateAtTick` function should only update the throughput for the specific gate being processed.", "fr": "Ta fonction `handleGateAtTick` ne doit mettre à jour le débit que pour la porte précise en cours de traitement." }
+      ]
+    },
+    {
+      "file": "69bac0e7112d02531998dbf0.md",
+      "id": "69bac0e7112d02531998dbf0",
+      "dashedName": "step-20",
+      "title": { "en": "Step 20", "fr": "Étape 20" },
+      "description": [
+        {
+          "en": "The final task in your `handleGateAtTick` function is to handle any overflow for the current tick.",
+          "fr": "La dernière tâche de ta fonction `handleGateAtTick` est de gérer tout débordement pour le tick courant."
+        },
+        {
+          "en": "If any overflow exists (`result.overflow > 0`), you should:",
+          "fr": "S'il existe un débordement (`result.overflow > 0`), tu dois :"
+        },
+        {
+          "en": "- Log the following message `\"Overflow of \" + result.overflow + \" attendees. Rerouting...\"`.\n- Reroute the overflow by calling your `rerouteOverflow()` function with `gates`, `gate`, `tickIndex`, and `result.overflow`.",
+          "fr": "- Afficher le message suivant `\"Overflow of \" + result.overflow + \" attendees. Rerouting...\"`.\n- Rediriger le débordement en appelant ta fonction `rerouteOverflow()` avec `gates`, `gate`, `tickIndex` et `result.overflow`."
+        }
+      ],
+      "hints": [
+        { "en": "If any overflow exists (`result.overflow > 0`), you should first log the message `\"Overflow of \" + result.overflow + \" attendees. Rerouting...\"`.", "fr": "S'il existe un débordement (`result.overflow > 0`), tu dois d'abord afficher le message `\"Overflow of \" + result.overflow + \" attendees. Rerouting...\"`." },
+        { "en": "If any overflow exists (`result.overflow > 0`), you should reroute the overflow by calling `rerouteOverflow()` with `gates`, `gate`, `tickIndex`, and `result.overflow`.", "fr": "S'il existe un débordement (`result.overflow > 0`), tu dois rediriger le débordement en appelant `rerouteOverflow()` avec `gates`, `gate`, `tickIndex` et `result.overflow`." }
+      ]
+    },
+    {
+      "file": "69bac0f9659af01091c5967d.md",
+      "id": "69bac0f9659af01091c5967d",
+      "dashedName": "step-21",
+      "title": { "en": "Step 21", "fr": "Étape 21" },
+      "description": [
+        {
+          "en": "It will be helpful to have a function for displaying a summary of throughput during a simulation. Create an empty function named `printSummary` with a parameter `summary`.",
+          "fr": "Il sera utile d'avoir une fonction pour afficher un résumé du débit pendant une simulation. Crée une fonction vide nommée `printSummary` avec un paramètre `summary`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `printSummary`.", "fr": "Tu dois créer une fonction nommée `printSummary`." },
+        { "en": "Your `printSummary` function should have a parameter `summary`.", "fr": "Ta fonction `printSummary` doit avoir un paramètre `summary`." }
+      ]
+    },
+    {
+      "file": "69bac11611f4c349e8e666ec.md",
+      "id": "69bac11611f4c349e8e666ec",
+      "dashedName": "step-22",
+      "title": { "en": "Step 22", "fr": "Étape 22" },
+      "description": [
+        {
+          "en": "First, log the following message to the console `\"\\nThroughput Summary\"`.",
+          "fr": "D'abord, affiche le message suivant dans la console `\"\\nThroughput Summary\"`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `printSummary` function should first log the following message to the console, `\"\\nThroughput Summary\"`.", "fr": "Ta fonction `printSummary` doit d'abord afficher le message suivant dans la console, `\"\\nThroughput Summary\"`." }
+      ]
+    },
+    {
+      "file": "69bac12483f656898154f969.md",
+      "id": "69bac12483f656898154f969",
+      "dashedName": "step-23",
+      "title": { "en": "Step 23", "fr": "Étape 23" },
+      "description": [
+        {
+          "en": "Use a `for...in` loop to iterate through every gate in the input `summary` object and log the total attendees processed.",
+          "fr": "Utilise une boucle `for...in` pour parcourir chaque porte de l'objet `summary` fourni et afficher le total des participants traités."
+        },
+        {
+          "en": "For each gate, log a message in this format: `gate + \": \" + summary[gate] + \" attendees processed\"`.",
+          "fr": "Pour chaque porte, affiche un message à ce format : `gate + \": \" + summary[gate] + \" attendees processed\"`."
+        },
+        {
+          "en": "As an example, for an input `summary` object defined as `{ North: 5, East: 3, South: 4, West: 2 }`, you should log:",
+          "fr": "À titre d'exemple, pour un objet `summary` fourni défini comme `{ North: 5, East: 3, South: 4, West: 2 }`, tu dois afficher :"
+        }
+      ],
+      "hints": [
+        { "en": "You should loop through every element in the `summary` object and log the following message once per element: `element + \": \" + summary[element] + \" attendees processed`.", "fr": "Tu dois parcourir chaque élément de l'objet `summary` et afficher le message suivant une fois par élément : `element + \": \" + summary[element] + \" attendees processed`." }
+      ]
+    },
+    {
+      "file": "69bac146b5f30209b4179af1.md",
+      "id": "69bac146b5f30209b4179af1",
+      "dashedName": "step-24",
+      "title": { "en": "Step 24", "fr": "Étape 24" },
+      "description": [
+        {
+          "en": "Now you can build a function for simulating the festival. Create an empty function named `simulateFestival` with parameters `gates` and `timeBlock`.",
+          "fr": "Maintenant, tu peux construire une fonction pour simuler le festival. Crée une fonction vide nommée `simulateFestival` avec les paramètres `gates` et `timeBlock`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a function named `simulateFestival`.", "fr": "Tu dois créer une fonction nommée `simulateFestival`." },
+        { "en": "Your `simulateFestival` function should have parameters `gates` and `timeBlock`.", "fr": "Ta fonction `simulateFestival` doit avoir les paramètres `gates` et `timeBlock`." }
+      ]
+    },
+    {
+      "file": "69bac15062ac8a348b84fe46.md",
+      "id": "69bac15062ac8a348b84fe46",
+      "dashedName": "step-25",
+      "title": { "en": "Step 25", "fr": "Étape 25" },
+      "description": [
+        {
+          "en": "First, log the following message to the console: `\"\\n\" + timeBlock + \" Simulation\"`.",
+          "fr": "D'abord, affiche le message suivant dans la console : `\"\\n\" + timeBlock + \" Simulation\"`."
+        }
+      ],
+      "hints": [
+        { "en": "Your `simulateFestival` function should first log the message `\"\\n\" + timeBlock + \" Simulation\"`.", "fr": "Ta fonction `simulateFestival` doit d'abord afficher le message `\"\\n\" + timeBlock + \" Simulation\"`." },
+        { "en": "Your `simulateFestival` function should log the correct time block in the message.", "fr": "Ta fonction `simulateFestival` doit afficher le bon créneau horaire dans le message." }
+      ]
+    },
+    {
+      "file": "69bac17a4c53a3812b595eb9.md",
+      "id": "69bac17a4c53a3812b595eb9",
+      "dashedName": "step-26",
+      "title": { "en": "Step 26", "fr": "Étape 26" },
+      "description": [
+        {
+          "en": "Before starting the simulation, you need an object to track how many attendees each gate processes over all ticks. Call `initializeThroughput()` with `gates` and assign the result to a variable named `throughputSummary`.",
+          "fr": "Avant de démarrer la simulation, tu as besoin d'un objet pour suivre combien de participants chaque porte traite sur l'ensemble des ticks. Appelle `initializeThroughput()` avec `gates` et affecte le résultat à une variable nommée `throughputSummary`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `initializeThroughput()` with `gates` and assign the result to a variable named `throughputSummary`.", "fr": "Tu dois appeler `initializeThroughput()` avec `gates` et affecter le résultat à une variable nommée `throughputSummary`." },
+        { "en": "Your `simulateFestival` function should call the `initializeThroughput()` function with `gates`.", "fr": "Ta fonction `simulateFestival` doit appeler la fonction `initializeThroughput()` avec `gates`." }
+      ]
+    },
+    {
+      "file": "69bac18fe3729f6761344365.md",
+      "id": "69bac18fe3729f6761344365",
+      "dashedName": "step-27",
+      "title": { "en": "Step 27", "fr": "Étape 27" },
+      "description": [
+        {
+          "en": "You need to know how many ticks the simulation should run. Recall that:",
+          "fr": "Tu dois savoir combien de ticks la simulation doit exécuter. Rappelle-toi que :"
+        },
+        {
+          "en": "- Each gate has a `queue` array that shows how many attendees arrive at each tick.  \n- Since all gates have the same number of ticks, you can simply use the length of the first gate’s queue.",
+          "fr": "- Chaque porte a un tableau `queue` qui montre combien de participants arrivent à chaque tick.  \n- Comme toutes les portes ont le même nombre de ticks, tu peux simplement utiliser la longueur de la file de la première porte."
+        },
+        {
+          "en": "Create a variable named `maxTicks` and assign it the value of `gates[0].queue.length`.",
+          "fr": "Crée une variable nommée `maxTicks` et affecte-lui la valeur de `gates[0].queue.length`."
+        },
+        {
+          "en": "This value will be used to control your simulation loop, ensuring each tick is processed for all gates.",
+          "fr": "Cette valeur sera utilisée pour contrôler ta boucle de simulation, en garantissant que chaque tick est traité pour toutes les portes."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a variable named `maxTicks` and assign it the value of `gates[0].queue.length`.", "fr": "Tu dois créer une variable nommée `maxTicks` et lui affecter la valeur de `gates[0].queue.length`." }
+      ]
+    },
+    {
+      "file": "69bac1a094d01d84ae4c9e75.md",
+      "id": "69bac1a094d01d84ae4c9e75",
+      "dashedName": "step-28",
+      "title": { "en": "Step 28", "fr": "Étape 28" },
+      "description": [
+        {
+          "en": "To keep track of which tick is currently being processed during the simulation, create a variable named `tickIndex` and assign it an initial value of `0`.",
+          "fr": "Pour garder la trace du tick en cours de traitement pendant la simulation, crée une variable nommée `tickIndex` et affecte-lui une valeur initiale de `0`."
+        },
+        {
+          "en": "This variable will be used to loop through all ticks in your simulation and ensure each gate is processed in the correct order.",
+          "fr": "Cette variable sera utilisée pour parcourir tous les ticks de ta simulation et garantir que chaque porte est traitée dans le bon ordre."
+        }
+      ],
+      "hints": [
+        { "en": "You should create a variable named `tickIndex` and assign it a value of `0`.", "fr": "Tu dois créer une variable nommée `tickIndex` et lui affecter la valeur `0`." }
+      ]
+    },
+    {
+      "file": "69bac1c29c13f446b39f524f.md",
+      "id": "69bac1c29c13f446b39f524f",
+      "dashedName": "step-29",
+      "title": { "en": "Step 29", "fr": "Étape 29" },
+      "description": [
+        {
+          "en": "You should now implement the main simulation loop. This loop will ensure that every gate is processed for each tick in the simulation until all ticks have been completed.",
+          "fr": "Tu dois maintenant implémenter la boucle principale de simulation. Cette boucle garantira que chaque porte est traitée à chaque tick de la simulation jusqu'à ce que tous les ticks soient terminés."
+        },
+        {
+          "en": "Create an empty `while` loop that continues as long as `tickIndex` is less than `maxTicks`.",
+          "fr": "Crée une boucle `while` vide qui continue tant que `tickIndex` est inférieur à `maxTicks`."
+        }
+      ],
+      "hints": [
+        { "en": "You should create an empty `while` loop with the condition `(tickIndex < maxTicks)`.", "fr": "Tu dois créer une boucle `while` vide avec la condition `(tickIndex < maxTicks)`." }
+      ]
+    },
+    {
+      "file": "69d08c139139f65a17cc615c.md",
+      "id": "69d08c139139f65a17cc615c",
+      "dashedName": "step-30",
+      "title": { "en": "Step 30", "fr": "Étape 30" },
+      "description": [
+        {
+          "en": "Inside your `while` loop:",
+          "fr": "À l'intérieur de ta boucle `while` :"
+        },
+        {
+          "en": "- Log the message, `\"\\nTick \" + (tickIndex + 1)`.\n- Loop through each gate in the `gates` array and call `handleGateAtTick()` with these arguments:\n  - `gates`: the full gates input array.\n  - `gate`: the current gate object.\n  - `tickIndex`: the current tick.\n  - `throughputSummary`: the local object tracking total attendees processed per gate. \n- Increment `tickIndex` by 1 to move to the next tick.",
+          "fr": "- Affiche le message, `\"\\nTick \" + (tickIndex + 1)`.\n- Parcours chaque porte du tableau `gates` et appelle `handleGateAtTick()` avec ces arguments :\n  - `gates` : le tableau d'entrée complet des portes.\n  - `gate` : l'objet porte courant.\n  - `tickIndex` : le tick courant.\n  - `throughputSummary` : l'objet local suivant le total des participants traités par porte. \n- Incrémente `tickIndex` de 1 pour passer au tick suivant."
+        }
+      ],
+      "hints": [
+        { "en": "You should log the following message to the console, `\"\\nTick \" + (tickIndex + 1)`.", "fr": "Tu dois afficher le message suivant dans la console, `\"\\nTick \" + (tickIndex + 1)`." },
+        { "en": "After logging to the console, you should loop through each gate in the `gates` array and call `handleGateAtTick()` with `gates`, `gate`, `tickIndex`, and `throughputSummary`.", "fr": "Après avoir affiché dans la console, tu dois parcourir chaque porte du tableau `gates` et appeler `handleGateAtTick()` avec `gates`, `gate`, `tickIndex` et `throughputSummary`." },
+        { "en": "After your loop through the `gates` array, you should increment `tickIndex` by 1.", "fr": "Après ta boucle sur le tableau `gates`, tu dois incrémenter `tickIndex` de 1." }
+      ]
+    },
+    {
+      "file": "69bac1d7a104cfeccc356118.md",
+      "id": "69bac1d7a104cfeccc356118",
+      "dashedName": "step-31",
+      "title": { "en": "Step 31", "fr": "Étape 31" },
+      "description": [
+        {
+          "en": "To complete your `simulateFestival` function, display a summary of the simulation results. Call `printSummary()` with your local `throughputSummary` object.",
+          "fr": "Pour compléter ta fonction `simulateFestival`, affiche un résumé des résultats de la simulation. Appelle `printSummary()` avec ton objet local `throughputSummary`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `printSummary()` with `throughputSummary`.", "fr": "Tu dois appeler `printSummary()` avec `throughputSummary`." }
+      ]
+    },
+    {
+      "file": "69bac1e1ae414b16a12e4041.md",
+      "id": "69bac1e1ae414b16a12e4041",
+      "dashedName": "step-32",
+      "title": { "en": "Step 32", "fr": "Étape 32" },
+      "description": [
+        {
+          "en": "Finally, you can run your simulations.",
+          "fr": "Enfin, tu peux exécuter tes simulations."
+        },
+        {
+          "en": "Begin with the morning shift. Call `simulateFestival()` with `morningGates` and `\"Morning\"`.",
+          "fr": "Commence par le créneau du matin. Appelle `simulateFestival()` avec `morningGates` et `\"Morning\"`."
+        }
+      ],
+      "hints": [
+        { "en": "You should call `simulateFestival()` with `morningGates` and `\"Morning\"`.", "fr": "Tu dois appeler `simulateFestival()` avec `morningGates` et `\"Morning\"`." }
+      ]
+    },
+    {
+      "file": "69d1b6d762a5a7edeb997258.md",
+      "id": "69d1b6d762a5a7edeb997258",
+      "dashedName": "step-33",
+      "title": { "en": "Step 33", "fr": "Étape 33" },
+      "description": [
+        {
+          "en": "Simulate the night shift by calling `simulateFestival()` with `nightGates` and `\"Night\"`.",
+          "fr": "Simule le créneau de la nuit en appelant `simulateFestival()` avec `nightGates` et `\"Night\"`."
+        },
+        {
+          "en": "With that, your simulations are complete!",
+          "fr": "Avec ça, tes simulations sont terminées !"
+        }
+      ],
+      "hints": [
+        { "en": "You should call `simulateFestival()` with `nightGates` and `\"Night\"`.", "fr": "Tu dois appeler `simulateFestival()` avec `nightGates` et `\"Night\"`." }
+      ]
+    }
+  ]
+}
