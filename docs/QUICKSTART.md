@@ -119,7 +119,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Il reste 0 workshop RWD. JavaScript v9 : 36 blocs FR sur 230 — modules `javascript-variables-and-strings` et `javascript-booleans-and-numbers` **100 % complets**. Prochaine cible : module 3 `javascript-functions`.
+Etat actuel : JavaScript v9 : 80 blocs FR sur 230 — modules 1-6 **100 % complets**. Prochaine cible : module 7 `review-javascript-fundamentals`. (RWD v9 : 158/158, cert terminé.)
 
 Workflow rapide mais relu manuellement :
 
@@ -132,7 +132,7 @@ Traduis et relis `tools/translations/<workshop>.json`, puis applique :
 ```powershell
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
-pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+pnpm -C curriculum lint-challenges --superblock javascript-v9
 ```
 
 Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`. Pour les lectures JS, le JSON sort en `kind: "lecture"` et extrait aussi `description/interactive/questions/answers/feedback`.

@@ -1,5 +1,7 @@
 # Plan d'Optimisation — Traductions Workshops RWD
 
+> **Doc historique (RWD v9).** Tous les workshops RWD sont terminés (158/158). Le travail actif est JavaScript v9 — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les workflows ci-dessous restent valables pour les workshops JS.
+
 Ce document définit la méthode pour finir les workshops Responsive Web Design v9 plus vite **sans baisser la qualité**.
 
 Principe non négociable : les traductions finales sont rédigées et relues par Claude. Les scripts servent seulement à éviter de recopier le code et à vérifier que les parties techniques restent intactes.
@@ -253,14 +255,14 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD est terminé : 158 blocs FR sur 158, 0 workshop restant. JavaScript v9 est en cours : 36 blocs FR sur 230 — modules 1-2 (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`) **100 % complets**. Prochaine cible : module 3 `javascript-functions`.
+RWD est terminé (158/158). JavaScript v9 est en cours : 80 blocs FR sur 230 — modules 1-6 **100 % complets**. Prochaine cible : module 7 `review-javascript-fundamentals`.
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>
 # traduire et relire tools/translations/<workshop>.json
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
-pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+pnpm -C curriculum lint-challenges --superblock javascript-v9
 git diff --check
 git commit -m "translate <workshop-name> workshop"
 git push standalone main
@@ -272,7 +274,7 @@ Après chaque workshop :
 
 ```powershell
 pnpm exec prettier --check tools/translate-workshop.js tools/translations/phrasebook.json
-pnpm -C curriculum lint-challenges --superblock responsive-web-design-v9
+pnpm -C curriculum lint-challenges --superblock javascript-v9
 node tools/translate-workshop.js verify <workshop>
 pnpm -C client test catalog
 pnpm lint-root

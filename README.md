@@ -100,11 +100,9 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est la priorite et il est maintenant entierement traduit : chapitre HTML complet, `computer-basics`, modules CSS pedagogiques, labs autonomes, revisions, quiz, examen RWD et tous les workshops du superblock.
+Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-Etat actuel RWD v9 : 158 blocs FR sur 158 (100%). Les workshops `workshop-game-settings-panel`, `workshop-flexbox-photo-gallery`, `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` sont traduits. Il reste 0 workshop RWD.
-
-JavaScript v9 est en cours : 36 blocs FR sur 230 — modules `javascript-variables-and-strings` et `javascript-booleans-and-numbers` **100 % complets**. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS (`kind: "lecture"`), les workshops/labs step-by-step (`kind: "workshop"`), les reviews (kind lecture + `# --assignment--`) et les quizzes (`kind: "quiz"`).
+JavaScript v9 est en cours : 80 blocs FR sur 230 — modules 1-6 **100 % complets**. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS (`kind: "lecture"`), les workshops/labs step-by-step (`kind: "workshop"`), les reviews (kind lecture + `# --assignment--`) et les quizzes (`kind: "quiz"`). Prochaine cible : module 7 `review-javascript-fundamentals`.
 
 Pour continuer les workshops sans toucher au code technique :
 
