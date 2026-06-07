@@ -1,0 +1,689 @@
+{
+  "workshop": "lecture-working-with-types-and-objects",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329f9e9eb84e5c6a5e4366.md",
+      "id": "67329f9e9eb84e5c6a5e4366",
+      "dashedName": "what-is-a-string-object-and-how-does-it-differ-from-string-primitive",
+      "title": {
+        "en": "What Is a String Object, and How Does It Differ from String Primitive?",
+        "fr": "Qu'est-ce qu'un objet `String`, et en quoi diffère-t-il de la primitive `string` ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In previous modules you have been used to working with strings literals like this:",
+              "fr": "Dans les modules précédents, tu as l'habitude de travailler avec des littéraux de chaîne comme ceci :"
+            },
+            {
+              "en": "But JavaScript also has string objects. Both string objects and string primitives are used to handle text but they function differently under the hood. A string object is created using the string constructor function, which wraps the primitive value in an object. Here is how you would create a string object:",
+              "fr": "Mais JavaScript possède aussi des objets `String`. Les objets `String` et les primitives `string` servent tous deux à manipuler du texte, mais ils fonctionnent différemment en interne. Un objet `String` est créé à l'aide de la fonction constructeur `String`, qui enveloppe la valeur primitive dans un objet. Voici comment tu peux créer un objet `String` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When we use the `typeof` operator we can see that the result is of type object instead of type string. One of the things that you might have been wondering about is how you can use properties like the `.length` property on string primitives.",
+              "fr": "Lorsque nous utilisons l'opérateur `typeof`, nous pouvons voir que le résultat est de type `object` au lieu de type `string`. Tu te demandes peut-être comment tu peux utiliser des propriétés comme la propriété `.length` sur des primitives `string`."
+            },
+            {
+              "en": "When you use the `length` property on a string primitive, JavaScript temporarily wraps the string primitive in a string object, to perform the operation. This is why you can use the `length` property and the different methods like `repeat()`, `concat()`, and `slice()`. These types of methods and properties are referred to as instance methods, instance properties, and static methods. You will learn about how that works in detail in future modules.",
+              "fr": "Lorsque tu utilises la propriété `length` sur une primitive `string`, JavaScript enveloppe temporairement la primitive `string` dans un objet `String` pour effectuer l'opération. C'est pourquoi tu peux utiliser la propriété `length` et les différentes méthodes comme `repeat()`, `concat()` et `slice()`. Ces types de méthodes et propriétés sont appelés méthodes d'instance, propriétés d'instance et méthodes statiques. Tu apprendras en détail comment cela fonctionne dans les modules suivants."
+            },
+            {
+              "en": "One key difference between a string object and a string primitive is how it relates to memory and performance. String primitives are usually more memory efficient and faster compared to string objects. Although you will primarily work with string primitives in your code, it's still useful to understand how string objects work.",
+              "fr": "Une différence clé entre un objet `String` et une primitive `string` concerne la mémoire et les performances. Les primitives `string` sont généralement plus efficaces en mémoire et plus rapides que les objets `String`. Bien que tu travailles principalement avec des primitives `string` dans ton code, il reste utile de comprendre comment fonctionnent les objets `String`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference between a string primitive and a string object in JavaScript?",
+              "fr": "Quelle est la principale différence entre une primitive `string` et un objet `String` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "String primitives are objects, while string objects are not.",
+              "fr": "Les primitives `string` sont des objets, tandis que les objets `String` ne le sont pas."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how each type is represented and what they offer in terms of functionality.",
+              "fr": "Réfléchis à la façon dont chaque type est représenté et à ce qu'il offre en termes de fonctionnalités."
+            },
+            {
+              "en": "String primitives are lighter and more efficient, while string objects provide additional properties and methods.",
+              "fr": "Les primitives `string` sont plus légères et plus efficaces, tandis que les objets `String` offrent des propriétés et des méthodes supplémentaires."
+            },
+            {
+              "en": "String objects cannot access methods like `.toUpperCase()`.",
+              "fr": "Les objets `String` ne peuvent pas accéder à des méthodes comme `.toUpperCase()`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how each type is represented and what they offer in terms of functionality.",
+              "fr": "Réfléchis à la façon dont chaque type est représenté et à ce qu'il offre en termes de fonctionnalités."
+            },
+            {
+              "en": "String primitives can change their value after they are created.",
+              "fr": "Les primitives `string` peuvent changer leur valeur après leur création."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how each type is represented and what they offer in terms of functionality.",
+              "fr": "Réfléchis à la façon dont chaque type est représenté et à ce qu'il offre en termes de fonctionnalités."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following correctly describes the `.length` property of a string?",
+              "fr": "Laquelle des affirmations suivantes décrit correctement la propriété `.length` d'une chaîne ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It changes the value of a string.",
+              "fr": "Elle change la valeur d'une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what the `.length` property provides when used on a string.",
+              "fr": "Concentre-toi sur ce que la propriété `.length` fournit lorsqu'elle est utilisée sur une chaîne."
+            },
+            {
+              "en": "It returns the number of characters in a string.",
+              "fr": "Elle renvoie le nombre de caractères dans une chaîne."
+            },
+            {
+              "en": "It works only on string objects.",
+              "fr": "Elle ne fonctionne que sur les objets `String`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what the `.length` property provides when used on a string.",
+              "fr": "Concentre-toi sur ce que la propriété `.length` fournit lorsqu'elle est utilisée sur une chaîne."
+            },
+            {
+              "en": "It adds new characters to the string.",
+              "fr": "Elle ajoute de nouveaux caractères à la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what the `.length` property provides when used on a string.",
+              "fr": "Concentre-toi sur ce que la propriété `.length` fournit lorsqu'elle est utilisée sur une chaîne."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Que va afficher le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that both string primitives and string objects have access to the `.length` property.",
+              "fr": "Souviens-toi que les primitives `string` et les objets `String` ont tous deux accès à la propriété `.length`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that both string primitives and string objects have access to the `.length` property.",
+              "fr": "Souviens-toi que les primitives `string` et les objets `String` ont tous deux accès à la propriété `.length`."
+            },
+            {
+              "en": "It throws an error.",
+              "fr": "Il lève une erreur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that both string primitives and string objects have access to the `.length` property.",
+              "fr": "Souviens-toi que les primitives `string` et les objets `String` ont tous deux accès à la propriété `.length`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c68f4520d160584a6fd2.md",
+      "id": "6732c68f4520d160584a6fd2",
+      "dashedName": "what-is-the-tostring-method-and-how-does-it-work",
+      "title": {
+        "en": "What Is the toString() Method, and How Does It Work?",
+        "fr": "Qu'est-ce que la méthode `toString()`, et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `toString()` method is a fundamental feature in JavaScript that converts a value to its string representation. It's a method you can use for numbers, booleans, arrays, and objects. One of the most common uses of `toString()` is to convert a number to its string representation. Here's an example:",
+              "fr": "La méthode `toString()` est une fonctionnalité fondamentale en JavaScript qui convertit une valeur en sa représentation sous forme de chaîne. C'est une méthode que tu peux utiliser pour les nombres, les booléens, les tableaux et les objets. L'une des utilisations les plus courantes de `toString()` est de convertir un nombre en sa représentation sous forme de chaîne. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This method accepts an optional radix which is a number from `2` to `36`. This radix represents the base, such as base 2 for binary or base 8 for octal. If the radix is not specified it defaults to base 10, which is decimal. Here's an example of passing `2` as an argument to the `toString()` method:",
+              "fr": "Cette méthode accepte un radix optionnel, qui est un nombre de `2` à `36`. Ce radix représente la base, comme la base 2 pour le binaire ou la base 8 pour l'octal. Si le radix n'est pas spécifié, il est par défaut en base 10, soit décimal. Voici un exemple en passant `2` comme argument à la méthode `toString()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The result will be `1010` which is the binary representation for the decimal number `10`.",
+              "fr": "Le résultat sera `1010`, qui est la représentation binaire du nombre décimal `10`."
+            },
+            {
+              "en": "You can also use the `toString()` method to convert arrays and objects to strings. Arrays have a custom implementation of `toString()` that converts each element to a string and joins them with commas. Here's an example:",
+              "fr": "Tu peux aussi utiliser la méthode `toString()` pour convertir des tableaux et des objets en chaînes. Les tableaux ont une implémentation personnalisée de `toString()` qui convertit chaque élément en chaîne et les joint avec des virgules. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example all the elements of the array are joined together to form the string `1,2,3`.",
+              "fr": "Dans cet exemple, tous les éléments du tableau sont joints pour former la chaîne `1,2,3`."
+            },
+            {
+              "en": "When `toString()` method is used with objects, the result will not be a stringified version of the object properties.",
+              "fr": "Lorsque la méthode `toString()` est utilisée avec des objets, le résultat ne sera pas une version en chaîne des propriétés de l'objet."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, the result will be the default string representation for the object which is `[object Object]`. To get a stringified version of the `person` object properties you'll need to use `JSON.stringify()` which you will learn about more in the future lessons.",
+              "fr": "Dans cet exemple, le résultat sera la représentation par défaut de l'objet, soit `[object Object]`. Pour obtenir une version en chaîne des propriétés de l'objet `person`, tu devras utiliser `JSON.stringify()`, que tu découvriras plus en détail dans les leçons suivantes."
+            },
+            {
+              "en": "In conclusion, the `toString()` method is used for converting values to strings. Understanding how it works with different data types and how to customize it for your own objects can greatly advance your ability to manipulate and display data in your JavaScript applications.",
+              "fr": "En conclusion, la méthode `toString()` sert à convertir des valeurs en chaînes. Comprendre comment elle fonctionne avec différents types de données et comment la personnaliser pour tes propres objets peut grandement améliorer ta capacité à manipuler et afficher des données dans tes applications JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `toString()` method is used to convert a value to its string representation.",
+              "fr": "La méthode `toString()` sert à convertir une valeur en sa représentation sous forme de chaîne."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `toString()` method is used to convert a value to its string representation.",
+              "fr": "La méthode `toString()` sert à convertir une valeur en sa représentation sous forme de chaîne."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `toString()` method is used to convert a value to its string representation.",
+              "fr": "La méthode `toString()` sert à convertir une valeur en sa représentation sous forme de chaîne."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Arrays in JavaScript have a custom implementation of the `toString()` method.",
+              "fr": "Les tableaux en JavaScript ont une implémentation personnalisée de la méthode `toString()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Arrays in JavaScript have a custom implementation of the `toString()` method.",
+              "fr": "Les tableaux en JavaScript ont une implémentation personnalisée de la méthode `toString()`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Arrays in JavaScript have a custom implementation of the `toString()` method.",
+              "fr": "Les tableaux en JavaScript ont une implémentation personnalisée de la méthode `toString()`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "By default, the `toString()` method for objects in JavaScript returns a less readable string representation.",
+              "fr": "Par défaut, la méthode `toString()` pour les objets en JavaScript renvoie une représentation sous forme de chaîne moins lisible."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "By default, the `toString()` method for objects in JavaScript returns a less readable string representation.",
+              "fr": "Par défaut, la méthode `toString()` pour les objets en JavaScript renvoie une représentation sous forme de chaîne moins lisible."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "By default, the `toString()` method for objects in JavaScript returns a less readable string representation.",
+              "fr": "Par défaut, la méthode `toString()` pour les objets en JavaScript renvoie une représentation sous forme de chaîne moins lisible."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c69d82814160951b1aa7.md",
+      "id": "6732c69d82814160951b1aa7",
+      "dashedName": "what-is-the-number-constructor-and-how-does-it-work-for-type-coercion",
+      "title": {
+        "en": "What Is the Number Constructor, and How Does It Work for Type Coercion?",
+        "fr": "Qu'est-ce que le constructeur `Number`, et comment fonctionne-t-il pour la coercition de type ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `Number()` constructor is used to create a number object. The number object contains a few helpful properties and methods like the `isNaN` and the `toFixed` method. Here's an example using the `Number()` constructor with the `new` keyword:",
+              "fr": "Le constructeur `Number()` sert à créer un objet `Number`. L'objet `Number` contient quelques propriétés et méthodes utiles, comme `isNaN` et la méthode `toFixed`. Voici un exemple utilisant le constructeur `Number()` avec le mot-clé `new` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example we pass in a string literal to the `Number()` constructor and the return type is of type `object` instead of a `string`.",
+              "fr": "Dans cet exemple, nous passons un littéral de chaîne au constructeur `Number()` et le type renvoyé est de type `object` au lieu de `string`."
+            },
+            {
+              "en": "When the `Number()` constructor is called as a function without the `new` keyword, then the return value will be the primitive number type. Most of the time you will be using the `Number()` constructor to convert other data types to the number data type. Here's an example of converting a string to a number:",
+              "fr": "Lorsque le constructeur `Number()` est appelé comme une fonction sans le mot-clé `new`, la valeur renvoyée sera du type primitif `number`. La plupart du temps, tu utiliseras le constructeur `Number()` pour convertir d'autres types de données en type `number`. Voici un exemple de conversion d'une chaîne en nombre :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This is helpful when you are getting input from the user and you need to convert that string input to a number so you can perform mathematical calculations.",
+              "fr": "C'est utile lorsque tu récupères une saisie de l'utilisateur et que tu dois convertir cette chaîne en nombre pour effectuer des calculs mathématiques."
+            },
+            {
+              "en": "If you try to call the `Number()` constructor through an empty string then the result will be the number `0`:",
+              "fr": "Si tu appelles le constructeur `Number()` avec une chaîne vide, le résultat sera le nombre `0` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This is because JavaScript will try to parse the string and since it doesn't contain any digits, the result will be zero.",
+              "fr": "C'est parce que JavaScript essaiera d'analyser la chaîne et, comme elle ne contient aucun chiffre, le résultat sera zéro."
+            },
+            {
+              "en": "If you try to pass in a string with random characters then the result will be `NaN` or \"Not a Number\".",
+              "fr": "Si tu passes une chaîne avec des caractères aléatoires, le résultat sera `NaN` ou « Not a Number »."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When working with booleans, `true` returns `1` because `true` gets converted to one and `false` returns `0` because `false` is converted to zero.",
+              "fr": "Lorsque tu travailles avec des booléens, `true` renvoie `1` car `true` est converti en un et `false` renvoie `0` car `false` est converti en zéro."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "If you pass in `null`, the result will be `0` and if you pass `undefined`, the result will be `NaN`.",
+              "fr": "Si tu passes `null`, le résultat sera `0` et si tu passes `undefined`, le résultat sera `NaN`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When working with arrays there are a few things to consider.",
+              "fr": "Lorsque tu travailles avec des tableaux, il y a quelques points à prendre en compte."
+            },
+            {
+              "en": "An empty array will return `0`. An array with a single number will return that number. An array with multiple numbers returns `NaN`. And an array with string(s) will also return `NaN`.",
+              "fr": "Un tableau vide renverra `0`. Un tableau avec un seul nombre renverra ce nombre. Un tableau avec plusieurs nombres renvoie `NaN`. Et un tableau avec une ou plusieurs chaînes renverra aussi `NaN`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "When working with objects, the result is always `NaN`.",
+              "fr": "Lorsque tu travailles avec des objets, le résultat est toujours `NaN`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In conclusion, you'll mostly use the `Number()` constructor for type conversion more than creating a number or a number object.",
+              "fr": "En conclusion, tu utiliseras surtout le constructeur `Number()` pour la conversion de type plutôt que pour créer un nombre ou un objet `Number`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `Number` constructor in JavaScript?",
+              "fr": "Quel est le rôle du constructeur `Number` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It only creates strings.",
+              "fr": "Il ne crée que des chaînes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might turn a string into a number or create a new number in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais transformer une chaîne en nombre ou créer un nouveau nombre en JavaScript."
+            },
+            {
+              "en": "It converts other data types to numbers and creates new number values.",
+              "fr": "Il convertit d'autres types de données en nombres et crée de nouvelles valeurs numériques."
+            },
+            {
+              "en": "It is used to manipulate arrays.",
+              "fr": "Il sert à manipuler des tableaux."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might turn a string into a number or create a new number in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais transformer une chaîne en nombre ou créer un nouveau nombre en JavaScript."
+            },
+            {
+              "en": "It performs string concatenation.",
+              "fr": "Il effectue une concaténation de chaînes."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might turn a string into a number or create a new number in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais transformer une chaîne en nombre ou créer un nouveau nombre en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you create a number object using the `Number` constructor in JavaScript?",
+              "fr": "Comment crées-tu un objet `Number` avec le constructeur `Number` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the `Number.toString()` method.",
+              "fr": "En utilisant la méthode `Number.toString()`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might create an instance of an object in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais créer une instance d'objet en JavaScript."
+            },
+            {
+              "en": "By initializing it with the new keyword and passing a number as an argument.",
+              "fr": "En l'initialisant avec le mot-clé `new` et en passant un nombre comme argument."
+            },
+            {
+              "en": "By declaring a variable with the `var` keyword.",
+              "fr": "En déclarant une variable avec le mot-clé `var`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might create an instance of an object in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais créer une instance d'objet en JavaScript."
+            },
+            {
+              "en": "By calling `Number.parseInt()` with a string value.",
+              "fr": "En appelant `Number.parseInt()` avec une valeur de type chaîne."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you might create an instance of an object in JavaScript.",
+              "fr": "Réfléchis à la façon dont tu pourrais créer une instance d'objet en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is one of the correct ways JavaScript handles arrays when converting them to numbers using the `Number` constructor?",
+              "fr": "Laquelle de ces affirmations décrit correctement la façon dont JavaScript gère les tableaux lors de leur conversion en nombres avec le constructeur `Number` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "An empty array returns `NaN`.",
+              "fr": "Un tableau vide renvoie `NaN`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how different array structures might behave during conversion.",
+              "fr": "Réfléchis à la façon dont différentes structures de tableau se comportent lors de la conversion."
+            },
+            {
+              "en": "An array with multiple numbers converts to their sum.",
+              "fr": "Un tableau avec plusieurs nombres se convertit en leur somme."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how different array structures might behave during conversion.",
+              "fr": "Réfléchis à la façon dont différentes structures de tableau se comportent lors de la conversion."
+            },
+            {
+              "en": "An array with a single number converts to that number, while an empty array returns `0`.",
+              "fr": "Un tableau avec un seul nombre se convertit en ce nombre, tandis qu'un tableau vide renvoie `0`."
+            },
+            {
+              "en": "An array with string(s) converts to `NaN`.",
+              "fr": "Un tableau avec une ou plusieurs chaînes se convertit en `NaN`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how different array structures might behave during conversion.",
+              "fr": "Réfléchis à la façon dont différentes structures de tableau se comportent lors de la conversion."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

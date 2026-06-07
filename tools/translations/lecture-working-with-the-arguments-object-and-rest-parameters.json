@@ -1,0 +1,500 @@
+{
+  "workshop": "lecture-working-with-the-arguments-object-and-rest-parameters",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "68bcc3b6a7480288cd981be0.md",
+      "id": "68bcc3b6a7480288cd981be0",
+      "dashedName": "what-is-the-arguments-object",
+      "title": {
+        "en": "What is the arguments Object?",
+        "fr": "Qu'est-ce que l'objet arguments ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "As you recall from earlier lessons and workshops, you can create functions with a number of parameters and call that function with arguments.",
+              "fr": "Comme tu te le rappelles des leçons et ateliers précédents, tu peux créer des fonctions avec un certain nombre de paramètres et appeler cette fonction avec des arguments."
+            },
+            {
+              "en": "Here is a reminder:",
+              "fr": "Voici un rappel :"
+            },
+            {
+              "en": "But what if you have a function that is called with more arguments than it was defined to accept?",
+              "fr": "Mais que se passe-t-il si tu as une fonction appelée avec plus d'arguments qu'elle n'en accepte par définition ?"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "JavaScript will not throw an error in this case. It will instead ignore the extra argument and just add the numbers `3` and `4` together. Functions that accept a variable number of arguments are known as <dfn>variadic functions</dfn>.",
+              "fr": "JavaScript ne lèvera pas d'erreur dans ce cas. Il ignorera plutôt l'argument supplémentaire et additionnera simplement les nombres `3` et `4`. Les fonctions qui acceptent un nombre variable d'arguments sont appelées <dfn>fonctions variadiques</dfn>."
+            },
+            {
+              "en": "If you are working with variadic functions, then you can utilize the `arguments` object. This array-like object contains the values of the arguments passed into the function.",
+              "fr": "Si tu travailles avec des fonctions variadiques, tu peux utiliser l'objet `arguments`. Cet objet de type tableau contient les valeurs des arguments passés à la fonction."
+            },
+            {
+              "en": "Here is an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Since the `arguments` object is array-like, you can access an argument at a specific index like this:",
+              "fr": "Comme l'objet `arguments` est de type tableau, tu peux accéder à un argument à un index précis comme ceci :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can also use the `length` property like this to get the number of arguments the function was called with:",
+              "fr": "Tu peux aussi utiliser la propriété `length` comme ceci pour obtenir le nombre d'arguments avec lesquels la fonction a été appelée :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Even though the `arguments` object appears to act like a real array, it does not have built in `Array` methods like `includes` or `push`. To have access to those methods, you would need to first convert the `arguments` object to a real array using something like `slice`, `Array.from()` or the spread operator:",
+              "fr": "Même si l'objet `arguments` semble se comporter comme un vrai tableau, il n'a pas les méthodes `Array` intégrées comme `includes` ou `push`. Pour avoir accès à ces méthodes, tu devrais d'abord convertir l'objet `arguments` en un vrai tableau en utilisant quelque chose comme `slice`, `Array.from()` ou l'opérateur spread :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "While it is possible to work with the `arguments` object for variadic functions, modern JavaScript applications will normally use rest parameter syntax. You will learn more about that in a future lesson.",
+              "fr": "Bien qu'il soit possible de travailler avec l'objet `arguments` pour les fonctions variadiques, les applications JavaScript modernes utilisent normalement la syntaxe des paramètres rest. Tu en apprendras davantage dans une leçon future."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a variadic function?",
+              "fr": "Qu'est-ce qu'une fonction variadique ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Functions that accept two arguments.",
+              "fr": "Des fonctions qui acceptent deux arguments."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "Functions that accept a variable number of arguments.",
+              "fr": "Des fonctions qui acceptent un nombre variable d'arguments."
+            },
+            {
+              "en": "Functions that accept a single argument.",
+              "fr": "Des fonctions qui acceptent un seul argument."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "Functions that accept more than three arguments.",
+              "fr": "Des fonctions qui acceptent plus de trois arguments."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the `arguments` object?",
+              "fr": "Qu'est-ce que l'objet `arguments` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A special dictionary that contains the values of the arguments passed into a function.",
+              "fr": "Un dictionnaire spécial qui contient les valeurs des arguments passés à une fonction."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "An array-like object that contains the values of the arguments passed into a function.",
+              "fr": "Un objet de type tableau qui contient les valeurs des arguments passés à une fonction."
+            },
+            {
+              "en": "A variable that contains only the first argument passed into a function.",
+              "fr": "Une variable qui contient uniquement le premier argument passé à une fonction."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "A true array that automatically updates when function parameters are reassigned.",
+              "fr": "Un vrai tableau qui se met à jour automatiquement lorsque les paramètres de la fonction sont réaffectés."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why can't you use built in `Array` methods like `includes` or `push` on the `arguments` object?",
+              "fr": "Pourquoi ne peux-tu pas utiliser les méthodes `Array` intégrées comme `includes` ou `push` sur l'objet `arguments` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The `arguments` object is always empty unless explicitly initialized.",
+              "fr": "L'objet `arguments` est toujours vide sauf s'il est explicitement initialisé."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "JavaScript automatically blocks method calls on the `arguments` object for performance reasons.",
+              "fr": "JavaScript bloque automatiquement les appels de méthodes sur l'objet `arguments` pour des raisons de performance."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "The `includes` or `push` methods unreliably work on the `arguments` object so those methods should be avoided.",
+              "fr": "Les méthodes `includes` ou `push` fonctionnent de manière peu fiable sur l'objet `arguments`, donc ces méthodes devraient être évitées."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "The `arguments` object is not a real array so it doesn't have those built in methods.",
+              "fr": "L'objet `arguments` n'est pas un vrai tableau, donc il n'a pas ces méthodes intégrées."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68bcc7d9a1807e9752728e45.md",
+      "id": "68bcc7d9a1807e9752728e45",
+      "dashedName": "what-are-rest-parameters-and-how-do-they-differ-from-the-arguments-object",
+      "title": {
+        "en": "What are Rest Parameters and How Do They Differ from the arguments Object?",
+        "fr": "Que sont les paramètres rest et en quoi diffèrent-ils de l'objet arguments ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you learned how to work with the `arguments` object which is an array-like object containing the values of the arguments passed into the function.",
+              "fr": "Dans la leçon précédente, tu as appris à travailler avec l'objet `arguments`, qui est un objet de type tableau contenant les valeurs des arguments passés à la fonction."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "While this is a valid way to access and work with a variable set of arguments from a function, modern JavaScript applications will use the rest parameter syntax instead.",
+              "fr": "Bien que ce soit une façon valide d'accéder à un ensemble variable d'arguments et d'y travailler depuis une fonction, les applications JavaScript modernes utiliseront plutôt la syntaxe des paramètres rest."
+            },
+            {
+              "en": "Here is an updated example using the rest parameter syntax instead of the `arguments` object:",
+              "fr": "Voici un exemple mis à jour utilisant la syntaxe des paramètres rest au lieu de l'objet `arguments` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This updated example no longer references the `arguments` object directly. Instead, the function definition's last parameter has three dots in front of it. This causes this rest parameter to be placed within an `Array` object. You can name this rest parameter whatever you like. Just make sure it is the last parameter in the function definition like this:",
+              "fr": "Cet exemple mis à jour ne fait plus référence directement à l'objet `arguments`. À la place, le dernier paramètre de la définition de la fonction a trois points devant lui. Cela fait que ce paramètre rest est placé dans un objet `Array`. Tu peux nommer ce paramètre rest comme tu le souhaites. Assure-toi simplement qu'il est le dernier paramètre dans la définition de la fonction, comme ceci :"
+            },
+            {
+              "en": "There are a few more restrictions when dealing with the rest parameter syntax. One restriction is that function definitions can only have one rest parameter. So the following example here would be considered invalid.",
+              "fr": "Il y a quelques restrictions supplémentaires lorsqu'on travaille avec la syntaxe des paramètres rest. Une restriction est que les définitions de fonction ne peuvent avoir qu'un seul paramètre rest. L'exemple suivant serait donc considéré comme invalide."
+            },
+            {
+              "en": "The next restriction is that trailing commas are not allowed after the rest parameter: `function exampleFunction(a, b, ...restOfArgs, )`.",
+              "fr": "La restriction suivante est que les virgules finales ne sont pas autorisées après le paramètre rest : `function exampleFunction(a, b, ...restOfArgs, )`."
+            },
+            {
+              "en": "Another restriction is that the rest parameter cannot have a default value. Otherwise a `SyntaxError` will be thrown.",
+              "fr": "Une autre restriction est que le paramètre rest ne peut pas avoir de valeur par défaut. Sinon, une `SyntaxError` sera levée."
+            },
+            {
+              "en": "So what are some differences between the `arguments` object and `rest` parameters?",
+              "fr": "Alors, quelles sont certaines différences entre l'objet `arguments` et les paramètres `rest` ?"
+            },
+            {
+              "en": "One key difference is that the `arguments` object is not a real array so it doesn't support methods like `includes`, `pop` and `push`. But the rest parameter is an `Array` instance. So you can use valid built in array methods without needing to convert it to a real array first.",
+              "fr": "Une différence clé est que l'objet `arguments` n'est pas un vrai tableau, donc il ne prend pas en charge des méthodes comme `includes`, `pop` et `push`. Mais le paramètre rest est une instance de `Array`. Tu peux donc utiliser des méthodes de tableau intégrées valides sans avoir besoin de le convertir d'abord en un vrai tableau."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to use the rest parameter syntax in a function definition?",
+              "fr": "Lequel des éléments suivants est la bonne façon d'utiliser la syntaxe des paramètres rest dans une définition de fonction ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a restriction when dealing with the rest parameter syntax?",
+              "fr": "Lequel des éléments suivants est une restriction lorsqu'on travaille avec la syntaxe des paramètres rest ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "You can only have one rest parameter per function definition.",
+              "fr": "Tu ne peux avoir qu'un seul paramètre rest par définition de fonction."
+            },
+            {
+              "en": "You must place the rest parameter at the beginning of the function parameter list.",
+              "fr": "Tu dois placer le paramètre rest au début de la liste des paramètres de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "You must have two rest parameters per function definition.",
+              "fr": "Tu dois avoir deux paramètres rest par définition de fonction."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "You can only use rest parameters in arrow functions.",
+              "fr": "Tu ne peux utiliser les paramètres rest que dans les fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key difference between the `arguments` object and rest parameters?",
+              "fr": "Quelle est une différence clé entre l'objet `arguments` et les paramètres rest ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "You can only use built in array methods like `push` and `pop` on the rest parameter while the `arguments` objects accepts all built in array methods.",
+              "fr": "Tu ne peux utiliser les méthodes de tableau intégrées comme `push` et `pop` que sur le paramètre rest, tandis que l'objet `arguments` accepte toutes les méthodes de tableau intégrées."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "You cannot use built in array methods like `push` and `pop` on the rest parameter but those methods can be used on the `arguments` object.",
+              "fr": "Tu ne peux pas utiliser les méthodes de tableau intégrées comme `push` et `pop` sur le paramètre rest, mais ces méthodes peuvent être utilisées sur l'objet `arguments`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "The `arguments` object is an `Array` instance while the rest parameter is array-like.",
+              "fr": "L'objet `arguments` est une instance de `Array` tandis que le paramètre rest est de type tableau."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson for the answer.",
+              "fr": "Reporte-toi à la fin de la leçon pour la réponse."
+            },
+            {
+              "en": "The rest parameter is an `Array` instance while the `arguments` object is array-like.",
+              "fr": "Le paramètre rest est une instance de `Array` tandis que l'objet `arguments` est de type tableau."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

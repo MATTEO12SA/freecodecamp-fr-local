@@ -1,0 +1,713 @@
+{
+  "workshop": "lecture-working-with-code-quality-and-execution-concepts",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6732c6c72d3738614e1230a2.md",
+      "id": "6732c6c72d3738614e1230a2",
+      "dashedName": "what-are-linters-and-formatters-and-how-can-they-help-you-with-code-consistency",
+      "title": {
+        "en": "What Are Linters and Formatters, and How Can They Help You with Code Consistency?",
+        "fr": "Que sont les linters et les formateurs, et comment peuvent-ils t'aider à assurer la cohérence du code ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the world of software development maintaining clean, consistent and error-free code is important. This is where linters and formatters come into play. These tools are essential for developers to ensure code quality and consistency across projects and teams.",
+              "fr": "Dans le monde du développement logiciel, maintenir un code propre, cohérent et sans erreur est important. C'est là qu'interviennent les linters et les formateurs. Ces outils sont essentiels pour les développeurs afin d'assurer la qualité et la cohérence du code à travers les projets et les équipes."
+            },
+            {
+              "en": "Let's start with linters. A linter is a static code analysis tool that flags programming errors, bugs, stylistic errors, and suspicious constructs. The term lint comes from a Unix utility that examines C language source code.",
+              "fr": "Commençons par les linters. Un linter est un outil d'analyse statique du code qui signale les erreurs de programmation, les bugs, les erreurs de style et les constructions suspectes. Le terme lint vient d'un utilitaire Unix qui examine le code source en langage C."
+            },
+            {
+              "en": "Today linters exist for most programming languages including JavaScript. Linters help in several ways. First they catch potential errors before runtime. For example, a linter might flag the use of undefined variable or a function being called with the wrong number of arguments. They also enforce coding standards and best practices. This might include rules about indentation, the use of semicolons, or the maximum allowed line length. Lastly, they help maintain consistency across a codebase especially when multiple developers are working on the same project.",
+              "fr": "Aujourd'hui, des linters existent pour la plupart des langages de programmation, y compris JavaScript. Les linters aident de plusieurs façons. D'abord, ils détectent les erreurs potentielles avant l'exécution. Par exemple, un linter peut signaler l'utilisation d'une variable non définie ou une fonction appelée avec un mauvais nombre d'arguments. Ils appliquent aussi les standards de codage et les bonnes pratiques. Cela peut inclure des règles sur l'indentation, l'utilisation des points-virgules ou la longueur maximale autorisée d'une ligne. Enfin, ils aident à maintenir la cohérence dans une base de code, surtout lorsque plusieurs développeurs travaillent sur le même projet."
+            },
+            {
+              "en": "A popular linter for JavaScript is ESLint. Here is a simple example of what ESLint might flag:",
+              "fr": "Un linter populaire pour JavaScript est ESLint. Voici un exemple simple de ce qu'ESLint pourrait signaler :"
+            },
+            {
+              "en": "In this code variable `z` is not declared, so ESLint would flag the error `z` is not defined. Also, the last statement is missing a semicolon which ESLint might also flag in the code editor.",
+              "fr": "Dans ce code, la variable `z` n'est pas déclarée, donc ESLint signalerait l'erreur `z` is not defined. De plus, la dernière instruction manque d'un point-virgule, ce qu'ESLint pourrait aussi signaler dans l'éditeur de code."
+            },
+            {
+              "en": "Formatters on the other hand are tools that automatically format your code to adhere to a specific style guide. While linters can often autofix some issues, formatters are specifically designed to rewrite your code to match a predetermined style.",
+              "fr": "Les formateurs, quant à eux, sont des outils qui formatent automatiquement ton code pour qu'il respecte un guide de style spécifique. Bien que les linters puissent souvent corriger automatiquement certains problèmes, les formateurs sont spécialement conçus pour réécrire ton code afin qu'il corresponde à un style prédéfini."
+            },
+            {
+              "en": "Formatters ensure a consistent code style across an entire project or team regardless of individual developer preferences. They also save time and mental energy that would otherwise be spent on manual formatting. Lastly, they can make code reviews more efficient by eliminating discussions about code style.",
+              "fr": "Les formateurs assurent un style de code cohérent dans tout un projet ou une équipe, indépendamment des préférences individuelles des développeurs. Ils font aussi gagner du temps et de l'énergie mentale qui seraient autrement consacrés au formatage manuel. Enfin, ils peuvent rendre les revues de code plus efficaces en éliminant les discussions sur le style du code."
+            },
+            {
+              "en": "A popular formatter for JavaScript is Prettier. Here is an example of how Prettier might format code. Here's a before formatting:",
+              "fr": "Un formateur populaire pour JavaScript est Prettier. Voici un exemple de la façon dont Prettier pourrait formater du code. Voici le code avant formatage :"
+            },
+            {
+              "en": "And then after the prettier formatting:",
+              "fr": "Et ensuite, après le formatage par Prettier :"
+            },
+            {
+              "en": "Both linters and formatters can be integrated into your development workflow in various ways. They can be included in your build process or added as plugins to your text editor or IDE providing real-time feedback as you code. Using linters and formatters together can significantly improve code quality and consistency. For example, you might use ESLint to catch potential errors and enforce certain coding practices, and then use Prettier to handle all formatting tasks.",
+              "fr": "Les linters et les formateurs peuvent être intégrés à ton flux de développement de diverses façons. Ils peuvent être inclus dans ton processus de build ou ajoutés comme plugins à ton éditeur de texte ou ton IDE, fournissant un retour en temps réel pendant que tu codes. Utiliser les linters et les formateurs ensemble peut améliorer considérablement la qualité et la cohérence du code. Par exemple, tu pourrais utiliser ESLint pour détecter les erreurs potentielles et appliquer certaines pratiques de codage, puis utiliser Prettier pour gérer toutes les tâches de formatage."
+            },
+            {
+              "en": "Many development teams set up these tools as part of their project configuration often with pre-commit hooks that run the linter and formatter before allowing code to be committed. This ensures that all code in the repository meets the teams standards for quality and style.",
+              "fr": "De nombreuses équipes de développement configurent ces outils dans la configuration de leur projet, souvent avec des hooks pre-commit qui exécutent le linter et le formateur avant d'autoriser le commit du code. Cela garantit que tout le code du dépôt respecte les standards de qualité et de style de l'équipe."
+            },
+            {
+              "en": "In summary, linters and formatters are powerful tools that help maintain code quality, catch potential errors early, and ensure consistency across codebases. By automating these aspects of code review they allow developers to focus more on solving problems and less on debating code style.",
+              "fr": "En résumé, les linters et les formateurs sont des outils puissants qui aident à maintenir la qualité du code, à détecter les erreurs potentielles tôt et à assurer la cohérence entre les bases de code. En automatisant ces aspects de la revue de code, ils permettent aux développeurs de se concentrer davantage sur la résolution de problèmes et moins sur les débats sur le style du code."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of a linter?",
+              "fr": "Quel est le rôle principal d'un linter ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To automatically format code.",
+              "fr": "Formater automatiquement le code."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what linters check in your code.",
+              "fr": "Réfléchis à ce que les linters vérifient dans ton code."
+            },
+            {
+              "en": "To compile code.",
+              "fr": "Compiler le code."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what linters check in your code.",
+              "fr": "Réfléchis à ce que les linters vérifient dans ton code."
+            },
+            {
+              "en": "To flag potential errors and style issues.",
+              "fr": "Signaler les erreurs potentielles et les problèmes de style."
+            },
+            {
+              "en": "To run unit tests.",
+              "fr": "Exécuter des tests unitaires."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what linters check in your code.",
+              "fr": "Réfléchis à ce que les linters vérifient dans ton code."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a benefit of using a code formatter?",
+              "fr": "Lequel des éléments suivants est un avantage de l'utilisation d'un formateur de code ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It catches runtime errors.",
+              "fr": "Il détecte les erreurs d'exécution."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how formatters affect the appearance of code.",
+              "fr": "Réfléchis à la façon dont les formateurs affectent l'apparence du code."
+            },
+            {
+              "en": "It ensures consistent code style across a project.",
+              "fr": "Il assure un style de code cohérent dans tout un projet."
+            },
+            {
+              "en": "It improves the performance of the code.",
+              "fr": "Il améliore les performances du code."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how formatters affect the appearance of code.",
+              "fr": "Réfléchis à la façon dont les formateurs affectent l'apparence du code."
+            },
+            {
+              "en": "It adds new features to the codebase.",
+              "fr": "Il ajoute de nouvelles fonctionnalités à la base de code."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how formatters affect the appearance of code.",
+              "fr": "Réfléchis à la façon dont les formateurs affectent l'apparence du code."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Where in the development process might you integrate a linter?",
+              "fr": "À quel moment du processus de développement pourrais-tu intégrer un linter ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Only during the initial project setup.",
+              "fr": "Uniquement lors de la configuration initiale du projet."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when it would be most beneficial to catch potential issues.",
+              "fr": "Réfléchis au moment où il serait le plus utile de détecter les problèmes potentiels."
+            },
+            {
+              "en": "Only during the final code review.",
+              "fr": "Uniquement lors de la revue de code finale."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when it would be most beneficial to catch potential issues.",
+              "fr": "Réfléchis au moment où il serait le plus utile de détecter les problèmes potentiels."
+            },
+            {
+              "en": "As part of the build process, a plugin for your text editor or IDE, a pre-commit hook before code can be committed to a codebase, and so on.",
+              "fr": "Dans le cadre du processus de build, comme plugin pour ton éditeur de texte ou ton IDE, comme hook pre-commit avant que le code puisse être commité dans une base de code, et ainsi de suite."
+            },
+            {
+              "en": "After the code has been deployed to production.",
+              "fr": "Après que le code a été déployé en production."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when it would be most beneficial to catch potential issues.",
+              "fr": "Réfléchis au moment où il serait le plus utile de détecter les problèmes potentiels."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c6d4dec34c61850a1276.md",
+      "id": "6732c6d4dec34c61850a1276",
+      "dashedName": "what-is-memory-management-and-how-does-it-work-in-javascript",
+      "title": {
+        "en": "What Is Memory Management, and How Does It Work in JavaScript?",
+        "fr": "Qu'est-ce que la gestion de la mémoire, et comment fonctionne-t-elle en JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Memory management is an essential concept in programming, but it can be a bit confusing for beginners, let's break it down in simple terms.",
+              "fr": "La gestion de la mémoire est un concept essentiel en programmation, mais elle peut être un peu déroutante pour les débutants. Voyons cela en termes simples."
+            },
+            {
+              "en": "When you run a program, including JavaScript code in a web browser, it needs memory to store all the information its working with. This includes variables, functions, objects, basically everything your code creates and uses. Memory management is the process of controlling this memory, allocating it when needed, and freeing it up when it's no longer needed. In some programming languages, developers have to manually manage memory. They need to explicitly tell the computer when to allocate memory for new things and when to free up memory that's no longer needed. This can be powerful but also tricky as forgetting to free memory can lead to memory leaks.",
+              "fr": "Lorsque tu exécutes un programme, y compris du code JavaScript dans un navigateur web, il a besoin de mémoire pour stocker toutes les informations avec lesquelles il travaille. Cela inclut les variables, les fonctions, les objets — en gros, tout ce que ton code crée et utilise. La gestion de la mémoire est le processus de contrôle de cette mémoire : l'allouer quand c'est nécessaire et la libérer quand elle n'est plus utile. Dans certains langages de programmation, les développeurs doivent gérer la mémoire manuellement. Ils doivent indiquer explicitement à l'ordinateur quand allouer de la mémoire pour de nouvelles choses et quand libérer la mémoire qui n'est plus nécessaire. Cela peut être puissant mais aussi délicat, car oublier de libérer la mémoire peut entraîner des fuites de mémoire."
+            },
+            {
+              "en": "JavaScript however uses automatic memory management. This means that JavaScript (more specifically the JavaScript engine in your web browser) takes care of memory allocation and deallocation for you. You don't have to explicitly free memory in your code. This automatic process is often called garbage collection.",
+              "fr": "JavaScript, cependant, utilise une gestion automatique de la mémoire. Cela signifie que JavaScript (plus précisément le moteur JavaScript de ton navigateur web) s'occupe de l'allocation et de la désallocation de la mémoire pour toi. Tu n'as pas besoin de libérer explicitement la mémoire dans ton code. Ce processus automatique est souvent appelé garbage collection."
+            },
+            {
+              "en": "Here's how it works in simple terms. First allocation happens when you create a variable, objects or functions in your JavaScript code, memory is automatically allocated to store them. Then you use this allocated memory when you work with these variables, objects or functions in your code.",
+              "fr": "Voici comment cela fonctionne en termes simples. D'abord, l'allocation se produit lorsque tu crées une variable, des objets ou des fonctions dans ton code JavaScript — la mémoire est automatiquement allouée pour les stocker. Ensuite, tu utilises cette mémoire allouée lorsque tu travailles avec ces variables, objets ou fonctions dans ton code."
+            },
+            {
+              "en": "The JavaScript engine has clever ways to figure out when something in memory is no longer needed. Generally if there is no way for your program to access or use a piece of data any more it's considered no longer needed. Periodically the garbage collector runs, it finds a memory that's no longer needed and frees it up, making it available for future use. This process happens automatically which is great because it means you don't have to worry about managing memory yourself.",
+              "fr": "Le moteur JavaScript dispose de moyens astucieux pour déterminer quand quelque chose en mémoire n'est plus nécessaire. En général, s'il n'y a plus aucun moyen pour ton programme d'accéder à ou d'utiliser une donnée, elle est considérée comme n'étant plus nécessaire. Périodiquement, le garbage collector s'exécute, trouve la mémoire qui n'est plus nécessaire et la libère, la rendant disponible pour une utilisation future. Ce processus se produit automatiquement, ce qui est formidable car cela signifie que tu n'as pas à te soucier de gérer la mémoire toi-même."
+            },
+            {
+              "en": "However, it's still important to understand this concept because you can sometimes accidentally keep references to things you don't need anymore preventing the garbage collector from freeing that memory. For example:",
+              "fr": "Cependant, il est toujours important de comprendre ce concept, car tu peux parfois garder accidentellement des références à des choses dont tu n'as plus besoin, empêchant le garbage collector de libérer cette mémoire. Par exemple :"
+            },
+            {
+              "en": "In this code, even after `createLargeArray` finishes running, `largeArray` can't be garbage collected because the returned function still has access to it. This is a closure, and while closures are useful they can sometimes lead to more memory usage than you might expect. You will learn more about closures in future lessons.",
+              "fr": "Dans ce code, même après que `createLargeArray` a fini de s'exécuter, `largeArray` ne peut pas être garbage collecté car la fonction renvoyée y a encore accès. C'est une closure, et bien que les closures soient utiles, elles peuvent parfois entraîner une utilisation de la mémoire plus importante que tu ne le penserais. Tu en apprendras davantage sur les closures dans les leçons à venir."
+            },
+            {
+              "en": "As a beginner, you don't need to worry too much about the intricacies of memory management. JavaScript's automatic garbage collection takes care of most things for you. However, as you advance in your JavaScript journey, understanding these concepts can help you write more efficient code, especially for larger applications or when working with limited resources.",
+              "fr": "En tant que débutant, tu n'as pas besoin de trop te soucier des subtilités de la gestion de la mémoire. Le garbage collection automatique de JavaScript s'occupe de la plupart des choses pour toi. Cependant, à mesure que tu progresses dans ton parcours JavaScript, comprendre ces concepts peut t'aider à écrire du code plus efficace, surtout pour les applications plus grandes ou lorsque tu travailles avec des ressources limitées."
+            },
+            {
+              "en": "Remember, good coding practices, like avoiding global variables when possible and being mindful of what your functions are closing over, can help the JavaScript engine manage memory more efficiently.",
+              "fr": "Rappelle-toi que de bonnes pratiques de codage, comme éviter les variables globales lorsque c'est possible et être attentif à ce sur quoi tes fonctions ferment, peuvent aider le moteur JavaScript à gérer la mémoire plus efficacement."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In JavaScript, who is primarily responsible for managing memory?",
+              "fr": "En JavaScript, qui est principalement responsable de la gestion de la mémoire ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The developer.",
+              "fr": "Le développeur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about who or what handles the allocation and deallocation of memory in JavaScript.",
+              "fr": "Réfléchis à qui ou à quoi gère l'allocation et la désallocation de la mémoire en JavaScript."
+            },
+            {
+              "en": "The JavaScript engine.",
+              "fr": "Le moteur JavaScript."
+            },
+            {
+              "en": "The operating system.",
+              "fr": "Le système d'exploitation."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about who or what handles the allocation and deallocation of memory in JavaScript.",
+              "fr": "Réfléchis à qui ou à quoi gère l'allocation et la désallocation de la mémoire en JavaScript."
+            },
+            {
+              "en": "The web browser.",
+              "fr": "Le navigateur web."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about who or what handles the allocation and deallocation of memory in JavaScript.",
+              "fr": "Réfléchis à qui ou à quoi gère l'allocation et la désallocation de la mémoire en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the process called when JavaScript automatically frees up memory that's no longer needed?",
+              "fr": "Comment s'appelle le processus par lequel JavaScript libère automatiquement la mémoire qui n'est plus nécessaire ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Memory allocation.",
+              "fr": "L'allocation de mémoire."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This process involves \"collecting\" memory that's no longer in use.",
+              "fr": "Ce processus implique de « collecter » la mémoire qui n'est plus utilisée."
+            },
+            {
+              "en": "Garbage collection.",
+              "fr": "Garbage collection."
+            },
+            {
+              "en": "Memory fragmentation.",
+              "fr": "La fragmentation de la mémoire."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This process involves \"collecting\" memory that's no longer in use.",
+              "fr": "Ce processus implique de « collecter » la mémoire qui n'est plus utilisée."
+            },
+            {
+              "en": "Stack overflow.",
+              "fr": "Le débordement de pile."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This process involves \"collecting\" memory that's no longer in use.",
+              "fr": "Ce processus implique de « collecter » la mémoire qui n'est plus utilisée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a potential downside of JavaScript's automatic memory management?",
+              "fr": "Lequel des éléments suivants est un inconvénient potentiel de la gestion automatique de la mémoire en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It requires more code to be written.",
+              "fr": "Cela nécessite d'écrire plus de code."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what might happen if the garbage collector can't identify all unused memory.",
+              "fr": "Réfléchis à ce qui pourrait se passer si le garbage collector ne peut pas identifier toute la mémoire inutilisée."
+            },
+            {
+              "en": "It can sometimes keep memory allocated that's no longer needed.",
+              "fr": "Il peut parfois garder de la mémoire allouée qui n'est plus nécessaire."
+            },
+            {
+              "en": "It makes the program run slower.",
+              "fr": "Cela ralentit l'exécution du programme."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what might happen if the garbage collector can't identify all unused memory.",
+              "fr": "Réfléchis à ce qui pourrait se passer si le garbage collector ne peut pas identifier toute la mémoire inutilisée."
+            },
+            {
+              "en": "It requires manual memory deallocation.",
+              "fr": "Cela nécessite une désallocation manuelle de la mémoire."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what might happen if the garbage collector can't identify all unused memory.",
+              "fr": "Réfléchis à ce qui pourrait se passer si le garbage collector ne peut pas identifier toute la mémoire inutilisée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6732c6e281c14a61c4858361.md",
+      "id": "6732c6e281c14a61c4858361",
+      "dashedName": "what-are-closures-and-how-do-they-work",
+      "title": {
+        "en": "What Are Closures, and How Do They Work?",
+        "fr": "Que sont les closures, et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Closures are one of the most powerful and often misunderstood features in JavaScript. At its core, a closure is a function that has access to variables in its outer enclosing lexical scope, even after the outer function has returned. This might sound complex but it's a fundamental concept that enables many advanced programming patterns in JavaScript.",
+              "fr": "Les closures sont l'une des fonctionnalités les plus puissantes et souvent mal comprises en JavaScript. À la base, une closure est une fonction qui a accès aux variables de sa portée lexicale englobante extérieure, même après que la fonction extérieure a renvoyé. Cela peut sembler complexe, mais c'est un concept fondamental qui permet de nombreux modèles de programmation avancés en JavaScript."
+            },
+            {
+              "en": "To understand closures, let's start with an example:",
+              "fr": "Pour comprendre les closures, commençons par un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this example, `outerFunction` takes a parameter `x` and defines a local variable `y`. It then defines an `innerFunction` that uses both `x` and `y`. Finally it returns `innerFunction`. When we call `outerFunction(5)` it returns `innerFunction` which we assign to the variable `closure`. When we later call `closure()` it still has access to `x` and `y` from `outerFunction` even though `outerFunction` has already finished executing. This is the essence of a closure.",
+              "fr": "Dans cet exemple, `outerFunction` prend un paramètre `x` et définit une variable locale `y`. Elle définit ensuite une `innerFunction` qui utilise à la fois `x` et `y`. Enfin, elle renvoie `innerFunction`. Lorsque nous appelons `outerFunction(5)`, elle renvoie `innerFunction` que nous assignons à la variable `closure`. Lorsque nous appelons ensuite `closure()`, elle a toujours accès à `x` et `y` de `outerFunction`, même si `outerFunction` a déjà fini de s'exécuter. C'est l'essence d'une closure."
+            },
+            {
+              "en": "The inner function maintains a reference to its outer lexical environment, preserving access to the variables in that environment even after the outer function has completed.",
+              "fr": "La fonction interne maintient une référence à son environnement lexical extérieur, préservant l'accès aux variables de cet environnement même après que la fonction extérieure s'est terminée."
+            },
+            {
+              "en": "Closures are particularly useful for creating private variables and functions. Consider this example:",
+              "fr": "Les closures sont particulièrement utiles pour créer des variables et des fonctions privées. Considère cet exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, `createCounter` returns a function that increments and returns a `count` variable. The `count` variable is not directly accessible from outside `createCounter`, but the returned function (our closure) has access to it. Each time we call `counter()`, it increments and returns the `count`.",
+              "fr": "Dans ce cas, `createCounter` renvoie une fonction qui incrémente et renvoie une variable `count`. La variable `count` n'est pas directement accessible depuis l'extérieur de `createCounter`, mais la fonction renvoyée (notre closure) y a accès. Chaque fois que nous appelons `counter()`, elle incrémente et renvoie le `count`."
+            },
+            {
+              "en": "Closures can also capture multiple variables from their outer scope. For example:",
+              "fr": "Les closures peuvent aussi capturer plusieurs variables de leur portée extérieure. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Here the inner function captures the `x` parameter from `multiply`. When we create `double` by calling `multiply(2)` it returns a function that always multiplies its argument by `2`.",
+              "fr": "Ici, la fonction interne capture le paramètre `x` de `multiply`. Lorsque nous créons `double` en appelant `multiply(2)`, elle renvoie une fonction qui multiplie toujours son argument par `2`."
+            },
+            {
+              "en": "One important thing to note about closures is that they capture variables, by reference not by value. This means if the value of a captured variable changes, the closure will see the new value. For example:",
+              "fr": "Une chose importante à noter à propos des closures est qu'elles capturent les variables par référence et non par valeur. Cela signifie que si la valeur d'une variable capturée change, la closure verra la nouvelle valeur. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Each time we call `increment` its working with the same `count` variable, not a copy of it's initial value. Closures are a powerful tool in JavaScript. as you continue to work with JavaScript you'll find that understanding and using closures effectively can greatly enhance your ability to write clean, efficient and powerful code.",
+              "fr": "Chaque fois que nous appelons `increment`, elle travaille avec la même variable `count`, et non une copie de sa valeur initiale. Les closures sont un outil puissant en JavaScript. À mesure que tu continues à travailler avec JavaScript, tu découvriras que comprendre et utiliser efficacement les closures peut grandement améliorer ta capacité à écrire du code propre, efficace et puissant."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in outer captures the `x` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans outer capture le paramètre `x`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in outer captures the `x` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans outer capture le paramètre `x`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in outer captures the `x` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans outer capture le paramètre `x`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What concept does the following code demonstrate?",
+              "fr": "Quel concept le code suivant illustre-t-il ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Hoisting.",
+              "fr": "Le hoisting."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the returned function retains access to the `greeting` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction renvoyée conserve l'accès au paramètre `greeting`."
+            },
+            {
+              "en": "Closure.",
+              "fr": "Closure."
+            },
+            {
+              "en": "Recursion.",
+              "fr": "La récursion."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the returned function retains access to the `greeting` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction renvoyée conserve l'accès au paramètre `greeting`."
+            },
+            {
+              "en": "Prototype inheritance.",
+              "fr": "L'héritage par prototype."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the returned function retains access to the `greeting` parameter.",
+              "fr": "Réfléchis à la façon dont la fonction renvoyée conserve l'accès au paramètre `greeting`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in counter maintains access to the count variable across multiple calls.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans counter maintient l'accès à la variable count à travers plusieurs appels."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in counter maintains access to the count variable across multiple calls.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans counter maintient l'accès à la variable count à travers plusieurs appels."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the inner function in counter maintains access to the count variable across multiple calls.",
+              "fr": "Réfléchis à la façon dont la fonction interne dans counter maintient l'accès à la variable count à travers plusieurs appels."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

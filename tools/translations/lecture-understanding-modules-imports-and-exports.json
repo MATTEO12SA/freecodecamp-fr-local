@@ -1,0 +1,231 @@
+{
+  "workshop": "lecture-understanding-modules-imports-and-exports",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329fd6ad99c75d4a4b74e4.md",
+      "id": "67329fd6ad99c75d4a4b74e4",
+      "dashedName": "what-is-a-module-in-javascript-and-how-can-you-import-and-export-modules-in-your-program",
+      "title": {
+        "en": "What Is a Module in JavaScript, and How Can You Import and Export Modules in Your Program?",
+        "fr": "Qu'est-ce qu'un module en JavaScript, et comment importer et exporter des modules dans ton programme ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In JavaScript, a module is a self-contained unit of code that encapsulates related functions, classes, or variables.",
+              "fr": "En JavaScript, un module est une unité de code autonome qui encapsule des fonctions, des classes ou des variables liées."
+            },
+            {
+              "en": "Think of a module as a building block for your application, much like a chapter in a book. Each module focuses on a specific functionality, making your code more organized, maintainable, and reusable. Modules help prevent naming conflicts and allow you to structure your application into separate, interconnected pieces.",
+              "fr": "Imagine un module comme un élément de base pour ton application, un peu comme un chapitre dans un livre. Chaque module se concentre sur une fonctionnalité précise, ce qui rend ton code plus organisé, plus facile à maintenir et réutilisable. Les modules aident à éviter les conflits de noms et te permettent de structurer ton application en morceaux séparés et interconnectés."
+            },
+            {
+              "en": "The concept of modules in JavaScript has evolved over time, but the most widely used and supported approach is the ES6 (ECMAScript 2015) module system. This system provides a standardized way to define and use modules across different JavaScript environments.",
+              "fr": "Le concept de modules en JavaScript a évolué au fil du temps, mais l'approche la plus utilisée et la plus prise en charge est le système de modules ES6 (ECMAScript 2015). Ce système fournit une manière standardisée de définir et d'utiliser des modules dans différents environnements JavaScript."
+            },
+            {
+              "en": "To create a module, you write your JavaScript code in a separate file. Any variables, functions, or classes you want to make available to other parts of your application need to be explicitly exported. You can do this using the `export` keyword.",
+              "fr": "Pour créer un module, tu écris ton code JavaScript dans un fichier séparé. Toutes les variables, fonctions ou classes que tu veux rendre disponibles aux autres parties de ton application doivent être explicitement exportées. Tu peux le faire en utilisant le mot-clé `export`."
+            },
+            {
+              "en": "For example, let's say you have a file called `math.js` with some math functions:",
+              "fr": "Par exemple, disons que tu as un fichier appelé `math.js` avec quelques fonctions mathématiques :"
+            },
+            {
+              "en": "In this example, we're exporting two functions (`add` and `subtract`) and a constant (`PI`). You can export as many items as you need from a single module.",
+              "fr": "Dans cet exemple, nous exportons deux fonctions (`add` et `subtract`) et une constante (`PI`). Tu peux exporter autant d'éléments que nécessaire depuis un seul module."
+            },
+            {
+              "en": "To use these exported items in another part of your application, you need to import them. This is done using the `import` keyword.",
+              "fr": "Pour utiliser ces éléments exportés dans une autre partie de ton application, tu dois les importer. Cela se fait en utilisant le mot-clé `import`."
+            },
+            {
+              "en": "Let's say you want to use these math functions in a file called `app.js`:",
+              "fr": "Disons que tu veux utiliser ces fonctions mathématiques dans un fichier appelé `app.js` :"
+            },
+            {
+              "en": "Here, we're importing the specific functions and constant we need from the `math.js` module. The `'./math.js'` part tells JavaScript where to find the module file relative to the current file.",
+              "fr": "Ici, nous importons les fonctions et la constante spécifiques dont nous avons besoin depuis le module `math.js`. La partie `'./math.js'` indique à JavaScript où trouver le fichier du module par rapport au fichier actuel."
+            },
+            {
+              "en": "Sometimes, you might want to import everything a module exports. You can do this using the asterisk (`*`) syntax:",
+              "fr": "Parfois, tu peux vouloir importer tout ce qu'un module exporte. Tu peux le faire en utilisant la syntaxe avec l'astérisque (`*`) :"
+            },
+            {
+              "en": "In this case, all exports from `math.js` are imported as properties of an object called `Math`.",
+              "fr": "Dans ce cas, toutes les exportations de `math.js` sont importées en tant que propriétés d'un objet appelé `Math`."
+            },
+            {
+              "en": "Another common pattern is to have a default export in a module. This is typically used when a module primarily exports a single function. You can only have one default export per module.",
+              "fr": "Un autre modèle courant consiste à avoir une exportation par défaut dans un module. Cela est généralement utilisé lorsqu'un module exporte principalement une seule fonction. Tu ne peux avoir qu'une seule exportation par défaut par module."
+            },
+            {
+              "en": "Here's how it looks:",
+              "fr": "Voici à quoi cela ressemble :"
+            },
+            {
+              "en": "Notice that when importing a default export, you don't need to use curly braces, and you can name the import whatever you want.",
+              "fr": "Remarque que lors de l'importation d'une exportation par défaut, tu n'as pas besoin d'utiliser des accolades, et tu peux nommer l'import comme tu le souhaites."
+            },
+            {
+              "en": "It's important to note that to use ES6 modules in the browser, you need to specify the `type` as `module` in your `script` tag:",
+              "fr": "Il est important de noter que pour utiliser les modules ES6 dans le navigateur, tu dois spécifier le `type` comme `module` dans ta balise `script` :"
+            },
+            {
+              "en": "Modules provide a powerful way to organize and structure your JavaScript code. They allow you to break your application into smaller, manageable pieces, promote code reuse, and help maintain a clean separation of concerns. As you build larger applications, you'll find that modules become an essential tool in your JavaScript development toolkit.",
+              "fr": "Les modules offrent un moyen puissant d'organiser et de structurer ton code JavaScript. Ils te permettent de diviser ton application en morceaux plus petits et gérables, favorisent la réutilisation du code et aident à maintenir une séparation claire des responsabilités. Au fur et à mesure que tu construis des applications plus grandes, tu découvriras que les modules deviennent un outil essentiel dans ta boîte à outils de développement JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What keyword is used to make functions, variables, or classes available to other modules?",
+              "fr": "Quel mot-clé est utilisé pour rendre des fonctions, des variables ou des classes disponibles aux autres modules ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword we use to make items accessible outside their original module.",
+              "fr": "Réfléchis au mot-clé que nous utilisons pour rendre les éléments accessibles en dehors de leur module d'origine."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword we use to make items accessible outside their original module.",
+              "fr": "Réfléchis au mot-clé que nous utilisons pour rendre les éléments accessibles en dehors de leur module d'origine."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword we use to make items accessible outside their original module.",
+              "fr": "Réfléchis au mot-clé que nous utilisons pour rendre les éléments accessibles en dehors de leur module d'origine."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you import a default export from a module?",
+              "fr": "Comment importer une exportation par défaut depuis un module ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax we discussed for importing default exports.",
+              "fr": "Souviens-toi de la syntaxe spéciale que nous avons abordée pour importer les exportations par défaut."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax we discussed for importing default exports.",
+              "fr": "Souviens-toi de la syntaxe spéciale que nous avons abordée pour importer les exportations par défaut."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax we discussed for importing default exports.",
+              "fr": "Souviens-toi de la syntaxe spéciale que nous avons abordée pour importer les exportations par défaut."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of using modules in JavaScript?",
+              "fr": "Quel est l'objectif d'utiliser des modules en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To make the code run faster.",
+              "fr": "Pour faire exécuter le code plus rapidement."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the main advantages of using modules that we discussed.",
+              "fr": "Considère les principaux avantages de l'utilisation des modules que nous avons abordés."
+            },
+            {
+              "en": "To reduce the file size of the application.",
+              "fr": "Pour réduire la taille des fichiers de l'application."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the main advantages of using modules that we discussed.",
+              "fr": "Considère les principaux avantages de l'utilisation des modules que nous avons abordés."
+            },
+            {
+              "en": "To organize code into manageable, reusable pieces.",
+              "fr": "Pour organiser le code en morceaux gérables et réutilisables."
+            },
+            {
+              "en": "To encrypt sensitive parts of the code.",
+              "fr": "Pour chiffrer les parties sensibles du code."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the main advantages of using modules that we discussed.",
+              "fr": "Considère les principaux avantages de l'utilisation des modules que nous avons abordés."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

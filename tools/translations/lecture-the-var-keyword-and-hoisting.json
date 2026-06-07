@@ -1,0 +1,480 @@
+{
+  "workshop": "lecture-the-var-keyword-and-hoisting",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67329fbcfaf5ff5cdaa38a42.md",
+      "id": "67329fbcfaf5ff5cdaa38a42",
+      "dashedName": "what-is-the-var-keyword-and-why-is-it-no-longer-suggested-to-use-it",
+      "title": {
+        "en": "What Is the var Keyword, and Why Is It No Longer Suggested to Use It?",
+        "fr": "Qu'est-ce que le mot-clé `var`, et pourquoi n'est-il plus recommandé de l'utiliser ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `var` keyword in JavaScript is one of the original ways to declare variables. It has been part of the language since its inception and for many years it remained the primary method for creating variables. However as JavaScript evolved and developers gained more experience with the language, certain drawbacks of using `var` became apparent leading to the introduction of `let` and `const` in 2015.",
+              "fr": "Le mot-clé `var` en JavaScript est l'une des premières façons de déclarer des variables. Il fait partie du langage depuis ses débuts et, pendant de nombreuses années, il est resté la méthode principale pour créer des variables. Cependant, à mesure que JavaScript a évolué et que les développeurs ont acquis plus d'expérience avec le langage, certains inconvénients de l'utilisation de `var` sont devenus évidents, ce qui a conduit à l'introduction de `let` et `const` en 2015."
+            },
+            {
+              "en": "When you declare a variable with `var`, it becomes function-scoped or globally-scoped. This means that if you declare a variable inside a function using `var` it's only accessible within that function. However if you declare it outside any function, it becomes a global variable accessible throughout your entire script. This behavior can sometimes lead to unexpected results and make your code harder to understand.",
+              "fr": "Lorsque tu déclares une variable avec `var`, elle devient limitée à la fonction ou à la portée globale. Cela signifie que si tu déclares une variable à l'intérieur d'une fonction en utilisant `var`, elle n'est accessible que dans cette fonction. Cependant, si tu la déclares en dehors de toute fonction, elle devient une variable globale accessible dans tout ton script. Ce comportement peut parfois conduire à des résultats inattendus et rendre ton code plus difficile à comprendre."
+            },
+            {
+              "en": "A problem with `var` is that it allows you to redeclare the same variable multiple times without throwing an error. This can lead to accidental overwrites and make debugging more difficult.",
+              "fr": "Un problème avec `var` est qu'il te permet de redéclarer la même variable plusieurs fois sans générer d'erreur. Cela peut entraîner des écrasements accidentels et rendre le débogage plus difficile."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The most significant issue with `var` is its lack of block scoping. Variables declared with `var` inside a block like an `if` statement or a `for` loop are still accessible outside that block.",
+              "fr": "Le problème le plus important avec `var` est son absence de portée de bloc. Les variables déclarées avec `var` à l'intérieur d'un bloc, comme une instruction `if` ou une boucle `for`, restent accessibles en dehors de ce bloc."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This behavior can lead to unintended variable leaks and make your code more prone to bugs.",
+              "fr": "Ce comportement peut entraîner des fuites de variables involontaires et rendre ton code plus susceptible de bugs."
+            },
+            {
+              "en": "Due to these issues, modern JavaScript development has largely moved away from `var` in favor of `let` and `const`. These keywords provide block scoping which aligns more closely with how scoping works in many other programming languages.",
+              "fr": "En raison de ces problèmes, le développement JavaScript moderne s'est largement éloigné de `var` au profit de `let` et `const`. Ces mots-clés offrent une portée de bloc qui correspond mieux au fonctionnement de la portée dans de nombreux autres langages de programmation."
+            },
+            {
+              "en": "They also don't allow redeclaration within the same scope helping to prevent accidental overrides.",
+              "fr": "Ils n'autorisent pas non plus la redéclaration dans la même portée, ce qui aide à prévenir les écrasements accidentels."
+            },
+            {
+              "en": "While `var` is still part of JavaScript and works in all browsers, it's generally recommended to use `let` and `const` in modern JavaScript development. They provide clear scoping rules, help prevent common pitfalls, and make your code's behavior more predictable.",
+              "fr": "Bien que `var` fasse toujours partie de JavaScript et fonctionne dans tous les navigateurs, il est généralement recommandé d'utiliser `let` et `const` dans le développement JavaScript moderne. Ils fournissent des règles de portée claires, aident à éviter les pièges courants et rendent le comportement de ton code plus prévisible."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the scope of a variable declared with `var` outside of any function?",
+              "fr": "Quelle est la portée d'une variable déclarée avec `var` en dehors de toute fonction ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Block scope.",
+              "fr": "Portée de bloc."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a `var` variable declared outside a function can be accessed.",
+              "fr": "Réfléchis à l'endroit où une variable `var` déclarée en dehors d'une fonction peut être accessible."
+            },
+            {
+              "en": "Function scope.",
+              "fr": "Portée de fonction."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a `var` variable declared outside a function can be accessed.",
+              "fr": "Réfléchis à l'endroit où une variable `var` déclarée en dehors d'une fonction peut être accessible."
+            },
+            {
+              "en": "Global scope.",
+              "fr": "Portée globale."
+            },
+            {
+              "en": "Module scope.",
+              "fr": "Portée de module."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where a `var` variable declared outside a function can be accessed.",
+              "fr": "Réfléchis à l'endroit où une variable `var` déclarée en dehors d'une fonction peut être accessible."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the output of the following code?",
+              "fr": "Quelle sera la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `var` is function-scoped or globally-scoped, and it allows redeclaration within the same scope.",
+              "fr": "Rappelle-toi que `var` a une portée de fonction ou globale, et qu'il permet la redéclaration dans la même portée."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `var` is function-scoped or globally-scoped, and it allows redeclaration within the same scope.",
+              "fr": "Rappelle-toi que `var` a une portée de fonction ou globale, et qu'il permet la redéclaration dans la même portée."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that `var` is function-scoped or globally-scoped, and it allows redeclaration within the same scope.",
+              "fr": "Rappelle-toi que `var` a une portée de fonction ou globale, et qu'il permet la redéclaration dans la même portée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a reason to avoid using `var` in modern JavaScript?",
+              "fr": "Lequel des éléments suivants N'est PAS une raison d'éviter d'utiliser `var` en JavaScript moderne ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`var` allows redeclaration of variables in the same scope.",
+              "fr": "`var` permet de redéclarer des variables dans la même portée."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which statement is false about `var`'s behavior or support.",
+              "fr": "Réfléchis à quelle affirmation est fausse concernant le comportement ou le support de `var`."
+            },
+            {
+              "en": "`var` is not supported in modern browsers.",
+              "fr": "`var` n'est pas pris en charge dans les navigateurs modernes."
+            },
+            {
+              "en": "`var` variables are function-scoped, not block-scoped.",
+              "fr": "Les variables `var` ont une portée de fonction, pas une portée de bloc."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which statement is false about `var`'s behavior or support.",
+              "fr": "Réfléchis à quelle affirmation est fausse concernant le comportement ou le support de `var`."
+            },
+            {
+              "en": "`var` variables are hoisted.",
+              "fr": "Les variables `var` sont hoistées."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which statement is false about `var`'s behavior or support.",
+              "fr": "Réfléchis à quelle affirmation est fausse concernant le comportement ou le support de `var`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67335f45489c5a11b71d0ed5.md",
+      "id": "67335f45489c5a11b71d0ed5",
+      "dashedName": "what-is-hoisting",
+      "title": {
+        "en": "What Is Hoisting?",
+        "fr": "Qu'est-ce que le hoisting ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Hoisting is a behavior in JavaScript that often confuses beginners, but understanding it can help you avoid subtle bugs in your code. In simple terms hoisting is JavaScript's default behavior of moving declarations to the top of their respective scopes during the compilation phase before the code is executed.",
+              "fr": "Le hoisting est un comportement en JavaScript qui perturbe souvent les débutants, mais le comprendre peut t'aider à éviter des bugs subtils dans ton code. En termes simples, le hoisting est le comportement par défaut de JavaScript qui consiste à déplacer les déclarations en haut de leurs portées respectives pendant la phase de compilation, avant l'exécution du code."
+            },
+            {
+              "en": "To understand hoisting, it's important to know that JavaScript runs in two phases: the compilation phase and the execution phase. During the compilation phase, the JavaScript engine goes through your code and sets up memory space for variables and functions. This is where hoisting comes into play.",
+              "fr": "Pour comprendre le hoisting, il est important de savoir que JavaScript s'exécute en deux phases : la phase de compilation et la phase d'exécution. Pendant la phase de compilation, le moteur JavaScript parcourt ton code et réserve de l'espace mémoire pour les variables et les fonctions. C'est là qu'intervient le hoisting."
+            },
+            {
+              "en": "Let's start with variables hoisting, when you declare a variable using the `var` keyword, JavaScript hoists the declaration to the top of its scope. However it's crucial to note that only the declaration is hoisted, not the initialization. This means you can use a variable in your code before you have declared it, but its value will be `undefined` until you actually assign a value to it.",
+              "fr": "Commençons par le hoisting des variables : lorsque tu déclares une variable en utilisant le mot-clé `var`, JavaScript remonte la déclaration en haut de sa portée. Cependant, il est crucial de noter que seule la déclaration est hoistée, pas l'initialisation. Cela signifie que tu peux utiliser une variable dans ton code avant de l'avoir déclarée, mais sa valeur sera `undefined` jusqu'à ce que tu lui assignes réellement une valeur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this code even though we use `x` before declaring it we don't get an error, instead we get `undefined`. This is because JavaScript hoists the declaration `var x` to the top of its scope but not the initialization `x = 5`. It's as if the code were rewritten like this:",
+              "fr": "Dans ce code, même si nous utilisons `x` avant de le déclarer, nous n'obtenons pas d'erreur, mais plutôt `undefined`. C'est parce que JavaScript remonte la déclaration `var x` en haut de sa portée, mais pas l'initialisation `x = 5`. C'est comme si le code était réécrit ainsi :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Function hoisting works a bit differently. When you declare a function using the `function` declaration syntax both the function name and the function body are hoisted. This means you can call a function before you've declared it in your code. Here's an example of function hoisting:",
+              "fr": "Le hoisting des fonctions fonctionne un peu différemment. Lorsque tu déclares une fonction en utilisant la syntaxe de déclaration `function`, le nom de la fonction et le corps de la fonction sont tous deux hoistés. Cela signifie que tu peux appeler une fonction avant de l'avoir déclarée dans ton code. Voici un exemple de hoisting de fonction :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this case, we can call `sayHello()` before its declaration because the entire function is hoisted to the top of its scope.",
+              "fr": "Dans ce cas, nous pouvons appeler `sayHello()` avant sa déclaration, car l'intégralité de la fonction est hoistée en haut de sa portée."
+            },
+            {
+              "en": "It's important to note that hoisting works differently with `let` and `const` declarations introduced in ES6.",
+              "fr": "Il est important de noter que le hoisting fonctionne différemment avec les déclarations `let` et `const` introduites dans ES6."
+            },
+            {
+              "en": "These declarations are hoisted but they are not initialized and you can't access them before the actual declaration in your code. This is often referred to as the temporal dead zone.",
+              "fr": "Ces déclarations sont hoistées, mais elles ne sont pas initialisées et tu ne peux pas y accéder avant la déclaration réelle dans ton code. On appelle cela la zone morte temporelle."
+            },
+            {
+              "en": "Understanding hoisting can help you write cleaner, more predictable code. However, relying on hoisting can make your code harder to read and maintain. As a best practice, it's recommended to declare your variables at the top of their scope and your functions before you use them regardless of hoisting. This make your code's behavior more explicit and easier for others including your future self to understand.",
+              "fr": "Comprendre le hoisting peut t'aider à écrire un code plus propre et plus prévisible. Cependant, s'appuyer sur le hoisting peut rendre ton code plus difficile à lire et à maintenir. En bonne pratique, il est recommandé de déclarer tes variables en haut de leur portée et tes fonctions avant de les utiliser, indépendamment du hoisting. Cela rend le comportement de ton code plus explicite et plus facile à comprendre pour les autres, y compris ton futur toi."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when a variable declared with `var` is hoisted?",
+              "fr": "Que se passe-t-il lorsqu'une variable déclarée avec `var` est hoistée ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Both the declaration and initialization are moved to the top.",
+              "fr": "La déclaration et l'initialisation sont toutes deux déplacées en haut."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what value a hoisted variable has before it's explicitly assigned a value.",
+              "fr": "Réfléchis à quelle valeur possède une variable hoistée avant qu'une valeur ne lui soit explicitement assignée."
+            },
+            {
+              "en": "Only the declaration is moved to the top.",
+              "fr": "Seule la déclaration est déplacée en haut."
+            },
+            {
+              "en": "The variable is not hoisted at all.",
+              "fr": "La variable n'est pas hoistée du tout."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what value a hoisted variable has before it's explicitly assigned a value.",
+              "fr": "Réfléchis à quelle valeur possède une variable hoistée avant qu'une valeur ne lui soit explicitement assignée."
+            },
+            {
+              "en": "The variable is deleted from the code.",
+              "fr": "La variable est supprimée du code."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what value a hoisted variable has before it's explicitly assigned a value.",
+              "fr": "Réfléchis à quelle valeur possède une variable hoistée avant qu'une valeur ne lui soit explicitement assignée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does function hoisting differ from variable hoisting?",
+              "fr": "En quoi le hoisting des fonctions diffère-t-il du hoisting des variables ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Functions are not hoisted.",
+              "fr": "Les fonctions ne sont pas hoistées."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider whether you can call a function before its declaration in the code.",
+              "fr": "Réfléchis à savoir si tu peux appeler une fonction avant sa déclaration dans le code."
+            },
+            {
+              "en": "Only the function name is hoisted.",
+              "fr": "Seul le nom de la fonction est hoisté."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider whether you can call a function before its declaration in the code.",
+              "fr": "Réfléchis à savoir si tu peux appeler une fonction avant sa déclaration dans le code."
+            },
+            {
+              "en": "Both the function name and body are hoisted.",
+              "fr": "Le nom de la fonction et son corps sont tous deux hoistés."
+            },
+            {
+              "en": "Function hoisting only works with arrow functions.",
+              "fr": "Le hoisting des fonctions ne fonctionne qu'avec les fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider whether you can call a function before its declaration in the code.",
+              "fr": "Réfléchis à savoir si tu peux appeler une fonction avant sa déclaration dans le code."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the result of trying to access a variable declared with `let` before its declaration in the code?",
+              "fr": "Quel est le résultat si tu essaies d'accéder à une variable déclarée avec `let` avant sa déclaration dans le code ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It returns `undefined`.",
+              "fr": "Elle renvoie `undefined`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of the \"temporal dead zone\" mentioned in the lesson.",
+              "fr": "Réfléchis au concept de « zone morte temporelle » mentionné dans la leçon."
+            },
+            {
+              "en": "It throws a `ReferenceError`.",
+              "fr": "Elle génère une `ReferenceError`."
+            },
+            {
+              "en": "It returns `null`.",
+              "fr": "Elle renvoie `null`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of the \"temporal dead zone\" mentioned in the lesson.",
+              "fr": "Réfléchis au concept de « zone morte temporelle » mentionné dans la leçon."
+            },
+            {
+              "en": "It works without any issues",
+              "fr": "Cela fonctionne sans aucun problème."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the concept of the \"temporal dead zone\" mentioned in the lesson.",
+              "fr": "Réfléchis au concept de « zone morte temporelle » mentionné dans la leçon."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
