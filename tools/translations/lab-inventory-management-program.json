@@ -1,0 +1,105 @@
+{
+  "workshop": "lab-inventory-management-program",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66d75dd0aa65a71600dc669b.md",
+      "id": "66d75dd0aa65a71600dc669b",
+      "dashedName": "build-an-inventory-management-program",
+      "title": {
+        "en": "Build an Inventory Management Program",
+        "fr": "Crée un programme de gestion d'inventaire"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build an inventory management program that will allow you to add, update, find and remove products from the inventory. You will use an array of objects to represent your inventory, where each object will have name and quantity as the keys.",
+          "fr": "Dans ce lab, tu vas créer un programme de gestion d'inventaire qui te permettra d'ajouter, de mettre à jour, de trouver et de retirer des produits de l'inventaire. Tu utiliseras un tableau d'objets pour représenter ton inventaire, où chaque objet aura `name` et `quantity` comme clés."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should declare an empty array named `inventory` that will store product objects having a key `name` with the value of a lowercase string, and a key `quantity` with the value of an integer.\n1. You should create a function named `findProductIndex` that takes the product name as its argument and returns the index of the corresponding product object inside the `inventory` array. The function should always use the lowercase form of the product name to perform the search. If the product is not found, the function should return `-1`.\n1. You should create a function named `addProduct` that takes a product object as its argument.\n1. If the product is already present in the inventory, the `addProduct` function should update its `quantity` value by adding the quantity passed in to the function to the current `quantity` and log to the console the product name followed by a space and `quantity updated`.\n1. If the product is not present in the inventory, the `addProduct` function should push the product to the `inventory` array and log the product name to the console, followed by a space and `added to inventory`.\n1. You should create a function named `removeProduct` that takes the product name and quantity as its arguments.\n1. The `removeProduct` function should subtract the passed quantity from the corresponding product object inside the inventory and log the string `Remaining <product-name> pieces: <product-quantity>` to the console, where `<product-name>` should be replaced by the product name, and `<product-quantity>` should be replaced by the product quantity.\n1. If the quantity after the subtraction is zero, `removeProduct` should remove the product object from the inventory. If the quantity in the inventory is not enough to perform the subtraction, the `removeProduct` function should log the string `Not enough <product-name> available, remaining pieces: <product-quantity>` to the console.\n1. If the product to remove is not present in the inventory, the `removeProduct` function should log `<product-name> not found` to the console.",
+          "fr": "1. Tu dois déclarer un tableau vide nommé `inventory` qui stockera des objets produit ayant une clé `name` avec la valeur d'une chaîne en minuscules, et une clé `quantity` avec la valeur d'un entier.\n1. Tu dois créer une fonction nommée `findProductIndex` qui prend le nom du produit en argument et renvoie l'indice de l'objet produit correspondant dans le tableau `inventory`. La fonction doit toujours utiliser la forme en minuscules du nom du produit pour effectuer la recherche. Si le produit n'est pas trouvé, la fonction doit renvoyer `-1`.\n1. Tu dois créer une fonction nommée `addProduct` qui prend un objet produit en argument.\n1. Si le produit est déjà présent dans l'inventaire, la fonction `addProduct` doit mettre à jour sa valeur `quantity` en ajoutant la quantité passée à la fonction à la `quantity` actuelle et afficher dans la console le nom du produit suivi d'un espace et de `quantity updated`.\n1. Si le produit n'est pas présent dans l'inventaire, la fonction `addProduct` doit ajouter le produit au tableau `inventory` et afficher dans la console le nom du produit suivi d'un espace et de `added to inventory`.\n1. Tu dois créer une fonction nommée `removeProduct` qui prend le nom du produit et la quantité en arguments.\n1. La fonction `removeProduct` doit soustraire la quantité passée de l'objet produit correspondant dans l'inventaire et afficher dans la console la chaîne `Remaining <product-name> pieces: <product-quantity>`, où `<product-name>` doit être remplacé par le nom du produit et `<product-quantity>` par la quantité du produit.\n1. Si la quantité après la soustraction est zéro, `removeProduct` doit retirer l'objet produit de l'inventaire. Si la quantité dans l'inventaire n'est pas suffisante pour effectuer la soustraction, la fonction `removeProduct` doit afficher dans la console la chaîne `Not enough <product-name> available, remaining pieces: <product-quantity>`.\n1. Si le produit à retirer n'est pas présent dans l'inventaire, la fonction `removeProduct` doit afficher `<product-name> not found` dans la console."
+        },
+        {
+          "en": "**Note:** To prevent conflicts, keep only the logging mentioned in the user stories when running tests.",
+          "fr": "**Note :** pour éviter les conflits, conserve uniquement les affichages mentionnés dans les user stories lors de l'exécution des tests."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare an empty array named `inventory`.",
+          "fr": "Tu dois déclarer un tableau vide nommé `inventory`."
+        },
+        {
+          "en": "You should have a function named `findProductIndex`.",
+          "fr": "Tu dois avoir une fonction nommée `findProductIndex`."
+        },
+        {
+          "en": "`findProductIndex(\"flour\")` should return the index of the object having `name` equal to `\"flour\"` inside the `inventory` array.",
+          "fr": "`findProductIndex(\"flour\")` doit renvoyer l'indice de l'objet ayant `name` égal à `\"flour\"` dans le tableau `inventory`."
+        },
+        {
+          "en": "`findProductIndex(\"FloUr\")` should return the index of the object having `name` equal to `\"flour\"` inside the `inventory` array.",
+          "fr": "`findProductIndex(\"FloUr\")` doit renvoyer l'indice de l'objet ayant `name` égal à `\"flour\"` dans le tableau `inventory`."
+        },
+        {
+          "en": "`findProductIndex(\"Flour\")` should return `-1` when no object having `name` equal to `\"flour\"` is found inside the `inventory` array.",
+          "fr": "`findProductIndex(\"Flour\")` doit renvoyer `-1` lorsqu'aucun objet ayant `name` égal à `\"flour\"` n'est trouvé dans le tableau `inventory`."
+        },
+        {
+          "en": "You should have a function named `addProduct`.",
+          "fr": "Tu dois avoir une fonction nommée `addProduct`."
+        },
+        {
+          "en": "`addProduct({name: \"FLOUR\", quantity: 5})` should add `5` to `quantity` value of the object having `name` equal to `\"flour\"` in the `inventory` array.",
+          "fr": "`addProduct({name: \"FLOUR\", quantity: 5})` doit ajouter `5` à la valeur `quantity` de l'objet ayant `name` égal à `\"flour\"` dans le tableau `inventory`."
+        },
+        {
+          "en": "`addProduct({name: \"FLOUR\", quantity: 5})` should log `flour quantity updated` when an object having `name` equal to `\"flour\"` is found in the `inventory` array.",
+          "fr": "`addProduct({name: \"FLOUR\", quantity: 5})` doit afficher `flour quantity updated` lorsqu'un objet ayant `name` égal à `\"flour\"` est trouvé dans le tableau `inventory`."
+        },
+        {
+          "en": "`addProduct({name: \"FLOUR\", quantity: 5})` should push `{name: \"flour\", quantity: 5}` to the `inventory` array when no object having `name` equal to `\"flour\"` is found in the inventory.",
+          "fr": "`addProduct({name: \"FLOUR\", quantity: 5})` doit ajouter `{name: \"flour\", quantity: 5}` au tableau `inventory` lorsqu'aucun objet ayant `name` égal à `\"flour\"` n'est trouvé dans l'inventaire."
+        },
+        {
+          "en": "`addProduct({name: \"FLOUR\", quantity: 5})` should log `flour added to inventory` when no object having `name` equal to `\"flour\"` is found in the inventory.",
+          "fr": "`addProduct({name: \"FLOUR\", quantity: 5})` doit afficher `flour added to inventory` lorsqu'aucun objet ayant `name` égal à `\"flour\"` n'est trouvé dans l'inventaire."
+        },
+        {
+          "en": "You should create a function named `removeProduct`.",
+          "fr": "Tu dois créer une fonction nommée `removeProduct`."
+        },
+        {
+          "en": "`removeProduct(\"FLOUR\", 5)` should log `flour not found` when no object having `name` equal to `\"flour\"` is found in the `inventory` array.",
+          "fr": "`removeProduct(\"FLOUR\", 5)` doit afficher `flour not found` lorsqu'aucun objet ayant `name` égal à `\"flour\"` n'est trouvé dans le tableau `inventory`."
+        },
+        {
+          "en": "`removeProduct(\"FLOUR\", 5)` should subtract `5` from the `quantity` value of the object having `name` equal to `\"flour\"` inside the `inventory` array.",
+          "fr": "`removeProduct(\"FLOUR\", 5)` doit soustraire `5` de la valeur `quantity` de l'objet ayant `name` égal à `\"flour\"` dans le tableau `inventory`."
+        },
+        {
+          "en": "`removeProduct(\"FLOUR\", 5)` should log `Remaining flour pieces: 15` to the console, when `inventory` is equal to `[{name: \"flour\", quantity: 20}, {name: \"rice\", quantity: 5}]`.",
+          "fr": "`removeProduct(\"FLOUR\", 5)` doit afficher `Remaining flour pieces: 15` dans la console, lorsque `inventory` est égal à `[{name: \"flour\", quantity: 20}, {name: \"rice\", quantity: 5}]`."
+        },
+        {
+          "en": "If the `quantity` after the subtraction is zero, `removeProduct` should remove the product object from the inventory.",
+          "fr": "Si la `quantity` après la soustraction est zéro, `removeProduct` doit retirer l'objet produit de l'inventaire."
+        },
+        {
+          "en": "`removeProduct(\"FLOUR\", 10)` should log `Not enough flour available, remaining pieces: 5` when `inventory` is equal to `[{name: \"flour\", quantity: 5}, {name: \"rice\", quantity: 5}]`.",
+          "fr": "`removeProduct(\"FLOUR\", 10)` doit afficher `Not enough flour available, remaining pieces: 5` lorsque `inventory` est égal à `[{name: \"flour\", quantity: 5}, {name: \"rice\", quantity: 5}]`."
+        }
+      ]
+    }
+  ]
+}

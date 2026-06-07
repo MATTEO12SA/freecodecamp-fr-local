@@ -1,0 +1,121 @@
+{
+  "workshop": "lab-playlist-remix-engine",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6976db7ecfa770bf21307b20.md",
+      "id": "6976db7ecfa770bf21307b20",
+      "dashedName": "build-a-playlist-remix-engine",
+      "title": {
+        "en": "Build a Playlist Remix Engine",
+        "fr": "Crée un moteur de remix de playlists"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a program that creates a single remix playlist from multiple playlists submitted by listeners.",
+          "fr": "Dans ce lab, tu vas créer un programme qui génère une seule playlist remix à partir de plusieurs playlists soumises par les auditeurs."
+        },
+        {
+          "en": "Each listener provides a list of songs they want to hear. Some songs may appear more than once, and some artists may show up too many times. Your job is to work through these playlists step by step: combine them into one list, score each song, remove duplicate songs, limit how often the same artist appears, and then create a final play order.",
+          "fr": "Chaque auditeur fournit une liste de chansons qu'il souhaite entendre. Certaines chansons peuvent apparaître plus d'une fois, et certains artistes peuvent être trop présents. Ton travail consiste à traiter ces playlists étape par étape : les combiner en une seule liste, noter chaque chanson, supprimer les doublons, limiter la fréquence d'apparition d'un même artiste, puis créer un ordre de lecture final."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should create a function named `flattenPlaylists` that accepts an array of playlists where each playlist is an array of objects with the following properties: `trackId`, `artist`, `title`, `votes`, `bpm`. If the input is not an array, `flattenPlaylists` should return an empty array. An example playlist has been provided for you. You can use this example to test out your function.",
+          "fr": "1. Tu dois créer une fonction nommée `flattenPlaylists` qui accepte un tableau de playlists, chaque playlist étant un tableau d'objets avec les propriétés suivantes : `trackId`, `artist`, `title`, `votes`, `bpm`. Si l'entrée n'est pas un tableau, `flattenPlaylists` doit renvoyer un tableau vide. Un exemple de playlist t'a été fourni. Tu peux utiliser cet exemple pour tester ta fonction."
+        },
+        {
+          "en": "2. `flattenPlaylists` should return a flat array of track objects, where each object includes all the original track properties plus a `source` property set to an array with the playlist index and the track index indicating where the track originated.",
+          "fr": "2. `flattenPlaylists` doit renvoyer un tableau plat d'objets piste, où chaque objet inclut toutes les propriétés originales de la piste plus une propriété `source` définie comme un tableau contenant l'indice de la playlist et l'indice de la piste indiquant l'origine de la piste."
+        },
+        {
+          "en": "3. You should create a function named `scoreTracks` that accepts an array of track objects as returned by `flattenPlaylists` (each with `trackId`, `artist`, `title`, `votes`, `bpm`, and `source` properties) and returns a new array of track objects, each with a `score` property added using the formula: `votes * 10 - Math.abs(bpm - 120)`.",
+          "fr": "3. Tu dois créer une fonction nommée `scoreTracks` qui accepte un tableau d'objets piste tels que renvoyés par `flattenPlaylists` (chacun avec les propriétés `trackId`, `artist`, `title`, `votes`, `bpm` et `source`) et renvoie un nouveau tableau d'objets piste, chacun avec une propriété `score` ajoutée selon la formule : `votes * 10 - Math.abs(bpm - 120)`."
+        },
+        {
+          "en": "4. You should create a function named `dedupeTracks` that accepts an array of track objects as returned by `scoreTracks` and returns a new array with duplicate `trackId` entries removed, keeping only the first occurrence of each.",
+          "fr": "4. Tu dois créer une fonction nommée `dedupeTracks` qui accepte un tableau d'objets piste tels que renvoyés par `scoreTracks` et renvoie un nouveau tableau sans les entrées `trackId` en double, en ne conservant que la première occurrence de chacune."
+        },
+        {
+          "en": "5. You should create a function named `enforceArtistQuota` that accepts an array of track objects as returned by `dedupeTracks` and a number representing the maximum allowed occurrences per artist. The function should return a new array where no artist appears more times than the given number, keeping the earliest occurrences.",
+          "fr": "5. Tu dois créer une fonction nommée `enforceArtistQuota` qui accepte un tableau d'objets piste tels que renvoyés par `dedupeTracks` et un nombre représentant le nombre maximal d'occurrences autorisées par artiste. La fonction doit renvoyer un nouveau tableau où aucun artiste n'apparaît plus de fois que le nombre donné, en conservant les occurrences les plus anciennes."
+        },
+        {
+          "en": "6. You should create a function named `buildSchedule` that accepts an array of track objects as returned by `enforceArtistQuota` and returns a new array of `{ slot, trackId }` objects, where `slot` is a 1-based index representing each track's position in the broadcast order.",
+          "fr": "6. Tu dois créer une fonction nommée `buildSchedule` qui accepte un tableau d'objets piste tels que renvoyés par `enforceArtistQuota` et renvoie un nouveau tableau d'objets `{ slot, trackId }`, où `slot` est un indice commençant à 1 représentant la position de chaque piste dans l'ordre de diffusion."
+        },
+        {
+          "en": "7. You should create a function named `remixPlaylist` that accepts an array of playlists and the maximum number of allowed occurrences per artist. The function should return the final broadcast schedule as an array of `{ slot, trackId }` objects, by calling `flattenPlaylists`, `scoreTracks`, `dedupeTracks`, `enforceArtistQuota`, and `buildSchedule` in order.",
+          "fr": "7. Tu dois créer une fonction nommée `remixPlaylist` qui accepte un tableau de playlists et le nombre maximal d'occurrences autorisées par artiste. La fonction doit renvoyer le planning de diffusion final sous forme de tableau d'objets `{ slot, trackId }`, en appelant `flattenPlaylists`, `scoreTracks`, `dedupeTracks`, `enforceArtistQuota` et `buildSchedule` dans cet ordre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `flattenPlaylists`.",
+          "fr": "Tu dois avoir une fonction nommée `flattenPlaylists`."
+        },
+        {
+          "en": "You should return an empty array from `flattenPlaylists` when the input is not an array.",
+          "fr": "Tu dois renvoyer un tableau vide depuis `flattenPlaylists` lorsque l'entrée n'est pas un tableau."
+        },
+        {
+          "en": "Each track returned by `flattenPlaylists` should include a `source` field that is an array containing the playlist index and the track index.",
+          "fr": "Chaque piste renvoyée par `flattenPlaylists` doit inclure un champ `source` qui est un tableau contenant l'indice de la playlist et l'indice de la piste."
+        },
+        {
+          "en": "You should have a function named `scoreTracks`.",
+          "fr": "Tu dois avoir une fonction nommée `scoreTracks`."
+        },
+        {
+          "en": "Each track returned by `scoreTracks` should include a numeric `score` field.",
+          "fr": "Chaque piste renvoyée par `scoreTracks` doit inclure un champ numérique `score`."
+        },
+        {
+          "en": "You should calculate `score` using a target BPM of `120` and this formula: `votes * 10 - Math.abs(bpm - 120)`.",
+          "fr": "Tu dois calculer `score` en utilisant un BPM cible de `120` et cette formule : `votes * 10 - Math.abs(bpm - 120)`."
+        },
+        {
+          "en": "You should have a function named `dedupeTracks`.",
+          "fr": "Tu dois avoir une fonction nommée `dedupeTracks`."
+        },
+        {
+          "en": "When duplicate `trackId` values exist, `dedupeTracks` should keep only the first occurrence of the track.",
+          "fr": "Lorsque des valeurs `trackId` en double existent, `dedupeTracks` doit ne conserver que la première occurrence de la piste."
+        },
+        {
+          "en": "You should have a function named `enforceArtistQuota`.",
+          "fr": "Tu dois avoir une fonction nommée `enforceArtistQuota`."
+        },
+        {
+          "en": "`enforceArtistQuota` should ensure no artist appears more than `maxPerArtist` times by removing extra tracks while keeping the earliest ones.",
+          "fr": "`enforceArtistQuota` doit s'assurer qu'aucun artiste n'apparaît plus de `maxPerArtist` fois en supprimant les pistes en trop tout en conservant les plus anciennes."
+        },
+        {
+          "en": "You should have a function named `buildSchedule`.",
+          "fr": "Tu dois avoir une fonction nommée `buildSchedule`."
+        },
+        {
+          "en": "`buildSchedule` should return an array of objects with the shape `{ slot, trackId }`, where `slot` starts at `1`.",
+          "fr": "`buildSchedule` doit renvoyer un tableau d'objets de la forme `{ slot, trackId }`, où `slot` commence à `1`."
+        },
+        {
+          "en": "You should have a function named `remixPlaylist`.",
+          "fr": "Tu dois avoir une fonction nommée `remixPlaylist`."
+        },
+        {
+          "en": "`remixPlaylist` should call the helper functions in order to produce the final schedule.",
+          "fr": "`remixPlaylist` doit appeler les fonctions auxiliaires dans l'ordre pour produire le planning final."
+        }
+      ]
+    }
+  ]
+}
