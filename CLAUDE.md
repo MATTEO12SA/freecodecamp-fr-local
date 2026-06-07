@@ -195,7 +195,7 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 80/230 blocs — modules 1-6 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`, `javascript-loops`). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 7 `review-javascript-fundamentals` (clé intro.json `review-javascript-fundamentals`).
+- **JavaScript v9** : 105/230 blocs — modules 1-7 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`, `javascript-loops`, `review-javascript-fundamentals`). Le pipeline gère les lectures (`kind: "lecture"`), workshops/labs (`kind: "workshop"`), reviews (kind lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 8 `higher-order-functions-and-callbacks` (clé intro.json `introduction-to-higher-order-functions-and-callbacks-in-javascript`).
 
 ## Pièges
 

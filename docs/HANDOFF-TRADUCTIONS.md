@@ -12,9 +12,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Modules 1-6 Terminés (80/230)
+### JavaScript v9 — Modules 1-7 Terminés (105/230)
 
-État actuel : 80 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10) et `javascript-loops` (15/15) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 6 = `lecture-working-with-loops` (5 leçons) + 5 workshops (`workshop-word-counter` 11, `workshop-sentence-analyzer` 8, `workshop-space-mission-roster` 32, `workshop-heritage-library-catalog` 30, `workshop-festival-crowd-flow-simulator` 33) + 7 labs + `review-javascript-loops` + `quiz-javascript-loops`. Prochaine cible : module 7 `review-javascript-fundamentals` (clé intro.json `review-javascript-fundamentals`).
+État actuel : 105 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10), `javascript-loops` (15/15) et `review-javascript-fundamentals` (25/25) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 7 = 6 lectures (11 leçons) + 17 labs + `review-javascript-fundamentals` + `quiz-javascript-fundamentals`. Prochaine cible : module 8 `higher-order-functions-and-callbacks` (clé intro.json `introduction-to-higher-order-functions-and-callbacks-in-javascript`).
 
 Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
 
@@ -228,7 +228,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (80/230 blocs). Modules 1-6 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 7 `review-javascript-fundamentals`.
+Suite en cours : JavaScript v9 (105/230 blocs). Modules 1-7 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 8 `higher-order-functions-and-callbacks`.
 
 ### Lister ce qui manque dans un module
 
@@ -255,7 +255,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 80/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 105/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -272,7 +272,7 @@ pnpm local:check:full                            # checks longs avant push final
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-6 **100 % complets** (80/230) ; prochaine cible = module 7 `review-javascript-fundamentals`.
+3. Continuer JavaScript v9 : modules 1-7 **100 % complets** (105/230) ; prochaine cible = module 8 `higher-order-functions-and-callbacks`.
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
