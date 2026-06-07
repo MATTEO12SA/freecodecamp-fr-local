@@ -6,15 +6,15 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : racine du depot `freecodecamp-fr-local`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : traduire le superblock `javascript-v9` du curriculum freeCodeCamp en français (le cert RWD v9 est déjà 100 % traduit et n'est plus suivi ici).
+- **Objectif** : traduire le superblock `javascript-v9` du curriculum freeCodeCamp en français.
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Modules 1-5 Terminés + Module 6 en cours (74/230)
+### JavaScript v9 — Modules 1-6 Terminés (80/230)
 
-État actuel : 74 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7) et `introduction-to-objects-in-javascript` (10/10) sont **100 % traduits**. Module 6 `javascript-loops` **en cours (9/15)** : les 7 labs (`lab-longest-word-in-a-string`, `lab-factorial-calculator`, `lab-mutations`, `lab-chunky-monkey`, `lab-profile-lookup`, `lab-repeat-a-string`, `lab-missing-letter-detector`) + `review-javascript-loops` + `quiz-javascript-loops` sont traduits (contenu + intro.json aux deux occurrences). **Restent 6 gros blocs (119 fichiers)** : `lecture-working-with-loops` (5), `workshop-word-counter` (11), `workshop-sentence-analyzer` (8), `workshop-space-mission-roster` (32), `workshop-heritage-library-catalog` (30), `workshop-festival-crowd-flow-simulator` (33). Ordre recommandé : lecture → sentence-analyzer → word-counter → puis les 3 workshops de 30+. Module 5 = 3 lectures (`lecture-introduction-to-javascript-objects-and-their-properties` 7 leçons, `lecture-working-with-json` 2, `lecture-working-with-optional-chaining-and-object-destructuring` 2) + 2 workshops (`workshop-wildlife-tracker` 12 étapes, `workshop-recipe-tracker` 13 étapes) + 3 labs (`lab-cargo-manifest-validator`, `lab-quiz-game`, `lab-record-collection`) + 1 review (`review-javascript-objects`) + 1 quiz (`quiz-javascript-objects`). Titres + intros des blocs traduits dans `intro.json` aux **deux occurrences** (map `blocks` + arbre `chapters/modules`). Prochaine cible : module 6 `javascript-loops` (clé intro.json `introduction-to-loops-in-javascript`).
+État actuel : 80 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10) et `javascript-loops` (15/15) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 6 = `lecture-working-with-loops` (5 leçons) + 5 workshops (`workshop-word-counter` 11, `workshop-sentence-analyzer` 8, `workshop-space-mission-roster` 32, `workshop-heritage-library-catalog` 30, `workshop-festival-crowd-flow-simulator` 33) + 7 labs + `review-javascript-loops` + `quiz-javascript-loops`. Prochaine cible : module 7 `review-javascript-fundamentals` (clé intro.json `review-javascript-fundamentals`).
 
 Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
 
@@ -228,7 +228,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (74/230 blocs). Modules 1-5 **100 % complets** ; module 6 `javascript-loops` en cours (9/15, restent 6 gros blocs). Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : les gros blocs du module 6 (`lecture-working-with-loops` puis les workshops).
+Suite en cours : JavaScript v9 (80/230 blocs). Modules 1-6 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 7 `review-javascript-fundamentals`.
 
 ### Lister ce qui manque dans un module
 
@@ -255,7 +255,7 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 74/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 80/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -272,7 +272,7 @@ pnpm local:check:full                            # checks longs avant push final
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-5 **100 % complets** + module 6 `javascript-loops` à 9/15 (74/230) ; prochaine cible = les 6 gros blocs du module 6 (`lecture-working-with-loops` puis les workshops).
+3. Continuer JavaScript v9 : modules 1-6 **100 % complets** (80/230) ; prochaine cible = module 7 `review-javascript-fundamentals`.
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
