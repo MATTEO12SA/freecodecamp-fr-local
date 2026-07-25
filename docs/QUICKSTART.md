@@ -119,7 +119,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 : 80 blocs FR sur 230 — modules 1-6 **100 % complets**. Prochaine cible : module 7 `review-javascript-fundamentals`. (RWD v9 : 158/158, cert terminé.)
+Etat actuel : JavaScript v9 : 105 blocs FR sur 230 — modules 1-7 **100 % complets**. Prochaine cible : module 8 `higher-order-functions-and-callbacks`. (RWD v9 : 158/158, cert terminé.)
 
 Workflow rapide mais relu manuellement :
 
