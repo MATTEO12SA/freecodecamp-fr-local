@@ -80,7 +80,7 @@ Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`, 
 .\dev-check.ps1 -OpenDev           # ouvre /dev-fr dans le navigateur quand UP
 ```
 
-Le script combine `status.json` + processus node + port TCP + HTTP HEAD `/`. Verdicts possibles :
+Le script combine `status.json` + processus node + HTTP HEAD `localhost` + fallback TCP IPv4/IPv6. Verdicts possibles :
 
 - `UP` : port 8000 ouvert ET HTTP repond. Exit 0.
 - `STARTING` : au moins un process node tourne mais le port n'est pas pret. Exit 3.

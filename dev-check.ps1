@@ -1,6 +1,7 @@
 # Verifie l'etat reel du serveur de dev freeCodeCamp.
 # Ne se fie PAS qu'a dev-logs/status.json (peut etre zombie apres un crash).
-# Combine status.json + processus node + port TCP + HTTP HEAD.
+# Combine status.json + processus node + HTTP HEAD + port TCP.
+# Sur Windows, Gatsby peut ecouter sur ::1 alors que 127.0.0.1 refuse.
 #
 # Usage:
 #   .\dev-check.ps1                 # verifie une fois, affiche le verdict
@@ -31,27 +32,36 @@ $statusFile = Join-Path $PSScriptRoot 'dev-logs/status.json'
 
 function Test-Port {
     param([int]$Port)
-    $tcp = New-Object System.Net.Sockets.TcpClient
-    try {
-        $task = $tcp.ConnectAsync('127.0.0.1', $Port)
-        if ($task.Wait(1500) -and $tcp.Connected) { return $true }
-        return $false
-    } catch {
-        return $false
-    } finally {
-        $tcp.Close()
+    foreach ($hostName in @('localhost', '127.0.0.1', '::1')) {
+        $tcp = New-Object System.Net.Sockets.TcpClient
+        try {
+            $task = $tcp.ConnectAsync($hostName, $Port)
+            if ($task.Wait(1500) -and $tcp.Connected) { return $true }
+        } catch {
+            # Try the next host. 127.0.0.1 can refuse while ::1 is UP.
+        } finally {
+            $tcp.Close()
+        }
     }
+    return $false
 }
 
 function Test-Http {
     param([int]$Port)
-    try {
-        $response = Invoke-WebRequest -Uri "http://127.0.0.1:$Port/" -UseBasicParsing -Method Head -TimeoutSec 3
-        return [int]$response.StatusCode
-    } catch {
-        if ($_.Exception.Response) { return [int]$_.Exception.Response.StatusCode }
-        return 0
+    $urls = @(
+        "http://localhost:$Port/",
+        "http://127.0.0.1:$Port/",
+        "http://[::1]:$Port/"
+    )
+    foreach ($url in $urls) {
+        try {
+            $response = Invoke-WebRequest -Uri $url -UseBasicParsing -Method Head -TimeoutSec 3
+            return [int]$response.StatusCode
+        } catch {
+            if ($_.Exception.Response) { return [int]$_.Exception.Response.StatusCode }
+        }
     }
+    return 0
 }
 
 function Get-ServerCheck {
@@ -61,18 +71,23 @@ function Get-ServerCheck {
         try {
             $statusData = Get-Content -Raw $statusFile | ConvertFrom-Json
             $reportedStatus = $statusData.status
-            $updatedAt = [DateTime]::Parse($statusData.updatedAt)
-            $reportedAge = [Math]::Round(((Get-Date).ToUniversalTime() - $updatedAt.ToUniversalTime()).TotalMinutes, 1)
+            $updatedRaw = $statusData.updatedAt
+            $updatedAtUtc = if ($updatedRaw -is [DateTime]) {
+                $updatedRaw.ToUniversalTime()
+            } else {
+                ([DateTimeOffset]::Parse([string]$updatedRaw, [System.Globalization.CultureInfo]::InvariantCulture)).UtcDateTime
+            }
+            $reportedAge = [Math]::Round(((Get-Date).ToUniversalTime() - $updatedAtUtc).TotalMinutes, 1)
         } catch {}
     }
 
     $nodes = @(Get-Process -Name node -ErrorAction SilentlyContinue)
+    $httpStatus = Test-Http -Port $Port
     $portOpen = Test-Port -Port $Port
-    $httpStatus = if ($portOpen) { Test-Http -Port $Port } else { 0 }
 
-    # La verite vient du port + HTTP. status.json peut mentir (zombie apres
+    # La verite vient d'abord du HTTP localhost. status.json peut mentir (zombie apres
     # crash) ou etre prematurement UP pendant que Gatsby ecrit les page-data.
-    $verdict = if ($portOpen -and $httpStatus -gt 0) {
+    $verdict = if ($httpStatus -gt 0) {
         'UP'
     } elseif ($portOpen) {
         'PORT_OPEN_NO_HTTP'

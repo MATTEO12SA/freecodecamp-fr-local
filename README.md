@@ -47,7 +47,7 @@ dev-logs/latest.log
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP
 ```
 
-Le script combine `status.json` + process node + port 8000 + HTTP HEAD. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
+Le script combine `status.json` + process node + HTTP HEAD `localhost` + fallback TCP IPv4/IPv6. Codes de sortie : 0 UP, 1 DOWN, 2 ZOMBIE, 3 STARTING.
 
 Pour suivre en direct quand le serveur est prêt et quand Gatsby intègre les traductions :
 

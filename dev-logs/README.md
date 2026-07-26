@@ -57,7 +57,7 @@ Si le navigateur ouvre `http://localhost:8000` mais que `status.json` reste en `
 .\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
 ```
 
-Le script ne se fie pas a `status.json` : il combine processus node + port TCP 8000 + HTTP HEAD `/`. Il detecte explicitement le cas `ZOMBIE` (status dit UP mais plus aucun node ne tourne).
+Le script ne se fie pas a `status.json` : il combine processus node + HTTP HEAD `localhost` + fallback TCP IPv4/IPv6. Il detecte explicitement le cas `ZOMBIE` (status dit UP mais plus aucun node ne tourne).
 
 ## Pendant Une Traduction De Workshop
 

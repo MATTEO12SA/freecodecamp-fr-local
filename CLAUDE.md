@@ -28,7 +28,7 @@ Toutes les commandes ci-dessous se lancent depuis `freeCodeCamp/`. Le shell est 
 .\dev-check.ps1 -Open              # Ouvre /cours-fr quand UP
 ```
 
-`status.json` peut mentir (crash sans nettoyage → bloqué en STARTING/UP ; rebuild Gatsby → port temporairement fermé). **Toujours utiliser `dev-check.ps1` pour un verdict réel** — il combine `status.json` + processus node + port TCP + HTTP HEAD.
+`status.json` peut mentir (crash sans nettoyage → bloqué en STARTING/UP ; rebuild Gatsby → port temporairement fermé). **Toujours utiliser `dev-check.ps1` pour un verdict réel** — il combine `status.json` + processus node + HTTP HEAD `localhost` + fallback TCP IPv4/IPv6.
 
 ## Lint / Vérification De Types / Tests
 
@@ -201,5 +201,5 @@ Tous les docs détaillés vivent dans `docs/` (sauf `README.md` et `LICENSE.md`,
 
 - `.husky/pre-push` utilise `xargs -n 50` pour éviter le bug Windows « ligne de commande trop longue » sur les gros workshops — à garder.
 - Le slug d'URL `responsive-web-design-v9` apparaît partout sous la forme `serverPath=/learn/responsive-web-design-v9/` ; c'est la clé de superblock du cert, pas une faute.
-- Gatsby peut n'écouter que sur `::1` sous Windows alors que `127.0.0.1:8000` refuse — le watcher teste le HTTP avant le fallback TCP pour cette raison.
+- Gatsby peut n'écouter que sur `::1` sous Windows alors que `127.0.0.1:8000` refuse — `dev.ps1` et `dev-check.ps1` testent donc `localhost`/IPv6 avant de conclure que le serveur est down.
 - `client/static/local-dev/report.json` est git-ignored — le régénérer avec `pnpm local:report` si `/dev-fr` dit qu'il manque.
