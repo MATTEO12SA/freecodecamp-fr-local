@@ -66,7 +66,9 @@ for (const target of PAGES) {
         `${serious.length} serieuse(s)`
     );
     for (const v of serious) {
-      console.log(`       - [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} noeud(s))`);
+      console.log(
+        `       - [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} noeud(s))`
+      );
     }
   } catch (err) {
     if (/addScriptTag|net::|axe/i.test(err.message)) axeLoadFailed = true;
