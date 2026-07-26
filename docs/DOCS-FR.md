@@ -114,14 +114,11 @@ Scripts supprimes : anciens diagnostics, scripts de traduction ponctuelle, captu
 ```text
 dev-logs/status.json
 dev-logs/latest.log
-dev-logs/server.log
-dev-logs/errors.log
 ```
 
 - `status.json` donne le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`, le mode `normal`/`fast`, l'URL attendue et le dernier probleme detecte.
 - `latest.log` garde le transcript lisible du dernier lancement.
-- `server.log` garde les memes evenements en JSON Lines pour analyser proprement les erreurs.
-- `errors.log` regroupe les avertissements et erreurs detectes, avec une action conseillee quand le script reconnait le probleme.
+- `server.log` et `errors.log` sont d'anciens chemins de diagnostic. Le `dev.ps1` actuel ne les reecrit plus : les evenements et erreurs utiles sont regroupes dans `latest.log`.
 
 Pour voir en direct quand le serveur est pret et quand Gatsby integre les traductions :
 
@@ -394,7 +391,7 @@ pnpm -C curriculum build
 pnpm -C client create:external-curriculum
 ```
 
-`dev.ps1` surveille aussi `intro.json` pendant que Gatsby tourne. Quand tu sauvegardes ce fichier, `latest.log` doit afficher `intro.changed`, puis `intro.integrated` avec `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/responsive-web-design-v9.json` et `serverPath=/learn/responsive-web-design-v9/`.
+`dev.ps1` surveille aussi `intro.json` pendant que Gatsby tourne. Quand tu sauvegardes ce fichier, `latest.log` doit afficher `intro.changed`, puis `intro.integrated` avec `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/<superblock>.json` et `serverPath=/learn/<superblock>/`.
 
 Le generateur ecrit `intro.integrating` puis `intro.integrated` dans `dev-logs/latest.log`. `client/tools/external-curriculum/build-external-curricula-data-v2.ts` evite de reecrire les fichiers JSON inchanges. Cela reduit les events sur `client/static/curriculum-data` et evite que Gatsby tombe sur un fichier `client/public/curriculum-data` en cours de remplacement pendant le dev server.
 

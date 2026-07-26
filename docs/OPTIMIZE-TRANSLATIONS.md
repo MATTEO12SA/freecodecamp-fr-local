@@ -1,14 +1,14 @@
-# Plan d'Optimisation — Traductions Workshops RWD
+# Plan d'Optimisation — Traductions Curriculum
 
-> **Doc historique (RWD v9).** Tous les workshops RWD sont terminés (158/158). Le travail actif est JavaScript v9 — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les workflows ci-dessous restent valables pour les workshops JS.
+> **Doc historique et workflow actif.** Ce plan a été créé pour finir RWD v9, qui est maintenant terminé (158/158). Le travail actif est JavaScript v9 — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les règles ci-dessous restent la méthode de référence pour les workshops, lectures, reviews et quizzes JS.
 
-Ce document définit la méthode pour finir les workshops Responsive Web Design v9 plus vite **sans baisser la qualité**.
+Ce document définit la méthode pour traduire le curriculum plus vite **sans baisser la qualité**.
 
 Principe non négociable : les traductions finales sont rédigées et relues par Claude. Les scripts servent seulement à éviter de recopier le code et à vérifier que les parties techniques restent intactes.
 
 ## Objectif
 
-Il reste 0 workshop RWD à traduire. Les 17 workshops RWD listés dans le tableau du HANDOFF sont maintenant traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
+Objectif actuel : continuer JavaScript v9 avec le pipeline `extract → JSON relu → apply → verify → check-translation-quality`. Côté RWD, il reste 0 workshop à traduire. Les 17 workshops RWD listés historiquement sont maintenant traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
 
 Les passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
@@ -270,7 +270,7 @@ git push standalone main
 
 ## Validations Obligatoires
 
-Après chaque workshop :
+Après chaque bloc ou module traduit :
 
 ```powershell
 pnpm exec prettier --check tools/translate-workshop.js tools/translations/phrasebook.json
@@ -294,7 +294,7 @@ Les lignes attendues sont :
 - `challenge.integrated`
 - `watcher.touched` si le workshop était un nouveau bloc FR
 
-## Workshops Restants
+## État Des Workshops RWD
 
 Aucun workshop RWD restant.
 

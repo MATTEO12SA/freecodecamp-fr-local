@@ -170,9 +170,9 @@ Ce sont des écarts intentionnels du fork vis-à-vis de l'upstream — restaurer
 ```
 status.json    — STARTING / UP / DOWN / ERROR + mode + dernier problème (peut mentir)
 latest.log     — transcript lisible
-server.log     — mêmes events au format JSON Lines
-errors.log     — avertissements/erreurs avec action conseillée quand reconnue
 ```
+
+`server.log` et `errors.log` sont d'anciens chemins de diagnostic. Le `dev.ps1` actuel ne les réécrit plus ; utiliser `latest.log` pour les événements et erreurs.
 
 Pattern tail-and-filter :
 

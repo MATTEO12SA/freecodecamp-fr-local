@@ -16,7 +16,7 @@ racine pour le demarrage.
 A la racine (hors `docs/`) :
 
 - [../README.md](../README.md) : demarrage standard avec `.\dev.ps1`.
-- [../dev-logs/README.md](../dev-logs/README.md) : comprendre `latest.log`, `status.json`, `server.log`, `errors.log`.
+- [../dev-logs/README.md](../dev-logs/README.md) : comprendre `latest.log`, `status.json` et les anciens chemins `server.log` / `errors.log`.
 
 ## Lancer Le Serveur
 

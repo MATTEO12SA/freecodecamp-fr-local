@@ -38,7 +38,6 @@ Logs serveur :
 ```text
 dev-logs/status.json
 dev-logs/latest.log
-dev-logs/errors.log
 ```
 
 `status.json` indique le statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`. Attention : il peut mentir en cas de crash sans cleanup, ou pendant un rebuild Gatsby qui ferme temporairement le port. Pour un vrai check :
@@ -65,6 +64,8 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 ```
 
 `intro.changed` puis `intro.integrated` indiquent qu'une modification directe de `intro.json` a été vue par le serveur et reprise dans le bundle `/learn`. `intro.integrating` puis `intro.integrated` indiquent que `create:external-curriculum` a repris `intro.json` dans les fichiers `curriculum-data` statiques servis par Gatsby.
+
+`server.log` et `errors.log` sont d'anciens chemins de diagnostic. Le lanceur actuel ne les réécrit plus : le suivi utile vit dans `latest.log` et l'état courant dans `status.json`.
 
 Pages utiles :
 

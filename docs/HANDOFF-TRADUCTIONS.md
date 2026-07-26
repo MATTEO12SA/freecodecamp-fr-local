@@ -298,8 +298,8 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 3. **Menu local** — navigation principale expose `/learn`, `/cours-fr`, `/catalog`, `/dev-fr`. L'examen n'est pas dans le menu, il reste accessible depuis `/cours-fr` et `/dev-fr`.
 4. **Catalogue** — recherche texte, `Theme > Francais`, progression locale et bouton `Continuer`; le label separe "Disponible en français" a ete retire pour eviter le doublon.
 5. **Pipeline JS** — `tools/translate-workshop.js` extrait/verifie aussi les lectures JS v9 (`kind: "lecture"`). Teste sur `lecture-understanding-code-clarity` sans garder de JSON non relu.
-6. **Docs** — ajout de [DOCS-INDEX.md](README.md) et mise a jour des docs principales.
+6. **Docs** — ajout de l'index [docs/README.md](README.md) et mise a jour des docs principales.
 
-Vérifs OK : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. JS 16/230. Prochaine cible traduction : reviews/quizzes du module 1 (besoin extension pipeline) ou module 2.
+Vérifs OK à ce moment-là : `pnpm local:check`, `pnpm -C client test catalog`, `pnpm -C client lint`, `pnpm -C client type-check`, verifies `translate-workshop.js` workshop + lectures. JS était alors à 16/230 ; voir les sections du haut pour l'état actuel.
 
 (Mis à jour la session suivante : JS désormais 20/230, module 1 terminé, pipeline étendu — voir la note de session 2026-05-30 ci-dessous.)

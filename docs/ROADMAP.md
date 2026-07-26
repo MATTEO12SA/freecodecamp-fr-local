@@ -42,10 +42,10 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
    bookmark, etat perdu au reload.
 6. **Aucune identite propre.** Theme freeCodeCamp brut, emoji 📁/🚧, pas
    d'onboarding, pas de marque.
-7. **CI heritee non taillee.** Le repo embarque les workflows fCC (deploy-_,
-   crowdin-_, docker-\*) qui n'ont aucun sens pour un fork local et peuvent
-   echouer/tourner maintenant que le repo est public ; aucune CI ne valide les
-   systemes propres du fork.
+7. **CI fork minimale mais pas exhaustive.** Les workflows fCC herites sont
+   desactives en `*.yml.disabled` et `fork-ci.yml` valide les garde-fous du fork
+   sans serveur. Il reste a decider si GitHub CI doit aussi porter les checks
+   lourds aujourd'hui couverts localement par `pnpm local:check:full`.
 
 ## 1. Principes directeurs (a ne jamais violer)
 
@@ -267,23 +267,21 @@ Faiblesses structurelles identifiees (a corriger en priorite) :
 - **Objectif :** valider automatiquement les systemes du fork ; arreter les
   workflows fCC inutiles maintenant que le repo est public.
 - **Impact :** 🟠 Eleve · **Difficulte :** Moyenne.
-- **Etat actuel :** `.github/workflows/` contient les workflows upstream
-  (deploy-api, deploy-client, crowdin-_, docker-_, devcontainer-ci…) sans rapport
-  avec un fork local.
-- **Comment faire :**
-  1. Ajouter `.github/workflows/fork-ci.yml` : sur `push`/`pull_request`, faire
-     `pnpm install`, typecheck client + shared, `vitest`, `lint-root`, et
-     idealement un sous-ensemble des smoke tests.
-  2. **Desactiver** (ou supprimer) les workflows herites non pertinents :
-     `deploy-*`, `crowdin-*`, `docker-*`, `devcontainer-ci`, `e2e-third-party`.
-     A defaut de suppression, retirer leurs declencheurs (`on:`) pour eviter
-     qu'ils tournent/echouent.
-  3. Brancher `axe-test.mjs` (cf. 2.6) une fois les pages custom couvertes.
-- **Fichiers :** `+ fork-ci.yml`, `~/− workflows herites`.
+- **Etat actuel :** `.github/workflows/fork-ci.yml` est le workflow actif du fork.
+  Les workflows upstream sans rapport avec ce fork local sont renommes
+  `*.yml.disabled`.
+- **Ce qui est en place :**
+  1. `fork-ci.yml` tourne sur `push` et `pull_request` vers `main`.
+  2. La CI installe les dependances, typecheck `@freecodecamp/shared`, verifie le
+     drift EN -> FR et bloque les liens de navigation externes non allowlistes.
+  3. Aucun workflow de deploy/upload/crowdin/docker/e2e upstream ne se lance.
+- **Reste optionnel :** elargir GitHub CI a `pnpm -C client lint`,
+  `pnpm lint-root`, aux tests navigateur et a `axe-test.mjs` si le cout CI devient
+  acceptable. Aujourd'hui ces checks restent dans `pnpm local:check:full`.
+- **Fichiers :** `.github/workflows/fork-ci.yml`, workflows herites en
+  `*.yml.disabled`.
 - **DoD :** une PR déclenche uniquement la CI du fork, verte ; aucun workflow de
   deploiement/upload ne se lance.
-- **Risques :** ne pas casser le submodule i18n / `curriculum-i18n-submodule.yml`
-  s'il sert encore ; verifier avant suppression.
 
 ## 2.3 — Persister les erreurs + Repetition espacee (SRS) 🔴
 
@@ -346,19 +344,20 @@ today`, puis les blocs faibles.
 - **Objectif :** rendre les pages custom reellement accessibles.
 - **Impact :** 🟠 Eleve · **Difficulte :** Moyenne.
 - **Etat actuel :** bases presentes (barre `aria-hidden` + texte, `aria-label` sur
-  les choix). Manques : navigation clavier de l'examen, focus visibles, gestion
-  `prefers-reduced-motion`, contrastes non audites ; `axe-test.mjs` ne couvre pas
-  les pages custom.
+  les choix). `axe-test.mjs` couvre deja `/cours-fr`, `/catalog`, `/exam-fr` et
+  `/dev-fr` en local, et `pnpm local:check:full` le lance quand le serveur est UP.
+  Manques : navigation clavier fine de l'examen, focus visibles, gestion
+  `prefers-reduced-motion`, contrastes et audit manuel lecteur d'ecran.
 - **Comment faire :**
-  1. Etendre `axe-test.mjs` a `/cours-fr`, `/catalog`, `/exam-fr`, `/dev-fr` et le
-     brancher en CI (2.2).
+  1. Garder `axe-test.mjs` vert ; utiliser `--strict` pour bloquer localement si
+     besoin et envisager son branchement CI plus tard.
   2. Examen : touches `1-4` pour repondre, `←/→` pour naviguer, focus visible,
      `aria-live` sur le changement de question.
   3. Auditer les contrastes ; ajouter une option « police lisible / espacement »
      (dyslexie).
 - **Fichiers :** `~ axe-test.mjs`, `~ exam-fr.tsx`, CSS.
 - **DoD :** examen entierement utilisable au clavier + lecteur d'ecran ; axe vert
-  en CI.
+  en local strict, puis en CI si le check est promu.
 
 ## 2.7 — Identite visuelle FR (design tokens) 🟠
 

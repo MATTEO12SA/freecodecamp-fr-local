@@ -10,12 +10,12 @@ Commandes utiles :
 .\dev.ps1 -Full  # force le setup complet
 ```
 
-Fichiers crees au lancement :
+Fichiers actifs au lancement :
 
 - `status.json` : statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.
 - `latest.log` : transcript humain du dernier lancement.
-- `server.log` : logs structures en JSON Lines, une entree par ligne.
-- `errors.log` : avertissements et erreurs detectes avec une action conseillee.
+
+`server.log` et `errors.log` sont d'anciens chemins de diagnostic. Le `dev.ps1` actuel ne les reecrit plus : les evenements et erreurs utiles sont regroupes dans `latest.log`.
 
 Pour suivre le serveur et les traductions dans le log principal :
 
@@ -38,11 +38,11 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 ```
 
 - `intro.integrating` : le generateur charge `intro.json` et regenere les `curriculum-data`.
-- `intro.integrated` : les donnees statiques sont a jour. La ligne indique notamment `responsive-web-design-v9.json=changed` ou `unchanged`.
+- `intro.integrated` : les donnees statiques sont a jour. La ligne indique notamment `<superblock>.json=changed` ou `unchanged`.
 - `intro.changed` : `intro.json` a ete modifie pendant que le serveur tourne.
 - `intro.integrated` avec `logSource=dev-logs/client.stdout.log` : Gatsby a reconstruit le bundle `/learn` apres cette modification.
 
-Les fichiers generes sont ignores par Git. Tu peux vider les `*.log` quand ils ne servent plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
+Les fichiers generes sont ignores par Git. Tu peux vider `latest.log` quand il ne sert plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
 
 Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere ligne `status.down`. Dans ce cas, relance simplement `.\dev.ps1` : `latest.log` et `status.json` sont recrees au debut du lancement.
 

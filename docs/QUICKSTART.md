@@ -47,7 +47,7 @@ Puis verifie `latest.log` :
 Select-String -Path dev-logs\latest.log -Pattern "intro.integrating|intro.integrated" | Select-Object -Last 4
 ```
 
-`intro.integrated` doit indiquer `responsive-web-design-v9.json=changed` ou `unchanged` et `serverPath=/curriculum-data/v2/responsive-web-design-v9.json`.
+`intro.integrated` doit indiquer `<superblock>.json=changed` ou `unchanged` et `serverPath=/curriculum-data/v2/<superblock>.json` (`javascript-v9.json` pendant la traduction JS).
 
 Si tu modifies `intro.json` directement pendant que le serveur tourne, `latest.log` doit aussi montrer :
 
@@ -55,7 +55,7 @@ Si tu modifies `intro.json` directement pendant que le serveur tourne, `latest.l
 Select-String -Path dev-logs\latest.log -Pattern "intro.changed|intro.integrated" | Select-Object -Last 4
 ```
 
-La ligne doit contenir `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/responsive-web-design-v9.json` et `serverPath=/learn/responsive-web-design-v9/`.
+La ligne doit contenir `sourceJson=client/i18n/locales/french/intro.json`, `curriculumData=/curriculum-data/v2/<superblock>.json` et `serverPath=/learn/<superblock>/`.
 
 ## Logs Serveur
 
@@ -64,11 +64,9 @@ Le dossier permanent `dev-logs/` est mis a jour par `dev.ps1` :
 ```text
 dev-logs/status.json
 dev-logs/latest.log
-dev-logs/server.log
-dev-logs/errors.log
 ```
 
-Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`. Regarde `errors.log` pour les avertissements et erreurs resumes.
+Regarde `status.json` pour savoir si le serveur est `UP`, `DOWN` ou en `ERROR`, et `latest.log` pour le transcript du dernier lancement. `server.log` et `errors.log` sont d'anciens chemins de diagnostic : le `dev.ps1` actuel ne les réécrit plus.
 
 ### Verifier Que Le Serveur Est Vraiment UP
 
@@ -174,8 +172,8 @@ Suivi de l'avancement et detection du drift (lecture seule, pas besoin du serveu
 node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
 node tools/check-translation-drift.js   # .md EN modifie apres son equivalent FR
 pnpm local:report                       # snapshot local pour /dev-fr
-pnpm local:check                        # HTTP + status + drift + tests catalogue + lint JS v9
-pnpm local:check:full                   # ajoute lint client/root + smoke tests si serveur UP
+pnpm local:check                        # HTTP + status + drift + tests catalogue + lint JS v9 + typecheck client/shared + garde liens externes
+pnpm local:check:full                   # ajoute lint client/root + smoke tests + axe si serveur UP
 ```
 
 Tests navigateur locaux, avec le serveur deja lance :
