@@ -102,7 +102,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 105 blocs FR sur 230 — modules 1-7 **100 % complets**. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS (`kind: "lecture"`), les workshops/labs step-by-step (`kind: "workshop"`), les reviews (kind lecture + `# --assignment--`) et les quizzes (`kind: "quiz"`). Prochaine cible : module 8 `higher-order-functions-and-callbacks`.
+JavaScript v9 est en cours : 118 blocs FR sur 230 — modules 1-8 **100 % complets**. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS (`kind: "lecture"`), les workshops/labs step-by-step (`kind: "workshop"`), les reviews (kind lecture + `# --assignment--`) et les quizzes (`kind: "quiz"`). Prochaine cible : module 9 `dom-manipulation-and-events`.
 
 Pour continuer les workshops sans toucher au code technique :
 

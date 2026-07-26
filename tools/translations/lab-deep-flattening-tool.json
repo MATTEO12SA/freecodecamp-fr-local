@@ -1,0 +1,77 @@
+{
+  "workshop": "lab-deep-flattening-tool",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "ab306dbdcc907c7ddfc30830.md",
+      "id": "ab306dbdcc907c7ddfc30830",
+      "dashedName": "create-a-deep-flattening-tool",
+      "title": {
+        "en": "Create a Deep Flattening Tool",
+        "fr": "Crée un outil d'aplatissement profond"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will be implementing an array flattening algorithm.",
+          "fr": "Dans ce lab, tu vas implémenter un algorithme d'aplatissement de tableau."
+        },
+        {
+          "en": "Flattening an array means turning a nested array of any depth into a single, one-dimensional array. The process extracts all elements in order, unwrapping only arrays. Other types are left unchanged.",
+          "fr": "Aplatir un tableau signifie transformer un tableau imbriqué de n'importe quelle profondeur en un seul tableau unidimensionnel. Le processus extrait tous les éléments dans l'ordre, en dépliant uniquement les tableaux. Les autres types restent inchangés."
+        },
+        {
+          "en": "For example:",
+          "fr": "Par exemple :"
+        },
+        {
+          "en": "| Original | Flattened |\n| --- | --- |\n| `[[1], [], [2, [3]]]` | `[1, 2, 3]` |\n| `[1, {\"foo\": \"bar\"}, [2]]` | `[1, {\"foo\": \"bar\"}, 2]` |\n| `[\"baz\", [1, 2], {}]` | `[\"baz\", 1, 2, {}]` |",
+          "fr": "| Original | Aplati |\n| --- | --- |\n| `[[1], [], [2, [3]]]` | `[1, 2, 3]` |\n| `[1, {\"foo\": \"bar\"}, [2]]` | `[1, {\"foo\": \"bar\"}, 2]` |\n| `[\"baz\", [1, 2], {}]` | `[\"baz\", 1, 2, {}]` |"
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have a function named `steamrollArray`.\n1. The `steamrollArray` function should accept one argument: a nested array.\n1. The function should flatten the nested array, accounting for varying levels of nesting.\n1. Your solution should not use the `Array.prototype.flat()` or `Array.prototype.flatMap()` methods.\n1. Global variables should not be used.",
+          "fr": "1. Tu dois avoir une fonction nommée `steamrollArray`.\n1. La fonction `steamrollArray` doit accepter un argument : un tableau imbriqué.\n1. La fonction doit aplatir le tableau imbriqué en tenant compte de différents niveaux d'imbrication.\n1. Ta solution ne doit pas utiliser les méthodes `Array.prototype.flat()` ou `Array.prototype.flatMap()`.\n1. Les variables globales ne doivent pas être utilisées."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `steamrollArray` function.",
+          "fr": "Tu dois avoir une fonction `steamrollArray`."
+        },
+        {
+          "en": "`steamrollArray([[[\"a\"]], [[\"b\"]]])` should return `[\"a\", \"b\"]`.",
+          "fr": "`steamrollArray([[[\"a\"]], [[\"b\"]]])` doit renvoyer `[\"a\", \"b\"]`."
+        },
+        {
+          "en": "`steamrollArray([1, [2], [3, [[4]]]])` should return `[1, 2, 3, 4]`.",
+          "fr": "`steamrollArray([1, [2], [3, [[4]]]])` doit renvoyer `[1, 2, 3, 4]`."
+        },
+        {
+          "en": "`steamrollArray([1, [], [3, [[4]]]])` should return `[1, 3, 4]`.",
+          "fr": "`steamrollArray([1, [], [3, [[4]]]])` doit renvoyer `[1, 3, 4]`."
+        },
+        {
+          "en": "`steamrollArray([1, {}, [3, [[4]]]])` should return `[1, {}, 3, 4]`.",
+          "fr": "`steamrollArray([1, {}, [3, [[4]]]])` doit renvoyer `[1, {}, 3, 4]`."
+        },
+        {
+          "en": "Your solution should not use the `Array.prototype.flat()` or `Array.prototype.flatMap()` methods.",
+          "fr": "Ta solution ne doit pas utiliser les méthodes `Array.prototype.flat()` ou `Array.prototype.flatMap()`."
+        },
+        {
+          "en": "You should not use global variables.",
+          "fr": "Tu ne dois pas utiliser de variables globales."
+        }
+      ]
+    }
+  ]
+}

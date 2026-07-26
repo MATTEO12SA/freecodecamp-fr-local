@@ -58,7 +58,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 105 blocs FR sur 230 — modules 1-7 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`, `javascript-loops`, `review-javascript-fundamentals`). Prochaine cible : module 8 `higher-order-functions-and-callbacks`. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
+JavaScript v9 est en cours : 118 blocs FR sur 230 — modules 1-8 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`, `javascript-loops`, `review-javascript-fundamentals`, `higher-order-functions-and-callbacks`). Prochaine cible : module 9 `dom-manipulation-and-events`. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -92,7 +92,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (105/230), modules 1-7 **100 % complets**. Prochaine cible : module 8 `higher-order-functions-and-callbacks`.
+Suite en cours : JavaScript v9 (118/230), modules 1-8 **100 % complets**. Prochaine cible : module 9 `dom-manipulation-and-events`.
 
 ## Scripts Gardes
 
@@ -423,7 +423,7 @@ pnpm local:check                        # verification locale rapide
 pnpm local:check:full                   # verification locale longue avant push
 ```
 
-`check-translation-drift.js` sort en code 1 s'il trouve un drift, donc utilisable en pre-commit. Etat actuel : 0 drift sur 1722 fichiers compares.
+`check-translation-drift.js` sort en code 1 s'il trouve un drift, donc utilisable en pre-commit. Etat actuel : 0 drift sur 2180 fichiers compares.
 
 Verification manuelle :
 

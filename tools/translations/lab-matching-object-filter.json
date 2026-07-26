@@ -1,0 +1,69 @@
+{
+  "workshop": "lab-matching-object-filter",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "a8e512fbe388ac2f9198f0fa.md",
+      "id": "a8e512fbe388ac2f9198f0fa",
+      "dashedName": "implement-a-matching-object-filter",
+      "title": {
+        "en": "Implement a Matching Object Filter",
+        "fr": "Implémente un filtre d'objets correspondants"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will create a function that filters an array of objects and returns only those objects that match all key-value pairs in a given source object.",
+          "fr": "Dans ce lab, tu vas créer une fonction qui filtre un tableau d'objets et renvoie uniquement les objets qui correspondent à toutes les paires clé-valeur d'un objet source donné."
+        },
+        {
+          "en": "**Objective**: Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif** : réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have a `whatIsInAName` function that accepts two arguments, an array of objects and a source object.\n1. The `whatIsInAName` function should return a new array containing only the objects from the collection that have all the key–value pairs present in the source object.\n1. If no objects match all the key–value pairs from the source, the function should return an empty array. For example:",
+          "fr": "1. Tu dois avoir une fonction `whatIsInAName` qui accepte deux arguments : un tableau d'objets et un objet source.\n1. La fonction `whatIsInAName` doit renvoyer un nouveau tableau contenant uniquement les objets de la collection qui possèdent toutes les paires clé-valeur présentes dans l'objet source.\n1. Si aucun objet ne correspond à toutes les paires clé-valeur de la source, la fonction doit renvoyer un tableau vide. Par exemple :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `whatIsInAName` function.",
+          "fr": "Tu dois avoir une fonction `whatIsInAName`."
+        },
+        {
+          "en": "`whatIsInAName([{ first: \"Romeo\", last: \"Montague\" }, { first: \"Mercutio\", last: null }, { first: \"Tybalt\", last: \"Capulet\" }], { last: \"Capulet\" })` should return `[{ first: \"Tybalt\", last: \"Capulet\" }]`.",
+          "fr": "`whatIsInAName([{ first: \"Romeo\", last: \"Montague\" }, { first: \"Mercutio\", last: null }, { first: \"Tybalt\", last: \"Capulet\" }], { last: \"Capulet\" })` doit renvoyer `[{ first: \"Tybalt\", last: \"Capulet\" }]`."
+        },
+        {
+          "en": "`whatIsInAName([{ \"apple\": 1 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2 }], { \"apple\": 1 })` should return `[{\"apple\": 1}, {\"apple\": 1}, {\"apple\": 1, \"bat\": 2}]`.",
+          "fr": "`whatIsInAName([{ \"apple\": 1 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2 }], { \"apple\": 1 })` doit renvoyer `[{\"apple\": 1}, {\"apple\": 1}, {\"apple\": 1, \"bat\": 2}]`."
+        },
+        {
+          "en": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"bat\": 2 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }], { \"apple\": 1, \"bat\": 2 })` should return `[{\"apple\": 1, \"bat\": 2}, {\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`.",
+          "fr": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"bat\": 2 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }], { \"apple\": 1, \"bat\": 2 })` doit renvoyer `[{\"apple\": 1, \"bat\": 2}, {\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`."
+        },
+        {
+          "en": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }], { \"apple\": 1, \"cookie\": 2 })` should return `[{\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`.",
+          "fr": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }], { \"apple\": 1, \"cookie\": 2 })` doit renvoyer `[{\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`."
+        },
+        {
+          "en": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }, { \"bat\": 2 }], { \"apple\": 1, \"bat\": 2 })` should return `[{\"apple\": 1, \"bat\": 2}, {\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`",
+          "fr": "`whatIsInAName([{ \"apple\": 1, \"bat\": 2 }, { \"apple\": 1 }, { \"apple\": 1, \"bat\": 2, \"cookie\": 2 }, { \"bat\": 2 }], { \"apple\": 1, \"bat\": 2 })` doit renvoyer `[{\"apple\": 1, \"bat\": 2}, {\"apple\": 1, \"bat\": 2, \"cookie\": 2}]`"
+        },
+        {
+          "en": "`whatIsInAName([{\"a\": 1, \"b\": 2, \"c\": 3}], {\"a\": 1, \"b\": 9999, \"c\": 3})` should return `[]`.",
+          "fr": "`whatIsInAName([{\"a\": 1, \"b\": 2, \"c\": 3}], {\"a\": 1, \"b\": 9999, \"c\": 3})` doit renvoyer `[]`."
+        },
+        {
+          "en": "`whatIsInAName([{\"a\": 1, \"b\": 2, \"c\": 3, \"d\": 9999}], {\"a\": 1, \"b\": 9999, \"c\": 3})` should return `[]`.",
+          "fr": "`whatIsInAName([{\"a\": 1, \"b\": 2, \"c\": 3, \"d\": 9999}], {\"a\": 1, \"b\": 9999, \"c\": 3})` doit renvoyer `[]`."
+        }
+      ]
+    }
+  ]
+}

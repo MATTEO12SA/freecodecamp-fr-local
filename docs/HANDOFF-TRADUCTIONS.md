@@ -12,9 +12,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Modules 1-7 Terminés (105/230)
+### JavaScript v9 — Modules 1-8 Terminés (118/230)
 
-État actuel : 105 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10), `javascript-loops` (15/15) et `review-javascript-fundamentals` (25/25) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 7 = 6 lectures (11 leçons) + 17 labs + `review-javascript-fundamentals` + `quiz-javascript-fundamentals`. Prochaine cible : module 8 `higher-order-functions-and-callbacks` (clé intro.json `introduction-to-higher-order-functions-and-callbacks-in-javascript`).
+État actuel : 118 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10), `javascript-loops` (15/15), `review-javascript-fundamentals` (25/25) et `higher-order-functions-and-callbacks` (13/13) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 8 = lecture `lecture-working-with-higher-order-functions-and-callbacks` (8 fichiers), `workshop-library-manager` (18 étapes), 9 labs mono-fichier, `review-javascript-higher-order-functions` et `quiz-javascript-higher-order-functions`. Prochaine cible : module 9 `dom-manipulation-and-events` (clé intro.json `learn-dom-manipulation-and-events-with-javascript`).
 
 Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
 
@@ -228,7 +228,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (105/230 blocs). Modules 1-7 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 8 `higher-order-functions-and-callbacks`.
+Suite en cours : JavaScript v9 (118/230 blocs). Modules 1-8 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 9 `dom-manipulation-and-events`.
 
 ### Lister ce qui manque dans un module
 
@@ -255,8 +255,8 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 105/230.
-- [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 1722 fichiers.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 118/230.
+- [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
 - [tools/translate-workshop.js](../tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
@@ -272,7 +272,7 @@ pnpm local:check:full                            # checks longs avant push final
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-7 **100 % complets** (105/230) ; prochaine cible = module 8 `higher-order-functions-and-callbacks`.
+3. Continuer JavaScript v9 : modules 1-8 **100 % complets** (118/230) ; prochaine cible = module 9 `dom-manipulation-and-events`.
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -287,7 +287,7 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session (2026-05-30, quizzes + reviews)** : module `javascript-variables-and-strings` terminé à 100 % (20/20 blocs, JS 16→20/230). Pipeline `translate-workshop.js` étendu pour deux types : les **quizzes** (`kind: "quiz"`, challengeType 8 — extrait `# --description--`, `#### --text--`, `#### --distractors--`, `#### --answer--` ; distracteurs en code/backticks et séparateurs `---` laissés verbatim) et les **reviews** (challengeType 31, mode lecture + `# --assignment--` ajouté à `lectureProseMarkers`). `check-translation-quality.js` rendu kind-aware en parallèle (`detectKind` + `proseMarkersForKind` exportés depuis `translate-workshop.js`). Traduit les 4 derniers blocs du module via `extract/apply/verify` : `review-javascript-variables-and-data-types`, `review-javascript-strings`, `quiz-javascript-variables-and-data-types`, `quiz-javascript-strings`. Titres + intros ajoutés dans `intro.json` (2× chacun). `verify` vert sur les 4, `lint-challenges --superblock javascript-v9` exit 0, drift 0, prettier clean. Les avertissements `check-translation-quality` restants sont volontaires (termes gardés en anglais : `Camel case` et ses distracteurs `X case`, expansions de l'acronyme ASCII, exemples de littéraux `` `Hello, ${user}!` ``). Prochaine cible : module 2 `javascript-booleans-and-numbers`. ⚠️ Push vers `standalone main` bloqué par le classifieur de permissions Claude cette session : commits locaux faits, à pousser manuellement via `git push standalone main`.
+**Dernière session (2026-07-26, module 8 JS)** : module `higher-order-functions-and-callbacks` terminé à 100 % (13/13 blocs, 37 fichiers, JS 105→118/230). Traduit la lecture `lecture-working-with-higher-order-functions-and-callbacks` (8 fichiers), `workshop-library-manager` (18 étapes), 9 labs mono-fichier, `review-javascript-higher-order-functions` et `quiz-javascript-higher-order-functions`. Titres + intros ajoutés dans `intro.json` aux deux occurrences, et libellé du module ajouté dans la navigation. Vérifications : `verify` + `check-translation-quality` verts sur les 13 blocs, `lint-challenges --superblock javascript-v9` exit 0, `pnpm -C curriculum build` exit 0, `pnpm -C client create:external-curriculum` exit 0, `translation-status.js javascript-v9` = 118/230, drift 0 sur 2180 fichiers, `git diff --check` clean. Prochaine cible : module 9 `dom-manipulation-and-events`.
 
 **Session du 2026-05-29 (lectures + greeting-bot)** : traduit les 7 lectures restantes du module `javascript-variables-and-strings` (16 fichiers, mode `lecture`) + le premier workshop `workshop-greeting-bot` (15 fichiers, mode `workshop`) via le pipeline `extract/apply/verify` — soit 31 fichiers, 8 nouveaux blocs. Lectures : `understanding-code-clarity`, `working-with-data-types`, `working-with-strings-in-javascript`, et les 4 lectures `working-with-string-*-methods`. Titres + intros de tous ces blocs traduits dans `intro.json` (chacun présent 2× : map `blocks` + arbre `chapters/modules`). QA verte partout, drift 0, prettier clean. JS passe de 2/230 à 10/230 blocs. Régénération curriculum-data faite pour afficher les titres. Prochaine cible : `lab-javascript-trivia-bot`.
 

@@ -1,0 +1,89 @@
+{
+  "workshop": "lab-all-true-property-validator",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "a10d2431ad0c6a099a4b8b52.md",
+      "id": "a10d2431ad0c6a099a4b8b52",
+      "dashedName": "build-an-all-true-property-validator",
+      "title": {
+        "en": "Build an All-True Property Validator",
+        "fr": "Crée un validateur de propriété toujours vraie"
+      },
+      "description": [
+        {
+          "en": "In this lab you will test a specific property of each object in an array to see if it always has a truthy value or not.",
+          "fr": "Dans ce lab, tu vas tester une propriété précise de chaque objet dans un tableau pour voir si elle a toujours une valeur truthy ou non."
+        },
+        {
+          "en": "For example, you could be asked to test one property of the objects in an array like the following:",
+          "fr": "Par exemple, on pourrait te demander de tester une propriété des objets d'un tableau comme celui-ci :"
+        },
+        {
+          "en": "If you were asked to test the `name` property, in the objects of this array the property `name` has the values of `\"Quincy\"`, `\"Naomi\"`, and `\"Camperbot\"`, so it is always truthy.",
+          "fr": "Si on te demande de tester la propriété `name`, dans les objets de ce tableau la propriété `name` a les valeurs `\"Quincy\"`, `\"Naomi\"` et `\"Camperbot\"`, donc elle est toujours truthy."
+        },
+        {
+          "en": "If you were asked to test the `role` property, the values are `\"Founder\"`, `\"\"`, and `\"Bot\"`, in this case `\"\"` is a falsy value, so the values are not always truthy.",
+          "fr": "Si on te demande de tester la propriété `role`, les valeurs sont `\"Founder\"`, `\"\"` et `\"Bot\"`. Dans ce cas, `\"\"` est une valeur falsy, donc les valeurs ne sont pas toujours truthy."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have a function named `truthCheck`.\n1. The `truthCheck` function takes two arguments: an array of objects and a string representing a property name found in those objects.\n1. The function should check if the property with the name equal to the second argument has a truthy value in all the objects of the array, and return `true` if it has, and `false` otherwise.",
+          "fr": "1. Tu dois avoir une fonction nommée `truthCheck`.\n1. La fonction `truthCheck` prend deux arguments : un tableau d'objets et une chaîne représentant un nom de propriété trouvé dans ces objets.\n1. La fonction doit vérifier si la propriété dont le nom est égal au second argument a une valeur truthy dans tous les objets du tableau, et renvoyer `true` si c'est le cas, ou `false` sinon."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"isBot\")` should return `false`.",
+          "fr": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"isBot\")` doit renvoyer `false`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"name\")` should return `true`.",
+          "fr": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"name\")` doit renvoyer `true`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"role\")` should return `false`.",
+          "fr": "`truthCheck([{name: \"Quincy\", role: \"Founder\", isBot: false}, {name: \"Naomi\", role: \"\", isBot: false}, {name: \"Camperbot\", role: \"Bot\", isBot: true}], \"role\")` doit renvoyer `false`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}], \"number\")` should return `true`.",
+          "fr": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}], \"number\")` doit renvoyer `true`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}, {name: \"MissingNo\", number: NaN, caught: 0}], \"caught\")` should return `false`.",
+          "fr": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}, {name: \"MissingNo\", number: NaN, caught: 0}], \"caught\")` doit renvoyer `false`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}, {name: \"MissingNo\", number: NaN, caught: 0}], \"number\")` should return `false`.",
+          "fr": "`truthCheck([{name: \"Pikachu\", number: 25, caught: 3}, {name: \"Togepi\", number: 175, caught: 1}, {name: \"MissingNo\", number: NaN, caught: 0}], \"number\")` doit renvoyer `false`."
+        },
+        {
+          "en": "`truthCheck([{name: \"Quincy\", username: \"QuincyLarson\"}, {name: \"Naomi\", username: \"nhcarrigan\"}, {name: \"Camperbot\"}], \"username\")` should return `false`.",
+          "fr": "`truthCheck([{name: \"Quincy\", username: \"QuincyLarson\"}, {name: \"Naomi\", username: \"nhcarrigan\"}, {name: \"Camperbot\"}], \"username\")` doit renvoyer `false`."
+        },
+        {
+          "en": "`truthCheck([{name: \"freeCodeCamp\", users: [{name: \"Quincy\"}, {name: \"Naomi\"}]}, {name: \"Code Radio\", users: [{name: \"Camperbot\"}]}, {name: \"\", users: []}], \"users\")` should return `true`.",
+          "fr": "`truthCheck([{name: \"freeCodeCamp\", users: [{name: \"Quincy\"}, {name: \"Naomi\"}]}, {name: \"Code Radio\", users: [{name: \"Camperbot\"}]}, {name: \"\", users: []}], \"users\")` doit renvoyer `true`."
+        },
+        {
+          "en": "`truthCheck([{id: 1, data: {url: \"https://freecodecamp.org\", name: \"freeCodeCamp\"}}, {id: 2, data: {url: \"https://coderadio.freecodecamp.org/\", name: \"CodeRadio\"}}, {id: null, data: {}}], \"data\")` should return `true`.",
+          "fr": "`truthCheck([{id: 1, data: {url: \"https://freecodecamp.org\", name: \"freeCodeCamp\"}}, {id: 2, data: {url: \"https://coderadio.freecodecamp.org/\", name: \"CodeRadio\"}}, {id: null, data: {}}], \"data\")` doit renvoyer `true`."
+        },
+        {
+          "en": "`truthCheck([{id: 1, data: {url: \"https://freecodecamp.org\", name: \"freeCodeCamp\"}}, {id: 2, data: {url: \"https://coderadio.freecodecamp.org/\", name: \"CodeRadio\"}}, {id: null, data: {}}], \"id\")` should return `false`.",
+          "fr": "`truthCheck([{id: 1, data: {url: \"https://freecodecamp.org\", name: \"freeCodeCamp\"}}, {id: 2, data: {url: \"https://coderadio.freecodecamp.org/\", name: \"CodeRadio\"}}, {id: null, data: {}}], \"id\")` doit renvoyer `false`."
+        }
+      ]
+    }
+  ]
+}
