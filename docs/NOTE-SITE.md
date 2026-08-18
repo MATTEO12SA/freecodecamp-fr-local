@@ -44,10 +44,10 @@ Juillet mesuré : 6,7 / 10. Août matin (relecture code) : 7,8 / 10.
 
 ## Ce qui empêche 9+
 
-- Curriculum JS v9 à 121/230 blocs (36 %). Module 9 à 3/12.
+- Curriculum JS v9 à 123/230 blocs (38 %). Module 9 à 5/12.
 - Examen honor-system, HTML des quizzes rendu tel quel.
 - GitHub Actions ne lance pas qualité FR, tsc client, ni Axe.
-- Lecture DOM encore en JSON `reviewed: false` — ne pas appliquer.
+- `workshop-emoji-reactor.json` extrait, `reviewed: false` — ne pas appliquer.
 - Pas d'export de profil / PWA (vague 5, volontairement plus tard).
 
 ## Relancer les preuves

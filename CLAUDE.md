@@ -218,7 +218,7 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 121/230 blocs, 468/1311 fichiers — modules 1-8 **100 % complets**. Module 9 `dom-manipulation-and-events` : 3/12 (`lab-favorite-icon-toggler`, `lab-real-time-counter`, `lab-lightbox-viewer`). Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`. Le pipeline gère lectures, workshops/labs, reviews et quizzes.
+- **JavaScript v9** : 123/230 blocs, 504/1311 fichiers — modules 1-8 **100 % complets**. Module 9 `dom-manipulation-and-events` : 5/12 (lecture DOM, `workshop-storytelling-app`, `lab-favorite-icon-toggler`, `lab-real-time-counter`, `lab-lightbox-viewer`). Prochaine cible : relire `tools/translations/workshop-emoji-reactor.json` (`reviewed: false` — ne pas appliquer). Le pipeline gère lectures, workshops/labs, reviews et quizzes.
 
 ## Pièges
 

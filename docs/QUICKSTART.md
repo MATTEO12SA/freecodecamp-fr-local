@@ -136,7 +136,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 compte 121 blocs FR sur 230 (468/1311 fichiers). Les modules 1-8 sont **100 % complets** et le module 9 `dom-manipulation-and-events` est à 3/12 après `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer`. Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
+Etat actuel : JavaScript v9 compte 123 blocs FR sur 230 (504/1311 fichiers). Les modules 1-8 sont **100 % complets** et le module 9 `dom-manipulation-and-events` est à 5/12 (lecture DOM, `workshop-storytelling-app`, `lab-favorite-icon-toggler`, `lab-real-time-counter`, `lab-lightbox-viewer`). Prochaine cible : relire `tools/translations/workshop-emoji-reactor.json` (`reviewed: false` — ne pas appliquer).
 
 Workflow rapide mais relu manuellement :
 
