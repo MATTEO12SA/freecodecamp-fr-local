@@ -2,7 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Col, Container, Row, Spacer } from '@freecodecamp/ui';
 import LearnLayout from '../components/layouts/learn';
 import SEO from '../components/seo';
+import { getAllAttempts } from '../utils/exam-history';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
+import { formatSnapshotAge } from '../utils/snapshot-age';
 
 import './dev-fr.css';
 
@@ -83,25 +85,12 @@ function readBrowserSummary(): BrowserSummary {
   }
 
   const completedChallenges = getLocalCompletedChallenges().length;
-  try {
-    const raw = window.localStorage.getItem('fcc-exam-history');
-    const parsed = raw ? (JSON.parse(raw) as Record<string, unknown>) : {};
-    const attempts = Object.values(parsed)
-      .filter(Array.isArray)
-      .flat() as Array<{ date?: string }>;
-    attempts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-    return {
-      completedChallenges,
-      examAttempts: attempts.length,
-      lastExamAttempt: attempts[0]?.date || ''
-    };
-  } catch {
-    return {
-      completedChallenges,
-      examAttempts: 0,
-      lastExamAttempt: ''
-    };
-  }
+  const attempts = getAllAttempts();
+  return {
+    completedChallenges,
+    examAttempts: attempts.length,
+    lastExamAttempt: attempts[0]?.date || ''
+  };
 }
 
 function statusClass(value: string): string {
@@ -148,6 +137,10 @@ function DevFrPage(): JSX.Element {
     () => (report ? formatDate(report.generatedAt) : ''),
     [report]
   );
+  const snapshotAge = useMemo(
+    () => (report ? formatSnapshotAge(report.generatedAt) : ''),
+    [report]
+  );
 
   async function loadReport(): Promise<void> {
     setLoading(true);
@@ -172,9 +165,9 @@ function DevFrPage(): JSX.Element {
   }, []);
 
   return (
-    <LearnLayout>
+    <LearnLayout className='dev-fr-page' contentId='content-start'>
       <SEO title='Dev FR' />
-      <main className='dev-fr-page'>
+      <div>
         <Container>
           <Row>
             <Col md={10} mdOffset={1} sm={12} xs={12}>
@@ -192,7 +185,7 @@ function DevFrPage(): JSX.Element {
                   type='button'
                   onClick={() => void loadReport()}
                 >
-                  Rafraîchir
+                  Relire le snapshot
                 </button>
               </div>
 
@@ -235,8 +228,12 @@ function DevFrPage(): JSX.Element {
                       </strong>
                     </div>
                     <div className='dev-fr-metric'>
-                      <span>Snapshot</span>
+                      <span>Snapshot généré</span>
                       <strong>{generatedAt}</strong>
+                    </div>
+                    <div className='dev-fr-metric'>
+                      <span>Âge du snapshot</span>
+                      <strong>{snapshotAge}</strong>
                     </div>
                   </section>
 
@@ -246,7 +243,7 @@ function DevFrPage(): JSX.Element {
                       <QuickLink href='/' label='Accueil' note='Home locale' />
                       <QuickLink
                         href='/cours-fr'
-                        label='Cours FR'
+                        label='Parcours'
                         note='Certifications françaises'
                       />
                       <QuickLink
@@ -314,7 +311,14 @@ function DevFrPage(): JSX.Element {
 
                   <section className='dev-fr-section'>
                     <h2>Traductions</h2>
-                    <div className='dev-fr-table-wrap'>
+                    <div
+                      className='dev-fr-table-wrap'
+                      role='region'
+                      aria-label='Progression des traductions'
+                      // Required so keyboard users can pan this table when it overflows.
+                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                      tabIndex={0}
+                    >
                       <table className='dev-fr-table'>
                         <thead>
                           <tr>
@@ -329,23 +333,31 @@ function DevFrPage(): JSX.Element {
                             const pct = row.pctFiles ?? row.pct;
                             return (
                               <tr key={row.key}>
-                                <td>{row.key}</td>
-                                <td>
-                                  {row.translated}/{row.total}
+                                <td data-label='Certification'>
+                                  <span>{row.key}</span>
                                 </td>
-                                <td>
-                                  {row.totalFiles != null
-                                    ? `${row.translatedFiles}/${row.totalFiles}`
-                                    : '—'}
+                                <td data-label='Blocs'>
+                                  <span>
+                                    {row.translated}/{row.total}
+                                  </span>
                                 </td>
-                                <td>
-                                  <div
-                                    className='dev-fr-bar'
-                                    aria-hidden='true'
-                                  >
-                                    <span style={{ width: `${pct}%` }} />
+                                <td data-label='Fichiers'>
+                                  <span>
+                                    {row.totalFiles != null
+                                      ? `${row.translatedFiles}/${row.totalFiles}`
+                                      : '—'}
+                                  </span>
+                                </td>
+                                <td data-label='Progression'>
+                                  <div className='dev-fr-progress-cell'>
+                                    <div
+                                      className='dev-fr-bar'
+                                      aria-hidden='true'
+                                    >
+                                      <span style={{ width: `${pct}%` }} />
+                                    </div>
+                                    <span>{pct}%</span>
                                   </div>
-                                  <span>{pct}%</span>
                                 </td>
                               </tr>
                             );
@@ -386,7 +398,13 @@ function DevFrPage(): JSX.Element {
                       <dd>{report.git.dirty ? 'modifié' : 'propre'}</dd>
                     </dl>
                     {report.git.changedFiles.length > 0 && (
-                      <pre className='dev-fr-log'>
+                      <pre
+                        className='dev-fr-log'
+                        role='region'
+                        aria-label='Fichiers Git modifiés'
+                        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                        tabIndex={0}
+                      >
                         {report.git.changedFiles.join('\n')}
                       </pre>
                     )}
@@ -394,7 +412,13 @@ function DevFrPage(): JSX.Element {
 
                   <section className='dev-fr-section'>
                     <h2>Derniers logs</h2>
-                    <pre className='dev-fr-log'>
+                    <pre
+                      className='dev-fr-log'
+                      role='region'
+                      aria-label='Derniers événements du serveur'
+                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                      tabIndex={0}
+                    >
                       {report.latestLog.join('\n')}
                     </pre>
                   </section>
@@ -403,7 +427,7 @@ function DevFrPage(): JSX.Element {
             </Col>
           </Row>
         </Container>
-      </main>
+      </div>
     </LearnLayout>
   );
 }

@@ -44,10 +44,12 @@ const UniversalNav = ({
       <Link
         className='universal-nav-logo'
         id='universal-nav-logo'
-        to='/learn'
+        to='/'
+        aria-label='freeCodeCamp FR Local, projet non officiel'
         data-playwright-test-label='header-universal-nav-logo'
       >
-        <FreeCodeCampLogo aria-label={t('aria.fcc-curriculum')} />
+        <FreeCodeCampLogo aria-hidden='true' />
+        <span className='local-brand-mark'>FR local</span>
       </Link>
       <div className='universal-nav-right main-nav'>
         {pending ? (

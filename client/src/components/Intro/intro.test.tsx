@@ -32,4 +32,11 @@ describe('<Intro />', () => {
     );
     expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
   });
+
+  it('does not expose the English local placeholder as a user name', () => {
+    renderWithRedux(<Intro complete={true} pending={false} name='You' />);
+    expect(screen.getByRole('heading', { level: 1 })).not.toHaveTextContent(
+      'You'
+    );
+  });
 });

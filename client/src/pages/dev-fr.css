@@ -20,12 +20,12 @@
 }
 
 .dev-fr-section {
-  border-top: 1px solid var(--background-quaternary);
+  border-top: 1px solid var(--quaternary-background);
   padding: 1.5rem 0;
 }
 
 .dev-fr-empty {
-  border: 1px solid var(--background-quaternary);
+  border: 1px solid var(--quaternary-background);
   padding: 1rem;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .dev-fr-metric {
-  border: 1px solid var(--background-quaternary);
+  border: 1px solid var(--quaternary-background);
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -56,15 +56,15 @@
 }
 
 .dev-fr-ok {
-  color: #2d8a47;
+  color: var(--success-color);
 }
 
 .dev-fr-warn {
-  color: #b7791f;
+  color: var(--yellow-color);
 }
 
 .dev-fr-bad {
-  color: #c92a2a;
+  color: var(--danger-color);
 }
 
 .dev-fr-links {
@@ -74,7 +74,7 @@
 }
 
 .dev-fr-link-card {
-  border: 1px solid var(--background-quaternary);
+  border: 1px solid var(--quaternary-background);
   color: var(--primary-color);
   display: flex;
   flex-direction: column;
@@ -115,6 +115,7 @@
 
 .dev-fr-table-wrap {
   overflow-x: auto;
+  position: relative;
 }
 
 .dev-fr-table {
@@ -123,14 +124,14 @@
 
 .dev-fr-table th,
 .dev-fr-table td {
-  border-bottom: 1px solid var(--background-quaternary);
+  border-bottom: 1px solid var(--quaternary-background);
   padding: 0.75rem;
   text-align: left;
   vertical-align: middle;
 }
 
 .dev-fr-bar {
-  background: var(--background-tertiary);
+  background: var(--tertiary-background);
   height: 8px;
   margin-bottom: 0.35rem;
   max-width: 260px;
@@ -138,14 +139,18 @@
 }
 
 .dev-fr-bar span {
-  background: #2d8a47;
+  background: var(--success-color);
   display: block;
   height: 100%;
 }
 
+.dev-fr-progress-cell {
+  width: 100%;
+}
+
 .dev-fr-log {
   background: var(--secondary-background);
-  border: 1px solid var(--background-quaternary);
+  border: 1px solid var(--quaternary-background);
   max-height: 360px;
   overflow: auto;
   padding: 1rem;
@@ -163,5 +168,58 @@
 
   .dev-fr-details {
     grid-template-columns: 1fr;
+  }
+
+  .dev-fr-table-wrap {
+    overflow: visible;
+  }
+
+  .dev-fr-table,
+  .dev-fr-table tbody,
+  .dev-fr-table tr,
+  .dev-fr-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .dev-fr-table thead {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .dev-fr-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .dev-fr-table tr {
+    background: var(--secondary-background);
+    border: 1px solid var(--quaternary-background);
+    padding: 0.35rem 0.75rem;
+  }
+
+  .dev-fr-table td {
+    align-items: start;
+    border-bottom: 1px solid var(--quaternary-background);
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: minmax(100px, 0.8fr) minmax(0, 1.2fr);
+    overflow-wrap: anywhere;
+    padding-inline: 0;
+  }
+
+  .dev-fr-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .dev-fr-table td::before {
+    color: var(--quaternary-color);
+    content: attr(data-label);
+    font-weight: 700;
   }
 }

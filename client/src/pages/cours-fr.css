@@ -39,9 +39,15 @@
 
 .cours-fr-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 900px) {
+  .cours-fr-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .cours-fr-folder-card {
@@ -62,6 +68,14 @@
     background-color 0.1s;
 }
 
+.cours-fr-upcoming-card {
+  background: var(--secondary-background);
+  border: 1px solid var(--quaternary-background);
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem 1.3rem;
+}
+
 .cours-fr-folder-card:hover:not(:disabled) {
   background-color: rgba(128, 128, 128, 0.15) !important;
   border-color: currentColor;
@@ -75,10 +89,41 @@
   cursor: not-allowed;
 }
 
-.cours-fr-folder-icon {
-  font-size: 2.4rem;
-  margin-bottom: 0.4rem;
-  line-height: 1;
+.cours-fr-card-kind {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 0.45rem;
+}
+
+.cours-fr-folder-card-primary {
+  border-color: var(--highlight-color, currentColor);
+  background: var(--tertiary-background, rgba(128, 128, 128, 0.12));
+}
+
+.cours-fr-exam-launch {
+  text-align: center;
+  margin: 0 0 1.5rem;
+}
+
+.cours-fr-exam-btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 2px solid var(--primary-color);
+  background: var(--primary-color);
+  color: var(--primary-background);
+  text-decoration: none;
+}
+
+.cours-fr-exam-btn:hover,
+.cours-fr-exam-btn:focus-visible {
+  background: var(--primary-background);
+  color: var(--primary-color);
+  text-decoration: none;
 }
 
 .cours-fr-folder-label {
@@ -196,12 +241,8 @@
   padding: 1rem 1.25rem;
   margin: 1rem 0 1.5rem;
   border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 10, 35, 0.05),
-    rgba(10, 10, 35, 0.12)
-  );
-  border: 2px solid #0a0a23;
+  background: var(--tertiary-background);
+  border: 2px solid var(--primary-color);
   text-decoration: none;
   color: inherit;
   font-size: 1.05rem;
@@ -209,17 +250,13 @@
 }
 
 .fr-banner:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(10, 10, 35, 0.1),
-    rgba(10, 10, 35, 0.22)
-  );
+  background: var(--quaternary-background);
   text-decoration: none;
 }
 
 .fr-banner-cta {
-  background: #0a0a23;
-  color: #fff;
+  background: var(--primary-color);
+  color: var(--primary-background);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-weight: bold;

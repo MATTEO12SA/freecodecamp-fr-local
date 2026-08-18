@@ -1,0 +1,121 @@
+{
+  "workshop": "lab-lightbox-viewer",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66db57ad34c7089b9b41bfd6.md",
+      "id": "66db57ad34c7089b9b41bfd6",
+      "dashedName": "build-a-lightbox-viewer",
+      "title": {
+        "en": "Build a Lightbox Viewer",
+        "fr": "Construire une visionneuse Lightbox"
+      },
+      "description": [
+        {
+          "en": "A lightbox is used on websites to showcase multimedia content in a more engaging way through use of a popup or modal window over the page's main content.",
+          "fr": "Une Lightbox est utilisée sur les sites web pour présenter du contenu multimédia de façon plus attrayante au moyen d'une fenêtre contextuelle ou modale qui s'affiche au-dessus du contenu principal de la page."
+        },
+        {
+          "en": "In this lab, you will create a lightbox gallery that displays full-size images when a thumbnail is clicked. For each image, two versions are provided: a thumbnail and a full-size image. The full-size image is the same as the thumbnail, but without the `-thumbnail` suffix.",
+          "fr": "Dans ce lab, tu vas créer une galerie Lightbox qui affiche les images en taille réelle lorsque l'utilisateur clique sur une miniature. Deux versions de chaque image sont fournies : une miniature et une image en taille réelle. L'image en taille réelle est identique à la miniature, mais sans le suffixe `-thumbnail`."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Réponds aux user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have a `div` with a class of `gallery` within your `body`.\n1. Within the `.gallery` element, you should have three image thumbnails, each with a class of `gallery-item`. You should use the following links for thumbnail images:\n   \n    - `https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg`",
+          "fr": "1. Tu dois avoir un élément `div` avec une classe `gallery` dans ton élément `body`.\n1. Dans l'élément `.gallery`, tu dois avoir trois miniatures, chacune avec une classe `gallery-item`. Tu dois utiliser les liens suivants pour les miniatures :\n   \n    - `https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg`"
+        },
+        {
+          "en": "1. You should have a `div` with a class of `lightbox` within your `body`.\n1. You should have a `button` with an `id` of `close-btn` within your `.lightbox` element. You can use `&times;` as its text if you want.\n1. You should have a `img` with an `id` of `lightbox-image` within your `.lightbox` element.\n1. Your `.lightbox` element should have a fixed position so that the preview opens on top of the current images.\n1. Your `.lightbox` element should cover the entire viewport by setting the height and width to 100% of the container. You should ensure that the `.lightbox` element starts at the top left corner of the container.\n1. `.lightbox` should have a background color. Initially, its `display` property should be set to `none` to hide it.\n1. When you click one of your `.gallery-item` elements, the `.lightbox` element's `display` property should be set to `flex` to make the `.lightbox` element and the two elements within it visible.\n1. When you click one of your `.gallery-item` elements, the `#lightbox-image` element's `src` should be set to a full-size version of the image clicked by removing `-thumbnail` from the image's `src` attribute. The full-size images are located at the following links:",
+          "fr": "1. Tu dois avoir un élément `div` avec une classe `lightbox` dans ton élément `body`.\n1. Tu dois avoir un élément `button` avec l'`id` `close-btn` dans ton élément `.lightbox`. Tu peux utiliser `&times;` comme texte si tu le souhaites.\n1. Tu dois avoir un élément `img` avec l'`id` `lightbox-image` dans ton élément `.lightbox`.\n1. Ton élément `.lightbox` doit avoir une position fixe afin que l'aperçu s'ouvre au-dessus des images actuelles.\n1. Ton élément `.lightbox` doit couvrir toute la zone d'affichage en définissant sa hauteur et sa largeur sur 100 % du conteneur. Tu dois veiller à ce que l'élément `.lightbox` commence dans l'angle supérieur gauche du conteneur.\n1. `.lightbox` doit avoir une couleur d'arrière-plan. Initialement, sa propriété `display` doit être définie sur `none` pour le masquer.\n1. Lorsque tu cliques sur l'un de tes éléments `.gallery-item`, la propriété `display` de l'élément `.lightbox` doit être définie sur `flex` afin de rendre visibles l'élément `.lightbox` et les deux éléments qu'il contient.\n1. Lorsque tu cliques sur l'un de tes éléments `.gallery-item`, l'attribut `src` de l'élément `#lightbox-image` doit être défini sur la version en taille réelle de l'image sélectionnée en retirant `-thumbnail` de l'attribut `src` de l'image. Les images en taille réelle se trouvent aux liens suivants :"
+        },
+        {
+          "en": "- `https://cdn.freecodecamp.org/curriculum/labs/stonehenge.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/storm.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/trees.jpg`\n  \n1. When your `.lightbox` element is visible and you click the `#close-btn` or the `.lightbox` element, the `.lightbox` element's `display` should be set back to `none`.",
+          "fr": "- `https://cdn.freecodecamp.org/curriculum/labs/stonehenge.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/storm.jpg`\n    - `https://cdn.freecodecamp.org/curriculum/labs/trees.jpg`\n  \n1. Lorsque ton élément `.lightbox` est visible et que tu cliques sur `#close-btn` ou sur l'élément `.lightbox`, la propriété `display` de l'élément `.lightbox` doit de nouveau être définie sur `none`."
+        },
+        {
+          "en": "**Note:** Be sure to link your stylesheet and the JavaScript file in your HTML.",
+          "fr": "**Remarque :** Veille à lier ta feuille de style et ton fichier JavaScript dans ton HTML."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `div` with the class of `gallery` inside your `body` element.",
+          "fr": "Tu dois avoir un élément `div` avec la classe `gallery` dans ton élément `body`."
+        },
+        {
+          "en": "Within the `.gallery` element, you should have three `img` elements with the class of `gallery-item`.",
+          "fr": "Dans l'élément `.gallery`, tu dois avoir trois éléments `img` avec la classe `gallery-item`."
+        },
+        {
+          "en": "Within the `.gallery` element, you should have an `img` element with the `src` set to `https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg`.",
+          "fr": "Dans l'élément `.gallery`, tu dois avoir un élément `img` dont l'attribut `src` est défini sur `https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg`."
+        },
+        {
+          "en": "Within the `.gallery` element, you should have an `img` element with the `src` set to `https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg`.",
+          "fr": "Dans l'élément `.gallery`, tu dois avoir un élément `img` dont l'attribut `src` est défini sur `https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg`."
+        },
+        {
+          "en": "Within the `.gallery` element, you should have an `img` element with the `src` set to `https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg`.",
+          "fr": "Dans l'élément `.gallery`, tu dois avoir un élément `img` dont l'attribut `src` est défini sur `https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg`."
+        },
+        {
+          "en": "You should have a `div` element with the class of `lightbox` inside your `body` element.",
+          "fr": "Tu dois avoir un élément `div` avec la classe `lightbox` dans ton élément `body`."
+        },
+        {
+          "en": "Within your `.lightbox` element, you should have a `button` element with the `id` set to `close-btn`.",
+          "fr": "Dans ton élément `.lightbox`, tu dois avoir un élément `button` dont l'`id` est défini sur `close-btn`."
+        },
+        {
+          "en": "Within your `.lightbox` element, you should have an `img` element with the `id` set to `lightbox-image`.",
+          "fr": "Dans ton élément `.lightbox`, tu dois avoir un élément `img` dont l'`id` est défini sur `lightbox-image`."
+        },
+        {
+          "en": "Your `.lightbox` element should have fixed positioning.",
+          "fr": "Ton élément `.lightbox` doit avoir une position fixe."
+        },
+        {
+          "en": "Your `.lightbox` element should cover the entire viewport.",
+          "fr": "Ton élément `.lightbox` doit couvrir toute la zone d'affichage."
+        },
+        {
+          "en": "Your `.lightbox` element should be aligned with top left corner of the container.",
+          "fr": "Ton élément `.lightbox` doit être aligné avec l'angle supérieur gauche du conteneur."
+        },
+        {
+          "en": "Your `.lightbox` element should have a background color.",
+          "fr": "Ton élément `.lightbox` doit avoir une couleur d'arrière-plan."
+        },
+        {
+          "en": "Your `.lightbox` element should be hidden initially.",
+          "fr": "Ton élément `.lightbox` doit être masqué initialement."
+        },
+        {
+          "en": "When you click one of your `.gallery-item` elements, the `.lightbox` element's `display` property should be set to `flex` to make `.lightbox` and the two elements within it visible.",
+          "fr": "Lorsque tu cliques sur l'un de tes éléments `.gallery-item`, la propriété `display` de l'élément `.lightbox` doit être définie sur `flex` afin de rendre visibles `.lightbox` et les deux éléments qu'il contient."
+        },
+        {
+          "en": "When you click one of your `.gallery-item` elements, the `#lightbox-image` element's `src` should be set to a full-size version of the image clicked by removing `-thumbnail` from the image's `src` attribute.",
+          "fr": "Lorsque tu cliques sur l'un de tes éléments `.gallery-item`, l'attribut `src` de l'élément `#lightbox-image` doit être défini sur la version en taille réelle de l'image sélectionnée en retirant `-thumbnail` de l'attribut `src` de l'image."
+        },
+        {
+          "en": "When your `.lightbox` element is visible and you click the `#close-btn` button, the `.lightbox` element's `display` should be set back to `none`.",
+          "fr": "Lorsque ton élément `.lightbox` est visible et que tu cliques sur le bouton `#close-btn`, la propriété `display` de l'élément `.lightbox` doit de nouveau être définie sur `none`."
+        },
+        {
+          "en": "When your `.lightbox` element is visible and you click the `.lightbox` element, the `.lightbox` element's `display` should be set back to `none`.",
+          "fr": "Lorsque ton élément `.lightbox` est visible et que tu cliques sur l'élément `.lightbox`, la propriété `display` de l'élément `.lightbox` doit de nouveau être définie sur `none`."
+        }
+      ]
+    }
+  ]
+}

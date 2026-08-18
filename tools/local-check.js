@@ -68,6 +68,11 @@ async function main() {
       '--superblock',
       'javascript-v9'
     ]),
+    runStep('translation quality javascript-v9', 'node', [
+      'tools/check-translation-quality.js',
+      '--superblock',
+      'javascript-v9'
+    ]),
     runStep('client typecheck', 'pnpm', [
       'exec',
       'tsc',
@@ -82,21 +87,29 @@ async function main() {
       '@freecodecamp/shared',
       'type-check'
     ]),
-    runStep('external link guard', 'node', ['tools/check-external-links.js'])
+    runStep('external link guard', 'node', ['tools/check-external-links.js']),
+    runStep('axe failure regression', 'node', ['axe-test-regression.mjs'])
   ];
 
   if (isFull) {
     steps.push(runStep('client lint', 'pnpm', ['-C', 'client', 'lint']));
     steps.push(runStep('root lint', 'pnpm', ['lint-root']));
     if (report.server.http.ok) {
-      for (const script of [
-        'smoke-test.mjs',
-        'submit-test.mjs',
-        'persist-test.mjs',
-        'full-flow-test.mjs',
-        'axe-test.mjs'
+      for (const test of [
+        { name: 'smoke-test.mjs', args: ['smoke-test.mjs'] },
+        { name: 'submit-test.mjs', args: ['submit-test.mjs'] },
+        { name: 'persist-test.mjs', args: ['persist-test.mjs'] },
+        { name: 'full-flow-test.mjs', args: ['full-flow-test.mjs'] },
+        {
+          name: 'local-network-test.mjs',
+          args: ['local-network-test.mjs']
+        },
+        {
+          name: 'axe-test.mjs --strict',
+          args: ['axe-test.mjs', '--strict']
+        }
       ]) {
-        steps.push(runStep(script, 'node', [script]));
+        steps.push(runStep(test.name, 'node', test.args));
       }
     }
   }

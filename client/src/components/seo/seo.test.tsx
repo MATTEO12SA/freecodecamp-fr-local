@@ -39,7 +39,9 @@ describe('<SEO />', () => {
 
     const helmet = Helmet.peek();
 
-    expect(helmet.title).toBe('freeCodeCamp');
+    expect(helmet.title).toBe(
+      'freeCodeCamp | freeCodeCamp FR Local (non officiel)'
+    );
   });
 
   it('renders structure data script tag', () => {

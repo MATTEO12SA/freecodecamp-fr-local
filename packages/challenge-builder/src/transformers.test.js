@@ -4,9 +4,38 @@
 
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { embedFilesInHtml, embedScript } from './transformers';
+import {
+  embedFilesInHtml,
+  embedScript,
+  registerPluginIfMissing
+} from './transformers';
 
 const parseHtml = html => new DOMParser().parseFromString(html, 'text/html');
+
+describe('registerPluginIfMissing', () => {
+  it('does not register an existing Babel plugin again', () => {
+    const babel = {
+      availablePlugins: { loopProtection: vi.fn() },
+      registerPlugin: vi.fn()
+    };
+
+    registerPluginIfMissing(babel, 'loopProtection', vi.fn());
+
+    expect(babel.registerPlugin).not.toHaveBeenCalled();
+  });
+
+  it('registers a missing Babel plugin', () => {
+    const plugin = vi.fn();
+    const babel = {
+      availablePlugins: {},
+      registerPlugin: vi.fn()
+    };
+
+    registerPluginIfMissing(babel, 'loopProtection', plugin);
+
+    expect(babel.registerPlugin).toHaveBeenCalledWith('loopProtection', plugin);
+  });
+});
 
 describe('embedFilesInHtml', () => {
   it('keeps deferred script.js in place', async () => {

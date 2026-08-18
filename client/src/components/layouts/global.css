@@ -1,12 +1,12 @@
 html {
-  height: 100%;
+  min-height: 100%;
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   scroll-padding-top: calc(var(--header-height) + 10px);
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
   font-family: var(--font-family-sans-serif);
   color: var(--secondary-color);
   background: var(--secondary-background);
@@ -59,18 +59,18 @@ rt {
 }
 
 #___gatsby {
-  height: 100%;
+  min-height: 100%;
 }
 
 #gatsby-focus-wrapper {
-  height: 100%;
+  min-height: 100vh;
 }
 
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100%;
-  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .page-wrapper-80 {
@@ -97,22 +97,22 @@ rt {
 }
 
 .default-layout {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
   margin-top: var(--header-height);
   background: var(--secondary-background);
 }
 
 .default-layout:only-child {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
   min-height: 0;
 }
 
-.default-layout:has(.breadcrumbs-demo) #learn-app-wrapper {
+.default-layout:has(.breadcrumbs-demo) .learn-app-wrapper {
   padding-top: var(--breadcrumbs-height);
 }
 
-.default-layout:has(.action-row) #learn-app-wrapper {
+.default-layout:has(.action-row) .learn-app-wrapper {
   padding-top: calc(var(--breadcrumbs-height) + var(--action-row-height));
 }
 

@@ -1,10 +1,18 @@
 # freeCodeCamp FR Local
 
-Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte, sans backend et sans redirection vers des services externes.
+Version personnelle de freeCodeCamp pour apprendre en local, en francais, sans compte et sans backend obligatoire pour le parcours principal.
 
 > **Projet personnel et non officiel.** Ce depot est un fork educatif a usage personnel. Il n'est ni affilie a, ni soutenu par freeCodeCamp.org. « freeCodeCamp » est une marque de freeCodeCamp.org, Inc. Le code et le curriculum d'origine restent sous leurs licences respectives (voir [Licence](#licence)).
 
-Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher automatiquement les niveaux deja disponibles en francais. `/exam-fr?cert=<superblock>` lance un examen local 100% FR qui tire 80 questions parmi les quizzes traduits.
+Le site se lance sur ton ordinateur, ta progression reste dans `localStorage`, `/cours-fr` sert de dossier de certifications francaises et `/catalog` garde le catalogue global avec ses filtres, dont `Theme > Francais` pour afficher les superblocks qui possedent deja au moins un fichier FR. `/exam-fr?cert=<superblock>` lance un examen local 100% FR qui tire 80 questions parmi les quizzes traduits.
+
+> **Etat qualite verifie le 26 juillet 2026.** Les 29 constats de l'audit ont
+> ete traites : 28 sont corriges et la charge lourde mesuree uniquement dans
+> Gatsby Develop n'est pas reproduite dans le build de production. Les parcours
+> locaux testés ne chargent ni GTM, ni Google Analytics, ni Stripe et ne
+> contactent pas le port 3000. Voir le
+> [tracker](docs/AUDIT-FIX-TRACKER.md) et le
+> [rapport final](docs/AUDIT-FIX-REPORT.md).
 
 ## Demarrage
 
@@ -82,15 +90,25 @@ http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 
 - Utilisateur local automatique, sans Auth0 ni MongoDB.
 - Progression sauvegardee dans `localStorage`.
-- API backend neutralisee pour le flux d'apprentissage local.
+- API backend neutralisee pour le flux d'apprentissage principal.
+  `exam-download` utilise des prerequis calcules localement et ne monte aucun
+  hook RTK Query en mode local.
 - Interface francaise avec contenus d'origine encore disponibles quand la traduction manque.
 - Donnees statiques du curriculum generees avec les titres FR quand `CURRICULUM_LOCALE=french`.
 - `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte automatiquement un badge `🚧 Traduction a venir`, calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem). L'accordeon contient l'examen qui pointe sur la page locale `/exam-fr`. En ouvrant une cert, une barre « X/Y challenges termines » et les coches ✓ refletent la progression `localStorage`.
-- `/catalog` propose recherche texte, filtres niveau/theme, `Theme > Francais`, progression locale par certification et bouton `Continuer` vers le prochain challenge.
-- `/dev-fr` regroupe serveur, logs, traduction, drift, git, liens rapides et progression navigateur via un snapshot genere par `pnpm local:report`.
+- `/catalog` propose recherche texte, filtres niveau/theme, `Theme > Francais`,
+  progression locale et bouton `Continuer`. Il affiche 12 cartes au depart,
+  charge la suite sur demande et calcule pour chaque carte un statut FR
+  `absent`, `partiel` ou `complet`.
+- `/dev-fr` regroupe serveur, logs, traduction, drift, git, liens rapides et
+  progression navigateur via un snapshot genere par `pnpm local:report`.
+  `Relire le snapshot` refetch le fichier existant. La route et son menu
+  n'existent pas dans le build public.
 - `/exam-fr?cert=<superblock>` lance l'examen local : 80 questions tirees au hasard parmi les `quiz-*` traduits du superblock. 70% pour reussir. Pas besoin du `.exe` officiel de freeCodeCamp ni de compte Auth0. L'examen garde un historique local des tentatives, affiche les stats par module et permet de reviser uniquement les questions ratees.
 - **Live detection** : creer un nouveau dossier `blocks/<x>/` avec un `.md` FR met a jour automatiquement le filtre catalog et le badge cours-fr sans redemarrer le serveur (voir `dev-logs/latest.log` -> `watcher.touched`).
-- Liens externes visibles desactives ou retires.
+- Liens de navigation externes visibles desactives ou retires. Le mode local
+  bloque aussi l'initialisation analytics et l'import Stripe ; un test réseau
+  couvre sept routes dans Chromium, Firefox et WebKit.
 - Defi du jour, forum/aide externe, donations, app mobile, partage social, CodeAlly/Ona/Codespaces et pages API inutiles retires du site local.
 
 ## Curriculum FR
@@ -103,7 +121,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 118 blocs FR sur 230 — modules 1-8 **100 % complets**. Le pipeline `tools/translate-workshop.js` sait extraire/verifier les lectures JS (`kind: "lecture"`), les workshops/labs step-by-step (`kind: "workshop"`), les reviews (kind lecture + `# --assignment--`) et les quizzes (`kind: "quiz"`). Prochaine cible : module 9 `dom-manipulation-and-events`.
+JavaScript v9 est en cours : 121 blocs FR sur 230 (468/1311 fichiers). Les modules 1-8 sont **100 % complets**. Le module 9 `dom-manipulation-and-events` est à 3/12 : `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont traduits. Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 
 Pour continuer les workshops sans toucher au code technique :
 
@@ -138,6 +156,10 @@ pnpm local:check                        # verdict local rapide
 pnpm local:check:full                   # checks longs avant push final
 ```
 
+`pnpm local:check:full` lance Axe en mode strict. Le script échoue sur page
+inaccessible, timeout, scan ignoré ou zéro page scannée et affiche ses compteurs.
+La régression `pnpm test:axe-regression` vérifie explicitement ce garde-fou.
+
 Scripts locaux gardes :
 
 ```text
@@ -147,7 +169,7 @@ persist-test.mjs
 full-flow-test.mjs
 ```
 
-Toute la documentation detaillee est dans `docs/` (ce `README.md` et `LICENSE.md` restent a la racine) :
+La documentation de reference vit dans `docs/`. Les points d'entree, la licence, les instructions agent et l'audit restent a la racine :
 
 - [`docs/README.md`](docs/README.md) : index rapide des docs, commandes et pages locales.
 - [`docs/QUICKSTART.md`](docs/QUICKSTART.md) : commandes courtes pour lancer et tester.
@@ -155,7 +177,10 @@ Toute la documentation detaillee est dans `docs/` (ce `README.md` et `LICENSE.md
 - [`docs/HANDOFF-TRADUCTIONS.md`](docs/HANDOFF-TRADUCTIONS.md) : etat exact des traductions et prochaine cible.
 - [`docs/OPTIMIZE-TRANSLATIONS.md`](docs/OPTIMIZE-TRANSLATIONS.md) : workflow rapide qualite maximale pour les workshops, avec le retour d'experience accumule sur les gros blocs.
 - [`docs/TOOLS-REPORT.md`](docs/TOOLS-REPORT.md) : role des scripts et dossiers sous `tools/`.
-- [`docs/ROADMAP.md`](docs/ROADMAP.md) : audit complet et plan d'action (vagues 1/2/3) pour faire evoluer le projet.
+- [`AUDIT_COMPLET_APPLICATION.md`](AUDIT_COMPLET_APPLICATION.md) : audit navigateur exhaustif du 26 juillet 2026, preuves et 29 problemes priorises.
+- [`docs/AUDIT-FIX-TRACKER.md`](docs/AUDIT-FIX-TRACKER.md) : statut et preuves des 29 constats.
+- [`docs/AUDIT-FIX-REPORT.md`](docs/AUDIT-FIX-REPORT.md) : rapport final des corrections et validations.
+- [`docs/ROADMAP.md`](docs/ROADMAP.md) : vagues correctives terminees, maintenance et evolutions produit.
 - [`dev-logs/README.md`](dev-logs/README.md) : lecture des logs serveur et des events de traduction.
 
 Le `CLAUDE.md` (racine) reste le point d'entree pour Claude Code.

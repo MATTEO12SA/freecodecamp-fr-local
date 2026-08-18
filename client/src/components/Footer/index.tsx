@@ -4,7 +4,7 @@ import './footer.css';
 function Footer(): JSX.Element {
   return (
     <footer className='site-footer site-footer-minimal'>
-      © freeCodeCamp · Apprentissage local
+      Projet local non officiel basé sur freeCodeCamp
     </footer>
   );
 }

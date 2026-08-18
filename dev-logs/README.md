@@ -1,67 +1,57 @@
 # Dev Logs
 
-Ce dossier reste toujours au meme endroit pour suivre le serveur lance par `dev.ps1`.
+Dossier de diagnostic du serveur lance par `.\dev.ps1`. Les fichiers generes
+sont ignores par Git ; seuls ce README, `.gitignore` et les deux scripts
+watchers sont versionnes.
 
-Commandes utiles :
-
-```powershell
-.\dev.ps1        # lancement quotidien: Gatsby direct
-.\dev.ps1 -Clean # vide le cache Gatsby puis relance
-.\dev.ps1 -Full  # force le setup complet
-```
-
-Fichiers actifs au lancement :
-
-- `status.json` : statut courant `STARTING`, `UP`, `DOWN` ou `ERROR`.
-- `latest.log` : transcript humain du dernier lancement.
-
-`server.log` et `errors.log` sont d'anciens chemins de diagnostic. Le `dev.ps1` actuel ne les reecrit plus : les evenements et erreurs utiles sont regroupes dans `latest.log`.
-
-Pour suivre le serveur et les traductions dans le log principal :
+## Commandes
 
 ```powershell
-Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error"
+.\dev.ps1                 # lancement quotidien (Gatsby direct)
+.\dev.ps1 -Clean          # vide le cache Gatsby puis relance
+.\dev.ps1 -Full           # setup complet (plus lent)
+.\dev-check.ps1           # verdict reel : UP / STARTING / ZOMBIE / DOWN
+.\dev-check.ps1 -Wait     # attend HTTP pret
 ```
 
-- `status.up` : Gatsby repond sur `http://localhost:8000`. Le watcher teste d'abord l'URL HTTP, puis le port TCP en fallback, parce que Gatsby peut ecouter sur `::1` sous Windows.
-- `watcher.ready` : le watcher de traductions est arme.
-- `watcher.changed` : un `.md` FR existant a ete modifie.
-- `watcher.added` : un nouveau `.md` FR a ete detecte.
-- `challenge.integrating` : Gatsby commence a reintegrer le fichier.
-- `challenge.integrated` : Gatsby a reintegre le fichier et va reconstruire les donnees de page.
-- `challenge.error` : l'integration a echoue, regarder la ligne d'erreur juste apres.
+Si `http://localhost:8000` repond deja, `.\dev.ps1` s'arrete tout de suite
+sans relancer Gatsby. C'est le chemin le plus rapide.
 
-Pour voir aussi l'integration de `client/i18n/locales/french/intro.json` dans les titres de modules/blocs :
+`status.json` peut mentir apres un crash. La source de verite est
+`.\dev-check.ps1` (processus node + HTTP HEAD, pas seulement le fichier).
+
+## Fichiers
+
+| Fichier | Role |
+| --- | --- |
+| `status.json` | Statut `STARTING` / `UP` / `DOWN` / `ERROR` du dernier lancement. Ne pas s'y fier seul. |
+| `latest.log` | Transcript du lanceur, de Gatsby et des watchers. |
+| `latest.prev.log` | Copie de `latest.log` au lancement suivant. |
+| `client.stdout.log` | Sortie brute de Gatsby. |
+| `client.stderr.log` | Erreurs brutes de Gatsby. |
+| `status-watch.ps1` | Attend une reponse HTTP puis ecrit `status.up`. |
+| `intro-watch.ps1` | Suit `intro.json` pendant que le serveur tourne. |
+
+Les anciens `server.log`, `errors.log` et `launcher.*.log` ne sont plus
+ecrits. Ils ne servaient qu'a dupliquer `latest.log`.
+
+## Evenements utiles
 
 ```powershell
-Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrating|intro.integrated"
+Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status.error|watcher.|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrated"
 ```
 
-- `intro.integrating` : le generateur charge `intro.json` et regenere les `curriculum-data`.
-- `intro.integrated` : les donnees statiques sont a jour. La ligne indique notamment `<superblock>.json=changed` ou `unchanged`.
-- `intro.changed` : `intro.json` a ete modifie pendant que le serveur tourne.
-- `intro.integrated` avec `logSource=dev-logs/client.stdout.log` : Gatsby a reconstruit le bundle `/learn` apres cette modification.
+- `status.up` : Gatsby repond en HTTP sur `http://localhost:8000`.
+- `watcher.ready` : le watcher de traductions est arme (`fs.watch` recursif,
+  plus les 2000 pollers `fs.watchFile` par defaut).
+- `watcher.changed` / `watcher.added` : un `.md` FR a change ou a ete cree.
+- `challenge.integrated` : Gatsby a reintegre le fichier.
+- `intro.integrated` : `intro.json` a ete repris dans les donnees de page.
 
-Les fichiers generes sont ignores par Git. Tu peux vider `latest.log` quand il ne sert plus, mais garde `README.md`, `.gitignore`, `status.json` et `status-watch.ps1`.
+## Pendant une traduction
 
-Si Windows ou le PC crash, le serveur ne peut pas toujours ecrire une derniere ligne `status.down`. Dans ce cas, relance simplement `.\dev.ps1` : `latest.log` et `status.json` sont recrees au debut du lancement.
-
-Si le navigateur ouvre `http://localhost:8000` mais que `status.json` reste en `STARTING` ou passe en `ERROR`, verifier que `dev.ps1` contient bien le probe HTTP dans `Start-PortStatusWatcher`. L'ancien test TCP seul pouvait rater Gatsby quand le port 8000 etait ouvert uniquement sur IPv6 (`::1`).
-
-### Verifier Sans Faire Confiance A `status.json`
-
-`status.json` peut rester figé en `STARTING` ou `UP` apres un crash (process node morts mais le fichier n'a pas eu le temps d'etre mis a jour) ; il peut aussi annoncer `UP` pendant qu'un rebuild Gatsby ferme temporairement le port. Pour un verdict reel :
-
-```powershell
-.\dev-check.ps1                    # snapshot : UP / STARTING / ZOMBIE / DOWN / PORT_OPEN_NO_HTTP
-.\dev-check.ps1 -Wait -Timeout 600 # boucle jusqu'a UP (timeout 10 min)
-```
-
-Le script ne se fie pas a `status.json` : il combine processus node + HTTP HEAD `localhost` + fallback TCP IPv4/IPv6. Il detecte explicitement le cas `ZOMBIE` (status dit UP mais plus aucun node ne tourne).
-
-## Pendant Une Traduction De Workshop
-
-Quand `node tools/translate-workshop.js apply <workshop>` cree des `.md` FR pendant que le serveur tourne, `latest.log` doit montrer le cycle suivant :
+Quand `node tools/translate-workshop.js apply <bloc>` cree des `.md` FR pendant
+que le serveur tourne, tu dois voir :
 
 ```text
 watcher.added
@@ -70,10 +60,7 @@ challenge.integrated
 watcher.touched
 ```
 
-`watcher.touched` apparait seulement si le workshop etait un nouveau bloc FR au demarrage du serveur. Il force la mise a jour live de `Theme > Francais` dans `/catalog` et des badges de `/cours-fr`.
-
-Pour verifier vite :
-
-```powershell
-Select-String -Path dev-logs\latest.log -Pattern "watcher.added|watcher.touched|challenge.integrating|challenge.integrated|challenge.error|intro.changed|intro.integrated" | Select-Object -Last 30
-```
+`watcher.touched` n'apparait que si c'est le premier fichier FR du bloc. Il
+rafraichit le filtre `Theme > Francais` et les badges de `/cours-fr`. Le
+catalogue calcule ensuite `absent` / `partial` / `complete` avec le vrai
+pourcentage de fichiers traduits.

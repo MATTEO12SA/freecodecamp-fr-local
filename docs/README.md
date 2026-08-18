@@ -11,12 +11,24 @@ racine pour le demarrage.
 - [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md) : etat exact des traductions, prochaine cible, pieges connus.
 - [OPTIMIZE-TRANSLATIONS.md](OPTIMIZE-TRANSLATIONS.md) : retour d'experience et workflow qualite des workshops.
 - [TOOLS-REPORT.md](TOOLS-REPORT.md) : role de chaque script sous `tools/`.
-- [ROADMAP.md](ROADMAP.md) : audit senior + plan d'action detaille (vagues 1/2/3) pour passer en qualite produit.
+- [NOTE-SITE.md](NOTE-SITE.md) : note courante du site (8,3/10) et écart vs l'audit de juillet.
+- [ROADMAP.md](ROADMAP.md) : priorites correctives issues du dernier audit, puis vagues produit.
+- [AUDIT-FIX-TRACKER.md](AUDIT-FIX-TRACKER.md) : statut, cause, tests et preuve des 29 constats.
+- [AUDIT-FIX-REPORT.md](AUDIT-FIX-REPORT.md) : synthese finale de la campagne de correction.
 
 A la racine (hors `docs/`) :
 
 - [../README.md](../README.md) : demarrage standard avec `.\dev.ps1`.
+- [../AUDIT_COMPLET_APPLICATION.md](../AUDIT_COMPLET_APPLICATION.md) : audit navigateur exhaustif du 26 juillet 2026 (29 constats, preuves, notes et verdict).
 - [../dev-logs/README.md](../dev-logs/README.md) : comprendre `latest.log`, `status.json` et les anciens chemins `server.log` / `errors.log`.
+
+## Etat Qualite Actuel
+
+- Le coeur local fonctionne sans compte ni backend obligatoire.
+- Les 29 constats ont ete suivis : 28 corriges, 1 non reproduit dans le build de production.
+- Le test reseau couvre sept routes dans Chromium, Firefox et WebKit avec zero telemetrie, zero appel au port 3000, zero erreur console et zero warning audite.
+- Axe strict a scanne 10/10 etats sans page ignoree ni violation serieuse.
+- `/dev-fr` et `/___graphql` restent disponibles en developpement et sont absents du build public.
 
 ## Lancer Le Serveur
 
@@ -28,11 +40,15 @@ A la racine (hors `docs/`) :
 ## Verifier Avant Push
 
 ```powershell
-pnpm local:check        # HTTP + drift + tests catalogue + lint JS v9 + typecheck client/shared + garde liens externes
-pnpm local:check:full   # + lint client/racine + smoke tests + audit a11y axe (serveur UP requis)
+pnpm local:check        # HTTP + drift + qualité FR JS v9 + tests catalogue + lint JS v9 + typecheck client/shared + garde liens externes
+pnpm local:check:full   # + lint client/racine + parcours + reseau/console + Axe strict
 ```
 
 Ces commandes generent aussi le snapshot utilise par `/dev-fr`.
+
+`axe-test.mjs` affiche les compteurs demandés/chargés/scannés/ignorés/échoués.
+Le mode strict échoue dès qu'une page n'est pas réellement scannée ;
+`test:axe-regression` vérifie le cas inaccessible.
 
 ## Suivi Et Qualite (Lecture Seule)
 
@@ -66,9 +82,10 @@ confirment que Gatsby voit les fichiers `.md` FR.
 ## Catalogue Et Pages Locales
 
 - `/cours-fr` : certifications FR, progression locale, acces examens.
-- `/catalog` : catalogue global, recherche, filtres niveau/theme, `Theme > Francais`, progression locale, bouton continuer.
+- `/catalog` : catalogue global, recherche, filtres niveau/theme, statut FR par carte, progression locale, chargement progressif et bouton continuer.
 - `/learn` : parcours complet local.
-- `/dev-fr` : hub local (serveur, logs, traduction, drift, git, liens, progression navigateur).
+- `/dev-fr` : hub local de developpement (serveur, logs, traduction, drift, git, liens, progression navigateur). Le snapshot reste statique jusqu'a `pnpm local:report`.
 - `/exam-fr?cert=responsive-web-design-v9` : examen local FR, accessible depuis `/cours-fr` et `/dev-fr`.
 
 Le menu principal expose `/learn`, `/cours-fr`, `/catalog`, `/dev-fr`.
+L'entrée `/dev-fr` est conditionnée au mode développement.

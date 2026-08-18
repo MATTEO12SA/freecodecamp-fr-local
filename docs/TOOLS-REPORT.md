@@ -8,7 +8,9 @@ Pour le travail de traduction actuel, les fichiers les plus importants sont :
 
 - `tools/translate-workshop.js` : pipeline securise pour extraire/appliquer/verifier la prose des workshops step-by-step.
 - `tools/translations/*.json` : JSON de travail relus pour les workshops deja traduits.
-- `tools/translations/phrasebook.json` : aide de pre-remplissage pour les hints repetitifs.
+- `tools/translations/lexique-fr.md` : reference de style relue par le traducteur.
+- `tools/translations/phrasebook.json` : pre-remplissage optionnel de brouillon (`--phrasebook`), jamais source finale.
+- `tools/check-translation-quality.js` : controle des chunks, restes anglais probables, placeholders et code inline.
 - `tools/client-plugins/gatsby-source-challenges/gatsby-node.js` : plugin Gatsby qui lit les challenges et surveille les nouveaux fichiers FR pendant le serveur dev.
 - `tools/challenge-parser` : parser utilise par le curriculum pour transformer les `.md` en donnees exploitables.
 
@@ -24,30 +26,35 @@ Le reste sert surtout au developpement upstream freeCodeCamp ou a des workflows 
 
 ## Dossiers Et Scripts
 
-| Chemin                                           | Role                                                                                                                                                                                      | Utile Pour Nous                                                                    |
-| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `tools/translate-workshop.js`                    | Extrait/applique/verifie les workshops (`description/hints`) et les lectures JS (`description/interactive/questions/answers/feedback`) sans toucher au code technique.                    | Oui, pour les workshops et les lectures JavaScript v9.                             |
-| `tools/translate-challenges.py`                  | Ancien script de traduction automatique via Argos Translate.                                                                                                                              | Non comme source finale. A eviter pour la qualite demandee.                        |
-| `tools/translations/`                            | Stocke les JSON relus des workshops et le `phrasebook`.                                                                                                                                   | Oui. Les JSON gardent une trace du travail et permettent de regenerer/verifier.    |
-| `tools/translation-status.js`                    | Avancement FR par superblock `*-v9.json` : barre + % au **niveau fichier** (.md FR/EN, vraie completude) + compte de blocs. Lecture seule. S'appuie sur `tools/lib/curriculum-fr.js`.     | Oui. Remplace les comptages PowerShell ad-hoc tapes a chaque session.              |
-| `tools/check-translation-drift.js`               | Compare le dernier commit git de chaque `.md` EN vs son equivalent FR (repli mtime disque hors git) et signale les FR potentiellement obsoletes. Exit 1 si drift. Lib `curriculum-fr.js`. | Oui. Controle qualite anti-drift, utilisable en pre-commit.                        |
-| `tools/local-dev-report.js`                      | Genere le snapshot JSON de `/dev-fr` : serveur, logs, traduction (bloc + fichier), drift, git. S'appuie sur `tools/lib/curriculum-fr.js`.                                                 | Oui. Source de donnees sans backend pour le hub dev local.                         |
-| `tools/local-check.js`                           | Lance les checks locaux et affiche `READY` ou `BLOCKED`. Inclut desormais typecheck client/shared + garde liens externes (et audit a11y en `--full`).                                     | Oui. Commande de verification rapide avant push.                                   |
-| `tools/lib/curriculum-fr.js`                     | Source unique du scan FR : chemins, blocs traduits, completude fichier, structure superblock. Module CommonJS pur.                                                                        | Oui. Importee par translation-status, check-translation-drift et local-dev-report. |
-| `tools/check-external-links.js`                  | Garde anti-regression : echoue si un lien de navigation externe non allowliste apparait dans `client/src`. Baseline `tools/external-links-allowlist.json` (`--update`).                   | Oui. Integree a `pnpm local:check`.                                                |
-| `axe-test.mjs` (racine)                          | Audit a11y (axe-core, CDN en repli) des 4 pages custom `/cours-fr`, `/catalog`, `/exam-fr`, `/dev-fr`. Serveur requis. `--strict` pour bloquer.                                           | Oui. Integre a `pnpm local:check:full`.                                            |
-| `tools/challenge-helper-scripts/`                | Scripts upstream pour creer/renommer/supprimer des challenges, steps, tasks, quizzes et projets.                                                                                          | Rarement. Utile si on cree du curriculum, pas pour traduire un bloc existant.      |
-| `tools/challenge-parser/`                        | Parser Markdown du curriculum : frontmatter, sections, quizzes, seeds, solutions, tests, directives.                                                                                      | Indirectement crucial. Les validations et builds s'appuient dessus.                |
-| `tools/client-plugins/gatsby-source-challenges/` | Plugin Gatsby qui transforme les challenges en nodes Gatsby. Dans ce fork, il surveille aussi les fichiers FR et logge `watcher.added`, `challenge.integrating`, `challenge.integrated`.  | Tres important pour voir les traductions arriver dans `latest.log`.                |
-| `tools/client-plugins/browser-scripts/`          | Compile les scripts executes dans le navigateur : runner de tests JS/DOM/Python, workers TypeScript/Python/Sass.                                                                          | Indirectement. Ne pas toucher pour traduire.                                       |
-| `tools/daily-challenges/`                        | Seed des daily coding challenges dans MongoDB local/prod.                                                                                                                                 | Non pour les traductions.                                                          |
-| `tools/scripts/sync-i18n.ts`                     | Synchronisation i18n upstream.                                                                                                                                                            | A utiliser prudemment, peut toucher beaucoup de fichiers.                          |
-| `tools/scripts/redirect-gen.ts`                  | Generation de redirections.                                                                                                                                                               | Non pour les traductions courantes.                                                |
-| `tools/scripts/test_challenges.sh`               | Helper shell pour tester des challenges.                                                                                                                                                  | Peu utile sur Windows, preferer les commandes `pnpm`.                              |
-| `tools/scripts/move-bf.sh`                       | Script shell historique de deplacement de fichiers.                                                                                                                                       | Non utile ici.                                                                     |
-| `tools/scripts/seed/`                            | Scripts de seed MongoDB pour donnees utilisateur/demo/surveys.                                                                                                                            | Non pour les traductions.                                                          |
-| `tools/scripts/seed-exams/`                      | Generation/seed d'examens de dev.                                                                                                                                                         | Non pour la traduction du curriculum.                                              |
-| `tools/challenge-editor/`                        | Dossier present mais vide dans ce checkout.                                                                                                                                               | Aucun usage actuel.                                                                |
+| Chemin                                           | Role                                                                                                                                                                                       | Utile Pour Nous                                                                    |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| `tools/translate-workshop.js`                    | Extrait/applique/verifie workshops, labs, lectures, reviews et quizzes sans toucher au code technique.                                                                                     | Oui, pipeline principal JavaScript v9.                                             |
+| `tools/translate-challenges.py`                  | Ancien script Argos. **Désactivé** (exit 2) : ce n'est pas une source FR acceptable.                                                                                                       | Non. Utiliser `translate-workshop.js`.                                             |
+| `tools/translations/`                            | Stocke les JSON relus des workshops et le `phrasebook`.                                                                                                                                    | Oui. Les JSON gardent une trace du travail et permettent de regenerer/verifier.    |
+| `tools/check-translation-quality.js`             | Controle un bloc traduit : chunks vides, restes anglais, placeholders `$n`, spans inline. `--superblock javascript-v9` ou `--all`. Inclus dans `pnpm local:check`.                         | Oui. A lancer aussi apres `verify` sur chaque bloc.                                |
+| `tools/translation-status.js`                    | Avancement FR par superblock `*-v9.json` : barre + % au **niveau fichier** (.md FR/EN, vraie completude) + compte de blocs. Lecture seule. S'appuie sur `tools/lib/curriculum-fr.js`.      | Oui. Remplace les comptages PowerShell ad-hoc tapes a chaque session.              |
+| `tools/check-translation-drift.js`               | Compare le dernier commit git de chaque `.md` EN vs son equivalent FR (repli mtime disque hors git) et signale les FR potentiellement obsoletes. Exit 1 si drift. Lib `curriculum-fr.js`.  | Oui. Controle qualite anti-drift, utilisable en pre-commit.                        |
+| `tools/local-dev-report.js`                      | Genere le snapshot JSON de `/dev-fr` : serveur, logs, traduction (bloc + fichier), drift, git. S'appuie sur `tools/lib/curriculum-fr.js`.                                                  | Oui. Snapshot statique : le bouton navigateur ne le regenere pas.                  |
+| `tools/local-check.js`                           | Lance les checks locaux et affiche `READY` ou `BLOCKED`. Inclut typecheck client/shared, liens externes et régression Axe ; `--full` ajoute lints, parcours, réseau/console et Axe strict. | Oui. Garde locale principale avant livraison.                                      |
+| `tools/lib/curriculum-fr.js`                     | Source unique du scan FR : chemins, blocs traduits, completude fichier, structure superblock. Module CommonJS pur.                                                                         | Oui. Importee par translation-status, check-translation-drift et local-dev-report. |
+| `tools/check-external-links.js`                  | Garde anti-regression : echoue si un lien de navigation externe non allowliste apparait dans `client/src`. Baseline `tools/external-links-allowlist.json` (`--update`).                    | Oui. Controle les ancres ; `local-network-test.mjs` contrôle les requêtes.         |
+| `axe-test.mjs` (racine)                          | Audit a11y strict de 10 pages/états, clair/sombre et examen dynamique. Compte demandé/chargé/scanné/ignoré/échoué et échoue si le scan est incomplet.                                      | Oui. Régression dédiée dans `axe-test-regression.mjs`.                             |
+| `audit-regression-test.mjs` (racine)             | Parcours navigateur des états URL, examen, catalogue, chrome FR, footer, mobile et identité locale.                                                                                        | Oui. Produit un rapport JSON avec `--output`.                                      |
+| `local-network-test.mjs` (racine)                | Vérifie sept routes : zéro GTM/GA/Stripe, zéro port 3000, zéro erreur console, zéro warning audité et contrastes catalogue.                                                                | Oui. À lancer dans Chromium, Firefox et WebKit.                                    |
+| `production-regression-test.mjs` (racine)        | Vérifie le build statique : menu public, absence de `/dev-fr` et `/___graphql`, vraie 404 utilisateur.                                                                                     | Oui, uniquement contre un serveur de `client/public`.                              |
+| `production-performance-test.mjs` (racine)       | Mesure transfert, poids décodé, scripts, DOM, heap et timings de l'accueil, du catalogue et de l'éditeur.                                                                                  | Oui, uniquement après un build de production.                                      |
+| `tools/challenge-helper-scripts/`                | Scripts upstream pour creer/renommer/supprimer des challenges, steps, tasks, quizzes et projets.                                                                                           | Rarement. Utile si on cree du curriculum, pas pour traduire un bloc existant.      |
+| `tools/screenshot-tour.mjs`                      | Tour Playwright « humain » : menu, parcours, examen, catalogue, sombre, mobile. Ecrit `screenshots/current/`.                                                                               | Oui. `pnpm screenshots` quand le serveur est UP.                                   |
+| `tools/client-plugins/gatsby-source-challenges/` | Plugin Gatsby qui transforme les challenges en nodes. Watcher Windows : `fs.watch` recursif par defaut (plus les 2000 pollers `fs.watchFile`). `FCC_WATCHFILE=1` restaure l'ancien mode.   | Tres important pour voir les traductions arriver dans `latest.log`.                |
+| `tools/client-plugins/browser-scripts/`          | Compile les scripts executes dans le navigateur : runner de tests JS/DOM/Python, workers TypeScript/Python/Sass.                                                                           | Indirectement. Ne pas toucher pour traduire.                                       |
+| `tools/daily-challenges/`                        | Seed des daily coding challenges dans MongoDB local/prod.                                                                                                                                  | Non pour les traductions.                                                          |
+| `tools/scripts/sync-i18n.ts`                     | Synchronisation i18n upstream.                                                                                                                                                             | A utiliser prudemment, peut toucher beaucoup de fichiers.                          |
+| `tools/scripts/redirect-gen.ts`                  | Generation de redirections.                                                                                                                                                                | Non pour les traductions courantes.                                                |
+| `tools/scripts/test_challenges.sh`               | Helper shell pour tester des challenges.                                                                                                                                                   | Peu utile sur Windows, preferer les commandes `pnpm`.                              |
+| `tools/scripts/move-bf.sh`                       | Script shell historique de deplacement de fichiers.                                                                                                                                        | Non utile ici.                                                                     |
+| `tools/scripts/seed/`                            | Scripts de seed MongoDB pour donnees utilisateur/demo/surveys.                                                                                                                             | Non pour les traductions.                                                          |
+| `tools/scripts/seed-exams/`                      | Generation/seed d'examens de dev.                                                                                                                                                          | Non pour la traduction du curriculum.                                              |
+| `tools/challenge-editor/`                        | Dossier present mais vide dans ce checkout.                                                                                                                                                | Aucun usage actuel.                                                                |
 
 ## Details Par Usage
 
@@ -63,7 +70,12 @@ node tools/translate-workshop.js verify <block>
 
 Il protege la technique, mais il ne traduit pas a notre place. Le JSON doit etre relu, corrige et marque `reviewed: true`.
 
-Le JSON contient `kind: "workshop"` pour les blocs `description/hints` et `kind: "lecture"` pour les lectures JS. En mode lecture, le script extrait les zones de prose dans `description`, `interactive`, `questions`, `answers` et `feedback`, en laissant code fences, marqueurs, `video-solution` et frontmatter technique intacts.
+Le JSON contient `kind: "workshop"` pour les blocs `description/hints`,
+`kind: "lecture"` pour les lectures et reviews, et `kind: "quiz"` pour les
+quizzes. En mode lecture, le script extrait les zones de prose dans
+`description`, `interactive`, `questions`, `assignment`, `answers` et
+`feedback`, en laissant code fences, marqueurs, `video-solution` et frontmatter
+technique intacts.
 
 ### Suivi Et Anti-Drift
 
@@ -80,6 +92,24 @@ pnpm local:check:full                   # verification locale longue
 `check-translation-drift.js` sort en code 1 s'il detecte un drift, donc il peut servir de garde-fou avant un commit. Aucun des deux n'ecrit quoi que ce soit ni n'a besoin du serveur.
 
 `local-dev-report.js` ecrit uniquement dans `client/static/local-dev/report.json`, ignore par git. `/dev-fr` lit ce fichier dans le navigateur.
+
+Le bouton « Relire le snapshot » de `/dev-fr` fait seulement un nouveau `fetch`
+de ce JSON. Pour actualiser son contenu, relancer `pnpm local:report`. Le lecteur
+d'historique accepte le format versionné `{ version, byCert }`, l'ancien tableau
+et les données corrompues.
+
+### Gardes Locales Apres Audit
+
+La campagne de correction a séparé trois contrôles complémentaires :
+
+- `check-external-links.js` bloque les ancres externes non allowlistées ;
+- `local-network-test.mjs` bloque GTM/GA/Stripe, le port 3000 et les problèmes
+  console audités dans les trois moteurs ;
+- `axe-test.mjs --strict` garantit que toutes les pages demandées ont été
+  réellement scannées.
+
+Les preuves visuelles actuelles se génèrent avec `pnpm screenshots` dans
+`screenshots/current/`. Le dossier n'est plus une archive datée de juillet.
 
 ### Serveur Dev Et Logs
 

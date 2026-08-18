@@ -8,6 +8,7 @@ import { toggleTheme } from '../../../redux/actions';
 import { Link } from '../../helpers';
 import { LocalStorageThemes } from '../../../redux/types';
 import { themeSelector } from '../../../redux/selectors';
+import { isDevelopmentMode } from '../../../../config/runtime-mode';
 
 export interface NavLinksProps {
   displayMenu: boolean;
@@ -60,25 +61,50 @@ function NavLinks({
       className={`nav-list${displayMenu ? ' display-menu' : ''}`}
     >
       <li key='learn'>
-        <Link className='nav-link' onKeyDown={handleMenuKeyDown} to='/learn'>
+        <Link
+          className='nav-link'
+          onClick={hideMenu}
+          onKeyDown={handleMenuKeyDown}
+          to='/learn'
+          title='Carte de tous les cours locaux'
+        >
           {t('buttons.curriculum')}
         </Link>
       </li>
       <li key='cours-fr'>
-        <Link className='nav-link' onKeyDown={handleMenuKeyDown} to='/cours-fr'>
-          Cours FR
+        <Link
+          className='nav-link'
+          onClick={hideMenu}
+          onKeyDown={handleMenuKeyDown}
+          to='/cours-fr'
+          title='Certifications déjà traduites en français'
+        >
+          Parcours
         </Link>
       </li>
       <li key='catalog'>
-        <Link className='nav-link' onKeyDown={handleMenuKeyDown} to='/catalog'>
+        <Link
+          className='nav-link'
+          onClick={hideMenu}
+          onKeyDown={handleMenuKeyDown}
+          to='/catalog'
+          title='Recherche et filtres, y compris le thème Français'
+        >
           Catalogue
         </Link>
       </li>
-      <li className='nav-line' key='dev-fr'>
-        <Link className='nav-link' onKeyDown={handleMenuKeyDown} to='/dev-fr'>
-          Dev FR
-        </Link>
-      </li>
+      {isDevelopmentMode() && (
+        <li className='nav-line' key='dev-fr'>
+          <Link
+            className='nav-link'
+            onClick={hideMenu}
+            onKeyDown={handleMenuKeyDown}
+            to='/dev-fr'
+          >
+            Dev FR
+          </Link>
+        </li>
+      )}
       <li className='nav-line' key='theme'>
         <button
           type='button'

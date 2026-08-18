@@ -26,8 +26,7 @@ interface Item {
   provider: {
     '@type': 'Organization';
     name: string;
-    sameAs: string;
-    nonprofitStatus: string;
+    url: string;
   };
 }
 
@@ -60,8 +59,12 @@ const SEO = ({ title, children }: SEOProps) => {
     }
   `);
 
+  const baseTitle = title || defaultTitle;
+  const localTitle = 'freeCodeCamp FR Local (non officiel)';
   const seo = {
-    title: title || defaultTitle
+    title: baseTitle.includes('FR Local')
+      ? baseTitle
+      : `${baseTitle} | ${localTitle}`
   };
 
   const structuredData: StructuredData = {
@@ -91,9 +94,8 @@ const SEO = ({ title, children }: SEOProps) => {
         description: introText.at(0),
         provider: {
           '@type': 'Organization',
-          name: 'freeCodeCamp',
-          sameAs: 'https://freecodecamp.org',
-          nonprofitStatus: 'Nonprofit501c3'
+          name: localTitle,
+          url: siteUrl
         }
       }
     });

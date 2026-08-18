@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faStairs } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import { Link } from './helpers';
+import type { CatalogTranslationStatus } from '../utils/catalog-translation-status';
 
 interface CatalogItemProps {
   superBlock: string;
@@ -14,6 +15,9 @@ interface CatalogItemProps {
   totalCount?: number;
   actionHref?: string;
   actionLabel?: string;
+  translationStatus?: CatalogTranslationStatus;
+  translatedFiles?: number;
+  totalFiles?: number;
 }
 
 const CatalogItem: React.FC<CatalogItemProps> = ({
@@ -25,7 +29,10 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
   completedCount = 0,
   totalCount = 0,
   actionHref,
-  actionLabel
+  actionLabel,
+  translationStatus,
+  translatedFiles = 0,
+  totalFiles = 0
 }) => {
   const { t } = useTranslation();
 
@@ -33,10 +40,21 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
     returnObjects: true
   }) as Partial<{
     title: string;
+    intro: string[];
     summary: string[];
   }>;
   const title = intro.title || superBlock;
-  const summary = Array.isArray(intro.summary) ? intro.summary : [];
+  const introBody = Array.isArray(intro.intro)
+    ? intro.intro
+    : Array.isArray(intro.summary)
+      ? intro.summary
+      : [];
+  const summary =
+    translationStatus === 'partial'
+      ? [t('curriculum.catalog.partial-summary')]
+      : introBody;
+  const coveragePercent =
+    totalFiles > 0 ? Math.round((translatedFiles / totalFiles) * 100) : 0;
 
   const duration =
     hours === 1
@@ -50,10 +68,22 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
           <div className={`block-label block-label-${topic}`}>
             {t(`curriculum.catalog.topic.${topic}`)}
           </div>
+          {translationStatus === 'partial' && (
+            <div className='catalog-item-translation-status'>
+              {t('curriculum.catalog.partial-translation')}
+              {totalFiles > 0
+                ? ` · ${t('curriculum.catalog.file-coverage', {
+                    percent: coveragePercent,
+                    translated: translatedFiles,
+                    total: totalFiles
+                  })}`
+                : ''}
+            </div>
+          )}
         </div>
-        <h3>
+        <h2>
           <Link to={`/learn/${superBlock}`}>{title}</Link>
-        </h3>
+        </h2>
         {showAllSummaries ? (
           summary.map((text, i) => <p key={i}>{text}</p>)
         ) : summary && summary.length > 0 ? (

@@ -12,13 +12,28 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Modules 1-8 Terminés (118/230)
+### JavaScript v9 — Module 9 En Cours (121/230)
 
-État actuel : 118 blocs FR sur 230. Les modules `javascript-variables-and-strings` (20/20), `javascript-booleans-and-numbers` (16/16), `introduction-functions-in-javascript` (12/12), `introduction-to-arrays-in-javascript` (7/7), `introduction-to-objects-in-javascript` (10/10), `javascript-loops` (15/15), `review-javascript-fundamentals` (25/25) et `higher-order-functions-and-callbacks` (13/13) sont **100 % traduits** (contenu `.md` + titres/intros `intro.json` aux deux occurrences). Module 8 = lecture `lecture-working-with-higher-order-functions-and-callbacks` (8 fichiers), `workshop-library-manager` (18 étapes), 9 labs mono-fichier, `review-javascript-higher-order-functions` et `quiz-javascript-higher-order-functions`. Prochaine cible : module 9 `dom-manipulation-and-events` (clé intro.json `learn-dom-manipulation-and-events-with-javascript`).
+État actuel : 121 blocs FR sur 230 (468/1311 fichiers). Les modules 1-8 sont **100 % traduits**. Le module 9 `dom-manipulation-and-events` est à 3/12 : `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont terminés (contenus `.md`, titres et intros aux deux occurrences, titre/résumé du module). Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — **ne pas appliquer**), puis `workshop-storytelling-app`.
 
 Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
 
 Note pièges connus du pipeline (vus module 3) : le `verify` custom de `translate-workshop.js` peut crier `nombre de blocs de prose dans # --hints-- modifie` quand une étape EN a une ligne blanche avec un espace (` `) entre le dernier bloc de code et `# --seed--` (ex. loan-qualification step-3) — c'est un faux positif d'espace, le `.md` rendu est identique. Autorité finale : `pnpm -C curriculum lint-challenges --superblock javascript-v9` (doit sortir exit 0).
+
+### Etat Produit A Ne Pas Confondre Avec L'Etat Des Traductions
+
+L'[audit initial](../AUDIT_COMPLET_APPLICATION.md) du 26 juillet 2026 ne change
+pas la prochaine cible de traduction. Sa campagne de correction est terminée :
+28 constats corrigés, 1 charge dev non reproduite en production. Le
+[tracker](AUDIT-FIX-TRACKER.md) et le
+[rapport final](AUDIT-FIX-REPORT.md) sont les références produit actuelles.
+
+Pendant un lot de traduction :
+
+- `verify`, `check-translation-quality` et `lint-challenges` restent les autorites sur le curriculum ;
+- `latest.log` prouve l'integration Gatsby, pas l'accessibilite ni l'absence de requetes tierces ;
+- `Theme > Francais` part de la présence d'au moins un fichier FR ; chaque carte affiche ensuite un statut précis `absent` / `partial` / `complete` ;
+- ne pas profiter d'un lot de traduction pour corriger les 29 constats UI au hasard : suivre [ROADMAP.md](ROADMAP.md) par lots separes.
 
 Attention : les lectures JS utilisent surtout `# --description--`, `# --interactive--`, `# --questions--`, `## --answers--` et `### --feedback--` (`kind: "lecture"`). Les reviews (`challengeType 31`) passent par le même mode lecture, avec `# --assignment--` ajouté aux marqueurs de prose. Les quizzes (`challengeType 8`) utilisent `kind: "quiz"` : seuls `# --description--`, `#### --text--`, `#### --distractors--` et `#### --answer--` sont traduits ; distracteurs en code/backticks et séparateurs `---` restent verbatim. Traduire le JSON manuellement, puis `apply`/`verify`/`check-translation-quality`.
 
@@ -33,7 +48,7 @@ pwsh -Command "
   \$allBlocks | Where-Object { \$_ -notin \$fr }"
 ```
 
-## Infrastructure Mise En Place (Tous Pushed)
+## Infrastructure Mise En Place
 
 ### Détection Automatique Des Certifications Traduites
 
@@ -43,6 +58,12 @@ Utilisé par :
 
 - [client/src/pages/cours-fr.tsx](../client/src/pages/cours-fr.tsx) — affiche le badge "🚧 Traduction à venir" sur les certs non traduites.
 - [client/src/pages/catalog.tsx](../client/src/pages/catalog.tsx) — filtre `Theme > Francais` du catalogue.
+
+`hasFrenchIntro()` reste la source automatique de présence FR au niveau
+superblock. Le catalogue complète ce booléen avec
+`catalog-translation-status.ts`, qui compare les intros et le contenu réel pour
+afficher `absent`, `partial` ou `complete` par carte. Ne pas remplacer ces deux
+sources par une liste manuelle.
 
 **Live update (sans restart)** : [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](../tools/client-plugins/gatsby-source-challenges/gatsby-node.js) détecte les nouveaux blocs FR via `fs.watch` recursive. Quand un block FR jamais vu apparaît, il `fs.utimesSync` sur `has-french-intro.ts` pour forcer Webpack à ré-évaluer le preval. Confirmation dans `dev-logs/latest.log` :
 
@@ -59,10 +80,15 @@ Test bout-en-bout vérifié : créer un nouveau dossier `blocks/<x>/` avec un `.
 L'examen a une mémoire locale (tout dans `localStorage`, aucune API) :
 
 - **Historique** : chaque examen complet est enregistré via [client/src/utils/exam-history.ts](../client/src/utils/exam-history.ts) (clé `fcc-exam-history`). L'écran d'intro affiche les 5 dernières tentatives (date + score + %). Les révisions ne sont pas enregistrées.
+- **Session en cours** : [client/src/utils/exam-session.ts](../client/src/utils/exam-session.ts) conserve seed, index, réponses et mode par certification dans `fcc-exam-session`, avec schéma versionné et expiration de sept jours. L'intro propose Reprendre/Recommencer.
 - **Stats par module** : l'écran résultats regroupe les questions par bloc source (`sourceBlock`) et affiche un tableau « Réussite par module » trié du plus faible au plus fort.
 - **Révision ciblée** : un bouton « Réviser mes erreurs » relance un mini-examen composé uniquement des questions ratées (réutilise les `PreparedQuestion` en mémoire, pas de nouveau tirage du pool).
+- **Fin sûre** : les réponses vides sont confirmées avant le score et les corrections sont filtrables dans des détails repliés.
 
-[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx) a été nettoyé : seul le bouton "Passer l'examen en français" est gardé. Les boutons cassés (`Open Exam Environment`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimés — ils dépendent de l'API + Auth0 freeCodeCamp qui n'existent pas dans le fork.
+[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx)
+garde le bouton « Passer l'examen en français » et retire les anciens boutons
+cassés. En mode local, `LocalExamPrerequisites` remplace la branche upstream
+avant le montage des hooks RTK Query : aucun appel au port 3000.
 
 L'examen apparaît dans l'accordéon `/cours-fr` (filtre `examDownload` retiré de [client/src/pages/cours-fr.tsx](../client/src/pages/cours-fr.tsx)).
 
@@ -190,7 +216,7 @@ Pour les modules non-workshop, le workflow manuel reste possible, mais les works
 
 - `/cours-fr` — page des certifications françaises avec badge auto "🚧 Traduction à venir" sur celles sans contenu FR.
 - `/learn` — parcours complet local.
-- `/catalog` — catalogue global avec filtres ; `Theme > Francais` filtre automatiquement les niveaux FR.
+- `/catalog` — catalogue global avec filtres ; `Theme > Francais` filtre les superblocks qui possedent au moins un `.md` FR, sans garantir une carte entierement traduite.
 - `/exam-fr?cert=<superblock>` — examen local 100% FR (80 questions tirées des quizzes traduits).
 
 ### Statut serveur
@@ -228,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (118/230 blocs). Modules 1-8 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : module 9 `dom-manipulation-and-events`.
+Suite en cours : JavaScript v9 (121/230 blocs, 468/1311 fichiers). Modules 1-8 **100 % complets**, module 9 à 3/12. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `lecture-working-with-the-dom-click-events-and-web-apis` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 
 ### Lister ce qui manque dans un module
 
@@ -255,24 +281,22 @@ pnpm local:check                                 # verdict local rapide
 pnpm local:check:full                            # checks longs avant push final
 ```
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 118/230.
+`pnpm local:check:full` exécute Axe en mode strict. Une page inaccessible, un
+timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; les
+compteurs sont affichés dans la sortie et protégés par
+`axe-test-regression.mjs`.
+
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 121/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
 - [tools/translate-workshop.js](../tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
 
-## Mémoire Utilisateur (Important)
-
-- **« Dis oui tout le temps »** : enchaîner les opérations sans demander confirmation.
-- L'utilisateur veut le maximum de fichiers traduits par session.
-- Toujours commit + push à la fin de chaque module (pas juste commit local).
-- Tutoiement systématique dans les traductions.
-
 ## Comment Démarrer La Prochaine Session
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-8 **100 % complets** (118/230) ; prochaine cible = module 9 `dom-manipulation-and-events`.
+3. Continuer JavaScript v9 : modules 1-8 **100 % complets**, module 9 à 3/12 (121/230) ; prochaine cible = relire `lecture-working-with-the-dom-click-events-and-web-apis` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -286,6 +310,39 @@ Pour vérifier l'ordre exact des blocs/modules :
 Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le navigateur (Ctrl + Shift + R). Si tu crées un nouveau `.md` (nouveau bloc ou nouveau fichier dans un bloc existant), le `fs.watch` recursive le détecte automatiquement sans redémarrer le serveur — ET si c'est le premier fichier d'un block jamais vu, `has-french-intro.ts` est touché pour mettre à jour le filtre catalog + badge cours-fr.
 
 ---
+
+**Dernière session (2026-08-18, priorités d'audit + lanceur)** :
+JS v9 à 121/230 blocs (468/1311 fichiers), module 9 à 3/12 avec
+`lab-lightbox-viewer` déjà traduit. Catalogue : statut FR basé sur `intro` et
+le vrai % de fichiers. Examen : session v2 sans solutions, dédup historique
+par `seed`, Reprendre/Recommencer, filtre « Sans réponse ». Qualité de
+traduction branchée dans `local:check`. Argos (`translate-challenges.py`)
+désactivé. Watcher curriculum : `fs.watch` récursif par défaut. `dev.ps1`
+sort immédiatement si HTTP est déjà UP. Ne pas appliquer
+`lecture-working-with-the-dom-click-events-and-web-apis.json`. Prochaine cible :
+ce JSON relu, puis `workshop-storytelling-app`.
+
+**Session (2026-07-26, début module 9 JS)** :
+`lab-favorite-icon-toggler` et `lab-real-time-counter` traduits manuellement et
+vérifiés, soit JavaScript v9 à 120/230 blocs (467/1311 fichiers) et module
+`dom-manipulation-and-events` à 2/12. Le titre/résumé du module ainsi que les
+deux entrées de chaque lab dans `intro.json` sont en français. Vérifications :
+`verify` OK sur les deux blocs, QA `0 erreur / 0 avertissement`, lint JavaScript
+v9 et Prettier verts, données curriculum régénérées, titres FR confirmés par
+HTTP.
+`latest.log` contient `watcher.added`, `watcher.touched`,
+`challenge.integrating`, `challenge.integrated` et `intro.integrated`.
+L'extraction
+`tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json`
+existe mais reste **non relue** (`reviewed: false`, 814 segments) : ne pas
+l'appliquer. Cible courte à l'époque : `lab-lightbox-viewer` (depuis traduit).
+
+**Correction de l'audit + synchronisation docs (2026-07-26)** : les 29 constats
+ont été suivis dans `AUDIT-FIX-TRACKER.md`. Résultat : 28 corrigés et AUD-29 non
+reproduit dans le build de production. Réseau/console validés sur sept routes
+dans Chromium, Firefox et WebKit ; Axe strict 10/10 ; build public 18 716 pages,
+outils dev absents et 404 utilisateur validée. Aucun compteur de traduction n'a
+changé : JS reste 118/230, prochaine cible module 9.
 
 **Dernière session (2026-07-26, module 8 JS)** : module `higher-order-functions-and-callbacks` terminé à 100 % (13/13 blocs, 37 fichiers, JS 105→118/230). Traduit la lecture `lecture-working-with-higher-order-functions-and-callbacks` (8 fichiers), `workshop-library-manager` (18 étapes), 9 labs mono-fichier, `review-javascript-higher-order-functions` et `quiz-javascript-higher-order-functions`. Titres + intros ajoutés dans `intro.json` aux deux occurrences, et libellé du module ajouté dans la navigation. Vérifications : `verify` + `check-translation-quality` verts sur les 13 blocs, `lint-challenges --superblock javascript-v9` exit 0, `pnpm -C curriculum build` exit 0, `pnpm -C client create:external-curriculum` exit 0, `translation-status.js javascript-v9` = 118/230, drift 0 sur 2180 fichiers, `git diff --check` clean. Prochaine cible : module 9 `dom-manipulation-and-events`.
 

@@ -1,8 +1,9 @@
 .catalog-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   width: 100%;
-  gap: 2rem;
+  gap: 1.5rem;
+  padding-inline: 1rem;
 }
 
 .catalog-filters {
@@ -25,10 +26,40 @@
 }
 
 .catalog-search input {
-  border: 1px solid var(--background-quaternary);
+  background-color: var(--primary-background);
+  border: 1px solid var(--quaternary-color);
+  caret-color: var(--primary-color);
+  color: var(--primary-color);
   min-height: 44px;
   padding: 0.5rem 0.75rem;
   width: 100%;
+}
+
+.catalog-search input::placeholder {
+  color: var(--quaternary-color);
+  opacity: 1;
+}
+
+.catalog-search input:focus,
+.catalog-search input:focus-visible {
+  border-color: var(--focus-outline-color);
+  box-shadow: 0 0 0 2px var(--focus-outline-color);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.catalog-search input:-webkit-autofill,
+.catalog-search input:-webkit-autofill:hover,
+.catalog-search input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--primary-background) inset;
+  -webkit-text-fill-color: var(--primary-color);
+  caret-color: var(--primary-color);
+}
+
+.catalog-search input:autofill {
+  background-color: var(--primary-background);
+  box-shadow: 0 0 0 1000px var(--primary-background) inset;
+  color: var(--primary-color);
 }
 
 .catalog-filters .dropdown {
@@ -79,15 +110,15 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid var(--background-quaternary);
-  max-width: 400px;
+  border: 1px solid var(--quaternary-background);
+  min-width: 0;
 }
 
 .catalog-item a {
   text-decoration: none;
 }
 
-.catalog-item h3 {
+.catalog-item h2 {
   margin: 0;
 }
 
@@ -113,6 +144,25 @@
 .catalog-item-progress {
   color: var(--quaternary-color);
   font-size: 0.9rem;
+}
+
+.catalog-item-translation-status {
+  border: 1px solid var(--quaternary-color);
+  font-size: 0.8rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.catalog-results-count {
+  margin-inline: 1rem;
+}
+
+.catalog-pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 1rem 0;
 }
 
 .catalog-item-cta {

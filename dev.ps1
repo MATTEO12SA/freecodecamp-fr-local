@@ -20,9 +20,7 @@ $OutputEncoding = $utf8NoBom
 
 $script:DevLogsDir = Join-Path $PSScriptRoot "dev-logs"
 $script:StatusFile = Join-Path $script:DevLogsDir "status.json"
-$script:StructuredLogFile = Join-Path $script:DevLogsDir "server.log"
 $script:LatestLogFile = Join-Path $script:DevLogsDir "latest.log"
-$script:ErrorsLogFile = Join-Path $script:DevLogsDir "errors.log"
 $script:RunId = [guid]::NewGuid().ToString()
 $script:RunStartedAt = (Get-Date).ToUniversalTime().ToString("o")
 $script:ServerHost = "localhost"
@@ -39,6 +37,7 @@ $script:StartupPortWaitStarted = $false
 $script:PortWatcherJob = $null
 $script:PortWatcherProcess = $null
 $script:IntroWatcherProcess = $null
+$script:ClientPid = $null
 $script:IsStopping = $false
 
 function Test-Port {
@@ -63,6 +62,67 @@ function Test-Port {
     }
 
     return $false
+}
+
+function Test-HttpReady {
+    $urls = @(
+        $script:ServerUrl,
+        "http://127.0.0.1:$($script:ServerPort)/",
+        "http://[::1]:$($script:ServerPort)/"
+    )
+    foreach ($url in $urls) {
+        try {
+            $response = Invoke-WebRequest -Uri $url -UseBasicParsing -Method Head -TimeoutSec 2
+            if ([int]$response.StatusCode -ge 200) {
+                return $true
+            }
+        } catch {
+            if ($_.Exception.Response) {
+                return $true
+            }
+        }
+    }
+    return $false
+}
+
+function Get-PidsOnPort {
+    param([int]$Port)
+
+    $processIds = @()
+    try {
+        $connections = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction Stop
+        foreach ($connection in $connections) {
+            if ($connection.OwningProcess -and $connection.OwningProcess -ne 0) {
+                $processIds += $connection.OwningProcess
+            }
+        }
+    } catch {
+        $escapedPort = [regex]::Escape([string]$Port)
+        $lines = netstat -ano | Select-String ":$escapedPort\s"
+        foreach ($line in $lines) {
+            if ($line.Line -match '\sLISTENING\s+(\d+)\s*$') {
+                $processIds += [int]$Matches[1]
+            }
+        }
+    }
+
+    return @($processIds | Select-Object -Unique)
+}
+
+function Stop-ExistingClient {
+    $currentPid = $PID
+    $stopped = @()
+    foreach ($processId in (Get-PidsOnPort -Port $script:ServerPort)) {
+        if ($processId -eq $currentPid) {
+            continue
+        }
+        Write-Host "Arret du process $processId sur le port $script:ServerPort" -ForegroundColor Yellow
+        Stop-Process -Id $processId -Force -ErrorAction SilentlyContinue
+        $stopped += $processId
+    }
+    if ($stopped.Count -gt 0) {
+        Start-Sleep -Seconds 1
+    }
 }
 
 function Get-LogTimestamp {
@@ -90,25 +150,13 @@ function ConvertTo-LogText {
     return (Remove-AnsiControl -Text ([string]$Value)).TrimEnd()
 }
 
-function ConvertTo-PowerShellLiteral {
-    param([string]$Value)
-
-    if ($null -eq $Value) {
-        return "''"
-    }
-
-    return "'" + $Value.Replace("'", "''") + "'"
-}
-
-function New-EncodedPowerShellCommand {
-    param([string]$Command)
-
-    $bytes = [System.Text.Encoding]::Unicode.GetBytes($Command)
-    return [Convert]::ToBase64String($bytes)
-}
-
 function Initialize-DevLogs {
     New-Item -ItemType Directory -Path $script:DevLogsDir -Force | Out-Null
+
+    $previousLog = Join-Path $script:DevLogsDir "latest.prev.log"
+    if (Test-Path -LiteralPath $script:LatestLogFile) {
+        Copy-Item -LiteralPath $script:LatestLogFile -Destination $previousLog -Force
+    }
 
     $header = @(
         "runId=$script:RunId",
@@ -117,10 +165,6 @@ function Initialize-DevLogs {
         ""
     )
     [System.IO.File]::WriteAllText($script:LatestLogFile, ($header -join [Environment]::NewLine), $utf8NoBom)
-    # [FR-local] server.log / errors.log desactives : doublons de latest.log,
-    # consommes par aucun outil. latest.log + status.json suffisent.
-    # [System.IO.File]::WriteAllText($script:StructuredLogFile, "", $utf8NoBom)
-    # [System.IO.File]::WriteAllText($script:ErrorsLogFile, "", $utf8NoBom)
 }
 
 function Format-JsonText {
@@ -252,6 +296,51 @@ function Read-SharedTextFile {
     }
 }
 
+function ConvertTo-ProcessArgument {
+    param([AllowNull()][string]$Value)
+
+    $text = if ($null -eq $Value) { "" } else { [string]$Value }
+    return '"' + $text.Replace('"', '\"') + '"'
+}
+
+function Start-WatchProcess {
+    param(
+        [string]$ScriptFile,
+        [string[]]$ArgumentList,
+        [string]$EventName,
+        [string]$Message,
+        [hashtable]$Data = @{}
+    )
+
+    if (-not (Test-Path -LiteralPath $ScriptFile)) {
+        Write-LogEvent -Level "WARN" -Event "$EventName.skipped" -Message "script watcher introuvable" -Data @{
+            script = $ScriptFile
+        }
+        return $null
+    }
+
+    $allArgs = @(
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        $ScriptFile
+    ) + @($ArgumentList)
+    $argString = ($allArgs | ForEach-Object { ConvertTo-ProcessArgument $_ }) -join " "
+
+    $process = Start-Process -FilePath "powershell.exe" -ArgumentList $argString -WindowStyle Hidden -PassThru
+
+    $payload = @{}
+    if ($Data) {
+        foreach ($key in $Data.Keys) {
+            $payload[$key] = $Data[$key]
+        }
+    }
+    $payload.pid = $process.Id
+    Write-LogEvent -Level "INFO" -Event $EventName -Message $Message -Data $payload
+    return $process
+}
+
 function Start-PortStatusWatcher {
     param([string]$HostName, [int]$Port, [int]$TimeoutSeconds = 1200)
 
@@ -260,164 +349,17 @@ function Start-PortStatusWatcher {
     }
 
     $watcherScriptFile = Join-Path $script:DevLogsDir "status-watch.ps1"
-    $watcherScript = @'
-param(
-    [string]$HostName,
-    [int]$Port,
-    [int]$TimeoutSeconds,
-    [string]$StatusFile,
-    [string]$LatestLogFile,
-    [string]$DevLogsDir,
-    [string]$StructuredLogFile,
-    [string]$ErrorsLogFile,
-    [string]$RunId,
-    [string]$RunStartedAt,
-    [string]$RunMode
-)
-
-function Test-LoopbackPort {
-    param([string]$HostName, [int]$Port)
-
-    foreach ($loopbackUrl in @("http://$HostName`:$Port/", "http://localhost`:$Port/")) {
-        try {
-            $response = Invoke-WebRequest -UseBasicParsing -Uri $loopbackUrl -TimeoutSec 2
-            if ($response.StatusCode -ge 200 -and $response.StatusCode -lt 600) {
-                return $true
-            }
-        } catch {
-            # Try the TCP fallback below.
-        }
-    }
-
-    foreach ($loopbackHost in @($HostName, "localhost", "127.0.0.1", "::1")) {
-        $tcpClient = $null
-        try {
-            if ($loopbackHost -like "*:*") {
-                $tcpClient = [System.Net.Sockets.TcpClient]::new([System.Net.Sockets.AddressFamily]::InterNetworkV6)
-            } else {
-                $tcpClient = New-Object System.Net.Sockets.TcpClient
-            }
-            $connectTask = $tcpClient.ConnectAsync($loopbackHost, $Port)
-            if ($connectTask.Wait(1000) -and $tcpClient.Connected) {
-                return $true
-            }
-        } catch {
-            # Try the next loopback address.
-        } finally {
-            if ($tcpClient) {
-                $tcpClient.Close()
-            }
-        }
-    }
-
-    return $false
-}
-
-function Write-PrettyJson {
-    param($Payload, [string]$Path)
-
-    $json = $Payload | ConvertTo-Json -Depth 8
-    $encoding = New-Object System.Text.UTF8Encoding($false)
-    $tempFile = "$Path.$PID.watcher.tmp"
-
-    for ($attempt = 1; $attempt -le 5; $attempt++) {
-        try {
-            [System.IO.File]::WriteAllText($tempFile, $json + [Environment]::NewLine, $encoding)
-            Move-Item -LiteralPath $tempFile -Destination $Path -Force
-            return
-        } catch {
-            Start-Sleep -Milliseconds (100 * $attempt)
-        }
-    }
-}
-
-function New-StatusPayload {
-    param(
-        [string]$Status,
-        [string]$Message,
-        $LastProblem = $null,
-        [int]$Problems = 0
-    )
-
-    $serverUrl = "http://$HostName`:$Port"
-    return [ordered]@{
-        status = $Status
-        message = $Message
-        runId = $RunId
-        mode = $RunMode
-        service = "client"
-        url = $serverUrl
-        port = $Port
-        startedAt = $RunStartedAt
-        updatedAt = (Get-Date).ToUniversalTime().ToString("o")
-        warnings = 0
-        problems = $Problems
-        lastProblem = $LastProblem
-        logs = [ordered]@{
-            directory = "dev-logs"
-            status = "dev-logs/status.json"
-            latest = "dev-logs/latest.log"
-            server = "dev-logs/server.log"
-            errors = "dev-logs/errors.log"
-        }
-        absoluteLogs = [ordered]@{
-            directory = $DevLogsDir
-            status = $StatusFile
-            latest = $LatestLogFile
-            server = $StructuredLogFile
-            errors = $ErrorsLogFile
-        }
-    }
-}
-
-$serverUrl = "http://$HostName`:$Port"
-$deadline = (Get-Date).AddSeconds($TimeoutSeconds)
-while ((Get-Date) -lt $deadline) {
-    if (Test-LoopbackPort -HostName $HostName -Port $Port) {
-        $updatedAt = (Get-Date).ToUniversalTime().ToString("o")
-        Write-PrettyJson -Payload (New-StatusPayload -Status "UP" -Message "Client pret sur $serverUrl") -Path $StatusFile
-        Add-Content -LiteralPath $LatestLogFile -Value "$updatedAt [INFO] [status.up] Client pret sur $serverUrl port=$Port watcherProcess=True" -Encoding UTF8
-        exit 0
-    }
-
-    Start-Sleep -Seconds 2
-}
-
-$updatedAt = (Get-Date).ToUniversalTime().ToString("o")
-$problem = [ordered]@{
-    code = "SERVER_START_TIMEOUT"
-    line = "Le port $Port n'a pas ouvert avant le timeout."
-    action = "Regarde dev-logs/latest.log, puis relance avec .\dev.ps1 -Clean si Gatsby est bloque."
-}
-Write-PrettyJson -Payload (New-StatusPayload -Status "ERROR" -Message "Timeout: client non joignable sur $serverUrl apres $TimeoutSeconds secondes" -LastProblem $problem -Problems 1) -Path $StatusFile
-Add-Content -LiteralPath $LatestLogFile -Value "$updatedAt [ERROR] [status.error] Timeout: client non joignable sur $serverUrl apres $TimeoutSeconds secondes problemCode=SERVER_START_TIMEOUT watcherProcess=True" -Encoding UTF8
-exit 1
-'@
-
-    Set-Content -LiteralPath $watcherScriptFile -Value $watcherScript -Encoding UTF8
-    $watcherCommand = @(
-        "& $(ConvertTo-PowerShellLiteral -Value $watcherScriptFile)",
-        "-HostName $(ConvertTo-PowerShellLiteral -Value $HostName)",
-        "-Port $(ConvertTo-PowerShellLiteral -Value ([string]$Port))",
-        "-TimeoutSeconds $(ConvertTo-PowerShellLiteral -Value ([string]$TimeoutSeconds))",
-        "-StatusFile $(ConvertTo-PowerShellLiteral -Value $script:StatusFile)",
-        "-LatestLogFile $(ConvertTo-PowerShellLiteral -Value $script:LatestLogFile)",
-        "-DevLogsDir $(ConvertTo-PowerShellLiteral -Value $script:DevLogsDir)",
-        "-StructuredLogFile $(ConvertTo-PowerShellLiteral -Value $script:StructuredLogFile)",
-        "-ErrorsLogFile $(ConvertTo-PowerShellLiteral -Value $script:ErrorsLogFile)",
-        "-RunId $(ConvertTo-PowerShellLiteral -Value $script:RunId)",
-        "-RunStartedAt $(ConvertTo-PowerShellLiteral -Value $script:RunStartedAt)",
-        "-RunMode $(ConvertTo-PowerShellLiteral -Value $script:RunMode)"
-    ) -join " "
-    $encodedWatcherCommand = New-EncodedPowerShellCommand -Command $watcherCommand
-
-    $script:PortWatcherProcess = Start-Process -FilePath powershell -ArgumentList @(
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-EncodedCommand",
-        $encodedWatcherCommand
-    ) -WindowStyle Hidden -PassThru
+    $script:PortWatcherProcess = Start-WatchProcess -ScriptFile $watcherScriptFile -ArgumentList @(
+        "-HostName", $HostName,
+        "-Port", ([string]$Port),
+        "-TimeoutSeconds", ([string]$TimeoutSeconds),
+        "-StatusFile", $script:StatusFile,
+        "-LatestLogFile", $script:LatestLogFile,
+        "-DevLogsDir", $script:DevLogsDir,
+        "-RunId", $script:RunId,
+        "-RunStartedAt", $script:RunStartedAt,
+        "-RunMode", $script:RunMode
+    ) -EventName "status.watch.started" -Message "Surveillance du port $Port demarree"
 }
 
 function Start-IntroJsonWatcher {
@@ -442,253 +384,17 @@ function Start-IntroJsonWatcher {
     $watcherScriptFile = Join-Path $script:DevLogsDir "intro-watch.ps1"
     $clientStdoutLogFile = Join-Path $script:DevLogsDir "client.stdout.log"
     $sourceJsonRelativePath = "client/i18n/locales/$Locale/intro.json"
-    $watcherScript = @'
-param(
-    [string]$IntroJsonPath,
-    [string]$LatestLogFile,
-    [string]$StructuredLogFile,
-    [string]$ErrorsLogFile,
-    [string]$RunId,
-    [string]$RunStartedAt,
-    [string]$RunMode,
-    [string]$ServerUrl,
-    [string]$ClientStdoutLogFile,
-    [string]$SourceJsonRelativePath
-)
-
-function Get-UtcTimestamp {
-    return (Get-Date).ToUniversalTime().ToString("o")
-}
-
-function Get-FileLength {
-    param([string]$Path)
-
-    try {
-        if (-not (Test-Path -LiteralPath $Path)) {
-            return 0
-        }
-
-        return ([System.IO.FileInfo](Get-Item -LiteralPath $Path)).Length
-    } catch {
-        return 0
-    }
-}
-
-function Read-SharedTextFile {
-    param([string]$Path, [long]$Offset = 0)
-
-    $stream = $null
-    $reader = $null
-
-    try {
-        if (-not (Test-Path -LiteralPath $Path)) {
-            return ""
-        }
-
-        $stream = [System.IO.File]::Open($Path, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-        if ($Offset -gt $stream.Length) {
-            $Offset = 0
-        }
-        [void]$stream.Seek($Offset, [System.IO.SeekOrigin]::Begin)
-        $reader = New-Object System.IO.StreamReader($stream, [System.Text.Encoding]::UTF8, $true, 4096, $false)
-        return $reader.ReadToEnd()
-    } catch {
-        return ""
-    } finally {
-        if ($reader) {
-            $reader.Dispose()
-        } elseif ($stream) {
-            $stream.Dispose()
-        }
-    }
-}
-
-function Get-IntroHash {
-    $stream = $null
-    $sha256 = $null
-
-    try {
-        if (-not [System.IO.File]::Exists($IntroJsonPath)) {
-            return $null
-        }
-
-        $stream = [System.IO.File]::Open($IntroJsonPath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::Read, [System.IO.FileShare]::ReadWrite)
-        $sha256 = [System.Security.Cryptography.SHA256]::Create()
-        return [BitConverter]::ToString($sha256.ComputeHash($stream)).Replace("-", "")
-    } catch {
-        return $null
-    } finally {
-        if ($sha256) {
-            $sha256.Dispose()
-        }
-        if ($stream) {
-            $stream.Dispose()
-        }
-    }
-}
-
-function Write-DevLog {
-    param(
-        [ValidateSet("INFO", "WARN", "ERROR")]
-        [string]$Level,
-        [Alias("Event")]
-        [string]$EventName,
-        [string]$Message,
-        [hashtable]$Data = @{}
-    )
-
-    if ($null -eq $Data) {
-        $Data = @{}
-    }
-
-    $timestamp = Get-UtcTimestamp
-    $details = ""
-    if ($Data.Count -gt 0) {
-        $details = " " + (($Data.GetEnumerator() | Sort-Object Name | ForEach-Object {
-            "$($_.Name)=$($_.Value)"
-        }) -join " ")
-    }
-
-    $humanLine = "$timestamp [$Level] [$EventName] $Message$details"
-    Add-Content -LiteralPath $LatestLogFile -Value $humanLine -Encoding UTF8
-
-    try {
-        $record = [ordered]@{
-            timestamp = $timestamp
-            runId = $RunId
-            level = $Level
-            event = $EventName
-            status = "UP"
-            message = $Message
-            data = $Data
-        }
-        # [FR-local] server.log desactive (doublon de latest.log).
-        # Add-Content -LiteralPath $StructuredLogFile -Value ($record | ConvertTo-Json -Compress -Depth 8) -Encoding UTF8
-    } catch {
-        # Logging must never stop the watcher.
-    }
-
-    if ($Level -eq "ERROR") {
-        # [FR-local] errors.log desactive (sous-ensemble de latest.log).
-        # Add-Content -LiteralPath $ErrorsLogFile -Value $humanLine -Encoding UTF8
-    }
-}
-
-function Wait-ForGatsbyRebuild {
-    param(
-        [long]$LatestOffset,
-        [long]$StdoutOffset,
-        [int]$TimeoutSeconds = 60
-    )
-
-    $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
-    while ((Get-Date) -lt $deadline) {
-        $stdoutTail = Read-SharedTextFile -Path $ClientStdoutLogFile -Offset $StdoutOffset
-        if ($stdoutTail -match "Re-building development bundle|Building development bundle") {
-            return "dev-logs/client.stdout.log"
-        }
-
-        $latestTail = Read-SharedTextFile -Path $LatestLogFile -Offset $LatestOffset
-        if ($latestTail -match "Re-building development bundle|Building development bundle") {
-            return "dev-logs/latest.log"
-        }
-
-        Start-Sleep -Milliseconds 500
-    }
-
-    return $null
-}
-
-$lastHash = Get-IntroHash
-if (-not $lastHash) {
-    Write-DevLog -Level "WARN" -Event "intro.watch.skipped" -Message "intro.json introuvable, surveillance impossible" -Data @{
-        introJsonPath = $IntroJsonPath
-        sourceJson = $SourceJsonRelativePath
-    }
-    exit 0
-}
-
-$lastStdoutLength = Get-FileLength -Path $ClientStdoutLogFile
-
-Write-DevLog -Level "INFO" -Event "intro.watch" -Message "Surveillance intro.json active" -Data @{
-    curriculumData = "/curriculum-data/v2/responsive-web-design-v9.json"
-    sourceJson = $SourceJsonRelativePath
-    serverPath = "/learn/responsive-web-design-v9/"
-}
-
-while ($true) {
-    Start-Sleep -Seconds 1
-
-    $currentHash = Get-IntroHash
-    if (-not $currentHash -or $currentHash -eq $lastHash) {
-        $lastStdoutLength = Get-FileLength -Path $ClientStdoutLogFile
-        continue
-    }
-
-    Start-Sleep -Milliseconds 700
-    $stableHash = Get-IntroHash
-    if (-not $stableHash -or $stableHash -eq $lastHash) {
-        $lastStdoutLength = Get-FileLength -Path $ClientStdoutLogFile
-        continue
-    }
-
-    $lastHash = $stableHash
-    $latestOffset = Get-FileLength -Path $LatestLogFile
-    $stdoutOffset = $lastStdoutLength
-
-    Write-DevLog -Level "INFO" -Event "intro.changed" -Message "intro.json modifie; attente du rebuild Gatsby" -Data @{
-        curriculumData = "/curriculum-data/v2/responsive-web-design-v9.json"
-        sourceJson = $SourceJsonRelativePath
-        serverPath = "/learn/responsive-web-design-v9/"
-    }
-
-    $logSource = Wait-ForGatsbyRebuild -LatestOffset $latestOffset -StdoutOffset $stdoutOffset
-    if ($logSource) {
-        Write-DevLog -Level "INFO" -Event "intro.integrated" -Message "intro.json integre par Gatsby" -Data @{
-            curriculumData = "/curriculum-data/v2/responsive-web-design-v9.json"
-            sourceJson = $SourceJsonRelativePath
-            logSource = $logSource
-            serverPath = "/learn/responsive-web-design-v9/"
-        }
-    } else {
-        Write-DevLog -Level "WARN" -Event "intro.integration.pending" -Message "intro.json modifie, mais aucun rebuild Gatsby detecte dans le delai" -Data @{
-            curriculumData = "/curriculum-data/v2/responsive-web-design-v9.json"
-            sourceJson = $SourceJsonRelativePath
-            serverPath = "/learn/responsive-web-design-v9/"
-        }
-    }
-
-    $lastStdoutLength = Get-FileLength -Path $ClientStdoutLogFile
-}
-'@
-
-    Set-Content -LiteralPath $watcherScriptFile -Value $watcherScript -Encoding UTF8
-    $watcherCommand = @(
-        "& $(ConvertTo-PowerShellLiteral -Value $watcherScriptFile)",
-        "-IntroJsonPath $(ConvertTo-PowerShellLiteral -Value $introJsonPath)",
-        "-LatestLogFile $(ConvertTo-PowerShellLiteral -Value $script:LatestLogFile)",
-        "-StructuredLogFile $(ConvertTo-PowerShellLiteral -Value $script:StructuredLogFile)",
-        "-ErrorsLogFile $(ConvertTo-PowerShellLiteral -Value $script:ErrorsLogFile)",
-        "-RunId $(ConvertTo-PowerShellLiteral -Value $script:RunId)",
-        "-RunStartedAt $(ConvertTo-PowerShellLiteral -Value $script:RunStartedAt)",
-        "-RunMode $(ConvertTo-PowerShellLiteral -Value $script:RunMode)",
-        "-ServerUrl $(ConvertTo-PowerShellLiteral -Value $script:ServerUrl)",
-        "-ClientStdoutLogFile $(ConvertTo-PowerShellLiteral -Value $clientStdoutLogFile)",
-        "-SourceJsonRelativePath $(ConvertTo-PowerShellLiteral -Value $sourceJsonRelativePath)"
-    ) -join " "
-    $encodedWatcherCommand = New-EncodedPowerShellCommand -Command $watcherCommand
-
-    $script:IntroWatcherProcess = Start-Process -FilePath powershell -ArgumentList @(
-        "-NoProfile",
-        "-ExecutionPolicy",
-        "Bypass",
-        "-EncodedCommand",
-        $encodedWatcherCommand
-    ) -WindowStyle Hidden -PassThru
-
-    Write-LogEvent -Level "INFO" -Event "intro.watch.started" -Message "Surveillance intro.json demarree" -Data @{
+    $script:IntroWatcherProcess = Start-WatchProcess -ScriptFile $watcherScriptFile -ArgumentList @(
+        "-IntroJsonPath", $introJsonPath,
+        "-LatestLogFile", $script:LatestLogFile,
+        "-RunId", $script:RunId,
+        "-RunStartedAt", $script:RunStartedAt,
+        "-RunMode", $script:RunMode,
+        "-ServerUrl", $script:ServerUrl,
+        "-ClientStdoutLogFile", $clientStdoutLogFile,
+        "-SourceJsonRelativePath", $sourceJsonRelativePath
+    ) -EventName "intro.watch.started" -Message "Surveillance intro.json demarree" -Data @{
         sourceJson = $sourceJsonRelativePath
-        pid = $script:IntroWatcherProcess.Id
     }
 }
 
@@ -708,19 +414,6 @@ function Write-LogEvent {
 
     $timestamp = Get-LogTimestamp
     $cleanMessage = ConvertTo-LogText -Value $Message
-    $record = [ordered]@{
-        timestamp = $timestamp
-        runId = $script:RunId
-        level = $Level
-        event = $EventName
-        status = $script:CurrentStatus
-        message = $cleanMessage
-        data = $Data
-    }
-
-    $json = $record | ConvertTo-Json -Compress -Depth 8
-    # [FR-local] server.log desactive (doublon JSON de latest.log).
-    # Add-Content -LiteralPath $script:StructuredLogFile -Value $json -Encoding UTF8
 
     $details = ""
     if ($Data.Count -gt 0) {
@@ -731,11 +424,6 @@ function Write-LogEvent {
 
     $humanLine = "$timestamp [$Level] [$EventName] $cleanMessage$details"
     Add-Content -LiteralPath $script:LatestLogFile -Value $humanLine -Encoding UTF8
-
-    if ($Level -eq "ERROR") {
-        # [FR-local] errors.log desactive (sous-ensemble de latest.log).
-        # Add-Content -LiteralPath $script:ErrorsLogFile -Value $humanLine -Encoding UTF8
-    }
 }
 
 function Set-ServerStatus {
@@ -752,15 +440,13 @@ function Set-ServerStatus {
         directory = "dev-logs"
         status = "dev-logs/status.json"
         latest = "dev-logs/latest.log"
-        server = "dev-logs/server.log"
-        errors = "dev-logs/errors.log"
+        client = "dev-logs/client.stdout.log"
     }
     $absoluteLogs = [ordered]@{
         directory = $script:DevLogsDir
         status = $script:StatusFile
         latest = $script:LatestLogFile
-        server = $script:StructuredLogFile
-        errors = $script:ErrorsLogFile
+        client = Join-Path $script:DevLogsDir "client.stdout.log"
     }
     $payload = [ordered]@{
         status = $Status
@@ -775,6 +461,7 @@ function Set-ServerStatus {
         warnings = $script:WarningCount
         problems = $script:ProblemCount
         lastProblem = $script:LastProblem
+        clientPid = $script:ClientPid
         logs = $relativeLogs
         absoluteLogs = $absoluteLogs
     }
@@ -916,7 +603,7 @@ function Test-ServerReadyFromOutput {
     }
 
     $script:LastPortProbe = $now
-    if (Test-Port -Port $Port) {
+    if (Test-HttpReady) {
         $script:IsServerUp = $true
         Set-ServerStatus -Status "UP" -Message "Client pret sur $script:ServerUrl" -Data @{ port = $Port }
         return
@@ -931,7 +618,7 @@ function Wait-ForServerReadyStatus {
 
     $startTime = Get-Date
     while (-not $script:IsServerUp -and ((Get-Date) - $startTime).TotalSeconds -lt $TimeoutSeconds) {
-        if (Test-Port -Port $Port) {
+        if (Test-HttpReady) {
             $script:IsServerUp = $true
             Set-ServerStatus -Status "UP" -Message "$ServiceName pret sur $script:ServerUrl" -Data @{ port = $Port }
             return $true
@@ -969,7 +656,7 @@ function Write-ProcessLine {
     if ($level -eq "ERROR") {
         Test-ServerReadyFromOutput -Line $cleanLine -Port $Port
 
-        if ($script:IsServerUp -or (Test-Port -Port $Port)) {
+        if ($script:IsServerUp -or (Test-HttpReady)) {
             $script:IsServerUp = $true
             Write-LogEvent -Level "WARN" -Event "process.warning" -Message $cleanLine -Data $data
             Set-ServerStatus -Status "UP" -Message "Client pret sur $script:ServerUrl" -Data @{ port = $Port }
@@ -999,7 +686,7 @@ function Wait-ForServer {
 
     $startTime = Get-Date
     while (((Get-Date) - $startTime).TotalSeconds -lt $TimeoutSeconds) {
-        if (Test-Port -Port $Port) {
+        if (Test-HttpReady) {
             Write-Host "$ServiceName est pret sur $script:ServerUrl" -ForegroundColor Green
             return $true
         }
@@ -1132,6 +819,12 @@ function Invoke-DetachedCommand {
     }
 
     $process = Start-Process -FilePath $FilePath -ArgumentList $Arguments -WorkingDirectory $WorkingDirectory -WindowStyle Hidden -RedirectStandardOutput $stdoutFile -RedirectStandardError $stderrFile -PassThru
+    $script:ClientPid = $process.Id
+    Set-ServerStatus -Status "STARTING" -Message "$ServiceName lance (pid $($process.Id))" -Data @{
+        service = $ServiceName
+        pid = $process.Id
+        port = $Port
+    }
     Write-LogEvent -Level "INFO" -Event "process.detached" -Message "$ServiceName lance en arriere-plan" -Data @{
         service = $ServiceName
         pid = $process.Id
@@ -1141,9 +834,12 @@ function Invoke-DetachedCommand {
         $stdoutText = Read-SharedTextFile -Path $stdoutFile
         $gatsbyReady = $stdoutText -match "You can now view" -or $stdoutText -match [regex]::Escape($script:ServerUrl)
 
-        if (-not $script:IsServerUp -and ($gatsbyReady -or (Test-Port -Port $Port))) {
+        if (-not $script:IsServerUp -and ($gatsbyReady -or (Test-HttpReady))) {
             $script:IsServerUp = $true
-            Set-ServerStatus -Status "UP" -Message "$ServiceName pret sur $script:ServerUrl" -Data @{ port = $Port }
+            Set-ServerStatus -Status "UP" -Message "$ServiceName pret sur $script:ServerUrl" -Data @{
+                port = $Port
+                pid = $process.Id
+            }
         }
 
         Start-Sleep -Seconds 2
@@ -1168,7 +864,7 @@ function Start-Client {
         Write-Host "Mode rapide: lancement direct de Gatsby, sans turbo setup ni debugger Node." -ForegroundColor Green
         Write-Host "C'est le mode par defaut. Utilise .\dev.ps1 -Clean pour vider le cache Gatsby, ou .\dev.ps1 -Full pour forcer le setup complet." -ForegroundColor Yellow
 
-        Invoke-DetachedCommand -FilePath "pnpm.cmd" -Arguments @("exec", "gatsby", "develop") -WorkingDirectory (Join-Path $PSScriptRoot "client") -ServiceName "client" -Port $script:ServerPort
+        Invoke-DetachedCommand -FilePath "pnpm.cmd" -Arguments @("exec", "gatsby", "develop", "--host", "localhost", "--port", "$script:ServerPort") -WorkingDirectory (Join-Path $PSScriptRoot "client") -ServiceName "client" -Port $script:ServerPort
 
         return
     }
@@ -1219,6 +915,17 @@ function Invoke-LoggedCommand {
     Set-ServerStatus -Status "DOWN" -Message "$ServiceName est arrete" -Data @{ exitCode = $exitCode }
 }
 
+if (-not $Clean -and -not $Full -and (Test-HttpReady)) {
+    Write-Host "Client deja pret sur $script:ServerUrl" -ForegroundColor Green
+    Write-Host "Rien a relancer. Utilise .\dev-check.ps1 pour un verdict, ou .\dev.ps1 -Clean pour recreer le cache." -ForegroundColor Yellow
+    exit 0
+}
+
+if (Test-Port -Port $script:ServerPort) {
+    Write-Host "Liberation du port $script:ServerPort avant relance..." -ForegroundColor Yellow
+    Stop-ExistingClient
+}
+
 Initialize-DevLogs
 Set-ServerStatus -Status "DOWN" -Message "Serveur non lance"
 
@@ -1243,6 +950,7 @@ try {
     Write-Host "Configuration de l'environnement..." -ForegroundColor Cyan
     $env:NODE_OPTIONS = "--max-old-space-size=7168 --no-deprecation"
     $env:NODE_ENV = "development"
+    $env:GATSBY_TELEMETRY_DISABLED = "1"
     if (-not $env:CLIENT_LOCALE) {
         $env:CLIENT_LOCALE = "french"
     }
@@ -1254,6 +962,7 @@ try {
         NODE_ENV = $env:NODE_ENV
         CLIENT_LOCALE = $env:CLIENT_LOCALE
         CURRICULUM_LOCALE = $env:CURRICULUM_LOCALE
+        GATSBY_TELEMETRY_DISABLED = $env:GATSBY_TELEMETRY_DISABLED
     }
 
     if ($Clean -or (Test-StaleGatsbyCache)) {
@@ -1280,9 +989,7 @@ try {
     Write-Host "Lancement du client de developpement..." -ForegroundColor Cyan
     $script:RunMode = if ($useFast) { "fast" } else { "full" }
     Set-ServerStatus -Status "STARTING" -Message "Lancement du client de developpement" -Data @{ fast = $useFast; full = (-not $useFast) }
-    if (-not $useFast) {
-        Start-PortStatusWatcher -HostName $script:ServerHost -Port $script:ServerPort
-    }
+    Start-PortStatusWatcher -HostName $script:ServerHost -Port $script:ServerPort
     Start-IntroJsonWatcher -Locale $env:CLIENT_LOCALE
     Write-Host "Appuyez sur Ctrl+C pour arreter tous les processus" -ForegroundColor Yellow
     Write-Host ""

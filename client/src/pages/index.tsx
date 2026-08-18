@@ -8,7 +8,8 @@ function IndexPage(): JSX.Element {
     <>
       <SEO title='Apprendre à coder' />
       <main
-        id='landing-content'
+        id='content-start'
+        tabIndex={-1}
         data-testid='landing-content'
         className='home-wrap'
       >
@@ -24,8 +25,13 @@ function IndexPage(): JSX.Element {
           data-playwright-test-label='start-button'
           className='home-btn'
         >
-          Commencer →
+          Voir les cours
         </a>
+        <p className='home-secondary'>
+          <a href='/catalog'>Catalogue</a>
+          <span aria-hidden='true'> · </span>
+          <a href='/learn'>Tous les parcours</a>
+        </p>
 
         <p className='home-note'>
           Pas de compte. Ta progression reste sur ton ordinateur.

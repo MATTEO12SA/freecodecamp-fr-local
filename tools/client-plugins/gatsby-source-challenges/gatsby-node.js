@@ -265,10 +265,11 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     handleChallengeUpdate(filePath, 'deleted');
   });
 
-  // Fallback : on this Windows setup chokidar's polling sometimes misses
-  // events (suspected antivirus interference). fs.watchFile uses Node's
-  // built-in stat-poll which goes through a different code path and reliably
-  // fires when mtime changes. We register one watcher per .md file.
+  // Legacy fallback: one fs.watchFile poller per .md. Off by default because
+  // 2000+ stat intervals slow boot and burn CPU. Restore with FCC_WATCHFILE=1
+  // if recursive fs.watch misses events on a given machine.
+  const useWatchFilePoll =
+    process.env.FCC_WATCHFILE === 'true' || process.env.FCC_WATCHFILE === '1';
   function attachFsWatchFileFallback() {
     let attached = 0;
     function walkDir(dir) {
@@ -308,7 +309,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       `[fcc-source-challenges fs.watchFile] watching ${attached} .md files in ${curriculumPath}`
     );
   }
-  if (useNativeWatch) attachFsWatchFileFallback();
+  if (useNativeWatch && useWatchFilePoll) attachFsWatchFileFallback();
 
   // has-french-intro.ts uses a preval that scans this directory at compile
   // time. When a brand-new block is translated (first .md appears under
@@ -367,51 +368,61 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
     }
   }
 
-  // Detect .md files CREATED after server startup (which fs.watchFile cannot
-  // see, since it only watches paths registered at boot). fs.watch on
-  // directories with { recursive: true } fires on rename events for
-  // creation/deletion, and on Windows is implemented via ReadDirectoryChangesW
-  // (native + reliable). When a new .md appears, we attach a fs.watchFile on
-  // it AND immediately trigger an "added" update so Gatsby sources the node.
-  const watchedNewFiles = new Set();
-  function watchForNewFiles() {
+  // Native recursive watcher (Windows: ReadDirectoryChangesW). Handles both
+  // new files and edits, so we no longer need 2000 fs.watchFile pollers.
+  const knownNativeFiles = new Set();
+  function collectMarkdownFiles(dir) {
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const entry of entries) {
+      if (entry.name.startsWith('.')) continue;
+      const full = nodePath.join(dir, entry.name);
+      if (entry.isDirectory()) collectMarkdownFiles(full);
+      else if (/\.md$/.test(entry.name)) knownNativeFiles.add(full);
+    }
+  }
+  function watchCurriculumNative() {
+    collectMarkdownFiles(curriculumPath);
     try {
       fs.watch(
         curriculumPath,
         { recursive: true, persistent: true },
-        (eventType, filename) => {
+        (_eventType, filename) => {
           if (!filename || !/\.md$/.test(filename)) return;
           const absPath = nodePath.join(curriculumPath, filename);
-          // rename event covers both creation and deletion. We only act on
-          // creation (file exists now) and only if we haven't seen this path.
-          if (eventType !== 'rename') return;
-          if (watchedNewFiles.has(absPath)) return;
-          if (!fs.existsSync(absPath)) return;
-          watchedNewFiles.add(absPath);
-          try {
-            fs.watchFile(absPath, { interval: watchInterval }, (curr, prev) => {
-              if (curr.mtimeMs === prev.mtimeMs) return;
-              logWatcherInfo(
-                reporter,
-                'watcher.changed',
-                `[fcc-source-challenges fs.watchFile] change ${filename}`
-              );
-              handleChallengeUpdate(filename, 'changed');
-            });
+          const exists = fs.existsSync(absPath);
+          if (!exists) {
+            knownNativeFiles.delete(absPath);
+            logWatcherInfo(
+              reporter,
+              'watcher.deleted',
+              `[fcc-source-challenges fs.watch] deleted ${filename}`
+            );
+            handleChallengeUpdate(filename, 'deleted');
+            return;
+          }
+          const isNew = !knownNativeFiles.has(absPath);
+          knownNativeFiles.add(absPath);
+          if (isNew) {
             logWatcherInfo(
               reporter,
               'watcher.added',
               `[fcc-source-challenges fs.watch] new file detected ${filename}`
             );
-            handleChallengeUpdate(filename, 'added');
             maybeTouchForNewBlock(filename);
-          } catch (e) {
-            logWatcherWarn(
-              reporter,
-              'watcher.error',
-              `[fcc-source-challenges fs.watch] failed to attach: ${e.message}`
-            );
+            handleChallengeUpdate(filename, 'added');
+            return;
           }
+          logWatcherInfo(
+            reporter,
+            'watcher.changed',
+            `[fcc-source-challenges fs.watch] change ${filename}`
+          );
+          handleChallengeUpdate(filename, 'changed');
         }
       );
       logWatcherInfo(
@@ -427,7 +438,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       );
     }
   }
-  if (useNativeWatch) watchForNewFiles();
+  if (useNativeWatch) watchCurriculumNative();
 
   function sourceAndCreateNodes() {
     return source()

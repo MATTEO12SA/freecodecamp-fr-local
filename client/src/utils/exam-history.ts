@@ -12,6 +12,7 @@ export type ExamAttempt = {
   score: number;
   total: number;
   pct: number; // entier 0-100
+  seed?: number;
 };
 
 type Store = Record<string, ExamAttempt[]>;
@@ -22,8 +23,10 @@ function isValidAttempt(a: unknown): a is ExamAttempt {
     !!a &&
     typeof a === 'object' &&
     typeof (a as ExamAttempt).cert === 'string' &&
+    typeof (a as ExamAttempt).date === 'string' &&
     typeof (a as ExamAttempt).score === 'number' &&
-    typeof (a as ExamAttempt).total === 'number'
+    typeof (a as ExamAttempt).total === 'number' &&
+    typeof (a as ExamAttempt).pct === 'number'
   );
 }
 
@@ -70,10 +73,23 @@ export function getAttempts(cert: string): ExamAttempt[] {
   return Array.isArray(list) ? list : [];
 }
 
-export function saveAttempt(attempt: ExamAttempt): void {
+export function getAllAttempts(): ExamAttempt[] {
+  return Object.values(readStore())
+    .flat()
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function saveAttempt(attempt: ExamAttempt): boolean {
   const store = readStore();
   const list = Array.isArray(store[attempt.cert]) ? store[attempt.cert] : [];
+  if (
+    typeof attempt.seed === 'number' &&
+    list.some(existing => existing.seed === attempt.seed)
+  ) {
+    return false;
+  }
   list.unshift(attempt);
   store[attempt.cert] = list.slice(0, MAX_PER_CERT);
   writeStore(store);
+  return true;
 }

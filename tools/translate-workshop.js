@@ -625,14 +625,16 @@ function verifySections(enSections, frSections, file, proseMarkers) {
         );
       }
       const useLectureExtractor = proseMarkers.has(en.marker);
+      const normalizedFrContent = normalizeCopiedWhitespace(fr.content);
+      const normalizedEnContent = normalizeCopiedWhitespace(en.content);
       assertEqual(
         (useLectureExtractor
-          ? extractLectureChunks(fr.content)
-          : extractProseChunks(fr.content)
+          ? extractLectureChunks(normalizedFrContent)
+          : extractProseChunks(normalizedFrContent)
         ).length,
         (useLectureExtractor
-          ? extractLectureChunks(en.content)
-          : extractProseChunks(en.content)
+          ? extractLectureChunks(normalizedEnContent)
+          : extractProseChunks(normalizedEnContent)
         ).length,
         `${file}: nombre de blocs de prose dans ${en.marker} modifie.`
       );
@@ -710,7 +712,8 @@ module.exports = {
   detectKind,
   getSection,
   getWorkshopPaths,
-  readText
+  readText,
+  normalizeCopiedWhitespace
 };
 
 if (require.main === module) {

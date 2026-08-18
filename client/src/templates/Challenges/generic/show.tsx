@@ -167,12 +167,14 @@ const ShowGeneric = ({
   // video
   const [videoIsLoaded, setVideoIsLoaded] = useState(false);
 
-  const handleVideoIsLoaded = (e: YouTubeEvent) => {
-    const playbackRate = Number(store.get('fcc-yt-playback-rate')) || 1;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const player = e.target;
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    player.setPlaybackRate(playbackRate);
+  const handleVideoIsLoaded = (e?: YouTubeEvent) => {
+    if (e) {
+      const playbackRate = Number(store.get('fcc-yt-playback-rate')) || 1;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const player = e.target;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+      player.setPlaybackRate(playbackRate);
+    }
 
     setVideoIsLoaded(true);
   };

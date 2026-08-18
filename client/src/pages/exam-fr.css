@@ -1,3 +1,27 @@
+.exam-fr-cert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.exam-fr-cert-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--quaternary-color);
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+}
+
+.exam-fr-cert-list a:hover,
+.exam-fr-cert-list a:focus-visible {
+  border-color: var(--highlight-color);
+  background: var(--tertiary-background);
+}
+
 .exam-fr-intro,
 .exam-fr-progress,
 .exam-fr-warning {
@@ -11,20 +35,57 @@
   margin-bottom: 1rem;
 }
 
-.exam-fr-warning {
-  background: var(--background-quaternary, #2a2a40);
-  border: 2px solid var(--foreground-secondary, #ffac33);
+.exam-fr-resume {
+  background: var(--secondary-background);
+  border: 2px solid var(--highlight-color);
   padding: 1rem;
   border-radius: 4px;
   margin: 1rem 0;
+}
+
+.exam-fr-resume .exam-fr-nav {
+  margin-top: 0.75rem;
+  justify-content: flex-start;
+}
+
+.exam-fr-resume-primary,
+.exam-fr-resume-danger {
+  padding: 0.65rem 1.3rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.exam-fr-resume-primary {
+  background: var(--primary-color);
+  color: var(--primary-background);
+  border: 2px solid var(--primary-color);
+}
+
+.exam-fr-resume-primary:hover,
+.exam-fr-resume-primary:focus-visible {
+  background: var(--primary-background);
+  color: var(--primary-color);
+}
+
+.exam-fr-resume-danger {
+  background: var(--primary-background);
+  color: var(--danger-color);
+  border: 2px solid var(--danger-color);
+}
+
+.exam-fr-resume-danger:hover,
+.exam-fr-resume-danger:focus-visible {
+  background: var(--danger-background);
+  color: var(--danger-color);
 }
 
 .exam-fr-question {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background: var(--background-secondary, #1b1b32);
-  border-left: 4px solid var(--foreground-secondary, #99c9ff);
+  background: var(--secondary-background);
+  border-left: 4px solid var(--highlight-color);
 }
 
 .exam-fr-question p {
@@ -35,7 +96,7 @@
 .exam-fr-review-q pre {
   overflow-x: auto;
   padding: 0.5rem;
-  background: var(--background-primary, #0a0a23);
+  background: var(--primary-background);
   font-size: 0.9rem;
 }
 
@@ -54,22 +115,22 @@
   align-items: flex-start;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border: 2px solid var(--foreground-tertiary, #5a5a8a);
+  border: 2px solid var(--quaternary-color);
   border-radius: 4px;
   cursor: pointer;
-  background: var(--background-secondary, #1b1b32);
+  background: var(--secondary-background);
   transition:
     background 0.15s,
     border-color 0.15s;
 }
 
 .exam-fr-choice:hover {
-  background: var(--background-quaternary, #2a2a40);
+  background: var(--tertiary-background);
 }
 
 .exam-fr-choice-selected {
-  border-color: var(--foreground-secondary, #99c9ff);
-  background: var(--background-quaternary, #2a2a40);
+  border-color: var(--highlight-color);
+  background: var(--tertiary-background);
 }
 
 .exam-fr-choice input[type='radio'] {
@@ -97,6 +158,23 @@
   align-self: center;
 }
 
+.exam-fr-finish-confirmation {
+  background: var(--yellow-background);
+  border: 2px solid var(--yellow-color);
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.exam-fr-finish-confirmation h2 {
+  margin-top: 0;
+}
+
+.exam-fr-confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .exam-fr-result-passed,
 .exam-fr-result-failed {
   text-align: center;
@@ -106,13 +184,13 @@
 }
 
 .exam-fr-result-passed {
-  background: rgba(34, 139, 34, 0.15);
-  border: 2px solid #228b22;
+  background: var(--success-background);
+  border: 2px solid var(--success-color);
 }
 
 .exam-fr-result-failed {
-  background: rgba(220, 53, 69, 0.15);
-  border: 2px solid #dc3545;
+  background: var(--danger-background);
+  border: 2px solid var(--danger-color);
 }
 
 .exam-fr-score {
@@ -130,20 +208,67 @@
   padding-left: 1.5rem;
 }
 
+.exam-fr-review-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.exam-fr-review-filters button {
+  background: var(--secondary-background);
+  border: 2px solid var(--quaternary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+}
+
+.exam-fr-review-filters button[aria-pressed='true'] {
+  background: var(--primary-color);
+  color: var(--primary-background);
+}
+
+.exam-fr-review-filters button:focus-visible,
+.exam-fr-review-item summary:focus-visible {
+  outline: 3px solid var(--focus-outline-color);
+  outline-offset: 2px;
+}
+
+.exam-fr-review-filters button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .exam-fr-review-item {
-  padding: 1rem;
   margin-bottom: 0.75rem;
   border-radius: 4px;
   border-left: 4px solid transparent;
-  background: var(--background-secondary, #1b1b32);
+  background: var(--secondary-background);
 }
 
 .exam-fr-correct {
-  border-left-color: #228b22;
+  border-left-color: var(--success-color);
 }
 
 .exam-fr-incorrect {
-  border-left-color: #dc3545;
+  border-left-color: var(--danger-color);
+}
+
+.exam-fr-review-item summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.exam-fr-review-item details[open] summary {
+  border-bottom: 1px solid var(--quaternary-background);
+}
+
+.exam-fr-review-content {
+  padding: 1rem;
 }
 
 .exam-fr-review-q {
@@ -158,7 +283,7 @@
 }
 
 .exam-fr-review-user {
-  color: var(--foreground-secondary, #ffadad);
+  color: var(--danger-color);
 }
 
 .exam-fr-history {
@@ -177,7 +302,7 @@
   align-items: center;
   gap: 1rem;
   padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--foreground-tertiary, #5a5a8a);
+  border-bottom: 1px solid var(--quaternary-background);
 }
 
 .exam-fr-history-date {
@@ -191,11 +316,11 @@
 }
 
 .exam-fr-history-pass {
-  color: #3aa757;
+  color: var(--success-color);
 }
 
 .exam-fr-history-fail {
-  color: #dc3545;
+  color: var(--danger-color);
 }
 
 .exam-fr-modules {
@@ -208,7 +333,7 @@
 .exam-fr-modules td {
   text-align: left;
   padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--foreground-tertiary, #5a5a8a);
+  border-bottom: 1px solid var(--quaternary-background);
 }
 
 .exam-fr-modules th:nth-child(2),

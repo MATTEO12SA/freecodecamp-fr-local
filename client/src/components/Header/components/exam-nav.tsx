@@ -15,7 +15,10 @@ const ExamNav = (): JSX.Element => {
       id='exam-nav'
       data-playwright-test-label='header-exam-nav'
     >
-      <FreeCodeCampLogo aria-hidden='true' />
+      <div className='exam-nav-local-brand'>
+        <FreeCodeCampLogo aria-hidden='true' />
+        <span className='local-brand-mark'>FR local</span>
+      </div>
       <MicrosoftLogo
         aria-hidden='true'
         data-playwright-test-label='header-exam-nav-microsoft-logo'

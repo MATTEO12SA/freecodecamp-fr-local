@@ -2,6 +2,13 @@
 
 > **Doc historique et workflow actif.** Ce plan a été créé pour finir RWD v9, qui est maintenant terminé (158/158). Le travail actif est JavaScript v9 — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les règles ci-dessous restent la méthode de référence pour les workshops, lectures, reviews et quizzes JS.
 
+> **Qualite produit separee.** Le pipeline ci-dessous garantit la prose et
+> l'integrite technique du curriculum, pas toute l'application. L'
+> [audit initial](../AUDIT_COMPLET_APPLICATION.md), le
+> [tracker](AUDIT-FIX-TRACKER.md) et le
+> [rapport final](AUDIT-FIX-REPORT.md) couvrent l'UI, l'accessibilite, le réseau,
+> la navigation et la performance.
+
 Ce document définit la méthode pour traduire le curriculum plus vite **sans baisser la qualité**.
 
 Principe non négociable : les traductions finales sont rédigées et relues par Claude. Les scripts servent seulement à éviter de recopier le code et à vérifier que les parties techniques restent intactes.
@@ -71,6 +78,9 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Vérifier immédiatement avec `node tools/translate-workshop.js verify <workshop>`.
 - Mettre à jour `intro.json` pour le titre et l'intro du workshop.
 - Mettre à jour les docs : `README.md`, `QUICKSTART.md`, `DOCS-FR.md`, `HANDOFF-TRADUCTIONS.md` et ce fichier.
+- Ne pas recopier un ancien verdict produit : distinguer l'audit initial de son
+  état corrigé dans `AUDIT-FIX-TRACKER.md` et garder la prochaine cible de
+  `ROADMAP.md` cohérente.
 - Lancer les validations listées plus bas avant commit.
 - Commit + push tout de suite après un workshop terminé.
 
@@ -87,6 +97,9 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Ne pas oublier les docs. Sinon le prochain démarrage repart avec de mauvais compteurs ou une mauvaise prochaine cible.
 - Ne pas pousser si `verify`, `lint-challenges`, `git diff --check` ou les tests ciblés échouent.
 - Ne pas prendre un `HTTP 200` sur `/learn` comme preuve suffisante. Il faut aussi vérifier le JSON curriculum, les logs serveur et les validations.
+- Ne pas prendre `Theme > Francais` comme preuve que toute une carte est traduite : `hasFrenchIntro` valide seulement la presence d'au moins un `.md` FR dans le superblock.
+- Ne pas accepter un résultat Axe incomplet : même si le garde-fou est corrigé,
+  vérifier que `requested = loaded = scanned` et que `skipped = failed = 0`.
 
 ## Style FR À Garder
 
@@ -255,7 +268,7 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD est terminé (158/158). JavaScript v9 est en cours : 118 blocs FR sur 230 — modules 1-8 **100 % complets**. Prochaine cible : module 9 `dom-manipulation-and-events`.
+RWD est terminé (158/158). JavaScript v9 est en cours : 121 blocs FR sur 230 (468/1311 fichiers) — modules 1-8 **100 % complets**, module 9 à 3/12. `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont terminés. Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>
@@ -281,6 +294,10 @@ pnpm lint-root
 git diff --check
 ```
 
+Si `pnpm local:check:full` est lance, lire les compteurs d'`axe-test.mjs`.
+Le mode strict échoue désormais sur timeout, page ignorée, scan impossible ou
+zéro page scannée. `pnpm test:axe-regression` vérifie cette garantie.
+
 Vérifier aussi `dev-logs/latest.log` quand le serveur tourne :
 
 ```powershell
@@ -293,6 +310,8 @@ Les lignes attendues sont :
 - `challenge.integrating`
 - `challenge.integrated`
 - `watcher.touched` si le workshop était un nouveau bloc FR
+
+Ces events prouvent que Gatsby a repris les fichiers. Ils ne prouvent ni l'absence de texte anglais dans une carte, ni le contraste, ni l'absence de requetes externes. Pour un lot qui modifie aussi l'interface, suivre les controles de `ROADMAP.md` et du rapport d'audit.
 
 ## État Des Workshops RWD
 

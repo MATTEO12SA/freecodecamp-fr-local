@@ -17,7 +17,7 @@ const config: GatsbyConfig = {
   },
   trailingSlash: 'ignore',
   siteMetadata: {
-    title: 'freeCodeCamp',
+    title: 'freeCodeCamp FR Local (non officiel)',
     siteUrl: homeLocation
   },
   pathPrefix: pathPrefix,

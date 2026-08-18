@@ -1,4 +1,4 @@
-import TagManager from 'react-gtm-module';
+import type ReactGTMModule from 'react-gtm-module';
 
 import {
   devAnalyticsId,
@@ -6,18 +6,33 @@ import {
 } from '../../config/analytics-settings';
 
 import envData from '../../config/env.json';
+import { isLocalMode } from '../../config/runtime-mode';
 
 const { deploymentEnv } = envData;
 
-const analyticsIDSelector = () => {
-  if (deploymentEnv === 'staging') return devAnalyticsId;
+export const analyticsIDSelector = (environment = deploymentEnv) => {
+  if (environment === 'staging') return devAnalyticsId;
   else return prodAnalyticsId;
 };
 
 const gtmId = analyticsIDSelector();
+type TagManager = typeof ReactGTMModule;
+let activeTagManager: TagManager | null = null;
 
-if (typeof document !== `undefined`) {
-  TagManager.initialize({ gtmId });
+async function initializeAnalytics(): Promise<void> {
+  const { default: tagManager } = await import('react-gtm-module');
+  tagManager.initialize({ gtmId });
+  activeTagManager = tagManager;
 }
 
-export default TagManager;
+if (typeof document !== 'undefined' && !isLocalMode()) {
+  void initializeAnalytics().catch(() => undefined);
+}
+
+const analytics: Pick<TagManager, 'dataLayer'> = {
+  dataLayer(args) {
+    activeTagManager?.dataLayer(args);
+  }
+};
+
+export default analytics;

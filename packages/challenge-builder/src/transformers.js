@@ -42,16 +42,24 @@ let Babel;
 let presetEnv, presetReact;
 let presetsJS, presetsJSX;
 
+export function registerPluginIfMissing(babel, name, plugin) {
+  if (!(name in babel.availablePlugins)) {
+    babel.registerPlugin(name, plugin);
+  }
+}
+
 async function loadBabel() {
   if (Babel) return;
   Babel = await import(
     /* webpackChunkName: "@babel/standalone" */ '@babel/standalone'
   );
-  Babel.registerPlugin(
+  registerPluginIfMissing(
+    Babel,
     'loopProtection',
     protect(protectTimeout, loopProtectCB, loopsPerTimeoutCheck)
   );
-  Babel.registerPlugin(
+  registerPluginIfMissing(
+    Babel,
     'testLoopProtection',
     protect(testProtectTimeout, testLoopProtectCB, testLoopsPerTimeoutCheck)
   );

@@ -1,6 +1,10 @@
 # Documentation Du Fork FR Local
 
-Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, sans compte, sans backend obligatoire et sans liens de navigation vers des sites externes.
+Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais,
+sans compte, sans backend obligatoire pour le parcours principal et sans liens
+de navigation cliquables vers des sites externes. Depuis la correction de
+l'audit du 26 juillet 2026, le mode local empêche aussi l'initialisation de GTM
+et Google Analytics ainsi que l'import Stripe.
 
 ## Architecture Locale
 
@@ -12,21 +16,53 @@ Ce repo est une version locale de freeCodeCamp : un client Gatsby en francais, s
 - `client/src/redux/fetch-user-saga.js` cree un utilisateur local au lieu d'appeler une session serveur.
 - `client/src/utils/local-progress.ts` lit et ecrit la progression dans `localStorage`.
 - `client/src/redux/local-progress-epic.js` persiste les challenges termines apres `submitComplete`.
-- `client/src/utils/ajax.ts` garde les signatures HTTP attendues par le code, mais renvoie des reponses locales pour eviter la dependance backend.
+- `client/src/utils/ajax.ts` garde les signatures HTTP attendues par le code et renvoie des reponses locales pour le parcours principal.
+- `client/config/runtime-mode.ts` centralise les modes `local`, `development` et `public`. Les hooks réseau spécifiques à `exam-download`, les analytics, Stripe et les pages développeur utilisent cette source testable.
 - `CLIENT_LOCALE=french` et `CURRICULUM_LOCALE=french` pilotent l'interface et le curriculum francais.
 - `client/tools/external-curriculum/build-external-curricula-data-v2.ts` lit l'intro locale disponible pour generer les titres statiques du plan avec les traductions francaises.
 
 ## Interface Et Navigation
 
 - La home pointe vers `/cours-fr`.
-- `/cours-fr` affiche les certifications francaises. Chaque cert sans contenu FR porte un badge `🚧 Traduction à venir`, calcule automatiquement via `client/src/utils/has-french-intro.ts` (voir section dediee).
-- `/cours-fr` ouvre l'accordeon officiel d'un cert qui contient ses chapitres, modules, blocs et l'examen (l'examen est cliquable, il route vers la page exam-download nettoyee).
-- `/catalog` ajoute un theme synthetique `Francais`, une recherche texte, la progression locale par certification et un bouton `Continuer`. Mecanisme identique a celui de `/cours-fr` : `hasFrenchIntro(superBlock)` est partagee entre les deux pages.
-- `/dev-fr` affiche le hub dev local : etat serveur, derniers logs, progression traduction, drift EN->FR, git, liens rapides et progression navigateur. Il lit `client/static/local-dev/report.json`, genere par `pnpm local:report`.
+- `/cours-fr` sépare les certifications « Disponibles maintenant » des « Traductions à venir ». Les premières ouvrent l'accordéon; les secondes sont informatives et non cliquables.
+- `/cours-fr` synchronise sa vue et la certification sélectionnée dans l'URL, donc Retour, partage et rechargement conservent le contexte.
+- `/catalog` ajoute un theme synthetique `Francais`, une recherche texte, la progression locale et un bouton `Continuer`. `hasFrenchIntro(superBlock)` fournit la présence FR automatique, puis `catalog-translation-status.ts` calcule un état `absent`, `partial` ou `complete` par carte à partir des intros et fichiers réels.
+- `/catalog` conserve ses filtres dans `q`, `level` et `topic`, affiche 12 cartes initiales, charge la suite sur demande et utilise trois colonnes à 1440 px.
+- `/dev-fr` affiche le hub dev local : etat serveur, derniers logs, progression traduction, drift EN->FR, git, liens rapides et progression navigateur. Il lit `client/static/local-dev/report.json`, genere par `pnpm local:report`. Le bouton « Relire le snapshot » refetch ce fichier sans le regenerer.
+- `/dev-fr`, son entrée de menu et `/___graphql` existent en développement et sont supprimés du build public.
 - `/exam-fr?cert=<superblock>` est une page d'examen locale 100% francaise (voir section dediee).
 - Le menu principal expose `/learn`, `/cours-fr`, `/catalog` et `/dev-fr`. L'examen reste accessible depuis `/cours-fr` et `/dev-fr`, pas depuis le menu.
 - Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, MS Trophy et projets qui exigent des services externes. Note : `challengeTypes.exam` et `challengeTypes.examDownload` sont **autorises** maintenant pour que l'examen apparaisse dans l'accordeon.
-- Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local.
+- Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local. Le mode local neutralise également les SDK analytics/paiement avant import.
+
+## Etat Verifie Apres Correction De L'Audit
+
+L'[audit initial](../AUDIT_COMPLET_APPLICATION.md) conserve les observations au
+commit `8fa33f421b`. Le
+[tracker](AUDIT-FIX-TRACKER.md) et le
+[rapport final](AUDIT-FIX-REPORT.md) décrivent l'état corrigé.
+
+Points valides a conserver :
+
+- serveur stable et HTTP 200 ;
+- progression locale et theme persistes ;
+- deux challenges soumis reellement dans Monaco ;
+- examen 80 questions, historique et revision fonctionnels ;
+- aucun lien interne mort parmi les 163 controles ;
+- aucun overflow horizontal global aux tailles testees ;
+- coeur de l'application utilisable quand toutes les requetes HTTPS externes sont bloquees.
+
+Résultats de la campagne :
+
+- 28 constats corrigés et 1 non reproduit dans le build de production ;
+- zéro GTM/GA/Stripe, zéro requête port 3000, zéro erreur console et zéro
+  warning audité sur sept routes dans Chromium, Firefox et WebKit ;
+- Axe strict : 10 pages/états demandés, chargés et scannés, zéro ignoré,
+  zéro échec et zéro violation sérieuse ;
+- build de production : 18 716 pages ; `/dev-fr` et `/___graphql` absents,
+  404 utilisateur validée ;
+- charges décodées production : accueil 5,51 MiB, catalogue 10,64 MiB,
+  éditeur 16,98 MiB.
 
 ## Nettoyage Strict Effectue
 
@@ -48,6 +84,13 @@ Ce qui reste volontairement :
 - Les URLs techniques necessaires aux exercices, images, medias, CDN ou exemples de code ne sont pas traitees comme des liens de navigation.
 - `preview-portal.tsx` utilise `window.open('', ...)` pour ouvrir une fenetre locale d'aperçu du code, pas un site externe.
 
+Comportements désormais gardés par régression :
+
+- aucun import Stripe ni initialisation analytics en mode local ;
+- aucun hook backend dans `exam-download` en mode local ;
+- aucun outil développeur dans le build public ;
+- aucun succès Axe après zéro page scannée.
+
 ## Curriculum Francais
 
 Les fichiers traduits sont dans :
@@ -58,7 +101,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 118 blocs FR sur 230 — modules 1-8 **100 % complets** (`javascript-variables-and-strings`, `javascript-booleans-and-numbers`, `introduction-functions-in-javascript`, `introduction-to-arrays-in-javascript`, `introduction-to-objects-in-javascript`, `javascript-loops`, `review-javascript-fundamentals`, `higher-order-functions-and-callbacks`). Prochaine cible : module 9 `dom-manipulation-and-events`. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
+JavaScript v9 est en cours : 121 blocs FR sur 230 (468/1311 fichiers) — modules 1-8 **100 % complets** et module 9 `dom-manipulation-and-events` à 3/12. `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont traduits. Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`. Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -92,7 +135,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (118/230), modules 1-8 **100 % complets**. Prochaine cible : module 9 `dom-manipulation-and-events`.
+Suite en cours : JavaScript v9 (121/230), modules 1-8 **100 % complets**, module 9 à 3/12. Prochaine cible : relire `lecture-working-with-the-dom-click-events-and-web-apis` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 
 ## Scripts Gardes
 
@@ -136,7 +179,7 @@ Get-Content dev-logs\latest.log -Wait | Select-String -Pattern "status.up|status
 
 `intro.changed` puis `intro.integrated` confirment qu'une modification directe de `intro.json` a ete vue par le serveur et reprise dans le bundle `/learn`. `intro.integrating` puis `intro.integrated` confirment que les titres de blocs/modules ont ete repris dans `client/static/curriculum-data/v2/*.json` et servis sur `/curriculum-data/v2/*.json`.
 
-## Detection Automatique Des Certs Et Modules Traduits
+## Detection Automatique De La Couverture Française
 
 `/cours-fr` et `/catalog` partagent une seule source de verite : [client/src/utils/has-french-intro.ts](../client/src/utils/has-french-intro.ts). La fonction `hasFrenchIntro(superBlock)` renvoie `true` si le cert ou module a au moins un challenge `.md` traduit.
 
@@ -145,7 +188,20 @@ La liste est **generee au build via `preval`** (macro Babel) qui scanne :
 1. `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<block>/*.md` pour la liste des blocs traduits.
 2. `curriculum/structure/superblocks/*.json` pour mapper chaque bloc a son cert et a son module.
 
-Resultat : aucun maintenance manuelle a faire. Quand un nouveau bloc est traduit, le filtre `/catalog` et le badge `/cours-fr` se mettent a jour automatiquement.
+Resultat : aucune liste de disponibilité manuelle à maintenir. Quand un nouveau
+bloc est traduit, le filtre `/catalog` et les groupes `/cours-fr` se mettent à
+jour automatiquement.
+
+Le booléen seul ne décrit pas la complétude d'une carte. Le catalogue appelle
+[client/src/utils/catalog-translation-status.ts](../client/src/utils/catalog-translation-status.ts)
+avec :
+
+- la présence réelle d'au moins un challenge FR ;
+- le titre et le résumé français ;
+- le titre et le résumé anglais de référence.
+
+Il obtient `absent`, `partial` ou `complete`. Une carte partielle conserve un
+libellé explicite au lieu de laisser croire que tout son contenu est traduit.
 
 ### Mise A Jour Live (Sans Restart)
 
@@ -199,14 +255,36 @@ Comme le reste du fork, l'examen n'a pas de backend : tout est dans `localStorag
 
 La lecture de `localStorage` se fait apres montage (les valeurs sont vides cote SSR), donc pas de mismatch d'hydratation.
 
-### Bouton D'Acces
+### Session En Cours
 
-[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx) a ete nettoye : tous les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. Il ne reste que :
+[client/src/utils/exam-session.ts](../client/src/utils/exam-session.ts) persiste
+une session versionnée dans `fcc-exam-session`, séparée de l'historique :
+
+- une entrée par certification ;
+- seed, index courant, réponses, mode et questions de révision conservés ;
+- validation stricte du JSON avant restauration ;
+- expiration automatique après sept jours ;
+- choix explicite « Reprendre » ou « Recommencer » à l'intro.
+
+Sur la dernière question, une boîte `alertdialog` indique le nombre de réponses
+vides. Échap ou « Continuer l'examen » revient aux questions; la fin est
+protégée contre le double envoi. Les résultats affichent un résumé, des filtres
+et des détails repliables.
+
+### Bouton D'Acces Et Prérequis Locaux
+
+[client/src/templates/Challenges/exam-download/show.tsx](../client/src/templates/Challenges/exam-download/show.tsx) a ete simplifie visuellement : les boutons casses (`Open Exam Environment Application`, `Generate Exam Token`, `Attempts`, downloads .exe, support email) sont supprimes. La page affiche :
 
 - `ChallengeTitle` avec checkmark de completion.
-- `PrerequisitesCallout` (utile : detecte via localStorage les challenges restants).
+- `LocalExamPrerequisites`, calculé à partir des challenges et de la progression locale.
 - Un paragraphe d'explication FR.
 - Le bouton `Passer l'examen en francais` qui pointe sur `/exam-fr?cert=<examSuperBlock>`.
+
+`isLocalMode()` choisit cette branche avant le montage de
+`ExamPrerequisites`. Les hooks `useGetExamsQuery()` et
+`useGetExamIdsByChallengeIdQuery()` restent disponibles pour les modes upstream,
+mais ne sont jamais exécutés dans le parcours local. Un test réseau sur trois
+moteurs garantit zéro appel au port 3000.
 
 ## Hot-Reload Des Traductions
 
@@ -420,6 +498,11 @@ pnpm local:check                        # verification locale rapide
 pnpm local:check:full                   # verification locale longue avant push
 ```
 
+`local:check:full` lance `axe-test.mjs --strict`. Le script attend un élément
+stable plutôt que `networkidle`, compte toutes les pages et échoue si une page
+est inaccessible, ignorée, non scannée ou en timeout. Il couvre les thèmes
+clair/sombre et les états intro/question/résultats de l'examen.
+
 `check-translation-drift.js` sort en code 1 s'il trouve un drift, donc utilisable en pre-commit. Etat actuel : 0 drift sur 2180 fichiers compares.
 
 Verification manuelle :
@@ -428,14 +511,30 @@ Verification manuelle :
 2. Ouvrir `/`, `/learn`, `/cours-fr` et `/catalog`.
 3. Verifier que le defi du jour n'apparait plus.
 4. Ouvrir un exercice Responsive Web Design traduit.
-5. Dans `/catalog`, verifier que `Theme > Francais` affiche les niveaux traduits automatiquement depuis `intro.json` et peut se combiner avec le filtre `Niveau`.
+5. Dans `/catalog`, verifier que `Theme > Francais` affiche les superblocks avec au moins un `.md` FR, signale les contenus partiels et peut se combiner avec le filtre `Niveau`.
 6. Ouvrir un exercice compatible dont le fichier FR manque encore.
 7. Confirmer qu'aucun lien visible ne sort vers forum, donation, app mobile, social, CodeAlly, Ona, GitHub externe ou Okta.
 8. Dans `/cours-fr`, ouvrir une certification : la barre « X/Y challenges termines » et les coches ✓ refletent la progression `localStorage`.
 9. Sur `/exam-fr?cert=...`, finir un examen : verifier l'historique sur l'intro, le tableau « Reussite par module » et le bouton « Reviser mes erreurs ».
+10. Activer le theme sombre dans `/catalog` et verifier que le texte saisi dans la recherche reste lisible.
+11. Ouvrir le panneau reseau : confirmer aucune requete GTM/GA/Stripe.
+12. Ouvrir le challenge `exam-download` : confirmer qu'aucune requete ne vise le port 3000.
+13. Verifier que `/dev-fr` compte les tentatives stockees sous `{ version, byCert }`.
+14. Lancer `pnpm test:local-network` dans Chromium, Firefox et WebKit.
+15. Lancer `pnpm test:axe` et verifier `requested = loaded = scanned`.
 
 ## Limites Connues
 
 - Les certificats PDF et examens serveur ne sont pas operationnels localement.
 - Certains composants upstream restent dans le code car ils sont partages par le build ou les types, meme s'ils ne sont plus visibles.
 - Si un nouveau composant upstream ajoute un lien externe, la garde globale le bloque au clic, mais il faut aussi le retirer proprement si ce composant devient visible.
+- `/dev-fr` et `/___graphql` sont intentionnellement disponibles dans Gatsby
+  Develop. Le test de production garantit leur absence du build public.
+- Le statut `partial` d'une carte signifie qu'une partie du contenu existe en
+  français, pas que toute la certification est traduite.
+- Le build Gatsby conserve des warnings amont sur React Helmet, certains imports
+  JSON nommés, Babel standalone et la sérialisation du cache Webpack. Ils
+  n'apparaissent pas comme erreurs ou warnings audités dans la console des
+  parcours navigateur.
+- Les certificats locaux restent non officiels et ne remplacent pas les
+  certificats délivrés par freeCodeCamp.org.

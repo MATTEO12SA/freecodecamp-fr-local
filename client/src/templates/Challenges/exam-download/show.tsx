@@ -22,6 +22,7 @@ import {
 import { examAttempts } from '../../../utils/ajax';
 import MissingPrerequisites from '../exam/components/missing-prerequisites';
 import { isChallengeCompletedSelector } from '../redux/selectors';
+import { isLocalMode } from '../../../../config/runtime-mode';
 
 import './show.css';
 import { Link, Loader } from '../../../components/helpers';
@@ -70,6 +71,35 @@ interface ExamPrerequisitesProps {
   completedChallenges: CompletedChallenge[];
   challenges: ChallengeNode['challenge'][];
   examSuperBlock: SuperBlocks;
+}
+
+function LocalExamPrerequisites({
+  completedChallenges,
+  challenges,
+  examSuperBlock
+}: Omit<ExamPrerequisitesProps, 'id'>): JSX.Element {
+  const challengeIds = new Set(
+    challenges
+      .filter(challenge => challenge.superBlock === examSuperBlock)
+      .map(challenge => challenge.id)
+  );
+  const completedCount = completedChallenges.filter(challenge =>
+    challengeIds.has(challenge.id)
+  ).length;
+
+  return (
+    <Callout variant='note' label='Prérequis locaux'>
+      <p>
+        Aucun compte, token, téléchargement ou backend n&apos;est requis. Il est
+        recommandé de terminer les modules disponibles avant de commencer.
+      </p>
+      <p>
+        Progression enregistrée pour cette certification : {completedCount}{' '}
+        challenge{completedCount > 1 ? 's' : ''} terminé
+        {completedCount > 1 ? 's' : ''}.
+      </p>
+    </Callout>
+  );
 }
 
 function ExamPrerequisites({
@@ -264,14 +294,22 @@ function ShowExamDownload({
               {title}
             </ChallengeTitle>
             <Spacer size='m' />
-            <PrerequisitesCallout
-              isSignedIn={isSignedIn}
-              isHonest={user?.isHonest ?? false}
-              id={id}
-              challenges={nodes.map(({ challenge }) => challenge)}
-              completedChallenges={completedChallenges}
-              examSuperBlock={examSuperBlock}
-            />
+            {isLocalMode() ? (
+              <LocalExamPrerequisites
+                challenges={nodes.map(({ challenge }) => challenge)}
+                completedChallenges={completedChallenges}
+                examSuperBlock={examSuperBlock}
+              />
+            ) : (
+              <PrerequisitesCallout
+                isSignedIn={isSignedIn}
+                isHonest={user?.isHonest ?? false}
+                id={id}
+                challenges={nodes.map(({ challenge }) => challenge)}
+                completedChallenges={completedChallenges}
+                examSuperBlock={examSuperBlock}
+              />
+            )}
             <Spacer size='m' />
             <p>
               Cet examen est passé directement dans le navigateur, en français.

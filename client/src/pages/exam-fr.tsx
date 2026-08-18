@@ -1,10 +1,20 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import { Container, Col, Row, Spacer, Button } from '@freecodecamp/ui';
 import LearnLayout from '../components/layouts/learn';
 import SEO from '../components/seo';
+import {
+  getExamCertificationTitle,
+  listReadyExamCertifications
+} from '../utils/exam-certifications';
+import { hasFrenchBlock } from '../utils/has-french-intro';
 import { getAttempts, saveAttempt } from '../utils/exam-history';
+import {
+  clearExamSession,
+  getExamSession,
+  saveExamSession
+} from '../utils/exam-session';
 
 import './exam-fr.css';
 
@@ -52,16 +62,6 @@ function getAccessibleChoiceText(html: string, fallback: string): string {
 
   return text || fallback;
 }
-
-const CERT_TITLES: Record<string, string> = {
-  'responsive-web-design-v9': 'Responsive Web Design',
-  'javascript-v9': 'JavaScript',
-  'front-end-development-libraries-v9': 'Bibliothèques Front-End',
-  'python-v9': 'Python',
-  'relational-databases-v9': 'Bases de données relationnelles',
-  'back-end-development-and-apis-v9': 'Back-End et APIs',
-  'full-stack-developer-v9': 'Cursus Full-Stack'
-};
 
 const EXAM_LENGTH = 80;
 const PASSING_SCORE = 0.7;
@@ -134,7 +134,7 @@ function prepareQuestions(
 }
 
 function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
-  const [cert, setCert] = useState<string | null>(null);
+  const cert = getCertFromSearch(location.search);
   const [seed, setSeed] = useState<number>(0);
   const [phase, setPhase] = useState<'intro' | 'inprogress' | 'results'>(
     'intro'
@@ -143,25 +143,80 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   const [answers, setAnswers] = useState<(number | null)[]>([]);
   // 'full' = examen complet tire du pool ; 'review' = revision des erreurs.
   const [mode, setMode] = useState<'full' | 'review'>('full');
-  const [reviewQuestions, setReviewQuestions] = useState<PreparedQuestion[]>(
-    []
-  );
+  const [reviewIndexes, setReviewIndexes] = useState<number[]>([]);
   // Bumpe apres une sauvegarde pour rafraichir l'historique affiche.
   const [historyVersion, setHistoryVersion] = useState(0);
+  const [restoredCert, setRestoredCert] = useState<string | null>(null);
+  const [pendingResume, setPendingResume] = useState(false);
+  const [showFinishConfirmation, setShowFinishConfirmation] = useState(false);
+  const [reviewFilter, setReviewFilter] = useState<
+    'all' | 'incorrect' | 'unanswered'
+  >('all');
+  const finishingRef = useRef(false);
+
+  const certTitle = getExamCertificationTitle(cert);
+  const isUnknownCertification = Boolean(cert && !certTitle);
 
   useEffect(() => {
-    setCert(getCertFromSearch(location.search));
-  }, [location.search]);
+    finishingRef.current = false;
+    setShowFinishConfirmation(false);
+    setReviewFilter('all');
+
+    if (!cert || !getExamCertificationTitle(cert)) {
+      setPhase('intro');
+      setCurrentIndex(0);
+      setAnswers([]);
+      setMode('full');
+      setReviewIndexes([]);
+      setPendingResume(false);
+      setRestoredCert(cert);
+      return;
+    }
+
+    const session = getExamSession(cert);
+    if (session) {
+      setSeed(session.seed);
+      setCurrentIndex(session.currentIndex);
+      setAnswers(session.answers);
+      setMode(session.mode);
+      setReviewIndexes(session.reviewIndexes);
+      setPendingResume(true);
+      setPhase('intro');
+    } else {
+      setPhase('intro');
+      setCurrentIndex(0);
+      setAnswers([]);
+      setMode('full');
+      setReviewIndexes([]);
+      setPendingResume(false);
+    }
+    setRestoredCert(cert);
+  }, [cert]);
+
+  const frenchQuizChallenges = useMemo(
+    () =>
+      data.allChallengeNode.nodes
+        .map(node => node.challenge)
+        .filter(challenge => hasFrenchBlock(challenge.block)),
+    [data.allChallengeNode.nodes]
+  );
 
   const questions = useMemo(() => {
-    if (mode === 'review') return reviewQuestions;
-    if (!cert || phase === 'intro') return [];
-    return prepareQuestions(
-      data.allChallengeNode.nodes.map(n => n.challenge),
-      cert,
-      seed
-    );
-  }, [data.allChallengeNode.nodes, cert, seed, phase, mode, reviewQuestions]);
+    if (!cert || (phase === 'intro' && !pendingResume)) return [];
+    const pool = prepareQuestions(frenchQuizChallenges, cert, seed);
+    if (mode === 'review') {
+      return reviewIndexes.map(index => pool[index]).filter(Boolean);
+    }
+    return phase === 'intro' ? [] : pool;
+  }, [
+    frenchQuizChallenges,
+    cert,
+    seed,
+    phase,
+    mode,
+    reviewIndexes,
+    pendingResume
+  ]);
 
   const attempts = useMemo(() => {
     void historyVersion;
@@ -171,28 +226,98 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   const availableCount = useMemo(() => {
     if (!cert) return 0;
     let count = 0;
-    for (const node of data.allChallengeNode.nodes) {
-      const c = node.challenge;
-      if (c.superBlock !== cert) continue;
-      for (const quiz of c.quizzes || []) {
+    for (const challenge of frenchQuizChallenges) {
+      if (challenge.superBlock !== cert) continue;
+      for (const quiz of challenge.quizzes || []) {
         count += (quiz.questions || []).length;
       }
     }
     return count;
-  }, [data.allChallengeNode.nodes, cert]);
+  }, [frenchQuizChallenges, cert]);
 
-  const certTitle = cert ? CERT_TITLES[cert] || cert : '';
+  const readyExams = useMemo(
+    () => listReadyExamCertifications(frenchQuizChallenges),
+    [frenchQuizChallenges]
+  );
+
+  useEffect(() => {
+    if (
+      restoredCert !== cert ||
+      phase !== 'inprogress' ||
+      !cert ||
+      !certTitle
+    ) {
+      return;
+    }
+
+    saveExamSession({
+      cert,
+      seed,
+      currentIndex,
+      answers,
+      mode,
+      reviewIndexes
+    });
+  }, [
+    answers,
+    cert,
+    certTitle,
+    currentIndex,
+    mode,
+    phase,
+    restoredCert,
+    reviewIndexes,
+    seed
+  ]);
+
+  useEffect(() => {
+    if (
+      phase === 'inprogress' &&
+      questions.length > 0 &&
+      currentIndex >= questions.length
+    ) {
+      setCurrentIndex(questions.length - 1);
+    }
+  }, [currentIndex, phase, questions.length]);
+
+  useEffect(() => {
+    if (!showFinishConfirmation) return;
+
+    const closeOnEscape = (event: KeyboardEvent): void => {
+      if (event.key === 'Escape') {
+        setShowFinishConfirmation(false);
+      }
+    };
+
+    document.getElementById('exam-fr-continue')?.focus();
+    document.addEventListener('keydown', closeOnEscape);
+
+    return () => document.removeEventListener('keydown', closeOnEscape);
+  }, [showFinishConfirmation]);
 
   function startExam(): void {
+    if (cert) clearExamSession(cert);
+    finishingRef.current = false;
+    setShowFinishConfirmation(false);
+    setPendingResume(false);
+    setReviewFilter('all');
     setMode('full');
-    setReviewQuestions([]);
+    setReviewIndexes([]);
     setSeed(Date.now());
     setAnswers(new Array(Math.min(EXAM_LENGTH, availableCount)).fill(null));
     setCurrentIndex(0);
     setPhase('inprogress');
   }
 
+  function resumeExam(): void {
+    finishingRef.current = false;
+    setShowFinishConfirmation(false);
+    setPendingResume(false);
+    setPhase('inprogress');
+  }
+
   function selectAnswer(choiceIndex: number): void {
+    setShowFinishConfirmation(false);
     const next = answers.slice();
     next[currentIndex] = choiceIndex;
     setAnswers(next);
@@ -202,33 +327,55 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
     } else {
-      setPhase('results');
+      const unanswered = answers.filter(answer => answer === null).length;
+      if (unanswered > 0) {
+        setShowFinishConfirmation(true);
+      } else {
+        finishExam();
+      }
     }
   }
 
   function goPrev(): void {
+    setShowFinishConfirmation(false);
     if (currentIndex > 0) setCurrentIndex(currentIndex - 1);
   }
 
+  function finishExam(): void {
+    if (finishingRef.current) return;
+    finishingRef.current = true;
+    setShowFinishConfirmation(false);
+    if (cert) clearExamSession(cert);
+    setPhase('results');
+  }
+
   function restart(): void {
+    if (cert) clearExamSession(cert);
+    finishingRef.current = false;
+    setShowFinishConfirmation(false);
+    setPendingResume(false);
+    setReviewFilter('all');
     setMode('full');
-    setReviewQuestions([]);
+    setReviewIndexes([]);
     setPhase('intro');
     setCurrentIndex(0);
     setAnswers([]);
   }
 
   // Relance un mini-examen compose uniquement des questions ratees de la
-  // tentative qui vient de se terminer. On reutilise les PreparedQuestion deja
-  // en memoire (pas de nouveau tirage dans le pool global).
+  // tentative qui vient de se terminer. On reutilise le seed de l'examen
+  // complet et les index des erreurs, sans stocker les solutions.
   function startReview(): void {
-    const failed = questions.filter(
-      (q, i) => answers[i] !== q.correctChoiceIndex
-    );
-    if (failed.length === 0) return;
-    setReviewQuestions(failed);
+    const failedIndexes = questions
+      .map((_, index) => index)
+      .filter(index => answers[index] !== questions[index].correctChoiceIndex);
+    if (failedIndexes.length === 0) return;
+    finishingRef.current = false;
+    setShowFinishConfirmation(false);
+    setReviewFilter('all');
+    setReviewIndexes(failedIndexes);
     setMode('review');
-    setAnswers(new Array(failed.length).fill(null));
+    setAnswers(new Array(failedIndexes.length).fill(null));
     setCurrentIndex(0);
     setPhase('inprogress');
   }
@@ -269,26 +416,61 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   }, [phase, questions, answers]);
 
   const wrongCount = totalQuestions - score;
+  const unansweredCount = answers.filter(answer => answer === null).length;
+  const incorrectCount = questions.filter(
+    (question, index) =>
+      answers[index] !== null && answers[index] !== question.correctChoiceIndex
+  ).length;
+  const effectiveReviewFilter =
+    incorrectCount === 0 && unansweredCount === 0 ? 'all' : reviewFilter;
+  const reviewItems = questions
+    .map((question, index) => {
+      const userChoiceIndex = answers[index] ?? null;
+      return {
+        question,
+        index,
+        userChoiceIndex,
+        isCorrect: userChoiceIndex === question.correctChoiceIndex
+      };
+    })
+    .filter(item => {
+      if (effectiveReviewFilter === 'incorrect') {
+        return !item.isCorrect && item.userChoiceIndex !== null;
+      }
+      if (effectiveReviewFilter === 'unanswered') {
+        return item.userChoiceIndex === null;
+      }
+      return true;
+    });
 
   // Sauvegarde la tentative a l'entree dans l'ecran resultats (examen complet
   // seulement : on ne pollue pas l'historique avec les revisions).
   useEffect(() => {
     if (phase !== 'results' || mode !== 'full' || !cert || totalQuestions === 0)
       return;
-    saveAttempt({
+    const saved = saveAttempt({
       cert,
       date: new Date().toISOString(),
       score,
       total: totalQuestions,
-      pct: Math.round(scorePct * 100)
+      pct: Math.round(scorePct * 100),
+      seed
     });
-    setHistoryVersion(v => v + 1);
+    if (saved) setHistoryVersion(v => v + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, mode, cert]);
+  }, [phase, mode, cert, seed]);
 
   return (
-    <LearnLayout>
-      <SEO title={cert ? `Examen ${certTitle}` : 'Examen'} />
+    <LearnLayout contentId='content-start'>
+      <SEO
+        title={
+          isUnknownCertification
+            ? 'Certification inconnue'
+            : certTitle
+              ? `Examen ${certTitle}`
+              : 'Examen'
+        }
+      />
       <Container>
         <Row>
           <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
@@ -296,18 +478,54 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
 
             {!cert && (
               <>
-                <h1 className='text-center'>Examen non sélectionné</h1>
+                <h1 className='text-center'>Choisis une certification</h1>
                 <p className='exam-fr-intro'>
-                  Cette page attend une certification dans l&apos;URL. Exemple :{' '}
-                  <code>/exam-fr?cert=responsive-web-design-v9</code>.
+                  L&apos;examen se lance depuis une certification, pas depuis
+                  une URL à taper. Seuls les parcours qui ont déjà des
+                  questions de quiz en français sont listés.
                 </p>
+                {readyExams.length === 0 ? (
+                  <p className='exam-fr-warning'>
+                    Aucun quiz français n&apos;est encore disponible pour
+                    l&apos;examen.
+                  </p>
+                ) : (
+                  <ul className='exam-fr-cert-list'>
+                    {readyExams.map(item => (
+                      <li key={item.key}>
+                        <a
+                          href={`/exam-fr?cert=${encodeURIComponent(item.key)}`}
+                        >
+                          {item.title} ({item.questions} questions)
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <p>
-                  <a href='/cours-fr'>← Retour aux certifications</a>
+                  <a href='/cours-fr?view=certifications'>
+                    ← Retour aux certifications
+                  </a>
                 </p>
               </>
             )}
 
-            {cert && phase === 'intro' && (
+            {isUnknownCertification && (
+              <>
+                <h1 className='text-center'>Certification inconnue</h1>
+                <p className='exam-fr-intro'>
+                  Cette certification ne correspond à aucun examen local
+                  disponible.
+                </p>
+                <p>
+                  <a href='/cours-fr?view=certifications'>
+                    ← Retour aux certifications
+                  </a>
+                </p>
+              </>
+            )}
+
+            {cert && certTitle && phase === 'intro' && (
               <>
                 <h1 className='text-center'>Examen — {certTitle}</h1>
                 <Spacer size='m' />
@@ -331,6 +549,32 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                     certification. Reviens quand les modules de cette
                     certification auront leurs quizzes en français.
                   </p>
+                ) : pendingResume ? (
+                  <div className='exam-fr-resume' role='status'>
+                    <p>
+                      Une session est en cours à la question{' '}
+                      <strong>
+                        {currentIndex + 1}/{answers.length || EXAM_LENGTH}
+                      </strong>
+                      . Tu peux la reprendre ou recommencer à zéro.
+                    </p>
+                    <div className='exam-fr-nav'>
+                      <button
+                        type='button'
+                        className='exam-fr-resume-primary'
+                        onClick={resumeExam}
+                      >
+                        Reprendre
+                      </button>
+                      <button
+                        type='button'
+                        className='exam-fr-resume-danger'
+                        onClick={startExam}
+                      >
+                        Recommencer
+                      </button>
+                    </div>
+                  </div>
                 ) : (
                   <>
                     <p>
@@ -366,70 +610,103 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                 )}
                 <Spacer size='m' />
                 <p>
-                  <a href='/cours-fr'>← Retour aux certifications</a>
+                  <a href='/cours-fr?view=certifications'>
+                    ← Retour aux certifications
+                  </a>
                 </p>
               </>
             )}
 
-            {cert && phase === 'inprogress' && questions.length > 0 && (
-              <>
-                <h1 className='text-center'>
-                  {mode === 'review' ? 'Révision' : 'Examen'} — {certTitle}
-                </h1>
-                <p className='exam-fr-progress'>
-                  Question {currentIndex + 1} / {questions.length}
-                </p>
-                <div
-                  className='exam-fr-question'
-                  dangerouslySetInnerHTML={{
-                    __html: questions[currentIndex].questionText
-                  }}
-                />
-                <ul className='exam-fr-choices'>
-                  {questions[currentIndex].choices.map((choice, idx) => {
-                    const checked = answers[currentIndex] === idx;
-                    const accessibleChoiceText = getAccessibleChoiceText(
-                      choice.text,
-                      `Réponse ${idx + 1}`
-                    );
-                    return (
-                      <li key={idx}>
-                        <label
-                          aria-label={accessibleChoiceText}
-                          className={
-                            checked
-                              ? 'exam-fr-choice exam-fr-choice-selected'
-                              : 'exam-fr-choice'
-                          }
+            {cert &&
+              certTitle &&
+              phase === 'inprogress' &&
+              questions.length > 0 && (
+                <>
+                  <h1 className='text-center'>
+                    {mode === 'review' ? 'Révision' : 'Examen'} — {certTitle}
+                  </h1>
+                  <p className='exam-fr-progress'>
+                    Question {currentIndex + 1} / {questions.length}
+                  </p>
+                  <div
+                    className='exam-fr-question'
+                    dangerouslySetInnerHTML={{
+                      __html: questions[currentIndex].questionText
+                    }}
+                  />
+                  <ul className='exam-fr-choices'>
+                    {questions[currentIndex].choices.map((choice, idx) => {
+                      const checked = answers[currentIndex] === idx;
+                      const accessibleChoiceText = getAccessibleChoiceText(
+                        choice.text,
+                        `Réponse ${idx + 1}`
+                      );
+                      return (
+                        <li key={idx}>
+                          <label
+                            aria-label={accessibleChoiceText}
+                            className={
+                              checked
+                                ? 'exam-fr-choice exam-fr-choice-selected'
+                                : 'exam-fr-choice'
+                            }
+                          >
+                            <input
+                              type='radio'
+                              name={`q-${currentIndex}`}
+                              checked={checked}
+                              onChange={() => selectAnswer(idx)}
+                            />
+                            <span
+                              dangerouslySetInnerHTML={{ __html: choice.text }}
+                            />
+                          </label>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <div className='exam-fr-nav'>
+                    <Button onClick={goPrev} disabled={currentIndex === 0}>
+                      Précédent
+                    </Button>
+                    <Button onClick={goNext}>
+                      {currentIndex === questions.length - 1
+                        ? 'Terminer'
+                        : 'Suivant'}
+                    </Button>
+                  </div>
+                  {showFinishConfirmation && (
+                    <div
+                      className='exam-fr-finish-confirmation'
+                      role='alertdialog'
+                      aria-modal='true'
+                      aria-labelledby='exam-fr-finish-title'
+                    >
+                      <h2 id='exam-fr-finish-title'>
+                        Terminer l&apos;examen ?
+                      </h2>
+                      <p>
+                        {unansweredCount} question
+                        {unansweredCount > 1 ? 's' : ''} sans réponse. Tu peux
+                        encore les compléter avant de calculer ton score.
+                      </p>
+                      <div className='exam-fr-confirm-actions'>
+                        <Button
+                          id='exam-fr-continue'
+                          onClick={() => setShowFinishConfirmation(false)}
                         >
-                          <input
-                            type='radio'
-                            name={`q-${currentIndex}`}
-                            checked={checked}
-                            onChange={() => selectAnswer(idx)}
-                          />
-                          <span
-                            dangerouslySetInnerHTML={{ __html: choice.text }}
-                          />
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <div className='exam-fr-nav'>
-                  <Button onClick={goPrev} disabled={currentIndex === 0}>
-                    Précédent
-                  </Button>
-                  <Button onClick={goNext}>
-                    {currentIndex === questions.length - 1
-                      ? 'Terminer'
-                      : 'Suivant'}
-                  </Button>
-                </div>
-              </>
-            )}
+                          Continuer l&apos;examen
+                        </Button>
+                        <Button onClick={finishExam}>
+                          Terminer quand même
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
 
-            {cert && phase === 'results' && (
+            {cert && certTitle && phase === 'results' && (
               <>
                 <h1 className='text-center'>
                   {mode === 'review' ? 'Révision' : 'Résultats'} — {certTitle}
@@ -478,49 +755,93 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   </>
                 )}
                 <h2>Détail des réponses</h2>
+                <div
+                  className='exam-fr-review-filters'
+                  aria-label='Filtrer le détail des réponses'
+                >
+                  <button
+                    type='button'
+                    aria-pressed={effectiveReviewFilter === 'incorrect'}
+                    disabled={incorrectCount === 0}
+                    onClick={() => setReviewFilter('incorrect')}
+                  >
+                    À revoir ({incorrectCount})
+                  </button>
+                  <button
+                    type='button'
+                    aria-pressed={effectiveReviewFilter === 'unanswered'}
+                    disabled={unansweredCount === 0}
+                    onClick={() => setReviewFilter('unanswered')}
+                  >
+                    Sans réponse ({unansweredCount})
+                  </button>
+                  <button
+                    type='button'
+                    aria-pressed={effectiveReviewFilter === 'all'}
+                    onClick={() => setReviewFilter('all')}
+                  >
+                    Toutes ({totalQuestions})
+                  </button>
+                </div>
                 <ol className='exam-fr-review'>
-                  {questions.map((q, i) => {
-                    const userIdx = answers[i];
-                    const isCorrect = userIdx === q.correctChoiceIndex;
-                    return (
-                      <li
-                        key={i}
-                        className={
-                          isCorrect
-                            ? 'exam-fr-review-item exam-fr-correct'
-                            : 'exam-fr-review-item exam-fr-incorrect'
-                        }
-                      >
-                        <div
-                          className='exam-fr-review-q'
-                          dangerouslySetInnerHTML={{ __html: q.questionText }}
-                        />
-                        <div className='exam-fr-review-a'>
-                          <strong>Bonne réponse :</strong>{' '}
-                          <span
-                            dangerouslySetInnerHTML={{
-                              __html: q.choices[q.correctChoiceIndex].text
-                            }}
-                          />
-                        </div>
-                        {!isCorrect && userIdx !== null && (
-                          <div className='exam-fr-review-user'>
-                            <strong>Ta réponse :</strong>{' '}
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: q.choices[userIdx].text
-                              }}
-                            />
-                          </div>
-                        )}
-                        {userIdx === null && (
-                          <div className='exam-fr-review-user'>
-                            <em>Pas répondu</em>
-                          </div>
-                        )}
-                      </li>
-                    );
-                  })}
+                  {reviewItems.map(
+                    ({ question, index, userChoiceIndex, isCorrect }) => {
+                      return (
+                        <li
+                          key={index}
+                          className={
+                            isCorrect
+                              ? 'exam-fr-review-item exam-fr-correct'
+                              : 'exam-fr-review-item exam-fr-incorrect'
+                          }
+                        >
+                          <details>
+                            <summary>
+                              <span>Question {index + 1}</span>
+                              <strong>
+                                {isCorrect ? 'Correcte' : 'À revoir'}
+                              </strong>
+                            </summary>
+                            <div className='exam-fr-review-content'>
+                              <div
+                                className='exam-fr-review-q'
+                                dangerouslySetInnerHTML={{
+                                  __html: question.questionText
+                                }}
+                              />
+                              <div className='exam-fr-review-a'>
+                                <strong>Bonne réponse :</strong>{' '}
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      question.choices[
+                                        question.correctChoiceIndex
+                                      ].text
+                                  }}
+                                />
+                              </div>
+                              {!isCorrect && userChoiceIndex !== null && (
+                                <div className='exam-fr-review-user'>
+                                  <strong>Ta réponse :</strong>{' '}
+                                  <span
+                                    dangerouslySetInnerHTML={{
+                                      __html:
+                                        question.choices[userChoiceIndex].text
+                                    }}
+                                  />
+                                </div>
+                              )}
+                              {userChoiceIndex === null && (
+                                <div className='exam-fr-review-user'>
+                                  <em>Pas répondu</em>
+                                </div>
+                              )}
+                            </div>
+                          </details>
+                        </li>
+                      );
+                    }
+                  )}
                 </ol>
                 <Spacer size='m' />
                 <div className='exam-fr-nav'>
@@ -530,7 +851,10 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                     </Button>
                   )}
                   <Button onClick={restart}>Recommencer</Button>
-                  <a className='exam-fr-back-link' href='/cours-fr'>
+                  <a
+                    className='exam-fr-back-link'
+                    href='/cours-fr?view=certifications'
+                  >
                     ← Retour aux certifications
                   </a>
                 </div>

@@ -1,10 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-require-imports, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access */
 
+import {
+  isDevelopmentMode,
+  type RuntimeEnvironment
+} from './config/runtime-mode';
+
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const webpack = require('webpack');
 
-const env = require('./config/env.json');
+type GatsbyEnvironment = RuntimeEnvironment & {
+  algoliaAPIKey?: string;
+  algoliaAppId?: string;
+  stripePublicKey?: string;
+};
+
+const env: GatsbyEnvironment = require('./config/env.json');
 const { createSuperBlockIntroPages } = require('./utils/gatsby');
+
+exports.onCreatePage = ({ page, actions }: any) => {
+  const normalizedPath = page.path.replace(/\/+$/, '');
+  if (normalizedPath === '/dev-fr' && !isDevelopmentMode(env)) {
+    actions.deletePage(page);
+  }
+};
 
 exports.createPages = async function createPages({
   actions,

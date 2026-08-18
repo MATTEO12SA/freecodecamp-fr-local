@@ -26,9 +26,16 @@ const mapStateToProps = createSelector(
 type LearnLayoutProps = {
   fetchState: FetchState;
   children?: React.ReactNode;
+  className?: string;
+  contentId?: string;
 };
 
-function LearnLayout({ fetchState, children }: LearnLayoutProps): JSX.Element {
+function LearnLayout({
+  fetchState,
+  children,
+  className,
+  contentId = 'learn-app-wrapper'
+}: LearnLayoutProps): JSX.Element {
   useEffect(() => {
     return () => {
       const metaTag = document.querySelector(`meta[name="robots"]`);
@@ -47,7 +54,13 @@ function LearnLayout({ fetchState, children }: LearnLayoutProps): JSX.Element {
       <Helmet>
         <meta content='noindex' name='robots' />
       </Helmet>
-      <main id='learn-app-wrapper'>{children}</main>
+      <main
+        id={contentId}
+        className={`learn-app-wrapper${className ? ` ${className}` : ''}`}
+        tabIndex={contentId === 'content-start' ? -1 : undefined}
+      >
+        {children}
+      </main>
     </>
   );
 }

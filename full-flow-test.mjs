@@ -75,7 +75,7 @@ await typeSolution('<html><body><h1>CatPhotoApp</h1></body></html>');
 const r1 = await checkAndSubmit();
 log('Step 1 →', r1);
 await page.waitForTimeout(2500);
-await page.screenshot({ path: 'screenshots/flow-step1-after-submit.png' });
+await page.screenshot({ path: 'screenshots/current/editor/step1-after-submit.png' });
 log('URL after submit:', page.url());
 
 // === Step 2: add <h2>Cat Photos</h2> ===
@@ -95,7 +95,7 @@ await page.waitForTimeout(600);
 const r2 = await checkAndSubmit();
 log('Step 2 →', r2);
 await page.waitForTimeout(2500);
-await page.screenshot({ path: 'screenshots/flow-step2-after-submit.png' });
+await page.screenshot({ path: 'screenshots/current/editor/step2-after-submit.png' });
 log('URL after step-2 submit:', page.url());
 
 // localStorage check

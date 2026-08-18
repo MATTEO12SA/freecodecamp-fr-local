@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { graphql } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import { useDispatch } from 'react-redux';
 import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
 import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
-import type {
-  BlockLabel,
-  BlockLayouts
-} from '@freecodecamp/shared/config/blocks';
+import { BlockLabel, type BlockLayouts } from '@freecodecamp/shared/config/blocks';
 import LearnLayout from '../components/layouts/learn';
+import { Link } from '../components/helpers';
 import SEO from '../components/seo';
 import type { ChapterBasedSuperBlockStructure } from '../redux/prop-types';
 import { SuperBlockAccordion } from '../templates/Introduction/components/super-block-accordion';
 import { resetExpansion, toggleBlock } from '../templates/Introduction/redux';
 import { hasFrenchIntro } from '../utils/has-french-intro';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
+import { groupCertificationsByFrenchAvailability } from '../utils/french-certification-groups';
+import {
+  getCoursFrCertificationHref,
+  parseCoursFrView
+} from '../utils/cours-fr-navigation';
 
 import './cours-fr.css';
 
@@ -79,6 +83,26 @@ function isLocalChallenge(challenge: Challenge): boolean {
   );
 }
 
+function challengesInStructure(
+  challenges: Challenge[],
+  structure: ChapterBasedSuperBlockStructure | undefined,
+  { includeExam = true }: { includeExam?: boolean } = {}
+): Challenge[] {
+  const blocks = new Set(
+    (structure?.chapters ?? []).flatMap(chapter => {
+      if (!includeExam && chapter.chapterType === 'exam') return [];
+      return (chapter.modules ?? []).flatMap(module => {
+        if (!includeExam && module.moduleType === BlockLabel.exam) {
+          return [];
+        }
+        return module.blocks ?? [];
+      });
+    })
+  );
+  if (blocks.size === 0) return challenges;
+  return challenges.filter(challenge => blocks.has(challenge.block));
+}
+
 const CERTIFICATIONS: Certification[] = [
   {
     key: 'responsive-web-design-v9',
@@ -132,16 +156,22 @@ const CERTIFICATIONS: Certification[] = [
   }
 ];
 
-type View = { v: 'lang' } | { v: 'fr-home' } | { v: 'fr-cert'; cert: string };
-
-function CoursFrPage({ data }: { data: PageData }): JSX.Element {
-  const [view, setView] = useState<View>({ v: 'lang' });
+function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
+  const view = useMemo(
+    () => parseCoursFrView(location.search),
+    [location.search]
+  );
   // localStorage n'existe pas au build (SSR) : on charge la progression apres
   // le montage pour eviter un mismatch d'hydratation.
   const [completedChallengeIds, setCompletedChallengeIds] = useState<string[]>(
     []
   );
   const dispatch = useDispatch();
+  const certificationGroups = useMemo(
+    () =>
+      groupCertificationsByFrenchAvailability(CERTIFICATIONS, hasFrenchIntro),
+    []
+  );
 
   useEffect(() => {
     setCompletedChallengeIds(getLocalCompletedChallenges().map(c => c.id));
@@ -161,7 +191,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
   }, [data.allChallengeNode.nodes, dispatch, view]);
 
   return (
-    <LearnLayout>
+    <LearnLayout contentId='content-start'>
       <SEO title='Cours en français' />
       <Container>
         <Row>
@@ -172,40 +202,40 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
               <>
                 <h1 className='cours-fr-title'>Choisis ton parcours</h1>
                 <p className='cours-fr-intro'>
-                  Ouvre les certifications françaises, le parcours complet ou le
-                  catalogue filtré.
+                  Trois portes d&apos;entrée, un seul but : apprendre. Le hub
+                  français liste ce qui est déjà traduit. La carte complète
+                  montre tout le curriculum local. Le catalogue sert à chercher
+                  et filtrer.
                 </p>
                 <div className='cours-fr-grid'>
-                  <button
-                    type='button'
-                    className='cours-fr-folder-card'
-                    onClick={() => setView({ v: 'fr-home' })}
+                  <Link
+                    className='cours-fr-folder-card cours-fr-folder-card-primary'
+                    to='/cours-fr?view=certifications'
                   >
-                    <span className='cours-fr-folder-icon'>📁</span>
+                    <span className='cours-fr-card-kind'>Recommandé</span>
                     <span className='cours-fr-folder-label'>
-                      Certifications françaises
+                      Cours disponibles en français
                     </span>
                     <span className='cours-fr-folder-sub'>
-                      Certifications françaises disponibles.
+                      Certifications dont les exercices sont déjà traduits.
                     </span>
-                  </button>
-                  <a className='cours-fr-folder-card' href='/learn'>
-                    <span className='cours-fr-folder-icon'>📁</span>
+                  </Link>
+                  <Link className='cours-fr-folder-card' to='/learn'>
+                    <span className='cours-fr-card-kind'>Carte</span>
                     <span className='cours-fr-folder-label'>
-                      Parcours complet
+                      Tous les parcours
                     </span>
                     <span className='cours-fr-folder-sub'>
-                      Tous les cours locaux, avec les traductions quand elles
-                      existent.
+                      La carte complète, avec le français quand il existe.
                     </span>
-                  </a>
-                  <a className='cours-fr-folder-card' href='/catalog'>
-                    <span className='cours-fr-folder-icon'>📁</span>
+                  </Link>
+                  <Link className='cours-fr-folder-card' to='/catalog'>
+                    <span className='cours-fr-card-kind'>Recherche</span>
                     <span className='cours-fr-folder-label'>Catalogue</span>
                     <span className='cours-fr-folder-sub'>
-                      Catalogue global avec les filtres du site.
+                      Recherche, niveau, thème, et filtre Français.
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </>
             )}
@@ -213,55 +243,63 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
             {view.v === 'fr-home' && (
               <>
                 <BackBar
-                  onBack={() => setView({ v: 'lang' })}
-                  crumbs={['Certifications françaises']}
+                  href='/cours-fr'
+                  crumbs={['Cours disponibles en français']}
                 />
-                <h1 className='cours-fr-title'>📁 Certifications françaises</h1>
+                <h1 className='cours-fr-title'>
+                  Cours disponibles en français
+                </h1>
                 <p className='cours-fr-intro'>
-                  Choisis une certification française, ou ouvre le catalogue
-                  global pour utiliser tous les filtres du site.
+                  Ces certifications ont déjà des exercices en français. L&apos;examen
+                  se lance depuis la page de la certification.
                 </p>
 
-                <h2 className='cours-fr-section-title'>Catalogue global</h2>
+                <h2 className='cours-fr-section-title'>
+                  Disponibles maintenant
+                </h2>
                 <div className='cours-fr-grid'>
-                  <a className='cours-fr-folder-card' href='/catalog'>
-                    <span className='cours-fr-folder-icon'>📁</span>
-                    <span className='cours-fr-folder-label'>Catalogue</span>
-                    <span className='cours-fr-folder-sub'>
-                      Ouvre le catalogue complet avec les filtres globaux.
-                    </span>
-                  </a>
+                  {certificationGroups.available.map(cert => (
+                    <Link
+                      key={cert.key}
+                      className='cours-fr-folder-card'
+                      to={getCoursFrCertificationHref(cert.key)}
+                    >
+                      <span className='cours-fr-card-kind'>Certification</span>
+                      <span className='cours-fr-folder-label'>
+                        {cert.title}
+                      </span>
+                      <span className='cours-fr-folder-sub'>
+                        {cert.subtitle}
+                      </span>
+                    </Link>
+                  ))}
                 </div>
 
-                <h2 className='cours-fr-section-title'>Par certification</h2>
-                <div className='cours-fr-grid'>
-                  {CERTIFICATIONS.map(cert => {
-                    const hasTranslatedContent = hasFrenchIntro(cert.key);
-                    return (
-                      <button
-                        key={cert.key}
-                        type='button'
-                        className='cours-fr-folder-card'
-                        onClick={() =>
-                          setView({ v: 'fr-cert', cert: cert.key })
-                        }
-                      >
-                        <span className='cours-fr-folder-icon'>📁</span>
-                        <span className='cours-fr-folder-label'>
-                          {cert.title}
-                        </span>
-                        <span className='cours-fr-folder-sub'>
-                          {cert.subtitle}
-                        </span>
-                        {!hasTranslatedContent ? (
-                          <span className='cours-fr-not-translated'>
-                            🚧 Traduction à venir
+                {certificationGroups.upcoming.length > 0 && (
+                  <>
+                    <h2 className='cours-fr-section-title'>
+                      Traductions à venir
+                    </h2>
+                    <div className='cours-fr-grid'>
+                      {certificationGroups.upcoming.map(cert => (
+                        <article
+                          key={cert.key}
+                          className='cours-fr-upcoming-card'
+                        >
+                          <span className='cours-fr-folder-label'>
+                            {cert.title}
                           </span>
-                        ) : null}
-                      </button>
-                    );
-                  })}
-                </div>
+                          <span className='cours-fr-folder-sub'>
+                            {cert.subtitle}
+                          </span>
+                          <span className='cours-fr-not-translated'>
+                            Traduction à venir
+                          </span>
+                        </article>
+                      ))}
+                    </div>
+                  </>
+                )}
               </>
             )}
 
@@ -273,16 +311,29 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                 const structure = data.allSuperBlockStructure.nodes.find(
                   node => node.superBlock === superBlock
                 );
-                const superBlockChallenges = data.allChallengeNode.nodes
+                const localChallenges = data.allChallengeNode.nodes
                   .map(({ challenge }) => challenge)
                   .filter(
                     challenge =>
                       challenge.superBlock === superBlock &&
                       isLocalChallenge(challenge)
                   );
+                const superBlockChallenges = challengesInStructure(
+                  localChallenges,
+                  structure
+                );
+                const progressChallenges = challengesInStructure(
+                  localChallenges,
+                  structure,
+                  { includeExam: false }
+                ).filter(
+                  challenge =>
+                    challenge.challengeType !== challengeTypes.exam &&
+                    challenge.challengeType !== challengeTypes.examDownload
+                );
                 const completedSet = new Set(completedChallengeIds);
-                const totalChallenges = superBlockChallenges.length;
-                const doneChallenges = superBlockChallenges.filter(challenge =>
+                const totalChallenges = progressChallenges.length;
+                const doneChallenges = progressChallenges.filter(challenge =>
                   completedSet.has(challenge.id)
                 ).length;
                 const progressPct =
@@ -292,15 +343,22 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                 return (
                   <>
                     <BackBar
-                      onBack={() => setView({ v: 'fr-home' })}
-                      crumbs={['Français', cert.title]}
+                      href='/cours-fr?view=certifications'
+                      crumbs={['Cours en français', cert.title]}
                     />
-                    <h1 className='cours-fr-title text-center'>Cours</h1>
+                    <h1 className='cours-fr-title text-center'>{cert.title}</h1>
                     <p className='cours-fr-intro cours-fr-cert-note'>
-                      {cert.title} — architecture officielle freeCodeCamp. Les
-                      dossiers incompatibles avec le mode local sont masqués.
-                      Les autres restent disponibles selon leur état de
-                      traduction.
+                      Les blocs qui demandent un backend ou un outil externe
+                      sont masqués en local. Le reste s&apos;ouvre dans
+                      l&apos;éditeur du navigateur.
+                    </p>
+                    <p className='cours-fr-exam-launch'>
+                      <Link
+                        className='cours-fr-exam-btn'
+                        to={`/exam-fr?cert=${encodeURIComponent(cert.key)}`}
+                      >
+                        Passer l&apos;examen
+                      </Link>
                     </p>
                     {cert.overview && (
                       <section className='cours-fr-cert-overview'>
@@ -323,7 +381,7 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
                       <div className='cours-fr-progress'>
                         <div className='cours-fr-progress-head'>
                           <span className='cours-fr-progress-label'>
-                            {doneChallenges}/{totalChallenges} challenges
+                            {doneChallenges}/{totalChallenges} exercices
                             terminés
                           </span>
                           <span className='cours-fr-progress-pct'>
@@ -371,12 +429,12 @@ function CoursFrPage({ data }: { data: PageData }): JSX.Element {
   );
 }
 
-function BackBar({ onBack, crumbs }: { onBack: () => void; crumbs: string[] }) {
+function BackBar({ href, crumbs }: { href: string; crumbs: string[] }) {
   return (
     <div className='cours-fr-backbar'>
-      <button type='button' className='cours-fr-back-btn' onClick={onBack}>
+      <Link className='cours-fr-back-btn' to={href}>
         ← Retour
-      </button>
+      </Link>
       <span className='cours-fr-crumbs'>{crumbs.join(' / ')}</span>
     </div>
   );

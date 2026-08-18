@@ -1,5 +1,10 @@
 # Demarrage Rapide
 
+> Etat verifie le 26 juillet 2026 : les 29 constats de l'audit ont ete traites
+> (28 corriges, 1 non reproduit en production). Les parcours locaux ne chargent
+> plus analytics/Stripe et `exam-download` ne contacte plus le backend. Voir le
+> [rapport final](AUDIT-FIX-REPORT.md).
+
 ## Lancer Le Site
 
 ```powershell
@@ -99,11 +104,25 @@ http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 
 `/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build). En ouvrant une certification, une barre « X/Y challenges termines » et les coches ✓ refletent la progression sauvegardee dans `localStorage`.
 
-Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules dont au moins un challenge `.md` FR existe. Tu peux le combiner avec `Niveau : Debutant/Intermediaire/Avance` et la recherche texte. Les cartes affichent aussi la progression locale et un bouton `Continuer`.
+Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules
+dont au moins un challenge `.md` FR existe. Chaque carte calcule ensuite son
+statut `absent`, `partiel` ou `complet` à partir des fichiers de challenges et
+des intros FR réelles. Tu peux combiner ce thème avec
+`Niveau : Debutant/Intermediaire/Avance` et la recherche texte. Le catalogue
+affiche 12 cartes au départ, charge la suite sur demande et montre la progression
+locale avec un bouton `Continuer`.
 
-`/dev-fr` affiche le hub local. Lance `pnpm local:report` si la page indique que le snapshot manque.
+`/dev-fr` affiche le hub local de developpement. Lance `pnpm local:report` si la
+page indique que le snapshot manque. Le bouton « Relire le snapshot » relit le
+fichier existant sans le regenerer. Gatsby supprime cette route, son menu et
+`/___graphql` du build public.
 
-`/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au hasard parmi les quizzes traduits, 70% pour reussir. L'examen garde un historique des tentatives (intro), affiche les stats par module et un bouton « Reviser mes erreurs » sur l'ecran resultats (tout dans `localStorage`).
+`/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au
+hasard parmi les quizzes traduits, 70% pour reussir. L'examen garde un
+historique, les stats par module, la revision des erreurs et une session
+versionnee par certification pendant sept jours. Un rechargement propose la
+reprise ; terminer avec des réponses vides demande confirmation. `/dev-fr` lit
+les formats d'historique actuel, ancien et corrompu sans planter.
 
 ### Live Update Quand Tu Traduis Un Nouveau Bloc
 
@@ -117,7 +136,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 : 118 blocs FR sur 230 — modules 1-8 **100 % complets**. Prochaine cible : module 9 `dom-manipulation-and-events`. (RWD v9 : 158/158, cert terminé.)
+Etat actuel : JavaScript v9 compte 121 blocs FR sur 230 (468/1311 fichiers). Les modules 1-8 sont **100 % complets** et le module 9 `dom-manipulation-and-events` est à 3/12 après `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer`. Prochaine cible : relire `tools/translations/lecture-working-with-the-dom-click-events-and-web-apis.json` (`reviewed: false` — ne pas appliquer), puis `workshop-storytelling-app`.
 
 Workflow rapide mais relu manuellement :
 
@@ -145,7 +164,7 @@ Si un helper temporaire a servi a pre-remplir le JSON, supprime-le avant commit.
 
 ## Configuration Locale
 
-Le fork est prevu pour fonctionner sans API, sans MongoDB et sans Auth0.
+Le fork est prevu pour fonctionner sans API, sans MongoDB et sans Auth0 pour le parcours principal.
 
 Variables attendues :
 
@@ -154,7 +173,10 @@ CLIENT_LOCALE=french
 CURRICULUM_LOCALE=french
 ```
 
-Le backend peut rester eteint. Le client construit un utilisateur local et sauvegarde la progression dans `localStorage`.
+Le backend peut rester eteint. Le client construit un utilisateur local,
+sauvegarde la progression dans `localStorage` et remplace les prerequis
+`exam-download` par un calcul local. Aucun hook RTK Query, token ou appel au port
+3000 n'est monté sur ce parcours.
 
 ## Verifier
 
@@ -176,6 +198,10 @@ pnpm local:check                        # HTTP + status + drift + tests catalogu
 pnpm local:check:full                   # ajoute lint client/root + smoke tests + axe si serveur UP
 ```
 
+`axe-test.mjs`, appele par `local:check:full`, fonctionne en strict : timeout,
+page inaccessible, scan ignore ou zero page scannee font échouer la commande.
+Les compteurs demandés/chargés/scannés/ignorés/échoués sont toujours affichés.
+
 Tests navigateur locaux, avec le serveur deja lance :
 
 ```powershell
@@ -185,15 +211,24 @@ node persist-test.mjs
 node full-flow-test.mjs
 ```
 
-## Ce Qui Est Retire Du Site Local
+## Ce Qui Est Retire De La Navigation Locale
 
 - Defi du jour.
 - Forum/aide externe.
-- Donations Stripe, PayPal, Patreon.
+- Interfaces de donations Stripe, PayPal, Patreon.
 - App mobile.
 - Partage social.
 - CodeAlly, Ona et Codespaces visibles.
 - Pages API inutiles comme `/status/version`.
 - Liens cliquables vers des sites externes.
 
-Les URLs techniques necessaires aux exercices, images, medias ou tests peuvent rester dans le code, mais elles ne sont pas presentees comme liens de navigation du site.
+Les URLs techniques necessaires aux exercices, images, medias ou tests peuvent
+rester dans le code, mais elles ne sont pas presentees comme liens de navigation
+du site. Le mode local bloque en plus l'initialisation GTM/Google Analytics et
+l'import Stripe. Vérifie la garde avec :
+
+```powershell
+pnpm test:local-network -- --browser=chromium
+pnpm test:local-network -- --browser=firefox
+pnpm test:local-network -- --browser=webkit
+```

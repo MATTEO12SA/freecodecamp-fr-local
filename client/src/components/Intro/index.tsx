@@ -13,6 +13,7 @@ interface IntroProps {
 
 const Intro = ({ name, pending, complete }: IntroProps): JSX.Element => {
   const { t } = useTranslation();
+  const displayName = name === 'You' ? '' : name;
   if (pending && !complete) {
     return (
       <>
@@ -26,8 +27,8 @@ const Intro = ({ name, pending, complete }: IntroProps): JSX.Element => {
     <>
       <Spacer size='m' />
       <h1 id='content-start' className='text-center'>
-        {name
-          ? `${t('learn.welcome-1', { name: name })}`
+        {displayName
+          ? `${t('learn.welcome-1', { name: displayName })}`
           : `${t('learn.heading')}`}
       </h1>
       <Spacer size='m' />

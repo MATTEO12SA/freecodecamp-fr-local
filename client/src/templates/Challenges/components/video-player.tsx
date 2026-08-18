@@ -4,6 +4,7 @@ import store from 'store';
 
 import Loader from '../../../components/helpers/loader';
 import envData from '../../../../config/env.json';
+import { isLocalMode } from '../../../../config/runtime-mode';
 import type { BilibiliIds, VideoLocaleIds } from '../../../redux/prop-types';
 
 // TODO: pull these types from all-langs
@@ -20,7 +21,7 @@ const { clientLocale } = envData as {
 interface VideoPlayerProps {
   videoId: string;
   videoLocaleIds?: VideoLocaleIds;
-  onVideoLoad: (e: YouTubeEvent) => void;
+  onVideoLoad: (e?: YouTubeEvent) => void;
   videoIsLoaded: boolean;
   bilibiliIds?: BilibiliIds;
   title: string;
@@ -66,6 +67,18 @@ function VideoPlayer({
           frameBorder='no'
           scrolling='no'
           src={bilibiliSrc}
+          title={title}
+        />
+      ) : isLocalMode() ? (
+        <iframe
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+          allowFullScreen
+          className={
+            videoIsLoaded ? 'display-youtube-video' : 'hide-youtube-video'
+          }
+          onLoad={() => onVideoLoad()}
+          referrerPolicy='strict-origin-when-cross-origin'
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
           title={title}
         />
       ) : (

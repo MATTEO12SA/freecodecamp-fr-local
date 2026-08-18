@@ -55,7 +55,7 @@ function LearnPage({
                 <strong>Cours en français</strong> — voir les cours déjà
                 traduits avec une explication de ce que chacun t’apprend.
               </span>
-              <span className='fr-banner-cta'>Ouvrir le dossier FR →</span>
+              <span className='fr-banner-cta'>Ouvrir le parcours FR</span>
             </a>
             <Map />
             <Spacer size='l' />
