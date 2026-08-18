@@ -5,7 +5,10 @@ import { useDispatch } from 'react-redux';
 import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
 import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
-import { BlockLabel, type BlockLayouts } from '@freecodecamp/shared/config/blocks';
+import {
+  BlockLabel,
+  type BlockLayouts
+} from '@freecodecamp/shared/config/blocks';
 import LearnLayout from '../components/layouts/learn';
 import { Link } from '../components/helpers';
 import SEO from '../components/seo';
@@ -250,8 +253,8 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   Cours disponibles en français
                 </h1>
                 <p className='cours-fr-intro'>
-                  Ces certifications ont déjà des exercices en français. L&apos;examen
-                  se lance depuis la page de la certification.
+                  Ces certifications ont déjà des exercices en français.
+                  L&apos;examen se lance depuis la page de la certification.
                 </p>
 
                 <h2 className='cours-fr-section-title'>

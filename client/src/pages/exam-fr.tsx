@@ -481,8 +481,8 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                 <h1 className='text-center'>Choisis une certification</h1>
                 <p className='exam-fr-intro'>
                   L&apos;examen se lance depuis une certification, pas depuis
-                  une URL à taper. Seuls les parcours qui ont déjà des
-                  questions de quiz en français sont listés.
+                  une URL à taper. Seuls les parcours qui ont déjà des questions
+                  de quiz en français sont listés.
                 </p>
                 {readyExams.length === 0 ? (
                   <p className='exam-fr-warning'>

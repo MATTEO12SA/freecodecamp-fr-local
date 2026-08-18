@@ -126,7 +126,5 @@ export const hasFrenchIntro = (superBlock: string): boolean =>
 export const hasFrenchBlock = (block: string): boolean =>
   FRENCH_TRANSLATED_BLOCKS.has(block);
 
-export const getFrenchFileCoverage = (
-  superBlock: string
-): FrenchFileCoverage =>
+export const getFrenchFileCoverage = (superBlock: string): FrenchFileCoverage =>
   FRENCH_DATA.coverage[superBlock] ?? { translated: 0, total: 0 };

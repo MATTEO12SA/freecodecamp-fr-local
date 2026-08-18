@@ -35,7 +35,9 @@ type QuizChallenge = {
   quizzes?: { questions?: unknown[] }[];
 };
 
-export function listReadyExamCertifications(challenges: QuizChallenge[]): Array<{
+export function listReadyExamCertifications(
+  challenges: QuizChallenge[]
+): Array<{
   key: keyof typeof examCertificationTitles;
   title: string;
   questions: number;

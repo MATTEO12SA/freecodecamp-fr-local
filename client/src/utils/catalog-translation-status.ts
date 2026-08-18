@@ -37,8 +37,7 @@ export function getCatalogTranslationStatus({
   const englishLines = introLines(englishIntro);
 
   const titleTranslated =
-    Boolean(frenchTitle) &&
-    (!englishTitle || frenchTitle !== englishTitle);
+    Boolean(frenchTitle) && (!englishTitle || frenchTitle !== englishTitle);
   const bodyTranslated =
     frenchLines.length >= englishLines.length &&
     englishLines.every(

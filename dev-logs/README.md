@@ -22,15 +22,15 @@ sans relancer Gatsby. C'est le chemin le plus rapide.
 
 ## Fichiers
 
-| Fichier | Role |
-| --- | --- |
-| `status.json` | Statut `STARTING` / `UP` / `DOWN` / `ERROR` du dernier lancement. Ne pas s'y fier seul. |
-| `latest.log` | Transcript du lanceur, de Gatsby et des watchers. |
-| `latest.prev.log` | Copie de `latest.log` au lancement suivant. |
-| `client.stdout.log` | Sortie brute de Gatsby. |
-| `client.stderr.log` | Erreurs brutes de Gatsby. |
-| `status-watch.ps1` | Attend une reponse HTTP puis ecrit `status.up`. |
-| `intro-watch.ps1` | Suit `intro.json` pendant que le serveur tourne. |
+| Fichier             | Role                                                                                    |
+| ------------------- | --------------------------------------------------------------------------------------- |
+| `status.json`       | Statut `STARTING` / `UP` / `DOWN` / `ERROR` du dernier lancement. Ne pas s'y fier seul. |
+| `latest.log`        | Transcript du lanceur, de Gatsby et des watchers.                                       |
+| `latest.prev.log`   | Copie de `latest.log` au lancement suivant.                                             |
+| `client.stdout.log` | Sortie brute de Gatsby.                                                                 |
+| `client.stderr.log` | Erreurs brutes de Gatsby.                                                               |
+| `status-watch.ps1`  | Attend une reponse HTTP puis ecrit `status.up`.                                         |
+| `intro-watch.ps1`   | Suit `intro.json` pendant que le serveur tourne.                                        |
 
 Les anciens `server.log`, `errors.log` et `launcher.*.log` ne sont plus
 ecrits. Ils ne servaient qu'a dupliquer `latest.log`.
