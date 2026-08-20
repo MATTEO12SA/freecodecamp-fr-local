@@ -1,0 +1,916 @@
+{
+  "workshop": "lecture-working-with-data-in-react",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6734e3ceee2da4b0301719b7.md",
+      "id": "6734e3ceee2da4b0301719b7",
+      "dashedName": "how-do-you-pass-props-from-a-parent-component-to-a-child-component-in-react",
+      "title": {
+        "en": "How Do You Pass Props from a Parent Component to a Child Component in React?",
+        "fr": "Comment passes-tu des props d'un composant parent à un composant enfant dans React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lessons, we learned how to build small components in React like this:",
+              "fr": "Dans les leçons précédentes, nous avons appris à construire de petits composants dans React comme ceci :"
+            },
+            {
+              "en": "We can choose to nest this component inside another parent component or the root component like this:",
+              "fr": "Nous pouvons choisir d'imbriquer ce composant dans un autre composant parent ou dans le composant racine comme ceci :"
+            },
+            {
+              "en": "While this code will run fine and display the result of `Hi Jessica!` on the screen, it is not that flexible of a component.",
+              "fr": "Bien que ce code fonctionne bien et affiche le résultat `Hi Jessica!` à l'écran, ce n'est pas un composant très flexible."
+            },
+            {
+              "en": "What if we wanted to display a different name like Naomi, Tom, or Oliver? This is where React props comes in. Props, which is short for properties, is the way for parent components to pass data down to the child component. Props can be of any type: strings, numbers, booleans, objects, or arrays.",
+              "fr": "Et si nous voulions afficher un nom différent comme Naomi, Tom ou Oliver ? C'est là que les props React interviennent. Props, raccourci de properties (propriétés), est la façon pour les composants parents de passer des données au composant enfant. Les props peuvent être de n'importe quel type : chaînes, nombres, booléens, objets ou tableaux."
+            },
+            {
+              "en": "Let's update our example from earlier to now accept a `name` prop:",
+              "fr": "Mettons à jour notre exemple précédent pour maintenant accepter une prop `name` :"
+            },
+            {
+              "en": "For the child component called `Greeting` we are now using `props.name` instead of hardcoding the name `\"Jessica\"`. We are also logging `props` to the console which is showing as an object.",
+              "fr": "Pour le composant enfant appelé `Greeting`, nous utilisons maintenant `props.name` au lieu de coder en dur le nom `\"Jessica\"`. Nous journalisons aussi `props` dans la console, qui s'affiche comme un objet."
+            },
+            {
+              "en": "Then, inside of the parent `App` component, we are passing the value to the `name` prop so it can be passed down to the child. The result will be the same on the screen like earlier, but now we have created a more flexible component.",
+              "fr": "Ensuite, à l'intérieur du composant parent `App`, nous passons la valeur à la prop `name` pour qu'elle puisse être transmise à l'enfant. Le résultat sera le même à l'écran qu'auparavant, mais nous avons maintenant créé un composant plus flexible."
+            },
+            {
+              "en": "Now we have the ability to reuse the child component several times and pass in different names each time:",
+              "fr": "Nous avons maintenant la capacité de réutiliser le composant enfant plusieurs fois et de passer des noms différents à chaque fois :"
+            },
+            {
+              "en": "You can also choose to use object destructuring in the props to make it more readable. Here's how you could rewrite the `Greeting` component:",
+              "fr": "Tu peux aussi choisir d'utiliser la déstructuration d'objet dans les props pour la rendre plus lisible. Voici comment tu pourrais réécrire le composant `Greeting` :"
+            },
+            {
+              "en": "This code achieves the same result but makes it clearer which props the component is expecting to receive.",
+              "fr": "Ce code obtient le même résultat mais rend plus clair quelles props le composant s'attend à recevoir."
+            },
+            {
+              "en": "React also provides a special prop called `children`. Any JSX you place between a component's opening and closing tags is passed to the component as `children`.",
+              "fr": "React fournit aussi une prop spéciale appelée `children`. Tout JSX que tu places entre les balises d'ouverture et de fermeture d'un composant est passé au composant comme `children`."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "In this case, the JSX inside `<Card>...</Card>` becomes the `children` prop. The rendered output in the DOM will be:",
+              "fr": "Dans ce cas, le JSX à l'intérieur de `<Card>...</Card>` devient la prop `children`. La sortie affichée dans le DOM sera :"
+            },
+            {
+              "en": "This pattern is often used for component composition, where a component wraps other UI elements.",
+              "fr": "Ce motif est souvent utilisé pour la composition de composants, où un composant enveloppe d'autres éléments d'UI."
+            },
+            {
+              "en": "Sometimes, you can have a lot of properties that you have to pass as props. Instead of passing them one by one, you can use the spread operator (`...`), after converting them to an object.",
+              "fr": "Parfois, tu peux avoir beaucoup de propriétés à passer comme props. Au lieu de les passer une par une, tu peux utiliser l'opérateur de propagation (`...`), après les avoir converties en objet."
+            },
+            {
+              "en": "Here is an example of a new child component called `DeveloperCard`:",
+              "fr": "Voici un exemple d'un nouveau composant enfant appelé `DeveloperCard` :"
+            },
+            {
+              "en": "This `DeveloperCard` component accepts three props: `name`, `age`, and `country`.",
+              "fr": "Ce composant `DeveloperCard` accepte trois props : `name`, `age` et `country`."
+            },
+            {
+              "en": "In the parent `App` component, we can use the spread syntax to pass all the properties from an object as individual props to the child component:",
+              "fr": "Dans le composant parent `App`, nous pouvons utiliser la syntaxe de propagation pour passer toutes les propriétés d'un objet comme props individuelles au composant enfant :"
+            },
+            {
+              "en": "This is particularly useful when working with arrays of objects and passing multiple sets of properties to child components. For example, you might have a list of developers where each object in the array has the same structure but represents a different person.",
+              "fr": "C'est particulièrement utile quand tu travailles avec des tableaux d'objets et que tu passes plusieurs ensembles de propriétés à des composants enfants. Par exemple, tu pourrais avoir une liste de développeurs où chaque objet du tableau a la même structure mais représente une personne différente."
+            },
+            {
+              "en": "You will learn more about how to render lists in arrays in future lessons.",
+              "fr": "Tu en apprendras plus sur l'affichage de listes dans des tableaux dans les prochaines leçons."
+            },
+            {
+              "en": "Using props in React makes your components more flexible and reusable, allowing you to build more complex UIs. However, it's important to note that props are immutable, meaning they cannot be changed once passed to a component. If you need to handle user input and modify data, you should use state instead. You'll learn more about managing state in future lessons.",
+              "fr": "Utiliser les props dans React rend tes composants plus flexibles et réutilisables, te permettant de construire des UI plus complexes. Cependant, il est important de noter que les props sont immuables, ce qui signifie qu'elles ne peuvent pas être modifiées une fois passées à un composant. Si tu as besoin de gérer la saisie utilisateur et de modifier des données, tu devrais utiliser l'état à la place. Tu en apprendras plus sur la gestion de l'état dans les prochaines leçons."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In React, how do you pass a prop named `message` with the string `Hello` to a child component?",
+              "fr": "Dans React, comment passes-tu une prop nommée `message` avec la chaîne `Hello` à un composant enfant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how attributes are added to JSX elements.",
+              "fr": "Réfléchis à la façon dont les attributs sont ajoutés aux éléments JSX."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how attributes are added to JSX elements.",
+              "fr": "Réfléchis à la façon dont les attributs sont ajoutés aux éléments JSX."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how attributes are added to JSX elements.",
+              "fr": "Réfléchis à la façon dont les attributs sont ajoutés aux éléments JSX."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How would you access a prop named `userName` inside a functional child component, assuming the props are passed as a `props` object?",
+              "fr": "Comment accéderais-tu à une prop nommée `userName` dans un composant enfant fonctionnel, en supposant que les props sont passées comme un objet `props` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how props are passed to functional components in React.",
+              "fr": "Réfléchis à la façon dont les props sont passées aux composants fonctionnels dans React."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how props are passed to functional components in React.",
+              "fr": "Réfléchis à la façon dont les props sont passées aux composants fonctionnels dans React."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how props are passed to functional components in React.",
+              "fr": "Réfléchis à la façon dont les props sont passées aux composants fonctionnels dans React."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct way to pass all properties of an object as individual props to a child component?",
+              "fr": "Quelle est la bonne façon de passer toutes les propriétés d'un objet comme props individuelles à un composant enfant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax used to spread object properties as individual props.",
+              "fr": "Souviens-toi de la syntaxe spéciale utilisée pour propager les propriétés d'objet comme props individuelles."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax used to spread object properties as individual props.",
+              "fr": "Souviens-toi de la syntaxe spéciale utilisée pour propager les propriétés d'objet comme props individuelles."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the special syntax used to spread object properties as individual props.",
+              "fr": "Souviens-toi de la syntaxe spéciale utilisée pour propager les propriétés d'objet comme props individuelles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673500abfe36cd015b67b1b7.md",
+      "id": "673500abfe36cd015b67b1b7",
+      "dashedName": "how-does-conditional-rendering-work-in-react-components",
+      "title": {
+        "en": "How Does Conditional Rendering Work in React Components?",
+        "fr": "Comment fonctionne le rendu conditionnel dans les composants React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Conditional rendering in React allows you to create dynamic user interfaces. It is used to show different content based on certain conditions or states within your application.",
+              "fr": "Le rendu conditionnel dans React te permet de créer des interfaces utilisateur dynamiques. Il sert à montrer du contenu différent selon certaines conditions ou états dans ton application."
+            },
+            {
+              "en": "The most common approaches of using conditional rendering includes using `if` statements, the ternary (`?:`) operator, and logical AND (`&&`) operator.",
+              "fr": "Les approches les plus courantes pour le rendu conditionnel incluent l'utilisation d'instructions `if`, de l'opérateur ternaire (`?:`) et de l'opérateur ET logique (`&&`)."
+            },
+            {
+              "en": "The simplest form of conditional rendering uses an `if` statement. Here's an example:",
+              "fr": "La forme la plus simple de rendu conditionnel utilise une instruction `if`. Voici un exemple :"
+            },
+            {
+              "en": "In this example, the `Greeting` component checks the `isLoggedIn` prop. If it's `true`, it returns a welcome message, otherwise, it prompts the user to sign in.",
+              "fr": "Dans cet exemple, le composant `Greeting` vérifie la prop `isLoggedIn`. Si elle est `true`, il renvoie un message de bienvenue, sinon il invite l'utilisateur à se connecter."
+            },
+            {
+              "en": "Here is an example using the `Greeting` component inside of the parent `App` component:",
+              "fr": "Voici un exemple utilisant le composant `Greeting` à l'intérieur du composant parent `App` :"
+            },
+            {
+              "en": "For simpler conditions, the ternary operator (`?:`) is often used directly within JSX. It allows for inline conditional rendering, which can make your code more concise:",
+              "fr": "Pour des conditions plus simples, l'opérateur ternaire (`?:`) est souvent utilisé directement dans le JSX. Il permet un rendu conditionnel en ligne, ce qui peut rendre ton code plus concis :"
+            },
+            {
+              "en": "This code achieves the same result as the previous example but in a more compact form. The ternary operator checks `isLoggedIn` and renders the appropriate message.",
+              "fr": "Ce code obtient le même résultat que l'exemple précédent mais sous une forme plus compacte. L'opérateur ternaire vérifie `isLoggedIn` et affiche le message approprié."
+            },
+            {
+              "en": "Another common pattern for conditional rendering is using the logical AND (`&&`) operator. This is particularly useful when you want to render something, or nothing, based on a condition:",
+              "fr": "Un autre motif courant pour le rendu conditionnel est d'utiliser l'opérateur ET logique (`&&`). C'est particulièrement utile quand tu veux afficher quelque chose, ou rien, selon une condition :"
+            },
+            {
+              "en": "In this example, the paragraph element with the message is only rendered if the `message` prop is truthy. If `message` is falsy - meaning it is an empty string, `null`, or `undefined`, nothing is rendered to the screen.",
+              "fr": "Dans cet exemple, l'élément paragraphe avec le message n'est affiché que si la prop `message` est truthy. Si `message` est falsy — c'est-à-dire une chaîne vide, `null` ou `undefined` — rien n'est affiché à l'écran."
+            },
+            {
+              "en": "By mastering these techniques of conditional rendering, you can build more interactive and user-friendly applications that adapt to changing data and user interactions.",
+              "fr": "En maîtrisant ces techniques de rendu conditionnel, tu peux construire des applications plus interactives et agréables qui s'adaptent aux données changeantes et aux interactions utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a common method for conditional rendering in React?",
+              "fr": "Laquelle des méthodes suivantes N'EST PAS une méthode courante de rendu conditionnel dans React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Using `if` statements.",
+              "fr": "Utiliser des instructions `if`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the methods discussed in the lesson for handling conditional rendering in React.",
+              "fr": "Réfléchis aux méthodes discutées dans la leçon pour gérer le rendu conditionnel dans React."
+            },
+            {
+              "en": "Using the ternary operator.",
+              "fr": "Utiliser l'opérateur ternaire."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the methods discussed in the lesson for handling conditional rendering in React.",
+              "fr": "Réfléchis aux méthodes discutées dans la leçon pour gérer le rendu conditionnel dans React."
+            },
+            {
+              "en": "Using the logical AND (`&&`) operator",
+              "fr": "Utiliser l'opérateur ET logique (`&&`)"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the methods discussed in the lesson for handling conditional rendering in React.",
+              "fr": "Réfléchis aux méthodes discutées dans la leçon pour gérer le rendu conditionnel dans React."
+            },
+            {
+              "en": "Using the `switch` statement.",
+              "fr": "Utiliser l'instruction `switch`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be rendered by the following code if `message` is an empty string?",
+              "fr": "Que sera affiché par le code suivant si `message` est une chaîne vide ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the logical AND (`&&`) operator works with falsy values in JSX.",
+              "fr": "Réfléchis à la façon dont l'opérateur ET logique (`&&`) fonctionne avec les valeurs falsy en JSX."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the logical AND (`&&`) operator works with falsy values in JSX.",
+              "fr": "Réfléchis à la façon dont l'opérateur ET logique (`&&`) fonctionne avec les valeurs falsy en JSX."
+            },
+            {
+              "en": "This will throw an error.",
+              "fr": "Cela lèvera une erreur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how the logical AND (`&&`) operator works with falsy values in JSX.",
+              "fr": "Réfléchis à la façon dont l'opérateur ET logique (`&&`) fonctionne avec les valeurs falsy en JSX."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the following code, what type of conditional rendering is being used?",
+              "fr": "Dans le code suivant, quel type de rendu conditionnel est utilisé ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`if` statement.",
+              "fr": "Instruction `if`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look at the syntax used within the JSX to conditionally render different content.",
+              "fr": "Regarde la syntaxe utilisée dans le JSX pour afficher conditionnellement du contenu différent."
+            },
+            {
+              "en": "`switch` statement.",
+              "fr": "Instruction `switch`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look at the syntax used within the JSX to conditionally render different content.",
+              "fr": "Regarde la syntaxe utilisée dans le JSX pour afficher conditionnellement du contenu différent."
+            },
+            {
+              "en": "Ternary operator.",
+              "fr": "Opérateur ternaire."
+            },
+            {
+              "en": "Logical AND (`&&`) operator.",
+              "fr": "Opérateur ET logique (`&&`)."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look at the syntax used within the JSX to conditionally render different content.",
+              "fr": "Regarde la syntaxe utilisée dans le JSX pour afficher conditionnellement du contenu différent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673500b41af8500191febedc.md",
+      "id": "673500b41af8500191febedc",
+      "dashedName": "how-do-you-render-lists-in-react",
+      "title": {
+        "en": "How Do You Render Lists in React?",
+        "fr": "Comment affiches-tu des listes dans React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Rendering lists is a fundamental task in React web apps, and is used for displaying data to users. In React, the `map` method is used to transform an array of data into an array of JSX elements that can be rendered in the UI.",
+              "fr": "Afficher des listes est une tâche fondamentale dans les apps web React, et sert à présenter des données aux utilisateurs. Dans React, la méthode `map` sert à transformer un tableau de données en un tableau d'éléments JSX qui peuvent être affichés dans l'UI."
+            },
+            {
+              "en": "Here is an example of a component called `FruitList` that displays a list of fruits:",
+              "fr": "Voici un exemple d'un composant appelé `FruitList` qui affiche une liste de fruits :"
+            },
+            {
+              "en": "In this example, the `map` function iterates over each item in the `fruits` array. For each fruit, it creates a new `li` element containing the fruit's name. The newly created array of `li` elements is then displayed inside the `ul` parent tags.",
+              "fr": "Dans cet exemple, la fonction `map` parcourt chaque élément du tableau `fruits`. Pour chaque fruit, elle crée un nouvel élément `li` contenant le nom du fruit. Le nouveau tableau d'éléments `li` est ensuite affiché à l'intérieur des balises parentes `ul`."
+            },
+            {
+              "en": "However, when rendering lists in React, it is important not to forget the `key` prop for each element in the list. The key must always be unique and it helps React identify which items have changed, been added, or been removed, which is essential for efficient rendering and updating the list.",
+              "fr": "Cependant, lors de l'affichage de listes dans React, il est important de ne pas oublier la prop `key` pour chaque élément de la liste. La clé doit toujours être unique et elle aide React à identifier quels éléments ont changé, ont été ajoutés ou ont été retirés, ce qui est essentiel pour un rendu efficace et la mise à jour de la liste."
+            },
+            {
+              "en": "If you forget the key, React will show a warning in the console, but it will not throw a fatal error. The application might still render and function, but you may encounter subtle bugs, especially when the list changes. These bugs can be difficult to debug because the UI might look correct initially.",
+              "fr": "Si tu oublies la clé, React affichera un avertissement dans la console, mais ne lèvera pas d'erreur fatale. L'application peut toujours s'afficher et fonctionner, mais tu peux rencontrer des bugs subtils, surtout quand la liste change. Ces bugs peuvent être difficiles à déboguer car l'UI peut sembler correcte au début."
+            },
+            {
+              "en": "A common mistake is to use the array index as the key, like this:",
+              "fr": "Une erreur courante est d'utiliser l'indice du tableau comme clé, comme ceci :"
+            },
+            {
+              "en": "While this silences the warning, it is generally considered an anti-pattern. Using the index as a key can cause issues when the list is reordered, sorted, or filtered. React uses the key to track elements. If the list order changes, React might incorrectly reuse component state or fail to update the DOM efficiently because the keys (indexes) stay the same even if the content at that index has changed.",
+              "fr": "Bien que cela fasse taire l'avertissement, c'est généralement considéré comme un anti-pattern. Utiliser l'indice comme clé peut causer des problèmes quand la liste est réordonnée, triée ou filtrée. React utilise la clé pour suivre les éléments. Si l'ordre de la liste change, React pourrait réutiliser incorrectement l'état du composant ou échouer à mettre à jour le DOM efficacement car les clés (indices) restent les mêmes même si le contenu à cet indice a changé."
+            },
+            {
+              "en": "The best practice is to use a stable, unique identifier for each item. This is typically an ID from your database, like a UUID or a database ID.",
+              "fr": "La bonne pratique est d'utiliser un identifiant stable et unique pour chaque élément. C'est typiquement un ID de ta base de données, comme un UUID ou un ID de base de données."
+            },
+            {
+              "en": "If your data doesn't have a unique ID, you can generate one when the data is created (e.g., using `crypto.randomUUID()` or a library like `uuid`), or use a combination of fields that are guaranteed to be unique. However, you should avoid generating keys on the fly during rendering (e.g., `key={Math.random()}`), as this will cause React to recreate the DOM elements on every render and reset their state.",
+              "fr": "Si tes données n'ont pas d'ID unique, tu peux en générer un quand les données sont créées (par ex. avec `crypto.randomUUID()` ou une bibliothèque comme `uuid`), ou utiliser une combinaison de champs garantis uniques. Cependant, tu devrais éviter de générer des clés à la volée pendant le rendu (par ex. `key={Math.random()}`), car cela fera recréer les éléments DOM à chaque rendu et réinitialisera leur état."
+            },
+            {
+              "en": "Let's modify our example to include keys:",
+              "fr": "Modifions notre exemple pour inclure des clés :"
+            },
+            {
+              "en": "In this refactored example, we are creating a unique key for each list item by concatenating the fruit name with its index. This ensures that each list item has a distinct key, which helps React efficiently manage and update the list when items are added, removed, or reordered.",
+              "fr": "Dans cet exemple refactorisé, nous créons une clé unique pour chaque élément de liste en concaténant le nom du fruit avec son indice. Cela garantit que chaque élément de liste a une clé distincte, ce qui aide React à gérer et mettre à jour efficacement la liste quand des éléments sont ajoutés, retirés ou réordonnés."
+            },
+            {
+              "en": "React also allows you to render more complex structures. For instance, you might have an array of objects representing users, each with multiple properties that you want to display:",
+              "fr": "React te permet aussi d'afficher des structures plus complexes. Par exemple, tu pourrais avoir un tableau d'objets représentant des utilisateurs, chacun avec plusieurs propriétés que tu veux afficher :"
+            },
+            {
+              "en": "In this example, we're creating a more complex JSX structure for each user, displaying both their name and email address. We're using the user's `id` as the `key`, which is a good practice.",
+              "fr": "Dans cet exemple, nous créons une structure JSX plus complexe pour chaque utilisateur, affichant à la fois son nom et son adresse e-mail. Nous utilisons l'`id` de l'utilisateur comme `key`, ce qui est une bonne pratique."
+            },
+            {
+              "en": "In conclusion, rendering lists in React involves converting arrays of data into JSX elements, typically using the `map` function.",
+              "fr": "En conclusion, afficher des listes dans React implique de convertir des tableaux de données en éléments JSX, typiquement avec la fonction `map`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of using the `key` prop when rendering lists in React?",
+              "fr": "Quel est le but principal d'utiliser la prop `key` lors de l'affichage de listes dans React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To style list items.",
+              "fr": "Pour styliser les éléments de liste."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding React's rendering optimization.",
+              "fr": "Réfléchis à ce que nous avons dit concernant l'optimisation du rendu de React."
+            },
+            {
+              "en": "To help React identify changes in the list efficiently.",
+              "fr": "Pour aider React à identifier efficacement les changements dans la liste."
+            },
+            {
+              "en": "To sort the list items.",
+              "fr": "Pour trier les éléments de liste."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding React's rendering optimization.",
+              "fr": "Réfléchis à ce que nous avons dit concernant l'optimisation du rendu de React."
+            },
+            {
+              "en": "To filter the list items.",
+              "fr": "Pour filtrer les éléments de liste."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding React's rendering optimization.",
+              "fr": "Réfléchis à ce que nous avons dit concernant l'optimisation du rendu de React."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which JavaScript method is typically used to transform an array of data into an array of JSX elements in React?",
+              "fr": "Quelle méthode JavaScript est typiquement utilisée pour transformer un tableau de données en un tableau d'éléments JSX dans React ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the method we consistently used in our examples for creating JSX elements from array items.",
+              "fr": "Rappelle-toi la méthode que nous avons constamment utilisée dans nos exemples pour créer des éléments JSX à partir d'éléments de tableau."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the method we consistently used in our examples for creating JSX elements from array items.",
+              "fr": "Rappelle-toi la méthode que nous avons constamment utilisée dans nos exemples pour créer des éléments JSX à partir d'éléments de tableau."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the method we consistently used in our examples for creating JSX elements from array items.",
+              "fr": "Rappelle-toi la méthode que nous avons constamment utilisée dans nos exemples pour créer des éléments JSX à partir d'éléments de tableau."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When rendering a list of items that have unique IDs, what is considered the best practice for the `key` prop?",
+              "fr": "Lors de l'affichage d'une liste d'éléments qui ont des ID uniques, quelle est la bonne pratique considérée pour la prop `key` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Use the index of the item in the array.",
+              "fr": "Utiliser l'indice de l'élément dans le tableau."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using stable and unique identifiers for keys.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation d'identifiants stables et uniques pour les clés."
+            },
+            {
+              "en": "Use a random number.",
+              "fr": "Utiliser un nombre aléatoire."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using stable and unique identifiers for keys.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation d'identifiants stables et uniques pour les clés."
+            },
+            {
+              "en": "Use the item's unique ID.",
+              "fr": "Utiliser l'ID unique de l'élément."
+            },
+            {
+              "en": "Use the item's name or title.",
+              "fr": "Utiliser le nom ou le titre de l'élément."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about using stable and unique identifiers for keys.",
+              "fr": "Souviens-toi de ce que nous avons dit sur l'utilisation d'identifiants stables et uniques pour les clés."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673500bfe1f41601c1ddb1a2.md",
+      "id": "673500bfe1f41601c1ddb1a2",
+      "dashedName": "how-do-inline-styles-work-in-react",
+      "title": {
+        "en": "How Do Inline Styles Work in React?",
+        "fr": "Comment fonctionnent les styles en ligne dans React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In React, inline styles are used to apply CSS styles directly to React elements within your JSX code instead of defining them in separate CSS files.",
+              "fr": "Dans React, les styles en ligne servent à appliquer des styles CSS directement aux éléments React dans ton code JSX au lieu de les définir dans des fichiers CSS séparés."
+            },
+            {
+              "en": "React's approach to inline styles involves using JavaScript objects to define styles, rather than traditional CSS strings. This means that instead of writing styles as you would in a CSS file, you create a JavaScript object where the keys are camel cased versions of CSS property names, and the values are the strings of CSS values.",
+              "fr": "L'approche de React pour les styles en ligne implique d'utiliser des objets JavaScript pour définir les styles, plutôt que des chaînes CSS traditionnelles. Cela signifie qu'au lieu d'écrire les styles comme tu le ferais dans un fichier CSS, tu crées un objet JavaScript où les clés sont des versions en camel case des noms de propriétés CSS, et les valeurs sont les chaînes de valeurs CSS."
+            },
+            {
+              "en": "Here is an example of how you can use inline styles for a `Button` component:",
+              "fr": "Voici un exemple de comment tu peux utiliser des styles en ligne pour un composant `Button` :"
+            },
+            {
+              "en": "In this example, we define a style object called `defaultStyles`. We then apply these styles to a button element using the `style` attribute. React takes care of applying these styles to the element when it renders.",
+              "fr": "Dans cet exemple, nous définissons un objet de style appelé `defaultStyles`. Nous appliquons ensuite ces styles à un élément bouton avec l'attribut `style`. React se charge d'appliquer ces styles à l'élément lors du rendu."
+            },
+            {
+              "en": "You can also choose to pass in an object directly to the `style` attribute. Here is what a revised example would look like:",
+              "fr": "Tu peux aussi choisir de passer un objet directement à l'attribut `style`. Voici à quoi ressemblerait un exemple révisé :"
+            },
+            {
+              "en": "Notice the double curly braces `{{}}` in the `style` attribute. The outer braces indicate a JavaScript expression in JSX, while the inner braces define a JavaScript object literal. This syntax allows you to embed JavaScript objects directly in JSX attributes.",
+              "fr": "Remarque les doubles accolades `{{}}` dans l'attribut `style`. Les accolades extérieures indiquent une expression JavaScript en JSX, tandis que les accolades intérieures définissent un littéral d'objet JavaScript. Cette syntaxe te permet d'intégrer des objets JavaScript directement dans les attributs JSX."
+            },
+            {
+              "en": "Sometimes you might want to pass in an object directly if there are only a few properties like shown here. Otherwise, passing in a name to an object would be better like in the first example.",
+              "fr": "Parfois tu pourrais vouloir passer un objet directement s'il n'y a que quelques propriétés comme montré ici. Sinon, passer un nom vers un objet serait mieux comme dans le premier exemple."
+            },
+            {
+              "en": "It's important to note that while CSS property names are typically written in kebab case, like `font-size`, in React's inline styles, we use camel case, like `fontSize`. This is because the style object is a JavaScript object, and kebab case names are not valid as object keys in JavaScript without using quotes.",
+              "fr": "Il est important de noter que si les noms de propriétés CSS sont typiquement écrits en kebab case, comme `font-size`, dans les styles en ligne de React, nous utilisons le camel case, comme `fontSize`. C'est parce que l'objet de style est un objet JavaScript, et les noms en kebab case ne sont pas valides comme clés d'objet en JavaScript sans utiliser des guillemets."
+            },
+            {
+              "en": "A great advantage of inline styles in React is that they support dynamic styling based on a component state or props. For example:",
+              "fr": "Un grand avantage des styles en ligne dans React est qu'ils supportent le style dynamique basé sur l'état ou les props d'un composant. Par exemple :"
+            },
+            {
+              "en": "In this example, the button's background color changes based on the `isActive` prop. This kind of dynamic styling can be powerful for creating interactive and responsive user interfaces.",
+              "fr": "Dans cet exemple, la couleur de fond du bouton change selon la prop `isActive`. Ce genre de style dynamique peut être puissant pour créer des interfaces utilisateur interactives et responsive."
+            },
+            {
+              "en": "In summary, inline styles in React provide a powerful way to apply and manipulate styles directly within your components. They use JavaScript objects instead of CSS strings, require camel cased property names, and can easily incorporate dynamic values. They're an essential tool in a React developer's toolkit, especially for creating highly customized and interactive user interfaces.",
+              "fr": "En résumé, les styles en ligne dans React offrent une façon puissante d'appliquer et de manipuler des styles directement dans tes composants. Ils utilisent des objets JavaScript au lieu de chaînes CSS, exigent des noms de propriétés en camel case, et peuvent facilement incorporer des valeurs dynamiques. C'est un outil essentiel dans la boîte à outils d'un développeur React, surtout pour créer des interfaces utilisateur très personnalisées et interactives."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In React inline styles, how should the CSS property `background-color` be written?",
+              "fr": "Dans les styles en ligne React, comment la propriété CSS `background-color` devrait-elle être écrite ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about the naming convention for CSS properties in React inline styles.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la convention de nommage des propriétés CSS dans les styles en ligne React."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about the naming convention for CSS properties in React inline styles.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la convention de nommage des propriétés CSS dans les styles en ligne React."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what we said about the naming convention for CSS properties in React inline styles.",
+              "fr": "Souviens-toi de ce que nous avons dit sur la convention de nommage des propriétés CSS dans les styles en ligne React."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is an advantage of using inline styles in React?",
+              "fr": "Quel est un avantage d'utiliser les styles en ligne dans React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They support all CSS features including media queries.",
+              "fr": "Ils supportent toutes les fonctionnalités CSS y compris les media queries."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we discussed regarding dynamic styling in React components.",
+              "fr": "Réfléchis à ce que nous avons discuté concernant le style dynamique dans les composants React."
+            },
+            {
+              "en": "They are always more performant than external CSS.",
+              "fr": "Ils sont toujours plus performants que le CSS externe."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we discussed regarding dynamic styling in React components.",
+              "fr": "Réfléchis à ce que nous avons discuté concernant le style dynamique dans les composants React."
+            },
+            {
+              "en": "They allow for easy dynamic styling based on component state or props.",
+              "fr": "Ils permettent un style dynamique facile basé sur l'état ou les props du composant."
+            },
+            {
+              "en": "They are the only way to style React components.",
+              "fr": "Ils sont la seule façon de styliser les composants React."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we discussed regarding dynamic styling in React components.",
+              "fr": "Réfléchis à ce que nous avons discuté concernant le style dynamique dans les composants React."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How are inline styles applied to a React element?",
+              "fr": "Comment les styles en ligne sont-ils appliqués à un élément React ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Using the `class` attribute.",
+              "fr": "En utilisant l'attribut `class`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the syntax we used in our examples for applying styles to React elements.",
+              "fr": "Rappelle-toi la syntaxe que nous avons utilisée dans nos exemples pour appliquer des styles aux éléments React."
+            },
+            {
+              "en": "Using the `style` attribute with a JavaScript object.",
+              "fr": "En utilisant l'attribut `style` avec un objet JavaScript."
+            },
+            {
+              "en": "Using a separate CSS file",
+              "fr": "En utilisant un fichier CSS séparé"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the syntax we used in our examples for applying styles to React elements.",
+              "fr": "Rappelle-toi la syntaxe que nous avons utilisée dans nos exemples pour appliquer des styles aux éléments React."
+            },
+            {
+              "en": "Using the `css` attribute",
+              "fr": "En utilisant l'attribut `css`"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall the syntax we used in our examples for applying styles to React elements.",
+              "fr": "Rappelle-toi la syntaxe que nous avons utilisée dans nos exemples pour appliquer des styles aux éléments React."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
