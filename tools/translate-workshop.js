@@ -59,7 +59,12 @@ function usage() {
 }
 
 function readText(filePath) {
-  return fs.readFileSync(filePath, 'utf8').replace(/\r\n/g, '\n');
+  // Normalize CRLF, CRCRLF (corrupt mixed endings), and lone CR to LF so
+  // verify can compare EN/FR code blocks reliably on Windows sources.
+  return fs
+    .readFileSync(filePath, 'utf8')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n');
 }
 
 function normalizeCopiedWhitespace(text) {

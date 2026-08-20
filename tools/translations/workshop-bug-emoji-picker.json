@@ -1,7 +1,7 @@
 {
   "workshop": "workshop-bug-emoji-picker",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -15,29 +15,29 @@
       "description": [
         {
           "en": "In this workshop, you'll learn about TypeScript abstract classes and generics by building a bug species selector that displays different bug emojis.",
-          "fr": ""
+          "fr": "Dans cet atelier, tu vas apprendre les classes abstraites et les generics de TypeScript en construisant un sélecteur d’espèces d’insectes qui affiche différents emojis d’insectes."
         },
         {
           "en": "The HTML and CSS for the project have been provided for you so you can focus on the TypeScript. You can check the files to learn about the elements you will select later.",
-          "fr": ""
+          "fr": "Le HTML et le CSS du projet t’ont été fournis pour que tu puisses te concentrer sur TypeScript. Tu peux consulter les fichiers pour découvrir les éléments que tu sélectionneras plus tard."
         },
         {
           "en": "To start, you'll need an abstract base class for all bugs. Abstract classes cannot be instantiated directly and are meant to be extended by other classes.",
-          "fr": ""
+          "fr": "Pour commencer, tu auras besoin d’une classe de base abstraite pour tous les insectes. Les classes abstraites ne peuvent pas être instanciées directement et sont destinées à être étendues par d’autres classes."
         },
         {
           "en": "Create an abstract class named `Bug` with a generic type parameter `T`.",
-          "fr": ""
+          "fr": "Crée une classe abstraite nommée `Bug` avec un paramètre de type générique `T`."
         }
       ],
       "hints": [
         {
           "en": "You should have an abstract class named `Bug`.",
-          "fr": ""
+          "fr": "Tu dois avoir une classe abstraite nommée `Bug`."
         },
         {
           "en": "Your `Bug` class should have a generic type parameter `T`.",
-          "fr": ""
+          "fr": "Ta classe `Bug` doit avoir un paramètre de type générique `T`."
         }
       ]
     },
@@ -52,25 +52,25 @@
       "description": [
         {
           "en": "Now you need to define the properties that all bugs will have.",
-          "fr": ""
+          "fr": "Maintenant, tu dois définir les propriétés que tous les insectes auront."
         },
         {
           "en": "Inside the `Bug` class, declare a property named `emoji` with the type `T` using the definite assignment assertion operator (`!`). This tells TypeScript that the property will be assigned later.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe `Bug`, déclare une propriété nommée `emoji` avec le type `T` en utilisant l’opérateur d’assertion d’assignation définie (`!`). Cela indique à TypeScript que la propriété sera assignée plus tard."
         }
       ],
       "hints": [
         {
           "en": "Your `Bug` class should have a property named `emoji`.",
-          "fr": ""
+          "fr": "Ta classe `Bug` doit avoir une propriété nommée `emoji`."
         },
         {
           "en": "Your `emoji` property should have the type `T`.",
-          "fr": ""
+          "fr": "Ta propriété `emoji` doit avoir le type `T`."
         },
         {
           "en": "Your `emoji` property should use the definite assignment assertion operator (`!`).",
-          "fr": ""
+          "fr": "Ta propriété `emoji` doit utiliser l’opérateur d’assertion d’assignation définie (`!`)."
         }
       ]
     },
@@ -85,21 +85,21 @@
       "description": [
         {
           "en": "Still inside the `Bug` class, declare a property named `emojiElement` with the type `HTMLParagraphElement`. This property will hold a reference to the HTML paragraph element where the bug emoji will be displayed.",
-          "fr": ""
+          "fr": "Toujours à l’intérieur de la classe `Bug`, déclare une propriété nommée `emojiElement` avec le type `HTMLParagraphElement`. Cette propriété contiendra une référence à l’élément paragraphe HTML où l’emoji de l’insecte sera affiché."
         }
       ],
       "hints": [
         {
           "en": "Your `Bug` class should have a property named `emojiElement`.",
-          "fr": ""
+          "fr": "Ta classe `Bug` doit avoir une propriété nommée `emojiElement`."
         },
         {
           "en": "Your `emojiElement` property should have the type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "Ta propriété `emojiElement` doit avoir le type `HTMLParagraphElement`."
         },
         {
           "en": "Your `emojiElement` property should use the definite assignment assertion operator (`!`).",
-          "fr": ""
+          "fr": "Ta propriété `emojiElement` doit utiliser l’opérateur d’assertion d’assignation définie (`!`)."
         }
       ]
     },
@@ -114,21 +114,21 @@
       "description": [
         {
           "en": "Next, create a constructor for the `Bug` class that takes a single parameter named `emojiElement` of type `HTMLParagraphElement`. Inside the constructor, assign the `emojiElement` parameter to the `emojiElement` property of the class.",
-          "fr": ""
+          "fr": "Ensuite, crée un constructeur pour la classe `Bug` qui prend un seul paramètre nommé `emojiElement` de type `HTMLParagraphElement`. À l’intérieur du constructeur, assigne le paramètre `emojiElement` à la propriété `emojiElement` de la classe."
         }
       ],
       "hints": [
         {
           "en": "Your `Bug` class should have a constructor.",
-          "fr": ""
+          "fr": "Ta classe `Bug` doit avoir un constructeur."
         },
         {
           "en": "Your `Bug` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "Ton constructeur `Bug` doit avoir un paramètre nommé `emojiElement` de type `HTMLParagraphElement`."
         },
         {
           "en": "Your `Bug` constructor should assign `emojiElement` to `this.emojiElement`.",
-          "fr": ""
+          "fr": "Ton constructeur `Bug` doit assigner `emojiElement` à `this.emojiElement`."
         }
       ]
     },
@@ -143,17 +143,17 @@
       "description": [
         {
           "en": "After the constructor, create an abstract `render` method that has a return type of `void`. You'll use this in subclasses to update the displayed emoji.",
-          "fr": ""
+          "fr": "Après le constructeur, crée une méthode abstraite `render` qui a un type de retour `void`. Tu l’utiliseras dans les sous-classes pour mettre à jour l’emoji affiché."
         }
       ],
       "hints": [
         {
           "en": "Your `Bug` class should have an abstract `render` method.",
-          "fr": ""
+          "fr": "Ta classe `Bug` doit avoir une méthode abstraite `render`."
         },
         {
           "en": "Your `render` method should have a return type of `void`.",
-          "fr": ""
+          "fr": "Ta méthode `render` doit avoir un type de retour `void`."
         }
       ]
     },
@@ -168,21 +168,21 @@
       "description": [
         {
           "en": "Next, create a subclass named `Bee` that extends the `Bug` class with the generic type parameter set to `string`.",
-          "fr": ""
+          "fr": "Ensuite, crée une sous-classe nommée `Bee` qui étend la classe `Bug` avec le paramètre de type générique défini sur `string`."
         }
       ],
       "hints": [
         {
           "en": "You should have a class named `Bee`.",
-          "fr": ""
+          "fr": "Tu dois avoir une classe nommée `Bee`."
         },
         {
           "en": "Your `Bee` class should extend `Bug`.",
-          "fr": ""
+          "fr": "Ta classe `Bee` doit étendre `Bug`."
         },
         {
           "en": "Your `Bee` class should extend `Bug` with a type argument of `string`.",
-          "fr": ""
+          "fr": "Ta classe `Bee` doit étendre `Bug` avec un argument de type `string`."
         }
       ]
     },
@@ -197,29 +197,29 @@
       "description": [
         {
           "en": "Inside the `Bee` class, create a constructor that takes a single parameter `emojiElement` of type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe `Bee`, crée un constructeur qui prend un seul paramètre `emojiElement` de type `HTMLParagraphElement`."
         },
         {
           "en": "Inside the constructor, call the `super` function with the `emojiElement` parameter to invoke the constructor of the parent `Bug` class. Then, set the `emoji` property to the string value `\"🐝\"`.",
-          "fr": ""
+          "fr": "À l’intérieur du constructeur, appelle la fonction `super` avec le paramètre `emojiElement` pour invoquer le constructeur de la classe parente `Bug`. Puis, définis la propriété `emoji` sur la valeur chaîne `\"🐝\"`."
         }
       ],
       "hints": [
         {
           "en": "Your `Bee` class should have a constructor.",
-          "fr": ""
+          "fr": "Ta classe `Bee` doit avoir un constructeur."
         },
         {
           "en": "Your `Bee` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "Ton constructeur `Bee` doit avoir un paramètre nommé `emojiElement` de type `HTMLParagraphElement`."
         },
         {
           "en": "Your `Bee` constructor should call `super` with the `emojiElement` parameter.",
-          "fr": ""
+          "fr": "Ton constructeur `Bee` doit appeler `super` avec le paramètre `emojiElement`."
         },
         {
           "en": "Your `Bee` constructor should set `this.emoji` to `\"🐝\"`.",
-          "fr": ""
+          "fr": "Ton constructeur `Bee` doit définir `this.emoji` sur `\"🐝\"`."
         }
       ]
     },
@@ -234,17 +234,17 @@
       "description": [
         {
           "en": "Inside the `Bee` class, implement the `render` method, prefixed by the `override` keyword, to update the `innerText` property of the `emojiElement` with the value of the `emoji` property.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe `Bee`, implémente la méthode `render`, préfixée par le mot-clé `override`, pour mettre à jour la propriété `innerText` de `emojiElement` avec la valeur de la propriété `emoji`."
         }
       ],
       "hints": [
         {
           "en": "Your `Bee` class should have a `render` method using the `override` keyword.",
-          "fr": ""
+          "fr": "Ta classe `Bee` doit avoir une méthode `render` utilisant le mot-clé `override`."
         },
         {
           "en": "You should set `this.emojiElement.innerText` to `this.emoji` inside the `render` method of `Bee`.",
-          "fr": ""
+          "fr": "Tu dois définir `this.emojiElement.innerText` sur `this.emoji` à l’intérieur de la méthode `render` de `Bee`."
         }
       ]
     },
@@ -259,21 +259,21 @@
       "description": [
         {
           "en": "Create a subclass `Spider` that extends the `Bug` class with the generic type parameter set to `string`.",
-          "fr": ""
+          "fr": "Crée une sous-classe `Spider` qui étend la classe `Bug` avec le paramètre de type générique défini sur `string`."
         }
       ],
       "hints": [
         {
           "en": "You should have a class named `Spider`.",
-          "fr": ""
+          "fr": "Tu dois avoir une classe nommée `Spider`."
         },
         {
           "en": "Your `Spider` class should extend `Bug`.",
-          "fr": ""
+          "fr": "Ta classe `Spider` doit étendre `Bug`."
         },
         {
           "en": "Your `Spider` class should extend `Bug` with a type argument of `string`.",
-          "fr": ""
+          "fr": "Ta classe `Spider` doit étendre `Bug` avec un argument de type `string`."
         }
       ]
     },
@@ -288,29 +288,29 @@
       "description": [
         {
           "en": "Inside the `Spider` class, create a constructor that takes a single parameter `emojiElement` of type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe `Spider`, crée un constructeur qui prend un seul paramètre `emojiElement` de type `HTMLParagraphElement`."
         },
         {
           "en": "Inside the constructor, call the `super` function with the `emojiElement` parameter to invoke the constructor of the parent `Bug` class. Then, set the `emoji` property to the string value `\"🕷️\"`.",
-          "fr": ""
+          "fr": "À l’intérieur du constructeur, appelle la fonction `super` avec le paramètre `emojiElement` pour invoquer le constructeur de la classe parente `Bug`. Puis, définis la propriété `emoji` sur la valeur chaîne `\"🕷️\"`."
         }
       ],
       "hints": [
         {
           "en": "Your `Spider` class should have a constructor.",
-          "fr": ""
+          "fr": "Ta classe `Spider` doit avoir un constructeur."
         },
         {
           "en": "Your `Spider` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "Ton constructeur `Spider` doit avoir un paramètre nommé `emojiElement` de type `HTMLParagraphElement`."
         },
         {
           "en": "Your `Spider` constructor should call `super` with the `emojiElement` parameter.",
-          "fr": ""
+          "fr": "Ton constructeur `Spider` doit appeler `super` avec le paramètre `emojiElement`."
         },
         {
           "en": "Your `Spider` constructor should set `this.emoji` to `\"🕷️\"`.",
-          "fr": ""
+          "fr": "Ton constructeur `Spider` doit définir `this.emoji` sur `\"🕷️\"`."
         }
       ]
     },
@@ -325,21 +325,21 @@
       "description": [
         {
           "en": "Inside the `Spider` class, implement the `render` method, prefixed by the `override` keyword, to update the `innerText` property of the `emojiElement` with the value of the `emoji` property.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe `Spider`, implémente la méthode `render`, préfixée par le mot-clé `override`, pour mettre à jour la propriété `innerText` de `emojiElement` avec la valeur de la propriété `emoji`."
         }
       ],
       "hints": [
         {
           "en": "Your `Spider` class should have a `render` method.",
-          "fr": ""
+          "fr": "Ta classe `Spider` doit avoir une méthode `render`."
         },
         {
           "en": "Your `Spider` `render` method should use the `override` keyword.",
-          "fr": ""
+          "fr": "Ta méthode `render` de `Spider` doit utiliser le mot-clé `override`."
         },
         {
           "en": "Your `Spider` `render` method should set `this.emojiElement.innerText` to `this.emoji`.",
-          "fr": ""
+          "fr": "Ta méthode `render` de `Spider` doit définir `this.emojiElement.innerText` sur `this.emoji`."
         }
       ]
     },
@@ -354,21 +354,21 @@
       "description": [
         {
           "en": "Create a function named `isSelect` that takes a single parameter `element` of type `EventTarget | null`. This function will check if the selected element is a `<select>` HTML element.",
-          "fr": ""
+          "fr": "Crée une fonction nommée `isSelect` qui prend un seul paramètre `element` de type `EventTarget | null`. Cette fonction vérifiera si l’élément sélectionné est un élément HTML `<select>`."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `isSelect`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `isSelect`."
         },
         {
           "en": "Your `isSelect` function should have a parameter named `element` of type `EventTarget | null`.",
-          "fr": ""
+          "fr": "Ta fonction `isSelect` doit avoir un paramètre nommé `element` de type `EventTarget | null`."
         },
         {
           "en": "Your `isSelect` function should have a return type of `element is HTMLSelectElement`.",
-          "fr": ""
+          "fr": "Ta fonction `isSelect` doit avoir un type de retour `element is HTMLSelectElement`."
         }
       ]
     },
@@ -383,13 +383,13 @@
       "description": [
         {
           "en": "Now inside the `isSelect` function, return a boolean indicating whether the `element` is an instance of `HTMLSelectElement`. Use the `instanceof` operator to perform this check.",
-          "fr": ""
+          "fr": "Maintenant, à l’intérieur de la fonction `isSelect`, renvoie un booléen indiquant si `element` est une instance de `HTMLSelectElement`. Utilise l’opérateur `instanceof` pour effectuer cette vérification."
         }
       ],
       "hints": [
         {
           "en": "Your `isSelect` function should return `element instanceof HTMLSelectElement`.",
-          "fr": ""
+          "fr": "Ta fonction `isSelect` doit renvoyer `element instanceof HTMLSelectElement`."
         }
       ]
     },
@@ -404,25 +404,25 @@
       "description": [
         {
           "en": "You will now start referencing the needed DOM elements.",
-          "fr": ""
+          "fr": "Tu vas maintenant commencer à référencer les éléments DOM nécessaires."
         },
         {
           "en": "Get the paragraph element with the ID of `bug-emoji` and store it in a constant named `bugEmojiElement`. Use the `!` non-null assertion operator to assert that the element is not `null`.",
-          "fr": ""
+          "fr": "Récupère l’élément paragraphe avec l’ID `bug-emoji` et stocke-le dans une constante nommée `bugEmojiElement`. Utilise l’opérateur d’assertion non-null `!` pour affirmer que l’élément n’est pas `null`."
         }
       ],
       "hints": [
         {
           "en": "You should have a constant named `bugEmojiElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir une constante nommée `bugEmojiElement`."
         },
         {
           "en": "Your `bugEmojiElement` should query the element with the ID `bug-emoji` using `document.querySelector` with a type argument of `HTMLParagraphElement`.",
-          "fr": ""
+          "fr": "Ton `bugEmojiElement` doit interroger l’élément avec l’ID `bug-emoji` en utilisant `document.querySelector` avec un argument de type `HTMLParagraphElement`."
         },
         {
           "en": "Your `bugEmojiElement` should use the non-null assertion operator (`!`).",
-          "fr": ""
+          "fr": "Ton `bugEmojiElement` doit utiliser l’opérateur d’assertion non-null (`!`)."
         }
       ]
     },
@@ -437,21 +437,21 @@
       "description": [
         {
           "en": "Next, define an object named `bugMap` with the type `Record<string, Bug<string>>` and assign it an empty object for now.",
-          "fr": ""
+          "fr": "Ensuite, définis un objet nommé `bugMap` avec le type `Record<string, Bug<string>>` et assigne-lui un objet vide pour l’instant."
         }
       ],
       "hints": [
         {
           "en": "You should have a constant named `bugMap`.",
-          "fr": ""
+          "fr": "Tu dois avoir une constante nommée `bugMap`."
         },
         {
           "en": "Your `bugMap` should have a type annotation of `Record<string, Bug<string>>`.",
-          "fr": ""
+          "fr": "Ton `bugMap` doit avoir une annotation de type `Record<string, Bug<string>>`."
         },
         {
           "en": "Your `bugMap` should be initialized to an empty object.",
-          "fr": ""
+          "fr": "Ton `bugMap` doit être initialisé à un objet vide."
         }
       ]
     },
@@ -466,17 +466,17 @@
       "description": [
         {
           "en": "Now populate `bugMap` with two entries. Add `\"bee\"` as a key mapped to a new `Bee` instance, and `\"spider\"` as a key mapped to a new `Spider` instance. Pass in `bugEmojiElement` as the argument of both.",
-          "fr": ""
+          "fr": "Maintenant, remplis `bugMap` avec deux entrées. Ajoute `\"bee\"` comme clé associée à une nouvelle instance de `Bee`, et `\"spider\"` comme clé associée à une nouvelle instance de `Spider`. Passe `bugEmojiElement` comme argument des deux."
         }
       ],
       "hints": [
         {
           "en": "Your `bugMap` should have a `\"bee\"` entry set to `new Bee(bugEmojiElement)`.",
-          "fr": ""
+          "fr": "Ton `bugMap` doit avoir une entrée `\"bee\"` définie sur `new Bee(bugEmojiElement)`."
         },
         {
           "en": "Your `bugMap` should have a `\"spider\"` entry set to `new Spider(bugEmojiElement)`.",
-          "fr": ""
+          "fr": "Ton `bugMap` doit avoir une entrée `\"spider\"` définie sur `new Spider(bugEmojiElement)`."
         }
       ]
     },
@@ -491,21 +491,21 @@
       "description": [
         {
           "en": "Get the `select` element with ID `species` from the DOM and store it in a constant named `selectElement`. Use the `!` non-null assertion operator to assert that the element is not `null`",
-          "fr": ""
+          "fr": "Récupère l’élément `select` avec l’ID `species` depuis le DOM et stocke-le dans une constante nommée `selectElement`. Utilise l’opérateur d’assertion non-null `!` pour affirmer que l’élément n’est pas `null`"
         }
       ],
       "hints": [
         {
           "en": "You should have a constant named `selectElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir une constante nommée `selectElement`."
         },
         {
           "en": "Your `selectElement` should query the element with the ID `species` using `document.querySelector` with a type argument of `HTMLSelectElement`.",
-          "fr": ""
+          "fr": "Ton `selectElement` doit interroger l’élément avec l’ID `species` en utilisant `document.querySelector` avec un argument de type `HTMLSelectElement`."
         },
         {
           "en": "Your `selectElement` should use the non-null assertion operator (`!`).",
-          "fr": ""
+          "fr": "Ton `selectElement` doit utiliser l’opérateur d’assertion non-null (`!`)."
         }
       ]
     },
@@ -520,21 +520,21 @@
       "description": [
         {
           "en": "Up until now, nothing changes when you select a different bug.",
-          "fr": ""
+          "fr": "Jusqu’à présent, rien ne change quand tu sélectionnes un insecte différent."
         },
         {
           "en": "Add a `change` event listener to `selectElement`. In the callback, use `isSelect` to check if `e.target` is an `HTMLSelectElement`. You don't need to do anything inside the `if` block yet.",
-          "fr": ""
+          "fr": "Ajoute un écouteur d’événement `change` à `selectElement`. Dans le callback, utilise `isSelect` pour vérifier si `e.target` est un `HTMLSelectElement`. Tu n’as pas encore besoin de faire quoi que ce soit à l’intérieur du bloc `if`."
         }
       ],
       "hints": [
         {
           "en": "Your `selectElement` should have a `change` event listener with a callback that takes an event parameter.",
-          "fr": ""
+          "fr": "Ton `selectElement` doit avoir un écouteur d’événement `change` avec un callback qui prend un paramètre événement."
         },
         {
           "en": "Your event listener callback should have an `if` statement with the condition `isSelect(e.target)`.",
-          "fr": ""
+          "fr": "Ton callback d’écouteur d’événement doit avoir une instruction `if` avec la condition `isSelect(e.target)`."
         }
       ]
     },
@@ -549,17 +549,17 @@
       "description": [
         {
           "en": "Now that the `if` check is in place, use `e.target.value` to look up the corresponding bug in `bugMap` and call its `render` method. After that, you should be able to select the bugs and see the result right away.",
-          "fr": ""
+          "fr": "Maintenant que la vérification `if` est en place, utilise `e.target.value` pour chercher l’insecte correspondant dans `bugMap` et appelle sa méthode `render`. Ensuite, tu devrais pouvoir sélectionner les insectes et voir le résultat tout de suite."
         },
         {
           "en": "With that, your Bug Emoji Picker workshop is complete!",
-          "fr": ""
+          "fr": "Avec ça, ton atelier Bug Emoji Picker est terminé !"
         }
       ],
       "hints": [
         {
           "en": "You should call the `render` method on the corresponding bug from `bugMap`.",
-          "fr": ""
+          "fr": "Tu dois appeler la méthode `render` sur l’insecte correspondant depuis `bugMap`."
         }
       ]
     }

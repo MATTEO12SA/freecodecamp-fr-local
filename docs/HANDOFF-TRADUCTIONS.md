@@ -14,7 +14,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### JavaScript v9 — TERMINÉ (230/230)
 
-État actuel : JS v9 **230/230**, RWD v9 **158/158**, Back End APIs v9 **16/16**. Front-end libraries v9 **en cours ~49/62** (React + perf/testing + CSS/Tailwind + partie TypeScript). Restant : lectures/workshops TS majeurs + blocs comingSoon.
+État actuel : JS v9 **230/230**, RWD v9 **158/158**, Back End APIs v9 **16/16**. Front-end libraries v9 **en cours ~55/62** (TypeScript presque complet ; restent fortune-teller, football-card, et blocs comingSoon).
 
 Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
