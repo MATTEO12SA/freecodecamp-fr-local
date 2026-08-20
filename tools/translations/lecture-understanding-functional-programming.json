@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-functional-programming",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-is-functional-programming",
       "title": {
         "en": "What Is Functional Programming?",
-        "fr": ""
+        "fr": "Qu'est-ce que la programmation fonctionnelle ?"
       },
       "sections": [
         {
@@ -19,79 +19,79 @@
           "chunks": [
             {
               "en": "Functional programming is about writing code that is clean, predictable, and easier to test and debug. Two key concepts we'll explore today are pure functions and avoiding side effects.",
-              "fr": ""
+              "fr": "La programmation fonctionnelle consiste à écrire du code propre, prévisible, et plus facile à tester et à déboguer. Deux concepts clés que nous allons explorer aujourd'hui sont les fonctions pures et l'évitement des effets de bord."
             },
             {
               "en": "Let's start with pure functions.",
-              "fr": ""
+              "fr": "Commençons par les fonctions pures."
             },
             {
               "en": "A pure function is a function that, given the same input, will always return the same output, and it doesn't modify anything outside of itself.",
-              "fr": ""
+              "fr": "Une fonction pure est une fonction qui, pour la même entrée, renvoie toujours la même sortie, et qui ne modifie rien en dehors d'elle-même."
             },
             {
               "en": "Here's an example of a pure function:",
-              "fr": ""
+              "fr": "Voici un exemple de fonction pure :"
             },
             {
               "en": "This function is pure because it always returns the same result for the same inputs, and it doesn't change anything outside of itself. No matter how many times you call `add(2, 3)`, it will always return `5`, and it won't affect any other part of your program.",
-              "fr": ""
+              "fr": "Cette fonction est pure car elle renvoie toujours le même résultat pour les mêmes entrées, et elle ne change rien en dehors d'elle-même. Peu importe combien de fois tu appelles `add(2, 3)`, elle renverra toujours `5`, et elle n'affectera aucune autre partie de ton programme."
             },
             {
               "en": "Now, let's contrast this with an impure function:",
-              "fr": ""
+              "fr": "Maintenant, contrastons cela avec une fonction impure :"
             },
             {
               "en": "This function is impure because it modifies a variable outside of itself (`total`). The result of `addToTotal(5)` will be different depending on what `total` was before the function was called. This unpredictability can make our code harder to understand and debug.",
-              "fr": ""
+              "fr": "Cette fonction est impure car elle modifie une variable en dehors d'elle-même (`total`). Le résultat de `addToTotal(5)` sera différent selon ce qu'était `total` avant l'appel de la fonction. Cette imprévisibilité peut rendre notre code plus difficile à comprendre et à déboguer."
             },
             {
               "en": "This brings us to our next important concept and that is side effects.",
-              "fr": ""
+              "fr": "Cela nous amène à notre prochain concept important : les effets de bord."
             },
             {
               "en": "A side effect is any change that occurs in the state of the program when a function is called. This could include modifying a global variable, writing to a file, or making an API call.",
-              "fr": ""
+              "fr": "Un effet de bord est tout changement qui se produit dans l'état du programme lorsqu'une fonction est appelée. Cela peut inclure la modification d'une variable globale, l'écriture dans un fichier, ou un appel API."
             },
             {
               "en": "Pure functions have no side effects but impure functions have these.",
-              "fr": ""
+              "fr": "Les fonctions pures n'ont pas d'effets de bord, contrairement aux fonctions impures."
             },
             {
               "en": "Avoiding side effects is a key principle of functional programming. When we minimize side effects, our code becomes more predictable and easier to test.",
-              "fr": ""
+              "fr": "Éviter les effets de bord est un principe clé de la programmation fonctionnelle. Lorsque nous minimisons les effets de bord, notre code devient plus prévisible et plus facile à tester."
             },
             {
               "en": "While writing code, our main goal should be to make functions do one thing and they should do it very well without changing other parts of our program.",
-              "fr": ""
+              "fr": "En écrivant du code, notre objectif principal devrait être de faire en sorte que les fonctions fassent une seule chose et qu'elles le fassent très bien, sans changer d'autres parties de notre programme."
             },
             {
               "en": "Here's an example of a function with a side effect:",
-              "fr": ""
+              "fr": "Voici un exemple de fonction avec un effet de bord :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This function has a side effect because it interacts with the outside world by logging to the console.",
-              "fr": ""
+              "fr": "Cette fonction a un effet de bord car elle interagit avec le monde extérieur en journalisant dans la console."
             },
             {
               "en": "In functional programming, we might rewrite this as:",
-              "fr": ""
+              "fr": "En programmation fonctionnelle, on pourrait la réécrire ainsi :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now `greet` is a pure function that simply returns a string, and we handle the side effect (logging to the console) separately.",
-              "fr": ""
+              "fr": "Maintenant `greet` est une fonction pure qui renvoie simplement une chaîne, et on gère l'effet de bord (journalisation dans la console) séparément."
             },
             {
               "en": "Functional programming encourages us to compose our programs using pure functions by breaking our code into small, predictable pieces. And thus, we can build programs that are easier to understand, test, and maintain.",
-              "fr": ""
+              "fr": "La programmation fonctionnelle nous encourage à composer nos programmes à l'aide de fonctions pures en décomposant notre code en petits morceaux prévisibles. Ainsi, on peut construire des programmes plus faciles à comprendre, à tester et à maintenir."
             }
           ]
         },
@@ -101,7 +101,7 @@
           "chunks": [
             {
               "en": "What is a key characteristic of a pure function?",
-              "fr": ""
+              "fr": "Quelle est une caractéristique clé d'une fonction pure ?"
             }
           ]
         },
@@ -111,7 +111,7 @@
           "chunks": [
             {
               "en": "It always modifies global state.",
-              "fr": ""
+              "fr": "Elle modifie toujours l'état global."
             }
           ]
         },
@@ -121,11 +121,11 @@
           "chunks": [
             {
               "en": "Think about what we said regarding the predictability of pure functions.",
-              "fr": ""
+              "fr": "Réfléchis à ce que nous avons dit concernant la prévisibilité des fonctions pures."
             },
             {
               "en": "It produces different outputs for the same input.",
-              "fr": ""
+              "fr": "Elle produit des sorties différentes pour la même entrée."
             }
           ]
         },
@@ -135,15 +135,15 @@
           "chunks": [
             {
               "en": "Think about what we said regarding the predictability of pure functions.",
-              "fr": ""
+              "fr": "Réfléchis à ce que nous avons dit concernant la prévisibilité des fonctions pures."
             },
             {
               "en": "It always produces the same output for the same input.",
-              "fr": ""
+              "fr": "Elle produit toujours la même sortie pour la même entrée."
             },
             {
               "en": "It always performs I/O operations.",
-              "fr": ""
+              "fr": "Elle effectue toujours des opérations d'E/S."
             }
           ]
         },
@@ -153,7 +153,7 @@
           "chunks": [
             {
               "en": "Think about what we said regarding the predictability of pure functions.",
-              "fr": ""
+              "fr": "Réfléchis à ce que nous avons dit concernant la prévisibilité des fonctions pures."
             }
           ]
         },
@@ -163,7 +163,7 @@
           "chunks": [
             {
               "en": "Which of the following is considered a side effect in functional programming?",
-              "fr": ""
+              "fr": "Lequel des éléments suivants est considéré comme un effet de bord en programmation fonctionnelle ?"
             }
           ]
         },
@@ -173,11 +173,11 @@
           "chunks": [
             {
               "en": "Returning a value from a function.",
-              "fr": ""
+              "fr": "Renvoyer une valeur depuis une fonction."
             },
             {
               "en": "Creating a new object within a function.",
-              "fr": ""
+              "fr": "Créer un nouvel objet dans une fonction."
             }
           ]
         },
@@ -187,15 +187,15 @@
           "chunks": [
             {
               "en": "Recall what we discussed about functions interacting with their external environment.",
-              "fr": ""
+              "fr": "Rappelle-toi ce que nous avons dit sur les fonctions qui interagissent avec leur environnement externe."
             },
             {
               "en": "Modifying a global variable.",
-              "fr": ""
+              "fr": "Modifier une variable globale."
             },
             {
               "en": "Using local variables within a function.",
-              "fr": ""
+              "fr": "Utiliser des variables locales dans une fonction."
             }
           ]
         },
@@ -205,7 +205,7 @@
           "chunks": [
             {
               "en": "Recall what we discussed about functions interacting with their external environment.",
-              "fr": ""
+              "fr": "Rappelle-toi ce que nous avons dit sur les fonctions qui interagissent avec leur environnement externe."
             }
           ]
         },
@@ -215,7 +215,7 @@
           "chunks": [
             {
               "en": "What is a benefit of avoiding side effects in functional programming?",
-              "fr": ""
+              "fr": "Quel est un avantage d'éviter les effets de bord en programmation fonctionnelle ?"
             }
           ]
         },
@@ -225,7 +225,7 @@
           "chunks": [
             {
               "en": "It makes the code run faster.",
-              "fr": ""
+              "fr": "Cela fait tourner le code plus rapidement."
             }
           ]
         },
@@ -235,11 +235,11 @@
           "chunks": [
             {
               "en": "Consider what we said about the predictability and testability of code without side effects.",
-              "fr": ""
+              "fr": "Considère ce que nous avons dit sur la prévisibilité et la testabilité du code sans effets de bord."
             },
             {
               "en": "It reduces the amount of code needed.",
-              "fr": ""
+              "fr": "Cela réduit la quantité de code nécessaire."
             }
           ]
         },
@@ -249,15 +249,15 @@
           "chunks": [
             {
               "en": "Consider what we said about the predictability and testability of code without side effects.",
-              "fr": ""
+              "fr": "Considère ce que nous avons dit sur la prévisibilité et la testabilité du code sans effets de bord."
             },
             {
               "en": "It makes the code easier to understand and test.",
-              "fr": ""
+              "fr": "Cela rend le code plus facile à comprendre et à tester."
             },
             {
               "en": "It eliminates the need for functions altogether.",
-              "fr": ""
+              "fr": "Cela élimine totalement le besoin de fonctions."
             }
           ]
         },
@@ -267,7 +267,7 @@
           "chunks": [
             {
               "en": "Consider what we said about the predictability and testability of code without side effects.",
-              "fr": ""
+              "fr": "Considère ce que nous avons dit sur la prévisibilité et la testabilité du code sans effets de bord."
             }
           ]
         }
@@ -279,7 +279,7 @@
       "dashedName": "what-is-currying-and-how-does-it-work",
       "title": {
         "en": "What Is Currying, and How Does It Work?",
-        "fr": ""
+        "fr": "Qu'est-ce que la curryfication, et comment ça fonctionne ?"
       },
       "sections": [
         {
@@ -288,51 +288,51 @@
           "chunks": [
             {
               "en": "Currying is a technique where we transform a function that takes multiple arguments into a sequence of functions, each taking a single argument.",
-              "fr": ""
+              "fr": "La curryfication est une technique où l'on transforme une fonction qui prend plusieurs arguments en une séquence de fonctions, chacune prenant un seul argument."
             },
             {
               "en": "Let's start with a basic example. Imagine we have a function that adds two numbers:",
-              "fr": ""
+              "fr": "Commençons par un exemple basique. Imagine que nous avons une fonction qui additionne deux nombres :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This is a function that takes two arguments and returns their sum. Now, let's see how we can curry this function:",
-              "fr": ""
+              "fr": "C'est une fonction qui prend deux arguments et renvoie leur somme. Voyons maintenant comment on peut curryfier cette fonction :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "In this curry converted code, instead of taking two arguments at once, we have a function that takes the first argument and returns another function. This returned function then takes the second argument and performs the addition. We call it like `curriedAdd(3)(4)`, where each pair of parentheses represents a function call.",
-              "fr": ""
+              "fr": "Dans ce code curryfié, au lieu de prendre deux arguments à la fois, on a une fonction qui prend le premier argument et renvoie une autre fonction. Cette fonction renvoyée prend ensuite le second argument et effectue l'addition. On l'appelle comme `curriedAdd(3)(4)`, où chaque paire de parenthèses représente un appel de fonction."
             },
             {
               "en": "But why would we want to do this?",
-              "fr": ""
+              "fr": "Mais pourquoi voudrait-on faire cela ?"
             },
             {
               "en": "Currying allows us to create some special functions easily. For example, we could create a function that always adds five to any number:",
-              "fr": ""
+              "fr": "La curryfication nous permet de créer facilement des fonctions spéciales. Par exemple, on pourrait créer une fonction qui ajoute toujours cinq à n'importe quel nombre :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Here, `addFive` is a function that's always ready to add five to whatever number we give it. This is a simple example of partial application, where we fix a certain number of arguments to a function, producing another function that takes fewer arguments.",
-              "fr": ""
+              "fr": "Ici, `addFive` est une fonction toujours prête à ajouter cinq à n'importe quel nombre qu'on lui donne. C'est un exemple simple d'application partielle, où l'on fixe un certain nombre d'arguments d'une fonction, produisant une autre fonction qui prend moins d'arguments."
             },
             {
               "en": "While our examples have focused on functions with two arguments, currying can be applied to functions with any number of arguments.",
-              "fr": ""
+              "fr": "Bien que nos exemples se soient concentrés sur des fonctions à deux arguments, la curryfication peut s'appliquer à des fonctions avec n'importe quel nombre d'arguments."
             },
             {
               "en": "As you continue your journey in JavaScript, you'll likely find many situations where currying can make your code cleaner and more expressive.",
-              "fr": ""
+              "fr": "Au fur et à mesure de ton parcours en JavaScript, tu trouveras probablement de nombreuses situations où la curryfication peut rendre ton code plus propre et plus expressif."
             }
           ]
         },
@@ -342,7 +342,7 @@
           "chunks": [
             {
               "en": "What is the primary purpose of currying in functional programming?",
-              "fr": ""
+              "fr": "Quel est l'objectif principal de la curryfication en programmation fonctionnelle ?"
             }
           ]
         },
@@ -352,7 +352,7 @@
           "chunks": [
             {
               "en": "To make functions run faster.",
-              "fr": ""
+              "fr": "Faire tourner les fonctions plus rapidement."
             }
           ]
         },
@@ -362,15 +362,15 @@
           "chunks": [
             {
               "en": "Think about how currying changes the way we pass arguments to a function.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la curryfication change la manière dont on passe des arguments à une fonction."
             },
             {
               "en": "To transform a function with multiple arguments into a sequence of functions with single arguments.",
-              "fr": ""
+              "fr": "Transformer une fonction à plusieurs arguments en une séquence de fonctions à un seul argument."
             },
             {
               "en": "To eliminate the need for function parameters.",
-              "fr": ""
+              "fr": "Éliminer le besoin de paramètres de fonction."
             }
           ]
         },
@@ -380,11 +380,11 @@
           "chunks": [
             {
               "en": "Think about how currying changes the way we pass arguments to a function.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la curryfication change la manière dont on passe des arguments à une fonction."
             },
             {
               "en": "To combine multiple functions into one.",
-              "fr": ""
+              "fr": "Combiner plusieurs fonctions en une seule."
             }
           ]
         },
@@ -394,7 +394,7 @@
           "chunks": [
             {
               "en": "Think about how currying changes the way we pass arguments to a function.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la curryfication change la manière dont on passe des arguments à une fonction."
             }
           ]
         },
@@ -404,7 +404,7 @@
           "chunks": [
             {
               "en": "In the context of currying, what is partial application?",
-              "fr": ""
+              "fr": "Dans le contexte de la curryfication, qu'est-ce que l'application partielle ?"
             }
           ]
         },
@@ -414,11 +414,11 @@
           "chunks": [
             {
               "en": "Applying a function to only some of its arguments.",
-              "fr": ""
+              "fr": "Appliquer une fonction à seulement une partie de ses arguments."
             },
             {
               "en": "Applying a function to all of its arguments at once.",
-              "fr": ""
+              "fr": "Appliquer une fonction à tous ses arguments en une seule fois."
             }
           ]
         },
@@ -428,11 +428,11 @@
           "chunks": [
             {
               "en": "Recall what we said about \"fixing\" some arguments to a function.",
-              "fr": ""
+              "fr": "Rappelle-toi ce que nous avons dit à propos de « fixer » certains arguments d'une fonction."
             },
             {
               "en": "Creating a new function from scratch.",
-              "fr": ""
+              "fr": "Créer une nouvelle fonction à partir de zéro."
             }
           ]
         },
@@ -442,11 +442,11 @@
           "chunks": [
             {
               "en": "Recall what we said about \"fixing\" some arguments to a function.",
-              "fr": ""
+              "fr": "Rappelle-toi ce que nous avons dit à propos de « fixer » certains arguments d'une fonction."
             },
             {
               "en": "Splitting a function into multiple smaller functions.",
-              "fr": ""
+              "fr": "Découper une fonction en plusieurs fonctions plus petites."
             }
           ]
         },
@@ -456,7 +456,7 @@
           "chunks": [
             {
               "en": "Recall what we said about \"fixing\" some arguments to a function.",
-              "fr": ""
+              "fr": "Rappelle-toi ce que nous avons dit à propos de « fixer » certains arguments d'une fonction."
             }
           ]
         },
@@ -466,7 +466,7 @@
           "chunks": [
             {
               "en": "Which of the following is an example of a curried function in JavaScript?",
-              "fr": ""
+              "fr": "Lequel des éléments suivants est un exemple de fonction curryfiée en JavaScript ?"
             }
           ]
         },
@@ -476,7 +476,7 @@
           "chunks": [
             {
               "en": "This is a regular function that takes all parameters at once.",
-              "fr": ""
+              "fr": "C'est une fonction classique qui prend tous les paramètres à la fois."
             }
           ]
         },
@@ -486,7 +486,7 @@
           "chunks": [
             {
               "en": "This function accepts all parameters at once and calls them like functions, which does not follow the definition of a curried function.",
-              "fr": ""
+              "fr": "Cette fonction accepte tous les paramètres à la fois et les appelle comme des fonctions, ce qui ne suit pas la définition d'une fonction curryfiée."
             }
           ]
         },
@@ -496,7 +496,7 @@
           "chunks": [
             {
               "en": "The inner function is never returned, so `add(2)` will return `undefined` and `add(2)(3)` will throw an error.",
-              "fr": ""
+              "fr": "La fonction interne n'est jamais renvoyée, donc `add(2)` renverra `undefined` et `add(2)(3)` lèvera une erreur."
             }
           ]
         }

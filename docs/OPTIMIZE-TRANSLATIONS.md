@@ -268,7 +268,7 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD est terminé (158/158). JavaScript v9 est en cours : 149 blocs FR sur 230 (1195/1311 fichiers) — modules 1-12 **100 % complets**. Prochaine cible : extraire/traduire `tools/translations/lecture-understanding-graphs-and-trees-js.json` (`reviewed: false` — ne pas appliquer).
+RWD est terminé (158/158). JavaScript v9 est en cours : 149 blocs FR sur 230 (1311/1311 fichiers) — modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine priorité produit : Vague 5 (SRS, XP, PWA…) après fiabilité.
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>

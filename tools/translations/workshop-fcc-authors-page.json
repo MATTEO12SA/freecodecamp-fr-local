@@ -1,0 +1,967 @@
+{
+  "workshop": "workshop-fcc-authors-page",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "641d9a19bff38d34d5a5edb8.md",
+      "id": "641d9a19bff38d34d5a5edb8",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will learn how to work with the Fetch API to load data from an external source and display it on a page filled with freeCodeCamp authors.",
+          "fr": "Dans cet atelier, tu vas apprendre à utiliser la Fetch API pour charger des données depuis une source externe et les afficher sur une page remplie d'auteurs freeCodeCamp."
+        },
+        {
+          "en": "All of the HTML and CSS for this workshop has been provided for you. You can take a look at the two files to familiarize yourself with them.",
+          "fr": "Tout le HTML et le CSS de cet atelier t'ont été fournis. Tu peux consulter les deux fichiers pour te familiariser avec eux."
+        },
+        {
+          "en": "When you are ready, start by accessing the `#author-container` and `#load-more-btn` elements. Remember you can use the `getElementById` or `querySelector` methods for this.",
+          "fr": "Quand tu es prêt, commence par accéder aux éléments `#author-container` et `#load-more-btn`. Souviens-toi que tu peux utiliser les méthodes `getElementById` ou `querySelector` pour cela."
+        },
+        {
+          "en": "Then assign these elements to variables  called `authorContainer` and `loadMoreBtn`, respectively.",
+          "fr": "Puis assigne ces éléments aux variables appelées `authorContainer` et `loadMoreBtn`, respectivement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `authorContainer`.",
+          "fr": "Tu dois avoir une variable appelée `authorContainer`."
+        },
+        {
+          "en": "You should assign the `#author-container` element to the `authorContainer` variable.",
+          "fr": "Tu dois assigner l'élément `#author-container` à la variable `authorContainer`."
+        },
+        {
+          "en": "You should have a variable called `loadMoreBtn`.",
+          "fr": "Tu dois avoir une variable appelée `loadMoreBtn`."
+        },
+        {
+          "en": "You should assign the `#load-more-btn` element to the `loadMoreBtn` variable.",
+          "fr": "Tu dois assigner l'élément `#load-more-btn` à la variable `loadMoreBtn`."
+        }
+      ]
+    },
+    {
+      "file": "641da3c6b6fbd742bff6ee40.md",
+      "id": "641da3c6b6fbd742bff6ee40",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "The <dfn>Fetch API</dfn> is a built-in JavaScript interface to make network requests to a server. It has a `fetch()` method you can use to make `GET`, `POST`, `PUT`, or `PATCH` requests. In this project, you'll make a `GET` request to a URL for a JSON file with information about authors on freeCodeCamp News.",
+          "fr": "La <dfn>Fetch API</dfn> est une interface JavaScript intégrée pour faire des requêtes réseau vers un serveur. Elle a une méthode `fetch()` que tu peux utiliser pour faire des requêtes `GET`, `POST`, `PUT`, ou `PATCH`. Dans ce projet, tu feras une requête `GET` vers une URL pour un fichier JSON avec des informations sur les auteurs de freeCodeCamp News."
+        },
+        {
+          "en": "Here is how you can make a `GET` request with the `fetch()` method:",
+          "fr": "Voici comment tu peux faire une requête `GET` avec la méthode `fetch()` :"
+        },
+        {
+          "en": "Make a `GET` request to this URL: `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`. Don't terminate your code with a semicolon yet.",
+          "fr": "Fais une requête `GET` vers cette URL : `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`. Ne termine pas encore ton code par un point-virgule."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `fetch()` method to make a `GET` request to `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`.",
+          "fr": "Tu dois utiliser la méthode `fetch()` pour faire une requête `GET` vers `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`."
+        },
+        {
+          "en": "You should not have a semicolon after your `fetch` call.",
+          "fr": "Tu ne dois pas avoir de point-virgule après ton appel `fetch`."
+        }
+      ]
+    },
+    {
+      "file": "641da42481d90c4314c99e94.md",
+      "id": "641da42481d90c4314c99e94",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "The `fetch()` method returns a `Promise`, which is a placeholder object that will either be fulfilled if your request is successful, or rejected if your request is unsuccessful.",
+          "fr": "La méthode `fetch()` renvoie une `Promise`, qui est un objet placeholder qui sera soit rempli si ta requête réussit, soit rejeté si ta requête échoue."
+        },
+        {
+          "en": "If the `Promise` is fulfilled, it resolves to a `Response` object, and you can use the `.then()` method to access the `Response`.",
+          "fr": "Si la `Promise` est remplie, elle se résout en un objet `Response`, et tu peux utiliser la méthode `.then()` pour accéder à la `Response`."
+        },
+        {
+          "en": "Here's how you can chain `.then()` to the `fetch()` method:",
+          "fr": "Voici comment tu peux enchaîner `.then()` à la méthode `fetch()` :"
+        },
+        {
+          "en": "Chain the `.then()` method to your `fetch` call. Inside the `.then()` method, add a callback function with `res` as a parameter, then log the `res` to the console so you can see the `Response` object. Open your browser console and expand the `Response` object to see what it contains.",
+          "fr": "Enchaîne la méthode `.then()` à ton appel `fetch`. Dans la méthode `.then()`, ajoute une fonction callback avec `res` comme paramètre, puis affiche `res` dans la console pour voir l'objet `Response`. Ouvre la console de ton navigateur et développe l'objet `Response` pour voir ce qu'il contient."
+        },
+        {
+          "en": "Again, don't terminate the code with a semicolon yet.",
+          "fr": "Encore une fois, ne termine pas encore le code par un point-virgule."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `fetch()` method to make a `GET` request to `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`.",
+          "fr": "Tu dois utiliser la méthode `fetch()` pour faire une requête `GET` vers `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`."
+        },
+        {
+          "en": "You should chain the `.then()` method to your `fetch()` syntax",
+          "fr": "Tu dois enchaîner la méthode `.then()` à ta syntaxe `fetch()`"
+        },
+        {
+          "en": "You should add a `res` parameter to your `.then()` method.",
+          "fr": "Tu dois ajouter un paramètre `res` à ta méthode `.then()`."
+        },
+        {
+          "en": "Your `.then()` method should use arrow function syntax.",
+          "fr": "Ta méthode `.then()` doit utiliser la syntaxe des fonctions fléchées."
+        },
+        {
+          "en": "You should log the `res` parameter to the console so you can see the `Response` object.",
+          "fr": "Tu dois afficher le paramètre `res` dans la console pour voir l'objet `Response`."
+        },
+        {
+          "en": "You should not have a semicolon after your `.then()`.",
+          "fr": "Tu ne dois pas avoir de point-virgule après ton `.then()`."
+        }
+      ]
+    },
+    {
+      "file": "641da465273051435d332b15.md",
+      "id": "641da465273051435d332b15",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "The data you get from a `GET` request is not usable at first. To make the data usable, you can use the `.json()` method on the `Response` object to parse it into JSON. If you expand the `Prototype` of the `Response` object in the browser console, you will see the `.json()` method there.",
+          "fr": "Les données que tu obtiens d'une requête `GET` ne sont pas utilisables au début. Pour les rendre utilisables, tu peux utiliser la méthode `.json()` sur l'objet `Response` pour les analyser en JSON. Si tu développes le `Prototype` de l'objet `Response` dans la console du navigateur, tu verras la méthode `.json()` là."
+        },
+        {
+          "en": "Remove `console.log(res)` and implicitly return `res.json()` instead.",
+          "fr": "Supprime `console.log(res)` et renvoie implicitement `res.json()` à la place."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `console.log(res)`.",
+          "fr": "Tu dois supprimer le `console.log(res)`."
+        },
+        {
+          "en": "You should implicitly return `res.json()` in your `.then()`.",
+          "fr": "Tu dois renvoyer implicitement `res.json()` dans ton `.then()`."
+        },
+        {
+          "en": "You should not have a semicolon after your `.then()`.",
+          "fr": "Tu ne dois pas avoir de point-virgule après ton `.then()`."
+        }
+      ]
+    },
+    {
+      "file": "641da4b16937be43ba24c63d.md",
+      "id": "641da4b16937be43ba24c63d",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "In order to start working with the data, you will need to use another `.then()` method.",
+          "fr": "Pour commencer à travailler avec les données, tu auras besoin d'utiliser une autre méthode `.then()`."
+        },
+        {
+          "en": "Chain another `.then()` to the existing `.then()` method. This time, pass in `data` as the parameter for the callback function. For the callback, use curly braces because you will have more than one expression. Within your callback function, log `data` to the console to see what it looks like.",
+          "fr": "Enchaîne un autre `.then()` à la méthode `.then()` existante. Cette fois, passe `data` comme paramètre de la fonction callback. Pour le callback, utilise des accolades car tu auras plus d'une expression. Dans ta fonction callback, affiche `data` dans la console pour voir à quoi ça ressemble."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `fetch()` method to make a `GET` request to `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`.",
+          "fr": "Tu dois utiliser la méthode `fetch()` pour faire une requête `GET` vers `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`."
+        },
+        {
+          "en": "Your first `.then()` should not have a semicolon.",
+          "fr": "Ton premier `.then()` ne doit pas avoir de point-virgule."
+        },
+        {
+          "en": "You should chain another `.then()` to the existing `.then()`.",
+          "fr": "Tu dois enchaîner un autre `.then()` au `.then()` existant."
+        },
+        {
+          "en": "You should add a `data` parameter to your second `.then()` method.",
+          "fr": "Tu dois ajouter un paramètre `data` à ta deuxième méthode `.then()`."
+        },
+        {
+          "en": "Your second `.then()` method should use arrow function syntax.",
+          "fr": "Ta deuxième méthode `.then()` doit utiliser la syntaxe des fonctions fléchées."
+        },
+        {
+          "en": "Your second `.then()` method should have curly braces.",
+          "fr": "Ta deuxième méthode `.then()` doit avoir des accolades."
+        },
+        {
+          "en": "Your second `.then()` method should log `data` to the console.",
+          "fr": "Ta deuxième méthode `.then()` doit afficher `data` dans la console."
+        },
+        {
+          "en": "Your second `.then()` should not have semicolon after it.",
+          "fr": "Ton deuxième `.then()` ne doit pas avoir de point-virgule après lui."
+        }
+      ]
+    },
+    {
+      "file": "641da51a9810e74411262fcc.md",
+      "id": "641da51a9810e74411262fcc",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "The `.catch()` method is another asynchronous JavaScript method you can use to handle errors. This is useful in case the `Promise` gets rejected.",
+          "fr": "La méthode `.catch()` est une autre méthode JavaScript asynchrone que tu peux utiliser pour gérer les erreurs. C'est utile au cas où la `Promise` serait rejetée."
+        },
+        {
+          "en": "Chain `.catch()` to the last `.then()`. Pass in a callback function with `err` as the parameter. Inside the callback, use `console.error()` to log possible errors to the console with the text `There was an error: ${err}`. Since you're using `err` in the text, don't forget to use a template literal string with backticks (\\`\\`) instead of single or double quotes.",
+          "fr": "Enchaîne `.catch()` au dernier `.then()`. Passe une fonction callback avec `err` comme paramètre. Dans le callback, utilise `console.error()` pour afficher les erreurs possibles dans la console avec le texte `There was an error: ${err}`. Comme tu utilises `err` dans le texte, n'oublie pas d'utiliser une chaîne littérale de modèle avec des backticks (\\`\\`) au lieu de guillemets simples ou doubles."
+        },
+        {
+          "en": "**Note**: `catch` is the last call chained on to fetch, so you can terminate your code with a semicolon.",
+          "fr": "**Note** : `catch` est le dernier appel enchaîné à fetch, donc tu peux terminer ton code par un point-virgule."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `fetch()` method to make a `GET` request to `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`.",
+          "fr": "Tu dois utiliser la méthode `fetch()` pour faire une requête `GET` vers `\"https://cdn.freecodecamp.org/curriculum/news-author-page/authors.json\"`."
+        },
+        {
+          "en": "You should chain another `.then()` to the existing `.then()`.",
+          "fr": "Tu dois enchaîner un autre `.then()` au `.then()` existant."
+        },
+        {
+          "en": "You should add a `data` parameter to your second `.then()` method.",
+          "fr": "Tu dois ajouter un paramètre `data` à ta deuxième méthode `.then()`."
+        },
+        {
+          "en": "Your second `.then()` method should use arrow function syntax.",
+          "fr": "Ta deuxième méthode `.then()` doit utiliser la syntaxe des fonctions fléchées."
+        },
+        {
+          "en": "Your second `.then()` method should have curly braces.",
+          "fr": "Ta deuxième méthode `.then()` doit avoir des accolades."
+        },
+        {
+          "en": "Your second `.then()` method should log `data` to the console.",
+          "fr": "Ta deuxième méthode `.then()` doit afficher `data` dans la console."
+        },
+        {
+          "en": "Your second `.then()` should not have a semicolon.",
+          "fr": "Ton deuxième `.then()` ne doit pas avoir de point-virgule."
+        },
+        {
+          "en": "You should chain the `.catch()` method to the second `.then()` you already have.",
+          "fr": "Tu dois enchaîner la méthode `.catch()` au deuxième `.then()` que tu as déjà."
+        },
+        {
+          "en": "You should add an `err` parameter to your `.catch()` method.",
+          "fr": "Tu dois ajouter un paramètre `err` à ta méthode `.catch()`."
+        },
+        {
+          "en": "Your `.catch()` method should have an arrow function syntax.",
+          "fr": "Ta méthode `.catch()` doit avoir une syntaxe de fonction fléchée."
+        },
+        {
+          "en": "Your `.catch()` method should use `console.error()` to log `err` to the console with the text `` `There was an error: ${err}` ``. Don't forget to use backticks.",
+          "fr": "Ta méthode `.catch()` doit utiliser `console.error()` pour afficher `err` dans la console avec le texte `` `There was an error: ${err}` ``. N'oublie pas d'utiliser des backticks."
+        }
+      ]
+    },
+    {
+      "file": "641da5462576784453146ec2.md",
+      "id": "641da5462576784453146ec2",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now that you have the data you want, you can use it to populate the UI.",
+          "fr": "Maintenant que tu as les données que tu veux, tu peux les utiliser pour peupler l'interface."
+        },
+        {
+          "en": "But the data you are fetching will have a total of 26 authors. Instead of displaying all 26 authors at once, you should display 8 authors at a time.",
+          "fr": "Mais les données que tu récupères auront un total de 26 auteurs. Au lieu d'afficher les 26 auteurs d'un coup, tu dois en afficher 8 à la fois."
+        },
+        {
+          "en": "Start by using the `let` keyword to create two variables named `startingIndex` and `endingIndex`, and assign them the numbers `0` and `8`, respectively. You will need to use `let` here because you will be reassigning these values later on.",
+          "fr": "Commence par utiliser le mot-clé `let` pour créer deux variables nommées `startingIndex` et `endingIndex`, et assigne-leur les nombres `0` et `8`, respectivement. Tu auras besoin d'utiliser `let` ici car tu réassigneras ces valeurs plus tard."
+        },
+        {
+          "en": "Then, create an `authorDataArr` variable and assign it an empty array.",
+          "fr": "Puis, crée une variable `authorDataArr` et assigne-lui un tableau vide."
+        },
+        {
+          "en": "Declare and initialize each variable on a separate line.",
+          "fr": "Déclare et initialise chaque variable sur une ligne séparée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to declare a variable named `startingIndex`.",
+          "fr": "Tu dois utiliser `let` pour déclarer une variable nommée `startingIndex`."
+        },
+        {
+          "en": "Your `startingIndex` variable should be a number.",
+          "fr": "Ta variable `startingIndex` doit être un nombre."
+        },
+        {
+          "en": "Your `startingIndex` variable should be set to `0`.",
+          "fr": "Ta variable `startingIndex` doit être définie à `0`."
+        },
+        {
+          "en": "You should use `let` to declare a variable named `endingIndex`.",
+          "fr": "Tu dois utiliser `let` pour déclarer une variable nommée `endingIndex`."
+        },
+        {
+          "en": "Your `endingIndex` variable should be a number.",
+          "fr": "Ta variable `endingIndex` doit être un nombre."
+        },
+        {
+          "en": "You should set your `endingIndex` variable to `8`.",
+          "fr": "Tu dois définir ta variable `endingIndex` à `8`."
+        },
+        {
+          "en": "You should have a variable named `authorDataArr`.",
+          "fr": "Tu dois avoir une variable nommée `authorDataArr`."
+        },
+        {
+          "en": "Your `authorDataArr` variable should be an empty array.",
+          "fr": "Ta variable `authorDataArr` doit être un tableau vide."
+        }
+      ]
+    },
+    {
+      "file": "641da5abaac81844a54adb03.md",
+      "id": "641da5abaac81844a54adb03",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Now, it is time to create the function that will be responsible for displaying the authors on the page.",
+          "fr": "Maintenant, il est temps de créer la fonction qui sera responsable d'afficher les auteurs sur la page."
+        },
+        {
+          "en": "Start by creating a function called `displayAuthors` that takes an `authors` parameter. Your function should then loop through the `authors` array and add a card for each author to the `authorContainer` element.",
+          "fr": "Commence par créer une fonction appelée `displayAuthors` qui prend un paramètre `authors`. Ta fonction doit ensuite parcourir le tableau `authors` et ajouter une carte pour chaque auteur à l'élément `authorContainer`."
+        },
+        {
+          "en": "The card should have the following structure:",
+          "fr": "La carte doit avoir la structure suivante :"
+        },
+        {
+          "en": "**Tips:**",
+          "fr": "**Astuces :**"
+        },
+        {
+          "en": "- You can use any type of loop to iterate over the `authors` array. Ex. `for`, `forEach`, `map`, etc.\n- You should use the `innerHTML` property to add the card to the `authorContainer` inside the loop. You will also need to use template literal syntax to add the markup.",
+          "fr": "- Tu peux utiliser n'importe quel type de boucle pour itérer sur le tableau `authors`. Ex. `for`, `forEach`, `map`, etc.\n- Tu dois utiliser la propriété `innerHTML` pour ajouter la carte à `authorContainer` dans la boucle. Tu auras aussi besoin d'utiliser la syntaxe des littéraux de modèle pour ajouter le balisage."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`displayAuthors` should be a function.",
+          "fr": "`displayAuthors` doit être une fonction."
+        },
+        {
+          "en": "Your `displayAuthors` function should take an `authors` parameter.",
+          "fr": "Ta fonction `displayAuthors` doit prendre un paramètre `authors`."
+        },
+        {
+          "en": "When the `displayAuthors` function is called with an author's array, it should add a card for each author to the `#authorContainer` element.",
+          "fr": "Quand la fonction `displayAuthors` est appelée avec un tableau d'auteurs, elle doit ajouter une carte pour chaque auteur à l'élément `#authorContainer`."
+        }
+      ]
+    },
+    {
+      "file": "641da73b09e7f046c758e0ed.md",
+      "id": "641da73b09e7f046c758e0ed",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "To see the authors' names on the page, you need to call the `displayAuthors` function inside the second `.then()` method. But before that, you need to assign the author data to the empty `authorDataArr` array.",
+          "fr": "Pour voir les noms des auteurs sur la page, tu dois appeler la fonction `displayAuthors` dans la deuxième méthode `.then()`. Mais avant cela, tu dois assigner les données d'auteurs au tableau vide `authorDataArr`."
+        },
+        {
+          "en": "First, remove your `console.log()` statement. Then, assign `data` to the `authorDataArr` variable.",
+          "fr": "D'abord, supprime ton instruction `console.log()`. Puis, assigne `data` à la variable `authorDataArr`."
+        }
+      ],
+      "hints": []
+    },
+    {
+      "file": "641da791d0c34a472b8d15b6.md",
+      "id": "641da791d0c34a472b8d15b6",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Now `authorDataArr` is the same as the `data` you logged to the console a while ago. Log `authorDataArr` to the console to confirm this.",
+          "fr": "Maintenant `authorDataArr` est le même que le `data` que tu as affiché dans la console il y a un moment. Affiche `authorDataArr` dans la console pour le confirmer."
+        },
+        {
+          "en": "Inside your `console.log()` statement, add the text `\"Author Data Array:\"` as the first argument and `authorDataArr` as the second argument. Use comma to separate the text from `authorDataArr`.",
+          "fr": "Dans ton instruction `console.log()`, ajoute le texte `\"Author Data Array:\"` comme premier argument et `authorDataArr` comme second argument. Utilise une virgule pour séparer le texte de `authorDataArr`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `data` to the `authorDataArr` variable",
+          "fr": "Tu dois assigner `data` à la variable `authorDataArr`"
+        },
+        {
+          "en": "You should have a console log with the text `\"Author Data Array:\"`.",
+          "fr": "Tu dois avoir un console log avec le texte `\"Author Data Array:\"`."
+        },
+        {
+          "en": "You should use comma to separate your `\"Author Data Array:\"` text and `authorDataArr`.",
+          "fr": "Tu dois utiliser une virgule pour séparer ton texte `\"Author Data Array:\"` et `authorDataArr`."
+        },
+        {
+          "en": "`authorDataArr` should be the second argument of your console log statement.",
+          "fr": "`authorDataArr` doit être le second argument de ton instruction console log."
+        }
+      ]
+    },
+    {
+      "file": "641da7bfbc7f0f477438ad8a.md",
+      "id": "641da7bfbc7f0f477438ad8a",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Now it's time to call the `displayAuthors` function. But again, you don't want to populate the page with all the authors at once. Instead, you can extract a portion of the authors with the `startingIndex` and `endingIndex` variables. The best method to do this is the `.slice()` array method.",
+          "fr": "Il est maintenant temps d'appeler la fonction `displayAuthors`. Mais encore une fois, tu ne veux pas peupler la page avec tous les auteurs d'un coup. Au lieu de cela, tu peux extraire une portion des auteurs avec les variables `startingIndex` et `endingIndex`. La meilleure méthode pour cela est la méthode de tableau `.slice()`."
+        },
+        {
+          "en": "First, remove the console log statement showing `authorDataArr`. Then, call the `displayAuthors` function with the `authorDataArr` array and `.slice()`. Use the `startingIndex` variable for the starting point and the `endingIndex` variable for the ending point.",
+          "fr": "D'abord, supprime l'instruction console log montrant `authorDataArr`. Puis, appelle la fonction `displayAuthors` avec le tableau `authorDataArr` et `.slice()`. Utilise la variable `startingIndex` pour le point de départ et la variable `endingIndex` pour le point de fin."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `data` to the `authorDataArr` variable",
+          "fr": "Tu dois assigner `data` à la variable `authorDataArr`"
+        },
+        {
+          "en": "You should remove the console log statement showing `authorDataArr`",
+          "fr": "Tu dois supprimer l'instruction console log montrant `authorDataArr`"
+        },
+        {
+          "en": "You should call your `displayAuthors` function.",
+          "fr": "Tu dois appeler ta fonction `displayAuthors`."
+        },
+        {
+          "en": "You should call your `displayAuthors` function and pass in an argument of `authorDataArr.slice()`.",
+          "fr": "Tu dois appeler ta fonction `displayAuthors` et passer un argument de `authorDataArr.slice()`."
+        },
+        {
+          "en": "The first parameter of your `slice()` method should be `startingIndex`.",
+          "fr": "Le premier paramètre de ta méthode `slice()` doit être `startingIndex`."
+        },
+        {
+          "en": "The second parameter of your `slice()` method should be `endingIndex`.",
+          "fr": "Le second paramètre de ta méthode `slice()` doit être `endingIndex`."
+        }
+      ]
+    },
+    {
+      "file": "641da803d9892447d059804e.md",
+      "id": "641da803d9892447d059804e",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Inside the `displayAuthors` function, the data of each author has been destructured for you.",
+          "fr": "Dans la fonction `displayAuthors`, les données de chaque auteur ont été déstructurées pour toi."
+        },
+        {
+          "en": "Now create an image tag and give it a `class` attribute of `\"user-img\"`. Use string interpolation to set the `src` attribute to the `image` property. Set the `alt` attribute to `author` followed by the text `\"avatar\"`. Make sure there is a space between the `author` variable and the word `\"avatar\"`, for example, `\"Quincy Larson avatar\"`.",
+          "fr": "Maintenant crée une balise image et donne-lui un attribut `class` de `\"user-img\"`. Utilise l'interpolation de chaîne pour définir l'attribut `src` à la propriété `image`. Définis l'attribut `alt` à `author` suivi du texte `\"avatar\"`. Assure-toi qu'il y a un espace entre la variable `author` et le mot `\"avatar\"`, par exemple, `\"Quincy Larson avatar\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `img` element.",
+          "fr": "Tu dois créer un élément `img`."
+        },
+        {
+          "en": "Your `img` element should have the class `\"user-img\"`.",
+          "fr": "Ton élément `img` doit avoir la classe `\"user-img\"`."
+        },
+        {
+          "en": "You should set the `src` attribute of your `img` element to `${image}`.",
+          "fr": "Tu dois définir l'attribut `src` de ton élément `img` à `${image}`."
+        },
+        {
+          "en": "You should set the `alt` attribute of your `img` element to `${author} avatar`.",
+          "fr": "Tu dois définir l'attribut `alt` de ton élément `img` à `${author} avatar`."
+        }
+      ]
+    },
+    {
+      "file": "641da836581c254815f785fe.md",
+      "id": "641da836581c254815f785fe",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "The next thing you'll show are biographical details about the author. You can do this by using the `bio` property.",
+          "fr": "La prochaine chose que tu afficheras sont les détails biographiques sur l'auteur. Tu peux le faire en utilisant la propriété `bio`."
+        },
+        {
+          "en": "Add a paragraph element with a `class` attribute of `\"bio\"`, then interpolate `bio` inside the paragraph element.",
+          "fr": "Ajoute un élément paragraphe avec un attribut `class` de `\"bio\"`, puis interpole `bio` à l'intérieur de l'élément paragraphe."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `p` element.",
+          "fr": "Tu dois créer un élément `p`."
+        },
+        {
+          "en": "Your `p` element should have the class `\"bio\"`",
+          "fr": "Ton élément `p` doit avoir la classe `\"bio\"`"
+        },
+        {
+          "en": "You should interpolate `bio` in your `p` element.",
+          "fr": "Tu dois interpoler `bio` dans ton élément `p`."
+        }
+      ]
+    },
+    {
+      "file": "641da86294fd9f485d3c2bf0.md",
+      "id": "641da86294fd9f485d3c2bf0",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Next, add a link to the author's page on freeCodeCamp News.",
+          "fr": "Ensuite, ajoute un lien vers la page de l'auteur sur freeCodeCamp News."
+        },
+        {
+          "en": "Add an anchor element with a `class` attribute of `\"author-link\"`, interpolate `url` as the value for the `href` attribute, and set `target` to `\"_blank\"`. For the text of the anchor element, interpolate `author` followed by the text `\"'s author page\"`. For example, `\"Quincy Larson's author page\"`.",
+          "fr": "Ajoute un élément ancre avec un attribut `class` de `\"author-link\"`, interpole `url` comme valeur de l'attribut `href`, et définis `target` à `\"_blank\"`. Pour le texte de l'élément ancre, interpole `author` suivi du texte `\"'s author page\"`. Par exemple, `\"Quincy Larson's author page\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an anchor element.",
+          "fr": "Tu dois créer un élément ancre."
+        },
+        {
+          "en": "Your anchor element should have the class `\"author-link\"`.",
+          "fr": "Ton élément ancre doit avoir la classe `\"author-link\"`."
+        },
+        {
+          "en": "You should interpolate `url` as the value of your anchor's `href` attribute.",
+          "fr": "Tu dois interpoler `url` comme valeur de l'attribut `href` de ton ancre."
+        },
+        {
+          "en": "You should set the `target` attribute of your anchor element to `\"_blank\"`.",
+          "fr": "Tu dois définir l'attribut `target` de ton élément ancre à `\"_blank\"`."
+        },
+        {
+          "en": "You should interpolate `author` followed by the text `\"'s author page\"` inside your anchor element.",
+          "fr": "Tu dois interpoler `author` suivi du texte `\"'s author page\"` dans ton élément ancre."
+        }
+      ]
+    },
+    {
+      "file": "641da895fb7ec648a5bdf19c.md",
+      "id": "641da895fb7ec648a5bdf19c",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Now you have everything you want to include in the UI. The next step is to make the `Load More Authors` button fetch more authors whenever it's clicked. You can do this by adding a `click` event to the button and carefully incrementing the `startingIndex` and `endingIndex` variables.",
+          "fr": "Maintenant tu as tout ce que tu veux inclure dans l'interface. La prochaine étape est de faire en sorte que le bouton `Load More Authors` récupère plus d'auteurs quand on clique dessus. Tu peux le faire en ajoutant un événement `click` au bouton et en incrémentant soigneusement les variables `startingIndex` et `endingIndex`."
+        },
+        {
+          "en": "Create a `fetchMoreAuthors` function with the arrow function syntax. Don't put anything in it yet. Make sure you use curly braces because you'll have more than one expression inside the function.",
+          "fr": "Crée une fonction `fetchMoreAuthors` avec la syntaxe des fonctions fléchées. N'y mets encore rien. Assure-toi d'utiliser des accolades car tu auras plus d'une expression dans la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to create a `fetchMoreAuthors` function.",
+          "fr": "Tu dois utiliser `const` pour créer une fonction `fetchMoreAuthors`."
+        },
+        {
+          "en": "`fetchMoreAuthors` should be a function.",
+          "fr": "`fetchMoreAuthors` doit être une fonction."
+        },
+        {
+          "en": "Your `fetchMoreAuthors` function should not take any parameter.",
+          "fr": "Ta fonction `fetchMoreAuthors` ne doit prendre aucun paramètre."
+        },
+        {
+          "en": "Your `fetchMoreAuthors` function should use arrow syntax.",
+          "fr": "Ta fonction `fetchMoreAuthors` doit utiliser la syntaxe fléchée."
+        },
+        {
+          "en": "Your `fetchMoreAuthors` function should be empty.",
+          "fr": "Ta fonction `fetchMoreAuthors` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "641da8db2a036048ebe6999e.md",
+      "id": "641da8db2a036048ebe6999e",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Inside the `fetchMoreAuthors` function, set the `startingIndex` and `endingIndex` variables to `+= 8` each.",
+          "fr": "Dans la fonction `fetchMoreAuthors`, définis les variables `startingIndex` et `endingIndex` à `+= 8` chacune."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `startingIndex` variable to `+=8`.",
+          "fr": "Tu dois définir la variable `startingIndex` à `+=8`."
+        },
+        {
+          "en": "You should set the `endingIndex` variable to `+=8`.",
+          "fr": "Tu dois définir la variable `endingIndex` à `+=8`."
+        }
+      ]
+    },
+    {
+      "file": "641da97c987a514959ada414.md",
+      "id": "641da97c987a514959ada414",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Now call the `displayAuthors` function with a portion of the author data just like you did before.",
+          "fr": "Maintenant appelle la fonction `displayAuthors` avec une portion des données d'auteurs comme tu l'as fait avant."
+        },
+        {
+          "en": "If you click the `Load More Authors` button after calling the function, it won't work. That's because you still have to add the `click` event listener to the button. You'll do that next.",
+          "fr": "Si tu cliques sur le bouton `Load More Authors` après avoir appelé la fonction, ça ne marchera pas. C'est parce que tu dois encore ajouter l'écouteur d'événement `click` au bouton. Tu feras ça ensuite."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call your `displayAuthors` function.",
+          "fr": "Tu dois appeler ta fonction `displayAuthors`."
+        },
+        {
+          "en": "You should call your `displayAuthors` function and pass in an argument of `authorDataArr.slice()`.",
+          "fr": "Tu dois appeler ta fonction `displayAuthors` et passer un argument de `authorDataArr.slice()`."
+        },
+        {
+          "en": "The first argument of your `slice()` method should be `startingIndex`.",
+          "fr": "Le premier argument de ta méthode `slice()` doit être `startingIndex`."
+        },
+        {
+          "en": "The second argument of your `slice()` method should be `endingIndex`.",
+          "fr": "Le second argument de ta méthode `slice()` doit être `endingIndex`."
+        }
+      ]
+    },
+    {
+      "file": "641da9aceb788e49a73ebcc9.md",
+      "id": "641da9aceb788e49a73ebcc9",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Remember that in step 1 you selected the `Load More Authors` button and assigned it to `loadMoreBtn`.",
+          "fr": "Souviens-toi qu'à l'étape 1 tu as sélectionné le bouton `Load More Authors` et l'as assigné à `loadMoreBtn`."
+        },
+        {
+          "en": "Use `addEventListener` to add a `\"click\"` event listener to `loadMoreBtn`. Also, pass in a reference to the `fetchMoreAuthors` function to run whenever the button is clicked.",
+          "fr": "Utilise `addEventListener` pour ajouter un écouteur d'événement `\"click\"` à `loadMoreBtn`. Aussi, passe une référence à la fonction `fetchMoreAuthors` à exécuter quand on clique sur le bouton."
+        },
+        {
+          "en": "After that, when you click the button you should see 8 more authors.",
+          "fr": "Après cela, quand tu cliques sur le bouton tu devrais voir 8 auteurs de plus."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `loadMoreBtn` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `loadMoreBtn`."
+        },
+        {
+          "en": "Your event listener should listen for a `\"click\"` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `\"click\"`."
+        },
+        {
+          "en": "Your event listener should take `fetchMoreAuthors` as the function to run.",
+          "fr": "Ton écouteur d'événement doit prendre `fetchMoreAuthors` comme fonction à exécuter."
+        }
+      ]
+    },
+    {
+      "file": "641da9ea9b847a49fe6ee9b6.md",
+      "id": "641da9ea9b847a49fe6ee9b6",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Your fCC Authors Page is now complete. But you could improve on a few things.",
+          "fr": "Ta page d'auteurs fCC est maintenant complète. Mais tu pourrais améliorer quelques choses."
+        },
+        {
+          "en": "First, if you click the `Load More Authors` button a couple of times, you'll see that it won't add more authors to the page. That's because you've reached the end of the authors list. For a better user experience, you should make it clear when there's no more data to display by disabling the button and changing its text. An `if` statement is the perfect tool for this.",
+          "fr": "D'abord, si tu cliques sur le bouton `Load More Authors` plusieurs fois, tu verras qu'il n'ajoutera plus d'auteurs à la page. C'est parce que tu as atteint la fin de la liste des auteurs. Pour une meilleure expérience utilisateur, tu dois rendre clair qu'il n'y a plus de données à afficher en désactivant le bouton et en changeant son texte. Une instruction `if` est l'outil parfait pour cela."
+        },
+        {
+          "en": "Inside the `fetchMoreAuthors` function, write an `if` statement and set the condition to `authorDataArr.length <= endingIndex` – meaning there's no more data to load.",
+          "fr": "Dans la fonction `fetchMoreAuthors`, écris une instruction `if` et définis la condition à `authorDataArr.length <= endingIndex` – ce qui signifie qu'il n'y a plus de données à charger."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement.",
+          "fr": "Tu dois avoir une instruction `if`."
+        },
+        {
+          "en": "Your `if` statement should take in `authorDataArr.length <= endingIndex` as its condition.",
+          "fr": "Ton instruction `if` doit prendre `authorDataArr.length <= endingIndex` comme condition."
+        },
+        {
+          "en": "Your `if` statement should be empty.",
+          "fr": "Ton instruction `if` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "641daa5ea050f24a7cade6e6.md",
+      "id": "641daa5ea050f24a7cade6e6",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "If this condition is met, disable the button by setting its `disabled` property to `true`. Also, set the `textContent` of the button to `\"No more data to load\"`.",
+          "fr": "Si cette condition est remplie, désactive le bouton en définissant sa propriété `disabled` à `true`. Aussi, définis le `textContent` du bouton à `\"No more data to load\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `disabled` property of `loadMoreBtn` to `true`.",
+          "fr": "Tu dois définir la propriété `disabled` de `loadMoreBtn` à `true`."
+        },
+        {
+          "en": "You should set the `textContent` of `loadMoreBtn` to `\"No more data to load\"`.",
+          "fr": "Tu dois définir le `textContent` de `loadMoreBtn` à `\"No more data to load\"`."
+        }
+      ]
+    },
+    {
+      "file": "641daa8c2c3e364ac3650b37.md",
+      "id": "641daa8c2c3e364ac3650b37",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Next, there's not a lot of separation between each author's name and image, and the rest of the details on the card. A divider will give the author cards a clear visual hierarchy.",
+          "fr": "Ensuite, il n'y a pas beaucoup de séparation entre le nom et l'image de chaque auteur, et le reste des détails sur la carte. Un séparateur donnera aux cartes d'auteurs une hiérarchie visuelle claire."
+        },
+        {
+          "en": "Add a `div` element above the author's bio and give it a `class` attribute of `\"purple-divider\"`.",
+          "fr": "Ajoute un élément `div` au-dessus de la bio de l'auteur et donne-lui un attribut `class` de `\"purple-divider\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `div` element before your `p` element.",
+          "fr": "Tu dois créer un élément `div` avant ton élément `p`."
+        },
+        {
+          "en": "Your `div` element should have the `class` set to `\"purple-divider\"`.",
+          "fr": "Ton élément `div` doit avoir la `class` définie à `\"purple-divider\"`."
+        }
+      ]
+    },
+    {
+      "file": "641daabed8d0584b1150c953.md",
+      "id": "641daabed8d0584b1150c953",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Some of the author bios are much longer than others. To give the cards a uniform look, you can extract the first 50 characters of each one and replace the rest with an ellipsis `\"...\"`. Otherwise, you can show the entire bio.",
+          "fr": "Certaines bios d'auteurs sont beaucoup plus longues que d'autres. Pour donner aux cartes un aspect uniforme, tu peux extraire les 50 premiers caractères de chacune et remplacer le reste par une ellipse `\"...\"`. Sinon, tu peux montrer la bio entière."
+        },
+        {
+          "en": "Within the paragraph element, replace `bio` with a ternary operator. For the condition, check if the length of `bio` is greater than 50. If it is, use the `.slice()` method to extract the first 50 characters of `bio` and add an ellipsis at the end. Otherwise, show the full `bio`.",
+          "fr": "Dans l'élément paragraphe, remplace `bio` par un opérateur ternaire. Pour la condition, vérifie si la longueur de `bio` est supérieure à 50. Si c'est le cas, utilise la méthode `.slice()` pour extraire les 50 premiers caractères de `bio` et ajoute une ellipse à la fin. Sinon, montre la `bio` complète."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `p` element.",
+          "fr": "Tu dois créer un élément `p`."
+        },
+        {
+          "en": "Your `p` element should have the class `bio`",
+          "fr": "Ton élément `p` doit avoir la classe `bio`"
+        },
+        {
+          "en": "You should check if the length of the `bio` text is greater than `50`.",
+          "fr": "Tu dois vérifier si la longueur du texte `bio` est supérieure à `50`."
+        },
+        {
+          "en": "If the `bio` text is greater than `50` characters, you should extract the first 50 characters with `slice()` and replace the rest with `\"...\"`. Don't forget that indexes are zero-based.",
+          "fr": "Si le texte `bio` fait plus de `50` caractères, tu dois extraire les 50 premiers caractères avec `slice()` et remplacer le reste par `\"...\"`. N'oublie pas que les indices commencent à zéro."
+        },
+        {
+          "en": "If the `bio` text is less than 50 characters, use the `bio` text directly.",
+          "fr": "Si le texte `bio` fait moins de 50 caractères, utilise le texte `bio` directement."
+        }
+      ]
+    },
+    {
+      "file": "641daae5e18eae4b562633e4.md",
+      "id": "641daae5e18eae4b562633e4",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Finally, what if there's an error and the author data fail to load? Then we need to show an error in the UI. That's exactly what the `.catch()` method is for – handling errors.",
+          "fr": "Enfin, que se passe-t-il s'il y a une erreur et que les données d'auteurs ne se chargent pas ? Alors nous devons afficher une erreur dans l'interface. C'est exactement à quoi sert la méthode `.catch()` – gérer les erreurs."
+        },
+        {
+          "en": "Inside the `.catch()`, remove the `console.error()` and set the `innerHTML` of the `authorContainer` to a `p` element with a `class` attribute of `\"error-msg\"` and text `\"There was an error loading the authors\"`.",
+          "fr": "Dans le `.catch()`, supprime le `console.error()` et définis le `innerHTML` de `authorContainer` à un élément `p` avec un attribut `class` de `\"error-msg\"` et le texte `\"There was an error loading the authors\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove your `console.error` and its text.",
+          "fr": "Tu dois supprimer ton `console.error` et son texte."
+        },
+        {
+          "en": "You should access the `innerHTML` of `authorContainer` and set it to a `p` element. Don't forget to surround the `p` element with a template literal.",
+          "fr": "Tu dois accéder au `innerHTML` de `authorContainer` et le définir à un élément `p`. N'oublie pas d'entourer l'élément `p` d'un littéral de modèle."
+        },
+        {
+          "en": "Your `p` element should have the class `\"error-msg\"`.",
+          "fr": "Ton élément `p` doit avoir la classe `\"error-msg\"`."
+        },
+        {
+          "en": "Your `p` element should have the text `\"There was an error loading the authors\"`.",
+          "fr": "Ton élément `p` doit avoir le texte `\"There was an error loading the authors\"`."
+        }
+      ]
+    },
+    {
+      "file": "641dab13c1b6f14b9828e6b1.md",
+      "id": "641dab13c1b6f14b9828e6b1",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "One more thing. If you keep clicking the `Load More Authors` button until there's no more data to load and the text changes to `\"No more data to load\"`, the cursor value is still `pointer`. Why not change the cursor value to `not-allowed` instead?",
+          "fr": "Encore une chose. Si tu continues à cliquer sur le bouton `Load More Authors` jusqu'à ce qu'il n'y ait plus de données à charger et que le texte change en `\"No more data to load\"`, la valeur du curseur est toujours `pointer`. Pourquoi ne pas changer la valeur du curseur en `not-allowed` à la place ?"
+        },
+        {
+          "en": "Access the `style` property of the `Load More Authors` button and set `cursor` to `\"not-allowed\"`.",
+          "fr": "Accède à la propriété `style` du bouton `Load More Authors` et définis `cursor` à `\"not-allowed\"`."
+        },
+        {
+          "en": "With that, your author page is complete!",
+          "fr": "Avec cela, ta page d'auteurs est complète !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `style` property of `loadMoreBtn` with a dot notation.",
+          "fr": "Tu dois accéder à la propriété `style` de `loadMoreBtn` avec une notation point."
+        },
+        {
+          "en": "You should access `cursor` from the `style` property with dot notation.",
+          "fr": "Tu dois accéder à `cursor` depuis la propriété `style` avec la notation point."
+        },
+        {
+          "en": "You should set the value of the `cursor` property to `\"not-allowed\"`.",
+          "fr": "Tu dois définir la valeur de la propriété `cursor` à `\"not-allowed\"`."
+        }
+      ]
+    }
+  ]
+}

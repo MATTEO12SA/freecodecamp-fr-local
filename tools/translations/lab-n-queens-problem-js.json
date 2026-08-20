@@ -1,7 +1,7 @@
 {
   "workshop": "lab-n-queens-problem-js",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -10,90 +10,90 @@
       "dashedName": "implement-the-n-queens-algorithm",
       "title": {
         "en": "Implement the N-Queens Algorithm",
-        "fr": ""
+        "fr": "Implémenter l'algorithme des N-reines"
       },
       "description": [
         {
           "en": "The N-Queens problem asks you to place N queens on an N×N chessboard so that no two queens attack each other (no two share a row, column, or diagonal).",
-          "fr": ""
+          "fr": "Le problème des N-reines te demande de placer N reines sur un échiquier N×N de sorte qu'aucune paire de reines ne s'attaque (aucune ne partage une ligne, une colonne ou une diagonale)."
         },
         {
           "en": "For example, if there is a 4x4 board, one valid arrangement is:",
-          "fr": ""
+          "fr": "Par exemple, s'il y a un plateau 4x4, un arrangement valide est :"
         },
         {
           "en": "That means that in row 0, the queen is placed in column 1; in row 1, the queen is placed in column 3; in row 2, the queen is placed in column 0; and in row 3, the queen is placed in column 2.",
-          "fr": ""
+          "fr": "Cela signifie qu'en ligne 0, la reine est placée en colonne 1 ; en ligne 1, la reine est placée en colonne 3 ; en ligne 2, la reine est placée en colonne 0 ; et en ligne 3, la reine est placée en colonne 2."
         },
         {
           "en": "Visually, this arrangement looks like:",
-          "fr": ""
+          "fr": "Visuellement, cet arrangement ressemble à :"
         },
         {
           "en": "Where `Q` represents a queen and `.` represents an empty square.",
-          "fr": ""
+          "fr": "Où `Q` représente une reine et `.` représente une case vide."
         },
         {
           "en": "In this lab, you will implement the N-Queens problem solver using the depth-first search approach.",
-          "fr": ""
+          "fr": "Dans ce labo, tu vas implémenter le solveur du problème des N-reines avec l'approche du parcours en profondeur."
         },
         {
           "en": "**Objective**: Fulfill the user stories below and get all the tests to pass to complete the lab.",
-          "fr": ""
+          "fr": "**Objectif** : Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le labo."
         },
         {
           "en": "**User Stories:**",
-          "fr": ""
+          "fr": "**User Stories :**"
         },
         {
           "en": "1. You should have a function named `dfsNQueens`.\n2. The function should accept exactly one argument: an integer `n`.\n3. If `n` is less than `1`, the function should return an empty array (`[]`).\n4. The function should return a list of solutions; each solution is itself a list of length `n`, where the element at index `i` is the column index (0-based) of the queen in row `i`.",
-          "fr": ""
+          "fr": "1. Tu dois avoir une fonction nommée `dfsNQueens`.\n2. La fonction doit accepter exactement un argument : un entier `n`.\n3. Si `n` est inférieur à `1`, la fonction doit renvoyer un tableau vide (`[]`).\n4. La fonction doit renvoyer une liste de solutions ; chaque solution est elle-même une liste de longueur `n`, où l'élément à l'indice `i` est l'indice de colonne (base 0) de la reine en ligne `i`."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `dfsNQueens` that takes one argument.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `dfsNQueens` qui prend un argument."
         },
         {
           "en": "If `n` is less than `1`, the function should return an empty array.",
-          "fr": ""
+          "fr": "Si `n` est inférieur à `1`, la fonction doit renvoyer un tableau vide."
         },
         {
           "en": "The function should return an array of solutions, where each solution is an array of length `n`.",
-          "fr": ""
+          "fr": "La fonction doit renvoyer un tableau de solutions, où chaque solution est un tableau de longueur `n`."
         },
         {
           "en": "`dfsNQueens(1)` should return `[[0]]`.",
-          "fr": ""
+          "fr": "`dfsNQueens(1)` doit renvoyer `[[0]]`."
         },
         {
           "en": "`dfsNQueens(2)` should return `[]`.",
-          "fr": ""
+          "fr": "`dfsNQueens(2)` doit renvoyer `[]`."
         },
         {
           "en": "`dfsNQueens(3)` should return `[]`.",
-          "fr": ""
+          "fr": "`dfsNQueens(3)` doit renvoyer `[]`."
         },
         {
           "en": "`dfsNQueens(4)` should return `[[1, 3, 0, 2], [2, 0, 3, 1]]`.",
-          "fr": ""
+          "fr": "`dfsNQueens(4)` doit renvoyer `[[1, 3, 0, 2], [2, 0, 3, 1]]`."
         },
         {
           "en": "`dfsNQueens(5)` should return `[[0, 2, 4, 1, 3], [0, 3, 1, 4, 2], [1, 3, 0, 2, 4], [1, 4, 2, 0, 3], [2, 0, 3, 1, 4], [2, 4, 1, 3, 0], [3, 0, 2, 4, 1], [3, 1, 4, 2, 0], [4, 1, 3, 0, 2], [4, 2, 0, 3, 1]]`.",
-          "fr": ""
+          "fr": "`dfsNQueens(5)` doit renvoyer `[[0, 2, 4, 1, 3], [0, 3, 1, 4, 2], [1, 3, 0, 2, 4], [1, 4, 2, 0, 3], [2, 0, 3, 1, 4], [2, 4, 1, 3, 0], [3, 0, 2, 4, 1], [3, 1, 4, 2, 0], [4, 1, 3, 0, 2], [4, 2, 0, 3, 1]]`."
         },
         {
           "en": "`dfsNQueens(5).length` should be `10`.",
-          "fr": ""
+          "fr": "`dfsNQueens(5).length` doit valoir `10`."
         },
         {
           "en": "`dfsNQueens(8).length` should be `92`.",
-          "fr": ""
+          "fr": "`dfsNQueens(8).length` doit valoir `92`."
         },
         {
           "en": "`dfsNQueens` should return the correct result.",
-          "fr": ""
+          "fr": "`dfsNQueens` doit renvoyer le résultat correct."
         }
       ]
     }

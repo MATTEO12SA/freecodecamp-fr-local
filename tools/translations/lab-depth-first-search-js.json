@@ -1,7 +1,7 @@
 {
   "workshop": "lab-depth-first-search-js",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -10,74 +10,74 @@
       "dashedName": "implement-depth-first-search-algorithm",
       "title": {
         "en": "Implement the Depth-First Search Algorithm",
-        "fr": ""
+        "fr": "Implémenter l'algorithme de parcours en profondeur"
       },
       "description": [
         {
           "en": "In this lab, you will implement a graph traversal algorithm called <dfn>depth-first search</dfn> (DFS).",
-          "fr": ""
+          "fr": "Dans ce labo, tu vas implémenter un algorithme de parcours de graphe appelé <dfn>parcours en profondeur</dfn> (DFS)."
         },
         {
           "en": "While a <dfn>breadth-first search</dfn> (BFS) explores neighbors level by level, <dfn>depth-first search</dfn> dives as deep as possible down a single path of edges before backtracking.",
-          "fr": ""
+          "fr": "Alors qu'un <dfn>parcours en largeur</dfn> (BFS) explore les voisins niveau par niveau, le <dfn>parcours en profondeur</dfn> plonge aussi loin que possible le long d'un seul chemin d'arêtes avant de revenir en arrière."
         },
         {
           "en": "Once the algorithm reaches the end of a path (a node with no unvisited neighbors), it backtracks to the most recent node that still has unexplored edges and continues the search from there.",
-          "fr": ""
+          "fr": "Une fois que l'algorithme atteint la fin d'un chemin (un nœud sans voisins non visités), il revient au nœud le plus récent qui a encore des arêtes inexplorées et continue la recherche depuis là."
         },
         {
           "en": "To implement this algorithm iteratively, you'll want to use a **stack**. In JavaScript, a standard `Array` serves perfectly as a stack using the `.push()` and `.pop()` methods, following the **Last-In-First-Out (LIFO)** principle. This ensures that the neighbor most recently added to the stack is the next one to be explored.",
-          "fr": ""
+          "fr": "Pour implémenter cet algorithme de façon itérative, tu voudras utiliser une **pile**. En JavaScript, un `Array` standard sert parfaitement de pile avec les méthodes `.push()` et `.pop()`, suivant le principe **Last-In-First-Out (LIFO)**. Cela garantit que le voisin ajouté le plus récemment à la pile est le prochain à être exploré."
         },
         {
           "en": "A simple output of this algorithm is a list of nodes which are reachable from a given node. Therefore, you'll also want to keep track of the nodes you visit.",
-          "fr": ""
+          "fr": "Une sortie simple de cet algorithme est une liste de nœuds atteignables depuis un nœud donné. Tu voudras donc aussi suivre les nœuds que tu visites."
         },
         {
           "en": "**Objective**: Fulfill the user stories below and get all the tests to pass to complete the lab.",
-          "fr": ""
+          "fr": "**Objectif** : Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le labo."
         },
         {
           "en": "**User Stories:**",
-          "fr": ""
+          "fr": "**User Stories :**"
         },
         {
           "en": "1. You should define a function named `dfs`.\n1. The `dfs` function should take two arguments:",
-          "fr": ""
+          "fr": "1. Tu dois définir une fonction nommée `dfs`.\n1. La fonction `dfs` doit prendre deux arguments :"
         },
         {
           "en": "- `graph`: An adjacency matrix (an array of arrays).\n    - `root`: A numeric node label (the starting index) which is the numeric value of the node between `0` and `n - 1`, where `n` is the total number of nodes in the graph.",
-          "fr": ""
+          "fr": "- `graph` : Une matrice d'adjacence (un tableau de tableaux).\n    - `root` : Un label de nœud numérique (l'indice de départ) qui est la valeur numérique du nœud entre `0` et `n - 1`, où `n` est le nombre total de nœuds dans le graphe."
         },
         {
           "en": "1. The function should return an array containing all node labels reachable from the starting node.",
-          "fr": ""
+          "fr": "1. La fonction doit renvoyer un tableau contenant tous les labels de nœuds atteignables depuis le nœud de départ."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `dfs` that takes two arguments.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `dfs` qui prend deux arguments."
         },
         {
           "en": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]], 1)` should return a list with `1`, `2`, `3`, and `0`.",
-          "fr": ""
+          "fr": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]], 1)` doit renvoyer une liste avec `1`, `2`, `3`, et `0`."
         },
         {
           "en": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]], 3)` should return a list with `1`, `2`, `3`, and `0`.",
-          "fr": ""
+          "fr": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]], 3)` doit renvoyer une liste avec `1`, `2`, `3`, et `0`."
         },
         {
           "en": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 0]], 3)` should return `[3]`.",
-          "fr": ""
+          "fr": "`dfs([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 0], [0, 0, 0, 0]], 3)` doit renvoyer `[3]`."
         },
         {
           "en": "`dfs([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], 3)` should return a list with `3` and `2`.",
-          "fr": ""
+          "fr": "`dfs([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], 3)` doit renvoyer une liste avec `3` et `2`."
         },
         {
           "en": "`dfs([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], 0)` should return a list with `0` and `1`.",
-          "fr": ""
+          "fr": "`dfs([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], 0)` doit renvoyer une liste avec `0` et `1`."
         }
       ]
     }

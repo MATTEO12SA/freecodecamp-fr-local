@@ -1,7 +1,7 @@
 {
   "workshop": "lab-sorting-visualizer",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -10,114 +10,114 @@
       "dashedName": "build-a-sorting-visualizer",
       "title": {
         "en": "Build a Sorting Visualizer",
-        "fr": ""
+        "fr": "Crée un visualiseur de tri"
       },
       "description": [
         {
           "en": "The Bubble Sort algorithm sorts a sequence of integers by comparing couples of adjacent elements starting from the beginning of the sequence. If the first element is greater than the second one, it swaps them. Then, it proceeds with the following couple. When the last element of the sequence is reached, it starts a new cycle from the beginning of the sequence, and repeats the process until the elements are sorted. The algorithm stops after one cycle completes with no swaps.",
-          "fr": ""
+          "fr": "L'algorithme du tri à bulles (Bubble Sort) trie une séquence d'entiers en comparant des couples d'éléments adjacents à partir du début de la séquence. Si le premier élément est plus grand que le second, il les échange. Puis il poursuit avec le couple suivant. Lorsque le dernier élément de la séquence est atteint, il recommence un nouveau cycle depuis le début de la séquence, et répète le processus jusqu'à ce que les éléments soient triés. L'algorithme s'arrête après qu'un cycle se termine sans aucun échange."
         },
         {
           "en": "For this lab, you have been provided with all the HTML and CSS. You will use JavaScript to complete the Bubble Sort Visualizer so that it visualizes each step needed by the Bubble Sort algorithm to sort an array of five integers.",
-          "fr": ""
+          "fr": "Pour ce lab, tout le HTML et le CSS t'ont été fournis. Tu vas utiliser JavaScript pour terminer le visualiseur de tri à bulles afin qu'il visualise chaque étape nécessaire à l'algorithme Bubble Sort pour trier un tableau de cinq entiers."
         },
         {
           "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
-          "fr": ""
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
         },
         {
           "en": "**User Stories:**",
-          "fr": ""
+          "fr": "**User Stories :**"
         },
         {
           "en": "1. You should have a function named `generateElement` that returns a random integer between `1` and `100`, inclusive.\n1. You should have a function named `generateArray` that uses the `generateElement` function to return an array containing five random integers.\n1. You should have a function named `generateContainer` that creates and returns an empty `div` element.\n1. You should have a function named `fillArrContainer` that takes an HTML element as the first argument and an array as the second argument.\n1. The `fillArrContainer` should take an element as its first parameter and an array of integers as its second parameter, then populate the element with five `span` elements, with each `span` showing one of the integers from the array.\n1. You should have a function named `isOrdered` that takes two integers and returns a boolean indicating if the first integer is less than or equal to the second.\n1. You should have a function named `swapElements` that takes an array of integers and a numeric index.\n1. The `swapElements` function should modify the array in place by swapping the element at the passed index and the following element if `isOrdered` returns `false`.\n1. You should have a function named `highlightCurrentEls` that takes an HTML element and a numeric index.\n1. The `highlightCurrentEls` function should set the `border` of the given element's child at the given index, and the child immediately after the index, to have a `dashed` style, a `red` color, and a width of your choice.\n1. When you click `#generate-btn` you should use the `fillArrContainer` function to fill `#starting-array` with five `span` elements, each with a random number as its text. If present, other elements should be removed from `#array-container`.\n1. You should implement the Bubble Sort algorithm so that after you click `#sort-btn`, `#array-container` contains a `div` element for each of the steps required by the Bubble Sort algorithm to sort the starting array, including the `div` representing the starting array and a `div` representing the sorted array. The functions you have created so far can be useful here.\n1. Each `div` should contain five `span` elements, representing the array in its current state of being sorted.\n1. After you click `#sort-btn`, `#starting-array` should represent the starting step with the initial array and the first two integers highlighted.\n1. For each sorting step, you should use `highlightCurrentEls` to highlight the two numbers that are being compared, and swap them in the next step by using `swapElements`.",
-          "fr": ""
+          "fr": "1. Tu dois avoir une fonction nommée `generateElement` qui renvoie un entier aléatoire entre `1` et `100`, inclus.\n1. Tu dois avoir une fonction nommée `generateArray` qui utilise la fonction `generateElement` pour renvoyer un tableau contenant cinq entiers aléatoires.\n1. Tu dois avoir une fonction nommée `generateContainer` qui crée et renvoie un élément `div` vide.\n1. Tu dois avoir une fonction nommée `fillArrContainer` qui prend un élément HTML comme premier argument et un tableau comme second argument.\n1. `fillArrContainer` doit prendre un élément comme premier paramètre et un tableau d'entiers comme second paramètre, puis remplir l'élément avec cinq éléments `span`, chaque `span` affichant l'un des entiers du tableau.\n1. Tu dois avoir une fonction nommée `isOrdered` qui prend deux entiers et renvoie un booléen indiquant si le premier entier est inférieur ou égal au second.\n1. Tu dois avoir une fonction nommée `swapElements` qui prend un tableau d'entiers et un indice numérique.\n1. La fonction `swapElements` doit modifier le tableau en place en échangeant l'élément à l'indice passé et l'élément suivant si `isOrdered` renvoie `false`.\n1. Tu dois avoir une fonction nommée `highlightCurrentEls` qui prend un élément HTML et un indice numérique.\n1. La fonction `highlightCurrentEls` doit définir la `border` de l'enfant de l'élément donné à l'indice donné, et de l'enfant immédiatement après l'indice, avec un style `dashed`, une couleur `red`, et une largeur de ton choix.\n1. Lorsque tu cliques sur `#generate-btn`, tu dois utiliser la fonction `fillArrContainer` pour remplir `#starting-array` avec cinq éléments `span`, chacun avec un nombre aléatoire comme texte. S'ils sont présents, les autres éléments doivent être retirés de `#array-container`.\n1. Tu dois implémenter l'algorithme Bubble Sort de sorte qu'après avoir cliqué sur `#sort-btn`, `#array-container` contienne un élément `div` pour chacune des étapes requises par l'algorithme Bubble Sort pour trier le tableau de départ, y compris le `div` représentant le tableau de départ et un `div` représentant le tableau trié. Les fonctions que tu as créées jusqu'ici peuvent être utiles ici.\n1. Chaque `div` doit contenir cinq éléments `span`, représentant le tableau dans son état actuel de tri.\n1. Après avoir cliqué sur `#sort-btn`, `#starting-array` doit représenter l'étape de départ avec le tableau initial et les deux premiers entiers surlignés.\n1. Pour chaque étape de tri, tu dois utiliser `highlightCurrentEls` pour surligner les deux nombres en cours de comparaison, et les échanger à l'étape suivante en utilisant `swapElements`."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `generateElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `generateElement`."
         },
         {
           "en": "Your `generateElement` function should return a random integer between `1` and `100` inclusive.",
-          "fr": ""
+          "fr": "Ta fonction `generateElement` doit renvoyer un entier aléatoire entre `1` et `100` inclus."
         },
         {
           "en": "You should have a function named `generateArray`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `generateArray`."
         },
         {
           "en": "Your `generateArray` function should make use of the `generateElement` function.",
-          "fr": ""
+          "fr": "Ta fonction `generateArray` doit utiliser la fonction `generateElement`."
         },
         {
           "en": "Your `generateArray` function should return an array containing five random integers between `1` and `100`.",
-          "fr": ""
+          "fr": "Ta fonction `generateArray` doit renvoyer un tableau contenant cinq entiers aléatoires entre `1` et `100`."
         },
         {
           "en": "You should have a function named `generateContainer`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `generateContainer`."
         },
         {
           "en": "Your `generateContainer` function should return an empty `div` element.",
-          "fr": ""
+          "fr": "Ta fonction `generateContainer` doit renvoyer un élément `div` vide."
         },
         {
           "en": "You should have a function named `fillArrContainer`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `fillArrContainer`."
         },
         {
           "en": "Your `fillArrContainer()` should take an element as its first parameter and an array of integers as its second parameter, then populate the element with five `span` elements, with each `span` showing one of the integers from the array.",
-          "fr": ""
+          "fr": "Ta fonction `fillArrContainer()` doit prendre un élément comme premier paramètre et un tableau d'entiers comme second paramètre, puis remplir l'élément avec cinq éléments `span`, chaque `span` affichant l'un des entiers du tableau."
         },
         {
           "en": "You should have a function named `isOrdered`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `isOrdered`."
         },
         {
           "en": "Your `isOrdered` function should take two integers and should return a boolean indicating if the first integer is less than or equal to the second.",
-          "fr": ""
+          "fr": "Ta fonction `isOrdered` doit prendre deux entiers et renvoyer un booléen indiquant si le premier entier est inférieur ou égal au second."
         },
         {
           "en": "You should have a function named `swapElements`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `swapElements`."
         },
         {
           "en": "Your `swapElements` function take an array of integers and a numeric index as arguments. It should modify the array passed in place by swapping the element at the given index and the following element if the first element is greater than the second.",
-          "fr": ""
+          "fr": "Ta fonction `swapElements` prend un tableau d'entiers et un indice numérique comme arguments. Elle doit modifier le tableau passé en place en échangeant l'élément à l'indice donné et l'élément suivant si le premier élément est plus grand que le second."
         },
         {
           "en": "You should have a function named `highlightCurrentEls`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `highlightCurrentEls`."
         },
         {
           "en": "Your `highlightCurrentEls` function should give the descendants of the specified element, located at the given index and the next index, a border that is `dashed`, `red`, and set to a width of your choice.",
-          "fr": ""
+          "fr": "Ta fonction `highlightCurrentEls` doit donner aux descendants de l'élément spécifié, situés à l'indice donné et à l'indice suivant, une bordure `dashed`, `red`, et d'une largeur de ton choix."
         },
         {
           "en": "When you click `#generate-btn` you should fill `#starting-array` with five `span` elements, each with a random number between `1` and `100` as its text.",
-          "fr": ""
+          "fr": "Lorsque tu cliques sur `#generate-btn`, tu dois remplir `#starting-array` avec cinq éléments `span`, chacun avec un nombre aléatoire entre `1` et `100` comme texte."
         },
         {
           "en": "When `#starting-array` already contains a generated array, or `#array-container` contains the sorted array, clicking the `#generate-btn` should remove other elements in the `#array-container`, leaving only `#starting-array` with newly generated numbers.",
-          "fr": ""
+          "fr": "Lorsque `#starting-array` contient déjà un tableau généré, ou que `#array-container` contient le tableau trié, cliquer sur `#generate-btn` doit retirer les autres éléments de `#array-container`, en ne laissant que `#starting-array` avec des nombres nouvellement générés."
         },
         {
           "en": "After you click `#sort-btn`, `#array-container` should contain as many `div` elements as the steps required by the Bubble Sort algorithm to sort the starting array, including the `div` representing the starting array and a `div` representing the sorted array.",
-          "fr": ""
+          "fr": "Après avoir cliqué sur `#sort-btn`, `#array-container` doit contenir autant d'éléments `div` que d'étapes requises par l'algorithme Bubble Sort pour trier le tableau de départ, y compris le `div` représentant le tableau de départ et un `div` représentant le tableau trié."
         },
         {
           "en": "After you click `#sort-btn`, each `div` within `#array-container` should contain five `span`, each with a number as its text, and arranged to represent the steps required by Bubble Sort algorithm to sort the starting array.",
-          "fr": ""
+          "fr": "Après avoir cliqué sur `#sort-btn`, chaque `div` dans `#array-container` doit contenir cinq `span`, chacun avec un nombre comme texte, et arrangés pour représenter les étapes requises par l'algorithme Bubble Sort pour trier le tableau de départ."
         },
         {
           "en": "When you click the `#sort-btn`, you should make use of the `highlightCurrentEls` function to highlight the elements being compared in each step.",
-          "fr": ""
+          "fr": "Lorsque tu cliques sur `#sort-btn`, tu dois utiliser la fonction `highlightCurrentEls` pour surligner les éléments comparés à chaque étape."
         },
         {
           "en": "After you click `#sort-btn`, `#starting-array` should represent the starting step with the initial array and the first two integers highlighted using `highlightCurrentEls`.",
-          "fr": ""
+          "fr": "Après avoir cliqué sur `#sort-btn`, `#starting-array` doit représenter l'étape de départ avec le tableau initial et les deux premiers entiers surlignés à l'aide de `highlightCurrentEls`."
         }
       ]
     }

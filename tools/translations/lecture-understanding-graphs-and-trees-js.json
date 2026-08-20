@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-graphs-and-trees-js",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-are-graphs-in-computer-science",
       "title": {
         "en": "What Are Graphs in Computer Science?",
-        "fr": ""
+        "fr": "Que sont les graphes en informatique ?"
       },
       "sections": [
         {
@@ -19,251 +19,251 @@
           "chunks": [
             {
               "en": "Graphs are data structures used to represent the connections or relationships between objects or entities. They're often used to model networks.",
-              "fr": ""
+              "fr": "Les graphes sont des structures de données utilisées pour représenter les connexions ou les relations entre des objets ou des entités. On les utilise souvent pour modéliser des réseaux."
             },
             {
               "en": "The types of networks that you can model with a graph include social networks, transportation networks, communications networks, and even recommendation systems.",
-              "fr": ""
+              "fr": "Les types de réseaux que tu peux modéliser avec un graphe incluent les réseaux sociaux, les réseaux de transport, les réseaux de communication, et même les systèmes de recommandation."
             },
             {
               "en": "For example, graphs can represent connections between users on a social media platform, or connections between cities on a road network.",
-              "fr": ""
+              "fr": "Par exemple, les graphes peuvent représenter les connexions entre utilisateurs sur une plateforme de réseaux sociaux, ou les connexions entre villes sur un réseau routier."
             },
             {
               "en": "They're very versatile.",
-              "fr": ""
+              "fr": "Ils sont très polyvalents."
             },
             {
               "en": "A graph is often represented as a collection of points or circles connected by lines.",
-              "fr": ""
+              "fr": "Un graphe est souvent représenté comme une collection de points ou de cercles reliés par des lignes."
             },
             {
               "en": "These circles and lines represent the two main components of a graph: nodes and edges.",
-              "fr": ""
+              "fr": "Ces cercles et ces lignes représentent les deux composantes principales d'un graphe : les nœuds et les arêtes."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"A simple graph showing five nodes labeled A, B, C, D, and E connected by edges. Node A connects to B, B connects to A, C, and D, C connects to B and D, D connects to B, C, and E, and E connects to D.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"Un graphe simple montrant cinq nœuds étiquetés A, B, C, D et E reliés par des arêtes. Le nœud A est relié à B, B est relié à A, C et D, C est relié à B et D, D est relié à B, C et E, et E est relié à D.\">"
             },
             {
               "en": "**Nodes**, also known as vertices, represent the objects or entities that are part of the network modeled by the graph. They could be users, products, stations, cities, or any other entities in the model.",
-              "fr": ""
+              "fr": "**Les nœuds**, aussi appelés sommets, représentent les objets ou entités qui font partie du réseau modélisé par le graphe. Ce peuvent être des utilisateurs, des produits, des stations, des villes, ou toute autre entité du modèle."
             },
             {
               "en": "In this example, nodes are represented as circles and labeled with the letters A, B, C, D, and E to distinguish them visually.",
-              "fr": ""
+              "fr": "Dans cet exemple, les nœuds sont représentés par des cercles et étiquetés avec les lettres A, B, C, D et E pour les distinguer visuellement."
             },
             {
               "en": "**Edges** are the connections between the nodes. If two nodes are connected by an edge, that means that they're somehow connected in the network.",
-              "fr": ""
+              "fr": "**Les arêtes** sont les connexions entre les nœuds. Si deux nœuds sont reliés par une arête, cela signifie qu'ils sont d'une certaine façon connectés dans le réseau."
             },
             {
               "en": "In this example, there are five edges connecting the different pairs of nodes. Node A is connected to node B. node B is connected to nodes A, C, and D and so on.",
-              "fr": ""
+              "fr": "Dans cet exemple, il y a cinq arêtes reliant les différentes paires de nœuds. Le nœud A est relié au nœud B. Le nœud B est relié aux nœuds A, C et D, et ainsi de suite."
             },
             {
               "en": "The specific meaning of the connection will depend on the context. It may be physical, like a real road that connects two cities, or it could be more abstract, like the connection between two users on a social media platform.",
-              "fr": ""
+              "fr": "La signification précise de la connexion dépendra du contexte. Elle peut être physique, comme une vraie route qui relie deux villes, ou plus abstraite, comme la connexion entre deux utilisateurs sur une plateforme de réseaux sociaux."
             },
             {
               "en": "If two nodes are directly connected by an edge, like nodes A and B in this example, they're known as **adjacent nodes**.",
-              "fr": ""
+              "fr": "Si deux nœuds sont directement reliés par une arête, comme les nœuds A et B dans cet exemple, on les appelle des **nœuds adjacents**."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-2.png\" alt=\"The same graph with nodes A and B highlighted to illustrate adjacent nodes - two nodes that are directly connected by an edge.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-2.png\" alt=\"Le même graphe avec les nœuds A et B mis en évidence pour illustrer les nœuds adjacents - deux nœuds directement reliés par une arête.\">"
             },
             {
               "en": "## Types of Graphs",
-              "fr": ""
+              "fr": "## Types de graphes"
             },
             {
               "en": "There are different types of graphs with different characteristics and applications. Let's go over some of them.",
-              "fr": ""
+              "fr": "Il existe différents types de graphes avec des caractéristiques et des applications différentes. Passons-en quelques-uns en revue."
             },
             {
               "en": "### Undirected Graphs",
-              "fr": ""
+              "fr": "### Graphes non orientés"
             },
             {
               "en": "**Undirected graphs** are graphs where the edges don't have a specific direction. This type of edge is usually represented with a straight line between the nodes.",
-              "fr": ""
+              "fr": "**Les graphes non orientés** sont des graphes dont les arêtes n'ont pas de direction spécifique. Ce type d'arête est généralement représenté par une ligne droite entre les nœuds."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"An example of an undirected graph where all edges are represented as straight lines without arrows, demonstrating that connections work in both directions between nodes.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"Un exemple de graphe non orienté où toutes les arêtes sont représentées par des lignes droites sans flèches, montrant que les connexions fonctionnent dans les deux sens entre les nœuds.\">"
             },
             {
               "en": "This means that, if there's an edge connecting nodes A and B, the connection works in both directions: from node A to node B and from node B to node A.",
-              "fr": ""
+              "fr": "Cela signifie que, s'il y a une arête reliant les nœuds A et B, la connexion fonctionne dans les deux directions : du nœud A au nœud B et du nœud B au nœud A."
             },
             {
               "en": "Depending on the network that is being modeled by the graph, this connection can have different meanings.",
-              "fr": ""
+              "fr": "Selon le réseau modélisé par le graphe, cette connexion peut avoir différentes significations."
             },
             {
               "en": "For example, if you're modeling connections between users of a social media platform, this means that user A is connected to user B and user B is connected to user A. The connection is bidirectional.",
-              "fr": ""
+              "fr": "Par exemple, si tu modélises les connexions entre utilisateurs d'une plateforme de réseaux sociaux, cela signifie que l'utilisateur A est connecté à l'utilisateur B et l'utilisateur B est connecté à l'utilisateur A. La connexion est bidirectionnelle."
             },
             {
               "en": "### Directed Graphs",
-              "fr": ""
+              "fr": "### Graphes orientés"
             },
             {
               "en": "In contrast, **directed graphs** are graphs where the edges do have a specific direction.",
-              "fr": ""
+              "fr": "En revanche, **les graphes orientés** sont des graphes dont les arêtes ont une direction spécifique."
             },
             {
               "en": "If there is a connection from node A to node B, that doesn't necessarily imply that there is a connection from node B to node A.",
-              "fr": ""
+              "fr": "S'il y a une connexion du nœud A au nœud B, cela n'implique pas nécessairement qu'il y a une connexion du nœud B au nœud A."
             },
             {
               "en": "The edges of a directed graph are often represented as straight lines that end with an arrow to indicate the direction.",
-              "fr": ""
+              "fr": "Les arêtes d'un graphe orienté sont souvent représentées par des lignes droites qui se terminent par une flèche pour indiquer la direction."
             },
             {
               "en": "Here's an example. In this graph, you can go from node A to node B but not from node B to node A because of the direction of the edge.",
-              "fr": ""
+              "fr": "Voici un exemple. Dans ce graphe, tu peux aller du nœud A au nœud B mais pas du nœud B au nœud A à cause de la direction de l'arête."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-4.png\" alt=\"A directed graph example showing the same nodes as before but with arrows indicating specific one-way connections: from A to B, B to C, C to D, D to B, and D to E, demonstrating unidirectional edges.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-4.png\" alt=\"Un exemple de graphe orienté montrant les mêmes nœuds qu'auparavant mais avec des flèches indiquant des connexions unidirectionnelles spécifiques : de A vers B, B vers C, C vers D, D vers B, et D vers E, illustrant des arêtes unidirectionnelles.\">"
             },
             {
               "en": "For example, if you are modeling a road network, this would be helpful to model one-way streets or roads. You can go from city A to city B through that road, but not from city B to city A. You'll need to take a different route.",
-              "fr": ""
+              "fr": "Par exemple, si tu modélises un réseau routier, cela serait utile pour modéliser des rues ou des routes à sens unique. Tu peux aller de la ville A à la ville B via cette route, mais pas de la ville B à la ville A. Tu devras emprunter un autre itinéraire."
             },
             {
               "en": "If there is a two-way connection between the nodes of a directed graph, you can represent this with two directed edges between them.",
-              "fr": ""
+              "fr": "S'il y a une connexion à double sens entre les nœuds d'un graphe orienté, tu peux la représenter avec deux arêtes orientées entre eux."
             },
             {
               "en": "Here you can see an example. You can go from node B to node D and from node D to node B because there are two edges connecting them, but each edge has a direction.",
-              "fr": ""
+              "fr": "Voici un exemple. Tu peux aller du nœud B au nœud D et du nœud D au nœud B parce qu'il y a deux arêtes qui les relient, mais chaque arête a une direction."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-5.png\" alt=\"A directed graph showing bidirectional connection between nodes B and D with two arrows, one pointing from B to D and another from D to B.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-5.png\" alt=\"Un graphe orienté montrant une connexion bidirectionnelle entre les nœuds B et D avec deux flèches, l'une pointant de B vers D et l'autre de D vers B.\">"
             },
             {
               "en": "## Vertex Labeled Graphs",
-              "fr": ""
+              "fr": "## Graphes avec sommets étiquetés"
             },
             {
               "en": "A **vertex labeled graph** is a graph in which each node is associated with a label or identifier in addition to its data. These labels are used to identify the nodes, represent them visually, and store additional information about them.",
-              "fr": ""
+              "fr": "Un **graphe avec sommets étiquetés** est un graphe dans lequel chaque nœud est associé à une étiquette ou un identifiant en plus de ses données. Ces étiquettes servent à identifier les nœuds, à les représenter visuellement, et à stocker des informations supplémentaires à leur sujet."
             },
             {
               "en": "For example, in a transportation network graph, nodes could be cities and their labels could be their names, coordinates, or any other characteristic that would be helpful for the purposes of the model.",
-              "fr": ""
+              "fr": "Par exemple, dans un graphe de réseau de transport, les nœuds pourraient être des villes et leurs étiquettes pourraient être leurs noms, leurs coordonnées, ou toute autre caractéristique utile pour les besoins du modèle."
             },
             {
               "en": "## Cyclic Graphs",
-              "fr": ""
+              "fr": "## Graphes cycliques"
             },
             {
               "en": "**Cyclic graphs** are directed graphs with at least one cycle.",
-              "fr": ""
+              "fr": "**Les graphes cycliques** sont des graphes orientés comportant au moins un cycle."
             },
             {
               "en": "A **cycle** is a path that you can follow through the edges of a graph that will take you back to the initial node where you started.",
-              "fr": ""
+              "fr": "Un **cycle** est un chemin que tu peux suivre à travers les arêtes d'un graphe et qui te ramène au nœud initial où tu as commencé."
             },
             {
               "en": "In this example, we have a directed graph. If you look more closely, you'll notice that it has a cycle. If we start at node B, go to node C, and then to node D, we can go back to node B again through the directed edges.",
-              "fr": ""
+              "fr": "Dans cet exemple, nous avons un graphe orienté. Si tu regardes de plus près, tu remarqueras qu'il a un cycle. Si nous partons du nœud B, allons au nœud C, puis au nœud D, nous pouvons revenir au nœud B via les arêtes orientées."
             },
             {
               "en": "This is a cycle, so this is a cyclic graph.",
-              "fr": ""
+              "fr": "C'est un cycle, donc c'est un graphe cyclique."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-6.png\" alt=\"A directed graph showing a cycle where you can start at node B, go to node C, then to node D, and back to node B, forming a complete cycle.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-6.png\" alt=\"Un graphe orienté montrant un cycle où tu peux partir du nœud B, aller au nœud C, puis au nœud D, et revenir au nœud B, formant un cycle complet.\">"
             },
             {
               "en": "## Edge Labeled Graphs",
-              "fr": ""
+              "fr": "## Graphes avec arêtes étiquetées"
             },
             {
               "en": "In **edge labeled graphs**, edges are associated with labels. These labels are usually drawn next to their corresponding edges.",
-              "fr": ""
+              "fr": "Dans les **graphes avec arêtes étiquetées**, les arêtes sont associées à des étiquettes. Ces étiquettes sont généralement dessinées à côté de leurs arêtes correspondantes."
             },
             {
               "en": "## Weighted Graphs",
-              "fr": ""
+              "fr": "## Graphes pondérés"
             },
             {
               "en": "**Weighted graphs** are a specific type of edge labeled graph in which the labels on the edges represent values that can be compared and used to perform arithmetic operations.",
-              "fr": ""
+              "fr": "**Les graphes pondérés** sont un type spécifique de graphe avec arêtes étiquetées dans lequel les étiquettes sur les arêtes représentent des valeurs qui peuvent être comparées et utilisées pour effectuer des opérations arithmétiques."
             },
             {
               "en": "Some edges have a higher weight, while others have a lower weight. These weights represent the \"cost\" of the edge.",
-              "fr": ""
+              "fr": "Certaines arêtes ont un poids plus élevé, tandis que d'autres ont un poids plus faible. Ces poids représentent le « coût » de l'arête."
             },
             {
               "en": "For example, they may represent the distance between two cities or the time it takes to get from one city to the next.",
-              "fr": ""
+              "fr": "Par exemple, ils peuvent représenter la distance entre deux villes ou le temps nécessaire pour aller d'une ville à la suivante."
             },
             {
               "en": "This is an example of a weighted graph. We write each weight next to its corresponding edge. The \"cost\" of going from node B to node D is 3, and since this is an undirected graph, that's the same cost of going from node D back to node B.",
-              "fr": ""
+              "fr": "Voici un exemple de graphe pondéré. Nous écrivons chaque poids à côté de son arête correspondante. Le « coût » pour aller du nœud B au nœud D est 3, et comme c'est un graphe non orienté, c'est le même coût pour aller du nœud D au nœud B."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-7.png\" alt=\"A weighted graph showing nodes connected by edges with numerical weights labeled next to each edge, such as weight 3 between nodes B and D.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-7.png\" alt=\"Un graphe pondéré montrant des nœuds reliés par des arêtes avec des poids numériques étiquetés à côté de chaque arête, comme le poids 3 entre les nœuds B et D.\">"
             },
             {
               "en": "## Directed Acyclic Graph",
-              "fr": ""
+              "fr": "## Graphe orienté acyclique"
             },
             {
               "en": "Another very common type of graph in computer science is the **directed acyclic graph**, which is a directed graph with no cycles.",
-              "fr": ""
+              "fr": "Un autre type de graphe très courant en informatique est le **graphe orienté acyclique**, qui est un graphe orienté sans cycles."
             },
             {
               "en": "Here's an example. It's a directed graph because each edge has a direction.",
-              "fr": ""
+              "fr": "Voici un exemple. C'est un graphe orienté parce que chaque arête a une direction."
             },
             {
               "en": "It's acyclic because it doesn't have any cycles. Why? Notice that, if you start at a specific node, you cannot go back to it because of the direction of the edges.",
-              "fr": ""
+              "fr": "Il est acyclique parce qu'il n'a aucun cycle. Pourquoi ? Remarque que, si tu pars d'un nœud spécifique, tu ne peux pas y revenir à cause de la direction des arêtes."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-8.png\" alt=\"A directed acyclic graph (DAG) with connections from A to B, B to C, B to D, C to D, and D to E, demonstrating how the directional flow prevents any cycles from forming.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-8.png\" alt=\"Un graphe orienté acyclique (DAG) avec des connexions de A vers B, B vers C, B vers D, C vers D, et D vers E, montrant comment le flux directionnel empêche la formation de tout cycle.\">"
             },
             {
               "en": "## Disconnected Graph",
-              "fr": ""
+              "fr": "## Graphe non connexe"
             },
             {
               "en": "And the last type of graph that we'll cover in this lesson is the **disconnected graph**.",
-              "fr": ""
+              "fr": "Et le dernier type de graphe que nous couvrirons dans cette leçon est le **graphe non connexe**."
             },
             {
               "en": "A disconnected graph is a graph with two or more groups of nodes that are not connected by any edges.",
-              "fr": ""
+              "fr": "Un graphe non connexe est un graphe avec deux ou plusieurs groupes de nœuds qui ne sont reliés par aucune arête."
             },
             {
               "en": "A real-world example would be a social media network, where you have two or more groups of people who don't know each other and who have no friends in common.",
-              "fr": ""
+              "fr": "Un exemple concret serait un réseau social, où tu as deux ou plusieurs groupes de personnes qui ne se connaissent pas et qui n'ont aucun ami en commun."
             },
             {
               "en": "This is an example. The first component has the nodes A, B, and C. The second component has the nodes D and E. These components don't have any edges between them, so this is a disconnected graph.",
-              "fr": ""
+              "fr": "Voici un exemple. La première composante a les nœuds A, B et C. La deuxième composante a les nœuds D et E. Ces composantes n'ont aucune arête entre elles, donc c'est un graphe non connexe."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-9.png\" alt=\"A disconnected graph showing two separate components: the first component has nodes A, B, and C connected in sequence (A connects to B, B connects to C), and the second component has nodes D and E connected to each other, with no connections between the two components.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-9.png\" alt=\"Un graphe non connexe montrant deux composantes séparées : la première composante a les nœuds A, B et C reliés en séquence (A est relié à B, B est relié à C), et la deuxième composante a les nœuds D et E reliés l'un à l'autre, sans aucune connexion entre les deux composantes.\">"
             },
             {
               "en": "You can implement graphs in a variety of ways, including sets, functions, and arrays. You'll learn more about this in the coming lessons.",
-              "fr": ""
+              "fr": "Tu peux implémenter des graphes de diverses façons, notamment avec des ensembles, des fonctions et des tableaux. Tu en apprendras davantage dans les prochaines leçons."
             },
             {
               "en": "Understanding graphs and the characteristics of the different types of graphs is essential for solving a wide range of problems in computer science and other fields.",
-              "fr": ""
+              "fr": "Comprendre les graphes et les caractéristiques des différents types de graphes est essentiel pour résoudre un large éventail de problèmes en informatique et dans d'autres domaines."
             }
           ]
         },
@@ -273,7 +273,7 @@
           "chunks": [
             {
               "en": "What is a graph in computer science?",
-              "fr": ""
+              "fr": "Qu'est-ce qu'un graphe en informatique ?"
             }
           ]
         },
@@ -283,11 +283,11 @@
           "chunks": [
             {
               "en": "A data structure used to represent relationships between objects.",
-              "fr": ""
+              "fr": "Une structure de données utilisée pour représenter les relations entre des objets."
             },
             {
               "en": "A mathematical equation.",
-              "fr": ""
+              "fr": "Une équation mathématique."
             }
           ]
         },
@@ -297,11 +297,11 @@
           "chunks": [
             {
               "en": "Think about how graphs are used to model connections and relationships.",
-              "fr": ""
+              "fr": "Pense à la façon dont les graphes sont utilisés pour modéliser des connexions et des relations."
             },
             {
               "en": "A visual representation of data.",
-              "fr": ""
+              "fr": "Une représentation visuelle de données."
             }
           ]
         },
@@ -311,11 +311,11 @@
           "chunks": [
             {
               "en": "Think about how graphs are used to model connections and relationships.",
-              "fr": ""
+              "fr": "Pense à la façon dont les graphes sont utilisés pour modéliser des connexions et des relations."
             },
             {
               "en": "A programming language.",
-              "fr": ""
+              "fr": "Un langage de programmation."
             }
           ]
         },
@@ -325,7 +325,7 @@
           "chunks": [
             {
               "en": "Think about how graphs are used to model connections and relationships.",
-              "fr": ""
+              "fr": "Pense à la façon dont les graphes sont utilisés pour modéliser des connexions et des relations."
             }
           ]
         },
@@ -335,7 +335,7 @@
           "chunks": [
             {
               "en": "What are the two main components of a graph?",
-              "fr": ""
+              "fr": "Quelles sont les deux composantes principales d'un graphe ?"
             }
           ]
         },
@@ -345,7 +345,7 @@
           "chunks": [
             {
               "en": "Points and lines",
-              "fr": ""
+              "fr": "Points et lignes"
             }
           ]
         },
@@ -355,11 +355,11 @@
           "chunks": [
             {
               "en": "Think about the basic building blocks of a graph.",
-              "fr": ""
+              "fr": "Pense aux éléments de base qui constituent un graphe."
             },
             {
               "en": "Vertices and nodes",
-              "fr": ""
+              "fr": "Sommets et nœuds"
             }
           ]
         },
@@ -369,15 +369,15 @@
           "chunks": [
             {
               "en": "Think about the basic building blocks of a graph.",
-              "fr": ""
+              "fr": "Pense aux éléments de base qui constituent un graphe."
             },
             {
               "en": "Nodes and edges",
-              "fr": ""
+              "fr": "Nœuds et arêtes"
             },
             {
               "en": "Elements and vertices",
-              "fr": ""
+              "fr": "Éléments et sommets"
             }
           ]
         },
@@ -387,7 +387,7 @@
           "chunks": [
             {
               "en": "Think about the basic building blocks of a graph.",
-              "fr": ""
+              "fr": "Pense aux éléments de base qui constituent un graphe."
             }
           ]
         },
@@ -397,7 +397,7 @@
           "chunks": [
             {
               "en": "What is a directed graph?",
-              "fr": ""
+              "fr": "Qu'est-ce qu'un graphe orienté ?"
             }
           ]
         },
@@ -407,7 +407,7 @@
           "chunks": [
             {
               "en": "A graph where edges do not have a direction.",
-              "fr": ""
+              "fr": "Un graphe dont les arêtes n'ont pas de direction."
             }
           ]
         },
@@ -417,15 +417,15 @@
           "chunks": [
             {
               "en": "Think about whether the connections between nodes have a specific direction.",
-              "fr": ""
+              "fr": "Pense à savoir si les connexions entre les nœuds ont une direction spécifique."
             },
             {
               "en": "A graph where edges have a direction.",
-              "fr": ""
+              "fr": "Un graphe dont les arêtes ont une direction."
             },
             {
               "en": "A graph with more nodes than edges.",
-              "fr": ""
+              "fr": "Un graphe avec plus de nœuds que d'arêtes."
             }
           ]
         },
@@ -435,11 +435,11 @@
           "chunks": [
             {
               "en": "Think about whether the connections between nodes have a specific direction.",
-              "fr": ""
+              "fr": "Pense à savoir si les connexions entre les nœuds ont une direction spécifique."
             },
             {
               "en": "A graph with more edges than nodes.",
-              "fr": ""
+              "fr": "Un graphe avec plus d'arêtes que de nœuds."
             }
           ]
         },
@@ -449,7 +449,7 @@
           "chunks": [
             {
               "en": "Think about whether the connections between nodes have a specific direction.",
-              "fr": ""
+              "fr": "Pense à savoir si les connexions entre les nœuds ont une direction spécifique."
             }
           ]
         }
@@ -461,7 +461,7 @@
       "dashedName": "how-do-depth-first-and-breadth-first-search-work",
       "title": {
         "en": "How Do Depth First and Breadth First Search Work?",
-        "fr": ""
+        "fr": "Comment fonctionnent le parcours en profondeur et le parcours en largeur ?"
       },
       "sections": [
         {
@@ -470,391 +470,391 @@
           "chunks": [
             {
               "en": "As you start working with data structures and algorithms, you'll soon realize that one of the common operations that you'll need to perform is visiting each node.",
-              "fr": ""
+              "fr": "Quand tu commences à travailler avec les structures de données et les algorithmes, tu te rendras bientôt compte que l'une des opérations courantes que tu auras à effectuer est de visiter chaque nœud."
             },
             {
               "en": "This process is known as \"traversing\" the data structure.",
-              "fr": ""
+              "fr": "Ce processus est connu sous le nom de « parcours » de la structure de données."
             },
             {
               "en": "Traversals are used to do something with every single node in the data structure, like printing their values, finding a specific value, or performing certain operations on the nodes.",
-              "fr": ""
+              "fr": "Les parcours servent à faire quelque chose avec chaque nœud de la structure de données, comme afficher leurs valeurs, trouver une valeur spécifique, ou effectuer certaines opérations sur les nœuds."
             },
             {
               "en": "By systematically visiting each node, you make sure that the process won't skip any nodes.",
-              "fr": ""
+              "fr": "En visitant systématiquement chaque nœud, tu t'assures que le processus ne sautera aucun nœud."
             },
             {
               "en": "But how do you determine the order in which you should traverse the data structure? Where should the process start, and how should the next node be selected?",
-              "fr": ""
+              "fr": "Mais comment déterminer l'ordre dans lequel tu dois parcourir la structure de données ? Où le processus doit-il commencer, et comment le nœud suivant doit-il être sélectionné ?"
             },
             {
               "en": "Without a clear way to traverse the data structure, going through it would be like walking through a maze without a specific path to follow.",
-              "fr": ""
+              "fr": "Sans une façon claire de parcourir la structure de données, la traverser serait comme marcher dans un labyrinthe sans chemin précis à suivre."
             },
             {
               "en": "That's where algorithms like breadth-first search (BFS) and depth-first search (DFS) become really important. They are commonly used to traverse graphs and for finding a path between two nodes.",
-              "fr": ""
+              "fr": "C'est là que des algorithmes comme le parcours en largeur (BFS) et le parcours en profondeur (DFS) deviennent vraiment importants. Ils sont couramment utilisés pour parcourir des graphes et pour trouver un chemin entre deux nœuds."
             },
             {
               "en": "When they are used to traverse a data structure, they define the order in which the nodes should be visited to make sure that none of them is skipped.",
-              "fr": ""
+              "fr": "Quand ils sont utilisés pour parcourir une structure de données, ils définissent l'ordre dans lequel les nœuds doivent être visités pour s'assurer qu'aucun d'eux n'est sauté."
             },
             {
               "en": "Let's start with breadth-first search (BFS).",
-              "fr": ""
+              "fr": "Commençons par le parcours en largeur (BFS)."
             },
             {
               "en": "## Breadth-First Search (BFS)",
-              "fr": ""
+              "fr": "## Parcours en largeur (BFS)"
             },
             {
               "en": "**Breadth-first search (BFS)** is an algorithm that visits all neighboring nodes before moving to the next level in the graph.",
-              "fr": ""
+              "fr": "**Le parcours en largeur (BFS)** est un algorithme qui visite tous les nœuds voisins avant de passer au niveau suivant dans le graphe."
             },
             {
               "en": "It can be used to find the shortest path between two nodes in an unweighted graph because it analyzes all the nodes at each level, so it finds the path with fewest edges first.",
-              "fr": ""
+              "fr": "Il peut être utilisé pour trouver le plus court chemin entre deux nœuds dans un graphe non pondéré, car il analyse tous les nœuds à chaque niveau, donc il trouve d'abord le chemin avec le moins d'arêtes."
             },
             {
               "en": "This algorithm is commonly implemented using a queue data structure to keep track of the nodes that have been visited. Queues follow the FIFO (first in, first out) method, where the first node that was added to the queue is the first one to be removed.",
-              "fr": ""
+              "fr": "Cet algorithme est couramment implémenté avec une structure de données de type file pour suivre les nœuds qui ont été visités. Les files suivent la méthode FIFO (premier entré, premier sorti), où le premier nœud ajouté à la file est le premier à être retiré."
             },
             {
               "en": "The algorithm works like this:",
-              "fr": ""
+              "fr": "L'algorithme fonctionne ainsi :"
             },
             {
               "en": "* You start at a specific node.\n    \n* That node is marked as visited and added to the queue.\n    \n* While the queue is not empty, the current node is removed from the queue (dequeued). Then, for each one of its neighbors, if the neighbor has not been visited, it is marked as visited and added to the queue.",
-              "fr": ""
+              "fr": "* Tu commences à un nœud spécifique.\n    \n* Ce nœud est marqué comme visité et ajouté à la file.\n    \n* Tant que la file n'est pas vide, le nœud courant est retiré de la file (défilé). Ensuite, pour chacun de ses voisins, si le voisin n'a pas été visité, il est marqué comme visité et ajouté à la file."
             },
             {
               "en": "One important consideration is that, since breadth-first search (BFS) requires storing a queue in memory, and this queue may have a large number of nodes, the space requirements of this algorithm can be considerable. This is especially true for graphs with a large number of nodes on the same level.",
-              "fr": ""
+              "fr": "Une considération importante est que, comme le parcours en largeur (BFS) nécessite de stocker une file en mémoire, et que cette file peut contenir un grand nombre de nœuds, les besoins en espace de cet algorithme peuvent être considérables. C'est particulièrement vrai pour les graphes avec un grand nombre de nœuds au même niveau."
             },
             {
               "en": "Let's see an example of BFS applied to a specific type of graph called a tree.",
-              "fr": ""
+              "fr": "Voyons un exemple de BFS appliqué à un type spécifique de graphe appelé arbre."
             },
             {
               "en": "You will learn more about trees in an upcoming lesson, but they are essentially graphs with no cycles, where nodes are organized in a hierarchy. Cycles are paths that start and end at the same node.",
-              "fr": ""
+              "fr": "Tu en apprendras davantage sur les arbres dans une prochaine leçon, mais ce sont essentiellement des graphes sans cycles, où les nœuds sont organisés en hiérarchie. Les cycles sont des chemins qui commencent et se terminent au même nœud."
             },
             {
               "en": "Let's apply the breadth-first search (BFS) algorithm to this tree:",
-              "fr": ""
+              "fr": "Appliquons l'algorithme de parcours en largeur (BFS) à cet arbre :"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-1.png\" alt=\"A tree diagram showing nodes A through G arranged in a hierarchy. Node A is at the root, with children B and C. Node B has children D and E, and node C has children F and G.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-1.png\" alt=\"Un diagramme d'arbre montrant les nœuds A à G organisés en hiérarchie. Le nœud A est à la racine, avec les enfants B et C. Le nœud B a les enfants D et E, et le nœud C a les enfants F et G.\">"
             },
             {
               "en": "**Step 1:**",
-              "fr": ""
+              "fr": "**Étape 1 :**"
             },
             {
               "en": "We start at the root of the tree, node A. We add A to the queue and immediately mark it as visited.",
-              "fr": ""
+              "fr": "Nous partons de la racine de l'arbre, le nœud A. Nous ajoutons A à la file et le marquons immédiatement comme visité."
             },
             {
               "en": "* **Queue:** `[A]`\n    \n* **Visited:** `{A}`",
-              "fr": ""
+              "fr": "* **File :** `[A]`\n    \n* **Visités :** `{A}`"
             },
             {
               "en": "**Step 2:**",
-              "fr": ""
+              "fr": "**Étape 2 :**"
             },
             {
               "en": "We dequeue node A. We add its unvisited children (node B and then node C), to the queue and mark them as visited.",
-              "fr": ""
+              "fr": "Nous défilons le nœud A. Nous ajoutons ses enfants non visités (le nœud B puis le nœud C) à la file et les marquons comme visités."
             },
             {
               "en": "* **Queue:** `[B, C]`\n    \n* **Visited:** `{A, B, C}`",
-              "fr": ""
+              "fr": "* **File :** `[B, C]`\n    \n* **Visités :** `{A, B, C}`"
             },
             {
               "en": "The order in which nodes at the same level are added to the queue is defined by the implementation of the data structure and the order in which the edges (connections) are stored in the graph representation.",
-              "fr": ""
+              "fr": "L'ordre dans lequel les nœuds au même niveau sont ajoutés à la file est défini par l'implémentation de la structure de données et l'ordre dans lequel les arêtes (connexions) sont stockées dans la représentation du graphe."
             },
             {
               "en": "If the implementation is consistent, the specific order in which the nodes at the same level are traversed will not affect the correctness of the algorithm. It will still visit every node level by level.",
-              "fr": ""
+              "fr": "Si l'implémentation est cohérente, l'ordre spécifique dans lequel les nœuds au même niveau sont parcourus n'affectera pas la correction de l'algorithme. Il visitera toujours chaque nœud niveau par niveau."
             },
             {
               "en": "**Step 3:**",
-              "fr": ""
+              "fr": "**Étape 3 :**"
             },
             {
               "en": "We dequeue node B. We add its unvisited children, (node D and then node E), to the queue and mark them as visited.",
-              "fr": ""
+              "fr": "Nous défilons le nœud B. Nous ajoutons ses enfants non visités (le nœud D puis le nœud E) à la file et les marquons comme visités."
             },
             {
               "en": "* **Queue:** `[C, D, E]`\n    \n* **Visited:** `{A, B, C, D, E}`",
-              "fr": ""
+              "fr": "* **File :** `[C, D, E]`\n    \n* **Visités :** `{A, B, C, D, E}`"
             },
             {
               "en": "**Step 4:**",
-              "fr": ""
+              "fr": "**Étape 4 :**"
             },
             {
               "en": "We dequeue node C. We add its unvisited children, (node F and then node G), to the queue and mark them as visited.",
-              "fr": ""
+              "fr": "Nous défilons le nœud C. Nous ajoutons ses enfants non visités (le nœud F puis le nœud G) à la file et les marquons comme visités."
             },
             {
               "en": "* **Queue:** `[D, E, F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **File :** `[D, E, F, G]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 5:**",
-              "fr": ""
+              "fr": "**Étape 5 :**"
             },
             {
               "en": "We dequeue node D. This node does not have any unvisited children, so nothing changes in the visited set.",
-              "fr": ""
+              "fr": "Nous défilons le nœud D. Ce nœud n'a aucun enfant non visité, donc rien ne change dans l'ensemble des visités."
             },
             {
               "en": "* **Queue:** `[E, F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **File :** `[E, F, G]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 6:**",
-              "fr": ""
+              "fr": "**Étape 6 :**"
             },
             {
               "en": "We dequeue node E. This node does not have any unvisited children, so nothing changes in the visited set.",
-              "fr": ""
+              "fr": "Nous défilons le nœud E. Ce nœud n'a aucun enfant non visité, donc rien ne change dans l'ensemble des visités."
             },
             {
               "en": "* **Queue:** `[F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **File :** `[F, G]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 7:**",
-              "fr": ""
+              "fr": "**Étape 7 :**"
             },
             {
               "en": "We dequeue F. This node does not have any unvisited children, so nothing changes in the visited set.",
-              "fr": ""
+              "fr": "Nous défilons F. Ce nœud n'a aucun enfant non visité, donc rien ne change dans l'ensemble des visités."
             },
             {
               "en": "* **Queue:** `[G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **File :** `[G]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 8:**",
-              "fr": ""
+              "fr": "**Étape 8 :**"
             },
             {
               "en": "We dequeue G. This node does not have any unvisited children, so nothing changes in the visited set.",
-              "fr": ""
+              "fr": "Nous défilons G. Ce nœud n'a aucun enfant non visité, donc rien ne change dans l'ensemble des visités."
             },
             {
               "en": "* **Queue:** `[]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **File :** `[]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "When the queue is empty, the traversal is complete.",
-              "fr": ""
+              "fr": "Quand la file est vide, le parcours est terminé."
             },
             {
               "en": "The nodes were traversed in this order:",
-              "fr": ""
+              "fr": "Les nœuds ont été parcourus dans cet ordre :"
             },
             {
               "en": "**A → B → C → D → E → F → G**",
-              "fr": ""
+              "fr": "**A → B → C → D → E → F → G**"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-2.png\" alt=\"The same tree diagram with arrows showing the BFS traversal order: A to B to C to D to E to F to G, demonstrating level-by-level visitation.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-2.png\" alt=\"Le même diagramme d'arbre avec des flèches montrant l'ordre de parcours BFS : A vers B vers C vers D vers E vers F vers G, illustrant une visitation niveau par niveau.\">"
             },
             {
               "en": "Notice how the algorithm visits the nodes per level.",
-              "fr": ""
+              "fr": "Remarque comment l'algorithme visite les nœuds par niveau."
             },
             {
               "en": "We start at node A, then move to the next level to visit nodes B and C, then to the next level to nodes D, E, F, and G. That is the core principle of breadth-first search (BFS).",
-              "fr": ""
+              "fr": "Nous partons du nœud A, puis passons au niveau suivant pour visiter les nœuds B et C, puis au niveau suivant vers les nœuds D, E, F et G. C'est le principe fondamental du parcours en largeur (BFS)."
             },
             {
               "en": "## Depth-First Search (DFS)",
-              "fr": ""
+              "fr": "## Parcours en profondeur (DFS)"
             },
             {
               "en": "While breadth-first search (BFS) first visits all the neighboring nodes at the same level, **depth-first search (DFS)** follows each branch as deep as possible before it backtracks.",
-              "fr": ""
+              "fr": "Alors que le parcours en largeur (BFS) visite d'abord tous les nœuds voisins au même niveau, **le parcours en profondeur (DFS)** suit chaque branche aussi loin que possible avant de revenir en arrière."
             },
             {
               "en": "You can imagine this algorithm as exploring a maze by choosing a specific path and following it until you reach a dead end or the exit. If you reach a dead end, you go back and choose a different path.",
-              "fr": ""
+              "fr": "Tu peux imaginer cet algorithme comme l'exploration d'un labyrinthe en choisissant un chemin spécifique et en le suivant jusqu'à atteindre une impasse ou la sortie. Si tu arrives à une impasse, tu reviens en arrière et choisis un autre chemin."
             },
             {
               "en": "Depth-first search (DFS) is commonly used to solve puzzles with a single solution, detecting cycles in a graph, and finding connected graph components.",
-              "fr": ""
+              "fr": "Le parcours en profondeur (DFS) est couramment utilisé pour résoudre des puzzles à solution unique, détecter des cycles dans un graphe, et trouver les composantes connexes d'un graphe."
             },
             {
               "en": "This algorithm can be implemented using recursion or a stack data structure to keep track of the visited nodes.",
-              "fr": ""
+              "fr": "Cet algorithme peut être implémenté avec la récursion ou une structure de données de type pile pour suivre les nœuds visités."
             },
             {
               "en": "Stacks follow the LIFO (last in, first out) method, where the last node that was added to the stack is the first one to be removed from the stack.",
-              "fr": ""
+              "fr": "Les piles suivent la méthode LIFO (dernier entré, premier sorti), où le dernier nœud ajouté à la pile est le premier à en être retiré."
             },
             {
               "en": "The algorithm works like this:",
-              "fr": ""
+              "fr": "L'algorithme fonctionne ainsi :"
             },
             {
               "en": "* Start at a specific node.\n    \n* That node is marked as visited and added to the stack.\n    \n* While the stack is not empty, the current node is popped (removed). This is when we \"visit\" or process it (for example, by printing its value). Then, all of its unvisited neighbors are marked as visited and added to the stack.",
-              "fr": ""
+              "fr": "* Commence à un nœud spécifique.\n    \n* Ce nœud est marqué comme visité et ajouté à la pile.\n    \n* Tant que la pile n'est pas vide, le nœud courant est dépilé (retiré). C'est à ce moment que nous le « visitons » ou le traitons (par exemple, en affichant sa valeur). Ensuite, tous ses voisins non visités sont marqués comme visités et ajoutés à la pile."
             },
             {
               "en": "One of the limitations of this algorithm is that it's not always guaranteed to find the shortest path between two nodes in an unweighted graph.",
-              "fr": ""
+              "fr": "L'une des limitations de cet algorithme est qu'il n'est pas toujours garanti de trouver le plus court chemin entre deux nœuds dans un graphe non pondéré."
             },
             {
               "en": "Let's see an example of Depth-First Search (DFS) applied to our tree example.",
-              "fr": ""
+              "fr": "Voyons un exemple de parcours en profondeur (DFS) appliqué à notre exemple d'arbre."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-3.png\" alt=\"The same tree diagram as before, showing nodes A through G in their hierarchical structure, ready for DFS demonstration.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-3.png\" alt=\"Le même diagramme d'arbre qu'auparavant, montrant les nœuds A à G dans leur structure hiérarchique, prêt pour la démonstration du DFS.\">"
             },
             {
               "en": "**Step 1:**",
-              "fr": ""
+              "fr": "**Étape 1 :**"
             },
             {
               "en": "We start at the root node A. We mark it as visited and add it to the stack.",
-              "fr": ""
+              "fr": "Nous partons du nœud racine A. Nous le marquons comme visité et l'ajoutons à la pile."
             },
             {
               "en": "* **Stack:** `[A]`\n    \n* **Visited:** `{A}`",
-              "fr": ""
+              "fr": "* **Pile :** `[A]`\n    \n* **Visités :** `{A}`"
             },
             {
               "en": "**Step 2:**",
-              "fr": ""
+              "fr": "**Étape 2 :**"
             },
             {
               "en": "We pop node A from the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud A de la pile."
             },
             {
               "en": "Then, we add its unvisited children, node B and node C, to the stack. We'll add them in reverse order, `C` then `B`, so that `B` is on top (LIFO) and will be processed next. We also mark them as visited.",
-              "fr": ""
+              "fr": "Ensuite, nous ajoutons ses enfants non visités, le nœud B et le nœud C, à la pile. Nous les ajoutons dans l'ordre inverse, `C` puis `B`, pour que `B` soit au sommet (LIFO) et soit traité ensuite. Nous les marquons aussi comme visités."
             },
             {
               "en": "* **Stack:** `[C, B]`\n    \n* **Visited:** `{A, B, C}`",
-              "fr": ""
+              "fr": "* **Pile :** `[C, B]`\n    \n* **Visités :** `{A, B, C}`"
             },
             {
               "en": "**Step 3:**",
-              "fr": ""
+              "fr": "**Étape 3 :**"
             },
             {
               "en": "We pop node B from the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud B de la pile."
             },
             {
               "en": "Then, we add its unvisited children, node D and node E, to the stack in reverse order (`E` then `D`). We also mark them as visited.",
-              "fr": ""
+              "fr": "Ensuite, nous ajoutons ses enfants non visités, le nœud D et le nœud E, à la pile dans l'ordre inverse (`E` puis `D`). Nous les marquons aussi comme visités."
             },
             {
               "en": "* **Stack:** `[C, E, D]`\n    \n* **Visited:** `{A, B, C, D, E}`",
-              "fr": ""
+              "fr": "* **Pile :** `[C, E, D]`\n    \n* **Visités :** `{A, B, C, D, E}`"
             },
             {
               "en": "**Step 4:**",
-              "fr": ""
+              "fr": "**Étape 4 :**"
             },
             {
               "en": "We pop node D from the stack. This node has no children to add to the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud D de la pile. Ce nœud n'a aucun enfant à ajouter à la pile."
             },
             {
               "en": "* **Stack:** `[C, E]`\n    \n* **Visited:** `{A, B, C, D, E}`",
-              "fr": ""
+              "fr": "* **Pile :** `[C, E]`\n    \n* **Visités :** `{A, B, C, D, E}`"
             },
             {
               "en": "**Step 5:**",
-              "fr": ""
+              "fr": "**Étape 5 :**"
             },
             {
               "en": "We pop node E from the stack. This node has no children to add to the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud E de la pile. Ce nœud n'a aucun enfant à ajouter à la pile."
             },
             {
               "en": "* **Stack:** `[C]`\n    \n* **Visited:** `{A, B, C, D, E}`",
-              "fr": ""
+              "fr": "* **Pile :** `[C]`\n    \n* **Visités :** `{A, B, C, D, E}`"
             },
             {
               "en": "**Step 6:**",
-              "fr": ""
+              "fr": "**Étape 6 :**"
             },
             {
               "en": "We pop node C.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud C."
             },
             {
               "en": "Then, we add its children, node F and node G, to the stack in reverse order (node G then node F) and we mark them as visited.",
-              "fr": ""
+              "fr": "Ensuite, nous ajoutons ses enfants, le nœud F et le nœud G, à la pile dans l'ordre inverse (le nœud G puis le nœud F) et nous les marquons comme visités."
             },
             {
               "en": "* **Stack:** `[G, F]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **Pile :** `[G, F]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 7:**",
-              "fr": ""
+              "fr": "**Étape 7 :**"
             },
             {
               "en": "We pop node F from the stack. This node has no children to add to the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud F de la pile. Ce nœud n'a aucun enfant à ajouter à la pile."
             },
             {
               "en": "* **Stack:** `[G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **Pile :** `[G]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "**Step 8:**",
-              "fr": ""
+              "fr": "**Étape 8 :**"
             },
             {
               "en": "We pop node G. This node has no children to add to the stack.",
-              "fr": ""
+              "fr": "Nous dépilons le nœud G. Ce nœud n'a aucun enfant à ajouter à la pile."
             },
             {
               "en": "* **Stack:** `[]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
-              "fr": ""
+              "fr": "* **Pile :** `[]`\n    \n* **Visités :** `{A, B, C, D, E, F, G}`"
             },
             {
               "en": "When the stack is empty, the traversal is completed and all nodes have been visited.",
-              "fr": ""
+              "fr": "Quand la pile est vide, le parcours est terminé et tous les nœuds ont été visités."
             },
             {
               "en": "The algorithm visited the nodes in this order:",
-              "fr": ""
+              "fr": "L'algorithme a visité les nœuds dans cet ordre :"
             },
             {
               "en": "**A → B → D → E → C → F → G**",
-              "fr": ""
+              "fr": "**A → B → D → E → C → F → G**"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-4.png\" alt=\"The tree diagram with numbers showing the DFS traversal order: A(1), B(2), D(3), E(4), C(5), F(6), G(7), demonstrating depth-first exploration of branches.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-4.png\" alt=\"Le diagramme d'arbre avec des numéros montrant l'ordre de parcours DFS : A(1), B(2), D(3), E(4), C(5), F(6), G(7), illustrant l'exploration en profondeur des branches.\">"
             },
             {
               "en": "Notice how we start at node A, and then move all the way down the tree to node B, and nodes D and E, before we move up again to node C and then nodes F and G. This is the core principle of depth-first search (DFS), traversing full paths before backtracking and finding other paths.",
-              "fr": ""
+              "fr": "Remarque comment nous partons du nœud A, puis descendons tout le chemin de l'arbre vers le nœud B, et les nœuds D et E, avant de remonter vers le nœud C puis les nœuds F et G. C'est le principe fondamental du parcours en profondeur (DFS) : parcourir des chemins complets avant de revenir en arrière et de trouver d'autres chemins."
             },
             {
               "en": "In this case, we solved this example using a stack. Alternatively, depth-first search (DFS) can be implemented using recursion, where the function processes the current node and then calls itself for each of its unvisited neighbors. The function call stack implicitly manages the LIFO (last-in, first-out) order.",
-              "fr": ""
+              "fr": "Dans ce cas, nous avons résolu cet exemple avec une pile. Alternativement, le parcours en profondeur (DFS) peut être implémenté avec la récursion, où la fonction traite le nœud courant puis s'appelle elle-même pour chacun de ses voisins non visités. La pile d'appels de fonctions gère implicitement l'ordre LIFO (dernier entré, premier sorti)."
             },
             {
               "en": "Both breadth-first search (BFS) and depth-first search (DFS) are essential algorithms for traversing graphs and trees. Breadth-first search (BFS) explores nodes level by level, which is perfect for finding the shortest path in an unweighted graph. On the other hand, depth-first search (DFS) follows one branch as deep as possible before backtracking, which is perfect for solving mazes and detecting cycles. Understanding their pros and cons is helpful for choosing the right one for a particular problem.",
-              "fr": ""
+              "fr": "Le parcours en largeur (BFS) et le parcours en profondeur (DFS) sont tous deux des algorithmes essentiels pour parcourir des graphes et des arbres. Le parcours en largeur (BFS) explore les nœuds niveau par niveau, ce qui est parfait pour trouver le plus court chemin dans un graphe non pondéré. En revanche, le parcours en profondeur (DFS) suit une branche aussi loin que possible avant de revenir en arrière, ce qui est parfait pour résoudre des labyrinthes et détecter des cycles. Comprendre leurs avantages et inconvénients aide à choisir le bon pour un problème particulier."
             }
           ]
         },
@@ -864,7 +864,7 @@
           "chunks": [
             {
               "en": "Which of the following data structures is commonly used to implement a standard breadth-first search (BFS) algorithm?",
-              "fr": ""
+              "fr": "Laquelle des structures de données suivantes est couramment utilisée pour implémenter un algorithme standard de parcours en largeur (BFS) ?"
             }
           ]
         },
@@ -874,7 +874,7 @@
           "chunks": [
             {
               "en": "Stack",
-              "fr": ""
+              "fr": "Pile"
             }
           ]
         },
@@ -884,15 +884,15 @@
           "chunks": [
             {
               "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
-              "fr": ""
+              "fr": "Pense à la façon dont une file traite les données et comment cela se rapporte à la visite des nœuds niveau par niveau."
             },
             {
               "en": "Queue",
-              "fr": ""
+              "fr": "File"
             },
             {
               "en": "Linked List",
-              "fr": ""
+              "fr": "Liste chaînée"
             }
           ]
         },
@@ -902,11 +902,11 @@
           "chunks": [
             {
               "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
-              "fr": ""
+              "fr": "Pense à la façon dont une file traite les données et comment cela se rapporte à la visite des nœuds niveau par niveau."
             },
             {
               "en": "Tree",
-              "fr": ""
+              "fr": "Arbre"
             }
           ]
         },
@@ -916,7 +916,7 @@
           "chunks": [
             {
               "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
-              "fr": ""
+              "fr": "Pense à la façon dont une file traite les données et comment cela se rapporte à la visite des nœuds niveau par niveau."
             }
           ]
         },
@@ -926,7 +926,7 @@
           "chunks": [
             {
               "en": "Which of the following statements about depth-first search (DFS) is true?",
-              "fr": ""
+              "fr": "Laquelle des affirmations suivantes sur le parcours en profondeur (DFS) est vraie ?"
             }
           ]
         },
@@ -936,7 +936,7 @@
           "chunks": [
             {
               "en": "Depth-first search is guaranteed to find the shortest path between two nodes in an unweighted graph.",
-              "fr": ""
+              "fr": "Le parcours en profondeur est garanti de trouver le plus court chemin entre deux nœuds dans un graphe non pondéré."
             }
           ]
         },
@@ -946,11 +946,11 @@
           "chunks": [
             {
               "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
-              "fr": ""
+              "fr": "Pense à la stratégie que le parcours en profondeur (DFS) utilise pour parcourir la structure de données."
             },
             {
               "en": "Depth-first search visits all neighbors at the current level before moving to the next level.",
-              "fr": ""
+              "fr": "Le parcours en profondeur visite tous les voisins au niveau courant avant de passer au niveau suivant."
             }
           ]
         },
@@ -960,11 +960,11 @@
           "chunks": [
             {
               "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
-              "fr": ""
+              "fr": "Pense à la stratégie que le parcours en profondeur (DFS) utilise pour parcourir la structure de données."
             },
             {
               "en": "Depth-first search is always more space-efficient than BFS.",
-              "fr": ""
+              "fr": "Le parcours en profondeur est toujours plus efficace en espace que le BFS."
             }
           ]
         },
@@ -974,11 +974,11 @@
           "chunks": [
             {
               "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
-              "fr": ""
+              "fr": "Pense à la stratégie que le parcours en profondeur (DFS) utilise pour parcourir la structure de données."
             },
             {
               "en": "Depth-first search is typically implemented using recursion or a stack.",
-              "fr": ""
+              "fr": "Le parcours en profondeur est typiquement implémenté avec la récursion ou une pile."
             }
           ]
         },
@@ -988,7 +988,7 @@
           "chunks": [
             {
               "en": "If you wanted to find the shortest path from a starting node to a target node in an unweighted graph, which algorithm would be the most suitable choice?",
-              "fr": ""
+              "fr": "Si tu voulais trouver le plus court chemin d'un nœud de départ à un nœud cible dans un graphe non pondéré, quel algorithme serait le choix le plus adapté ?"
             }
           ]
         },
@@ -998,11 +998,11 @@
           "chunks": [
             {
               "en": "Breadth-first search (BFS)",
-              "fr": ""
+              "fr": "Parcours en largeur (BFS)"
             },
             {
               "en": "Depth-first search (DFS)",
-              "fr": ""
+              "fr": "Parcours en profondeur (DFS)"
             }
           ]
         },
@@ -1012,11 +1012,11 @@
           "chunks": [
             {
               "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
-              "fr": ""
+              "fr": "Pense à la stratégie de parcours fondamentale du parcours en largeur et du parcours en profondeur et à laquelle garantit de trouver le plus court chemin entre deux nœuds."
             },
             {
               "en": "Binary search",
-              "fr": ""
+              "fr": "Recherche binaire"
             }
           ]
         },
@@ -1026,11 +1026,11 @@
           "chunks": [
             {
               "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
-              "fr": ""
+              "fr": "Pense à la stratégie de parcours fondamentale du parcours en largeur et du parcours en profondeur et à laquelle garantit de trouver le plus court chemin entre deux nœuds."
             },
             {
               "en": "Merge sort",
-              "fr": ""
+              "fr": "Tri fusion"
             }
           ]
         },
@@ -1040,7 +1040,7 @@
           "chunks": [
             {
               "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
-              "fr": ""
+              "fr": "Pense à la stratégie de parcours fondamentale du parcours en largeur et du parcours en profondeur et à laquelle garantit de trouver le plus court chemin entre deux nœuds."
             }
           ]
         }
@@ -1052,7 +1052,7 @@
       "dashedName": "how-do-matrices-and-adjacency-lists-work",
       "title": {
         "en": "How Do Matrices and Adjacency Lists Work?",
-        "fr": ""
+        "fr": "Comment fonctionnent les matrices et les listes d'adjacence ?"
       },
       "sections": [
         {
@@ -1061,167 +1061,167 @@
           "chunks": [
             {
               "en": "Graphs are very powerful data structures made by a set of nodes, also known as vertices, and edges that connect them.",
-              "fr": ""
+              "fr": "Les graphes sont des structures de données très puissantes formées d'un ensemble de nœuds, aussi appelés sommets, et d'arêtes qui les relient."
             },
             {
               "en": "There are two common ways to implement graphs in your code:",
-              "fr": ""
+              "fr": "Il y a deux façons courantes d'implémenter des graphes dans ton code :"
             },
             {
               "en": "* Adjacency matrices\n    \n* Adjacency lists",
-              "fr": ""
+              "fr": "* Matrices d'adjacence\n    \n* Listes d'adjacence"
             },
             {
               "en": "Let's look more into these, and go over their advantages and limitations.",
-              "fr": ""
+              "fr": "Examinons-les plus en détail, et passons en revue leurs avantages et leurs limitations."
             },
             {
               "en": "## Adjacency Matrices",
-              "fr": ""
+              "fr": "## Matrices d'adjacence"
             },
             {
               "en": "We'll start with adjacency matrices.",
-              "fr": ""
+              "fr": "Nous commencerons par les matrices d'adjacence."
             },
             {
               "en": "An adjacency matrix is a two-dimensional array in which the rows and columns represent the graph's vertices.",
-              "fr": ""
+              "fr": "Une matrice d'adjacence est un tableau à deux dimensions dans lequel les lignes et les colonnes représentent les sommets du graphe."
             },
             {
               "en": "The values in the matrix represent the edges or connections between the nodes.",
-              "fr": ""
+              "fr": "Les valeurs dans la matrice représentent les arêtes ou connexions entre les nœuds."
             },
             {
               "en": "For example, if you have a matrix stored in a variable named `matrix`, the value stored at `matrix[i][j]`, where `i` is the row and `j` is the column, represents the edge or connection between node `i` and node `j`.",
-              "fr": ""
+              "fr": "Par exemple, si tu as une matrice stockée dans une variable nommée `matrix`, la valeur stockée à `matrix[i][j]`, où `i` est la ligne et `j` est la colonne, représente l'arête ou la connexion entre le nœud `i` et le nœud `j`."
             },
             {
               "en": "The values may have different meanings depending on whether the graph is weighted or unweighted:",
-              "fr": ""
+              "fr": "Les valeurs peuvent avoir différentes significations selon que le graphe est pondéré ou non pondéré :"
             },
             {
               "en": "* If the graph is unweighted, a value of `1` means that there is an edge connecting these nodes, while a value of `0` means there is no edge between them.\n    \n* If the graph is weighted, the value would represent the weight of the edge that connects the nodes.",
-              "fr": ""
+              "fr": "* Si le graphe est non pondéré, une valeur de `1` signifie qu'il y a une arête reliant ces nœuds, tandis qu'une valeur de `0` signifie qu'il n'y a pas d'arête entre eux.\n    \n* Si le graphe est pondéré, la valeur représenterait le poids de l'arête qui relie les nœuds."
             },
             {
               "en": "One of the great advantages of using an adjacency matrix is that checking if there is an edge between two nodes takes constant time `O(1)`. This is because the program only needs to find that particular value in the 2D array.",
-              "fr": ""
+              "fr": "L'un des grands avantages d'utiliser une matrice d'adjacence est que vérifier s'il y a une arête entre deux nœuds prend un temps constant `O(1)`. C'est parce que le programme n'a besoin que de trouver cette valeur particulière dans le tableau 2D."
             },
             {
               "en": "However, this efficiency in finding the edges comes with a tradeoff. Adjacency matrices have a large quadratic space requirement `O(V²)`, where `V` is the number of nodes in the graph.",
-              "fr": ""
+              "fr": "Cependant, cette efficacité pour trouver les arêtes a un compromis. Les matrices d'adjacence ont un grand besoin d'espace quadratique `O(V²)`, où `V` est le nombre de nœuds dans le graphe."
             },
             {
               "en": "This is inefficient for sparse graphs, which are graphs that only have a few edges. Why? Because if the graph is sparse, you will be storing many 0s in the matrix to represent the lack of edges between the nodes, and these 0s will still take space in memory.",
-              "fr": ""
+              "fr": "C'est inefficace pour les graphes creux, qui sont des graphes qui n'ont que peu d'arêtes. Pourquoi ? Parce que si le graphe est creux, tu stockeras beaucoup de 0 dans la matrice pour représenter l'absence d'arêtes entre les nœuds, et ces 0 occuperont quand même de l'espace en mémoire."
             },
             {
               "en": "Adjacency matrices are also inefficient for finding a node's neighbors because the program has to iterate over the entire row or column to find the 0s and 1s that represent the edges. In the worst case, this process can take `O(V)` time, where `V` is the number of nodes in the graph.",
-              "fr": ""
+              "fr": "Les matrices d'adjacence sont aussi inefficaces pour trouver les voisins d'un nœud, car le programme doit parcourir toute la ligne ou la colonne pour trouver les 0 et les 1 qui représentent les arêtes. Dans le pire des cas, ce processus peut prendre un temps `O(V)`, où `V` est le nombre de nœuds dans le graphe."
             },
             {
               "en": "Let's see an example of an adjacency matrix for this particular graph:",
-              "fr": ""
+              "fr": "Voyons un exemple de matrice d'adjacence pour ce graphe particulier :"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"A graph with four nodes labeled A, B, C, and D. Node A connects to B, C, and D. Node B connects to A and D. Node C connects to A. Node D connects to A and B.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"Un graphe avec quatre nœuds étiquetés A, B, C et D. Le nœud A est relié à B, C et D. Le nœud B est relié à A et D. Le nœud C est relié à A. Le nœud D est relié à A et B.\">"
             },
             {
               "en": "In the adjacency matrix:",
-              "fr": ""
+              "fr": "Dans la matrice d'adjacence :"
             },
             {
               "en": "* Each row represents a node. The first row represents node A, the second row represents node B, and so on.\n    \n* Each column represents a node too.\n    \n* Each value in the matrix represents whether there is an edge between each pair of nodes. A value of 0 means there isn't an edge connecting these nodes, while a value of 1 means there is an edge.\n    \nThe values in the diagonal represent whether or not each node has a self-loop, an edge that connects the node to itself. In our example, they are all 0s because the graph doesn't have any self-loops.",
-              "fr": ""
+              "fr": "* Chaque ligne représente un nœud. La première ligne représente le nœud A, la deuxième ligne représente le nœud B, et ainsi de suite.\n    \n* Chaque colonne représente aussi un nœud.\n    \n* Chaque valeur dans la matrice représente s'il y a une arête entre chaque paire de nœuds. Une valeur de 0 signifie qu'il n'y a pas d'arête reliant ces nœuds, tandis qu'une valeur de 1 signifie qu'il y en a une.\n    \nLes valeurs sur la diagonale représentent si chaque nœud a une boucle sur lui-même, une arête qui relie le nœud à lui-même. Dans notre exemple, ce sont toutes des 0 parce que le graphe n'a aucune boucle sur lui-même."
             },
             {
               "en": "This is a visual representation of the adjacency matrix to show you how the rows and columns represent the corresponding nodes.",
-              "fr": ""
+              "fr": "Voici une représentation visuelle de la matrice d'adjacence pour te montrer comment les lignes et les colonnes représentent les nœuds correspondants."
             },
             {
               "en": "For example, the first row is `[0, 1, 1, 1]` because node A has edges connecting it to nodes B, C, and D:",
-              "fr": ""
+              "fr": "Par exemple, la première ligne est `[0, 1, 1, 1]` parce que le nœud A a des arêtes le reliant aux nœuds B, C et D :"
             },
             {
               "en": "And this is the same adjacency matrix, but implemented in JavaScript code:",
-              "fr": ""
+              "fr": "Et voici la même matrice d'adjacence, mais implémentée en code JavaScript :"
             },
             {
               "en": "## Adjacency Lists",
-              "fr": ""
+              "fr": "## Listes d'adjacence"
             },
             {
               "en": "Another common way to represent graphs is by using adjacency lists.",
-              "fr": ""
+              "fr": "Une autre façon courante de représenter des graphes est d'utiliser des listes d'adjacence."
             },
             {
               "en": "An adjacency list is an array or object (or a `Map`) that stores all the neighbors of each node.",
-              "fr": ""
+              "fr": "Une liste d'adjacence est un tableau ou un objet (ou une `Map`) qui stocke tous les voisins de chaque nœud."
             },
             {
               "en": "There are two common ways to implement adjacency lists:",
-              "fr": ""
+              "fr": "Il y a deux façons courantes d'implémenter des listes d'adjacence :"
             },
             {
               "en": "* As an array, where each index represents a node and the array stored at that index contains its neighbors.\n* As an object (or `Map`), where each key represents a node and the value associated to that key (an array) contains its neighbors.",
-              "fr": ""
+              "fr": "* Sous forme de tableau, où chaque indice représente un nœud et le tableau stocké à cet indice contient ses voisins.\n* Sous forme d'objet (ou `Map`), où chaque clé représente un nœud et la valeur associée à cette clé (un tableau) contient ses voisins."
             },
             {
               "en": "Adjacency lists are more efficient than adjacency matrices in terms of space requirements. They have a `O(V + E)` space complexity, where `V` is the number of vertices (nodes) and `E` is the number of edges.",
-              "fr": ""
+              "fr": "Les listes d'adjacence sont plus efficaces que les matrices d'adjacence en termes de besoins en espace. Elles ont une complexité spatiale `O(V + E)`, où `V` est le nombre de sommets (nœuds) et `E` est le nombre d'arêtes."
             },
             {
               "en": "It's also efficient for finding all neighbor nodes, since this operation only requires accessing the list associated to the node.",
-              "fr": ""
+              "fr": "Elles sont aussi efficaces pour trouver tous les nœuds voisins, puisque cette opération ne nécessite que d'accéder à la liste associée au nœud."
             },
             {
               "en": "However, there is also a tradeoff.",
-              "fr": ""
+              "fr": "Cependant, il y a aussi un compromis."
             },
             {
               "en": "Adjacency lists are less efficient than adjacency matrices for determining if there is an edge between two nodes.",
-              "fr": ""
+              "fr": "Les listes d'adjacence sont moins efficaces que les matrices d'adjacence pour déterminer s'il y a une arête entre deux nœuds."
             },
             {
               "en": "The search process typically takes `O(deg(v))` time (where `deg(v)` is the number of neighbors of the node you’re checking), and in the worst case it can be `O(V)` if a node is connected to all the other nodes in the graph.",
-              "fr": ""
+              "fr": "Le processus de recherche prend typiquement un temps `O(deg(v))` (où `deg(v)` est le nombre de voisins du nœud que tu vérifies), et dans le pire des cas il peut être `O(V)` si un nœud est connecté à tous les autres nœuds du graphe."
             },
             {
               "en": "Here is an example of an adjacency list for this graph:",
-              "fr": ""
+              "fr": "Voici un exemple de liste d'adjacence pour ce graphe :"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"A graph with four nodes labeled A, B, C, and D. Node A connects to B, C, and D. Node B connects to A and D. Node C connects to A. Node D connects to A and B. It's the same image as before.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"Un graphe avec quatre nœuds étiquetés A, B, C et D. Le nœud A est relié à B, C et D. Le nœud B est relié à A et D. Le nœud C est relié à A. Le nœud D est relié à A et B. C'est la même image qu'auparavant.\">"
             },
             {
               "en": "This adjacency list is implemented as an object. Every key in the object represents a node, and the value associated to that key is an array with all the neighbors of the corresponding node:",
-              "fr": ""
+              "fr": "Cette liste d'adjacence est implémentée comme un objet. Chaque clé de l'objet représente un nœud, et la valeur associée à cette clé est un tableau avec tous les voisins du nœud correspondant :"
             },
             {
               "en": "Alternatively, we could implement it as a 2D array, where each index represents a node. For example, index 0 represents node A, index 1 represents node B, and so on:",
-              "fr": ""
+              "fr": "Alternativement, nous pourrions l'implémenter comme un tableau 2D, où chaque indice représente un nœud. Par exemple, l'indice 0 représente le nœud A, l'indice 1 représente le nœud B, et ainsi de suite :"
             },
             {
               "en": "Notice that even if this 2D array may look similar to the adjacency matrix, they are quite different.",
-              "fr": ""
+              "fr": "Remarque que même si ce tableau 2D peut sembler similaire à la matrice d'adjacence, ils sont assez différents."
             },
             {
               "en": "* The adjacency matrix stores 0s, 1s, or other values that represent the edges or weights of the edges in the graph.",
-              "fr": ""
+              "fr": "* La matrice d'adjacence stocke des 0, des 1, ou d'autres valeurs qui représentent les arêtes ou les poids des arêtes dans le graphe."
             },
             {
               "en": "* The adjacency list stores the actual list of all the neighbors of each node.",
-              "fr": ""
+              "fr": "* La liste d'adjacence stocke la liste réelle de tous les voisins de chaque nœud."
             },
             {
               "en": "This is a very important difference that you should be familiar with.",
-              "fr": ""
+              "fr": "C'est une différence très importante que tu devrais connaître."
             },
             {
               "en": "Both adjacency matrices and adjacency lists are very important for implementing graphs. Choosing between them depends on the graph's size and how you need to use the data. Adjacency matrices are helpful for dense graphs with many edges, while adjacency lists are usually the preferred choice for real-world scenarios, where sparse graphs are more common.",
-              "fr": ""
+              "fr": "Les matrices d'adjacence et les listes d'adjacence sont toutes deux très importantes pour implémenter des graphes. Le choix entre elles dépend de la taille du graphe et de la façon dont tu as besoin d'utiliser les données. Les matrices d'adjacence sont utiles pour les graphes denses avec beaucoup d'arêtes, tandis que les listes d'adjacence sont généralement le choix privilégié pour les scénarios du monde réel, où les graphes creux sont plus courants."
             }
           ]
         },
@@ -1231,7 +1231,7 @@
           "chunks": [
             {
               "en": "For which of the following scenarios is an adjacency matrix the most efficient choice for representing a graph?",
-              "fr": ""
+              "fr": "Pour lequel des scénarios suivants une matrice d'adjacence est-elle le choix le plus efficace pour représenter un graphe ?"
             }
           ]
         },
@@ -1241,7 +1241,7 @@
           "chunks": [
             {
               "en": "A social network with billions of people and very few connections per person.",
-              "fr": ""
+              "fr": "Un réseau social avec des milliards de personnes et très peu de connexions par personne."
             }
           ]
         },
@@ -1251,11 +1251,11 @@
           "chunks": [
             {
               "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
-              "fr": ""
+              "fr": "Pense à la quantité de mémoire qu'utilise une matrice et comment cela change selon le nombre de connexions."
             },
             {
               "en": "A computer network with only five connections.",
-              "fr": ""
+              "fr": "Un réseau informatique avec seulement cinq connexions."
             }
           ]
         },
@@ -1265,15 +1265,15 @@
           "chunks": [
             {
               "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
-              "fr": ""
+              "fr": "Pense à la quantité de mémoire qu'utilise une matrice et comment cela change selon le nombre de connexions."
             },
             {
               "en": "A dense graph where every node is connected to most other nodes.",
-              "fr": ""
+              "fr": "Un graphe dense où chaque nœud est connecté à la plupart des autres nœuds."
             },
             {
               "en": "A graph where the main operation is to find all neighbors of a specific node.",
-              "fr": ""
+              "fr": "Un graphe où l'opération principale est de trouver tous les voisins d'un nœud spécifique."
             }
           ]
         },
@@ -1283,7 +1283,7 @@
           "chunks": [
             {
               "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
-              "fr": ""
+              "fr": "Pense à la quantité de mémoire qu'utilise une matrice et comment cela change selon le nombre de connexions."
             }
           ]
         },
@@ -1293,7 +1293,7 @@
           "chunks": [
             {
               "en": "When would it be more efficient to use an adjacency list over an adjacency matrix?",
-              "fr": ""
+              "fr": "Quand serait-il plus efficace d'utiliser une liste d'adjacence plutôt qu'une matrice d'adjacence ?"
             }
           ]
         },
@@ -1303,7 +1303,7 @@
           "chunks": [
             {
               "en": "When the graph is dense and has many edges.",
-              "fr": ""
+              "fr": "Quand le graphe est dense et a beaucoup d'arêtes."
             }
           ]
         },
@@ -1313,11 +1313,11 @@
           "chunks": [
             {
               "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
-              "fr": ""
+              "fr": "Pense à la façon dont une liste d'adjacence économise de la mémoire quand un graphe n'est pas très connecté."
             },
             {
               "en": "When you need to check if an edge exists between two nodes very quickly.",
-              "fr": ""
+              "fr": "Quand tu as besoin de vérifier très rapidement si une arête existe entre deux nœuds."
             }
           ]
         },
@@ -1327,11 +1327,11 @@
           "chunks": [
             {
               "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
-              "fr": ""
+              "fr": "Pense à la façon dont une liste d'adjacence économise de la mémoire quand un graphe n'est pas très connecté."
             },
             {
               "en": "When the graph has a high number of vertices and many connections.",
-              "fr": ""
+              "fr": "Quand le graphe a un nombre élevé de sommets et beaucoup de connexions."
             }
           ]
         },
@@ -1341,11 +1341,11 @@
           "chunks": [
             {
               "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
-              "fr": ""
+              "fr": "Pense à la façon dont une liste d'adjacence économise de la mémoire quand un graphe n'est pas très connecté."
             },
             {
               "en": "When the graph is sparse, with a high number of vertices and a low number of edges.",
-              "fr": ""
+              "fr": "Quand le graphe est creux, avec un nombre élevé de sommets et un faible nombre d'arêtes."
             }
           ]
         },
@@ -1355,7 +1355,7 @@
           "chunks": [
             {
               "en": "Which of the following operations is faster in an adjacency matrix compared to an adjacency list?",
-              "fr": ""
+              "fr": "Laquelle des opérations suivantes est plus rapide dans une matrice d'adjacence que dans une liste d'adjacence ?"
             }
           ]
         },
@@ -1365,7 +1365,7 @@
           "chunks": [
             {
               "en": "Finding all neighbors of a single node.",
-              "fr": ""
+              "fr": "Trouver tous les voisins d'un seul nœud."
             }
           ]
         },
@@ -1375,15 +1375,15 @@
           "chunks": [
             {
               "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont tu effectuerais chacune de ces opérations dans une structure en grille et une structure basée sur une liste."
             },
             {
               "en": "Checking if a direct edge exists between two specific nodes.",
-              "fr": ""
+              "fr": "Vérifier si une arête directe existe entre deux nœuds spécifiques."
             },
             {
               "en": "Iterating through all nodes in the graph.",
-              "fr": ""
+              "fr": "Parcourir tous les nœuds du graphe."
             }
           ]
         },
@@ -1393,11 +1393,11 @@
           "chunks": [
             {
               "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont tu effectuerais chacune de ces opérations dans une structure en grille et une structure basée sur une liste."
             },
             {
               "en": "Adding a new node to the graph.",
-              "fr": ""
+              "fr": "Ajouter un nouveau nœud au graphe."
             }
           ]
         },
@@ -1407,7 +1407,7 @@
           "chunks": [
             {
               "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont tu effectuerais chacune de ces opérations dans une structure en grille et une structure basée sur une liste."
             }
           ]
         }
@@ -1419,7 +1419,7 @@
       "dashedName": "what-are-trees-and-tries-and-how-do-they-work",
       "title": {
         "en": "What Are Trees and Tries and How Do They Work?",
-        "fr": ""
+        "fr": "Que sont les arbres et les tries et comment fonctionnent-ils ?"
       },
       "sections": [
         {
@@ -1428,183 +1428,183 @@
           "chunks": [
             {
               "en": "Trees are very important in the world of computer science.",
-              "fr": ""
+              "fr": "Les arbres sont très importants dans le monde de l'informatique."
             },
             {
               "en": "A **tree** is a specific type of graph.",
-              "fr": ""
+              "fr": "Un **arbre** est un type spécifique de graphe."
             },
             {
               "en": "For a graph to be classified as a tree, it must:",
-              "fr": ""
+              "fr": "Pour qu'un graphe soit classé comme un arbre, il doit :"
             },
             {
               "en": "* Have no loops or cycles (paths where the start and end nodes are the same).\n    \n* Be connected (every node can be reached from every other node).",
-              "fr": ""
+              "fr": "* N'avoir aucune boucle ni cycle (chemins où les nœuds de début et de fin sont les mêmes).\n    \n* Être connexe (chaque nœud peut être atteint depuis chaque autre nœud)."
             },
             {
               "en": "Trees are non-linear data structures that organize nodes in a hierarchy, where nodes may have children, siblings, and parent nodes.",
-              "fr": ""
+              "fr": "Les arbres sont des structures de données non linéaires qui organisent les nœuds en hiérarchie, où les nœuds peuvent avoir des enfants, des frères et sœurs, et des nœuds parents."
             },
             {
               "en": "The root node is the very top of a tree. It's the only node in the tree without a parent node. This is the node where you will start traversing the entire data structure, usually with algorithms like breadth-first search (BFS) or depth-first search (DFS).",
-              "fr": ""
+              "fr": "Le nœud racine est tout en haut d'un arbre. C'est le seul nœud de l'arbre sans nœud parent. C'est le nœud où tu commenceras à parcourir toute la structure de données, généralement avec des algorithmes comme le parcours en largeur (BFS) ou le parcours en profondeur (DFS)."
             },
             {
               "en": "This is a graphical example of a tree:",
-              "fr": ""
+              "fr": "Voici un exemple graphique d'un arbre :"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"A tree diagram showing a hierarchical structure with node A at the root, nodes B and C as children of A, and nodes D and E as children of C. Node B is a leaf node.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"Un diagramme d'arbre montrant une structure hiérarchique avec le nœud A à la racine, les nœuds B et C comme enfants de A, et les nœuds D et E comme enfants de C. Le nœud B est une feuille.\">"
             },
             {
               "en": "Since nodes are organized in a hierarchy, they have relationships between them.",
-              "fr": ""
+              "fr": "Comme les nœuds sont organisés en hiérarchie, ils ont des relations entre eux."
             },
             {
               "en": "A **parent node** is a node that is immediately connected to other nodes below it. In the diagram, node A is the parent node of nodes B and C.",
-              "fr": ""
+              "fr": "Un **nœud parent** est un nœud qui est immédiatement connecté à d'autres nœuds en dessous de lui. Dans le diagramme, le nœud A est le nœud parent des nœuds B et C."
             },
             {
               "en": "A **child node** is a node that is immediately connected to a node above it. In the diagram, node D and E are the child nodes of node C.",
-              "fr": ""
+              "fr": "Un **nœud enfant** est un nœud qui est immédiatement connecté à un nœud au-dessus de lui. Dans le diagramme, les nœuds D et E sont les nœuds enfants du nœud C."
             },
             {
               "en": "Nodes D and E are also classified as **leaves**. A leaf is a node that has no child nodes. You can think of them as the end of the \"branches\" of the tree.",
-              "fr": ""
+              "fr": "Les nœuds D et E sont aussi classés comme des **feuilles**. Une feuille est un nœud qui n'a aucun nœud enfant. Tu peux les voir comme la fin des « branches » de l'arbre."
             },
             {
               "en": "Tree nodes also have important properties:",
-              "fr": ""
+              "fr": "Les nœuds d'arbre ont aussi des propriétés importantes :"
             },
             {
               "en": "* **Depth**: the length of the path from the root to that node. For example, in the diagram, node D has depth 2 because if you start at the root, you have to go through two edges to reach it.\n    \n* **Height**: the length of the path from that node down to a leaf. For example, node C has a height of 1 because it's one level above the leaf nodes.\n    \n* **Degree:** the number of child nodes each node has. In the diagram, node B has degree 0 because it's a leaf node, so it has no child nodes. Node C has degree 2 because it has two child nodes.",
-              "fr": ""
+              "fr": "* **Profondeur** : la longueur du chemin de la racine jusqu'à ce nœud. Par exemple, dans le diagramme, le nœud D a une profondeur de 2 parce que si tu pars de la racine, tu dois passer par deux arêtes pour l'atteindre.\n    \n* **Hauteur** : la longueur du chemin de ce nœud jusqu'à une feuille. Par exemple, le nœud C a une hauteur de 1 parce qu'il est un niveau au-dessus des nœuds feuilles.\n    \n* **Degré :** le nombre de nœuds enfants que chaque nœud a. Dans le diagramme, le nœud B a un degré de 0 parce que c'est une feuille, donc il n'a aucun nœud enfant. Le nœud C a un degré de 2 parce qu'il a deux nœuds enfants."
             },
             {
               "en": "Trees also have a **height**. The height of a tree is the height of its root node.",
-              "fr": ""
+              "fr": "Les arbres ont aussi une **hauteur**. La hauteur d'un arbre est la hauteur de son nœud racine."
             },
             {
               "en": "There are many different types of trees, including Binary Trees, Binary Search Trees, AVL trees, Red-Black Trees, and B-Trees.",
-              "fr": ""
+              "fr": "Il existe de nombreux types d'arbres différents, notamment les arbres binaires, les arbres binaires de recherche, les arbres AVL, les arbres rouge-noir, et les B-arbres."
             },
             {
               "en": "## Binary Trees and Binary Search Trees",
-              "fr": ""
+              "fr": "## Arbres binaires et arbres binaires de recherche"
             },
             {
               "en": "These are two of the most commonly used types of trees.",
-              "fr": ""
+              "fr": "Ce sont deux des types d'arbres les plus couramment utilisés."
             },
             {
               "en": "A **binary tree** is a type of tree in which each node can have at most two child nodes, a left child node and a right child node. Yes, this means that the example that you have seen so far is a binary tree!",
-              "fr": ""
+              "fr": "Un **arbre binaire** est un type d'arbre dans lequel chaque nœud peut avoir au plus deux nœuds enfants, un nœud enfant gauche et un nœud enfant droit. Oui, cela signifie que l'exemple que tu as vu jusqu'ici est un arbre binaire !"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"The same binary tree example highlighting that it's a binary tree, with each node having at most two children.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"Le même exemple d'arbre binaire mettant en évidence que c'est un arbre binaire, chaque nœud ayant au plus deux enfants.\">"
             },
             {
               "en": "A **binary search tree** is a more specific version of a binary tree, with a very particular ordering property.",
-              "fr": ""
+              "fr": "Un **arbre binaire de recherche** est une version plus spécifique d'un arbre binaire, avec une propriété d'ordre très particulière."
             },
             {
               "en": "To understand it, first you need to understand subtrees. A **subtree** is a section of a tree that is a tree itself.",
-              "fr": ""
+              "fr": "Pour le comprendre, tu dois d'abord comprendre les sous-arbres. Un **sous-arbre** est une section d'un arbre qui est elle-même un arbre."
             },
             {
               "en": "In our tree example, nodes C, D, and E form a tree by themselves, so they are considered a subtree.",
-              "fr": ""
+              "fr": "Dans notre exemple d'arbre, les nœuds C, D et E forment un arbre à eux seuls, donc ils sont considérés comme un sous-arbre."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-3.png\" alt=\"A diagram highlighting a subtree within the main tree, showing nodes C, D, and E forming their own tree structure.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-3.png\" alt=\"Un diagramme mettant en évidence un sous-arbre au sein de l'arbre principal, montrant les nœuds C, D et E formant leur propre structure d'arbre.\">"
             },
             {
               "en": "The ordering property of binary search trees (BST) establishes that for every node, all values in its left subtree are less than the node's value, and all values in its right subtree are greater than the node's value.",
-              "fr": ""
+              "fr": "La propriété d'ordre des arbres binaires de recherche (ABR) établit que pour chaque nœud, toutes les valeurs de son sous-arbre gauche sont inférieures à la valeur du nœud, et toutes les valeurs de son sous-arbre droit sont supérieures à la valeur du nœud."
             },
             {
               "en": "The left and right subtrees must also be binary search trees themselves.",
-              "fr": ""
+              "fr": "Les sous-arbres gauche et droit doivent aussi être eux-mêmes des arbres binaires de recherche."
             },
             {
               "en": "This ordering makes search, insertion, and deletion operations very efficient if the tree is balanced.",
-              "fr": ""
+              "fr": "Cet ordre rend les opérations de recherche, d'insertion et de suppression très efficaces si l'arbre est équilibré."
             },
             {
               "en": "A balanced tree is a tree in which the heights of the left and right subtrees of any node are very similar to make sure that operations remain efficient.",
-              "fr": ""
+              "fr": "Un arbre équilibré est un arbre dans lequel les hauteurs des sous-arbres gauche et droit de tout nœud sont très similaires pour s'assurer que les opérations restent efficaces."
             },
             {
               "en": "## Tries",
-              "fr": ""
+              "fr": "## Tries"
             },
             {
               "en": "Now that you know more about trees and binary search trees, let's dive into tries.",
-              "fr": ""
+              "fr": "Maintenant que tu en sais plus sur les arbres et les arbres binaires de recherche, plongeons dans les tries."
             },
             {
               "en": "**Tries** are tree data structures used to store a set of strings.",
-              "fr": ""
+              "fr": "**Les tries** sont des structures de données arborescentes utilisées pour stocker un ensemble de chaînes."
             },
             {
               "en": "Tries are also known as **prefix trees** because they are very efficient for operations that require finding strings based on their prefixes.",
-              "fr": ""
+              "fr": "Les tries sont aussi connus sous le nom d'**arbres de préfixes** parce qu'ils sont très efficaces pour les opérations qui nécessitent de trouver des chaînes basées sur leurs préfixes."
             },
             {
               "en": "Each node in the trie represents a single character of a string.",
-              "fr": ""
+              "fr": "Chaque nœud dans le trie représente un seul caractère d'une chaîne."
             },
             {
               "en": "The root node does not represent any particular character, so you can think of it as representing an empty string.",
-              "fr": ""
+              "fr": "Le nœud racine ne représente aucun caractère particulier, donc tu peux le voir comme représentant une chaîne vide."
             },
             {
               "en": "As you traverse the trie down from the root, the path to a node defines a specific prefix. To find a word, you follow that prefix until you reach the node with the word you are looking for.",
-              "fr": ""
+              "fr": "Quand tu parcours le trie vers le bas depuis la racine, le chemin jusqu'à un nœud définit un préfixe spécifique. Pour trouver un mot, tu suis ce préfixe jusqu'à atteindre le nœud avec le mot que tu cherches."
             },
             {
               "en": "Nodes that represent complete words are assigned end-of-word markers.",
-              "fr": ""
+              "fr": "Les nœuds qui représentent des mots complets reçoivent des marqueurs de fin de mot."
             },
             {
               "en": "This is an example of a trie with the words \"top\", \"tea\" and \"ten\".",
-              "fr": ""
+              "fr": "Voici un exemple de trie avec les mots « top », « tea » et « ten »."
             },
             {
               "en": "Notice how the words \"tea\" and \"ten\" share the same prefix \"te\", so the data structure follows the same path until the last character, which is marked as an end-of-word character. In this diagram, this is represented with a red border around the node:",
-              "fr": ""
+              "fr": "Remarque comment les mots « tea » et « ten » partagent le même préfixe « te », donc la structure de données suit le même chemin jusqu'au dernier caractère, qui est marqué comme un caractère de fin de mot. Dans ce diagramme, cela est représenté par une bordure rouge autour du nœud :"
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-4.png\" alt=\"A trie data structure showing the words 'top', 'tea', and 'ten'. The root node branches to 't', which then branches to 'o' (leading to 'top') and 'e' (leading to 'tea' and 'ten'). End-of-word nodes are marked with red borders.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-4.png\" alt=\"Une structure de données trie montrant les mots 'top', 'tea' et 'ten'. Le nœud racine se branche vers 't', qui se branche ensuite vers 'o' (menant à 'top') et 'e' (menant à 'tea' et 'ten'). Les nœuds de fin de mot sont marqués avec des bordures rouges.\">"
             },
             {
               "en": "The worst-case time complexity for the search operation is O(L), where L is the length of the string that you are looking for.",
-              "fr": ""
+              "fr": "La complexité temporelle dans le pire des cas pour l'opération de recherche est O(L), où L est la longueur de la chaîne que tu cherches."
             },
             {
               "en": "Insertion is also efficient. This operation only requires creating new nodes for the characters that don't exist in the trie yet.",
-              "fr": ""
+              "fr": "L'insertion est aussi efficace. Cette opération ne nécessite que de créer de nouveaux nœuds pour les caractères qui n'existent pas encore dans le trie."
             },
             {
               "en": "The great advantage of this data structure is that when multiple strings share the same prefix, their paths overlap, so the prefix itself is only stored once.",
-              "fr": ""
+              "fr": "Le grand avantage de cette structure de données est que lorsque plusieurs chaînes partagent le même préfixe, leurs chemins se chevauchent, donc le préfixe lui-même n'est stocké qu'une seule fois."
             },
             {
               "en": "This efficiency makes tries perfect for implementing features like autocomplete and spell checkers.",
-              "fr": ""
+              "fr": "Cette efficacité rend les tries parfaits pour implémenter des fonctionnalités comme l'autocomplétion et les correcteurs orthographiques."
             },
             {
               "en": "However, tries are not efficient for all sets of strings. They can be inefficient if the set of strings has many unique characters. This would require storing many unique characters as individual nodes. These nodes would have to be traversed to find the words, which would not be optimal.",
-              "fr": ""
+              "fr": "Cependant, les tries ne sont pas efficaces pour tous les ensembles de chaînes. Ils peuvent être inefficaces si l'ensemble de chaînes a beaucoup de caractères uniques. Cela nécessiterait de stocker beaucoup de caractères uniques comme nœuds individuels. Ces nœuds devraient être parcourus pour trouver les mots, ce qui ne serait pas optimal."
             },
             {
               "en": "Now that you are familiar with the different types of trees and what they are used for, you can start using them in real-world scenarios. Knowing how to choose the right one is a valuable skill to have when you need to tackle challenges in your daily work.",
-              "fr": ""
+              "fr": "Maintenant que tu es familiarisé avec les différents types d'arbres et à quoi ils servent, tu peux commencer à les utiliser dans des scénarios du monde réel. Savoir choisir le bon est une compétence précieuse quand tu dois relever des défis dans ton travail quotidien."
             }
           ]
         },
@@ -1614,7 +1614,7 @@
           "chunks": [
             {
               "en": "Which of the following statements about a Binary Search Tree (BST) is always true?",
-              "fr": ""
+              "fr": "Laquelle des affirmations suivantes sur un arbre binaire de recherche (ABR) est toujours vraie ?"
             }
           ]
         },
@@ -1624,11 +1624,11 @@
           "chunks": [
             {
               "en": "All values in the left subtree of a node are less than the node's value.",
-              "fr": ""
+              "fr": "Toutes les valeurs du sous-arbre gauche d'un nœud sont inférieures à la valeur du nœud."
             },
             {
               "en": "Every node can have up to three children.",
-              "fr": ""
+              "fr": "Chaque nœud peut avoir jusqu'à trois enfants."
             }
           ]
         },
@@ -1638,11 +1638,11 @@
           "chunks": [
             {
               "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
-              "fr": ""
+              "fr": "Pense à la règle spécifique qui régit la façon dont les nombres sont organisés dans un arbre binaire de recherche (ABR) pour permettre une recherche efficace."
             },
             {
               "en": "The tree is guaranteed to be perfectly balanced after every insertion.",
-              "fr": ""
+              "fr": "L'arbre est garanti d'être parfaitement équilibré après chaque insertion."
             }
           ]
         },
@@ -1652,11 +1652,11 @@
           "chunks": [
             {
               "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
-              "fr": ""
+              "fr": "Pense à la règle spécifique qui régit la façon dont les nombres sont organisés dans un arbre binaire de recherche (ABR) pour permettre une recherche efficace."
             },
             {
               "en": "It is a specialized tree-like structure optimized for storing strings.",
-              "fr": ""
+              "fr": "C'est une structure spécialisée de type arbre optimisée pour stocker des chaînes."
             }
           ]
         },
@@ -1666,7 +1666,7 @@
           "chunks": [
             {
               "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
-              "fr": ""
+              "fr": "Pense à la règle spécifique qui régit la façon dont les nombres sont organisés dans un arbre binaire de recherche (ABR) pour permettre une recherche efficace."
             }
           ]
         },
@@ -1676,7 +1676,7 @@
           "chunks": [
             {
               "en": "For which of the following tasks is a trie, or prefix tree most effective?",
-              "fr": ""
+              "fr": "Pour laquelle des tâches suivantes un trie, ou arbre de préfixes, est-il le plus efficace ?"
             }
           ]
         },
@@ -1686,7 +1686,7 @@
           "chunks": [
             {
               "en": "Finding the smallest value in a large dataset.",
-              "fr": ""
+              "fr": "Trouver la plus petite valeur dans un grand ensemble de données."
             }
           ]
         },
@@ -1696,11 +1696,11 @@
           "chunks": [
             {
               "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
-              "fr": ""
+              "fr": "Pense au principal avantage de la structure d'un trie et à la façon dont il est construit à partir de caractères."
             },
             {
               "en": "Managing a hierarchical file system on a computer.",
-              "fr": ""
+              "fr": "Gérer un système de fichiers hiérarchique sur un ordinateur."
             }
           ]
         },
@@ -1710,15 +1710,15 @@
           "chunks": [
             {
               "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
-              "fr": ""
+              "fr": "Pense au principal avantage de la structure d'un trie et à la façon dont il est construit à partir de caractères."
             },
             {
               "en": "Implementing an autocomplete feature.",
-              "fr": ""
+              "fr": "Implémenter une fonctionnalité d'autocomplétion."
             },
             {
               "en": "Storing an unordered list of unique numbers.",
-              "fr": ""
+              "fr": "Stocker une liste non ordonnée de nombres uniques."
             }
           ]
         },
@@ -1728,7 +1728,7 @@
           "chunks": [
             {
               "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
-              "fr": ""
+              "fr": "Pense au principal avantage de la structure d'un trie et à la façon dont il est construit à partir de caractères."
             }
           ]
         },
@@ -1738,7 +1738,7 @@
           "chunks": [
             {
               "en": "What is the fundamental difference between a general tree and a Binary Tree?",
-              "fr": ""
+              "fr": "Quelle est la différence fondamentale entre un arbre général et un arbre binaire ?"
             }
           ]
         },
@@ -1748,7 +1748,7 @@
           "chunks": [
             {
               "en": "A Binary Tree can only store numbers, while a general tree can store any data type.",
-              "fr": ""
+              "fr": "Un arbre binaire ne peut stocker que des nombres, tandis qu'un arbre général peut stocker n'importe quel type de données."
             }
           ]
         },
@@ -1758,11 +1758,11 @@
           "chunks": [
             {
               "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
-              "fr": ""
+              "fr": "Pense au nombre de connexions que chaque nœud d'un arbre binaire peut avoir, par rapport aux arbres généraux."
             },
             {
               "en": "A Binary Tree has a root node, but a general tree does not.",
-              "fr": ""
+              "fr": "Un arbre binaire a un nœud racine, mais un arbre général n'en a pas."
             }
           ]
         },
@@ -1772,11 +1772,11 @@
           "chunks": [
             {
               "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
-              "fr": ""
+              "fr": "Pense au nombre de connexions que chaque nœud d'un arbre binaire peut avoir, par rapport aux arbres généraux."
             },
             {
               "en": "A Binary Tree has no parent-child relationships, unlike a general tree.",
-              "fr": ""
+              "fr": "Un arbre binaire n'a pas de relations parent-enfant, contrairement à un arbre général."
             }
           ]
         },
@@ -1786,11 +1786,11 @@
           "chunks": [
             {
               "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
-              "fr": ""
+              "fr": "Pense au nombre de connexions que chaque nœud d'un arbre binaire peut avoir, par rapport aux arbres généraux."
             },
             {
               "en": "A Binary Tree restricts each node to a maximum of two children, while a general tree does not.",
-              "fr": ""
+              "fr": "Un arbre binaire limite chaque nœud à un maximum de deux enfants, tandis qu'un arbre général ne le fait pas."
             }
           ]
         }
@@ -1802,7 +1802,7 @@
       "dashedName": "how-do-priority-queues-and-heaps-work",
       "title": {
         "en": "How Do Priority Queues and Heaps Work?",
-        "fr": ""
+        "fr": "Comment fonctionnent les files de priorité et les tas ?"
       },
       "sections": [
         {
@@ -1811,175 +1811,175 @@
           "chunks": [
             {
               "en": "A **priority queue** is an abstract data type (ADT) that works similarly to a queue or stack, but with one key difference.",
-              "fr": ""
+              "fr": "Une **file de priorité** est un type abstrait de données (TAD) qui fonctionne de façon similaire à une file ou une pile, mais avec une différence clé."
             },
             {
               "en": "As you may already know, standard queues follow a FIFO (First-in, First-out) approach, where the first element added to the queue is the first one to be removed from the queue.",
-              "fr": ""
+              "fr": "Comme tu le sais peut-être déjà, les files standard suivent une approche FIFO (premier entré, premier sorti), où le premier élément ajouté à la file est le premier à en être retiré."
             },
             {
               "en": "Stacks follow a LIFO (Last-in, First-out) approach, where the last element added to the stack is the first one to be removed from the stack.",
-              "fr": ""
+              "fr": "Les piles suivent une approche LIFO (dernier entré, premier sorti), où le dernier élément ajouté à la pile est le premier à en être retiré."
             },
             {
               "en": "Queues and stacks only consider the order of insertion of the elements.",
-              "fr": ""
+              "fr": "Les files et les piles ne considèrent que l'ordre d'insertion des éléments."
             },
             {
               "en": "However, priority queues take the \"priority\" of the elements into account. The priority is used to determine which element should be removed next.",
-              "fr": ""
+              "fr": "Cependant, les files de priorité prennent en compte la « priorité » des éléments. La priorité sert à déterminer quel élément doit être retiré ensuite."
             },
             {
               "en": "Usually, the element with the highest priority is removed first, but some implementations may also choose to remove the element with the lowest priority first. This will depend on the requirements of your program.",
-              "fr": ""
+              "fr": "Habituellement, l'élément avec la plus haute priorité est retiré en premier, mais certaines implémentations peuvent aussi choisir de retirer d'abord l'élément avec la plus basse priorité. Cela dépendra des exigences de ton programme."
             },
             {
               "en": "Priority queues are very helpful for practical applications like finding the shortest path between two locations, scheduling tasks in operating systems, simulating traffic, compressing data, and managing networks.",
-              "fr": ""
+              "fr": "Les files de priorité sont très utiles pour des applications pratiques comme trouver le plus court chemin entre deux emplacements, planifier des tâches dans les systèmes d'exploitation, simuler le trafic, compresser des données, et gérer des réseaux."
             },
             {
               "en": "In practice, priority queues are commonly implemented using a heap data structure.",
-              "fr": ""
+              "fr": "En pratique, les files de priorité sont couramment implémentées avec une structure de données de type tas."
             },
             {
               "en": "A **heap** is a tree data structure with a very specific property called the **heap property**. This property determines the relationship between each node and its children, based on the type of heap.",
-              "fr": ""
+              "fr": "Un **tas** est une structure de données arborescente avec une propriété très spécifique appelée la **propriété de tas**. Cette propriété détermine la relation entre chaque nœud et ses enfants, selon le type de tas."
             },
             {
               "en": "There are two primary types of heaps:",
-              "fr": ""
+              "fr": "Il y a deux types principaux de tas :"
             },
             {
               "en": "* Max-heap\n    \n* Min-heap",
-              "fr": ""
+              "fr": "* Max-heap\n    \n* Min-heap"
             },
             {
               "en": "In a **max-heap**, the value of each node is greater than or equal to the value of its children.",
-              "fr": ""
+              "fr": "Dans un **max-heap**, la valeur de chaque nœud est supérieure ou égale à la valeur de ses enfants."
             },
             {
               "en": "In this example, you can see a tree structure with the nodes 8, 7, 5, 2, and 1. Note that node 7 is greater than node 2 and node 1, following the heap property. This is true for all the other nodes as well.",
-              "fr": ""
+              "fr": "Dans cet exemple, tu peux voir une structure d'arbre avec les nœuds 8, 7, 5, 2 et 1. Note que le nœud 7 est supérieur au nœud 2 et au nœud 1, suivant la propriété de tas. C'est aussi vrai pour tous les autres nœuds."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-1.png\" alt=\"A max-heap tree structure showing nodes with values 8 at the root, 7 and 5 as children of 8, and 2 and 1 as children of 7, demonstrating that each parent node is greater than its children.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-1.png\" alt=\"Une structure d'arbre max-heap montrant des nœuds avec la valeur 8 à la racine, 7 et 5 comme enfants de 8, et 2 et 1 comme enfants de 7, illustrant que chaque nœud parent est supérieur à ses enfants.\">"
             },
             {
               "en": "In contrast, in a **min-heap**, the value of each node is less than or equal to the value of its children.",
-              "fr": ""
+              "fr": "En revanche, dans un **min-heap**, la valeur de chaque nœud est inférieure ou égale à la valeur de ses enfants."
             },
             {
               "en": "In this example, we have nodes with values 4, 7, 9, 12, and 15. For example, node 7 is less than node 12 and node 15, following the heap property. This is also true for all the other nodes.",
-              "fr": ""
+              "fr": "Dans cet exemple, nous avons des nœuds avec les valeurs 4, 7, 9, 12 et 15. Par exemple, le nœud 7 est inférieur au nœud 12 et au nœud 15, suivant la propriété de tas. C'est aussi vrai pour tous les autres nœuds."
             },
             {
               "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-2.png\" alt=\"A min-heap tree structure showing nodes with values 4 at the root, 7 and 9 as children of 4, and 12 and 15 as children of 7, demonstrating that each parent node is less than its children.\">",
-              "fr": ""
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-2.png\" alt=\"Une structure d'arbre min-heap montrant des nœuds avec la valeur 4 à la racine, 7 et 9 comme enfants de 4, et 12 et 15 comme enfants de 7, illustrant que chaque nœud parent est inférieur à ses enfants.\">"
             },
             {
               "en": "The heap property is key because it ensures that the maximum (or minimum) element (depending on the type of heap) always stays at the top, which makes it very easy to remove.",
-              "fr": ""
+              "fr": "La propriété de tas est essentielle car elle garantit que l'élément maximum (ou minimum) (selon le type de tas) reste toujours au sommet, ce qui rend son retrait très facile."
             },
             {
               "en": "In practice, heaps are typically implemented as arrays to access parent and child nodes efficiently.",
-              "fr": ""
+              "fr": "En pratique, les tas sont typiquement implémentés comme des tableaux pour accéder efficacement aux nœuds parents et enfants."
             },
             {
               "en": "Using arrays simplifies the logic for accessing these values or \"nodes\" because behind the scenes, if the heap maintains the structure of a complete binary tree, the array implementation only requires simple mathematical operations based on their indices to find where the elements are located in memory.",
-              "fr": ""
+              "fr": "Utiliser des tableaux simplifie la logique pour accéder à ces valeurs ou « nœuds » parce qu'en coulisses, si le tas maintient la structure d'un arbre binaire complet, l'implémentation en tableau ne nécessite que de simples opérations mathématiques basées sur leurs indices pour trouver où les éléments sont situés en mémoire."
             },
             {
               "en": "JavaScript doesn't have a built-in heap module, but you can implement a min-heap using an array.",
-              "fr": ""
+              "fr": "JavaScript n'a pas de module de tas intégré, mais tu peux implémenter un min-heap avec un tableau."
             },
             {
               "en": "Here is a basic min-heap implementation in JavaScript:",
-              "fr": ""
+              "fr": "Voici une implémentation basique de min-heap en JavaScript :"
             },
             {
               "en": "To use this heap, you can create an empty heap. This will be the underlying data structure for the heap:",
-              "fr": ""
+              "fr": "Pour utiliser ce tas, tu peux créer un tas vide. Ce sera la structure de données sous-jacente du tas :"
             },
             {
               "en": "To add elements to the heap, you would call `push()`. This will automatically add the element where it should be, to preserve the heap property:",
-              "fr": ""
+              "fr": "Pour ajouter des éléments au tas, tu appellerais `push()`. Cela ajoutera automatiquement l'élément là où il doit être, pour préserver la propriété de tas :"
             },
             {
               "en": "To get the element with the highest priority (in this case, the smallest value), you would call `pop()`:",
-              "fr": ""
+              "fr": "Pour obtenir l'élément avec la plus haute priorité (dans ce cas, la plus petite valeur), tu appellerais `pop()` :"
             },
             {
               "en": "`pushPop()` combines both operations into one call.",
-              "fr": ""
+              "fr": "`pushPop()` combine les deux opérations en un seul appel."
             },
             {
               "en": "This is more efficient than calling them in a sequence separately, especially when the heap is large, since it only performs one reordering operation:",
-              "fr": ""
+              "fr": "C'est plus efficace que de les appeler séparément en séquence, surtout quand le tas est grand, car il n'effectue qu'une seule opération de réordonnancement :"
             },
             {
               "en": "If you already have an array and you want to transform it into a heap, you could call `heapify()`:",
-              "fr": ""
+              "fr": "Si tu as déjà un tableau et que tu veux le transformer en tas, tu pourrais appeler `heapify()` :"
             },
             {
               "en": "But currently, we are sorting the elements by their values, right?",
-              "fr": ""
+              "fr": "Mais actuellement, nous trions les éléments par leurs valeurs, n'est-ce pas ?"
             },
             {
               "en": "What if we want to sort them by their \"priority\" instead?",
-              "fr": ""
+              "fr": "Et si nous voulions les trier par leur « priorité » à la place ?"
             },
             {
               "en": "You could do this by storing arrays with this structure: `[priority, element]`.",
-              "fr": ""
+              "fr": "Tu pourrais le faire en stockant des tableaux avec cette structure : `[priority, element]`."
             },
             {
               "en": "In JavaScript, arrays are not automatically compared element by element for ordering, so you pass a comparison function to the heap that compares priorities first.",
-              "fr": ""
+              "fr": "En JavaScript, les tableaux ne sont pas automatiquement comparés élément par élément pour l'ordonnancement, donc tu passes une fonction de comparaison au tas qui compare d'abord les priorités."
             },
             {
               "en": "Please note that, in this case, lower values will represent higher priorities. This means that an item with priority of 1 will have a **higher** priority than an item with priority of 3:",
-              "fr": ""
+              "fr": "Note bien que, dans ce cas, les valeurs plus basses représenteront des priorités plus élevées. Cela signifie qu'un élément avec une priorité de 1 aura une priorité **plus haute** qu'un élément avec une priorité de 3 :"
             },
             {
               "en": "If you need elements with the same priority to be removed in the order that they were inserted, you could consider including a unique counter as the second element of your item to break the tie, like this `[priority, counter, element]`.",
-              "fr": ""
+              "fr": "Si tu as besoin que les éléments avec la même priorité soient retirés dans l'ordre où ils ont été insérés, tu pourrais envisager d'inclure un compteur unique comme deuxième élément de ton item pour départager, comme ceci `[priority, counter, element]`."
             },
             {
               "en": "For example, you can compare by priority first, and then by the counter:",
-              "fr": ""
+              "fr": "Par exemple, tu peux comparer d'abord par priorité, puis par le compteur :"
             },
             {
               "en": "Now let's talk about the efficiency of heaps.",
-              "fr": ""
+              "fr": "Parlons maintenant de l'efficacité des tas."
             },
             {
               "en": "The average and worst case time complexities for inserting and extracting the minimum or maximum value from a heap (depending on the type of heap) are logarithmic, `O(log n)`, because the number of swaps required is usually proportional to the height of the heap, which is log(n).",
-              "fr": ""
+              "fr": "Les complexités temporelles moyennes et dans le pire des cas pour l'insertion et l'extraction de la valeur minimum ou maximum d'un tas (selon le type de tas) sont logarithmiques, `O(log n)`, car le nombre d'échanges requis est généralement proportionnel à la hauteur du tas, qui est log(n)."
             },
             {
               "en": "The average and worst case time complexity for the \"peek\" operation is constant time, O(1). Peeking involves getting the minimum or maximum value (depending on the type of heap) without removing it.",
-              "fr": ""
+              "fr": "La complexité temporelle moyenne et dans le pire des cas pour l'opération « peek » est un temps constant, O(1). Le peek consiste à obtenir la valeur minimum ou maximum (selon le type de tas) sans la retirer."
             },
             {
               "en": "The \"heapify\" operation, where the heap is built from an unsorted list, has linear time complexity, O(n), in the average and worst cases.",
-              "fr": ""
+              "fr": "L'opération « heapify », où le tas est construit à partir d'une liste non triée, a une complexité temporelle linéaire, O(n), en moyenne et dans le pire des cas."
             },
             {
               "en": "Similarly, both searching for and deleting an arbitrary element have linear average and worst case time complexities of O(n), since they potentially require traversing the entire heap.",
-              "fr": ""
+              "fr": "De même, la recherche et la suppression d'un élément arbitraire ont toutes deux des complexités temporelles moyennes et dans le pire des cas linéaires de O(n), car elles nécessitent potentiellement de parcourir tout le tas."
             },
             {
               "en": "And how much space do they require?",
-              "fr": ""
+              "fr": "Et de combien d'espace ont-ils besoin ?"
             },
             {
               "en": "The space complexity of the heap is linear, O(n), where `n` is the number of elements it contains. It only needs to store the elements and a small additional overhead for the array object itself.",
-              "fr": ""
+              "fr": "La complexité spatiale du tas est linéaire, O(n), où `n` est le nombre d'éléments qu'il contient. Il n'a besoin que de stocker les éléments et un petit surcoût supplémentaire pour l'objet tableau lui-même."
             },
             {
               "en": "Priority queues and heaps are very important in computer science. They let you quickly find and use the most important elements from a list. This efficiency is crucial for many computer programs that perform critical real-world tasks, such as finding the fastest route on a map.",
-              "fr": ""
+              "fr": "Les files de priorité et les tas sont très importants en informatique. Ils te permettent de trouver et d'utiliser rapidement les éléments les plus importants d'une liste. Cette efficacité est cruciale pour de nombreux programmes informatiques qui effectuent des tâches critiques du monde réel, comme trouver l'itinéraire le plus rapide sur une carte."
             }
           ]
         },
@@ -1989,7 +1989,7 @@
           "chunks": [
             {
               "en": "What is the primary characteristic that distinguishes a priority queue from a standard queue or stack?",
-              "fr": ""
+              "fr": "Quelle est la caractéristique principale qui distingue une file de priorité d'une file ou d'une pile standard ?"
             }
           ]
         },
@@ -1999,7 +1999,7 @@
           "chunks": [
             {
               "en": "It allows elements to be accessed by their index.",
-              "fr": ""
+              "fr": "Elle permet d'accéder aux éléments par leur indice."
             }
           ]
         },
@@ -2009,11 +2009,11 @@
           "chunks": [
             {
               "en": "Think about the main factor that determines which element is removed next.",
-              "fr": ""
+              "fr": "Pense au facteur principal qui détermine quel élément est retiré ensuite."
             },
             {
               "en": "It always processes elements in the order they were inserted.",
-              "fr": ""
+              "fr": "Elle traite toujours les éléments dans l'ordre où ils ont été insérés."
             }
           ]
         },
@@ -2023,15 +2023,15 @@
           "chunks": [
             {
               "en": "Think about the main factor that determines which element is removed next.",
-              "fr": ""
+              "fr": "Pense au facteur principal qui détermine quel élément est retiré ensuite."
             },
             {
               "en": "It retrieves elements based on an assigned priority.",
-              "fr": ""
+              "fr": "Elle récupère les éléments selon une priorité assignée."
             },
             {
               "en": "It only stores elements of the same data type.",
-              "fr": ""
+              "fr": "Elle ne stocke que des éléments du même type de données."
             }
           ]
         },
@@ -2041,7 +2041,7 @@
           "chunks": [
             {
               "en": "Think about the main factor that determines which element is removed next.",
-              "fr": ""
+              "fr": "Pense au facteur principal qui détermine quel élément est retiré ensuite."
             }
           ]
         },
@@ -2051,7 +2051,7 @@
           "chunks": [
             {
               "en": "Which of the following is a common real-world application where a priority queue would be helpful?",
-              "fr": ""
+              "fr": "Laquelle des applications concrètes suivantes est un cas où une file de priorité serait utile ?"
             }
           ]
         },
@@ -2061,11 +2061,11 @@
           "chunks": [
             {
               "en": "Scheduling tasks in an operating system where some tasks are more urgent.",
-              "fr": ""
+              "fr": "Planifier des tâches dans un système d'exploitation où certaines tâches sont plus urgentes."
             },
             {
               "en": "Managing a playlist where songs play in a fixed order.",
-              "fr": ""
+              "fr": "Gérer une playlist où les chansons sont lues dans un ordre fixe."
             }
           ]
         },
@@ -2075,11 +2075,11 @@
           "chunks": [
             {
               "en": "Think about scenarios where some items are more important and need to be handled first.",
-              "fr": ""
+              "fr": "Pense à des scénarios où certains éléments sont plus importants et doivent être traités en premier."
             },
             {
               "en": "Storing a list of grocery items.",
-              "fr": ""
+              "fr": "Stocker une liste d'articles d'épicerie."
             }
           ]
         },
@@ -2089,11 +2089,11 @@
           "chunks": [
             {
               "en": "Think about scenarios where some items are more important and need to be handled first.",
-              "fr": ""
+              "fr": "Pense à des scénarios où certains éléments sont plus importants et doivent être traités en premier."
             },
             {
               "en": "Keeping track of customer names in alphabetical order.",
-              "fr": ""
+              "fr": "Suivre les noms de clients par ordre alphabétique."
             }
           ]
         },
@@ -2103,7 +2103,7 @@
           "chunks": [
             {
               "en": "Think about scenarios where some items are more important and need to be handled first.",
-              "fr": ""
+              "fr": "Pense à des scénarios où certains éléments sont plus importants et doivent être traités en premier."
             }
           ]
         },
@@ -2113,7 +2113,7 @@
           "chunks": [
             {
               "en": "What is the main reason why heaps are typically implemented as arrays in practice, despite being conceptualized as trees?",
-              "fr": ""
+              "fr": "Quelle est la principale raison pour laquelle les tas sont typiquement implémentés comme des tableaux en pratique, malgré le fait d'être conceptualisés comme des arbres ?"
             }
           ]
         },
@@ -2123,7 +2123,7 @@
           "chunks": [
             {
               "en": "Arrays are always faster than any other data structure.",
-              "fr": ""
+              "fr": "Les tableaux sont toujours plus rapides que toute autre structure de données."
             }
           ]
         },
@@ -2133,15 +2133,15 @@
           "chunks": [
             {
               "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont la structure arborescente d'un tas peut être efficacement mappée vers une structure de données linéaire."
             },
             {
               "en": "Arrays simplify the logic for accessing parent and child nodes using mathematical formulas.",
-              "fr": ""
+              "fr": "Les tableaux simplifient la logique pour accéder aux nœuds parents et enfants avec des formules mathématiques."
             },
             {
               "en": "Arrays allow for direct random access to any element, which is a core heap operation.",
-              "fr": ""
+              "fr": "Les tableaux permettent un accès direct aléatoire à n'importe quel élément, ce qui est une opération centrale du tas."
             }
           ]
         },
@@ -2151,11 +2151,11 @@
           "chunks": [
             {
               "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont la structure arborescente d'un tas peut être efficacement mappée vers une structure de données linéaire."
             },
             {
               "en": "Arrays are the only data structure that can guarantee the heap property.",
-              "fr": ""
+              "fr": "Les tableaux sont la seule structure de données qui peut garantir la propriété de tas."
             }
           ]
         },
@@ -2165,7 +2165,7 @@
           "chunks": [
             {
               "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
-              "fr": ""
+              "fr": "Pense à la façon dont la structure arborescente d'un tas peut être efficacement mappée vers une structure de données linéaire."
             }
           ]
         }

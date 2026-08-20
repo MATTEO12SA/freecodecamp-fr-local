@@ -1,7 +1,7 @@
 {
   "workshop": "workshop-shortest-path-algorithm-js",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -15,25 +15,25 @@
       "description": [
         {
           "en": "In this workshop, you will implement the shortest path algorithm in JavaScript. You will write a function that computes the shortest path between nodes in a weighted graph and returns both the distances and the paths taken.",
-          "fr": ""
+          "fr": "Dans cet atelier, tu vas implémenter l'algorithme du plus court chemin en JavaScript. Tu vas écrire une fonction qui calcule le plus court chemin entre des nœuds dans un graphe pondéré et renvoie à la fois les distances et les chemins empruntés."
         },
         {
           "en": "For example, given a graph where cities are connected by roads with different distances, the algorithm will find the shortest route from one city to another. If you want to travel from City A to City D, the algorithm might find that going A ⇨ B ⇨ C ⇨ D (total: 15km) is shorter than going directly A ⇨ D (20km).",
-          "fr": ""
+          "fr": "Par exemple, pour un graphe où des villes sont reliées par des routes de distances différentes, l'algorithme trouvera la route la plus courte d'une ville à une autre. Si tu veux voyager de la Ville A à la Ville D, l'algorithme pourrait trouver que le trajet A ⇨ B ⇨ C ⇨ D (total : 15 km) est plus court que le trajet direct A ⇨ D (20 km)."
         },
         {
           "en": "To get started, define a variable named `INF` and assign it the value `Infinity`. Later, you'll use it to indicate that there is no direct connection between two nodes.",
-          "fr": ""
+          "fr": "Pour commencer, définis une variable nommée `INF` et assigne-lui la valeur `Infinity`. Plus tard, tu l'utiliseras pour indiquer qu'il n'y a pas de connexion directe entre deux nœuds."
         }
       ],
       "hints": [
         {
           "en": "You should define a variable named `INF`.",
-          "fr": ""
+          "fr": "Tu dois définir une variable nommée `INF`."
         },
         {
           "en": "Your `INF` variable should have the value `Infinity`.",
-          "fr": ""
+          "fr": "Ta variable `INF` doit avoir la valeur `Infinity`."
         }
       ]
     },
@@ -48,25 +48,25 @@
       "description": [
         {
           "en": "You will need a 2D array to represent the adjacency matrix of the graph. Each value represents the weight (distance) of the edge between two nodes. A value of `INF` means there is no direct edge.",
-          "fr": ""
+          "fr": "Tu auras besoin d'un tableau 2D pour représenter la matrice d'adjacence du graphe. Chaque valeur représente le poids (distance) de l'arête entre deux nœuds. Une valeur de `INF` signifie qu'il n'y a pas d'arête directe."
         },
         {
           "en": "Create another variable named `adjMatrix` and assign it a 2D array with the following values:",
-          "fr": ""
+          "fr": "Crée une autre variable nommée `adjMatrix` et assigne-lui un tableau 2D avec les valeurs suivantes :"
         }
       ],
       "hints": [
         {
           "en": "You should create a variable named `adjMatrix`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `adjMatrix`."
         },
         {
           "en": "`adjMatrix` should be a 2D array with 6 rows and 6 columns.",
-          "fr": ""
+          "fr": "`adjMatrix` doit être un tableau 2D avec 6 lignes et 6 colonnes."
         },
         {
           "en": "`adjMatrix` should contain the correct values.",
-          "fr": ""
+          "fr": "`adjMatrix` doit contenir les valeurs correctes."
         }
       ]
     },
@@ -81,25 +81,25 @@
       "description": [
         {
           "en": "Now you will create the main function that does all the work.",
-          "fr": ""
+          "fr": "Maintenant tu vas créer la fonction principale qui fait tout le travail."
         },
         {
           "en": "Create a function named `shortestPath` that takes three parameters: `matrix`, `startNode`, and `targetNode`.",
-          "fr": ""
+          "fr": "Crée une fonction nommée `shortestPath` qui prend trois paramètres : `matrix`, `startNode`, et `targetNode`."
         },
         {
           "en": "Over the next few steps, you will build out the logic for this function.",
-          "fr": ""
+          "fr": "Au cours des prochaines étapes, tu vas construire la logique de cette fonction."
         }
       ],
       "hints": [
         {
           "en": "You should create a function named `shortestPath`.",
-          "fr": ""
+          "fr": "Tu dois créer une fonction nommée `shortestPath`."
         },
         {
           "en": "Your `shortestPath` function should have the parameters `matrix`, `startNode`, and `targetNode`.",
-          "fr": ""
+          "fr": "Ta fonction `shortestPath` doit avoir les paramètres `matrix`, `startNode`, et `targetNode`."
         }
       ]
     },
@@ -114,17 +114,17 @@
       "description": [
         {
           "en": "The `targetNode` parameter is optional. When not provided, the function will compute shortest paths from `startNode` to all other nodes in the graph.",
-          "fr": ""
+          "fr": "Le paramètre `targetNode` est optionnel. Quand il n'est pas fourni, la fonction calculera les plus courts chemins de `startNode` vers tous les autres nœuds du graphe."
         },
         {
           "en": "Give the `targetNode` parameter a default value of `null`.",
-          "fr": ""
+          "fr": "Donne au paramètre `targetNode` une valeur par défaut de `null`."
         }
       ],
       "hints": [
         {
           "en": "The `targetNode` parameter of your `shortestPath` function should default to `null`.",
-          "fr": ""
+          "fr": "Le paramètre `targetNode` de ta fonction `shortestPath` doit valoir `null` par défaut."
         }
       ]
     },
@@ -139,21 +139,21 @@
       "description": [
         {
           "en": "You need to store the number of nodes in the graph.",
-          "fr": ""
+          "fr": "Tu dois stocker le nombre de nœuds dans le graphe."
         },
         {
           "en": "Inside the `shortestPath` function, create a variable named `n` and assign it `matrix.length`.",
-          "fr": ""
+          "fr": "À l'intérieur de la fonction `shortestPath`, crée une variable nommée `n` et assigne-lui `matrix.length`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable `n` inside the `shortestPath` function.",
-          "fr": ""
+          "fr": "Tu dois créer une variable `n` à l'intérieur de la fonction `shortestPath`."
         },
         {
           "en": "Your `n` variable should have the value `matrix.length`.",
-          "fr": ""
+          "fr": "Ta variable `n` doit avoir la valeur `matrix.length`."
         }
       ]
     },
@@ -168,25 +168,25 @@
       "description": [
         {
           "en": "You need to keep track of the shortest known distance from the start node to every other node. To begin, you'll assume every node is infinitely far away.",
-          "fr": ""
+          "fr": "Tu dois suivre la plus courte distance connue du nœud de départ vers chaque autre nœud. Pour commencer, tu vas supposer que chaque nœud est infiniment loin."
         },
         {
           "en": "In JavaScript, you can create an array pre-filled with a value using `new Array(n).fill(value)`. For example, `new Array(3).fill(0)` creates `[0, 0, 0]`.",
-          "fr": ""
+          "fr": "En JavaScript, tu peux créer un tableau prérempli avec une valeur en utilisant `new Array(n).fill(value)`. Par exemple, `new Array(3).fill(0)` crée `[0, 0, 0]`."
         },
         {
           "en": "Inside the `shortestPath` function, create a variable named `distances` and assign it `new Array(n).fill(INF)`.",
-          "fr": ""
+          "fr": "À l'intérieur de la fonction `shortestPath`, crée une variable nommée `distances` et assigne-lui `new Array(n).fill(INF)`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable named `distances` inside `shortestPath`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `distances` à l'intérieur de `shortestPath`."
         },
         {
           "en": "Your `distances` variable should be set to `new Array(n).fill(INF)`.",
-          "fr": ""
+          "fr": "Ta variable `distances` doit être définie à `new Array(n).fill(INF)`."
         }
       ]
     },
@@ -201,17 +201,17 @@
       "description": [
         {
           "en": "The distance from the starting node to itself is always `0`. You have to update the `distances` array to reflect this.",
-          "fr": ""
+          "fr": "La distance du nœud de départ à lui-même est toujours `0`. Tu dois mettre à jour le tableau `distances` pour refléter cela."
         },
         {
           "en": "After the `distances` array, set `distances[startNode]` to `0`.",
-          "fr": ""
+          "fr": "Après le tableau `distances`, définis `distances[startNode]` à `0`."
         }
       ],
       "hints": [
         {
           "en": "You should set `distances[startNode]` to `0`.",
-          "fr": ""
+          "fr": "Tu dois définir `distances[startNode]` à `0`."
         }
       ]
     },
@@ -226,37 +226,37 @@
       "description": [
         {
           "en": "You also need to track the actual path taken to reach each node. You will store a list of paths where each entry is an array of node indices representing the route taken.",
-          "fr": ""
+          "fr": "Tu dois aussi suivre le chemin réel emprunté pour atteindre chaque nœud. Tu stockeras une liste de chemins où chaque entrée est un tableau d'indices de nœuds représentant la route empruntée."
         },
         {
           "en": "Initially, each node's path will just contain itself. You can create this structure using `Array.from()`:",
-          "fr": ""
+          "fr": "Au départ, le chemin de chaque nœud ne contiendra que lui-même. Tu peux créer cette structure avec `Array.from()` :"
         },
         {
           "en": "This creates an array of `n` elements, where the element at index `i` is `[i]`.",
-          "fr": ""
+          "fr": "Cela crée un tableau de `n` éléments, où l'élément à l'indice `i` est `[i]`."
         },
         {
           "en": "Still within the `shortestPath` function, create a variable named `paths` and assign it `Array.from({ length: n }, (_, i) => [i])`.",
-          "fr": ""
+          "fr": "Toujours dans la fonction `shortestPath`, crée une variable nommée `paths` et assigne-lui `Array.from({ length: n }, (_, i) => [i])`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable `paths` inside the `shortestPath` function.",
-          "fr": ""
+          "fr": "Tu dois créer une variable `paths` à l'intérieur de la fonction `shortestPath`."
         },
         {
           "en": "Your `paths` variable should be initialized using `Array.from`.",
-          "fr": ""
+          "fr": "Ta variable `paths` doit être initialisée avec `Array.from`."
         },
         {
           "en": "Your `paths` variable should use `{ length: n }` as the first argument to `Array.from`.",
-          "fr": ""
+          "fr": "Ta variable `paths` doit utiliser `{ length: n }` comme premier argument de `Array.from`."
         },
         {
           "en": "The second argument to `Array.from` should be a callback `(_, i) => [i]`, where `_` is a placeholder for the unused element and `i` is the index. It should return `[i]`.",
-          "fr": ""
+          "fr": "Le second argument de `Array.from` doit être un callback `(_, i) => [i]`, où `_` est un placeholder pour l'élément inutilisé et `i` est l'indice. Il doit renvoyer `[i]`."
         }
       ]
     },
@@ -271,21 +271,21 @@
       "description": [
         {
           "en": "As the algorithm runs, you need to track which nodes have already been processed so you don't revisit them.",
-          "fr": ""
+          "fr": "Pendant que l'algorithme s'exécute, tu dois suivre quels nœuds ont déjà été traités pour ne pas les revisiter."
         },
         {
           "en": "Create a variable named `visited` and assign it `new Array(n).fill(false)`.",
-          "fr": ""
+          "fr": "Crée une variable nommée `visited` et assigne-lui `new Array(n).fill(false)`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable named `visited`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `visited`."
         },
         {
           "en": "Your `visited` variable should be set to `new Array(n).fill(false)`.",
-          "fr": ""
+          "fr": "Ta variable `visited` doit être définie à `new Array(n).fill(false)`."
         }
       ]
     },
@@ -300,29 +300,29 @@
       "description": [
         {
           "en": "Now you'll add the main loop that drives the algorithm. It runs once for each node in the graph, selecting the closest unvisited node each time.",
-          "fr": ""
+          "fr": "Maintenant tu vas ajouter la boucle principale qui pilote l'algorithme. Elle s'exécute une fois pour chaque nœud du graphe, en sélectionnant à chaque fois le nœud non visité le plus proche."
         },
         {
           "en": "Inside the `shortestPath` function, add a `for` loop that runs `n` times using `i` as the loop variable.",
-          "fr": ""
+          "fr": "À l'intérieur de la fonction `shortestPath`, ajoute une boucle `for` qui s'exécute `n` fois en utilisant `i` comme variable de boucle."
         },
         {
           "en": "At the start of the loop body, using `let`, declare two variables `minDistance` and `current` set to `INF`, and `-1` respectively. These will track the closest unvisited node found in each iteration.",
-          "fr": ""
+          "fr": "Au début du corps de la boucle, avec `let`, déclare deux variables `minDistance` et `current` définies respectivement à `INF` et `-1`. Elles suivront le nœud non visité le plus proche trouvé à chaque itération."
         }
       ],
       "hints": [
         {
           "en": "You should have a `for` loop inside `shortestPath` that runs `n` times. Don't forget to set `i` with `let` inside it.",
-          "fr": ""
+          "fr": "Tu dois avoir une boucle `for` à l'intérieur de `shortestPath` qui s'exécute `n` fois. N'oublie pas de définir `i` avec `let` à l'intérieur."
         },
         {
           "en": "You should have a `minDistance` variable set to `INF` inside the loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une variable `minDistance` définie à `INF` à l'intérieur de la boucle."
         },
         {
           "en": "You should have a `current` variable set to `-1` inside the loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une variable `current` définie à `-1` à l'intérieur de la boucle."
         }
       ]
     },
@@ -337,21 +337,21 @@
       "description": [
         {
           "en": "Inside the loop, you need to scan every node to find the one with the smallest known distance that hasn't been visited yet.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle, tu dois parcourir chaque nœud pour trouver celui avec la plus petite distance connue qui n'a pas encore été visité."
         },
         {
           "en": "Add a `for` loop inside the main loop that iterates through each node. Use `nodeNo` as the loop variable going from `0` to `n`.",
-          "fr": ""
+          "fr": "Ajoute une boucle `for` à l'intérieur de la boucle principale qui itère sur chaque nœud. Utilise `nodeNo` comme variable de boucle allant de `0` à `n`."
         },
         {
           "en": "Leave the body empty for now.",
-          "fr": ""
+          "fr": "Laisse le corps vide pour l'instant."
         }
       ],
       "hints": [
         {
           "en": "You should have a second (inner) `for` loop inside the main loop with `nodeNo` as its loop variable.",
-          "fr": ""
+          "fr": "Tu dois avoir une seconde boucle `for` (interne) à l'intérieur de la boucle principale avec `nodeNo` comme variable de boucle."
         }
       ]
     },
@@ -366,21 +366,21 @@
       "description": [
         {
           "en": "Inside the inner `for` loop, you need to check whether the current node is unvisited and closer than the best you've found so far.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle `for` interne, tu dois vérifier si le nœud courant est non visité et plus proche que le meilleur trouvé jusqu'ici."
         },
         {
           "en": "Add an `if` statement that checks if `nodeNo` has not been visited and `distances[nodeNo]` is less than `minDistance`.",
-          "fr": ""
+          "fr": "Ajoute une instruction `if` qui vérifie si `nodeNo` n'a pas été visité et si `distances[nodeNo]` est inférieur à `minDistance`."
         },
         {
           "en": "Leave the body empty for now.",
-          "fr": ""
+          "fr": "Laisse le corps vide pour l'instant."
         }
       ],
       "hints": [
         {
           "en": "You should have an `if` statement with the condition `!visited[nodeNo] && distances[nodeNo] < minDistance` inside the inner `for` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` avec la condition `!visited[nodeNo] && distances[nodeNo] < minDistance` à l'intérieur de la boucle `for` interne."
         }
       ]
     },
@@ -395,21 +395,21 @@
       "description": [
         {
           "en": "If the condition is true, the current node is the best unvisited candidate found so far. You need to update your tracking variables to reflect that.",
-          "fr": ""
+          "fr": "Si la condition est vraie, le nœud courant est le meilleur candidat non visité trouvé jusqu'ici. Tu dois mettre à jour tes variables de suivi pour le refléter."
         },
         {
           "en": "Inside the `if` statement, update `minDistance` to `distances[nodeNo]` and `current` to `nodeNo`.",
-          "fr": ""
+          "fr": "À l'intérieur de l'instruction `if`, mets à jour `minDistance` à `distances[nodeNo]` et `current` à `nodeNo`."
         }
       ],
       "hints": [
         {
           "en": "You should set `minDistance` to `distances[nodeNo]` inside the `if` block.",
-          "fr": ""
+          "fr": "Tu dois définir `minDistance` à `distances[nodeNo]` à l'intérieur du bloc `if`."
         },
         {
           "en": "You should set `current` to `nodeNo` inside the `if` block.",
-          "fr": ""
+          "fr": "Tu dois définir `current` à `nodeNo` à l'intérieur du bloc `if`."
         }
       ]
     },
@@ -424,21 +424,21 @@
       "description": [
         {
           "en": "After scanning all nodes to find the closest unvisited one, you need to handle the case where no valid node is found. This happens when all remaining nodes are unreachable.",
-          "fr": ""
+          "fr": "Après avoir parcouru tous les nœuds pour trouver le non visité le plus proche, tu dois gérer le cas où aucun nœud valide n'est trouvé. Cela arrive quand tous les nœuds restants sont inatteignables."
         },
         {
           "en": "After the inner `for` loop, but still inside the outer loop, add an `if` statement that checks if `current` is strictly equal to `-1`. If that is true, use `break` inside the `if` block to stop the outer loop early.",
-          "fr": ""
+          "fr": "Après la boucle `for` interne, mais toujours dans la boucle externe, ajoute une instruction `if` qui vérifie si `current` est strictement égal à `-1`. Si c'est vrai, utilise `break` dans le bloc `if` pour arrêter tôt la boucle externe."
         }
       ],
       "hints": [
         {
           "en": "You should add an `if` statement that checks if `current === -1`.",
-          "fr": ""
+          "fr": "Tu dois ajouter une instruction `if` qui vérifie si `current === -1`."
         },
         {
           "en": "You should use `break` inside the `if` block.",
-          "fr": ""
+          "fr": "Tu dois utiliser `break` à l'intérieur du bloc `if`."
         }
       ]
     },
@@ -453,17 +453,17 @@
       "description": [
         {
           "en": "Once you've confirmed a valid node was found, mark it as visited so the algorithm won't process it again.",
-          "fr": ""
+          "fr": "Une fois que tu as confirmé qu'un nœud valide a été trouvé, marque-le comme visité pour que l'algorithme ne le traite plus."
         },
         {
           "en": "After the `if` statement with the condition `current === -1`, set `visited[current]` to `true`.",
-          "fr": ""
+          "fr": "Après l'instruction `if` avec la condition `current === -1`, définis `visited[current]` à `true`."
         }
       ],
       "hints": [
         {
           "en": "You should set `visited[current]` to `true`.",
-          "fr": ""
+          "fr": "Tu dois définir `visited[current]` à `true`."
         }
       ]
     },
@@ -478,29 +478,29 @@
       "description": [
         {
           "en": "Now that the current node is marked as visited, you need to look at all its neighbors to see if you can reach them more efficiently through the current node.",
-          "fr": ""
+          "fr": "Maintenant que le nœud courant est marqué comme visité, tu dois regarder tous ses voisins pour voir si tu peux les atteindre plus efficacement via le nœud courant."
         },
         {
           "en": "After `visited[current] = true`, add a neighbor `for` loop that iterates through each `nodeNo` from `0` to `n`. Note that this is another inner loop on the same level as the first.",
-          "fr": ""
+          "fr": "Après `visited[current] = true`, ajoute une boucle `for` de voisins qui itère sur chaque `nodeNo` de `0` à `n`. Note que c'est une autre boucle interne au même niveau que la première."
         },
         {
           "en": "Inside the loop, declare a variable named `distance` and assign it `matrix[current][nodeNo]`. This gives you the edge weight between the current node and its neighbor.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle, déclare une variable nommée `distance` et assigne-lui `matrix[current][nodeNo]`. Cela te donne le poids de l'arête entre le nœud courant et son voisin."
         }
       ],
       "hints": [
         {
           "en": "You should add a neighbor `for` loop after marking the current node as visited.",
-          "fr": ""
+          "fr": "Tu dois ajouter une boucle `for` de voisins après avoir marqué le nœud courant comme visité."
         },
         {
           "en": "The neighbor `for` loop should iterate from `0` to `n`.",
-          "fr": ""
+          "fr": "La boucle `for` de voisins doit itérer de `0` à `n`."
         },
         {
           "en": "You should have a `distance` variable assigned to `matrix[current][nodeNo]` inside the neighbor loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une variable `distance` assignée à `matrix[current][nodeNo]` à l'intérieur de la boucle des voisins."
         }
       ]
     },
@@ -515,25 +515,25 @@
       "description": [
         {
           "en": "Before updating distances, you need to verify the neighbor is worth considering. There must be an actual edge to it (`distance !== INF`) and it must not have been visited yet.",
-          "fr": ""
+          "fr": "Avant de mettre à jour les distances, tu dois vérifier que le voisin vaut la peine d'être considéré. Il doit y avoir une arête réelle vers lui (`distance !== INF`) et il ne doit pas encore avoir été visité."
         },
         {
           "en": "Inside the neighbor `for` loop, add an `if` statement that checks if `distance` is not strictly equal to `INF` **and** if `nodeNo` is not visited.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle `for` des voisins, ajoute une instruction `if` qui vérifie si `distance` n'est pas strictement égal à `INF` **et** si `nodeNo` n'est pas visité."
         },
         {
           "en": "Inside the `if` block, declare a variable `newDistance` assigned to `distances[current] + distance`. This is the total cost of reaching the neighbor through the current node.",
-          "fr": ""
+          "fr": "À l'intérieur du bloc `if`, déclare une variable `newDistance` assignée à `distances[current] + distance`. C'est le coût total pour atteindre le voisin via le nœud courant."
         }
       ],
       "hints": [
         {
           "en": "You should add an `if` statement with the condition `distance !== INF && !visited[nodeNo]`.",
-          "fr": ""
+          "fr": "Tu dois ajouter une instruction `if` avec la condition `distance !== INF && !visited[nodeNo]`."
         },
         {
           "en": "You should declare a `newDistance` with the value `distances[current] + distance` inside the `if` block.",
-          "fr": ""
+          "fr": "Tu dois déclarer une `newDistance` avec la valeur `distances[current] + distance` à l'intérieur du bloc `if`."
         }
       ]
     },
@@ -548,21 +548,21 @@
       "description": [
         {
           "en": "Now you should check whether going through the current node gives a shorter route to the neighbor. If `newDistance` is better than what's already stored, then you should update it.",
-          "fr": ""
+          "fr": "Maintenant tu dois vérifier si passer par le nœud courant donne une route plus courte vers le voisin. Si `newDistance` est meilleur que ce qui est déjà stocké, alors tu dois le mettre à jour."
         },
         {
           "en": "Inside the existing `if` block, add a nested `if` statement that checks if `newDistance` is less than `distances[nodeNo]`. Inside that nested `if` block, update `distances[nodeNo]` to `newDistance`.",
-          "fr": ""
+          "fr": "À l'intérieur du bloc `if` existant, ajoute une instruction `if` imbriquée qui vérifie si `newDistance` est inférieur à `distances[nodeNo]`. Dans ce bloc `if` imbriqué, mets à jour `distances[nodeNo]` à `newDistance`."
         }
       ],
       "hints": [
         {
           "en": "You should add a nested `if` statement with the condition `newDistance < distances[nodeNo]`.",
-          "fr": ""
+          "fr": "Tu dois ajouter une instruction `if` imbriquée avec la condition `newDistance < distances[nodeNo]`."
         },
         {
           "en": "You should update `distances[nodeNo]` to `newDistance` inside the nested `if` block.",
-          "fr": ""
+          "fr": "Tu dois mettre à jour `distances[nodeNo]` à `newDistance` à l'intérieur du bloc `if` imbriqué."
         }
       ]
     },
@@ -577,25 +577,25 @@
       "description": [
         {
           "en": "When you find a shorter path to a neighbor, you also need to update the recorded path to reach it.",
-          "fr": ""
+          "fr": "Quand tu trouves un chemin plus court vers un voisin, tu dois aussi mettre à jour le chemin enregistré pour l'atteindre."
         },
         {
           "en": "In JavaScript, you can create a new array combining an existing array and a new element using the spread operator:",
-          "fr": ""
+          "fr": "En JavaScript, tu peux créer un nouveau tableau combinant un tableau existant et un nouvel élément avec l'opérateur spread :"
         },
         {
           "en": "Inside the nested `if` block, update `paths[nodeNo]` to be the path to the current node with `nodeNo` appended at the end using spread syntax like so: `[...paths[current], nodeNo]`.",
-          "fr": ""
+          "fr": "À l'intérieur du bloc `if` imbriqué, mets à jour `paths[nodeNo]` pour qu'il soit le chemin vers le nœud courant avec `nodeNo` ajouté à la fin avec la syntaxe spread comme suit : `[...paths[current], nodeNo]`."
         }
       ],
       "hints": [
         {
           "en": "You should update `paths[nodeNo]` inside the nested `if` block.",
-          "fr": ""
+          "fr": "Tu dois mettre à jour `paths[nodeNo]` à l'intérieur du bloc `if` imbriqué."
         },
         {
           "en": "`paths[nodeNo]` should be set to `[...paths[current], nodeNo]`.",
-          "fr": ""
+          "fr": "`paths[nodeNo]` doit être défini à `[...paths[current], nodeNo]`."
         }
       ]
     },
@@ -610,33 +610,33 @@
       "description": [
         {
           "en": "Once the main loop finishes, you need to decide which node(s) to display results for.",
-          "fr": ""
+          "fr": "Une fois la boucle principale terminée, tu dois décider pour quel(s) nœud(s) afficher les résultats."
         },
         {
           "en": "If a specific `targetNode` was provided, only show results for that node. Otherwise, show results for all nodes.",
-          "fr": ""
+          "fr": "Si un `targetNode` spécifique a été fourni, n'affiche les résultats que pour ce nœud. Sinon, affiche les résultats pour tous les nœuds."
         },
         {
           "en": "In JavaScript, you can get all indices of an array as an iterable using `[...Array(n).keys()]`.",
-          "fr": ""
+          "fr": "En JavaScript, tu peux obtenir tous les indices d'un tableau comme itérable avec `[...Array(n).keys()]`."
         },
         {
           "en": "After the outer `for` loop, create a variable named `targets`. Using a ternary expression, if `targetNode` is strictly not `null`, assign `[targetNode]`, otherwise assign `[...Array(n).keys()]`.",
-          "fr": ""
+          "fr": "Après la boucle `for` externe, crée une variable nommée `targets`. Avec une expression ternaire, si `targetNode` n'est strictement pas `null`, assigne `[targetNode]`, sinon assigne `[...Array(n).keys()]`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable `targets` after the main loop.",
-          "fr": ""
+          "fr": "Tu dois créer une variable `targets` après la boucle principale."
         },
         {
           "en": "Your `targets` variable should use a ternary checking `targetNode !== null`.",
-          "fr": ""
+          "fr": "Ta variable `targets` doit utiliser un ternaire vérifiant `targetNode !== null`."
         },
         {
           "en": "When a target is provided, `targets` should be `[targetNode]`, otherwise it should be `[...Array(n).keys()]`.",
-          "fr": ""
+          "fr": "Quand une cible est fournie, `targets` doit être `[targetNode]`, sinon ce doit être `[...Array(n).keys()]`."
         }
       ]
     },
@@ -651,17 +651,17 @@
       "description": [
         {
           "en": "Now loop through the target nodes to display results for each one.",
-          "fr": ""
+          "fr": "Maintenant parcours les nœuds cibles pour afficher les résultats de chacun."
         },
         {
           "en": "Add a `for...of` loop that iterates over `targets` using `nodeNo` as the loop variable. Leave the body empty for now.",
-          "fr": ""
+          "fr": "Ajoute une boucle `for...of` qui itère sur `targets` en utilisant `nodeNo` comme variable de boucle. Laisse le corps vide pour l'instant."
         }
       ],
       "hints": [
         {
           "en": "You should create a `for...of` loop with the variable `nodeNo` iterating over `targets`.",
-          "fr": ""
+          "fr": "Tu dois créer une boucle `for...of` avec la variable `nodeNo` itérant sur `targets`."
         }
       ]
     },
@@ -676,21 +676,21 @@
       "description": [
         {
           "en": "You only want to display results for nodes that are reachable and different from the start node.",
-          "fr": ""
+          "fr": "Tu ne veux afficher les résultats que pour les nœuds atteignables et différents du nœud de départ."
         },
         {
           "en": "Inside the `for...of` loop, add an `if` statement that checks if `nodeNo` is strictly equal to `startNode` **or** `distances[nodeNo]` is strictly equal to `INF`. If either is true, use `continue` inside the `if` block to skip to the next iteration.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle `for...of`, ajoute une instruction `if` qui vérifie si `nodeNo` est strictement égal à `startNode` **ou** si `distances[nodeNo]` est strictement égal à `INF`. Si l'un des deux est vrai, utilise `continue` dans le bloc `if` pour passer à l'itération suivante."
         }
       ],
       "hints": [
         {
           "en": "You should have an `if` statement with the condition `nodeNo === startNode || distances[nodeNo] === INF` inside your `for...of` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` avec la condition `nodeNo === startNode || distances[nodeNo] === INF` à l'intérieur de ta boucle `for...of`."
         },
         {
           "en": "You should use `continue` in the `if` block.",
-          "fr": ""
+          "fr": "Tu dois utiliser `continue` dans le bloc `if`."
         }
       ]
     },
@@ -705,25 +705,25 @@
       "description": [
         {
           "en": "Now that you know the node is reachable and not the start, format its path into a readable string.",
-          "fr": ""
+          "fr": "Maintenant que tu sais que le nœud est atteignable et n'est pas le départ, formate son chemin en une chaîne lisible."
         },
         {
           "en": "The `paths[nodeNo]` array holds the sequence of node indices visited to reach `nodeNo`. You can turn that into a human-readable string like `0 -> 2 -> 3` using the `.join()` method.",
-          "fr": ""
+          "fr": "Le tableau `paths[nodeNo]` contient la séquence d'indices de nœuds visités pour atteindre `nodeNo`. Tu peux en faire une chaîne lisible comme `0 -> 2 -> 3` avec la méthode `.join()`."
         },
         {
           "en": "Inside the `for...of` loop, after the `if` statement with `continue`, declare a variable named `path` and assign it the value `paths[nodeNo].join(' -> ')`.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle `for...of`, après l'instruction `if` avec `continue`, déclare une variable nommée `path` et assigne-lui la valeur `paths[nodeNo].join(' -> ')`."
         }
       ],
       "hints": [
         {
           "en": "You should have a variable named `path` inside the `for...of` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une variable nommée `path` à l'intérieur de la boucle `for...of`."
         },
         {
           "en": "Your `path` variable should have the value `paths[nodeNo].join(' -> ')`.",
-          "fr": ""
+          "fr": "Ta variable `path` doit avoir la valeur `paths[nodeNo].join(' -> ')`."
         }
       ]
     },
@@ -738,29 +738,29 @@
       "description": [
         {
           "en": "Now, you should print the result for each reachable node.",
-          "fr": ""
+          "fr": "Maintenant, tu dois afficher le résultat pour chaque nœud atteignable."
         },
         {
           "en": "After the `path` variable, add a `console.log()` call with a template literal that outputs:",
-          "fr": ""
+          "fr": "Après la variable `path`, ajoute un appel `console.log()` avec un template literal qui affiche :"
         },
         {
           "en": "For example, if `startNode` is `0` and `nodeNo` is `3`, the output should look like this:",
-          "fr": ""
+          "fr": "Par exemple, si `startNode` vaut `0` et `nodeNo` vaut `3`, la sortie devrait ressembler à ceci :"
         }
       ],
       "hints": [
         {
           "en": "You should have a `console.log()` inside the `for...of` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir un `console.log()` à l'intérieur de la boucle `for...of`."
         },
         {
           "en": "The `console.log()` should use a template literal containing `${startNode}-${nodeNo} distance: ${distances[nodeNo]}`.",
-          "fr": ""
+          "fr": "Le `console.log()` doit utiliser un template literal contenant `${startNode}-${nodeNo} distance: ${distances[nodeNo]}`."
         },
         {
           "en": "The template literal should also include `${path}`.",
-          "fr": ""
+          "fr": "Le template literal doit aussi inclure `${path}`."
         }
       ]
     },
@@ -775,17 +775,17 @@
       "description": [
         {
           "en": "The function should return the computed data so callers can use it programmatically.",
-          "fr": ""
+          "fr": "La fonction doit renvoyer les données calculées pour que les appelants puissent les utiliser de façon programmatique."
         },
         {
           "en": "After the `for...of` loop, add a `return` statement that returns an array containing `distances` and `paths`, in that order.",
-          "fr": ""
+          "fr": "Après la boucle `for...of`, ajoute une instruction `return` qui renvoie un tableau contenant `distances` et `paths`, dans cet ordre."
         }
       ],
       "hints": [
         {
           "en": "You should return `[distances, paths]` after the `for...of` loop.",
-          "fr": ""
+          "fr": "Tu dois renvoyer `[distances, paths]` après la boucle `for...of`."
         }
       ]
     },
@@ -800,25 +800,25 @@
       "description": [
         {
           "en": "The function is complete. Now call it to see the results.",
-          "fr": ""
+          "fr": "La fonction est complète. Appelle-la maintenant pour voir les résultats."
         },
         {
           "en": "At the bottom of the file (outside the function), call `shortestPath` with `adjMatrix` as the matrix, `0` as the start node, and `5` as the target node.",
-          "fr": ""
+          "fr": "En bas du fichier (en dehors de la fonction), appelle `shortestPath` avec `adjMatrix` comme matrice, `0` comme nœud de départ, et `5` comme nœud cible."
         },
         {
           "en": "This will print the shortest path from node `0` to node `5` in the adjacency matrix.",
-          "fr": ""
+          "fr": "Cela affichera le plus court chemin du nœud `0` au nœud `5` dans la matrice d'adjacence."
         },
         {
           "en": "With that, your shortest path algorithm workshop is complete!",
-          "fr": ""
+          "fr": "Avec cela, ton atelier sur l'algorithme du plus court chemin est terminé !"
         }
       ],
       "hints": [
         {
           "en": "You should call the `shortestPath` function with `adjMatrix, 0, 5`.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `shortestPath` avec `adjMatrix, 0, 5`."
         }
       ]
     }

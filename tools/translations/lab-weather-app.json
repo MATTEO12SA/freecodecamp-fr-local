@@ -1,0 +1,217 @@
+{
+  "workshop": "lab-weather-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66f12a88741aeb16b9246c59.md",
+      "id": "66f12a88741aeb16b9246c59",
+      "dashedName": "lab-weather-app",
+      "title": {
+        "en": "Build a Weather App",
+        "fr": "Crée une application météo"
+      },
+      "description": [
+        {
+          "en": "In this lab, you'll build an app that provides weather information from different cities.",
+          "fr": "Dans ce lab, tu vas construire une application qui fournit des informations météo de différentes villes."
+        },
+        {
+          "en": "You will use a weather API. The output data has the following format:",
+          "fr": "Tu utiliseras une API météo. Les données de sortie ont le format suivant :"
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should have a `button` element with an `id` of `get-weather-btn`.",
+          "fr": "1. Tu dois avoir un élément `button` avec un `id` de `get-weather-btn`."
+        },
+        {
+          "en": "1. You should have a `select` element with seven `option` elements nested within it. The first option should have an empty string as its text and `value` attribute. The rest should have the following for their text and values (with the value being lowercase):",
+          "fr": "1. Tu dois avoir un élément `select` avec sept éléments `option` imbriqués dedans. La première option doit avoir une chaîne vide comme texte et attribut `value`. Les autres doivent avoir ce qui suit pour leur texte et valeurs (la valeur étant en minuscules) :"
+        },
+        {
+          "en": "- New York\n   - Los Angeles\n   - Chicago\n   - Paris\n   - Tokyo\n   - London",
+          "fr": "- New York\n   - Los Angeles\n   - Chicago\n   - Paris\n   - Tokyo\n   - London"
+        },
+        {
+          "en": "1. If no city is selected, pressing the button should do nothing.",
+          "fr": "1. Si aucune ville n'est sélectionnée, appuyer sur le bouton ne doit rien faire."
+        },
+        {
+          "en": "1. If a city is selected, elements to show the weather should appear:",
+          "fr": "1. Si une ville est sélectionnée, des éléments pour afficher la météo doivent apparaître :"
+        },
+        {
+          "en": "- You should have an `img` element with the id `weather-icon` for displaying the weather icon.",
+          "fr": "- Tu dois avoir un élément `img` avec l'id `weather-icon` pour afficher l'icône météo."
+        },
+        {
+          "en": "- You should have an element with the id `main-temperature` for displaying the main temperature.",
+          "fr": "- Tu dois avoir un élément avec l'id `main-temperature` pour afficher la température principale."
+        },
+        {
+          "en": "- You should have an element with the id `feels-like` for displaying what the temperature feels like.",
+          "fr": "- Tu dois avoir un élément avec l'id `feels-like` pour afficher la température ressentie."
+        },
+        {
+          "en": "- You should have an element with the id `humidity` for displaying the amount of humidity in air.",
+          "fr": "- Tu dois avoir un élément avec l'id `humidity` pour afficher le taux d'humidité dans l'air."
+        },
+        {
+          "en": "- You should have an element with the id `wind` for displaying the wind speed.",
+          "fr": "- Tu dois avoir un élément avec l'id `wind` pour afficher la vitesse du vent."
+        },
+        {
+          "en": "- You should have an element with the id `wind-gust` for displaying the wind gust.",
+          "fr": "- Tu dois avoir un élément avec l'id `wind-gust` pour afficher les rafales de vent."
+        },
+        {
+          "en": "- You should have an element with the id `weather-main` for displaying the main weather type.",
+          "fr": "- Tu dois avoir un élément avec l'id `weather-main` pour afficher le type de météo principal."
+        },
+        {
+          "en": "- You should have an element with the id `location` for displaying the current location.",
+          "fr": "- Tu dois avoir un élément avec l'id `location` pour afficher la localisation actuelle."
+        },
+        {
+          "en": "1. You should have an asynchronous function named `getWeather` that fetches the weather information from the `https://weather-proxy.freecodecamp.rocks/api/city/<CITY>` API and returns it. Note that this API returns data using the metric system, that means m/s for wind speed, and Celsius for the temperature.",
+          "fr": "1. Tu dois avoir une fonction asynchrone nommée `getWeather` qui récupère les informations météo depuis l'API `https://weather-proxy.freecodecamp.rocks/api/city/<CITY>` et les renvoie. Note que cette API renvoie des données en système métrique, c'est-à-dire m/s pour la vitesse du vent, et Celsius pour la température."
+        },
+        {
+          "en": "1. The `getWeather` asynchronous function should accept a city as its argument.",
+          "fr": "1. La fonction asynchrone `getWeather` doit accepter une ville comme argument."
+        },
+        {
+          "en": "1. You should handle any errors that occur within the `getWeather` function and log them to the console.",
+          "fr": "1. Tu dois gérer toutes les erreurs qui surviennent dans la fonction `getWeather` et les afficher dans la console."
+        },
+        {
+          "en": "1. You should have an asynchronous `showWeather` function that accepts a city as parameter.",
+          "fr": "1. Tu dois avoir une fonction asynchrone `showWeather` qui accepte une ville comme paramètre."
+        },
+        {
+          "en": "1. The `showWeather` function should call the `getWeather` function to retrieve the weather data for the selected city from the dropdown.",
+          "fr": "1. La fonction `showWeather` doit appeler la fonction `getWeather` pour récupérer les données météo de la ville sélectionnée dans le menu déroulant."
+        },
+        {
+          "en": "1. If the `getWeather` function had an error, the app should only show an alert that says `Something went wrong, please try again later`.",
+          "fr": "1. Si la fonction `getWeather` a eu une erreur, l'application ne doit afficher qu'une alerte qui dit `Something went wrong, please try again later`."
+        },
+        {
+          "en": "1. If the data from `getWeather` are usable, the `showWeather` function should display the weather data in the corresponding elements. If a certain value from the API is `undefined`, you should write `N/A` in the corresponding element.",
+          "fr": "1. Si les données de `getWeather` sont utilisables, la fonction `showWeather` doit afficher les données météo dans les éléments correspondants. Si une certaine valeur de l'API est `undefined`, tu dois écrire `N/A` dans l'élément correspondant."
+        },
+        {
+          "en": "NOTE: The tests will take time to complete. As long as you see `// running tests` in the console, they are being executed.",
+          "fr": "NOTE : Les tests prendront du temps à se terminer. Tant que tu vois `// running tests` dans la console, ils sont en cours d'exécution."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `button` element with an `id` of `get-weather-btn`.",
+          "fr": "Tu dois avoir un élément `button` avec un `id` de `get-weather-btn`."
+        },
+        {
+          "en": "You should have a `select` element.",
+          "fr": "Tu dois avoir un élément `select`."
+        },
+        {
+          "en": "Inside the `select` element the first child should be an `option` element with an empty `value` attribute.",
+          "fr": "Dans l'élément `select`, le premier enfant doit être un élément `option` avec un attribut `value` vide."
+        },
+        {
+          "en": "Inside the `select` element there should be 6 `option` elements, one for each of the following cities: Paris, London, Tokyo, Los Angeles, Chicago, New York.",
+          "fr": "Dans l'élément `select`, il doit y avoir 6 éléments `option`, un pour chacune des villes suivantes : Paris, London, Tokyo, Los Angeles, Chicago, New York."
+        },
+        {
+          "en": "You should have an `img` element with the id `weather-icon` for displaying the weather icon.",
+          "fr": "Tu dois avoir un élément `img` avec l'id `weather-icon` pour afficher l'icône météo."
+        },
+        {
+          "en": "You should have an element with the id `main-temperature` for displaying the main temperature.",
+          "fr": "Tu dois avoir un élément avec l'id `main-temperature` pour afficher la température principale."
+        },
+        {
+          "en": "You should have an element with the id `feels-like` for displaying what the temperature feels like.",
+          "fr": "Tu dois avoir un élément avec l'id `feels-like` pour afficher la température ressentie."
+        },
+        {
+          "en": "You should have an element with the id `humidity` for displaying the amount of humidity in air.",
+          "fr": "Tu dois avoir un élément avec l'id `humidity` pour afficher le taux d'humidité dans l'air."
+        },
+        {
+          "en": "You should have an element with the id `wind` for displaying the wind speed.",
+          "fr": "Tu dois avoir un élément avec l'id `wind` pour afficher la vitesse du vent."
+        },
+        {
+          "en": "You should have an element with the id `wind-gust` for displaying the wind gust.",
+          "fr": "Tu dois avoir un élément avec l'id `wind-gust` pour afficher les rafales de vent."
+        },
+        {
+          "en": "You should have an element with the id `weather-main` for displaying the main weather type.",
+          "fr": "Tu dois avoir un élément avec l'id `weather-main` pour afficher le type de météo principal."
+        },
+        {
+          "en": "You should have an element with the id `location` for displaying the current location.",
+          "fr": "Tu dois avoir un élément avec l'id `location` pour afficher la localisation actuelle."
+        },
+        {
+          "en": "You should have a `showWeather` function.",
+          "fr": "Tu dois avoir une fonction `showWeather`."
+        },
+        {
+          "en": "You should have a `getWeather` function.",
+          "fr": "Tu dois avoir une fonction `getWeather`."
+        },
+        {
+          "en": "The `getWeather` function should accept a city as its only argument and return the JSON from the Weather API.",
+          "fr": "La fonction `getWeather` doit accepter une ville comme seul argument et renvoyer le JSON de l'API Weather."
+        },
+        {
+          "en": "The `showWeather` function should call the `getWeather` function to get the weather data.",
+          "fr": "La fonction `showWeather` doit appeler la fonction `getWeather` pour obtenir les données météo."
+        },
+        {
+          "en": "The `showWeather` function should manage the case in which `getWeather` returns `undefined`.",
+          "fr": "La fonction `showWeather` doit gérer le cas où `getWeather` renvoie `undefined`."
+        },
+        {
+          "en": "When New York is selected the `showWeather` function should display the data from the API in the respective HTML elements. If the value from the API is `undefined`, you should show `N/A`.",
+          "fr": "Quand New York est sélectionné, la fonction `showWeather` doit afficher les données de l'API dans les éléments HTML respectifs. Si la valeur de l'API est `undefined`, tu dois afficher `N/A`."
+        },
+        {
+          "en": "When Chicago is selected the `showWeather` function should display the data from the API in the respective HTML elements. If the value from the API is `undefined`, you should show `N/A`.",
+          "fr": "Quand Chicago est sélectionné, la fonction `showWeather` doit afficher les données de l'API dans les éléments HTML respectifs. Si la valeur de l'API est `undefined`, tu dois afficher `N/A`."
+        },
+        {
+          "en": "When London is selected the `showWeather` function should display the data from the API in the respective HTML elements. If the value from the API is `undefined`, you should show `N/A`.",
+          "fr": "Quand London est sélectionné, la fonction `showWeather` doit afficher les données de l'API dans les éléments HTML respectifs. Si la valeur de l'API est `undefined`, tu dois afficher `N/A`."
+        },
+        {
+          "en": "When Tokyo is selected the `showWeather` function should display the data from the API in the respective HTML elements. If the value from the API is `undefined`, you should show `N/A`.",
+          "fr": "Quand Tokyo est sélectionné, la fonction `showWeather` doit afficher les données de l'API dans les éléments HTML respectifs. Si la valeur de l'API est `undefined`, tu dois afficher `N/A`."
+        },
+        {
+          "en": "When Los Angeles is selected the `showWeather` function should display the data from the API in the respective HTML elements. If the value from the API is `undefined`, you should show `N/A`.",
+          "fr": "Quand Los Angeles est sélectionné, la fonction `showWeather` doit afficher les données de l'API dans les éléments HTML respectifs. Si la valeur de l'API est `undefined`, tu dois afficher `N/A`."
+        },
+        {
+          "en": "If there is an error, your `getWeather` function should log the error to the console.",
+          "fr": "S'il y a une erreur, ta fonction `getWeather` doit afficher l'erreur dans la console."
+        },
+        {
+          "en": "When Paris is selected the app should show an alert with `Something went wrong, please try again later`.",
+          "fr": "Quand Paris est sélectionné, l'application doit afficher une alerte avec `Something went wrong, please try again later`."
+        }
+      ]
+    }
+  ]
+}

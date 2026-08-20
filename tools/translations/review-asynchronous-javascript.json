@@ -1,0 +1,188 @@
+{
+  "workshop": "review-asynchronous-javascript",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6723d35bb07d1bd220d0f28d.md",
+      "id": "6723d35bb07d1bd220d0f28d",
+      "dashedName": "review-asynchronous-javascript",
+      "title": {
+        "en": "Asynchronous JavaScript Review",
+        "fr": "Révision du JavaScript asynchrone"
+      },
+      "description": [
+        {
+          "en": "- **Synchronous JavaScript** is executed sequentially and waits for the previous operation to finish before moving on to the next one.\n- **Asynchronous JavaScript** allows multiple operations to be executed in the background without blocking the main thread.\n- **Thread** is a sequence of instructions that can be executed independently of the main program flow.\n- **Callback functions** are functions that are passed as arguments to other functions and are executed after the completion of the operation or as a result of an event.",
+          "fr": "- **JavaScript synchrone** s'exécute séquentiellement et attend que l'opération précédente se termine avant de passer à la suivante.\n- **JavaScript asynchrone** permet d'exécuter plusieurs opérations en arrière-plan sans bloquer le thread principal.\n- **Thread** est une séquence d'instructions qui peut s'exécuter indépendamment du flux principal du programme.\n- **Fonctions callback** sont des fonctions passées comme arguments à d'autres fonctions et exécutées après la fin de l'opération ou suite à un événement."
+        },
+        {
+          "en": "## The JavaScript engine and JavaScript runtime",
+          "fr": "## Le moteur JavaScript et le runtime JavaScript"
+        },
+        {
+          "en": "- The **JavaScript engine** is a program that executes JavaScript code in a web browser. It works like a converter that takes your code, turns it into instructions that the computer can understand and work accordingly. \n- V8 is an example of a JavaScript engine developed by Google.\n- The **JavaScript runtime** is the environment in which JavaScript code is executed. It includes the JavaScript engine which processes and executes the code, and additional features like a web browser or Node.js.",
+          "fr": "- Le **moteur JavaScript** est un programme qui exécute du code JavaScript dans un navigateur web. Il fonctionne comme un convertisseur qui prend ton code, le transforme en instructions que l'ordinateur peut comprendre et exécuter. \n- V8 est un exemple de moteur JavaScript développé par Google.\n- Le **runtime JavaScript** est l'environnement dans lequel le code JavaScript est exécuté. Il inclut le moteur JavaScript qui traite et exécute le code, et des fonctionnalités supplémentaires comme un navigateur web ou Node.js."
+        },
+        {
+          "en": "## The Fetch API",
+          "fr": "## La Fetch API"
+        },
+        {
+          "en": "- The Fetch API allows web apps to make network requests, typically to retrieve or send data to the server. It provides a `fetch()` method that you can use to make these requests.\n- You can retrieve text, images, audio, JSON, and other types of data using the Fetch API.",
+          "fr": "- La Fetch API permet aux applications web de faire des requêtes réseau, généralement pour récupérer ou envoyer des données au serveur. Elle fournit une méthode `fetch()` que tu peux utiliser pour faire ces requêtes.\n- Tu peux récupérer du texte, des images, de l'audio, du JSON, et d'autres types de données avec la Fetch API."
+        },
+        {
+          "en": "## HTTP methods for Fetch API",
+          "fr": "## Méthodes HTTP pour la Fetch API"
+        },
+        {
+          "en": "The Fetch API supports various HTTP methods to interact with the server. The most common methods are:",
+          "fr": "La Fetch API prend en charge diverses méthodes HTTP pour interagir avec le serveur. Les méthodes les plus courantes sont :"
+        },
+        {
+          "en": "- **GET**: Used to retrieve data from the server. By default, the Fetch API uses the `GET` method to retrieve data.",
+          "fr": "- **GET** : Utilisée pour récupérer des données depuis le serveur. Par défaut, la Fetch API utilise la méthode `GET` pour récupérer des données."
+        },
+        {
+          "en": "To use the fetched data, it must be converted to JSON format using the `.json()` method:",
+          "fr": "Pour utiliser les données récupérées, elles doivent être converties au format JSON avec la méthode `.json()` :"
+        },
+        {
+          "en": "In this code, the response coming from the Fetch API is a promise and the `.then` handler is converting the response to a JSON format.",
+          "fr": "Dans ce code, la réponse provenant de la Fetch API est une promesse et le gestionnaire `.then` convertit la réponse au format JSON."
+        },
+        {
+          "en": "- **POST**: Used to send data to the server. The `POST` method is used to create new resources on the server.",
+          "fr": "- **POST** : Utilisée pour envoyer des données au serveur. La méthode `POST` sert à créer de nouvelles ressources sur le serveur."
+        },
+        {
+          "en": "In this example, we're sending a `POST` request to create a new user. We have specified the method as `POST`, set the appropriate headers, and included a body with the data we want to send. The body needs to be a string, so we use `JSON.stringify()` to convert our object to a JSON string.",
+          "fr": "Dans cet exemple, on envoie une requête `POST` pour créer un nouvel utilisateur. On a précisé la méthode comme `POST`, défini les en-têtes appropriés, et inclus un corps avec les données à envoyer. Le corps doit être une chaîne, donc on utilise `JSON.stringify()` pour convertir notre objet en chaîne JSON."
+        },
+        {
+          "en": "- **PUT**: Used to update data on the server. The `PUT` method is used to update existing resources on the server.",
+          "fr": "- **PUT** : Utilisée pour mettre à jour des données sur le serveur. La méthode `PUT` sert à mettre à jour des ressources existantes sur le serveur."
+        },
+        {
+          "en": "In this example, we are updating the ID `45` that is specified at the end of the URL. We have used the `PUT` method on the code and also specified the data as the body which will be used to update the identified data.",
+          "fr": "Dans cet exemple, on met à jour l'ID `45` précisé à la fin de l'URL. On a utilisé la méthode `PUT` dans le code et aussi précisé les données comme corps qui serviront à mettre à jour les données identifiées."
+        },
+        {
+          "en": "- **DELETE**: Used to delete data on the server. The `DELETE` method is used to delete resources on the server.",
+          "fr": "- **DELETE** : Utilisée pour supprimer des données sur le serveur. La méthode `DELETE` sert à supprimer des ressources sur le serveur."
+        },
+        {
+          "en": "In this example, we're sending a `DELETE` request to remove a user with the ID `45`.",
+          "fr": "Dans cet exemple, on envoie une requête `DELETE` pour supprimer un utilisateur avec l'ID `45`."
+        },
+        {
+          "en": "## Promise and promise chaining",
+          "fr": "## Promesse et chaînage de promesses"
+        },
+        {
+          "en": "- **Promises** are objects that represent the eventual completion or failure of an asynchronous operation and its resulting value. The value of the promise is known only when the `async` operation is completed.\n- Here is an example to create a simple promise:",
+          "fr": "- Les **promesses** sont des objets qui représentent l'achèvement ou l'échec éventuel d'une opération asynchrone et sa valeur résultante. La valeur de la promesse n'est connue que lorsque l'opération `async` est terminée.\n- Voici un exemple pour créer une promesse simple :"
+        },
+        {
+          "en": "- The `.then()` method is used in a Promise to specify what should happen when the Promise is fulfilled, while `.catch()` is used to handle any errors that occur.\n- Here is an example of using `.then()` and `.catch()` with a Promise:",
+          "fr": "- La méthode `.then()` est utilisée dans une Promise pour préciser ce qui doit se passer quand la Promise est remplie, tandis que `.catch()` sert à gérer les erreurs qui surviennent.\n- Voici un exemple d'utilisation de `.then()` et `.catch()` avec une Promise :"
+        },
+        {
+          "en": "In the above example, the `.then()` method is used to log the data received from the Promise, while the `.catch()` method is used to log any errors that occur.",
+          "fr": "Dans l'exemple ci-dessus, la méthode `.then()` est utilisée pour afficher les données reçues de la Promise, tandis que la méthode `.catch()` est utilisée pour afficher les erreurs qui surviennent."
+        },
+        {
+          "en": "- **Promise chaining**: One of the powerful features of Promises is that we can chain multiple asynchronous operations together. Each `.then()` can return a new Promise, allowing you to perform a sequence of asynchronous operations one after the other.\n- Here is an example of Promise chaining:",
+          "fr": "- **Chaînage de promesses** : Une des fonctionnalités puissantes des Promises est qu'on peut enchaîner plusieurs opérations asynchrones. Chaque `.then()` peut renvoyer une nouvelle Promise, te permettant d'exécuter une séquence d'opérations asynchrones l'une après l'autre.\n- Voici un exemple de chaînage de Promises :"
+        },
+        {
+          "en": "In the above example, we first fetch data from one URL, then fetch data from another URL based on the first response, and finally log the second data received.",
+          "fr": "Dans l'exemple ci-dessus, on récupère d'abord des données depuis une URL, puis on récupère des données depuis une autre URL basées sur la première réponse, et enfin on affiche les secondes données reçues."
+        },
+        {
+          "en": "The `catch` method would handle any errors that occur during the process. This means you don't need to add error handling to each step, which can greatly simplify your code.",
+          "fr": "La méthode `catch` gérerait toutes les erreurs survenant pendant le processus. Cela signifie que tu n'as pas besoin d'ajouter la gestion d'erreurs à chaque étape, ce qui peut grandement simplifier ton code."
+        },
+        {
+          "en": "## Using `async/await` to handle promises",
+          "fr": "## Utiliser `async/await` pour gérer les promesses"
+        },
+        {
+          "en": "Async/await makes writing & reading asynchronous code easier which is built on top of Promises.",
+          "fr": "Async/await facilite l'écriture et la lecture du code asynchrone et est construit sur les Promises."
+        },
+        {
+          "en": "- **async**: The `async` keyword is used to define an asynchronous function. An `async` function returns a Promise, which resolves with the value returned by the `async` function.\n- **await**: The `await` keyword is used inside an `async` function to pause the execution of the function until the Promise is resolved. It can only be used inside an `async` function.\n- Here is an example of using `async/await`:",
+          "fr": "- **async** : Le mot-clé `async` sert à définir une fonction asynchrone. Une fonction `async` renvoie une Promise, qui se résout avec la valeur renvoyée par la fonction `async`.\n- **await** : Le mot-clé `await` est utilisé dans une fonction `async` pour mettre en pause l'exécution de la fonction jusqu'à ce que la Promise soit résolue. Il ne peut être utilisé que dans une fonction `async`.\n- Voici un exemple d'utilisation de `async/await` :"
+        },
+        {
+          "en": "In the above example, the `delayedGreeting` function is an `async` function that pauses for 2 seconds before printing the greeting message. The `await` keyword is used to pause the function execution until the `Promise` is resolved.",
+          "fr": "Dans l'exemple ci-dessus, la fonction `delayedGreeting` est une fonction `async` qui fait une pause de 2 secondes avant d'afficher le message de salutation. Le mot-clé `await` est utilisé pour mettre en pause l'exécution de la fonction jusqu'à ce que la `Promise` soit résolue."
+        },
+        {
+          "en": "- One of the biggest advantages of `async/await` is error handling via `try/catch` blocks. Here's an example:",
+          "fr": "- Un des plus grands avantages de `async/await` est la gestion des erreurs via des blocs `try/catch`. Voici un exemple :"
+        },
+        {
+          "en": "In the above example, the `try` block contains the code that might throw an error, and the `catch` block handles the error if it occurs. This makes error handling more straightforward and readable.",
+          "fr": "Dans l'exemple ci-dessus, le bloc `try` contient le code qui pourrait lever une erreur, et le bloc `catch` gère l'erreur si elle survient. Cela rend la gestion des erreurs plus directe et lisible."
+        },
+        {
+          "en": "## The `async` attribute",
+          "fr": "## L'attribut `async`"
+        },
+        {
+          "en": "- The `async` attribute tells the browser to download the script file asynchronously while continuing to parse the HTML document. \n- Once the script is downloaded, the HTML parsing is paused, the script is executed, and then HTML parsing resumes.\n- You should use `async` for independent scripts where the order of execution doesn't matter",
+          "fr": "- L'attribut `async` dit au navigateur de télécharger le fichier script de façon asynchrone tout en continuant à parser le document HTML. \n- Une fois le script téléchargé, le parsing HTML est mis en pause, le script est exécuté, puis le parsing HTML reprend.\n- Tu dois utiliser `async` pour les scripts indépendants où l'ordre d'exécution n'importe pas"
+        },
+        {
+          "en": "## The `defer` attribute",
+          "fr": "## L'attribut `defer`"
+        },
+        {
+          "en": "- The `defer` attribute also downloads the script asynchronously, but it defers the execution of the script until after the HTML document has been fully parsed. \n- The `defer` scripts maintain the order of execution as they appear in the HTML document.",
+          "fr": "- L'attribut `defer` télécharge aussi le script de façon asynchrone, mais il diffère l'exécution du script jusqu'à ce que le document HTML ait été entièrement parsé. \n- Les scripts `defer` maintiennent l'ordre d'exécution tel qu'ils apparaissent dans le document HTML."
+        },
+        {
+          "en": "- It's important to note that both `async` and `defer` attributes are ignored for inline scripts and only work for external script files.",
+          "fr": "- Il est important de noter que les attributs `async` et `defer` sont ignorés pour les scripts en ligne et ne fonctionnent que pour les fichiers de scripts externes."
+        },
+        {
+          "en": "- When both `async` and `defer` attributes are present, the `async` attribute takes precedence.",
+          "fr": "- Quand les attributs `async` et `defer` sont tous les deux présents, l'attribut `async` a la priorité."
+        },
+        {
+          "en": "## Geolocation API",
+          "fr": "## Geolocation API"
+        },
+        {
+          "en": "- The Geolocation API provides a way for websites to request the user's location.",
+          "fr": "- La Geolocation API fournit un moyen pour les sites web de demander la localisation de l'utilisateur."
+        },
+        {
+          "en": "- The example below demonstrates the API's  `getCurrentPosition()` method which is used to get the user's current location.",
+          "fr": "- L'exemple ci-dessous démontre la méthode `getCurrentPosition()` de l'API qui sert à obtenir la localisation actuelle de l'utilisateur."
+        },
+        {
+          "en": "In this code, we're calling `getCurrentPosition` and passing it a function which will be called when the position is successfully obtained.",
+          "fr": "Dans ce code, on appelle `getCurrentPosition` et on lui passe une fonction qui sera appelée quand la position est obtenue avec succès."
+        },
+        {
+          "en": "The `position` object contains a variety of information, but here we have selected `latitude` and `longitude` only.",
+          "fr": "L'objet `position` contient diverses informations, mais ici on a sélectionné uniquement `latitude` et `longitude`."
+        },
+        {
+          "en": "If there is an issue with getting the `position`, then the error will be logged to the console.",
+          "fr": "S'il y a un problème pour obtenir la `position`, alors l'erreur sera affichée dans la console."
+        },
+        {
+          "en": "- It is important to respect the user's privacy and only request their location when necessary.",
+          "fr": "- Il est important de respecter la confidentialité de l'utilisateur et de ne demander sa localisation que lorsque c'est nécessaire."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

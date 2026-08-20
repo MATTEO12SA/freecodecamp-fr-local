@@ -1,7 +1,7 @@
 {
   "workshop": "workshop-breadth-first-search-js",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -15,25 +15,25 @@
       "description": [
         {
           "en": "In this workshop, you'll implement a function that generates all valid combinations of parentheses using a breadth-first search (BFS) approach. For example, the valid combinations of two pairs of parentheses are `(())` and `()()`.",
-          "fr": ""
+          "fr": "Dans cet atelier, tu vas implémenter une fonction qui génère toutes les combinaisons valides de parenthèses avec une approche de parcours en largeur (BFS). Par exemple, les combinaisons valides de deux paires de parenthèses sont `(())` et `()()`."
         },
         {
           "en": "Start by creating a function named `genParentheses` with a single parameter `pairs`. For now, return an empty array from the function.",
-          "fr": ""
+          "fr": "Commence par créer une fonction nommée `genParentheses` avec un seul paramètre `pairs`. Pour l'instant, renvoie un tableau vide depuis la fonction."
         }
       ],
       "hints": [
         {
           "en": "You should define a function named `genParentheses`.",
-          "fr": ""
+          "fr": "Tu dois définir une fonction nommée `genParentheses`."
         },
         {
           "en": "Your `genParentheses` function should have a single parameter named `pairs`.",
-          "fr": ""
+          "fr": "Ta fonction `genParentheses` doit avoir un seul paramètre nommé `pairs`."
         },
         {
           "en": "Your function should return an empty array.",
-          "fr": ""
+          "fr": "Ta fonction doit renvoyer un tableau vide."
         }
       ]
     },
@@ -48,29 +48,29 @@
       "description": [
         {
           "en": "Before implementing the core algorithm, you need to validate the input. The `pairs` parameter should be an integer, as it represents the number of parentheses pairs to generate.",
-          "fr": ""
+          "fr": "Avant d'implémenter l'algorithme principal, tu dois valider l'entrée. Le paramètre `pairs` doit être un entier, car il représente le nombre de paires de parenthèses à générer."
         },
         {
           "en": "Add an `if` statement at the beginning of your function to check if `pairs` is not an integer. Use the `Number.isInteger()` method for that.",
-          "fr": ""
+          "fr": "Ajoute une instruction `if` au début de ta fonction pour vérifier si `pairs` n'est pas un entier. Utilise la méthode `Number.isInteger()` pour cela."
         },
         {
           "en": "If the condition is true, return the string `The number of pairs should be an integer`.",
-          "fr": ""
+          "fr": "Si la condition est vraie, renvoie la chaîne `The number of pairs should be an integer`."
         }
       ],
       "hints": [
         {
           "en": "You should have an if statement with the condition `!Number.isInteger(pairs)` inside the `genParentheses` function.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction if avec la condition `!Number.isInteger(pairs)` à l'intérieur de la fonction `genParentheses`."
         },
         {
           "en": "You should return a string when the input is not an integer.",
-          "fr": ""
+          "fr": "Tu dois renvoyer une chaîne quand l'entrée n'est pas un entier."
         },
         {
           "en": "You should return the string `The number of pairs should be an integer` when the input is a string.",
-          "fr": ""
+          "fr": "Tu dois renvoyer la chaîne `The number of pairs should be an integer` quand l'entrée est une chaîne."
         }
       ]
     },
@@ -85,21 +85,21 @@
       "description": [
         {
           "en": "Next, you need to validate that the number of pairs is at least one, since you can't generate parentheses combinations with zero or negative pairs.",
-          "fr": ""
+          "fr": "Ensuite, tu dois valider que le nombre de paires est au moins un, car tu ne peux pas générer de combinaisons de parenthèses avec zéro ou des paires négatives."
         },
         {
           "en": "Add another `if` statement to check if `pairs` is less than `1`. If this condition is true, return the string `The number of pairs should be at least 1`.",
-          "fr": ""
+          "fr": "Ajoute une autre instruction `if` pour vérifier si `pairs` est inférieur à `1`. Si cette condition est vraie, renvoie la chaîne `The number of pairs should be at least 1`."
         }
       ],
       "hints": [
         {
           "en": "You should have a second `if` statement with the condition `pairs < 1`.",
-          "fr": ""
+          "fr": "Tu dois avoir une deuxième instruction `if` avec la condition `pairs < 1`."
         },
         {
           "en": "You should return the string `The number of pairs should be at least 1` when `pairs` is less than `1`.",
-          "fr": ""
+          "fr": "Tu dois renvoyer la chaîne `The number of pairs should be at least 1` quand `pairs` est inférieur à `1`."
         }
       ]
     },
@@ -114,25 +114,25 @@
       "description": [
         {
           "en": "Now you'll set up the data structure to store your results. Create a variable named `result` and initialize it to an empty array. This array will store all the valid parentheses combinations you generate.",
-          "fr": ""
+          "fr": "Maintenant tu vas préparer la structure de données pour stocker tes résultats. Crée une variable nommée `result` et initialise-la à un tableau vide. Ce tableau stockera toutes les combinaisons valides de parenthèses que tu génères."
         },
         {
           "en": "Update your return statement to return `result` instead of an empty array.",
-          "fr": ""
+          "fr": "Mets à jour ton instruction return pour renvoyer `result` au lieu d'un tableau vide."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `result` in your `genParentheses` function.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `result` dans ta fonction `genParentheses`."
         },
         {
           "en": "You should initialize `result` to an empty array.",
-          "fr": ""
+          "fr": "Tu dois initialiser `result` à un tableau vide."
         },
         {
           "en": "You should return `result` at the end of your function.",
-          "fr": ""
+          "fr": "Tu dois renvoyer `result` à la fin de ta fonction."
         }
       ]
     },
@@ -147,25 +147,25 @@
       "description": [
         {
           "en": "For the breadth-first search approach, you'll use a queue to track different states as you build the parentheses combinations. Each state will be represented as an array containing three elements:",
-          "fr": ""
+          "fr": "Pour l'approche de parcours en largeur, tu vas utiliser une file pour suivre les différents états pendant que tu construis les combinaisons de parenthèses. Chaque état sera représenté comme un tableau contenant trois éléments :"
         },
         {
           "en": "- The current string being built\n- The number of opening parentheses used so far\n- The number of closing parentheses used so far",
-          "fr": ""
+          "fr": "- La chaîne courante en cours de construction\n- Le nombre de parenthèses ouvrantes utilisées jusqu'ici\n- Le nombre de parenthèses fermantes utilisées jusqu'ici"
         },
         {
           "en": "Create a variable named `queue` and initialize it to an array containing one array: `['', 0, 0]`. This represents the starting state with an empty string and zero parentheses used.",
-          "fr": ""
+          "fr": "Crée une variable nommée `queue` et initialise-la à un tableau contenant un tableau : `['', 0, 0]`. Cela représente l'état de départ avec une chaîne vide et zéro parenthèse utilisée."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `queue` in your `genParentheses` function.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `queue` dans ta fonction `genParentheses`."
         },
         {
           "en": "You should initialize `queue` with an array containing the array `['', 0, 0]`.",
-          "fr": ""
+          "fr": "Tu dois initialiser `queue` avec un tableau contenant le tableau `['', 0, 0]`."
         }
       ]
     },
@@ -180,21 +180,21 @@
       "description": [
         {
           "en": "Now you'll implement the main BFS loop. Create a `while` loop that continues as long as the `queue` is not empty, that is, `queue.length` is greater than `0`.",
-          "fr": ""
+          "fr": "Maintenant tu vas implémenter la boucle BFS principale. Crée une boucle `while` qui continue tant que la `queue` n'est pas vide, c'est-à-dire que `queue.length` est supérieur à `0`."
         },
         {
           "en": "Inside the loop, log `queue` to the console.",
-          "fr": ""
+          "fr": "À l'intérieur de la boucle, affiche `queue` dans la console."
         }
       ],
       "hints": [
         {
           "en": "You should create a `while` loop with the condition `queue.length > 0`.",
-          "fr": ""
+          "fr": "Tu dois créer une boucle `while` avec la condition `queue.length > 0`."
         },
         {
           "en": "You should log `queue` to the console inside your `while` loop.",
-          "fr": ""
+          "fr": "Tu dois afficher `queue` dans la console à l'intérieur de ta boucle `while`."
         }
       ]
     },
@@ -209,21 +209,21 @@
       "description": [
         {
           "en": "Inside your `while` loop, use `queue.shift()` to remove and get the first element from the queue. This implements the first-in-first-out (FIFO) behavior characteristic of BFS.",
-          "fr": ""
+          "fr": "À l'intérieur de ta boucle `while`, utilise `queue.shift()` pour retirer et obtenir le premier élément de la file. Cela implémente le comportement premier-entré-premier-sorti (FIFO) caractéristique du BFS."
         },
         {
           "en": "Destructure this array into three variables: `current`, `opensUsed`, and `closesUsed`.",
-          "fr": ""
+          "fr": "Déstructure ce tableau en trois variables : `current`, `opensUsed`, et `closesUsed`."
         }
       ],
       "hints": [
         {
           "en": "You should use `queue.shift()` to get the first element from the queue.",
-          "fr": ""
+          "fr": "Tu dois utiliser `queue.shift()` pour obtenir le premier élément de la file."
         },
         {
           "en": "You should destructure the result into three variables: `current`, `opensUsed`, and `closesUsed`.",
-          "fr": ""
+          "fr": "Tu dois déstructurer le résultat en trois variables : `current`, `opensUsed`, et `closesUsed`."
         }
       ]
     },
@@ -238,13 +238,13 @@
       "description": [
         {
           "en": "Before you keep working on the BFS logic, call `genParentheses(1)` and log the result to the console.",
-          "fr": ""
+          "fr": "Avant de continuer la logique BFS, appelle `genParentheses(1)` et affiche le résultat dans la console."
         }
       ],
       "hints": [
         {
           "en": "You should log `genParentheses(1)` to the console.",
-          "fr": ""
+          "fr": "Tu dois afficher `genParentheses(1)` dans la console."
         }
       ]
     },
@@ -259,21 +259,21 @@
       "description": [
         {
           "en": "Now you need to identify when you've built a complete parentheses combination. A complete combination has a length equal to twice the number of pairs (since each pair contributes one opening and one closing parenthesis).",
-          "fr": ""
+          "fr": "Maintenant tu dois identifier quand tu as construit une combinaison complète de parenthèses. Une combinaison complète a une longueur égale à deux fois le nombre de paires (car chaque paire apporte une parenthèse ouvrante et une fermante)."
         },
         {
           "en": "Inside your `while` loop, add an `if` statement to check if `current.length === 2 * pairs`. When this condition is true, push `current` to the `result` array.",
-          "fr": ""
+          "fr": "À l'intérieur de ta boucle `while`, ajoute une instruction `if` pour vérifier si `current.length === 2 * pairs`. Quand cette condition est vraie, pousse `current` dans le tableau `result`."
         }
       ],
       "hints": [
         {
           "en": "You should have an `if` statement with the condition `current.length === 2 * pairs` inside your `while` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` avec la condition `current.length === 2 * pairs` à l'intérieur de ta boucle `while`."
         },
         {
           "en": "You should push `current` to the `result` array inside your new `if` statement.",
-          "fr": ""
+          "fr": "Tu dois pousser `current` dans le tableau `result` à l'intérieur de ta nouvelle instruction `if`."
         }
       ]
     },
@@ -288,29 +288,29 @@
       "description": [
         {
           "en": "If the current string isn't complete yet, you need to explore the next possible states. Add an `else` clause for the current `if` statement.",
-          "fr": ""
+          "fr": "Si la chaîne courante n'est pas encore complète, tu dois explorer les prochains états possibles. Ajoute une clause `else` pour l'instruction `if` actuelle."
         },
         {
           "en": "Inside the `else` block, you'll handle adding opening parentheses. Add an `if` statement to check if `opensUsed` is less than `pairs`. This ensures you don't use more opening parentheses than allowed.",
-          "fr": ""
+          "fr": "À l'intérieur du bloc `else`, tu vas gérer l'ajout de parenthèses ouvrantes. Ajoute une instruction `if` pour vérifier si `opensUsed` est inférieur à `pairs`. Cela garantit que tu n'utilises pas plus de parenthèses ouvrantes que permis."
         },
         {
           "en": "If this condition is `true`, push a new array to the `queue`: `[current + '(', opensUsed + 1, closesUsed]`. This represents the state after adding an opening parenthesis.",
-          "fr": ""
+          "fr": "Si cette condition est `true`, pousse un nouveau tableau dans la `queue` : `[current + '(', opensUsed + 1, closesUsed]`. Cela représente l'état après l'ajout d'une parenthèse ouvrante."
         }
       ],
       "hints": [
         {
           "en": "You should have an `else` clause for your `if` statement inside the `while` loop.",
-          "fr": ""
+          "fr": "Tu dois avoir une clause `else` pour ton instruction `if` à l'intérieur de la boucle `while`."
         },
         {
           "en": "You should have an `if` statement inside the `else` block with the condition `opensUsed < pairs`.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` à l'intérieur du bloc `else` avec la condition `opensUsed < pairs`."
         },
         {
           "en": "You should push `[current + '(', opensUsed + 1, closesUsed]` to the queue when the condition is `true`.",
-          "fr": ""
+          "fr": "Tu dois pousser `[current + '(', opensUsed + 1, closesUsed]` dans la file quand la condition est `true`."
         }
       ]
     },
@@ -325,25 +325,25 @@
       "description": [
         {
           "en": "Now you need to handle adding closing parentheses. The key rule is that you can only add a closing parenthesis if it maintains balance, meaning there must be more opening parentheses used than closing parentheses.",
-          "fr": ""
+          "fr": "Maintenant tu dois gérer l'ajout de parenthèses fermantes. La règle clé est que tu ne peux ajouter une parenthèse fermante que si cela maintient l'équilibre, c'est-à-dire qu'il doit y avoir plus de parenthèses ouvrantes utilisées que de parenthèses fermantes."
         },
         {
           "en": "Still within the `else` block, add a second `if` statement to check if `closesUsed` is less than `opensUsed`.",
-          "fr": ""
+          "fr": "Toujours dans le bloc `else`, ajoute une deuxième instruction `if` pour vérifier si `closesUsed` est inférieur à `opensUsed`."
         },
         {
           "en": "If this condition is true, push another new array to the `queue`: `[current + ')', opensUsed, closesUsed + 1]`. This represents the state after adding a closing parenthesis.",
-          "fr": ""
+          "fr": "Si cette condition est vraie, pousse un autre nouveau tableau dans la `queue` : `[current + ')', opensUsed, closesUsed + 1]`. Cela représente l'état après l'ajout d'une parenthèse fermante."
         }
       ],
       "hints": [
         {
           "en": "You should have a second `if` statement with the condition `closesUsed < opensUsed` inside your `else` block.",
-          "fr": ""
+          "fr": "Tu dois avoir une deuxième instruction `if` avec la condition `closesUsed < opensUsed` à l'intérieur de ton bloc `else`."
         },
         {
           "en": "You should push `[current + ')', opensUsed, closesUsed + 1]` to the queue when the condition is true.",
-          "fr": ""
+          "fr": "Tu dois pousser `[current + ')', opensUsed, closesUsed + 1]` dans la file quand la condition est vraie."
         }
       ]
     },
@@ -358,17 +358,17 @@
       "description": [
         {
           "en": "Your function is now complete. Test it again by logging `genParentheses(2)` instead of `genParentheses(1)`.",
-          "fr": ""
+          "fr": "Ta fonction est maintenant complète. Teste-la à nouveau en affichant `genParentheses(2)` au lieu de `genParentheses(1)`."
         }
       ],
       "hints": [
         {
           "en": "You should log `genParentheses(2)`.",
-          "fr": ""
+          "fr": "Tu dois afficher `genParentheses(2)`."
         },
         {
           "en": "You should not have `console.log(genParentheses(1))` in your code.",
-          "fr": ""
+          "fr": "Tu ne dois pas avoir `console.log(genParentheses(1))` dans ton code."
         }
       ]
     },
@@ -383,13 +383,13 @@
       "description": [
         {
           "en": "Now you don't need to log the queue anymore. So remove `console.log(queue)` from your `while` loop.",
-          "fr": ""
+          "fr": "Maintenant tu n'as plus besoin d'afficher la file. Donc retire `console.log(queue)` de ta boucle `while`."
         }
       ],
       "hints": [
         {
           "en": "You should not have `console.log(queue)` in your `while` loop.",
-          "fr": ""
+          "fr": "Tu ne dois pas avoir `console.log(queue)` dans ta boucle `while`."
         }
       ]
     },
@@ -404,17 +404,17 @@
       "description": [
         {
           "en": "Finally, call `genParentheses` with `3` as its argument to generate all five valid combinations of three pairs of parentheses and log the result to the console.",
-          "fr": ""
+          "fr": "Enfin, appelle `genParentheses` avec `3` comme argument pour générer les cinq combinaisons valides de trois paires de parenthèses et affiche le résultat dans la console."
         },
         {
           "en": "With that, your breadth-first search workshop is complete.",
-          "fr": ""
+          "fr": "Avec cela, ton atelier de parcours en largeur est terminé."
         }
       ],
       "hints": [
         {
           "en": "You should log `genParentheses(3)`.",
-          "fr": ""
+          "fr": "Tu dois afficher `genParentheses(3)`."
         }
       ]
     }

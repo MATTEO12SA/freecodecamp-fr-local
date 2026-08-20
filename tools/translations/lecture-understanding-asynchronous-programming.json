@@ -1,0 +1,1880 @@
+{
+  "workshop": "lecture-understanding-asynchronous-programming",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733b072bd8f5b06ccdbd9e2.md",
+      "id": "6733b072bd8f5b06ccdbd9e2",
+      "dashedName": "what-is-asynchronous-javascript-and-how-does-it-differ-from-synchronous-javascript",
+      "title": {
+        "en": "What Is Asynchronous JavaScript, and How Does It Differ from Synchronous JavaScript?",
+        "fr": "Qu'est-ce que JavaScript asynchrone, et en quoi diffère-t-il de JavaScript synchrone ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let’s learn about asynchronous JavaScript. Asynchronous events occur at different times, independently from each other.",
+              "fr": "Apprenons le JavaScript asynchrone. Les événements asynchrones se produisent à des moments différents, indépendamment les uns des autres."
+            },
+            {
+              "en": "In the context of software development, \"asynchronous\" refers to tasks that run in the background, independently from the main flow of the program. The main advantage of asynchronous processes is that they don’t block the execution of the main program.",
+              "fr": "En développement logiciel, « asynchrone » désigne des tâches qui s'exécutent en arrière-plan, indépendamment du flux principal du programme. Le grand avantage des processus asynchrones est qu'ils ne bloquent pas l'exécution du programme principal."
+            },
+            {
+              "en": "That’s particularly helpful for tasks that may take a long time to run, such as fetching data from a remote server, processing large files, handling user input, and performing complex calculations. This is what we know as asynchronous programming.",
+              "fr": "C'est particulièrement utile pour les tâches longues, comme récupérer des données d'un serveur distant, traiter de gros fichiers, gérer les saisies utilisateur, et effectuer des calculs complexes. C'est ce qu'on appelle la programmation asynchrone."
+            },
+            {
+              "en": "This approach contrasts with the traditional synchronous programming technique that you have been working with so far. When you write multiple lines of code, you can usually predict what will happen and when it will happen. The first line will be executed, then the second line, and so on in the order that you write them.",
+              "fr": "Cette approche contraste avec la technique synchrone traditionnelle avec laquelle tu as travaillé jusqu'ici. Quand tu écris plusieurs lignes de code, tu peux généralement prédire ce qui se passera et quand. La première ligne s'exécute, puis la deuxième, et ainsi de suite dans l'ordre où tu les écris."
+            },
+            {
+              "en": "In this example, the first line where you define the variable will be executed first, then the second line, and finally the third line where the string is logged to the console:",
+              "fr": "Dans cet exemple, la première ligne où tu définis la variable s'exécute d'abord, puis la deuxième, et enfin la troisième où la chaîne est affichée dans la console :"
+            },
+            {
+              "en": "Everything is sequential and predictable. Each line is completed before the next one starts. This type of JavaScript program is known as single-threaded.",
+              "fr": "Tout est séquentiel et prévisible. Chaque ligne se termine avant que la suivante ne commence. Ce type de programme JavaScript est dit monothread (single-threaded)."
+            },
+            {
+              "en": "The concept of threads is very important. A thread is a unit of execution within a process. It’s like a separate flow of control within the program.",
+              "fr": "Le concept de threads est très important. Un thread est une unité d'exécution au sein d'un processus. C'est comme un flux de contrôle distinct dans le programme."
+            },
+            {
+              "en": "In synchronous programming, threads execute sequentially, one after the other. If a thread is blocked, like waiting for user input, the entire process is blocked until the thread is completed.",
+              "fr": "En programmation synchrone, les threads s'exécutent séquentiellement, l'un après l'autre. Si un thread est bloqué, par exemple en attendant une saisie utilisateur, tout le processus est bloqué jusqu'à la fin du thread."
+            },
+            {
+              "en": "In asynchronous programming, threads can be executed concurrently, running multiple threads at the same time. This way, the program can continue running multiple tasks simultaneously without making the main program unresponsive, even if one of the threads is blocked.",
+              "fr": "En programmation asynchrone, les threads peuvent s'exécuter en concurrence, plusieurs à la fois. Ainsi, le programme peut continuer plusieurs tâches simultanément sans rendre le programme principal non réactif, même si l'un des threads est bloqué."
+            },
+            {
+              "en": "Asynchronous programming often involves callbacks, promises, or async/await to handle non-blocking operations.",
+              "fr": "La programmation asynchrone implique souvent des callbacks, des promesses, ou async/await pour gérer les opérations non bloquantes."
+            },
+            {
+              "en": "As you learned in earlier lessons, a callback is a function that you pass to another function to be called later. Event handlers are a particular type of callback that you’ve worked with before. They used to be the most common way to implement asynchronous functions in JavaScript. However, if the callback function also takes other callback functions, the code and logic can get quite complicated very quickly.",
+              "fr": "Comme tu l'as appris dans les leçons précédentes, un callback est une fonction que tu passes à une autre pour qu'elle soit appelée plus tard. Les gestionnaires d'événements sont un type particulier de callback que tu as déjà utilisé. Ils étaient le moyen le plus courant d'implémenter des fonctions asynchrones en JavaScript. Cependant, si la fonction callback prend aussi d'autres callbacks, le code et la logique peuvent vite devenir très compliqués."
+            },
+            {
+              "en": "Currently, the most commonly used technique for implementing asynchronous programming in JavaScript is the promise. A `Promise` is an object that represents the eventual completion (or failure) of an asynchronous process and its value.",
+              "fr": "Actuellement, la technique la plus utilisée pour la programmation asynchrone en JavaScript est la promesse. Une `Promise` est un objet qui représente l'achèvement éventuel (ou l'échec) d'un processus asynchrone et sa valeur."
+            },
+            {
+              "en": "The value of a promise is not known when the promise is created. It’s only known when the asynchronous process is completed. For example, the process of fetching data from a remote API for your web application may take some time. Meanwhile, you want your users to have a nice user experience, right?",
+              "fr": "La valeur d'une promesse n'est pas connue à sa création. Elle n'est connue que lorsque le processus asynchrone est terminé. Par exemple, récupérer des données d'une API distante pour ton application web peut prendre du temps. Pendant ce temps, tu veux que tes utilisateurs aient une bonne expérience, n'est-ce pas ?"
+            },
+            {
+              "en": "To implement this, you could create a promise to keep the user interface active and interactive while the asynchronous process is running. When the process is completed, the promise will contain the data that was sent back by the API, so the application can handle it or render it appropriately when it’s available.",
+              "fr": "Pour cela, tu pourrais créer une promesse afin de garder l'interface utilisateur active et interactive pendant que le processus asynchrone tourne. Quand le processus est terminé, la promesse contiendra les données renvoyées par l'API, pour que l'application puisse les traiter ou les afficher correctement dès qu'elles sont disponibles."
+            },
+            {
+              "en": "Asynchronous programming is a powerful tool for building efficient JavaScript applications. By understanding the differences between synchronous and asynchronous programming, you can choose the right approach for your application and write more efficient code.",
+              "fr": "La programmation asynchrone est un outil puissant pour créer des applications JavaScript efficaces. En comprenant les différences entre programmation synchrone et asynchrone, tu peux choisir la bonne approche pour ton application et écrire un code plus efficace."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary difference between synchronous and asynchronous programming?",
+              "fr": "Quelle est la principale différence entre programmation synchrone et asynchrone ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Synchronous code executes sequentially, while asynchronous code executes concurrently.",
+              "fr": "Le code synchrone s'exécute séquentiellement, tandis que le code asynchrone s'exécute en concurrence."
+            },
+            {
+              "en": "Synchronous code is more efficient than asynchronous code.",
+              "fr": "Le code synchrone est plus efficace que le code asynchrone."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the execution flow differs between the two.",
+              "fr": "Pense à la façon dont le flux d'exécution diffère entre les deux."
+            },
+            {
+              "en": "Synchronous code is only used for simple tasks, while asynchronous code is used for complex tasks.",
+              "fr": "Le code synchrone n'est utilisé que pour des tâches simples, tandis que le code asynchrone est utilisé pour des tâches complexes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the execution flow differs between the two.",
+              "fr": "Pense à la façon dont le flux d'exécution diffère entre les deux."
+            },
+            {
+              "en": "Synchronous code is always faster than asynchronous code.",
+              "fr": "Le code synchrone est toujours plus rapide que le code asynchrone."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the execution flow differs between the two.",
+              "fr": "Pense à la façon dont le flux d'exécution diffère entre les deux."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a technique for handling asynchronous operations in JavaScript?",
+              "fr": "Laquelle des techniques suivantes sert à gérer des opérations asynchrones en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Promises.",
+              "fr": "Les promesses."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different ways to handle asynchronous tasks.",
+              "fr": "Pense aux différentes façons de gérer des tâches asynchrones."
+            },
+            {
+              "en": "Callbacks.",
+              "fr": "Les callbacks."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different ways to handle asynchronous tasks.",
+              "fr": "Pense aux différentes façons de gérer des tâches asynchrones."
+            },
+            {
+              "en": "Event listeners.",
+              "fr": "Les écouteurs d'événements."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different ways to handle asynchronous tasks.",
+              "fr": "Pense aux différentes façons de gérer des tâches asynchrones."
+            },
+            {
+              "en": "All of the above.",
+              "fr": "Toutes les réponses ci-dessus."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary advantage of using asynchronous programming?",
+              "fr": "Quel est le principal avantage d'utiliser la programmation asynchrone ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Improved performance for CPU-bound tasks.",
+              "fr": "De meilleures performances pour les tâches liées au CPU."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how asynchronous programming can prevent the main thread from being blocked.",
+              "fr": "Pense à comment la programmation asynchrone peut empêcher le thread principal d'être bloqué."
+            },
+            {
+              "en": "Simpler code structure.",
+              "fr": "Une structure de code plus simple."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how asynchronous programming can prevent the main thread from being blocked.",
+              "fr": "Pense à comment la programmation asynchrone peut empêcher le thread principal d'être bloqué."
+            },
+            {
+              "en": "Increased responsiveness of applications.",
+              "fr": "Une réactivité accrue des applications."
+            },
+            {
+              "en": "Reduced memory usage.",
+              "fr": "Une utilisation mémoire réduite."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how asynchronous programming can prevent the main thread from being blocked.",
+              "fr": "Pense à comment la programmation asynchrone peut empêcher le thread principal d'être bloqué."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67340798c2c1776709d8a5fe.md",
+      "id": "67340798c2c1776709d8a5fe",
+      "dashedName": "how-does-the-async-attribute-work-inside-script-elements-and-how-does-it-differ-from-the-defer-attribute",
+      "title": {
+        "en": "How Does the Async Attribute Work Inside Script Elements, and How Does It Differ from the Defer Attribute?",
+        "fr": "Comment l'attribut async fonctionne-t-il dans les éléments script, et en quoi diffère-t-il de l'attribut defer ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The `async` and `defer` attributes in HTML `script` elements play a crucial role in how JavaScript files are loaded and executed in web pages. Understanding them can improve your website's performance and user experience. When you include a `script` in your HTML file, it looks like this:",
+              "fr": "Les attributs `async` et `defer` des éléments HTML `script` jouent un rôle crucial dans le chargement et l'exécution des fichiers JavaScript. Les comprendre peut améliorer les performances et l'expérience utilisateur de ton site. Quand tu inclus un `script` dans ton fichier HTML, cela ressemble à ceci :"
+            },
+            {
+              "en": "When the browser finds this `script` tag, it stops parsing the HTML, downloads the script, executes it, and then continues parsing the HTML. This can slow down the loading of your web page, especially if you have large scripts.",
+              "fr": "Quand le navigateur trouve cette balise `script`, il arrête le parsing HTML, télécharge le script, l'exécute, puis continue le parsing HTML. Cela peut ralentir le chargement de ta page, surtout avec de gros scripts."
+            },
+            {
+              "en": "This is where the `async` and `defer` attributes come in. They provide ways to load scripts more efficiently.",
+              "fr": "C'est là qu'interviennent les attributs `async` et `defer`. Ils permettent de charger les scripts plus efficacement."
+            },
+            {
+              "en": "Let's start with the `async` attribute:",
+              "fr": "Commençons par l'attribut `async` :"
+            },
+            {
+              "en": "By adding the `async` attribute to a `script` tag, the browser will continue parsing the HTML while the script is being downloaded. Once the script is fully downloaded, the browser will pause HTML parsing, execute the script, and then resume parsing the HTML. This can significantly speed up page loading.",
+              "fr": "En ajoutant l'attribut `async` à une balise `script`, le navigateur continue le parsing HTML pendant le téléchargement du script. Une fois le script entièrement téléchargé, le navigateur met en pause le parsing HTML, exécute le script, puis reprend le parsing. Cela peut accélérer nettement le chargement de la page."
+            },
+            {
+              "en": "It's important to note that async scripts are executed as soon as they're downloaded, which means they might not run in the correct order which we desire. This is where the `defer` attribute comes in for the rescue. Let's look at how the `defer` attribute looks like:",
+              "fr": "Il est important de noter que les scripts async s'exécutent dès qu'ils sont téléchargés, ce qui signifie qu'ils peuvent ne pas s'exécuter dans l'ordre souhaité. C'est là que l'attribut `defer` vient à la rescousse. Voyons à quoi ressemble l'attribut `defer` :"
+            },
+            {
+              "en": "The `defer` attribute is similar to `async` attribute. However, defer scripts are not executed immediately after they're downloaded. Instead, they wait until the HTML parsing is complete. Furthermore, defer scripts execute in the order they appear in the HTML code.",
+              "fr": "L'attribut `defer` est similaire à l'attribut `async`. Cependant, les scripts defer ne s'exécutent pas immédiatement après leur téléchargement. Ils attendent que le parsing HTML soit terminé. De plus, les scripts defer s'exécutent dans l'ordre où ils apparaissent dans le code HTML."
+            },
+            {
+              "en": "In short, use `async` for scripts where the order of execution doesn't matter, and use `defer` when you need to ensure that scripts run in the correct order. Both attributes can significantly improve page load times by allowing the browser to continue parsing HTML while scripts are being downloaded in the background.",
+              "fr": "En résumé, utilise `async` pour les scripts dont l'ordre d'exécution n'importe pas, et utilise `defer` quand tu dois garantir que les scripts s'exécutent dans le bon ordre. Les deux attributs peuvent améliorer nettement les temps de chargement en permettant au navigateur de continuer le parsing HTML pendant que les scripts sont téléchargés en arrière-plan."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the advantage of using the `defer` attribute in a `<script>` tag?",
+              "fr": "Quel est l'avantage d'utiliser l'attribut `defer` dans une balise `<script>` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It helps differentiate the script from `async` scripts.",
+              "fr": "Il aide à différencier le script des scripts `async`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember the purpose and differences of the `defer` and `async` attributes.",
+              "fr": "Souviens-toi du but et des différences des attributs `defer` et `async`."
+            },
+            {
+              "en": "It reduces memory usage during page load.",
+              "fr": "Il réduit l'utilisation mémoire pendant le chargement de la page."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `defer` attribute has nothing to do with memory management.",
+              "fr": "L'attribut `defer` n'a rien à voir avec la gestion de la mémoire."
+            },
+            {
+              "en": "It can improve the overall page loading performance.",
+              "fr": "Il peut améliorer les performances globales de chargement de la page."
+            },
+            {
+              "en": "It lets developers set a custom delay time before scripts run.",
+              "fr": "Il permet aux développeurs de définir un délai personnalisé avant l'exécution des scripts."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `defer` attribute doesn't execute scripts on a custom timer.",
+              "fr": "L'attribut `defer` n'exécute pas les scripts selon une minuterie personnalisée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In what order will the following scripts be executed?",
+              "fr": "Dans quel ordre les scripts suivants seront-ils exécutés ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`1.js`, `2.js`, `3.js`.",
+              "fr": "`1.js`, `2.js`, `3.js`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how `async` and `defer` affect the execution order of scripts.",
+              "fr": "Souviens-toi de l'effet de `async` et `defer` sur l'ordre d'exécution des scripts."
+            },
+            {
+              "en": "`2.js`, `1.js`, `3.js`.",
+              "fr": "`2.js`, `1.js`, `3.js`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how `async` and `defer` affect the execution order of scripts.",
+              "fr": "Souviens-toi de l'effet de `async` et `defer` sur l'ordre d'exécution des scripts."
+            },
+            {
+              "en": "The order is unpredictable.",
+              "fr": "L'ordre est imprévisible."
+            },
+            {
+              "en": "`1.js`, `3.js`, `2.js`.",
+              "fr": "`1.js`, `3.js`, `2.js`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember how `async` and `defer` affect the execution order of scripts.",
+              "fr": "Souviens-toi de l'effet de `async` et `defer` sur l'ordre d'exécution des scripts."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which statement about `async` and `defer` is true?",
+              "fr": "Quelle affirmation sur `async` et `defer` est vraie ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`async` scripts are executed in the order they appear in the HTML.",
+              "fr": "Les scripts `async` s'exécutent dans l'ordre où ils apparaissent dans le HTML."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when `async` and `defer` scripts are executed in relation to HTML parsing.",
+              "fr": "Pense au moment où les scripts `async` et `defer` s'exécutent par rapport au parsing HTML."
+            },
+            {
+              "en": "`defer` scripts are executed as soon as they are downloaded.",
+              "fr": "Les scripts `defer` s'exécutent dès qu'ils sont téléchargés."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when `async` and `defer` scripts are executed in relation to HTML parsing.",
+              "fr": "Pense au moment où les scripts `async` et `defer` s'exécutent par rapport au parsing HTML."
+            },
+            {
+              "en": "`async` scripts can be executed before the HTML is fully parsed.",
+              "fr": "Les scripts `async` peuvent s'exécuter avant que le HTML soit entièrement parsé."
+            },
+            {
+              "en": "`defer` scripts are executed before any `async` scripts.",
+              "fr": "Les scripts `defer` s'exécutent avant tout script `async`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when `async` and `defer` scripts are executed in relation to HTML parsing.",
+              "fr": "Pense au moment où les scripts `async` et `defer` s'exécutent par rapport au parsing HTML."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407a223891b6734563c89.md",
+      "id": "673407a223891b6734563c89",
+      "dashedName": "what-is-the-fetch-api-and-what-are-common-types-of-resources-that-are-fetched-from-the-network",
+      "title": {
+        "en": "What Is the Fetch API, and What Are Common Types of Resources That Are Fetched from the Network?",
+        "fr": "Qu'est-ce que la Fetch API, et quels types de ressources sont couramment récupérés depuis le réseau ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The Fetch API allows web apps to make network requests, typically to retrieve or send data to the server. This API provides a `fetch()` method that you can use to make these requests. Let's look at a basic example of how to use `fetch`:",
+              "fr": "La Fetch API permet aux applications web de faire des requêtes réseau, généralement pour récupérer ou envoyer des données au serveur. Cette API fournit une méthode `fetch()` que tu peux utiliser pour ces requêtes. Voyons un exemple basique d'utilisation de `fetch` :"
+            },
+            {
+              "en": "In this example, we're making a `GET` request to `https://api.example.com/data`. This will then return us some data that we need to convert to JSON format and can use anywhere we want to.",
+              "fr": "Dans cet exemple, on fait une requête `GET` vers `https://api.example.com/data`. Cela nous renvoie des données qu'il faut convertir au format JSON pour pouvoir les utiliser où on veut."
+            },
+            {
+              "en": "By default, the Fetch API uses the `GET` method to retrieve data. This will be covered in the next lesson, along with other common HTTP request methods.",
+              "fr": "Par défaut, la Fetch API utilise la méthode `GET` pour récupérer des données. Cela sera couvert dans la prochaine leçon, avec d'autres méthodes de requête HTTP courantes."
+            },
+            {
+              "en": "Now, let's discuss some common types of resources that are fetched from the network.",
+              "fr": "Maintenant, discutons de quelques types de ressources couramment récupérés depuis le réseau."
+            },
+            {
+              "en": "In our web apps, we need some common data like weather data, professions list data, country names list, country code or country flag icons/images. Using these data we can make our app more informative and interactive. Thanks to Fetch API, we can get these resources from the network.",
+              "fr": "Dans nos applications web, nous avons besoin de données courantes comme la météo, des listes de métiers, des noms de pays, des codes pays ou des icônes/images de drapeaux. Avec ces données, on peut rendre l'app plus informative et interactive. Grâce à la Fetch API, on peut obtenir ces ressources depuis le réseau."
+            },
+            {
+              "en": "Images are some frequently fetched resources. You might use fetch to load images statically or dynamically based on user actions, and display them on your web app.",
+              "fr": "Les images sont des ressources fréquemment récupérées. Tu pourrais utiliser fetch pour charger des images statiquement ou dynamiquement selon les actions de l'utilisateur, et les afficher dans ton application web."
+            },
+            {
+              "en": "Text files are another type of resource often fetched. This could include configuration files, log files, or even entire documents that you want to display on your webpage.",
+              "fr": "Les fichiers texte sont un autre type de ressource souvent récupéré. Cela peut inclure des fichiers de configuration, des journaux, ou même des documents entiers que tu veux afficher sur ta page."
+            },
+            {
+              "en": "In some cases, you might fetch audio or video files. The Fetch API can handle these types of resources as well, allowing you to work with a wide variety of data types.",
+              "fr": "Dans certains cas, tu pourrais récupérer des fichiers audio ou vidéo. La Fetch API peut aussi gérer ces types de ressources, ce qui te permet de travailler avec une grande variété de types de données."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the Fetch API in JavaScript?",
+              "fr": "Quel est le but principal de la Fetch API en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To create new HTML elements.",
+              "fr": "Créer de nouveaux éléments HTML."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what fetch allows you to do in relation to servers.",
+              "fr": "Pense à ce que fetch te permet de faire par rapport aux serveurs."
+            },
+            {
+              "en": "To make network requests and retrieve resources.",
+              "fr": "Faire des requêtes réseau et récupérer des ressources."
+            },
+            {
+              "en": "To manipulate the DOM.",
+              "fr": "Manipuler le DOM."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what fetch allows you to do in relation to servers.",
+              "fr": "Pense à ce que fetch te permet de faire par rapport aux serveurs."
+            },
+            {
+              "en": "To store data in the browser.",
+              "fr": "Stocker des données dans le navigateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what fetch allows you to do in relation to servers.",
+              "fr": "Pense à ce que fetch te permet de faire par rapport aux serveurs."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What type of data is commonly received from a fetch request to an API?",
+              "fr": "Quel type de données reçoit-on couramment d'une requête fetch vers une API ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "PDF",
+              "fr": "PDF"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format is easy for JavaScript to work with.",
+              "fr": "Réfléchis à quel format est facile à manipuler avec JavaScript."
+            },
+            {
+              "en": "JSON",
+              "fr": "JSON"
+            },
+            {
+              "en": "MP3",
+              "fr": "MP3"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format is easy for JavaScript to work with.",
+              "fr": "Réfléchis à quel format est facile à manipuler avec JavaScript."
+            },
+            {
+              "en": "EXE",
+              "fr": "EXE"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format is easy for JavaScript to work with.",
+              "fr": "Réfléchis à quel format est facile à manipuler avec JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a common type of resource fetched from the network?",
+              "fr": "Lequel des éléments suivants N'EST PAS un type de ressource couramment récupéré depuis le réseau ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "JSON data.",
+              "fr": "Des données JSON."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what types of data are typically stored on servers and retrieved by web applications.",
+              "fr": "Pense aux types de données typiquement stockés sur des serveurs et récupérés par des applications web."
+            },
+            {
+              "en": "HTML content.",
+              "fr": "Du contenu HTML."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what types of data are typically stored on servers and retrieved by web applications.",
+              "fr": "Pense aux types de données typiquement stockés sur des serveurs et récupérés par des applications web."
+            },
+            {
+              "en": "JavaScript functions.",
+              "fr": "Des fonctions JavaScript."
+            },
+            {
+              "en": "Image files.",
+              "fr": "Des fichiers image."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what types of data are typically stored on servers and retrieved by web applications.",
+              "fr": "Pense aux types de données typiquement stockés sur des serveurs et récupérés par des applications web."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407be6af21d6766ed4b96.md",
+      "id": "673407be6af21d6766ed4b96",
+      "dashedName": "how-does-the-fetch-api-work-with-common-http-methods-and-res-json",
+      "title": {
+        "en": "How Does the Fetch API Work with Common HTTP Methods and res.json()?",
+        "fr": "Comment la Fetch API fonctionne-t-elle avec les méthodes HTTP courantes et res.json() ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, we saw what the Fetch API is and how to use it. In this lesson, we will discuss about the `GET`, `POST`, `PUT` and `DELETE` HTTP methods of Fetch API.",
+              "fr": "Dans la leçon précédente, nous avons vu ce qu'est la Fetch API et comment l'utiliser. Dans cette leçon, nous parlerons des méthodes HTTP `GET`, `POST`, `PUT` et `DELETE` de la Fetch API."
+            },
+            {
+              "en": "Let's start with the most common HTTP method which is the `GET` method. This is used to retrieve data from a server. When you use `fetch()` without specifying a method, it defaults to `GET`.",
+              "fr": "Commençons par la méthode HTTP la plus courante, la méthode `GET`. Elle sert à récupérer des données depuis un serveur. Quand tu utilises `fetch()` sans préciser de méthode, elle utilise `GET` par défaut."
+            },
+            {
+              "en": "In this code, we're making a `GET` request to `https://api.example.com/data`. Now, please note that you cannot use this data directly, you have to convert the response to a JSON format. Only then you can use it anywhere you want in your project. Here’s an example of how to do it:",
+              "fr": "Dans ce code, on fait une requête `GET` vers `https://api.example.com/data`. Note bien que tu ne peux pas utiliser ces données directement : tu dois convertir la réponse au format JSON. Ensuite seulement tu pourras les utiliser où tu veux dans ton projet. Voici un exemple de comment faire :"
+            },
+            {
+              "en": "In this code, the response coming from the Fetch API is a promise, and we are using a `.then` handler to convert the response to a JSON format. In a prior lesson, you learned that a `Promise` is an object that represents the eventual completion (or failure) of an asynchronous process and its value.",
+              "fr": "Dans ce code, la réponse de la Fetch API est une promesse, et on utilise un gestionnaire `.then` pour convertir la réponse au format JSON. Dans une leçon précédente, tu as appris qu'une `Promise` est un objet qui représente l'achèvement éventuel (ou l'échec) d'un processus asynchrone et sa valeur."
+            },
+            {
+              "en": "The value of a promise is not known when the promise is created. It’s only known when the asynchronous process is completed. When we chain the two `.then` handlers to the fetch call, this is something called promise chaining which will be taught in the next lesson.",
+              "fr": "La valeur d'une promesse n'est pas connue à sa création. Elle n'est connue que lorsque le processus asynchrone est terminé. Quand on enchaîne les deux gestionnaires `.then` à l'appel fetch, c'est ce qu'on appelle le chaînage de promesses, qui sera enseigné dans la prochaine leçon."
+            },
+            {
+              "en": "So far we have been retrieving resources from a server. But, did you know that we can also send data to the server? The `POST` method is used to send data to a server to create a resource. Here’s an example of a `POST` method which is used to create data into the server:",
+              "fr": "Jusqu'ici, nous avons récupéré des ressources depuis un serveur. Mais savais-tu qu'on peut aussi envoyer des données au serveur ? La méthode `POST` sert à envoyer des données à un serveur pour créer une ressource. Voici un exemple d'une méthode `POST` utilisée pour créer des données sur le serveur :"
+            },
+            {
+              "en": "In this example, we're sending a `POST` request to create a new user. We specify the method as `POST`, set the appropriate headers, and include a `body` with the data we want to send. The body needs to be a string, so we use `JSON.stringify()` to convert our object to a JSON string.",
+              "fr": "Dans cet exemple, on envoie une requête `POST` pour créer un nouvel utilisateur. On précise la méthode comme `POST`, on définit les en-têtes appropriés, et on inclut un `body` avec les données à envoyer. Le corps doit être une chaîne, donc on utilise `JSON.stringify()` pour convertir notre objet en chaîne JSON."
+            },
+            {
+              "en": "The `PUT` method is used to update existing resources of a server. Here’s an example:",
+              "fr": "La méthode `PUT` sert à mettre à jour des ressources existantes sur un serveur. Voici un exemple :"
+            },
+            {
+              "en": "In this example, look carefully at the URL, you can see a `45` at the end. This is typically used as a unique ID to identify the data we are trying to update. We used the `PUT` method on the code and also specified the data as the `body` which will be used to update the identified data.",
+              "fr": "Dans cet exemple, regarde bien l'URL : tu vois un `45` à la fin. C'est typiquement utilisé comme ID unique pour identifier les données à mettre à jour. On a utilisé la méthode `PUT` dans le code et on a aussi précisé les données comme `body` qui serviront à mettre à jour les données identifiées."
+            },
+            {
+              "en": "The `DELETE` method is used to delete a resource from the server. Here’s an example:",
+              "fr": "La méthode `DELETE` sert à supprimer une ressource du serveur. Voici un exemple :"
+            },
+            {
+              "en": "In this code, we are including the `DELETE` method and an ID at the end of the url to identify the data which needs to be deleted.",
+              "fr": "Dans ce code, on inclut la méthode `DELETE` et un ID à la fin de l'url pour identifier les données à supprimer."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the default HTTP method used by `fetch()` if not specified?",
+              "fr": "Quelle est la méthode HTTP par défaut utilisée par `fetch()` si elle n'est pas précisée ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the most common operation when retrieving data from a server.",
+              "fr": "Pense à l'opération la plus courante quand on récupère des données depuis un serveur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the most common operation when retrieving data from a server.",
+              "fr": "Pense à l'opération la plus courante quand on récupère des données depuis un serveur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the most common operation when retrieving data from a server.",
+              "fr": "Pense à l'opération la plus courante quand on récupère des données depuis un serveur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When sending data with a `POST` request using `fetch()`, what do you need to do with the data before including it in the body?",
+              "fr": "Quand on envoie des données avec une requête `POST` via `fetch()`, que faut-il faire avec les données avant de les inclure dans le body ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Encrypt it.",
+              "fr": "Les chiffrer."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data needs to be formatted when sending it in a request body.",
+              "fr": "Réfléchis à comment les données doivent être formatées quand on les envoie dans le corps d'une requête."
+            },
+            {
+              "en": "Compress it.",
+              "fr": "Les compresser."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data needs to be formatted when sending it in a request body.",
+              "fr": "Réfléchis à comment les données doivent être formatées quand on les envoie dans le corps d'une requête."
+            },
+            {
+              "en": "Convert it to a JSON string.",
+              "fr": "Les convertir en chaîne JSON."
+            },
+            {
+              "en": "Base64 encode it.",
+              "fr": "Les encoder en Base64."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data needs to be formatted when sending it in a request body.",
+              "fr": "Réfléchis à comment les données doivent être formatées quand on les envoie dans le corps d'une requête."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `response.json()` method do?",
+              "fr": "Que fait la méthode `response.json()` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Sends JSON data to the server.",
+              "fr": "Envoie des données JSON au serveur."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the data from the server needs to be processed to be usable in JavaScript.",
+              "fr": "Pense à comment les données du serveur doivent être traitées pour être utilisables en JavaScript."
+            },
+            {
+              "en": "Creates a new JSON object.",
+              "fr": "Crée un nouvel objet JSON."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the data from the server needs to be processed to be usable in JavaScript.",
+              "fr": "Pense à comment les données du serveur doivent être traitées pour être utilisables en JavaScript."
+            },
+            {
+              "en": "Parses the response body as JSON.",
+              "fr": "Analyse le corps de la réponse en JSON."
+            },
+            {
+              "en": "Validates if the response is in JSON format.",
+              "fr": "Vérifie si la réponse est au format JSON."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the data from the server needs to be processed to be usable in JavaScript.",
+              "fr": "Pense à comment les données du serveur doivent être traitées pour être utilisables en JavaScript."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407ca21117a67cf9521ca.md",
+      "id": "673407ca21117a67cf9521ca",
+      "dashedName": "what-are-promises-and-how-does-promise-chaining-work",
+      "title": {
+        "en": "What Are Promises, and How Does Promise Chaining Work?",
+        "fr": "Que sont les promesses, et comment fonctionne le chaînage de promesses ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "A `Promise` is an object that represents the eventual completion or failure of an asynchronous operation. It's initially in a pending state. It can then transition to either a fulfilled state when the operation is successful, or a rejected state when the operation fails. Here's an example of creating a `Promise`:",
+              "fr": "Une `Promise` est un objet qui représente l'achèvement ou l'échec éventuel d'une opération asynchrone. Elle est initialement dans un état pending. Elle peut ensuite passer à un état fulfilled quand l'opération réussit, ou rejected quand elle échoue. Voici un exemple de création d'une `Promise` :"
+            },
+            {
+              "en": "In this example, we create a promise that simulates an asynchronous operation using `setTimeout`. After one second, the promise is resolved with the message `Operation successful!`.",
+              "fr": "Dans cet exemple, on crée une promesse qui simule une opération asynchrone avec `setTimeout`. Après une seconde, la promesse est résolue avec le message `Operation successful!`."
+            },
+            {
+              "en": "Another way to work with promises is to use the `.then` and `.catch` methods.",
+              "fr": "Une autre façon de travailler avec les promesses est d'utiliser les méthodes `.then` et `.catch`."
+            },
+            {
+              "en": "The `.then()` method is used in a promise to specify what should happen when the promise is fulfilled, while `.catch()` is used to handle any errors that occur. Let's see how we can use `.then` and `.catch` with our promise:",
+              "fr": "La méthode `.then()` est utilisée dans une promesse pour préciser ce qui doit se passer quand la promesse est remplie, tandis que `.catch()` sert à gérer les erreurs. Voyons comment utiliser `.then` et `.catch` avec notre promesse :"
+            },
+            {
+              "en": "In this code, or instructions of what to do when the promise is fulfilled, the function passed to `.then()` will be called with the resolved value of the promise. If an error occurs, the function passed to `.catch()` will be called instead.",
+              "fr": "Dans ce code, ou instructions de ce qu'il faut faire quand la promesse est remplie, la fonction passée à `.then()` sera appelée avec la valeur résolue de la promesse. Si une erreur survient, la fonction passée à `.catch()` sera appelée à la place."
+            },
+            {
+              "en": "Now, let's talk about promise chaining. One of the powerful features of promises is that we can chain multiple asynchronous operations together. Each `.then()` can return a new promise, allowing you to perform a sequence of asynchronous operations one after the other. Here’s an example:",
+              "fr": "Maintenant, parlons du chaînage de promesses. Une des fonctionnalités puissantes des promesses est qu'on peut enchaîner plusieurs opérations asynchrones. Chaque `.then()` peut renvoyer une nouvelle promesse, ce qui te permet d'exécuter une séquence d'opérations asynchrones l'une après l'autre. Voici un exemple :"
+            },
+            {
+              "en": "In this example, we're making two API calls in sequence. The first `.then()` parses the response as JSON. The second `.then()` logs the data and makes another API call. The third `.then()` parses the response of the second API call, and the fourth `.then()` logs that data. If an error occurs at any point in this chain, it will be caught by the `.catch()` at the end.",
+              "fr": "Dans cet exemple, on fait deux appels API en séquence. Le premier `.then()` analyse la réponse en JSON. Le deuxième `.then()` affiche les données et fait un autre appel API. Le troisième `.then()` analyse la réponse du second appel API, et le quatrième `.then()` affiche ces données. Si une erreur survient à n'importe quel moment de cette chaîne, elle sera attrapée par le `.catch()` à la fin."
+            },
+            {
+              "en": "It's important to note that `.catch()` will catch errors from any of the previous steps in the chain. This means you don't need to add error handling to each individual step, which can greatly simplify your code.",
+              "fr": "Il est important de noter que `.catch()` attrapera les erreurs de n'importe quelle étape précédente de la chaîne. Tu n'as donc pas besoin d'ajouter la gestion d'erreurs à chaque étape individuelle, ce qui peut grandement simplifier ton code."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are the possible states of a Promise?",
+              "fr": "Quels sont les états possibles d'une Promise ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Active, Inactive, or Terminated.",
+              "fr": "Active, Inactive, ou Terminated."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the stages a Promise goes through from creation to completion.",
+              "fr": "Pense aux étapes qu'une Promise traverse de sa création à son achèvement."
+            },
+            {
+              "en": "Running, Paused, or Stopped.",
+              "fr": "Running, Paused, ou Stopped."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the stages a Promise goes through from creation to completion.",
+              "fr": "Pense aux étapes qu'une Promise traverse de sa création à son achèvement."
+            },
+            {
+              "en": "Pending, Fulfilled, or Rejected.",
+              "fr": "Pending, Fulfilled, ou Rejected."
+            },
+            {
+              "en": "Started, Processing, or Ended.",
+              "fr": "Started, Processing, ou Ended."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the stages a Promise goes through from creation to completion.",
+              "fr": "Pense aux étapes qu'une Promise traverse de sa création à son achèvement."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `.then()` method in Promise chaining?",
+              "fr": "Quel est le but de la méthode `.then()` dans le chaînage de Promises ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To create a new Promise.",
+              "fr": "Créer une nouvelle Promise."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `.then()` allows you to do with the result of a Promise.",
+              "fr": "Réfléchis à ce que `.then()` te permet de faire avec le résultat d'une Promise."
+            },
+            {
+              "en": "To specify what happens when a Promise is fulfilled.",
+              "fr": "Préciser ce qui se passe quand une Promise est remplie."
+            },
+            {
+              "en": "To handle errors in the Promise chain.",
+              "fr": "Gérer les erreurs dans la chaîne de Promises."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `.then()` allows you to do with the result of a Promise.",
+              "fr": "Réfléchis à ce que `.then()` te permet de faire avec le résultat d'une Promise."
+            },
+            {
+              "en": "To cancel a Promise.",
+              "fr": "Annuler une Promise."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what `.then()` allows you to do with the result of a Promise.",
+              "fr": "Réfléchis à ce que `.then()` te permet de faire avec le résultat d'une Promise."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In a Promise chain, where should you typically place the `.catch()` method?",
+              "fr": "Dans une chaîne de Promises, où dois-tu typiquement placer la méthode `.catch()` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "After each `.then()`.",
+              "fr": "Après chaque `.then()`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `.catch()` can handle errors from multiple steps in the chain.",
+              "fr": "Pense à comment `.catch()` peut gérer les erreurs de plusieurs étapes de la chaîne."
+            },
+            {
+              "en": "Before the first `.then()`.",
+              "fr": "Avant le premier `.then()`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `.catch()` can handle errors from multiple steps in the chain.",
+              "fr": "Pense à comment `.catch()` peut gérer les erreurs de plusieurs étapes de la chaîne."
+            },
+            {
+              "en": "In the middle of the chain.",
+              "fr": "Au milieu de la chaîne."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `.catch()` can handle errors from multiple steps in the chain.",
+              "fr": "Pense à comment `.catch()` peut gérer les erreurs de plusieurs étapes de la chaîne."
+            },
+            {
+              "en": "At the end of the chain.",
+              "fr": "À la fin de la chaîne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407d56c3dce67fa97969b.md",
+      "id": "673407d56c3dce67fa97969b",
+      "dashedName": "what-is-async-await-and-how-does-it-work",
+      "title": {
+        "en": "What Is Async/Await, and How Does It Work?",
+        "fr": "Qu'est-ce qu'Async/Await, et comment ça fonctionne ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In the previous lessons, you learned about asynchronous programming which allows other code to run while we wait for some time-consuming tasks to complete, like fetching data from a server, reading data from a file, and so on.",
+              "fr": "Dans les leçons précédentes, tu as appris la programmation asynchrone qui permet à d'autre code de s'exécuter pendant qu'on attend des tâches longues, comme récupérer des données d'un serveur, lire un fichier, etc."
+            },
+            {
+              "en": "`async`/`await`, built on top of promises, makes writing and reading asynchronous code easier. When you put the `async` keyword before a function, it means that function will always return a `Promise`. The `await` keyword, which allows you to wait for a `Promise` to resolve before moving on to the next line of code, can only be used inside of asynchronous functions or the top level bodies of modules. Here's an example to illustrate how `async`/`await` works:",
+              "fr": "`async`/`await`, construit sur les promesses, facilite l'écriture et la lecture du code asynchrone. Quand tu mets le mot-clé `async` avant une fonction, cela signifie que cette fonction renverra toujours une `Promise`. Le mot-clé `await`, qui te permet d'attendre qu'une `Promise` se résolve avant de passer à la ligne suivante, ne peut être utilisé que dans des fonctions asynchrones ou au niveau supérieur des modules. Voici un exemple pour illustrer comment `async`/`await` fonctionne :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this code, we define an `async` function called `delayedGreeting`. Inside this function, we use `await` to pause the execution for 2 seconds. After the delay, it prints a greeting.",
+              "fr": "Dans ce code, on définit une fonction `async` appelée `delayedGreeting`. À l'intérieur, on utilise `await` pour mettre en pause l'exécution pendant 2 secondes. Après le délai, elle affiche une salutation."
+            },
+            {
+              "en": "When we call this function, you'll see `First Printed Message!` appear before the greeting. This is because the function is asynchronous - it doesn't block the rest of the code from running.",
+              "fr": "Quand on appelle cette fonction, tu verras `First Printed Message!` apparaître avant la salutation. C'est parce que la fonction est asynchrone — elle ne bloque pas le reste du code."
+            },
+            {
+              "en": "One of the biggest advantages of `async`/`await` is error handling. With promises, we often had to use `.catch()` method to handle errors. With `async`/`await`, we can use `try`/`catch` blocks. Here's an example:",
+              "fr": "Un des plus grands avantages de `async`/`await` est la gestion des erreurs. Avec les promesses, on devait souvent utiliser la méthode `.catch()`. Avec `async`/`await`, on peut utiliser des blocs `try`/`catch`. Voici un exemple :"
+            },
+            {
+              "en": "In this example, we're using `async`/`await` to fetch user data from an API. The `await` keyword is used twice: once to wait for the fetch operation to complete, and again to wait for the JSON parsing to finish. If any error occurs during this process, it will be caught in the `catch` block.",
+              "fr": "Dans cet exemple, on utilise `async`/`await` pour récupérer des données utilisateur depuis une API. Le mot-clé `await` est utilisé deux fois : une fois pour attendre la fin de l'opération fetch, et encore pour attendre la fin de l'analyse JSON. Si une erreur survient pendant ce processus, elle sera attrapée dans le bloc `catch`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the `async` keyword in JavaScript?",
+              "fr": "Quel est le but principal du mot-clé `async` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To make a function run faster.",
+              "fr": "Rendre une fonction plus rapide."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `async` does to the function's return value.",
+              "fr": "Pense à ce que `async` fait à la valeur de retour de la fonction."
+            },
+            {
+              "en": "To indicate that a function will always return a Promise.",
+              "fr": "Indiquer qu'une fonction renverra toujours une Promise."
+            },
+            {
+              "en": "To create a new thread for the function to run on.",
+              "fr": "Créer un nouveau thread pour exécuter la fonction."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `async` does to the function's return value.",
+              "fr": "Pense à ce que `async` fait à la valeur de retour de la fonction."
+            },
+            {
+              "en": "To prevent a function from being called asynchronously.",
+              "fr": "Empêcher qu'une fonction soit appelée de façon asynchrone."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what `async` does to the function's return value.",
+              "fr": "Pense à ce que `async` fait à la valeur de retour de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Where can the `await` keyword be used in JavaScript?",
+              "fr": "Où le mot-clé `await` peut-il être utilisé en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Anywhere in the code.",
+              "fr": "N'importe où dans le code."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the restrictions on where `await` can be placed.",
+              "fr": "Réfléchis aux restrictions sur l'emplacement de `await`."
+            },
+            {
+              "en": "At very beginning of your code.",
+              "fr": "Tout au début de ton code."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the restrictions on where `await` can be placed.",
+              "fr": "Réfléchis aux restrictions sur l'emplacement de `await`."
+            },
+            {
+              "en": "Inside `async` functions.",
+              "fr": "À l'intérieur des fonctions `async`."
+            },
+            {
+              "en": "Only in `try...catch` blocks.",
+              "fr": "Uniquement dans les blocs `try...catch`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the restrictions on where `await` can be placed.",
+              "fr": "Réfléchis aux restrictions sur l'emplacement de `await`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when an error occurs in an awaited Promise?",
+              "fr": "Que se passe-t-il quand une erreur survient dans une Promise attendue avec await ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The program crashes.",
+              "fr": "Le programme plante."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how error handling works with `async`/`await`.",
+              "fr": "Pense à comment la gestion des erreurs fonctionne avec `async`/`await`."
+            },
+            {
+              "en": "The error is automatically logged to the console.",
+              "fr": "L'erreur est automatiquement affichée dans la console."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how error handling works with `async`/`await`.",
+              "fr": "Pense à comment la gestion des erreurs fonctionne avec `async`/`await`."
+            },
+            {
+              "en": "Nothing, errors in Promises are ignored.",
+              "fr": "Rien, les erreurs dans les Promises sont ignorées."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how error handling works with `async`/`await`.",
+              "fr": "Pense à comment la gestion des erreurs fonctionne avec `async`/`await`."
+            },
+            {
+              "en": "The error can be caught using a `try...catch` block.",
+              "fr": "L'erreur peut être attrapée avec un bloc `try...catch`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407e02bcf0d682b9a49a9.md",
+      "id": "673407e02bcf0d682b9a49a9",
+      "dashedName": "how-does-the-javascript-engine-work-and-what-is-a-javascript-runtime",
+      "title": {
+        "en": "How Does the JavaScript Engine Work, and What Is a JavaScript Runtime?",
+        "fr": "Comment fonctionne le moteur JavaScript, et qu'est-ce qu'un runtime JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The JavaScript engine has the ability to read, understand, and execute your code. It works like a converter that takes your code, turns it into instructions that the computer can understand and work accordingly.",
+              "fr": "Le moteur JavaScript a la capacité de lire, comprendre et exécuter ton code. Il fonctionne comme un convertisseur qui prend ton code, le transforme en instructions que l'ordinateur peut comprendre et exécuter."
+            },
+            {
+              "en": "One of the most well-known JavaScript engines is V8, developed by Google, used in Chrome and Node.js. The JavaScript engine works in a few steps. First, it parses your code, reading it line by line to make sure there’s no mistake in the JavaScript code. Then, it converts this code into bytecode, which is a simpler, intermediate version of your code that’s easier for the computer to understand and execute. Finally, it runs this bytecode to execute your program's instructions. Here's an example of JavaScript code:",
+              "fr": "Un des moteurs JavaScript les plus connus est V8, développé par Google, utilisé dans Chrome et Node.js. Le moteur JavaScript travaille en plusieurs étapes. D'abord, il parse ton code, le lit ligne par ligne pour s'assurer qu'il n'y a pas d'erreur. Ensuite, il convertit ce code en bytecode, une version intermédiaire plus simple plus facile à comprendre et exécuter pour l'ordinateur. Enfin, il exécute ce bytecode pour réaliser les instructions de ton programme. Voici un exemple de code JavaScript :"
+            },
+            {
+              "en": "When you run this code, the JavaScript engine first parses it to check for any syntax errors. Parsing means the engine reads the code and breaks it down into a structure it can understand, checking for mistakes along the way.",
+              "fr": "Quand tu exécutes ce code, le moteur JavaScript le parse d'abord pour vérifier les erreurs de syntaxe. Parser signifie que le moteur lit le code et le décompose en une structure qu'il peut comprendre, en vérifiant les erreurs au passage."
+            },
+            {
+              "en": "Then, it compiles the code into an intermediate format (often bytecode or machine code, depending on the engine). Compiling is the process of converting the human-readable code into a more efficient format that the computer can execute faster.",
+              "fr": "Ensuite, il compile le code en un format intermédiaire (souvent du bytecode ou du code machine, selon le moteur). Compiler est le processus de conversion du code lisible par l'humain en un format plus efficace que l'ordinateur peut exécuter plus vite."
+            },
+            {
+              "en": "Finally, the engine executes the code, printing `Hello, World!` to the console.",
+              "fr": "Enfin, le moteur exécute le code, affichant `Hello, World!` dans la console."
+            },
+            {
+              "en": "Now, let's talk about the JavaScript runtime. The JavaScript runtime is the environment in which your JavaScript code is executed. It includes the JavaScript engine (like V8 in Chrome or SpiderMonkey in Firefox), which processes and executes the code, as well as additional features provided by the environment (such as a web browser or Node.js, which you will learn more about in future lessons).",
+              "fr": "Maintenant, parlons du runtime JavaScript. Le runtime JavaScript est l'environnement dans lequel ton code JavaScript est exécuté. Il inclut le moteur JavaScript (comme V8 dans Chrome ou SpiderMonkey dans Firefox), qui traite et exécute le code, ainsi que des fonctionnalités supplémentaires fournies par l'environnement (comme un navigateur web ou Node.js, que tu apprendras plus en détail dans de futures leçons)."
+            },
+            {
+              "en": "While the core JavaScript language handles things like variables, loops, and functions, the runtime provides extra tools that allow JavaScript to interact with things outside of the language itself, like the DOM (for web pages) or the Fetch API (for making network requests).",
+              "fr": "Alors que le langage JavaScript de base gère les variables, boucles et fonctions, le runtime fournit des outils supplémentaires qui permettent à JavaScript d'interagir avec des choses hors du langage lui-même, comme le DOM (pour les pages web) ou la Fetch API (pour les requêtes réseau)."
+            },
+            {
+              "en": "In short, the runtime is what allows JavaScript to do more than just basic programming tasks – like interacting with web pages or handling time-based actions – by providing these extra features beyond the language itself.",
+              "fr": "En résumé, le runtime permet à JavaScript de faire plus que des tâches de programmation basiques — comme interagir avec des pages web ou gérer des actions basées sur le temps — en fournissant ces fonctionnalités au-delà du langage lui-même."
+            },
+            {
+              "en": "While you don't need to know every detail of engines and runtimes to write JavaScript, having a basic understanding can help you write more efficient code and debug problems more effectively.",
+              "fr": "Même si tu n'as pas besoin de connaître chaque détail des moteurs et runtimes pour écrire du JavaScript, une compréhension de base peut t'aider à écrire un code plus efficace et à déboguer plus efficacement."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary function of a JavaScript engine?",
+              "fr": "Quelle est la fonction principale d'un moteur JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To provide a user interface for writing code.",
+              "fr": "Fournir une interface utilisateur pour écrire du code."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what needs to happen to your code for it to actually run.",
+              "fr": "Pense à ce qui doit arriver à ton code pour qu'il s'exécute réellement."
+            },
+            {
+              "en": "To connect to the internet.",
+              "fr": "Se connecter à Internet."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what needs to happen to your code for it to actually run.",
+              "fr": "Pense à ce qui doit arriver à ton code pour qu'il s'exécute réellement."
+            },
+            {
+              "en": "To read, interpret, and execute JavaScript code.",
+              "fr": "Lire, interpréter et exécuter du code JavaScript."
+            },
+            {
+              "en": "To store data in a database.",
+              "fr": "Stocker des données dans une base de données."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what needs to happen to your code for it to actually run.",
+              "fr": "Pense à ce qui doit arriver à ton code pour qu'il s'exécute réellement."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT typically considered part of the JavaScript runtime?",
+              "fr": "Lequel des éléments suivants ne fait typiquement PAS partie du runtime JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The JavaScript engine.",
+              "fr": "Le moteur JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what you provide versus what the environment provides.",
+              "fr": "Réfléchis à ce que tu fournis versus ce que l'environnement fournit."
+            },
+            {
+              "en": "Web APIs (in a browser environment).",
+              "fr": "Les Web APIs (dans un environnement navigateur)."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what you provide versus what the environment provides.",
+              "fr": "Réfléchis à ce que tu fournis versus ce que l'environnement fournit."
+            },
+            {
+              "en": "The event loop.",
+              "fr": "La boucle d'événements."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what you provide versus what the environment provides.",
+              "fr": "Réfléchis à ce que tu fournis versus ce que l'environnement fournit."
+            },
+            {
+              "en": "The JavaScript code you write.",
+              "fr": "Le code JavaScript que tu écris."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes the difference between a JavaScript engine and its runtime?",
+              "fr": "Laquelle des affirmations suivantes décrit le mieux la différence entre un moteur JavaScript et son runtime ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The engine provides features like the Fetch API and the DOM; the runtime only parses and executes code.",
+              "fr": "Le moteur fournit des fonctionnalités comme la Fetch API et le DOM ; le runtime ne fait que parser et exécuter le code."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the distinct roles of the JavaScript engine and the runtime environment.",
+              "fr": "Pense aux rôles distincts du moteur JavaScript et de l'environnement runtime."
+            },
+            {
+              "en": "The engine parses and executes code; the runtime provides the engine plus additional features like the Fetch API and the DOM.",
+              "fr": "Le moteur parse et exécute le code ; le runtime fournit le moteur plus des fonctionnalités supplémentaires comme la Fetch API et le DOM."
+            },
+            {
+              "en": "The runtime compiles code into bytecode and machine code; the engine just interprets the code.",
+              "fr": "Le runtime compile le code en bytecode et code machine ; le moteur se contente d'interpréter le code."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the distinct roles of the JavaScript engine and the runtime environment.",
+              "fr": "Pense aux rôles distincts du moteur JavaScript et de l'environnement runtime."
+            },
+            {
+              "en": "They are the same thing—engine and runtime are interchangeable terms.",
+              "fr": "Ce sont la même chose — moteur et runtime sont des termes interchangeables."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the distinct roles of the JavaScript engine and the runtime environment.",
+              "fr": "Pense aux rôles distincts du moteur JavaScript et de l'environnement runtime."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673407eb10ca9d68634e81d9.md",
+      "id": "673407eb10ca9d68634e81d9",
+      "dashedName": "what-is-the-geolocation-api-and-how-does-the-getcurrentposition-work",
+      "title": {
+        "en": "What Is the Geolocation API, and How Does the getCurrentPosition Work?",
+        "fr": "Qu'est-ce que la Geolocation API, et comment fonctionne getCurrentPosition ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The Geolocation API provides a way for websites to request the user's location. It's important to note that for privacy reasons, the user has to give permission before their location can be accessed via the website.",
+              "fr": "La Geolocation API fournit un moyen pour les sites web de demander la localisation de l'utilisateur. Il est important de noter que, pour des raisons de confidentialité, l'utilisateur doit donner son autorisation avant que sa localisation puisse être accessible via le site."
+            },
+            {
+              "en": "The main method we'll be focusing on today is `getCurrentPosition`. This method is used to collect the geographic location of the device. Here's an example of how you might use `getCurrentPosition`:",
+              "fr": "La principale méthode sur laquelle on se concentrera aujourd'hui est `getCurrentPosition`. Cette méthode sert à collecter la localisation géographique de l'appareil. Voici un exemple d'utilisation de `getCurrentPosition` :"
+            },
+            {
+              "en": "In this code, we're calling `getCurrentPosition` and passing it a function which will be called when the position is successfully obtained. This position object contains various pieces of information, but we're focusing on `latitude` and `longitude` only.",
+              "fr": "Dans ce code, on appelle `getCurrentPosition` et on lui passe une fonction qui sera appelée quand la position est obtenue avec succès. Cet objet position contient diverses informations, mais on se concentre uniquement sur `latitude` et `longitude`."
+            },
+            {
+              "en": "If there is an issue with getting the position, then the error will be logged to the console.",
+              "fr": "S'il y a un problème pour obtenir la position, alors l'erreur sera affichée dans la console."
+            },
+            {
+              "en": "The `getCurrentPosition` method uses GPS, Wi-Fi networks, or IP address geolocation, depending on the device and its settings. Once the location is found, the success callback function is called with a position object.",
+              "fr": "La méthode `getCurrentPosition` utilise le GPS, les réseaux Wi-Fi, ou la géolocalisation par adresse IP, selon l'appareil et ses réglages. Une fois la localisation trouvée, la fonction callback de succès est appelée avec un objet position."
+            },
+            {
+              "en": "The position object contains various properties, where the most commonly used are `latitude` and `longitude`, but it can also include `altitude`, `accuracy`, `speed`, and `heading`, and so on.",
+              "fr": "L'objet position contient diverses propriétés, dont les plus couramment utilisées sont `latitude` et `longitude`, mais il peut aussi inclure `altitude`, `accuracy`, `speed`, et `heading`, etc."
+            },
+            {
+              "en": "One important consideration when using geolocation is user privacy. Explain to your users why you need their location data and how you'll use it.",
+              "fr": "Une considération importante lors de l'utilisation de la géolocalisation est la confidentialité de l'utilisateur. Explique à tes utilisateurs pourquoi tu as besoin de leurs données de localisation et comment tu les utiliseras."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the Geolocation API's `getCurrentPosition` method?",
+              "fr": "Quel est le but principal de la méthode `getCurrentPosition` de la Geolocation API ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To set the user's current location.",
+              "fr": "Définir la localisation actuelle de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what information this method provides to the web application.",
+              "fr": "Pense aux informations que cette méthode fournit à l'application web."
+            },
+            {
+              "en": "To retrieve the user's current geographic location.",
+              "fr": "Récupérer la localisation géographique actuelle de l'utilisateur."
+            },
+            {
+              "en": "To calculate the distance between two points.",
+              "fr": "Calculer la distance entre deux points."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what information this method provides to the web application.",
+              "fr": "Pense aux informations que cette méthode fournit à l'application web."
+            },
+            {
+              "en": "To display a map on the webpage.",
+              "fr": "Afficher une carte sur la page web."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what information this method provides to the web application.",
+              "fr": "Pense aux informations que cette méthode fournit à l'application web."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What object is used to access the Geolocation API in JavaScript?",
+              "fr": "Quel objet est utilisé pour accéder à la Geolocation API en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which global object provides access to browser-specific information.",
+              "fr": "Pense à quel objet global donne accès aux informations spécifiques au navigateur."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which global object provides access to browser-specific information.",
+              "fr": "Pense à quel objet global donne accès aux informations spécifiques au navigateur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which global object provides access to browser-specific information.",
+              "fr": "Pense à quel objet global donne accès aux informations spécifiques au navigateur."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key privacy consideration when using the Geolocation API?",
+              "fr": "Quelle est une considération clé de confidentialité lors de l'utilisation de la Geolocation API ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Encrypting the location data.",
+              "fr": "Chiffrer les données de localisation."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what steps should be taken to respect user privacy.",
+              "fr": "Pense aux étapes à prendre pour respecter la confidentialité de l'utilisateur."
+            },
+            {
+              "en": "Storing location data indefinitely.",
+              "fr": "Stocker les données de localisation indéfiniment."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what steps should be taken to respect user privacy.",
+              "fr": "Pense aux étapes à prendre pour respecter la confidentialité de l'utilisateur."
+            },
+            {
+              "en": "Automatically accessing user location.",
+              "fr": "Accéder automatiquement à la localisation de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what steps should be taken to respect user privacy.",
+              "fr": "Pense aux étapes à prendre pour respecter la confidentialité de l'utilisateur."
+            },
+            {
+              "en": "Obtaining user permission before accessing location.",
+              "fr": "Obtenir l'autorisation de l'utilisateur avant d'accéder à la localisation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

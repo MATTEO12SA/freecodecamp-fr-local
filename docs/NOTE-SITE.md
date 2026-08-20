@@ -44,12 +44,12 @@ Juillet mesuré : 6,7 / 10. Août matin (relecture code) : 7,8 / 10.
 
 ## Ce qui empêche 9+
 
-- Curriculum JS v9 à 204/230 blocs (~91 %). Modules 1-12 complets.
+- Curriculum JS v9 **230/230** (100 %).
 - Examen honor-system, HTML des quizzes rendu tel quel.
 - GitHub Actions ne lance pas qualité FR, tsc client, ni Axe.
-- Lecture maps/sets `lecture-working-with-maps-and-sets.json` extraite, `reviewed: false` — ne pas appliquer. Vague 5 : Continuer, onboarding, export/import profil, confettis reduced-motion.
+- JavaScript v9 **100 %**. Vague 5 partielle : Continuer, onboarding, export/import, confettis faits.
 - Confettis de complétion respectent `prefers-reduced-motion`.
-- Pas d'export de profil / PWA (vague 5, volontairement plus tard).
+- Export/import profil + Continuer + onboarding + confettis faits. Restent Vague 5 : SRS, XP, streaks, badges, PWA.
 
 ## Relancer les preuves
 

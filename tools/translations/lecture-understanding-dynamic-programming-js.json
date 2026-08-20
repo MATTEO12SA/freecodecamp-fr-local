@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-dynamic-programming-js",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-is-dynamic-programming-and-what-are-some-common-algorithms",
       "title": {
         "en": "What is Dynamic Programming and What Are Some Common Algorithms?",
-        "fr": ""
+        "fr": "Qu'est-ce que la programmation dynamique et quels sont quelques algorithmes courants ?"
       },
       "sections": [
         {
@@ -19,175 +19,175 @@
           "chunks": [
             {
               "en": "Dynamic programming is an algorithmic technique that solves complex problems by breaking them down into simpler subproblems and storing the results to avoid redundant calculations. This approach transforms problems that would normally take exponential time into ones that can be solved in polynomial time.",
-              "fr": ""
+              "fr": "La programmation dynamique est une technique algorithmique qui résout des problèmes complexes en les décomposant en sous-problèmes plus simples et en stockant les résultats pour éviter les calculs redondants. Cette approche transforme des problèmes qui prendraient normalement un temps exponentiel en problèmes pouvant être résolus en temps polynomial."
             },
             {
               "en": "## Core Principles of Dynamic Programming",
-              "fr": ""
+              "fr": "## Principes fondamentaux de la programmation dynamique"
             },
             {
               "en": "Dynamic programming works when two key conditions are present in a problem.",
-              "fr": ""
+              "fr": "La programmation dynamique fonctionne lorsque deux conditions clés sont présentes dans un problème."
             },
             {
               "en": "- **Overlapping Subproblems**: The same smaller problems appear multiple times when solving the larger problem. Instead of recalculating these subproblems repeatedly, we store their solutions.\n    \n- **Optimal Substructure**: The optimal solution to the problem contains optimal solutions to its subproblems. This means we can build up the best solution by combining the best solutions to smaller parts.",
-              "fr": ""
+              "fr": "- **Sous-problèmes qui se chevauchent** : Les mêmes petits problèmes apparaissent plusieurs fois lors de la résolution du problème plus large. Au lieu de recalculer ces sous-problèmes à plusieurs reprises, on stocke leurs solutions.\n    \n- **Sous-structure optimale** : La solution optimale du problème contient des solutions optimales de ses sous-problèmes. Cela signifie qu'on peut construire la meilleure solution en combinant les meilleures solutions des parties plus petites."
             },
             {
               "en": "Let's examine these concepts using the classic \"climbing stairs\" problem.",
-              "fr": ""
+              "fr": "Examinons ces concepts à l'aide du problème classique de « montée d'escalier »."
             },
             {
               "en": "## The Problem with Naive Recursion",
-              "fr": ""
+              "fr": "## Le problème de la récursion naïve"
             },
             {
               "en": "Consider the climbing stairs problem: you're climbing a staircase with `n` steps and can climb either 1 or 2 steps at a time. How many distinct ways can you reach the top?",
-              "fr": ""
+              "fr": "Considère le problème de montée d'escalier : tu montes un escalier de `n` marches et tu peux monter soit 1, soit 2 marches à la fois. Combien de façons distinctes as-tu d'atteindre le sommet ?"
             },
             {
               "en": "This implementation has exponential time complexity because of massive redundant calculations. When calculating `climbStairsRecursive(5)`, here's what happens:",
-              "fr": ""
+              "fr": "Cette implémentation a une complexité temporelle exponentielle à cause d'énormes calculs redondants. Lors du calcul de `climbStairsRecursive(5)`, voici ce qui se passe :"
             },
             {
               "en": "- `climbStairsRecursive(5)` calls `climbStairsRecursive(4)` and `climbStairsRecursive(3)`\n    \n- `climbStairsRecursive(4)` calls `climbStairsRecursive(3)` and `climbStairsRecursive(2)`\n    \n- Now `climbStairsRecursive(3)` is calculated **twice**\n    \n- `climbStairsRecursive(3)` calls `climbStairsRecursive(2)` and `climbStairsRecursive(1)`\n    \n- `climbStairsRecursive(2)` gets calculated **3 times total**",
-              "fr": ""
+              "fr": "- `climbStairsRecursive(5)` appelle `climbStairsRecursive(4)` et `climbStairsRecursive(3)`\n    \n- `climbStairsRecursive(4)` appelle `climbStairsRecursive(3)` et `climbStairsRecursive(2)`\n    \n- Or `climbStairsRecursive(3)` est calculé **deux fois**\n    \n- `climbStairsRecursive(3)` appelle `climbStairsRecursive(2)` et `climbStairsRecursive(1)`\n    \n- `climbStairsRecursive(2)` est calculé **3 fois au total**"
             },
             {
               "en": "For just `n=5`, we make 9 function calls when we only need 5 unique calculations. As `n` grows, this redundancy explodes exponentially - `climbStairsRecursive(30)` would require over a few million function calls! The time complexity becomes `O(2^n)`, making it inefficient and impractical for larger values of `n`.",
-              "fr": ""
+              "fr": "Pour seulement `n=5`, on fait 9 appels de fonction alors qu'on n'a besoin que de 5 calculs uniques. À mesure que `n` augmente, cette redondance explose exponentiellement — `climbStairsRecursive(30)` nécessiterait plus de quelques millions d'appels de fonction ! La complexité temporelle devient `O(2^n)`, ce qui la rend inefficace et impraticable pour de plus grandes valeurs de `n`."
             },
             {
               "en": "## Dynamic Programming Solutions",
-              "fr": ""
+              "fr": "## Solutions de programmation dynamique"
             },
             {
               "en": "Dynamic programming eliminates this redundant computation through two main approaches:",
-              "fr": ""
+              "fr": "La programmation dynamique élimine ce calcul redondant grâce à deux approches principales :"
             },
             {
               "en": "### Memoization (Top-Down Approach)",
-              "fr": ""
+              "fr": "### Mémoïsation (approche top-down)"
             },
             {
               "en": "Memoization stores the results of expensive function calls and returns the cached result when the same inputs occur again:",
-              "fr": ""
+              "fr": "La mémoïsation stocke les résultats d'appels de fonctions coûteux et renvoie le résultat mis en cache lorsque les mêmes entrées se représentent :"
             },
             {
               "en": "Memoization is so much more efficient because each unique value from `1` to `n` is calculated exactly once. When we need `climbStairsMemo(3)` again, instead of recalculating it (which would trigger more recursive calls), we simply look it up in our memo dictionary in `O(1)` time.",
-              "fr": ""
+              "fr": "La mémoïsation est bien plus efficace car chaque valeur unique de `1` à `n` est calculée exactement une fois. Lorsque nous avons à nouveau besoin de `climbStairsMemo(3)`, au lieu de le recalculer (ce qui déclencherait d'autres appels récursifs), nous le recherchons simplement dans notre dictionnaire memo en temps `O(1)`."
             },
             {
               "en": "Let's trace through the execution of `climbStairsMemo(5)` with the top-down approach to see how memoization eliminates redundant work:",
-              "fr": ""
+              "fr": "Suivons l'exécution de `climbStairsMemo(5)` avec l'approche top-down pour voir comment la mémoïsation élimine le travail redondant :"
             },
             {
               "en": "**Efficiency comparison**",
-              "fr": ""
+              "fr": "**Comparaison d'efficacité**"
             },
             {
               "en": "- **Naive recursive**: Makes 9 function calls with repeated calculations\n    \n- **Memoization**: Makes only 5 unique calculations, then reuses stored results\n    \n- **Time complexity**: Reduced from `O(2^n)` to `O(n)` since we make only `n` unique calculations\n    \n- **Space complexity**: `O(n)` for the memo storage and call stack\n    \n- **Real impact**: `climbStairsMemo(30)` drops from millions of function calls to about 30 unique calculations!",
-              "fr": ""
+              "fr": "- **Récursion naïve** : Fait 9 appels de fonction avec des calculs répétés\n    \n- **Mémoïsation** : Ne fait que 5 calculs uniques, puis réutilise les résultats stockés\n    \n- **Complexité temporelle** : Réduite de `O(2^n)` à `O(n)` puisque nous ne faisons que `n` calculs uniques\n    \n- **Complexité spatiale** : `O(n)` pour le stockage memo et la pile d'appels\n    \n- **Impact réel** : `climbStairsMemo(30)` passe de millions d'appels de fonction à environ 30 calculs uniques !"
             },
             {
               "en": "### Tabulation (Bottom-Up Approach)",
-              "fr": ""
+              "fr": "### Tabulation (approche bottom-up)"
             },
             {
               "en": "Tabulation builds the solution from the ground up, filling a table with solutions to subproblems:",
-              "fr": ""
+              "fr": "La tabulation construit la solution depuis la base, en remplissant une table avec les solutions des sous-problèmes :"
             },
             {
               "en": "Tabulation eliminates recursion entirely by building the solution iteratively from the smallest subproblems up to the target.",
-              "fr": ""
+              "fr": "La tabulation élimine entièrement la récursion en construisant la solution de façon itérative, des plus petits sous-problèmes jusqu'à la cible."
             },
             {
               "en": "Let's see the bottom-up approach in action to see how we build the solution systematically. Here's the iterative construction for `climbStairsTabulation(5)`:",
-              "fr": ""
+              "fr": "Voyons l'approche bottom-up en action pour voir comment on construit la solution de façon systématique. Voici la construction itérative pour `climbStairsTabulation(5)` :"
             },
             {
               "en": "**Key advantages of tabulation**",
-              "fr": ""
+              "fr": "**Avantages clés de la tabulation**"
             },
             {
               "en": "- **No recursion overhead**: Unlike memoization, there's no recursive call stack.\n    \n- **Predictable execution**: We calculate values in a predetermined order (1, 2, 3, 4, 5...).\n    \n- **Cache-friendly**: Sequential array access optimizes memory usage.\n    \n- **Easy to optimize**: Can reduce space complexity to `O(1)` since we only need the last two values.",
-              "fr": ""
+              "fr": "- **Pas de surcoût de récursion** : Contrairement à la mémoïsation, il n'y a pas de pile d'appels récursifs.\n    \n- **Exécution prévisible** : On calcule les valeurs dans un ordre prédéterminé (1, 2, 3, 4, 5...).\n    \n- **Favorable au cache** : L'accès séquentiel au tableau optimise l'utilisation de la mémoire.\n    \n- **Facile à optimiser** : On peut réduire la complexité spatiale à `O(1)` car on n'a besoin que des deux dernières valeurs."
             },
             {
               "en": "**Efficiency comparison**",
-              "fr": ""
+              "fr": "**Comparaison d'efficacité**"
             },
             {
               "en": "- **Naive recursive**: 9 function calls for `n=5`, exponential growth.\n    \n- **Tabulation**: 3 simple additions for `n=5`, linear growth.\n    \n- **Time complexity**: `O(n)` instead of `O(2^n)`.\n    \n- **Space complexity**: `O(n)` for the array, or `O(1)` with optimization.\n    \n- **Predictable performance**: No risk of stack overflow for large inputs.",
-              "fr": ""
+              "fr": "- **Récursion naïve** : 9 appels de fonction pour `n=5`, croissance exponentielle.\n    \n- **Tabulation** : 3 additions simples pour `n=5`, croissance linéaire.\n    \n- **Complexité temporelle** : `O(n)` au lieu de `O(2^n)`.\n    \n- **Complexité spatiale** : `O(n)` pour le tableau, ou `O(1)` avec optimisation.\n    \n- **Performance prévisible** : Aucun risque de débordement de pile pour de grandes entrées."
             },
             {
               "en": "Both approaches reduce the time complexity from exponential `O(2^n)` to linear `O(n)`, a dramatic improvement that makes the difference between solving the problem in milliseconds versus waiting years for larger inputs.",
-              "fr": ""
+              "fr": "Les deux approches réduisent la complexité temporelle d'exponentielle `O(2^n)` à linéaire `O(n)`, une amélioration spectaculaire qui fait la différence entre résoudre le problème en millisecondes et attendre des années pour de plus grandes entrées."
             },
             {
               "en": "## Real-World Applications",
-              "fr": ""
+              "fr": "## Applications concrètes"
             },
             {
               "en": "Dynamic programming has widespread applications in computer science and beyond:",
-              "fr": ""
+              "fr": "La programmation dynamique a des applications très répandues en informatique et au-delà :"
             },
             {
               "en": "- **Route Optimization**: GPS systems use dynamic programming algorithms to find shortest paths between locations.\n    \n- **Text Processing**: Spell checkers and autocomplete features often rely on dynamic programming to calculate edit distances between words.\n    \n- **Financial Modeling**: Investment strategies and portfolio optimization frequently employ dynamic programming techniques.\n    \n- **Resource Allocation**: The knapsack problem and its variants appear in scheduling, budgeting, and resource management.",
-              "fr": ""
+              "fr": "- **Optimisation d'itinéraires** : Les systèmes GPS utilisent des algorithmes de programmation dynamique pour trouver les plus courts chemins entre des lieux.\n    \n- **Traitement de texte** : Les correcteurs orthographiques et les fonctionnalités d'autocomplétion s'appuient souvent sur la programmation dynamique pour calculer les distances d'édition entre les mots.\n    \n- **Modélisation financière** : Les stratégies d'investissement et l'optimisation de portefeuilles emploient fréquemment des techniques de programmation dynamique.\n    \n- **Allocation de ressources** : Le problème du sac à dos et ses variantes apparaissent dans la planification, la budgétisation et la gestion des ressources."
             },
             {
               "en": "## Practical Example: Coin Change Problem",
-              "fr": ""
+              "fr": "## Exemple pratique : le problème du rendu de monnaie"
             },
             {
               "en": "The coin change problem is a classic coding challenge that, when solved using dynamic programming, demonstrates both of DP's key principles: optimal substructure and overlapping subproblems.",
-              "fr": ""
+              "fr": "Le problème du rendu de monnaie est un défi de code classique qui, résolu avec la programmation dynamique, illustre les deux principes clés de la PD : sous-structure optimale et sous-problèmes qui se chevauchent."
             },
             {
               "en": "The coin change problem asks, \"What's the minimum number of coins needed to make a target amount?\"",
-              "fr": ""
+              "fr": "Le problème du rendu de monnaie demande : « Quel est le nombre minimum de pièces nécessaires pour atteindre un montant cible ? »"
             },
             {
               "en": "Here's one solution using dynamic programming:",
-              "fr": ""
+              "fr": "Voici une solution utilisant la programmation dynamique :"
             },
             {
               "en": "And here's how the dynamic programming coin change algorithm works step by step for `coins = [1, 3, 4]`, `amount = 6`:",
-              "fr": ""
+              "fr": "Et voici comment l'algorithme de rendu de monnaie en programmation dynamique fonctionne étape par étape pour `coins = [1, 3, 4]`, `amount = 6` :"
             },
             {
               "en": "This solution demonstrates both key principles of dynamic programming. It has overlapping subproblems because finding the minimum coins for amount 6 requires knowing the solutions for amounts 5, 3, and 2. These same subproblems appear when calculating other amounts. It has optimal substructure because the optimal solution for any amount incorporates optimal solutions for smaller amounts. If we know the minimum coins for amount 3 is 1, then one way to make amount 6 is to use that solution plus one more coin of value 3.",
-              "fr": ""
+              "fr": "Cette solution illustre les deux principes clés de la programmation dynamique. Elle a des sous-problèmes qui se chevauchent car trouver le minimum de pièces pour le montant 6 nécessite de connaître les solutions pour les montants 5, 3 et 2. Ces mêmes sous-problèmes apparaissent lors du calcul d'autres montants. Elle a une sous-structure optimale car la solution optimale pour tout montant intègre les solutions optimales pour des montants plus petits. Si on sait que le minimum de pièces pour le montant 3 est 1, alors une façon de faire le montant 6 est d'utiliser cette solution plus une pièce supplémentaire de valeur 3."
             },
             {
               "en": "Without DP, we'd need to try every possible combination of coins - an exponential number of possibilities. With DP, we build up the solution systematically:",
-              "fr": ""
+              "fr": "Sans PD, il faudrait essayer chaque combinaison possible de pièces — un nombre exponentiel de possibilités. Avec la PD, on construit la solution de façon systématique :"
             },
             {
               "en": "- **Time complexity**: `O(amount × number of coins)` instead of exponential.\n    \n- **Space complexity**: `O(amount)` for the `dp` array.\n    \n- **No redundant work**: Each subproblem (finding minimum coins for each amount) is solved exactly once.\n    \n- **Reusable results**: Once we know the minimum coins for amount 3, we use this knowledge for all larger amounts that can benefit from it.",
-              "fr": ""
+              "fr": "- **Complexité temporelle** : `O(amount × number of coins)` au lieu d'exponentielle.\n    \n- **Complexité spatiale** : `O(amount)` pour le tableau `dp`.\n    \n- **Pas de travail redondant** : Chaque sous-problème (trouver le minimum de pièces pour chaque montant) est résolu exactement une fois.\n    \n- **Résultats réutilisables** : Une fois qu'on connaît le minimum de pièces pour le montant 3, on utilise cette connaissance pour tous les montants plus grands qui peuvent en bénéficier."
             },
             {
               "en": "## When to Use Dynamic Programming",
-              "fr": ""
+              "fr": "## Quand utiliser la programmation dynamique"
             },
             {
               "en": "Dynamic programming is effective when:",
-              "fr": ""
+              "fr": "La programmation dynamique est efficace lorsque :"
             },
             {
               "en": "- The problem can be broken down into overlapping subproblems.\n    \n- The problem exhibits optimal substructure.\n    \n- A naive recursive solution would involve repeated calculations.\n    \n- You need to optimize for time complexity at the cost of space complexity.",
-              "fr": ""
+              "fr": "- Le problème peut être décomposé en sous-problèmes qui se chevauchent.\n    \n- Le problème présente une sous-structure optimale.\n    \n- Une solution récursive naïve entraînerait des calculs répétés.\n    \n- Tu as besoin d'optimiser la complexité temporelle au prix de la complexité spatiale."
             },
             {
               "en": "Common dynamic programming patterns include optimization problems (finding minimum/maximum values), counting problems (number of ways to achieve something), and decision problems that can be broken down into smaller decisions.",
-              "fr": ""
+              "fr": "Les motifs courants de programmation dynamique incluent les problèmes d'optimisation (trouver des valeurs minimum/maximum), les problèmes de comptage (nombre de façons d'accomplir quelque chose) et les problèmes de décision qui peuvent être décomposés en décisions plus petites."
             },
             {
               "en": "Dynamic programming transforms complex problems into manageable ones by systematically storing and reusing solutions to subproblems. Understanding this technique opens the door to solving a wide range of computational challenges efficiently.",
-              "fr": ""
+              "fr": "La programmation dynamique transforme des problèmes complexes en problèmes gérables en stockant et réutilisant systématiquement les solutions des sous-problèmes. Comprendre cette technique ouvre la porte à la résolution efficace d'un large éventail de défis computationnels."
             }
           ]
         },
@@ -197,7 +197,7 @@
           "chunks": [
             {
               "en": "What are the two key conditions that must be present for dynamic programming to be applicable?",
-              "fr": ""
+              "fr": "Quelles sont les deux conditions clés qui doivent être présentes pour que la programmation dynamique soit applicable ?"
             }
           ]
         },
@@ -207,7 +207,7 @@
           "chunks": [
             {
               "en": "Fast execution and low memory usage.",
-              "fr": ""
+              "fr": "Une exécution rapide et une faible utilisation de la mémoire."
             }
           ]
         },
@@ -217,15 +217,15 @@
           "chunks": [
             {
               "en": "Think about what makes a problem suitable for dynamic programming optimization.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui rend un problème adapté à l'optimisation par programmation dynamique."
             },
             {
               "en": "Overlapping subproblems and optimal substructure.",
-              "fr": ""
+              "fr": "Des sous-problèmes qui se chevauchent et une sous-structure optimale."
             },
             {
               "en": "Recursive calls and iterative loops.",
-              "fr": ""
+              "fr": "Des appels récursifs et des boucles itératives."
             }
           ]
         },
@@ -235,11 +235,11 @@
           "chunks": [
             {
               "en": "Think about what makes a problem suitable for dynamic programming optimization.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui rend un problème adapté à l'optimisation par programmation dynamique."
             },
             {
               "en": "Memoization and tabulation.",
-              "fr": ""
+              "fr": "La mémoïsation et la tabulation."
             }
           ]
         },
@@ -249,7 +249,7 @@
           "chunks": [
             {
               "en": "Think about what makes a problem suitable for dynamic programming optimization.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui rend un problème adapté à l'optimisation par programmation dynamique."
             }
           ]
         },
@@ -259,7 +259,7 @@
           "chunks": [
             {
               "en": "What is the main difference between memoization and tabulation approaches in dynamic programming?",
-              "fr": ""
+              "fr": "Quelle est la principale différence entre les approches de mémoïsation et de tabulation en programmation dynamique ?"
             }
           ]
         },
@@ -269,7 +269,7 @@
           "chunks": [
             {
               "en": "Memoization uses more memory than tabulation.",
-              "fr": ""
+              "fr": "La mémoïsation utilise plus de mémoire que la tabulation."
             }
           ]
         },
@@ -279,11 +279,11 @@
           "chunks": [
             {
               "en": "Consider the direction in which each approach builds the solution.",
-              "fr": ""
+              "fr": "Considère la direction dans laquelle chaque approche construit la solution."
             },
             {
               "en": "Tabulation is always faster than memoization.",
-              "fr": ""
+              "fr": "La tabulation est toujours plus rapide que la mémoïsation."
             }
           ]
         },
@@ -293,15 +293,15 @@
           "chunks": [
             {
               "en": "Consider the direction in which each approach builds the solution.",
-              "fr": ""
+              "fr": "Considère la direction dans laquelle chaque approche construit la solution."
             },
             {
               "en": "Memoization is top-down while tabulation is bottom-up.",
-              "fr": ""
+              "fr": "La mémoïsation est top-down tandis que la tabulation est bottom-up."
             },
             {
               "en": "Memoization only works with recursive functions.",
-              "fr": ""
+              "fr": "La mémoïsation ne fonctionne qu'avec des fonctions récursives."
             }
           ]
         },
@@ -311,7 +311,7 @@
           "chunks": [
             {
               "en": "Consider the direction in which each approach builds the solution.",
-              "fr": ""
+              "fr": "Considère la direction dans laquelle chaque approche construit la solution."
             }
           ]
         },
@@ -321,7 +321,7 @@
           "chunks": [
             {
               "en": "In the naive recursive climbing stairs implementation, what is the time complexity and why is it inefficient?",
-              "fr": ""
+              "fr": "Dans l'implémentation récursive naïve de la montée d'escalier, quelle est la complexité temporelle et pourquoi est-elle inefficace ?"
             }
           ]
         },
@@ -331,7 +331,7 @@
           "chunks": [
             {
               "en": "`O(n)` because it calculates each step once.",
-              "fr": ""
+              "fr": "`O(n)` car elle calcule chaque marche une seule fois."
             }
           ]
         },
@@ -341,11 +341,11 @@
           "chunks": [
             {
               "en": "Think about how many times the same stair counts get calculated in the recursive tree.",
-              "fr": ""
+              "fr": "Réfléchis au nombre de fois que les mêmes comptes de marches sont calculés dans l'arbre récursif."
             },
             {
               "en": "`O(n²)` because it uses nested loops.",
-              "fr": ""
+              "fr": "`O(n²)` car elle utilise des boucles imbriquées."
             }
           ]
         },
@@ -355,15 +355,15 @@
           "chunks": [
             {
               "en": "Think about how many times the same stair counts get calculated in the recursive tree.",
-              "fr": ""
+              "fr": "Réfléchis au nombre de fois que les mêmes comptes de marches sont calculés dans l'arbre récursif."
             },
             {
               "en": "`O(2^n)` because it recalculates the same subproblems multiple times.",
-              "fr": ""
+              "fr": "`O(2^n)` car elle recalcule les mêmes sous-problèmes plusieurs fois."
             },
             {
               "en": "`O(log n)` because it divides the problem in half.",
-              "fr": ""
+              "fr": "`O(log n)` car elle divise le problème en deux."
             }
           ]
         },
@@ -373,7 +373,7 @@
           "chunks": [
             {
               "en": "Think about how many times the same stair counts get calculated in the recursive tree.",
-              "fr": ""
+              "fr": "Réfléchis au nombre de fois que les mêmes comptes de marches sont calculés dans l'arbre récursif."
             }
           ]
         }

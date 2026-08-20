@@ -1,0 +1,181 @@
+{
+  "workshop": "lab-fcc-forum-leaderboard",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "673c91f0b934834bc4a3ecc2.md",
+      "id": "673c91f0b934834bc4a3ecc2",
+      "dashedName": "build-an-fcc-forum-leaderboard",
+      "title": {
+        "en": "Build an fCC Forum Leaderboard",
+        "fr": "Crée un classement du forum fCC"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a freeCodeCamp forum leaderboard that displays the latest topics, users, and replies from the [freeCodeCamp forum](https://forum.freecodecamp.org/). The HTML, CSS and part of the JS have been provided for you. Feel free to explore them.",
+          "fr": "Dans ce lab, tu vas construire un classement du forum freeCodeCamp qui affiche les derniers sujets, utilisateurs et réponses du [forum freeCodeCamp](https://forum.freecodecamp.org/). Le HTML, le CSS et une partie du JS t'ont été fournis. N'hésite pas à les explorer."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should have a function named `timeAgo` that takes a timestamp in the ISO 8601 format as the argument.\n1. The `timeAgo` function should compute the time difference between the time passed as an argument and the current time and return:\n   - `xm ago` (`x` represents minutes) if the amount of minutes that have passed is less than `60`.\n   - `xh ago` (`x` represents hours) if the amount of hours that have passed is less than `24`.\n   - `xd ago` (`x` represents days) otherwise.\n1. You should have a function named `viewCount` that takes the number of views of a post as the argument.\n1. If the value of the views passed as the argument is greater than or equal to `1000`, the `viewCount` function should return a string with the views value divided by `1000`, rounded down to the nearest whole number and the letter `k` appended to it. Otherwise, it should return the views value.\n1. You should have a function named `forumCategory` that takes the id of a selected category as the argument.\n1. The `forumCategory` function should verify that the selected category id is a property of the `allCategories` object and should return a string containing an anchor element with:\n   - the text of the `category` key of the selected category.\n   - a class of `category` followed by the `className` property of the selected category.\n   - an `href` with the value of `<forumCategoryUrl>/<className>/<id>`, where `<className>` is the `className` property of the selected category and `id` is the argument passed to `forumCategory`.\n1. If the `allCategories` object does not have the selected category id as its property, `category` should be indicated as `General` and `className` should be indicated as `general`.\n1. You should have a function named `avatars` that takes two arrays representing posters and users, respectively.\n1. The `avatars` function should return a string made by joining `img` elements, one for each `user_id` in the `posters` array. Find the `img` URL by looking up the `user_id` property in the `posters` array and find the matching `id` property in the `users` array.\n1. The `avatars` function should set each avatar's size by accessing the `avatar_template` property and replacing `{size}` with `30`.\n1. Each image element should have an alt text with the value of the `name` property of the poster.\n1. Each image element should have a source with the value of the `avatar_template` property of the poster. In case `avatar_template` contains a relative path, you should set the source to `<avatarUrl>/<avatar_template>`.\n1. You should have a function named `showLatestPosts` that takes a single parameter.\n1. The `showLatestPosts` should extract the `users` and `topic_list` properties from the object passed as argument. Also, it should process the following properties of the objects from the `topics` array, which is contained in `topic_list`:\n   - `id`: the id of the post\n   - `title`: the title of the post\n   - `views`: the number of views of the post\n   - `posts_count`: the number of replies to the topic\n   - `slug`: the slug of the post\n   - `posters`: the posters for that topic\n   - `category_id`: an integer indicating the category id for the post\n   - `bumped_at`: a timestamp in the ISO 8601 format\n1. The `showLatestPosts` should set the inner HTML of `#posts-container` to a string made by joining `tr` elements, one for each item in `topics`.\n1. Each `tr` element should have five `td` elements in it:\n   - a `td` containing two anchor elements, one with the class of `post-title`, an `href` of `<forumTopicUrl><slug>/<id>`, an anchor text of `<title>`, and one obtained by calling `forumCategory` with `category_id`.\n   - a `td` containing a `div` element with class `avatar-container` that contains the images returned by the `avatars` function called with `posters` and `users` as arguments.\n   - a `td` containing the number of replies to the post. _Hint:_ use `posts_count - 1`.\n   - a `td` containing the number of views of the post.\n   - a `td` containing the time passed since the last activity.\n1. You should have an async function named `fetchData`.\n1. The `fetchData` function should request data from `forumLatest` and call `showLatestPosts` passing it the response parsed as JSON.\n1. If there's an error when fetching data, the `fetchData` function should log the error to the console. You should specifically use `console.log` for this.",
+          "fr": "1. Tu dois avoir une fonction nommée `timeAgo` qui prend un horodatage au format ISO 8601 comme argument.\n1. La fonction `timeAgo` doit calculer la différence de temps entre l'heure passée en argument et l'heure actuelle et renvoyer :\n   - `xm ago` (`x` représente les minutes) si le nombre de minutes écoulées est inférieur à `60`.\n   - `xh ago` (`x` représente les heures) si le nombre d'heures écoulées est inférieur à `24`.\n   - `xd ago` (`x` représente les jours) sinon.\n1. Tu dois avoir une fonction nommée `viewCount` qui prend le nombre de vues d'un post comme argument.\n1. Si la valeur des vues passée en argument est supérieure ou égale à `1000`, la fonction `viewCount` doit renvoyer une chaîne avec la valeur des vues divisée par `1000`, arrondie à l'entier inférieur, et la lettre `k` ajoutée. Sinon, elle doit renvoyer la valeur des vues.\n1. Tu dois avoir une fonction nommée `forumCategory` qui prend l'id d'une catégorie sélectionnée comme argument.\n1. La fonction `forumCategory` doit vérifier que l'id de catégorie sélectionné est une propriété de l'objet `allCategories` et doit renvoyer une chaîne contenant un élément ancre avec :\n   - le texte de la clé `category` de la catégorie sélectionnée.\n   - une classe `category` suivie de la propriété `className` de la catégorie sélectionnée.\n   - un `href` avec la valeur `<forumCategoryUrl>/<className>/<id>`, où `<className>` est la propriété `className` de la catégorie sélectionnée et `id` est l'argument passé à `forumCategory`.\n1. Si l'objet `allCategories` n'a pas l'id de catégorie sélectionné comme propriété, `category` doit être indiqué comme `General` et `className` doit être indiqué comme `general`.\n1. Tu dois avoir une fonction nommée `avatars` qui prend deux tableaux représentant respectivement les posters et les users.\n1. La fonction `avatars` doit renvoyer une chaîne faite en joignant des éléments `img`, un pour chaque `user_id` dans le tableau `posters`. Trouve l'URL de l'`img` en cherchant la propriété `user_id` dans le tableau `posters` et trouve la propriété `id` correspondante dans le tableau `users`.\n1. La fonction `avatars` doit définir la taille de chaque avatar en accédant à la propriété `avatar_template` et en remplaçant `{size}` par `30`.\n1. Chaque élément image doit avoir un texte alt avec la valeur de la propriété `name` du poster.\n1. Chaque élément image doit avoir une source avec la valeur de la propriété `avatar_template` du poster. Si `avatar_template` contient un chemin relatif, tu dois définir la source à `<avatarUrl>/<avatar_template>`.\n1. Tu dois avoir une fonction nommée `showLatestPosts` qui prend un seul paramètre.\n1. `showLatestPosts` doit extraire les propriétés `users` et `topic_list` de l'objet passé en argument. Aussi, elle doit traiter les propriétés suivantes des objets du tableau `topics`, contenu dans `topic_list` :\n   - `id` : l'id du post\n   - `title` : le titre du post\n   - `views` : le nombre de vues du post\n   - `posts_count` : le nombre de réponses au sujet\n   - `slug` : le slug du post\n   - `posters` : les posters de ce sujet\n   - `category_id` : un entier indiquant l'id de catégorie du post\n   - `bumped_at` : un horodatage au format ISO 8601\n1. `showLatestPosts` doit définir le HTML interne de `#posts-container` à une chaîne faite en joignant des éléments `tr`, un pour chaque élément de `topics`.\n1. Chaque élément `tr` doit avoir cinq éléments `td` :\n   - un `td` contenant deux éléments ancres, un avec la classe `post-title`, un `href` de `<forumTopicUrl><slug>/<id>`, un texte d'ancre de `<title>`, et un obtenu en appelant `forumCategory` avec `category_id`.\n   - un `td` contenant un élément `div` avec la classe `avatar-container` qui contient les images renvoyées par la fonction `avatars` appelée avec `posters` et `users` comme arguments.\n   - un `td` contenant le nombre de réponses au post. _Astuce :_ utilise `posts_count - 1`.\n   - un `td` contenant le nombre de vues du post.\n   - un `td` contenant le temps écoulé depuis la dernière activité.\n1. Tu dois avoir une fonction async nommée `fetchData`.\n1. La fonction `fetchData` doit demander des données depuis `forumLatest` et appeler `showLatestPosts` en lui passant la réponse analysée en JSON.\n1. S'il y a une erreur lors de la récupération des données, la fonction `fetchData` doit afficher l'erreur dans la console. Tu dois spécifiquement utiliser `console.log` pour cela."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `timeAgo` that takes a single argument.",
+          "fr": "Tu dois avoir une fonction nommée `timeAgo` qui prend un seul argument."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `50` minutes, `timeAgo` should return `50m ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `50` minutes, `timeAgo` doit renvoyer `50m ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `60` minutes, `timeAgo` should return `1h ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `60` minutes, `timeAgo` doit renvoyer `1h ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `115` minutes, `timeAgo` should return `1h ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `115` minutes, `timeAgo` doit renvoyer `1h ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `15` hours, `timeAgo` should return `15h ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `15` heures, `timeAgo` doit renvoyer `15h ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `24` hours, `timeAgo` should return `1d ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `24` heures, `timeAgo` doit renvoyer `1d ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `46` hours, `timeAgo` should return `1d ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `46` heures, `timeAgo` doit renvoyer `1d ago`."
+        },
+        {
+          "en": "When the time difference between the time passed as argument and the current time is `3` days, `timeAgo` should return `3d ago`.",
+          "fr": "Quand la différence de temps entre l'heure passée en argument et l'heure actuelle est de `3` jours, `timeAgo` doit renvoyer `3d ago`."
+        },
+        {
+          "en": "You should have a function named `viewCount` that takes a single argument.",
+          "fr": "Tu dois avoir une fonction nommée `viewCount` qui prend un seul argument."
+        },
+        {
+          "en": "`viewCount(597)` should return `597`.",
+          "fr": "`viewCount(597)` doit renvoyer `597`."
+        },
+        {
+          "en": "`viewCount(1000)` should return `1k`.",
+          "fr": "`viewCount(1000)` doit renvoyer `1k`."
+        },
+        {
+          "en": "`viewCount(2730)` should return `2k`.",
+          "fr": "`viewCount(2730)` doit renvoyer `2k`."
+        },
+        {
+          "en": "You should have a function named `forumCategory` that takes a single argument.",
+          "fr": "Tu dois avoir une fonction nommée `forumCategory` qui prend un seul argument."
+        },
+        {
+          "en": "`forumCategory(299)` should return a string containing an anchor element with the text `Career Advice`.",
+          "fr": "`forumCategory(299)` doit renvoyer une chaîne contenant un élément ancre avec le texte `Career Advice`."
+        },
+        {
+          "en": "`forumCategory(299)` should return a string containing an anchor element with `href=\"https://forum.freecodecamp.org/c/career/299\"`.",
+          "fr": "`forumCategory(299)` doit renvoyer une chaîne contenant un élément ancre avec `href=\"https://forum.freecodecamp.org/c/career/299\"`."
+        },
+        {
+          "en": "`forumCategory(299)` should return a string containing an anchor element with `class=\"category career\"`.",
+          "fr": "`forumCategory(299)` doit renvoyer une chaîne contenant un élément ancre avec `class=\"category career\"`."
+        },
+        {
+          "en": "`forumCategory(200)` should return a string containing an anchor element with the text `General`.",
+          "fr": "`forumCategory(200)` doit renvoyer une chaîne contenant un élément ancre avec le texte `General`."
+        },
+        {
+          "en": "`forumCategory(200)` should return a string containing an anchor element with `href=\"https://forum.freecodecamp.org/c/general/200\"`.",
+          "fr": "`forumCategory(200)` doit renvoyer une chaîne contenant un élément ancre avec `href=\"https://forum.freecodecamp.org/c/general/200\"`."
+        },
+        {
+          "en": "`forumCategory(200)` should return a string containing an anchor element with `class=\"category general\"`.",
+          "fr": "`forumCategory(200)` doit renvoyer une chaîne contenant un élément ancre avec `class=\"category general\"`."
+        },
+        {
+          "en": "You should have a function named `avatars` that takes two arguments.",
+          "fr": "Tu dois avoir une fonction nommée `avatars` qui prend deux arguments."
+        },
+        {
+          "en": "The `avatars` function should return a string made by joining `img` elements, one for each poster found in the user array.",
+          "fr": "La fonction `avatars` doit renvoyer une chaîne faite en joignant des éléments `img`, un pour chaque poster trouvé dans le tableau users."
+        },
+        {
+          "en": "Each `img` element in the string returned by the `avatars` function should have an `alt` text with the value of the `name` property of the poster.",
+          "fr": "Chaque élément `img` dans la chaîne renvoyée par la fonction `avatars` doit avoir un texte `alt` avec la valeur de la propriété `name` du poster."
+        },
+        {
+          "en": "The `avatars` function should set each avatar's size by accessing the `avatar_template` property and replacing `{size}` with `30`.",
+          "fr": "La fonction `avatars` doit définir la taille de chaque avatar en accédant à la propriété `avatar_template` et en remplaçant `{size}` par `30`."
+        },
+        {
+          "en": "Each `img` element in the string returned by the `avatars` function should have the `src` with the value of the `avatar_template` property of the poster. In case `avatar_template` contains a relative path, it should be set to `<avatarUrl>/<avatar_template>`.",
+          "fr": "Chaque élément `img` dans la chaîne renvoyée par la fonction `avatars` doit avoir le `src` avec la valeur de la propriété `avatar_template` du poster. Si `avatar_template` contient un chemin relatif, il doit être défini à `<avatarUrl>/<avatar_template>`."
+        },
+        {
+          "en": "You should have a function named `showLatestPosts` that takes a single parameter.",
+          "fr": "Tu dois avoir une fonction nommée `showLatestPosts` qui prend un seul paramètre."
+        },
+        {
+          "en": "You should have a function named `fetchData`.",
+          "fr": "Tu dois avoir une fonction nommée `fetchData`."
+        },
+        {
+          "en": "Your `fetchData` function should request data from `https://cdn.freecodecamp.org/curriculum/forum-latest/latest.json`.",
+          "fr": "Ta fonction `fetchData` doit demander des données depuis `https://cdn.freecodecamp.org/curriculum/forum-latest/latest.json`."
+        },
+        {
+          "en": "Your `fetchData` function should call `showLatestPosts`.",
+          "fr": "Ta fonction `fetchData` doit appeler `showLatestPosts`."
+        },
+        {
+          "en": "If there is an error, your `fetchData` function should log the error to the console, using `console.log`.",
+          "fr": "S'il y a une erreur, ta fonction `fetchData` doit afficher l'erreur dans la console, en utilisant `console.log`."
+        },
+        {
+          "en": "`showLatestPosts` should set the inner HTML of `#posts-container` to a string made by joining `tr` elements, one for each item in `topics`.",
+          "fr": "`showLatestPosts` doit définir le HTML interne de `#posts-container` à une chaîne faite en joignant des éléments `tr`, un pour chaque élément de `topics`."
+        },
+        {
+          "en": "Each `tr` element from the string returned by `showLatestPosts` should contain 5 `td` elements.",
+          "fr": "Chaque élément `tr` de la chaîne renvoyée par `showLatestPosts` doit contenir 5 éléments `td`."
+        },
+        {
+          "en": "The first `td` element of each table row from the string returned by `showLatestPosts` should contain two anchor elements, the first with the class of `post-title`, an `href` of `<forumTopicUrl><slug>/<id>`, an anchor text of `<title>`, and the second obtained by calling `forumCategory` with `category_id`.",
+          "fr": "Le premier élément `td` de chaque ligne de tableau de la chaîne renvoyée par `showLatestPosts` doit contenir deux éléments ancres, le premier avec la classe `post-title`, un `href` de `<forumTopicUrl><slug>/<id>`, un texte d'ancre de `<title>`, et le second obtenu en appelant `forumCategory` avec `category_id`."
+        },
+        {
+          "en": "The second `td` element of each table row from the string returned by `showLatestPosts` should contain the images returned by the `avatars` function called with `posters` and `users` as arguments, nested within a `div` element with the class of `avatar-container`.",
+          "fr": "Le second élément `td` de chaque ligne de tableau de la chaîne renvoyée par `showLatestPosts` doit contenir les images renvoyées par la fonction `avatars` appelée avec `posters` et `users` comme arguments, imbriquées dans un élément `div` avec la classe `avatar-container`."
+        },
+        {
+          "en": "The third `td` element of each table row from the string returned by `showLatestPosts` should contain the number of replies to the post. _Hint:_ use `posts_count - 1`.",
+          "fr": "Le troisième élément `td` de chaque ligne de tableau de la chaîne renvoyée par `showLatestPosts` doit contenir le nombre de réponses au post. _Astuce :_ utilise `posts_count - 1`."
+        },
+        {
+          "en": "The fourth `td` element of each table row from the string returned by `showLatestPosts` should contain the number of views of the post.",
+          "fr": "Le quatrième élément `td` de chaque ligne de tableau de la chaîne renvoyée par `showLatestPosts` doit contenir le nombre de vues du post."
+        },
+        {
+          "en": "The fifth `td` element of each table row from the string returned by `showLatestPosts` should contain time passed since the last activity, generated using the `timeAgo` function.",
+          "fr": "Le cinquième élément `td` de chaque ligne de tableau de la chaîne renvoyée par `showLatestPosts` doit contenir le temps écoulé depuis la dernière activité, généré avec la fonction `timeAgo`."
+        }
+      ]
+    }
+  ]
+}
