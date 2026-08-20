@@ -1,0 +1,613 @@
+{
+  "workshop": "workshop-linked-list-js",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69a00a051b9a18694d00c16b.md",
+      "id": "69a00a051b9a18694d00c16b",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll implement a linked list.",
+          "fr": "Dans cet atelier, tu vas implémenter une liste chaînée."
+        },
+        {
+          "en": "To begin, create a function named `initList`. Inside it, return an object with a `head` property set to `null`, and a `length` property of `0`.",
+          "fr": "Pour commencer, crée une fonction nommée `initList`. À l'intérieur, renvoie un objet avec une propriété `head` définie à `null`, et une propriété `length` égale à `0`."
+        },
+        {
+          "en": "This is the function you will call to initialize a linked list. The `head` represents the first element in the list, initially, it is `null` because there's no element in the list. The `length` tracks the number of nodes (elements) in the list, which you will increment or decrement when adding or removing a node from the list.",
+          "fr": "C'est la fonction que tu appelleras pour initialiser une liste chaînée. Le `head` représente le premier élément de la liste ; au départ, il vaut `null` car il n'y a aucun élément dans la liste. La propriété `length` suit le nombre de nœuds (éléments) dans la liste, que tu incrémenteras ou décrémenteras quand tu ajoutes ou retires un nœud de la liste."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `initList` function.",
+          "fr": "Tu dois créer une fonction `initList`."
+        },
+        {
+          "en": "Your `initList` function should return an object.",
+          "fr": "Ta fonction `initList` doit renvoyer un objet."
+        },
+        {
+          "en": "Your `initList` function should return an object with a `head` set to `null`.",
+          "fr": "Ta fonction `initList` doit renvoyer un objet avec un `head` défini à `null`."
+        },
+        {
+          "en": "Your `initList` function should return an object with a `length` set to `0`.",
+          "fr": "Ta fonction `initList` doit renvoyer un objet avec un `length` défini à `0`."
+        }
+      ]
+    },
+    {
+      "file": "69a00cd4ec513345d40e95ec.md",
+      "id": "69a00cd4ec513345d40e95ec",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "The next thing you will work on is a function that lets you check if the list is empty.",
+          "fr": "Ensuite, tu vas travailler sur une fonction qui te permet de vérifier si la liste est vide."
+        },
+        {
+          "en": "To do that, create a function named `isEmpty` that takes a `list` parameter. Inside the function, return a check to see if the `length` property of `list` is strictly equal to `0`.",
+          "fr": "Pour cela, crée une fonction nommée `isEmpty` qui prend un paramètre `list`. À l'intérieur de la fonction, renvoie une vérification pour voir si la propriété `length` de `list` est strictement égale à `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `isEmpty` function.",
+          "fr": "Tu dois créer une fonction `isEmpty`."
+        },
+        {
+          "en": "Your `isEmpty` function should have a `list` parameter.",
+          "fr": "Ta fonction `isEmpty` doit avoir un paramètre `list`."
+        },
+        {
+          "en": "Your `isEmpty` function should return `list.length === 0`.",
+          "fr": "Ta fonction `isEmpty` doit renvoyer `list.length === 0`."
+        }
+      ]
+    },
+    {
+      "file": "69a00eaa43458e618331873c.md",
+      "id": "69a00eaa43458e618331873c",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Now you will work on the function that will add a node to the list.",
+          "fr": "Maintenant, tu vas travailler sur la fonction qui ajoutera un nœud à la liste."
+        },
+        {
+          "en": "Create an `add` function with `list` and `element` parameters.",
+          "fr": "Crée une fonction `add` avec les paramètres `list` et `element`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `add` function.",
+          "fr": "Tu dois créer une fonction `add`."
+        },
+        {
+          "en": "Your `add` function should have `list` and `element` parameters.",
+          "fr": "Ta fonction `add` doit avoir les paramètres `list` et `element`."
+        }
+      ]
+    },
+    {
+      "file": "69a00f673f171e29159e3ad8.md",
+      "id": "69a00f673f171e29159e3ad8",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "This node would need two properties, the element to add, and a pointer to the next node.",
+          "fr": "Ce nœud aurait besoin de deux propriétés : l'élément à ajouter, et un pointeur vers le nœud suivant."
+        },
+        {
+          "en": "Inside the add function, create an object named `node`, it should have a property named `element`, and a `next` property set to `null`, which is the pointer to the next element of the list.",
+          "fr": "À l'intérieur de la fonction add, crée un objet nommé `node` ; il doit avoir une propriété nommée `element`, et une propriété `next` définie à `null`, qui est le pointeur vers l'élément suivant de la liste."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an object named `node` inside your `add` function.",
+          "fr": "Tu dois créer un objet nommé `node` à l'intérieur de ta fonction `add`."
+        },
+        {
+          "en": "Your `node` object should have a property named `element` set to `element`.",
+          "fr": "Ton objet `node` doit avoir une propriété nommée `element` définie à `element`."
+        },
+        {
+          "en": "Your `node` object should have a property named `next` set to `null`.",
+          "fr": "Ton objet `node` doit avoir une propriété nommée `next` définie à `null`."
+        }
+      ]
+    },
+    {
+      "file": "69a0102e761a245bb1cbd8e7.md",
+      "id": "69a0102e761a245bb1cbd8e7",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "At this point, you should test the linked list for better understanding.",
+          "fr": "À ce stade, tu devrais tester la liste chaînée pour mieux la comprendre."
+        },
+        {
+          "en": "Create a `myList` variable and set it to `initList()`. Under it, log a call of `isEmpty()` using `myList` as the parameter to the console. Then, after that, call `add` with `myList` and a number of your choice, then log `myList` to the console. Under that, log another call of `isEmpty()` to the console using `myList` as the parameter again.",
+          "fr": "Crée une variable `myList` et définis-la à `initList()`. En dessous, affiche dans la console un appel à `isEmpty()` en passant `myList` en paramètre. Ensuite, appelle `add` avec `myList` et un nombre de ton choix, puis affiche `myList` dans la console. En dessous, affiche à nouveau un appel à `isEmpty()` dans la console en passant encore `myList` en paramètre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `myList` variable set to `initList()`.",
+          "fr": "Tu dois créer une variable `myList` définie à `initList()`."
+        },
+        {
+          "en": "You should log a call to `isEmpty(myList)` to the console.",
+          "fr": "Tu dois afficher un appel à `isEmpty(myList)` dans la console."
+        },
+        {
+          "en": "You should call `add` with `myList` and a number of your choice as the parameters.",
+          "fr": "Tu dois appeler `add` avec `myList` et un nombre de ton choix comme paramètres."
+        },
+        {
+          "en": "You should log your `myList` variable to the console.",
+          "fr": "Tu dois afficher ta variable `myList` dans la console."
+        },
+        {
+          "en": "You should log `isEmpty(myList)` to the console again.",
+          "fr": "Tu dois afficher à nouveau `isEmpty(myList)` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "69a012c6224fac85832247dd.md",
+      "id": "69a012c6224fac85832247dd",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Notice the `true`, `{ head: null, length: 0 }`, and `true` results in the console? This happens because you've not assigned anything to the list `myList`, and you've not incremented the `length` property.",
+          "fr": "Tu remarques les résultats `true`, `{ head: null, length: 0 }` et `true` dans la console ? Cela se produit parce que tu n'as rien assigné à la liste `myList`, et que tu n'as pas incrémenté la propriété `length`."
+        },
+        {
+          "en": "Go ahead and assign `node` to `list.head`, and under that, increment the `length` property of `list`.",
+          "fr": "Assigne `node` à `list.head`, et en dessous, incrémente la propriété `length` de `list`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `node` to `list.head`.",
+          "fr": "Tu dois assigner `node` à `list.head`."
+        },
+        {
+          "en": "You should increment the `length` property of `list`.",
+          "fr": "Tu dois incrémenter la propriété `length` de `list`."
+        }
+      ]
+    },
+    {
+      "file": "69a013a86c97dac3784b2636.md",
+      "id": "69a013a86c97dac3784b2636",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now, the log should show something like `{ head: { element: 42, next: null }, length: 1 }` in the console.",
+          "fr": "Maintenant, le log devrait afficher quelque chose comme `{ head: { element: 42, next: null }, length: 1 }` dans la console."
+        },
+        {
+          "en": "However, this is not how you would handle a case where the added node is the first element in the list, that is, the head.",
+          "fr": "Cependant, ce n'est pas ainsi que tu gérerais le cas où le nœud ajouté est le premier élément de la liste, c'est-à-dire le head."
+        },
+        {
+          "en": "To do that properly, use an if statement to check if the list is empty by calling the `isEmpty` function with the `list`. If that's true, then move your `list.head = node` line into the body of the `if` statement.",
+          "fr": "Pour le faire correctement, utilise une instruction if pour vérifier si la liste est vide en appelant la fonction `isEmpty` avec `list`. Si c'est vrai, alors déplace ta ligne `list.head = node` dans le corps de l'instruction `if`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement with the condition `isEmpty(list)`.",
+          "fr": "Tu dois avoir une instruction `if` avec la condition `isEmpty(list)`."
+        },
+        {
+          "en": "You should move your `list.head = node` line into the `if` statement.",
+          "fr": "Tu dois déplacer ta ligne `list.head = node` dans l'instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "69a014bd9b1730e94136279f.md",
+      "id": "69a014bd9b1730e94136279f",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "If the list is not empty, then you want to find its end, add the new element there, and make it point to `null`. This means you have to loop through the list from the `head`.",
+          "fr": "Si la liste n'est pas vide, tu veux trouver sa fin, y ajouter le nouvel élément, et le faire pointer vers `null`. Cela signifie que tu dois parcourir la liste à partir du `head`."
+        },
+        {
+          "en": "To start that, open up an `else` clause. Inside it, use `let` to create a `current` variable and set it to `list.head`.",
+          "fr": "Pour commencer, ouvre une clause `else`. À l'intérieur, utilise `let` pour créer une variable `current` et définis-la à `list.head`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `else` clause.",
+          "fr": "Tu dois avoir une clause `else`."
+        },
+        {
+          "en": "You should create a `current` variable set to `list.head` inside the `else` clause.",
+          "fr": "Tu dois créer une variable `current` définie à `list.head` à l'intérieur de la clause `else`."
+        }
+      ]
+    },
+    {
+      "file": "69a016ac6edea7d8c8020c98.md",
+      "id": "69a016ac6edea7d8c8020c98",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Now, create a `while` loop with `current.next !== null` as the condition. This means the loop should keep running as long as the current node has another node after it.",
+          "fr": "Maintenant, crée une boucle `while` avec `current.next !== null` comme condition. Cela signifie que la boucle doit continuer tant que le nœud actuel a un autre nœud après lui."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop with the condition `current.next !== null`.",
+          "fr": "Tu dois créer une boucle `while` avec la condition `current.next !== null`."
+        }
+      ]
+    },
+    {
+      "file": "69a0179a85b00b6127e0af45.md",
+      "id": "69a0179a85b00b6127e0af45",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Inside the `while` loop, update `current` to `current.next` so the loop moves forward through the list one node at a time, and stops when it reaches the node with a `next` property of `null`, that is, the end of the list.",
+          "fr": "À l'intérieur de la boucle `while`, mets à jour `current` à `current.next` pour que la boucle avance dans la liste un nœud à la fois, et s'arrête quand elle atteint le nœud dont la propriété `next` vaut `null`, c'est-à-dire la fin de la liste."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update the value of your `current` variable to `current.next` inside the `while` loop.",
+          "fr": "Tu dois mettre à jour la valeur de ta variable `current` à `current.next` à l'intérieur de la boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "69a01864d343dc2f2484d131.md",
+      "id": "69a01864d343dc2f2484d131",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "After finding the last node, you need to attach the new node to it. To do that, set `current.next` to `node` under the while loop but still within the `else` clause.",
+          "fr": "Après avoir trouvé le dernier nœud, tu dois y attacher le nouveau nœud. Pour cela, définis `current.next` à `node` sous la boucle while mais toujours dans la clause `else`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `current.next` to `node` under your `while` loop.",
+          "fr": "Tu dois définir `current.next` à `node` sous ta boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "69a02ee82bbeaee00e44c67d.md",
+      "id": "69a02ee82bbeaee00e44c67d",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "That's all you need to add an element to the list. To see what things look like, add two more numbers of your choice to the `myList` list.",
+          "fr": "C'est tout ce dont tu as besoin pour ajouter un élément à la liste. Pour voir à quoi ça ressemble, ajoute deux autres nombres de ton choix à la liste `myList`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add two more numbers of your choice to the `myList` list.",
+          "fr": "Tu dois ajouter deux autres nombres de ton choix à la liste `myList`."
+        }
+      ]
+    },
+    {
+      "file": "69a030fbe487f185f55b8627.md",
+      "id": "69a030fbe487f185f55b8627",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now, you will work on a function to remove a node from the list.",
+          "fr": "Maintenant, tu vas travailler sur une fonction pour retirer un nœud de la liste."
+        },
+        {
+          "en": "Create a `remove` function with `list` and `element` parameters.",
+          "fr": "Crée une fonction `remove` avec les paramètres `list` et `element`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `remove` function.",
+          "fr": "Tu dois créer une fonction `remove`."
+        },
+        {
+          "en": "Your `remove` function should have `list` and `element` parameters.",
+          "fr": "Ta fonction `remove` doit avoir les paramètres `list` et `element`."
+        }
+      ]
+    },
+    {
+      "file": "69a03aaa1e6fe8152788ce6a.md",
+      "id": "69a03aaa1e6fe8152788ce6a",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Inside the `remove` function, use `let` to create a `previous` variable set to `null`, and `let` again to create a `current` variable set to `list.head`. These are the variables you will use in the loop that will traverse the list.",
+          "fr": "À l'intérieur de la fonction `remove`, utilise `let` pour créer une variable `previous` définie à `null`, et `let` à nouveau pour créer une variable `current` définie à `list.head`. Ce sont les variables que tu utiliseras dans la boucle qui parcourra la liste."
+        },
+        {
+          "en": "`current` tracks the node currently being checked in the list, starting at the head and moving forward one node at a time. `previous`, on the other hand, keeps track of the node right before the current one.",
+          "fr": "`current` suit le nœud actuellement vérifié dans la liste, en commençant à la tête et en avançant d'un nœud à la fois. `previous`, de son côté, garde la trace du nœud juste avant le nœud actuel."
+        },
+        {
+          "en": "This is important when removing a node because you must update the next value of the previous node so it points to the node after the one being removed, in order to keep the list connected.",
+          "fr": "C'est important lors de la suppression d'un nœud, car tu dois mettre à jour la valeur next du nœud précédent pour qu'il pointe vers le nœud après celui qui est retiré, afin de garder la liste connectée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create a `previous` variable set to `null` inside your `remove` function.",
+          "fr": "Tu dois utiliser `let` pour créer une variable `previous` définie à `null` à l'intérieur de ta fonction `remove`."
+        },
+        {
+          "en": "You should use `let` to create a `current` variable set to `list.head` inside your `remove` function.",
+          "fr": "Tu dois utiliser `let` pour créer une variable `current` définie à `list.head` à l'intérieur de ta fonction `remove`."
+        }
+      ]
+    },
+    {
+      "file": "69a03ddce82b0626f329b001.md",
+      "id": "69a03ddce82b0626f329b001",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Now, create a `while` loop that checks if `current` is not strictly `null` and `current.element` is not strictly equal to element.",
+          "fr": "Maintenant, crée une boucle `while` qui vérifie si `current` n'est pas strictement `null` et si `current.element` n'est pas strictement égal à element."
+        },
+        {
+          "en": "This means the loop should continue traversing the list until the end of the list is reached or the element to remove is found.",
+          "fr": "Cela signifie que la boucle doit continuer à parcourir la liste jusqu'à ce que la fin de la liste soit atteinte ou que l'élément à retirer soit trouvé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop with the condition `current !== null && current.element !== element`.",
+          "fr": "Tu dois créer une boucle `while` avec la condition `current !== null && current.element !== element`."
+        }
+      ]
+    },
+    {
+      "file": "69a03f70b50b4c4d9a0f0113.md",
+      "id": "69a03f70b50b4c4d9a0f0113",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Inside the loop, reassign `previous` to `current`, and `current` to `current.next`. This means `current` checks the next node, and `previous` always stays one node behind.",
+          "fr": "À l'intérieur de la boucle, réassigne `previous` à `current`, et `current` à `current.next`. Cela signifie que `current` vérifie le nœud suivant, et que `previous` reste toujours un nœud derrière."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should reassign the `previous` variable to `current`.",
+          "fr": "Tu dois réassigner la variable `previous` à `current`."
+        },
+        {
+          "en": "You should reassign the `current` variable to `current.next`.",
+          "fr": "Tu dois réassigner la variable `current` à `current.next`."
+        }
+      ]
+    },
+    {
+      "file": "69a04088e600bd8074a9852f.md",
+      "id": "69a04088e600bd8074a9852f",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "If `current` is `null`, it means that's the end of the list, so the function should stop running.",
+          "fr": "Si `current` est `null`, cela signifie que c'est la fin de la liste, donc la fonction doit cesser de s'exécuter."
+        },
+        {
+          "en": "Create an `if` statement that checks if `current` is strictly equal to `null`. Inside the `if` statement, use `return` to exit the function.",
+          "fr": "Crée une instruction `if` qui vérifie si `current` est strictement égal à `null`. À l'intérieur de l'instruction `if`, utilise `return` pour quitter la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with the condition `current === null`.",
+          "fr": "Tu dois créer une instruction `if` avec la condition `current === null`."
+        },
+        {
+          "en": "You should use the `return` keyword inside your `if` statement.",
+          "fr": "Tu dois utiliser le mot-clé `return` à l'intérieur de ton instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "69a04466917c66b132323a1b.md",
+      "id": "69a04466917c66b132323a1b",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "If `previous` is not `null`, this means the element to be removed is not at the head but somewhere within the list, so the current node should be bypassed by linking the previous node directly to the next node.",
+          "fr": "Si `previous` n'est pas `null`, cela signifie que l'élément à retirer n'est pas à la tête mais quelque part dans la liste, donc le nœud actuel doit être contourné en reliant le nœud précédent directement au nœud suivant."
+        },
+        {
+          "en": "To do that, create another `if` statement that checks if previous is strictly not `null`. If that's the case, set `previous.next` to `current.next`.",
+          "fr": "Pour cela, crée une autre instruction `if` qui vérifie si previous n'est pas strictement `null`. Si c'est le cas, définis `previous.next` à `current.next`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create another `if` statement with the condition `previous !== null`.",
+          "fr": "Tu dois créer une autre instruction `if` avec la condition `previous !== null`."
+        },
+        {
+          "en": "You should set `previous.next` to `current.next`.",
+          "fr": "Tu dois définir `previous.next` à `current.next`."
+        }
+      ]
+    },
+    {
+      "file": "69a045fd236d0d973a59f103.md",
+      "id": "69a045fd236d0d973a59f103",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "If `previous` is `null`, this means the element to be removed is at the head of the list, so you should update the `head` to point to the next node in order to remove the first element.",
+          "fr": "Si `previous` est `null`, cela signifie que l'élément à retirer est à la tête de la liste, donc tu dois mettre à jour le `head` pour qu'il pointe vers le nœud suivant afin de retirer le premier élément."
+        },
+        {
+          "en": "To do that, add an `else` clause. Inside it, set `list.head` to `current.next`.",
+          "fr": "Pour cela, ajoute une clause `else`. À l'intérieur, définis `list.head` à `current.next`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `else` clause to your `if` statement.",
+          "fr": "Tu dois ajouter une clause `else` à ton instruction `if`."
+        },
+        {
+          "en": "You should set `list.head` to `current.next` inside the `else` clause.",
+          "fr": "Tu dois définir `list.head` à `current.next` à l'intérieur de la clause `else`."
+        }
+      ]
+    },
+    {
+      "file": "69a046a1a74385bb4be1bb88.md",
+      "id": "69a046a1a74385bb4be1bb88",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Now, you need to decrement `length` in the `remove` function to keep track of the actual number of elements remaining in the list after removing one.",
+          "fr": "Maintenant, tu dois décrémenter `length` dans la fonction `remove` pour suivre le nombre réel d'éléments restants dans la liste après en avoir retiré un."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should decrement the `length` property of `list` using the decrement operator (`--`).",
+          "fr": "Tu dois décrémenter la propriété `length` de `list` en utilisant l'opérateur de décrémentation (`--`)."
+        }
+      ]
+    },
+    {
+      "file": "69a04712866a37ea8f38b6bd.md",
+      "id": "69a04712866a37ea8f38b6bd",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now, you should test out the `remove` function.",
+          "fr": "Maintenant, tu dois tester la fonction `remove`."
+        },
+        {
+          "en": "Remove any of the numbers from the list by calling the `remove` function with `myList` and the number to remove, then log `myList` to the console using `console.log(JSON.stringify(myList, null, 2))` to see the complete updated list.",
+          "fr": "Retire l'un des nombres de la liste en appelant la fonction `remove` avec `myList` et le nombre à retirer, puis affiche `myList` dans la console avec `console.log(JSON.stringify(myList, null, 2))` pour voir la liste mise à jour complète."
+        },
+        {
+          "en": "With that, your linked list workshop is complete!",
+          "fr": "Avec cela, ton atelier sur les listes chaînées est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove any of the existing numbers using the `remove` function.",
+          "fr": "Tu dois retirer l'un des nombres existants en utilisant la fonction `remove`."
+        },
+        {
+          "en": "You should log `myList` to the console again, this time using `JSON.stringify(myList, null, 2)`.",
+          "fr": "Tu dois afficher à nouveau `myList` dans la console, cette fois en utilisant `JSON.stringify(myList, null, 2)`."
+        }
+      ]
+    }
+  ]
+}

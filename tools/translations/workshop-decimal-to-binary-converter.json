@@ -1,0 +1,3420 @@
+{
+  "workshop": "workshop-decimal-to-binary-converter",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "63db7f4677d06d7500a13321.md",
+      "id": "63db7f4677d06d7500a13321",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll build a decimal and binary converter and practice both number systems. You'll also use recursion to perform the conversions.",
+          "fr": "Dans cet atelier, tu vas construire un convertisseur décimal/binaire et t'exercer avec les deux systèmes de numération. Tu utiliseras aussi la récursion pour effectuer les conversions."
+        },
+        {
+          "en": "All of the HTML and CSS for this project has been provided for you.",
+          "fr": "Tout le HTML et le CSS de ce projet t'ont déjà été fournis."
+        },
+        {
+          "en": "When you're ready to get started, use the `.getElementById()` method to get the `input` element with the id `\"number-input\"`, and store it in a variable called `numberInput`. Use the same method to get the `button` element with the id `\"convert-btn\"` and store it in a variable called `convertBtn`, and the `output` element with the id `\"result\"` and store it in a variable called `result`.",
+          "fr": "Quand tu es prêt à commencer, utilise la méthode `.getElementById()` pour obtenir l'élément `input` avec l'id `\"number-input\"`, et stocke-le dans une variable appelée `numberInput`. Utilise la même méthode pour obtenir l'élément `button` avec l'id `\"convert-btn\"` et stocke-le dans une variable appelée `convertBtn`, et l'élément `output` avec l'id `\"result\"` et stocke-le dans une variable appelée `result`."
+        },
+        {
+          "en": "**NOTE**: This project will only convert positive numbers into binary.",
+          "fr": "**NOTE** : Ce projet ne convertira que les nombres positifs en binaire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `document.getElementById()` method to get the `#number-input` element.",
+          "fr": "Tu dois utiliser la méthode `document.getElementById()` pour obtenir l'élément `#number-input`."
+        },
+        {
+          "en": "You should use `const` to declare a variable called `numberInput` and assign it the `#number-input` element.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable appelée `numberInput` et lui assigner l'élément `#number-input`."
+        },
+        {
+          "en": "You should use the `document.getElementById()` method to get the `#convert-btn` element.",
+          "fr": "Tu dois utiliser la méthode `document.getElementById()` pour obtenir l'élément `#convert-btn`."
+        },
+        {
+          "en": "You should use `const` to declare a variable called `convertBtn` and assign it the `#convert-btn` element.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable appelée `convertBtn` et lui assigner l'élément `#convert-btn`."
+        },
+        {
+          "en": "You should use the `document.getElementById()` method to get the `#result` element.",
+          "fr": "Tu dois utiliser la méthode `document.getElementById()` pour obtenir l'élément `#result`."
+        },
+        {
+          "en": "You should use `const` to declare a variable called `result` and assign it the `#result` element.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable appelée `result` et lui assigner l'élément `#result`."
+        }
+      ]
+    },
+    {
+      "file": "63e9de47885cd4d08c29f8e2.md",
+      "id": "63e9de47885cd4d08c29f8e2",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Now you'll do some setup to check the value in the number input element whenever the user clicks the `Convert` button.",
+          "fr": "Maintenant, tu vas préparer la vérification de la valeur dans l'élément d'entrée numérique chaque fois que l'utilisateur clique sur le bouton `Convert`."
+        },
+        {
+          "en": "First, create an empty function called `checkUserInput`.",
+          "fr": "D'abord, crée une fonction vide appelée `checkUserInput`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`checkUserInput` should be a function.",
+          "fr": "`checkUserInput` doit être une fonction."
+        },
+        {
+          "en": "Your `checkUserInput` function should be empty.",
+          "fr": "Ta fonction `checkUserInput` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "63e9e5bcec5d33d21b82397e.md",
+      "id": "63e9e5bcec5d33d21b82397e",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "A good way to test that everything is working is to log the `value` attribute of `numberInput` to the console. As a reminder, you can access the `value` attribute of an element by using dot or bracket notation.",
+          "fr": "Un bon moyen de tester que tout fonctionne est d'afficher l'attribut `value` de `numberInput` dans la console. Pour rappel, tu peux accéder à l'attribut `value` d'un élément avec la notation par point ou par crochets."
+        },
+        {
+          "en": "Within the `checkUserInput` function, use `console.log()` to log the `value` of `numberInput` to the console.",
+          "fr": "Dans la fonction `checkUserInput`, utilise `console.log()` pour afficher la `value` de `numberInput` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `console.log()` call should be inside the `checkUserInput` function.",
+          "fr": "Ton appel à `console.log()` doit être à l'intérieur de la fonction `checkUserInput`."
+        },
+        {
+          "en": "You should use `console.log()` to log the `value` of `numberInput` to the console.",
+          "fr": "Tu dois utiliser `console.log()` pour afficher la `value` de `numberInput` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "6448e475f904ad580cd7e722.md",
+      "id": "6448e475f904ad580cd7e722",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now that your `checkUserInput()` function is set up for testing, you can use an event listener to call the function when users click the `Convert` button.",
+          "fr": "Maintenant que ta fonction `checkUserInput()` est prête pour les tests, tu peux utiliser un écouteur d'événements pour appeler la fonction quand les utilisateurs cliquent sur le bouton `Convert`."
+        },
+        {
+          "en": "Chain the `.addEventListener()` method to `convertBtn`. The event listener should listen for `click` events and take a reference to the `checkUserInput` function as a callback. Remember that function references are not called with parentheses.",
+          "fr": "Enchaîne la méthode `.addEventListener()` sur `convertBtn`. L'écouteur d'événements doit écouter les événements `click` et prendre une référence à la fonction `checkUserInput` comme callback. Rappelle-toi que les références de fonction ne sont pas appelées avec des parenthèses."
+        },
+        {
+          "en": "Once that's done, whenever you click the `Convert` button, the value of the number input should be logged to the console.",
+          "fr": "Une fois cela fait, chaque fois que tu cliques sur le bouton `Convert`, la valeur de l'entrée numérique doit s'afficher dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `.addEventListener()` method on your `convertBtn` element.",
+          "fr": "Tu dois appeler la méthode `.addEventListener()` sur ton élément `convertBtn`."
+        },
+        {
+          "en": "Your `.addEventListener()` method should listen for the `click` event.",
+          "fr": "Ta méthode `.addEventListener()` doit écouter l'événement `click`."
+        },
+        {
+          "en": "Your `.addEventListener()` method should take `checkUserInput` as the callback. Remember to pass the function reference, not the function call.",
+          "fr": "Ta méthode `.addEventListener()` doit prendre `checkUserInput` comme callback. Pense à passer la référence de la fonction, pas l'appel de la fonction."
+        }
+      ]
+    },
+    {
+      "file": "6448d62ce222044458b75931.md",
+      "id": "6448d62ce222044458b75931",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Your `Convert` button should be working now. But it could get tiring for users to enter in a number, then click that button each time they want to convert from decimal to binary. It would be much more convenient to perform the conversion when the `Enter` or `Return` key is pressed.",
+          "fr": "Ton bouton `Convert` devrait fonctionner maintenant. Mais cela pourrait devenir fatigant pour les utilisateurs de saisir un nombre, puis de cliquer sur ce bouton chaque fois qu'ils veulent convertir du décimal en binaire. Il serait bien plus pratique d'effectuer la conversion quand la touche `Enter` ou `Return` est pressée."
+        },
+        {
+          "en": "The `keydown` event fires every time a user presses a key on their keyboard, and is a good way to add more interactivity to `input` elements.",
+          "fr": "L'événement `keydown` se déclenche chaque fois qu'un utilisateur appuie sur une touche de son clavier, et c'est un bon moyen d'ajouter plus d'interactivité aux éléments `input`."
+        },
+        {
+          "en": "Chain `.addEventListener()` to `numberInput`. The event listener should listen for `keydown` events and take an empty arrow function as a callback.",
+          "fr": "Enchaîne `.addEventListener()` sur `numberInput`. L'écouteur d'événements doit écouter les événements `keydown` et prendre une fonction fléchée vide comme callback."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `.addEventListener()` method on your `numberInput` element.",
+          "fr": "Tu dois appeler la méthode `.addEventListener()` sur ton élément `numberInput`."
+        },
+        {
+          "en": "Your `.addEventListener()` method should listen for the `keydown` event.",
+          "fr": "Ta méthode `.addEventListener()` doit écouter l'événement `keydown`."
+        },
+        {
+          "en": "Your `.addEventListener()` method should take a callback function using the arrow syntax.",
+          "fr": "Ta méthode `.addEventListener()` doit prendre une fonction callback avec la syntaxe fléchée."
+        },
+        {
+          "en": "Your callback function should be empty.",
+          "fr": "Ta fonction callback doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "6448fefcd6445d6b3d9d63db.md",
+      "id": "6448fefcd6445d6b3d9d63db",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Whenever an event listener is triggered by an event, an event object is created automatically. You don't always need to use this object, like with your `click` handler above, but it can be useful to access information about the event that was triggered.",
+          "fr": "Chaque fois qu'un écouteur d'événements est déclenché par un événement, un objet événement est créé automatiquement. Tu n'as pas toujours besoin d'utiliser cet objet, comme avec ton gestionnaire `click` ci-dessus, mais il peut être utile d'accéder aux informations sur l'événement qui a été déclenché."
+        },
+        {
+          "en": "First, pass `e` as a parameter to your callback function. Remember that `e` is a common parameter name for the event object. Next, log `e` to the console in the body of your callback function.",
+          "fr": "D'abord, passe `e` comme paramètre à ta fonction callback. Rappelle-toi que `e` est un nom de paramètre courant pour l'objet événement. Ensuite, affiche `e` dans la console dans le corps de ta fonction callback."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your callback function should take the parameter `e`.",
+          "fr": "Ta fonction callback doit prendre le paramètre `e`."
+        },
+        {
+          "en": "You should log `e` to the console in the body of your callback function.",
+          "fr": "Tu dois afficher `e` dans la console dans le corps de ta fonction callback."
+        }
+      ]
+    },
+    {
+      "file": "63e9eb5b2328eed3d194b28a.md",
+      "id": "63e9eb5b2328eed3d194b28a",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "If you open your browser's console and type in the number input, you'll see event objects logged to the browser. And if you take a closer look at one of those event objects, you'll see helpful properties like `type` and `target`.",
+          "fr": "Si tu ouvres la console de ton navigateur et tapes dans l'entrée numérique, tu verras des objets événement affichés dans le navigateur. Et si tu regardes de plus près l'un de ces objets événement, tu verras des propriétés utiles comme `type` et `target`."
+        },
+        {
+          "en": "Since you want to perform an action when the `Enter` key is pressed, the most helpful property is `key`, which tells you the string value of the key that was pressed.",
+          "fr": "Comme tu veux effectuer une action quand la touche `Enter` est pressée, la propriété la plus utile est `key`, qui te indique la valeur en chaîne de la touche qui a été pressée."
+        },
+        {
+          "en": "Remove the `console.log()` statement from the callback function and add an `if` statement that checks if `e.key` is equal to the string `\"Enter\"`. Leave the body of your `if` statement empty for now.",
+          "fr": "Supprime l'instruction `console.log()` de la fonction callback et ajoute une instruction `if` qui vérifie si `e.key` est égal à la chaîne `\"Enter\"`. Laisse le corps de ton instruction `if` vide pour l'instant."
+        },
+        {
+          "en": "Note: Since the `Enter` and `Return` keys have similar functions, they both have the same string value of `\"Enter\"`.",
+          "fr": "Note : Comme les touches `Enter` et `Return` ont des fonctions similaires, elles ont toutes les deux la même valeur en chaîne `\"Enter\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your callback function should not contain a `console.log()` statement.",
+          "fr": "Ta fonction callback ne doit pas contenir d'instruction `console.log()`."
+        },
+        {
+          "en": "Your `if` statement should check if `e.key` is equal to the string `\"Enter\"`.",
+          "fr": "Ton instruction `if` doit vérifier si `e.key` est égal à la chaîne `\"Enter\"`."
+        },
+        {
+          "en": "The body of your `if` statement should be empty.",
+          "fr": "Le corps de ton instruction `if` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64005ab13a78eb062547c12d.md",
+      "id": "64005ab13a78eb062547c12d",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Next, within the body of the `if` statement, call the `checkUserInput()` function. After this, if you enter numbers into the number input and press the `Enter` / `Return` key, you should see numbers logged to the console.",
+          "fr": "Ensuite, dans le corps de l'instruction `if`, appelle la fonction `checkUserInput()`. Après cela, si tu saisis des nombres dans l'entrée numérique et appuies sur la touche `Enter` / `Return`, tu devrais voir des nombres affichés dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `checkUserInput()` function within the body of your `if` statement.",
+          "fr": "Tu dois appeler la fonction `checkUserInput()` dans le corps de ton instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "644905b34f614973a8252a26.md",
+      "id": "644905b34f614973a8252a26",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Now that your `Convert` button and number input are listening for clicks and `Enter` key presses, it's time to complete the `checkUserInput()` function.",
+          "fr": "Maintenant que ton bouton `Convert` et ton entrée numérique écoutent les clics et les pressions de la touche `Enter`, il est temps de terminer la fonction `checkUserInput()`."
+        },
+        {
+          "en": "It would be helpful to alert users if they don't enter a value into the number input, or the number they enter is invalid. While the `input type=\"number\"` element makes validation easier by only allowing numbers and some special characters, remember that all values you get from HTML elements are actually strings. Also, if the number input is empty, the `value` property will be an empty string.",
+          "fr": "Il serait utile d'alerter les utilisateurs s'ils n'entrent pas de valeur dans l'entrée numérique, ou si le nombre qu'ils entrent est invalide. Bien que l'élément `input type=\"number\"` facilite la validation en n'autorisant que les nombres et quelques caractères spéciaux, rappelle-toi que toutes les valeurs que tu obtiens des éléments HTML sont en fait des chaînes. Aussi, si l'entrée numérique est vide, la propriété `value` sera une chaîne vide."
+        },
+        {
+          "en": "Inside your `checkUserInput` function, use an `if` statement to check if the `value` of `numberInput` is equal to an empty string. Leave the body of the `if` statement empty for now.",
+          "fr": "Dans ta fonction `checkUserInput`, utilise une instruction `if` pour vérifier si la `value` de `numberInput` est égale à une chaîne vide. Laisse le corps de l'instruction `if` vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `if` statement within `checkUserInput` should check if the `value` of `numberInput` is equal to an empty string.",
+          "fr": "Ton instruction `if` dans `checkUserInput` doit vérifier si la `value` de `numberInput` est égale à une chaîne vide."
+        },
+        {
+          "en": "The body of your `if` statement within `checkUserInput` should be empty.",
+          "fr": "Le corps de ton instruction `if` dans `checkUserInput` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64005eb6d2d06a15d9f7611f.md",
+      "id": "64005eb6d2d06a15d9f7611f",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "In an earlier lesson you learned about truthy and falsy values, which are values that evaluate to `true` or `false`. In JavaScript, some common falsy values you'll see are `null`, `undefined`, the number `0`, and empty strings.",
+          "fr": "Dans une leçon précédente, tu as appris les valeurs truthy et falsy, qui sont des valeurs qui s'évaluent à `true` ou `false`. En JavaScript, quelques valeurs falsy courantes que tu verras sont `null`, `undefined`, le nombre `0`, et les chaînes vides."
+        },
+        {
+          "en": "Rather than check if a value is equal to a falsy value, you can use the <dfn>logical NOT</dfn> operator (`!`) to check if the value itself is falsy. For example:",
+          "fr": "Plutôt que de vérifier si une valeur est égale à une valeur falsy, tu peux utiliser l'opérateur <dfn>NOT logique</dfn> (`!`) pour vérifier si la valeur elle-même est falsy. Par exemple :"
+        },
+        {
+          "en": "Update the condition in your `if` statement to use the logical NOT operator to check if `numberInput.value` is falsy.",
+          "fr": "Mets à jour la condition de ton instruction `if` pour utiliser l'opérateur NOT logique afin de vérifier si `numberInput.value` est falsy."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the logical NOT operator (`!`) to check if `numberInput.value` is falsy.",
+          "fr": "Tu dois utiliser l'opérateur NOT logique (`!`) pour vérifier si `numberInput.value` est falsy."
+        },
+        {
+          "en": "The body of your `if` statement within `checkUserInput` should be empty.",
+          "fr": "Le corps de ton instruction `if` dans `checkUserInput` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "640067f276acd525509646cc.md",
+      "id": "640067f276acd525509646cc",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Because the `input type=\"number\"` element allows special characters like `.`, `+`, and `e`, users can input floats like `2.2`, equations like `2e+3`, or even just `e`, which you don't want to allow.",
+          "fr": "Parce que l'élément `input type=\"number\"` autorise des caractères spéciaux comme `.`, `+`, et `e`, les utilisateurs peuvent saisir des flottants comme `2.2`, des équations comme `2e+3`, ou même juste `e`, ce que tu ne veux pas autoriser."
+        },
+        {
+          "en": "A good way to check and normalize numbers in JavaScript is to use the built-in `parseInt()` function, which converts a string into an integer or whole number. `parseInt()` takes at least one argument, a string to be converted into an integer, and returns either an integer or `NaN` which stands for `Not a Number`. For example:",
+          "fr": "Un bon moyen de vérifier et de normaliser les nombres en JavaScript est d'utiliser la fonction intégrée `parseInt()`, qui convertit une chaîne en un entier ou nombre entier. `parseInt()` prend au moins un argument, une chaîne à convertir en entier, et renvoie soit un entier, soit `NaN` qui signifie `Not a Number`. Par exemple :"
+        },
+        {
+          "en": "Add a logical OR operator (`||`) after the first condition in your `if` statement. Then, pass the value of `numberInput` into the `parseInt()` function as the second condition of your `if` statement.",
+          "fr": "Ajoute un opérateur OR logique (`||`) après la première condition de ton instruction `if`. Ensuite, passe la valeur de `numberInput` à la fonction `parseInt()` comme deuxième condition de ton instruction `if`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the logical OR operator (`||`) after the first condition in your `if` statement, then pass the value of `numberInput` into the `parseInt()` function as the second condition of your `if` statement.",
+          "fr": "Tu dois ajouter l'opérateur OR logique (`||`) après la première condition de ton instruction `if`, puis passer la valeur de `numberInput` à la fonction `parseInt()` comme deuxième condition de ton instruction `if`."
+        },
+        {
+          "en": "The body of your `if` statement within `checkUserInput` should be empty.",
+          "fr": "Le corps de ton instruction `if` dans `checkUserInput` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64007367d54d2a7efbf44fcf.md",
+      "id": "64007367d54d2a7efbf44fcf",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Next, you need to check if the value returned by the `parseInt()` function is a number or not.",
+          "fr": "Ensuite, tu dois vérifier si la valeur renvoyée par la fonction `parseInt()` est un nombre ou non."
+        },
+        {
+          "en": "To do that, you can use the `isNaN()` function. This function takes in a string or number as an argument, and returns `true` if it evaluates to `NaN`. For example:",
+          "fr": "Pour cela, tu peux utiliser la fonction `isNaN()`. Cette fonction prend une chaîne ou un nombre comme argument, et renvoie `true` si elle s'évalue à `NaN`. Par exemple :"
+        },
+        {
+          "en": "Update the second condition in your `if` statement to use the `isNaN()` function to check if the value returned by `parseInt()` is `NaN`.",
+          "fr": "Mets à jour la deuxième condition de ton instruction `if` pour utiliser la fonction `isNaN()` afin de vérifier si la valeur renvoyée par `parseInt()` est `NaN`."
+        },
+        {
+          "en": "Also, as we mentioned in step 1, we are considering only positive numbers, so we should add a third condition to the `if` statement to check whether the number is less than 0 (i.e., negative numbers).",
+          "fr": "Aussi, comme nous l'avons mentionné à l'étape 1, nous ne considérons que les nombres positifs, donc tu dois ajouter une troisième condition à l'instruction `if` pour vérifier si le nombre est inférieur à 0 (c'est-à-dire les nombres négatifs)."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should wrap the value returned by `parseInt()` in the `isNaN()` function. And add a third condition which checks the value returned by `parseInt()` to be less than 0.",
+          "fr": "Tu dois envelopper la valeur renvoyée par `parseInt()` dans la fonction `isNaN()`. Et ajouter une troisième condition qui vérifie que la valeur renvoyée par `parseInt()` est inférieure à 0."
+        },
+        {
+          "en": "The body of your `if` statement within `checkUserInput` should be empty.",
+          "fr": "Le corps de ton instruction `if` dans `checkUserInput` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64475c0b61cddb6feaab4e2e.md",
+      "id": "64475c0b61cddb6feaab4e2e",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now you can alert the user if they don't enter a number, or the number is invalid before you attempt to convert it into binary.",
+          "fr": "Maintenant, tu peux alerter l'utilisateur s'il n'entre pas de nombre, ou si le nombre est invalide, avant de tenter de le convertir en binaire."
+        },
+        {
+          "en": "In the body of the `if` statement, use the `alert()` method to display the text `\"Please provide a decimal number greater than or equal to 0\"`.",
+          "fr": "Dans le corps de l'instruction `if`, utilise la méthode `alert()` pour afficher le texte `\"Please provide a decimal number greater than or equal to 0\"`."
+        },
+        {
+          "en": "Note that `alert()` is a method on the `window` object in the browser, so you can use either `window.alert()` or `alert()`.",
+          "fr": "Note que `alert()` est une méthode de l'objet `window` dans le navigateur, donc tu peux utiliser soit `window.alert()`, soit `alert()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `alert()` method within the body of your `if` statement within `checkUserInput`.",
+          "fr": "Tu dois appeler la méthode `alert()` dans le corps de ton instruction `if` dans `checkUserInput`."
+        },
+        {
+          "en": "When there is a falsy value in the `#number-input` element and the `checkUserInput()` function is called, the `alert()` method should display the text `\"Please provide a decimal number greater than or equal to 0\"`.",
+          "fr": "Quand il y a une valeur falsy dans l'élément `#number-input` et que la fonction `checkUserInput()` est appelée, la méthode `alert()` doit afficher le texte `\"Please provide a decimal number greater than or equal to 0\"`."
+        }
+      ]
+    },
+    {
+      "file": "644760f4fb15ce765baebb62.md",
+      "id": "644760f4fb15ce765baebb62",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "After alerting the user if the number input is empty or the value is not a number, you can use the `return` keyword to break out of this function early. This will prevent future code in this function from running.",
+          "fr": "Après avoir alerté l'utilisateur si l'entrée numérique est vide ou si la valeur n'est pas un nombre, tu peux utiliser le mot-clé `return` pour quitter cette fonction plus tôt. Cela empêchera le code suivant dans cette fonction de s'exécuter."
+        },
+        {
+          "en": "Add the `return` keyword after `alert()`.",
+          "fr": "Ajoute le mot-clé `return` après `alert()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `return` keyword after `alert()`.",
+          "fr": "Tu dois utiliser le mot-clé `return` après `alert()`."
+        }
+      ]
+    },
+    {
+      "file": "6448ab52a902de04fc56b3fa.md",
+      "id": "6448ab52a902de04fc56b3fa",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Now you'll start building the function to actually do the decimal to binary conversion.",
+          "fr": "Maintenant, tu vas commencer à construire la fonction qui effectuera réellement la conversion décimal vers binaire."
+        },
+        {
+          "en": "Create a function called `decimalToBinary` with `input` as a parameter. Leave the body of the function empty for now.",
+          "fr": "Crée une fonction appelée `decimalToBinary` avec `input` comme paramètre. Laisse le corps de la fonction vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`decimalToBinary` should be a function.",
+          "fr": "`decimalToBinary` doit être une fonction."
+        },
+        {
+          "en": "You should pass `input` as a parameter to your `decimalToBinary` function.",
+          "fr": "Tu dois passer `input` comme paramètre à ta fonction `decimalToBinary`."
+        },
+        {
+          "en": "The body of your `decimalToBinary` function should be empty.",
+          "fr": "Le corps de ta fonction `decimalToBinary` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "6448b2c9aec64c0ecd41573d.md",
+      "id": "6448b2c9aec64c0ecd41573d",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Within your `checkUserInput` function, remove the `console.log()` statement. Then, call the `decimalToBinary` function and pass in the `value` of `numberInput` as an argument. Also, make sure to use the `parseInt()` function to convert the input into a number.",
+          "fr": "Dans ta fonction `checkUserInput`, supprime l'instruction `console.log()`. Ensuite, appelle la fonction `decimalToBinary` et passe la `value` de `numberInput` comme argument. Assure-toi aussi d'utiliser la fonction `parseInt()` pour convertir l'entrée en un nombre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `console.log()` statement from your `checkUserInput` function.",
+          "fr": "Tu dois supprimer l'instruction `console.log()` de ta fonction `checkUserInput`."
+        },
+        {
+          "en": "You should call the `decimalToBinary` function after the `if` statement within the body of your `checkUserInput` function.",
+          "fr": "Tu dois appeler la fonction `decimalToBinary` après l'instruction `if` dans le corps de ta fonction `checkUserInput`."
+        },
+        {
+          "en": "You should use `parseInt()` to convert the `value` of `numberInput` into a number, and pass that as an argument to the `decimalToBinary` function.",
+          "fr": "Tu dois utiliser `parseInt()` pour convertir la `value` de `numberInput` en un nombre, et passer cela comme argument à la fonction `decimalToBinary`."
+        }
+      ]
+    },
+    {
+      "file": "645b9ea45d3a9a9d711df81a.md",
+      "id": "645b9ea45d3a9a9d711df81a",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Finally, you should clear the number input by setting its value to an empty string. Then later when you convert several numbers in a row, you won't have to delete the previous number before entering the next one.",
+          "fr": "Enfin, tu dois vider l'entrée numérique en définissant sa valeur à une chaîne vide. Ainsi, plus tard, quand tu convertiras plusieurs nombres à la suite, tu n'auras pas à supprimer le nombre précédent avant d'entrer le suivant."
+        },
+        {
+          "en": "Set the `value` property of `numberInput` to an empty string.",
+          "fr": "Définis la propriété `value` de `numberInput` à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `value` property of `numberInput` to an empty string.",
+          "fr": "Tu dois définir la propriété `value` de `numberInput` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "6448b4107aadc110a6ab4f65.md",
+      "id": "6448b4107aadc110a6ab4f65",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Now that your function is set up, it's time to learn about <dfn>binary numbers</dfn>.",
+          "fr": "Maintenant que ta fonction est prête, il est temps d'apprendre les <dfn>nombres binaires</dfn>."
+        },
+        {
+          "en": "Binary numbers are a <dfn>base-2</dfn> number system. Unlike the <dfn>base-10</dfn> or decimal number system we use every day that uses 10 digits (`0-9`) to form numbers, the binary number system only has two digits, `0` and `1`. In computer science, these binary digits are called <dfn>bits</dfn>, and are the smallest unit of data computers can process. For computers, `0` represents `false` or \"off\", and `1` represents `true` or \"on\".",
+          "fr": "Les nombres binaires sont un système de numération en <dfn>base 2</dfn>. Contrairement au système de numération en <dfn>base 10</dfn> ou décimal que nous utilisons tous les jours et qui utilise 10 chiffres (`0-9`) pour former les nombres, le système binaire n'a que deux chiffres, `0` et `1`. En informatique, ces chiffres binaires sont appelés <dfn>bits</dfn>, et sont la plus petite unité de données que les ordinateurs peuvent traiter. Pour les ordinateurs, `0` représente `false` ou « off », et `1` représente `true` ou « on »."
+        },
+        {
+          "en": "In your `decimalToBinary` function, use the `return` keyword to return a string of the binary number representation of `true`.",
+          "fr": "Dans ta fonction `decimalToBinary`, utilise le mot-clé `return` pour renvoyer une chaîne de la représentation en nombre binaire de `true`."
+        },
+        {
+          "en": "Note: Binary numbers can be long sequences that start with `0`, so they are often represented as strings.",
+          "fr": "Note : Les nombres binaires peuvent être de longues séquences qui commencent par `0`, donc ils sont souvent représentés comme des chaînes."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `decimalToBinary` function should return a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer une chaîne."
+        },
+        {
+          "en": "Your `decimalToBinary` function should return `1` as a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer `1` comme une chaîne."
+        }
+      ]
+    },
+    {
+      "file": "644a0eadcbccaf1d13c7d137.md",
+      "id": "644a0eadcbccaf1d13c7d137",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "In the base-2 number system, the rightmost digit represents the ones place, the next digit to the left represents the twos place, then the fours place, then the eights place, and so on. In this system, each digit's place value is two times greater than the digit to its right.",
+          "fr": "Dans le système de numération en base 2, le chiffre le plus à droite représente la place des unités, le chiffre suivant à gauche représente la place des deux, puis la place des quatre, puis la place des huit, et ainsi de suite. Dans ce système, la valeur de place de chaque chiffre est deux fois plus grande que celle du chiffre à sa droite."
+        },
+        {
+          "en": "Here are numbers zero to nine in the base-10 and base-2 number systems:",
+          "fr": "Voici les nombres de zéro à neuf dans les systèmes de numération en base 10 et en base 2 :"
+        },
+        {
+          "en": "Notice that binary numbers are formed from left to right, from the digit with the greatest place value on the left, to the least significant on the right. For example, the number `3` in binary is `11`, or `1` in the twos place and `1` in the ones place. Then for the number `4`, a digit to represent the fours place is included on the left and set to `1`, the twos place is `0`, and the ones place is `0`.",
+          "fr": "Remarque que les nombres binaires sont formés de gauche à droite, du chiffre avec la plus grande valeur de place à gauche, jusqu'au moins significatif à droite. Par exemple, le nombre `3` en binaire est `11`, ou `1` à la place des deux et `1` à la place des unités. Ensuite, pour le nombre `4`, un chiffre pour représenter la place des quatre est inclus à gauche et mis à `1`, la place des deux est `0`, et la place des unités est `0`."
+        },
+        {
+          "en": "In your `decimalToBinary` function, convert the number `10` into binary and `return` it as a string.",
+          "fr": "Dans ta fonction `decimalToBinary`, convertis le nombre `10` en binaire et `return`-le comme une chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `decimalToBinary` function should return a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer une chaîne."
+        },
+        {
+          "en": "Your `decimalToBinary` function should return a string with a length of `4`.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer une chaîne d'une longueur de `4`."
+        },
+        {
+          "en": "Your `decimalToBinary` function should return `\"1010\"` as a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer `\"1010\"` comme une chaîne."
+        }
+      ]
+    },
+    {
+      "file": "644a2013b2ceea32c44d09f9.md",
+      "id": "644a2013b2ceea32c44d09f9",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Bits are often grouped into an octet, which is an 8-bit set known as a <dfn>byte</dfn>. A byte can represent any number between `0` and `255`. Here are the placement values for each bit in a byte:",
+          "fr": "Les bits sont souvent regroupés en un octet, qui est un ensemble de 8 bits connu sous le nom de <dfn>byte</dfn>. Un byte peut représenter n'importe quel nombre entre `0` et `255`. Voici les valeurs de placement pour chaque bit dans un byte :"
+        },
+        {
+          "en": "Because bits are often grouped into bytes, it's common to see binary numbers represented in groups of eight, sometimes with leading zeros. For example, the number `52` can be represented as `110100`, or `00110100` with leading zeros. Here's how that breaks down with the placement values:",
+          "fr": "Parce que les bits sont souvent regroupés en bytes, il est courant de voir les nombres binaires représentés en groupes de huit, parfois avec des zéros en tête. Par exemple, le nombre `52` peut être représenté comme `110100`, ou `00110100` avec des zéros en tête. Voici comment cela se décompose avec les valeurs de placement :"
+        },
+        {
+          "en": "In your `decimalToBinary` function, convert the number `118` into binary with leading zeros and `return` it as a string.",
+          "fr": "Dans ta fonction `decimalToBinary`, convertis le nombre `118` en binaire avec des zéros en tête et `return`-le comme une chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `decimalToBinary` function should return a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer une chaîne."
+        },
+        {
+          "en": "Your `decimalToBinary` function should return a string with a length of `8`.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer une chaîne d'une longueur de `8`."
+        },
+        {
+          "en": "Your `decimalToBinary` function should return `\"01110110\"` as a string.",
+          "fr": "Ta fonction `decimalToBinary` doit renvoyer `\"01110110\"` comme une chaîne."
+        }
+      ]
+    },
+    {
+      "file": "644a37d773b7610ac5ede66e.md",
+      "id": "644a37d773b7610ac5ede66e",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now that you're familiar with binary numbers, it's time to finish building the function to do the conversion for you. You'll start off with a simpler solution first, then refactor that into a recursive solution.",
+          "fr": "Maintenant que tu es familier avec les nombres binaires, il est temps de terminer la construction de la fonction qui fera la conversion pour toi. Tu commenceras par une solution plus simple d'abord, puis tu la refactoriseras en une solution récursive."
+        },
+        {
+          "en": "First, you need to create some arrays to store the inputs and results of the division you'll do in the following steps. These will make it easier to see how the decimal to binary conversion works.",
+          "fr": "D'abord, tu dois créer quelques tableaux pour stocker les entrées et les résultats de la division que tu feras dans les étapes suivantes. Cela facilitera la visualisation du fonctionnement de la conversion décimal vers binaire."
+        },
+        {
+          "en": "Remove the `return` statement from your `decimalToBinary` function. Then, declare variables named `inputs`, `quotients`, and `remainders`, and assign an empty array to each of them.",
+          "fr": "Supprime l'instruction `return` de ta fonction `decimalToBinary`. Ensuite, déclare des variables nommées `inputs`, `quotients`, et `remainders`, et assigne un tableau vide à chacune d'elles."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `return` statement from your `decimalToBinary` function.",
+          "fr": "Tu dois supprimer l'instruction `return` de ta fonction `decimalToBinary`."
+        },
+        {
+          "en": "You should declare a variable named `inputs`.",
+          "fr": "Tu dois déclarer une variable nommée `inputs`."
+        },
+        {
+          "en": "You should assign an empty array to `inputs`.",
+          "fr": "Tu dois assigner un tableau vide à `inputs`."
+        },
+        {
+          "en": "You should declare a variable named `quotients`.",
+          "fr": "Tu dois déclarer une variable nommée `quotients`."
+        },
+        {
+          "en": "You should assign an empty array to `quotients`.",
+          "fr": "Tu dois assigner un tableau vide à `quotients`."
+        },
+        {
+          "en": "You should declare a variable named `remainders`.",
+          "fr": "Tu dois déclarer une variable nommée `remainders`."
+        },
+        {
+          "en": "You should assign an empty array to `remainders`.",
+          "fr": "Tu dois assigner un tableau vide à `remainders`."
+        }
+      ]
+    },
+    {
+      "file": "645b5c05986aba539ba6ca03.md",
+      "id": "645b5c05986aba539ba6ca03",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Set `input` equal to the number `0` for now. We'll change this in the next few steps.",
+          "fr": "Définis `input` égal au nombre `0` pour l'instant. Nous changerons cela dans les prochaines étapes."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `input` equal to the number `0`.",
+          "fr": "Tu dois définir `input` égal au nombre `0`."
+        }
+      ]
+    },
+    {
+      "file": "644b6a23d398bb5f05ef796b.md",
+      "id": "644b6a23d398bb5f05ef796b",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "For the decimal to binary conversion, you need to divide `input` by `2` until the <dfn>quotient</dfn>, or the result of dividing two numbers, is `0`. But since you don't know how many times you need to divide `input` by `2`, you can use a `while` loop to run a block of code as long as `input` is greater than `0` and can be divided.",
+          "fr": "Pour la conversion décimal vers binaire, tu dois diviser `input` par `2` jusqu'à ce que le <dfn>quotient</dfn>, ou le résultat de la division de deux nombres, soit `0`. Mais comme tu ne sais pas combien de fois tu dois diviser `input` par `2`, tu peux utiliser une boucle `while` pour exécuter un bloc de code tant que `input` est supérieur à `0` et peut être divisé."
+        },
+        {
+          "en": "As a reminder, a `while` loop is used to run a block of code as long as the condition evaluates to `true`, and the condition is checked before the code block is executed. For example:",
+          "fr": "Pour rappel, une boucle `while` sert à exécuter un bloc de code tant que la condition s'évalue à `true`, et la condition est vérifiée avant l'exécution du bloc de code. Par exemple :"
+        },
+        {
+          "en": "Create a `while` loop that runs as long as `input` is greater than `0`. Leave the body of the loop empty for now.",
+          "fr": "Crée une boucle `while` qui s'exécute tant que `input` est supérieur à `0`. Laisse le corps de la boucle vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The condition of your `while` loop should check if `input` is greater than `0`.",
+          "fr": "La condition de ta boucle `while` doit vérifier si `input` est supérieur à `0`."
+        },
+        {
+          "en": "Your `while` loop should have an empty body.",
+          "fr": "Ta boucle `while` doit avoir un corps vide."
+        }
+      ]
+    },
+    {
+      "file": "644b82e0dc8e5e7ca47fcd9b.md",
+      "id": "644b82e0dc8e5e7ca47fcd9b",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "The tricky part about `while` loops is that, if you're not careful, they can run forever. This is called an <dfn>infinite loop</dfn>, and can cause your browser to crash.",
+          "fr": "La partie délicate des boucles `while` est que, si tu n'es pas prudent, elles peuvent tourner indéfiniment. On appelle cela une <dfn>boucle infinie</dfn>, et cela peut faire planter ton navigateur."
+        },
+        {
+          "en": "To avoid infinite loops, you need to make sure that the condition for the `while` loop eventually becomes `false`. In this case, you want to make sure that the `input` variable eventually becomes `0`.",
+          "fr": "Pour éviter les boucles infinies, tu dois t'assurer que la condition de la boucle `while` devient finalement `false`. Dans ce cas, tu veux t'assurer que la variable `input` devient finalement `0`."
+        },
+        {
+          "en": "Move the `input = 0` statement into the body of the `while` loop. This will make it so that the loop will only run up to one time.",
+          "fr": "Déplace l'instruction `input = 0` dans le corps de la boucle `while`. Cela fera en sorte que la boucle ne s'exécute qu'une seule fois au maximum."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should move the `input = 0` statement into the body of the `while` loop.",
+          "fr": "Tu dois déplacer l'instruction `input = 0` dans le corps de la boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "644b6ad4fa8dfd600a9dff2c.md",
+      "id": "644b6ad4fa8dfd600a9dff2c",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "To divide numbers in JavaScript, use the division operator (`/`). For example:",
+          "fr": "Pour diviser des nombres en JavaScript, utilise l'opérateur de division (`/`). Par exemple :"
+        },
+        {
+          "en": "In the example above, `5` is the <dfn>dividend</dfn>, or the number to be divided, and `2` is the <dfn>divisor</dfn>, or the number to divide by. The result, `2.5`, is called the <dfn>quotient</dfn>.",
+          "fr": "Dans l'exemple ci-dessus, `5` est le <dfn>dividende</dfn>, ou le nombre à diviser, et `2` est le <dfn>diviseur</dfn>, ou le nombre par lequel on divise. Le résultat, `2.5`, s'appelle le <dfn>quotient</dfn>."
+        },
+        {
+          "en": "Inside your `while` loop, create a variable named `quotient` and assign it the value of `input` divided by `2`.",
+          "fr": "Dans ta boucle `while`, crée une variable nommée `quotient` et assigne-lui la valeur de `input` divisé par `2`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `quotient` inside your `while` loop.",
+          "fr": "Tu dois créer une variable nommée `quotient` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should assign `quotient` the value of `input` divided by `2`.",
+          "fr": "Tu dois assigner à `quotient` la valeur de `input` divisé par `2`."
+        }
+      ]
+    },
+    {
+      "file": "644b71f678b5e1687666c88d.md",
+      "id": "644b71f678b5e1687666c88d",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Like you saw in the last step, division can lead to a floating point number, or a number with a decimal point. The best way to handle this is to round down to the nearest whole number.",
+          "fr": "Comme tu l'as vu à l'étape précédente, la division peut mener à un nombre à virgule flottante, ou un nombre avec un point décimal. La meilleure façon de gérer cela est d'arrondir à l'entier inférieur le plus proche."
+        },
+        {
+          "en": "Use the `Math.floor()` function to round down the quotient of `input` divided by `2` before it's assigned to `quotient`.",
+          "fr": "Utilise la fonction `Math.floor()` pour arrondir à l'entier inférieur le quotient de `input` divisé par `2` avant qu'il ne soit assigné à `quotient`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `Math.floor()` function to round down the quotient of `input` divided by `2`.",
+          "fr": "Tu dois utiliser la fonction `Math.floor()` pour arrondir à l'entier inférieur le quotient de `input` divisé par `2`."
+        }
+      ]
+    },
+    {
+      "file": "644b765b3bf09e6dff5e0931.md",
+      "id": "644b765b3bf09e6dff5e0931",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "Now that you have an operation that will lower the value of `input` each time the loop runs, you don't have to worry about the loop running forever.",
+          "fr": "Maintenant que tu as une opération qui diminuera la valeur de `input` à chaque exécution de la boucle, tu n'as plus à t'inquiéter que la boucle tourne indéfiniment."
+        },
+        {
+          "en": "Update the last line of your `while` loop and assign `quotient` to `input`.",
+          "fr": "Mets à jour la dernière ligne de ta boucle `while` et assigne `quotient` à `input`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `quotient` to `input` at the end of your `while` loop.",
+          "fr": "Tu dois assigner `quotient` à `input` à la fin de ta boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "644b77a563c51f6ff5237b99.md",
+      "id": "644b77a563c51f6ff5237b99",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "Next, you need to calculate the remainder of `input` divided by `2`. You can do this by using the <dfn>remainder operator</dfn> (`%`), which returns the remainder of the division of two numbers. For example:",
+          "fr": "Ensuite, tu dois calculer le reste de `input` divisé par `2`. Tu peux le faire en utilisant l'opérateur <dfn>reste</dfn> (`%`), qui renvoie le reste de la division de deux nombres. Par exemple :"
+        },
+        {
+          "en": "In other words, the dividend, `5`, can be divided by the divisor, `2`, multiple times. Then you're left with a remainder of `1`.",
+          "fr": "Autrement dit, le dividende, `5`, peut être divisé par le diviseur, `2`, plusieurs fois. Il te reste alors un reste de `1`."
+        },
+        {
+          "en": "Inside your `while` loop, create a variable named `remainder` and use the remainder operator to assign it the remainder of `input` divided by `2`.",
+          "fr": "À l'intérieur de ta boucle `while`, crée une variable nommée `remainder` et utilise l'opérateur de reste pour lui assigner le reste de `input` divisé par `2`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `remainder` inside your `while` loop.",
+          "fr": "Tu dois créer une variable nommée `remainder` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should use `input` as the dividend and `2` as the divisor when calculating the remainder.",
+          "fr": "Tu dois utiliser `input` comme dividende et `2` comme diviseur pour calculer le reste."
+        }
+      ]
+    },
+    {
+      "file": "644b7ac994d7dd73a61b4fa6.md",
+      "id": "644b7ac994d7dd73a61b4fa6",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "Inside your `while` loop, use the `.push()` method to append `input` to the `inputs` array. This will help you get a better idea of how the conversion works later when you log the contents of your arrays to the console.",
+          "fr": "À l'intérieur de ta boucle `while`, utilise la méthode `.push()` pour ajouter `input` au tableau `inputs`. Cela t'aidera à mieux comprendre comment la conversion fonctionne plus tard, quand tu afficheras le contenu de tes tableaux dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.push()` method on the `inputs` array within your `while` loop.",
+          "fr": "Tu dois utiliser la méthode `.push()` sur le tableau `inputs` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should use the `.push()` method to append `input` to the `inputs` array.",
+          "fr": "Tu dois utiliser la méthode `.push()` pour ajouter `input` au tableau `inputs`."
+        }
+      ]
+    },
+    {
+      "file": "645b65b681a62f5fa125ff62.md",
+      "id": "645b65b681a62f5fa125ff62",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "Use `.push()` to append the `quotient` variable to the `quotients` array. Also, append the `remainder` variable to the `remainders` array.",
+          "fr": "Utilise `.push()` pour ajouter la variable `quotient` au tableau `quotients`. Ajoute aussi la variable `remainder` au tableau `remainders`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.push()` method on the `quotients` array within your `while` loop.",
+          "fr": "Tu dois utiliser la méthode `.push()` sur le tableau `quotients` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should use the `.push()` method to append `quotient` to the `quotients` array.",
+          "fr": "Tu dois utiliser la méthode `.push()` pour ajouter `quotient` au tableau `quotients`."
+        },
+        {
+          "en": "You should use the `.push()` method on the `remainders` array within your `while` loop.",
+          "fr": "Tu dois utiliser la méthode `.push()` sur le tableau `remainders` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should use the `.push()` method to append `remainder` to the `remainders` array.",
+          "fr": "Tu dois utiliser la méthode `.push()` pour ajouter `remainder` au tableau `remainders`."
+        }
+      ]
+    },
+    {
+      "file": "645b6693d8e1bf60f2d92e67.md",
+      "id": "645b6693d8e1bf60f2d92e67",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "Now's a good time to check your work.",
+          "fr": "C'est un bon moment pour vérifier ton travail."
+        },
+        {
+          "en": "Log the text `\"Inputs: \"`, followed by a comma, followed by the `inputs` array to the console.",
+          "fr": "Affiche le texte `\"Inputs: \"`, suivi d'une virgule, suivi du tableau `inputs` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log the text `\"Inputs: \"` and the `inputs` array to the console, separated by a comma.",
+          "fr": "Tu dois afficher le texte `\"Inputs: \"` et le tableau `inputs` dans la console, séparés par une virgule."
+        }
+      ]
+    },
+    {
+      "file": "645b6c92876e836832538e34.md",
+      "id": "645b6c92876e836832538e34",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "Next, log the text `\"Quotients: \"`, followed by a comma, followed by the `quotients` array to the console. Also, log the text `\"Remainders: \"`, followed by a comma, followed by the `remainders` array.",
+          "fr": "Ensuite, affiche le texte `\"Quotients: \"`, suivi d'une virgule, suivi du tableau `quotients` dans la console. Affiche aussi le texte `\"Remainders: \"`, suivi d'une virgule, suivi du tableau `remainders`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log the text `\"Quotients: \"` and the `quotients` array to the console, separated by a comma.",
+          "fr": "Tu dois afficher le texte `\"Quotients: \"` et le tableau `quotients` dans la console, séparés par une virgule."
+        },
+        {
+          "en": "You should log the text `\"Remainders: \"` and the `remainders` array to the console, separated by a comma.",
+          "fr": "Tu dois afficher le texte `\"Remainders: \"` et le tableau `remainders` dans la console, séparés par une virgule."
+        }
+      ]
+    },
+    {
+      "file": "645b6dad50514e69df601df6.md",
+      "id": "645b6dad50514e69df601df6",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "Now if you enter in the number `6` and click the `Convert` button, you'll see the following output:",
+          "fr": "Maintenant, si tu saisis le nombre `6` et que tu cliques sur le bouton `Convert`, tu verras la sortie suivante :"
+        },
+        {
+          "en": "Notice that the `remainders` array is the binary representation of the number `6`, but in reverse order.",
+          "fr": "Remarque que le tableau `remainders` est la représentation binaire du nombre `6`, mais dans l'ordre inverse."
+        },
+        {
+          "en": "Use the `.reverse()` method to reverse the order of the `remainders` array, and `.join()` with an empty string as a separator to join the elements into a binary number string. Then, set `result.innerText` equal to the binary number string.",
+          "fr": "Utilise la méthode `.reverse()` pour inverser l'ordre du tableau `remainders`, et `.join()` avec une chaîne vide comme séparateur pour joindre les éléments en une chaîne de nombre binaire. Puis, définis `result.innerText` égal à la chaîne du nombre binaire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.reverse()` method on the `remainders` array.",
+          "fr": "Tu dois utiliser la méthode `.reverse()` sur le tableau `remainders`."
+        },
+        {
+          "en": "You should use the `.join()` with an empty string as a separator on the reversed `remainders` array.",
+          "fr": "Tu dois utiliser `.join()` avec une chaîne vide comme séparateur sur le tableau `remainders` inversé."
+        },
+        {
+          "en": "You should set `result.innerText` equal to the binary number string.",
+          "fr": "Tu dois définir `result.innerText` égal à la chaîne du nombre binaire."
+        }
+      ]
+    },
+    {
+      "file": "645b7f6a575ffc807877a8c6.md",
+      "id": "645b7f6a575ffc807877a8c6",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "Your `decimalToBinary` function works well, but there is an issue – because of the condition in your `while` loop, it only works for numbers greater than `0`. If you try to convert `0` to binary, nothing will get added to the page.",
+          "fr": "Ta fonction `decimalToBinary` fonctionne bien, mais il y a un problème – à cause de la condition de ta boucle `while`, elle ne marche que pour les nombres strictement supérieurs à `0`. Si tu essaies de convertir `0` en binaire, rien ne sera ajouté à la page."
+        },
+        {
+          "en": "To fix this, add an `if` statement to check if `input` is equal to `0`. Leave the body of the `if` statement empty for now.",
+          "fr": "Pour corriger cela, ajoute une instruction `if` qui vérifie si `input` est égal à `0`. Laisse le corps de l'instruction `if` vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement that checks if `input` is equal to `0`.",
+          "fr": "Tu dois ajouter une instruction `if` qui vérifie si `input` est égal à `0`."
+        },
+        {
+          "en": "The body of your `if` statement should be empty.",
+          "fr": "Le corps de ton instruction `if` doit être vide."
+        },
+        {
+          "en": "Your `if` statement should be written before your `while` loop.",
+          "fr": "Ton instruction `if` doit être écrite avant ta boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "645b9d56b48971997a8055dd.md",
+      "id": "645b9d56b48971997a8055dd",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "Within the body of the `if` statement, set the `innerText` property of `result` equal to the string `\"0\"`. Then, use an early `return` statement to break out of the function early.",
+          "fr": "Dans le corps de l'instruction `if`, définis la propriété `innerText` de `result` égale à la chaîne `\"0\"`. Puis, utilise une instruction `return` anticipée pour sortir de la fonction plus tôt."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `innerText` property of `result` equal to the string `\"0\"`.",
+          "fr": "Tu dois définir la propriété `innerText` de `result` égale à la chaîne `\"0\"`."
+        },
+        {
+          "en": "After setting the `innerText` of the `result` element, you should use an early `return` statement to break out of the function early.",
+          "fr": "Après avoir défini le `innerText` de l'élément `result`, tu dois utiliser une instruction `return` anticipée pour sortir de la fonction plus tôt."
+        }
+      ]
+    },
+    {
+      "file": "645b9de38df75b9a5cfc2e85.md",
+      "id": "645b9de38df75b9a5cfc2e85",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "Now your `decimalToBinary` function is complete. Feel free to play around with it.",
+          "fr": "Maintenant, ta fonction `decimalToBinary` est terminée. N'hésite pas à l'essayer."
+        },
+        {
+          "en": "But there are some ways to improve it. For example, it's not necessary to keep track of the inputs and quotients. We can clean things up so the function is more efficient.",
+          "fr": "Mais il y a des façons de l'améliorer. Par exemple, il n'est pas nécessaire de suivre les entrées et les quotients. On peut nettoyer le code pour rendre la fonction plus efficace."
+        },
+        {
+          "en": "First, remove everything in the body of the `decimalToBinary` function. Then, use `let` to create a variable named `binary` and assign it an empty string.",
+          "fr": "D'abord, retire tout le contenu du corps de la fonction `decimalToBinary`. Puis, utilise `let` pour créer une variable nommée `binary` et assigne-lui une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create the `binary` variable.",
+          "fr": "Tu dois utiliser `let` pour créer la variable `binary`."
+        },
+        {
+          "en": "You should create a variable named `binary` inside your `decimalToBinary` function.",
+          "fr": "Tu dois créer une variable nommée `binary` à l'intérieur de ta fonction `decimalToBinary`."
+        },
+        {
+          "en": "You should assign `binary` an empty string.",
+          "fr": "Tu dois assigner à `binary` une chaîne vide."
+        },
+        {
+          "en": "You should remove everything else from the body of your `decimalToBinary` function.",
+          "fr": "Tu dois retirer tout le reste du corps de ta fonction `decimalToBinary`."
+        }
+      ]
+    },
+    {
+      "file": "645c803cad8434791a5f57b6.md",
+      "id": "645c803cad8434791a5f57b6",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "Since you'll want to display the result of the conversion, assign the `binary` variable to the `innerText` property of `result` at the end of the function.",
+          "fr": "Comme tu voudras afficher le résultat de la conversion, assigne la variable `binary` à la propriété `innerText` de `result` à la fin de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `binary` to the `innerText` property of `result`.",
+          "fr": "Tu dois assigner `binary` à la propriété `innerText` de `result`."
+        },
+        {
+          "en": "You should assign `binary` to the `innerText` property of `result` at the end of the function.",
+          "fr": "Tu dois assigner `binary` à la propriété `innerText` de `result` à la fin de la fonction."
+        }
+      ]
+    },
+    {
+      "file": "645c80ee8b65917a24afcb14.md",
+      "id": "645c80ee8b65917a24afcb14",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "Create a `while` loop that runs as long as `input` is greater than `0`. Inside the loop, assign `0` to `input` for now.",
+          "fr": "Crée une boucle `while` qui s'exécute tant que `input` est supérieur à `0`. À l'intérieur de la boucle, assigne `0` à `input` pour l'instant."
+        },
+        {
+          "en": "Note: Be careful not to trigger the `decimalToBinary` function before you set `input` equal to `0` inside the loop. Otherwise, you could cause an infinite loop.",
+          "fr": "Note : fais attention à ne pas déclencher la fonction `decimalToBinary` avant d'avoir défini `input` égal à `0` dans la boucle. Sinon, tu pourrais provoquer une boucle infinie."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop that runs as long as `input` is greater than `0`.",
+          "fr": "Tu dois créer une boucle `while` qui s'exécute tant que `input` est supérieur à `0`."
+        },
+        {
+          "en": "Inside the loop, you should assign `0` to `input`.",
+          "fr": "À l'intérieur de la boucle, tu dois assigner `0` à `input`."
+        }
+      ]
+    },
+    {
+      "file": "645c81579c54a57ae7c1a5f7.md",
+      "id": "645c81579c54a57ae7c1a5f7",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "Recall that, each time the loop runs, `input` is the quotient of the previous value of `input` divided by `2`, rounded down. Eventually, `input` is less than `1`, and the loop stops running.",
+          "fr": "Rappelle-toi que, à chaque exécution de la boucle, `input` est le quotient de la valeur précédente de `input` divisée par `2`, arrondi vers le bas. Finalement, `input` devient inférieur à `1`, et la boucle s'arrête."
+        },
+        {
+          "en": "You can do this in a single step.",
+          "fr": "Tu peux faire cela en une seule étape."
+        },
+        {
+          "en": "Inside your `while` loop, set `input` equal to the quotient of `input` divided by `2`. Also, remember to use `Math.floor()` to round the quotient down.",
+          "fr": "À l'intérieur de ta boucle `while`, définis `input` égal au quotient de `input` divisé par `2`. N'oublie pas non plus d'utiliser `Math.floor()` pour arrondir le quotient vers le bas."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the value of `input` within your `while` loop.",
+          "fr": "Tu dois définir la valeur de `input` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should use `Math.floor()` to round the quotient down.",
+          "fr": "Tu dois utiliser `Math.floor()` pour arrondir le quotient vers le bas."
+        },
+        {
+          "en": "You should set `input` equal to the quotient of `input` divided by `2`, rounded down, within your `while` loop.",
+          "fr": "Tu dois définir `input` égal au quotient de `input` divisé par `2`, arrondi vers le bas, à l'intérieur de ta boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "645c81683d816b7b3a044143.md",
+      "id": "645c81683d816b7b3a044143",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "In the previous version of this function, you pushed the remainder of `input` divided by `2` to `binaryArray`. Then later you reversed and joined the entries into a binary number string.",
+          "fr": "Dans la version précédente de cette fonction, tu poussais le reste de `input` divisé par `2` dans `binaryArray`. Ensuite, tu inversais et joignais les entrées pour former une chaîne de nombre binaire."
+        },
+        {
+          "en": "But it would be easier to use string concatenation within the loop to build the binary string from right to left, so you won't need to reverse it later.",
+          "fr": "Mais il serait plus simple d'utiliser la concaténation de chaînes dans la boucle pour construire la chaîne binaire de droite à gauche, ainsi tu n'auras pas besoin de l'inverser plus tard."
+        },
+        {
+          "en": "First, use the `remainder` operator (`%`) to set `binary` equal to the remainder of `input` divided by `2`.",
+          "fr": "D'abord, utilise l'opérateur `remainder` (`%`) pour définir `binary` égal au reste de `input` divisé par `2`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the value of `binary` within your `while` loop.",
+          "fr": "Tu dois définir la valeur de `binary` à l'intérieur de ta boucle `while`."
+        },
+        {
+          "en": "You should set `binary` equal to the remainder of `input` divided by `2`.",
+          "fr": "Tu dois définir `binary` égal au reste de `input` divisé par `2`."
+        }
+      ]
+    },
+    {
+      "file": "645c82268b9a8d7c4debd8dc.md",
+      "id": "645c82268b9a8d7c4debd8dc",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "Then, use the addition operator to add the current value of `binary` to the end of the equation `input % 2`. This is what will build the binary string from right to left.",
+          "fr": "Ensuite, utilise l'opérateur d'addition pour ajouter la valeur actuelle de `binary` à la fin de l'équation `input % 2`. C'est ce qui construira la chaîne binaire de droite à gauche."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the addition operator (`+`) to add `binary` to the end of the equation `input % 2`.",
+          "fr": "Tu dois utiliser l'opérateur d'addition (`+`) pour ajouter `binary` à la fin de l'équation `input % 2`."
+        }
+      ]
+    },
+    {
+      "file": "645c85251dc1827fe4a6c4ce.md",
+      "id": "645c85251dc1827fe4a6c4ce",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "To clean things up a bit, wrap `input % 2` in parentheses. This can sometimes change the order of operations, but in this case, it just makes your code easier to read.",
+          "fr": "Pour clarifier un peu, enveloppe `input % 2` entre parenthèses. Cela peut parfois changer l'ordre des opérations, mais ici, cela rend juste ton code plus lisible."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should wrap `input % 2` in parentheses.",
+          "fr": "Tu dois envelopper `input % 2` entre parenthèses."
+        }
+      ]
+    },
+    {
+      "file": "645c86f92a102d82250ce3e8.md",
+      "id": "645c86f92a102d82250ce3e8",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "Finally, you need to handle cases where `input` is `0`. Rather than update the DOM and return early like you did before, you can update the `binary` string and let the rest of the code in the function run.",
+          "fr": "Enfin, tu dois gérer les cas où `input` vaut `0`. Au lieu de mettre à jour le DOM et de sortir tôt comme avant, tu peux mettre à jour la chaîne `binary` et laisser le reste du code de la fonction s'exécuter."
+        },
+        {
+          "en": "Create an `if` statement that checks if `input` is equal to `0`. If it is, set `binary` equal to the string `\"0\"`.",
+          "fr": "Crée une instruction `if` qui vérifie si `input` est égal à `0`. Si c'est le cas, définis `binary` égal à la chaîne `\"0\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement that checks if `input` is equal to `0`.",
+          "fr": "Tu dois ajouter une instruction `if` qui vérifie si `input` est égal à `0`."
+        },
+        {
+          "en": "In the body of your `if` statement, you should set `binary` equal to the string `\"0\"`.",
+          "fr": "Dans le corps de ton instruction `if`, tu dois définir `binary` égal à la chaîne `\"0\"`."
+        }
+      ]
+    },
+    {
+      "file": "645c8a55eca2118650ee3ce3.md",
+      "id": "645c8a55eca2118650ee3ce3",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "Awesome. Now you have a more efficient way to convert decimal numbers into binary. After learning a bit about the call stack and recursion, you'll refactor the `decimalToBinary` function to use recursion instead of a `while` loop.",
+          "fr": "Génial. Tu as maintenant une façon plus efficace de convertir des nombres décimaux en binaire. Après avoir appris un peu la pile d'appels et la récursion, tu refactoriseras la fonction `decimalToBinary` pour utiliser la récursion à la place d'une boucle `while`."
+        },
+        {
+          "en": "Create a function named `a` that returns the following: `\"freeCodeCamp \" + b()`.",
+          "fr": "Crée une fonction nommée `a` qui renvoie ce qui suit : `\"freeCodeCamp \" + b()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `a`.",
+          "fr": "Tu dois créer une fonction nommée `a`."
+        },
+        {
+          "en": "Your function `a` should return `\"freeCodeCamp \" + b()`.",
+          "fr": "Ta fonction `a` doit renvoyer `\"freeCodeCamp \" + b()`."
+        }
+      ]
+    },
+    {
+      "file": "645cb99035b8f046f1d669e4.md",
+      "id": "645cb99035b8f046f1d669e4",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "Next, create a function named `b` that returns the following: `\"is \" + c()`.",
+          "fr": "Ensuite, crée une fonction nommée `b` qui renvoie ce qui suit : `\"is \" + c()`."
+        },
+        {
+          "en": "Also, create a function named `c` that returns the following: `\"awesome!\"`.",
+          "fr": "Crée aussi une fonction nommée `c` qui renvoie ce qui suit : `\"awesome!\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `b`.",
+          "fr": "Tu dois créer une fonction nommée `b`."
+        },
+        {
+          "en": "You should create a function named `c`.",
+          "fr": "Tu dois créer une fonction nommée `c`."
+        },
+        {
+          "en": "Your function `b` should return `\"is \" + c()`.",
+          "fr": "Ta fonction `b` doit renvoyer `\"is \" + c()`."
+        },
+        {
+          "en": "Your function `c` should return `\"awesome!\"`.",
+          "fr": "Ta fonction `c` doit renvoyer `\"awesome!\"`."
+        }
+      ]
+    },
+    {
+      "file": "645cbad5f77ce948b35cf83e.md",
+      "id": "645cbad5f77ce948b35cf83e",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Finally, call `a()` from within a `console.log()` statement to log the output to the console.",
+          "fr": "Enfin, appelle `a()` depuis une instruction `console.log()` pour afficher la sortie dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `a()` from within a `console.log()` statement.",
+          "fr": "Tu dois appeler `a()` depuis une instruction `console.log()`."
+        }
+      ]
+    },
+    {
+      "file": "645cbb5ab1296e49946adb6e.md",
+      "id": "645cbb5ab1296e49946adb6e",
+      "dashedName": "step-47",
+      "title": {
+        "en": "Step 47",
+        "fr": "Étape 47"
+      },
+      "description": [
+        {
+          "en": "In computer science, a <dfn>stack</dfn> is a data structure where items are stored in a <dfn>LIFO</dfn> (last-in-first-out) manner. If you imagine a stack of books, the last book you add to the stack is the first book you can take off the stack. Or an array where you can only `.push()` and `.pop()` elements.",
+          "fr": "En informatique, une <dfn>pile</dfn> est une structure de données où les éléments sont stockés selon un mode <dfn>LIFO</dfn> (last-in-first-out, dernier entré, premier sorti). Si tu imagines une pile de livres, le dernier livre ajouté à la pile est le premier que tu peux retirer. Ou un tableau où tu ne peux que faire `.push()` et `.pop()` sur les éléments."
+        },
+        {
+          "en": "The <dfn>call stack</dfn> is a collection of function calls stored in a stack structure. When you call a function, it is added to the top of the stack, and when it returns, it is removed from the top / end of the stack.",
+          "fr": "La <dfn>pile d'appels</dfn> est une collection d'appels de fonctions stockés dans une structure en pile. Quand tu appelles une fonction, elle est ajoutée en haut de la pile, et quand elle renvoie une valeur, elle est retirée du haut / de la fin de la pile."
+        },
+        {
+          "en": "You'll see this in action by creating mock call stack.",
+          "fr": "Tu vas voir cela en action en créant une pile d'appels fictive."
+        },
+        {
+          "en": "Initialize a variable named `callStack` and assign it an empty array.",
+          "fr": "Initialise une variable nommée `callStack` et assigne-lui un tableau vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `callStack`.",
+          "fr": "Tu dois créer une variable nommée `callStack`."
+        },
+        {
+          "en": "You should assign `callStack` an empty array.",
+          "fr": "Tu dois assigner un tableau vide à `callStack`."
+        }
+      ]
+    },
+    {
+      "file": "645cc5925f158b5b33e2698f.md",
+      "id": "645cc5925f158b5b33e2698f",
+      "dashedName": "step-48",
+      "title": {
+        "en": "Step 48",
+        "fr": "Étape 48"
+      },
+      "description": [
+        {
+          "en": "When your code runs, the `a()` function is added to the call stack first.",
+          "fr": "Quand ton code s'exécute, la fonction `a()` est ajoutée en premier à la pile d'appels."
+        },
+        {
+          "en": "In your `callStack` array, add the following string: `'a(): returns \"freeCodeCamp \" + b()'`. This represents the function call and the code that will be executed.",
+          "fr": "Dans ton tableau `callStack`, ajoute la chaîne suivante : `'a(): returns \"freeCodeCamp \" + b()'`. Cela représente l'appel de fonction et le code qui sera exécuté."
+        },
+        {
+          "en": "Note: Since the string you're adding includes double quotation marks (`\"`), wrap it in single quotation marks (`'`) or backticks (`` ` ``).",
+          "fr": "Note : comme la chaîne que tu ajoutes contient des guillemets doubles (`\"`), enveloppe-la dans des guillemets simples (`'`) ou des backticks (`` ` ``)."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` have a single element that is a string.",
+          "fr": "`callStack` doit avoir un seul élément qui est une chaîne."
+        },
+        {
+          "en": "The string in `callStack` should be the string `'a(): returns \"freeCodeCamp \" + b()'`.",
+          "fr": "La chaîne dans `callStack` doit être la chaîne `'a(): returns \"freeCodeCamp \" + b()'`."
+        }
+      ]
+    },
+    {
+      "file": "645ccf7ec9aca267d84b053e.md",
+      "id": "645ccf7ec9aca267d84b053e",
+      "dashedName": "step-49",
+      "title": {
+        "en": "Step 49",
+        "fr": "Étape 49"
+      },
+      "description": [
+        {
+          "en": "Then, since `a()` calls `b()`, the function `b()` is added to the call stack.",
+          "fr": "Ensuite, comme `a()` appelle `b()`, la fonction `b()` est ajoutée à la pile d'appels."
+        },
+        {
+          "en": "Next, add the following string to your `callStack` array: `\"b(): returns 'is ' + c()\"`.",
+          "fr": "Puis, ajoute la chaîne suivante à ton tableau `callStack` : `\"b(): returns 'is ' + c()\"`."
+        },
+        {
+          "en": "Remember that the call stack is a LIFO data structure, so the last function is added to the top or end of the stack, similar to pushing an element into an array.",
+          "fr": "Rappelle-toi que la pile d'appels est une structure de données LIFO, donc la dernière fonction est ajoutée en haut ou à la fin de la pile, comme quand on pousse un élément dans un tableau."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should have two elements that are strings.",
+          "fr": "`callStack` doit avoir deux éléments qui sont des chaînes."
+        },
+        {
+          "en": "The second element in `callStack` should be the string `\"b(): returns 'is ' + c()\"`.",
+          "fr": "Le deuxième élément de `callStack` doit être la chaîne `\"b(): returns 'is ' + c()\"`."
+        }
+      ]
+    },
+    {
+      "file": "645cd17b061afb6a8cba945a.md",
+      "id": "645cd17b061afb6a8cba945a",
+      "dashedName": "step-50",
+      "title": {
+        "en": "Step 50",
+        "fr": "Étape 50"
+      },
+      "description": [
+        {
+          "en": "And since `b()` calls `c()`, the function `c()` is added to the call stack.",
+          "fr": "Et comme `b()` appelle `c()`, la fonction `c()` est ajoutée à la pile d'appels."
+        },
+        {
+          "en": "Add the following string to your `callStack` array: `'c(): returns \"awesome!\"'`.",
+          "fr": "Ajoute la chaîne suivante à ton tableau `callStack` : `'c(): returns \"awesome!\"'`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should have three elements that are strings.",
+          "fr": "`callStack` doit avoir trois éléments qui sont des chaînes."
+        },
+        {
+          "en": "The third element in `callStack` should be the string `'c(): returns \"awesome!\"'`.",
+          "fr": "Le troisième élément de `callStack` doit être la chaîne `'c(): returns \"awesome!\"'`."
+        }
+      ]
+    },
+    {
+      "file": "645cd267410ac06bfcaf0bd4.md",
+      "id": "645cd267410ac06bfcaf0bd4",
+      "dashedName": "step-51",
+      "title": {
+        "en": "Step 51",
+        "fr": "Étape 51"
+      },
+      "description": [
+        {
+          "en": "Your call stack is complete. As you can see, `a()` is at the bottom or beginning of the stack, which calls `b()` in the middle, which calls `c()` at the top or end. Once they're all in place, they begin to execute from top to bottom.",
+          "fr": "Ta pile d'appels est complète. Comme tu peux le voir, `a()` est en bas ou au début de la pile, elle appelle `b()` au milieu, qui appelle `c()` en haut ou à la fin. Une fois toutes en place, elles commencent à s'exécuter de haut en bas."
+        },
+        {
+          "en": "`c()` executes, returns the string `\"awesome!\"`, and is popped off or removed from the top of the stack.",
+          "fr": "`c()` s'exécute, renvoie la chaîne `\"awesome!\"`, et est retirée (pop) du haut de la pile."
+        },
+        {
+          "en": "Remove your `'c(): returns \"awesome!\"'` string from the top of the `callStack` array.",
+          "fr": "Retire ta chaîne `'c(): returns \"awesome!\"'` du haut du tableau `callStack`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should have two elements that are strings.",
+          "fr": "`callStack` doit avoir deux éléments qui sont des chaînes."
+        },
+        {
+          "en": "The final element in `callStack` should be the string `'b(): returns \"is \" + c()'`.",
+          "fr": "Le dernier élément de `callStack` doit être la chaîne `'b(): returns \"is \" + c()'`."
+        }
+      ]
+    },
+    {
+      "file": "645cd2b76488fd6cb8d1ae79.md",
+      "id": "645cd2b76488fd6cb8d1ae79",
+      "dashedName": "step-52",
+      "title": {
+        "en": "Step 52",
+        "fr": "Étape 52"
+      },
+      "description": [
+        {
+          "en": "Then the function `b()` executes and evaluates to `\"is \" + \"awesome!\"`.",
+          "fr": "Ensuite, la fonction `b()` s'exécute et s'évalue à `\"is \" + \"awesome!\"`."
+        },
+        {
+          "en": "Update your mock call to `b()` so it looks like this: `'b(): returns \"is \" + \"awesome!\"'`.",
+          "fr": "Mets à jour ton appel fictif à `b()` pour qu'il ressemble à ceci : `'b(): returns \"is \" + \"awesome!\"'`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should have two elements that are strings.",
+          "fr": "`callStack` doit avoir deux éléments qui sont des chaînes."
+        },
+        {
+          "en": "The final element in `callStack` should be the string `'b(): returns \"is \" + \"awesome!\"'`.",
+          "fr": "Le dernier élément de `callStack` doit être la chaîne `'b(): returns \"is \" + \"awesome!\"'`."
+        }
+      ]
+    },
+    {
+      "file": "645cd4eb6edf6e6f91acabbb.md",
+      "id": "645cd4eb6edf6e6f91acabbb",
+      "dashedName": "step-53",
+      "title": {
+        "en": "Step 53",
+        "fr": "Étape 53"
+      },
+      "description": [
+        {
+          "en": "Now that `b()` has executed, pop it off the call stack. Then, update your mock call to `a()` to the following: `'a(): returns \"freeCodeCamp \" + \"is awesome!\"'`.",
+          "fr": "Maintenant que `b()` s'est exécutée, retire-la de la pile d'appels. Puis, mets à jour ton appel fictif à `a()` comme suit : `'a(): returns \"freeCodeCamp \" + \"is awesome!\"'`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should have one element that is a string.",
+          "fr": "`callStack` doit avoir un élément qui est une chaîne."
+        },
+        {
+          "en": "The string in `callStack` should be the string `'a(): returns \"freeCodeCamp \" + \"is awesome!\"'`.",
+          "fr": "La chaîne dans `callStack` doit être la chaîne `'a(): returns \"freeCodeCamp \" + \"is awesome!\"'`."
+        }
+      ]
+    },
+    {
+      "file": "645cd5b506ed8970b7ea953d.md",
+      "id": "645cd5b506ed8970b7ea953d",
+      "dashedName": "step-54",
+      "title": {
+        "en": "Step 54",
+        "fr": "Étape 54"
+      },
+      "description": [
+        {
+          "en": "Finally, `a()` returns the concatenated string `\"freeCodeCamp is awesome!\"`.",
+          "fr": "Enfin, `a()` renvoie la chaîne concaténée `\"freeCodeCamp is awesome!\"`."
+        },
+        {
+          "en": "Pop `a()` off the top of the call stack.",
+          "fr": "Retire `a()` du haut de la pile d'appels."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`callStack` should be an empty array.",
+          "fr": "`callStack` doit être un tableau vide."
+        }
+      ]
+    },
+    {
+      "file": "645cd65c33bdc871bb72def4.md",
+      "id": "645cd65c33bdc871bb72def4",
+      "dashedName": "step-55",
+      "title": {
+        "en": "Step 55",
+        "fr": "Étape 55"
+      },
+      "description": [
+        {
+          "en": "While that's a simple example, it demonstrates how the call stack steps through your code and calls multiple functions.",
+          "fr": "Même si c'est un exemple simple, il montre comment la pile d'appels parcourt ton code et appelle plusieurs fonctions."
+        },
+        {
+          "en": "Now it's time to jump into recursion, and see how the call stack fits into the picture.",
+          "fr": "Il est maintenant temps de passer à la récursion, et de voir comment la pile d'appels s'y intègre."
+        },
+        {
+          "en": "Remove your `callStack` array, the `a()`, `b()`, and `c()` functions, and the `console.log()` statement.",
+          "fr": "Supprime ton tableau `callStack`, les fonctions `a()`, `b()` et `c()`, et l'instruction `console.log()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `callStack` array from your code.",
+          "fr": "Tu dois supprimer le tableau `callStack` de ton code."
+        },
+        {
+          "en": "You should remove the `a()`, `b()`, and `c()` functions from your code.",
+          "fr": "Tu dois supprimer les fonctions `a()`, `b()` et `c()` de ton code."
+        },
+        {
+          "en": "Your code should not have a `console.log()` statement.",
+          "fr": "Ton code ne doit pas contenir d'instruction `console.log()`."
+        }
+      ]
+    },
+    {
+      "file": "645cd8b7f4d8e27526694448.md",
+      "id": "645cd8b7f4d8e27526694448",
+      "dashedName": "step-56",
+      "title": {
+        "en": "Step 56",
+        "fr": "Étape 56"
+      },
+      "description": [
+        {
+          "en": "Now you'll create a function that will count down from a given number to zero using recursion.",
+          "fr": "Tu vas maintenant créer une fonction qui compte à rebours depuis un nombre donné jusqu'à zéro en utilisant la récursion."
+        },
+        {
+          "en": "Create a new function named `countdown` with `number` as a parameter. Leave the function body empty for now.",
+          "fr": "Crée une nouvelle fonction nommée `countdown` avec `number` comme paramètre. Laisse le corps de la fonction vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `countdown`.",
+          "fr": "Tu dois créer une fonction nommée `countdown`."
+        },
+        {
+          "en": "Your function `countdown` should accept `number` as a parameter.",
+          "fr": "Ta fonction `countdown` doit accepter `number` comme paramètre."
+        },
+        {
+          "en": "The body of your `countdown` function should be empty.",
+          "fr": "Le corps de ta fonction `countdown` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "645ca158fb7fa3237437fbbd.md",
+      "id": "645ca158fb7fa3237437fbbd",
+      "dashedName": "step-57",
+      "title": {
+        "en": "Step 57",
+        "fr": "Étape 57"
+      },
+      "description": [
+        {
+          "en": "The first thing you need to do is log the current value of `number` to the console to act as the countdown.",
+          "fr": "La première chose à faire est d'afficher la valeur actuelle de `number` dans la console pour servir de compte à rebours."
+        },
+        {
+          "en": "Use `console.log()` to log `number` to the console.",
+          "fr": "Utilise `console.log()` pour afficher `number` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `console.log()` to log `number` to the console within the body of your `countdown` function.",
+          "fr": "Tu dois utiliser `console.log()` pour afficher `number` dans la console à l'intérieur du corps de ta fonction `countdown`."
+        }
+      ]
+    },
+    {
+      "file": "645c8fe0c9505407650c4ac6.md",
+      "id": "645c8fe0c9505407650c4ac6",
+      "dashedName": "step-58",
+      "title": {
+        "en": "Step 58",
+        "fr": "Étape 58"
+      },
+      "description": [
+        {
+          "en": "A recursive function is a function that calls itself over and over. But you have to be careful because you can easily create an infinite loop. That's where the <dfn>base case</dfn> comes in. The base case is when the function stops calling itself, and it is a good idea to write it first.",
+          "fr": "Une fonction récursive est une fonction qui s'appelle elle-même encore et encore. Mais tu dois faire attention, car tu peux facilement créer une boucle infinie. C'est là qu'intervient le <dfn>cas de base</dfn>. Le cas de base est le moment où la fonction arrête de s'appeler, et c'est une bonne idée de l'écrire en premier."
+        },
+        {
+          "en": "Since your `countdown()` function will count down from a given number to zero, the base case is when the `number` parameter is equal to `0`. Then it should `return` to break out of its recursive loop.",
+          "fr": "Comme ta fonction `countdown()` compte à rebours depuis un nombre donné jusqu'à zéro, le cas de base est quand le paramètre `number` est égal à `0`. Elle doit alors faire un `return` pour sortir de sa boucle récursive."
+        },
+        {
+          "en": "Use an `if` statement to check if `number` is equal to `0`. If it is, use the `return` keyword to break out of the function.",
+          "fr": "Utilise une instruction `if` pour vérifier si `number` est égal à `0`. Si c'est le cas, utilise le mot-clé `return` pour sortir de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `countdown` function should have an `if` statement that checks if `number` is equal to `0`.",
+          "fr": "Ta fonction `countdown` doit avoir une instruction `if` qui vérifie si `number` est égal à `0`."
+        },
+        {
+          "en": "Your `countdown` function should `return` when `number` is equal to `0`.",
+          "fr": "Ta fonction `countdown` doit faire un `return` quand `number` est égal à `0`."
+        }
+      ]
+    },
+    {
+      "file": "645c9e6cf5c7251f7b3308f6.md",
+      "id": "645c9e6cf5c7251f7b3308f6",
+      "dashedName": "step-59",
+      "title": {
+        "en": "Step 59",
+        "fr": "Étape 59"
+      },
+      "description": [
+        {
+          "en": "Recursive functions also have a <dfn>recursive case</dfn>, which is where the function calls itself.",
+          "fr": "Les fonctions récursives ont aussi un <dfn>cas récursif</dfn>, là où la fonction s'appelle elle-même."
+        },
+        {
+          "en": "First, convert your `if` statement into an `if...else` statement. Leave the body of your `else` statement empty for now.",
+          "fr": "D'abord, convertis ton instruction `if` en instruction `if...else`. Laisse le corps de ton instruction `else` vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should change your `if` statement into an `if...else` statement.",
+          "fr": "Tu dois transformer ton instruction `if` en une instruction `if...else`."
+        },
+        {
+          "en": "The body of your `else` statement should be empty.",
+          "fr": "Le corps de ton instruction `else` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "645ca381c8f87f263034954f.md",
+      "id": "645ca381c8f87f263034954f",
+      "dashedName": "step-60",
+      "title": {
+        "en": "Step 60",
+        "fr": "Étape 60"
+      },
+      "description": [
+        {
+          "en": "When writing the recursive case, you need to remember two things:",
+          "fr": "Quand tu rédiges le cas récursif, tu dois te souvenir de deux choses :"
+        },
+        {
+          "en": "1. What is the base case?\n2. What is the least amount of work you need to do to get closer to the base case?",
+          "fr": "1. Quel est le cas de base ?\n2. Quel est le minimum de travail à faire pour te rapprocher du cas de base ?"
+        },
+        {
+          "en": "Since the base case is when `number` is equal to `0`, you need to call `countdown()` again while also lowering the value of `number` by `1`.",
+          "fr": "Comme le cas de base est quand `number` est égal à `0`, tu dois appeler `countdown()` à nouveau tout en baissant la valeur de `number` de `1`."
+        },
+        {
+          "en": "Inside the `else` block, call `countdown()` and pass it `number - 1` as an argument.",
+          "fr": "Dans le bloc `else`, appelle `countdown()` et passe-lui `number - 1` comme argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `countdown()` within the body of your `else` statement.",
+          "fr": "Tu dois appeler `countdown()` dans le corps de ton instruction `else`."
+        },
+        {
+          "en": "You should pass `number - 1` as an argument to `countdown()`.",
+          "fr": "Tu dois passer `number - 1` comme argument à `countdown()`."
+        }
+      ]
+    },
+    {
+      "file": "645ca5ca11d0d7293e61c6c7.md",
+      "id": "645ca5ca11d0d7293e61c6c7",
+      "dashedName": "step-61",
+      "title": {
+        "en": "Step 61",
+        "fr": "Étape 61"
+      },
+      "description": [
+        {
+          "en": "It's time to test your function. Call `countdown()` with an argument of `3` to see if it works.",
+          "fr": "Il est temps de tester ta fonction. Appelle `countdown()` avec un argument de `3` pour voir si elle marche."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `countdown()` with an argument of `3`.",
+          "fr": "Tu dois appeler `countdown()` avec un argument de `3`."
+        }
+      ]
+    },
+    {
+      "file": "645ca62092c53f29f4ea9bf6.md",
+      "id": "645ca62092c53f29f4ea9bf6",
+      "dashedName": "step-62",
+      "title": {
+        "en": "Step 62",
+        "fr": "Étape 62"
+      },
+      "description": [
+        {
+          "en": "To really see the call stack in action, you just need to modify the function slightly.",
+          "fr": "Pour vraiment voir la pile d'appels en action, tu dois juste modifier un peu la fonction."
+        },
+        {
+          "en": "First, rename the `countdown()` function to `countDownAndUp()`. Remember to update your function calls, too.",
+          "fr": "D'abord, renomme la fonction `countdown()` en `countDownAndUp()`. N'oublie pas de mettre à jour tes appels aussi."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not have a function named `countdown()` in your code.",
+          "fr": "Tu ne dois pas avoir de fonction nommée `countdown()` dans ton code."
+        },
+        {
+          "en": "You should have a function named `countDownAndUp()` in your code.",
+          "fr": "Tu dois avoir une fonction nommée `countDownAndUp()` dans ton code."
+        },
+        {
+          "en": "Within the body of the `else` statement in your `countDownAndUp()` function, you should call `countDownAndUp()` with an argument of `number - 1`.",
+          "fr": "Dans le corps de l'instruction `else` de ta fonction `countDownAndUp()`, tu dois appeler `countDownAndUp()` avec l'argument `number - 1`."
+        },
+        {
+          "en": "You should call `countDownAndUp()` with an argument of `3`.",
+          "fr": "Tu dois appeler `countDownAndUp()` avec un argument de `3`."
+        }
+      ]
+    },
+    {
+      "file": "645cb1306eb27a397be7f18c.md",
+      "id": "645cb1306eb27a397be7f18c",
+      "dashedName": "step-63",
+      "title": {
+        "en": "Step 63",
+        "fr": "Étape 63"
+      },
+      "description": [
+        {
+          "en": "In your base case, log `\"Reached base case\"` to the console.",
+          "fr": "Dans ton cas de base, affiche `\"Reached base case\"` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `\"Reached base case\"` to the console in your base case.",
+          "fr": "Tu dois afficher `\"Reached base case\"` dans la console dans ton cas de base."
+        }
+      ]
+    },
+    {
+      "file": "645cb07132281a380223e458.md",
+      "id": "645cb07132281a380223e458",
+      "dashedName": "step-64",
+      "title": {
+        "en": "Step 64",
+        "fr": "Étape 64"
+      },
+      "description": [
+        {
+          "en": "Then, log `number` to the console after your recursive `countDownAndUp(number - 1)` function call.",
+          "fr": "Puis, affiche `number` dans la console après ton appel récursif `countDownAndUp(number - 1)`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `number` to the console after your recursive `countDownAndUp(number - 1)` function call.",
+          "fr": "Tu dois afficher `number` dans la console après ton appel récursif `countDownAndUp(number - 1)`."
+        }
+      ]
+    },
+    {
+      "file": "645cb0ce6dc93738b442b0d0.md",
+      "id": "645cb0ce6dc93738b442b0d0",
+      "dashedName": "step-65",
+      "title": {
+        "en": "Step 65",
+        "fr": "Étape 65"
+      },
+      "description": [
+        {
+          "en": "Now you should see a countdown from `3` to `0`, followed by `Reached base case`, and a count from `1` to `3`. This is because, after the recursive loop is finished, the function will continue to execute the code after the recursive call. This is why you see `Reached base case` before the count from `1` to `3`.",
+          "fr": "Tu dois maintenant voir un compte à rebours de `3` à `0`, suivi de `Reached base case`, puis un compte de `1` à `3`. C'est parce qu'après la boucle récursive, la fonction continue d'exécuter le code après l'appel récursif. C'est pourquoi tu vois `Reached base case` avant le compte de `1` à `3`."
+        },
+        {
+          "en": "Now that you have a better understanding of how the call stack and recursion work, you'll refactor the `decimalToBinary()` function to use recursion instead of a `while` loop.",
+          "fr": "Maintenant que tu comprends mieux la pile d'appels et la récursion, tu vas refactoriser `decimalToBinary()` pour utiliser la récursion au lieu d'une boucle `while`."
+        },
+        {
+          "en": "First, remove your `countDownAndUp()` function and function call.",
+          "fr": "D'abord, retire ta fonction `countDownAndUp()` et son appel."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your code should not have a function named `countDownAndUp`.",
+          "fr": "Ton code ne doit pas avoir de fonction nommée `countDownAndUp`."
+        },
+        {
+          "en": "Your code should not call the `countDownAndUp` function.",
+          "fr": "Ton code ne doit pas appeler la fonction `countDownAndUp`."
+        }
+      ]
+    },
+    {
+      "file": "645ce315efe609814258b0bc.md",
+      "id": "645ce315efe609814258b0bc",
+      "dashedName": "step-66",
+      "title": {
+        "en": "Step 66",
+        "fr": "Étape 66"
+      },
+      "description": [
+        {
+          "en": "Then, remove the contents of your `decimalToBinary()` function. Leave the body of the function empty for now.",
+          "fr": "Puis, retire le contenu de ta fonction `decimalToBinary()`. Laisse le corps de la fonction vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The body of your `decimalToBinary()` function should be empty.",
+          "fr": "Le corps de ta fonction `decimalToBinary()` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "645ce3c80f1c29824f1a8359.md",
+      "id": "645ce3c80f1c29824f1a8359",
+      "dashedName": "step-67",
+      "title": {
+        "en": "Step 67",
+        "fr": "Étape 67"
+      },
+      "description": [
+        {
+          "en": "As a reminder, it's often best to start with the base case when writing a recursive function so you know what you're working towards, and to prevent an infinite loop.",
+          "fr": "Pour rappel, il vaut souvent mieux commencer par le cas de base quand tu écris une fonction récursive, pour savoir où tu vas et éviter une boucle infinie."
+        },
+        {
+          "en": "Similar to your last implementation, you'll divide `input` by `2` repeatedly until `input` is `0`.",
+          "fr": "Comme dans ta dernière version, tu diviseras `input` par `2` plusieurs fois jusqu'à ce que `input` soit `0`."
+        },
+        {
+          "en": "Use an `if` statement to check if `input` is equal to `0`. If it is, `return` an empty string.",
+          "fr": "Utilise une instruction `if` pour vérifier si `input` est égal à `0`. Si c'est le cas, `return` une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use an `if` statement to check if `input` is equal to `0`.",
+          "fr": "Tu dois utiliser une instruction `if` pour vérifier si `input` est égal à `0`."
+        },
+        {
+          "en": "You should return an empty string if `input` is equal to `0`.",
+          "fr": "Tu dois renvoyer une chaîne vide si `input` est égal à `0`."
+        }
+      ]
+    },
+    {
+      "file": "645ce4375221138326895726.md",
+      "id": "645ce4375221138326895726",
+      "dashedName": "step-68",
+      "title": {
+        "en": "Step 68",
+        "fr": "Étape 68"
+      },
+      "description": [
+        {
+          "en": "For the recursive case, add an `else` statement and `return` the result of calling `decimalToBinary()`. Pass in `input` divided by `2` rounded down with `Math.floor()` as the argument.",
+          "fr": "Pour le cas récursif, ajoute une instruction `else` et `return` le résultat de l'appel à `decimalToBinary()`. Passe `input` divisé par `2` arrondi vers le bas avec `Math.floor()` comme argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should convert your `if` statement into an `if...else` statement.",
+          "fr": "Tu dois convertir ton instruction `if` en une instruction `if...else`."
+        },
+        {
+          "en": "Within the body of your `else` statement, you should `return` the result of calling `decimalToBinary`.",
+          "fr": "Dans le corps de ton instruction `else`, tu dois `return` le résultat de l'appel à `decimalToBinary`."
+        },
+        {
+          "en": "You should pass in `input` divided by `2` rounded down with `Math.floor()` as the argument to `decimalToBinary`.",
+          "fr": "Tu dois passer `input` divisé par `2` arrondi vers le bas avec `Math.floor()` comme argument à `decimalToBinary`."
+        }
+      ]
+    },
+    {
+      "file": "6461f79f4ea2ef042fb2c0f4.md",
+      "id": "6461f79f4ea2ef042fb2c0f4",
+      "dashedName": "step-69",
+      "title": {
+        "en": "Step 69",
+        "fr": "Étape 69"
+      },
+      "description": [
+        {
+          "en": "This effectively lowers the `input` by roughly half each time the `decimalToBinary()` function is called.",
+          "fr": "Cela réduit effectivement `input` d'environ la moitié à chaque appel de la fonction `decimalToBinary()`."
+        },
+        {
+          "en": "However, remember that the binary number string is built by calculating the remainder of `input` divided by `2` and concatenating that to the end.",
+          "fr": "Cependant, souviens-toi que la chaîne du nombre binaire se construit en calculant le reste de `input` divisé par `2` et en le concaténant à la fin."
+        },
+        {
+          "en": "After your call to `decimalToBinary()`, use the addition operator (`+`) to concatenate the remainder of `input` divided by `2` to the end of the string your recursive function returns. Also, wrap the operation in parentheses.",
+          "fr": "Après ton appel à `decimalToBinary()`, utilise l'opérateur d'addition (`+`) pour concaténer le reste de `input` divisé par `2` à la fin de la chaîne renvoyée par ta fonction récursive. Entoure aussi l'opération de parenthèses."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the addition operator (`+`) to concatenate the remainder of `input` divided by `2` to the end of the string your recursive function returns.",
+          "fr": "Tu dois utiliser l'opérateur d'addition (`+`) pour concaténer le reste de `input` divisé par `2` à la fin de la chaîne renvoyée par ta fonction récursive."
+        },
+        {
+          "en": "You should wrap `input % 2` in parentheses.",
+          "fr": "Tu dois envelopper `input % 2` entre parenthèses."
+        }
+      ]
+    },
+    {
+      "file": "6461fd4c1bc6620aed6435b2.md",
+      "id": "6461fd4c1bc6620aed6435b2",
+      "dashedName": "step-70",
+      "title": {
+        "en": "Step 70",
+        "fr": "Étape 70"
+      },
+      "description": [
+        {
+          "en": "Finally, in your `checkUserInput()` function, set the `textContent` property of `result` equal to the string returned by your `decimalToBinary()` function.",
+          "fr": "Enfin, dans ta fonction `checkUserInput()`, définis la propriété `textContent` de `result` égale à la chaîne renvoyée par ta fonction `decimalToBinary()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `textContent` property of `result` equal to the string returned by your `decimalToBinary()` function.",
+          "fr": "Tu dois définir la propriété `textContent` de `result` égale à la chaîne renvoyée par ta fonction `decimalToBinary()`."
+        },
+        {
+          "en": "You should continue to pass in `parseInt(numberInput.value)` as an argument to `decimalToBinary()`.",
+          "fr": "Tu dois continuer à passer `parseInt(numberInput.value)` comme argument à `decimalToBinary()`."
+        }
+      ]
+    },
+    {
+      "file": "64620068f97fe70ea47a9e75.md",
+      "id": "64620068f97fe70ea47a9e75",
+      "dashedName": "step-71",
+      "title": {
+        "en": "Step 71",
+        "fr": "Étape 71"
+      },
+      "description": [
+        {
+          "en": "Your converter should be working now. Feel free to try out different numbers and think about what is happening each time `decimalToBinary()` is called.",
+          "fr": "Ton convertisseur devrait marcher maintenant. N'hésite pas à tester différents nombres et à réfléchir à ce qui se passe à chaque appel de `decimalToBinary()`."
+        },
+        {
+          "en": "But if you test your converter with `0`, you'll see that nothing happens. This is because you return an empty string in your base case when `input` is `0`. We can fix this now.",
+          "fr": "Mais si tu testes ton convertisseur avec `0`, tu verras que rien ne se passe. C'est parce que tu renvoies une chaîne vide dans ton cas de base quand `input` est `0`. On peut corriger ça maintenant."
+        },
+        {
+          "en": "Update your base case so that it returns the string `\"0\"` when `input` is equal to `0`.",
+          "fr": "Mets à jour ton cas de base pour qu'il renvoie la chaîne `\"0\"` quand `input` est égal à `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should return the string `\"0\"` when `input` is equal to `0` in your base case.",
+          "fr": "Tu dois renvoyer la chaîne `\"0\"` quand `input` est égal à `0` dans ton cas de base."
+        }
+      ]
+    },
+    {
+      "file": "646203cdc054d012b5d71428.md",
+      "id": "646203cdc054d012b5d71428",
+      "dashedName": "step-72",
+      "title": {
+        "en": "Step 72",
+        "fr": "Étape 72"
+      },
+      "description": [
+        {
+          "en": "This mostly works – if you convert `0` into binary, `0` is displayed on the page. But now when you convert other numbers greater than `0`, your binary number starts with a leading `0`. For example, if you convert `1`, the result is `01`.",
+          "fr": "Ça marche presque – si tu convertis `0` en binaire, `0` s'affiche sur la page. Mais maintenant, quand tu convertis d'autres nombres plus grands que `0`, ton nombre binaire commence par un `0` en tête. Par exemple, si tu convertis `1`, le résultat est `01`."
+        },
+        {
+          "en": "But if you think about it, `0` and `1` in base-10 always convert to `0` and `1` in base-2, respectively. So you can add another base case to handle when `input` is `1`.",
+          "fr": "Mais si tu y réfléchis, `0` et `1` en base 10 se convertissent toujours en `0` et `1` en base 2, respectivement. Tu peux donc ajouter un autre cas de base pour gérer quand `input` est `1`."
+        },
+        {
+          "en": "Add an `else if` statement to your function that checks if `input` is equal to `1`. If it is, return the string `\"1\"`.",
+          "fr": "Ajoute une instruction `else if` à ta fonction qui vérifie si `input` est égal à `1`. Si c'est le cas, renvoie la chaîne `\"1\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `else if` statement to your `decimalToBinary()` function.",
+          "fr": "Tu dois ajouter une instruction `else if` à ta fonction `decimalToBinary()`."
+        },
+        {
+          "en": "For the condition of your `else if` statement, you should check if `input` is equal to `1`.",
+          "fr": "Pour la condition de ton instruction `else if`, tu dois vérifier si `input` est égal à `1`."
+        },
+        {
+          "en": "You should return the string `\"1\"` if `input` is equal to `1`.",
+          "fr": "Tu dois renvoyer la chaîne `\"1\"` si `input` est égal à `1`."
+        }
+      ]
+    },
+    {
+      "file": "6462060b0a8a2c15726649ec.md",
+      "id": "6462060b0a8a2c15726649ec",
+      "dashedName": "step-73",
+      "title": {
+        "en": "Step 73",
+        "fr": "Étape 73"
+      },
+      "description": [
+        {
+          "en": "Now everything should work as expected. And since you know that `input` will either be the numbers `0` or `1` at this point, you can combine your two base cases and just return `input` as a string.",
+          "fr": "Maintenant tout devrait marcher comme prévu. Et comme tu sais que `input` sera soit `0` soit `1` à ce stade, tu peux combiner tes deux cas de base et simplement renvoyer `input` comme chaîne."
+        },
+        {
+          "en": "For a reliable way to convert a value into a string, even falsy values like `null` and `undefined`, you can use the `String()` function. For example:",
+          "fr": "Pour convertir une valeur en chaîne de façon fiable, même les valeurs falsy comme `null` et `undefined`, tu peux utiliser la fonction `String()`. Par exemple :"
+        },
+        {
+          "en": "Combine your `if` and `else if` statements into a single `if` statement checking if `input` is equal to `0` or `1`. If it is, use the `String()` function to convert `input` into a string and return it.",
+          "fr": "Combine tes instructions `if` et `else if` en une seule instruction `if` qui vérifie si `input` est égal à `0` ou `1`. Si c'est le cas, utilise `String()` pour convertir `input` en chaîne et renvoie-la."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `decimalToBinary()` function should not have an `else if` statement.",
+          "fr": "Ta fonction `decimalToBinary()` ne doit pas avoir d'instruction `else if`."
+        },
+        {
+          "en": "Your `decimalToBinary()` function should have an `if` statement that checks if `input` is equal to `0` or `1`.",
+          "fr": "Ta fonction `decimalToBinary()` doit avoir une instruction `if` qui vérifie si `input` est égal à `0` ou `1`."
+        },
+        {
+          "en": "If input is equal to `0` or `1`, your `decimalToBinary()` function should return `String(input)`.",
+          "fr": "Si input est égal à `0` ou `1`, ta fonction `decimalToBinary()` doit renvoyer `String(input)`."
+        }
+      ]
+    },
+    {
+      "file": "64620800e0c6ab17f0e31d6d.md",
+      "id": "64620800e0c6ab17f0e31d6d",
+      "dashedName": "step-74",
+      "title": {
+        "en": "Step 74",
+        "fr": "Étape 74"
+      },
+      "description": [
+        {
+          "en": "Now your `decimalToBinary()` function is complete. Feel free to test it out.",
+          "fr": "Maintenant ta fonction `decimalToBinary()` est terminée. N'hésite pas à la tester."
+        },
+        {
+          "en": "If you're still confused about how it works under the hood, don't worry. Next, you'll create a simple animation to help you understand what's happening each step of the way.",
+          "fr": "Si tu es encore perdu sur son fonctionnement interne, ne t'inquiète pas. Ensuite, tu vas créer une animation simple pour comprendre ce qui se passe à chaque étape."
+        },
+        {
+          "en": "Create a new function called `showAnimation`. Leave the body of the function empty for now.",
+          "fr": "Crée une nouvelle fonction appelée `showAnimation`. Laisse le corps de la fonction vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `showAnimation`.",
+          "fr": "Tu dois créer une fonction nommée `showAnimation`."
+        },
+        {
+          "en": "The body of your `showAnimation` function should be empty.",
+          "fr": "Le corps de ta fonction `showAnimation` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "646463be7341819690797ad2.md",
+      "id": "646463be7341819690797ad2",
+      "dashedName": "step-75",
+      "title": {
+        "en": "Step 75",
+        "fr": "Étape 75"
+      },
+      "description": [
+        {
+          "en": "You'll show the animation when users try to convert the decimal number `5` to binary, so you'll need to add a check for that within your `checkUserInput()` function.",
+          "fr": "Tu afficheras l'animation quand les utilisateurs essaient de convertir le nombre décimal `5` en binaire, donc tu dois ajouter une vérification pour ça dans ta fonction `checkUserInput()`."
+        },
+        {
+          "en": "Use an `if` statement to check if the `value` attribute of `numberInput` is equal to the number `5`. Remember to use the `parseInt()` function to convert the string into a number before comparing it to `5`. Leave the `if` statement empty for now.",
+          "fr": "Utilise une instruction `if` pour vérifier si l'attribut `value` de `numberInput` est égal au nombre `5`. N'oublie pas d'utiliser `parseInt()` pour convertir la chaîne en nombre avant de la comparer à `5`. Laisse l'instruction `if` vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a second `if` statement to your `checkUserInput()` function, after the existing `if` statement.",
+          "fr": "Tu dois ajouter une deuxième instruction `if` à ta fonction `checkUserInput()`, après l'instruction `if` existante."
+        },
+        {
+          "en": "You should use the `parseInt()` function within the condition of your new `if` statement.",
+          "fr": "Tu dois utiliser la fonction `parseInt()` dans la condition de ta nouvelle instruction `if`."
+        },
+        {
+          "en": "You should check if the `value` attribute of `numberInput` is equal to `5`.",
+          "fr": "Tu dois vérifier si l'attribut `value` de `numberInput` est égal à `5`."
+        },
+        {
+          "en": "The body of your new `if` statement should be empty.",
+          "fr": "Le corps de ta nouvelle instruction `if` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "6464650a962e3d9852713549.md",
+      "id": "6464650a962e3d9852713549",
+      "dashedName": "step-76",
+      "title": {
+        "en": "Step 76",
+        "fr": "Étape 76"
+      },
+      "description": [
+        {
+          "en": "If the `value` of `numberInput` is equal to `5`, call the `showAnimation()` function, then `return` early.",
+          "fr": "Si la `value` de `numberInput` est égale à `5`, appelle la fonction `showAnimation()`, puis fais un `return` anticipé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `showAnimation()` function within the body of your second `if` statement.",
+          "fr": "Tu dois appeler la fonction `showAnimation()` dans le corps de ta deuxième instruction `if`."
+        },
+        {
+          "en": "After calling the `showAnimation()` function, you should use the `return` keyword to exit the `checkUserInput()` function early.",
+          "fr": "Après avoir appelé `showAnimation()`, tu dois utiliser le mot-clé `return` pour quitter tôt la fonction `checkUserInput()`."
+        }
+      ]
+    },
+    {
+      "file": "64646577f28ade99100a55c3.md",
+      "id": "64646577f28ade99100a55c3",
+      "dashedName": "step-77",
+      "title": {
+        "en": "Step 77",
+        "fr": "Étape 77"
+      },
+      "description": [
+        {
+          "en": "Now your `showAnimation()` function is set up. But if you look at your `checkUserInput()` function, you'll notice that it is calling `parseInt()` to convert `numberInput.value` into a number several times.",
+          "fr": "Ta fonction `showAnimation()` est maintenant en place. Mais si tu regardes `checkUserInput()`, tu verras qu'elle appelle `parseInt()` pour convertir `numberInput.value` en nombre plusieurs fois."
+        },
+        {
+          "en": "This is generally a poor practice, for reasons like performance concerns or even just the fact that you'd have to change your logic in multiple places to update the `parseInt()` call.",
+          "fr": "C'est en général une mauvaise pratique, pour des raisons de performance ou simplement parce que tu devrais changer ta logique à plusieurs endroits pour mettre à jour l'appel `parseInt()`."
+        },
+        {
+          "en": "To fix this, create a new variable to store the converted number. Then you only have to convert the number once and can use it throughout the function.",
+          "fr": "Pour corriger ça, crée une nouvelle variable pour stocker le nombre converti. Tu n'auras alors à convertir le nombre qu'une seule fois et pourras l'utiliser dans toute la fonction."
+        },
+        {
+          "en": "Create a new variable called `inputInt` and assign it the number converted from `numberInput.value`.",
+          "fr": "Crée une nouvelle variable appelée `inputInt` et assigne-lui le nombre converti depuis `numberInput.value`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a new variable called `inputInt`.",
+          "fr": "Tu dois créer une nouvelle variable appelée `inputInt`."
+        },
+        {
+          "en": "You should use the `parseInt()` function to convert the `value` of `numberInput` into a number and assign it to `inputInt`.",
+          "fr": "Tu dois utiliser `parseInt()` pour convertir la `value` de `numberInput` en nombre et l'assigner à `inputInt`."
+        }
+      ]
+    },
+    {
+      "file": "646467130d7acc9b4e565c42.md",
+      "id": "646467130d7acc9b4e565c42",
+      "dashedName": "step-78",
+      "title": {
+        "en": "Step 78",
+        "fr": "Étape 78"
+      },
+      "description": [
+        {
+          "en": "Replace all instances of `parseInt(numberInput.value)` with `inputInt`.",
+          "fr": "Remplace toutes les occurrences de `parseInt(numberInput.value)` par `inputInt`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should replace `isNaN(parseInt(numberInput.value))` with `isNaN(inputInt)` and `parseInt(numberInput.value) < 0` with `inputInt < 0`.",
+          "fr": "Tu dois remplacer `isNaN(parseInt(numberInput.value))` par `isNaN(inputInt)` et `parseInt(numberInput.value) < 0` par `inputInt < 0`."
+        },
+        {
+          "en": "You should replace `parseInt(numberInput.value) === 5` with `inputInt === 5`.",
+          "fr": "Tu dois remplacer `parseInt(numberInput.value) === 5` par `inputInt === 5`."
+        },
+        {
+          "en": "You should replace `decimalToBinary(parseInt(numberInput.value))` with `decimalToBinary(inputInt)`.",
+          "fr": "Tu dois remplacer `decimalToBinary(parseInt(numberInput.value))` par `decimalToBinary(inputInt)`."
+        },
+        {
+          "en": "Your `checkUserInput()` function should only contain one instance of `parseInt(numberInput.value)`.",
+          "fr": "Ta fonction `checkUserInput()` ne doit contenir qu'une seule occurrence de `parseInt(numberInput.value)`."
+        }
+      ]
+    },
+    {
+      "file": "646467683f25e19bfc9cf9b0.md",
+      "id": "646467683f25e19bfc9cf9b0",
+      "dashedName": "step-79",
+      "title": {
+        "en": "Step 79",
+        "fr": "Étape 79"
+      },
+      "description": [
+        {
+          "en": "Now that your `showAnimation()` function is set up, let's do some testing.",
+          "fr": "Maintenant que ta fonction `showAnimation()` est en place, faisons quelques tests."
+        },
+        {
+          "en": "Add three `console.log()` statements in the `showAnimation()` function to log the text `\"free\"`, `\"Code\"`, and `\"Camp\"` to the console. You should see that text in the console when you enter `5` into the number input and click the `Convert` button.",
+          "fr": "Ajoute trois instructions `console.log()` dans `showAnimation()` pour afficher les textes `\"free\"`, `\"Code\"` et `\"Camp\"` dans la console. Tu dois voir ce texte dans la console quand tu saisis `5` dans le champ nombre et cliques sur le bouton `Convert`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `console.log()` statement for the string `\"free\"`.",
+          "fr": "Tu dois ajouter une instruction `console.log()` pour la chaîne `\"free\"`."
+        },
+        {
+          "en": "You should add a `console.log()` statement for the string `\"Code\"`.",
+          "fr": "Tu dois ajouter une instruction `console.log()` pour la chaîne `\"Code\"`."
+        },
+        {
+          "en": "You should add a `console.log()` statement for the string `\"Camp\"`.",
+          "fr": "Tu dois ajouter une instruction `console.log()` pour la chaîne `\"Camp\"`."
+        }
+      ]
+    },
+    {
+      "file": "64646bc0e5a60ea131e03f91.md",
+      "id": "64646bc0e5a60ea131e03f91",
+      "dashedName": "step-80",
+      "title": {
+        "en": "Step 80",
+        "fr": "Étape 80"
+      },
+      "description": [
+        {
+          "en": "Before you start writing code for the animation, let's take a look at the function you'll use to add and remove elements from the DOM: `setTimeout`.",
+          "fr": "Avant d'écrire le code de l'animation, regardons la fonction que tu utiliseras pour ajouter et retirer des éléments du DOM : `setTimeout`."
+        },
+        {
+          "en": "The `setTimeout` function takes two arguments: a callback function and a number representing the time in milliseconds to wait before executing the callback function.",
+          "fr": "La fonction `setTimeout` prend deux arguments : une fonction de rappel et un nombre représentant le temps en millisecondes à attendre avant d'exécuter la fonction de rappel."
+        },
+        {
+          "en": "For example, if you wanted to log `\"Hello, world!\"` to the console after `3` seconds, you would write:",
+          "fr": "Par exemple, si tu voulais afficher `\"Hello, world!\"` dans la console après `3` secondes, tu écrirais :"
+        },
+        {
+          "en": "Use the `setTimeout` function to add a one second delay before the text `\"Code\"` is logged to the console. Then see what happens after you enter `5` into the number input and click the `Convert` button.",
+          "fr": "Utilise `setTimeout` pour ajouter un délai d'une seconde avant que le texte `\"Code\"` soit affiché dans la console. Puis vois ce qui se passe après avoir saisi `5` dans le champ nombre et cliqué sur le bouton `Convert`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `showAnimation()` function should contain a call to the `setTimeout` function.",
+          "fr": "Ta fonction `showAnimation()` doit contenir un appel à la fonction `setTimeout`."
+        },
+        {
+          "en": "You should pass a callback function as the first argument to the `setTimeout` function.",
+          "fr": "Tu dois passer une fonction de rappel comme premier argument à la fonction `setTimeout`."
+        },
+        {
+          "en": "Within the callback function, you should log the text `\"Code\"` to the console.",
+          "fr": "Dans la fonction de rappel, tu dois afficher le texte `\"Code\"` dans la console."
+        },
+        {
+          "en": "You should pass `1000` as the second argument to the `setTimeout` function.",
+          "fr": "Tu dois passer `1000` comme deuxième argument à la fonction `setTimeout`."
+        }
+      ]
+    },
+    {
+      "file": "64646db2c684b7a3a174a1d0.md",
+      "id": "64646db2c684b7a3a174a1d0",
+      "dashedName": "step-81",
+      "title": {
+        "en": "Step 81",
+        "fr": "Étape 81"
+      },
+      "description": [
+        {
+          "en": "If you test your code, you'll notice that your console logs are not in the expected order. Instead of logging `\"free\"`, pausing for a second before logging `\"Code\"`, and finally logging `\"Camp\"`, you'll see this:",
+          "fr": "Si tu testes ton code, tu verras que tes logs console ne sont pas dans l'ordre attendu. Au lieu d'afficher `\"free\"`, de pauser une seconde avant d'afficher `\"Code\"`, puis enfin `\"Camp\"`, tu verras ceci :"
+        },
+        {
+          "en": "This is because the `setTimeout()` function is <dfn>asynchronous</dfn>, meaning that it doesn't stop the execution of the rest of your code. All the code in the `showAnimation()` function runs line by line, but because `setTimeout()` is asynchronous, `free` and `Camp` are logged to the console immediately, and then `Code` is logged to the console after a one second delay.",
+          "fr": "C'est parce que la fonction `setTimeout()` est <dfn>asynchronous</dfn>, ce qui signifie qu'elle n'arrête pas l'exécution du reste de ton code. Tout le code de `showAnimation()` s'exécute ligne par ligne, mais comme `setTimeout()` est asynchrone, `free` et `Camp` s'affichent tout de suite, puis `Code` s'affiche après un délai d'une seconde."
+        },
+        {
+          "en": "One way to fix this is to use multiple `setTimeout()` functions. Use `setTimeout()` to log `free` to the console after half a second, or `500` milliseconds.",
+          "fr": "Une façon de corriger ça est d'utiliser plusieurs fonctions `setTimeout()`. Utilise `setTimeout()` pour afficher `free` dans la console après une demi-seconde, soit `500` millisecondes."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a second `setTimeout()` function to your `showAnimation()` function.",
+          "fr": "Tu dois ajouter une deuxième fonction `setTimeout()` à ta fonction `showAnimation()`."
+        },
+        {
+          "en": "You should pass a callback function as the first argument to the new `setTimeout()` function.",
+          "fr": "Tu dois passer une fonction de rappel comme premier argument à la nouvelle fonction `setTimeout()`."
+        },
+        {
+          "en": "Within the new `setTimeout()` function's callback, you should log the text `\"free\"` to the console.",
+          "fr": "Dans le rappel de la nouvelle fonction `setTimeout()`, tu dois afficher le texte `\"free\"` dans la console."
+        },
+        {
+          "en": "You should pass `500` as the second argument to the new `setTimeout()` function.",
+          "fr": "Tu dois passer `500` comme deuxième argument à la nouvelle fonction `setTimeout()`."
+        }
+      ]
+    },
+    {
+      "file": "646477c82475ffaf0c3c0771.md",
+      "id": "646477c82475ffaf0c3c0771",
+      "dashedName": "step-82",
+      "title": {
+        "en": "Step 82",
+        "fr": "Étape 82"
+      },
+      "description": [
+        {
+          "en": "While asynchronous, or async, code can be difficult to understand at first, it has many advantages. One of the most important is that it allows you to write non-blocking code.",
+          "fr": "Bien que le code asynchrone, ou async, puisse être difficile à comprendre au début, il a de nombreux avantages. L'un des plus importants est qu'il te permet d'écrire du code non bloquant."
+        },
+        {
+          "en": "For example, imagine you're baking a cake, and you put the cake in the oven and set a timer. You don't have to sit in front of the oven waiting the entire time – you can wash dishes, read a book, or do anything else while you wait for the timer to go off.",
+          "fr": "Par exemple, imagine que tu fais un gâteau : tu le mets au four et tu règles un minuteur. Tu n'as pas à rester devant le four tout le temps – tu peux faire la vaisselle, lire un livre, ou faire autre chose en attendant que le minuteur sonne."
+        },
+        {
+          "en": "Async code works in a similar way. You can start an async operation and other parts of your code will still work while that operation is running.",
+          "fr": "Le code async fonctionne de façon similaire. Tu peux démarrer une opération async et d'autres parties de ton code continueront de marcher pendant que cette opération tourne."
+        },
+        {
+          "en": "You'll learn more about async code in a future module, but the `setTimeout()` function is a good introduction.",
+          "fr": "Tu en apprendras plus sur le code async dans un futur module, mais la fonction `setTimeout()` est une bonne introduction."
+        },
+        {
+          "en": "Add a `1500` millisecond delay before the text `\"Camp\"` is logged to the console.",
+          "fr": "Ajoute un délai de `1500` millisecondes avant que le texte `\"Camp\"` soit affiché dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a third `setTimeout()` function to your `showAnimation()` function.",
+          "fr": "Tu dois ajouter une troisième fonction `setTimeout()` à ta fonction `showAnimation()`."
+        },
+        {
+          "en": "You should pass a callback function as the first argument to the new `setTimeout()` function.",
+          "fr": "Tu dois passer une fonction de rappel comme premier argument à la nouvelle fonction `setTimeout()`."
+        },
+        {
+          "en": "Within the new `setTimeout()` function's callback, you should log the text `Camp` to the console.",
+          "fr": "Dans le rappel de la nouvelle fonction `setTimeout()`, tu dois afficher le texte `Camp` dans la console."
+        },
+        {
+          "en": "You should pass `1500` as the second argument to the new `setTimeout()` function.",
+          "fr": "Tu dois passer `1500` comme deuxième argument à la nouvelle fonction `setTimeout()`."
+        }
+      ]
+    },
+    {
+      "file": "64647cf70a4556b5105e65b2.md",
+      "id": "64647cf70a4556b5105e65b2",
+      "dashedName": "step-83",
+      "title": {
+        "en": "Step 83",
+        "fr": "Étape 83"
+      },
+      "description": [
+        {
+          "en": "Now you're ready to start on the animation itself. You'll use an array of objects to store data for each frame of the animation.",
+          "fr": "Tu es prêt à commencer l'animation elle-même. Tu utiliseras un tableau d'objets pour stocker les données de chaque image de l'animation."
+        },
+        {
+          "en": "First, create a new variable called `animationData` and assign it an empty array.",
+          "fr": "D'abord, crée une nouvelle variable appelée `animationData` et assigne-lui un tableau vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `animationData`.",
+          "fr": "Tu dois créer une variable nommée `animationData`."
+        },
+        {
+          "en": "Your `animationData` variable should be an empty array.",
+          "fr": "Ta variable `animationData` doit être un tableau vide."
+        }
+      ]
+    },
+    {
+      "file": "64648534ff5498bee5dceb28.md",
+      "id": "64648534ff5498bee5dceb28",
+      "dashedName": "step-84",
+      "title": {
+        "en": "Step 84",
+        "fr": "Étape 84"
+      },
+      "description": [
+        {
+          "en": "Next, you'll create an object to represent the first frame of your animation. Your object should have two properties or keys: `inputVal`, and `addElDelay`.",
+          "fr": "Ensuite, tu vas créer un objet pour représenter la première image de ton animation. Ton objet doit avoir deux propriétés ou clés : `inputVal`, et `addElDelay`."
+        },
+        {
+          "en": "`inputVal` will represent the value of the input each time your recursive function runs. And `addElDelay` will be the delay between adding DOM elements to the page.",
+          "fr": "`inputVal` représentera la valeur de l'entrée à chaque exécution de ta fonction récursive. Et `addElDelay` sera le délai entre l'ajout d'éléments DOM à la page."
+        },
+        {
+          "en": "Add an object to `animationData` with an `inputVal` property set to `5`, and an `addElDelay` property set to `1000`.",
+          "fr": "Ajoute un objet à `animationData` avec une propriété `inputVal` égale à `5`, et une propriété `addElDelay` égale à `1000`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `animationData` array should have a length of `1`.",
+          "fr": "Le tableau `animationData` doit avoir une longueur de `1`."
+        },
+        {
+          "en": "The `animationData` array should contain an object.",
+          "fr": "Le tableau `animationData` doit contenir un objet."
+        },
+        {
+          "en": "You should add an `inputVal` property to the object.",
+          "fr": "Tu dois ajouter une propriété `inputVal` à l'objet."
+        },
+        {
+          "en": "You should set the value of the `inputVal` property to the number `5`.",
+          "fr": "Tu dois définir la valeur de la propriété `inputVal` au nombre `5`."
+        },
+        {
+          "en": "You should add an `addElDelay` property to the object.",
+          "fr": "Tu dois ajouter une propriété `addElDelay` à l'objet."
+        },
+        {
+          "en": "You should set the value of the `addElDelay` property to the number `1000`.",
+          "fr": "Tu dois définir la valeur de la propriété `addElDelay` au nombre `1000`."
+        }
+      ]
+    },
+    {
+      "file": "646486adf52652c0ee103aab.md",
+      "id": "646486adf52652c0ee103aab",
+      "dashedName": "step-85",
+      "title": {
+        "en": "Step 85",
+        "fr": "Étape 85"
+      },
+      "description": [
+        {
+          "en": "Recall that the call stack is a LIFO (last in, first out) data structure. This means that, as functions are called, they are added to the top or end of the stack, and as functions return, they are removed from the top of the stack.",
+          "fr": "Rappelle-toi que la pile d'appels est une structure de données LIFO (dernier entré, premier sorti). Cela signifie que, quand des fonctions sont appelées, elles sont ajoutées en haut ou à la fin de la pile, et quand elles renvoient, elles sont retirées du haut de la pile."
+        },
+        {
+          "en": "Treat your `animationData` array as a stack and add a new object to it. Your new object should have the properties `inputVal`, and `addElDelay` set to `2`, and `1500`, respectively. Remember to add this object to the top of the stack, or in other words, to the end of the `animationData` array.",
+          "fr": "Traite ton tableau `animationData` comme une pile et ajoute-y un nouvel objet. Ton nouvel objet doit avoir les propriétés `inputVal` et `addElDelay` définies à `2` et `1500`, respectivement. N'oublie pas d'ajouter cet objet en haut de la pile, autrement dit à la fin du tableau `animationData`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `animationData` array should have a length of `2`.",
+          "fr": "Le tableau `animationData` doit avoir une longueur de `2`."
+        },
+        {
+          "en": "Each element in the `animationData` array should be an object.",
+          "fr": "Chaque élément du tableau `animationData` doit être un objet."
+        },
+        {
+          "en": "You should add an `inputVal` property to the object at the top of the stack.",
+          "fr": "Tu dois ajouter une propriété `inputVal` à l'objet en haut de la pile."
+        },
+        {
+          "en": "You should set the value of the `inputVal` property to the number `2`.",
+          "fr": "Tu dois définir la valeur de la propriété `inputVal` au nombre `2`."
+        },
+        {
+          "en": "You should add an `addElDelay` property to the object at the top of the stack.",
+          "fr": "Tu dois ajouter une propriété `addElDelay` à l'objet en haut de la pile."
+        },
+        {
+          "en": "You should set the value of the `addElDelay` property to the number `1500`.",
+          "fr": "Tu dois définir la valeur de la propriété `addElDelay` au nombre `1500`."
+        }
+      ]
+    },
+    {
+      "file": "64648963e014f8c42a65b83a.md",
+      "id": "64648963e014f8c42a65b83a",
+      "dashedName": "step-86",
+      "title": {
+        "en": "Step 86",
+        "fr": "Étape 86"
+      },
+      "description": [
+        {
+          "en": "Add another object to the `animationData` array. Your new object should have the properties `inputVal`, and `addElDelay` set to `1`, and `2000`, respectively. Remember to treat the `animationData` array as a stack and add the new object to the top of the stack.",
+          "fr": "Ajoute un autre objet au tableau `animationData`. Ton nouvel objet doit avoir les propriétés `inputVal` et `addElDelay` définies à `1` et `2000`, respectivement. N'oublie pas de traiter le tableau `animationData` comme une pile et d'ajouter le nouvel objet au sommet de la pile."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `animationData` array should have a length of `3`.",
+          "fr": "Le tableau `animationData` devrait avoir une longueur de `3`."
+        },
+        {
+          "en": "Each element in the `animationData` array should be an object.",
+          "fr": "Chaque élément du tableau `animationData` doit être un objet."
+        },
+        {
+          "en": "You should add an `inputVal` property to the object at the top of the stack.",
+          "fr": "Tu dois ajouter une propriété `inputVal` à l'objet en haut de la pile."
+        },
+        {
+          "en": "You should set the value of the `inputVal` property to the number `1`.",
+          "fr": "Tu dois définir la valeur de la propriété `inputVal` au nombre `1`."
+        },
+        {
+          "en": "You should add an `addElDelay` property to the object at the top of the stack.",
+          "fr": "Tu dois ajouter une propriété `addElDelay` à l'objet en haut de la pile."
+        },
+        {
+          "en": "You should set the value of the `addElDelay` property to the number `2000`.",
+          "fr": "Tu dois définir la valeur de la propriété `addElDelay` au nombre `2000`."
+        }
+      ]
+    },
+    {
+      "file": "646493b7dc53b5d45c9c50fc.md",
+      "id": "646493b7dc53b5d45c9c50fc",
+      "dashedName": "step-87",
+      "title": {
+        "en": "Step 87",
+        "fr": "Étape 87"
+      },
+      "description": [
+        {
+          "en": "Now you'll start building the animation itself.",
+          "fr": "Maintenant, tu vas commencer à construire l'animation elle-même."
+        },
+        {
+          "en": "First, use the `document.getElementById()` method to select the element with the id `animation-container` and assign it to a variable called `animationContainer`.",
+          "fr": "D'abord, utilise la méthode `document.getElementById()` pour sélectionner l'élément avec l'id `animation-container` et assigne-le à une variable appelée `animationContainer`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `document.getElementById()` method to get the `#animation-container` element.",
+          "fr": "Tu dois utiliser la méthode `document.getElementById()` pour obtenir l'élément `#animation-container`."
+        },
+        {
+          "en": "You should use `const` to declare a variable called `animationContainer` and assign it the `#animation-container` element.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable appelée `animationContainer` et lui assigner l'élément `#animation-container`."
+        }
+      ]
+    },
+    {
+      "file": "64648c3703ad2ec796ab8d1e.md",
+      "id": "64648c3703ad2ec796ab8d1e",
+      "dashedName": "step-88",
+      "title": {
+        "en": "Step 88",
+        "fr": "Étape 88"
+      },
+      "description": [
+        {
+          "en": "Next, clear out your `showAnimation()` function by removing all of your `setTimeout()` calls.",
+          "fr": "Ensuite, vide ta fonction `showAnimation()` en retirant tous tes appels à `setTimeout()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove all of the `setTimeout()` calls from your `showAnimation()` function.",
+          "fr": "Tu dois retirer tous les appels à `setTimeout()` de ta fonction `showAnimation()`."
+        },
+        {
+          "en": "The body of your `showAnimation()` function should be empty.",
+          "fr": "Le corps de ta fonction `showAnimation()` devrait être vide."
+        }
+      ]
+    },
+    {
+      "file": "64648cf52e1ce1c8c00956ae.md",
+      "id": "64648cf52e1ce1c8c00956ae",
+      "dashedName": "step-89",
+      "title": {
+        "en": "Step 89",
+        "fr": "Étape 89"
+      },
+      "description": [
+        {
+          "en": "Now you'll start building the animation itself.",
+          "fr": "Maintenant, tu vas commencer à construire l'animation elle-même."
+        },
+        {
+          "en": "First, set the `innerText` property of `result` to `\"Call Stack Animation\"`.",
+          "fr": "D'abord, définis la propriété `innerText` de `result` à `\"Call Stack Animation\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `innerText` property of `result` to the string `\"Call Stack Animation\"`.",
+          "fr": "Tu dois définir la propriété `innerText` de `result` à la chaîne `\"Call Stack Animation\"`."
+        },
+        {
+          "en": "After calling the `showAnimation` function, the `innerText` property of `result` should be `\"Call Stack Animation\"`.",
+          "fr": "Après avoir appelé la fonction `showAnimation`, la propriété `innerText` de `result` devrait être `\"Call Stack Animation\"`."
+        }
+      ]
+    },
+    {
+      "file": "6464905afec9efcf7328ce58.md",
+      "id": "6464905afec9efcf7328ce58",
+      "dashedName": "step-90",
+      "title": {
+        "en": "Step 90",
+        "fr": "Étape 90"
+      },
+      "description": [
+        {
+          "en": "Next, use the `.forEach()` method to loop through the `animationData` array. For the `.forEach()` method's callback function, pass in `obj` as a parameter, but leave the body of the callback function empty for now.",
+          "fr": "Ensuite, utilise la méthode `.forEach()` pour parcourir le tableau `animationData`. Pour la fonction de rappel de la méthode `.forEach()`, passe `obj` comme paramètre, mais laisse le corps de la fonction de rappel vide pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.forEach()` method to loop through the `animationData` array.",
+          "fr": "Tu dois utiliser la méthode `.forEach()` pour parcourir le tableau `animationData`."
+        },
+        {
+          "en": "You should pass in `obj` as a parameter to the `.forEach()` method's callback function.",
+          "fr": "Tu dois passer `obj` comme paramètre à la fonction de rappel de la méthode `.forEach()`."
+        },
+        {
+          "en": "The body of your `.forEach()` method's callback function should be empty.",
+          "fr": "Le corps de la fonction de rappel de ta méthode `.forEach()` devrait être vide."
+        }
+      ]
+    },
+    {
+      "file": "646491d2c856afd17c2f380d.md",
+      "id": "646491d2c856afd17c2f380d",
+      "dashedName": "step-91",
+      "title": {
+        "en": "Step 91",
+        "fr": "Étape 91"
+      },
+      "description": [
+        {
+          "en": "Since you have the timing for each frame of animation stored in `addElDelay`, you can use that value with `setTimeout()` to set up the delay to add elements to the DOM.",
+          "fr": "Puisque tu as le timing de chaque image de l'animation stocké dans `addElDelay`, tu peux utiliser cette valeur avec `setTimeout()` pour définir le délai d'ajout des éléments au DOM."
+        },
+        {
+          "en": "Within the body of the `.forEach()` method's callback function, add a `setTimeout()` function. Pass in an empty callback function as the first argument, and `obj.addElDelay` as the second argument.",
+          "fr": "Dans le corps de la fonction de rappel de la méthode `.forEach()`, ajoute une fonction `setTimeout()`. Passe une fonction de rappel vide comme premier argument, et `obj.addElDelay` comme deuxième argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the `setTimeout()` function within the body of your `.forEach()` method's callback function.",
+          "fr": "Tu dois ajouter la fonction `setTimeout()` dans le corps de la fonction de rappel de ta méthode `.forEach()`."
+        },
+        {
+          "en": "You should pass in an empty callback function as the first argument to the `setTimeout()` function.",
+          "fr": "Tu dois passer une fonction de rappel vide comme premier argument à la fonction `setTimeout()`."
+        },
+        {
+          "en": "The body of your `setTimeout()` function's callback function should be empty.",
+          "fr": "Le corps de la fonction de rappel de ta fonction `setTimeout()` devrait être vide."
+        },
+        {
+          "en": "You should pass in `obj.addElDelay` as the second argument to the `setTimeout()` function.",
+          "fr": "Tu dois passer `obj.addElDelay` comme deuxième argument à la fonction `setTimeout()`."
+        }
+      ]
+    },
+    {
+      "file": "646492f5c672c9d32f340c22.md",
+      "id": "646492f5c672c9d32f340c22",
+      "dashedName": "step-92",
+      "title": {
+        "en": "Step 92",
+        "fr": "Étape 92"
+      },
+      "description": [
+        {
+          "en": "Then, use the compound assignment operator (`+=`) to set the `innerHTML` property of the `animationContainer` to an empty template literal string.",
+          "fr": "Ensuite, utilise l'opérateur d'affectation composé (`+=`) pour définir la propriété `innerHTML` de `animationContainer` à une chaîne littérale de gabarit vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the compound assignment operator (`+=`) to set the `innerHTML` property of the `animationContainer` to an empty template literal string.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation composé (`+=`) pour définir la propriété `innerHTML` de `animationContainer` à une chaîne littérale de gabarit vide."
+        }
+      ]
+    },
+    {
+      "file": "64649b243b9cc3ddabacc593.md",
+      "id": "64649b243b9cc3ddabacc593",
+      "dashedName": "step-93",
+      "title": {
+        "en": "Step 93",
+        "fr": "Étape 93"
+      },
+      "description": [
+        {
+          "en": "Within the template literal, add a paragraph element with the `id` attribute equal to an empty string.",
+          "fr": "Dans le littéral de gabarit, ajoute un élément paragraphe avec l'attribut `id` égal à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `id` attribute to the paragraph element.",
+          "fr": "Tu dois ajouter un attribut `id` à l'élément paragraphe."
+        },
+        {
+          "en": "You should set the value of the `id` attribute to an empty string.",
+          "fr": "Tu dois définir la valeur de l'attribut `id` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "64649c6d77059edf80279a32.md",
+      "id": "64649c6d77059edf80279a32",
+      "dashedName": "step-94",
+      "title": {
+        "en": "Step 94",
+        "fr": "Étape 94"
+      },
+      "description": [
+        {
+          "en": "Next, use string interpolation to set the `id` attribute to the `inputVal` property of the current object, `obj`.",
+          "fr": "Ensuite, utilise l'interpolation de chaîne pour définir l'attribut `id` à la propriété `inputVal` de l'objet courant, `obj`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use string interpolation to set the `id` attribute to the `inputVal` property of `obj`.",
+          "fr": "Tu dois utiliser l'interpolation de chaîne pour définir l'attribut `id` à la propriété `inputVal` de `obj`."
+        }
+      ]
+    },
+    {
+      "file": "64649efb555939e30462c79b.md",
+      "id": "64649efb555939e30462c79b",
+      "dashedName": "step-95",
+      "title": {
+        "en": "Step 95",
+        "fr": "Étape 95"
+      },
+      "description": [
+        {
+          "en": "Add a `class` attribute set to `\"animation-frame\"`.",
+          "fr": "Ajoute un attribut `class` défini à `\"animation-frame\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `class` attribute to the paragraph element.",
+          "fr": "Tu dois ajouter un attribut `class` à l'élément paragraphe."
+        },
+        {
+          "en": "You should set the value of the `class` attribute to `\"animation-frame\"`.",
+          "fr": "Tu dois définir la valeur de l'attribut `class` à `\"animation-frame\"`."
+        }
+      ]
+    },
+    {
+      "file": "64649f91446721e3ff391d88.md",
+      "id": "64649f91446721e3ff391d88",
+      "dashedName": "step-96",
+      "title": {
+        "en": "Step 96",
+        "fr": "Étape 96"
+      },
+      "description": [
+        {
+          "en": "Finally, use string interpolation to set the text of the paragraph element to `decimalToBinary(${currVal})`, where `currVal` is the `inputVal` property of the current object. After this, test out your code by entering the number `5` into the number input and clicking the `Convert` button.",
+          "fr": "Enfin, utilise l'interpolation de chaîne pour définir le texte de l'élément paragraphe à `decimalToBinary(${currVal})`, où `currVal` est la propriété `inputVal` de l'objet courant. Ensuite, teste ton code en saisissant le nombre `5` dans le champ numérique et en cliquant sur le bouton `Convert`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use string interpolation to set the text of the paragraph element to `decimalToBinary(${obj.inputVal})`.",
+          "fr": "Tu dois utiliser l'interpolation de chaîne pour définir le texte de l'élément paragraphe à `decimalToBinary(${obj.inputVal})`."
+        }
+      ]
+    },
+    {
+      "file": "6464a057702d04e537d56d49.md",
+      "id": "6464a057702d04e537d56d49",
+      "dashedName": "step-97",
+      "title": {
+        "en": "Step 97",
+        "fr": "Étape 97"
+      },
+      "description": [
+        {
+          "en": "Now it's time to set up for the next phase of the animation where you'll update and remove the paragraphs you append to the DOM during the animation.",
+          "fr": "Il est maintenant temps de préparer la prochaine phase de l'animation, où tu mettras à jour et retireras les paragraphes que tu ajoutes au DOM pendant l'animation."
+        },
+        {
+          "en": "Add the property `msg` to the animation object at the top of the stack, and set its value to an empty string.",
+          "fr": "Ajoute la propriété `msg` à l'objet d'animation au sommet de la pile, et définis sa valeur à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the property `msg` to the animation object at the top of the stack.",
+          "fr": "Tu dois ajouter la propriété `msg` à l'objet d'animation au sommet de la pile."
+        },
+        {
+          "en": "You should set the value of the `msg` property to an empty string.",
+          "fr": "Tu dois définir la valeur de la propriété `msg` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "6464a6d98c43acecb8a7867b.md",
+      "id": "6464a6d98c43acecb8a7867b",
+      "dashedName": "step-98",
+      "title": {
+        "en": "Step 98",
+        "fr": "Étape 98"
+      },
+      "description": [
+        {
+          "en": "Set the value of the `msg` property to the following string:",
+          "fr": "Définis la valeur de la propriété `msg` à la chaîne suivante :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your animation object at the top of the stack should have `msg` property.",
+          "fr": "Ton objet d'animation au sommet de la pile devrait avoir la propriété `msg`."
+        },
+        {
+          "en": "You should set the value of the `msg` property to `\"decimalToBinary(1) returns '1' (base case) and gives that value to the stack below. Then it pops off the stack.\"`",
+          "fr": "Tu dois définir la valeur de la propriété `msg` à `\"decimalToBinary(1) returns '1' (base case) and gives that value to the stack below. Then it pops off the stack.\"`"
+        }
+      ]
+    },
+    {
+      "file": "6464a9f7d81939f08d04f435.md",
+      "id": "6464a9f7d81939f08d04f435",
+      "dashedName": "step-99",
+      "title": {
+        "en": "Step 99",
+        "fr": "Étape 99"
+      },
+      "description": [
+        {
+          "en": "Next, add the property `showMsgDelay` with the value `5000` and `removeElDelay` with the value `10000`.",
+          "fr": "Ensuite, ajoute la propriété `showMsgDelay` avec la valeur `5000` et `removeElDelay` avec la valeur `10000`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the property `showMsgDelay` to the animation object at the top of the stack.",
+          "fr": "Tu dois ajouter la propriété `showMsgDelay` à l'objet d'animation au sommet de la pile."
+        },
+        {
+          "en": "You should set the value of the `showMsgDelay` property to `5000`.",
+          "fr": "Tu dois définir la valeur de la propriété `showMsgDelay` à `5000`."
+        },
+        {
+          "en": "You should add the property `removeElDelay` to the animation object at the top of the stack.",
+          "fr": "Tu dois ajouter la propriété `removeElDelay` à l'objet d'animation au sommet de la pile."
+        },
+        {
+          "en": "You should set the value of the `removeElDelay` property to `10000`.",
+          "fr": "Tu dois définir la valeur de la propriété `removeElDelay` à `10000`."
+        }
+      ]
+    },
+    {
+      "file": "6464aabd17cd45f1d17cfe56.md",
+      "id": "6464aabd17cd45f1d17cfe56",
+      "dashedName": "step-100",
+      "title": {
+        "en": "Step 100",
+        "fr": "Étape 100"
+      },
+      "description": [
+        {
+          "en": "For the object in the middle of the stack, add the property `msg` set to the following string:",
+          "fr": "Pour l'objet au milieu de la pile, ajoute la propriété `msg` définie à la chaîne suivante :"
+        },
+        {
+          "en": "Also, add the property `showMsgDelay` set to `10000` and the property `removeElDelay` set to `15000`.",
+          "fr": "Ajoute aussi la propriété `showMsgDelay` définie à `10000` et la propriété `removeElDelay` définie à `15000`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the property `msg` to the animation object in the middle of the stack.",
+          "fr": "Tu dois ajouter la propriété `msg` à l'objet d'animation au milieu de la pile."
+        },
+        {
+          "en": "You should set the value of the `msg` property to `\"decimalToBinary(2) returns '1' + 0 (2 % 2) and gives that value to the stack below. Then it pops off the stack.\"`",
+          "fr": "Tu dois définir la valeur de la propriété `msg` à `\"decimalToBinary(2) returns '1' + 0 (2 % 2) and gives that value to the stack below. Then it pops off the stack.\"`"
+        },
+        {
+          "en": "You should add the property `showMsgDelay` to the animation object in the middle of the stack.",
+          "fr": "Tu dois ajouter la propriété `showMsgDelay` à l'objet d'animation au milieu de la pile."
+        },
+        {
+          "en": "You should set the value of the `showMsgDelay` property to `10000`.",
+          "fr": "Tu dois définir la valeur de la propriété `showMsgDelay` à `10000`."
+        },
+        {
+          "en": "You should add the property `removeElDelay` to the animation object in the middle of the stack.",
+          "fr": "Tu dois ajouter la propriété `removeElDelay` à l'objet d'animation au milieu de la pile."
+        },
+        {
+          "en": "You should set the value of the `removeElDelay` property to `15000`.",
+          "fr": "Tu dois définir la valeur de la propriété `removeElDelay` à `15000`."
+        }
+      ]
+    },
+    {
+      "file": "6464ab8c06ea92f30bc548d5.md",
+      "id": "6464ab8c06ea92f30bc548d5",
+      "dashedName": "step-101",
+      "title": {
+        "en": "Step 101",
+        "fr": "Étape 101"
+      },
+      "description": [
+        {
+          "en": "For the last animation object, add the property `msg` set to the following string:",
+          "fr": "Pour le dernier objet d'animation, ajoute la propriété `msg` définie à la chaîne suivante :"
+        },
+        {
+          "en": "Also, add the property `showMsgDelay` set to `15000` and the property `removeElDelay` set to `20000`.",
+          "fr": "Ajoute aussi la propriété `showMsgDelay` définie à `15000` et la propriété `removeElDelay` définie à `20000`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the property `msg` to the animation object at the bottom of the stack.",
+          "fr": "Tu dois ajouter la propriété `msg` à l'objet d'animation au bas de la pile."
+        },
+        {
+          "en": "You should set the value of the `msg` property to `\"decimalToBinary(5) returns '10' + 1 (5 % 2). Then it pops off the stack.\"`",
+          "fr": "Tu dois définir la valeur de la propriété `msg` à `\"decimalToBinary(5) returns '10' + 1 (5 % 2). Then it pops off the stack.\"`"
+        },
+        {
+          "en": "You should add the property `showMsgDelay` to the animation object at the bottom of the stack.",
+          "fr": "Tu dois ajouter la propriété `showMsgDelay` à l'objet d'animation au bas de la pile."
+        },
+        {
+          "en": "You should set the value of the `showMsgDelay` property to `15000`.",
+          "fr": "Tu dois définir la valeur de la propriété `showMsgDelay` à `15000`."
+        },
+        {
+          "en": "You should add the property `removeElDelay` to the animation object at the bottom of the stack.",
+          "fr": "Tu dois ajouter la propriété `removeElDelay` à l'objet d'animation au bas de la pile."
+        },
+        {
+          "en": "You should set the value of the `removeElDelay` property to `20000`.",
+          "fr": "Tu dois définir la valeur de la propriété `removeElDelay` à `20000`."
+        }
+      ]
+    },
+    {
+      "file": "6464abfb6cf778f3cb33d379.md",
+      "id": "6464abfb6cf778f3cb33d379",
+      "dashedName": "step-102",
+      "title": {
+        "en": "Step 102",
+        "fr": "Étape 102"
+      },
+      "description": [
+        {
+          "en": "For the next phase of the animation you'll update the paragraphs with the `msg` text. Since you have the delays for each step of the animation already, you can add your code to the same `.forEach()` loop.",
+          "fr": "Pour la prochaine phase de l'animation, tu mettras à jour les paragraphes avec le texte `msg`. Puisque tu as déjà les délais pour chaque étape de l'animation, tu peux ajouter ton code dans la même boucle `.forEach()`."
+        },
+        {
+          "en": "Add another `setTimeout()` function. Pass in an empty callback function as the first argument, and pass in the `showMsgDelay` property of the current object as the second argument.",
+          "fr": "Ajoute une autre fonction `setTimeout()`. Passe une fonction de rappel vide comme premier argument, et passe la propriété `showMsgDelay` de l'objet courant comme deuxième argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `showAnimation()` function should have two `setTimeout()` functions.",
+          "fr": "Ta fonction `showAnimation()` devrait avoir deux fonctions `setTimeout()`."
+        },
+        {
+          "en": "The new `setTimeout()` function should have an empty callback function as the first argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir une fonction de rappel vide comme premier argument."
+        },
+        {
+          "en": "The new `setTimeout()` function should have the `showMsgDelay` property of the current object as the second argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir la propriété `showMsgDelay` de l'objet courant comme deuxième argument."
+        }
+      ]
+    },
+    {
+      "file": "6464ad3c9b2e6cf58224cfa9.md",
+      "id": "6464ad3c9b2e6cf58224cfa9",
+      "dashedName": "step-103",
+      "title": {
+        "en": "Step 103",
+        "fr": "Étape 103"
+      },
+      "description": [
+        {
+          "en": "You have set the `id` attribute for your paragraph elements to the `obj.inputVal` property.",
+          "fr": "Tu as défini l'attribut `id` de tes éléments paragraphe à la propriété `obj.inputVal`."
+        },
+        {
+          "en": "Now, use `getElementById` to select the element with that attribute value, again using the `obj.inputVal` property. You should pass the `obj.inputVal` value directly to your `getElementById` call.",
+          "fr": "Maintenant, utilise `getElementById` pour sélectionner l'élément avec cette valeur d'attribut, en utilisant encore la propriété `obj.inputVal`. Tu dois passer la valeur `obj.inputVal` directement à ton appel `getElementById`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.getElementById()` method to target the element where the `id` attribute matches the value of `inputVal` for the current object.",
+          "fr": "Tu dois utiliser la méthode `.getElementById()` pour cibler l'élément dont l'attribut `id` correspond à la valeur de `inputVal` pour l'objet courant."
+        }
+      ]
+    },
+    {
+      "file": "6464b1384318a5087190950a.md",
+      "id": "6464b1384318a5087190950a",
+      "dashedName": "step-104",
+      "title": {
+        "en": "Step 104",
+        "fr": "Étape 104"
+      },
+      "description": [
+        {
+          "en": "Now that you've targeted the correct element, you can update its text after the delay you specified earlier.",
+          "fr": "Maintenant que tu as ciblé le bon élément, tu peux mettre à jour son texte après le délai que tu as spécifié plus tôt."
+        },
+        {
+          "en": "Set the `textContent` property of the targeted element equal to the `msg` property of the current object by using property chaining on your `.getElementById()` method directly.",
+          "fr": "Définis la propriété `textContent` de l'élément ciblé égale à la propriété `msg` de l'objet courant en utilisant le chaînage de propriétés directement sur ta méthode `.getElementById()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain `.textContent` to the `.getElementById()` method.",
+          "fr": "Tu dois chaîner `.textContent` à la méthode `.getElementById()`."
+        },
+        {
+          "en": "You should set the `textContent` property of the targeted element equal to the `msg` property of the current object.",
+          "fr": "Tu dois définir la propriété `textContent` de l'élément ciblé égale à la propriété `msg` de l'objet courant."
+        }
+      ]
+    },
+    {
+      "file": "6464b25851863b0a119eb7b1.md",
+      "id": "6464b25851863b0a119eb7b1",
+      "dashedName": "step-105",
+      "title": {
+        "en": "Step 105",
+        "fr": "Étape 105"
+      },
+      "description": [
+        {
+          "en": "Next, you'll remove the paragraph elements from the `#show-animation` element after the delays you specified earlier.",
+          "fr": "Ensuite, tu retireras les éléments paragraphe de l'élément `#show-animation` après les délais que tu as spécifiés plus tôt."
+        },
+        {
+          "en": "Add a `setTimeout()` function to your `.forEach()` loop. Pass in an empty callback function as the first argument, and pass in the `removeElDelay` property of the current object as the second argument.",
+          "fr": "Ajoute une fonction `setTimeout()` à ta boucle `.forEach()`. Passe une fonction de rappel vide comme premier argument, et passe la propriété `removeElDelay` de l'objet courant comme deuxième argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `showAnimation()` function should have three `setTimeout()` functions.",
+          "fr": "Ta fonction `showAnimation()` devrait avoir trois fonctions `setTimeout()`."
+        },
+        {
+          "en": "The new `setTimeout()` function should have an empty callback function as the first argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir une fonction de rappel vide comme premier argument."
+        },
+        {
+          "en": "The new `setTimeout()` function should have the `removeElDelay` property of the current object as the second argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir la propriété `removeElDelay` de l'objet courant comme deuxième argument."
+        }
+      ]
+    },
+    {
+      "file": "6464b3adeee9310bd37ff636.md",
+      "id": "6464b3adeee9310bd37ff636",
+      "dashedName": "step-106",
+      "title": {
+        "en": "Step 106",
+        "fr": "Étape 106"
+      },
+      "description": [
+        {
+          "en": "Use the `.getElementById()` method to target the element with the `id` attribute with the value of the `inputVal` property of the current object. Then, use the `.remove()` method on that element to remove it from the DOM after the delay.",
+          "fr": "Utilise la méthode `.getElementById()` pour cibler l'élément avec l'attribut `id` égal à la valeur de la propriété `inputVal` de l'objet courant. Ensuite, utilise la méthode `.remove()` sur cet élément pour le retirer du DOM après le délai."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.getElementById()` method to target the element where the `id` attribute matches the value of `inputVal` for the current object.",
+          "fr": "Tu dois utiliser la méthode `.getElementById()` pour cibler l'élément dont l'attribut `id` correspond à la valeur de `inputVal` pour l'objet courant."
+        },
+        {
+          "en": "You should chain the `.remove()` method to the `.getElementById()` method.",
+          "fr": "Tu dois chaîner la méthode `.remove()` à la méthode `.getElementById()`."
+        }
+      ]
+    },
+    {
+      "file": "6464b8ccb1a5d612c2f857d1.md",
+      "id": "6464b8ccb1a5d612c2f857d1",
+      "dashedName": "step-107",
+      "title": {
+        "en": "Step 107",
+        "fr": "Étape 107"
+      },
+      "description": [
+        {
+          "en": "Now your animation is complete. When you enter `5` in the number input and click the `Convert` button, the animation will add paragraphs to the DOM, update the text of each paragraph, and then remove the paragraphs from the DOM.",
+          "fr": "Maintenant, ton animation est terminée. Quand tu saisis `5` dans le champ numérique et que tu cliques sur le bouton `Convert`, l'animation ajoutera des paragraphes au DOM, mettra à jour le texte de chaque paragraphe, puis retirera les paragraphes du DOM."
+        },
+        {
+          "en": "The last thing you need to do is add the result of converting the number `5` into binary to the page once the animation is complete.",
+          "fr": "La dernière chose à faire est d'ajouter le résultat de la conversion du nombre `5` en binaire à la page une fois l'animation terminée."
+        },
+        {
+          "en": "After the `.forEach()` method, add another `setTimeout()` function. Pass in an empty callback function as the first argument, and a delay of `20000` milliseconds as the second argument.",
+          "fr": "Après la méthode `.forEach()`, ajoute une autre fonction `setTimeout()`. Passe une fonction de rappel vide comme premier argument, et un délai de `20000` millisecondes comme deuxième argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `showAnimation()` function should have four `setTimeout()` functions.",
+          "fr": "Ta fonction `showAnimation()` devrait avoir quatre fonctions `setTimeout()`."
+        },
+        {
+          "en": "The new `setTimeout()` function should have an empty callback function as the first argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir une fonction de rappel vide comme premier argument."
+        },
+        {
+          "en": "The new `setTimeout()` function should have a delay of `20000` milliseconds as the second argument.",
+          "fr": "La nouvelle fonction `setTimeout()` devrait avoir un délai de `20000` millisecondes comme deuxième argument."
+        }
+      ]
+    },
+    {
+      "file": "6464c6d6698a8027f8c9d6be.md",
+      "id": "6464c6d6698a8027f8c9d6be",
+      "dashedName": "step-108",
+      "title": {
+        "en": "Step 108",
+        "fr": "Étape 108"
+      },
+      "description": [
+        {
+          "en": "Finally, set the `textContent` property of `result` equal to calling `decimalToBinary()` with `5` as an argument. After this, test out your code by entering the number `5` into the number input and clicking the `Convert` button.",
+          "fr": "Enfin, définis la propriété `textContent` de `result` égale à l'appel de `decimalToBinary()` avec `5` comme argument. Ensuite, teste ton code en saisissant le nombre `5` dans le champ numérique et en cliquant sur le bouton `Convert`."
+        },
+        {
+          "en": "Congratulations! You just finished your decimal to binary converter with recursion.",
+          "fr": "Félicitations ! Tu viens de terminer ton convertisseur décimal vers binaire avec la récursion."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `textContent` property of `result` equal to calling `decimalToBinary()` with `5` as an argument.",
+          "fr": "Tu dois définir la propriété `textContent` de `result` égale à l'appel de `decimalToBinary()` avec `5` comme argument."
+        }
+      ]
+    }
+  ]
+}

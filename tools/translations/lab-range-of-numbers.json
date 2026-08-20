@@ -1,0 +1,97 @@
+{
+  "workshop": "lab-range-of-numbers",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "5cc0bd7a49b71cb96132e54c.md",
+      "id": "5cc0bd7a49b71cb96132e54c",
+      "dashedName": "build-a-range-of-numbers-generator",
+      "title": {
+        "en": "Build a Range of Numbers Generator",
+        "fr": "Construire un générateur de plage de nombres"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a `rangeOfNumbers` function that generates an array of numbers within a specified range.",
+          "fr": "Dans ce lab, tu vas construire une fonction `rangeOfNumbers` qui génère un tableau de nombres dans une plage donnée."
+        },
+        {
+          "en": "Examples:",
+          "fr": "Exemples :"
+        },
+        {
+          "en": "- `rangeOfNumbers(3, 9)` returns `[3, 4, 5, 6, 7, 8, 9]`\n- `rangeOfNumbers(5, 5)` returns `[5]`",
+          "fr": "- `rangeOfNumbers(3, 9)` renvoie `[3, 4, 5, 6, 7, 8, 9]`\n- `rangeOfNumbers(5, 5)` renvoie `[5]`"
+        },
+        {
+          "en": "Requirements:",
+          "fr": "Exigences :"
+        },
+        {
+          "en": "- Use recursion (the function must call itself)\n- No loops or array methods (`for`, `while`, `Array.from`, `forEach`, `map`, `filter`, `reduce`)",
+          "fr": "- Utilise la récursion (la fonction doit s'appeler elle-même)\n- Pas de boucles ni de méthodes de tableau (`for`, `while`, `Array.from`, `forEach`, `map`, `filter`, `reduce`)"
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should create a function named `rangeOfNumbers` that takes two parameters: `startNum` and `endNum`.\n1. The function should return an array of integers that begins with the number represented by the `startNum` parameter and ends with the number represented by the `endNum` parameter (inclusive).\n1. The `startNum` will always be less than or equal to the `endNum`.\n1. Your function must use recursion by calling itself. It should not use any loop syntax (`for`, `while`, `Array.from()`, or higher-order functions such as `forEach`, `map`, `filter`, or `reduce`).\n1. The function should handle the base case where `startNum` equals `endNum` by returning an array containing just that single number.\n1. For the recursive case, the function should call itself with modified parameters to build the array, then add the current number to the result.\n1. The function should not rely on global variables to cache or build the array.",
+          "fr": "1. Tu dois créer une fonction nommée `rangeOfNumbers` qui prend deux paramètres : `startNum` et `endNum`.\n1. La fonction doit renvoyer un tableau d'entiers qui commence par le nombre représenté par le paramètre `startNum` et se termine par le nombre représenté par le paramètre `endNum` (inclus).\n1. Le `startNum` sera toujours inférieur ou égal au `endNum`.\n1. Ta fonction doit utiliser la récursion en s'appelant elle-même. Elle ne doit utiliser aucune syntaxe de boucle (`for`, `while`, `Array.from()`, ni de fonctions d'ordre supérieur telles que `forEach`, `map`, `filter` ou `reduce`).\n1. La fonction doit gérer le cas de base où `startNum` est égal à `endNum` en renvoyant un tableau contenant uniquement ce seul nombre.\n1. Pour le cas récursif, la fonction doit s'appeler avec des paramètres modifiés pour construire le tableau, puis ajouter le nombre courant au résultat.\n1. La fonction ne doit pas s'appuyer sur des variables globales pour mettre en cache ou construire le tableau."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `rangeOfNumbers`.",
+          "fr": "Tu dois avoir une fonction nommée `rangeOfNumbers`."
+        },
+        {
+          "en": "The `rangeOfNumbers` function should take two parameters.",
+          "fr": "La fonction `rangeOfNumbers` doit prendre deux paramètres."
+        },
+        {
+          "en": "Your function should return an array.",
+          "fr": "Ta fonction doit renvoyer un tableau."
+        },
+        {
+          "en": "Your code should not use any loop syntax (`for`, `while`, `Array.from()` or higher order functions such as `forEach`, `map`, `filter`, or `reduce`).",
+          "fr": "Ton code ne doit utiliser aucune syntaxe de boucle (`for`, `while`, `Array.from()` ou des fonctions d'ordre supérieur telles que `forEach`, `map`, `filter` ou `reduce`)."
+        },
+        {
+          "en": "`rangeOfNumbers` should use recursion (call itself) to solve this challenge.",
+          "fr": "`rangeOfNumbers` doit utiliser la récursion (s'appeler elle-même) pour résoudre ce défi."
+        },
+        {
+          "en": "`rangeOfNumbers(1, 5)` should return `[1, 2, 3, 4, 5]`.",
+          "fr": "`rangeOfNumbers(1, 5)` devrait renvoyer `[1, 2, 3, 4, 5]`."
+        },
+        {
+          "en": "`rangeOfNumbers(6, 9)` should return `[6, 7, 8, 9]`.",
+          "fr": "`rangeOfNumbers(6, 9)` devrait renvoyer `[6, 7, 8, 9]`."
+        },
+        {
+          "en": "`rangeOfNumbers(4, 4)` should return `[4]`.",
+          "fr": "`rangeOfNumbers(4, 4)` devrait renvoyer `[4]`."
+        },
+        {
+          "en": "`rangeOfNumbers(10, 15)` should return `[10, 11, 12, 13, 14, 15]`.",
+          "fr": "`rangeOfNumbers(10, 15)` devrait renvoyer `[10, 11, 12, 13, 14, 15]`."
+        },
+        {
+          "en": "`rangeOfNumbers(2, 8)` should return `[2, 3, 4, 5, 6, 7, 8]`.",
+          "fr": "`rangeOfNumbers(2, 8)` devrait renvoyer `[2, 3, 4, 5, 6, 7, 8]`."
+        },
+        {
+          "en": "Global variables should not be used to cache the array.",
+          "fr": "Les variables globales ne doivent pas être utilisées pour mettre en cache le tableau."
+        }
+      ]
+    }
+  ]
+}

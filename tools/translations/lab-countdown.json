@@ -1,0 +1,89 @@
+{
+  "workshop": "lab-countdown",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "5cd9a70215d3c4e65518328f.md",
+      "id": "5cd9a70215d3c4e65518328f",
+      "dashedName": "build-a-countdown",
+      "title": {
+        "en": "Build a Countdown",
+        "fr": "Construire un compte à rebours"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a `countdown` function that takes a starting number and generates a countdown list.",
+          "fr": "Dans ce lab, tu vas construire une fonction `countdown` qui prend un nombre de départ et génère une liste de compte à rebours."
+        },
+        {
+          "en": "When you call `countdown(n)`, it should return an array that starts at `n` and counts down by `1` until it reaches `1`.",
+          "fr": "Quand tu appelles `countdown(n)`, elle doit renvoyer un tableau qui commence à `n` et compte à rebours de `1` jusqu'à atteindre `1`."
+        },
+        {
+          "en": "For example:",
+          "fr": "Par exemple :"
+        },
+        {
+          "en": "- `countdown(5)` should return `[5, 4, 3, 2, 1]`\n- `countdown(1)` should return `[1]`",
+          "fr": "- `countdown(5)` devrait renvoyer `[5, 4, 3, 2, 1]`\n- `countdown(1)` devrait renvoyer `[1]`"
+        },
+        {
+          "en": "If the starting number is less than `1`, there is nothing to countdown, so return an empty array:",
+          "fr": "Si le nombre de départ est inférieur à `1`, il n'y a rien à compter à rebours, donc renvoie un tableau vide :"
+        },
+        {
+          "en": "- `countdown(0)` should return `[]`\n- `countdown(-3)` should return `[]`",
+          "fr": "- `countdown(0)` devrait renvoyer `[]`\n- `countdown(-3)` devrait renvoyer `[]`"
+        },
+        {
+          "en": "To complete the lab, you must build the result using recursion and you must not use loops (`for`, `while`), `Array.from()`, or array-iteration methods (`forEach`, `map`, `filter`, `reduce`). Each call should produce its own result array (don't use globals to store the countdown).",
+          "fr": "Pour terminer le lab, tu dois construire le résultat avec la récursion et tu ne dois pas utiliser de boucles (`for`, `while`), `Array.from()`, ni de méthodes d'itération de tableau (`forEach`, `map`, `filter`, `reduce`). Chaque appel doit produire son propre tableau de résultat (n'utilise pas de variables globales pour stocker le compte à rebours)."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should create a function named `countdown`.\n2. The `countdown` function should take a single argument `n` (a number).\n3. If `n` is less than `1`, `countdown` should return an empty array.\n4. Otherwise, `countdown` should return an array containing the integers from `n` down to `1` in descending order.\n5. You must use recursion (the function should call itself) and must not use loops of any kind (`for`, `while`, `Array.from()`, or higher-order methods like `forEach`, `map`, `filter`, `reduce`).\n6. Each recursive call should use a smaller value than the previous call (for example, `n - 1`) so the function reaches its base case.\n7. The solution should not use global variables to store or cache the result array.\n8. Calling `countdown` multiple times with different inputs should always return the correct, independent result.",
+          "fr": "1. Tu dois créer une fonction nommée `countdown`.\n2. La fonction `countdown` doit prendre un seul argument `n` (un nombre).\n3. Si `n` est inférieur à `1`, `countdown` doit renvoyer un tableau vide.\n4. Sinon, `countdown` doit renvoyer un tableau contenant les entiers de `n` jusqu'à `1` dans l'ordre décroissant.\n5. Tu dois utiliser la récursion (la fonction doit s'appeler elle-même) et tu ne dois utiliser aucune boucle (`for`, `while`, `Array.from()`, ni de méthodes d'ordre supérieur comme `forEach`, `map`, `filter`, `reduce`).\n6. Chaque appel récursif doit utiliser une valeur plus petite que l'appel précédent (par exemple, `n - 1`) pour que la fonction atteigne son cas de base.\n7. La solution ne doit pas utiliser de variables globales pour stocker ou mettre en cache le tableau de résultat.\n8. Appeler `countdown` plusieurs fois avec des entrées différentes doit toujours renvoyer le résultat correct et indépendant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `countdown`.",
+          "fr": "Tu dois avoir une fonction nommée `countdown`."
+        },
+        {
+          "en": "`countdown(-1)` should return an empty array.",
+          "fr": "`countdown(-1)` devrait renvoyer un tableau vide."
+        },
+        {
+          "en": "`countdown(10)` should return `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]`",
+          "fr": "`countdown(10)` devrait renvoyer `[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]`"
+        },
+        {
+          "en": "`countdown(5)` should return `[5, 4, 3, 2, 1]`",
+          "fr": "`countdown(5)` devrait renvoyer `[5, 4, 3, 2, 1]`"
+        },
+        {
+          "en": "Your code should not rely on any kind of loops (`for`, `while`, `Array.from()` or higher order functions such as `forEach`, `map`, `filter`, and `reduce`).",
+          "fr": "Ton code ne doit pas s'appuyer sur des boucles d'aucune sorte (`for`, `while`, `Array.from()` ou des fonctions d'ordre supérieur telles que `forEach`, `map`, `filter` et `reduce`)."
+        },
+        {
+          "en": "You should use recursion to solve this problem.",
+          "fr": "Tu dois utiliser la récursion pour résoudre ce problème."
+        },
+        {
+          "en": "Global variables should not be used to cache the array.",
+          "fr": "Les variables globales ne doivent pas être utilisées pour mettre en cache le tableau."
+        }
+      ]
+    }
+  ]
+}

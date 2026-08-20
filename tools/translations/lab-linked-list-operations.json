@@ -1,0 +1,145 @@
+{
+  "workshop": "lab-linked-list-operations",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69708d59833ceded7d00541f.md",
+      "id": "69708d59833ceded7d00541f",
+      "dashedName": "implement-linked-list-operations",
+      "title": {
+        "en": "Implement Linked List Operations",
+        "fr": "Implémenter les opérations d'une liste chaînée"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will implement additional operations for a linked list data structure, building on the basic functionality of adding and removing nodes.",
+          "fr": "Dans ce lab, tu vas implémenter des opérations supplémentaires pour une structure de données liste chaînée, en t'appuyant sur les fonctionnalités de base d'ajout et de suppression de nœuds."
+        },
+        {
+          "en": "**Objective**: Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif** : Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories**",
+          "fr": "**User Stories**"
+        },
+        {
+          "en": "1. You should have a `contains` function that accepts a linked list and an element. It should return `true` if the specified element exists in the linked list, and `false` otherwise.\n1. You should have a `getAt` function that accepts a linked list and an index. It should return the element at the given index in the linked list. If the index is out of bounds, it should return `undefined`.\n1. You should have a `insertAt` function that accepts a linked list, an index, and an element. It should insert the given element at the specified position in the linked list. If the index is out of bounds, it should not modify the list.\n1. You should have a `removeAt` function that accepts a linked list and an index. It should remove the node at the given index in the linked list. If the index is out of bounds, it should not modify the list.\n1. You should have a `clear` function that accepts a linked list. It should remove all elements from the linked list, effectively resetting it to an empty state.",
+          "fr": "1. Tu dois avoir une fonction `contains` qui accepte une liste chaînée et un élément. Elle doit renvoyer `true` si l'élément spécifié existe dans la liste chaînée, et `false` sinon.\n1. Tu dois avoir une fonction `getAt` qui accepte une liste chaînée et un index. Elle doit renvoyer l'élément à l'index donné dans la liste chaînée. Si l'index est hors limites, elle doit renvoyer `undefined`.\n1. Tu dois avoir une fonction `insertAt` qui accepte une liste chaînée, un index et un élément. Elle doit insérer l'élément donné à la position spécifiée dans la liste chaînée. Si l'index est hors limites, elle ne doit pas modifier la liste.\n1. Tu dois avoir une fonction `removeAt` qui accepte une liste chaînée et un index. Elle doit retirer le nœud à l'index donné dans la liste chaînée. Si l'index est hors limites, elle ne doit pas modifier la liste.\n1. Tu dois avoir une fonction `clear` qui accepte une liste chaînée. Elle doit retirer tous les éléments de la liste chaînée, en la réinitialisant effectivement à un état vide."
+        },
+        {
+          "en": "**Note:** Some later tests rely on earlier methods. For example, if `getAt` is not implemented correctly, tests for functions like `insertAt` and `removeAt` may fail even when those functions are close to correct.",
+          "fr": "**Note :** Certains tests ultérieurs s'appuient sur des méthodes précédentes. Par exemple, si `getAt` n'est pas correctement implémentée, les tests de fonctions comme `insertAt` et `removeAt` peuvent échouer même lorsque ces fonctions sont proches d'être correctes."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`initList` should return an object with `head` set to `null` and `length` set to `0`.",
+          "fr": "`initList` doit renvoyer un objet avec `head` défini à `null` et `length` défini à `0`."
+        },
+        {
+          "en": "`add` should increase the list length by one.",
+          "fr": "`add` doit augmenter la longueur de la liste de un."
+        },
+        {
+          "en": "`remove` should decrease the list length by one.",
+          "fr": "`remove` doit diminuer la longueur de la liste de un."
+        },
+        {
+          "en": "You should have a `contains` function.",
+          "fr": "Tu dois avoir une fonction `contains`."
+        },
+        {
+          "en": "`contains` should return `true` if the element exists in the list.",
+          "fr": "`contains` doit renvoyer `true` si l'élément existe dans la liste."
+        },
+        {
+          "en": "`contains` should return `false` if the element does not exist in the list.",
+          "fr": "`contains` doit renvoyer `false` si l'élément n'existe pas dans la liste."
+        },
+        {
+          "en": "`contains` should return `false` for an empty list.",
+          "fr": "`contains` doit renvoyer `false` pour une liste vide."
+        },
+        {
+          "en": "You should have a `getAt` function.",
+          "fr": "Tu dois avoir une fonction `getAt`."
+        },
+        {
+          "en": "`getAt` should return the element at a given index.",
+          "fr": "`getAt` doit renvoyer l'élément à un index donné."
+        },
+        {
+          "en": "`getAt` should return `undefined` for invalid indices.",
+          "fr": "`getAt` doit renvoyer `undefined` pour des indices invalides."
+        },
+        {
+          "en": "`getAt` should return `undefined` for an empty list.",
+          "fr": "`getAt` doit renvoyer `undefined` pour une liste vide."
+        },
+        {
+          "en": "You should have an `insertAt` function.",
+          "fr": "Tu dois avoir une fonction `insertAt`."
+        },
+        {
+          "en": "`insertAt` should insert an element at the beginning of the list.",
+          "fr": "`insertAt` doit insérer un élément au début de la liste."
+        },
+        {
+          "en": "`insertAt` should insert an element at the middle of the list.",
+          "fr": "`insertAt` doit insérer un élément au milieu de la liste."
+        },
+        {
+          "en": "`insertAt` should insert an element at the end of the list.",
+          "fr": "`insertAt` doit insérer un élément à la fin de la liste."
+        },
+        {
+          "en": "`insertAt` should insert into an empty list at index `0`.",
+          "fr": "`insertAt` doit insérer dans une liste vide à l'index `0`."
+        },
+        {
+          "en": "`insertAt` should not modify the list for invalid indices.",
+          "fr": "`insertAt` ne doit pas modifier la liste pour des indices invalides."
+        },
+        {
+          "en": "You should have a `removeAt` function.",
+          "fr": "Tu dois avoir une fonction `removeAt`."
+        },
+        {
+          "en": "`removeAt` should remove the element at a specified index.",
+          "fr": "`removeAt` doit retirer l'élément à un index spécifié."
+        },
+        {
+          "en": "`removeAt` should remove the first element correctly.",
+          "fr": "`removeAt` doit retirer correctement le premier élément."
+        },
+        {
+          "en": "`removeAt` should remove the last element correctly.",
+          "fr": "`removeAt` doit retirer correctement le dernier élément."
+        },
+        {
+          "en": "`removeAt` should reset the list when removing the only element.",
+          "fr": "`removeAt` doit réinitialiser la liste lors du retrait du seul élément."
+        },
+        {
+          "en": "`removeAt` should not modify the list for invalid indices.",
+          "fr": "`removeAt` ne doit pas modifier la liste pour des indices invalides."
+        },
+        {
+          "en": "You should have a `clear` function.",
+          "fr": "Tu dois avoir une fonction `clear`."
+        },
+        {
+          "en": "`clear` should remove all elements from the list.",
+          "fr": "`clear` doit retirer tous les éléments de la liste."
+        },
+        {
+          "en": "`clear` should allow the list to be reused.",
+          "fr": "`clear` doit permettre de réutiliser la liste."
+        }
+      ]
+    }
+  ]
+}

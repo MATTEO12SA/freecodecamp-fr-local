@@ -100,7 +100,7 @@ La CI du fork et les contrôles locaux restent deux sujets distincts :
   `check-translation-drift.js` contrôlent sans écrire la traduction.
 - Le catalogue combine présence FR automatique et statut
   `absent` / `partial` / `complete` par carte.
-- État curriculum : JavaScript v9 `180/230` (996/1311 fichiers), modules 1 à 12 complets.
+- État curriculum : JavaScript v9 `195/230` (1146/1311 fichiers), modules 1 à 12 complets.
   Prochaine cible : relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states`
   (`reviewed: false` — ne pas appliquer).
 

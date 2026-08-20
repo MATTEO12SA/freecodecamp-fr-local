@@ -1,0 +1,1881 @@
+{
+  "workshop": "lecture-working-with-common-data-structures-js",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "699bf504558ca3acf83b4732.md",
+      "id": "699bf504558ca3acf83b4732",
+      "dashedName": "what-is-an-algorithm-and-how-does-big-o-notation-work",
+      "title": {
+        "en": "What Is an Algorithm and How Does Big O Notation Work?",
+        "fr": "Qu'est-ce qu'un algorithme et comment fonctionne la notation Big O ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Every computer program that runs on your device has a specific set of instructions, which are executed in a specific order to complete a task.",
+              "fr": "Chaque programme informatique qui s'exécute sur ton appareil possède un ensemble précis d'instructions, exécutées dans un ordre précis pour accomplir une tâche."
+            },
+            {
+              "en": "The task could be sorting a set of numbers, modifying an image, tracking inventory, or even running your favorite video game.",
+              "fr": "La tâche peut être de trier un ensemble de nombres, de modifier une image, de suivre un inventaire, ou même de faire tourner ton jeu vidéo préféré."
+            },
+            {
+              "en": "This is where algorithms come into play. An **algorithm** is a set of unambiguous instructions for solving a problem or carrying out a task.",
+              "fr": "C'est là qu'interviennent les algorithmes. Un **algorithme** est un ensemble d'instructions non ambiguës pour résoudre un problème ou accomplir une tâche."
+            },
+            {
+              "en": "You can think of algorithms as \"recipes\". When you cook, recipes list all the ingredients that you'll need, and provide step by step instructions on how to prepare a dish.",
+              "fr": "Tu peux voir les algorithmes comme des « recettes ». Quand tu cuisines, les recettes listent tous les ingrédients dont tu auras besoin, et fournissent des instructions étape par étape pour préparer un plat."
+            },
+            {
+              "en": "Equivalently, you can think of algorithms as \"recipes\" that tell computers exactly what should be done and how to do it.",
+              "fr": "De façon équivalente, tu peux voir les algorithmes comme des « recettes » qui disent aux ordinateurs exactement ce qui doit être fait et comment le faire."
+            },
+            {
+              "en": "Algorithms have two key characteristics:",
+              "fr": "Les algorithmes ont deux caractéristiques clés :"
+            },
+            {
+              "en": "* They cannot continue indefinitely. They must finish in a finite number of steps.\n    \n* Each step must be precise and unambiguous.",
+              "fr": "* Ils ne peuvent pas continuer indéfiniment. Ils doivent se terminer en un nombre fini d'étapes.\n    \n* Chaque étape doit être précise et non ambiguë."
+            },
+            {
+              "en": "They may have zero, one, or more inputs, and generate one or more outputs.",
+              "fr": "Ils peuvent avoir zéro, une ou plusieurs entrées, et produire une ou plusieurs sorties."
+            },
+            {
+              "en": "The steps of an algorithm are independent from any programming language.",
+              "fr": "Les étapes d'un algorithme sont indépendantes de tout langage de programmation."
+            },
+            {
+              "en": "But to actually make them run on a computer, you need to implement them in a programming language, like Python or JavaScript.",
+              "fr": "Mais pour réellement les faire tourner sur un ordinateur, tu dois les implémenter dans un langage de programmation, comme Python ou JavaScript."
+            },
+            {
+              "en": "If an algorithm is correct, the output for any valid input should match the expected output.",
+              "fr": "Si un algorithme est correct, la sortie pour toute entrée valide doit correspondre à la sortie attendue."
+            },
+            {
+              "en": "In addition to being correct, algorithms should also be efficient.",
+              "fr": "En plus d'être correct, un algorithme doit aussi être efficace."
+            },
+            {
+              "en": "Algorithm efficiency can be measured in terms of how long they take to run and how much space they require in memory to complete the task.",
+              "fr": "L'efficacité d'un algorithme peut se mesurer en termes de temps d'exécution et d'espace mémoire requis pour accomplir la tâche."
+            },
+            {
+              "en": "Knowing an algorithm's efficiency is very important because it gives you an idea of how well it will perform as the input size grows.",
+              "fr": "Connaître l'efficacité d'un algorithme est très important, car cela te donne une idée de ses performances à mesure que la taille de l'entrée augmente."
+            },
+            {
+              "en": "For example, sorting 15 integers is not the same as sorting 1 million integers.",
+              "fr": "Par exemple, trier 15 entiers n'est pas la même chose que trier 1 million d'entiers."
+            },
+            {
+              "en": "As the process grows in size and complexity, if the algorithm is not efficient enough to handle it, you might end up with a very slow computer program that may even crash the entire system.",
+              "fr": "À mesure que le processus grandit en taille et en complexité, si l'algorithme n'est pas assez efficace pour le gérer, tu risques de te retrouver avec un programme très lent qui peut même faire planter tout le système."
+            },
+            {
+              "en": "That's why it's very important to develop and choose the most efficient algorithms possible.",
+              "fr": "C'est pourquoi il est très important de développer et de choisir les algorithmes les plus efficaces possibles."
+            },
+            {
+              "en": "This is where Big O notation becomes very important.",
+              "fr": "C'est là que la notation Big O devient très importante."
+            },
+            {
+              "en": "Big O notation describes the worst-case performance, or growth rate, of an algorithm as the input size increases.",
+              "fr": "La notation Big O décrit les performances dans le pire cas, ou le taux de croissance, d'un algorithme à mesure que la taille de l'entrée augmente."
+            },
+            {
+              "en": "The growth rate of an algorithm refers to how the resources it requires increase as the input size grows.",
+              "fr": "Le taux de croissance d'un algorithme désigne la façon dont les ressources qu'il requiert augmentent à mesure que la taille de l'entrée grandit."
+            },
+            {
+              "en": "Big O notation focuses on the worst-case performance because this case is very important to understand how efficient the algorithm can be, even in the worst case scenario, regardless of the input.",
+              "fr": "La notation Big O se concentre sur les performances dans le pire cas, car ce cas est très important pour comprendre à quel point l'algorithme peut être efficace, même dans le scénario le plus défavorable, quelle que soit l'entrée."
+            },
+            {
+              "en": "Going back to our sorting example, sorting 1 million integers should intuitively take more time and resources than sorting 15 integers.",
+              "fr": "Pour revenir à notre exemple de tri, trier 1 million d'entiers devrait intuitivement prendre plus de temps et de ressources que trier 15 entiers."
+            },
+            {
+              "en": "But how much more?",
+              "fr": "Mais combien de plus ?"
+            },
+            {
+              "en": "This really depends on the algorithm that you choose to sort them.",
+              "fr": "Cela dépend vraiment de l'algorithme que tu choisis pour les trier."
+            },
+            {
+              "en": "Big O notation will not give you an exact number to describe the algorithm's efficiency, but it will give you an idea of how it scales as the input size grows, based on the number of operations performed by the algorithm.",
+              "fr": "La notation Big O ne te donnera pas un nombre exact pour décrire l'efficacité de l'algorithme, mais elle te donnera une idée de la façon dont il évolue à mesure que la taille de l'entrée augmente, d'après le nombre d'opérations effectuées par l'algorithme."
+            },
+            {
+              "en": "In Big O notation, we usually denote input size with the letter `n`. For example, if the input is a list, `n` would denote the number of elements in that list.",
+              "fr": "En notation Big O, on note généralement la taille de l'entrée avec la lettre `n`. Par exemple, si l'entrée est une liste, `n` désignerait le nombre d'éléments de cette liste."
+            },
+            {
+              "en": "Constant factors and lower-order terms are not taken into account to find the time complexity of an algorithm based on the number of operations. That's because as the size of `n` grows, the impact of these smaller terms in the total number of operations performed will become smaller and smaller.",
+              "fr": "Les facteurs constants et les termes d'ordre inférieur ne sont pas pris en compte pour trouver la complexité temporelle d'un algorithme d'après le nombre d'opérations. C'est parce qu'à mesure que la taille de `n` augmente, l'impact de ces termes plus petits sur le nombre total d'opérations effectuées devient de plus en plus faible."
+            },
+            {
+              "en": "The term that will dominate the overall behavior of the algorithm will be the highest order term with `n`, the input size.",
+              "fr": "Le terme qui dominera le comportement global de l'algorithme sera le terme d'ordre le plus élevé avec `n`, la taille de l'entrée."
+            },
+            {
+              "en": "For example, if an algorithm performs `7n + 20` operations to be completed, the impact of the constant `20` on the final result will be smaller and smaller as `n` grows. The term `7n` will tend to dominate and this will define the overall behavior and efficiency of the algorithm.",
+              "fr": "Par exemple, si un algorithme effectue `7n + 20` opérations pour être terminé, l'impact de la constante `20` sur le résultat final sera de plus en plus faible à mesure que `n` augmente. Le terme `7n` tendra à dominer et cela définira le comportement global et l'efficacité de l'algorithme."
+            },
+            {
+              "en": "Another example would be an algorithm that takes `20n² + 15n + 7` operations to be completed. The term `20n²` will tend to dominate as `n` grows, so this algorithm would have a quadratic time complexity because the dominant term has `n²`.",
+              "fr": "Un autre exemple serait un algorithme qui prend `20n² + 15n + 7` opérations pour être terminé. Le terme `20n²` tendra à dominer à mesure que `n` augmente, donc cet algorithme aurait une complexité temporelle quadratique parce que le terme dominant a `n²`."
+            },
+            {
+              "en": "Quadratic time complexity is one of many different types of time complexities that you can find in the world of algorithms.",
+              "fr": "La complexité temporelle quadratique est l'un des nombreux types de complexités temporelles que tu peux rencontrer dans le monde des algorithmes."
+            },
+            {
+              "en": "Let's learn about some of the most common ones.",
+              "fr": "Apprenons-en quelques-unes des plus courantes."
+            },
+            {
+              "en": "**`O(1)`** is known as \"Constant Time Complexity\". When an algorithm has constant time complexity, it takes the same amount of time to run, regardless of input size.",
+              "fr": "**`O(1)`** est connue sous le nom de « complexité temporelle constante ». Quand un algorithme a une complexité temporelle constante, il prend le même temps pour s'exécuter, quelle que soit la taille de l'entrée."
+            },
+            {
+              "en": "For example, checking if a number is even or odd will always take the same amount of time, regardless of the number itself.",
+              "fr": "Par exemple, vérifier si un nombre est pair ou impair prendra toujours le même temps, quel que soit le nombre lui-même."
+            },
+            {
+              "en": "**`O(log n)`** is known as \"Logarithmic Time Complexity\". This means that the time required by the algorithm increases slowly as the input size grows. This is common in problems in which the size of the problem is repeatedly reduced by a constant fraction.",
+              "fr": "**`O(log n)`** est connue sous le nom de « complexité temporelle logarithmique ». Cela signifie que le temps requis par l'algorithme augmente lentement à mesure que la taille de l'entrée grandit. C'est courant dans les problèmes où la taille du problème est réduite de façon répétée par une fraction constante."
+            },
+            {
+              "en": "For example, a popular search algorithm called Binary Search has `O(log n)` worst-case time complexity. This is because it eliminates half of the remaining elements in each comparison, which makes it more efficient overall.",
+              "fr": "Par exemple, un algorithme de recherche populaire appelé recherche binaire a une complexité temporelle dans le pire cas de `O(log n)`. C'est parce qu'il élimine la moitié des éléments restants à chaque comparaison, ce qui le rend plus efficace dans l'ensemble."
+            },
+            {
+              "en": "**`O(n)`** is known as \"Linear Time Complexity\". The running time of algorithms with this time complexity increases proportionally to the input size.",
+              "fr": "**`O(n)`** est connue sous le nom de « complexité temporelle linéaire ». Le temps d'exécution des algorithmes avec cette complexité temporelle augmente proportionnellement à la taille de l'entrée."
+            },
+            {
+              "en": "For example, a `for` loop that iterates over all the elements of a list will perform more iterations as the number of list elements increases. If the list is doubled in size, the number of operations will approximately double as well.",
+              "fr": "Par exemple, une boucle `for` qui itère sur tous les éléments d'une liste effectuera plus d'itérations à mesure que le nombre d'éléments de la liste augmente. Si la liste double de taille, le nombre d'opérations approximativement doublera aussi."
+            },
+            {
+              "en": "**`O(n log n)`** is known as \"Log-Linear Time Complexity\". This is a common time complexity of efficient sorting algorithms, like Merge Sort and Quick Sort.",
+              "fr": "**`O(n log n)`** est connue sous le nom de « complexité temporelle log-linéaire ». C'est une complexité temporelle courante des algorithmes de tri efficaces, comme le tri fusion (Merge Sort) et le tri rapide (Quick Sort)."
+            },
+            {
+              "en": "**`O(n²)`** is known as \"Quadratic Time Complexity\". The running time of these algorithms increases quadratically relative to the input size, which is generally not efficient for real-world problems.",
+              "fr": "**`O(n²)`** est connue sous le nom de « complexité temporelle quadratique ». Le temps d'exécution de ces algorithmes augmente de façon quadratique par rapport à la taille de l'entrée, ce qui n'est généralement pas efficace pour les problèmes du monde réel."
+            },
+            {
+              "en": "Nested loops are a common example of quadratic time complexity. The inner loop will perform `n` iterations for each one of the `n` iterations of the outer loop, resulting in `n` squared iterations.",
+              "fr": "Les boucles imbriquées sont un exemple courant de complexité temporelle quadratique. La boucle interne effectuera `n` itérations pour chacune des `n` itérations de la boucle externe, ce qui donne `n` au carré itérations."
+            },
+            {
+              "en": "Other time complexities include \"Exponential Time Complexity\", denoted as `O(2^n)`, and \"Factorial Time Complexity\", denoted as `O(n!)`. Both are inefficient for real-world scenarios.",
+              "fr": "D'autres complexités temporelles incluent la « complexité temporelle exponentielle », notée `O(2^n)`, et la « complexité temporelle factorielle », notée `O(n!)`. Les deux sont inefficaces pour les scénarios du monde réel."
+            },
+            {
+              "en": "In this graph, you can compare the growth of the mathematical functions that represent the most common time complexities. Think of the x-axis (horizontal) as the input size and the y-axis (vertical) as the running time of the algorithm.",
+              "fr": "Dans ce graphique, tu peux comparer la croissance des fonctions mathématiques qui représentent les complexités temporelles les plus courantes. Imagine l'axe des x (horizontal) comme la taille de l'entrée et l'axe des y (vertical) comme le temps d'exécution de l'algorithme."
+            },
+            {
+              "en": "You can see that the Quadratic Time Complexity (`O(n²)`) (yellow) grows much faster than the other ones, while the Constant Time Complexity (`O(1)`) (red) stays constant, even if the input gets larger.",
+              "fr": "Tu peux voir que la complexité temporelle quadratique (`O(n²)`) (jaune) croît beaucoup plus vite que les autres, tandis que la complexité temporelle constante (`O(1)`) (rouge) reste constante, même si l'entrée devient plus grande."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-is-an-algorithm-and-how-does-big-o-notation-work-1.png\" alt=\"graph comparing time complexity\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-is-an-algorithm-and-how-does-big-o-notation-work-1.png\" alt=\"graphique comparant les complexités temporelles\">"
+            },
+            {
+              "en": "Great. So far, you've learned about Big O notation in terms of time requirements, but this notation can also be applied to the context of space requirements.",
+              "fr": "Super. Jusqu'ici, tu as appris la notation Big O en termes d'exigences de temps, mais cette notation peut aussi s'appliquer au contexte des exigences d'espace."
+            },
+            {
+              "en": "In this context, it describes how the memory space required by the algorithm grows as the input size grows.",
+              "fr": "Dans ce contexte, elle décrit comment l'espace mémoire requis par l'algorithme croît à mesure que la taille de l'entrée augmente."
+            },
+            {
+              "en": "Algorithms with \"Constant Space Complexity\" `O(1)` always require a constant amount of memory space, even as the input gets larger.",
+              "fr": "Les algorithmes avec une « complexité spatiale constante » `O(1)` requièrent toujours une quantité constante d'espace mémoire, même si l'entrée devient plus grande."
+            },
+            {
+              "en": "An example would be an algorithm that only creates and stores a few variables in memory.",
+              "fr": "Un exemple serait un algorithme qui crée et stocke seulement quelques variables en mémoire."
+            },
+            {
+              "en": "In contrast, the space required by algorithms with \"Linear Space Complexity\" `O(n)` increases proportionally as the input size grows.",
+              "fr": "En revanche, l'espace requis par les algorithmes avec une « complexité spatiale linéaire » `O(n)` augmente proportionnellement à mesure que la taille de l'entrée grandit."
+            },
+            {
+              "en": "An example of this would be an algorithm that creates and stores a copy of a list of length `n`.",
+              "fr": "Un exemple serait un algorithme qui crée et stocke une copie d'une liste de longueur `n`."
+            },
+            {
+              "en": "And finally, the space requirements of an algorithm with \"Quadratic Space Complexity\" `O(n²)` increase quadratically as the input size grows.",
+              "fr": "Et enfin, les exigences d'espace d'un algorithme avec une « complexité spatiale quadratique » `O(n²)` augmentent de façon quadratique à mesure que la taille de l'entrée grandit."
+            },
+            {
+              "en": "An example of this would be creating a 2D matrix, where the dimensions are determined by the input size, storing all possible pairs.",
+              "fr": "Un exemple serait de créer une matrice 2D, dont les dimensions sont déterminées par la taille de l'entrée, en stockant toutes les paires possibles."
+            },
+            {
+              "en": "Algorithms are the building-blocks of computer programs, while Big O notation is a powerful framework for analyzing how efficient they are, based on how their time and space requirements in the worst-case scenario scale as the input size grows. Understanding their efficiency is very important for developing software that works efficiently in real-world scenarios.",
+              "fr": "Les algorithmes sont les briques de base des programmes informatiques, tandis que la notation Big O est un cadre puissant pour analyser leur efficacité, d'après la façon dont leurs exigences de temps et d'espace dans le pire cas évoluent à mesure que la taille de l'entrée augmente. Comprendre leur efficacité est très important pour développer des logiciels qui fonctionnent efficacement dans des scénarios du monde réel."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes an algorithm?",
+              "fr": "Laquelle des propositions suivantes décrit le mieux un algorithme ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A specific programming language used to write code.",
+              "fr": "Un langage de programmation spécifique utilisé pour écrire du code."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you follow when you're trying to achieve a specific task.",
+              "fr": "Pense à ce que tu suis quand tu essaies d'accomplir une tâche précise."
+            },
+            {
+              "en": "A set of step-by-step instructions designed to solve a problem or perform a task.",
+              "fr": "Un ensemble d'instructions étape par étape conçu pour résoudre un problème ou accomplir une tâche."
+            },
+            {
+              "en": "A type of computer hardware component.",
+              "fr": "Un type de composant matériel d'ordinateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you follow when you're trying to achieve a specific task.",
+              "fr": "Pense à ce que tu suis quand tu essaies d'accomplir une tâche précise."
+            },
+            {
+              "en": "A software application used for developing and playing games.",
+              "fr": "Une application logicielle utilisée pour développer et jouer à des jeux."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what you follow when you're trying to achieve a specific task.",
+              "fr": "Pense à ce que tu suis quand tu essaies d'accomplir une tâche précise."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of Big O notation in the context of algorithms?",
+              "fr": "Quel est le but principal de la notation Big O dans le contexte des algorithmes ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To measure the exact time an algorithm takes to run on a specific computer in seconds.",
+              "fr": "Mesurer le temps exact qu'un algorithme met à s'exécuter sur un ordinateur précis, en secondes."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Big O notation helps you understand an algorithm's performance when the amount of data it processes gets very large.",
+              "fr": "Pense à ce que la notation Big O t'aide à comprendre sur les performances d'un algorithme quand la quantité de données qu'il traite devient très grande."
+            },
+            {
+              "en": "To count the total number of lines of code in an algorithm.",
+              "fr": "Compter le nombre total de lignes de code dans un algorithme."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Big O notation helps you understand an algorithm's performance when the amount of data it processes gets very large.",
+              "fr": "Pense à ce que la notation Big O t'aide à comprendre sur les performances d'un algorithme quand la quantité de données qu'il traite devient très grande."
+            },
+            {
+              "en": "To describe how the resource usage of an algorithm grows as the input size increases.",
+              "fr": "Décrire comment l'utilisation des ressources d'un algorithme croît à mesure que la taille de l'entrée augmente."
+            },
+            {
+              "en": "To determine the best-case performance of an algorithm.",
+              "fr": "Déterminer les performances dans le meilleur cas d'un algorithme."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Big O notation helps you understand an algorithm's performance when the amount of data it processes gets very large.",
+              "fr": "Pense à ce que la notation Big O t'aide à comprendre sur les performances d'un algorithme quand la quantité de données qu'il traite devient très grande."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If an algorithm has a time complexity of `O(n)`, what does this mean about its performance?",
+              "fr": "Si un algorithme a une complexité temporelle de `O(n)`, que cela signifie-t-il pour ses performances ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The algorithm's running time increases proportionally with the input size.",
+              "fr": "Le temps d'exécution de l'algorithme augmente proportionnellement à la taille de l'entrée."
+            },
+            {
+              "en": "The algorithm's running time remains constant regardless of the input size.",
+              "fr": "Le temps d'exécution de l'algorithme reste constant quelle que soit la taille de l'entrée."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what \"linear\" means in terms of a direct relationship or a straight line on a graph.",
+              "fr": "Pense à ce que signifie « linéaire » en termes de relation directe ou de ligne droite sur un graphique."
+            },
+            {
+              "en": "The algorithm's running time grows exponentially with the input size.",
+              "fr": "Le temps d'exécution de l'algorithme croît de façon exponentielle avec la taille de l'entrée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what \"linear\" means in terms of a direct relationship or a straight line on a graph.",
+              "fr": "Pense à ce que signifie « linéaire » en termes de relation directe ou de ligne droite sur un graphique."
+            },
+            {
+              "en": "The algorithm's running time decreases as the input size gets larger.",
+              "fr": "Le temps d'exécution de l'algorithme diminue à mesure que la taille de l'entrée augmente."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what \"linear\" means in terms of a direct relationship or a straight line on a graph.",
+              "fr": "Pense à ce que signifie « linéaire » en termes de relation directe ou de ligne droite sur un graphique."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "699bf563af9132c9e3807638.md",
+      "id": "699bf563af9132c9e3807638",
+      "dashedName": "what-are-good-problem-solving-techniques-and-ways-to-approach-algorithmic-challenges",
+      "title": {
+        "en": "What Are Good Problem-Solving Techniques and Ways to Approach Algorithmic Challenges?",
+        "fr": "Quelles sont de bonnes techniques de résolution de problèmes et des façons d'aborder les défis algorithmiques ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "During your learning journey, you should work on developing strong problem-solving skills. These core skills will be essential for tackling real-world problems in your daily work.",
+              "fr": "Pendant ton parcours d'apprentissage, tu dois travailler à développer de solides compétences en résolution de problèmes. Ces compétences essentielles seront indispensables pour relever des problèmes du monde réel dans ton travail quotidien."
+            },
+            {
+              "en": "Solving algorithmic challenges is a great way to practice. It requires an analytical way of thinking, being able to break the problem down into its core components, and finding a solution that generates the right output efficiently.",
+              "fr": "Résoudre des défis algorithmiques est un excellent moyen de s'entraîner. Cela demande une pensée analytique, la capacité de décomposer le problème en ses composants essentiels, et de trouver une solution qui produit la bonne sortie de façon efficace."
+            },
+            {
+              "en": "But where do you start?",
+              "fr": "Mais par où commencer ?"
+            },
+            {
+              "en": "There are several problem-solving techniques that you can use to start approaching these challenges.",
+              "fr": "Il existe plusieurs techniques de résolution de problèmes que tu peux utiliser pour commencer à aborder ces défis."
+            },
+            {
+              "en": "As an example, we'll reverse a string in JavaScript.",
+              "fr": "Comme exemple, nous allons inverser une chaîne en JavaScript."
+            },
+            {
+              "en": "This is the challenge:",
+              "fr": "Voici le défi :"
+            },
+            {
+              "en": "\"Given a string, write an algorithm that returns a new string with the characters in reverse order.\"",
+              "fr": "« Étant donné une chaîne, écris un algorithme qui renvoie une nouvelle chaîne avec les caractères dans l'ordre inverse. »"
+            },
+            {
+              "en": "The first thing that you should do when you come across this type of problem is to read the description multiple times to make sure that you understand what it says. You may miss critical information if you skip this step or read it too fast.",
+              "fr": "La première chose que tu dois faire quand tu rencontres ce type de problème, c'est de lire la description plusieurs fois pour t'assurer que tu comprends ce qu'elle dit. Tu risques de manquer des informations critiques si tu sautes cette étape ou si tu lis trop vite."
+            },
+            {
+              "en": "Then, once you are familiar with the problem, start breaking it down into its core components.",
+              "fr": "Ensuite, une fois que tu es familiarisé avec le problème, commence à le décomposer en ses composants essentiels."
+            },
+            {
+              "en": "Ask yourself:",
+              "fr": "Demande-toi :"
+            },
+            {
+              "en": "* \"What is the input?\"\n    \n* \"What is the expected output?\"\n    \n* \"How can I transform the input into the expected output?\"",
+              "fr": "* « Quelle est l'entrée ? »\n    \n* « Quelle est la sortie attendue ? »\n    \n* « Comment puis-je transformer l'entrée en la sortie attendue ? »"
+            },
+            {
+              "en": "In this problem, you can determine that the input is a string because the challenge starts with \"Given a string…\"",
+              "fr": "Dans ce problème, tu peux déterminer que l'entrée est une chaîne parce que le défi commence par « Étant donné une chaîne… »"
+            },
+            {
+              "en": "The output is \"a new string with the characters in reverse order.\"",
+              "fr": "La sortie est « une nouvelle chaîne avec les caractères dans l'ordre inverse. »"
+            },
+            {
+              "en": "So you need to take the original string and reverse it.",
+              "fr": "Donc tu dois prendre la chaîne d'origine et l'inverser."
+            },
+            {
+              "en": "This initial analysis might seem a bit repetitive at first, but it's very helpful to make sure that you fully understand the requirements.",
+              "fr": "Cette analyse initiale peut sembler un peu répétitive au début, mais elle est très utile pour t'assurer que tu comprends pleinement les exigences."
+            },
+            {
+              "en": "Then, you should start thinking about how the algorithm that you will develop will transform the input into the output.",
+              "fr": "Ensuite, tu dois commencer à réfléchir à la façon dont l'algorithme que tu vas développer transformera l'entrée en sortie."
+            },
+            {
+              "en": "During this planning and analysis phase, it's common to use pseudocode to map out the necessary steps.",
+              "fr": "Pendant cette phase de planification et d'analyse, il est courant d'utiliser du pseudocode pour cartographier les étapes nécessaires."
+            },
+            {
+              "en": "**Pseudocode** is a high-level description of the algorithm's logic that is general in nature, and is not based on any specific programming language.",
+              "fr": "Le **pseudocode** est une description de haut niveau de la logique de l'algorithme, de nature générale, et qui n'est basée sur aucun langage de programmation spécifique."
+            },
+            {
+              "en": "Pseudocode is not as formal as actual code, since it's only intended for humans to read. It should be easy to understand at a glance. Its main purpose is to give a clear idea of the sequence of steps that will be performed.",
+              "fr": "Le pseudocode n'est pas aussi formel que du vrai code, puisqu'il est uniquement destiné à être lu par des humains. Il doit être facile à comprendre d'un coup d'œil. Son but principal est de donner une idée claire de la séquence d'étapes qui seront effectuées."
+            },
+            {
+              "en": "Pseudocode is usually a mixture of a common written language, like English, with programming constructs, like `IF`, `ELSE`, `FOR`, and `WHILE`.",
+              "fr": "Le pseudocode est généralement un mélange d'une langue écrite courante, comme l'anglais, avec des constructions de programmation, comme `IF`, `ELSE`, `FOR` et `WHILE`."
+            },
+            {
+              "en": "This is an example of pseudocode that you may write to solve the \"Reverse a String\" challenge.",
+              "fr": "Voici un exemple de pseudocode que tu pourrais écrire pour résoudre le défi « Reverse a String »."
+            },
+            {
+              "en": "Note how the steps are outlined in a way that is easy to understand. The words and constructs themselves might vary depending on the standards that you are following.",
+              "fr": "Remarque comment les étapes sont exposées d'une façon facile à comprendre. Les mots et les constructions eux-mêmes peuvent varier selon les normes que tu suis."
+            },
+            {
+              "en": "If you wanted to, you could implement these steps in JavaScript or other programming languages following the same logic, since the pseudocode is independent of the programming language.",
+              "fr": "Si tu le voulais, tu pourrais implémenter ces étapes en JavaScript ou dans d'autres langages de programmation en suivant la même logique, puisque le pseudocode est indépendant du langage de programmation."
+            },
+            {
+              "en": "By this point, you may have already realized that this problem can be solved in many different ways. This isn't the only way to reverse a string.",
+              "fr": "À ce stade, tu as peut-être déjà réalisé que ce problème peut être résolu de nombreuses façons différentes. Ce n'est pas la seule façon d'inverser une chaîne."
+            },
+            {
+              "en": "But remember that choosing the right algorithm is important.",
+              "fr": "Mais souviens-toi que choisir le bon algorithme est important."
+            },
+            {
+              "en": "In a previous lesson, you learned about algorithmic complexity and why it is important to choose algorithms that are efficient in terms of time and space.",
+              "fr": "Dans une leçon précédente, tu as appris la complexité algorithmique et pourquoi il est important de choisir des algorithmes efficaces en termes de temps et d'espace."
+            },
+            {
+              "en": "That's where you will play a vital role as a developer. You will need to choose the most efficient algorithm to solve the challenge.",
+              "fr": "C'est là que tu joueras un rôle vital en tant que développeur. Tu devras choisir l'algorithme le plus efficace pour résoudre le défi."
+            },
+            {
+              "en": "Thinking through different available algorithms is an important problem-solving skill that you should practice. Take a moment to ask yourself if the solution that you are proposing in your pseudocode is the best one or not.",
+              "fr": "Réfléchir aux différents algorithmes disponibles est une compétence importante de résolution de problèmes que tu dois pratiquer. Prends un moment pour te demander si la solution que tu proposes dans ton pseudocode est la meilleure ou non."
+            },
+            {
+              "en": "For example, there are many different algorithms for sorting elements, but some of them are more efficient than others. Bubble sort, for example, is very inefficient for sorting large lists, while Quick Sort is usually more efficient.",
+              "fr": "Par exemple, il existe de nombreux algorithmes différents pour trier des éléments, mais certains sont plus efficaces que d'autres. Le tri à bulles, par exemple, est très inefficace pour trier de grandes listes, tandis que le Quick Sort est généralement plus efficace."
+            },
+            {
+              "en": "For our \"Reverse a String\" challenge, we could use either one of these approaches, assuming that we are planning to implement our algorithm in JavaScript:",
+              "fr": "Pour notre défi « Reverse a String », nous pourrions utiliser l'une ou l'autre de ces approches, en supposant que nous prévoyons d'implémenter notre algorithme en JavaScript :"
+            },
+            {
+              "en": "* Using built-in methods like `.split(\"\")`, `.reverse()`, and `.join(\"\")` to return a new reversed string.\n    \n* Looping over the characters from left to right and adding the new character to the beginning of the new string.\n    \n* Converting the string into an array and manually reversing it with a loop before joining it back into a string.",
+              "fr": "* Utiliser des méthodes intégrées comme `.split(\"\")`, `.reverse()` et `.join(\"\")` pour renvoyer une nouvelle chaîne inversée.\n    \n* Parcourir les caractères de gauche à droite et ajouter le nouveau caractère au début de la nouvelle chaîne.\n    \n* Convertir la chaîne en tableau et l'inverser manuellement avec une boucle avant de la rejoindre en une chaîne."
+            },
+            {
+              "en": "Which one should you use? That's your choice.",
+              "fr": "Laquelle utiliser ? C'est ton choix."
+            },
+            {
+              "en": "Making these decisions based on your knowledge and experience can make a huge difference in the final performance of your application. Consider different approaches, their efficiency, implications, and implementation.",
+              "fr": "Prendre ces décisions d'après tes connaissances et ton expérience peut faire une énorme différence dans les performances finales de ton application. Considère différentes approches, leur efficacité, leurs implications et leur implémentation."
+            },
+            {
+              "en": "Ask yourself:",
+              "fr": "Demande-toi :"
+            },
+            {
+              "en": "* \"How will I approach this problem?\"\n    \n* \"What data structures will I use?\"\n    \n* \"Are the data structures that I chose the most efficient ones for the problem at hand?\"\n    \n* \"Am I covering all possible edge cases?\"",
+              "fr": "* « Comment vais-je aborder ce problème ? »\n    \n* « Quelles structures de données vais-je utiliser ? »\n    \n* « Les structures de données que j'ai choisies sont-elles les plus efficaces pour le problème en question ? »\n    \n* « Est-ce que je couvre tous les cas limites possibles ? »"
+            },
+            {
+              "en": "Edge cases are specific, valid inputs or conditions that occur at the boundaries of what an algorithm should handle.",
+              "fr": "Les cas limites sont des entrées ou conditions spécifiques et valides qui se produisent aux frontières de ce qu'un algorithme doit gérer."
+            },
+            {
+              "en": "For example, in the \"Reverse a String\" challenge, an edge case would be taking an empty string as input. Are you handling this correctly? If not, consider the best way to handle this edge case and add it to your pseudocode.",
+              "fr": "Par exemple, dans le défi « Reverse a String », un cas limite serait de prendre une chaîne vide comme entrée. Est-ce que tu gères cela correctement ? Sinon, considère la meilleure façon de gérer ce cas limite et ajoute-le à ton pseudocode."
+            },
+            {
+              "en": "Then, once you are happy with your plan, you can move on to the implementation phase. At this phase, you will implement your algorithm in a programming language.",
+              "fr": "Ensuite, une fois que tu es satisfait de ton plan, tu peux passer à la phase d'implémentation. À cette phase, tu implémenteras ton algorithme dans un langage de programmation."
+            },
+            {
+              "en": "When structuring your program, you should write modular code that is easy to read and understand.",
+              "fr": "En structurant ton programme, tu dois écrire du code modulaire facile à lire et à comprendre."
+            },
+            {
+              "en": "Use the tools of the programming language based on your current knowledge. Some programming languages include built-in solutions for common problems and tasks. Use them if possible.",
+              "fr": "Utilise les outils du langage de programmation d'après tes connaissances actuelles. Certains langages de programmation incluent des solutions intégrées pour des problèmes et tâches courants. Utilise-les si possible."
+            },
+            {
+              "en": "To be consistent, follow the best practices of JavaScript or the programming language of your choice.",
+              "fr": "Pour être cohérent, suis les bonnes pratiques de JavaScript ou du langage de programmation de ton choix."
+            },
+            {
+              "en": "Test your code as you write it and make sure that you are handling edge cases appropriately.",
+              "fr": "Teste ton code au fur et à mesure que tu l'écris et assure-toi que tu gères correctement les cas limites."
+            },
+            {
+              "en": "Once your solution is implemented, check if it works correctly for all the examples and potentially refactor your code to make it clearer or simpler.",
+              "fr": "Une fois ta solution implémentée, vérifie qu'elle fonctionne correctement pour tous les exemples et refactorise éventuellement ton code pour le rendre plus clair ou plus simple."
+            },
+            {
+              "en": "Going back to your solution is very important. Development is not necessarily a linear, step-by-step process. You can always go back to your code and use your critical thinking skills to improve it.",
+              "fr": "Revenir à ta solution est très important. Le développement n'est pas forcément un processus linéaire, étape par étape. Tu peux toujours revenir à ton code et utiliser ton esprit critique pour l'améliorer."
+            },
+            {
+              "en": "These are some common problem-solving techniques that you can follow to approach algorithmic challenges. If you practice consistently, you will gradually develop your problem-solving skills.",
+              "fr": "Voici quelques techniques courantes de résolution de problèmes que tu peux suivre pour aborder les défis algorithmiques. Si tu t'entraînes régulièrement, tu développeras progressivement tes compétences en résolution de problèmes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the most important first step when approaching any problem-solving challenge?",
+              "fr": "Laquelle des propositions suivantes est la première étape la plus importante quand on aborde un défi de résolution de problèmes ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Understand the problem statement, inputs, and constraints.",
+              "fr": "Comprendre l'énoncé du problème, les entrées et les contraintes."
+            },
+            {
+              "en": "Search for existing solutions online.",
+              "fr": "Chercher des solutions existantes en ligne."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What should you do before you even think about solutions?",
+              "fr": "Que dois-tu faire avant même de penser aux solutions ?"
+            },
+            {
+              "en": "Immediately start writing code.",
+              "fr": "Commencer immédiatement à écrire du code."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What should you do before you even think about solutions?",
+              "fr": "Que dois-tu faire avant même de penser aux solutions ?"
+            },
+            {
+              "en": "Guess a solution and then try to make it work.",
+              "fr": "Deviner une solution puis essayer de la faire fonctionner."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What should you do before you even think about solutions?",
+              "fr": "Que dois-tu faire avant même de penser aux solutions ?"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main purpose of writing pseudocode when solving an algorithmic challenge?",
+              "fr": "Quel est le but principal d'écrire du pseudocode quand on résout un défi algorithmique ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To write the final, executable version of the code.",
+              "fr": "Écrire la version finale et exécutable du code."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what pseudocode helps you do before you start writing code.",
+              "fr": "Pense à ce que le pseudocode t'aide à faire avant de commencer à écrire du code."
+            },
+            {
+              "en": "To test the algorithm's performance and find bugs.",
+              "fr": "Tester les performances de l'algorithme et trouver des bugs."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what pseudocode helps you do before you start writing code.",
+              "fr": "Pense à ce que le pseudocode t'aide à faire avant de commencer à écrire du code."
+            },
+            {
+              "en": "To outline the algorithm's logic in a human-readable, language-agnostic way.",
+              "fr": "Exposer la logique de l'algorithme d'une façon lisible par un humain et indépendante du langage."
+            },
+            {
+              "en": "To automatically generate the actual code for the solution.",
+              "fr": "Générer automatiquement le code réel de la solution."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what pseudocode helps you do before you start writing code.",
+              "fr": "Pense à ce que le pseudocode t'aide à faire avant de commencer à écrire du code."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Before writing the final code for an algorithmic challenge, why is it important to consider edge cases?",
+              "fr": "Avant d'écrire le code final d'un défi algorithmique, pourquoi est-il important de considérer les cas limites ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Edge cases are always the easiest parts of the problem to solve.",
+              "fr": "Les cas limites sont toujours les parties les plus faciles du problème à résoudre."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of inputs might cause unexpected behavior if they are not specifically considered, even if they are valid.",
+              "fr": "Pense au type d'entrées qui pourraient provoquer un comportement inattendu si elles ne sont pas spécifiquement considérées, même si elles sont valides."
+            },
+            {
+              "en": "They help ensure the algorithm works correctly for all valid inputs.",
+              "fr": "Ils aident à garantir que l'algorithme fonctionne correctement pour toutes les entrées valides."
+            },
+            {
+              "en": "They are only relevant for very simple problems.",
+              "fr": "Ils ne sont pertinents que pour des problèmes très simples."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of inputs might cause unexpected behavior if they are not specifically considered, even if they are valid.",
+              "fr": "Pense au type d'entrées qui pourraient provoquer un comportement inattendu si elles ne sont pas spécifiquement considérées, même si elles sont valides."
+            },
+            {
+              "en": "They make the code shorter.",
+              "fr": "Ils rendent le code plus court."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of inputs might cause unexpected behavior if they are not specifically considered, even if they are valid.",
+              "fr": "Pense au type d'entrées qui pourraient provoquer un comportement inattendu si elles ne sont pas spécifiquement considérées, même si elles sont valides."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "699bf563af9132c9e3807639.md",
+      "id": "699bf563af9132c9e3807639",
+      "dashedName": "how-do-dynamic-arrays-differ-from-static-arrays",
+      "title": {
+        "en": "How Do Dynamic Arrays Differ From Static Arrays?",
+        "fr": "En quoi les tableaux dynamiques diffèrent-ils des tableaux statiques ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Arrays are a fundamental data structure in computer science. All arrays store ordered collections of data, but depending on their type, they may work differently behind the scenes.",
+              "fr": "Les tableaux sont une structure de données fondamentale en informatique. Tous les tableaux stockent des collections ordonnées de données, mais selon leur type, ils peuvent fonctionner différemment en coulisses."
+            },
+            {
+              "en": "Their underlying behavior can have an important effect in the program's efficiency, so let's learn about dynamic and static arrays and their differences, so you can choose the most efficient one for your program.",
+              "fr": "Leur comportement sous-jacent peut avoir un effet important sur l'efficacité du programme, alors apprenons les tableaux dynamiques et statiques et leurs différences, pour que tu puisses choisir le plus efficace pour ton programme."
+            },
+            {
+              "en": "We'll start with static arrays.",
+              "fr": "Nous commencerons par les tableaux statiques."
+            },
+            {
+              "en": "**Static arrays** have a fixed size. They store elements in adjacent memory locations.",
+              "fr": "Les **tableaux statiques** ont une taille fixe. Ils stockent les éléments dans des emplacements mémoire adjacents."
+            },
+            {
+              "en": "The size of a static array is determined when the array is initialized. Once that specific block of memory is allocated, it's fixed, and cannot be changed while the program is running. This is a key characteristic of static arrays.",
+              "fr": "La taille d'un tableau statique est déterminée quand le tableau est initialisé. Une fois ce bloc de mémoire spécifique alloué, il est fixe et ne peut pas être modifié pendant l'exécution du programme. C'est une caractéristique clé des tableaux statiques."
+            },
+            {
+              "en": "Storing elements in adjacent memory locations makes the data retrieval process more efficient because the program can store the location of the first element and then use indices to make simple calculations and find the other elements in memory.",
+              "fr": "Stocker les éléments dans des emplacements mémoire adjacents rend le processus de récupération des données plus efficace, car le programme peut stocker l'emplacement du premier élément puis utiliser des indices pour faire des calculs simples et trouver les autres éléments en mémoire."
+            },
+            {
+              "en": "Thanks to this, accessing the values of a static array takes constant time `O(1)`, which is very efficient.",
+              "fr": "Grâce à cela, accéder aux valeurs d'un tableau statique prend un temps constant `O(1)`, ce qui est très efficace."
+            },
+            {
+              "en": "You can use a static array when you know the number of elements that will be stored in advance. It's also helpful when the values will be accessed very frequently, since the access operation is very efficient.",
+              "fr": "Tu peux utiliser un tableau statique quand tu connais à l'avance le nombre d'éléments qui seront stockés. C'est aussi utile quand les valeurs seront consultées très fréquemment, puisque l'opération d'accès est très efficace."
+            },
+            {
+              "en": "However, this data structure cannot grow or shrink, so if the number of elements that will be stored can vary, you should use a dynamic array instead.",
+              "fr": "Cependant, cette structure de données ne peut ni grandir ni rétrécir, donc si le nombre d'éléments à stocker peut varier, tu devrais plutôt utiliser un tableau dynamique."
+            },
+            {
+              "en": "Trying to increase the size of a static array would involve creating a new array and copying all the elements from the old array to a new one, which is inefficient. In that case, a dynamic array would be much better because it handles this process automatically.",
+              "fr": "Essayer d'augmenter la taille d'un tableau statique impliquerait de créer un nouveau tableau et de copier tous les éléments de l'ancien vers le nouveau, ce qui est inefficace. Dans ce cas, un tableau dynamique serait bien meilleur car il gère ce processus automatiquement."
+            },
+            {
+              "en": "JavaScript does not have traditional low-level static arrays like C or Java, but you can simulate a fixed-size array using the built-in `Array` object:",
+              "fr": "JavaScript n'a pas de tableaux statiques traditionnels de bas niveau comme C ou Java, mais tu peux simuler un tableau de taille fixe avec l'objet intégré `Array` :"
+            },
+            {
+              "en": "While JavaScript allows resizing, conceptually this represents a fixed-length array.",
+              "fr": "Bien que JavaScript permette le redimensionnement, conceptuellement cela représente un tableau de longueur fixe."
+            },
+            {
+              "en": "Arrays in JavaScript are dynamic by default, so let's take a look at those.",
+              "fr": "Les tableaux en JavaScript sont dynamiques par défaut, alors regardons ceux-là."
+            },
+            {
+              "en": "**Dynamic arrays** are more flexible because they can grow or shrink automatically while the program is running.",
+              "fr": "Les **tableaux dynamiques** sont plus flexibles car ils peuvent grandir ou rétrécir automatiquement pendant l'exécution du programme."
+            },
+            {
+              "en": "They work through an automatic resizing mechanism that copies the elements into a new array when the original array is full. The process is done efficiently because the size of the new array is chosen in an efficient way that makes these computationally expensive operations less frequent.",
+              "fr": "Ils fonctionnent via un mécanisme de redimensionnement automatique qui copie les éléments dans un nouveau tableau quand le tableau d'origine est plein. Le processus est fait efficacement car la taille du nouveau tableau est choisie de façon efficace, ce qui rend ces opérations coûteuses en calcul moins fréquentes."
+            },
+            {
+              "en": "Accessing the elements of a dynamic array takes constant time `O(1)`, so this operation is very efficient.",
+              "fr": "Accéder aux éléments d'un tableau dynamique prend un temps constant `O(1)`, donc cette opération est très efficace."
+            },
+            {
+              "en": "Inserting an element in the middle of the array takes linear time `O(n)` because the elements after it need to be relocated.",
+              "fr": "Insérer un élément au milieu du tableau prend un temps linéaire `O(n)` car les éléments après lui doivent être déplacés."
+            },
+            {
+              "en": "Inserting an element at the end of the array takes constant time `O(1)` if there is still space available in the dynamic array, but if the array is full and needs resizing, this operation has a `O(n)` complexity.",
+              "fr": "Insérer un élément à la fin du tableau prend un temps constant `O(1)` s'il reste de l'espace disponible dans le tableau dynamique, mais si le tableau est plein et doit être redimensionné, cette opération a une complexité `O(n)`."
+            },
+            {
+              "en": "You should use dynamic arrays when you don't know in advance the number of values that you will need to store in the array. They are also helpful when you will be frequently inserting and deleting elements.",
+              "fr": "Tu devrais utiliser des tableaux dynamiques quand tu ne connais pas à l'avance le nombre de valeurs que tu auras besoin de stocker dans le tableau. Ils sont aussi utiles quand tu vas fréquemment insérer et supprimer des éléments."
+            },
+            {
+              "en": "To create an array in JavaScript, you write the elements inside square brackets, separated by commas:",
+              "fr": "Pour créer un tableau en JavaScript, tu écris les éléments entre crochets, séparés par des virgules :"
+            },
+            {
+              "en": "This creates a dynamic array with four elements.",
+              "fr": "Cela crée un tableau dynamique avec quatre éléments."
+            },
+            {
+              "en": "You can access an element in the array by writing the variable name, followed by square brackets containing the index.",
+              "fr": "Tu peux accéder à un élément du tableau en écrivant le nom de la variable, suivi de crochets contenant l'indice."
+            },
+            {
+              "en": "Indices start at 0 for the first element and increase by 1 for each next element.",
+              "fr": "Les indices commencent à 0 pour le premier élément et augmentent de 1 pour chaque élément suivant."
+            },
+            {
+              "en": "To update a value, you just need to reassign it:",
+              "fr": "Pour mettre à jour une valeur, tu as juste besoin de la réassigner :"
+            },
+            {
+              "en": "Now, the array becomes `[3, 4, 16, 6]`.",
+              "fr": "Maintenant, le tableau devient `[3, 4, 16, 6]`."
+            },
+            {
+              "en": "To add an element to the end of the array, use the `.push()` method:",
+              "fr": "Pour ajouter un élément à la fin du tableau, utilise la méthode `.push()` :"
+            },
+            {
+              "en": "Now the array becomes `[3, 4, 16, 6, 7]`:",
+              "fr": "Maintenant le tableau devient `[3, 4, 16, 6, 7]` :"
+            },
+            {
+              "en": "To insert elements at a specific index, JavaScript does not have `.insert()` like Python, but you can use the `.splice()` method. The syntax looks like this:",
+              "fr": "Pour insérer des éléments à un index spécifique, JavaScript n'a pas de `.insert()` comme Python, mais tu peux utiliser la méthode `.splice()`. La syntaxe ressemble à ceci :"
+            },
+            {
+              "en": "Here's an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "This example means:",
+              "fr": "Cet exemple signifie :"
+            },
+            {
+              "en": "- Start at index 3\n- Remove 0 elements\n- Insert 15",
+              "fr": "- Commencer à l'index 3\n- Supprimer 0 éléments\n- Insérer 15"
+            },
+            {
+              "en": "If the array was `[3, 4, 16, 6, 7]`, it now becomes `[3, 4, 16, 15, 6, 7]`.",
+              "fr": "Si le tableau était `[3, 4, 16, 6, 7]`, il devient maintenant `[3, 4, 16, 15, 6, 7]`."
+            },
+            {
+              "en": "You can remove an element at a specific index with the same `.splice` method:",
+              "fr": "Tu peux supprimer un élément à un index spécifique avec la même méthode `.splice` :"
+            },
+            {
+              "en": "This means start at index 2 and remove 1 element.",
+              "fr": "Cela signifie commencer à l'index 2 et supprimer 1 élément."
+            },
+            {
+              "en": "To remove the last element, use the `.pop()` method:",
+              "fr": "Pour supprimer le dernier élément, utilise la méthode `.pop()` :"
+            },
+            {
+              "en": "There are tons of other built-in array methods that you can check in the documentation for working with arrays in JavaScript.",
+              "fr": "Il existe plein d'autres méthodes de tableau intégrées que tu peux consulter dans la documentation pour travailler avec les tableaux en JavaScript."
+            },
+            {
+              "en": "That's the power of dynamic arrays.",
+              "fr": "C'est ça la puissance des tableaux dynamiques."
+            },
+            {
+              "en": "In general, you should use static arrays when you know the number of elements in advance and you need to access them frequently, and use dynamic arrays when the number of elements is unknown or variable over time.",
+              "fr": "En général, tu devrais utiliser des tableaux statiques quand tu connais le nombre d'éléments à l'avance et que tu dois y accéder fréquemment, et utiliser des tableaux dynamiques quand le nombre d'éléments est inconnu ou variable dans le temps."
+            },
+            {
+              "en": "You should always consider the tradeoff between the simplicity of static arrays and the flexibility of dynamic arrays. They are both helpful for specific use cases and scenarios. Being able to choose the best one for a given problem is part of the problem-solving skills that you will gradually develop with practice.",
+              "fr": "Tu devrais toujours considérer le compromis entre la simplicité des tableaux statiques et la flexibilité des tableaux dynamiques. Ils sont tous les deux utiles pour des cas d'usage et des scénarios spécifiques. Être capable de choisir le meilleur pour un problème donné fait partie des compétences de résolution de problèmes que tu développeras progressivement avec la pratique."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference in size between a static array and a dynamic array?",
+              "fr": "Quelle est la principale différence de taille entre un tableau statique et un tableau dynamique ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Static arrays can change their size after being created, while dynamic arrays cannot.",
+              "fr": "Les tableaux statiques peuvent changer de taille après avoir été créés, tandis que les tableaux dynamiques ne le peuvent pas."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much space each type of array will require.",
+              "fr": "Réfléchis à l'espace dont chaque type de tableau aura besoin."
+            },
+            {
+              "en": "Static arrays have a fixed size, while dynamic arrays can change size during runtime.",
+              "fr": "Les tableaux statiques ont une taille fixe, tandis que les tableaux dynamiques peuvent changer de taille pendant l'exécution."
+            },
+            {
+              "en": "There is no practical difference in how their sizes are handled.",
+              "fr": "Il n'y a pas de différence pratique dans la façon dont leurs tailles sont gérées."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much space each type of array will require.",
+              "fr": "Réfléchis à l'espace dont chaque type de tableau aura besoin."
+            },
+            {
+              "en": "Dynamic arrays are always larger than static arrays.",
+              "fr": "Les tableaux dynamiques sont toujours plus grands que les tableaux statiques."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much space each type of array will require.",
+              "fr": "Réfléchis à l'espace dont chaque type de tableau aura besoin."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If you need to add more elements to a static array that is already full, what is the typical process involved?",
+              "fr": "Si tu as besoin d'ajouter plus d'éléments à un tableau statique déjà plein, quel est le processus typique impliqué ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The static array automatically expands its memory to fit the new elements.",
+              "fr": "Le tableau statique étend automatiquement sa mémoire pour accueillir les nouveaux éléments."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is necessary when a container with a fixed capacity runs out of space.",
+              "fr": "Réfléchis à ce qui est nécessaire quand un conteneur à capacité fixe n'a plus d'espace."
+            },
+            {
+              "en": "You must create a new, larger array and copy all existing elements to it.",
+              "fr": "Tu dois créer un nouveau tableau plus grand et y copier tous les éléments existants."
+            },
+            {
+              "en": "The array automatically converts itself into a dynamic array.",
+              "fr": "Le tableau se convertit automatiquement en tableau dynamique."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is necessary when a container with a fixed capacity runs out of space.",
+              "fr": "Réfléchis à ce qui est nécessaire quand un conteneur à capacité fixe n'a plus d'espace."
+            },
+            {
+              "en": "New elements are simply discarded if the array is full.",
+              "fr": "Les nouveaux éléments sont simplement ignorés si le tableau est plein."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is necessary when a container with a fixed capacity runs out of space.",
+              "fr": "Réfléchis à ce qui est nécessaire quand un conteneur à capacité fixe n'a plus d'espace."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which scenario would a static array typically be a more suitable choice than a dynamic array?",
+              "fr": "Dans quel scénario un tableau statique serait-il typiquement un choix plus adapté qu'un tableau dynamique ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When the exact number of elements is unknown and changes frequently.",
+              "fr": "Quand le nombre exact d'éléments est inconnu et change fréquemment."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a static array related to its size and resource usage.",
+              "fr": "Réfléchis au principal avantage d'un tableau statique lié à sa taille et à l'utilisation des ressources."
+            },
+            {
+              "en": "When you need to store a very large dataset that might grow indefinitely.",
+              "fr": "Quand tu as besoin de stocker un très grand jeu de données qui pourrait grandir indéfiniment."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a static array related to its size and resource usage.",
+              "fr": "Réfléchis au principal avantage d'un tableau statique lié à sa taille et à l'utilisation des ressources."
+            },
+            {
+              "en": "When you require frequent insertions and deletions at arbitrary positions within the collection.",
+              "fr": "Quand tu as besoin d'insertions et de suppressions fréquentes à des positions arbitraires dans la collection."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a static array related to its size and resource usage.",
+              "fr": "Réfléchis au principal avantage d'un tableau statique lié à sa taille et à l'utilisation des ressources."
+            },
+            {
+              "en": "When the data size is fixed and known at the time the program is written.",
+              "fr": "Quand la taille des données est fixe et connue au moment où le programme est écrit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "699bf563af9132c9e380763a.md",
+      "id": "699bf563af9132c9e380763a",
+      "dashedName": "how-do-stacks-and-queues-work",
+      "title": {
+        "en": "How Do Stacks and Queues Work?",
+        "fr": "Comment Fonctionnent les Piles et les Files ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Stacks and queues are data structures commonly used in computer science.",
+              "fr": "Les piles et les files sont des structures de données couramment utilisées en informatique."
+            },
+            {
+              "en": "They're linear data structures that follow specific rules for adding and removing elements.",
+              "fr": "Ce sont des structures de données linéaires qui suivent des règles spécifiques pour ajouter et retirer des éléments."
+            },
+            {
+              "en": "## Stacks",
+              "fr": "## Piles"
+            },
+            {
+              "en": "Let's start with **Stacks**.",
+              "fr": "Commençons par les **Piles**."
+            },
+            {
+              "en": "A **stack** is a Last-in, First-out (LIFO) data structure.",
+              "fr": "Une **pile** est une structure de données Last-in, First-out (LIFO)."
+            },
+            {
+              "en": "This means that the last element that was added to the stack is the first one to be removed.",
+              "fr": "Cela signifie que le dernier élément ajouté à la pile est le premier à être retiré."
+            },
+            {
+              "en": "Stacks have two ends, which we know as top and bottom.",
+              "fr": "Les piles ont deux extrémités, que l'on appelle le sommet et la base."
+            },
+            {
+              "en": "Elements are added and removed from the top of the stack.",
+              "fr": "Les éléments sont ajoutés et retirés depuis le sommet de la pile."
+            },
+            {
+              "en": "You can think of a stack as a pile of dishes, where you can only place dishes at the top of the pile and take dishes from the top of the pile.",
+              "fr": "Tu peux imaginer une pile comme une pile d'assiettes, où tu ne peux placer des assiettes qu'au sommet de la pile et prendre des assiettes depuis le sommet de la pile."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-1.png\" alt=\"stack data structure visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-1.png\" alt=\"visualisation de la structure de données pile\">"
+            },
+            {
+              "en": "These operations of adding and removing elements have special names in this context.",
+              "fr": "Ces opérations d'ajout et de retrait d'éléments ont des noms spéciaux dans ce contexte."
+            },
+            {
+              "en": "Adding an element to a stack is known as a \"push\" operation. We say that we \"push\" an element onto the stack when we add it to the top of the stack.",
+              "fr": "Ajouter un élément à une pile est connu comme une opération « push ». On dit que l'on « push » un élément sur la pile quand on l'ajoute au sommet de la pile."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-2.png\" alt=\"stack push operation visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-2.png\" alt=\"visualisation de l'opération push sur une pile\">"
+            },
+            {
+              "en": "Removing an element from a stack is known as a \"pop\" operation. We say that we \"pop\" an element from the stack when we remove it from the top of the stack.",
+              "fr": "Retirer un élément d'une pile est connu comme une opération « pop ». On dit que l'on « pop » un élément de la pile quand on le retire du sommet de la pile."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-3.png\" alt=\"stack pop operation visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-3.png\" alt=\"visualisation de l'opération pop sur une pile\">"
+            },
+            {
+              "en": "You can see that we don't really perform any operations at the bottom of the stack but we keep it there as a reference.",
+              "fr": "Tu peux voir que l'on ne réalise vraiment aucune opération à la base de la pile, mais on la garde comme référence."
+            },
+            {
+              "en": "The time complexity of the push and pop operations is typically `O(1)`, a constant time complexity.",
+              "fr": "La complexité temporelle des opérations push et pop est typiquement `O(1)`, une complexité temporelle constante."
+            },
+            {
+              "en": "When you push an element onto the stack, the element is simply added to the top.",
+              "fr": "Quand tu fais un push d'un élément sur la pile, l'élément est simplement ajouté au sommet."
+            },
+            {
+              "en": "When you pop an element from the stack, the element at the top is removed.",
+              "fr": "Quand tu fais un pop d'un élément de la pile, l'élément au sommet est retiré."
+            },
+            {
+              "en": "Therefore, the time it takes to perform these operations remains constant regardless of the size of the stack.",
+              "fr": "Par conséquent, le temps nécessaire pour effectuer ces opérations reste constant quelle que soit la taille de la pile."
+            },
+            {
+              "en": "The space complexity of the push and pop operations is usually constant `O(1)`. This means that the amount of memory required to perform these operations remains constant regardless of the size of the stack.",
+              "fr": "La complexité spatiale des opérations push et pop est généralement constante `O(1)`. Cela signifie que la quantité de mémoire requise pour effectuer ces opérations reste constante quelle que soit la taille de la pile."
+            },
+            {
+              "en": "## Queues",
+              "fr": "## Files"
+            },
+            {
+              "en": "Now that you know more about stacks, let's learn about **Queues**.",
+              "fr": "Maintenant que tu en sais plus sur les piles, apprenons-en davantage sur les **Files**."
+            },
+            {
+              "en": "A queue is a First-in First-out (FIFO) linear data structure. This means that the first element added to the queue is the first one to be removed.",
+              "fr": "Une file est une structure de données linéaire First-in First-out (FIFO). Cela signifie que le premier élément ajouté à la file est le premier à être retiré."
+            },
+            {
+              "en": "Queues have two ends: front and back.",
+              "fr": "Les files ont deux extrémités : l'avant et l'arrière."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-4.webp\" alt=\"queue data structure visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-4.webp\" alt=\"visualisation de la structure de données file\">"
+            },
+            {
+              "en": "Elements are added to the back of the queue and they are removed from the front of the queue.",
+              "fr": "Les éléments sont ajoutés à l'arrière de la file et ils sont retirés de l'avant de la file."
+            },
+            {
+              "en": "You can think of a queue as a line of people waiting to pay for their groceries at the supermarket. The first person in line is the first one to go to the cash register while new people join the line at the end.",
+              "fr": "Tu peux imaginer une file comme une file de personnes qui attendent de payer leurs courses au supermarché. La première personne dans la file est la première à passer à la caisse tandis que les nouvelles personnes rejoignent la file à la fin."
+            },
+            {
+              "en": "The operations of adding and removing elements have special names in the context of a queue.",
+              "fr": "Les opérations d'ajout et de retrait d'éléments ont des noms spéciaux dans le contexte d'une file."
+            },
+            {
+              "en": "Adding an element to the back of a queue is known as an \"enqueue\" operation.",
+              "fr": "Ajouter un élément à l'arrière d'une file est connu comme une opération « enqueue »."
+            },
+            {
+              "en": "In an enqueue operation, the new element is added to the end of the queue, becoming the end of the line.",
+              "fr": "Dans une opération enqueue, le nouvel élément est ajouté à la fin de la file, devenant la fin de la file d'attente."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-5.png\" alt=\"queue enqueue operation visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-5.png\" alt=\"visualisation de l'opération enqueue sur une file\">"
+            },
+            {
+              "en": "Removing an element from the front of the queue is known as a \"dequeue\" operation.  \n  \nIn the dequeue operation, the element at the front of the queue is removed, and the next element in line becomes the new front.",
+              "fr": "Retirer un élément de l'avant de la file est connu comme une opération « dequeue ».  \n  \nDans l'opération dequeue, l'élément à l'avant de la file est retiré, et l'élément suivant dans la file devient le nouvel avant."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-6.png\" alt=\"queue dequeue operation visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-stacks-and-queues-work-6.png\" alt=\"visualisation de l'opération dequeue sur une file\">"
+            },
+            {
+              "en": "The time complexity of the enqueue and dequeue operations is `O(1)`, constant time. The time it takes to perform these operations remains constant, regardless of the size of the queue.",
+              "fr": "La complexité temporelle des opérations enqueue et dequeue est `O(1)`, temps constant. Le temps nécessaire pour effectuer ces opérations reste constant, quelle que soit la taille de la file."
+            },
+            {
+              "en": "The space complexity of the enqueue and dequeue operations is usually constant `O(1)`. This means that the amount of memory required to perform these operations remains constant regardless of the size of the queue.",
+              "fr": "La complexité spatiale des opérations enqueue et dequeue est généralement constante `O(1)`. Cela signifie que la quantité de mémoire requise pour effectuer ces opérations reste constante quelle que soit la taille de la file."
+            },
+            {
+              "en": "Stacks and queues are data structures used in computer science for organizing and managing elements. Understanding them is essential for building efficient algorithms in various programming applications.",
+              "fr": "Les piles et les files sont des structures de données utilisées en informatique pour organiser et gérer des éléments. Les comprendre est essentiel pour construire des algorithmes efficaces dans diverses applications de programmation."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary difference between a stack and a queue?",
+              "fr": "Quelle est la principale différence entre une pile et une file ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Stacks are LIFO, while queues are FIFO.",
+              "fr": "Les piles sont LIFO, tandis que les files sont FIFO."
+            },
+            {
+              "en": "Stacks are FIFO, while queues are LIFO.",
+              "fr": "Les piles sont FIFO, tandis que les files sont LIFO."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which elements are added and removed from each data structure.",
+              "fr": "Réfléchis à l'ordre dans lequel les éléments sont ajoutés et retirés de chaque structure de données."
+            },
+            {
+              "en": "Stacks are used for storing data, while queues are used for processing data.",
+              "fr": "Les piles sont utilisées pour stocker des données, tandis que les files sont utilisées pour traiter des données."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which elements are added and removed from each data structure.",
+              "fr": "Réfléchis à l'ordre dans lequel les éléments sont ajoutés et retirés de chaque structure de données."
+            },
+            {
+              "en": "There is no difference between stacks and queues.",
+              "fr": "Il n'y a pas de différence entre les piles et les files."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the order in which elements are added and removed from each data structure.",
+              "fr": "Réfléchis à l'ordre dans lequel les éléments sont ajoutés et retirés de chaque structure de données."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which operation is used to add an element to a stack?",
+              "fr": "Quelle opération est utilisée pour ajouter un élément à une pile ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a stack of plates.",
+              "fr": "Réfléchis à l'analogie d'une pile d'assiettes."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a stack of plates.",
+              "fr": "Réfléchis à l'analogie d'une pile d'assiettes."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a stack of plates.",
+              "fr": "Réfléchis à l'analogie d'une pile d'assiettes."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which operation is used to remove an element from a queue?",
+              "fr": "Quelle opération est utilisée pour retirer un élément d'une file ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a line of people waiting.",
+              "fr": "Réfléchis à l'analogie d'une file de personnes qui attendent."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a line of people waiting.",
+              "fr": "Réfléchis à l'analogie d'une file de personnes qui attendent."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the analogy of a line of people waiting.",
+              "fr": "Réfléchis à l'analogie d'une file de personnes qui attendent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "699bf563af9132c9e380763b.md",
+      "id": "699bf563af9132c9e380763b",
+      "dashedName": "how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list",
+      "title": {
+        "en": "How Do Singly Linked Lists Work and How Do They Differ From Doubly Linked Lists?",
+        "fr": "Comment Fonctionnent les Listes Simplement Chaînées et En Quoi Diffèrent-elles des Listes Doublement Chaînées ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "A **linked list** is a linear data structure in which each node is connected to the next node in the sequence.",
+              "fr": "Une **liste chaînée** est une structure de données linéaire dans laquelle chaque nœud est connecté au nœud suivant dans la séquence."
+            },
+            {
+              "en": "These connections create a data structure that looks like a chain of nodes, where each node stores data and a reference to the next node in the linked list.",
+              "fr": "Ces connexions créent une structure de données qui ressemble à une chaîne de nœuds, où chaque nœud stocke des données et une référence vers le nœud suivant dans la liste chaînée."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-1.png\" alt=\"linked list basic structure visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-1.png\" alt=\"visualisation de la structure de base d'une liste chaînée\">"
+            },
+            {
+              "en": "We use these references to go from the first node to the next node and so on.",
+              "fr": "On utilise ces références pour aller du premier nœud au nœud suivant et ainsi de suite."
+            },
+            {
+              "en": "Linked lists are commonly used for implementing other data structures, such as stacks, queues, and deques. They can also be used to implement essential graph algorithms, such as depth-first search and breadth-first search.",
+              "fr": "Les listes chaînées sont couramment utilisées pour implémenter d'autres structures de données, comme les piles, les files et les deques. Elles peuvent aussi être utilisées pour implémenter des algorithmes de graphes essentiels, comme le parcours en profondeur et le parcours en largeur."
+            },
+            {
+              "en": "## Singly Linked Lists",
+              "fr": "## Listes Simplement Chaînées"
+            },
+            {
+              "en": "A **singly linked list** is a type of linked list in which each node is connected to the next node in the sequence.",
+              "fr": "Une **liste simplement chaînée** est un type de liste chaînée dans laquelle chaque nœud est connecté au nœud suivant dans la séquence."
+            },
+            {
+              "en": "Each node is connected to the next one by storing a reference to it.",
+              "fr": "Chaque nœud est connecté au suivant en stockant une référence vers celui-ci."
+            },
+            {
+              "en": "This single reference per node allows you to traverse the linked list in one direction, from start to end.",
+              "fr": "Cette référence unique par nœud te permet de parcourir la liste chaînée dans une seule direction, du début à la fin."
+            },
+            {
+              "en": "The search can only move forward, not backwards.",
+              "fr": "La recherche ne peut avancer que vers l'avant, pas vers l'arrière."
+            },
+            {
+              "en": "In this example, you would start at the head node, node A.",
+              "fr": "Dans cet exemple, tu commencerais au nœud tête, le nœud A."
+            },
+            {
+              "en": "The **head** node is the first node in the linked list.",
+              "fr": "Le nœud **tête** (head) est le premier nœud de la liste chaînée."
+            },
+            {
+              "en": "In a singly linked list, the head node is usually the only node that is directly accessible. This is where the search process will start when you're trying to find a specific node.",
+              "fr": "Dans une liste simplement chaînée, le nœud tête est généralement le seul nœud directement accessible. C'est là que le processus de recherche commencera quand tu essaies de trouver un nœud spécifique."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-2.webp\" alt=\"singly linked list traversal visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-2.webp\" alt=\"visualisation du parcours d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "The process will start at node A, then it will continue to node B, then node C, and finally node D, the **tail** node. It may also stop before that if you implement specific logic in your code.",
+              "fr": "Le processus commencera au nœud A, puis continuera vers le nœud B, puis le nœud C, et enfin le nœud D, le nœud **queue** (tail). Il peut aussi s'arrêter avant si tu implémentes une logique spécifique dans ton code."
+            },
+            {
+              "en": "The **tail** node is the last node. It's used to determine when the process has reached the end of the linked list.",
+              "fr": "Le nœud **queue** (tail) est le dernier nœud. Il sert à déterminer quand le processus a atteint la fin de la liste chaînée."
+            },
+            {
+              "en": "### **Inserting Nodes**",
+              "fr": "### **Insertion de Nœuds**"
+            },
+            {
+              "en": "One of the great things about linked lists is that they do not have a fixed size. They can be expanded or shrunk as needed by simply updating the connections between the nodes.",
+              "fr": "L'un des grands avantages des listes chaînées est qu'elles n'ont pas de taille fixe. Elles peuvent être agrandies ou réduites selon les besoins en mettant simplement à jour les connexions entre les nœuds."
+            },
+            {
+              "en": "You can **insert** a node at the start, middle, and end of a linked list.",
+              "fr": "Tu peux **insérer** un nœud au début, au milieu et à la fin d'une liste chaînée."
+            },
+            {
+              "en": "Linked lists don't necessarily need to store the nodes in a specific order. The order will be determined by the connections between the nodes.",
+              "fr": "Les listes chaînées n'ont pas forcément besoin de stocker les nœuds dans un ordre spécifique. L'ordre sera déterminé par les connexions entre les nœuds."
+            },
+            {
+              "en": "However, if you do need to keep the nodes in a specific order for your particular use case, you can do so by implementing that logic in your code and the criteria you implement will determine if the node is inserted at the start, middle, or end.",
+              "fr": "Cependant, si tu as besoin de garder les nœuds dans un ordre spécifique pour ton cas d'usage particulier, tu peux le faire en implémentant cette logique dans ton code et les critères que tu implémentes détermineront si le nœud est inséré au début, au milieu ou à la fin."
+            },
+            {
+              "en": "To insert a node at the start of the linked list, you just need to create a connection between the new node and the node that used to be the head node and make the new node the head node instead.",
+              "fr": "Pour insérer un nœud au début de la liste chaînée, tu as juste besoin de créer une connexion entre le nouveau nœud et le nœud qui était auparavant le nœud tête, et de faire du nouveau nœud le nœud tête à la place."
+            },
+            {
+              "en": "This is an example, where we insert node E at the start and make this new node the head node of the linked list.",
+              "fr": "Voici un exemple, où l'on insère le nœud E au début et où l'on fait de ce nouveau nœud le nœud tête de la liste chaînée."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-3.png\" alt=\"singly linked list insert at beginning visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-3.png\" alt=\"visualisation de l'insertion au début d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "Inserting a node at the beginning of the linked list has a constant time complexity `O(1)` because it only requires updating the reference to the head node and the connection between the new head node and the next node in the sequence.",
+              "fr": "Insérer un nœud au début de la liste chaînée a une complexité temporelle constante `O(1)` car cela ne nécessite que de mettre à jour la référence vers le nœud tête et la connexion entre le nouveau nœud tête et le nœud suivant dans la séquence."
+            },
+            {
+              "en": "In this example, we are inserting node E at the start of the linked list. This will work correctly. But if we wanted to keep the linked list sorted in alphabetical order, node E would have to be inserted at the end of the linked list instead.",
+              "fr": "Dans cet exemple, on insère le nœud E au début de la liste chaînée. Cela fonctionnera correctement. Mais si l'on voulait garder la liste chaînée triée par ordre alphabétique, le nœud E devrait être inséré à la fin de la liste chaînée à la place."
+            },
+            {
+              "en": "To insert a node at the end of the linked list, first you need to reach the end and then add a connection to the new node to make it the new tail node.",
+              "fr": "Pour insérer un nœud à la fin de la liste chaînée, tu dois d'abord atteindre la fin puis ajouter une connexion vers le nouveau nœud pour en faire le nouveau nœud queue."
+            },
+            {
+              "en": "This operation has linear time complexity, `O(n)`, where n is the number of nodes stored in the linked list, because first you need to reach the end of the linked list to make the insertion and this would require going from one node to the next and so on until the end is reached.",
+              "fr": "Cette opération a une complexité temporelle linéaire, `O(n)`, où n est le nombre de nœuds stockés dans la liste chaînée, car tu dois d'abord atteindre la fin de la liste chaînée pour faire l'insertion et cela nécessiterait d'aller d'un nœud au suivant et ainsi de suite jusqu'à atteindre la fin."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-4.png\" alt=\"singly linked list insert at end visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-4.png\" alt=\"visualisation de l'insertion à la fin d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "If the node has to be inserted somewhere in the middle of the linked list, the connections between the nodes will have to be updated too. The previous node in the sequence should be connected to the new node and the new node should be connected to the next node, like in the following diagram.",
+              "fr": "Si le nœud doit être inséré quelque part au milieu de la liste chaînée, les connexions entre les nœuds devront aussi être mises à jour. Le nœud précédent dans la séquence devrait être connecté au nouveau nœud et le nouveau nœud devrait être connecté au nœud suivant, comme dans le diagramme suivant."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-5.webp\" alt=\"singly linked list insert in middle visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-5.webp\" alt=\"visualisation de l'insertion au milieu d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "The insertion operation has a constant space complexity `O(1)`, since inserting a new node only requires creating it and updating the connections between the nodes. This operation doesn't depend on the size of the linked list itself.",
+              "fr": "L'opération d'insertion a une complexité spatiale constante `O(1)`, car insérer un nouveau nœud ne nécessite que de le créer et de mettre à jour les connexions entre les nœuds. Cette opération ne dépend pas de la taille de la liste chaînée elle-même."
+            },
+            {
+              "en": "### **Removing Nodes**",
+              "fr": "### **Suppression de Nœuds**"
+            },
+            {
+              "en": "Just as you can insert nodes, you can also remove them from the start, middle, and end of the linked list.",
+              "fr": "Tout comme tu peux insérer des nœuds, tu peux aussi les supprimer du début, du milieu et de la fin de la liste chaînée."
+            },
+            {
+              "en": "To remove a node from the start, you need to update the reference to the head node, which should be the next node in the sequence.",
+              "fr": "Pour supprimer un nœud du début, tu dois mettre à jour la référence vers le nœud tête, qui devrait être le nœud suivant dans la séquence."
+            },
+            {
+              "en": "This operation has a constant time complexity `O(1)`, because it only requires updating the linked list's reference to the head node.",
+              "fr": "Cette opération a une complexité temporelle constante `O(1)`, car elle ne nécessite que de mettre à jour la référence de la liste chaînée vers le nœud tête."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-6.png\" alt=\"singly linked list remove from beginning visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-6.png\" alt=\"visualisation de la suppression au début d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "To remove a node from the middle of the linked list, you need to update the reference of the previous node to connect it to the next node in the sequence, forming a sort of \"bridge\" between them, as you can see in this diagram.",
+              "fr": "Pour supprimer un nœud du milieu de la liste chaînée, tu dois mettre à jour la référence du nœud précédent pour le connecter au nœud suivant dans la séquence, formant une sorte de « pont » entre eux, comme tu peux le voir dans ce diagramme."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-7.png\" alt=\"singly linked list remove from middle visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-7.png\" alt=\"visualisation de la suppression au milieu d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "That will remove the node that you want to remove, in this case node B, from the sequence of connections, so it won't be reached the next time you traverse it.",
+              "fr": "Cela retirera le nœud que tu veux supprimer, dans ce cas le nœud B, de la séquence de connexions, donc il ne sera plus atteint la prochaine fois que tu la parcourras."
+            },
+            {
+              "en": "To remove a node from the end of the linked list, you need to remove the connection of the previous node and make this node the new tail node. Now the linked list will end at the new tail node.",
+              "fr": "Pour supprimer un nœud de la fin de la liste chaînée, tu dois retirer la connexion du nœud précédent et faire de ce nœud le nouveau nœud queue. Maintenant la liste chaînée se terminera au nouveau nœud queue."
+            },
+            {
+              "en": "This operation has a linear time complexity `O(n)`, because first you have to reach the end of the linked list.",
+              "fr": "Cette opération a une complexité temporelle linéaire `O(n)`, car tu dois d'abord atteindre la fin de la liste chaînée."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-8.png\" alt=\"singly linked list remove from end visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-8.png\" alt=\"visualisation de la suppression à la fin d'une liste simplement chaînée\">"
+            },
+            {
+              "en": "The deletion operation has a constant space complexity `O(1)`, because no additional memory is required to delete a node.",
+              "fr": "L'opération de suppression a une complexité spatiale constante `O(1)`, car aucune mémoire supplémentaire n'est requise pour supprimer un nœud."
+            },
+            {
+              "en": "## Doubly Linked Lists",
+              "fr": "## Listes Doublement Chaînées"
+            },
+            {
+              "en": "Now that you know more about singly linked lists, let's talk about doubly linked lists.",
+              "fr": "Maintenant que tu en sais plus sur les listes simplement chaînées, parlons des listes doublement chaînées."
+            },
+            {
+              "en": "In a **doubly linked list**, each node stores two references: a reference to the next node and a reference to the previous node in the sequence.",
+              "fr": "Dans une **liste doublement chaînée**, chaque nœud stocke deux références : une référence vers le nœud suivant et une référence vers le nœud précédent dans la séquence."
+            },
+            {
+              "en": "This means that doubly linked lists can be traversed in both directions.",
+              "fr": "Cela signifie que les listes doublement chaînées peuvent être parcourues dans les deux directions."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-9.webp\" alt=\"doubly linked list structure visualization\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-singly-linked-lists-work-and-how-do-they-differ-from-doubly-linked-list-9.webp\" alt=\"visualisation de la structure d'une liste doublement chaînée\">"
+            },
+            {
+              "en": "In this type of linked list, it's also common to keep a reference to the tail node in the linked list itself to start the traversal from the end if necessary.",
+              "fr": "Dans ce type de liste chaînée, il est aussi courant de garder une référence vers le nœud queue dans la liste chaînée elle-même pour démarrer le parcours depuis la fin si nécessaire."
+            },
+            {
+              "en": "That sounds great, right? They're more flexible than singly linked lists.",
+              "fr": "Ça a l'air génial, non ? Elles sont plus flexibles que les listes simplement chaînées."
+            },
+            {
+              "en": "However, doubly linked lists do require more memory than singly linked lists because each node stores **two** references instead of one.",
+              "fr": "Cependant, les listes doublement chaînées nécessitent plus de mémoire que les listes simplement chaînées car chaque nœud stocke **deux** références au lieu d'une."
+            },
+            {
+              "en": "This is something that you should keep in mind when you're choosing the right data structure for your project.",
+              "fr": "C'est quelque chose que tu devrais garder à l'esprit quand tu choisis la bonne structure de données pour ton projet."
+            },
+            {
+              "en": "There **is** a tradeoff.",
+              "fr": "Il y **a** un compromis."
+            },
+            {
+              "en": "The insertion and deletion operations work exactly the same. The only difference is that now you will need to update two references per node and keep track of the reference to the tail node to insert elements at the end of the doubly linked list very efficiently and start the traversal process from the back, if necessary.",
+              "fr": "Les opérations d'insertion et de suppression fonctionnent exactement de la même façon. La seule différence est que maintenant tu auras besoin de mettre à jour deux références par nœud et de suivre la référence vers le nœud queue pour insérer des éléments à la fin de la liste doublement chaînée de façon très efficace et démarrer le processus de parcours depuis l'arrière, si nécessaire."
+            },
+            {
+              "en": "Singly and doubly linked lists are essential data structures in computer science used for storing and manipulating elements in a sequential order. Understanding their differences is essential for choosing the right one for your specific application.",
+              "fr": "Les listes simplement et doublement chaînées sont des structures de données essentielles en informatique utilisées pour stocker et manipuler des éléments dans un ordre séquentiel. Comprendre leurs différences est essentiel pour choisir la bonne pour ton application spécifique."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a linked list?",
+              "fr": "Qu'est-ce qu'une liste chaînée ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A data structure that stores elements in a contiguous block of memory.",
+              "fr": "Une structure de données qui stocke des éléments dans un bloc de mémoire contigu."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how nodes are connected in a linked list.",
+              "fr": "Réfléchis à la façon dont les nœuds sont connectés dans une liste chaînée."
+            },
+            {
+              "en": "A data structure where nodes are connected using references.",
+              "fr": "Une structure de données où les nœuds sont connectés à l'aide de références."
+            },
+            {
+              "en": "A data structure that is always sorted.",
+              "fr": "Une structure de données qui est toujours triée."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how nodes are connected in a linked list.",
+              "fr": "Réfléchis à la façon dont les nœuds sont connectés dans une liste chaînée."
+            },
+            {
+              "en": "A data structure that has a fixed size.",
+              "fr": "Une structure de données qui a une taille fixe."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how nodes are connected in a linked list.",
+              "fr": "Réfléchis à la façon dont les nœuds sont connectés dans une liste chaînée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between a singly linked list and a doubly linked list?",
+              "fr": "Quelle est la différence entre une liste simplement chaînée et une liste doublement chaînée ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Singly linked lists have a head and tail node, while doubly linked lists do not.",
+              "fr": "Les listes simplement chaînées ont un nœud tête et un nœud queue, tandis que les listes doublement chaînées n'en ont pas."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the references contained in each type of linked list.",
+              "fr": "Réfléchis aux références contenues dans chaque type de liste chaînée."
+            },
+            {
+              "en": "Singly linked lists can only be traversed in one direction, while doubly linked lists can be traversed in both directions.",
+              "fr": "Les listes simplement chaînées ne peuvent être parcourues que dans une seule direction, tandis que les listes doublement chaînées peuvent être parcourues dans les deux directions."
+            },
+            {
+              "en": "Singly linked lists are more efficient to insert elements at the end, while doubly linked lists are more efficient to insert elements at the beginning.",
+              "fr": "Les listes simplement chaînées sont plus efficaces pour insérer des éléments à la fin, tandis que les listes doublement chaînées sont plus efficaces pour insérer des éléments au début."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the references contained in each type of linked list.",
+              "fr": "Réfléchis aux références contenues dans chaque type de liste chaînée."
+            },
+            {
+              "en": "Singly linked lists require more memory than doubly linked lists.",
+              "fr": "Les listes simplement chaînées nécessitent plus de mémoire que les listes doublement chaînées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the references contained in each type of linked list.",
+              "fr": "Réfléchis aux références contenues dans chaque type de liste chaînée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the time complexity of inserting a node at the beginning of a singly linked list?",
+              "fr": "Quelle est la complexité temporelle de l'insertion d'un nœud au début d'une liste simplement chaînée ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of operations required to insert a node at the beginning of the linked list.",
+              "fr": "Réfléchis au nombre d'opérations nécessaires pour insérer un nœud au début de la liste chaînée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of operations required to insert a node at the beginning of the linked list.",
+              "fr": "Réfléchis au nombre d'opérations nécessaires pour insérer un nœud au début de la liste chaînée."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of operations required to insert a node at the beginning of the linked list.",
+              "fr": "Réfléchis au nombre d'opérations nécessaires pour insérer un nœud au début de la liste chaînée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

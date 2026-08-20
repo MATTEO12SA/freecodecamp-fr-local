@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-recursion-and-the-call-stack",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-is-recursion-and-how-does-it-work",
       "title": {
         "en": "What Is Recursion, and How Does It Work?",
-        "fr": ""
+        "fr": "Qu'est-ce que la récursion, et comment ça marche ?"
       },
       "sections": [
         {
@@ -19,127 +19,127 @@
           "chunks": [
             {
               "en": "Recursion is a complicated feature that allows you to call a function repeatedly until a base-case is reached. Unlike a traditional loop, recursion allows you to handle something with an unknown depth, such as deeply nested objects/arrays, or a file tree. But you can also use it for more basic tasks, such as counting down from a given number.",
-              "fr": ""
+              "fr": "La récursion est une fonctionnalité complexe qui te permet d'appeler une fonction de façon répétée jusqu'à atteindre un cas de base. Contrairement à une boucle traditionnelle, la récursion te permet de gérer quelque chose dont la profondeur est inconnue, comme des objets/tableaux profondément imbriqués, ou une arborescence de fichiers. Mais tu peux aussi l'utiliser pour des tâches plus simples, comme compter à rebours à partir d'un nombre donné."
             },
             {
               "en": "Let's construct a function to do exactly that. We’ll call our function `recursiveCountdown`, and it needs to accept a number. We’ll have it print this number to the console:",
-              "fr": ""
+              "fr": "Construisons une fonction qui fait exactement cela. Nous appellerons notre fonction `recursiveCountdown`, et elle doit accepter un nombre. Nous la ferons afficher ce nombre dans la console :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now if we call this and pass the number 5, we’ll see the number print to our terminal. But nothing else happens – and the number 5 certainly isn’t a countdown.",
-              "fr": ""
+              "fr": "Maintenant, si nous appelons cette fonction en passant le nombre 5, nous verrons ce nombre s'afficher dans notre terminal. Mais rien d'autre ne se passe – et le nombre 5 n'est certainement pas un compte à rebours."
             },
             {
               "en": "Before we start building the recursive portion of our function, we need to establish our base case first. If you don’t have a base case established, your code will run until it exceeds your memory allocation and crashes.",
-              "fr": ""
+              "fr": "Avant de commencer à construire la partie récursive de notre fonction, nous devons d'abord établir notre cas de base. Si tu n'as pas de cas de base établi, ton code s'exécutera jusqu'à dépasser ton allocation mémoire et planter."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "For our base case, we want the countdown to stop if the number is less than 1. When we hit that base-case, we can return to break out of the function execution.",
-              "fr": ""
+              "fr": "Pour notre cas de base, nous voulons que le compte à rebours s'arrête si le nombre est inférieur à 1. Quand nous atteignons ce cas de base, nous pouvons renvoyer pour sortir de l'exécution de la fonction."
             },
             {
               "en": "Now that we’ve safely prepared a base-case, we can set up the recursion. The key point that makes a function recursive is that it calls itself in its execution. In this case, we want to call the function after we print the number. But in order to count down, our new number needs to be one less:",
-              "fr": ""
+              "fr": "Maintenant que nous avons préparé en toute sécurité un cas de base, nous pouvons mettre en place la récursion. Le point clé qui rend une fonction récursive, c'est qu'elle s'appelle elle-même durant son exécution. Dans ce cas, nous voulons appeler la fonction après avoir affiché le nombre. Mais pour compter à rebours, notre nouveau nombre doit être diminué de un :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This would log the numbers 5, 4, 3, 2, and 1 to the console.",
-              "fr": ""
+              "fr": "Cela afficherait les nombres 5, 4, 3, 2 et 1 dans la console."
             },
             {
               "en": "We do get our five numbers! But what if we wanted to count up instead? Rather than writing an entirely new function, we can swap the order of our log and our recursive call:",
-              "fr": ""
+              "fr": "Nous obtenons bien nos cinq nombres ! Mais que se passe-t-il si nous voulions compter en montant à la place ? Plutôt que d'écrire une fonction entièrement nouvelle, nous pouvons inverser l'ordre de notre log et de notre appel récursif :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This would log the numbers 1, 2, 3, 4, and 5 to the console.",
-              "fr": ""
+              "fr": "Cela afficherait les nombres 1, 2, 3, 4 et 5 dans la console."
             },
             {
               "en": "But why does that work? Well, to understand this you need to understand the call stack. The call stack is how JavaScript tracks and resolves function calls. The stack functions as a last-in-first-out queue of sorts. To understand this better, let’s add some logging to our function:",
-              "fr": ""
+              "fr": "Mais pourquoi est-ce que ça marche ? Eh bien, pour le comprendre, tu dois comprendre la pile d'appels. La pile d'appels est la façon dont JavaScript suit et résout les appels de fonction. La pile fonctionne comme une sorte de file dernier-arrivé-premier-sorti. Pour mieux comprendre cela, ajoutons quelques logs à notre fonction :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "We’ve added four key statements here. The first log runs when a function call begins executing. The third log runs just before the recursive function is called. And the fourth log runs when the function execution has ended. The result is:",
-              "fr": ""
+              "fr": "Nous avons ajouté ici quatre instructions clés. Le premier log s'exécute quand un appel de fonction commence à s'exécuter. Le troisième log s'exécute juste avant que la fonction récursive ne soit appelée. Et le quatrième log s'exécute quand l'exécution de la fonction est terminée. Le résultat est :"
             },
             {
               "en": "But how does this happen? Well, this is where the call stack comes in to play. When we call `recursiveCountdown(5)`, that function call is added to the call stack.",
-              "fr": ""
+              "fr": "Mais comment cela se produit-il ? Eh bien, c'est là que la pile d'appels entre en jeu. Quand nous appelons `recursiveCountdown(5)`, cet appel de fonction est ajouté à la pile d'appels."
             },
             {
               "en": "When that function call reaches the point where it needs to call `recursiveCountdown(4)`, it has to stop and wait for that result. Meanwhile, our `recursiveCountdown(4)` gets added to the call stack, on top of the `recursiveCountdown(5)`.",
-              "fr": ""
+              "fr": "Quand cet appel de fonction atteint le point où il doit appeler `recursiveCountdown(4)`, il doit s'arrêter et attendre ce résultat. Pendant ce temps, notre `recursiveCountdown(4)` est ajouté à la pile d'appels, au-dessus de `recursiveCountdown(5)`."
             },
             {
               "en": "When that function call reaches the point where it needs to call `recursiveCountdown(3)`, it has to stop and wait for that result. Meanwhile, our `recursiveCountdown(3)` gets added to the call stack, on top of the `recursiveCountdown(4)`.",
-              "fr": ""
+              "fr": "Quand cet appel de fonction atteint le point où il doit appeler `recursiveCountdown(3)`, il doit s'arrêter et attendre ce résultat. Pendant ce temps, notre `recursiveCountdown(3)` est ajouté à la pile d'appels, au-dessus de `recursiveCountdown(4)`."
             },
             {
               "en": "When that function call reaches the point where it needs to call `recursiveCountdown(2)`, it has to stop and wait for that result. Meanwhile, our `recursiveCountdown(2)` gets added to the call stack, on top of the `recursiveCountdown(3)`.",
-              "fr": ""
+              "fr": "Quand cet appel de fonction atteint le point où il doit appeler `recursiveCountdown(2)`, il doit s'arrêter et attendre ce résultat. Pendant ce temps, notre `recursiveCountdown(2)` est ajouté à la pile d'appels, au-dessus de `recursiveCountdown(3)`."
             },
             {
               "en": "When that function call reaches the point where it needs to call `recursiveCountdown(1)`, it has to stop and wait for that result. Meanwhile, our `recursiveCountdown(1)` gets added to the call stack, on top of the `recursiveCountdown(2)`.",
-              "fr": ""
+              "fr": "Quand cet appel de fonction atteint le point où il doit appeler `recursiveCountdown(1)`, il doit s'arrêter et attendre ce résultat. Pendant ce temps, notre `recursiveCountdown(1)` est ajouté à la pile d'appels, au-dessus de `recursiveCountdown(2)`."
             },
             {
               "en": "And finally, when that function call reaches the point where it needs to call `recursiveCountdown(0)`, it has to stop and wait for that result. Meanwhile, our `recursiveCountdown(0)` gets added to the call stack, on top of the `recursiveCountdown(1)`.",
-              "fr": ""
+              "fr": "Et enfin, quand cet appel de fonction atteint le point où il doit appeler `recursiveCountdown(0)`, il doit s'arrêter et attendre ce résultat. Pendant ce temps, notre `recursiveCountdown(0)` est ajouté à la pile d'appels, au-dessus de `recursiveCountdown(1)`."
             },
             {
               "en": "But `recursiveCountdown(0)` doesn’t call another function – it hits our base case, where it returns early. Because the execution of that function has ended, the function call can be considered “resolved”. When the call is resolved, it’s removed from the stack.",
-              "fr": ""
+              "fr": "Mais `recursiveCountdown(0)` n'appelle pas une autre fonction – elle atteint notre cas de base, où elle renvoie immédiatement. Comme l'exécution de cette fonction est terminée, l'appel de fonction peut être considéré comme « résolu ». Quand l'appel est résolu, il est retiré de la pile."
             },
             {
               "en": "Now our `recursiveCountdown(1)` is no longer waiting on that call – it’s at the top of the stack and can resume executing.",
-              "fr": ""
+              "fr": "Maintenant, notre `recursiveCountdown(1)` n'attend plus cet appel – elle est en haut de la pile et peut reprendre son exécution."
             },
             {
               "en": "`recursiveCountdown(1)` resolves, is removed from the stack, and allows `recursiveCountdown(2)` to resume execution.",
-              "fr": ""
+              "fr": "`recursiveCountdown(1)` se résout, est retirée de la pile, et permet à `recursiveCountdown(2)` de reprendre son exécution."
             },
             {
               "en": "`recursiveCountdown(2)` resolves, is removed from the stack, and allows `recursiveCountdown(3)` to resume execution.",
-              "fr": ""
+              "fr": "`recursiveCountdown(2)` se résout, est retirée de la pile, et permet à `recursiveCountdown(3)` de reprendre son exécution."
             },
             {
               "en": "`recursiveCountdown(3)` resolves, is removed from the stack, and allows `recursiveCountdown(4)` to resume execution.",
-              "fr": ""
+              "fr": "`recursiveCountdown(3)` se résout, est retirée de la pile, et permet à `recursiveCountdown(4)` de reprendre son exécution."
             },
             {
               "en": "`recursiveCountdown(4)` resolves, is removed from the stack, and allows `recursiveCountdown(5)` to resume execution.",
-              "fr": ""
+              "fr": "`recursiveCountdown(4)` se résout, est retirée de la pile, et permet à `recursiveCountdown(5)` de reprendre son exécution."
             },
             {
               "en": "And `recursiveCountdown(5)` resolves and is removed from the stack. Our call stack is now empty, so the recursion is complete!",
-              "fr": ""
+              "fr": "Et `recursiveCountdown(5)` se résout et est retirée de la pile. Notre pile d'appels est maintenant vide, donc la récursion est terminée !"
             },
             {
               "en": "This is a basic overview of how recursion works in JavaScript. It’s a complicated concept, and you should play around with some code and log statements until you’re comfortable with the behavior of the call stack.",
-              "fr": ""
+              "fr": "Ceci est un aperçu de base du fonctionnement de la récursion en JavaScript. C'est un concept complexe, et tu devrais expérimenter avec un peu de code et des instructions de log jusqu'à être à l'aise avec le comportement de la pile d'appels."
             },
             {
               "en": "For a little fun fact, we talked about how a lack of a base-case can cause your code to crash when it runs out of memory. This is because the recursion keeps piling more and more function calls into the call stack until the stack overflows. Just like the name of the popular programming community.",
-              "fr": ""
+              "fr": "Pour une petite anecdote, nous avons parlé de la façon dont l'absence d'un cas de base peut faire planter ton code quand il n'a plus de mémoire. C'est parce que la récursion empile de plus en plus d'appels de fonction dans la pile d'appels jusqu'à ce que la pile déborde. Exactement comme le nom de la communauté de programmation populaire."
             }
           ]
         },
@@ -149,7 +149,7 @@
           "chunks": [
             {
               "en": "What is the primary purpose of a base case in a recursive function?",
-              "fr": ""
+              "fr": "Quel est le rôle principal d'un cas de base dans une fonction récursive ?"
             }
           ]
         },
@@ -159,7 +159,7 @@
           "chunks": [
             {
               "en": "To initiate the recursive calls.",
-              "fr": ""
+              "fr": "Initier les appels récursifs."
             }
           ]
         },
@@ -169,15 +169,15 @@
           "chunks": [
             {
               "en": "The lesson mentions what happens if you don't have a base case established.",
-              "fr": ""
+              "fr": "La leçon mentionne ce qui se passe si tu n'as pas de cas de base établi."
             },
             {
               "en": "To prevent infinite recursion and stack overflow.",
-              "fr": ""
+              "fr": "Empêcher la récursion infinie et le débordement de pile."
             },
             {
               "en": "To improve performance of the function.",
-              "fr": ""
+              "fr": "Améliorer les performances de la fonction."
             }
           ]
         },
@@ -187,11 +187,11 @@
           "chunks": [
             {
               "en": "The lesson mentions what happens if you don't have a base case established.",
-              "fr": ""
+              "fr": "La leçon mentionne ce qui se passe si tu n'as pas de cas de base établi."
             },
             {
               "en": "To handle error conditions.",
-              "fr": ""
+              "fr": "Gérer les conditions d'erreur."
             }
           ]
         },
@@ -201,7 +201,7 @@
           "chunks": [
             {
               "en": "The lesson mentions what happens if you don't have a base case established.",
-              "fr": ""
+              "fr": "La leçon mentionne ce qui se passe si tu n'as pas de cas de base établi."
             }
           ]
         },
@@ -211,7 +211,7 @@
           "chunks": [
             {
               "en": "In the context of recursion, what is the call stack used for?",
-              "fr": ""
+              "fr": "Dans le contexte de la récursion, à quoi sert la pile d'appels ?"
             }
           ]
         },
@@ -221,7 +221,7 @@
           "chunks": [
             {
               "en": "To store local variables.",
-              "fr": ""
+              "fr": "Stocker les variables locales."
             }
           ]
         },
@@ -231,15 +231,15 @@
           "chunks": [
             {
               "en": "The lesson explains how the call stack manages function calls during recursion.",
-              "fr": ""
+              "fr": "La leçon explique comment la pile d'appels gère les appels de fonction pendant la récursion."
             },
             {
               "en": "To track and resolve function calls.",
-              "fr": ""
+              "fr": "Suivre et résoudre les appels de fonction."
             },
             {
               "en": "To optimize recursive functions.",
-              "fr": ""
+              "fr": "Optimiser les fonctions récursives."
             }
           ]
         },
@@ -249,11 +249,11 @@
           "chunks": [
             {
               "en": "The lesson explains how the call stack manages function calls during recursion.",
-              "fr": ""
+              "fr": "La leçon explique comment la pile d'appels gère les appels de fonction pendant la récursion."
             },
             {
               "en": "To handle asynchronous operations.",
-              "fr": ""
+              "fr": "Gérer les opérations asynchrones."
             }
           ]
         },
@@ -263,7 +263,7 @@
           "chunks": [
             {
               "en": "The lesson explains how the call stack manages function calls during recursion.",
-              "fr": ""
+              "fr": "La leçon explique comment la pile d'appels gère les appels de fonction pendant la récursion."
             }
           ]
         },
@@ -273,7 +273,7 @@
           "chunks": [
             {
               "en": "What happens when a recursive function call reaches its base case?",
-              "fr": ""
+              "fr": "Que se passe-t-il quand un appel de fonction récursive atteint son cas de base ?"
             }
           ]
         },
@@ -283,7 +283,7 @@
           "chunks": [
             {
               "en": "It starts a new recursive cycle.",
-              "fr": ""
+              "fr": "Il démarre un nouveau cycle récursif."
             }
           ]
         },
@@ -293,11 +293,11 @@
           "chunks": [
             {
               "en": "Think about how the function behaves when it hits the condition that stops the recursion.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la fonction se comporte quand elle atteint la condition qui arrête la récursion."
             },
             {
               "en": "It throws an error.",
-              "fr": ""
+              "fr": "Il lève une erreur."
             }
           ]
         },
@@ -307,15 +307,15 @@
           "chunks": [
             {
               "en": "Think about how the function behaves when it hits the condition that stops the recursion.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la fonction se comporte quand elle atteint la condition qui arrête la récursion."
             },
             {
               "en": "It returns and allows the previous call to resume execution.",
-              "fr": ""
+              "fr": "Il renvoie et permet à l'appel précédent de reprendre son exécution."
             },
             {
               "en": "It continues to call itself indefinitely.",
-              "fr": ""
+              "fr": "Il continue de s'appeler indéfiniment."
             }
           ]
         },
@@ -325,7 +325,7 @@
           "chunks": [
             {
               "en": "Think about how the function behaves when it hits the condition that stops the recursion.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la fonction se comporte quand elle atteint la condition qui arrête la récursion."
             }
           ]
         }

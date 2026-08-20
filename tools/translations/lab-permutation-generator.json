@@ -1,0 +1,85 @@
+{
+  "workshop": "lab-permutation-generator",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66fe4f33a2cc9b33f4d5cd9b.md",
+      "id": "66fe4f33a2cc9b33f4d5cd9b",
+      "dashedName": "build-a-permutation-generator",
+      "title": {
+        "en": "Build a Permutation Generator",
+        "fr": "Construire un générateur de permutations"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a permutation generator that will take a string and return all possible permutations of the characters in the string. For example, the possible permutations of the string `cat` are `cat`, `cta`, `act`, `atc`, `tac`, and `tca`.",
+          "fr": "Dans ce lab, tu vas construire un générateur de permutations qui prendra une chaîne et renverra toutes les permutations possibles des caractères de la chaîne. Par exemple, les permutations possibles de la chaîne `cat` sont `cat`, `cta`, `act`, `atc`, `tac` et `tca`."
+        },
+        {
+          "en": "The recursive way of creating permutations of a string works by storing the fixed starting part of the string (prefix), and creating permutations of the rest.",
+          "fr": "La méthode récursive pour créer les permutations d'une chaîne consiste à stocker la partie initiale fixe de la chaîne (préfixe), et à créer les permutations du reste."
+        },
+        {
+          "en": "For example, let's consider the word `machine`. The first round of creating permutations would be made fixing the `m` as the prefix of the string, and then creating permutations of the rest of the string, `achine`.",
+          "fr": "Par exemple, considérons le mot `machine`. Le premier tour de création des permutations se ferait en fixant le `m` comme préfixe de la chaîne, puis en créant les permutations du reste de la chaîne, `achine`."
+        },
+        {
+          "en": "For the rest of the string, permutations continue in the same way. One letter is added to the prefix, maybe the `c`, so the prefix becomes `mc`. Then, each of the permutations of `ahine` is concatenated to the prefix.",
+          "fr": "Pour le reste de la chaîne, les permutations continuent de la même façon. Une lettre est ajoutée au préfixe, par exemple le `c`, donc le préfixe devient `mc`. Ensuite, chacune des permutations de `ahine` est concaténée au préfixe."
+        },
+        {
+          "en": "This continues until the prefix has all the letters, and the rest of the string is empty, that means one permutation has been created.",
+          "fr": "Cela continue jusqu'à ce que le préfixe contienne toutes les lettres, et que le reste de la chaîne soit vide : cela signifie qu'une permutation a été créée."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should create a function named `permuteString`.\n2. The `permuteString` function should take one parameter, a string, and then two parameters with a default value: a prefix value and an empty array for storing and returning the results. The prefix value should be a string used to accumulate characters to form a permutation. The function will be called with one single argument, like `permuteString(\"cat\")`.\n3. Inside the function, you should check if the length of the passed string is `0`. If it is, push the current prefix to the results and return the results.\n4. Iterate over each character in the input string and for each iteration, remove the current character from the string and call the `permuteString` function recursively with updated arguments to build the remaining permutations.\n5. You should return the final results array.\n6. You should ensure that the permutations are unique by removing duplicates.",
+          "fr": "1. Tu dois créer une fonction nommée `permuteString`.\n2. La fonction `permuteString` doit prendre un paramètre, une chaîne, puis deux paramètres avec une valeur par défaut : une valeur de préfixe et un tableau vide pour stocker et renvoyer les résultats. La valeur de préfixe doit être une chaîne utilisée pour accumuler les caractères afin de former une permutation. La fonction sera appelée avec un seul argument, comme `permuteString(\"cat\")`.\n3. À l'intérieur de la fonction, tu dois vérifier si la longueur de la chaîne passée est `0`. Si c'est le cas, pousse le préfixe courant dans les résultats et renvoie les résultats.\n4. Itère sur chaque caractère de la chaîne d'entrée et, pour chaque itération, retire le caractère courant de la chaîne et appelle la fonction `permuteString` de façon récursive avec des arguments mis à jour pour construire les permutations restantes.\n5. Tu dois renvoyer le tableau final des résultats.\n6. Tu dois t'assurer que les permutations sont uniques en supprimant les doublons."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function `permuteString`.",
+          "fr": "Tu dois avoir une fonction `permuteString`."
+        },
+        {
+          "en": "You should use recursion in your `permuteString` function.",
+          "fr": "Tu dois utiliser la récursion dans ta fonction `permuteString`."
+        },
+        {
+          "en": "`permuteString(\"far\")` should return `[ \"far\", \"fra\", \"afr\", \"arf\", \"rfa\", \"raf\" ]`.",
+          "fr": "`permuteString(\"far\")` devrait renvoyer `[ \"far\", \"fra\", \"afr\", \"arf\", \"rfa\", \"raf\" ]`."
+        },
+        {
+          "en": "`permuteString(\"fcc\")` should return `[ \"fcc\", \"cfc\", \"ccf\" ]`.",
+          "fr": "`permuteString(\"fcc\")` devrait renvoyer `[ \"fcc\", \"cfc\", \"ccf\" ]`."
+        },
+        {
+          "en": "`permuteString(\"p\")` should return `[ \"p\" ]`.",
+          "fr": "`permuteString(\"p\")` devrait renvoyer `[ \"p\" ]`."
+        },
+        {
+          "en": "`permuteString(\"\")` should return `[\"\"]`.",
+          "fr": "`permuteString(\"\")` devrait renvoyer `[\"\"]`."
+        },
+        {
+          "en": "`permuteString(\"walk\")` should return `[\"walk\", \"wakl\", \"wlak\", \"wlka\", \"wkla\", \"wkal\", \"awlk\", \"awkl\", \"alwk\", \"alkw\", \"aklw\", \"akwl\", \"lawk\", \"lakw\", \"lwak\", \"lwka\", \"lkaw\", \"lkwa\", \"kawl\", \"kalw\", \"kwal\", \"kwla\", \"klaw\", \"klwa\"]`.\n`.",
+          "fr": "`permuteString(\"walk\")` devrait renvoyer `[\"walk\", \"wakl\", \"wlak\", \"wlka\", \"wkla\", \"wkal\", \"awlk\", \"awkl\", \"alwk\", \"alkw\", \"aklw\", \"akwl\", \"lawk\", \"lakw\", \"lwak\", \"lwka\", \"lkaw\", \"lkwa\", \"kawl\", \"kalw\", \"kwal\", \"kwla\", \"klaw\", \"klwa\"]`.\n`."
+        },
+        {
+          "en": "`permuteString` should return the correct results.",
+          "fr": "`permuteString` devrait renvoyer les résultats corrects."
+        }
+      ]
+    }
+  ]
+}
