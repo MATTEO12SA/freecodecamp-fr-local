@@ -101,7 +101,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 130 blocs FR sur 230 (552/1311 fichiers) — modules 1-9 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-understanding-aria-expanded-aria-live-and-common-aria-states.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
+JavaScript v9 est en cours : 136 blocs FR sur 230 (594/1311 fichiers) — modules 1-10 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-debugging-techniques.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -135,7 +135,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (130/230), modules 1-9 **100 % complets**. Prochaine cible : relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (136/230), modules 1-10 **100 % complets**. Prochaine cible : relire `lecture-debugging-techniques` (`reviewed: false` — ne pas appliquer).
 
 ## Scripts Gardes
 

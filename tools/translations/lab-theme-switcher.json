@@ -1,0 +1,149 @@
+{
+  "workshop": "lab-theme-switcher",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "687ad7be1ff45032ccf1d92f.md",
+      "id": "687ad7be1ff45032ccf1d92f",
+      "dashedName": "lab-theme-switcher",
+      "title": {
+        "en": "Build a Theme Switcher",
+        "fr": "Construire un sélecteur de thème"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build an app that switches between different themes. When you switch to a different theme, the background color will change and a different message will display.",
+          "fr": "Dans ce lab, tu vas construire une application qui bascule entre différents thèmes. Quand tu changes de thème, la couleur d'arrière-plan change et un message différent s'affiche."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have a `button` element with the text `Switch Theme`.\n2. Your `button` element should have the following attributes:\n   - An `id` attribute set to `\"theme-switcher-button\"`.\n   - An `aria-haspopup` attribute set to `\"true\"`.\n   - An `aria-expanded` attribute set to `\"false\"`.\n   - An `aria-controls` attribute set to `\"theme-dropdown\"`.\n3. You should have a `ul` element with the following attributes:\n   - An `id` attribute set to `\"theme-dropdown\"`.\n   - A `role` attribute set to `\"menu\"`.\n   - An `aria-labelledby` attribute set to `\"theme-switcher-button\"`.\n   - A `hidden` attribute.\n4. Your `ul` element should have at least two `li` elements with a `role` attribute set to `\"menuitem\"` and text of your choice representing a different theme.\n5. Each of your `li` elements should have an `id` attribute that starts with `theme-` and ends with the theme you set for the `li` element text. For example, if one of your themes is `Light` then your `id` should be `theme-light`.\n6. You should have an element with an `aria-live` attribute set to `\"polite\"`.\n7. You should have a `themes` array with at least two objects that each contain a `name` and `message` property. The `name` will represent a different theme and the `message` will display when the theme switches. You are free to come up with `name` and `message` values of your choice but the `name` values should match the text content of your `li` elements.\n8. When a user clicks on the `#theme-switcher-button`, the `#theme-dropdown` element should display the available themes.\n9. When the `#theme-dropdown` element is displayed, the `aria-expanded` attribute should be set to `\"true\"` for the `button` element.\n10. When the users clicks on the `#theme-switcher-button` while the `#theme-dropdown` element is displayed, the menu should be closed and the `hidden` attribute should be added and the `aria-expanded` attribute should be set to `\"false\"`.\n11. When a user clicks on the `#theme-switcher-button` and selects a theme, the corresponding `theme-<name>` class should be added to the `body` element and the related theme message you set in the `themes` array should display in the `aria-live=\"polite\"` element. \n12. When a user clicks on the `#theme-switcher-button` and selects a different theme than the current one, the `body` theme class and status message should update to match the new selection.",
+          "fr": "1. Tu dois avoir un élément `button` avec le texte `Switch Theme`.\n2. Ton élément `button` doit avoir les attributs suivants :\n   - Un attribut `id` défini à `\"theme-switcher-button\"`.\n   - Un attribut `aria-haspopup` défini à `\"true\"`.\n   - Un attribut `aria-expanded` défini à `\"false\"`.\n   - Un attribut `aria-controls` défini à `\"theme-dropdown\"`.\n3. Tu dois avoir un élément `ul` avec les attributs suivants :\n   - Un attribut `id` défini à `\"theme-dropdown\"`.\n   - Un attribut `role` défini à `\"menu\"`.\n   - Un attribut `aria-labelledby` défini à `\"theme-switcher-button\"`.\n   - Un attribut `hidden`.\n4. Ton élément `ul` doit avoir au moins deux éléments `li` avec un attribut `role` défini à `\"menuitem\"` et un texte de ton choix représentant un thème différent.\n5. Chacun de tes éléments `li` doit avoir un attribut `id` qui commence par `theme-` et se termine par le thème que tu as défini pour le texte de l'élément `li`. Par exemple, si l'un de tes thèmes est `Light`, alors ton `id` doit être `theme-light`.\n6. Tu dois avoir un élément avec un attribut `aria-live` défini à `\"polite\"`.\n7. Tu dois avoir un tableau `themes` avec au moins deux objets qui contiennent chacun une propriété `name` et `message`. La propriété `name` représentera un thème différent et la propriété `message` s'affichera quand le thème change. Tu es libre de choisir les valeurs de `name` et `message` que tu veux, mais les valeurs de `name` doivent correspondre au contenu textuel de tes éléments `li`.\n8. Quand un utilisateur clique sur `#theme-switcher-button`, l'élément `#theme-dropdown` doit afficher les thèmes disponibles.\n9. Quand l'élément `#theme-dropdown` est affiché, l'attribut `aria-expanded` doit être défini à `\"true\"` pour l'élément `button`.\n10. Quand l'utilisateur clique sur `#theme-switcher-button` alors que l'élément `#theme-dropdown` est affiché, le menu doit être fermé, l'attribut `hidden` doit être ajouté et l'attribut `aria-expanded` doit être défini à `\"false\"`.\n11. Quand un utilisateur clique sur `#theme-switcher-button` et sélectionne un thème, la classe `theme-<name>` correspondante doit être ajoutée à l'élément `body` et le message de thème associé défini dans le tableau `themes` doit s'afficher dans l'élément `aria-live=\"polite\"`.\n12. Quand un utilisateur clique sur `#theme-switcher-button` et sélectionne un thème différent du thème actuel, la classe de thème sur `body` et le message d'état doivent se mettre à jour pour correspondre à la nouvelle sélection."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `button` element.",
+          "fr": "Tu dois avoir un élément `button`."
+        },
+        {
+          "en": "Your `button` element should have the text `Switch Theme`.",
+          "fr": "Ton élément `button` doit avoir le texte `Switch Theme`."
+        },
+        {
+          "en": "Your `button` element should have an `id` attribute set to `\"theme-switcher-button\"`.",
+          "fr": "Ton élément `button` doit avoir un attribut `id` défini à `\"theme-switcher-button\"`."
+        },
+        {
+          "en": "Your `button` element should have an `aria-haspopup` attribute set to `\"true\"`.",
+          "fr": "Ton élément `button` doit avoir un attribut `aria-haspopup` défini à `\"true\"`."
+        },
+        {
+          "en": "Your `button` element should have an `aria-expanded` attribute set to `\"false\"`.",
+          "fr": "Ton élément `button` doit avoir un attribut `aria-expanded` défini à `\"false\"`."
+        },
+        {
+          "en": "Your `button` element should have an `aria-controls` attribute set to `\"theme-dropdown\"`.",
+          "fr": "Ton élément `button` doit avoir un attribut `aria-controls` défini à `\"theme-dropdown\"`."
+        },
+        {
+          "en": "You should have an `ul` element.",
+          "fr": "Tu dois avoir un élément `ul`."
+        },
+        {
+          "en": "Your `ul` element should have an `id` attribute set to `\"theme-dropdown\"`.",
+          "fr": "Ton élément `ul` doit avoir un attribut `id` défini à `\"theme-dropdown\"`."
+        },
+        {
+          "en": "Your `ul` element should have an `role` attribute set to `\"menu\"`.",
+          "fr": "Ton élément `ul` doit avoir un attribut `role` défini à `\"menu\"`."
+        },
+        {
+          "en": "Your `ul` element should have an `aria-labelledby` attribute set to `\"theme-switcher-button\"`.",
+          "fr": "Ton élément `ul` doit avoir un attribut `aria-labelledby` défini à `\"theme-switcher-button\"`."
+        },
+        {
+          "en": "Your `ul` element should have a `hidden` attribute.",
+          "fr": "Ton élément `ul` doit avoir un attribut `hidden`."
+        },
+        {
+          "en": "Your `ul` element should have at least two `li` elements.",
+          "fr": "Ton élément `ul` doit avoir au moins deux éléments `li`."
+        },
+        {
+          "en": "Each of your `li` elements should have a `role` attribute set to `\"menuitem\"`.",
+          "fr": "Chacun de tes éléments `li` doit avoir un attribut `role` défini à `\"menuitem\"`."
+        },
+        {
+          "en": "Each of your `li` elements should have a piece of text that represents a theme.",
+          "fr": "Chacun de tes éléments `li` doit avoir un texte qui représente un thème."
+        },
+        {
+          "en": "Each of your `li` elements should have an `id` attribute that starts with `theme-` and ends with the corresponding theme for that element. Make sure your `id` value is all lowercase.",
+          "fr": "Chacun de tes éléments `li` doit avoir un attribut `id` qui commence par `theme-` et se termine par le thème correspondant à cet élément. Assure-toi que la valeur de ton `id` est entièrement en minuscules."
+        },
+        {
+          "en": "You should have an element with an `aria-live` attribute set to `\"polite\"`.",
+          "fr": "Tu dois avoir un élément avec un attribut `aria-live` défini à `\"polite\"`."
+        },
+        {
+          "en": "You should have a `themes` array.",
+          "fr": "Tu dois avoir un tableau `themes`."
+        },
+        {
+          "en": "Your `themes` array should have at least two objects.",
+          "fr": "Ton tableau `themes` doit avoir au moins deux objets."
+        },
+        {
+          "en": "Your `themes` array should have at least two objects each with a `name` and `message` property.",
+          "fr": "Ton tableau `themes` doit avoir au moins deux objets, chacun avec une propriété `name` et `message`."
+        },
+        {
+          "en": "Your `name` and `message` property values should be strings that are not empty.",
+          "fr": "Tes valeurs de propriétés `name` et `message` doivent être des chaînes non vides."
+        },
+        {
+          "en": "Each of your `name` property values should match the text content of one of your `li` elements. Make sure these values are all in lowercase.",
+          "fr": "Chacune de tes valeurs de propriété `name` doit correspondre au contenu textuel de l'un de tes éléments `li`. Assure-toi que ces valeurs sont entièrement en minuscules."
+        },
+        {
+          "en": "When a user clicks on the `#theme-switcher-button` to display the theme options, the `hidden` attribute should be removed from the `#theme-dropdown` element.",
+          "fr": "Quand un utilisateur clique sur `#theme-switcher-button` pour afficher les options de thème, l'attribut `hidden` doit être retiré de l'élément `#theme-dropdown`."
+        },
+        {
+          "en": "When the `#theme-dropdown` element is displayed, the `aria-expanded` attribute should be set to `\"true\"` for the `button` element.",
+          "fr": "Quand l'élément `#theme-dropdown` est affiché, l'attribut `aria-expanded` doit être défini à `\"true\"` pour l'élément `button`."
+        },
+        {
+          "en": "When the users clicks on the `#theme-switcher-button` while the `#theme-dropdown` element is displayed, the dropdown menu should be set back to `hidden`.",
+          "fr": "Quand l'utilisateur clique sur `#theme-switcher-button` alors que l'élément `#theme-dropdown` est affiché, le menu déroulant doit être remis à `hidden`."
+        },
+        {
+          "en": "When the users clicks on the `#theme-switcher-button` while the `#theme-dropdown` element is displayed, the `aria-expanded` attribute should be set to `\"false\"`.",
+          "fr": "Quand l'utilisateur clique sur `#theme-switcher-button` alors que l'élément `#theme-dropdown` est affiché, l'attribut `aria-expanded` doit être défini à `\"false\"`."
+        },
+        {
+          "en": "When a user clicks on the `#theme-switcher-button` and selects a theme, the corresponding `theme-<name>` class should be added to the `body` element.",
+          "fr": "Quand un utilisateur clique sur `#theme-switcher-button` et sélectionne un thème, la classe `theme-<name>` correspondante doit être ajoutée à l'élément `body`."
+        },
+        {
+          "en": "When a user clicks the `#theme-switcher-button` and selects a theme, a `message` related to the selected `theme` from the `themes` array should be displayed in the `aria-live=\"polite\"` element.",
+          "fr": "Quand un utilisateur clique sur `#theme-switcher-button` et sélectionne un thème, un `message` lié au `theme` sélectionné depuis le tableau `themes` doit s'afficher dans l'élément `aria-live=\"polite\"`."
+        },
+        {
+          "en": "When a user clicks on the `#theme-switcher-button` and selects two different themes, the `body` class and status message should update to match each selected theme.",
+          "fr": "Quand un utilisateur clique sur `#theme-switcher-button` et sélectionne deux thèmes différents, la classe de `body` et le message d'état doivent se mettre à jour pour correspondre à chaque thème sélectionné."
+        }
+      ]
+    }
+  ]
+}

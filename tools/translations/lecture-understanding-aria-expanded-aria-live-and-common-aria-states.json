@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-aria-expanded-aria-live-and-common-aria-states",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-is-the-aria-expanded-attribute",
       "title": {
         "en": "What Is the aria-expanded Attribute, and How Does It Work?",
-        "fr": ""
+        "fr": "Qu'est-ce que l'attribut aria-expanded, et comment fonctionne-t-il ?"
       },
       "sections": [
         {
@@ -19,79 +19,79 @@
           "chunks": [
             {
               "en": "The `aria-expanded` attribute is used for accessibility purposes to indicate if a control is expanded or collapsed. It's used in conjunction with collapsible widgets like menus, accordions and other disclosure widgets that control the visibility of content. The `aria-expanded` attribute is set to `true` if the control is expanded, or `false` if it is collapsed.",
-              "fr": ""
+              "fr": "L'attribut `aria-expanded` sert à l'accessibilité pour indiquer si un contrôle est développé ou réduit. On l'utilise avec des widgets repliables comme les menus, les accordéons et d'autres widgets de dévoilement qui contrôlent la visibilité du contenu. L'attribut `aria-expanded` vaut `true` si le contrôle est développé, ou `false` s'il est réduit."
             },
             {
               "en": "The information provided by `aria-expanded` allows people using screen readers to understand the current state of the control (whether it is expanded or collapsed).",
-              "fr": ""
+              "fr": "Les informations fournies par `aria-expanded` permettent aux personnes qui utilisent un lecteur d'écran de comprendre l'état actuel du contrôle (développé ou réduit)."
             },
             {
               "en": "The `aria-expanded` attribute is applied to the interactive element that toggles the visibility of a collapsible widget. For example, if a button toggles an expandable menu, the `aria-expanded` attribute is placed on the button.",
-              "fr": ""
+              "fr": "L'attribut `aria-expanded` s'applique à l'élément interactif qui bascule la visibilité d'un widget repliable. Par exemple, si un bouton ouvre un menu dépliable, `aria-expanded` est placé sur le bouton."
             },
             {
               "en": "When the menu is expanded, the `aria-expanded` attribute should be set to `true` like in this example:",
-              "fr": ""
+              "fr": "Quand le menu est développé, l'attribut `aria-expanded` doit valoir `true`, comme dans cet exemple :"
             },
             {
               "en": "When the menu is collapsed, it should be set to `false` instead.",
-              "fr": ""
+              "fr": "Quand le menu est réduit, il doit valoir `false` à la place."
             },
             {
               "en": "You must always have the `aria-expanded` attribute set to either `true` or `false` on the controlling element. For example, if a button toggles the visibility of a menu, the default value for `aria-expanded` should be  based on the default visibility of the menu.",
-              "fr": ""
+              "fr": "Tu dois toujours avoir l'attribut `aria-expanded` défini à `true` ou `false` sur l'élément de contrôle. Par exemple, si un bouton bascule la visibilité d'un menu, la valeur par défaut de `aria-expanded` doit reposer sur la visibilité par défaut du menu."
             },
             {
               "en": "If the menu is expanded by default, `aria-expanded` should initially be set to `true`. If the menu is collapsed by default, `aria-expanded` should initially be set of `false`.",
-              "fr": ""
+              "fr": "Si le menu est développé par défaut, `aria-expanded` doit d'abord valoir `true`. S'il est réduit par défaut, `aria-expanded` doit d'abord valoir `false`."
             },
             {
               "en": "The value of `aria-expanded` should be updated dynamically using JavaScript as the user interacts with the element.",
-              "fr": ""
+              "fr": "La valeur de `aria-expanded` doit être mise à jour dynamiquement avec JavaScript quand l'utilisateur interagit avec l'élément."
             },
             {
               "en": "Additionally, the properties, `aria-controls` and `aria-owns` can be used in combination with `aria-expanded` to establish a programmatic connection between the controlling element and the element it controls.",
-              "fr": ""
+              "fr": "De plus, les propriétés `aria-controls` et `aria-owns` peuvent s'utiliser avec `aria-expanded` pour créer un lien programmatique entre l'élément de contrôle et l'élément qu'il contrôle."
             },
             {
               "en": "Let's start with `aria-controls`. When used with `aria-expanded`, the `aria-controls` attribute is used to specify the element being controlled. For example, a button might expand or collapse a list acting as a menu. The value of `aria-controls` will be the `id` of the controlled element (the menu list in this example).",
-              "fr": ""
+              "fr": "Commençons par `aria-controls`. Avec `aria-expanded`, l'attribut `aria-controls` indique l'élément contrôlé. Par exemple, un bouton peut développer ou réduire une liste qui sert de menu. La valeur de `aria-controls` sera l'`id` de l'élément contrôlé (la liste du menu dans cet exemple)."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Notice that the list immediately follows the controlling button. For expandable controls like this, it is best to have the expanded content immediately follow the element that controls it in the DOM. This prevents screen reader users from having to search for the expanded content, and makes it easier for keyboard users to navigate through any interactive controls in the expanded content.",
-              "fr": ""
+              "fr": "Remarque que la liste suit immédiatement le bouton de contrôle. Pour ce type de contrôles dépliables, le mieux est que le contenu développé suive tout de suite l'élément qui le contrôle dans le DOM. Ainsi, les utilisateurs de lecteurs d'écran n'ont pas à chercher le contenu développé, et les utilisateurs clavier naviguent plus facilement parmi les contrôles interactifs de ce contenu."
             },
             {
               "en": "If it is not possible to place the expanded content immediately after the controlling element, the `aria-owns` attribute allows you to virtually move it after the control in the accessibility tree. This allows assistive technology like screen readers to pretend the expanded content is placed directly after the control in the DOM.",
-              "fr": ""
+              "fr": "S'il n'est pas possible de placer le contenu développé juste après l'élément de contrôle, l'attribut `aria-owns` te permet de le déplacer virtuellement après le contrôle dans l'arbre d'accessibilité. Les technologies d'assistance comme les lecteurs d'écran peuvent alors faire comme si ce contenu était placé directement après le contrôle dans le DOM."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "There are drawbacks to using the `aria-owns` attribute. It creates unnecessary verbosity for screen reader users since most screen readers will automatically read out the entire contents of the expanded element when first expanded. It also does not change the tab order, potentially forcing keyboard users to tab through all of the other interactive controls on the page before reaching the expanded content, unless you manage the tabbing order with JavaScript.",
-              "fr": ""
+              "fr": "Utiliser `aria-owns` a des inconvénients. Cela crée une verbosité inutile pour les utilisateurs de lecteurs d'écran, car la plupart liront automatiquement tout le contenu de l'élément développé dès qu'il s'ouvre. Cela ne change pas non plus l'ordre de tabulation : les utilisateurs clavier peuvent devoir tabuler à travers tous les autres contrôles interactifs de la page avant d'atteindre le contenu développé, sauf si tu gères l'ordre de tabulation avec JavaScript."
             },
             {
               "en": "Ideally, the expandable content should be placed after the control element, and the `aria-owns` attribute should only be used in a worst case scenario when that is not possible. If it must be used, you will need to thoroughly test with a wide range of screen readers and browsers to ensure that your implementation is accessible for everyone.",
-              "fr": ""
+              "fr": "Idéalement, le contenu dépliable doit être placé après l'élément de contrôle, et `aria-owns` ne doit servir qu'en dernier recours quand ce n'est pas possible. S'il faut l'utiliser, tu devras tester soigneusement avec un large éventail de lecteurs d'écran et de navigateurs pour garantir que ton implémentation est accessible pour tout le monde."
             },
             {
               "en": "And just a reminder, when you use either `aria-controls` or `aria-owns`, the value of `aria-expanded` must continue to be updated as the control is expanded and collapsed.",
-              "fr": ""
+              "fr": "Et un rappel : quand tu utilises `aria-controls` ou `aria-owns`, la valeur de `aria-expanded` doit continuer à être mise à jour quand le contrôle est développé et réduit."
             },
             {
               "en": "The `aria-expanded` attribute indicates whether a control  is expanded or collapsed. This information is essential for screen reader users, helping them understand the current state of collapsible elements like menus, accordions, and other similar disclosure widgets.",
-              "fr": ""
+              "fr": "L'attribut `aria-expanded` indique si un contrôle est développé ou réduit. Cette information est essentielle pour les utilisateurs de lecteurs d'écran : elle les aide à comprendre l'état actuel des éléments repliables comme les menus, les accordéons et d'autres widgets de dévoilement similaires."
             },
             {
               "en": "By using `aria-expanded` correctly, you can create an intuitive user experience for everyone.",
-              "fr": ""
+              "fr": "En utilisant `aria-expanded` correctement, tu peux créer une expérience utilisateur intuitive pour tout le monde."
             }
           ]
         },
@@ -101,7 +101,7 @@
           "chunks": [
             {
               "en": "What is the primary purpose of the `aria-expanded` attribute?",
-              "fr": ""
+              "fr": "Quel est le rôle principal de l'attribut `aria-expanded` ?"
             }
           ]
         },
@@ -111,7 +111,7 @@
           "chunks": [
             {
               "en": "To define the visual appearance of an element.",
-              "fr": ""
+              "fr": "Définir l'apparence visuelle d'un élément."
             }
           ]
         },
@@ -121,11 +121,11 @@
           "chunks": [
             {
               "en": "Think about how `aria-expanded` provides information to assistive technologies.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-expanded` fournit des informations aux technologies d'assistance."
             },
             {
               "en": "To improve website performance.",
-              "fr": ""
+              "fr": "Améliorer les performances du site."
             }
           ]
         },
@@ -135,15 +135,15 @@
           "chunks": [
             {
               "en": "Think about how `aria-expanded` provides information to assistive technologies.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-expanded` fournit des informations aux technologies d'assistance."
             },
             {
               "en": "To indicate whether an element is expanded or collapsed.",
-              "fr": ""
+              "fr": "Indiquer si un élément est développé ou réduit."
             },
             {
               "en": "To enhance browser compatibility.",
-              "fr": ""
+              "fr": "Améliorer la compatibilité des navigateurs."
             }
           ]
         },
@@ -153,7 +153,7 @@
           "chunks": [
             {
               "en": "Think about how `aria-expanded` provides information to assistive technologies.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-expanded` fournit des informations aux technologies d'assistance."
             }
           ]
         },
@@ -163,7 +163,7 @@
           "chunks": [
             {
               "en": "When should the `aria-expanded` attribute be used?",
-              "fr": ""
+              "fr": "Quand faut-il utiliser l'attribut `aria-expanded` ?"
             }
           ]
         },
@@ -173,7 +173,7 @@
           "chunks": [
             {
               "en": "For all elements on a web page.",
-              "fr": ""
+              "fr": "Pour tous les éléments d'une page web."
             }
           ]
         },
@@ -183,11 +183,11 @@
           "chunks": [
             {
               "en": "Consider the context in which `aria-expanded` is most useful.",
-              "fr": ""
+              "fr": "Considère le contexte dans lequel `aria-expanded` est le plus utile."
             },
             {
               "en": "For elements that are visually hidden.",
-              "fr": ""
+              "fr": "Pour les éléments masqués visuellement."
             }
           ]
         },
@@ -197,15 +197,15 @@
           "chunks": [
             {
               "en": "Consider the context in which `aria-expanded` is most useful.",
-              "fr": ""
+              "fr": "Considère le contexte dans lequel `aria-expanded` est le plus utile."
             },
             {
               "en": "For collapsible elements like menus and accordions.",
-              "fr": ""
+              "fr": "Pour les éléments repliables comme les menus et les accordéons."
             },
             {
               "en": "For elements with dynamic content.",
-              "fr": ""
+              "fr": "Pour les éléments au contenu dynamique."
             }
           ]
         },
@@ -215,7 +215,7 @@
           "chunks": [
             {
               "en": "Consider the context in which `aria-expanded` is most useful.",
-              "fr": ""
+              "fr": "Considère le contexte dans lequel `aria-expanded` est le plus utile."
             }
           ]
         },
@@ -225,7 +225,7 @@
           "chunks": [
             {
               "en": "What are the possible values for the `aria-expanded` attribute?",
-              "fr": ""
+              "fr": "Quelles sont les valeurs possibles de l'attribut `aria-expanded` ?"
             }
           ]
         },
@@ -235,7 +235,7 @@
           "chunks": [
             {
               "en": "`true`, `false`, `yes`, `no`.",
-              "fr": ""
+              "fr": "`true`, `false`, `yes`, `no`."
             }
           ]
         },
@@ -245,11 +245,11 @@
           "chunks": [
             {
               "en": "Think about the states an element can be in regarding expansion or collapse.",
-              "fr": ""
+              "fr": "Pense aux états qu'un élément peut avoir pour l'expansion ou la réduction."
             },
             {
               "en": "`open`, `closed`, `expanded`, `collapsed`.",
-              "fr": ""
+              "fr": "`open`, `closed`, `expanded`, `collapsed`."
             }
           ]
         },
@@ -259,11 +259,11 @@
           "chunks": [
             {
               "en": "Think about the states an element can be in regarding expansion or collapse.",
-              "fr": ""
+              "fr": "Pense aux états qu'un élément peut avoir pour l'expansion ou la réduction."
             },
             {
               "en": "`show`, `hide`, `visible`, `invisible`.",
-              "fr": ""
+              "fr": "`show`, `hide`, `visible`, `invisible`."
             }
           ]
         },
@@ -273,11 +273,11 @@
           "chunks": [
             {
               "en": "Think about the states an element can be in regarding expansion or collapse.",
-              "fr": ""
+              "fr": "Pense aux états qu'un élément peut avoir pour l'expansion ou la réduction."
             },
             {
               "en": "`true`, `false`.",
-              "fr": ""
+              "fr": "`true`, `false`."
             }
           ]
         }
@@ -289,7 +289,7 @@
       "dashedName": "what-is-the-aria-live-attribute",
       "title": {
         "en": "What Is the aria-live Attribute, and How Does It Work?",
-        "fr": ""
+        "fr": "Qu'est-ce que l'attribut aria-live, et comment fonctionne-t-il ?"
       },
       "sections": [
         {
@@ -298,71 +298,71 @@
           "chunks": [
             {
               "en": "The `aria-live` attribute creates a live region on your page which can be used to notify screen reader users of dynamic content changes in the live region as they occur.",
-              "fr": ""
+              "fr": "L'attribut `aria-live` crée une région live sur ta page. Elle peut notifier les utilisateurs de lecteurs d'écran des changements dynamiques de contenu dans cette région, dès qu'ils se produisent."
             },
             {
               "en": "Common uses of live regions include messages that are displayed after an action has been taken (such as an error message or confirmation), content that updates periodically (such as a ticker, marquee, or countdown timer), or general status messages (such as updates about a process).",
-              "fr": ""
+              "fr": "Les usages courants des régions live incluent les messages affichés après une action (erreur ou confirmation), le contenu mis à jour périodiquement (ticker, marquee ou compte à rebours), ou les messages d'état généraux (mises à jour sur un processus)."
             },
             {
               "en": "Because the reading focus for screen readers can only be at one place at a time, screen reader users will not notice a content change if their focus is on another part of the page. Live regions allow screen reader users to be automatically notified of changes that happen on the page in real time. Without a live region, screen reader users might miss important content updates available to sighted users, since a sighted user has the ability to scan the entire page.",
-              "fr": ""
+              "fr": "Comme le focus de lecture d'un lecteur d'écran ne peut être qu'à un seul endroit à la fois, l'utilisateur ne remarquera pas un changement de contenu s'il est ailleurs sur la page. Les régions live permettent de notifier automatiquement ces changements en temps réel. Sans région live, les utilisateurs de lecteurs d'écran peuvent manquer des mises à jour importantes visibles pour les utilisateurs voyants, qui peuvent balayer toute la page."
             },
             {
               "en": "There are three possible values for this attribute, based on the priority of the information.",
-              "fr": ""
+              "fr": "Il y a trois valeurs possibles pour cet attribut, selon la priorité de l'information."
             },
             {
               "en": "If you set `aria-live` to the value `assertive` that means that the update is very important. It has the highest priority, so the user should be notified immediately.",
-              "fr": ""
+              "fr": "Si tu définis `aria-live` à `assertive`, cela signifie que la mise à jour est très importante. Elle a la priorité la plus haute, donc l'utilisateur doit être notifié immédiatement."
             },
             {
               "en": "This means that the screen reader will interrupt any announcement it is currently making to announce the content change in the live region. Such interruptions can be extremely disruptive, so the `assertive` value should only be used for time-sensitive or critical notifications.",
-              "fr": ""
+              "fr": "Le lecteur d'écran interrompra alors toute annonce en cours pour annoncer le changement dans la région live. Ces interruptions peuvent être très perturbantes : n'utilise `assertive` que pour des notifications critiques ou urgentes."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The next value in order of priority is `polite`.",
-              "fr": ""
+              "fr": "La valeur suivante par ordre de priorité est `polite`."
             },
             {
               "en": "This value means that the update is not urgent, so the screen reader can wait until any current announcement is finished or until the user stops typing before announcing the update. Most live regions will use the `polite` value.",
-              "fr": ""
+              "fr": "Cette valeur signifie que la mise à jour n'est pas urgente : le lecteur d'écran peut attendre la fin de l'annonce en cours ou que l'utilisateur arrête de taper avant d'annoncer la mise à jour. La plupart des régions live utiliseront `polite`."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The lowest priority value for `aria-live` is `off` which means that the update will not be announced unless the content is in an element that currently has keyboard focus. Realistically, this value is almost never used as the use case is very narrow and it is not implemented consistently (if at all) across screen readers. If you need live regions, plan on using `polite` for everything except critical messages that need `assertive`.",
-              "fr": ""
+              "fr": "La valeur de plus basse priorité pour `aria-live` est `off` : la mise à jour ne sera annoncée que si le contenu est dans un élément qui a actuellement le focus clavier. En pratique, cette valeur est presque jamais utilisée : le cas d'usage est très étroit et l'implémentation n'est pas cohérente (voire absente) selon les lecteurs d'écran. Si tu as besoin de régions live, prévois `polite` pour tout, sauf les messages critiques qui demandent `assertive`."
             },
             {
               "en": "It's also important to note that the `aria-live` attribute is not required if the updated information is contained in an element with an ARIA role of `alert`, `log`, `marquee`, `status`, or `timer`, as these roles already have default `aria-live` values. But the default value can be changed by explicitly setting `aria-live` on the element.",
-              "fr": ""
+              "fr": "Il est aussi important de noter que `aria-live` n'est pas requis si l'information mise à jour est dans un élément avec un rôle ARIA `alert`, `log`, `marquee`, `status` ou `timer`, car ces rôles ont déjà des valeurs `aria-live` par défaut. Mais tu peux changer la valeur par défaut en définissant explicitement `aria-live` sur l'élément."
             },
             {
               "en": "Choosing the right `aria-live` value depends on the priority of the updated information.",
-              "fr": ""
+              "fr": "Choisir la bonne valeur `aria-live` dépend de la priorité de l'information mise à jour."
             },
             {
               "en": "If the updates are urgent, you should notify the user immediately with `assertive`. But you should use this only if the updates are really urgent because sudden interruptions can potentially disorient users and affect the user experience.",
-              "fr": ""
+              "fr": "Si les mises à jour sont urgentes, tu dois notifier l'utilisateur immédiatement avec `assertive`. Mais n'utilise cette valeur que si c'est vraiment urgent : les interruptions soudaines peuvent désorienter les utilisateurs et nuire à l'expérience."
             },
             {
               "en": "If the update can wait until the current task is finished, you should use `polite` instead.",
-              "fr": ""
+              "fr": "Si la mise à jour peut attendre la fin de la tâche en cours, utilise `polite` à la place."
             },
             {
               "en": "The `aria-live` attribute lets assistive technologies know when the content is changing dynamically on a web page. This helps users with disabilities stay updated on important announcements and updates.",
-              "fr": ""
+              "fr": "L'attribut `aria-live` indique aux technologies d'assistance quand le contenu change dynamiquement sur une page web. Cela aide les utilisateurs en situation de handicap à rester informés des annonces et mises à jour importantes."
             },
             {
               "en": "By using `aria-live` appropriately, you can ensure that users are aware of these updates based on their priority.",
-              "fr": ""
+              "fr": "En utilisant `aria-live` de façon appropriée, tu peux t'assurer que les utilisateurs sont informés de ces mises à jour selon leur priorité."
             }
           ]
         },
@@ -372,7 +372,7 @@
           "chunks": [
             {
               "en": "What is the primary purpose of the `aria-live` attribute?",
-              "fr": ""
+              "fr": "Quel est le rôle principal de l'attribut `aria-live` ?"
             }
           ]
         },
@@ -382,7 +382,7 @@
           "chunks": [
             {
               "en": "To define the visual appearance of an element.",
-              "fr": ""
+              "fr": "Définir l'apparence visuelle d'un élément."
             }
           ]
         },
@@ -392,11 +392,11 @@
           "chunks": [
             {
               "en": "Think about how `aria-live` helps assistive technologies understand the content.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-live` aide les technologies d'assistance à comprendre le contenu."
             },
             {
               "en": "To improve website performance.",
-              "fr": ""
+              "fr": "Améliorer les performances du site."
             }
           ]
         },
@@ -406,15 +406,15 @@
           "chunks": [
             {
               "en": "Think about how `aria-live` helps assistive technologies understand the content.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-live` aide les technologies d'assistance à comprendre le contenu."
             },
             {
               "en": "To indicate that an element's content is changing dynamically.",
-              "fr": ""
+              "fr": "Indiquer que le contenu d'un élément change dynamiquement."
             },
             {
               "en": "To enhance browser compatibility.",
-              "fr": ""
+              "fr": "Améliorer la compatibilité des navigateurs."
             }
           ]
         },
@@ -424,7 +424,7 @@
           "chunks": [
             {
               "en": "Think about how `aria-live` helps assistive technologies understand the content.",
-              "fr": ""
+              "fr": "Pense à la façon dont `aria-live` aide les technologies d'assistance à comprendre le contenu."
             }
           ]
         },
@@ -434,7 +434,7 @@
           "chunks": [
             {
               "en": "Which of the following values can be used for the `aria-live` attribute?",
-              "fr": ""
+              "fr": "Laquelle des valeurs suivantes peut être utilisée pour l'attribut `aria-live` ?"
             }
           ]
         },
@@ -444,7 +444,7 @@
           "chunks": [
             {
               "en": "`true`, `false`, `off`.",
-              "fr": ""
+              "fr": "`true`, `false`, `off`."
             }
           ]
         },
@@ -454,11 +454,11 @@
           "chunks": [
             {
               "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
-              "fr": ""
+              "fr": "Réfléchis aux différents niveaux d'urgence pour annoncer les changements de contenu dynamique."
             },
             {
               "en": "`visible`, `hidden`, `off`.",
-              "fr": ""
+              "fr": "`visible`, `hidden`, `off`."
             }
           ]
         },
@@ -468,15 +468,15 @@
           "chunks": [
             {
               "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
-              "fr": ""
+              "fr": "Réfléchis aux différents niveaux d'urgence pour annoncer les changements de contenu dynamique."
             },
             {
               "en": "`assertive`, `polite`, `off`.",
-              "fr": ""
+              "fr": "`assertive`, `polite`, `off`."
             },
             {
               "en": "`open`, `closed`, `off`.",
-              "fr": ""
+              "fr": "`open`, `closed`, `off`."
             }
           ]
         },
@@ -486,7 +486,7 @@
           "chunks": [
             {
               "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
-              "fr": ""
+              "fr": "Réfléchis aux différents niveaux d'urgence pour annoncer les changements de contenu dynamique."
             }
           ]
         },
@@ -496,7 +496,7 @@
           "chunks": [
             {
               "en": "What is the difference between the `polite` and `assertive` values for the `aria-live` attribute?",
-              "fr": ""
+              "fr": "Quelle est la différence entre les valeurs `polite` et `assertive` de l'attribut `aria-live` ?"
             }
           ]
         },
@@ -506,7 +506,7 @@
           "chunks": [
             {
               "en": "`polite` announces updates immediately, while `assertive` announces updates when the focus is on another element.",
-              "fr": ""
+              "fr": "`polite` annonce les mises à jour immédiatement, tandis que `assertive` les annonce quand le focus est sur un autre élément."
             }
           ]
         },
@@ -516,15 +516,15 @@
           "chunks": [
             {
               "en": "Think about the level of urgency for announcing dynamic content.",
-              "fr": ""
+              "fr": "Pense au niveau d'urgence pour annoncer le contenu dynamique."
             },
             {
               "en": "`polite` announces updates after the current task is finished, while `assertive` announces updates immediately.",
-              "fr": ""
+              "fr": "`polite` annonce les mises à jour après la fin de la tâche en cours, tandis que `assertive` les annonce immédiatement."
             },
             {
               "en": "There is no difference between `polite` and `assertive`.",
-              "fr": ""
+              "fr": "Il n'y a aucune différence entre `polite` et `assertive`."
             }
           ]
         },
@@ -534,11 +534,11 @@
           "chunks": [
             {
               "en": "Think about the level of urgency for announcing dynamic content.",
-              "fr": ""
+              "fr": "Pense au niveau d'urgence pour annoncer le contenu dynamique."
             },
             {
               "en": "`polite` is used for important updates, while `assertive` is used for less urgent updates.",
-              "fr": ""
+              "fr": "`polite` sert aux mises à jour importantes, tandis que `assertive` sert aux mises à jour moins urgentes."
             }
           ]
         },
@@ -548,7 +548,7 @@
           "chunks": [
             {
               "en": "Think about the level of urgency for announcing dynamic content.",
-              "fr": ""
+              "fr": "Pense au niveau d'urgence pour annoncer le contenu dynamique."
             }
           ]
         }
@@ -560,7 +560,7 @@
       "dashedName": "what-are-some-common-aria-states-used-on-custom-control-elements",
       "title": {
         "en": "What Are Some Common ARIA States Used on Custom Control Elements?",
-        "fr": ""
+        "fr": "Quels sont quelques états ARIA courants utilisés sur les éléments de contrôle personnalisés ?"
       },
       "sections": [
         {
@@ -569,143 +569,143 @@
           "chunks": [
             {
               "en": "Semantic form control elements like `input`, `select`, `textarea`, `button`, and `fieldset` have built-in states that are conveyed to assistive technologies.",
-              "fr": ""
+              "fr": "Les éléments de contrôle de formulaire sémantiques comme `input`, `select`, `textarea`, `button` et `fieldset` ont des états intégrés transmis aux technologies d'assistance."
             },
             {
               "en": "For example, you could use the `disabled` attribute to disable a button or the `checked` attribute to indicate that a checkbox is checked.",
-              "fr": ""
+              "fr": "Par exemple, tu peux utiliser l'attribut `disabled` pour désactiver un bouton, ou l'attribut `checked` pour indiquer qu'une case à cocher est cochée."
             },
             {
               "en": "But if you are creating a custom control element, you need to use ARIA attributes to convey the state of the control to assistive technologies.",
-              "fr": ""
+              "fr": "Mais si tu crées un élément de contrôle personnalisé, tu dois utiliser des attributs ARIA pour transmettre l'état du contrôle aux technologies d'assistance."
             },
             {
               "en": "In this lesson, we will discuss a few common ARIA states that you can use on custom control elements.",
-              "fr": ""
+              "fr": "Dans cette leçon, nous verrons quelques états ARIA courants que tu peux utiliser sur des éléments de contrôle personnalisés."
             },
             {
               "en": "The first ARIA state we will discuss is `aria-selected`. This state is used to indicate that an element is selected. You can use this state on custom controls like a tabbed interface, a listbox, or a grid.",
-              "fr": ""
+              "fr": "Le premier état ARIA dont nous parlerons est `aria-selected`. Cet état indique qu'un élément est sélectionné. Tu peux l'utiliser sur des contrôles personnalisés comme une interface à onglets, une listbox ou une grille."
             },
             {
               "en": "Here is an example of how you can use `aria-selected` on a custom tab control:",
-              "fr": ""
+              "fr": "Voici un exemple d'utilisation de `aria-selected` sur un contrôle d'onglet personnalisé :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Tabs are used to display multiple panels of content in a limited space. The `aria-selected` state is used to indicate which tab is currently selected.",
-              "fr": ""
+              "fr": "Les onglets servent à afficher plusieurs panneaux de contenu dans un espace limité. L'état `aria-selected` indique quel onglet est actuellement sélectionné."
             },
             {
               "en": "When the user selects a tab, the `aria-selected` state of the selected tab is set to `true`, and the `aria-selected` state of the other tabs is set to `false`.",
-              "fr": ""
+              "fr": "Quand l'utilisateur sélectionne un onglet, l'état `aria-selected` de l'onglet sélectionné passe à `true`, et l'état `aria-selected` des autres onglets passe à `false`."
             },
             {
               "en": "Another common ARIA state is `aria-disabled`. This state is used to indicate that an element is disabled only to people using assistive technologies, such as screen readers. It is important to note that `aria-disabled` does not actually disable the element. It is up to you, the developer, to make it look and act like a disabled element. This attribute is also commonly used on native HTML elements in place of the `disabled` attribute. Which one you choose will depend on the context the button is being used.",
-              "fr": ""
+              "fr": "Un autre état ARIA courant est `aria-disabled`. Cet état indique qu'un élément est désactivé uniquement pour les personnes qui utilisent des technologies d'assistance, comme les lecteurs d'écran. Important : `aria-disabled` ne désactive pas réellement l'élément. C'est à toi, le développeur, de le faire paraître et se comporter comme un élément désactivé. Cet attribut s'utilise aussi souvent sur des éléments HTML natifs à la place de `disabled`. Le choix dépend du contexte d'utilisation du bouton."
             },
             {
               "en": "Here is an example of how you can use `aria-disabled` on a custom edit button:",
-              "fr": ""
+              "fr": "Voici un exemple d'utilisation de `aria-disabled` sur un bouton d'édition personnalisé :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The `aria-disabled` attribute is used to tell screen reader users that the edit button is disabled and cannot be interacted with. Again, it does not actually disable the button. When using `aria-disabled`,you will need to apply styling and JavaScript to make the control look and behave like a disabled button.",
-              "fr": ""
+              "fr": "L'attribut `aria-disabled` indique aux utilisateurs de lecteurs d'écran que le bouton d'édition est désactivé et qu'on ne peut pas interagir avec. Encore une fois, il ne désactive pas réellement le bouton. Avec `aria-disabled`, tu devras appliquer du style et du JavaScript pour que le contrôle ressemble et se comporte comme un bouton désactivé."
             },
             {
               "en": "In most cases, you will probably use the native button element, but there are cases where you might need to use a custom control. So, it is essential to know how to convey the state of the control to assistive technologies.",
-              "fr": ""
+              "fr": "Dans la plupart des cas, tu utiliseras probablement l'élément bouton natif, mais il y a des cas où tu pourrais avoir besoin d'un contrôle personnalisé. Il est donc essentiel de savoir transmettre l'état du contrôle aux technologies d'assistance."
             },
             {
               "en": "The next ARIA state we will discuss is `aria-haspopup`. This state is used to indicate that an interactive element will trigger a popup element when activated. You can only use the `aria-haspopup` attribute when the popup has one of the following roles: `menu`, `listbox`, `tree`, `grid`, or `dialog`. The value of `aria-haspopup` must be either one of these roles or `true`, which defaults to the `menu` role.",
-              "fr": ""
+              "fr": "Le prochain état ARIA dont nous parlerons est `aria-haspopup`. Cet état indique qu'un élément interactif déclenchera un élément popup une fois activé. Tu ne peux utiliser `aria-haspopup` que si le popup a l'un des rôles suivants : `menu`, `listbox`, `tree`, `grid` ou `dialog`. La valeur de `aria-haspopup` doit être l'un de ces rôles ou `true`, qui correspond par défaut au rôle `menu`."
             },
             {
               "en": "Here is an example of a file editor menu that uses `aria-haspopup`:",
-              "fr": ""
+              "fr": "Voici un exemple de menu d'éditeur de fichiers qui utilise `aria-haspopup` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The `aria-haspopup` state is used to indicate that the `File` menu button will open a popup menu when activated. Screen reader users may hear this additional information when they navigate to the button.",
-              "fr": ""
+              "fr": "L'état `aria-haspopup` indique que le bouton de menu `File` ouvrira un menu popup une fois activé. Les utilisateurs de lecteurs d'écran peuvent entendre cette information supplémentaire quand ils naviguent jusqu'au bouton."
             },
             {
               "en": "You will need to use JavaScript to show and hide the popup menu, and to implement proper keyboard support for interacting with the menu. Also, please note that the ARIA `menu` role refers to a very specific type of menu. It generally refers to a list of actions that the user can invoke, similar to a menu on a desktop application. It does not include more common uses of what we typically refer to as \"menus\", such as navigation menus. Realistically, most \"menus\" you create on the web will not be ARIA menus and you will not use `aria-haspopup` with them.",
-              "fr": ""
+              "fr": "Tu devras utiliser JavaScript pour afficher et masquer le menu popup, et pour implémenter un support clavier correct pour interagir avec le menu. Note aussi que le rôle ARIA `menu` désigne un type de menu très spécifique. Il s'agit en général d'une liste d'actions que l'utilisateur peut invoquer, comme un menu d'application de bureau. Cela n'inclut pas les usages plus courants de ce qu'on appelle souvent des « menus », comme les menus de navigation. En pratique, la plupart des « menus » que tu crées sur le web ne seront pas des menus ARIA, et tu n'utiliseras pas `aria-haspopup` avec eux."
             },
             {
               "en": "The next ARIA state we will discuss is `aria-required`. The `aria-required` attribute is used to indicate that a field needs to be filled out before the form is submitted.",
-              "fr": ""
+              "fr": "Le prochain état ARIA dont nous parlerons est `aria-required`. L'attribut `aria-required` indique qu'un champ doit être rempli avant l'envoi du formulaire."
             },
             {
               "en": "Here is an example of working with the `aria-required` attribute for a custom form control.",
-              "fr": ""
+              "fr": "Voici un exemple d'utilisation de l'attribut `aria-required` pour un contrôle de formulaire personnalisé."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "We need to use the `contenteditable` attribute so users can type in their input. We are also using the `aria-required` attribute set to `true` to indicate that this custom form control is required.",
-              "fr": ""
+              "fr": "Nous devons utiliser l'attribut `contenteditable` pour que les utilisateurs puissent saisir leur entrée. Nous utilisons aussi `aria-required` défini à `true` pour indiquer que ce contrôle de formulaire personnalisé est obligatoire."
             },
             {
               "en": "To make the form control look like a normal form control, you would need to add CSS. You would also need to add JavaScript to prevent the form from being submitted without content.",
-              "fr": ""
+              "fr": "Pour que le contrôle de formulaire ressemble à un contrôle normal, tu devras ajouter du CSS. Tu devras aussi ajouter du JavaScript pour empêcher l'envoi du formulaire sans contenu."
             },
             {
               "en": "If the label already has the word `required`, then you should omit the `aria-required` attribute. This ensures that screen readers only announce the word required once.",
-              "fr": ""
+              "fr": "Si le libellé contient déjà le mot `required`, tu dois omettre l'attribut `aria-required`. Ainsi, les lecteurs d'écran n'annoncent le mot « requis » qu'une seule fois."
             },
             {
               "en": "In most cases, you will probably use the native `label` and `form` elements with the `required` attribute. But if you need to create a custom form control, then it is important to add the `aria-required` attribute when necessary.",
-              "fr": ""
+              "fr": "Dans la plupart des cas, tu utiliseras probablement les éléments natifs `label` et `form` avec l'attribut `required`. Mais si tu dois créer un contrôle de formulaire personnalisé, il est important d'ajouter `aria-required` quand c'est nécessaire."
             },
             {
               "en": "Additionally, the `aria-required` attribute can also be used on native form inputs, such as the `input`, `textarea`, and `select` elements. This is often preferred to the native required attribute, since the required attribute may have potential usability and accessibility concerns, particularly with the default error handling provided by the browser. Ultimately, you will need to test in order to determine which attribute is best for your situation.",
-              "fr": ""
+              "fr": "De plus, `aria-required` peut aussi s'utiliser sur des entrées de formulaire natives, comme les éléments `input`, `textarea` et `select`. On le préfère souvent à l'attribut required natif, car celui-ci peut poser des problèmes d'utilisabilité et d'accessibilité, surtout avec la gestion d'erreurs par défaut du navigateur. Au final, tu devras tester pour déterminer quel attribut convient le mieux à ta situation."
             },
             {
               "en": "The last ARIA state we will discuss is `aria-checked`. This attribute is used to indicate whether an element is in the checked state. It is most commonly used when creating custom checkboxes, radio buttons, switches, and listboxes.",
-              "fr": ""
+              "fr": "Le dernier état ARIA dont nous parlerons est `aria-checked`. Cet attribut indique si un élément est dans l'état coché. On l'utilise surtout pour créer des cases à cocher, boutons radio, interrupteurs et listboxes personnalisés."
             },
             {
               "en": "Here is an example of how you can use `aria-checked` on a custom checkbox control:",
-              "fr": ""
+              "fr": "Voici un exemple d'utilisation de `aria-checked` sur un contrôle de case à cocher personnalisé :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Native checkbox elements have a built-in `checked` state that is conveyed to assistive technologies. But if you are creating a custom checkbox control, you will need to use the `aria-checked` attribute to indicate its state.",
-              "fr": ""
+              "fr": "Les éléments de case à cocher natifs ont un état `checked` intégré transmis aux technologies d'assistance. Mais si tu crées une case à cocher personnalisée, tu devras utiliser `aria-checked` pour indiquer son état."
             },
             {
               "en": "When the user interacts with the custom checkbox control, you will need to use the `aria-checked` state to reflect the new state of the checkbox. When the checkbox is checked, the `aria-checked` attribute is set to `true`. When it is unchecked, it is set to `false`.",
-              "fr": ""
+              "fr": "Quand l'utilisateur interagit avec la case à cocher personnalisée, tu devras utiliser l'état `aria-checked` pour refléter le nouvel état. Quand la case est cochée, `aria-checked` vaut `true`. Quand elle est décochée, il vaut `false`."
             },
             {
               "en": "Native elements typically have better support and built-in accessibility features.",
-              "fr": ""
+              "fr": "Les éléments natifs ont en général un meilleur support et des fonctionnalités d'accessibilité intégrées."
             },
             {
               "en": "However, if you must create custom controls, using ARIA attributes is essential to convey the state of these controls to assistive technologies effectively.",
-              "fr": ""
+              "fr": "Cependant, si tu dois créer des contrôles personnalisés, utiliser des attributs ARIA est essentiel pour transmettre efficacement leur état aux technologies d'assistance."
             },
             {
               "en": "As always, test your work to ensure that ARIA attributes are applied correctly and that the custom control functions in a way that is both accessible and user-friendly.",
-              "fr": ""
+              "fr": "Comme toujours, teste ton travail pour t'assurer que les attributs ARIA sont appliqués correctement et que le contrôle personnalisé fonctionne de façon accessible et conviviale."
             }
           ]
         },
@@ -715,7 +715,7 @@
           "chunks": [
             {
               "en": "What ARIA state would you use to indicate that a tab is currently selected?",
-              "fr": ""
+              "fr": "Quel état ARIA utiliserais-tu pour indiquer qu'un onglet est actuellement sélectionné ?"
             }
           ]
         },
@@ -725,7 +725,7 @@
           "chunks": [
             {
               "en": "This state shows which tab is active.",
-              "fr": ""
+              "fr": "Cet état montre quel onglet est actif."
             }
           ]
         },
@@ -735,7 +735,7 @@
           "chunks": [
             {
               "en": "This state shows which tab is active.",
-              "fr": ""
+              "fr": "Cet état montre quel onglet est actif."
             }
           ]
         },
@@ -745,7 +745,7 @@
           "chunks": [
             {
               "en": "This state shows which tab is active.",
-              "fr": ""
+              "fr": "Cet état montre quel onglet est actif."
             }
           ]
         },
@@ -755,7 +755,7 @@
           "chunks": [
             {
               "en": "In the context of custom controls, which ARIA state is used to indicate that an element is currently disabled?",
-              "fr": ""
+              "fr": "Dans le contexte des contrôles personnalisés, quel état ARIA indique qu'un élément est actuellement désactivé ?"
             }
           ]
         },
@@ -765,7 +765,7 @@
           "chunks": [
             {
               "en": "This state shows that an element cannot be interacted with.",
-              "fr": ""
+              "fr": "Cet état montre qu'on ne peut pas interagir avec un élément."
             }
           ]
         },
@@ -775,7 +775,7 @@
           "chunks": [
             {
               "en": "This state shows that an element cannot be interacted with.",
-              "fr": ""
+              "fr": "Cet état montre qu'on ne peut pas interagir avec un élément."
             }
           ]
         },
@@ -785,7 +785,7 @@
           "chunks": [
             {
               "en": "This state shows that an element cannot be interacted with.",
-              "fr": ""
+              "fr": "Cet état montre qu'on ne peut pas interagir avec un élément."
             }
           ]
         },
@@ -795,7 +795,7 @@
           "chunks": [
             {
               "en": "When you want to indicate that a menu item has a submenu, which ARIA state should be used?",
-              "fr": ""
+              "fr": "Quand tu veux indiquer qu'un élément de menu a un sous-menu, quel état ARIA faut-il utiliser ?"
             }
           ]
         },
@@ -805,7 +805,7 @@
           "chunks": [
             {
               "en": "One of the state heavily suggests that a popup is present.",
-              "fr": ""
+              "fr": "L'un des états suggère fortement qu'un popup est présent."
             }
           ]
         },
@@ -815,7 +815,7 @@
           "chunks": [
             {
               "en": "One of the state heavily suggests that a popup is present.",
-              "fr": ""
+              "fr": "L'un des états suggère fortement qu'un popup est présent."
             }
           ]
         },
@@ -825,7 +825,7 @@
           "chunks": [
             {
               "en": "One of the state heavily suggests that a popup is present.",
-              "fr": ""
+              "fr": "L'un des états suggère fortement qu'un popup est présent."
             }
           ]
         }
@@ -837,7 +837,7 @@
       "dashedName": "what-is-the-aria-controls-attribute",
       "title": {
         "en": "What Is the aria-controls Attribute, and How Does It Work?",
-        "fr": ""
+        "fr": "Qu'est-ce que l'attribut aria-controls, et comment fonctionne-t-il ?"
       },
       "sections": [
         {
@@ -846,47 +846,47 @@
           "chunks": [
             {
               "en": "The `aria-controls` attribute is used to create a programmatic relationship between an element that controls the presence of another element on the page, and the element it controls. This relationship can help screen reader users better understand how the control works. Common uses include a set of tabs that control the visibility of different sections of content, or a button that toggles the visibility of a menu.",
-              "fr": ""
+              "fr": "L'attribut `aria-controls` crée une relation programmatique entre un élément qui contrôle la présence d'un autre élément sur la page, et l'élément qu'il contrôle. Cette relation aide les utilisateurs de lecteurs d'écran à mieux comprendre comment le contrôle fonctionne. Les usages courants incluent un ensemble d'onglets qui contrôlent la visibilité de différentes sections de contenu, ou un bouton qui bascule la visibilité d'un menu."
             },
             {
               "en": "Let's take a look at an example to see how this works. In this example of a tabbed interface, we have a `div` element with a set of three buttons:",
-              "fr": ""
+              "fr": "Regardons un exemple pour voir comment cela fonctionne. Dans cet exemple d'interface à onglets, nous avons un élément `div` avec un ensemble de trois boutons :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The `div` uses `role=\"tablist\"` to indicate that it serves as a container element for a group of tabs.",
-              "fr": ""
+              "fr": "Le `div` utilise `role=\"tablist\"` pour indiquer qu'il sert de conteneur pour un groupe d'onglets."
             },
             {
               "en": "Each button represents a tab and has a `role` attribute set to `tab`. In most tabbed interfaces, the first tab panel is visible by default, so the first tab button has an `aria-selected` attribute set to `true` to indicate that its associated section of content is currently visible. The `aria-controls` attribute is used to associate each button with the section of content that it controls.",
-              "fr": ""
+              "fr": "Chaque bouton représente un onglet et a un attribut `role` défini à `tab`. Dans la plupart des interfaces à onglets, le premier panneau est visible par défaut, donc le premier bouton d'onglet a `aria-selected` défini à `true` pour indiquer que sa section de contenu associée est actuellement visible. L'attribut `aria-controls` associe chaque bouton à la section de contenu qu'il contrôle."
             },
             {
               "en": "Here are the three sections of content that correspond to the tabs:",
-              "fr": ""
+              "fr": "Voici les trois sections de contenu qui correspondent aux onglets :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Each section of content has a `role` attribute set to `tabpanel` and an `aria-labelledby` attribute that points to the corresponding tab to give the panel an accessible name. The `hidden` attribute is used to hide the sections of content that are not currently selected. Each section ID matches the value of the `aria-controls` attribute on the corresponding button. The `section1` ID matches the `aria-controls` attribute on the first button, `section2` matches the `aria-controls` attribute on the second button, and `section3` matches the `aria-controls` attribute on the third button. This is how the association between the tabs and their sections of content is established.",
-              "fr": ""
+              "fr": "Chaque section de contenu a un attribut `role` défini à `tabpanel` et un attribut `aria-labelledby` qui pointe vers l'onglet correspondant pour donner un nom accessible au panneau. L'attribut `hidden` masque les sections qui ne sont pas actuellement sélectionnées. Chaque ID de section correspond à la valeur de `aria-controls` sur le bouton correspondant. L'ID `section1` correspond à l'attribut `aria-controls` du premier bouton, `section2` correspond à l'attribut `aria-controls` du deuxième bouton, et `section3` correspond à l'attribut `aria-controls` du troisième bouton. C'est ainsi que l'association entre les onglets et leurs sections de contenu est établie."
             },
             {
               "en": "To switch between the different sections you will need to use JavaScript to update the `hidden` attribute on the section and the `aria-selected` attribute on the button based on which section is currently visible. Only one section can be visible at a time and it should not have the `hidden` attribute and `aria-selected` should be set to `true` on its button. The remaining hidden sections should all have the `hidden` attribute and `aria-selected` should be set to `false` on their buttons.",
-              "fr": ""
+              "fr": "Pour basculer entre les différentes sections, tu devras utiliser JavaScript pour mettre à jour l'attribut `hidden` sur la section et l'attribut `aria-selected` sur le bouton selon la section actuellement visible. Une seule section peut être visible à la fois : elle ne doit pas avoir l'attribut `hidden`, et `aria-selected` doit valoir `true` sur son bouton. Les sections masquées restantes doivent toutes avoir `hidden`, et `aria-selected` doit valoir `false` sur leurs boutons."
             },
             {
               "en": "Tabs are a common use case for the `aria-controls` attribute, but it can be used in other scenarios where one element controls the visibility or behavior of another element. Other examples include accordions, dropdown menus, and modals.",
-              "fr": ""
+              "fr": "Les onglets sont un cas d'usage courant pour `aria-controls`, mais on peut l'utiliser dans d'autres scénarios où un élément contrôle la visibilité ou le comportement d'un autre. D'autres exemples incluent les accordéons, les menus déroulants et les modales."
             },
             {
               "en": "The next time you design a user interface that involves controlling the visibility  of elements, consider using the `aria-controls` attribute to establish the relationship between the controlling element and the controlled element.",
-              "fr": ""
+              "fr": "La prochaine fois que tu conçois une interface qui implique de contrôler la visibilité d'éléments, considère d'utiliser l'attribut `aria-controls` pour établir la relation entre l'élément de contrôle et l'élément contrôlé."
             }
           ]
         },
@@ -896,7 +896,7 @@
           "chunks": [
             {
               "en": "What is the purpose of the `aria-controls` attribute in the context of tabs?",
-              "fr": ""
+              "fr": "Quel est le rôle de l'attribut `aria-controls` dans le contexte des onglets ?"
             }
           ]
         },
@@ -906,7 +906,7 @@
           "chunks": [
             {
               "en": "To specify which tab is currently active.",
-              "fr": ""
+              "fr": "Indiquer quel onglet est actuellement actif."
             }
           ]
         },
@@ -916,11 +916,11 @@
           "chunks": [
             {
               "en": "Think about the association between tabs and content sections.",
-              "fr": ""
+              "fr": "Pense à l'association entre les onglets et les sections de contenu."
             },
             {
               "en": "To hide or show sections of content.",
-              "fr": ""
+              "fr": "Masquer ou afficher des sections de contenu."
             }
           ]
         },
@@ -930,15 +930,15 @@
           "chunks": [
             {
               "en": "Think about the association between tabs and content sections.",
-              "fr": ""
+              "fr": "Pense à l'association entre les onglets et les sections de contenu."
             },
             {
               "en": "To associate a tab with the section it controls.",
-              "fr": ""
+              "fr": "Associer un onglet à la section qu'il contrôle."
             },
             {
               "en": "To set the role of the element.",
-              "fr": ""
+              "fr": "Définir le rôle de l'élément."
             }
           ]
         },
@@ -948,7 +948,7 @@
           "chunks": [
             {
               "en": "Think about the association between tabs and content sections.",
-              "fr": ""
+              "fr": "Pense à l'association entre les onglets et les sections de contenu."
             }
           ]
         },
@@ -958,7 +958,7 @@
           "chunks": [
             {
               "en": "How does the `aria-controls` attribute affect the content sections in the example?",
-              "fr": ""
+              "fr": "Comment l'attribut `aria-controls` affecte-t-il les sections de contenu dans l'exemple ?"
             }
           ]
         },
@@ -968,7 +968,7 @@
           "chunks": [
             {
               "en": "It automatically updates the content based on user input.",
-              "fr": ""
+              "fr": "Il met automatiquement à jour le contenu selon la saisie de l'utilisateur."
             }
           ]
         },
@@ -978,15 +978,15 @@
           "chunks": [
             {
               "en": "Think about how the attribute is used to control the visibility of content sections.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont l'attribut sert à contrôler la visibilité des sections de contenu."
             },
             {
               "en": "It hides or shows sections based on which tab is selected.",
-              "fr": ""
+              "fr": "Il masque ou affiche les sections selon l'onglet sélectionné."
             },
             {
               "en": "It changes the tab's style to indicate it is selected.",
-              "fr": ""
+              "fr": "Il change le style de l'onglet pour indiquer qu'il est sélectionné."
             }
           ]
         },
@@ -996,11 +996,11 @@
           "chunks": [
             {
               "en": "Think about how the attribute is used to control the visibility of content sections.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont l'attribut sert à contrôler la visibilité des sections de contenu."
             },
             {
               "en": "It defines the visual appearance of the tab.",
-              "fr": ""
+              "fr": "Il définit l'apparence visuelle de l'onglet."
             }
           ]
         },
@@ -1010,7 +1010,7 @@
           "chunks": [
             {
               "en": "Think about how the attribute is used to control the visibility of content sections.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont l'attribut sert à contrôler la visibilité des sections de contenu."
             }
           ]
         },
@@ -1020,7 +1020,7 @@
           "chunks": [
             {
               "en": "In the provided example, how is the `aria-labelledby` attribute used?",
-              "fr": ""
+              "fr": "Dans l'exemple fourni, comment l'attribut `aria-labelledby` est-il utilisé ?"
             }
           ]
         },
@@ -1030,7 +1030,7 @@
           "chunks": [
             {
               "en": "To specify which tab controls which content section.",
-              "fr": ""
+              "fr": "Pour indiquer quel onglet contrôle quelle section de contenu."
             }
           ]
         },
@@ -1040,15 +1040,15 @@
           "chunks": [
             {
               "en": "It links the tab to the content section it controls.",
-              "fr": ""
+              "fr": "Il lie l'onglet à la section de contenu qu'il contrôle."
             },
             {
               "en": "To identify the content section that a tab controls.",
-              "fr": ""
+              "fr": "Pour identifier la section de contenu qu'un onglet contrôle."
             },
             {
               "en": "To define the role of the tab and content sections.",
-              "fr": ""
+              "fr": "Pour définir le rôle de l'onglet et des sections de contenu."
             }
           ]
         },
@@ -1058,11 +1058,11 @@
           "chunks": [
             {
               "en": "It links the tab to the content section it controls.",
-              "fr": ""
+              "fr": "Il lie l'onglet à la section de contenu qu'il contrôle."
             },
             {
               "en": "To automatically switch between content sections when a tab is clicked.",
-              "fr": ""
+              "fr": "Pour basculer automatiquement entre les sections de contenu quand on clique sur un onglet."
             }
           ]
         },
@@ -1072,7 +1072,7 @@
           "chunks": [
             {
               "en": "It links the tab to the content section it controls.",
-              "fr": ""
+              "fr": "Il lie l'onglet à la section de contenu qu'il contrôle."
             }
           ]
         }
@@ -1084,7 +1084,7 @@
       "dashedName": "how-do-you-make-dynamic-and-interactive-content-accessible",
       "title": {
         "en": "How Do You Make Dynamic and Interactive Content Accessible?",
-        "fr": ""
+        "fr": "Comment rendre accessible le contenu dynamique et interactif ?"
       },
       "sections": [
         {
@@ -1093,31 +1093,31 @@
           "chunks": [
             {
               "en": "You previously learned how semantic markup and ARIA attributes make content accessible. In real-world apps, content is rarely static, and pages often update dynamically through JavaScript. When this happens, it's important to make sure these changes also are reflected in the HTML. This allows screen readers to accurately convey the updated state to users. Without this, people relying on assistive tools might never know that something changed, or could be given outdated or misleading information.",
-              "fr": ""
+              "fr": "Tu as déjà appris comment le balisage sémantique et les attributs ARIA rendent le contenu accessible. Dans les applications réelles, le contenu est rarement statique, et les pages se mettent souvent à jour dynamiquement via JavaScript. Quand cela arrive, il est important que ces changements se reflètent aussi dans le HTML. Ainsi, les lecteurs d'écran peuvent transmettre correctement l'état mis à jour aux utilisateurs. Sans cela, les personnes qui s'appuient sur des outils d'assistance pourraient ne jamais savoir que quelque chose a changé, ou recevoir des informations obsolètes ou trompeuses."
             },
             {
               "en": "Let's look at a common scenario where JavaScript changes the state of an element, and how you can keep your HTML accessible by updating ARIA attributes.",
-              "fr": ""
+              "fr": "Regardons un scénario courant où JavaScript change l'état d'un élément, et comment tu peux garder ton HTML accessible en mettant à jour les attributs ARIA."
             },
             {
               "en": "Suppose you have a button that opens and closes a dropdown menu:",
-              "fr": ""
+              "fr": "Suppose que tu as un bouton qui ouvre et ferme un menu déroulant :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The HTML sets up a button that controls a dropdown menu. The button uses `aria-expanded` to indicate whether the menu is open, and `aria-controls` to link it to the menu by referencing the menu's `id`.",
-              "fr": ""
+              "fr": "Le HTML met en place un bouton qui contrôle un menu déroulant. Le bouton utilise `aria-expanded` pour indiquer si le menu est ouvert, et `aria-controls` pour le lier au menu en référençant l'`id` du menu."
             },
             {
               "en": "The JavaScript listens for clicks on the menu button. When clicked, it toggles the value of `aria-expanded` and updates the `hidden` property on the menu. This keeps the menu's visibility and the accessibility information in sync, so both sighted users and screen reader users know whether the menu is open or closed.",
-              "fr": ""
+              "fr": "Le JavaScript écoute les clics sur le bouton du menu. Au clic, il bascule la valeur de `aria-expanded` et met à jour la propriété `hidden` du menu. Cela garde la visibilité du menu et les informations d'accessibilité synchronisées, pour que les utilisateurs voyants et ceux de lecteurs d'écran sachent si le menu est ouvert ou fermé."
             },
             {
               "en": "You will learn more about those ARIA attributes in the upcoming lessons. For now, just remember that when your JavaScript changes the state of an element, you should also update the relevant ARIA attributes so assistive technologies accurately reflect what's actually on the screen.",
-              "fr": ""
+              "fr": "Tu en apprendras plus sur ces attributs ARIA dans les leçons suivantes. Pour l'instant, retiens juste que quand ton JavaScript change l'état d'un élément, tu dois aussi mettre à jour les attributs ARIA concernés pour que les technologies d'assistance reflètent fidèlement ce qui est réellement à l'écran."
             }
           ]
         },
@@ -1127,7 +1127,7 @@
           "chunks": [
             {
               "en": "Why is it important to update the HTML when JavaScript changes the state of a page element?",
-              "fr": ""
+              "fr": "Pourquoi est-il important de mettre à jour le HTML quand JavaScript change l'état d'un élément de la page ?"
             }
           ]
         },
@@ -1137,11 +1137,11 @@
           "chunks": [
             {
               "en": "So assistive technologies can accurately communicate the current state to users.",
-              "fr": ""
+              "fr": "Pour que les technologies d'assistance puissent communiquer correctement l'état actuel aux utilisateurs."
             },
             {
               "en": "So users with assistive technologies can interact with the element.",
-              "fr": ""
+              "fr": "Pour que les utilisateurs de technologies d'assistance puissent interagir avec l'élément."
             }
           ]
         },
@@ -1151,11 +1151,11 @@
           "chunks": [
             {
               "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
-              "fr": ""
+              "fr": "Pense à ce que les utilisateurs de technologies d'assistance pourraient manquer si les attributs ARIA ne correspondent pas à ce qui est affiché sur la page."
             },
             {
               "en": "So the page doesn't crash upon state change.",
-              "fr": ""
+              "fr": "Pour que la page ne plante pas lors d'un changement d'état."
             }
           ]
         },
@@ -1165,11 +1165,11 @@
           "chunks": [
             {
               "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
-              "fr": ""
+              "fr": "Pense à ce que les utilisateurs de technologies d'assistance pourraient manquer si les attributs ARIA ne correspondent pas à ce qui est affiché sur la page."
             },
             {
               "en": "So the element's state can be saved automatically between page loads.",
-              "fr": ""
+              "fr": "Pour que l'état de l'élément soit sauvegardé automatiquement entre les chargements de page."
             }
           ]
         },
@@ -1179,7 +1179,7 @@
           "chunks": [
             {
               "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
-              "fr": ""
+              "fr": "Pense à ce que les utilisateurs de technologies d'assistance pourraient manquer si les attributs ARIA ne correspondent pas à ce qui est affiché sur la page."
             }
           ]
         },
@@ -1189,7 +1189,7 @@
           "chunks": [
             {
               "en": "What does the `aria-controls` attribute on the menu button specify?",
-              "fr": ""
+              "fr": "Que spécifie l'attribut `aria-controls` sur le bouton du menu ?"
             }
           ]
         },
@@ -1199,7 +1199,7 @@
           "chunks": [
             {
               "en": "The default state of the menu when the page loads.",
-              "fr": ""
+              "fr": "L'état par défaut du menu au chargement de la page."
             }
           ]
         },
@@ -1209,11 +1209,11 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-controls` est expliqué."
             },
             {
               "en": "The keyboard shortcut used to activate the menu.",
-              "fr": ""
+              "fr": "Le raccourci clavier utilisé pour activer le menu."
             }
           ]
         },
@@ -1223,11 +1223,11 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-controls` est expliqué."
             },
             {
               "en": "The class name of the element that the button controls.",
-              "fr": ""
+              "fr": "Le nom de classe de l'élément que le bouton contrôle."
             }
           ]
         },
@@ -1237,11 +1237,11 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-controls` est expliqué."
             },
             {
               "en": "The ID of the element that the button controls.",
-              "fr": ""
+              "fr": "L'ID de l'élément que le bouton contrôle."
             }
           ]
         },
@@ -1251,7 +1251,7 @@
           "chunks": [
             {
               "en": "What does the `aria-expanded` attribute on the menu button indicate?",
-              "fr": ""
+              "fr": "Qu'indique l'attribut `aria-expanded` sur le bouton du menu ?"
             }
           ]
         },
@@ -1261,7 +1261,7 @@
           "chunks": [
             {
               "en": "Whether the menu button has been clicked.",
-              "fr": ""
+              "fr": "Si le bouton du menu a été cliqué."
             }
           ]
         },
@@ -1271,11 +1271,11 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-expanded` est expliqué."
             },
             {
               "en": "Whether the menu button is enabled or disabled.",
-              "fr": ""
+              "fr": "Si le bouton du menu est activé ou désactivé."
             }
           ]
         },
@@ -1285,15 +1285,15 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-expanded` est expliqué."
             },
             {
               "en": "Whether the menu is open or closed.",
-              "fr": ""
+              "fr": "Si le menu est ouvert ou fermé."
             },
             {
               "en": "Whether the menu contains a submenu.",
-              "fr": ""
+              "fr": "Si le menu contient un sous-menu."
             }
           ]
         },
@@ -1303,7 +1303,7 @@
           "chunks": [
             {
               "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
-              "fr": ""
+              "fr": "Reviens à la partie de la leçon où `aria-expanded` est expliqué."
             }
           ]
         }

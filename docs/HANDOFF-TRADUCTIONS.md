@@ -12,11 +12,11 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Module 9 Terminé (130/230)
+### JavaScript v9 — Module 10 Terminé (136/230)
 
-État actuel : 130 blocs FR sur 230 (552/1311 fichiers). Les modules 1-9 sont **100 % traduits**. Prochaine cible : relire `tools/translations/lecture-understanding-aria-expanded-aria-live-and-common-aria-states.json` (module 10 `js-a11y`, `reviewed: false` — **ne pas appliquer**).
+État actuel : 136 blocs FR sur 230 (594/1311 fichiers, ~45 %). Les modules 1-10 sont **100 % traduits**. Prochaine cible : relire `tools/translations/lecture-debugging-techniques.json` (module 11 debugging, `reviewed: false` — **ne pas appliquer**).
 
-Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
+Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
 Note pièges connus du pipeline (vus module 3) : le `verify` custom de `translate-workshop.js` peut crier `nombre de blocs de prose dans # --hints-- modifie` quand une étape EN a une ligne blanche avec un espace (` `) entre le dernier bloc de code et `# --seed--` (ex. loan-qualification step-3) — c'est un faux positif d'espace, le `.md` rendu est identique. Autorité finale : `pnpm -C curriculum lint-challenges --superblock javascript-v9` (doit sortir exit 0).
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (130/230 blocs, 552/1311 fichiers). Modules 1-9 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (136/230 blocs, 594/1311 fichiers). Modules 1-10 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `lecture-debugging-techniques` (`reviewed: false` — ne pas appliquer).
 
 ### Lister ce qui manque dans un module
 
@@ -286,7 +286,7 @@ timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; 
 compteurs sont affichés dans la sortie et protégés par
 `axe-test-regression.mjs`.
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 130/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 136/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -296,7 +296,7 @@ compteurs sont affichés dans la sortie et protégés par
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-9 **100 % complets** (130/230) ; prochaine cible = relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states` (`reviewed: false` — ne pas appliquer).
+3. Continuer JavaScript v9 : modules 1-10 **100 % complets** (136/230) ; prochaine cible = relire `lecture-debugging-techniques` (`reviewed: false` — ne pas appliquer).
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -310,6 +310,16 @@ Pour vérifier l'ordre exact des blocs/modules :
 Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le navigateur (Ctrl + Shift + R). Si tu crées un nouveau `.md` (nouveau bloc ou nouveau fichier dans un bloc existant), le `fs.watch` recursive le détecte automatiquement sans redémarrer le serveur — ET si c'est le premier fichier d'un block jamais vu, `has-french-intro.ts` est touché pour mettre à jour le filtre catalog + badge cours-fr.
 
 ---
+
+**Dernière session (2026-08-20, module 10 a11y terminé + confettis a11y)** :
+JS v9 à 136/230 blocs (594/1311 fichiers), modules 1-10 **100 %**. Traduits :
+lecture ARIA, `workshop-planets-tablist`, `workshop-note-taking-app`,
+`lab-theme-switcher`, `review-js-a11y`, `quiz-js-a11y`. Intros module a11y FR
+(2× dans `intro.json`). Hints vides (trailing space après fence) retirés du
+JSON planets. Site : `fireConfetti` respecte `prefers-reduced-motion` (+ test
+vitest) ; fix tsc `exam-session.test.tsx`. Lecture suivante déjà extraite :
+`lecture-debugging-techniques.json` (`reviewed: false`) — **ne pas appliquer**.
+Goal actif : finir JS v9 + optimiser le fork.
 
 **Dernière session (2026-08-20, module 9 DOM terminé)** :
 JS v9 à 130/230 blocs (552/1311 fichiers), modules 1-9 **100 %**. Traduits :

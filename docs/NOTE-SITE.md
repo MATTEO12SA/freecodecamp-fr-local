@@ -44,10 +44,11 @@ Juillet mesuré : 6,7 / 10. Août matin (relecture code) : 7,8 / 10.
 
 ## Ce qui empêche 9+
 
-- Curriculum JS v9 à 130/230 blocs (42 %). Modules 1-9 complets.
+- Curriculum JS v9 à 136/230 blocs (~45 %). Modules 1-10 complets.
 - Examen honor-system, HTML des quizzes rendu tel quel.
 - GitHub Actions ne lance pas qualité FR, tsc client, ni Axe.
-- Lecture a11y `lecture-understanding-aria-expanded-aria-live-and-common-aria-states.json` extraite, `reviewed: false` — ne pas appliquer.
+- Lecture debugging `lecture-debugging-techniques.json` extraite, `reviewed: false` — ne pas appliquer.
+- Confettis de complétion respectent `prefers-reduced-motion`.
 - Pas d'export de profil / PWA (vague 5, volontairement plus tard).
 
 ## Relancer les preuves

@@ -1,6 +1,18 @@
 import confetti from 'canvas-confetti';
 
+function prefersReducedMotion(): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
+  }
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export const fireConfetti = () => {
+  // Respect OS/browser reduced-motion preference (a11y).
+  if (prefersReducedMotion()) {
+    return;
+  }
+
   const count = 200;
   const defaults = {
     origin: { y: 0.7 },

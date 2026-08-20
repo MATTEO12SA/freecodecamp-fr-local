@@ -25,7 +25,12 @@ describe('exam session', () => {
   it('saves and restores a versioned session without solutions', () => {
     saveExamSession(session, now);
 
-    const stored = JSON.parse(window.localStorage.getItem(storageKey) || '{}');
+    const stored = JSON.parse(
+      window.localStorage.getItem(storageKey) || '{}'
+    ) as {
+      version: number;
+      byCert: Record<string, unknown>;
+    };
     expect(stored.version).toBe(2);
     expect(stored.byCert['javascript-v9']).not.toHaveProperty(
       'reviewQuestions'

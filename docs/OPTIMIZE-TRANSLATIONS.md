@@ -268,7 +268,7 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD est terminé (158/158). JavaScript v9 est en cours : 130 blocs FR sur 230 (552/1311 fichiers) — modules 1-9 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-understanding-aria-expanded-aria-live-and-common-aria-states.json` (`reviewed: false` — ne pas appliquer).
+RWD est terminé (158/158). JavaScript v9 est en cours : 136 blocs FR sur 230 (594/1311 fichiers) — modules 1-10 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-debugging-techniques.json` (`reviewed: false` — ne pas appliquer).
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>

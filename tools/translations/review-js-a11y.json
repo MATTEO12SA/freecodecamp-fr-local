@@ -1,0 +1,135 @@
+{
+  "workshop": "review-js-a11y",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "683766860f71d4a96e429f3a.md",
+      "id": "683766860f71d4a96e429f3a",
+      "dashedName": "review-js-a11y",
+      "title": {
+        "en": "JavaScript and Accessibility Review",
+        "fr": "Révision : JavaScript et accessibilité"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Common ARIA Accessibility Attributes",
+              "fr": "## Attributs ARIA d'accessibilité courants"
+            },
+            {
+              "en": "- **`aria-expanded` attribute**: Used to convey the state of a toggle (or disclosure) feature to screen reader users.",
+              "fr": "- **Attribut `aria-expanded` :** Sert à transmettre l'état d'une fonctionnalité de bascule (ou de dévoilement) aux utilisateurs de lecteurs d'écran."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`aria-haspopup` attribute**: This state is used to indicate that an interactive element will trigger a pop-up element when activated. You can only use the `aria-haspopup` attribute when the pop-up has one of the following roles: `menu`, `listbox`, `tree`, `grid`, or `dialog`. The value of `aria-haspopup` must be either one of these roles or `true`, which is the same as `menu`.",
+              "fr": "- **Attribut `aria-haspopup` :** Cet état indique qu'un élément interactif déclenchera un élément popup une fois activé. Tu ne peux utiliser l'attribut `aria-haspopup` que si le popup a l'un des rôles suivants : `menu`, `listbox`, `tree`, `grid` ou `dialog`. La valeur de `aria-haspopup` doit être l'un de ces rôles ou `true`, qui correspond au rôle `menu`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`aria-checked` attribute**: This attribute is used to indicate whether an element is in the checked state. It is most commonly used when creating custom checkboxes, radio buttons, switches, and listboxes.",
+              "fr": "- **Attribut `aria-checked` :** Cet attribut indique si un élément est dans l'état coché. On l'utilise le plus souvent pour créer des cases à cocher, boutons radio, interrupteurs et listboxes personnalisés."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`aria-disabled` attribute**: This state is used to indicate that an element is disabled only to people using assistive technologies, such as screen readers.",
+              "fr": "- **Attribut `aria-disabled` :** Cet état indique qu'un élément est désactivé uniquement pour les personnes qui utilisent des technologies d'assistance, comme les lecteurs d'écran."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`aria-selected` attribute**: This state is used to indicate that an element is selected. You can use this state on custom controls like a tabbed interface, a listbox, or a grid.",
+              "fr": "- **Attribut `aria-selected` :** Cet état indique qu'un élément est sélectionné. Tu peux l'utiliser sur des contrôles personnalisés comme une interface à onglets, une listbox ou une grille."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`aria-controls` attribute**: Used to associate an element with another element that it controls. This helps people using assistive technologies understand the relationship between the elements.",
+              "fr": "- **Attribut `aria-controls` :** Sert à associer un élément à un autre élément qu'il contrôle. Cela aide les personnes qui utilisent des technologies d'assistance à comprendre la relation entre les éléments."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`hidden` attribute**: Hides inactive panels from both visual and assistive technology users.",
+              "fr": "- **Attribut `hidden` :** Masque les panneaux inactifs à la fois pour les utilisateurs voyants et pour les utilisateurs de technologies d'assistance."
+            },
+            {
+              "en": "## Working with Live Regions and Dynamic Content",
+              "fr": "## Travailler avec les régions live et le contenu dynamique"
+            },
+            {
+              "en": "- **`aria-live` attribute**: Makes part of a webpage a live region, meaning any updates inside that area will be announced by a screen reader so users don't miss important changes.\n- **`polite` value**: Most live regions use this value. This value means that the update is not urgent, so the screen reader can wait until it finishes any current announcement or the user completes their current action before announcing the update.",
+              "fr": "- **Attribut `aria-live` :** Transforme une partie d'une page web en région live, ce qui signifie que toute mise à jour dans cette zone sera annoncée par un lecteur d'écran pour que les utilisateurs ne manquent pas les changements importants.\n- **Valeur `polite` :** La plupart des régions live utilisent cette valeur. Elle signifie que la mise à jour n'est pas urgente : le lecteur d'écran peut attendre la fin de l'annonce en cours ou que l'utilisateur ait terminé son action en cours avant d'annoncer la mise à jour."
+            },
+            {
+              "en": "Here is an example of a live region that is dynamically updated by JavaScript:",
+              "fr": "Voici un exemple de région live mise à jour dynamiquement par JavaScript :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`contenteditable` attribute**: Turns the element into a live editor, allowing users to update its content as if it were a text field. When there is no visible label or heading for a contenteditable region, add an accessible name using the `aria-label` attribute to help screen reader users understand the purpose of the editable area.",
+              "fr": "- **Attribut `contenteditable` :** Transforme l'élément en éditeur live, permettant aux utilisateurs de mettre à jour son contenu comme s'il s'agissait d'un champ texte. Quand il n'y a pas de libellé visible ni de titre pour une région contenteditable, ajoute un nom accessible avec l'attribut `aria-label` pour aider les utilisateurs de lecteurs d'écran à comprendre le but de la zone éditable."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## `focus` and `blur` Events",
+              "fr": "## Événements `focus` et `blur`"
+            },
+            {
+              "en": "- **`blur` event**: Fires when an element loses focus.",
+              "fr": "- **Événement `blur` :** Se déclenche quand un élément perd le focus."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`focus` event**: Fires when an element receives focus.",
+              "fr": "- **Événement `focus` :** Se déclenche quand un élément reçoit le focus."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript and Accessibility topics and concepts.",
+              "fr": "Révise les sujets et concepts de JavaScript et d'accessibilité."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,437 @@
+{
+  "workshop": "workshop-note-taking-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "68813c1b28ec3fd41838daf6.md",
+      "id": "68813c1b28ec3fd41838daf6",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will practice working with the `aria-live` and `aria-label` attributes by building an accessible note taking app.",
+          "fr": "Dans ce workshop, tu vas t'entraîner à utiliser les attributs `aria-live` et `aria-label` en construisant une application de prise de notes accessible."
+        },
+        {
+          "en": "Most of the HTML and all of the CSS has been provided for you. The first few steps will involve adding the remaining markup.",
+          "fr": "La majeure partie du HTML et tout le CSS t'ont été fournis. Les premières étapes consisteront à ajouter le markup restant."
+        },
+        {
+          "en": "If you look at the preview, there is text to tell you to click on the card to edit it. But if you try to do that, it will not work. To make that `div` element editable, you can use the `contenteditable` attribute like this:",
+          "fr": "Si tu regardes l'aperçu, un texte te dit de cliquer sur la carte pour l'éditer. Mais si tu essaies, ça ne marchera pas. Pour rendre cet élément `div` éditable, tu peux utiliser l'attribut `contenteditable` comme ceci :"
+        },
+        {
+          "en": "In the opening `div` tag, add the `contenteditable` attribute and set its value to `\"true\"`. Now you should be able to click on the element and edit the text.",
+          "fr": "Dans la balise `div` ouvrante, ajoute l'attribut `contenteditable` et définis sa valeur à `\"true\"`. Tu devrais maintenant pouvoir cliquer sur l'élément et éditer le texte."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your opening `div` tag should have the `contenteditable` attribute.",
+          "fr": "Ta balise `div` ouvrante devrait avoir l'attribut `contenteditable`."
+        },
+        {
+          "en": "Your `div` element should have the `contenteditable` attribute set to `\"true\"`.",
+          "fr": "Ton élément `div` devrait avoir l'attribut `contenteditable` défini à `\"true\"`."
+        }
+      ]
+    },
+    {
+      "file": "68813f8b1b11bbdda98c6214.md",
+      "id": "68813f8b1b11bbdda98c6214",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Since a `div` element is being used for the note, screen readers will not understand its purpose. You can fix that by adding an `aria-label` attribute. This will help with accessibility and provide meaning for this `div` element.",
+          "fr": "Comme un élément `div` est utilisé pour la note, les lecteurs d'écran ne comprendront pas son rôle. Tu peux corriger ça en ajoutant un attribut `aria-label`. Cela améliorera l'accessibilité et donnera un sens à cet élément `div`."
+        },
+        {
+          "en": "In your opening `div` tag, add an `aria-label` attribute and set its value to `\"Note editor\"`.",
+          "fr": "Dans ta balise `div` ouvrante, ajoute un attribut `aria-label` et définis sa valeur à `\"Note editor\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your opening `div` tag should have the `aria-label` attribute.",
+          "fr": "Ta balise `div` ouvrante devrait avoir l'attribut `aria-label`."
+        },
+        {
+          "en": "Your opening `div` tag should have the `aria-label` attribute set to `\"Note editor\"`.",
+          "fr": "Ta balise `div` ouvrante devrait avoir l'attribut `aria-label` défini à `\"Note editor\"`."
+        }
+      ]
+    },
+    {
+      "file": "68813fbfc9f56dde3f21da08.md",
+      "id": "68813fbfc9f56dde3f21da08",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "When a user edits a note and either tabs or clicks outside of the card, then a status message should display notifying users that the note was saved successfully.",
+          "fr": "Quand un utilisateur édite une note et quitte la carte avec Tab ou un clic à l'extérieur, un message d'état devrait s'afficher pour indiquer que la note a bien été enregistrée."
+        },
+        {
+          "en": "To begin, create a `div` element with an `id` attribute set to `\"status\"`.",
+          "fr": "Pour commencer, crée un élément `div` avec un attribut `id` défini à `\"status\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a second `div` element.",
+          "fr": "Tu devrais avoir un deuxième élément `div`."
+        },
+        {
+          "en": "Your second `div` element should have an `id` attribute.",
+          "fr": "Ton deuxième élément `div` devrait avoir un attribut `id`."
+        },
+        {
+          "en": "Your second `div` element should have an `id` attribute set to `\"status\"`.",
+          "fr": "Ton deuxième élément `div` devrait avoir un attribut `id` défini à `\"status\"`."
+        }
+      ]
+    },
+    {
+      "file": "688140eac18479dee90553e5.md",
+      "id": "688140eac18479dee90553e5",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Since you are using another `div` element, you will need to make this more accessible for screen readers.",
+          "fr": "Comme tu utilises un autre élément `div`, tu devras le rendre plus accessible pour les lecteurs d'écran."
+        },
+        {
+          "en": "In a prior lesson, you learned about the `aria-live` attribute which is used to create a live region on a page. This will allow screen reader users to be automatically notified when the content of the live region changes, without needing to manually focus on or interact with it.",
+          "fr": "Dans une leçon précédente, tu as appris l'attribut `aria-live`, qui sert à créer une région live sur une page. Cela permet aux utilisateurs de lecteurs d'écran d'être notifiés automatiquement quand le contenu de la région live change, sans avoir à la focaliser ni à interagir avec elle manuellement."
+        },
+        {
+          "en": "In your `#status` element, add an `aria-live` attribute and set its value to `\"polite\"`.",
+          "fr": "Dans ton élément `#status`, ajoute un attribut `aria-live` et définis sa valeur à `\"polite\"`."
+        },
+        {
+          "en": "The `polite` value will tell screen readers to wait until any current announcement is finished or until the user stops typing before announcing the update.",
+          "fr": "La valeur `polite` dira aux lecteurs d'écran d'attendre la fin de toute annonce en cours, ou que l'utilisateur arrête de taper, avant d'annoncer la mise à jour."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `#status` element should have the `aria-live` attribute.",
+          "fr": "Ton élément `#status` devrait avoir l'attribut `aria-live`."
+        },
+        {
+          "en": "Your `#status` element should have the `aria-live` attribute set to `\"polite\"`.",
+          "fr": "Ton élément `#status` devrait avoir l'attribut `aria-live` défini à `\"polite\"`."
+        }
+      ]
+    },
+    {
+      "file": "6881417fdb4032df98134a89.md",
+      "id": "6881417fdb4032df98134a89",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "The remaining steps for the workshop will involve adding the code for dynamically showing the notes saved message and logging the current notes to the console.",
+          "fr": "Les étapes restantes du workshop consisteront à ajouter le code pour afficher dynamiquement le message de notes enregistrées et logger les notes actuelles dans la console."
+        },
+        {
+          "en": "Start by creating a variable called `noteEl` and assigning it the result of querying the document for the element with the `id` of `note`.",
+          "fr": "Commence par créer une variable appelée `noteEl` et assigne-lui le résultat d'une requête sur le document pour l'élément avec l'`id` `note`."
+        },
+        {
+          "en": "Then create another variable called `statusEl` and assign it the result of querying the document for the element with the `id` of `status`.",
+          "fr": "Puis crée une autre variable appelée `statusEl` et assigne-lui le résultat d'une requête sur le document pour l'élément avec l'`id` `status`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `noteEl` variable and assign it the result of querying the document for the element with the `id` of `note`.",
+          "fr": "Tu devrais avoir une variable `noteEl` et lui assigner le résultat d'une requête sur le document pour l'élément avec l'`id` `note`."
+        },
+        {
+          "en": "You should have a `statusEl` variable and assign it the result of querying the document for the element with the `id` of `status`.",
+          "fr": "Tu devrais avoir une variable `statusEl` et lui assigner le résultat d'une requête sur le document pour l'élément avec l'`id` `status`."
+        }
+      ]
+    },
+    {
+      "file": "688141a8be6e6be03af945ea.md",
+      "id": "688141a8be6e6be03af945ea",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "When a user edits the note, you want to keep track of the edited version.",
+          "fr": "Quand un utilisateur édite la note, tu veux suivre la version éditée."
+        },
+        {
+          "en": "Use `let` to create a variable called `currentContent` and assign it an empty string.",
+          "fr": "Utilise `let` pour créer une variable appelée `currentContent` et assigne-lui une chaîne vide."
+        },
+        {
+          "en": "*NOTE*: In a real world application you would normally save your notes in a database. Or you could even save them in local storage. However, working with databases and local storage is beyond the scope of this workshop and those concepts will be taught later on.",
+          "fr": "*NOTE* : Dans une application réelle, tu enregistrerais normalement tes notes dans une base de données. Ou tu pourrais même les enregistrer dans le local storage. Cependant, travailler avec les bases de données et le local storage dépasse le cadre de ce workshop, et ces concepts seront enseignés plus tard."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create the `currentContent` variable.",
+          "fr": "Tu devrais utiliser `let` pour créer la variable `currentContent`."
+        },
+        {
+          "en": "Your `currentContent` variable should be a string.",
+          "fr": "Ta variable `currentContent` devrait être une chaîne."
+        },
+        {
+          "en": "Your `currentContent` variable should be initialized with an empty string.",
+          "fr": "Ta variable `currentContent` devrait être initialisée avec une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "688141e05e367de0e3ef7635.md",
+      "id": "688141e05e367de0e3ef7635",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Right now, `currentContent` is initialized with the value of an empty string. But the desired result would be to have `currentContent` hold the value of the current note text.",
+          "fr": "Pour l'instant, `currentContent` est initialisée avec la valeur d'une chaîne vide. Mais le résultat souhaité serait que `currentContent` contienne la valeur du texte actuel de la note."
+        },
+        {
+          "en": "In an earlier lesson, you learned how to work with the `DOMContentLoaded` event like this:",
+          "fr": "Dans une leçon précédente, tu as appris à travailler avec l'événement `DOMContentLoaded` comme ceci :"
+        },
+        {
+          "en": "When everything in the HTML document has been loaded and parsed, you will be able to access the `noteEl` safely.",
+          "fr": "Quand tout le document HTML a été chargé et analysé, tu pourras accéder à `noteEl` en toute sécurité."
+        },
+        {
+          "en": "Start by attaching an `addEventListener` method to the `window` object. The first argument for the `addEventListener` method should be the `\"DOMContentLoaded\"` event. The second argument should be an arrow function. Inside the body of the arrow function, assign the value of `noteEl.textContent` to `currentContent`.",
+          "fr": "Commence par attacher une méthode `addEventListener` à l'objet `window`. Le premier argument de la méthode `addEventListener` devrait être l'événement `\"DOMContentLoaded\"`. Le deuxième argument devrait être une fonction fléchée. Dans le corps de la fonction fléchée, assigne la valeur de `noteEl.textContent` à `currentContent`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should attach an `addEventListener` method to the `window` object.",
+          "fr": "Tu devrais attacher une méthode `addEventListener` à l'objet `window`."
+        },
+        {
+          "en": "Your event listener should listen for the `\"DOMContentLoaded\"` event.",
+          "fr": "Ton écouteur d'événement devrait écouter l'événement `\"DOMContentLoaded\"`."
+        },
+        {
+          "en": "Inside the body of the arrow function, assign the value of `noteEl.textContent` to `currentContent`.",
+          "fr": "Dans le corps de la fonction fléchée, assigne la valeur de `noteEl.textContent` à `currentContent`."
+        }
+      ]
+    },
+    {
+      "file": "68814221fc4752e17b9696bd.md",
+      "id": "68814221fc4752e17b9696bd",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "When the user clicks on the note, makes edits and then clicks outside of the note, you will need a way to get that newly edited version. You can accomplish this by using the `blur` event. This event fires when an element loses focus. Here is an example:",
+          "fr": "Quand l'utilisateur clique sur la note, fait des modifications, puis clique à l'extérieur de la note, tu auras besoin d'un moyen d'obtenir cette version nouvellement éditée. Tu peux le faire avec l'événement `blur`. Cet événement se déclenche quand un élément perd le focus. Voici un exemple :"
+        },
+        {
+          "en": "Attach an `addEventListener` method to the `noteEl` variable. The first argument should be the `\"blur\"` event and the second argument should an arrow function. Inside of the body of that arrow function, use `const` to create a new variable called `newContent` and assign it the value of `noteEl.innerHTML`.",
+          "fr": "Attache une méthode `addEventListener` à la variable `noteEl`. Le premier argument devrait être l'événement `\"blur\"` et le deuxième argument devrait être une fonction fléchée. Dans le corps de cette fonction fléchée, utilise `const` pour créer une nouvelle variable appelée `newContent` et assigne-lui la valeur de `noteEl.innerHTML`."
+        },
+        {
+          "en": "`innerHTML` is used here to help preserve spacing and formatting for the note.",
+          "fr": "`innerHTML` est utilisé ici pour aider à préserver les espaces et le formatage de la note."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should attach an `addEventListener` method to the `noteEl` variable.",
+          "fr": "Tu devrais attacher une méthode `addEventListener` à la variable `noteEl`."
+        },
+        {
+          "en": "Your `addEventListener` method should have a first argument of the `\"blur\"` event.",
+          "fr": "Ta méthode `addEventListener` devrait avoir comme premier argument l'événement `\"blur\"`."
+        },
+        {
+          "en": "Inside of the body of the arrow function, you should use `const` to create a new variable called `newContent` and assign it the value of `noteEl.innerHTML`.",
+          "fr": "Dans le corps de la fonction fléchée, tu devrais utiliser `const` pour créer une nouvelle variable appelée `newContent` et lui assigner la valeur de `noteEl.innerHTML`."
+        }
+      ]
+    },
+    {
+      "file": "6881424b87c826e21247645b.md",
+      "id": "6881424b87c826e21247645b",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Once you get the edited content, that will now be the current content.",
+          "fr": "Une fois que tu as le contenu édité, ce sera désormais le contenu actuel."
+        },
+        {
+          "en": "Inside of the event listener, assign `newContent` to `currentContent`.",
+          "fr": "À l'intérieur de l'écouteur d'événement, assigne `newContent` à `currentContent`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `newContent` to `currentContent` inside of the event listener.",
+          "fr": "Tu devrais assigner `newContent` à `currentContent` à l'intérieur de l'écouteur d'événement."
+        }
+      ]
+    },
+    {
+      "file": "688142a607d1dce2aa82da77.md",
+      "id": "688142a607d1dce2aa82da77",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "It would be nice to see the edited changes in the console.",
+          "fr": "Ce serait bien de voir les modifications éditées dans la console."
+        },
+        {
+          "en": "Add a `console.log(currentContent);`.",
+          "fr": "Ajoute un `console.log(currentContent);`."
+        },
+        {
+          "en": "To test out your changes, trying editing the note and then clicking out of the note. You should now see the edited note in the console.",
+          "fr": "Pour tester tes changements, essaie d'éditer la note puis de cliquer à l'extérieur. Tu devrais maintenant voir la note éditée dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `console.log(currentContent);` inside of the event listener, after assigning `newContent` to `currentContent`.",
+          "fr": "Tu devrais ajouter un `console.log(currentContent);` à l'intérieur de l'écouteur d'événement, après avoir assigné `newContent` à `currentContent`."
+        }
+      ]
+    },
+    {
+      "file": "6881431e481bf6e352a33969.md",
+      "id": "6881431e481bf6e352a33969",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "As mentioned earlier, when the user edits the note and then clicks outside of the note, there should be a message to display that the note was saved.",
+          "fr": "Comme mentionné plus tôt, quand l'utilisateur édite la note puis clique à l'extérieur, un message devrait s'afficher pour indiquer que la note a été enregistrée."
+        },
+        {
+          "en": "To accomplish this, set the `statusEl.textContent` to the string `\"Note saved successfully!\"`.",
+          "fr": "Pour y arriver, définis `statusEl.textContent` à la chaîne `\"Note saved successfully!\"`."
+        },
+        {
+          "en": "Now when you test it out, you should see that message display on the screen.",
+          "fr": "Maintenant, quand tu testes, tu devrais voir ce message s'afficher à l'écran."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the user edits a note, the status message should be updated to indicate that the note was saved.",
+          "fr": "Quand l'utilisateur édite une note, le message d'état devrait être mis à jour pour indiquer que la note a été enregistrée."
+        }
+      ]
+    },
+    {
+      "file": "6881436e1e2afae400e8b4fe.md",
+      "id": "6881436e1e2afae400e8b4fe",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Right now, anytime the user edits a note and clicks outside of the note, the `currentContent` variable is being updated. But what about situations where the user focuses on the note and decides to leave without making any edits?",
+          "fr": "Pour l'instant, à chaque fois que l'utilisateur édite une note et clique à l'extérieur, la variable `currentContent` est mise à jour. Mais que se passe-t-il si l'utilisateur focalise la note et décide de partir sans rien modifier ?"
+        },
+        {
+          "en": "Well, in this situation, you can add a condition to handle that use case.",
+          "fr": "Dans cette situation, tu peux ajouter une condition pour gérer ce cas."
+        },
+        {
+          "en": "Above your `currentContent = newContent;` line, add an `if` statement to check if `currentContent` is equal to `newContent`. If so, return.",
+          "fr": "Au-dessus de ta ligne `currentContent = newContent;`, ajoute une instruction `if` pour vérifier si `currentContent` est égal à `newContent`. Si c'est le cas, fais un return."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement to check if `currentContent` is equal to `newContent`. If so, return.",
+          "fr": "Tu devrais ajouter une instruction `if` pour vérifier si `currentContent` est égal à `newContent`. Si c'est le cas, fais un return."
+        }
+      ]
+    },
+    {
+      "file": "688143c66d5665e4b3409977.md",
+      "id": "688143c66d5665e4b3409977",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Things seem to be working except for one small issue. If you edit a note and then leave that note, you should see the `\"Note saved successfully!\"` message. But if you try to edit the note again, the message is still displaying.",
+          "fr": "Tout semble fonctionner, sauf un petit problème. Si tu édites une note puis la quittes, tu devrais voir le message `\"Note saved successfully!\"`. Mais si tu essaies d'éditer la note à nouveau, le message est toujours affiché."
+        },
+        {
+          "en": "The desired behavior is for the message to disappear when the user focuses on the element. You can use the `focus` event for this.",
+          "fr": "Le comportement souhaité est que le message disparaisse quand l'utilisateur focalise l'élément. Tu peux utiliser l'événement `focus` pour ça."
+        },
+        {
+          "en": "Attach an `addEventListener` to the `noteEl` variable. The first argument should be the `\"focus\"` event and the second argument should be a callback function. Inside of that callback function, set the `statusEl.textContent` to an empty string. This will reset the live region when the note is focused.",
+          "fr": "Attache un `addEventListener` à la variable `noteEl`. Le premier argument devrait être l'événement `\"focus\"` et le deuxième argument devrait être une fonction de rappel. À l'intérieur de cette fonction de rappel, définis `statusEl.textContent` à une chaîne vide. Cela réinitialisera la région live quand la note est focalisée."
+        },
+        {
+          "en": "And with that last change, your workshop is complete!",
+          "fr": "Et avec ce dernier changement, ton workshop est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the user focuses on the note, you should set the `statusEl.textContent` to an empty string.",
+          "fr": "Quand l'utilisateur focalise la note, tu devrais définir `statusEl.textContent` à une chaîne vide."
+        }
+      ]
+    }
+  ]
+}
