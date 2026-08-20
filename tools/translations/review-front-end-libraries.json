@@ -1,0 +1,1204 @@
+{
+  "workshop": "review-front-end-libraries",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6724e2dbf723fe1c8883cc69.md",
+      "id": "6724e2dbf723fe1c8883cc69",
+      "dashedName": "review-front-end-libraries",
+      "title": {
+        "en": "Front-End Libraries Review",
+        "fr": "Révision des bibliothèques front-end"
+      },
+      "description": [
+        {
+          "en": "## JavaScript Libraries and Frameworks",
+          "fr": "## Bibliothèques et frameworks JavaScript"
+        },
+        {
+          "en": "- JavaScript libraries and frameworks offer quick solutions to common problems and speed up development by providing pre-built code.\n- Libraries are generally more focused on providing solutions to specific tasks, such as manipulating the DOM, handling events, or managing AJAX requests. \n- A couple of examples of JavaScript libraries are jQuery and React.\n- Frameworks, on the other hand, provide a more defined structure for building applications. They often come with a set of rules and conventions that developers need to follow.\n- Examples of frameworks include Angular and Next.js, a meta framework for React.\n- **Single-page applications** (SPAs) are web applications that load a single HTML page and dynamically update that page as the user interacts with the application without reloading the entire page.\n- SPAs use JavaScript to manage the application's state and render content. This is often done using frameworks which provide great tools for building complex user interfaces.\n- Some issues surrounding SPAs include:",
+          "fr": "- Les bibliothèques et frameworks JavaScript offrent des solutions rapides aux problèmes courants et accélèrent le développement en fournissant du code préécrit.\n- Les bibliothèques se concentrent généralement sur des tâches précises, comme manipuler le DOM, gérer les événements ou les requêtes AJAX.\n- Quelques exemples de bibliothèques JavaScript sont jQuery et React.\n- Les frameworks, eux, fournissent une structure plus définie pour construire des applications. Ils s’accompagnent souvent de règles et de conventions que les développeurs doivent suivre.\n- Des exemples de frameworks incluent Angular et Next.js, un méta-framework pour React.\n- Les **applications monopage** (SPA) sont des applications web qui chargent une seule page HTML et mettent à jour cette page dynamiquement quand l’utilisateur interagit, sans recharger toute la page.\n- Les SPA utilisent JavaScript pour gérer le state de l’application et rendre le contenu. On le fait souvent avec des frameworks qui offrent d’excellents outils pour construire des interfaces utilisateur complexes.\n- Quelques problèmes liés aux SPA :"
+        },
+        {
+          "en": "- Screen readers struggle with dynamically updated content.\n  - The URL does not change when the user navigates within the application, which can make it difficult to bookmark, backtrack or share specific pages.\n  - Initial load time can be slow if the application is large as all the assets need to be loaded upfront.",
+          "fr": "- Les lecteurs d’écran peinent avec le contenu mis à jour dynamiquement.\n  - L’URL ne change pas quand l’utilisateur navigue dans l’application, ce qui peut rendre difficile de mettre en favori, revenir en arrière ou partager des pages précises.\n  - Le temps de chargement initial peut être lent si l’application est volumineuse, car tous les assets doivent être chargés d’emblée."
+        },
+        {
+          "en": "## React",
+          "fr": "## React"
+        },
+        {
+          "en": "- React is a popular JavaScript library for building user interfaces and web applications.\n- A core concept of React is the creation of reusable UI components that can update and render independently as data changes.\n- React allows developers to describe how the UI should look like based on the application state. React then updates and renders the right components when the data or the state changes.",
+          "fr": "- React est une bibliothèque JavaScript populaire pour construire des interfaces utilisateur et des applications web.\n- Un concept central de React est la création de composants d’UI réutilisables qui peuvent se mettre à jour et se rendre indépendamment quand les données changent.\n- React permet aux développeurs de décrire à quoi l’UI doit ressembler en fonction du state de l’application. React met ensuite à jour et rend les bons composants quand les données ou le state changent."
+        },
+        {
+          "en": "## React Components",
+          "fr": "## Composants React"
+        },
+        {
+          "en": "- Components are the building blocks of React applications that allow developers to break down complex user interfaces into smaller, manageable pieces.\n- The UI is described using JSX, an extension of JavaScript syntax, that allows developers to write HTML-like code within JavaScript.\n- Components are basically JS functions or classes that return a piece of UI.",
+          "fr": "- Les composants sont les briques de base des applications React : ils permettent de découper des interfaces complexes en morceaux plus petits et gérables.\n- L’UI est décrite avec JSX, une extension de la syntaxe JavaScript qui permet d’écrire du code proche du HTML dans JavaScript.\n- Les composants sont essentiellement des fonctions ou des classes JS qui renvoient un morceau d’UI."
+        },
+        {
+          "en": "Here is an example of a simple React component that renders a greeting message:",
+          "fr": "Voici un exemple de composant React simple qui affiche un message de salutation :"
+        },
+        {
+          "en": "To use the component, you can simply call:",
+          "fr": "Pour utiliser le composant, tu peux simplement appeler :"
+        },
+        {
+          "en": "## Importing and Exporting React components",
+          "fr": "## Importer et exporter des composants React"
+        },
+        {
+          "en": "- An export makes a component available to other files. An import allows a file to use a component that was exported elsewhere.\n- There are two types of exports in React: default exports and named exports.",
+          "fr": "- Un export rend un composant disponible pour d’autres fichiers. Un import permet à un fichier d’utiliser un composant exporté ailleurs.\n- Il existe deux types d’exports dans React : les exports par défaut et les exports nommés."
+        },
+        {
+          "en": "**Default Exports**",
+          "fr": "**Exports par défaut**"
+        },
+        {
+          "en": "- A file can only have one default export. It is ideal for a file that primarily contains a single component.\n- You can export a component as a default export like this:",
+          "fr": "- Un fichier ne peut avoir qu’un seul export par défaut. C’est idéal pour un fichier qui contient surtout un seul composant.\n- Tu peux exporter un composant en export par défaut comme ceci :"
+        },
+        {
+          "en": "- You can also export on the same line as the component definition:",
+          "fr": "- Tu peux aussi exporter sur la même ligne que la définition du composant :"
+        },
+        {
+          "en": "- To import a default export, use the `import` keyword without curly braces:",
+          "fr": "- Pour importer un export par défaut, utilise le mot-clé `import` sans accolades :"
+        },
+        {
+          "en": "**Named Exports**",
+          "fr": "**Exports nommés**"
+        },
+        {
+          "en": "- Named exports allow a file to share multiple components. Unlike default exports, they must be imported using the exact name they were exported with.\n- You can export multiple components from the same file like this:",
+          "fr": "- Les exports nommés permettent à un fichier de partager plusieurs composants. Contrairement aux exports par défaut, ils doivent être importés avec le nom exact sous lequel ils ont été exportés.\n- Tu peux exporter plusieurs composants depuis le même fichier comme ceci :"
+        },
+        {
+          "en": "- To import named exports, use curly braces with the exact exported names:",
+          "fr": "- Pour importer des exports nommés, utilise des accolades avec les noms exacts exportés :"
+        },
+        {
+          "en": "- You can rename a named export during import using the `as` keyword:",
+          "fr": "- Tu peux renommer un export nommé à l’import avec le mot-clé `as` :"
+        },
+        {
+          "en": "**Mixed Default and Named Exports**",
+          "fr": "**Exports mixtes (par défaut et nommés)**"
+        },
+        {
+          "en": "- A file can have one default export and multiple named exports at the same time:",
+          "fr": "- Un fichier peut avoir un export par défaut et plusieurs exports nommés en même temps :"
+        },
+        {
+          "en": "- When importing mixed exports, the default export comes first (without braces), followed by named exports (inside braces):",
+          "fr": "- Quand tu importes des exports mixtes, l’export par défaut vient en premier (sans accolades), suivi des exports nommés (entre accolades) :"
+        },
+        {
+          "en": "## Setting up a React project using Vite",
+          "fr": "## Configurer un projet React avec Vite"
+        },
+        {
+          "en": "- Project setup tools and CLIs provide a quick & easy way to start new projects, allowing developers to focus on writing code rather than dealing with configuration. \n- Vite is a popular project setup tool and can be used with React.\n- To create a new project with Vite, you can use the following command in your terminal:",
+          "fr": "- Les outils de démarrage de projet et les CLI offrent un moyen rapide et simple de lancer de nouveaux projets, pour que les développeurs se concentrent sur le code plutôt que sur la configuration.\n- Vite est un outil de setup populaire et peut être utilisé avec React.\n- Pour créer un nouveau projet avec Vite, tu peux utiliser la commande suivante dans ton terminal :"
+        },
+        {
+          "en": "This command creates a new React project named `my-react-app` using Vite's React template. In the project directory, you will see a `package.json` file with the project dependencies and commands listed in it.",
+          "fr": "Cette commande crée un nouveau projet React nommé `my-react-app` avec le template React de Vite. Dans le répertoire du projet, tu verras un fichier `package.json` avec les dépendances et les commandes du projet."
+        },
+        {
+          "en": "- To run the project, navigate to the project directory and run the following commands:",
+          "fr": "- Pour lancer le projet, va dans le répertoire du projet et exécute les commandes suivantes :"
+        },
+        {
+          "en": "- Once the dependencies are installed, you should notice a new folder in your project called `node_modules`.",
+          "fr": "- Une fois les dépendances installées, tu devrais voir un nouveau dossier dans ton projet appelé `node_modules`."
+        },
+        {
+          "en": "- The `node_modules` folder is where all the packages and libraries required by your project are stored.",
+          "fr": "- Le dossier `node_modules` est l’endroit où sont stockés tous les packages et bibliothèques requis par ton projet."
+        },
+        {
+          "en": "- To run your project, use the following command:",
+          "fr": "- Pour lancer ton projet, utilise la commande suivante :"
+        },
+        {
+          "en": "- After that, open your browser and navigate to `http://localhost:5173` to see your React application running.",
+          "fr": "- Ensuite, ouvre ton navigateur et va sur `http://localhost:5173` pour voir ton application React en cours d’exécution."
+        },
+        {
+          "en": "- To actually see the code for the starter template, you can go into your project inside the `src` folder and you should see the `App.jsx` file.",
+          "fr": "- Pour voir le code du template de démarrage, tu peux aller dans le dossier `src` de ton projet et tu devrais voir le fichier `App.jsx`."
+        },
+        {
+          "en": "## Passing props in React components",
+          "fr": "## Passer des props dans les composants React"
+        },
+        {
+          "en": "- In React, props (short for properties) are a way to pass data from a parent component to a child component. This mechanism is needed to create reusable and dynamic UI elements.\n- Props can be any JavaScript value. To pass props from a parent to a child component, you add the props as attributes when you use the child component in the parent's JSX. Here's a simple example:",
+          "fr": "- Dans React, les props (abréviation de properties) permettent de passer des données d’un composant parent à un composant enfant. Ce mécanisme est nécessaire pour créer des éléments d’UI réutilisables et dynamiques.\n- Les props peuvent être n’importe quelle valeur JavaScript. Pour passer des props d’un parent à un enfant, tu les ajoutes comme attributs quand tu utilises le composant enfant dans le JSX du parent. Voici un exemple simple :"
+        },
+        {
+          "en": "You can pass multiple props using the spread operator `(...)`, after converting them to an object. Here's an example:",
+          "fr": "Tu peux passer plusieurs props avec l’opérateur spread `(...)`, après les avoir converties en objet. Voici un exemple :"
+        },
+        {
+          "en": "In this code, the spread operator `{...person}` converts the person object into individual props that are passed to the Child component.",
+          "fr": "Dans ce code, l’opérateur spread `{...person}` convertit l’objet person en props individuelles passées au composant Child."
+        },
+        {
+          "en": "## Conditional rendering in React",
+          "fr": "## Rendu conditionnel dans React"
+        },
+        {
+          "en": "- Conditional rendering in React allows you to create dynamic user interfaces. It is used to show different content based on certain conditions or states within your application.\n- There are several ways to conditionally render content in React. One common approach is to use the ternary operator. Here's an example:",
+          "fr": "- Le rendu conditionnel dans React te permet de créer des interfaces dynamiques. Il sert à afficher un contenu différent selon certaines conditions ou états dans ton application.\n- Il existe plusieurs façons de rendre du contenu conditionnellement dans React. Une approche courante est d’utiliser l’opérateur ternaire. Voici un exemple :"
+        },
+        {
+          "en": "- Another way to conditionally render content is to use the logical AND (`&&`) operator. This is useful when you want to render content only if a certain condition is met. Here's an example:",
+          "fr": "- Une autre façon de rendre du contenu conditionnellement est d’utiliser l’opérateur logique ET (`&&`). C’est utile quand tu veux afficher du contenu seulement si une certaine condition est remplie. Voici un exemple :"
+        },
+        {
+          "en": "In the code above, the `h1` element is only rendered if the user object is truthy.",
+          "fr": "Dans le code ci-dessus, l’élément `h1` n’est rendu que si l’objet user est truthy."
+        },
+        {
+          "en": "You can also use a direct `if` statement this way:",
+          "fr": "Tu peux aussi utiliser une instruction `if` directe de cette façon :"
+        },
+        {
+          "en": "## Rendering lists in React",
+          "fr": "## Afficher des listes dans React"
+        },
+        {
+          "en": "- Rendering lists in React is a common task when building user interfaces. \n- Lists can be rendered using the JS array `map()` method to iterate over an array of items and return a new array of JSX elements.\n- For example, if you have an array of names that you want to render as a list, you can do the following:",
+          "fr": "- Afficher des listes dans React est une tâche courante quand on construit des interfaces.\n- Les listes peuvent être rendues avec la méthode `map()` des tableaux JS pour parcourir un tableau d’éléments et renvoyer un nouveau tableau d’éléments JSX.\n- Par exemple, si tu as un tableau de noms que tu veux afficher en liste, tu peux faire ceci :"
+        },
+        {
+          "en": "- Always remember to provide a unique key for each list item to help React manage the updating and rendering roles. With these techniques, you can create flexible, efficient, and dynamic lists in your React applications.",
+          "fr": "- Pense toujours à fournir une clé unique pour chaque élément de liste afin d’aider React à gérer la mise à jour et le rendu. Avec ces techniques, tu peux créer des listes flexibles, efficaces et dynamiques dans tes applications React."
+        },
+        {
+          "en": "## Inline styles in React",
+          "fr": "## Styles en ligne dans React"
+        },
+        {
+          "en": "- Inline styles in React allow you to apply CSS styles directly to JSX elements using JavaScript objects.\n- To apply inline styles in React, you can use the style attribute on JSX elements. The style attribute takes an object where the keys are CSS properties in camelCase and the values are the corresponding values. Here's an example:",
+          "fr": "- Les styles en ligne dans React te permettent d’appliquer des styles CSS directement aux éléments JSX via des objets JavaScript.\n- Pour appliquer des styles en ligne dans React, tu peux utiliser l’attribut style sur les éléments JSX. L’attribut style prend un objet dont les clés sont des propriétés CSS en camelCase et les valeurs les valeurs correspondantes. Voici un exemple :"
+        },
+        {
+          "en": "You can also extract the styles into a separate object and reference it in the `style` attribute this way:",
+          "fr": "Tu peux aussi extraire les styles dans un objet séparé et le référencer dans l’attribut `style` de cette façon :"
+        },
+        {
+          "en": "- Inline styles support dynamic styling by allowing you to conditionally apply styles based on props or state. Here is an example of how you can conditionally apply styles based on a prop:",
+          "fr": "- Les styles en ligne prennent en charge le style dynamique en te permettant d’appliquer conditionnellement des styles selon les props ou le state. Voici un exemple d’application conditionnelle de styles selon une prop :"
+        },
+        {
+          "en": "- In the code above, the `color` and `fontSize` styles are conditionally set based on the `isImportant` prop.",
+          "fr": "- Dans le code ci-dessus, les styles `color` et `fontSize` sont définis conditionnellement selon la prop `isImportant`."
+        },
+        {
+          "en": "## Working with Events in React",
+          "fr": "## Travailler avec les événements dans React"
+        },
+        {
+          "en": "- **Synthetic Event System**: This is React's way of handling events. It serves as a wrapper around the native events like the `click`, `keydown`, and `submit` events. Event handlers in React use the camel casing naming convention. (Ex. `onClick`, `onSubmit`, etc)",
+          "fr": "- **Système d’événements synthétiques** : c’est la façon dont React gère les événements. Il sert de wrapper autour des événements natifs comme `click`, `keydown` et `submit`. Les gestionnaires d’événements dans React utilisent la convention camelCase. (Ex. `onClick`, `onSubmit`, etc.)"
+        },
+        {
+          "en": "Here is an example of using the `onClick` attribute for a `button` element in React:",
+          "fr": "Voici un exemple d’utilisation de l’attribut `onClick` pour un élément `button` dans React :"
+        },
+        {
+          "en": "In React, event handler functions usually start with the prefix `handle` to indicate they are responsible for handling events, like `handleClick` or `handleSubmit`.",
+          "fr": "Dans React, les fonctions gestionnaires d’événements commencent souvent par le préfixe `handle` pour indiquer qu’elles gèrent des événements, comme `handleClick` ou `handleSubmit`."
+        },
+        {
+          "en": "When a user action triggers an event, React passes a Synthetic Event object to your handler. This object behaves much like the native Event object in vanilla JavaScript, providing properties like `type`, `target`, and `currentTarget`.",
+          "fr": "Quand une action utilisateur déclenche un événement, React passe un objet Synthetic Event à ton gestionnaire. Cet objet se comporte beaucoup comme l’objet Event natif en JavaScript vanilla, avec des propriétés comme `type`, `target` et `currentTarget`."
+        },
+        {
+          "en": "To prevent default behaviors like browser refresh during an `onSubmit` event, for example, you can call the `preventDefault()` method:",
+          "fr": "Pour empêcher des comportements par défaut comme le rechargement du navigateur pendant un événement `onSubmit`, par exemple, tu peux appeler la méthode `preventDefault()` :"
+        },
+        {
+          "en": "You can also wrap a handler function in an arrow function like this:",
+          "fr": "Tu peux aussi envelopper une fonction gestionnaire dans une fonction fléchée comme ceci :"
+        },
+        {
+          "en": "## Working with State and the `useState` Hook",
+          "fr": "## Travailler avec le state et le hook `useState`"
+        },
+        {
+          "en": "- **Definition for state**: In React, state is an object that contains data for a component. When the state updates the component will re-render. React treats state as immutable, meaning you should not modify it directly.  \n- **`useState()` Hook**: The `useState` hook is a function that lets you declare state variables in functional components.  Here is a basic syntax:",
+          "fr": "- **Définition du state** : dans React, le state est un objet qui contient des données pour un composant. Quand le state se met à jour, le composant se re-rend. React traite le state comme immuable : tu ne dois pas le modifier directement.\n- **Hook `useState()`** : le hook `useState` est une fonction qui te permet de déclarer des variables d’état dans des composants fonctionnels. Voici une syntaxe de base :"
+        },
+        {
+          "en": "In the state variable you have the following:",
+          "fr": "Dans la variable d’état, tu as ce qui suit :"
+        },
+        {
+          "en": "- `stateVariable` holds the current state value\n- `setStateFunction` (the setter function) updates the state variable\n- `initialValue` sets the initial state",
+          "fr": "- `stateVariable` contient la valeur actuelle du state\n- `setStateFunction` (la fonction setter) met à jour la variable d’état\n- `initialValue` définit le state initial"
+        },
+        {
+          "en": "Here is a complete example for a `Counter` component:",
+          "fr": "Voici un exemple complet pour un composant `Counter` :"
+        },
+        {
+          "en": "## Rendering and React Components",
+          "fr": "## Rendu et composants React"
+        },
+        {
+          "en": "- **Definition**: In React, rendering is the process by which components appear in the user interface (UI), usually the browser. The rendering process consists of three stages: trigger, render, and commit.",
+          "fr": "- **Définition** : dans React, le rendu est le processus par lequel les composants apparaissent dans l’interface utilisateur (UI), en général le navigateur. Le processus de rendu comporte trois étapes : trigger, render et commit."
+        },
+        {
+          "en": "The trigger stage occurs when React detects that something has changed and the user interface (UI) might need to be updated. This change is often due to an update in state or props.",
+          "fr": "L’étape trigger se produit quand React détecte qu’un changement a eu lieu et que l’interface utilisateur (UI) pourrait devoir être mise à jour. Ce changement vient souvent d’une mise à jour du state ou des props."
+        },
+        {
+          "en": "Once the trigger happens, React enters the render stage. Here, React re-evaluates your components and figures out what to display. To do this, React uses a lightweight copy of the \"real\" DOM called the virtual DOM. With the virtual DOM, React can quickly check what needs to change in the component.",
+          "fr": "Une fois le trigger déclenché, React entre dans l’étape render. Ici, React réévalue tes composants et détermine quoi afficher. Pour cela, React utilise une copie légère du « vrai » DOM appelée virtual DOM. Avec le virtual DOM, React peut rapidement vérifier ce qui doit changer dans le composant."
+        },
+        {
+          "en": "The commit stage is where React takes the prepared changes from the virtual DOM and applies them to the real DOM. In other words, this is the stage where you see the final result on the screen.",
+          "fr": "L’étape commit est celle où React prend les changements préparés depuis le virtual DOM et les applique au vrai DOM. Autrement dit, c’est l’étape où tu vois le résultat final à l’écran."
+        },
+        {
+          "en": "## Updating Objects and Arrays in State",
+          "fr": "## Mettre à jour des objets et des tableaux dans le state"
+        },
+        {
+          "en": "- **Updating Objects in State**: If you need to update an object in state, then you should make a new object or copy an existing object first, then set the state for that new object. Any object put into state should be considered as read-only. Here is an example of setting a user's name, age and city. The `handleChange` function is used to handle updates to the user's information:",
+          "fr": "- **Mettre à jour des objets dans le state** : si tu dois mettre à jour un objet dans le state, tu dois d’abord créer un nouvel objet ou copier un objet existant, puis définir le state pour ce nouvel objet. Tout objet placé dans le state doit être considéré en lecture seule. Voici un exemple qui définit le nom, l’âge et la ville d’un utilisateur. La fonction `handleChange` gère les mises à jour des informations de l’utilisateur :"
+        },
+        {
+          "en": "- **Updating Arrays in State**: When updating arrays in state, it is important not to directly modify the array using methods like `push()` or `pop()`. Instead you should create a new array when updating state:",
+          "fr": "- **Mettre à jour des tableaux dans le state** : quand tu mets à jour des tableaux dans le state, il est important de ne pas modifier directement le tableau avec des méthodes comme `push()` ou `pop()`. À la place, tu dois créer un nouveau tableau lors de la mise à jour du state :"
+        },
+        {
+          "en": "If you want to remove items from an array, you should use the `filter()` method, which returns a new array after filtering out whatever you want to remove:",
+          "fr": "Si tu veux retirer des éléments d’un tableau, tu dois utiliser la méthode `filter()`, qui renvoie un nouveau tableau après avoir filtré ce que tu veux retirer :"
+        },
+        {
+          "en": "## Referencing Values Using Refs",
+          "fr": "## Référencer des valeurs avec les refs"
+        },
+        {
+          "en": "- **`ref` Attribute**: You can access a DOM node in React by using the `ref` attribute. Here is an example to showcase a `ref` to focus an `input` element. The `current` property is used to access the current value of that `ref`:",
+          "fr": "- **Attribut `ref`** : tu peux accéder à un nœud DOM dans React avec l’attribut `ref`. Voici un exemple qui montre une `ref` pour donner le focus à un élément `input`. La propriété `current` sert à accéder à la valeur actuelle de cette `ref` :"
+        },
+        {
+          "en": "## Working with the `useEffect` Hook",
+          "fr": "## Travailler avec le hook `useEffect`"
+        },
+        {
+          "en": "- **`useEffect()` Hook**: In React, an effect is anything that happens outside the component rendering process. That is, anything React does not handle directly as part of rendering the UI. Common examples include fetching data, updating the browser tab's title, reading from or writing to the browser's local storage, getting the user's location, and much more. These operations interact with the outside world and are known as side effects. React provides the `useEffect` hook to let you handle those side effects. `useEffect` lets you run a function after the component renders or updates.",
+          "fr": "- **Hook `useEffect()`** : dans React, un effet est tout ce qui se produit en dehors du processus de rendu du composant. Autrement dit, tout ce que React ne gère pas directement dans le rendu de l’UI. Exemples courants : récupérer des données, mettre à jour le titre de l’onglet du navigateur, lire ou écrire dans le local storage, obtenir la localisation de l’utilisateur, et bien plus. Ces opérations interagissent avec le monde extérieur et s’appellent des effets de bord (side effects). React fournit le hook `useEffect` pour les gérer. `useEffect` te permet d’exécuter une fonction après le rendu ou la mise à jour du composant."
+        },
+        {
+          "en": "The effect function runs after the component renders, while the optional `dependencies` argument controls when the effect runs.",
+          "fr": "La fonction d’effet s’exécute après le rendu du composant, tandis que l’argument optionnel `dependencies` contrôle quand l’effet s’exécute."
+        },
+        {
+          "en": "Note that `dependencies` can be an array of \"reactive values\" (state, props, functions, variables, and so on), an empty array, or omitted entirely. Here's how all of those options control how `useEffect` works:",
+          "fr": "Note que `dependencies` peut être un tableau de « valeurs réactives » (state, props, fonctions, variables, etc.), un tableau vide, ou être omis entièrement. Voici comment ces options contrôlent le fonctionnement de `useEffect` :"
+        },
+        {
+          "en": "- If `dependencies` is an array that includes one or more reactive values, the effect will run whenever they change.",
+          "fr": "- Si `dependencies` est un tableau qui inclut une ou plusieurs valeurs réactives, l’effet s’exécutera chaque fois qu’elles changent."
+        },
+        {
+          "en": "- If `dependencies` is an empty array, `useEffect` runs only once when the component first renders.",
+          "fr": "- Si `dependencies` est un tableau vide, `useEffect` ne s’exécute qu’une fois, au premier rendu du composant."
+        },
+        {
+          "en": "- If you omit `dependencies`, the effect runs every time the component renders or updates.",
+          "fr": "- Si tu omets `dependencies`, l’effet s’exécute à chaque rendu ou mise à jour du composant."
+        },
+        {
+          "en": "## How to Create Custom Hooks",
+          "fr": "## Comment créer des hooks personnalisés"
+        },
+        {
+          "en": "- **Custom Hooks**: A custom hook allows you to extract reusable logic from components, such as data fetching, state management, toggling, and side effects like tracking online status. In React, all built-in hooks start with the word `use`, so your custom hook should follow the same convention.",
+          "fr": "- **Hooks personnalisés** : un hook personnalisé te permet d’extraire une logique réutilisable des composants, comme la récupération de données, la gestion du state, le basculement, et des effets de bord comme le suivi du statut en ligne. Dans React, tous les hooks intégrés commencent par le mot `use`, donc ton hook personnalisé devrait suivre la même convention."
+        },
+        {
+          "en": "Here is an example of creating a `useDebounce` hook:",
+          "fr": "Voici un exemple de création d’un hook `useDebounce` :"
+        },
+        {
+          "en": "## Working with Forms in React",
+          "fr": "## Travailler avec les formulaires dans React"
+        },
+        {
+          "en": "- **Controlled Inputs**: This is when you store the input field value in state and update it through `onChange` events. This gives you complete control over the form data and allows instant validation and conditional rendering.",
+          "fr": "- **Inputs contrôlés** : c’est quand tu stockes la valeur du champ dans le state et que tu la mets à jour via des événements `onChange`. Cela te donne un contrôle total sur les données du formulaire et permet une validation instantanée et un rendu conditionnel."
+        },
+        {
+          "en": "- **Uncontrolled Inputs**: Instead of handling the inputs through the `useState` hook, uncontrolled inputs in HTML maintain their own internal state with the help of the DOM. Since the DOM controls the input values, you need to pull in the values of the input fields with a `ref`.",
+          "fr": "- **Inputs non contrôlés** : au lieu de gérer les inputs via le hook `useState`, les inputs non contrôlés en HTML conservent leur propre state interne grâce au DOM. Comme le DOM contrôle les valeurs des inputs, tu dois récupérer les valeurs des champs avec une `ref`."
+        },
+        {
+          "en": "## Working with the `useActionState` Hook",
+          "fr": "## Travailler avec le hook `useActionState`"
+        },
+        {
+          "en": "- **Server Actions**: These are functions that run on the server to allow form handling right on the server without the need for API endpoints. Here is an example from a Next.js application:",
+          "fr": "- **Server Actions** : ce sont des fonctions qui s’exécutent sur le serveur pour permettre la gestion de formulaires directement côté serveur, sans endpoints d’API. Voici un exemple issu d’une application Next.js :"
+        },
+        {
+          "en": "The `\"use server\"` directive marks the function as a server action.",
+          "fr": "La directive `\"use server\"` marque la fonction comme une server action."
+        },
+        {
+          "en": "- **`useActionState` Hook**: This hook updates state based on the outcome of a form submission. Here's the basic syntax of the `useActionState` hook:",
+          "fr": "- **Hook `useActionState`** : ce hook met à jour le state selon le résultat d’une soumission de formulaire. Voici la syntaxe de base du hook `useActionState` :"
+        },
+        {
+          "en": "- `state` is the current state the action returns.\n- `action` is the function that triggers the server action.\n- `isPending` is a boolean that indicates whether the action is currently running or not.\n- `actionFunction` parameter is the server action itself.\n- `initialState` is the parameter that represents the starting point for the state before the action runs.\n- `permalink` is an optional string that contains the unique page URL the form modifies.",
+          "fr": "- `state` est le state actuel renvoyé par l’action.\n- `action` est la fonction qui déclenche la server action.\n- `isPending` est un booléen qui indique si l’action est en cours d’exécution.\n- Le paramètre `actionFunction` est la server action elle-même.\n- `initialState` représente le point de départ du state avant l’exécution de l’action.\n- `permalink` est une chaîne optionnelle qui contient l’URL unique de la page que le formulaire modifie."
+        },
+        {
+          "en": "## Data Fetching in React",
+          "fr": "## Récupération de données dans React"
+        },
+        {
+          "en": "- **Options For Fetching Data**: There are many different ways to fetch data in React. You can use the native Fetch API, or third party tools like Axios or SWR. \n- **Commonly Used State Variables When Fetching Data**: Regardless of which way you choose to fetch your data in React, there are some pieces of state you will need to keep track of. The first is the data itself. The second will track whether the data is still being fetched. The third is a state variable that will capture any errors that might occur during the data fetching process.",
+          "fr": "- **Options pour récupérer des données** : il existe de nombreuses façons de récupérer des données dans React. Tu peux utiliser l’API Fetch native, ou des outils tiers comme Axios ou SWR.\n- **Variables d’état couramment utilisées lors de la récupération de données** : quelle que soit la méthode choisie pour récupérer tes données dans React, tu auras besoin de suivre certaines pièces de state. La première est les données elles-mêmes. La deuxième indique si les données sont encore en cours de récupération. La troisième capture les erreurs éventuelles pendant le processus."
+        },
+        {
+          "en": "Since data fetching is a side effect, it's best to use the `Fetch API` inside of a `useEffect` hook.",
+          "fr": "Comme la récupération de données est un effet de bord, il vaut mieux utiliser l’API `Fetch` à l’intérieur d’un hook `useEffect`."
+        },
+        {
+          "en": "Then you can render a loading message if the data fetching is not complete, an error message if there was an error fetching the data, or the results.",
+          "fr": "Ensuite, tu peux afficher un message de chargement si la récupération n’est pas terminée, un message d’erreur s’il y a eu une erreur, ou les résultats."
+        },
+        {
+          "en": "If you want to use Axios, you need to install and import it:",
+          "fr": "Si tu veux utiliser Axios, tu dois l’installer et l’importer :"
+        },
+        {
+          "en": "Then you can fetch the data using `axios.get`:",
+          "fr": "Ensuite, tu peux récupérer les données avec `axios.get` :"
+        },
+        {
+          "en": "To fetch data using the `useSWR` hook, you need to first install and import it.",
+          "fr": "Pour récupérer des données avec le hook `useSWR`, tu dois d’abord l’installer et l’importer."
+        },
+        {
+          "en": "Here is how you can use the hook to fetch data:",
+          "fr": "Voici comment utiliser le hook pour récupérer des données :"
+        },
+        {
+          "en": "## Working with the `useOptimistic` Hook",
+          "fr": "## Travailler avec le hook `useOptimistic`"
+        },
+        {
+          "en": "- **`useOptimistic` Hook**: This hook is used to keep UIs responsive while waiting for an async action to complete in the background. It helps manage \"optimistic updates\" in the UI, a strategy in which you provide immediate updates to the UI based on the expected outcome of an action, like waiting for a server response.",
+          "fr": "- **Hook `useOptimistic`** : ce hook sert à garder l’UI réactive pendant qu’une action asynchrone se termine en arrière-plan. Il aide à gérer les « mises à jour optimistes » dans l’UI : une stratégie où tu fournis des mises à jour immédiates selon le résultat attendu d’une action, comme l’attente d’une réponse serveur."
+        },
+        {
+          "en": "Here is the basic syntax:",
+          "fr": "Voici la syntaxe de base :"
+        },
+        {
+          "en": "- `optimisticState` is the temporary state that updates right away for a better user experience.\n- `addOptimistic` is the function that applies the optimistic update before the actual state changes.\n- `actualState` is the real state value that comes from the result of an action, like fetching data from a server.\n- `updateFunction` is the function that determines how the optimistic state should update when called.",
+          "fr": "- `optimisticState` est le state temporaire qui se met à jour tout de suite pour une meilleure expérience utilisateur.\n- `addOptimistic` est la fonction qui applique la mise à jour optimiste avant que le state réel change.\n- `actualState` est la vraie valeur de state issue du résultat d’une action, comme la récupération de données depuis un serveur.\n- `updateFunction` est la fonction qui détermine comment le state optimiste doit se mettre à jour quand elle est appelée."
+        },
+        {
+          "en": "Here is an example of using the `useOptimistic` hook in a `TaskList` component:",
+          "fr": "Voici un exemple d’utilisation du hook `useOptimistic` dans un composant `TaskList` :"
+        },
+        {
+          "en": "- **`startTransition`**: This is used to render part of the UI and mark a state update as a non-urgent transition. This allows the UI to be responsive during expensive updates. Here is the basic syntax:",
+          "fr": "- **`startTransition`** : sert à rendre une partie de l’UI et à marquer une mise à jour de state comme une transition non urgente. Cela permet à l’UI de rester réactive pendant des mises à jour coûteuses. Voici la syntaxe de base :"
+        },
+        {
+          "en": "The `action` performs a state update or triggers some transition-related logic. This ensures that urgent UI updates (like typing or clicking) are not blocked.",
+          "fr": "L’`action` effectue une mise à jour de state ou déclenche une logique liée à la transition. Cela garantit que les mises à jour urgentes de l’UI (comme la saisie ou les clics) ne sont pas bloquées."
+        },
+        {
+          "en": "## Working with the `useMemo` Hook",
+          "fr": "## Travailler avec le hook `useMemo`"
+        },
+        {
+          "en": "- **Memoization**: This is an optimization technique in which the result of expensive function calls are cached (remembered) based on specific arguments. When the same arguments are provided again, the cached result is returned instead of re-computing the function.\n- **`useMemo` Hook**: This hook is used to memoize computed values. Here is an example of memoizing the result of sorting a large array. The `expensiveSortFunction` will only run when `largeArray` changes:",
+          "fr": "- **Mémoïsation** : technique d’optimisation où le résultat d’appels de fonctions coûteux est mis en cache (mémorisé) selon des arguments précis. Quand les mêmes arguments sont fournis à nouveau, le résultat en cache est renvoyé au lieu de recalculer la fonction.\n- **Hook `useMemo`** : ce hook sert à mémoïser des valeurs calculées. Voici un exemple de mémoïsation du résultat du tri d’un grand tableau. La `expensiveSortFunction` ne s’exécutera que quand `largeArray` change :"
+        },
+        {
+          "en": "## Working with the `useCallback` Hook",
+          "fr": "## Travailler avec le hook `useCallback`"
+        },
+        {
+          "en": "- **`useCallback` Hook**: This is used to memoize function references.",
+          "fr": "- **Hook `useCallback`** : sert à mémoïser des références de fonctions."
+        },
+        {
+          "en": "- **`React.memo`**: This is used to memoize a component to prevent it from unnecessary re-renders when its prop has not changed.",
+          "fr": "- **`React.memo`** : sert à mémoïser un composant pour éviter des re-rendus inutiles quand ses props n’ont pas changé."
+        },
+        {
+          "en": "## Dependency Management Tools",
+          "fr": "## Outils de gestion des dépendances"
+        },
+        {
+          "en": "- **Dependency Definition**: In software, a dependency is where one component or module in an application relies on another to function properly. Dependencies are common in software applications because they allow developers to use pre-built functions or tools created by others. The two core dependencies needed for a React project will be the `react` and `react-dom` packages:",
+          "fr": "- **Définition d’une dépendance** : en logiciel, une dépendance désigne le cas où un composant ou un module d’une application s’appuie sur un autre pour fonctionner correctement. Les dépendances sont courantes car elles permettent d’utiliser des fonctions ou outils préécrits par d’autres. Les deux dépendances centrales d’un projet React seront les packages `react` et `react-dom` :"
+        },
+        {
+          "en": "- **Package Manager Definition**: To manage software dependencies in a project, you will need to use a package manager. A package manager is a tool used for installation, updates and removal of dependencies. Many popular programming languages like JavaScript, Python, Ruby and Java, all use package managers. Popular package managers for JavaScript include npm, Yarn and pnpm.\n- **`package.json` File**: This is a key configuration file in projects that contains metadata about your project, including its name, version, and dependencies. It also defines scripts, licensing information, and other settings that help manage the project and its dependencies.\n- **`package-lock.json` File**: This file will lock down the exact versions of all packages that your project is using. When you update a package, then the new versions will be updated in the lock file as well.\n- **`node_modules` Folder**: This folder contains the actual code for the dependencies listed in your `package.json` file, including both your project's direct dependencies and any dependencies of those dependencies.\n- **Dev Dependencies**: These are packages that are only used for development and not in production. An example of this would be a testing library like Jest. You would install Jest as a dev dependency because it is needed for testing your application locally but not needed to have the application run in production.",
+          "fr": "- **Définition d’un gestionnaire de packages** : pour gérer les dépendances logicielles d’un projet, tu auras besoin d’un gestionnaire de packages. C’est un outil pour l’installation, les mises à jour et la suppression des dépendances. De nombreux langages populaires comme JavaScript, Python, Ruby et Java utilisent des gestionnaires de packages. Parmi les plus connus pour JavaScript : npm, Yarn et pnpm.\n- **Fichier `package.json`** : fichier de configuration clé qui contient des métadonnées sur ton projet (nom, version, dépendances). Il définit aussi les scripts, les infos de licence et d’autres réglages pour gérer le projet et ses dépendances.\n- **Fichier `package-lock.json`** : ce fichier verrouille les versions exactes de tous les packages utilisés par ton projet. Quand tu mets à jour un package, les nouvelles versions sont aussi mises à jour dans le lock file.\n- **Dossier `node_modules`** : ce dossier contient le code réel des dépendances listées dans ton `package.json`, y compris les dépendances directes et leurs propres dépendances.\n- **Dev Dependencies** : packages utilisés seulement en développement, pas en production. Exemple : une bibliothèque de tests comme Jest. Tu installerais Jest en dev dependency car elle sert aux tests locaux, pas à faire tourner l’application en production."
+        },
+        {
+          "en": "## React Router",
+          "fr": "## React Router"
+        },
+        {
+          "en": "- **Introduction**: React Router is a third party library that allows you to add routing to your React applications. To begin, you will need to install React Router in an existing React project like this:",
+          "fr": "- **Introduction** : React Router est une bibliothèque tierce qui te permet d’ajouter le routage à tes applications React. Pour commencer, tu dois installer React Router dans un projet React existant comme ceci :"
+        },
+        {
+          "en": "Then inside of the `main.jsx` or `index.jsx` file, you will need to setup the route structure like this:",
+          "fr": "Ensuite, dans le fichier `main.jsx` ou `index.jsx`, tu dois configurer la structure des routes comme ceci :"
+        },
+        {
+          "en": "The `path` and `element` are used to couple the URL and UI components together. In this case, we are setting up a route for the homepage that points to the `App` component.",
+          "fr": "Les props `path` et `element` associent l’URL et les composants d’UI. Ici, on configure une route pour la page d’accueil qui pointe vers le composant `App`."
+        },
+        {
+          "en": "- **Multiple Views and Route Setup**: It is common in larger applications to have multiple views and routes setup like this:",
+          "fr": "- **Vues multiples et configuration des routes** : dans les applications plus grandes, il est courant d’avoir plusieurs vues et routes configurées comme ceci :"
+        },
+        {
+          "en": "The `index` prop in these examples is meant to represent the default route for a given path segment. So the `Home` component will be shown at the root `/` path while the `ProductsHome` component will be shown at the `/products` path.",
+          "fr": "La prop `index` dans ces exemples représente la route par défaut pour un segment de chemin donné. Donc le composant `Home` s’affichera au chemin racine `/` tandis que `ProductsHome` s’affichera au chemin `/products`."
+        },
+        {
+          "en": "- **Nesting Routes**: You can nest routes inside other routes which results in the path of the child route being appended to the parent route's path.",
+          "fr": "- **Imbriquer des routes** : tu peux imbriquer des routes dans d’autres routes : le chemin de la route enfant est alors ajouté à celui de la route parente."
+        },
+        {
+          "en": "In the example above, the path for the trending products will be products/trending.",
+          "fr": "Dans l’exemple ci-dessus, le chemin des produits tendance sera products/trending."
+        },
+        {
+          "en": "- **Dynamic Segments**: A dynamic segment is where any part of the URL path is dynamic.",
+          "fr": "- **Segments dynamiques** : un segment dynamique est une partie du chemin d’URL qui est dynamique."
+        },
+        {
+          "en": "In this example we have a dynamic segment called `category`. When a user navigates to a URL like products/brass-instruments, then the view will change to the `Category` component and you can dynamically fetch the appropriate data based on the segment.",
+          "fr": "Dans cet exemple, on a un segment dynamique appelé `category`. Quand un utilisateur navigue vers une URL comme products/brass-instruments, la vue passe au composant `Category` et tu peux récupérer dynamiquement les données appropriées selon le segment."
+        },
+        {
+          "en": "- **`useParams` Hook**: This hook is used to access the dynamic parameters from a URL path.",
+          "fr": "- **Hook `useParams`** : ce hook sert à accéder aux paramètres dynamiques d’un chemin d’URL."
+        },
+        {
+          "en": "## React Frameworks",
+          "fr": "## Frameworks React"
+        },
+        {
+          "en": "- **Introduction**: React frameworks provide features like routing, image optimizations, data fetching, authentication and more. This means that you might not need to set up separate front-end and back-end applications for certain use cases. Examples of React Frameworks include Next.js and Remix.\n- **Next.js Routing**: This routing system includes support for dynamic routes, parallel routes, route handlers, redirects, internalization and more.",
+          "fr": "- **Introduction** : les frameworks React fournissent des fonctionnalités comme le routage, l’optimisation d’images, la récupération de données, l’authentification, et plus encore. Tu n’as donc pas forcément besoin de configurer des applications front-end et back-end séparées pour certains cas d’usage. Exemples de frameworks React : Next.js et Remix.\n- **Routage Next.js** : ce système de routage inclut le support des routes dynamiques, routes parallèles, route handlers, redirections, internationalisation, et plus encore."
+        },
+        {
+          "en": "Here is an example of creating a custom request handler:",
+          "fr": "Voici un exemple de création d’un gestionnaire de requêtes personnalisé :"
+        },
+        {
+          "en": "- **Next.js Image Optimization**: The `Image` component extends the native HTML `img` element and allows for faster page loads and size optimizations. This means that images will only load when they enter the viewport and the `Image` component will automatically serve correctly sized images for each device.",
+          "fr": "- **Optimisation d’images Next.js** : le composant `Image` étend l’élément HTML natif `img` et permet des chargements de page plus rapides et des optimisations de taille. Les images ne se chargent que quand elles entrent dans le viewport, et le composant `Image` sert automatiquement des images correctement dimensionnées pour chaque appareil."
+        },
+        {
+          "en": "## Prop Drilling",
+          "fr": "## Prop drilling"
+        },
+        {
+          "en": "- **Definition**: Prop drilling is the process of passing props from a parent component to deeply nested child components, even when some of the child components don't need the props.",
+          "fr": "- **Définition** : le prop drilling est le processus de passer des props d’un composant parent à des composants enfants profondément imbriqués, même quand certains enfants n’ont pas besoin de ces props."
+        },
+        {
+          "en": "## State Management",
+          "fr": "## Gestion du state"
+        },
+        {
+          "en": "- **Context API**: Context refers to when a parent component makes information available to child components without needing to pass it explicitly through props. `createContext` is used to create a context object which represents the context that other components will read. The `Provider` is used to supply context values to the child components.",
+          "fr": "- **Context API** : le contexte désigne le cas où un composant parent met des informations à disposition des composants enfants sans les passer explicitement via des props. `createContext` sert à créer un objet de contexte que d’autres composants liront. Le `Provider` fournit les valeurs de contexte aux composants enfants."
+        },
+        {
+          "en": "- **Redux**: Redux handles state management by providing a central store and strict control over state updates. It uses a predictable pattern with actions, reducers, and middleware. Actions are payloads of information that send data from your application to the Redux store, often triggered by user interactions. Reducers are functions that specify how the state should change in response to those actions, ensuring the state is updated in an immutable way. Middleware, on the other hand, acts as a bridge between the action dispatching and the reducer, allowing you to extend Redux's functionality (e.g., logging, handling async operations) without modifying the core flow.",
+          "fr": "- **Redux** : Redux gère le state en fournissant un store central et un contrôle strict des mises à jour. Il utilise un motif prévisible avec actions, reducers et middleware. Les actions sont des payloads d’information qui envoient des données de ton application au store Redux, souvent déclenchées par des interactions utilisateur. Les reducers sont des fonctions qui précisent comment le state doit changer en réponse à ces actions, en garantissant une mise à jour immuable. Le middleware, lui, fait le pont entre le dispatch d’actions et le reducer, pour étendre les fonctionnalités de Redux (logs, opérations async, etc.) sans modifier le flux central."
+        },
+        {
+          "en": "- **Zustand**: This state management solution is ideal for small to medium-scale applications. It works by using a `useStore` hook to access state directly in components and pages. This lets you modify and access data without needing actions, reducers, or a provider.",
+          "fr": "- **Zustand** : cette solution de gestion du state convient bien aux applications de petite à moyenne taille. Elle utilise un hook `useStore` pour accéder au state directement dans les composants et les pages. Tu peux ainsi modifier et accéder aux données sans actions, reducers ni provider."
+        },
+        {
+          "en": "## Debugging React Components Using the React DevTools",
+          "fr": "## Déboguer des composants React avec les React DevTools"
+        },
+        {
+          "en": "- **React Developer Tools**: This is a browser extension you can use in Chrome, Firefox and Edge to inspect React components and identify performance issues. For Safari, you will need to install the `react-devtools` npm package. After installing React DevTools and opening a React app in the browser, open the browser developer tools to access the two extra tabs provided for debugging React – Components and Profiler.\n- **Components Tab**: This tab displays each component for you in a tree view format. Here are some things you can do in this tab:\n  - view the app's component hierarchy\n  - check and modify props, states, and context values in real time\n  - check the source code for each selected component\n  - log the component data to the console\n  - inspect the DOM elements for the component\n- **Profiler Tab**: This tab helps you analyze component performance. You can record component performance so you can identify unnecessary re-renders, view commit durations, and subsequently optimize slow components.",
+          "fr": "- **React Developer Tools** : extension de navigateur utilisable dans Chrome, Firefox et Edge pour inspecter les composants React et identifier des problèmes de performance. Pour Safari, tu dois installer le package npm `react-devtools`. Après installation et ouverture d’une app React dans le navigateur, ouvre les outils de développement pour accéder aux deux onglets supplémentaires pour déboguer React — Components et Profiler.\n- **Onglet Components** : affiche chaque composant sous forme d’arborescence. Tu peux notamment :\n  - voir la hiérarchie des composants de l’app\n  - vérifier et modifier props, states et valeurs de contexte en temps réel\n  - consulter le code source de chaque composant sélectionné\n  - journaliser les données du composant dans la console\n  - inspecter les éléments DOM du composant\n- **Onglet Profiler** : aide à analyser la performance des composants. Tu peux enregistrer la performance pour identifier des re-rendus inutiles, voir les durées de commit, puis optimiser les composants lents."
+        },
+        {
+          "en": "## React Server Components",
+          "fr": "## React Server Components"
+        },
+        {
+          "en": "- **Definition**: React Server Components are React components that render exclusively on the server, sending only the final HTML to the client. This means those components can directly access server-side resources and dramatically reduce the amount of JavaScript sent to the browser.",
+          "fr": "- **Définition** : les React Server Components sont des composants React qui se rendent exclusivement sur le serveur, en n’envoyant que le HTML final au client. Ces composants peuvent donc accéder directement aux ressources côté serveur et réduire fortement la quantité de JavaScript envoyée au navigateur."
+        },
+        {
+          "en": "## Differences Between Real and Perceived Performance",
+          "fr": "## Différences entre performance réelle et perçue"
+        },
+        {
+          "en": "- **Perceived Performance**: This is how users perceive the performance of a website. It's how they evaluate it in terms of responsiveness and reliability. This is a subjective measurement, so it's hard to quantify it, but it's very important, since the user experience determines the success or failure of a website.\n- **Real Performance**: This is the objective and measurable performance of the website. It's measured using metrics like page load time, server response time, and rendering time. These measurements are influenced by multiple factors related to the network and to the code itself.",
+          "fr": "- **Performance perçue** : c’est la façon dont les utilisateurs perçoivent la performance d’un site. Ils l’évaluent en termes de réactivité et de fiabilité. C’est une mesure subjective, donc difficile à quantifier, mais très importante : l’expérience utilisateur détermine le succès ou l’échec d’un site.\n- **Performance réelle** : c’est la performance objective et mesurable du site. On la mesure avec des métriques comme le temps de chargement de page, le temps de réponse serveur et le temps de rendu. Ces mesures dépendent de facteurs liés au réseau et au code lui-même."
+        },
+        {
+          "en": "## Techniques for Improving Perceived Performance",
+          "fr": "## Techniques pour améliorer la performance perçue"
+        },
+        {
+          "en": "- **Lazy Loading**: This technique reduces the initial load time as much as possible by loading non-essential resources in the background. \n- **Minimize Font Delays**: If your website has custom fonts, you should also try to minimize font loading delays, since this may result in flickering or in showing the fallback font while the custom font is being loaded. A suggestion for this is using a fallback font that is similar to the custom font, so in case this happens, the change will be more subtle.\n- **Use of Loading Indicators**: Showing a loading indicator for a long-running process as soon as the user clicks on an element can help the user feel connected and engaged with the process, making the wait time feel shorter.",
+          "fr": "- **Lazy Loading** : cette technique réduit autant que possible le temps de chargement initial en chargeant les ressources non essentielles en arrière-plan.\n- **Minimiser les délais de polices** : si ton site a des polices personnalisées, essaie aussi de minimiser les délais de chargement des polices, sinon tu risques un scintillement ou l’affichage de la police de repli pendant le chargement. Une suggestion : utiliser une police de repli proche de la police personnalisée pour que le changement soit plus subtil.\n- **Indicateurs de chargement** : afficher un indicateur pour un processus long dès que l’utilisateur clique sur un élément peut l’aider à se sentir connecté au processus, et raccourcir la sensation d’attente."
+        },
+        {
+          "en": "## Core Performance Concepts",
+          "fr": "## Concepts fondamentaux de performance"
+        },
+        {
+          "en": "- **Source order**: This refers to the way HTML elements are structured in the document. This determines what loads first and can significantly impact performance and accessibility.",
+          "fr": "- **Ordre source** : cela désigne la façon dont les éléments HTML sont structurés dans le document. Cela détermine ce qui se charge en premier et peut fortement impacter la performance et l’accessibilité."
+        },
+        {
+          "en": "Some best practices for source order include:",
+          "fr": "Quelques bonnes pratiques pour l’ordre source :"
+        },
+        {
+          "en": "- Placing critical content such as headings, navigation or main text higher in the HTML structure.\n- Deferring non-essential scripts such as ones for analytics, or third-party widgets, so they don't block rendering.\n- Using progressive enhancement, to ensure the core experience works even before styles and scripts load. Progressive enhancement is a way of building websites and applications based on the idea that you should make your page work with HTML first.",
+          "fr": "- Placer le contenu critique comme les titres, la navigation ou le texte principal plus haut dans la structure HTML.\n- Différer les scripts non essentiels (analytics, widgets tiers) pour qu’ils ne bloquent pas le rendu.\n- Utiliser l’amélioration progressive pour garantir que l’expérience de base fonctionne même avant le chargement des styles et scripts. L’amélioration progressive consiste à construire des sites en faisant d’abord fonctionner la page avec HTML."
+        },
+        {
+          "en": "Here is an example of good source order, using the best practices we just went through:",
+          "fr": "Voici un exemple de bon ordre source, avec les bonnes pratiques qu’on vient de voir :"
+        },
+        {
+          "en": "- **Critical Rendering Path**: This is the sequence of steps the browser follows to convert code into pixels on the screen.\n- **Latency**: This is the time it takes for a request to travel between the browser and the server. So in other words, high latency equals slow pages.",
+          "fr": "- **Critical Rendering Path** : séquence d’étapes que suit le navigateur pour convertir le code en pixels à l’écran.\n- **Latence** : temps qu’il faut à une requête pour voyager entre le navigateur et le serveur. Autrement dit, une latence élevée égale des pages lentes."
+        },
+        {
+          "en": "Some ways of reducing latency include:",
+          "fr": "Quelques façons de réduire la latence :"
+        },
+        {
+          "en": "- Using CDNs, or Content Delivery Networks, to serve files from closer locations.\n- Enabling compression using things such as Gzip to reduce file sizes.\n- Optimizing images and using lazy loading.",
+          "fr": "- Utiliser des CDN (Content Delivery Networks) pour servir les fichiers depuis des emplacements plus proches.\n- Activer la compression (Gzip, etc.) pour réduire la taille des fichiers.\n- Optimiser les images et utiliser le lazy loading."
+        },
+        {
+          "en": "## Improving INP",
+          "fr": "## Améliorer l’INP"
+        },
+        {
+          "en": "- **Definition**: INP (Interaction to Next Paint) assesses a page's overall responsiveness by measuring the time from when a user interacts, like a click or key press, to the next time the browser updates the display. A lower INP indicates a more responsive page.",
+          "fr": "- **Définition** : l’INP (Interaction to Next Paint) évalue la réactivité globale d’une page en mesurant le temps entre une interaction utilisateur (clic, touche) et le moment suivant où le navigateur met à jour l’affichage. Un INP plus bas indique une page plus réactive."
+        },
+        {
+          "en": "Here are some ways to improve INP:",
+          "fr": "Voici quelques façons d’améliorer l’INP :"
+        },
+        {
+          "en": "- Reduce main thread work by breaking up long JavaScript tasks.\n- Use `requestIdleCallback()` for non-critical scripts. This will queue a function to be called during a browser's idle periods.\n- Defer or lazy-load heavy assets which were covered earlier.\n- Optimize event handlers. If these handlers run too frequently or perform heavy operations, they can slow down the page and increase INP. The solution for this is debouncing. Debouncing ensures that the function only runs after the user stops typing for a short delay - so for example 300ms. This prevents unnecessary calculations and improves performance.",
+          "fr": "- Réduire le travail du thread principal en découpant les longues tâches JavaScript.\n- Utiliser `requestIdleCallback()` pour les scripts non critiques. Cela met en file une fonction à appeler pendant les périodes d’inactivité du navigateur.\n- Différer ou charger à la demande les assets lourds (vu plus tôt).\n- Optimiser les gestionnaires d’événements. S’ils s’exécutent trop souvent ou font des opérations lourdes, ils peuvent ralentir la page et augmenter l’INP. La solution : le debouncing. Le debouncing garantit que la fonction ne s’exécute qu’après que l’utilisateur a arrêté de taper pendant un court délai — par exemple 300 ms. Cela évite des calculs inutiles et améliore la performance."
+        },
+        {
+          "en": "## How Rendering Works in the Browser",
+          "fr": "## Comment le rendu fonctionne dans le navigateur"
+        },
+        {
+          "en": "- **How Rendering works**: First the browser parses the HTML and builds the DOM. Next, the browser processes the CSS, constructing the CSS Object Model, or CSSOM. This is another tree structure that dictates how elements should be styled. Finally, the browser paints the pixels to the screen, rendering each element based on the calculated styles and layout. In complex pages, this might involve multiple layers that are composited together to form the final visual output.",
+          "fr": "- **Comment fonctionne le rendu** : d’abord le navigateur parse le HTML et construit le DOM. Ensuite, il traite le CSS et construit le CSS Object Model, ou CSSOM. C’est une autre structure en arbre qui dicte comment les éléments doivent être stylés. Enfin, le navigateur peint les pixels à l’écran, en rendant chaque élément selon les styles et la mise en page calculés. Sur des pages complexes, cela peut impliquer plusieurs couches compositées pour former le rendu final."
+        },
+        {
+          "en": "## How Performance Impacts Sustainability",
+          "fr": "## Comment la performance impacte la durabilité"
+        },
+        {
+          "en": "- **Background Information**: The internet accounts for around 2% of global carbon emissions—that's the same as the airline industry! Every byte transferred requires electricity, from data centers to user devices. Larger files and inefficient scripts mean more power consumption. A high-performance website isn't just faster, it also reduces unnecessary processing and energy use.",
+          "fr": "- **Contexte** : Internet représente environ 2 % des émissions mondiales de carbone — autant que l’industrie aérienne ! Chaque octet transféré demande de l’électricité, des centres de données aux appareils utilisateurs. Des fichiers plus gros et des scripts inefficaces signifient plus de consommation d’énergie. Un site performant n’est pas seulement plus rapide : il réduit aussi le traitement et la consommation d’énergie inutiles."
+        },
+        {
+          "en": "## Ways to Reduce Page Loading Times",
+          "fr": "## Façons de réduire les temps de chargement de page"
+        },
+        {
+          "en": "- **Optimize Media Assets**: Large images and videos are common culprits for slow load times. By optimizing these assets, you can significantly speed up your site. This includes things like compressing images, using modern formats like WebP and using lazy loading for assets.\n- **Leverage Browser Caching**: Caching allows browsers to store parts of your website locally, reducing load times for returning visitors.\n- **Minify and Compress Files**: Reducing the size of your files can lead to quicker downloads. This includes reducing the size of transmitted files and minifying CSS and JavaScript files.",
+          "fr": "- **Optimiser les assets média** : les grandes images et vidéos sont souvent responsables de chargements lents. En les optimisant, tu peux nettement accélérer ton site : compression d’images, formats modernes comme WebP, lazy loading, etc.\n- **Tirer parti du cache navigateur** : le cache permet aux navigateurs de stocker localement des parties de ton site, ce qui réduit les temps de chargement pour les visiteurs qui reviennent.\n- **Minifier et compresser les fichiers** : réduire la taille de tes fichiers accélère les téléchargements. Cela inclut la réduction des fichiers transmis et la minification des fichiers CSS et JavaScript."
+        },
+        {
+          "en": "## Improving \"time to usable\"",
+          "fr": "## Améliorer le « time to usable »"
+        },
+        {
+          "en": "- **Definition**: \"time to usable\" is the interval from when a user requests a page to when they can meaningfully interact with it. To improve \"time to usable\" you can lazy load your asset or minimize render-blocking resources.",
+          "fr": "- **Définition** : le « time to usable » est l’intervalle entre le moment où un utilisateur demande une page et celui où il peut interagir utilement avec elle. Pour l’améliorer, tu peux charger tes assets en lazy loading ou minimiser les ressources qui bloquent le rendu."
+        },
+        {
+          "en": "## Key Metrics for Measuring Performance",
+          "fr": "## Métriques clés pour mesurer la performance"
+        },
+        {
+          "en": "- **First Contentful Paint or FCP**: It measures how quickly the first piece of content—text or image—appears on the screen. A good FCP is regarded as a time below 1.8 seconds, and a poor FCP is above 3 seconds. You can check your FCP using Chrome DevTools and checking the performance tab.\n- **Total Blocking Time**: This shows how long the main thread is blocked by heavy JavaScript tasks. If Total Blocking Time (TBT) is high, users experience sluggish interactions. To improve TBT, break up long tasks and defer non-essential scripts.\n- **Bounce Rate**: This is the percentage of visitors who leave without interacting. If your site has high bounce rates it might be because your page is too slow.\n- **Unique Users**: This metric tracks how many individual visitors come to your site. To view the Bounce Rate and Unique Users, you can use Google Analytics. It will allow you to monitor these metrics and improve engagement.",
+          "fr": "- **First Contentful Paint ou FCP** : mesure la rapidité d’apparition du premier contenu — texte ou image — à l’écran. Un bon FCP est en dessous de 1,8 seconde, un mauvais au-dessus de 3 secondes. Tu peux vérifier ton FCP avec Chrome DevTools, onglet Performance.\n- **Total Blocking Time** : montre combien de temps le thread principal est bloqué par de lourdes tâches JavaScript. Si le Total Blocking Time (TBT) est élevé, les utilisateurs ressentent des interactions lentes. Pour améliorer le TBT, découpe les longues tâches et diffère les scripts non essentiels.\n- **Bounce Rate** : pourcentage de visiteurs qui partent sans interagir. Un fort taux de rebond peut venir d’une page trop lente.\n- **Unique Users** : cette métrique suit combien de visiteurs individuels viennent sur ton site. Pour voir le Bounce Rate et les Unique Users, tu peux utiliser Google Analytics, qui te permet de suivre ces métriques et d’améliorer l’engagement."
+        },
+        {
+          "en": "## Common Performance Measurement Tools",
+          "fr": "## Outils courants de mesure de la performance"
+        },
+        {
+          "en": "- **Chrome DevTools**: Chrome DevTools is a built-in tool inside Google Chrome that lets you analyze and debug performance in real-time. DevTools will show loading times, CPU usage, and render delays. It's especially useful for measuring First Contentful Paint, or FCP, is how fast a user sees the first visible content. If your website feels slow, DevTools will help you spot the bottlenecks. \n- **Lighthouse**: This is an automated tool that checks performance, SEO, and accessibility. \n- **WebPageTest**: This tool lets you test how your site loads from different locations and devices. This tool gives you a detailed breakdown of your site's Speed Index, Total Blocking Time, and other key performance metrics. If you want to know how real users experience your site globally, WebPageTest is the tool for that.\n- **PageSpeed Insights**: This tool analyzes your website and suggests quick improvements for both mobile and desktop. It will tell you what's slowing your site down and give specific recommendations like optimizing images, removing render-blocking scripts, and reducing server response times. PageSpeed Insights is a fast and easy way to check how Google sees your site's performance.\n- **Real User Monitoring**: RUM tools track actual user behavior, showing how real visitors experience your site. Popular RUM tools include Google Analytics, which tracks page load times and bounce rates, and New Relic or Datadog, which monitor real-time performance issues. If you want data from actual users, RUM tools are essential.",
+          "fr": "- **Chrome DevTools** : outil intégré à Google Chrome pour analyser et déboguer la performance en temps réel. DevTools montre les temps de chargement, l’usage CPU et les délais de rendu. Il est particulièrement utile pour mesurer le First Contentful Paint (FCP), c’est-à-dire la vitesse à laquelle un utilisateur voit le premier contenu visible. Si ton site paraît lent, DevTools t’aidera à repérer les goulots d’étranglement.\n- **Lighthouse** : outil automatisé qui vérifie performance, SEO et accessibilité.\n- **WebPageTest** : te permet de tester le chargement de ton site depuis différents lieux et appareils. Il donne une décomposition détaillée du Speed Index, du Total Blocking Time et d’autres métriques clés. Si tu veux savoir comment de vrais utilisateurs vivent ton site dans le monde, c’est l’outil adapté.\n- **PageSpeed Insights** : analyse ton site et propose des améliorations rapides pour mobile et desktop. Il indique ce qui ralentit ton site et donne des recommandations précises (optimiser les images, retirer les scripts qui bloquent le rendu, réduire les temps de réponse serveur). C’est un moyen rapide de voir comment Google perçoit la performance de ton site.\n- **Real User Monitoring** : les outils RUM suivent le comportement réel des utilisateurs. Parmi les plus connus : Google Analytics (temps de chargement, bounce rates) et New Relic ou Datadog (problèmes de performance en temps réel). Pour des données d’utilisateurs réels, les outils RUM sont essentiels."
+        },
+        {
+          "en": "## Working with Performance Web APIs",
+          "fr": "## Travailler avec les Web APIs de performance"
+        },
+        {
+          "en": "- **Definition**: Performance Web APIs let developers track how efficiently a webpage loads and responds directly in the code. These APIs allow you to measure page load times, track rendering and interaction delays and analyze JavaScript execution time.\n- **`performance.now()`**: This API gives you high-precision timestamps (in milliseconds) to measure how long different parts of your site take to load.",
+          "fr": "- **Définition** : les Web APIs de performance permettent aux développeurs de suivre directement dans le code l’efficacité du chargement et de la réponse d’une page. Elles permettent de mesurer les temps de chargement, les délais de rendu et d’interaction, et le temps d’exécution JavaScript.\n- **`performance.now()`** : cette API fournit des horodatages haute précision (en millisecondes) pour mesurer combien de temps différentes parties de ton site mettent à charger."
+        },
+        {
+          "en": "- **Performance Timing API**: This API gives you a breakdown of every stage of page loading, from DNS lookup to `DOMContentLoaded`.",
+          "fr": "- **Performance Timing API** : cette API te donne une décomposition de chaque étape du chargement de page, de la résolution DNS jusqu’à `DOMContentLoaded`."
+        },
+        {
+          "en": "- **`PerformanceObserver`**: This API listens for performance events such as layout shifts, long tasks, and user interactions.",
+          "fr": "- **`PerformanceObserver`** : cette API écoute des événements de performance comme les layout shifts, les longues tâches et les interactions utilisateur."
+        },
+        {
+          "en": "## Techniques for Improving CSS Performance",
+          "fr": "## Techniques pour améliorer la performance CSS"
+        },
+        {
+          "en": "- **CSS Animations**: Animating certain CSS properties, such as dimensions, position, and layout, triggers a process called \"reflow\", during which the browser recalculates the position and geometry of certain elements on the page. This requires a repaint, which is computationally expensive. Therefore, it's recommended to reduce the number of CSS animations as much as possible or at least give the user an option to toggle them on or off.",
+          "fr": "- **Animations CSS** : animer certaines propriétés CSS (dimensions, position, mise en page) déclenche un processus appelé « reflow », où le navigateur recalcule la position et la géométrie de certains éléments. Cela entraîne un repaint, coûteux en calcul. Il est donc recommandé de réduire le nombre d’animations CSS autant que possible, ou au moins de laisser à l’utilisateur la possibilité de les activer ou les désactiver."
+        },
+        {
+          "en": "## Techniques for Improving JavaScript Performance",
+          "fr": "## Techniques pour améliorer la performance JavaScript"
+        },
+        {
+          "en": "- **Code Splitting**: Splitting your JavaScript code into modules that perform critical and non-critical tasks is also helpful. This way, you'll be able to preload the critical ones as soon as possible and defer the non-critical ones to render the page as fast as possible.\n- **DOM Manipulation**: Remember that DOM Manipulation refers to the process of dynamically changing the content of a page with JavaScript by interacting with the Document Object Model (DOM). Manipulating the DOM is computationally expensive. By reducing the amount of DOM manipulation in your JavaScript code will improve performance.",
+          "fr": "- **Code Splitting** : découper ton code JavaScript en modules pour tâches critiques et non critiques est aussi utile. Tu pourras ainsi précharger les modules critiques au plus tôt et différer les non critiques pour rendre la page aussi vite que possible.\n- **Manipulation du DOM** : rappelle-toi que la manipulation du DOM désigne le processus de modification dynamique du contenu d’une page avec JavaScript via le Document Object Model (DOM). Manipuler le DOM est coûteux en calcul. Réduire la quantité de manipulations DOM dans ton code JavaScript améliorera la performance."
+        },
+        {
+          "en": "## CSS Frameworks",
+          "fr": "## Frameworks CSS"
+        },
+        {
+          "en": "- **CSS frameworks**: CSS frameworks can speed up your workflow, create a uniform visual style across a website, make your design look consistent across multiple browsers, and keep your CSS code more organized.\n- **Popular CSS frameworks**: Some of the popular CSS frameworks are Tailwind CSS, Bootstrap, Materialize, and Foundation.\n- **Potential disadvantages**:\n  - The CSS provided by the framework might conflict with your custom CSS.\n  - Your website might look similar to other websites using the same framework.\n  - Large frameworks might cause performance issues.",
+          "fr": "- **Frameworks CSS** : les frameworks CSS peuvent accélérer ton workflow, créer un style visuel uniforme sur un site, rendre ton design cohérent sur plusieurs navigateurs, et mieux organiser ton code CSS.\n- **Frameworks CSS populaires** : parmi les plus connus, Tailwind CSS, Bootstrap, Materialize et Foundation.\n- **Inconvénients potentiels** :\n  - Le CSS du framework peut entrer en conflit avec ton CSS personnalisé.\n  - Ton site peut ressembler à d’autres sites qui utilisent le même framework.\n  - Les gros frameworks peuvent causer des problèmes de performance."
+        },
+        {
+          "en": "## Two Types of CSS Frameworks",
+          "fr": "## Deux types de frameworks CSS"
+        },
+        {
+          "en": "- **Utility-first CSS frameworks**: These frameworks have small classes with specific purposes, like setting the margin, padding, or background color. You can assign these small classes directly to the HTML elements as needed. Tailwind CSS is categorized as a utility-first CSS framework.",
+          "fr": "- **Frameworks CSS utility-first** : ces frameworks ont de petites classes à but précis, comme définir la marge, le padding ou la couleur de fond. Tu peux assigner ces petites classes directement aux éléments HTML selon tes besoins. Tailwind CSS est classé comme framework CSS utility-first."
+        },
+        {
+          "en": "Here is an example of using Tailwind CSS to style a button.",
+          "fr": "Voici un exemple d’utilisation de Tailwind CSS pour styliser un bouton."
+        },
+        {
+          "en": "- **Component-based CSS frameworks**: These frameworks have pre-built components with pre-defined styles that you can add to your website. The components are available in the official documentation of the CSS framework, and you can copy and paste them into your project. Bootstrap is categorized as a component-based CSS framework.",
+          "fr": "- **Frameworks CSS basés sur des composants** : ces frameworks ont des composants préconstruits avec des styles prédéfinis que tu peux ajouter à ton site. Les composants sont disponibles dans la documentation officielle du framework, et tu peux les copier-coller dans ton projet. Bootstrap est classé comme framework CSS basé sur des composants."
+        },
+        {
+          "en": "Here is an example of using Bootstrap to create a list group. Instead of applying small classes to your HTML elements, you will add the entire component, including the HTML structure.",
+          "fr": "Voici un exemple d’utilisation de Bootstrap pour créer un list group. Au lieu d’appliquer de petites classes à tes éléments HTML, tu ajouteras le composant entier, y compris la structure HTML."
+        },
+        {
+          "en": "## Tailwind CSS",
+          "fr": "## Tailwind CSS"
+        },
+        {
+          "en": "Tailwind is a utility-first CSS framework. Instead of writing custom CSS rules, you build your designs by combining small utility classes directly in your HTML.",
+          "fr": "Tailwind est un framework CSS utility-first. Au lieu d’écrire des règles CSS personnalisées, tu construis tes designs en combinant de petites classes utilitaires directement dans ton HTML."
+        },
+        {
+          "en": "### Responsive Design Utilities",
+          "fr": "### Utilitaires de design responsive"
+        },
+        {
+          "en": "Tailwind uses prefixes such as `sm:`, `md:`, and `lg:` to apply styles at different screen sizes.",
+          "fr": "Tailwind utilise des préfixes comme `sm:`, `md:` et `lg:` pour appliquer des styles à différentes tailles d’écran."
+        },
+        {
+          "en": "### Flexbox Utilities",
+          "fr": "### Utilitaires Flexbox"
+        },
+        {
+          "en": "Classes like `flex`, `flex-col`, `justify-around`, and `items-center` make it easy to create flexible layouts.",
+          "fr": "Des classes comme `flex`, `flex-col`, `justify-around` et `items-center` facilitent la création de mises en page flexibles."
+        },
+        {
+          "en": "### Grid Utilities",
+          "fr": "### Utilitaires Grid"
+        },
+        {
+          "en": "Tailwind includes utilities for CSS Grid, like `grid`, `grid-cols-1`, and `md:grid-cols-3`.",
+          "fr": "Tailwind inclut des utilitaires pour CSS Grid, comme `grid`, `grid-cols-1` et `md:grid-cols-3`."
+        },
+        {
+          "en": "### Spacing Utilities",
+          "fr": "### Utilitaires d’espacement"
+        },
+        {
+          "en": "Utilities like `mt-8`, `mx-auto`, `p-4`, and `gap-4` help create consistent spacing without writing CSS.",
+          "fr": "Des utilitaires comme `mt-8`, `mx-auto`, `p-4` et `gap-4` aident à créer un espacement cohérent sans écrire de CSS."
+        },
+        {
+          "en": "### Typography Utilities",
+          "fr": "### Utilitaires de typographie"
+        },
+        {
+          "en": "Utilities like `uppercase`, `font-bold`, `font-semibold`, and `text-4xl` control text appearance.",
+          "fr": "Des utilitaires comme `uppercase`, `font-bold`, `font-semibold` et `text-4xl` contrôlent l’apparence du texte."
+        },
+        {
+          "en": "You can set font sizes that adjust at breakpoints, such as `text-3xl` and `md:text-5xl`.",
+          "fr": "Tu peux définir des tailles de police qui s’ajustent aux breakpoints, comme `text-3xl` et `md:text-5xl`."
+        },
+        {
+          "en": "### Colors and Hover States",
+          "fr": "### Couleurs et états de survol"
+        },
+        {
+          "en": "Tailwind provides a wide color palette, such as `text-red-700`, `bg-indigo-600`, and `bg-gray-100`.",
+          "fr": "Tailwind fournit une large palette de couleurs, comme `text-red-700`, `bg-indigo-600` et `bg-gray-100`."
+        },
+        {
+          "en": "Classes like `hover:bg-pink-600` make interactive effects simple.",
+          "fr": "Des classes comme `hover:bg-pink-600` rendent les effets interactifs simples."
+        },
+        {
+          "en": "### Borders, Rings, and Effects",
+          "fr": "### Bordures, rings et effets"
+        },
+        {
+          "en": "- **Borders**: `border-2 border-red-300` adds borders with specified thickness and colors.\n- **Rings**: `ring-1 ring-gray-300` creates outline-like effects often used for focus or cards.\n- **Rounded corners and scaling**: Classes like `rounded-md`, `rounded-xl`, and `scale-105` add polish.",
+          "fr": "- **Bordures** : `border-2 border-red-300` ajoute des bordures avec une épaisseur et des couleurs précises.\n- **Rings** : `ring-1 ring-gray-300` crée des effets de contour souvent utilisés pour le focus ou les cartes.\n- **Coins arrondis et mise à l’échelle** : des classes comme `rounded-md`, `rounded-xl` et `scale-105` apportent de la finition."
+        },
+        {
+          "en": "### Gradients",
+          "fr": "### Dégradés"
+        },
+        {
+          "en": "Tailwind supports gradient utilities like `bg-gradient-to-r from-fuchsia-500 to-indigo-600`.",
+          "fr": "Tailwind prend en charge des utilitaires de dégradé comme `bg-gradient-to-r from-fuchsia-500 to-indigo-600`."
+        },
+        {
+          "en": "## CSS Preprocessors",
+          "fr": "## Préprocesseurs CSS"
+        },
+        {
+          "en": "- **CSS preprocessor**: A CSS preprocessor is a tool that extends standard CSS. It compiles the code with extended syntax into a native CSS file. It can be helpful for writing cleaner, reusable, less repetitive, and scalable CSS for complex projects.\n- **Features**: Some of the features that can be provided by CSS preprocessors are variables, mixins, nesting, and selector inheritance.\n- **Popular CSS preprocessors**: Some of the popular CSS preprocessors are Sass, Less, and Stylus.  \n- **Potential disadvantages**:\n  - Compiling the CSS rules into standard CSS might cause overhead.\n  - The compiled code may be difficult to debug.",
+          "fr": "- **Préprocesseur CSS** : un préprocesseur CSS est un outil qui étend le CSS standard. Il compile le code à syntaxe étendue en un fichier CSS natif. Il peut aider à écrire un CSS plus propre, réutilisable, moins répétitif et évolutif pour des projets complexes.\n- **Fonctionnalités** : variables, mixins, imbrication et héritage de sélecteurs, entre autres.\n- **Préprocesseurs CSS populaires** : Sass, Less et Stylus.\n- **Inconvénients potentiels** :\n  - Compiler les règles CSS en CSS standard peut ajouter de la surcharge.\n  - Le code compilé peut être difficile à déboguer."
+        },
+        {
+          "en": "## Sass",
+          "fr": "## Sass"
+        },
+        {
+          "en": "- **Sass**: It is one of the most popular CSS preprocessors. Sass stands for \"Syntactically Awesome Style Sheets.\"\n- **Features supported by Sass**: Sass supports features like variables, nested CSS rules, modules, mixins, inheritance, and operators for basic mathematical operations",
+          "fr": "- **Sass** : c’est l’un des préprocesseurs CSS les plus populaires. Sass signifie « Syntactically Awesome Style Sheets ».\n- **Fonctionnalités prises en charge par Sass** : variables, règles CSS imbriquées, modules, mixins, héritage et opérateurs pour des opérations mathématiques de base"
+        },
+        {
+          "en": "## Two Syntaxes Supported by Sass",
+          "fr": "## Deux syntaxes prises en charge par Sass"
+        },
+        {
+          "en": "- **SCSS syntax**: The SCSS (Sassy CSS) expands the basic syntax of CSS. It is the most widely used syntax for Sass. SCSS files have an `.scss` extension.",
+          "fr": "- **Syntaxe SCSS** : le SCSS (Sassy CSS) étend la syntaxe de base du CSS. C’est la syntaxe la plus utilisée pour Sass. Les fichiers SCSS ont une extension `.scss`."
+        },
+        {
+          "en": "Here is an example of defining and using a variable in SCSS.",
+          "fr": "Voici un exemple de définition et d’utilisation d’une variable en SCSS."
+        },
+        {
+          "en": "- **Indented syntax**: The indented syntax was Sass's original syntax and is also known as the \"Sass syntax.\"",
+          "fr": "- **Syntaxe indentée** : la syntaxe indentée était la syntaxe originale de Sass ; on l’appelle aussi « syntaxe Sass »."
+        },
+        {
+          "en": "Here is an example of defining and using a variable in the indented syntax.",
+          "fr": "Voici un exemple de définition et d’utilisation d’une variable dans la syntaxe indentée."
+        },
+        {
+          "en": "### Mixins",
+          "fr": "### Mixins"
+        },
+        {
+          "en": "- **Mixins**: Mixins allow you to group multiple CSS properties and their values under the name and reuse that block of CSS code throughout your stylesheet.",
+          "fr": "- **Mixins** : les mixins te permettent de regrouper plusieurs propriétés CSS et leurs valeurs sous un nom, et de réutiliser ce bloc de CSS dans toute ta feuille de styles."
+        },
+        {
+          "en": "Here is an example of defining a mixin in SCSS syntax. In this case, the mixin is called `center-flex`. It has three CSS properties to center elements using flexbox.",
+          "fr": "Voici un exemple de définition d’un mixin en syntaxe SCSS. Ici, le mixin s’appelle `center-flex`. Il a trois propriétés CSS pour centrer des éléments avec Flexbox."
+        },
+        {
+          "en": "Here is an example of using the mixin you defined.",
+          "fr": "Voici un exemple d’utilisation du mixin que tu as défini."
+        },
+        {
+          "en": "## Manual and Automated Testing",
+          "fr": "## Tests manuels et automatisés"
+        },
+        {
+          "en": "- **Manual Testing**: In manual testing, a tester will manually go through each part of the application and test out different features to make sure it works correctly. If any bugs are uncovered in the testing process, the tester will report those bugs back to the software team so they can be fixed.\n- **Automated Testing**: In automated testing, you can automate your tests by writing a separate program that checks whether your application behaves as expected.",
+          "fr": "- **Tests manuels** : en test manuel, un testeur parcourt manuellement chaque partie de l’application et teste différentes fonctionnalités pour vérifier qu’elles fonctionnent correctement. Si des bugs apparaissent, le testeur les signale à l’équipe logicielle pour qu’ils soient corrigés.\n- **Tests automatisés** : en test automatisé, tu automatises tes tests en écrivant un programme séparé qui vérifie si ton application se comporte comme prévu."
+        },
+        {
+          "en": "## Unit Testing",
+          "fr": "## Tests unitaires"
+        },
+        {
+          "en": "- **Unit Testing**: In unit testing, you test each function to ensure that everything is working as expected. Unit tests can also serve as a form of documentation for your application because they are meant to represent the expected behavior for your code.\n- **Single Responsibility Principle**: The single responsibility principle recommends keeping each function small and responsible for one thing.\n- **Common JavaScript Testing Frameworks**: Some common testing frameworks include Jest, Mocha, and Vitest. Jest is a popular testing framework for unit tests.",
+          "fr": "- **Tests unitaires** : en test unitaire, tu testes chaque fonction pour t’assurer que tout fonctionne comme prévu. Les tests unitaires peuvent aussi servir de documentation, car ils représentent le comportement attendu de ton code.\n- **Principe de responsabilité unique** : ce principe recommande de garder chaque fonction petite et responsable d’une seule chose.\n- **Frameworks de test JavaScript courants** : Jest, Mocha et Vitest. Jest est un framework populaire pour les tests unitaires."
+        },
+        {
+          "en": "Here is an example of unit tests using Jest.",
+          "fr": "Voici un exemple de tests unitaires avec Jest."
+        },
+        {
+          "en": "First, you can create a function that is responsible for returning a newly formatted string:",
+          "fr": "D’abord, tu peux créer une fonction responsable de renvoyer une chaîne nouvellement formatée :"
+        },
+        {
+          "en": "In a separate `getFormattedWord.test.js` file, you can write some tests to verify that the function is working as expected. The `getFormattedWord.test.js` file will look like this:",
+          "fr": "Dans un fichier séparé `getFormattedWord.test.js`, tu peux écrire des tests pour vérifier que la fonction fonctionne comme prévu. Le fichier `getFormattedWord.test.js` ressemblera à ceci :"
+        },
+        {
+          "en": "- **`expect` Function**: The `expect` function is used to test a value.\n- **Matcher**: Matcher is a function that checks whether the value behaves as expected. In the above example, the matcher is `toBe()`. Jest has a variety of matchers.",
+          "fr": "- **Fonction `expect`** : la fonction `expect` sert à tester une valeur.\n- **Matcher** : un matcher est une fonction qui vérifie si la valeur se comporte comme prévu. Dans l’exemple ci-dessus, le matcher est `toBe()`. Jest propose une variété de matchers."
+        },
+        {
+          "en": "To use Jest, you first need to install the `jest` package by using `npm i jest`. You will also need to add a script to your `package.json` file like this:",
+          "fr": "Pour utiliser Jest, tu dois d’abord installer le package `jest` avec `npm i jest`. Tu devras aussi ajouter un script à ton fichier `package.json` comme ceci :"
+        },
+        {
+          "en": "Then, you can run the command `npm run test` to run your tests.",
+          "fr": "Ensuite, tu peux exécuter la commande `npm run test` pour lancer tes tests."
+        },
+        {
+          "en": "## Software Development Lifecycle",
+          "fr": "## Cycle de vie du développement logiciel"
+        },
+        {
+          "en": "- **Different Stages of Software Development Lifecycle**:\n  - **Planning Stage**: The development team collects requirements for the proposed work from the stakeholders.\n  - **Design Stage**: The software team breaks down the requirements and decides on the best approaches for solutions.\n  - **Implementation Stage**: The software team breaks down the requirements into manageable tasks and implements them.\n  - **Testing Stage**: This involves manual and automated testing for the new work. Sometimes, the team tests out the application throughout the entire development stage to catch and fix any issues that come up.\n  - **Deployment Stage**: The team deploys the new changes to a build or testing environment.\n  - **Maintenance Stage**: This involves fixing any issues that arise from customers in the production application.",
+          "fr": "- **Différentes étapes du cycle de vie du développement logiciel** :\n  - **Étape de planification** : l’équipe de développement recueille les exigences du travail proposé auprès des parties prenantes.\n  - **Étape de conception** : l’équipe logicielle découpe les exigences et choisit les meilleures approches de solution.\n  - **Étape d’implémentation** : l’équipe découpe les exigences en tâches gérables et les implémente.\n  - **Étape de test** : tests manuels et automatisés du nouveau travail. Parfois, l’équipe teste l’application tout au long du développement pour attraper et corriger les problèmes.\n  - **Étape de déploiement** : l’équipe déploie les nouveaux changements dans un environnement de build ou de test.\n  - **Étape de maintenance** : correction des problèmes signalés par les clients dans l’application de production."
+        },
+        {
+          "en": "- **Different Models of the Software Development Lifecycle**:\n  - **Waterfall Model**: The Waterfall model is where each phase of the lifecycle needs to be completed before the next phase can begin.\n  - **Agile Model**: The Agile model focuses on iterative development by breaking down work into sprints.",
+          "fr": "- **Différents modèles du cycle de vie du développement logiciel** :\n  - **Modèle Waterfall** : chaque phase du cycle doit être terminée avant que la suivante puisse commencer.\n  - **Modèle Agile** : se concentre sur le développement itératif en découpant le travail en sprints."
+        },
+        {
+          "en": "## BDD and TDD",
+          "fr": "## BDD et TDD"
+        },
+        {
+          "en": "- **TDD**: Test-driven development is a methodology that emphasizes writing tests first. Writing tests before building out features provides real-time feedback to developers during the development process.\n- **BDD**: Behavior-driven development is the approach of aligning a series of tests with business goals. The test scenarios in BDD should be written in a language that can be understood by both technical and non-technical individuals. An example of such syntax is Gherkin.\n- **BDD Testing Frameworks**: Examples of BDD testing frameworks include Cucumber, JBehave, and SpecFlow.",
+          "fr": "- **TDD** : le développement piloté par les tests (Test-driven development) met l’accent sur l’écriture des tests en premier. Écrire les tests avant de construire les fonctionnalités donne un retour en temps réel aux développeurs pendant le développement.\n- **BDD** : le développement piloté par le comportement (Behavior-driven development) aligne une série de tests sur les objectifs métier. Les scénarios de test BDD devraient être écrits dans un langage compréhensible par les profils techniques et non techniques. Un exemple de syntaxe est Gherkin.\n- **Frameworks de test BDD** : Cucumber, JBehave et SpecFlow, par exemple."
+        },
+        {
+          "en": "## Assertions in Unit Testing",
+          "fr": "## Assertions dans les tests unitaires"
+        },
+        {
+          "en": "- **Assertion**: Assertions are used to test that the code is behaving as expected.\n- **Assertion Libraries**: Chai is a commonly used assertion library. Other common JavaScript assertion libraries are `should.js` and `expect.js`.",
+          "fr": "- **Assertion** : les assertions servent à vérifier que le code se comporte comme prévu.\n- **Bibliothèques d’assertions** : Chai est une bibliothèque d’assertions courante. D’autres bibliothèques JavaScript courantes sont `should.js` et `expect.js`."
+        },
+        {
+          "en": "Here is an example of an assertion using Chai that checks that the return value from the `addThreeAndFour` function is equal to the number 7:",
+          "fr": "Voici un exemple d’assertion avec Chai qui vérifie que la valeur renvoyée par la fonction `addThreeAndFour` est égale au nombre 7 :"
+        },
+        {
+          "en": "- **Best Practices**: Regardless of which assertion library you use, you should write clear assert and failure messages that will help you understand which tests are failing and why.",
+          "fr": "- **Bonnes pratiques** : quelle que soit la bibliothèque d’assertions, tu devrais écrire des messages d’assert et d’échec clairs pour comprendre quels tests échouent et pourquoi."
+        },
+        {
+          "en": "## Mocking, Faking, and Stubbing",
+          "fr": "## Mocking, faking et stubbing"
+        },
+        {
+          "en": "- **Mocking**: Mocking is the process of replacing real data with false data that simulates the behavior of real components. For example, you could mock the API response in testing instead of making continuous API calls to fetch the data.\n- **Stubbing**: Stubs are objects that return pre-defined responses or dummy data for an expected behavior in an application. For example, you can stub the behavior for a database connection in your tests without having to rely on an actual database connection.\n- **Faking**: Fakes are simplified versions of real components without the complexity or side effects. For example, you can fake a database by storing the data in memory instead of interacting with the real database. This will allow you to mimic database operations in memory, which will be much faster than dealing with the real database.",
+          "fr": "- **Mocking** : remplacer de vraies données par de fausses données qui simulent le comportement de vrais composants. Par exemple, tu peux mocker la réponse d’API en test au lieu de faire des appels API continus.\n- **Stubbing** : les stubs sont des objets qui renvoient des réponses prédéfinies ou des données factices pour un comportement attendu. Par exemple, tu peux stubber le comportement d’une connexion base de données dans tes tests sans dépendre d’une vraie connexion.\n- **Faking** : les fakes sont des versions simplifiées de vrais composants, sans la complexité ni les effets de bord. Par exemple, tu peux faker une base de données en stockant les données en mémoire au lieu d’interagir avec la vraie base. Cela te permet de mimer des opérations en mémoire, beaucoup plus rapides."
+        },
+        {
+          "en": "## Functional Testing",
+          "fr": "## Tests fonctionnels"
+        },
+        {
+          "en": "- **Functional Testing**: Functional testing checks if the features and functions of the application work as expected. The goal of functional testing is to test the system as a whole against multiple scenarios.\n- **Non-Functional Testing**: Non-functional testing focuses on things like performance and reliability.\n- **Smoke testing**: Smoke testing is a preliminary check on the system for basic or critical issues before beginning more extensive testing.",
+          "fr": "- **Tests fonctionnels** : vérifient si les fonctionnalités de l’application fonctionnent comme prévu. L’objectif est de tester le système dans son ensemble face à plusieurs scénarios.\n- **Tests non fonctionnels** : se concentrent sur des aspects comme la performance et la fiabilité.\n- **Smoke testing** : vérification préliminaire du système pour repérer des problèmes basiques ou critiques avant des tests plus poussés."
+        },
+        {
+          "en": "## End-to-End Testing",
+          "fr": "## Tests de bout en bout"
+        },
+        {
+          "en": "- **End-to-End Testing**: End-to-end testing, or E2E, tests real-world scenarios from the user's perspective. End-to-end tests help ensure that your application behaves correctly and is predictable for users. However, it is time-consuming to set up, design, and maintain.\n- **End-to-End Testing Frameworks**: Playwright is a popular end-to-end testing framework developed by Microsoft. Other examples of end-to-end testing tools include Cypress, Selenium, and Puppeteer.",
+          "fr": "- **Tests de bout en bout** : les tests end-to-end, ou E2E, testent des scénarios réels du point de vue de l’utilisateur. Ils aident à garantir que ton application se comporte correctement et de façon prévisible. Cependant, leur mise en place, leur conception et leur maintenance prennent du temps.\n- **Frameworks de tests de bout en bout** : Playwright est un framework E2E populaire développé par Microsoft. D’autres outils : Cypress, Selenium et Puppeteer."
+        },
+        {
+          "en": "Here is an example of E2E tests from the freeCodeCamp codebase using Playwright. The `beforeEach` hook will run before each of the tests. The tests check that the donor has a supporter link in the menu bar, as well as a special stylized border around their avatar:",
+          "fr": "Voici un exemple de tests E2E du codebase freeCodeCamp avec Playwright. Le hook `beforeEach` s’exécute avant chacun des tests. Les tests vérifient que le donateur a un lien supporter dans la barre de menu, ainsi qu’une bordure stylisée spéciale autour de son avatar :"
+        },
+        {
+          "en": "## Usability Testing",
+          "fr": "## Tests d’utilisabilité"
+        },
+        {
+          "en": "- **Usability Testing**: Usability testing is when you have real users interacting with the application to discover if there are any design, user experience, or functionality issues in the app. Usability testing focuses on the intuitiveness of the application by users.\n- **Four Common Types of Usability Testing**:\n  - **Explorative**: Explorative usability testing involves users interacting with the different features of the application to better understand how they work.\n  - **Comparative**: Comparative testing is where you compare your application's user experience with similar applications in the marketplace.\n  - **Assessment**: Assessment testing is where you study how intuitive the application is to use.\n  - **Validation**: Validation testing is where you identify any major issues that will prevent the user from using the application effectively.\n- **Usability Testing Tools**: Examples of tools for usability testing include Loop11, Maze, Userbrain, UserTesting, and UXTweak.",
+          "fr": "- **Tests d’utilisabilité** : de vrais utilisateurs interagissent avec l’application pour découvrir d’éventuels problèmes de design, d’expérience utilisateur ou de fonctionnalités. Ces tests se concentrent sur le caractère intuitif de l’application.\n- **Quatre types courants de tests d’utilisabilité** :\n  - **Exploratoire** : les utilisateurs interagissent avec les différentes fonctionnalités pour mieux comprendre comment elles fonctionnent.\n  - **Comparatif** : tu compares l’expérience utilisateur de ton application à des applications similaires sur le marché.\n  - **Évaluation** : tu étudies à quel point l’application est intuitive à utiliser.\n  - **Validation** : tu identifies les problèmes majeurs qui empêcheraient l’utilisateur d’utiliser efficacement l’application.\n- **Outils de tests d’utilisabilité** : Loop11, Maze, Userbrain, UserTesting et UXTweak, par exemple."
+        },
+        {
+          "en": "## Compatibility Testing",
+          "fr": "## Tests de compatibilité"
+        },
+        {
+          "en": "- **Compatibility Testing**: The goal of compatibility testing is to ensure that your application works in different computing environments.\n- **Different Types of Compatibility Testing**:\n  - **Backwards Compatibility**: Backwards compatibility refers to when the software is compatible with earlier versions.\n  - **Forwards Compatibility**: Forwards compatibility refers to when the software and systems will work with future versions.\n  - **Hardware Compatibility**: Hardware compatibility is the software's ability to work properly in different hardware configurations.\n  - **Operating Systems Compatibility**: Operating systems compatibility is the software's ability to work on different operating systems, such as macOS, Windows, and Linux distributions like Ubuntu and Fedora.\n  - **Network Compatibility**: Network compatibility means the software can work in different network conditions, such as different network speeds, protocols, security settings, etc.\n  - **Browser Compatibility**: Browser compatibility means the web application can work consistently across different browsers, such as Google Chrome, Safari, Firefox, etc.\n  - **Mobile Compatibility**: It is important to ensure that your software applications work on a variety of Android and iOS devices, including phones and tablets.",
+          "fr": "- **Tests de compatibilité** : l’objectif est de s’assurer que ton application fonctionne dans différents environnements informatiques.\n- **Différents types de tests de compatibilité** :\n  - **Compatibilité ascendante (backwards)** : le logiciel est compatible avec les versions antérieures.\n  - **Compatibilité descendante (forwards)** : le logiciel et les systèmes fonctionneront avec les versions futures.\n  - **Compatibilité matérielle** : capacité du logiciel à fonctionner correctement dans différentes configurations matérielles.\n  - **Compatibilité des systèmes d’exploitation** : capacité à fonctionner sur différents OS, comme macOS, Windows, et des distributions Linux comme Ubuntu et Fedora.\n  - **Compatibilité réseau** : le logiciel peut fonctionner dans différentes conditions réseau (vitesses, protocoles, réglages de sécurité, etc.).\n  - **Compatibilité navigateurs** : l’application web fonctionne de façon cohérente sur différents navigateurs (Google Chrome, Safari, Firefox, etc.).\n  - **Compatibilité mobile** : il est important de s’assurer que tes applications fonctionnent sur une variété d’appareils Android et iOS, téléphones et tablettes compris."
+        },
+        {
+          "en": "## Performance Testing",
+          "fr": "## Tests de performance"
+        },
+        {
+          "en": "- **Performance Testing**: In performance testing, you test an application's speed, responsiveness, scalability, and stability under different workloads. The goal is to resolve any type of performance bottleneck.\n- **Different Types of Performance Testing**:\n  - **Load Testing**: Load testing determines how a system behaves during normal and peak load times.\n  - **Stress Testing**: Stress testing is where you test your application in extreme loads and see how well your system responds to the higher load.\n  - **Soak Testing (Endurance Testing)**: Soak testing or endurance testing is a type of load testing where you test the system with a higher load for an extended period of time.\n  - **Spike Testing**: Spike testing is where you dramatically increase and decrease the loads and analyze the system's reactions to the changes.\n  - **Breakpoint Testing (Capacity Testing)**: Breakpoint testing or capacity testing is where you slowly increment the load over time to the point where the system starts to fail or degrade.",
+          "fr": "- **Tests de performance** : tu testes la vitesse, la réactivité, la scalabilité et la stabilité d’une application sous différentes charges. L’objectif est de résoudre tout goulot d’étranglement de performance.\n- **Différents types de tests de performance** :\n  - **Load testing** : détermine le comportement du système en charge normale et en pic.\n  - **Stress testing** : tu testes l’application sous des charges extrêmes pour voir comment le système réagit.\n  - **Soak testing (endurance)** : type de load testing où tu testes le système avec une charge élevée pendant une période prolongée.\n  - **Spike testing** : tu augmentes et diminues dramatiquement les charges et analyses les réactions du système.\n  - **Breakpoint testing (capacity)** : tu incrémentes lentement la charge jusqu’au point où le système commence à échouer ou se dégrader."
+        },
+        {
+          "en": "## Security Testing",
+          "fr": "## Tests de sécurité"
+        },
+        {
+          "en": "- **Security Testing**: Security testing helps identify vulnerabilities and weaknesses.\n- **Security Principles**:\n  - **Confidentiality**: This protects against the release of sensitive information to other recipients that aren't the intended recipient.\n  - **Integrity**: This involves preventing malicious users from modifying user information.\n  - **Authentication**: This involves verifying the user's identity to ensure that they are allowed to use that system.\n  - **Authorization**: This is the process of determining what actions authenticated users are allowed to perform or which parts of the system they are permitted to access.\n  - **Availability**: This ensures that information and services are available to authorized users when they need it.\n  - **Non-Repudiation**: This ensures that both the sender and recipient have proof of delivery and verification of the sender's identity. It protects against the sender denying having sent the information.\n- **Common Security Threats**:\n  - **Cross-Site Scripting (XSS)**: XSS attacks happen when an attacker injects malicious scripts into a web page and then executes them in the context of the victim's browser.\n  - **SQL Injection**: SQL injection allows malicious users to inject malicious code into a database.\n  - **Denial-of-Service (DoS) Attack**: DoS attack is when malicious users flood a website with a high number of requests or traffic, causing the server to slow down and possibly crash, making the site unavailable to users. \n- **Categories of Security Testing Tools**:\n  - **Static Application Security Testing**: These tools evaluate the source code for an application to identify security vulnerabilities.\n  - **Dynamic Application Security Testing**: These tools interface with the application's front-end to uncover potential security weaknesses. DAST tools do not have access to the source code.\n- **Penetration Testing (pentest)**: Penetration testing is a type of security testing that involves creating simulated cyberattacks on the application to identify any vulnerabilities in the system.",
+          "fr": "- **Tests de sécurité** : aident à identifier vulnérabilités et faiblesses.\n- **Principes de sécurité** :\n  - **Confidentialité** : protège contre la divulgation d’informations sensibles à des destinataires non prévus.\n  - **Intégrité** : empêche des utilisateurs malveillants de modifier les informations utilisateur.\n  - **Authentification** : vérifie l’identité de l’utilisateur pour s’assurer qu’il est autorisé à utiliser le système.\n  - **Autorisation** : détermine quelles actions les utilisateurs authentifiés peuvent effectuer ou quelles parties du système ils peuvent accéder.\n  - **Disponibilité** : garantit que les informations et services sont disponibles pour les utilisateurs autorisés quand ils en ont besoin.\n  - **Non-répudiation** : garantit que l’émetteur et le destinataire ont une preuve de livraison et une vérification de l’identité de l’émetteur. Protège contre le déni d’avoir envoyé l’information.\n- **Menaces de sécurité courantes** :\n  - **Cross-Site Scripting (XSS)** : injections de scripts malveillants dans une page web, exécutés dans le contexte du navigateur de la victime.\n  - **SQL Injection** : permet à des utilisateurs malveillants d’injecter du code malveillant dans une base de données.\n  - **Attaque Denial-of-Service (DoS)** : des utilisateurs malveillants inondent un site de requêtes ou de trafic, ce qui ralentit voire fait planter le serveur et rend le site indisponible.\n- **Catégories d’outils de tests de sécurité** :\n  - **Static Application Security Testing** : évaluent le code source pour identifier des vulnérabilités.\n  - **Dynamic Application Security Testing** : interagissent avec le front-end de l’application pour découvrir des faiblesses potentielles. Les outils DAST n’ont pas accès au code source.\n- **Tests de pénétration (pentest)** : type de test de sécurité qui simule des cyberattaques sur l’application pour identifier des vulnérabilités."
+        },
+        {
+          "en": "## A/B Testing",
+          "fr": "## Tests A/B"
+        },
+        {
+          "en": "- **A/B Testing**: A/B testing involves comparing two versions of a page or application and studying which version performs better. It is also known as bucket or split testing. A/B testing allows you to make more data-driven decisions and continually improve the user experience.\n- **Tools for A/B Testing**: Examples of tools to use for A/B testing include GrowthBook and LaunchDarkly.",
+          "fr": "- **Tests A/B** : comparent deux versions d’une page ou d’une application pour étudier laquelle performe mieux. On parle aussi de bucket testing ou split testing. Les tests A/B te permettent de prendre des décisions plus data-driven et d’améliorer continuellement l’expérience utilisateur.\n- **Outils pour les tests A/B** : GrowthBook et LaunchDarkly, par exemple."
+        },
+        {
+          "en": "## Alpha and Beta Testing",
+          "fr": "## Tests alpha et bêta"
+        },
+        {
+          "en": "Once the initial development and software testing are complete, it is important to have the application tested by testers and real users. This is where alpha and beta testing come in.",
+          "fr": "Une fois le développement initial et les tests logiciels terminés, il est important de faire tester l’application par des testeurs et de vrais utilisateurs. C’est là qu’interviennent les tests alpha et bêta."
+        },
+        {
+          "en": "- **Alpha Testing**: Alpha testing is done by a select group of testers who go through the application to ensure there are no bugs before it is released into the marketplace. Alpha testing is part of acceptance testing and utilizes both white and black box testing techniques.\n- **Beta Testing**: Beta testing is where the application is made available to real users. Users can interact with the application and provide feedback. Beta testing is also a form of user acceptance testing.\n- **Acceptance Testing**: Acceptance testing ensures that the software application meets the business requirements and the needs of users before its release.\n- **Black Box Testing**: Black box testing only focuses on the expected behavior of the application.\n- **White Box Testing**: White box testing involves the tester knowing the internal components and performing tests on them.",
+          "fr": "- **Tests alpha** : réalisés par un groupe sélectionné de testeurs qui parcourent l’application pour s’assurer qu’il n’y a pas de bugs avant la mise sur le marché. Les tests alpha font partie des tests d’acceptation et utilisent des techniques white box et black box.\n- **Tests bêta** : l’application est mise à disposition de vrais utilisateurs. Ils peuvent interagir et fournir des retours. Les tests bêta sont aussi une forme de test d’acceptation utilisateur.\n- **Tests d’acceptation** : garantissent que l’application répond aux exigences métier et aux besoins des utilisateurs avant sa sortie.\n- **Black box testing** : se concentre uniquement sur le comportement attendu de l’application.\n- **White box testing** : le testeur connaît les composants internes et effectue des tests dessus."
+        },
+        {
+          "en": "## Regression Testing",
+          "fr": "## Tests de régression"
+        },
+        {
+          "en": "- **Regression**: Regression refers to situations where new changes unintentionally break existing functionality.\n- **Regression Testing**: Regression testing helps catch regression issues. In regression testing, you re-run functional tests against parts of your application to ensure that everything still works as expected.\n- **Tools for Regression Testing**: Tools that you can use to perform regression testing include Puppeteer, Playwright, Selenium, and Cypress.\n- **Techniques for Regression Testing**: \n  - **Unit Regression Testing**: This is where you have a list of items that need to be tested each time major changes or fixes are implemented into the app.\n  - **Partial Regression Testing**: This involves targeted approaches to ensure that new changes have not broken specific aspects of the application.\n  - **Complete Regression Testing**: This runs tests against all the functionalities in the codebase. This is the most time-consuming and detailed option.\n- **Retesting**: Retesting is used to check for known issues and ensure that they have been resolved. In contrast, regression testing searches for unknown issues that might have occurred through recent changes in the codebase.",
+          "fr": "- **Régression** : situations où de nouveaux changements cassent involontairement des fonctionnalités existantes.\n- **Tests de régression** : aident à attraper les problèmes de régression. Tu relances des tests fonctionnels sur des parties de ton application pour t’assurer que tout fonctionne encore comme prévu.\n- **Outils pour les tests de régression** : Puppeteer, Playwright, Selenium et Cypress.\n- **Techniques de tests de régression** :\n  - **Unit regression testing** : liste d’éléments à tester à chaque fois que des changements majeurs ou des correctifs sont implémentés.\n  - **Partial regression testing** : approches ciblées pour s’assurer que les nouveaux changements n’ont pas cassé des aspects précis de l’application.\n  - **Complete regression testing** : lance des tests sur toutes les fonctionnalités du codebase. C’est l’option la plus longue et la plus détaillée.\n- **Retesting** : sert à vérifier des problèmes connus et s’assurer qu’ils ont été résolus. En revanche, les tests de régression cherchent des problèmes inconnus qui pourraient être apparus suite à de récents changements."
+        },
+        {
+          "en": "## What is TypeScript",
+          "fr": "## Qu’est-ce que TypeScript"
+        },
+        {
+          "en": "- **JavaScript**: JavaScript is a dynamically-typed language. This means that variables can receive any values at run time. The challenge of a dynamically-typed language is that the lack of type safety can introduce errors.",
+          "fr": "- **JavaScript** : JavaScript est un langage à typage dynamique. Cela signifie que les variables peuvent recevoir n’importe quelles valeurs à l’exécution. Le défi d’un langage à typage dynamique est que le manque de sûreté de type peut introduire des erreurs."
+        },
+        {
+          "en": "For example, even if your JavaScript function expects an array, you can still call it with a number:",
+          "fr": "Par exemple, même si ta fonction JavaScript attend un tableau, tu peux quand même l’appeler avec un nombre :"
+        },
+        {
+          "en": "The `console` output for the example above will be `undefined`.",
+          "fr": "La sortie `console` pour l’exemple ci-dessus sera `undefined`."
+        },
+        {
+          "en": "- **TypeScript**: TypeScript extends the JavaScript language to include static typing, which helps catch errors caused by type mismatches before you run your code.",
+          "fr": "- **TypeScript** : TypeScript étend le langage JavaScript pour inclure le typage statique, ce qui aide à attraper les erreurs dues à des décalages de types avant d’exécuter ton code."
+        },
+        {
+          "en": "For example, you can define a type for the `array` parameter as follows:",
+          "fr": "Par exemple, tu peux définir un type pour le paramètre `array` comme suit :"
+        },
+        {
+          "en": "This type definition tells TypeScript that the `array` parameter must be an array of strings. Then, when you call `getRandomValue` and pass it a number, you get an error called a compiler error.",
+          "fr": "Cette définition de type indique à TypeScript que le paramètre `array` doit être un tableau de chaînes. Ensuite, quand tu appelles `getRandomValue` en passant un nombre, tu obtiens une erreur appelée erreur de compilation."
+        },
+        {
+          "en": "- **Compiler**: You first need to compile TypeScript code into regular JavaScript. When you run the compiler, TypeScript will evaluate your code and throw an error for any issues where the types don't match.",
+          "fr": "- **Compilateur** : tu dois d’abord compiler le code TypeScript en JavaScript classique. Quand tu lances le compilateur, TypeScript évalue ton code et lève une erreur pour tout problème où les types ne correspondent pas."
+        },
+        {
+          "en": "## Data Types in TypeScript",
+          "fr": "## Types de données en TypeScript"
+        },
+        {
+          "en": "- **Primitive Data Types in TypeScript**: For the primitive data types `string`, `null`, `undefined`, `number`, `boolean`, and `bigint`, TypeScript offers corresponding type keywords.",
+          "fr": "- **Types de données primitifs en TypeScript** : pour les types primitifs `string`, `null`, `undefined`, `number`, `boolean` et `bigint`, TypeScript offre des mots-clés de type correspondants."
+        },
+        {
+          "en": "- **Array**: You can define an array of specific type with two different syntaxes.",
+          "fr": "- **Tableau** : tu peux définir un tableau d’un type précis avec deux syntaxes différentes."
+        },
+        {
+          "en": "- **Objects**: You can define the exact structure of an object.",
+          "fr": "- **Objets** : tu peux définir la structure exacte d’un objet."
+        },
+        {
+          "en": "If you want an object with any keys, but where all values must be strings, there are two ways to define it:",
+          "fr": "Si tu veux un objet avec des clés quelconques, mais où toutes les valeurs doivent être des chaînes, il y a deux façons de le définir :"
+        },
+        {
+          "en": "- **Other Helpful Types in TypeScript**:\n  - **`any`**: `any` indicates that a value can have any type. It tells the compiler to stop caring about the type of that variable.\n  - **`unknown`**: `unknown` tells TypeScript that you _do_ care about the type of the value, but you don’t actually know what it is. `unknown` is generally preferred over `any`.\n  - **`void`**: This is a special type that you’ll typically only use when defining functions. Functions that don’t have a return value use a return type of `void`.\n  - **`never`**: It represents a type that will never exist.",
+          "fr": "- **Autres types utiles en TypeScript** :\n  - **`any`** : `any` indique qu’une valeur peut avoir n’importe quel type. Cela dit au compilateur d’arrêter de se soucier du type de cette variable.\n  - **`unknown`** : `unknown` dit à TypeScript que tu te soucies du type de la valeur, mais que tu ne le connais pas encore. `unknown` est généralement préféré à `any`.\n  - **`void`** : type spécial que tu utiliseras surtout en définissant des fonctions. Les fonctions sans valeur de retour utilisent un type de retour `void`.\n  - **`never`** : représente un type qui n’existera jamais."
+        },
+        {
+          "en": "- **`type` Keyword**: This keyword is like `const`, but instead of declaring a variable, you can declare a type.",
+          "fr": "- **Mot-clé `type`** : ce mot-clé ressemble à `const`, mais au lieu de déclarer une variable, tu déclares un type."
+        },
+        {
+          "en": "It is useful for declaring custom types such as union types or types that include only specific values:",
+          "fr": "Il est utile pour déclarer des types personnalisés comme des union types ou des types qui n’incluent que des valeurs précises :"
+        },
+        {
+          "en": "- **`interface`**: Interfaces are like classes for types. They can implement or extend other interfaces, are specifically object types, and are generally preferred unless you need a specific feature offered by a `type` declaration.",
+          "fr": "- **`interface`** : les interfaces ressemblent à des classes pour les types. Elles peuvent implémenter ou étendre d’autres interfaces, sont spécifiquement des types d’objets, et sont généralement préférées sauf si tu as besoin d’une fonctionnalité propre à une déclaration `type`."
+        },
+        {
+          "en": "- **Defining Return Type**: You can also define the _return type_ of the function.",
+          "fr": "- **Définir le type de retour** : tu peux aussi définir le type de retour de la fonction."
+        },
+        {
+          "en": "The example below defines the return value as a string. If you try to return anything else, TypeScript will give a compiler error.",
+          "fr": "L’exemple ci-dessous définit la valeur de retour comme une chaîne. Si tu essaies de renvoyer autre chose, TypeScript donnera une erreur de compilation."
+        },
+        {
+          "en": "## Generics",
+          "fr": "## Génériques"
+        },
+        {
+          "en": "- **Defining Generic Type**: You can define a generic type and refer to it in your function. It can be thought of as a special parameter you provide to a function to control the behavior of the function's type definition.",
+          "fr": "- **Définir un type générique** : tu peux définir un type générique et y faire référence dans ta fonction. On peut le voir comme un paramètre spécial fourni à une fonction pour contrôler le comportement de sa définition de type."
+        },
+        {
+          "en": "Here is an example of defining a generic type for a function:",
+          "fr": "Voici un exemple de définition d’un type générique pour une fonction :"
+        },
+        {
+          "en": "The `<T>` syntax tells TypeScript that you are defining a generic type `T` for the function. `T` is a common name for generic types, but you can use any name.",
+          "fr": "La syntaxe `<T>` indique à TypeScript que tu définis un type générique `T` pour la fonction. `T` est un nom courant pour les types génériques, mais tu peux en utiliser un autre."
+        },
+        {
+          "en": "Then, you tell TypeScript that the `array` parameter is an array of values matching the generic type, and that the returned value is a single element of that same type.",
+          "fr": "Ensuite, tu indiques à TypeScript que le paramètre `array` est un tableau de valeurs correspondant au type générique, et que la valeur renvoyée est un seul élément de ce même type."
+        },
+        {
+          "en": "- **Specifying Type Argument in Function Call**: You can pass a type argument to a function call using angle brackets between the function name and its parameters.",
+          "fr": "- **Spécifier un argument de type dans un appel de fonction** : tu peux passer un argument de type à un appel de fonction avec des chevrons entre le nom de la fonction et ses paramètres."
+        },
+        {
+          "en": "Here is an example of passing a type argument to a function call:",
+          "fr": "Voici un exemple de passage d’un argument de type à un appel de fonction :"
+        },
+        {
+          "en": "This tells TypeScript that the element you expect to find will be an input element.",
+          "fr": "Cela indique à TypeScript que l’élément que tu t’attends à trouver sera un élément input."
+        },
+        {
+          "en": "## Type Narrowing",
+          "fr": "## Rétrécissement de types (type narrowing)"
+        },
+        {
+          "en": "- **Narrowing by Truthiness**: In the example below, you get a compiler error trying to access the `value` property of `email` because `email` _might_ be `null`.",
+          "fr": "- **Rétrécissement par truthiness** : dans l’exemple ci-dessous, tu obtiens une erreur de compilation en essayant d’accéder à la propriété `value` de `email` parce que `email` pourrait être `null`."
+        },
+        {
+          "en": "You can use a conditional statement to confirm `email` is _truthy_ before accessing the property:",
+          "fr": "Tu peux utiliser une instruction conditionnelle pour confirmer que `email` est truthy avant d’accéder à la propriété :"
+        },
+        {
+          "en": "Truthiness checks can also work in the reverse direction:",
+          "fr": "Les vérifications de truthiness peuvent aussi fonctionner dans l’autre sens :"
+        },
+        {
+          "en": "Throwing an error ends the logical execution of this code, which means when you reach the `console.log()` call, TypeScript knows `email` _cannot_ be `null`.",
+          "fr": "Lever une erreur met fin à l’exécution logique de ce code, ce qui signifie qu’au moment d’atteindre l’appel `console.log()`, TypeScript sait que `email` ne peut pas être `null`."
+        },
+        {
+          "en": "- **Optional Chaining**: Optional chaining `?.` is also a form of type narrowing, under the same premise that the property access can't happen if the `email` value is `null`.",
+          "fr": "- **Optional chaining** : le chaînage optionnel `?.` est aussi une forme de type narrowing, selon le même principe : l’accès à la propriété ne peut pas se produire si la valeur `email` est `null`."
+        },
+        {
+          "en": "- **`typeof` Operator**: You can use a conditional to check the type of the variable using the `typeof` operator.",
+          "fr": "- **Opérateur `typeof`** : tu peux utiliser une condition pour vérifier le type de la variable avec l’opérateur `typeof`."
+        },
+        {
+          "en": "- **`instanceof` Keyword**: If the object comes from a class, you can use the `instanceof` keyword to narrow the type.",
+          "fr": "- **Mot-clé `instanceof`** : si l’objet vient d’une classe, tu peux utiliser le mot-clé `instanceof` pour rétrécir le type."
+        },
+        {
+          "en": "- **Casting**: When TypeScript cannot automatically determine the type of a value, such as the result from `request.json()` method in the example below, you'll get a compiler error. One way to resolve this is by casting the type, but doing so weakens TypeScript's ability to catch potential errors.",
+          "fr": "- **Casting** : quand TypeScript ne peut pas déterminer automatiquement le type d’une valeur, comme le résultat de la méthode `request.json()` dans l’exemple ci-dessous, tu obtiens une erreur de compilation. Une façon de résoudre cela est de caster le type, mais cela affaiblit la capacité de TypeScript à attraper des erreurs potentielles."
+        },
+        {
+          "en": "- **Type Guard**: Instead of casting the type, you can write a type guard:",
+          "fr": "- **Type Guard** : au lieu de caster le type, tu peux écrire un type guard :"
+        },
+        {
+          "en": "The `user is User` syntax indicates that your function returns a boolean value, which when true means the `user` value satisfies the `User` interface.",
+          "fr": "La syntaxe `user is User` indique que ta fonction renvoie une valeur booléenne qui, quand elle est vraie, signifie que la valeur `user` satisfait l’interface `User`."
+        },
+        {
+          "en": "## `tsconfig` File",
+          "fr": "## Fichier `tsconfig`"
+        },
+        {
+          "en": "- **`tsconfig.json`**: TypeScript's compiler settings live in a `tsconfig.json` file in the root directory of your project.",
+          "fr": "- **`tsconfig.json`** : les réglages du compilateur TypeScript vivent dans un fichier `tsconfig.json` à la racine de ton projet."
+        },
+        {
+          "en": "Here are descriptions of the compiler options used in the example above:",
+          "fr": "Voici les descriptions des options du compilateur utilisées dans l’exemple ci-dessus :"
+        },
+        {
+          "en": "- **`compilerOptions`**: The `compilerOptions` property is where you control how the TypeScript compiler behaves.\n- **`rootDir` and `outDir`**: The `rootDir` and `outDir` tell TypeScript which directory holds your source files, and which directory should contain the transpiled JavaScript code.\n- **`lib`**: The `lib` property determines which type definitions the compiler uses, and allows you to include support for specific ES releases, the DOM, and more.\n- **`module` and `moduleResolution`**: The `module` and `moduleResolution` work in tandem to manage how your package uses modules - either CommonJS or ECMAScript.\n- **`esModuleInterop`**: The `esModuleInterop` allows for smoother interoperability between CommonJS and ES modules by automatically creating namespace objects for imports.\n- **`skipLibCheck`**: The `skipLibCheck` option skips validating `.d.ts` files that aren't referenced by imports in your code.\n- **`strict`**: The `strict` flag enables several checks, such as ensuring proper handling of nullable types and warning when TypeScript falls back to `any`.\n- **`exclude`**: The top-level `exclude` property tells the compiler to ignore these TypeScript files during compilation.",
+          "fr": "- **`compilerOptions`** : la propriété `compilerOptions` contrôle le comportement du compilateur TypeScript.\n- **`rootDir` et `outDir`** : `rootDir` et `outDir` indiquent à TypeScript quel répertoire contient tes fichiers source, et lequel doit contenir le JavaScript transpilé.\n- **`lib`** : la propriété `lib` détermine quelles définitions de types le compilateur utilise, et te permet d’inclure le support de versions ES précises, du DOM, etc.\n- **`module` et `moduleResolution`** : `module` et `moduleResolution` travaillent ensemble pour gérer la façon dont ton package utilise les modules — CommonJS ou ECMAScript.\n- **`esModuleInterop`** : `esModuleInterop` facilite l’interopérabilité entre CommonJS et les modules ES en créant automatiquement des objets namespace pour les imports.\n- **`skipLibCheck`** : l’option `skipLibCheck` saute la validation des fichiers `.d.ts` non référencés par des imports dans ton code.\n- **`strict`** : le flag `strict` active plusieurs vérifications, comme une bonne gestion des types nullables et un avertissement quand TypeScript retombe sur `any`.\n- **`exclude`** : la propriété de premier niveau `exclude` dit au compilateur d’ignorer ces fichiers TypeScript pendant la compilation."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "workshop": "lab-scatterplot-graph",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "bd7178d8c242eddfaeb5bd13.md",
+      "id": "bd7178d8c242eddfaeb5bd13",
+      "dashedName": "build-a-scatterplot-graph",
+      "title": {
+        "en": "Build a Scatterplot Graph",
+        "fr": "Construire un nuage de points"
+      },
+      "description": [
+        {
+          "en": "In this project you will use the data from `https://cdn.freecodecamp.org/curriculum/labs/data/scatterplot/cyclist-data.json` to build a scatterplot graph.",
+          "fr": "Dans ce projet, tu utiliseras les données de `https://cdn.freecodecamp.org/curriculum/labs/data/scatterplot/cyclist-data.json` pour construire un nuage de points."
+        },
+        {
+          "en": "The tests require axes to be generated using the D3 axis property, which automatically generates ticks along the axis. These ticks are required for passing the D3 tests because their positions are used to determine alignment of graphed elements.",
+          "fr": "Les tests exigent que les axes soient générés avec la propriété d'axes de D3, qui génère automatiquement des ticks le long de l'axe. Ces ticks sont nécessaires pour réussir les tests D3, car leurs positions servent à déterminer l'alignement des éléments du graphique."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. Your chart should have a title with a corresponding `id=\"title\"`.\n1. Your chart should have a `g` element x-axis with a corresponding `id=\"x-axis\"`.\n1. Your chart should have a `g` element y-axis with a corresponding `id=\"y-axis\"`.\n1. Both axes should contain multiple tick labels, each with a corresponding `class=\"tick\"`.\n1. Your chart should have a `circle` element for each data point with a corresponding `class=\"dot\"` displaying the data.\n1. Each `.dot` should have the attributes `data-xvalue` and `data-yvalue` containing `year` and `time` values. For `data-xvalue`, integers (full years) or Date objects are acceptable for test evaluation. For `data-yvalue` (minutes), use Date objects.\n1. The `.dot` elements' `data-xvalue` attributes should match the order of the provided data.\n1. The `.dot` elements' `data-yvalue` attributes should match the order of the provided data.\n1. Each `.dot` element should align with the corresponding value on the x-axis.\n1. Each `.dot` element should align with the corresponding value on the y-axis.\n1. There should be multiple tick labels on the y-axis with `%M:%S` time format.\n1. There should be multiple tick labels on the x-axis that show the year.\n1. The range of the x-axis labels should be within the range of the actual x-axis data.\n1. The range of the y-axis labels should be within the range of the actual y-axis data.\n1. There should be a legend containing descriptive text that has `id=\"legend\"`.\n1. You should be able to mouse over an area and see a tooltip with a corresponding `id=\"tooltip\"` which displays more information about the area.\n1. Your tooltip should have a `data-year` attribute that corresponds to the `data-xvalue` of the active area.",
+          "fr": "1. Ton graphique devrait avoir un titre avec un `id=\"title\"` correspondant.\n1. Ton graphique devrait avoir un élément `g` pour l'axe des x avec un `id=\"x-axis\"` correspondant.\n1. Ton graphique devrait avoir un élément `g` pour l'axe des y avec un `id=\"y-axis\"` correspondant.\n1. Les deux axes devraient contenir plusieurs libellés de tick, chacun avec une `class=\"tick\"` correspondante.\n1. Ton graphique devrait avoir un élément `circle` pour chaque point de données avec une `class=\"dot\"` correspondante affichant les données.\n1. Chaque `.dot` devrait avoir les attributs `data-xvalue` et `data-yvalue` contenant les valeurs `year` et `time`. Pour `data-xvalue`, des entiers (années complètes) ou des objets Date sont acceptables pour l'évaluation des tests. Pour `data-yvalue` (minutes), utilise des objets Date.\n1. Les attributs `data-xvalue` des éléments `.dot` devraient correspondre à l'ordre des données fournies.\n1. Les attributs `data-yvalue` des éléments `.dot` devraient correspondre à l'ordre des données fournies.\n1. Chaque élément `.dot` devrait s'aligner avec la valeur correspondante sur l'axe des x.\n1. Chaque élément `.dot` devrait s'aligner avec la valeur correspondante sur l'axe des y.\n1. Il devrait y avoir plusieurs libellés de tick sur l'axe des y au format horaire `%M:%S`.\n1. Il devrait y avoir plusieurs libellés de tick sur l'axe des x qui affichent l'année.\n1. La plage des libellés de l'axe des x devrait être dans la plage des données réelles de l'axe des x.\n1. La plage des libellés de l'axe des y devrait être dans la plage des données réelles de l'axe des y.\n1. Il devrait y avoir une légende contenant du texte descriptif avec `id=\"legend\"`.\n1. Tu devrais pouvoir survoler une zone avec la souris et voir une infobulle avec un `id=\"tooltip\"` correspondant qui affiche plus d'informations sur la zone.\n1. Ton infobulle devrait avoir un attribut `data-year` qui correspond au `data-xvalue` de la zone active."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The chart should have an element with the `id` of `title` to contain the title.",
+          "fr": "Le graphique devrait avoir un élément avec l'`id` `title` pour contenir le titre."
+        },
+        {
+          "en": "The chart should have an `x-axis` with a corresponding `id=\"x-axis\"`.",
+          "fr": "Le graphique devrait avoir un `x-axis` avec un `id=\"x-axis\"` correspondant."
+        },
+        {
+          "en": "The chart should have a `y-axis` with a corresponding `id=\"y-axis\"`.",
+          "fr": "Le graphique devrait avoir un `y-axis` avec un `id=\"y-axis\"` correspondant."
+        },
+        {
+          "en": "The x axis should contain multiple tick labels, each with the corresponding `class=\"tick\"`.",
+          "fr": "L'axe des x devrait contenir plusieurs libellés de tick, chacun avec la `class=\"tick\"` correspondante."
+        },
+        {
+          "en": "The y axis should contain multiple tick labels, each with the corresponding `class=\"tick\"`.",
+          "fr": "L'axe des y devrait contenir plusieurs libellés de tick, chacun avec la `class=\"tick\"` correspondante."
+        },
+        {
+          "en": "Your chart should have dots, that each have a class of `dot`, which represent the data being plotted.",
+          "fr": "Ton graphique devrait avoir des points, chacun avec une classe `dot`, qui représentent les données tracées."
+        },
+        {
+          "en": "Each dot should have the properties `data-xvalue` and `data-yvalue` containing their corresponding x and y values.",
+          "fr": "Chaque point devrait avoir les propriétés `data-xvalue` et `data-yvalue` contenant leurs valeurs x et y correspondantes."
+        },
+        {
+          "en": "The `data-xvalue` and `data-yvalue` of each dot should be within the range of the actual data and in the correct data format. For `data-xvalue`, integers (full years) or Date objects are acceptable for test evaluation. For `data-yvalue` (minutes), use Date objects.",
+          "fr": "Les `data-xvalue` et `data-yvalue` de chaque point devraient être dans la plage des données réelles et au bon format. Pour `data-xvalue`, des entiers (années complètes) ou des objets Date sont acceptables pour l'évaluation des tests. Pour `data-yvalue` (minutes), utilise des objets Date."
+        },
+        {
+          "en": "The `data-xvalue` and its corresponding dot should align with the corresponding point/value on the x-axis.",
+          "fr": "Le `data-xvalue` et le point correspondant devraient s'aligner avec le point/la valeur correspondant(e) sur l'axe des x."
+        },
+        {
+          "en": "The `data-yvalue` and its corresponding dot should align with the corresponding point/value on the y-axis.",
+          "fr": "Le `data-yvalue` et le point correspondant devraient s'aligner avec le point/la valeur correspondant(e) sur l'axe des y."
+        },
+        {
+          "en": "You can see multiple tick labels on the y-axis with `%M:%S` time format.",
+          "fr": "Tu peux voir plusieurs libellés de tick sur l'axe des y au format horaire `%M:%S`."
+        },
+        {
+          "en": "You can see multiple tick labels on the x-axis that show the year.",
+          "fr": "Tu peux voir plusieurs libellés de tick sur l'axe des x qui affichent l'année."
+        },
+        {
+          "en": "The range of the x-axis labels are within the range of the actual x-axis data.",
+          "fr": "La plage des libellés de l'axe des x est dans la plage des données réelles de l'axe des x."
+        },
+        {
+          "en": "The range of the y-axis labels are within the range of the actual y-axis data.",
+          "fr": "La plage des libellés de l'axe des y est dans la plage des données réelles de l'axe des y."
+        },
+        {
+          "en": "You can see a legend containing descriptive text that has `id=\"legend\"`.",
+          "fr": "Tu peux voir une légende contenant du texte descriptif avec `id=\"legend\"`."
+        },
+        {
+          "en": "When hovering over an area your scatter plot should have a tooltip with a corresponding `id=\"tooltip\"` which displays more information about the area.",
+          "fr": "Lorsque tu survoles une zone, ton nuage de points devrait avoir une infobulle avec un `id=\"tooltip\"` correspondant qui affiche plus d'informations sur la zone."
+        },
+        {
+          "en": "The tooltip should have a `data-year` attribute that corresponds to the `data-xvalue` of the active area.",
+          "fr": "L'infobulle devrait avoir un attribut `data-year` qui correspond au `data-xvalue` de la zone active."
+        }
+      ]
+    }
+  ]
+}

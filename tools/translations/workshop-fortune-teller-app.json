@@ -1,7 +1,7 @@
 {
   "workshop": "workshop-fortune-teller-app",
   "kind": "workshop",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
   "files": [
     {
@@ -15,29 +15,29 @@
       "description": [
         {
           "en": "In this workshop, you will continue to practice working with TypeScript by building a fortune telling app.",
-          "fr": ""
+          "fr": "Dans cet atelier, tu vas continuer à pratiquer TypeScript en construisant une application de voyance."
         },
         {
           "en": "Begin by declaring an interface named `Card`. Inside the `Card` interface, add the following properties: `name`, `name_short` and `value`. The `name`, and `name_short` properties should have the types set to `string` and the `value` should have a union type set to `string | number`.",
-          "fr": ""
+          "fr": "Commence par déclarer une interface nommée `Card`. À l’intérieur de l’interface `Card`, ajoute les propriétés suivantes : `name`, `name_short` et `value`. Les propriétés `name` et `name_short` doivent avoir le type `string`, et `value` doit avoir un type union `string | number`."
         }
       ],
       "hints": [
         {
           "en": "You should declare an interface named `Card`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une interface nommée `Card`."
         },
         {
           "en": "Your `Card` interface should have a `name` property of type `string`.",
-          "fr": ""
+          "fr": "Ton interface `Card` doit avoir une propriété `name` de type `string`."
         },
         {
           "en": "Your `Card` interface should have a `name_short` property of type `string`.",
-          "fr": ""
+          "fr": "Ton interface `Card` doit avoir une propriété `name_short` de type `string`."
         },
         {
           "en": "Your `Card` interface should have a `value` property with a union type of `string` and `number`.",
-          "fr": ""
+          "fr": "Ton interface `Card` doit avoir une propriété `value` avec un type union de `string` et `number`."
         }
       ]
     },
@@ -52,37 +52,37 @@
       "description": [
         {
           "en": "There are more properties to add to the `Card` interface. Start by setting `value_int` to type `number`. All other properties should be of type `string`: `suit`, `type`, `img`, `meaning_up`, `meaning_rev`, and `desc`.",
-          "fr": ""
+          "fr": "Il y a d’autres propriétés à ajouter à l’interface `Card`. Commence par définir `value_int` avec le type `number`. Toutes les autres propriétés doivent être de type `string` : `suit`, `type`, `img`, `meaning_up`, `meaning_rev` et `desc`."
         }
       ],
       "hints": [
         {
           "en": "You should have a property `value_int` with a type of `number`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `value_int` de type `number`."
         },
         {
           "en": "You should have a property `suit` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `suit` de type `string`."
         },
         {
           "en": "You should have a property `type` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `type` de type `string`."
         },
         {
           "en": "You should have a property `img` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `img` de type `string`."
         },
         {
           "en": "You should have a property `meaning_up` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `meaning_up` de type `string`."
         },
         {
           "en": "You should have a property `meaning_rev` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `meaning_rev` de type `string`."
         },
         {
           "en": "You should have a property `desc` with a type of `string`.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `desc` de type `string`."
         }
       ]
     },
@@ -97,17 +97,17 @@
       "description": [
         {
           "en": "You need another interface called `Deck`. This interface should have a `cards` property, which is an array of the previous interface.",
-          "fr": ""
+          "fr": "Tu as besoin d’une autre interface appelée `Deck`. Cette interface doit avoir une propriété `cards`, qui est un tableau de l’interface précédente."
         }
       ],
       "hints": [
         {
           "en": "You should declare an interface named `Deck`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une interface nommée `Deck`."
         },
         {
           "en": "Your `Deck` interface should have a property `cards` of type `Card[]`.",
-          "fr": ""
+          "fr": "Ton interface `Deck` doit avoir une propriété `cards` de type `Card[]`."
         }
       ]
     },
@@ -122,45 +122,41 @@
       "description": [
         {
           "en": "In a previous lecture, you learned that type inference is TypeScript's ability to automatically determine and assign types to variables, function returns, and expressions based on their usage and context.",
-          "fr": ""
+          "fr": "Dans une leçon précédente, tu as appris que l’inférence de types est la capacité de TypeScript à déterminer et assigner automatiquement des types aux variables, aux retours de fonctions et aux expressions selon leur usage et leur contexte."
         },
         {
           "en": "In TypeScript, generics make functions, classes, and types more flexible. Generics allow the creation of type variables, eliminating the need to explicitly define types each time. This enables the same function to work safely with different types.",
-          "fr": ""
+          "fr": "En TypeScript, les génériques rendent les fonctions, les classes et les types plus flexibles. Les génériques permettent de créer des variables de type, ce qui évite de définir explicitement les types à chaque fois. Ainsi, la même fonction peut travailler en toute sécurité avec différents types."
         },
         {
           "en": "Here is a simple example of generics:",
-          "fr": ""
-        },
-        {
-          "en": "",
-          "fr": ""
+          "fr": "Voici un exemple simple de génériques :"
         },
         {
           "en": "Functions can use two or more generics. `T` is used by convention, and additional type variables like `S` can be added as needed.",
-          "fr": ""
+          "fr": "Les fonctions peuvent utiliser deux génériques ou plus. `T` est utilisé par convention, et d’autres variables de type comme `S` peuvent être ajoutées selon les besoins."
         },
         {
           "en": "Create a function `getElement` that takes `selector` of type `string` as a parameter. It should also take a generic type `T` that extends `HTMLElement`, and have a return type `T`.",
-          "fr": ""
+          "fr": "Crée une fonction `getElement` qui prend `selector` de type `string` en paramètre. Elle doit aussi prendre un type générique `T` qui étend `HTMLElement`, et avoir un type de retour `T`."
         }
       ],
       "hints": [
         {
           "en": "You should have an arrow function named `getElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction fléchée nommée `getElement`."
         },
         {
           "en": "Your `getElement` function should take a parameter named `selector` of type `string`.",
-          "fr": ""
+          "fr": "Ta fonction `getElement` doit prendre un paramètre nommé `selector` de type `string`."
         },
         {
           "en": "The generic type parameter `T` should extend the `HTMLElement` type.",
-          "fr": ""
+          "fr": "Le paramètre de type générique `T` doit étendre le type `HTMLElement`."
         },
         {
           "en": "Your `getElement` function should have a return type of `T`.",
-          "fr": ""
+          "fr": "Ta fonction `getElement` doit avoir un type de retour `T`."
         }
       ]
     },
@@ -175,29 +171,29 @@
       "description": [
         {
           "en": "Inside the `getElement` function, use `querySelector` with the generics and store the result in a variable. Add an `if` statement to check if the element does not exist, and if so, throw an error with the message `Element not found: ${error message here}`. If the element exists, return it.",
-          "fr": ""
+          "fr": "À l’intérieur de la fonction `getElement`, utilise `querySelector` avec les génériques et stocke le résultat dans une variable. Ajoute une instruction `if` pour vérifier si l’élément n’existe pas, et dans ce cas, lance une erreur avec le message `Element not found: ${error message here}`. Si l’élément existe, renvoie-le."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `el` inside the `getElement` function.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `el` à l’intérieur de la fonction `getElement`."
         },
         {
           "en": "Your `el` variable should be assigned the value `document.querySelector<T>(selector)`.",
-          "fr": ""
+          "fr": "Ta variable `el` doit recevoir la valeur `document.querySelector<T>(selector)`."
         },
         {
           "en": "You should have if statement that check if `el` is not found.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction if qui vérifie si `el` n’est pas trouvé."
         },
         {
           "en": "You should throw a new Error with the message `Element not found: ${selector}` inside your `if` statement.",
-          "fr": ""
+          "fr": "Tu dois lancer une nouvelle Error avec le message `Element not found: ${selector}` à l’intérieur de ton instruction `if`."
         },
         {
           "en": "You should return the `el` variable inside the getElement function.",
-          "fr": ""
+          "fr": "Tu dois renvoyer la variable `el` à l’intérieur de la fonction getElement."
         }
       ]
     },
@@ -212,21 +208,21 @@
       "description": [
         {
           "en": "Next, you need to create a function to hide elements from the DOM. Declare a `hideElements` function that takes `...elements` as a parameter with the type `HTMLElement[]`.",
-          "fr": ""
+          "fr": "Ensuite, tu dois créer une fonction pour masquer des éléments du DOM. Déclare une fonction `hideElements` qui prend `...elements` comme paramètre avec le type `HTMLElement[]`."
         },
         {
           "en": "This function, with a CSS `hidden` class, will be used throughout the app to toggle the visibility of UI elements.",
-          "fr": ""
+          "fr": "Cette fonction, avec une classe CSS `hidden`, sera utilisée dans toute l’application pour basculer la visibilité des éléments d’interface."
         }
       ],
       "hints": [
         {
           "en": "You should have declared a function named `hideElements`.",
-          "fr": ""
+          "fr": "Tu dois avoir déclaré une fonction nommée `hideElements`."
         },
         {
           "en": "Your `hideElements` function should have a parameter named `...elements` with the type `HTMLElement[]`.",
-          "fr": ""
+          "fr": "Ta fonction `hideElements` doit avoir un paramètre nommé `...elements` avec le type `HTMLElement[]`."
         }
       ]
     },
@@ -241,21 +237,21 @@
       "description": [
         {
           "en": "Wrap up the function by using the `forEach` array method to iterate over the elements argument. Inside the callback function, add the hidden class to each element by using the `.add()` method of `classList`.",
-          "fr": ""
+          "fr": "Termine la fonction en utilisant la méthode de tableau `forEach` pour parcourir l’argument elements. Dans la fonction de rappel, ajoute la classe hidden à chaque élément avec la méthode `.add()` de `classList`."
         }
       ],
       "hints": [
         {
           "en": "You should have a `forEach` method attached to the `elements` parameter.",
-          "fr": ""
+          "fr": "Tu dois avoir une méthode `forEach` attachée au paramètre `elements`."
         },
         {
           "en": "Your forEach method should take a parameter named `el`.",
-          "fr": ""
+          "fr": "Ta méthode forEach doit prendre un paramètre nommé `el`."
         },
         {
           "en": "Inside the forEach method, you should add the hidden class using the `classList.add` method.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode forEach, tu dois ajouter la classe hidden avec la méthode `classList.add`."
         }
       ]
     },
@@ -270,29 +266,29 @@
       "description": [
         {
           "en": "You need another function that shows elements in the DOM. Similar to the last function, create a function named `showElements`. This time use `classList.remove(\"hidden\")`.",
-          "fr": ""
+          "fr": "Tu as besoin d’une autre fonction qui affiche des éléments dans le DOM. Comme pour la précédente, crée une fonction nommée `showElements`. Cette fois, utilise `classList.remove(\"hidden\")`."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `showElements`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `showElements`."
         },
         {
           "en": "Your `showElements` function should have a parameter named `...elements` with the type `HTMLElement[]`.",
-          "fr": ""
+          "fr": "Ta fonction `showElements` doit avoir un paramètre nommé `...elements` avec le type `HTMLElement[]`."
         },
         {
           "en": "Your `showElements` function you should have a `forEach` method attached to the `elements` parameter.",
-          "fr": ""
+          "fr": "Ta fonction `showElements` doit avoir une méthode `forEach` attachée au paramètre `elements`."
         },
         {
           "en": "Your `forEach` method should take a parameter named `el`.",
-          "fr": ""
+          "fr": "Ta méthode `forEach` doit prendre un paramètre nommé `el`."
         },
         {
           "en": "You should remove the `hidden` class using the `classList.remove` method inside the `forEach` method.",
-          "fr": ""
+          "fr": "Tu dois retirer la classe `hidden` avec la méthode `classList.remove` à l’intérieur de la méthode `forEach`."
         }
       ]
     },
@@ -307,45 +303,45 @@
       "description": [
         {
           "en": "So far, you have three functions: `getElement`, `hideElements`, and `showElements`.\nNow you need a function that helps you get a random fortune.",
-          "fr": ""
+          "fr": "Jusqu’ici, tu as trois fonctions : `getElement`, `hideElements` et `showElements`.\nTu as maintenant besoin d’une fonction qui t’aide à obtenir une prédiction aléatoire."
         },
         {
           "en": "Declare a function named `getRandomItem` that takes an array of `items` as an argument. Use generics for this function.",
-          "fr": ""
+          "fr": "Déclare une fonction nommée `getRandomItem` qui prend un tableau `items` comme argument. Utilise des génériques pour cette fonction."
         },
         {
           "en": "Inside the function, use `Math.random()` and `Math.floor()` to select a random fortune from the `items` array.\nDon’t forget to return the selected fortune.",
-          "fr": ""
+          "fr": "À l’intérieur de la fonction, utilise `Math.random()` et `Math.floor()` pour sélectionner une prédiction aléatoire dans le tableau `items`.\nN’oublie pas de renvoyer la prédiction sélectionnée."
         }
       ],
       "hints": [
         {
           "en": "You should declare a function named `getRandomItem`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une fonction nommée `getRandomItem`."
         },
         {
           "en": "Your `getRandomItem` function should use the generic type parameter `T`.",
-          "fr": ""
+          "fr": "Ta fonction `getRandomItem` doit utiliser le paramètre de type générique `T`."
         },
         {
           "en": "Your `getRandomItem` function should have a parameter named `items` with the type `T[]`.",
-          "fr": ""
+          "fr": "Ta fonction `getRandomItem` doit avoir un paramètre nommé `items` avec le type `T[]`."
         },
         {
           "en": "Your `getRandomItem` function should have a return type of `T`.",
-          "fr": ""
+          "fr": "Ta fonction `getRandomItem` doit avoir un type de retour `T`."
         },
         {
           "en": "You should declare a variable named `index` inside the `getRandomItem` function.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `index` à l’intérieur de la fonction `getRandomItem`."
         },
         {
           "en": "The `index` variable should use `Math.floor()` and `Math.random()` with `items.length` to produce a random index.",
-          "fr": ""
+          "fr": "La variable `index` doit utiliser `Math.floor()` et `Math.random()` avec `items.length` pour produire un indice aléatoire."
         },
         {
           "en": "Your `getRandomItem` function should return `items[index]`.",
-          "fr": ""
+          "fr": "Ta fonction `getRandomItem` doit renvoyer `items[index]`."
         }
       ]
     },
@@ -360,49 +356,49 @@
       "description": [
         {
           "en": "Since the project now works with HTML DOM elements, you need a way to render the fortune to the DOM.",
-          "fr": ""
+          "fr": "Puisque le projet travaille maintenant avec des éléments HTML du DOM, tu as besoin d’un moyen d’afficher la prédiction dans le DOM."
         },
         {
           "en": "Declare a function named `renderCard` that takes four arguments: `drawingType`, `isReversed`, `shortName`, and `img`.",
-          "fr": ""
+          "fr": "Déclare une fonction nommée `renderCard` qui prend quatre arguments : `drawingType`, `isReversed`, `shortName` et `img`."
         },
         {
           "en": "The parameters `drawingType`, `shortName`, and `img` must be of type `string`, while `isReversed` must be of type `boolean`. The function should have a return type of `string`.",
-          "fr": ""
+          "fr": "Les paramètres `drawingType`, `shortName` et `img` doivent être de type `string`, tandis que `isReversed` doit être de type `boolean`. La fonction doit avoir un type de retour `string`."
         }
       ],
       "hints": [
         {
           "en": "You should have a function named `renderCard`.",
-          "fr": ""
+          "fr": "Tu dois avoir une fonction nommée `renderCard`."
         },
         {
           "en": "Your `renderCard` function should have four parameters.",
-          "fr": ""
+          "fr": "Ta fonction `renderCard` doit avoir quatre paramètres."
         },
         {
           "en": "Your first parameter should be `drawingType` of type `string`.",
-          "fr": ""
+          "fr": "Ton premier paramètre doit être `drawingType` de type `string`."
         },
         {
           "en": "Your second parameter should be `isReversed` of type `boolean`.",
-          "fr": ""
+          "fr": "Ton deuxième paramètre doit être `isReversed` de type `boolean`."
         },
         {
           "en": "Your third parameter should be `shortName` of type `string`.",
-          "fr": ""
+          "fr": "Ton troisième paramètre doit être `shortName` de type `string`."
         },
         {
           "en": "Your fourth parameter should be `img` of type `string`.",
-          "fr": ""
+          "fr": "Ton quatrième paramètre doit être `img` de type `string`."
         },
         {
           "en": "Your `renderCard` function should have a return type of `string`.",
-          "fr": ""
+          "fr": "Ta fonction `renderCard` doit avoir un type de retour `string`."
         },
         {
           "en": "Your `renderCard` function should return a template literal.",
-          "fr": ""
+          "fr": "Ta fonction `renderCard` doit renvoyer un littéral de gabarit."
         }
       ]
     },
@@ -417,29 +413,29 @@
       "description": [
         {
           "en": "Now, inside the template literal of the `renderCard` function, create a `div` element. Inside the `div`, add an `h2` element that outputs `drawingType`, and a `figure` element with the class `card_container ${isReversed ? \"reversed-card\" : \"\"}` and the attribute `data-id=\"${shortName}\"`.",
-          "fr": ""
+          "fr": "Maintenant, à l’intérieur du littéral de gabarit de la fonction `renderCard`, crée un élément `div`. À l’intérieur du `div`, ajoute un élément `h2` qui affiche `drawingType`, et un élément `figure` avec la classe `card_container ${isReversed ? \"reversed-card\" : \"\"}` et l’attribut `data-id=\"${shortName}\"`."
         }
       ],
       "hints": [
         {
           "en": "You should have a `div` element in the template literal of the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois avoir un élément `div` dans le littéral de gabarit de la fonction `renderCard`."
         },
         {
           "en": "You should have an `h2` element that interpolates `drawingType` inside the `div` element.",
-          "fr": ""
+          "fr": "Tu dois avoir un élément `h2` qui interpole `drawingType` à l’intérieur de l’élément `div`."
         },
         {
           "en": "You should have a `figure` element inside the `div` element.",
-          "fr": ""
+          "fr": "Tu dois avoir un élément `figure` à l’intérieur de l’élément `div`."
         },
         {
           "en": "Your `figure` element should have the class `card_container` and use a ternary to conditionally add `reversed-card`.",
-          "fr": ""
+          "fr": "Ton élément `figure` doit avoir la classe `card_container` et utiliser un ternaire pour ajouter conditionnellement `reversed-card`."
         },
         {
           "en": "Your `figure` element should have a `data-id` attribute set to `${shortName}`.",
-          "fr": ""
+          "fr": "Ton élément `figure` doit avoir un attribut `data-id` défini à `${shortName}`."
         }
       ]
     },
@@ -454,37 +450,37 @@
       "description": [
         {
           "en": "A default image for the card and the URL to make an API request to have been provided, you only need some variables to save them in.",
-          "fr": ""
+          "fr": "Une image par défaut pour la carte et l’URL pour faire une requête API ont été fournies ; tu as seulement besoin de quelques variables pour les stocker."
         },
         {
           "en": "Create a `CDN_URL` variable and set it to `https://cdn.freecodecamp.org/curriculum/typescript/tarot-app`. Also create a `defaultImg` variable with the value `new URL(\"default.svg\", import.meta.url)`, and a `LOCAL_DEFAULT_IMG` variable with the value `defaultImg`.",
-          "fr": ""
+          "fr": "Crée une variable `CDN_URL` et définis-la à `https://cdn.freecodecamp.org/curriculum/typescript/tarot-app`. Crée aussi une variable `defaultImg` avec la valeur `new URL(\"default.svg\", import.meta.url)`, et une variable `LOCAL_DEFAULT_IMG` avec la valeur `defaultImg`."
         }
       ],
       "hints": [
         {
           "en": "You should create a variable named `CDN_URL`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `CDN_URL`."
         },
         {
           "en": "Your `CDN_URL` variable should be set to `\"https://cdn.freecodecamp.org/curriculum/typescript/tarot-app\"`.",
-          "fr": ""
+          "fr": "Ta variable `CDN_URL` doit être définie à `\"https://cdn.freecodecamp.org/curriculum/typescript/tarot-app\"`."
         },
         {
           "en": "You should create a variable named `defaultImg`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `defaultImg`."
         },
         {
           "en": "Your `defaultImg` variable should be set to `new URL(\"default.svg\", import.meta.url)`.",
-          "fr": ""
+          "fr": "Ta variable `defaultImg` doit être définie à `new URL(\"default.svg\", import.meta.url)`."
         },
         {
           "en": "You should create a variable named `LOCAL_DEFAULT_IMG`.",
-          "fr": ""
+          "fr": "Tu dois créer une variable nommée `LOCAL_DEFAULT_IMG`."
         },
         {
           "en": "Your `LOCAL_DEFAULT_IMG` variable should be set to `defaultImg`.",
-          "fr": ""
+          "fr": "Ta variable `LOCAL_DEFAULT_IMG` doit être définie à `defaultImg`."
         }
       ]
     },
@@ -499,29 +495,29 @@
       "description": [
         {
           "en": "Now, add a `div` with the class `img-loader`. After that, create an `img` element and give it a conditional URL for the image using `{img ? ${CDN_URL}/${img} : LOCAL_DEFAULT_IMG}`.",
-          "fr": ""
+          "fr": "Maintenant, ajoute un `div` avec la classe `img-loader`. Ensuite, crée un élément `img` et donne-lui une URL conditionnelle pour l’image avec `{img ? ${CDN_URL}/${img} : LOCAL_DEFAULT_IMG}`."
         }
       ],
       "hints": [
         {
           "en": "You should have a `div` element inside your `figure` element.",
-          "fr": ""
+          "fr": "Tu dois avoir un élément `div` à l’intérieur de ton élément `figure`."
         },
         {
           "en": "Your `div` should have a class `img-loader`.",
-          "fr": ""
+          "fr": "Ton `div` doit avoir une classe `img-loader`."
         },
         {
           "en": "You should have an `img` element inside your `figure` element.",
-          "fr": ""
+          "fr": "Tu dois avoir un élément `img` à l’intérieur de ton élément `figure`."
         },
         {
           "en": "The `img` element should use `CDN_URL` and `img` for its `src` when `img` is provided, and fall back to `LOCAL_DEFAULT_IMG` when it is not.",
-          "fr": ""
+          "fr": "L’élément `img` doit utiliser `CDN_URL` et `img` pour son `src` lorsque `img` est fourni, et se rabattre sur `LOCAL_DEFAULT_IMG` sinon."
         },
         {
           "en": "Your `img` element should have the classes `card-img` and `hidden`.",
-          "fr": ""
+          "fr": "Ton élément `img` doit avoir les classes `card-img` et `hidden`."
         }
       ]
     },
@@ -536,21 +532,21 @@
       "description": [
         {
           "en": "Now, use the `onload` event to remove the `hidden` class when the image loads and hide the loading placeholder using its `previousElementSibling`.",
-          "fr": ""
+          "fr": "Maintenant, utilise l’événement `onload` pour retirer la classe `hidden` quand l’image se charge, et masquer le placeholder de chargement avec son `previousElementSibling`."
         }
       ],
       "hints": [
         {
           "en": "Your `img` element should have an `onload` handler.",
-          "fr": ""
+          "fr": "Ton élément `img` doit avoir un gestionnaire `onload`."
         },
         {
           "en": "Your `onload` handler should use `classList.remove` to remove the `hidden` class. Don't forget you need the `this` keyword here.",
-          "fr": ""
+          "fr": "Ton gestionnaire `onload` doit utiliser `classList.remove` pour retirer la classe `hidden`. N’oublie pas que tu as besoin du mot-clé `this` ici."
         },
         {
           "en": "Your `onload` handler should set `previousElementSibling.style.display` to `'none'`. Don't forget you need the `this` keyword to do this.",
-          "fr": ""
+          "fr": "Ton gestionnaire `onload` doit définir `previousElementSibling.style.display` à `'none'`. N’oublie pas que tu as besoin du mot-clé `this` pour cela."
         }
       ]
     },
@@ -565,33 +561,33 @@
       "description": [
         {
           "en": "Add an `onerror` handler to the image element to handle loading failures. On the first failure, mark it using `dataset.failed` and replace the source with the local default image. If the image fails again, remove the hidden class and hide the loading placeholder using `previousElementSibling`.",
-          "fr": ""
+          "fr": "Ajoute un gestionnaire `onerror` à l’élément image pour gérer les échecs de chargement. Au premier échec, marque-le avec `dataset.failed` et remplace la source par l’image locale par défaut. Si l’image échoue à nouveau, retire la classe hidden et masque le placeholder de chargement avec `previousElementSibling`."
         }
       ],
       "hints": [
         {
           "en": "Your `img` element should have an `onerror` handler.",
-          "fr": ""
+          "fr": "Ton élément `img` doit avoir un gestionnaire `onerror`."
         },
         {
           "en": "Your `onerror` handler should contain an `if` statement that checks if `dataset.failed` is falsy.",
-          "fr": ""
+          "fr": "Ton gestionnaire `onerror` doit contenir une instruction `if` qui vérifie si `dataset.failed` est falsy."
         },
         {
           "en": "`dataset.failed` should be set to `'1'` inside your `if` block. Don't forget the `this` keyword here.",
-          "fr": ""
+          "fr": "`dataset.failed` doit être défini à `'1'` dans ton bloc `if`. N’oublie pas le mot-clé `this` ici."
         },
         {
           "en": "Your `if` block should update `this.src` to the local default image. Don't forget the `this` keyword here.",
-          "fr": ""
+          "fr": "Ton bloc `if` doit mettre à jour `this.src` avec l’image locale par défaut. N’oublie pas le mot-clé `this` ici."
         },
         {
           "en": "You should have an `else` block should that removes the `hidden` class. Don't forget the `this` keyword here.",
-          "fr": ""
+          "fr": "Tu dois avoir un bloc `else` qui retire la classe `hidden`. N’oublie pas le mot-clé `this` ici."
         },
         {
           "en": "Your `else` block should set `previousElementSibling.style.display` to `'none'`. Don't forget the `this` keyword here.",
-          "fr": ""
+          "fr": "Ton bloc `else` doit définir `previousElementSibling.style.display` à `'none'`. N’oublie pas le mot-clé `this` ici."
         }
       ]
     },
@@ -606,25 +602,25 @@
       "description": [
         {
           "en": "Since the fortune app only has three moments Past, Present, and Future, declare an enum named `DrawingType` with three properties: `Past`, `Present`, and `Future`. Each property should have a string value corresponding to its name.",
-          "fr": ""
+          "fr": "Puisque l’application de voyance n’a que trois moments — Passé, Présent et Futur —, déclare un enum nommé `DrawingType` avec trois propriétés : `Past`, `Present` et `Future`. Chaque propriété doit avoir une valeur chaîne correspondant à son nom."
         }
       ],
       "hints": [
         {
           "en": "You should have `enum` named `DrawingType`.",
-          "fr": ""
+          "fr": "Tu dois avoir un `enum` nommé `DrawingType`."
         },
         {
           "en": "Your enum should have a `Past` property with a string value of `past`.",
-          "fr": ""
+          "fr": "Ton enum doit avoir une propriété `Past` avec une valeur chaîne `past`."
         },
         {
           "en": "Your enum should have a `Present` property with a string value of `present`.",
-          "fr": ""
+          "fr": "Ton enum doit avoir une propriété `Present` avec une valeur chaîne `present`."
         },
         {
           "en": "Your enum should have a `Future` property with a string value of `future`.",
-          "fr": ""
+          "fr": "Ton enum doit avoir une propriété `Future` avec une valeur chaîne `future`."
         }
       ]
     },
@@ -639,29 +635,29 @@
       "description": [
         {
           "en": "Now you need a main class that will help render the UI dynamically in the DOM.",
-          "fr": ""
+          "fr": "Maintenant tu as besoin d’une classe principale qui aidera à rendre l’interface dynamiquement dans le DOM."
         },
         {
           "en": "Create a class named `Game`. Inside it, add a property called `cards` of type `Card[]`, and for now, initialize it with an empty array.",
-          "fr": ""
+          "fr": "Crée une classe nommée `Game`. À l’intérieur, ajoute une propriété appelée `cards` de type `Card[]`, et pour l’instant, initialise-la avec un tableau vide."
         }
       ],
       "hints": [
         {
           "en": "You should have class named `Game`.",
-          "fr": ""
+          "fr": "Tu dois avoir une classe nommée `Game`."
         },
         {
           "en": "You should have a `cards` property inside the `Game` class.",
-          "fr": ""
+          "fr": "Tu dois avoir une propriété `cards` à l’intérieur de la classe `Game`."
         },
         {
           "en": "Your `cards` property should have a type of `Card[]`.",
-          "fr": ""
+          "fr": "Ta propriété `cards` doit avoir le type `Card[]`."
         },
         {
           "en": "Your cards property should be set to an empty `array`.",
-          "fr": ""
+          "fr": "Ta propriété cards doit être définie à un `array` vide."
         }
       ]
     },
@@ -676,25 +672,25 @@
       "description": [
         {
           "en": "Inside the class, add a private `elements` property as an object. Inside it, add the properties `singleCardBtn`, `singleCard`, and `multipleCardsBtn`, each typed as `HTMLElement`.",
-          "fr": ""
+          "fr": "À l’intérieur de la classe, ajoute une propriété privée `elements` sous forme d’objet. À l’intérieur, ajoute les propriétés `singleCardBtn`, `singleCard` et `multipleCardsBtn`, chacune typée comme `HTMLElement`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a `private` property named `elements` inside the `Game` class.",
-          "fr": ""
+          "fr": "Tu dois déclarer une propriété `private` nommée `elements` à l’intérieur de la classe `Game`."
         },
         {
           "en": "Your `elements` private property should have a `singleCardBtn` property typed as `HTMLElement`.",
-          "fr": ""
+          "fr": "Ta propriété privée `elements` doit avoir une propriété `singleCardBtn` typée comme `HTMLElement`."
         },
         {
           "en": "Your `elements` private property should have a `multipleCardsBtn` property typed as `HTMLElement`.",
-          "fr": ""
+          "fr": "Ta propriété privée `elements` doit avoir une propriété `multipleCardsBtn` typée comme `HTMLElement`."
         },
         {
           "en": "Your `elements` private property should have a `singleCard` property typed as `HTMLElement`.",
-          "fr": ""
+          "fr": "Ta propriété privée `elements` doit avoir une propriété `singleCard` typée comme `HTMLElement`."
         }
       ]
     },
@@ -709,49 +705,49 @@
       "description": [
         {
           "en": "Now add the remaining properties to the private `elements` object. They are: `multipleCard`, `title`, `newReadingBtn`, `fortuneContainer`, `fortuneDescription`, `headerTitle`, `subTitle`, `cardTitle`, `description`, and `text`. Make sure each property uses the `HTMLElement` type.",
-          "fr": ""
+          "fr": "Ajoute maintenant les propriétés restantes à l’objet privé `elements`. Ce sont : `multipleCard`, `title`, `newReadingBtn`, `fortuneContainer`, `fortuneDescription`, `headerTitle`, `subTitle`, `cardTitle`, `description` et `text`. Assure-toi que chaque propriété utilise le type `HTMLElement`."
         }
       ],
       "hints": [
         {
           "en": "You should have the `multipleCard` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `multipleCard` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `title` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `title` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `newReadingBtn` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `newReadingBtn` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `fortuneContainer` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `fortuneContainer` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `fortuneDescription` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `fortuneDescription` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `headerTitle` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `headerTitle` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `subTitle` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `subTitle` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `cardTitle` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `cardTitle` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `description` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `description` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         },
         {
           "en": "You should have the `text` property inside the `elements` property assigned the type `HTMLElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir la propriété `text` à l’intérieur de la propriété `elements` avec le type `HTMLElement`."
         }
       ]
     },
@@ -766,29 +762,29 @@
       "description": [
         {
           "en": "Add a `constructor` inside the class. In the constructor, you need to use the elements you created earlier to select the corresponding DOM elements using the `getElement` function.",
-          "fr": ""
+          "fr": "Ajoute un `constructor` à l’intérieur de la classe. Dans le constructeur, tu dois utiliser les éléments créés plus tôt pour sélectionner les éléments DOM correspondants avec la fonction `getElement`."
         },
         {
           "en": "For now, handle `singleCardBtn` and `singleCard`. For `singleCardBtn`, pass in `#btn-single-card`, and for `singleCard`, pass in the `.single_card`.",
-          "fr": ""
+          "fr": "Pour l’instant, gère `singleCardBtn` et `singleCard`. Pour `singleCardBtn`, passe `#btn-single-card`, et pour `singleCard`, passe `.single_card`."
         }
       ],
       "hints": [
         {
           "en": "The `Game` class should have a `constructor`.",
-          "fr": ""
+          "fr": "La classe `Game` doit avoir un `constructor`."
         },
         {
           "en": "Your constructor should assign `this.elements`.",
-          "fr": ""
+          "fr": "Ton constructeur doit assigner `this.elements`."
         },
         {
           "en": "`singleCardBtn` should be set using `getElement` with `'#btn-single-card'`.",
-          "fr": ""
+          "fr": "`singleCardBtn` doit être défini avec `getElement` et `'#btn-single-card'`."
         },
         {
           "en": "`singleCard` should be set using `getElement` with `'.single_card'`.",
-          "fr": ""
+          "fr": "`singleCard` doit être défini avec `getElement` et `'.single_card'`."
         }
       ]
     },
@@ -803,57 +799,57 @@
       "description": [
         {
           "en": "Now, do the same for the rest of the properties. Use the `getElement` function to select each one:",
-          "fr": ""
+          "fr": "Fais maintenant la même chose pour le reste des propriétés. Utilise la fonction `getElement` pour sélectionner chacune :"
         },
         {
           "en": "| Property | Selector | \n| ---------- | ---------- |\n| `multipleCardsBtn` | `#btn-multiple-cards` | \n| `multipleCard` | `.multiple_card` | \n| `title` | `.title` | \n| `newReadingBtn` | `.btn_reveal` | \n| `fortuneContainer` | `.fortune_container` | \n| `fortuneDescription` | `.fortune_description` | \n| `headerTitle` | `.header_title` | \n| `subTitle` | `.sub_title` | \n| `cardTitle` | `.desc_title` | \n| `description` | `.description` | \n| `text` | `.text` |",
-          "fr": ""
+          "fr": "| Propriété | Sélecteur | \n| ---------- | ---------- |\n| `multipleCardsBtn` | `#btn-multiple-cards` | \n| `multipleCard` | `.multiple_card` | \n| `title` | `.title` | \n| `newReadingBtn` | `.btn_reveal` | \n| `fortuneContainer` | `.fortune_container` | \n| `fortuneDescription` | `.fortune_description` | \n| `headerTitle` | `.header_title` | \n| `subTitle` | `.sub_title` | \n| `cardTitle` | `.desc_title` | \n| `description` | `.description` | \n| `text` | `.text` |"
         }
       ],
       "hints": [
         {
           "en": "You should access the `multipleCardsBtn` by using the `getElement` method and passing `#btn-multiple-cards`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `multipleCardsBtn` en utilisant la méthode `getElement` et en passant `#btn-multiple-cards`."
         },
         {
           "en": "You should access the `multipleCard` by using the `getElement` method and passing `.multiple_card`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `multipleCard` en utilisant la méthode `getElement` et en passant `.multiple_card`."
         },
         {
           "en": "You should access the `title` by using the `getElement` method and passing `.title`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `title` en utilisant la méthode `getElement` et en passant `.title`."
         },
         {
           "en": "You should access the `newReadingBtn` by using the `getElement` method and passing `.btn_reveal`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `newReadingBtn` en utilisant la méthode `getElement` et en passant `.btn_reveal`."
         },
         {
           "en": "You should access the `fortuneContainer` by using the `getElement` method and passing `.fortune_container`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `fortuneContainer` en utilisant la méthode `getElement` et en passant `.fortune_container`."
         },
         {
           "en": "You should access the `fortuneDescription` by using the `getElement` method and passing `.fortune_description`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `fortuneDescription` en utilisant la méthode `getElement` et en passant `.fortune_description`."
         },
         {
           "en": "You should access the `headerTitle` by using the `getElement` method and passing `.header_title`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `headerTitle` en utilisant la méthode `getElement` et en passant `.header_title`."
         },
         {
           "en": "You should access the `subTitle` by using the `getElement` method and passing `.sub_title`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `subTitle` en utilisant la méthode `getElement` et en passant `.sub_title`."
         },
         {
           "en": "You should access the `cardTitle` by using the `getElement` method and passing `.desc_title`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `cardTitle` en utilisant la méthode `getElement` et en passant `.desc_title`."
         },
         {
           "en": "You should access the `description` by using the `getElement` method and passing `.description`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `description` en utilisant la méthode `getElement` et en passant `.description`."
         },
         {
           "en": "You should access the `text` by using the `getElement` method and passing `.text`.",
-          "fr": ""
+          "fr": "Tu dois accéder à `text` en utilisant la méthode `getElement` et en passant `.text`."
         }
       ]
     },
@@ -868,21 +864,21 @@
       "description": [
         {
           "en": "Inside the constructor, add calls to `fetchCardsData()` and `initializeEventListeners()` using the `this` keyword, so they run when the class is initialized.",
-          "fr": ""
+          "fr": "À l’intérieur du constructeur, ajoute des appels à `fetchCardsData()` et `initializeEventListeners()` avec le mot-clé `this`, pour qu’ils s’exécutent à l’initialisation de la classe."
         },
         {
           "en": "The `fetchCardsData` method will handle loading the tarot card data from an API, and `initializeEventListeners` will set up the button click handlers. You'll create both methods in the coming steps.",
-          "fr": ""
+          "fr": "La méthode `fetchCardsData` gérera le chargement des données des cartes de tarot depuis une API, et `initializeEventListeners` configurera les gestionnaires de clic des boutons. Tu créeras ces deux méthodes dans les prochaines étapes."
         }
       ],
       "hints": [
         {
           "en": "You should call `fetchCardsData()` method inside the `constructor`.",
-          "fr": ""
+          "fr": "Tu dois appeler la méthode `fetchCardsData()` à l’intérieur du `constructor`."
         },
         {
           "en": "You should call `initializeEventListeners()` method inside the constructor.",
-          "fr": ""
+          "fr": "Tu dois appeler la méthode `initializeEventListeners()` à l’intérieur du constructeur."
         }
       ]
     },
@@ -897,21 +893,21 @@
       "description": [
         {
           "en": "Since you're calling `fetchCardsData` and `initializeEventListeners` inside the constructor, you now need to define them inside the class. Create both as `private` methods. Make sure `fetchCardsData` is asynchronous since it will handle API calls.",
-          "fr": ""
+          "fr": "Puisque tu appelles `fetchCardsData` et `initializeEventListeners` dans le constructeur, tu dois maintenant les définir dans la classe. Crée-les toutes les deux comme méthodes `private`. Assure-toi que `fetchCardsData` est asynchrone, car elle gérera des appels API."
         }
       ],
       "hints": [
         {
           "en": "You should have a `private` method named `fetchCardsData`.",
-          "fr": ""
+          "fr": "Tu dois avoir une méthode `private` nommée `fetchCardsData`."
         },
         {
           "en": "Your `fetchCardsData` method should be `async`.",
-          "fr": ""
+          "fr": "Ta méthode `fetchCardsData` doit être `async`."
         },
         {
           "en": "You should have a `private` method named `initializeEventListeners`.",
-          "fr": ""
+          "fr": "Tu dois avoir une méthode `private` nommée `initializeEventListeners`."
         }
       ]
     },
@@ -926,25 +922,25 @@
       "description": [
         {
           "en": "Inside the `fetchCardsData` method, declare a variable named `response` and assign it by calling the `fetch` function with the following URL: `` `${CDN_URL}/card_data.json` ``.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode `fetchCardsData`, déclare une variable nommée `response` et assigne-lui l’appel de la fonction `fetch` avec l’URL suivante : `` `${CDN_URL}/card_data.json` ``."
         },
         {
           "en": "Add the `await` keyword before the `fetch` call, and wrap the entire logic inside a `try...catch` block.",
-          "fr": ""
+          "fr": "Ajoute le mot-clé `await` avant l’appel `fetch`, et enveloppe toute la logique dans un bloc `try...catch`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a `response` variable inside the `fetchCardsData` method.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable `response` à l’intérieur de la méthode `fetchCardsData`."
         },
         {
           "en": "Your `response` variable should be assigned by calling `await fetch` with the URL `` `${CDN_URL}/card_data.json` ``.",
-          "fr": ""
+          "fr": "Ta variable `response` doit être assignée en appelant `await fetch` avec l’URL `` `${CDN_URL}/card_data.json` ``."
         },
         {
           "en": "Your `fetch` call should be wrapped inside a `try...catch` block, with `error` as the `catch` parameter.",
-          "fr": ""
+          "fr": "Ton appel `fetch` doit être enveloppé dans un bloc `try...catch`, avec `error` comme paramètre du `catch`."
         }
       ]
     },
@@ -959,29 +955,29 @@
       "description": [
         {
           "en": "After fetching the data, store the response in a variable and parse it to JSON. Give the parsed data the type `Deck`, and then assign it to the `cards` property. Inside the `catch` block, make sure to log the error with this message: `\"Error fetching cards:\", error`.",
-          "fr": ""
+          "fr": "Après avoir récupéré les données, stocke la réponse dans une variable et parse-la en JSON. Donne aux données parsées le type `Deck`, puis assigne-les à la propriété `cards`. Dans le bloc `catch`, assure-toi de journaliser l’erreur avec ce message : `\"Error fetching cards:\", error`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `data` inside `fetchCardsData`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `data` à l’intérieur de `fetchCardsData`."
         },
         {
           "en": "Your `data` variable should have the type `Deck`.",
-          "fr": ""
+          "fr": "Ta variable `data` doit avoir le type `Deck`."
         },
         {
           "en": "Your `data` variable should be assigned by parsing the response as JSON.",
-          "fr": ""
+          "fr": "Ta variable `data` doit être assignée en parseant la réponse en JSON."
         },
         {
           "en": "You should store `data.cards` in `this.cards`.",
-          "fr": ""
+          "fr": "Tu dois stocker `data.cards` dans `this.cards`."
         },
         {
           "en": "Your `catch` block should use `console.error()` to log the error with the message `\"Error fetching cards:\", error`.",
-          "fr": ""
+          "fr": "Ton bloc `catch` doit utiliser `console.error()` pour journaliser l’erreur avec le message `\"Error fetching cards:\", error`."
         }
       ]
     },
@@ -996,13 +992,13 @@
       "description": [
         {
           "en": "Now you will start working on the `initializeEventListeners()` method. First, give it the return type `void`.",
-          "fr": ""
+          "fr": "Tu vas maintenant commencer à travailler sur la méthode `initializeEventListeners()`. D’abord, donne-lui le type de retour `void`."
         }
       ],
       "hints": [
         {
           "en": "Your `initializeEventListeners` method should have a return type of `void`.",
-          "fr": ""
+          "fr": "Ta méthode `initializeEventListeners` doit avoir un type de retour `void`."
         }
       ]
     },
@@ -1017,21 +1013,21 @@
       "description": [
         {
           "en": "Inside the `initializeEventListeners` method, attach a `click` event listener to `singleCardBtn`. Within the event handler, call the `singleCardSelected` method. remember to get the `singleCardBtn` from `elements`.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode `initializeEventListeners`, attache un écouteur d’événement `click` à `singleCardBtn`. Dans le gestionnaire d’événement, appelle la méthode `singleCardSelected`. N’oublie pas de récupérer `singleCardBtn` depuis `elements`."
         },
         {
           "en": "You will create this method in the coming steps.",
-          "fr": ""
+          "fr": "Tu créeras cette méthode dans les prochaines étapes."
         }
       ],
       "hints": [
         {
           "en": "You should attach a `click` event to the `singleCardBtn` element. Don't forget you need the `this` keyword here.",
-          "fr": ""
+          "fr": "Tu dois attacher un événement `click` à l’élément `singleCardBtn`. N’oublie pas que tu as besoin du mot-clé `this` ici."
         },
         {
           "en": "Inside the event callback, you should call the `singleCardSelected` method.",
-          "fr": ""
+          "fr": "À l’intérieur du rappel d’événement, tu dois appeler la méthode `singleCardSelected`."
         }
       ]
     },
@@ -1046,29 +1042,29 @@
       "description": [
         {
           "en": "Now do the same for `multipleCardsBtn` and `newReadingBtn` by attaching a click event listener to `multipleCardsBtn` that calls `multipleCardSelected`, and another to `newReadingBtn` that calls `newReading`.",
-          "fr": ""
+          "fr": "Fais maintenant la même chose pour `multipleCardsBtn` et `newReadingBtn` en attachant un écouteur click à `multipleCardsBtn` qui appelle `multipleCardSelected`, et un autre à `newReadingBtn` qui appelle `newReading`."
         },
         {
           "en": "You will create the two methods in the coming steps.",
-          "fr": ""
+          "fr": "Tu créeras les deux méthodes dans les prochaines étapes."
         }
       ],
       "hints": [
         {
           "en": "You should attach a `click` event to the `multipleCardsBtn` element.",
-          "fr": ""
+          "fr": "Tu dois attacher un événement `click` à l’élément `multipleCardsBtn`."
         },
         {
           "en": "Inside the `multipleCardsBtn` callback event, you should call the `multipleCardSelected` method.",
-          "fr": ""
+          "fr": "Dans le rappel d’événement de `multipleCardsBtn`, tu dois appeler la méthode `multipleCardSelected`."
         },
         {
           "en": "You should attach a `click` event to the `newReadingBtn` element.",
-          "fr": ""
+          "fr": "Tu dois attacher un événement `click` à l’élément `newReadingBtn`."
         },
         {
           "en": "Inside the `newReadingBtn` callback event, you should call the `newReading` method.",
-          "fr": ""
+          "fr": "Dans le rappel d’événement de `newReadingBtn`, tu dois appeler la méthode `newReading`."
         }
       ]
     },
@@ -1083,33 +1079,33 @@
       "description": [
         {
           "en": "Add another event listener to the global `document` object that calls the `showFortune` function. Inside the callback, include a parameter `e` of type `Event`, and pass `e` as an argument to the `showFortune` method.",
-          "fr": ""
+          "fr": "Ajoute un autre écouteur d’événement sur l’objet global `document` qui appelle la fonction `showFortune`. Dans le rappel, inclus un paramètre `e` de type `Event`, et passe `e` comme argument à la méthode `showFortune`."
         },
         {
           "en": "`showFortune` will handle card click events, like reading the clicked card ID from the DOM and displaying the matching card fortune details. You will create it in the coming steps.",
-          "fr": ""
+          "fr": "`showFortune` gérera les clics sur les cartes, comme lire l’ID de la carte cliquée depuis le DOM et afficher les détails de prédiction correspondants. Tu la créeras dans les prochaines étapes."
         }
       ],
       "hints": [
         {
           "en": "You should assign a `click` event listener to the global `document`.",
-          "fr": ""
+          "fr": "Tu dois assigner un écouteur d’événement `click` au `document` global."
         },
         {
           "en": "Your event listener should have a callback parameter named `e`.",
-          "fr": ""
+          "fr": "Ton écouteur d’événement doit avoir un paramètre de rappel nommé `e`."
         },
         {
           "en": "Your callback parameter should have the type `Event`.",
-          "fr": ""
+          "fr": "Ton paramètre de rappel doit avoir le type `Event`."
         },
         {
           "en": "Inside the callback, you should call the `showFortune` function",
-          "fr": ""
+          "fr": "À l’intérieur du rappel, tu dois appeler la fonction `showFortune`"
         },
         {
           "en": "Inside the `showFortune` function, you should pass the argument `e`.",
-          "fr": ""
+          "fr": "Dans l’appel à `showFortune`, tu dois passer l’argument `e`."
         }
       ]
     },
@@ -1124,45 +1120,45 @@
       "description": [
         {
           "en": "Now you will start creating the methods.",
-          "fr": ""
+          "fr": "Tu vas maintenant commencer à créer les méthodes."
         },
         {
           "en": "Create a method called `singleCardSelected`. Inside it, call the `hideElements` function and pass the following properties: `singleCardBtn`, `multipleCardsBtn`, `multipleCard`, `text`, and `headerTitle`.",
-          "fr": ""
+          "fr": "Crée une méthode appelée `singleCardSelected`. À l’intérieur, appelle la fonction `hideElements` et passe les propriétés suivantes : `singleCardBtn`, `multipleCardsBtn`, `multipleCard`, `text` et `headerTitle`."
         },
         {
           "en": "Remember you must access all of them using `this.elements`.",
-          "fr": ""
+          "fr": "N’oublie pas que tu dois y accéder via `this.elements`."
         }
       ],
       "hints": [
         {
           "en": "You should define a method named `singleCardSelected`.",
-          "fr": ""
+          "fr": "Tu dois définir une méthode nommée `singleCardSelected`."
         },
         {
           "en": "Inside `singleCardSelected`, you should call the `hideElements` function.",
-          "fr": ""
+          "fr": "À l’intérieur de `singleCardSelected`, tu dois appeler la fonction `hideElements`."
         },
         {
           "en": "You should pass `singleCardBtn` to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `singleCardBtn` à la fonction `hideElements`."
         },
         {
           "en": "You should pass `multipleCardsBtn` to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCardsBtn` à la fonction `hideElements`."
         },
         {
           "en": "You should pass `multipleCard` to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCard` à la fonction `hideElements`."
         },
         {
           "en": "You should pass `text` to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `text` à la fonction `hideElements`."
         },
         {
           "en": "You should pass `headerTitle` to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `headerTitle` à la fonction `hideElements`."
         }
       ]
     },
@@ -1177,21 +1173,21 @@
       "description": [
         {
           "en": "In some cases, the cards need to be reversed, since they are not always in the correct position.",
-          "fr": ""
+          "fr": "Dans certains cas, les cartes doivent être inversées, car elles ne sont pas toujours dans la bonne position."
         },
         {
           "en": "Declare a variable called `isReversed` inside the `singleCardSelected` method. Use the `Math.random()` method to generate a random boolean value. To ensure the value stays within bounds, compare it with `0.5`.",
-          "fr": ""
+          "fr": "Déclare une variable appelée `isReversed` à l’intérieur de la méthode `singleCardSelected`. Utilise la méthode `Math.random()` pour générer une valeur booléenne aléatoire. Pour rester dans les bornes, compare-la à `0.5`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `isReversed`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `isReversed`."
         },
         {
           "en": "Your `isReversed` variable should use `Math.random()` to randomly decide if the card is reversed.",
-          "fr": ""
+          "fr": "Ta variable `isReversed` doit utiliser `Math.random()` pour décider aléatoirement si la carte est inversée."
         }
       ]
     },
@@ -1206,21 +1202,21 @@
       "description": [
         {
           "en": "The fortune must be random, so a helper function is required to select a random fortune. Declare a variable named `chosenCard` inside the `singleCardSelected` method. Use the `getRandomItem` method to obtain a random card and pass `cards` as an argument.",
-          "fr": ""
+          "fr": "La prédiction doit être aléatoire, donc une fonction utilitaire est nécessaire pour en sélectionner une au hasard. Déclare une variable nommée `chosenCard` à l’intérieur de la méthode `singleCardSelected`. Utilise la méthode `getRandomItem` pour obtenir une carte aléatoire et passe `cards` comme argument."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `chosenCard` inside `singleCardSelected`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `chosenCard` à l’intérieur de `singleCardSelected`."
         },
         {
           "en": "Your `chosenCard` variable should be assigned by calling `getRandomItem(this.cards)`.",
-          "fr": ""
+          "fr": "Ta variable `chosenCard` doit être assignée en appelant `getRandomItem(this.cards)`."
         },
         {
           "en": "You should pass `this.cards` as the argument to `getRandomItem`.",
-          "fr": ""
+          "fr": "Tu dois passer `this.cards` comme argument à `getRandomItem`."
         }
       ]
     },
@@ -1235,21 +1231,21 @@
       "description": [
         {
           "en": "Within the `singleCardSelected` method, retrieve the `singleCard` element and update its `innerHTML` by calling the `renderCard` function. Pass `\"Click the card and reveal the fortune\"` as the first argument, and `isReversed` as the second argument.",
-          "fr": ""
+          "fr": "Dans la méthode `singleCardSelected`, récupère l’élément `singleCard` et mets à jour son `innerHTML` en appelant la fonction `renderCard`. Passe `\"Click the card and reveal the fortune\"` comme premier argument, et `isReversed` comme deuxième argument."
         }
       ],
       "hints": [
         {
           "en": "You should update `this.elements.singleCard.innerHTML` by calling the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois mettre à jour `this.elements.singleCard.innerHTML` en appelant la fonction `renderCard`."
         },
         {
           "en": "Your `renderCard` call should have `\"Click the card and reveal the fortune\"` as the first argument.",
-          "fr": ""
+          "fr": "Ton appel à `renderCard` doit avoir `\"Click the card and reveal the fortune\"` comme premier argument."
         },
         {
           "en": "You should pass `isReversed` as the second argument to `renderCard`.",
-          "fr": ""
+          "fr": "Tu dois passer `isReversed` comme deuxième argument à `renderCard`."
         }
       ]
     },
@@ -1264,21 +1260,21 @@
       "description": [
         {
           "en": "Include the remaining arguments `chosenCard.name_short` and `chosenCard.img`. Then outside the `renderCard` function, reset the `multipleCard` element's `innerHTML` to an empty string.",
-          "fr": ""
+          "fr": "Inclus les arguments restants `chosenCard.name_short` et `chosenCard.img`. Puis, en dehors de l’appel à `renderCard`, réinitialise le `innerHTML` de l’élément `multipleCard` à une chaîne vide."
         }
       ],
       "hints": [
         {
           "en": "You should pass `chosenCard.name_short` as an argument to `renderCard`.",
-          "fr": ""
+          "fr": "Tu dois passer `chosenCard.name_short` comme argument à `renderCard`."
         },
         {
           "en": "You should pass `chosenCard.img` as the last argument to `renderCard`.",
-          "fr": ""
+          "fr": "Tu dois passer `chosenCard.img` comme dernier argument à `renderCard`."
         },
         {
           "en": "You should reset `this.elements.multipleCard.innerHTML` to an empty string.",
-          "fr": ""
+          "fr": "Tu dois réinitialiser `this.elements.multipleCard.innerHTML` à une chaîne vide."
         }
       ]
     },
@@ -1293,21 +1289,21 @@
       "description": [
         {
           "en": "Right after you clear `multipleCard`, inside the `singleCardSelected` method, call the `showElements` function and pass `singleCard` as the first argument and `fortuneContainer` as the second argument.",
-          "fr": ""
+          "fr": "Juste après avoir vidé `multipleCard`, à l’intérieur de la méthode `singleCardSelected`, appelle la fonction `showElements` et passe `singleCard` comme premier argument et `fortuneContainer` comme deuxième argument."
         }
       ],
       "hints": [
         {
           "en": "You should call the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `showElements`."
         },
         {
           "en": "You should pass `elements.singleCard` as the first argument.",
-          "fr": ""
+          "fr": "Tu dois passer `elements.singleCard` comme premier argument."
         },
         {
           "en": "You should pass `elements.fortuneContainer` as the second argument.",
-          "fr": ""
+          "fr": "Tu dois passer `elements.fortuneContainer` comme deuxième argument."
         }
       ]
     },
@@ -1322,37 +1318,37 @@
       "description": [
         {
           "en": "The fortune-teller app supports rendering multiple cards, so you need to have a method that can help render multiple cards. Declare a method called `multipleCardSelected`.",
-          "fr": ""
+          "fr": "L’application de voyance prend en charge le rendu de plusieurs cartes, donc tu as besoin d’une méthode pour aider à rendre plusieurs cartes. Déclare une méthode appelée `multipleCardSelected`."
         },
         {
           "en": "Inside the method, call the `hideElements` function and pass in the properties `singleCard`, `singleCardBtn`, `multipleCardsBtn`, and `headerTitle`.vDon't forget you have to access them from `this.elements`.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode, appelle la fonction `hideElements` et passe les propriétés `singleCard`, `singleCardBtn`, `multipleCardsBtn` et `headerTitle`. N’oublie pas que tu dois y accéder via `this.elements`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a `multipleCardSelected` method.",
-          "fr": ""
+          "fr": "Tu dois déclarer une méthode `multipleCardSelected`."
         },
         {
           "en": "You should call the `hideElements` function inside the `multipleCardSelected` method.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `hideElements` à l’intérieur de la méthode `multipleCardSelected`."
         },
         {
           "en": "You should pass `singleCard` as the first argument to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `singleCard` comme premier argument à la fonction `hideElements`."
         },
         {
           "en": "You should pass `singleCardBtn` as an argument to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `singleCardBtn` comme argument à la fonction `hideElements`."
         },
         {
           "en": "You should pass `multipleCardsBtn` as an argument to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCardsBtn` comme argument à la fonction `hideElements`."
         },
         {
           "en": "You should pass `headerTitle` as an argument to the `hideElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `headerTitle` comme argument à la fonction `hideElements`."
         }
       ]
     },
@@ -1367,25 +1363,25 @@
       "description": [
         {
           "en": "Now call the `showElements` function and pass in `multipleCard`, `fortuneContainer`, and `text` as properties.",
-          "fr": ""
+          "fr": "Appelle maintenant la fonction `showElements` et passe `multipleCard`, `fortuneContainer` et `text` comme propriétés."
         }
       ],
       "hints": [
         {
           "en": "You should call the `showElements` function inside the `multipleCardSelected` method.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `showElements` à l’intérieur de la méthode `multipleCardSelected`."
         },
         {
           "en": "You should pass `multipleCard` as the first argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCard` comme premier argument à la fonction `showElements`."
         },
         {
           "en": "You should pass `fortuneContainer` as an argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `fortuneContainer` comme argument à la fonction `showElements`."
         },
         {
           "en": "You should pass `text` as an argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `text` comme argument à la fonction `showElements`."
         }
       ]
     },
@@ -1400,25 +1396,25 @@
       "description": [
         {
           "en": "As done for the previous `multipleCard`, get the `multipleCard` element again and set its `innerHTML` by iterating through `DrawingType`. Use `Object.values()` and call the `map` method on it, passing `type` as an argument.",
-          "fr": ""
+          "fr": "Comme pour le `multipleCard` précédent, récupère à nouveau l’élément `multipleCard` et définis son `innerHTML` en itérant sur `DrawingType`. Utilise `Object.values()` et appelle la méthode `map` dessus, en passant `type` comme argument."
         }
       ],
       "hints": [
         {
           "en": "You should assign `multipleCard.innerHTML` by calling `Object.values`.",
-          "fr": ""
+          "fr": "Tu dois assigner `multipleCard.innerHTML` en appelant `Object.values`."
         },
         {
           "en": "You should pass `DrawingType` to the `Object.values` method.",
-          "fr": ""
+          "fr": "Tu dois passer `DrawingType` à la méthode `Object.values`."
         },
         {
           "en": "You should call the `map` method on `Object.values`.",
-          "fr": ""
+          "fr": "Tu dois appeler la méthode `map` sur `Object.values`."
         },
         {
           "en": "Your `map` method should have a parameter named `type`.",
-          "fr": ""
+          "fr": "Ta méthode `map` doit avoir un paramètre nommé `type`."
         }
       ]
     },
@@ -1433,25 +1429,25 @@
       "description": [
         {
           "en": "Again, you need to make the card random and reversed. Declare a variable named `isReversed` and `card`. For the first one, call the `Math.random` method and compare it with `< 0.5`. For the second one, call `getRandomItem` and pass `this.cards`.",
-          "fr": ""
+          "fr": "Encore une fois, tu dois rendre la carte aléatoire et inversée. Déclare une variable nommée `isReversed` et une nommée `card`. Pour la première, appelle la méthode `Math.random` et compare-la avec `< 0.5`. Pour la seconde, appelle `getRandomItem` et passe `this.cards`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `isReversed`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `isReversed`."
         },
         {
           "en": "Your `isReversed` variable should use `Math.random()` to randomly decide if the card is reversed.",
-          "fr": ""
+          "fr": "Ta variable `isReversed` doit utiliser `Math.random()` pour décider aléatoirement si la carte est inversée."
         },
         {
           "en": "You should declare a variable named `card`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `card`."
         },
         {
           "en": "Your `card` variable should be assigned by calling the `getRandomItem` method with `this.cards` as an argument.",
-          "fr": ""
+          "fr": "Ta variable `card` doit être assignée en appelant la méthode `getRandomItem` avec `this.cards` comme argument."
         }
       ]
     },
@@ -1466,33 +1462,33 @@
       "description": [
         {
           "en": "Inside the `map`, return the `renderCard` function by passing `type`, `isReversed`, `name_short`, and `img` as arguments, and add the `join` method on the `map` with an empty string.",
-          "fr": ""
+          "fr": "À l’intérieur du `map`, renvoie la fonction `renderCard` en passant `type`, `isReversed`, `name_short` et `img` comme arguments, et ajoute la méthode `join` sur le `map` avec une chaîne vide."
         }
       ],
       "hints": [
         {
           "en": "You should return the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois renvoyer la fonction `renderCard`."
         },
         {
           "en": "You should pass `type` as the first argument in the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois passer `type` comme premier argument dans la fonction `renderCard`."
         },
         {
           "en": "You should pass `isReversed` as the second argument in the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois passer `isReversed` comme deuxième argument dans la fonction `renderCard`."
         },
         {
           "en": "You should pass `card.name_short` as an argument in the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois passer `card.name_short` comme argument dans la fonction `renderCard`."
         },
         {
           "en": "You should pass `card.img` as an argument in the `renderCard` function.",
-          "fr": ""
+          "fr": "Tu dois passer `card.img` comme argument dans la fonction `renderCard`."
         },
         {
           "en": "You should attach `join(\"\")` on the `map` method.",
-          "fr": ""
+          "fr": "Tu dois attacher `join(\"\")` à la méthode `map`."
         }
       ]
     },
@@ -1507,21 +1503,21 @@
       "description": [
         {
           "en": "Now add another method called `showFortune`. As a parameter, pass `e` and give it the type `Event`. Also create a `newReading` method and leave it empty for now.",
-          "fr": ""
+          "fr": "Ajoute maintenant une autre méthode appelée `showFortune`. Comme paramètre, passe `e` et donne-lui le type `Event`. Crée aussi une méthode `newReading` et laisse-la vide pour l’instant."
         }
       ],
       "hints": [
         {
           "en": "You should declare a method named `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une méthode nommée `showFortune`."
         },
         {
           "en": "Your `showFortune` method should have an `e` parameter with the type `Event`.",
-          "fr": ""
+          "fr": "Ta méthode `showFortune` doit avoir un paramètre `e` de type `Event`."
         },
         {
           "en": "You should declare a method named `newReading`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une méthode nommée `newReading`."
         }
       ]
     },
@@ -1536,21 +1532,21 @@
       "description": [
         {
           "en": "You should test your progress so far. Create an instance of the `Game` class and assign it to a `game` variable.",
-          "fr": ""
+          "fr": "Tu devrais tester ton progrès jusqu’ici. Crée une instance de la classe `Game` et assigne-la à une variable `game`."
         },
         {
           "en": "At this point, you'll see that you can see the cards when you click the Single Card Reading and\nThree Card Spread buttons.",
-          "fr": ""
+          "fr": "À ce stade, tu verras que tu peux voir les cartes quand tu cliques sur les boutons Single Card Reading et\nThree Card Spread."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `game`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `game`."
         },
         {
           "en": "Your `game` variable should be initialized with `new Game()`.",
-          "fr": ""
+          "fr": "Ta variable `game` doit être initialisée avec `new Game()`."
         }
       ]
     },
@@ -1565,21 +1561,21 @@
       "description": [
         {
           "en": "Inside `showFortune` method declare a variable called `target` and assign it to `e.target` and create another empty if statement.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode `showFortune`, déclare une variable appelée `target` et assigne-lui `e.target`, puis crée une autre instruction if vide."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `target` inside `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `target` à l’intérieur de `showFortune`."
         },
         {
           "en": "Your `target` variable should be assigned to `e.target`.",
-          "fr": ""
+          "fr": "Ta variable `target` doit être assignée à `e.target`."
         },
         {
           "en": "You should have an empty `if` statement right after your `target` variable.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` vide juste après ta variable `target`."
         }
       ]
     },
@@ -1594,17 +1590,17 @@
       "description": [
         {
           "en": "For the condition of the `if` statement, check if the `target` is not an instance of `HTMLElement`. Then inside it, add a `return`.",
-          "fr": ""
+          "fr": "Pour la condition de l’instruction `if`, vérifie si `target` n’est pas une instance de `HTMLElement`. Puis, à l’intérieur, ajoute un `return`."
         }
       ],
       "hints": [
         {
           "en": "You should check in your `if` statement should have the condition `!(target instanceof  HTMLElement)`.",
-          "fr": ""
+          "fr": "Tu dois vérifier dans ton instruction `if` la condition `!(target instanceof  HTMLElement)`."
         },
         {
           "en": "You should have a `return` inside your `if` statement.",
-          "fr": ""
+          "fr": "Tu dois avoir un `return` à l’intérieur de ton instruction `if`."
         }
       ]
     },
@@ -1619,21 +1615,21 @@
       "description": [
         {
           "en": "Declare a variable named `cardElement` and use the `card_container` class to get the element. Use the `closest` selector to get it from the `target`.",
-          "fr": ""
+          "fr": "Déclare une variable nommée `cardElement` et utilise la classe `card_container` pour obtenir l’élément. Utilise le sélecteur `closest` pour le récupérer depuis `target`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `cardElement` inside `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `cardElement` à l’intérieur de `showFortune`."
         },
         {
           "en": "Your `cardElement` should use `target?.closest` to find the `.card_container`.",
-          "fr": ""
+          "fr": "Ton `cardElement` doit utiliser `target?.closest` pour trouver `.card_container`."
         },
         {
           "en": "You should pass `.card_container` as the argument to `closest`.",
-          "fr": ""
+          "fr": "Tu dois passer `.card_container` comme argument à `closest`."
         }
       ]
     },
@@ -1648,17 +1644,17 @@
       "description": [
         {
           "en": "Check if `cardElement` is not an instance of `HTMLElement`, and if so, add a `return`",
-          "fr": ""
+          "fr": "Vérifie si `cardElement` n’est pas une instance de `HTMLElement`, et dans ce cas, ajoute un `return`"
         }
       ],
       "hints": [
         {
           "en": "You should add another `if` statement with the condition `!(cardElement instanceof HTMLElement)`.",
-          "fr": ""
+          "fr": "Tu dois ajouter une autre instruction `if` avec la condition `!(cardElement instanceof HTMLElement)`."
         },
         {
           "en": "You should have a `return` inside your `if` statement.",
-          "fr": ""
+          "fr": "Tu dois avoir un `return` à l’intérieur de ton instruction `if`."
         }
       ]
     },
@@ -1673,21 +1669,17 @@
       "description": [
         {
           "en": "Check if `cardElement` is falsy, and if so, return without showing any message.",
-          "fr": ""
+          "fr": "Vérifie si `cardElement` est falsy, et dans ce cas, renvoie sans afficher de message."
         }
       ],
       "hints": [
         {
           "en": "You should have an `if` statement with the condition `!cardElement`.",
-          "fr": ""
+          "fr": "Tu dois avoir une instruction `if` avec la condition `!cardElement`."
         },
         {
           "en": "You should have a `return` inside your `if` statement.",
-          "fr": ""
-        },
-        {
-          "en": "",
-          "fr": ""
+          "fr": "Tu dois avoir un `return` à l’intérieur de ton instruction `if`."
         }
       ]
     },
@@ -1702,25 +1694,25 @@
       "description": [
         {
           "en": "Declare a variable named `cardId`, and assign it the value of the `data-id` attribute from `cardElement` using the `getAttribute()` method.",
-          "fr": ""
+          "fr": "Déclare une variable nommée `cardId`, et assigne-lui la valeur de l’attribut `data-id` de `cardElement` avec la méthode `getAttribute()`."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `cardId` inside `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `cardId` à l’intérieur de `showFortune`."
         },
         {
           "en": "Your `cardId` variable should be assigned by calling `cardElement.getAttribute(\"data-id\")`.",
-          "fr": ""
+          "fr": "Ta variable `cardId` doit être assignée en appelant `cardElement.getAttribute(\"data-id\")`."
         },
         {
           "en": "You should use the `getAttribute` method on `cardElement`.",
-          "fr": ""
+          "fr": "Tu dois utiliser la méthode `getAttribute` sur `cardElement`."
         },
         {
           "en": "You should pass `'data-id'` to `getAttribute`.",
-          "fr": ""
+          "fr": "Tu dois passer `'data-id'` à `getAttribute`."
         }
       ]
     },
@@ -1735,25 +1727,25 @@
       "description": [
         {
           "en": "Declare another variable named `foundCard`, and assign it to the result of calling the `find()` method on `cards`. Pass in `card` as the callback parameter, and compare `card.name_short` with `cardId` to find the matching card using strict equality.",
-          "fr": ""
+          "fr": "Déclare une autre variable nommée `foundCard`, et assigne-lui le résultat de l’appel à la méthode `find()` sur `cards`. Passe `card` comme paramètre du rappel, et compare `card.name_short` avec `cardId` pour trouver la carte correspondante avec une égalité stricte."
         }
       ],
       "hints": [
         {
           "en": "You should declare a variable named `foundCard` inside `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une variable nommée `foundCard` à l’intérieur de `showFortune`."
         },
         {
           "en": "Your `foundCard` should be assigned by calling `find` on `this.cards` with the correct callback.",
-          "fr": ""
+          "fr": "Ton `foundCard` doit être assigné en appelant `find` sur `this.cards` avec le bon rappel."
         },
         {
           "en": "The `find` callback should have a parameter named `card`.",
-          "fr": ""
+          "fr": "Le rappel de `find` doit avoir un paramètre nommé `card`."
         },
         {
           "en": "Inside the callback, `card.name_short` should be compared with `cardId`.",
-          "fr": ""
+          "fr": "À l’intérieur du rappel, `card.name_short` doit être comparé avec `cardId`."
         }
       ]
     },
@@ -1768,13 +1760,13 @@
       "description": [
         {
           "en": "Add an `if` statement to check whether `foundCard` exists before updating the elements with its data or content block.",
-          "fr": ""
+          "fr": "Ajoute une instruction `if` pour vérifier si `foundCard` existe avant de mettre à jour les éléments avec ses données ou son contenu."
         }
       ],
       "hints": [
         {
           "en": "You should declare an `if` statement with the condition `foundCard`.",
-          "fr": ""
+          "fr": "Tu dois déclarer une instruction `if` avec la condition `foundCard`."
         }
       ]
     },
@@ -1789,17 +1781,17 @@
       "description": [
         {
           "en": "Inside the `if` statement, get the `cardTitle` element and set its `textContent` to `foundCard.name`. Do the same for the `description` element by setting its `textContent` to `foundCard.desc`.",
-          "fr": ""
+          "fr": "À l’intérieur de l’instruction `if`, récupère l’élément `cardTitle` et définis son `textContent` à `foundCard.name`. Fais de même pour l’élément `description` en définissant son `textContent` à `foundCard.desc`."
         }
       ],
       "hints": [
         {
           "en": "You should set the `cardTitle` `textContent` to `foundCard.name`. Don't forget to use the `this` keyword.",
-          "fr": ""
+          "fr": "Tu dois définir le `textContent` de `cardTitle` à `foundCard.name`. N’oublie pas d’utiliser le mot-clé `this`."
         },
         {
           "en": "You should set the `description` `textContent` to `foundCard.desc`. Don't forget to use the `this` keyword.",
-          "fr": ""
+          "fr": "Tu dois définir le `textContent` de `description` à `foundCard.desc`. N’oublie pas d’utiliser le mot-clé `this`."
         }
       ]
     },
@@ -1814,25 +1806,25 @@
       "description": [
         {
           "en": "Now do the same for `subTitle` by assigning it to `meaning_up`, and for `title` assign it to `foundCard.name`. After that, call the `showElements` method and pass `fortuneDescription` from the elements.",
-          "fr": ""
+          "fr": "Fais maintenant la même chose pour `subTitle` en lui assignant `meaning_up`, et pour `title` en lui assignant `foundCard.name`. Ensuite, appelle la méthode `showElements` et passe `fortuneDescription` depuis les éléments."
         }
       ],
       "hints": [
         {
           "en": "You should set `this.elements.subTitle.textContent` to `foundCard.meaning_up`.",
-          "fr": ""
+          "fr": "Tu dois définir `this.elements.subTitle.textContent` à `foundCard.meaning_up`."
         },
         {
           "en": "You should set `this.elements.title.textContent` to `foundCard.name`.",
-          "fr": ""
+          "fr": "Tu dois définir `this.elements.title.textContent` à `foundCard.name`."
         },
         {
           "en": "You should call the `showElements` function inside `showFortune`.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `showElements` à l’intérieur de `showFortune`."
         },
         {
           "en": "You should pass `this.elements.fortuneDescription` as an argument to `showElements`.",
-          "fr": ""
+          "fr": "Tu dois passer `this.elements.fortuneDescription` comme argument à `showElements`."
         }
       ]
     },
@@ -1847,21 +1839,21 @@
       "description": [
         {
           "en": "At this point, you should be able to see the fortune each card shows once you click a card. The only thing left to do is to make the new reading button work.",
-          "fr": ""
+          "fr": "À ce stade, tu devrais pouvoir voir la prédiction que chaque carte montre une fois que tu cliques sur une carte. Il ne reste plus qu’à faire fonctionner le bouton de nouvelle lecture."
         },
         {
           "en": "Inside the `newReading` method, call `showElements()` and `hideElements()`.",
-          "fr": ""
+          "fr": "À l’intérieur de la méthode `newReading`, appelle `showElements()` et `hideElements()`."
         }
       ],
       "hints": [
         {
           "en": "You should call the `showElements` function inside the `newReading` method.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `showElements` à l’intérieur de la méthode `newReading`."
         },
         {
           "en": "You should call the `hideElements` function inside the `newReading` method.",
-          "fr": ""
+          "fr": "Tu dois appeler la fonction `hideElements` à l’intérieur de la méthode `newReading`."
         }
       ]
     },
@@ -1876,21 +1868,21 @@
       "description": [
         {
           "en": "Now inside the `showElements`, pass these as arguments: `singleCardBtn`, `multipleCardsBtn`, and `headerTitle`. Remember you get them from the `elements`, and access them with the `this` keyword.",
-          "fr": ""
+          "fr": "Maintenant, dans `showElements`, passe ces arguments : `singleCardBtn`, `multipleCardsBtn` et `headerTitle`. N’oublie pas que tu les récupères depuis `elements`, et que tu y accèdes avec le mot-clé `this`."
         }
       ],
       "hints": [
         {
           "en": "You should pass `singleCardBtn` as the first argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `singleCardBtn` comme premier argument à la fonction `showElements`."
         },
         {
           "en": "You should pass `multipleCardsBtn` as the second argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCardsBtn` comme deuxième argument à la fonction `showElements`."
         },
         {
           "en": "You should pass `headerTitle` as an argument to the `showElements` function.",
-          "fr": ""
+          "fr": "Tu dois passer `headerTitle` comme argument à la fonction `showElements`."
         }
       ]
     },
@@ -1905,29 +1897,29 @@
       "description": [
         {
           "en": "Finally, inside the `hideElements`, pass the arguments `singleCard`, `multipleCard`, `fortuneContainer`, and `fortuneDescription`. Remember to get them from the elements.",
-          "fr": ""
+          "fr": "Enfin, dans `hideElements`, passe les arguments `singleCard`, `multipleCard`, `fortuneContainer` et `fortuneDescription`. N’oublie pas de les récupérer depuis les éléments."
         },
         {
           "en": "With that, your Fortune Telling app is complete!",
-          "fr": ""
+          "fr": "Avec ça, ton application Fortune Telling est terminée !"
         }
       ],
       "hints": [
         {
           "en": "You should pass `singleCard` as the first argument to `hideElements`.",
-          "fr": ""
+          "fr": "Tu dois passer `singleCard` comme premier argument à `hideElements`."
         },
         {
           "en": "You should pass `multipleCard` as an argument to `hideElements`.",
-          "fr": ""
+          "fr": "Tu dois passer `multipleCard` comme argument à `hideElements`."
         },
         {
           "en": "You should pass `fortuneContainer` as an argument to `hideElements`.",
-          "fr": ""
+          "fr": "Tu dois passer `fortuneContainer` comme argument à `hideElements`."
         },
         {
           "en": "You should pass `fortuneDescription` as an argument to `hideElements`.",
-          "fr": ""
+          "fr": "Tu dois passer `fortuneDescription` comme argument à `hideElements`."
         }
       ]
     }
