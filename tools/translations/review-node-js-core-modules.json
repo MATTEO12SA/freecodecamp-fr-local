@@ -1,0 +1,304 @@
+{
+  "workshop": "review-node-js-core-modules",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69247cd74caa633ccd7e3351.md",
+      "id": "69247cd74caa633ccd7e3351",
+      "dashedName": "review-node-js-core-modules",
+      "title": {
+        "en": "Node.js Core Modules Review",
+        "fr": "Révision des modules de base de Node.js"
+      },
+      "description": [
+        {
+          "en": "## Introduction to Node.js Core Modules",
+          "fr": "## Introduction aux modules de base de Node.js"
+        },
+        {
+          "en": "- **Node.js Core Modules**: Built-in modules that come pre-installed with Node.js, providing essential functionality for file operations, cryptography, operating system interactions, and more.\n- **Standard Modules**: No need for separate installation; available as long as Node.js is installed.\n- **Import Syntax**: Use `require()` to import core modules into your application.",
+          "fr": "- **Modules de base Node.js** : Modules intégrés livrés préinstallés avec Node.js, fournissant des fonctionnalités essentielles pour les opérations sur fichiers, la cryptographie, les interactions avec le système d'exploitation, et plus encore.\n- **Modules standard** : Pas besoin d'installation séparée ; disponibles tant que Node.js est installé.\n- **Syntaxe d'import** : Utilise `require()` pour importer les modules de base dans ton application."
+        },
+        {
+          "en": "## File System (fs) Module",
+          "fr": "## Module File System (fs)"
+        },
+        {
+          "en": "- **Purpose**: Provides methods for working with files and folders, including opening, closing, reading, writing, and deleting operations.\n- **Import**: `const fs = require(\"fs\");`\n- **Flexibility**: Methods available in three forms: callbacks, promises, and synchronous.",
+          "fr": "- **Objectif** : Fournit des méthodes pour travailler avec les fichiers et dossiers, notamment ouvrir, fermer, lire, écrire et supprimer.\n- **Import** : `const fs = require(\"fs\");`\n- **Flexibilité** : Méthodes disponibles sous trois formes : callbacks, promises et synchrone."
+        },
+        {
+          "en": "### Method Usage Patterns",
+          "fr": "### Modèles d'utilisation des méthodes"
+        },
+        {
+          "en": "- **Asynchronous with Callbacks**: Default behavior, non-blocking.",
+          "fr": "- **Asynchrone avec callbacks** : Comportement par défaut, non bloquant."
+        },
+        {
+          "en": "- **Promises-based**: Preferred for modern applications, uses `async/await`.",
+          "fr": "- **Basé sur les promises** : Préféré pour les applications modernes, utilise `async/await`."
+        },
+        {
+          "en": "- **Synchronous**: Blocking operation, suitable for simple scripts.",
+          "fr": "- **Synchrone** : Opération bloquante, adaptée aux scripts simples."
+        },
+        {
+          "en": "### Core File Operations",
+          "fr": "### Opérations fichiers essentielles"
+        },
+        {
+          "en": "- **`writeFile()` Method**: Creates or overwrites a file with specified content.",
+          "fr": "- **Méthode `writeFile()`** : Crée ou écrase un fichier avec le contenu spécifié."
+        },
+        {
+          "en": "- **`appendFile()` Method**: Adds content to the end of an existing file.",
+          "fr": "- **Méthode `appendFile()`** : Ajoute du contenu à la fin d'un fichier existant."
+        },
+        {
+          "en": "- **`readFile()` Method**: Reads the contents of a file.",
+          "fr": "- **Méthode `readFile()`** : Lit le contenu d'un fichier."
+        },
+        {
+          "en": "- **`unlink()` Method**: Deletes a file from the file system.",
+          "fr": "- **Méthode `unlink()`** : Supprime un fichier du système de fichiers."
+        },
+        {
+          "en": "### Character Encoding",
+          "fr": "### Encodage des caractères"
+        },
+        {
+          "en": "- **UTF-8 Encoding**: Specify `\"utf8\"` to read files as text strings.\n- **Buffer Format**: Without encoding specification, files are read as binary buffer objects.",
+          "fr": "- **Encodage UTF-8** : Spécifie `\"utf8\"` pour lire les fichiers comme des chaînes de texte.\n- **Format Buffer** : Sans spécification d'encodage, les fichiers sont lus comme des objets buffer binaires."
+        },
+        {
+          "en": "## Buffer Module",
+          "fr": "## Module Buffer"
+        },
+        {
+          "en": "- **Purpose**: Handles binary data directly in memory for files, images, and network streams.\n- **Import**: `const { Buffer } = require(\"buffer\");`\n- **Use Cases**: File I/O, TCP streams, image processing, and binary data manipulation.",
+          "fr": "- **Objectif** : Gère les données binaires directement en mémoire pour les fichiers, images et flux réseau.\n- **Import** : `const { Buffer } = require(\"buffer\");`\n- **Cas d'usage** : I/O fichiers, flux TCP, traitement d'images et manipulation de données binaires."
+        },
+        {
+          "en": "### Buffer Creation",
+          "fr": "### Création de Buffer"
+        },
+        {
+          "en": "- **`Buffer.from()` Method**: Creates buffer from strings, arrays, or other data.",
+          "fr": "- **Méthode `Buffer.from()`** : Crée un buffer à partir de chaînes, tableaux ou autres données."
+        },
+        {
+          "en": "- **`Buffer.alloc()` Method**: Creates buffer of specified size filled with zeros.",
+          "fr": "- **Méthode `Buffer.alloc()`** : Crée un buffer de taille spécifiée rempli de zéros."
+        },
+        {
+          "en": "### Buffer Operations",
+          "fr": "### Opérations Buffer"
+        },
+        {
+          "en": "- **Array-like Access**: Access individual buffer elements using index notation.",
+          "fr": "- **Accès de type tableau** : Accède aux éléments individuels du buffer avec la notation d'index."
+        },
+        {
+          "en": "- **`toString()` Method**: Converts buffer to readable string.",
+          "fr": "- **Méthode `toString()`** : Convertit un buffer en chaîne lisible."
+        },
+        {
+          "en": "- **`Buffer.write()` Method**: Writes data to an allocated buffer.",
+          "fr": "- **Méthode `Buffer.write()`** : Écrit des données dans un buffer alloué."
+        },
+        {
+          "en": "- **`Buffer.byteLength()` Method**: Returns number of bytes needed to store a string.",
+          "fr": "- **Méthode `Buffer.byteLength()`** : Renvoie le nombre d'octets nécessaires pour stocker une chaîne."
+        },
+        {
+          "en": "### Additional Buffer Methods",
+          "fr": "### Méthodes Buffer supplémentaires"
+        },
+        {
+          "en": "- **`Buffer.isBuffer()`**: Checks if an object is a buffer.\n- **`Buffer.compare()`**: Compares two buffers and returns sort order.\n- **`Buffer.concat()`**: Joins multiple buffers into one.",
+          "fr": "- **`Buffer.isBuffer()`** : Vérifie si un objet est un buffer.\n- **`Buffer.compare()`** : Compare deux buffers et renvoie l'ordre de tri.\n- **`Buffer.concat()`** : Joint plusieurs buffers en un seul."
+        },
+        {
+          "en": "## Crypto Module",
+          "fr": "## Module Crypto"
+        },
+        {
+          "en": "- **Purpose**: Provides cryptographic functionality, including hashing, encryption, decryption, and digital signatures.\n- **Import**: `const crypto = require(\"crypto\");`\n- **Security Note**: Use well-tested libraries like `bcrypt` or `jsonwebtoken` for production authentication.",
+          "fr": "- **Objectif** : Fournit des fonctionnalités cryptographiques, notamment hachage, chiffrement, déchiffrement et signatures numériques.\n- **Import** : `const crypto = require(\"crypto\");`\n- **Note de sécurité** : Utilise des bibliothèques bien testées comme `bcrypt` ou `jsonwebtoken` pour l'authentification en production."
+        },
+        {
+          "en": "### Hashing Methods",
+          "fr": "### Méthodes de hachage"
+        },
+        {
+          "en": "- **`createHash()` Method**: Creates one-way hash using algorithms like SHA256, SHA512, or MD5.",
+          "fr": "- **Méthode `createHash()`** : Crée un hachage à sens unique avec des algorithmes comme SHA256, SHA512 ou MD5."
+        },
+        {
+          "en": "- **`createHmac()` Method**: Creates a hash with a secret key for authentication and data integrity.",
+          "fr": "- **Méthode `createHmac()`** : Crée un hachage avec une clé secrète pour l'authentification et l'intégrité des données."
+        },
+        {
+          "en": "### Encryption and Decryption",
+          "fr": "### Chiffrement et déchiffrement"
+        },
+        {
+          "en": "- **`createCipheriv()` and `createDecipheriv()` Methods**: Encrypt and decrypt data using algorithms, keys, and initialization vectors.",
+          "fr": "- **Méthodes `createCipheriv()` et `createDecipheriv()`** : Chiffrent et déchiffrent des données avec algorithmes, clés et vecteurs d'initialisation."
+        },
+        {
+          "en": "### Random Value Generation",
+          "fr": "### Génération de valeurs aléatoires"
+        },
+        {
+          "en": "- **`randomBytes()` Method**: Generates cryptographically secure random bytes.",
+          "fr": "- **Méthode `randomBytes()`** : Génère des octets aléatoires cryptographiquement sécurisés."
+        },
+        {
+          "en": "- **`randomInt()` Method**: Generates secure random integers within specified range.",
+          "fr": "- **Méthode `randomInt()`** : Génère des entiers aléatoires sécurisés dans une plage spécifiée."
+        },
+        {
+          "en": "### Key Management",
+          "fr": "### Gestion des clés"
+        },
+        {
+          "en": "- **`createSecretKey()` Method**: Creates cryptographic key objects from raw bytes.",
+          "fr": "- **Méthode `createSecretKey()`** : Crée des objets de clé cryptographique à partir d'octets bruts."
+        },
+        {
+          "en": "### Digital Signatures",
+          "fr": "### Signatures numériques"
+        },
+        {
+          "en": "- **`sign()` and `verify()` Methods**: Create and validate digital signatures using private/public key pairs.\n- **Use Case**: Proves data authenticity and integrity.",
+          "fr": "- **Méthodes `sign()` et `verify()`** : Créent et valident des signatures numériques avec des paires de clés privée/publique.\n- **Cas d'usage** : Prouve l'authenticité et l'intégrité des données."
+        },
+        {
+          "en": "### Additional Crypto Methods",
+          "fr": "### Méthodes Crypto supplémentaires"
+        },
+        {
+          "en": "- **`createPublicKey()` and `createPrivateKey()`**: Work with externally generated keys.\n- **`createDiffieHellman()`**: Enables secure shared secret generation.\n- **`Certificate()`**: Handles HTTPS certificate operations.",
+          "fr": "- **`createPublicKey()` et `createPrivateKey()`** : Travaillent avec des clés générées ailleurs.\n- **`createDiffieHellman()`** : Permet la génération sécurisée d'un secret partagé.\n- **`Certificate()`** : Gère les opérations sur les certificats HTTPS."
+        },
+        {
+          "en": "## OS Module",
+          "fr": "## Module OS"
+        },
+        {
+          "en": "- **Purpose**: Provides operating system-related utilities for system information and cross-platform compatibility.\n- **Import**: `const os = require(\"os\");`\n- **Use Cases**: System monitoring, cross-platform scripting, hardware information.",
+          "fr": "- **Objectif** : Fournit des utilitaires liés au système d'exploitation pour les infos système et la compatibilité multiplateforme.\n- **Import** : `const os = require(\"os\");`\n- **Cas d'usage** : Surveillance système, scripts multiplateformes, informations matérielles."
+        },
+        {
+          "en": "### System Information Methods",
+          "fr": "### Méthodes d'information système"
+        },
+        {
+          "en": "- **`platform()` Method**: Returns operating system platform.",
+          "fr": "- **Méthode `platform()`** : Renvoie la plateforme du système d'exploitation."
+        },
+        {
+          "en": "- **`arch()` Method**: Returns CPU architecture.",
+          "fr": "- **Méthode `arch()`** : Renvoie l'architecture CPU."
+        },
+        {
+          "en": "- **`type()` Method**: Returns official operating system name.",
+          "fr": "- **Méthode `type()`** : Renvoie le nom officiel du système d'exploitation."
+        },
+        {
+          "en": "### Version Information",
+          "fr": "### Informations de version"
+        },
+        {
+          "en": "- **`release()` Method**: Shows OS kernel version.",
+          "fr": "- **Méthode `release()`** : Affiche la version du noyau OS."
+        },
+        {
+          "en": "- **`version()` Method**: Returns detailed OS version information.",
+          "fr": "- **Méthode `version()`** : Renvoie des informations détaillées sur la version de l'OS."
+        },
+        {
+          "en": "### Hardware Information",
+          "fr": "### Informations matérielles"
+        },
+        {
+          "en": "- **`cpus()` Method**: Returns an array of CPU core information.",
+          "fr": "- **Méthode `cpus()`** : Renvoie un tableau d'informations sur les cœurs CPU."
+        },
+        {
+          "en": "- **`uptime()` Method**: Returns system uptime in seconds.",
+          "fr": "- **Méthode `uptime()`** : Renvoie le temps de fonctionnement du système en secondes."
+        },
+        {
+          "en": "### Memory Information",
+          "fr": "### Informations mémoire"
+        },
+        {
+          "en": "- **`totalmem()` Method**: Returns total system memory in bytes.\n- **`freemem()` Method**: Returns available system memory in bytes.",
+          "fr": "- **Méthode `totalmem()`** : Renvoie la mémoire système totale en octets.\n- **Méthode `freemem()`** : Renvoie la mémoire système disponible en octets."
+        },
+        {
+          "en": "## Best Practices",
+          "fr": "## Bonnes pratiques"
+        },
+        {
+          "en": "### Performance Considerations",
+          "fr": "### Considérations de performance"
+        },
+        {
+          "en": "- **Avoid Synchronous Methods**: Use asynchronous methods in production applications to prevent blocking.\n- **Prefer Promises**: Use `async/await` with promises-based API for cleaner, maintainable code.\n- **Error Handling**: Always implement proper error handling with try-catch blocks or error callbacks.",
+          "fr": "- **Évite les méthodes synchrones** : Utilise les méthodes asynchrones dans les applications de production pour éviter le blocage.\n- **Préfère les promises** : Utilise `async/await` avec l'API basée sur les promises pour un code plus propre et maintenable.\n- **Gestion des erreurs** : Implémente toujours une gestion d'erreurs correcte avec des blocs try-catch ou des callbacks d'erreur."
+        },
+        {
+          "en": "### Security Guidelines",
+          "fr": "### Guidelines de sécurité"
+        },
+        {
+          "en": "- **Crypto Module**: Use established libraries for authentication rather than building custom crypto solutions.\n- **Input Validation**: Validate file paths and user input to prevent security vulnerabilities.\n- **Key Management**: Store cryptographic keys securely, never hardcode them in source code.",
+          "fr": "- **Module Crypto** : Utilise des bibliothèques établies pour l'authentification plutôt que de construire des solutions crypto personnalisées.\n- **Validation des entrées** : Valide les chemins de fichiers et les entrées utilisateur pour prévenir les vulnérabilités de sécurité.\n- **Gestion des clés** : Stocke les clés cryptographiques de façon sécurisée, ne les code jamais en dur dans le code source."
+        },
+        {
+          "en": "### Cross-Platform Development",
+          "fr": "### Développement multiplateforme"
+        },
+        {
+          "en": "- **OS Module Usage**: Use OS module methods for cross-platform compatibility.\n- **Path Handling**: Use `path` module for cross-platform file path operations.\n- **Environment Variables**: Check platform-specific environment variables and configurations.",
+          "fr": "- **Usage du module OS** : Utilise les méthodes du module OS pour la compatibilité multiplateforme.\n- **Gestion des chemins** : Utilise le module `path` pour les opérations de chemins de fichiers multiplateformes.\n- **Variables d'environnement** : Vérifie les variables d'environnement et configurations spécifiques à la plateforme."
+        },
+        {
+          "en": "## Common Use Cases",
+          "fr": "## Cas d'usage courants"
+        },
+        {
+          "en": "### File Operations",
+          "fr": "### Opérations sur fichiers"
+        },
+        {
+          "en": "- Configuration file management\n- Log file creation and maintenance\n- Data export/import functionality\n- Template processing",
+          "fr": "- Gestion des fichiers de configuration\n- Création et maintenance de fichiers de logs\n- Fonctionnalité d'export/import de données\n- Traitement de templates"
+        },
+        {
+          "en": "### Data Security",
+          "fr": "### Sécurité des données"
+        },
+        {
+          "en": "- Password hashing for user authentication\n- Data encryption for sensitive information\n- Random token generation for sessions\n- Digital signature verification",
+          "fr": "- Hachage de mots de passe pour l'authentification utilisateur\n- Chiffrement de données pour les informations sensibles\n- Génération de tokens aléatoires pour les sessions\n- Vérification de signatures numériques"
+        },
+        {
+          "en": "### System Integration",
+          "fr": "### Intégration système"
+        },
+        {
+          "en": "- Cross-platform application deployment\n- System resource monitoring\n- Hardware compatibility checks\n- Performance optimization based on system capabilities",
+          "fr": "- Déploiement d'applications multiplateformes\n- Surveillance des ressources système\n- Vérifications de compatibilité matérielle\n- Optimisation des performances selon les capacités du système"
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

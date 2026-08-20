@@ -1,0 +1,522 @@
+{
+  "workshop": "lecture-working-with-express",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "69a6f5cc0512c4107ec1d446.md",
+      "id": "69a6f5cc0512c4107ec1d446",
+      "dashedName": "what-is-express-js",
+      "title": {
+        "en": "What is Express.js?",
+        "fr": "Qu'est-ce qu'Express.js ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Express.js or Express for short, is a minimal and flexible web framework built **on top** of Node.js. It simplifies the process of building web servers and APIs.",
+              "fr": "Express.js, ou Express en abrégé, est un framework web minimal et flexible construit **par-dessus** Node.js. Il simplifie le processus de construction de serveurs web et d'API."
+            },
+            {
+              "en": "Instead of writing tons of boilerplate code with Node’s native `http` module, Express lets you create robust web applications with just a few lines.",
+              "fr": "Au lieu d'écrire des tonnes de code boilerplate avec le module natif `http` de Node, Express te laisse créer des applications web robustes avec juste quelques lignes."
+            },
+            {
+              "en": "You can think of it as the fast, unopinionated layer that makes Node.js easier and more powerful.",
+              "fr": "Tu peux le voir comme la couche rapide et non opinionnée qui rend Node.js plus facile et plus puissant."
+            },
+            {
+              "en": "Here are three key reasons developers love Express:",
+              "fr": "Voici trois raisons clés pour lesquelles les développeurs aiment Express :"
+            },
+            {
+              "en": "1. **Minimal and fast** – Express provides only the essentials, giving you full control while letting you add features as needed through middleware and plugins.",
+              "fr": "1. **Minimal et rapide** – Express fournit seulement l'essentiel, te donnant un contrôle total tout en te laissant ajouter des fonctionnalités au besoin via le middleware et les plugins."
+            },
+            {
+              "en": "2. **Massive ecosystem** – It has a huge collection of middleware and plugins for logging, authentication, security, sessions, and more.",
+              "fr": "2. **Écosystème massif** – Il a une énorme collection de middleware et de plugins pour le logging, l'authentification, la sécurité, les sessions, et plus encore."
+            },
+            {
+              "en": "3. **Great for APIs** – Its simple routing and request-handling model makes Express especially well suited for building RESTful APIs.",
+              "fr": "3. **Idéal pour les API** – Son modèle simple de routage et de gestion des requêtes rend Express particulièrement adapté à la construction d'API RESTful."
+            },
+            {
+              "en": "With Express, you can create:",
+              "fr": "Avec Express, tu peux créer :"
+            },
+            {
+              "en": "* Web apps",
+              "fr": "* Des apps web"
+            },
+            {
+              "en": "* RESTful APIs",
+              "fr": "* Des API RESTful"
+            },
+            {
+              "en": "* Single Page Application (SPA) backends",
+              "fr": "* Des backends d'applications monopages (SPA)"
+            },
+            {
+              "en": "* Middleware-heavy services",
+              "fr": "* Des services riches en middleware"
+            },
+            {
+              "en": "* Anything server-side with HTTP",
+              "fr": "* Tout ce qui est côté serveur avec HTTP"
+            },
+            {
+              "en": "## How To Install Express",
+              "fr": "## Comment installer Express"
+            },
+            {
+              "en": "First, make sure you have Node.js and npm installed. Here is how to check if node and npm are installed:",
+              "fr": "D'abord, assure-toi d'avoir Node.js et npm installés. Voici comment vérifier si node et npm sont installés :"
+            },
+            {
+              "en": "If you see a version number, that means it is installed. If not, you will need to install them. You can find installation instructions in an earlier lesson, or on the official Node.js website.",
+              "fr": "Si tu vois un numéro de version, cela signifie que c'est installé. Sinon, tu devras les installer. Tu peux trouver les instructions d'installation dans une leçon précédente, ou sur le site officiel de Node.js."
+            },
+            {
+              "en": "Next, in your terminal, write the following commands:",
+              "fr": "Ensuite, dans ton terminal, écris les commandes suivantes :"
+            },
+            {
+              "en": "You'll learn more about middleware and plugins in future lessons, but in short, middleware is code that runs between receiving a request and sending a response. It's commonly used for error handling, input validation, modifying data in the request or response, and more. You can chain middleware together to build flexible and reusable logic to handle requests.",
+              "fr": "Tu en apprendras plus sur le middleware et les plugins dans de futures leçons, mais en bref, le middleware est du code qui s'exécute entre la réception d'une requête et l'envoi d'une réponse. Il est couramment utilisé pour la gestion d'erreurs, la validation d'entrée, la modification des données dans la requête ou la réponse, et plus encore. Tu peux enchaîner du middleware pour construire une logique flexible et réutilisable pour gérer les requêtes."
+            },
+            {
+              "en": "Plugins are typically external, third-party Node.js modules that extend the functionality of Express. You can install them separately with npm, and most are implemented as middleware that can be used in your app with just a little setup. Instead of writing common features from scratch, you can use a plugin to handle things like logging, authentication, or security best practices.",
+              "fr": "Les plugins sont typiquement des modules Node.js externes tiers qui étendent les fonctionnalités d'Express. Tu peux les installer séparément avec npm, et la plupart sont implémentés comme du middleware utilisable dans ton app avec juste un peu de configuration. Au lieu d'écrire des fonctionnalités courantes from scratch, tu peux utiliser un plugin pour gérer des choses comme le logging, l'authentification, ou les bonnes pratiques de sécurité."
+            },
+            {
+              "en": "Express is a popular framework for server-side development in Node.js. It gives you the building blocks to quickly spin up a server, handle routes, manage middleware, and build APIs—all with clean and readable code.",
+              "fr": "Express est un framework populaire pour le développement côté serveur en Node.js. Il te donne les briques pour rapidement lancer un serveur, gérer les routes, gérer le middleware, et construire des API — le tout avec un code propre et lisible."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is Express.js built on?",
+              "fr": "Sur quoi Express.js est-il construit ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "React",
+              "fr": "React"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript runtime Express runs on.",
+              "fr": "Pense au runtime JavaScript sur lequel Express s'exécute."
+            },
+            {
+              "en": "Python",
+              "fr": "Python"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript runtime Express runs on.",
+              "fr": "Pense au runtime JavaScript sur lequel Express s'exécute."
+            },
+            {
+              "en": "Node.js",
+              "fr": "Node.js"
+            },
+            {
+              "en": "Angular",
+              "fr": "Angular"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what JavaScript runtime Express runs on.",
+              "fr": "Pense au runtime JavaScript sur lequel Express s'exécute."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which command installs Express?",
+              "fr": "Quelle commande installe Express ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's the standard npm install command.",
+              "fr": "C'est la commande npm install standard."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's the standard npm install command.",
+              "fr": "C'est la commande npm install standard."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's the standard npm install command.",
+              "fr": "C'est la commande npm install standard."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is Express a popular framework?",
+              "fr": "Pourquoi Express est-il un framework populaire ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To quickly spin up a server.",
+              "fr": "Pour rapidement lancer un serveur."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Express.js does a lot of heavy lifting.",
+              "fr": "Express.js fait beaucoup du travail lourd."
+            },
+            {
+              "en": "To handle routes.",
+              "fr": "Pour gérer les routes."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Express.js does a lot of heavy lifting.",
+              "fr": "Express.js fait beaucoup du travail lourd."
+            },
+            {
+              "en": "To manage middleware.",
+              "fr": "Pour gérer le middleware."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Express.js does a lot of heavy lifting.",
+              "fr": "Express.js fait beaucoup du travail lourd."
+            },
+            {
+              "en": "All of the above.",
+              "fr": "Toutes les réponses ci-dessus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69a6f5e1264af50c407aecfe.md",
+      "id": "69a6f5e1264af50c407aecfe",
+      "dashedName": "how-do-you-create-a-basic-express-app",
+      "title": {
+        "en": "How Do You Create a Basic Express App?",
+        "fr": "Comment créer une app Express de base ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you created a project folder and installed Express:",
+              "fr": "Dans la leçon précédente, tu as créé un dossier de projet et installé Express :"
+            },
+            {
+              "en": "As a reminder, these commands create a new project folder, `cd` into the project folder, initialize the project and create a basic `package.json` file, and install Express.",
+              "fr": "Pour rappel, ces commandes créent un nouveau dossier de projet, font un `cd` dans le dossier du projet, initialisent le projet et créent un fichier `package.json` de base, et installent Express."
+            },
+            {
+              "en": "Next, open up a code editor, create a file named `index.js`, and write your first Express server:",
+              "fr": "Ensuite, ouvre un éditeur de code, crée un fichier nommé `index.js`, et écris ton premier serveur Express :"
+            },
+            {
+              "en": "You can run your code with the following command in the terminal:",
+              "fr": "Tu peux exécuter ton code avec la commande suivante dans le terminal :"
+            },
+            {
+              "en": "Open your browser to [http://localhost:3000](http://localhost:3000) and you'll see the message **\"Hello World!\"**",
+              "fr": "Ouvre ton navigateur sur [http://localhost:3000](http://localhost:3000) et tu verras le message **\"Hello World!\"**"
+            },
+            {
+              "en": "That’s how fast it is to get started with Express! Now let’s walk through the code step-by-step.",
+              "fr": "C'est aussi rapide que ça pour démarrer avec Express ! Maintenant parcourons le code étape par étape."
+            },
+            {
+              "en": "In the first line of code, you are loading the Express library and assigning that to a variable called `express`:",
+              "fr": "Dans la première ligne de code, tu charges la bibliothèque Express et tu l'assignes à une variable appelée `express` :"
+            },
+            {
+              "en": "The `express` variable is a factory function. When you call it, it creates and returns a new Express application instance:",
+              "fr": "La variable `express` est une fonction factory. Quand tu l'appelles, elle crée et renvoie une nouvelle instance d'application Express :"
+            },
+            {
+              "en": "`app` now has access to all the methods provided by Express, such as `.get()`, `.post()`, `.listen()`, and so on. This is your main server object.",
+              "fr": "`app` a maintenant accès à toutes les méthodes fournies par Express, comme `.get()`, `.post()`, `.listen()`, et ainsi de suite. C'est ton objet serveur principal."
+            },
+            {
+              "en": "The next line defines the `port` variable. A port is a network endpoint that your application listens on, and `3000` is a commonly used port for local development:",
+              "fr": "La ligne suivante définit la variable `port`. Un port est un point d'accès réseau sur lequel ton application écoute, et `3000` est un port couramment utilisé pour le développement local :"
+            },
+            {
+              "en": "Now, let’s take a look at the next part here:",
+              "fr": "Maintenant, regardons la partie suivante ici :"
+            },
+            {
+              "en": "This block of code defines a route and tells the server how to respond to requests. `app.get()` registers a handler for HTTP GET requests. A GET request is a commonly used HTTP method for retrieving data.",
+              "fr": "Ce bloc de code définit une route et dit au serveur comment répondre aux requêtes. `app.get()` enregistre un gestionnaire pour les requêtes HTTP GET. Une requête GET est une méthode HTTP couramment utilisée pour récupérer des données."
+            },
+            {
+              "en": "The `\"/\"` argument inside `app.get()` represents the route path. In this case, it points to the root URL of the application.",
+              "fr": "L'argument `\"/\"` dans `app.get()` représente le chemin de la route. Dans ce cas, il pointe vers l'URL racine de l'application."
+            },
+            {
+              "en": "The `(req, res) => { ... }` part is a callback function that runs when a request matches this route. The `req` object contains information about the incoming request, and the `res` object is used to send a response back to the client.",
+              "fr": "La partie `(req, res) => { ... }` est une fonction callback qui s'exécute quand une requête correspond à cette route. L'objet `req` contient des informations sur la requête entrante, et l'objet `res` est utilisé pour envoyer une réponse au client."
+            },
+            {
+              "en": "Finally, `res.send(\"Hello World!\")` sends a response to the client. In this example, the response is the plain text `\"Hello World!\"`.",
+              "fr": "Enfin, `res.send(\"Hello World!\")` envoie une réponse au client. Dans cet exemple, la réponse est le texte brut `\"Hello World!\"`."
+            },
+            {
+              "en": "Now, let’s take a look at the last piece of code here:",
+              "fr": "Maintenant, regardons le dernier morceau de code ici :"
+            },
+            {
+              "en": "The `app.listen()` method starts the Express application and tells Node to listen for incoming HTTP requests on the specified port, in this case, `3000`.",
+              "fr": "La méthode `app.listen()` démarre l'application Express et dit à Node d'écouter les requêtes HTTP entrantes sur le port spécifié, dans ce cas `3000`."
+            },
+            {
+              "en": "Once the server starts, the callback function executes and the message `Example app listening on port 3000` is logged to the console, confirming that the Express app has started successfully and is ready to receive requests.",
+              "fr": "Une fois le serveur démarré, la fonction callback s'exécute et le message `Example app listening on port 3000` est journalisé dans la console, confirmant que l'app Express a démarré avec succès et est prête à recevoir des requêtes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does this Express route do?",
+              "fr": "Que fait cette route Express ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It deletes the homepage.",
+              "fr": "Elle supprime la page d'accueil."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What happens when a user visits `/`?",
+              "fr": "Que se passe-t-il quand un utilisateur visite `/` ?"
+            },
+            {
+              "en": "It creates a new database.",
+              "fr": "Elle crée une nouvelle base de données."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What happens when a user visits `/`?",
+              "fr": "Que se passe-t-il quand un utilisateur visite `/` ?"
+            },
+            {
+              "en": "It sends a response to the root URL.",
+              "fr": "Elle envoie une réponse à l'URL racine."
+            },
+            {
+              "en": "It starts the server.",
+              "fr": "Elle démarre le serveur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "What happens when a user visits `/`?",
+              "fr": "Que se passe-t-il quand un utilisateur visite `/` ?"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does `app.listen()` do?",
+              "fr": "Que fait `app.listen()` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It stops the app.",
+              "fr": "Elle arrête l'app."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what must happen before you can visit [`http://localhost:3000`](http://localhost:3000) in a browser.",
+              "fr": "Pense à ce qui doit se passer avant que tu puisses visiter [`http://localhost:3000`](http://localhost:3000) dans un navigateur."
+            },
+            {
+              "en": "It sends a 404 code back to the client.",
+              "fr": "Elle renvoie un code 404 au client."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what must happen before you can visit [`http://localhost:3000`](http://localhost:3000) in a browser.",
+              "fr": "Pense à ce qui doit se passer avant que tu puisses visiter [`http://localhost:3000`](http://localhost:3000) dans un navigateur."
+            },
+            {
+              "en": "It defines the port for the app.",
+              "fr": "Elle définit le port pour l'app."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what must happen before you can visit [`http://localhost:3000`](http://localhost:3000) in a browser.",
+              "fr": "Pense à ce qui doit se passer avant que tu puisses visiter [`http://localhost:3000`](http://localhost:3000) dans un navigateur."
+            },
+            {
+              "en": "It starts the server and listens for incoming requests on a port.",
+              "fr": "Elle démarre le serveur et écoute les requêtes entrantes sur un port."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is a root URL?",
+              "fr": "Laquelle de celles-ci est une URL racine ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall that the root URL does not include any additional path segments.",
+              "fr": "Rappelle-toi que l'URL racine n'inclut aucun segment de chemin supplémentaire."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall that the root URL does not include any additional path segments.",
+              "fr": "Rappelle-toi que l'URL racine n'inclut aucun segment de chemin supplémentaire."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall that the root URL does not include any additional path segments.",
+              "fr": "Rappelle-toi que l'URL racine n'inclut aucun segment de chemin supplémentaire."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

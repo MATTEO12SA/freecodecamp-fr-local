@@ -15,6 +15,7 @@ import {
   getExamSession,
   saveExamSession
 } from '../utils/exam-session';
+import { sanitizeQuizHtml } from '../utils/sanitize-quiz-html';
 
 import './exam-fr.css';
 
@@ -631,7 +632,9 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   <div
                     className='exam-fr-question'
                     dangerouslySetInnerHTML={{
-                      __html: questions[currentIndex].questionText
+                      __html: sanitizeQuizHtml(
+                        questions[currentIndex].questionText
+                      )
                     }}
                   />
                   <ul className='exam-fr-choices'>
@@ -658,7 +661,9 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                               onChange={() => selectAnswer(idx)}
                             />
                             <span
-                              dangerouslySetInnerHTML={{ __html: choice.text }}
+                              dangerouslySetInnerHTML={{
+                                __html: sanitizeQuizHtml(choice.text)
+                              }}
                             />
                           </label>
                         </li>
@@ -806,17 +811,20 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                               <div
                                 className='exam-fr-review-q'
                                 dangerouslySetInnerHTML={{
-                                  __html: question.questionText
+                                  __html: sanitizeQuizHtml(
+                                    question.questionText
+                                  )
                                 }}
                               />
                               <div className='exam-fr-review-a'>
                                 <strong>Bonne réponse :</strong>{' '}
                                 <span
                                   dangerouslySetInnerHTML={{
-                                    __html:
+                                    __html: sanitizeQuizHtml(
                                       question.choices[
                                         question.correctChoiceIndex
                                       ].text
+                                    )
                                   }}
                                 />
                               </div>
@@ -825,8 +833,9 @@ function ExamFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                                   <strong>Ta réponse :</strong>{' '}
                                   <span
                                     dangerouslySetInnerHTML={{
-                                      __html:
+                                      __html: sanitizeQuizHtml(
                                         question.choices[userChoiceIndex].text
+                                      )
                                     }}
                                   />
                                 </div>

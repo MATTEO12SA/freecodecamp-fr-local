@@ -1,0 +1,152 @@
+{
+  "workshop": "review-npm",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69a99035edde234d544d003f.md",
+      "id": "69a99035edde234d544d003f",
+      "dashedName": "review-npm",
+      "title": {
+        "en": "NPM Review",
+        "fr": "Revue NPM"
+      },
+      "description": [
+        {
+          "en": "## What is npm?",
+          "fr": "## Qu'est-ce que npm ?"
+        },
+        {
+          "en": "- **Definition**: npm is an online registry for open-source software, functioning like an \"app store\" for code.\n- **Official Meaning**: npm does not officially stand for \"Node Package Manager\"; it is a recursive backronymic abbreviation for \"npm is not an acronym\".\n- **Three Related Parts**:",
+          "fr": "- **Définition** : npm est un registre en ligne de logiciels open source, fonctionnant comme un « app store » pour le code.\n- **Signification officielle** : npm ne signifie pas officiellement « Node Package Manager » ; c'est une abréviation backronymique récursive pour « npm is not an acronym ».\n- **Trois parties liées** :"
+        },
+        {
+          "en": "- **Website (npmjs.com)**: For looking up packages in the registry.\n  - **Registry**: A large public database storing all packages.\n  - **CLI (Command Line Interface)**: A tool installed with Node.js to manage project dependencies.",
+          "fr": "- **Site web (npmjs.com)** : Pour chercher des paquets dans le registre.\n  - **Registre** : Une grande base de données publique stockant tous les paquets.\n  - **CLI (Command Line Interface)** : Un outil installé avec Node.js pour gérer les dépendances du projet."
+        },
+        {
+          "en": "- **Alternatives**: While npm is most widely used, popular alternatives include **Yarn**, **PNPM**, and **Bun**.",
+          "fr": "- **Alternatives** : Bien que npm soit le plus largement utilisé, des alternatives populaires incluent **Yarn**, **PNPM** et **Bun**."
+        },
+        {
+          "en": "## The package.json File",
+          "fr": "## Le fichier package.json"
+        },
+        {
+          "en": "- **Purpose**: A configuration file that stores metadata, dependencies, and scripts for a Node.js project.\n- **Key Fields**:",
+          "fr": "- **Objectif** : Un fichier de configuration qui stocke les métadonnées, dépendances et scripts d'un projet Node.js.\n- **Champs clés** :"
+        },
+        {
+          "en": "- `name` and `version`: Identify the project.\n  - `main`: Specifies the entry point file, often `index.js`.\n  - `license`: Defines legal terms (default is `ISC`).\n  - `dependencies`: Packages required to run the app in production.\n  - `devDependencies`: Tools only needed during development, such as testing frameworks.",
+          "fr": "- `name` et `version` : Identifient le projet.\n  - `main` : Spécifie le fichier point d'entrée, souvent `index.js`.\n  - `license` : Définit les conditions légales (par défaut `ISC`).\n  - `dependencies` : Paquets requis pour faire tourner l'app en production.\n  - `devDependencies` : Outils nécessaires uniquement pendant le développement, comme les frameworks de test."
+        },
+        {
+          "en": "- **Creation**:",
+          "fr": "- **Création** :"
+        },
+        {
+          "en": "- `npm init`: Starts an interactive setup process.\n  - `npm init -y`: Installs a `package.json` with default values instantly.",
+          "fr": "- `npm init` : Démarre un processus de configuration interactif.\n  - `npm init -y` : Installe un `package.json` avec des valeurs par défaut instantanément."
+        },
+        {
+          "en": "## Semantic Versioning (SemVer)",
+          "fr": "## Versionnage sémantique (SemVer)"
+        },
+        {
+          "en": "- **Format**: `MAJOR.MINOR.PATCH`.\n- **Rules**:",
+          "fr": "- **Format** : `MAJOR.MINOR.PATCH`.\n- **Règles** :"
+        },
+        {
+          "en": "- **MAJOR**: Breaking changes that can affect existing code.\n  - **MINOR**: New features that are backwards compatible.\n  - **PATCH**: Small bug fixes and improvements.",
+          "fr": "- **MAJOR** : Breaking changes qui peuvent affecter le code existant.\n  - **MINOR** : Nouvelles fonctionnalités rétrocompatibles.\n  - **PATCH** : Petites corrections de bugs et améliorations."
+        },
+        {
+          "en": "- **Range Symbols**:",
+          "fr": "- **Symboles de plage** :"
+        },
+        {
+          "en": "- `^` (Caret): Allows minor and patch updates (e.g., `^1.2.3` allows `1.x.x`).\n  - `~` (Tilde): Allows only patch updates (e.g., `~1.2.3` allows `1.2.x`).\n  - `*` (Asterisk): Matches any version; used primarily for testing.",
+          "fr": "- `^` (Caret) : Autorise les mises à jour mineures et de patch (ex. : `^1.2.3` autorise `1.x.x`).\n  - `~` (Tilde) : Autorise uniquement les mises à jour de patch (ex. : `~1.2.3` autorise `1.2.x`).\n  - `*` (Astérisque) : Correspond à n'importe quelle version ; utilisé principalement pour les tests."
+        },
+        {
+          "en": "## Dependency Management",
+          "fr": "## Gestion des dépendances"
+        },
+        {
+          "en": "- **Installation**:",
+          "fr": "- **Installation** :"
+        },
+        {
+          "en": "- `npm install <name>`: Adds a production dependency.\n  - `npm install <name> -D`: Adds a development dependency.\n  - `npm install <name>@<version>`: Installs a specific version.",
+          "fr": "- `npm install <name>` : Ajoute une dépendance de production.\n  - `npm install <name> -D` : Ajoute une dépendance de développement.\n  - `npm install <name>@<version>` : Installe une version spécifique."
+        },
+        {
+          "en": "- **Node Modules & Locks**:",
+          "fr": "- **Node Modules et verrous** :"
+        },
+        {
+          "en": "- `node_modules/`: Contains the actual code for installed packages.\n  - `package-lock.json`: Locks the exact versions of all dependencies and \"child dependencies\" to ensure consistency across environments.",
+          "fr": "- `node_modules/` : Contient le code réel des paquets installés.\n  - `package-lock.json` : Verrouille les versions exactes de toutes les dépendances et « dépendances enfants » pour assurer la cohérence entre environnements."
+        },
+        {
+          "en": "- **Removal**: `npm uninstall <name>` removes the package and updates `package.json`.\n- **Maintenance**:",
+          "fr": "- **Suppression** : `npm uninstall <name>` retire le paquet et met à jour `package.json`.\n- **Maintenance** :"
+        },
+        {
+          "en": "- `npm outdated`: Identifies which packages have newer versions available.\n  - `npm update`: Updates packages within the allowed SemVer range.",
+          "fr": "- `npm outdated` : Identifie quels paquets ont de nouvelles versions disponibles.\n  - `npm update` : Met à jour les paquets dans la plage SemVer autorisée."
+        },
+        {
+          "en": "## npm Scripts",
+          "fr": "## Scripts npm"
+        },
+        {
+          "en": "- **Function**: Custom commands defined in the `scripts` section of `package.json` to automate tasks.\n- **Execution**: Run via `npm run <script_name>`.\n- Shorthands exist for `start`, `test`, `stop`, and `restart` (e.g., `npm start`).\n- **Sequential Execution**:\n- `&&`: Runs the second command only if the first succeeds.\n- `;`: Runs commands one after another regardless of success.\n- **Concurrent Execution**: Use the `&` operator to run processes in the background.\n- **Arguments**: Pass arguments to scripts using the `--` separator (e.g., `npm start -- 8000`).",
+          "fr": "- **Fonction** : Commandes personnalisées définies dans la section `scripts` de `package.json` pour automatiser des tâches.\n- **Exécution** : Lancer via `npm run <script_name>`.\n- Des abréviations existent pour `start`, `test`, `stop` et `restart` (ex. : `npm start`).\n- **Exécution séquentielle** :\n- `&&` : Exécute la seconde commande uniquement si la première réussit.\n- `;` : Exécute les commandes l'une après l'autre, succès ou non.\n- **Exécution concurrente** : Utilise l'opérateur `&` pour lancer des processus en arrière-plan.\n- **Arguments** : Passe des arguments aux scripts avec le séparateur `--` (ex. : `npm start -- 8000`)."
+        },
+        {
+          "en": "## Publishing to the npm Registry",
+          "fr": "## Publier sur le registre npm"
+        },
+        {
+          "en": "- **Registry Access**: A database of public and private packages.\n- **Publication Steps**:",
+          "fr": "- **Accès au registre** : Une base de données de paquets publics et privés.\n- **Étapes de publication** :"
+        },
+        {
+          "en": "1. Create a free account at `npmjs.com`.\n2. Log in via terminal using `npm login`.\n3. Ensure a unique `name` and valid `version` are in `package.json`.\n4. Create a `README.md` and `.npmignore` (to exclude sensitive files).\n5. Run `npm publish` (or `npm publish --access public` for scoped packages).",
+          "fr": "1. Crée un compte gratuit sur `npmjs.com`.\n2. Connecte-toi via le terminal avec `npm login`.\n3. Assure-toi qu'un `name` unique et une `version` valide sont dans `package.json`.\n4. Crée un `README.md` et un `.npmignore` (pour exclure les fichiers sensibles).\n5. Exécute `npm publish` (ou `npm publish --access public` pour les paquets scoped)."
+        },
+        {
+          "en": "- **Scopes**: Used to avoid name conflicts by publishing under `@username/package-name`.",
+          "fr": "- **Scopes** : Utilisés pour éviter les conflits de noms en publiant sous `@username/package-name`."
+        },
+        {
+          "en": "## Module Systems in Node.js",
+          "fr": "## Systèmes de modules dans Node.js"
+        },
+        {
+          "en": "### CommonJS (CJS)",
+          "fr": "### CommonJS (CJS)"
+        },
+        {
+          "en": "- **Default System**: The original way Node.js handles modules; loads synchronously.\n- **Syntax**:\n- **Import**: `const module = require('./path')`.\n- **Export**: `module.exports = { functionName }`.\n- **Identification**: Used for `.cjs` files or `.js` files when no `type` is specified in `package.json`.",
+          "fr": "- **Système par défaut** : La façon originale dont Node.js gère les modules ; charge de façon synchrone.\n- **Syntaxe** :\n- **Import** : `const module = require('./path')`.\n- **Export** : `module.exports = { functionName }`.\n- **Identification** : Utilisé pour les fichiers `.cjs` ou `.js` quand aucun `type` n'est spécifié dans `package.json`."
+        },
+        {
+          "en": "### ES Modules (ESM)",
+          "fr": "### Modules ES (ESM)"
+        },
+        {
+          "en": "- **Standardized Format**: Modern JavaScript standard; loads asynchronously for efficiency.\n- **Syntax**:",
+          "fr": "- **Format standardisé** : Standard JavaScript moderne ; charge de façon asynchrone pour plus d'efficacité.\n- **Syntaxe** :"
+        },
+        {
+          "en": "- **Export**: `export { name }` or `export default function`.\n  - **Import**: `import { name } from './path.mjs'`.\n  - **Identification**: Used for `.mjs` files or `.js` files when `package.json` contains `\"type\": \"module\"`.",
+          "fr": "- **Export** : `export { name }` ou `export default function`.\n  - **Import** : `import { name } from './path.mjs'`.\n  - **Identification** : Utilisé pour les fichiers `.mjs` ou `.js` quand `package.json` contient `\"type\": \"module\"`."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

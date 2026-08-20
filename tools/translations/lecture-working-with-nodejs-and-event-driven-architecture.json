@@ -1,0 +1,1013 @@
+{
+  "workshop": "lecture-working-with-nodejs-and-event-driven-architecture",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "68ff6d2f232c60f0fa68ef86.md",
+      "id": "68ff6d2f232c60f0fa68ef86",
+      "dashedName": "what-is-node-and-what-are-some-differences-between-the-browser-and-node-runtime-environment",
+      "title": {
+        "en": "What is Node and What are Some Differences Between the Browser and Node Runtime Environment?",
+        "fr": "Qu'est-ce que Node et quelles sont les différences entre le navigateur et l'environnement d'exécution Node ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "So far, you have been writing client-side code with JavaScript, code that runs on the client side of a web application, usually a web browser.",
+              "fr": "Jusqu'ici, tu as écrit du code côté client avec JavaScript, du code qui s'exécute côté client d'une application web, généralement un navigateur web."
+            },
+            {
+              "en": "Client-side JavaScript can be very powerful, but it does have certain limitations for more complex tasks.",
+              "fr": "Le JavaScript côté client peut être très puissant, mais il a certaines limites pour des tâches plus complexes."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "- It has very restricted access to local files.\n- It's not really designed for handling complex application logic.\n- And it has potential security concerns. For example, you would not want to expose sensitive information, such as database credentials, to client-side code.\n    \nClient-side JavaScript has these limitations because it was initially designed to run exclusively on web browsers.",
+              "fr": "- Il a un accès très restreint aux fichiers locaux.\n- Il n'est pas vraiment conçu pour gérer une logique applicative complexe.\n- Et il présente des risques de sécurité potentiels. Par exemple, tu ne voudrais pas exposer des informations sensibles, comme des identifiants de base de données, au code côté client.\n    \nLe JavaScript côté client a ces limites parce qu'il a été conçu initialement pour s'exécuter exclusivement dans les navigateurs web."
+            },
+            {
+              "en": "Web browsers provide the environment that is needed to run JavaScript code, including the JavaScript Engine. They also provide access to the Document Object Model (DOM), so you can access HTML elements in your code.",
+              "fr": "Les navigateurs web fournissent l'environnement nécessaire pour exécuter du code JavaScript, y compris le moteur JavaScript. Ils donnent aussi accès au Document Object Model (DOM), pour que tu puisses accéder aux éléments HTML dans ton code."
+            },
+            {
+              "en": "Previously, we could not run JavaScript outside of a browser, but now we can with Node.js.",
+              "fr": "Auparavant, on ne pouvait pas exécuter JavaScript en dehors d'un navigateur, mais maintenant on le peut avec Node.js."
+            },
+            {
+              "en": "Node.js is a JavaScript runtime environment. It's officially defined as “an open-source and cross-platform JavaScript runtime environment.”",
+              "fr": "Node.js est un environnement d'exécution JavaScript. Il est officiellement défini comme « un environnement d'exécution JavaScript open source et multiplateforme »."
+            },
+            {
+              "en": "Let's see what this means:",
+              "fr": "Voyons ce que cela signifie :"
+            },
+            {
+              "en": "- Node.js is open source because its code is publicly available and maintained by a large community of developers.\n- It's cross-platform because it works on any operating system, including Windows, macOS, and Linux.\n- And it's a JavaScript runtime environment because it allows you to run JavaScript code outside of a browser.\n    \nNode.js is used across a wide range of industries. Developers use it to build web servers and APIs that handle HTTP requests, as well as web and mobile applications.",
+              "fr": "- Node.js est open source parce que son code est accessible publiquement et maintenu par une large communauté de développeurs.\n- Il est multiplateforme parce qu'il fonctionne sur n'importe quel système d'exploitation, y compris Windows, macOS et Linux.\n- Et c'est un environnement d'exécution JavaScript parce qu'il te permet d'exécuter du code JavaScript en dehors d'un navigateur.\n    \nNode.js est utilisé dans un large éventail d'industries. Les développeurs l'utilisent pour créer des serveurs web et des API qui gèrent des requêtes HTTP, ainsi que des applications web et mobiles."
+            },
+            {
+              "en": "If you are using or developing a website or web application that interacts with a database or handles complex data, there is a high chance that you will use Node.js behind the scenes at some point.",
+              "fr": "Si tu utilises ou développes un site ou une application web qui interagit avec une base de données ou gère des données complexes, il y a de fortes chances que tu utilises Node.js en coulisses à un moment ou à un autre."
+            },
+            {
+              "en": "It's efficient, scalable, and it has a large community of developers and maintainers around the world.",
+              "fr": "Il est efficace, scalable, et il dispose d'une large communauté de développeurs et de mainteneurs dans le monde entier."
+            },
+            {
+              "en": "Now that you know what Node.js is, let's see some of the differences between the browser and the Node runtime environment.",
+              "fr": "Maintenant que tu sais ce qu'est Node.js, voyons quelques différences entre le navigateur et l'environnement d'exécution Node."
+            },
+            {
+              "en": "The browser environment is primarily designed for front-end web development, so it runs client-side JavaScript. In contrast, the Node runtime environment is primarily designed for back-end web development, so it runs server-side JavaScript. This also determines the APIs that they offer.",
+              "fr": "L'environnement du navigateur est principalement conçu pour le développement web front-end, donc il exécute du JavaScript côté client. En revanche, l'environnement d'exécution Node est principalement conçu pour le développement web back-end, donc il exécute du JavaScript côté serveur. Cela détermine aussi les API qu'ils proposent."
+            },
+            {
+              "en": "For example, from the browser, you can access the DOM API, but there are restrictions for accessing the local file system. In contrast, from the Node runtime environment, you can access almost all system resources, including the file system, but not the DOM.",
+              "fr": "Par exemple, depuis le navigateur, tu peux accéder à l'API DOM, mais il y a des restrictions pour accéder au système de fichiers local. En revanche, depuis l'environnement d'exécution Node, tu peux accéder à presque toutes les ressources système, y compris le système de fichiers, mais pas au DOM."
+            },
+            {
+              "en": "Both JavaScript environments provide a global object. In the browser JavaScript runtime, this is called `window`. This `window` object provides access to browser-related functionalities, such as access to methods for manipulating the DOM, managing cookies, and handling browser events. In the Node.js environment, this global object is called `global`. The `global` object provides access to Node.js specific functionalities, such as built-in modules for working with local files, networking, and interacting with the operating system.",
+              "fr": "Les deux environnements JavaScript fournissent un objet global. Dans l'environnement d'exécution JavaScript du navigateur, il s'appelle `window`. Cet objet `window` donne accès à des fonctionnalités liées au navigateur, comme des méthodes pour manipuler le DOM, gérer les cookies et traiter les événements du navigateur. Dans l'environnement Node.js, cet objet global s'appelle `global`. L'objet `global` donne accès à des fonctionnalités spécifiques à Node.js, comme des modules intégrés pour travailler avec les fichiers locaux, le réseau et interagir avec le système d'exploitation."
+            },
+            {
+              "en": "Finally, another important difference is that you can choose the version of Node.js that you want to use in your server. However, you have no control over the version of the browser environment that your users will use to visit your website.",
+              "fr": "Enfin, une autre différence importante est que tu peux choisir la version de Node.js que tu veux utiliser sur ton serveur. En revanche, tu n'as aucun contrôle sur la version de l'environnement du navigateur que tes utilisateurs utiliseront pour visiter ton site."
+            },
+            {
+              "en": "Node.js has become very important for developers worldwide. It is a powerful, scalable, and versatile tool that has transformed web development by enabling developers to use JavaScript to build both the front-end and the back-end of full-stack applications. This has made the development process more efficient because developers don't need to learn a new programming language just for developing the back-end.",
+              "fr": "Node.js est devenu très important pour les développeurs du monde entier. C'est un outil puissant, scalable et polyvalent qui a transformé le développement web en permettant aux développeurs d'utiliser JavaScript pour construire à la fois le front-end et le back-end d'applications full-stack. Cela a rendu le processus de développement plus efficace, car les développeurs n'ont pas besoin d'apprendre un nouveau langage de programmation uniquement pour développer le back-end."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes Node.js?",
+              "fr": "Laquelle des affirmations suivantes décrit le mieux Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A JavaScript library used for front-end development.",
+              "fr": "Une bibliothèque JavaScript utilisée pour le développement front-end."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where and how JavaScript code is executed when using Node.js.",
+              "fr": "Réfléchis à où et comment le code JavaScript est exécuté quand on utilise Node.js."
+            },
+            {
+              "en": "A JavaScript runtime environment that executes server-side JavaScript.",
+              "fr": "Un environnement d'exécution JavaScript qui exécute du JavaScript côté serveur."
+            },
+            {
+              "en": "A web browser designed for running JavaScript applications.",
+              "fr": "Un navigateur web conçu pour exécuter des applications JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where and how JavaScript code is executed when using Node.js.",
+              "fr": "Réfléchis à où et comment le code JavaScript est exécuté quand on utilise Node.js."
+            },
+            {
+              "en": "A JavaScript framework for building user interfaces.",
+              "fr": "Un framework JavaScript pour construire des interfaces utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where and how JavaScript code is executed when using Node.js.",
+              "fr": "Réfléchis à où et comment le code JavaScript est exécuté quand on utilise Node.js."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a key difference between the browser and the Node runtime environment?",
+              "fr": "Laquelle des affirmations suivantes est une différence clé entre le navigateur et l'environnement d'exécution Node ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Browsers have direct access to the file system, while the Node runtime environment does not.",
+              "fr": "Les navigateurs ont un accès direct au système de fichiers, alors que l'environnement d'exécution Node n'en a pas."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the roles and purpose of each environment.",
+              "fr": "Réfléchis aux rôles et à l'objectif de chaque environnement."
+            },
+            {
+              "en": "The Node runtime environment uses the window object as its global object, while browsers use the global object.",
+              "fr": "L'environnement d'exécution Node utilise l'objet window comme objet global, alors que les navigateurs utilisent l'objet global."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the roles and purpose of each environment.",
+              "fr": "Réfléchis aux rôles et à l'objectif de chaque environnement."
+            },
+            {
+              "en": "Browsers are primarily used for front-end development, while the Node runtime environment is primarily used for back-end development.",
+              "fr": "Les navigateurs sont principalement utilisés pour le développement front-end, alors que l'environnement d'exécution Node est principalement utilisé pour le développement back-end."
+            },
+            {
+              "en": "Browsers typically interact with the operating system, while the Node runtime environment interacts with the DOM.",
+              "fr": "Les navigateurs interagissent généralement avec le système d'exploitation, alors que l'environnement d'exécution Node interagit avec le DOM."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the roles and purpose of each environment.",
+              "fr": "Réfléchis aux rôles et à l'objectif de chaque environnement."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following tasks is Node.js commonly used for?",
+              "fr": "Pour laquelle des tâches suivantes Node.js est-il couramment utilisé ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Manipulating the HTML structure of a web page.",
+              "fr": "Manipuler la structure HTML d'une page web."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the server-side capabilities of Node.js.",
+              "fr": "Réfléchis aux capacités côté serveur de Node.js."
+            },
+            {
+              "en": "Building a web server to handle HTTP requests.",
+              "fr": "Construire un serveur web pour gérer des requêtes HTTP."
+            },
+            {
+              "en": "Styling web page elements with CSS.",
+              "fr": "Styliser les éléments d'une page web avec CSS."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the server-side capabilities of Node.js.",
+              "fr": "Réfléchis aux capacités côté serveur de Node.js."
+            },
+            {
+              "en": "Creating interactive animations within a web browser.",
+              "fr": "Créer des animations interactives dans un navigateur web."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the server-side capabilities of Node.js.",
+              "fr": "Réfléchis aux capacités côté serveur de Node.js."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68ff6d372ad364f285f0522e.md",
+      "id": "68ff6d372ad364f285f0522e",
+      "dashedName": "what-are-the-advantages-and-disadvantages-to-using-node-on-the-back-end",
+      "title": {
+        "en": "What are the Advantages and Disadvantages to Using Node on the Back-End?",
+        "fr": "Quels sont les avantages et les inconvénients d'utiliser Node côté back-end ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "One of the great advantages of Node.js is that you can implement both the front-end and the back-end of a web application using JavaScript. This reduces the initial learning curve because you and your team don't need to learn new programming languages or switch between them as you work, so you can be more efficient and productive.",
+              "fr": "Un des grands avantages de Node.js est que tu peux implémenter à la fois le front-end et le back-end d'une application web en JavaScript. Cela réduit la courbe d'apprentissage initiale, car toi et ton équipe n'avez pas besoin d'apprendre de nouveaux langages de programmation ni de basculer entre eux pendant le travail, donc tu peux être plus efficace et productif."
+            },
+            {
+              "en": "Node's architecture is another advantage. It has a non-blocking, event-driven architecture that is great for developing real-time applications, where responsiveness and efficiency are essential for creating a good user experience.",
+              "fr": "L'architecture de Node est un autre avantage. Elle a une architecture non bloquante et orientée événements, idéale pour développer des applications temps réel, où la réactivité et l'efficacité sont essentielles pour créer une bonne expérience utilisateur."
+            },
+            {
+              "en": "This is where the concept of “threads” becomes very important. A thread is a path of execution within a process, like a computer program that is currently running.",
+              "fr": "C'est là que le concept de « threads » devient très important. Un thread est un chemin d'exécution au sein d'un processus, comme un programme informatique actuellement en cours d'exécution."
+            },
+            {
+              "en": "Node's architecture relies on a single thread and event loop that can effectively handle a large number of simultaneous requests and input/output operations. This makes it perfect for applications that require handling multiple requests simultaneously.",
+              "fr": "L'architecture de Node repose sur un seul thread et une boucle d'événements qui peut gérer efficacement un grand nombre de requêtes simultanées et d'opérations d'entrée/sortie. Cela le rend parfait pour les applications qui doivent gérer plusieurs requêtes en même temps."
+            },
+            {
+              "en": "It also has a large community of developers around the world, who are constantly maintaining it and adding new features to it. Because of its popularity, there are many learning resources available. If you ever have a question about Node.js, it's almost guaranteed that you will find an answer, which is always helpful.",
+              "fr": "Il dispose aussi d'une large communauté de développeurs dans le monde entier, qui le maintiennent constamment et y ajoutent de nouvelles fonctionnalités. Grâce à sa popularité, de nombreuses ressources d'apprentissage sont disponibles. Si tu as jamais une question sur Node.js, il est presque certain que tu trouveras une réponse, ce qui est toujours utile."
+            },
+            {
+              "en": "When you work with Node.js, you also have access to `npm`, a package manager for Node.js. `npm` is a powerful tool that allows you to install and manage packages and modules for your projects.",
+              "fr": "Quand tu travailles avec Node.js, tu as aussi accès à `npm`, un gestionnaire de paquets pour Node.js. `npm` est un outil puissant qui te permet d'installer et de gérer des paquets et des modules pour tes projets."
+            },
+            {
+              "en": "You'll find packages for many different purposes, including handling HTTP requests, working with databases, formatting dates and times, testing code, and more. By using packages, you can reuse code that was already written, tested, and shared by other developers to make your workflow faster and more efficient.",
+              "fr": "Tu trouveras des paquets pour de nombreux usages, notamment gérer des requêtes HTTP, travailler avec des bases de données, formater des dates et heures, tester du code, et plus encore. En utilisant des paquets, tu peux réutiliser du code déjà écrit, testé et partagé par d'autres développeurs pour rendre ton flux de travail plus rapide et plus efficace."
+            },
+            {
+              "en": "And finally, in terms of costs, Node.js has the great advantage of being free and open source. Its packages, libraries, and associated tools are also primarily free. This can be an important factor when considering how to optimize your budget.",
+              "fr": "Et enfin, en termes de coûts, Node.js a le grand avantage d'être gratuit et open source. Ses paquets, bibliothèques et outils associés sont aussi principalement gratuits. Cela peut être un facteur important quand tu cherches à optimiser ton budget."
+            },
+            {
+              "en": "On the other hand, Node.js does have certain disadvantages or limitations that you should be aware of.",
+              "fr": "D'un autre côté, Node.js a certains inconvénients ou limites dont tu dois être conscient."
+            },
+            {
+              "en": "As you learned, it only runs one thread at a time, which means that it can only handle one operation at a time. While its architecture allows it to be efficient for handling concurrent (simultaneous) requests, CPU-intensive tasks may block the main thread and result in performance issues.",
+              "fr": "Comme tu l'as appris, il n'exécute qu'un seul thread à la fois, ce qui signifie qu'il ne peut gérer qu'une opération à la fois. Bien que son architecture lui permette d'être efficace pour gérer des requêtes concurrentes (simultanées), les tâches intensives en CPU peuvent bloquer le thread principal et entraîner des problèmes de performance."
+            },
+            {
+              "en": "Examples of CPU-intensive tasks include complex mathematical operations, image and video processing, and cryptography. There are ways to overcome this, but they usually increase the complexity of the application.",
+              "fr": "Des exemples de tâches intensives en CPU incluent les opérations mathématiques complexes, le traitement d'images et de vidéos, et la cryptographie. Il existe des moyens de contourner cela, mais ils augmentent généralement la complexité de l'application."
+            },
+            {
+              "en": "Node.js also relies on asynchronous programming. In asynchronous programming, a task that may take a long time to run is started, but instead of waiting until it's completed, the main program continues running while the asynchronous task runs in parallel. When the task is completed, the program handles the result.",
+              "fr": "Node.js repose aussi sur la programmation asynchrone. En programmation asynchrone, une tâche qui peut prendre du temps à s'exécuter est démarrée, mais au lieu d'attendre qu'elle soit terminée, le programme principal continue de s'exécuter pendant que la tâche asynchrone tourne en parallèle. Quand la tâche est terminée, le programme traite le résultat."
+            },
+            {
+              "en": "This process often involves what we know as “callbacks,” which are functions that define what happens when the asynchronous operations are completed. The asynchronous nature of Node.js can potentially make the code more difficult to read, understand, and debug.",
+              "fr": "Ce processus implique souvent ce qu'on appelle des « callbacks », qui sont des fonctions qui définissent ce qui se passe quand les opérations asynchrones sont terminées. La nature asynchrone de Node.js peut potentiellement rendre le code plus difficile à lire, comprendre et déboguer."
+            },
+            {
+              "en": "And finally, you should also be careful when choosing packages from `npm`, the Node package manager, because some of them may not be constantly maintained, so they may introduce vulnerabilities into your own application. As a developer, you should evaluate each package carefully and check if it follows quality and security best practices.",
+              "fr": "Et enfin, tu dois aussi faire attention quand tu choisis des paquets depuis `npm`, le gestionnaire de paquets Node, car certains peuvent ne pas être maintenus en permanence, et donc introduire des vulnérabilités dans ta propre application. En tant que développeur, tu dois évaluer chaque paquet avec soin et vérifier s'il suit les bonnes pratiques de qualité et de sécurité."
+            },
+            {
+              "en": "Node.js is currently one of the most popular tools for developing web applications. Knowing its advantages and disadvantages will help you to determine if it's the right tool for your project.",
+              "fr": "Node.js est actuellement l'un des outils les plus populaires pour développer des applications web. Connaître ses avantages et ses inconvénients t'aidera à déterminer si c'est le bon outil pour ton projet."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an advantage of using Node.js for back-end development?",
+              "fr": "Lequel des éléments suivants est un avantage d'utiliser Node.js pour le développement back-end ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is very efficient for CPU-intensive tasks due to its multi-threaded architecture.",
+              "fr": "Il est très efficace pour les tâches intensives en CPU grâce à son architecture multi-threads."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the programming language used by Node.js.",
+              "fr": "Réfléchis au langage de programmation utilisé par Node.js."
+            },
+            {
+              "en": "It allows developers to use JavaScript for both front-end and back-end development.",
+              "fr": "Il permet aux développeurs d'utiliser JavaScript pour le développement front-end et back-end."
+            },
+            {
+              "en": "It avoids asynchronous programming, making code easier to read and maintain.",
+              "fr": "Il évite la programmation asynchrone, ce qui rend le code plus facile à lire et à maintenir."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the programming language used by Node.js.",
+              "fr": "Réfléchis au langage de programmation utilisé par Node.js."
+            },
+            {
+              "en": "It has a small and inactive community, limiting available resources and support.",
+              "fr": "Il a une petite communauté inactive, ce qui limite les ressources et le support disponibles."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the programming language used by Node.js.",
+              "fr": "Réfléchis au langage de programmation utilisé par Node.js."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a potential disadvantage of using Node.js for back-end development?",
+              "fr": "Lequel des éléments suivants est un inconvénient potentiel d'utiliser Node.js pour le développement back-end ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Its non-blocking architecture makes it inefficient for handling multiple concurrent requests.",
+              "fr": "Son architecture non bloquante le rend inefficace pour gérer plusieurs requêtes concurrentes."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles tasks.",
+              "fr": "Réfléchis à la façon dont Node.js gère les tâches."
+            },
+            {
+              "en": "The large and active community can make it difficult to find reliable packages.",
+              "fr": "La grande et active communauté peut rendre difficile de trouver des paquets fiables."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles tasks.",
+              "fr": "Réfléchis à la façon dont Node.js gère les tâches."
+            },
+            {
+              "en": "Its single-threaded nature can reduce the efficiency of CPU-intensive operations.",
+              "fr": "Sa nature mono-thread peut réduire l'efficacité des opérations intensives en CPU."
+            },
+            {
+              "en": "The use of JavaScript for both front-end and back-end can lead to inconsistencies.",
+              "fr": "L'utilisation de JavaScript pour le front-end et le back-end peut entraîner des incohérences."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles tasks.",
+              "fr": "Réfléchis à la façon dont Node.js gère les tâches."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Node.js's strengths make it particularly well-suited for which of the following?",
+              "fr": "Les points forts de Node.js le rendent particulièrement adapté à lequel des cas suivants ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Applications with complex mathematical algorithms.",
+              "fr": "Des applications avec des algorithmes mathématiques complexes."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Node.js is designed to handle efficiently.",
+              "fr": "Réfléchis à ce que Node.js est conçu pour gérer efficacement."
+            },
+            {
+              "en": "Applications that require handling high concurrency and real-time updates.",
+              "fr": "Des applications qui nécessitent de gérer une forte concurrence et des mises à jour en temps réel."
+            },
+            {
+              "en": "Applications with complex relational database interactions.",
+              "fr": "Des applications avec des interactions complexes de bases de données relationnelles."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Node.js is designed to handle efficiently.",
+              "fr": "Réfléchis à ce que Node.js est conçu pour gérer efficacement."
+            },
+            {
+              "en": "Applications where development speed is not a major factor.",
+              "fr": "Des applications où la vitesse de développement n'est pas un facteur majeur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what Node.js is designed to handle efficiently.",
+              "fr": "Réfléchis à ce que Node.js est conçu pour gérer efficacement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68ff6d39d7ed9ef36ff281f3.md",
+      "id": "68ff6d39d7ed9ef36ff281f3",
+      "dashedName": "how-can-you-install-node-on-your-computer",
+      "title": {
+        "en": "How can you Install Node on your Computer?",
+        "fr": "Comment installer Node sur ton ordinateur ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Now you're ready to take your first steps into the world of Node.js by installing it on your computer. But first, before you install Node.js, we recommend installing a tool called NVM (Node Version Manager). As its name implies, NVM is a tool for managing multiple versions of Node.js on the same computer.",
+              "fr": "Tu es maintenant prêt à faire tes premiers pas dans le monde de Node.js en l'installant sur ton ordinateur. Mais d'abord, avant d'installer Node.js, nous recommandons d'installer un outil appelé NVM (Node Version Manager). Comme son nom l'indique, NVM est un outil pour gérer plusieurs versions de Node.js sur le même ordinateur."
+            },
+            {
+              "en": "Setting up this tool from the start will help you in the future because you might need to switch between different versions of Node.js for different projects. With NVM, you can do this very easily.",
+              "fr": "Mettre en place cet outil dès le début t'aidera à l'avenir, car tu pourrais avoir besoin de basculer entre différentes versions de Node.js pour différents projets. Avec NVM, tu peux le faire très facilement."
+            },
+            {
+              "en": "Let's see how you can install NVM on macOS/Linux and Windows, and how you can use it to install Node.js.",
+              "fr": "Voyons comment installer NVM sur macOS/Linux et Windows, et comment l'utiliser pour installer Node.js."
+            },
+            {
+              "en": "## How to Install NVM on macOS/Linux",
+              "fr": "## Comment installer NVM sur macOS/Linux"
+            },
+            {
+              "en": "On macOS and Linux, you can install NVM directly through a shell script.",
+              "fr": "Sur macOS et Linux, tu peux installer NVM directement via un script shell."
+            },
+            {
+              "en": "But for macOS, note that the official documentation for NVM mentions that “you need to manually install the Xcode command line tools before running the install script, otherwise, it'll fail.”",
+              "fr": "Mais pour macOS, note que la documentation officielle de NVM mentionne que « tu dois installer manuellement les outils en ligne de commande Xcode avant d'exécuter le script d'installation, sinon il échouera »."
+            },
+            {
+              "en": "On macOS, you can install Xcode command line tools by running this command in your terminal:",
+              "fr": "Sur macOS, tu peux installer les outils en ligne de commande Xcode en exécutant cette commande dans ton terminal :"
+            },
+            {
+              "en": "Once the installation is finished, you can check the version number and verify the installation with this command:",
+              "fr": "Une fois l'installation terminée, tu peux vérifier le numéro de version et confirmer l'installation avec cette commande :"
+            },
+            {
+              "en": "Then, it's time to install NVM. You can download and execute the NVM installation script by running one of these commands:",
+              "fr": "Ensuite, il est temps d'installer NVM. Tu peux télécharger et exécuter le script d'installation de NVM en lançant l'une de ces commandes :"
+            },
+            {
+              "en": "To get the latest version of NVM at the time when you are reading this article, please refer to the official NVM documentation: `https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script`. There, you will find these commands with the latest version number.",
+              "fr": "Pour obtenir la dernière version de NVM au moment où tu lis cet article, consulte la documentation officielle de NVM : `https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script`. Tu y trouveras ces commandes avec le dernier numéro de version."
+            },
+            {
+              "en": "You might need to restart your terminal when the process is completed to load the new command and the new configuration.",
+              "fr": "Tu pourrais devoir redémarrer ton terminal une fois le processus terminé pour charger la nouvelle commande et la nouvelle configuration."
+            },
+            {
+              "en": "Then, run this command to confirm that NVM was installed correctly and to check your current version:",
+              "fr": "Ensuite, exécute cette commande pour confirmer que NVM a été installé correctement et pour vérifier ta version actuelle :"
+            },
+            {
+              "en": "You should see your version of NVM in the output.",
+              "fr": "Tu devrais voir ta version de NVM dans la sortie."
+            },
+            {
+              "en": "## How to install Node.js with NVM on macOS/Linux",
+              "fr": "## Comment installer Node.js avec NVM sur macOS/Linux"
+            },
+            {
+              "en": "Now that you have NVM installed on macOS/Linux, you can install Node.js.",
+              "fr": "Maintenant que tu as NVM installé sur macOS/Linux, tu peux installer Node.js."
+            },
+            {
+              "en": "To install the latest Long-Term Support (LTS) version of Node.js, run this command:",
+              "fr": "Pour installer la dernière version Long-Term Support (LTS) de Node.js, exécute cette commande :"
+            },
+            {
+              "en": "Notice the `--lts` flag. This flag indicates that you want to install the current Long-Term Support (LTS) version of Node.js. This version is usually recommended because it prioritizes stability, reliability, and security over new or experimental features. It is thoroughly tested and ready for production. It's also guaranteed to have longer support periods with a focus on bug fixes and security patches.",
+              "fr": "Remarque le drapeau `--lts`. Ce drapeau indique que tu veux installer la version Long-Term Support (LTS) actuelle de Node.js. Cette version est généralement recommandée parce qu'elle priorise la stabilité, la fiabilité et la sécurité plutôt que les fonctionnalités nouvelles ou expérimentales. Elle est soigneusement testée et prête pour la production. Elle est aussi garantie d'avoir des périodes de support plus longues, avec un focus sur les corrections de bugs et les correctifs de sécurité."
+            },
+            {
+              "en": "Alternatively, you can install a specific version of Node.js by specifying the version number in the command:",
+              "fr": "Alternativement, tu peux installer une version spécifique de Node.js en précisant le numéro de version dans la commande :"
+            },
+            {
+              "en": "For example, here's how you can install Node.js v20:",
+              "fr": "Par exemple, voici comment installer Node.js v20 :"
+            },
+            {
+              "en": "Once you finish installing a version of Node.js, you can switch to that version with this command:",
+              "fr": "Une fois que tu as fini d'installer une version de Node.js, tu peux basculer vers cette version avec cette commande :"
+            },
+            {
+              "en": "For example, here's how to switch to version 20:",
+              "fr": "Par exemple, voici comment basculer vers la version 20 :"
+            },
+            {
+              "en": "Finally, you can check the current version of Node.js with this command:",
+              "fr": "Enfin, tu peux vérifier la version actuelle de Node.js avec cette commande :"
+            },
+            {
+              "en": "## How to install NVM on Windows",
+              "fr": "## Comment installer NVM sur Windows"
+            },
+            {
+              "en": "Now let's see how you can install and use NVM on Windows.",
+              "fr": "Voyons maintenant comment installer et utiliser NVM sur Windows."
+            },
+            {
+              "en": "Official versions of NVM only support Windows in specific cases. If you have Windows Subsystem for Linux (WSL) set up on your device, you can follow the macOS/Linux guide above to install and use NVM.",
+              "fr": "Les versions officielles de NVM ne prennent en charge Windows que dans des cas spécifiques. Si tu as Windows Subsystem for Linux (WSL) configuré sur ton appareil, tu peux suivre le guide macOS/Linux ci-dessus pour installer et utiliser NVM."
+            },
+            {
+              "en": "However, for Windows itself, there are a few alternatives. One of them is `nvm-windows`, a Node.js version management utility for Windows. This is a completely separate project from the official NVM project. But the purpose of these tools is the same — to help you work with multiple versions of Node.js on the same device.",
+              "fr": "Cependant, pour Windows lui-même, il existe quelques alternatives. L'une d'elles est `nvm-windows`, un utilitaire de gestion de versions Node.js pour Windows. C'est un projet complètement séparé du projet NVM officiel. Mais le but de ces outils est le même — t'aider à travailler avec plusieurs versions de Node.js sur le même appareil."
+            },
+            {
+              "en": "Before installing `nvm-windows`, you should know that the official repository recommends uninstalling any prior Node installation before installing NVM for Windows. If this is your first time installing Node.js, you should be okay. If you already have other versions of Node.js installed, it is recommended to uninstall them first.",
+              "fr": "Avant d'installer `nvm-windows`, tu dois savoir que le dépôt officiel recommande de désinstaller toute installation Node préalable avant d'installer NVM for Windows. Si c'est ta première installation de Node.js, tu devrais être bon. Si tu as déjà d'autres versions de Node.js installées, il est recommandé de les désinstaller d'abord."
+            },
+            {
+              "en": "To install `nvm-windows`:",
+              "fr": "Pour installer `nvm-windows` :"
+            },
+            {
+              "en": "- Go to the Releases section of the official repository: `https://github.com/coreybutler/nvm-windows/releases`.\n- Download the latest installer.\n- Follow the instructions.",
+              "fr": "- Va dans la section Releases du dépôt officiel : `https://github.com/coreybutler/nvm-windows/releases`.\n- Télécharge le dernier installateur.\n- Suis les instructions."
+            },
+            {
+              "en": "After completing the installation, you might need to restart your terminal if the `nvm` command is not immediately available.",
+              "fr": "Après avoir terminé l'installation, tu pourrais devoir redémarrer ton terminal si la commande `nvm` n'est pas immédiatement disponible."
+            },
+            {
+              "en": "You can check if the installation was successful and see your current version of `nvm-windows` by running this command:",
+              "fr": "Tu peux vérifier si l'installation a réussi et voir ta version actuelle de `nvm-windows` en exécutant cette commande :"
+            },
+            {
+              "en": "## How to Install Node.js using NVM for Windows",
+              "fr": "## Comment installer Node.js avec NVM for Windows"
+            },
+            {
+              "en": "Now that you have `nvm-windows` installed on Windows, you are ready to install Node.js.",
+              "fr": "Maintenant que tu as `nvm-windows` installé sur Windows, tu es prêt à installer Node.js."
+            },
+            {
+              "en": "To install the latest Long-Term Support (LTS) version of Node.js, run this command:",
+              "fr": "Pour installer la dernière version Long-Term Support (LTS) de Node.js, exécute cette commande :"
+            },
+            {
+              "en": "The Long-Term Support (LTS) version is usually recommended, but you can install a different version by specifying its version number in the command:",
+              "fr": "La version Long-Term Support (LTS) est généralement recommandée, mais tu peux installer une version différente en précisant son numéro de version dans la commande :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "When the installation is completed, you can switch to that version of Node.js with this command:",
+              "fr": "Quand l'installation est terminée, tu peux basculer vers cette version de Node.js avec cette commande :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "You can also check your current version of Node.js with this command:",
+              "fr": "Tu peux aussi vérifier ta version actuelle de Node.js avec cette commande :"
+            },
+            {
+              "en": "## Basic Commands",
+              "fr": "## Commandes de base"
+            },
+            {
+              "en": "Now that you know how to install NVM and Node.js, let's check out some basic commands that you will find helpful when working with Node.js and NVM.",
+              "fr": "Maintenant que tu sais comment installer NVM et Node.js, voyons quelques commandes de base qui te seront utiles quand tu travailleras avec Node.js et NVM."
+            },
+            {
+              "en": "Also, while all these commands will work for NVM installed on macOS/Linux, including WSL, they may work differently or may not work at all for `nvm-windows`. We'll leave alternative commands for `nvm-windows` whenever possible.",
+              "fr": "Aussi, bien que toutes ces commandes fonctionnent pour NVM installé sur macOS/Linux, y compris WSL, elles peuvent fonctionner différemment ou ne pas fonctionner du tout pour `nvm-windows`. Nous indiquerons des commandes alternatives pour `nvm-windows` quand c'est possible."
+            },
+            {
+              "en": "### How to Adjust Powershell's Execution Policy",
+              "fr": "### Comment ajuster la stratégie d'exécution de Powershell"
+            },
+            {
+              "en": "If you're running Windows and are following along with Powershell and `nvm-windows`, you may need to adjust Powershell's execution policy. The default execution policy for Powershell is `Restricted`, which is a security measure to prevent scripts from running.",
+              "fr": "Si tu es sous Windows et que tu suis avec Powershell et `nvm-windows`, tu pourrais devoir ajuster la stratégie d'exécution de Powershell. La stratégie d'exécution par défaut de Powershell est `Restricted`, ce qui est une mesure de sécurité pour empêcher l'exécution de scripts."
+            },
+            {
+              "en": "First, run Powershell as an administrator by right-clicking on Powershell, then clicking “Run as Administrator“.",
+              "fr": "D'abord, lance Powershell en tant qu'administrateur en faisant un clic droit sur Powershell, puis en cliquant sur « Run as Administrator »."
+            },
+            {
+              "en": "Then, to see the current execution policy of the current Powershell session, run the following command:",
+              "fr": "Ensuite, pour voir la stratégie d'exécution actuelle de la session Powershell en cours, exécute la commande suivante :"
+            },
+            {
+              "en": "Finally, to set Powershell's execution policy to `RemoteSigned`, which allows local scripts and `npm` to run, use the following command:",
+              "fr": "Enfin, pour définir la stratégie d'exécution de Powershell sur `RemoteSigned`, ce qui permet aux scripts locaux et à `npm` de s'exécuter, utilise la commande suivante :"
+            },
+            {
+              "en": "Once you've run the command above, you can close the administrator window of Powershell, and open a non-admin Powershell window.",
+              "fr": "Une fois que tu as exécuté la commande ci-dessus, tu peux fermer la fenêtre administrateur de Powershell, et ouvrir une fenêtre Powershell non administrateur."
+            },
+            {
+              "en": "### List All Versions",
+              "fr": "### Lister toutes les versions"
+            },
+            {
+              "en": "To list all installed versions of Node.js and check the one that is currently being used, run this command:",
+              "fr": "Pour lister toutes les versions installées de Node.js et vérifier celle qui est actuellement utilisée, exécute cette commande :"
+            },
+            {
+              "en": "### Set Default Node.js Version (NVM on macOS/Linux Only)",
+              "fr": "### Définir la version Node.js par défaut (NVM sur macOS/Linux uniquement)"
+            },
+            {
+              "en": "This command sets the default version of Node.js that will be used for new terminal sessions:",
+              "fr": "Cette commande définit la version par défaut de Node.js qui sera utilisée pour les nouvelles sessions de terminal :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "You can also create custom aliases to assign a more specific name to a version:",
+              "fr": "Tu peux aussi créer des alias personnalisés pour attribuer un nom plus spécifique à une version :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "After setting up the alias, you can use this new name to switch to that version:",
+              "fr": "Après avoir configuré l'alias, tu peux utiliser ce nouveau nom pour basculer vers cette version :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "### Remove a Version of Node.js",
+              "fr": "### Supprimer une version de Node.js"
+            },
+            {
+              "en": "To remove a version of Node.js, run this command:",
+              "fr": "Pour supprimer une version de Node.js, exécute cette commande :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "With NVM for macOS/Linux, you can remove a version of Node.js by running the `uninstall` command with a major version like `22` or `20`. For example:",
+              "fr": "Avec NVM pour macOS/Linux, tu peux supprimer une version de Node.js en exécutant la commande `uninstall` avec une version majeure comme `22` ou `20`. Par exemple :"
+            },
+            {
+              "en": "If you have multiple releases for that major version installed like `20.14.0` and `20.12.2`, the latest version will be removed first. In this case, running `nvm uninstall 20` will remove `20.14.0` first.",
+              "fr": "Si tu as plusieurs versions pour cette version majeure installées, comme `20.14.0` et `20.12.2`, la dernière version sera supprimée en premier. Dans ce cas, exécuter `nvm uninstall 20` supprimera d'abord `20.14.0`."
+            },
+            {
+              "en": "### Check Your Version of Node.js",
+              "fr": "### Vérifier ta version de Node.js"
+            },
+            {
+              "en": "To check your current version of Node.js, you can use the following:",
+              "fr": "Pour vérifier ta version actuelle de Node.js, tu peux utiliser ce qui suit :"
+            },
+            {
+              "en": "### Check Your Version of npm",
+              "fr": "### Vérifier ta version de npm"
+            },
+            {
+              "en": "`npm` is a package manager for Node.js. You can use it to install, publish, and manage software packages. It is automatically installed when you install Node.js.",
+              "fr": "`npm` est un gestionnaire de paquets pour Node.js. Tu peux l'utiliser pour installer, publier et gérer des paquets logiciels. Il est automatiquement installé quand tu installes Node.js."
+            },
+            {
+              "en": "To check your current version of `npm`, run this command:",
+              "fr": "Pour vérifier ta version actuelle de `npm`, exécute cette commande :"
+            },
+            {
+              "en": "### Run a JavaScript File",
+              "fr": "### Exécuter un fichier JavaScript"
+            },
+            {
+              "en": "This command runs the JavaScript file that you specify in the currently active Node.js runtime:",
+              "fr": "Cette commande exécute le fichier JavaScript que tu spécifies dans l'environnement d'exécution Node.js actuellement actif :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "### Create a Node.js Project",
+              "fr": "### Créer un projet Node.js"
+            },
+            {
+              "en": "This command creates a new Node.js project by creating a `package.json` file that tracks its details and dependencies.",
+              "fr": "Cette commande crée un nouveau projet Node.js en créant un fichier `package.json` qui suit ses détails et dépendances."
+            },
+            {
+              "en": "When you run the `npm init` command, it will walk you through an interactive CLI guide for setting up the `package.json` file. It will ask you questions for the project name, description, version, etc. If you want to start with a default `package.json` file, you can use the `npm init -y` or `npm init --yes` command.",
+              "fr": "Quand tu exécutes la commande `npm init`, elle te guide à travers un guide CLI interactif pour configurer le fichier `package.json`. Elle te posera des questions sur le nom du projet, la description, la version, etc. Si tu veux démarrer avec un fichier `package.json` par défaut, tu peux utiliser la commande `npm init -y` ou `npm init --yes`."
+            },
+            {
+              "en": "### Install a Package",
+              "fr": "### Installer un paquet"
+            },
+            {
+              "en": "To install a specific package, run:",
+              "fr": "Pour installer un paquet spécifique, exécute :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "### Install Dependencies",
+              "fr": "### Installer les dépendances"
+            },
+            {
+              "en": "To install all the dependencies listed in the `package.json` file of a project, run:",
+              "fr": "Pour installer toutes les dépendances listées dans le fichier `package.json` d'un projet, exécute :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary reason for using `nvm` (Node Version Manager) or `nvm-windows`?",
+              "fr": "Quelle est la raison principale d'utiliser `nvm` (Node Version Manager) ou `nvm-windows` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To install `npm` packages globally.",
+              "fr": "Pour installer des paquets `npm` globalement."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the \"V\" in \"NVM\" and what \"manager\" implies for software.",
+              "fr": "Réfléchis au « V » dans « NVM » et à ce qu'implique « manager » pour un logiciel."
+            },
+            {
+              "en": "To execute Node.js scripts in the browser.",
+              "fr": "Pour exécuter des scripts Node.js dans le navigateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the \"V\" in \"NVM\" and what \"manager\" implies for software.",
+              "fr": "Réfléchis au « V » dans « NVM » et à ce qu'implique « manager » pour un logiciel."
+            },
+            {
+              "en": "To manage and switch between multiple Node.js versions.",
+              "fr": "Pour gérer et basculer entre plusieurs versions de Node.js."
+            },
+            {
+              "en": "To debug Node.js applications efficiently.",
+              "fr": "Pour déboguer efficacement des applications Node.js."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the \"V\" in \"NVM\" and what \"manager\" implies for software.",
+              "fr": "Réfléchis au « V » dans « NVM » et à ce qu'implique « manager » pour un logiciel."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which `nvm` command would a developer use to switch their current terminal session to a specific installed Node.js version, for example, version `18.17.1`?",
+              "fr": "Quelle commande `nvm` un développeur utiliserait-il pour basculer sa session de terminal actuelle vers une version Node.js installée spécifique, par exemple la version `18.17.1` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the verb used by `nvm` to indicate which version should be active for the current shell.",
+              "fr": "Réfléchis au verbe utilisé par `nvm` pour indiquer quelle version doit être active pour le shell actuel."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the verb used by `nvm` to indicate which version should be active for the current shell.",
+              "fr": "Réfléchis au verbe utilisé par `nvm` pour indiquer quelle version doit être active pour le shell actuel."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the verb used by `nvm` to indicate which version should be active for the current shell.",
+              "fr": "Réfléchis au verbe utilisé par `nvm` pour indiquer quelle version doit être active pour le shell actuel."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "A new Node.js project needs to be initialized, setting up the `package.json` file to manage its dependencies and scripts. Which command is used for this purpose?",
+              "fr": "Un nouveau projet Node.js doit être initialisé, en configurant le fichier `package.json` pour gérer ses dépendances et scripts. Quelle commande est utilisée pour cela ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The command needs to create the project's foundational file for package management.",
+              "fr": "La commande doit créer le fichier fondateur du projet pour la gestion des paquets."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The command needs to create the project's foundational file for package management.",
+              "fr": "La commande doit créer le fichier fondateur du projet pour la gestion des paquets."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The command needs to create the project's foundational file for package management.",
+              "fr": "La commande doit créer le fichier fondateur du projet pour la gestion des paquets."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

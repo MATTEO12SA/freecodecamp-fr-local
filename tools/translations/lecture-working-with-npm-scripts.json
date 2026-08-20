@@ -1,0 +1,1282 @@
+{
+  "workshop": "lecture-working-with-npm-scripts",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "692ab9f91d74951aeba05c00.md",
+      "id": "692ab9f91d74951aeba05c00",
+      "dashedName": "what-are-npm-scripts",
+      "title": {
+        "en": "What Are npm Scripts?",
+        "fr": "Que sont les scripts npm ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Now you'll learn about npm scripts.",
+              "fr": "Maintenant tu vas apprendre les scripts npm."
+            },
+            {
+              "en": "Before we dive in, let's review some important concepts:",
+              "fr": "Avant de plonger, revoyons quelques concepts importants :"
+            },
+            {
+              "en": "* **npm** is a command-line tool that you can use to install and manage JavaScript packages.\n    \n* A **package** is a directory that groups related code in a logical structure.\n    \n* A **script** is a sequence of instructions or commands written in a scripting programming language.",
+              "fr": "* **npm** est un outil en ligne de commande que tu peux utiliser pour installer et gérer des paquets JavaScript.\n    \n* Un **paquet** est un répertoire qui regroupe du code lié dans une structure logique.\n    \n* Un **script** est une séquence d'instructions ou de commandes écrites dans un langage de programmation de scripting."
+            },
+            {
+              "en": "**npm scripts** are custom commands that you can define in the `package.json` file of your application.",
+              "fr": "Les **scripts npm** sont des commandes personnalisées que tu peux définir dans le fichier `package.json` de ton application."
+            },
+            {
+              "en": "They are helpful for automating tasks and workflows that you will use repeatedly throughout the development, testing, and deployment phases of your project.",
+              "fr": "Ils sont utiles pour automatiser des tâches et des flux de travail que tu utiliseras de façon répétée pendant les phases de développement, de test et de déploiement de ton projet."
+            },
+            {
+              "en": "For example, one use case for npm scripts is customizing `npm start` to start your entire development environment. Instead of manually writing all the commands one-by-one every time you need to start your development environment, you can just run `npm start` and the entire process will be executed.",
+              "fr": "Par exemple, un cas d'usage des scripts npm est de personnaliser `npm start` pour démarrer tout ton environnement de développement. Au lieu d'écrire manuellement toutes les commandes une par une chaque fois que tu dois démarrer ton environnement de développement, tu peux juste exécuter `npm start` et tout le processus sera exécuté."
+            },
+            {
+              "en": "You can also use npm scripts to automate linting throughout your codebase and for running test suites, among other use cases.",
+              "fr": "Tu peux aussi utiliser les scripts npm pour automatiser le linting dans toute ta base de code et pour exécuter des suites de tests, parmi d'autres cas d'usage."
+            },
+            {
+              "en": "They are very powerful, so let's check out their fundamentals.",
+              "fr": "Ils sont très puissants, alors voyons leurs fondamentaux."
+            },
+            {
+              "en": "## How to Create a package.json File",
+              "fr": "## Comment créer un fichier package.json"
+            },
+            {
+              "en": "To be able to create and run custom npm scripts, you'll need a `package.json` file.",
+              "fr": "Pour pouvoir créer et exécuter des scripts npm personnalisés, tu auras besoin d'un fichier `package.json`."
+            },
+            {
+              "en": "The `package.json` file is essential for Node.js projects. This file contains the metadata, dependencies, and scripts of the project.",
+              "fr": "Le fichier `package.json` est essentiel pour les projets Node.js. Ce fichier contient les métadonnées, les dépendances et les scripts du projet."
+            },
+            {
+              "en": "As a reminder, to create a `package.json` file, you must run the `npm init` command in the root directory of your project. Then you can enter in the package name, version, description, and other details in manually, or leave those fields blank to use the default values.",
+              "fr": "Pour rappel, pour créer un fichier `package.json`, tu dois exécuter la commande `npm init` dans le répertoire racine de ton projet. Ensuite tu peux saisir manuellement le nom du paquet, la version, la description et d'autres détails, ou laisser ces champs vides pour utiliser les valeurs par défaut."
+            },
+            {
+              "en": "Once you finish this process, you'll have a `package.json` file in the root directory of your project.",
+              "fr": "Une fois ce processus terminé, tu auras un fichier `package.json` dans le répertoire racine de ton projet."
+            },
+            {
+              "en": "If you kept all the default values, you should see these key-value pairs when you open `package.json` in your code editor:",
+              "fr": "Si tu as gardé toutes les valeurs par défaut, tu devrais voir ces paires clé-valeur quand tu ouvres `package.json` dans ton éditeur de code :"
+            },
+            {
+              "en": "Notice this key-value pair over here:",
+              "fr": "Remarque cette paire clé-valeur ici :"
+            },
+            {
+              "en": "This is where you will specify your npm scripts, under the `scripts` key.",
+              "fr": "C'est là que tu spécifieras tes scripts npm, sous la clé `scripts`."
+            },
+            {
+              "en": "You will see one script there by default, the test script:",
+              "fr": "Tu verras un script là par défaut, le script test :"
+            },
+            {
+              "en": "This is an example of an npm script defined in `package.json`.",
+              "fr": "Ceci est un exemple de script npm défini dans `package.json`."
+            },
+            {
+              "en": "Here is the basic syntax for defining an npm script:",
+              "fr": "Voici la syntaxe de base pour définir un script npm :"
+            },
+            {
+              "en": "To the left of the colon, we find the script name. Common ones include `run`, `start`, `test`, `build`, `dev`, and `lint`. These names act as \"shortcuts\" for their underlying commands on the right.",
+              "fr": "À gauche des deux-points, on trouve le nom du script. Les courants incluent `run`, `start`, `test`, `build`, `dev` et `lint`. Ces noms agissent comme des « raccourcis » pour leurs commandes sous-jacentes à droite."
+            },
+            {
+              "en": "To the right of the colon, we find the underlying commands themselves.",
+              "fr": "À droite des deux-points, on trouve les commandes sous-jacentes elles-mêmes."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "To run the script, enter this in the command line:",
+              "fr": "Pour exécuter le script, saisis ceci dans la ligne de commande :"
+            },
+            {
+              "en": "And that's how you can run any custom scripts defined in `package.json`.",
+              "fr": "Et c'est ainsi que tu peux exécuter n'importe quel script personnalisé défini dans `package.json`."
+            },
+            {
+              "en": "Sometimes you can use this shorthand version without the word `run` to execute scripts:",
+              "fr": "Parfois tu peux utiliser cette version abrégée sans le mot `run` pour exécuter des scripts :"
+            },
+            {
+              "en": "But this only works for specific npm scripts named `start`, `test`, `stop`, and `restart`.",
+              "fr": "Mais cela ne fonctionne que pour des scripts npm spécifiques nommés `start`, `test`, `stop` et `restart`."
+            },
+            {
+              "en": "Going back to our example, if we have this in `package.json`:",
+              "fr": "En revenant à notre exemple, si nous avons ceci dans `package.json` :"
+            },
+            {
+              "en": "To run the npm script, you need to enter `npm run start` in the command line. When you do that, the actual underlying command that's executed is `node app.js`.",
+              "fr": "Pour exécuter le script npm, tu dois saisir `npm run start` dans la ligne de commande. Quand tu le fais, la commande sous-jacente réellement exécutée est `node app.js`."
+            },
+            {
+              "en": "Since this npm script has a shorthand version, you could also use `npm start` and the result would be the same.",
+              "fr": "Comme ce script npm a une version abrégée, tu pourrais aussi utiliser `npm start` et le résultat serait le même."
+            },
+            {
+              "en": "In this case, you're just replacing a simple command, `node app.js`, with another one, `npm start`. But imagine if you had a sequence of complex commands that need to be executed in sequence or in parallel, and you could just use `npm start` to run all of them. That would save you a lot of time, right? That's where the power of npm scripts really shines.",
+              "fr": "Dans ce cas, tu remplaces juste une commande simple, `node app.js`, par une autre, `npm start`. Mais imagine si tu avais une séquence de commandes complexes à exécuter en séquence ou en parallèle, et que tu pouvais juste utiliser `npm start` pour toutes les exécuter. Cela te ferait gagner beaucoup de temps, non ? C'est là que la puissance des scripts npm brille vraiment."
+            },
+            {
+              "en": "Here's a quick overview of some of the most commonly used npm scripts:",
+              "fr": "Voici un aperçu rapide de certains des scripts npm les plus couramment utilisés :"
+            },
+            {
+              "en": "* `npm run`: used to run a custom npm script.\n    \n* `npm start`: used to start the main application or development server.\n    \n* `npm lint`: used to run a code style checker to check if your code meets code style standards and best practices.\n    \n* `npm test`: used to run the project's test suite.\n    \nThere are many other npm scripts for different purposes, but these are some of the most common ones you'll see.",
+              "fr": "* `npm run` : utilisé pour exécuter un script npm personnalisé.\n    \n* `npm start` : utilisé pour démarrer l'application principale ou le serveur de développement.\n    \n* `npm lint` : utilisé pour exécuter un vérificateur de style de code pour vérifier si ton code respecte les standards de style et les bonnes pratiques.\n    \n* `npm test` : utilisé pour exécuter la suite de tests du projet.\n    \nIl existe de nombreux autres scripts npm pour différents usages, mais ce sont certains des plus courants que tu verras."
+            },
+            {
+              "en": "Also, a common convention is using a colon to group related scripts under the same namespace. For example, `start:server` and `start:ui`.",
+              "fr": "Aussi, une convention courante est d'utiliser un deux-points pour regrouper des scripts liés sous le même namespace. Par exemple, `start:server` et `start:ui`."
+            },
+            {
+              "en": "## How to Run Commands Sequentially",
+              "fr": "## Comment exécuter des commandes séquentiellement"
+            },
+            {
+              "en": "If you need to run multiple commands in a sequence, you have two options. You can either use the logical AND operator (`&&`) or the semicolon (`;`). Let's check out their differences.",
+              "fr": "Si tu as besoin d'exécuter plusieurs commandes en séquence, tu as deux options. Tu peux soit utiliser l'opérateur logique AND (`&&`), soit le point-virgule (`;`). Voyons leurs différences."
+            },
+            {
+              "en": "The logical AND operator runs the next command only if the first one runs successfully.",
+              "fr": "L'opérateur logique AND exécute la commande suivante uniquement si la première s'exécute avec succès."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "Notice that there is a logical AND operator in the `start` command:",
+              "fr": "Remarque qu'il y a un opérateur logique AND dans la commande `start` :"
+            },
+            {
+              "en": "Here, `npm start` will try to run `npm run build` first, and only if this script runs successfully, `node server.js` will be executed.",
+              "fr": "Ici, `npm start` essaiera d'abord d'exécuter `npm run build`, et seulement si ce script s'exécute avec succès, `node server.js` sera exécuté."
+            },
+            {
+              "en": "This is a very common approach because it ensures reliability and prevents wasting time and resources on subsequent commands that may fail or throw errors if the previous one fails.",
+              "fr": "C'est une approche très courante car elle assure la fiabilité et évite de perdre du temps et des ressources sur des commandes suivantes qui pourraient échouer ou lever des erreurs si la précédente échoue."
+            },
+            {
+              "en": "Alternatively, you can use the semicolon operator to run commands sequentially, regardless of whether the previous command was successful or not.",
+              "fr": "Autrement, tu peux utiliser l'opérateur point-virgule pour exécuter des commandes séquentiellement, que la commande précédente ait réussi ou non."
+            },
+            {
+              "en": "In our example, this simple change would have an important impact on how the commands will run:",
+              "fr": "Dans notre exemple, ce simple changement aurait un impact important sur la façon dont les commandes s'exécuteront :"
+            },
+            {
+              "en": "Focus on the `start` command again:",
+              "fr": "Concentre-toi à nouveau sur la commande `start` :"
+            },
+            {
+              "en": "Now, since we are using a semicolon instead of the `&&` operator, the `node server.js` command will always run after `npm run build`, even if `node server.js` was not successful.",
+              "fr": "Maintenant, comme nous utilisons un point-virgule au lieu de l'opérateur `&&`, la commande `node server.js` s'exécutera toujours après `npm run build`, même si `node server.js` n'a pas réussi."
+            },
+            {
+              "en": "## How to Run Commands Concurrently",
+              "fr": "## Comment exécuter des commandes simultanément"
+            },
+            {
+              "en": "If you need to run commands concurrently (in parallel), you can use the `&` operator.",
+              "fr": "Si tu as besoin d'exécuter des commandes simultanément (en parallèle), tu peux utiliser l'opérateur `&`."
+            },
+            {
+              "en": "However, you should know that this option runs the processes in the background.",
+              "fr": "Cependant, tu dois savoir que cette option exécute les processus en arrière-plan."
+            },
+            {
+              "en": "This means that, if you run them in the same terminal session, you may see their combined output, which may be difficult to understand.",
+              "fr": "Cela signifie que, si tu les exécutes dans la même session de terminal, tu pourrais voir leur sortie combinée, ce qui peut être difficile à comprendre."
+            },
+            {
+              "en": "Other options for running commands concurrently include tools like `concurrently` and `npm-run-all`.",
+              "fr": "D'autres options pour exécuter des commandes simultanément incluent des outils comme `concurrently` et `npm-run-all`."
+            },
+            {
+              "en": "## How to Pass Arguments to npm Scripts",
+              "fr": "## Comment passer des arguments aux scripts npm"
+            },
+            {
+              "en": "If you need to pass arguments directly to the command that is being executed within the npm script, you can specify them in the command by writing two hyphens (`--`) followed by the arguments.",
+              "fr": "Si tu as besoin de passer des arguments directement à la commande exécutée dans le script npm, tu peux les spécifier dans la commande en écrivant deux tirets (`--`) suivis des arguments."
+            },
+            {
+              "en": "The `--` tells npm that everything after it will be arguments for the underlying commands that the npm script will execute.",
+              "fr": "Le `--` dit à npm que tout ce qui suit seront des arguments pour les commandes sous-jacentes que le script npm exécutera."
+            },
+            {
+              "en": "This is the general syntax:",
+              "fr": "Voici la syntaxe générale :"
+            },
+            {
+              "en": "For example, let's say that you define this `npm start` script:",
+              "fr": "Par exemple, disons que tu définis ce script `npm start` :"
+            },
+            {
+              "en": "How could you specify the port where you want to run your server if you use `npm start`?",
+              "fr": "Comment pourrais-tu spécifier le port où tu veux faire tourner ton serveur si tu utilises `npm start` ?"
+            },
+            {
+              "en": "Let's say that we want to pass the port directly as a command-line argument. You would write this:",
+              "fr": "Disons que nous voulons passer le port directement comme argument en ligne de commande. Tu écrirais ceci :"
+            },
+            {
+              "en": "In your code, you can access these arguments in the `process.argv` array using indices:",
+              "fr": "Dans ton code, tu peux accéder à ces arguments dans le tableau `process.argv` en utilisant des indices :"
+            },
+            {
+              "en": "Therefore, you could access and use the port number wherever you need to with `process.argv[2]`. That is the power of command-line arguments combined with npm scripts.",
+              "fr": "Par conséquent, tu pourrais accéder et utiliser le numéro de port partout où tu en as besoin avec `process.argv[2]`. C'est la puissance des arguments en ligne de commande combinés aux scripts npm."
+            },
+            {
+              "en": "Like you can see, npm scripts are essential tools for simplifying the development workflow. They help you to automate and transform complex and reusable command sequences into simple and consistent shortcuts that you can use in your daily work.",
+              "fr": "Comme tu peux le voir, les scripts npm sont des outils essentiels pour simplifier le flux de travail de développement. Ils t'aident à automatiser et transformer des séquences de commandes complexes et réutilisables en raccourcis simples et cohérents que tu peux utiliser dans ton travail quotidien."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Where are npm scripts defined in a Node.js project?",
+              "fr": "Où sont définis les scripts npm dans un projet Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "In a `.npmignore` file.",
+              "fr": "Dans un fichier `.npmignore`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that acts as the central manifest for a Node.js project and its executable commands.",
+              "fr": "Pense au fichier qui agit comme le manifeste central d'un projet Node.js et de ses commandes exécutables."
+            },
+            {
+              "en": "Within the `\"dependencies\"` object of `package.json`.",
+              "fr": "Dans l'objet `\"dependencies\"` de `package.json`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that acts as the central manifest for a Node.js project and its executable commands.",
+              "fr": "Pense au fichier qui agit comme le manifeste central d'un projet Node.js et de ses commandes exécutables."
+            },
+            {
+              "en": "Within the `\"scripts\"` object of `package.json`.",
+              "fr": "Dans l'objet `\"scripts\"` de `package.json`."
+            },
+            {
+              "en": "In a separate `npm-config.json` file.",
+              "fr": "Dans un fichier séparé `npm-config.json`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that acts as the central manifest for a Node.js project and its executable commands.",
+              "fr": "Pense au fichier qui agit comme le manifeste central d'un projet Node.js et de ses commandes exécutables."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you execute an npm script named `build`?",
+              "fr": "Comment exécutes-tu un script npm nommé `build` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command prefix that tells npm you want to execute one of the custom commands defined in the `\"scripts\"` section.",
+              "fr": "Pense au préfixe de commande qui dit à npm que tu veux exécuter l'une des commandes personnalisées définies dans la section `\"scripts\"`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command prefix that tells npm you want to execute one of the custom commands defined in the `\"scripts\"` section.",
+              "fr": "Pense au préfixe de commande qui dit à npm que tu veux exécuter l'une des commandes personnalisées définies dans la section `\"scripts\"`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command prefix that tells npm you want to execute one of the custom commands defined in the `\"scripts\"` section.",
+              "fr": "Pense au préfixe de commande qui dit à npm que tu veux exécuter l'une des commandes personnalisées définies dans la section `\"scripts\"`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the double hyphen (`--`) when running an npm script like `npm run start -- 5`?",
+              "fr": "Quel est le rôle du double tiret (`--`) quand on exécute un script npm comme `npm run start -- 5` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It signals that the script should be run in silent mode.",
+              "fr": "Il signale que le script doit être exécuté en mode silencieux."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a complex command utility (like Jest or Webpack) receives its specific flags when run through an npm shortcut.",
+              "fr": "Pense à la façon dont un utilitaire de commande complexe (comme Jest ou Webpack) reçoit ses drapeaux spécifiques quand il est lancé via un raccourci npm."
+            },
+            {
+              "en": "It tells npm to pass the remaining arguments to the underlying script command.",
+              "fr": "Il dit à npm de passer les arguments restants à la commande sous-jacente du script."
+            },
+            {
+              "en": "It means the script must be executed with elevated administrative privileges.",
+              "fr": "Cela signifie que le script doit être exécuté avec des privilèges administratifs élevés."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a complex command utility (like Jest or Webpack) receives its specific flags when run through an npm shortcut.",
+              "fr": "Pense à la façon dont un utilitaire de commande complexe (comme Jest ou Webpack) reçoit ses drapeaux spécifiques quand il est lancé via un raccourci npm."
+            },
+            {
+              "en": "It indicates that the script should be run in parallel with other defined scripts.",
+              "fr": "Cela indique que le script doit être exécuté en parallèle avec d'autres scripts définis."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a complex command utility (like Jest or Webpack) receives its specific flags when run through an npm shortcut.",
+              "fr": "Pense à la façon dont un utilitaire de commande complexe (comme Jest ou Webpack) reçoit ses drapeaux spécifiques quand il est lancé via un raccourci npm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "692aba0978ca391f10455b4a.md",
+      "id": "692aba0978ca391f10455b4a",
+      "dashedName": "how-can-you-publish-a-package-to-the-npm-registry",
+      "title": {
+        "en": "How Can You Publish a Package to the npm Registry?",
+        "fr": "Comment peux-tu publier un paquet sur le registre npm ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's learn about the npm registry, where you can share your JavaScript packages with the world.",
+              "fr": "Apprenons le registre npm, où tu peux partager tes paquets JavaScript avec le monde."
+            },
+            {
+              "en": "The **npm registry** is a database of public and private packages.",
+              "fr": "Le **registre npm** est une base de données de paquets publics et privés."
+            },
+            {
+              "en": "Developers and organizations can publish packages to this registry to share their tools with their communities and team members, and in many cases, with all other Node.js developers.",
+              "fr": "Les développeurs et les organisations peuvent publier des paquets sur ce registre pour partager leurs outils avec leurs communautés et membres d'équipe, et dans de nombreux cas, avec tous les autres développeurs Node.js."
+            },
+            {
+              "en": "Packages can be either public or private. Public packages can be accessed by anyone. Private packages can only be accessed by specific users or members of an organization.",
+              "fr": "Les paquets peuvent être publics ou privés. Les paquets publics sont accessibles par n'importe qui. Les paquets privés ne sont accessibles que par des utilisateurs spécifiques ou des membres d'une organisation."
+            },
+            {
+              "en": "In the npm registry, you can share what you've built with the world with just a few clicks. Sounds great, right?",
+              "fr": "Dans le registre npm, tu peux partager ce que tu as construit avec le monde en quelques clics. Ça a l'air génial, non ?"
+            },
+            {
+              "en": "Let's see how you can publish a package step by step.",
+              "fr": "Voyons comment tu peux publier un paquet étape par étape."
+            },
+            {
+              "en": "## Step 1: Create an Account",
+              "fr": "## Étape 1 : Créer un compte"
+            },
+            {
+              "en": "The first step is to create a free npm account. To create your account:",
+              "fr": "La première étape est de créer un compte npm gratuit. Pour créer ton compte :"
+            },
+            {
+              "en": "* Go to [https://www.npmjs.com/signup](https://www.npmjs.com/signup).\n    \n* Fill in the form. You will need to enter your username, email, and password.",
+              "fr": "* Va sur [https://www.npmjs.com/signup](https://www.npmjs.com/signup).\n    \n* Remplis le formulaire. Tu devras saisir ton nom d'utilisateur, ton e-mail et ton mot de passe."
+            },
+            {
+              "en": "Please note that, according to the sign-up page, \"your email address will be added to the metadata of packages that you publish, so it may be seen publicly.\"",
+              "fr": "Note que, selon la page d'inscription, « ton adresse e-mail sera ajoutée aux métadonnées des paquets que tu publies, elle pourra donc être vue publiquement. »"
+            },
+            {
+              "en": "## Step 2: **Log in**",
+              "fr": "## Étape 2 : **Se connecter**"
+            },
+            {
+              "en": "Once you have an npm account, you will need to log in on your terminal by running this command:",
+              "fr": "Une fois que tu as un compte npm, tu devras te connecter sur ton terminal en exécutant cette commande :"
+            },
+            {
+              "en": "Then you'll need to authenticate with your account information.",
+              "fr": "Ensuite tu devras t'authentifier avec les informations de ton compte."
+            },
+            {
+              "en": "## **Step 3: Create a** `package.json` file",
+              "fr": "## **Étape 3 : Créer un** fichier `package.json`"
+            },
+            {
+              "en": "Before you publish your package, you will need to create a `package.json` file with this command:",
+              "fr": "Avant de publier ton paquet, tu devras créer un fichier `package.json` avec cette commande :"
+            },
+            {
+              "en": "(If your project already has one, you can go directly to **step 4**).",
+              "fr": "(Si ton projet en a déjà un, tu peux aller directement à l'**étape 4**)."
+            },
+            {
+              "en": "You will need to enter this information for your `package.json` file:",
+              "fr": "Tu devras saisir ces informations pour ton fichier `package.json` :"
+            },
+            {
+              "en": "* **name**: This is usually the name of your project/directory. If you are planning to make your package public, this name must be unique, unless you use scopes (we'll cover this in just a moment).\n    \n* **version**: You should start with `\"1.0.0\"`, the default value. This represents the initial version of your package and you can update it as you make changes to the package.\n    \n* **main**: The entry point of your project. This is `index.js` by default.\n    \n* **author**: You can write your name or preferred handle.\n    \n* **license**: Choose a specific license. Some examples include MIT and ISC.\n    \n* **description**: A brief summary of your package.",
+              "fr": "* **name** : C'est généralement le nom de ton projet/répertoire. Si tu prévois de rendre ton paquet public, ce nom doit être unique, sauf si tu utilises des scopes (nous en parlerons dans un instant).\n    \n* **version** : Tu devrais commencer par `\"1.0.0\"`, la valeur par défaut. Cela représente la version initiale de ton paquet et tu peux la mettre à jour au fur et à mesure des changements.\n    \n* **main** : Le point d'entrée de ton projet. C'est `index.js` par défaut.\n    \n* **author** : Tu peux écrire ton nom ou ton pseudo préféré.\n    \n* **license** : Choisis une licence spécifique. Quelques exemples incluent MIT et ISC.\n    \n* **description** : Un bref résumé de ton paquet."
+            },
+            {
+              "en": "When choosing the name of your package, make sure it's not already taken in the npm registry. To do this, you can go to the following URL, replacing `<your-package-name>` with the name of your package:",
+              "fr": "Quand tu choisis le nom de ton paquet, assure-toi qu'il n'est pas déjà pris dans le registre npm. Pour cela, tu peux aller à l'URL suivante, en remplaçant `<your-package-name>` par le nom de ton paquet :"
+            },
+            {
+              "en": "If there isn't a package at that URL, the package name is available and you can use it.",
+              "fr": "S'il n'y a pas de paquet à cette URL, le nom du paquet est disponible et tu peux l'utiliser."
+            },
+            {
+              "en": "However, if the name is already taken and you really want to keep it, you can use what is known as a **scope** to publish it.",
+              "fr": "Cependant, si le nom est déjà pris et que tu veux vraiment le garder, tu peux utiliser ce qu'on appelle un **scope** pour le publier."
+            },
+            {
+              "en": "### **Scopes**",
+              "fr": "### **Scopes**"
+            },
+            {
+              "en": "When you create a user or organization account in the npm registry, you are granted a scope with your username or the name of your organization.",
+              "fr": "Quand tu crées un compte utilisateur ou organisation dans le registre npm, on te donne un scope avec ton nom d'utilisateur ou le nom de ton organisation."
+            },
+            {
+              "en": "Scopes are helpful to avoid name conflicts because you can publish your package under your scope, even if another package with the same name already exists.",
+              "fr": "Les scopes sont utiles pour éviter les conflits de noms car tu peux publier ton paquet sous ton scope, même si un autre paquet avec le même nom existe déjà."
+            },
+            {
+              "en": "The name of a scoped package starts with the scope name. For example, in `package.json`, you would find this key-value pair:",
+              "fr": "Le nom d'un paquet scoped commence par le nom du scope. Par exemple, dans `package.json`, tu trouverais cette paire clé-valeur :"
+            },
+            {
+              "en": "You can make this change directly in the file if you need to, or you can create the `package.json` file with the scope from the start by adding `--scope=@<scope-name>` to the `npm init` command.",
+              "fr": "Tu peux faire ce changement directement dans le fichier si besoin, ou tu peux créer le fichier `package.json` avec le scope dès le départ en ajoutant `--scope=@<scope-name>` à la commande `npm init`."
+            },
+            {
+              "en": "The scope name can be your username if you are using a personal account, or the name of your organization if you are using an organizational account.",
+              "fr": "Le nom du scope peut être ton nom d'utilisateur si tu utilises un compte personnel, ou le nom de ton organisation si tu utilises un compte organisationnel."
+            },
+            {
+              "en": "## Step 4: Create README.md",
+              "fr": "## Étape 4 : Créer README.md"
+            },
+            {
+              "en": "The README of your package is a markdown file where you describe what your package does and its intended usage.",
+              "fr": "Le README de ton paquet est un fichier markdown où tu décris ce que fait ton paquet et son usage prévu."
+            },
+            {
+              "en": "Some examples of important content that you may want to include are:",
+              "fr": "Quelques exemples de contenu important que tu pourrais vouloir inclure sont :"
+            },
+            {
+              "en": "* Its purpose.\n    \n* How to install it.\n    \n* Important dependencies and considerations.\n    \n* How to get started.\n    \n* Sample code snippets.\n    \n* Contribution guidelines (if you accept contributions).\n    \n* Link to a changelog file where you track the changes that have been made in different versions.",
+              "fr": "* Son objectif.\n    \n* Comment l'installer.\n    \n* Dépendances importantes et considérations.\n    \n* Comment démarrer.\n    \n* Exemples d'extraits de code.\n    \n* Directives de contribution (si tu acceptes des contributions).\n    \n* Lien vers un fichier changelog où tu suis les changements faits dans les différentes versions."
+            },
+            {
+              "en": "The structure of the README is flexible, though. You can adapt it to fit your needs.",
+              "fr": "La structure du README est flexible, cependant. Tu peux l'adapter à tes besoins."
+            },
+            {
+              "en": "## **Step 5:** `.npmignore`",
+              "fr": "## **Étape 5 :** `.npmignore`"
+            },
+            {
+              "en": "The `.npmignore` file tells the npm registry what files to include and what files to ignore when publishing your package. It's very important to prevent sharing sensitive information such as private keys, passwords, and personal information.",
+              "fr": "Le fichier `.npmignore` dit au registre npm quels fichiers inclure et quels fichiers ignorer lors de la publication de ton paquet. Il est très important pour éviter de partager des informations sensibles comme des clés privées, des mots de passe et des informations personnelles."
+            },
+            {
+              "en": "In this file, you can write patterns to specify what files, directories, and types of files are ignored. It follows the same pattern-matching rules as the `.gitignore` files.",
+              "fr": "Dans ce fichier, tu peux écrire des motifs pour spécifier quels fichiers, répertoires et types de fichiers sont ignorés. Il suit les mêmes règles de correspondance de motifs que les fichiers `.gitignore`."
+            },
+            {
+              "en": "If you have worked with Git, you may think that this file sounds very similar to `.gitignore`, right? Well, that's because it is. According to the npm documentation, \"If there's no `.npmignore` file, but there is a `.gitignore` file, then npm will ignore the stuff matched by the `.gitignore` file.\"",
+              "fr": "Si tu as travaillé avec Git, tu penses peut-être que ce fichier ressemble beaucoup à `.gitignore`, non ? Eh bien, c'est parce que c'est le cas. Selon la documentation npm, « S'il n'y a pas de fichier `.npmignore`, mais qu'il y a un fichier `.gitignore`, alors npm ignorera ce qui correspond au fichier `.gitignore`. »"
+            },
+            {
+              "en": "You should also know that npm looks for `.npmignore` and `.gitignore` files in all subdirectories of your package, not just the root directory.",
+              "fr": "Tu dois aussi savoir que npm cherche les fichiers `.npmignore` et `.gitignore` dans tous les sous-répertoires de ton paquet, pas seulement le répertoire racine."
+            },
+            {
+              "en": "By default, these paths are automatically ignored, so you don't need to add them to `.npmignore`:",
+              "fr": "Par défaut, ces chemins sont automatiquement ignorés, donc tu n'as pas besoin de les ajouter à `.npmignore` :"
+            },
+            {
+              "en": "* `.*.swp`\n    \n* `._*`\n    \n* `.DS_Store`\n    \n* `.git`\n    \n* `.gitignore`\n    \n* `.hg`\n    \n* `.npmignore`\n    \n* `.npmrc`\n    \n* `.lock-wscript`\n    \n* `.svn`\n    \n* `.wafpickle-*`\n    \n* `config.gypi`\n    \n* `CVS`\n    \n* `npm-debug.log`",
+              "fr": "* `.*.swp`\n    \n* `._*`\n    \n* `.DS_Store`\n    \n* `.git`\n    \n* `.gitignore`\n    \n* `.hg`\n    \n* `.npmignore`\n    \n* `.npmrc`\n    \n* `.lock-wscript`\n    \n* `.svn`\n    \n* `.wafpickle-*`\n    \n* `config.gypi`\n    \n* `CVS`\n    \n* `npm-debug.log`"
+            },
+            {
+              "en": "The `node_modules` directory is also ignored, except bundled dependencies.",
+              "fr": "Le répertoire `node_modules` est aussi ignoré, sauf les dépendances bundled."
+            },
+            {
+              "en": "## **Step 6: Publish your package**",
+              "fr": "## **Étape 6 : Publier ton paquet**"
+            },
+            {
+              "en": "Before publishing your package to the npm registry, you should test it by running this command:",
+              "fr": "Avant de publier ton paquet sur le registre npm, tu devrais le tester en exécutant cette commande :"
+            },
+            {
+              "en": "Once you are ready to publish it, the command will depend on the type of package: scope vs. unscoped.",
+              "fr": "Une fois prêt à le publier, la commande dépendra du type de paquet : scoped vs. unscoped."
+            },
+            {
+              "en": "If your package is unscoped, run this command:",
+              "fr": "Si ton paquet est unscoped, exécute cette commande :"
+            },
+            {
+              "en": "If your package is scoped, it will be published as a private package by default (if this feature is available in your account). If you want to make it public, you will need to add `--access public` to the command.",
+              "fr": "Si ton paquet est scoped, il sera publié comme paquet privé par défaut (si cette fonctionnalité est disponible sur ton compte). Si tu veux le rendre public, tu devras ajouter `--access public` à la commande."
+            },
+            {
+              "en": "To see your public package, go to this URL:",
+              "fr": "Pour voir ton paquet public, va à cette URL :"
+            },
+            {
+              "en": "You should see an indication of the visibility of your package (public or private) below the package name.",
+              "fr": "Tu devrais voir une indication de la visibilité de ton paquet (public ou privé) sous le nom du paquet."
+            },
+            {
+              "en": "## **Step 7 (Optional): Install Your Package**",
+              "fr": "## **Étape 7 (Optionnelle) : Installer ton paquet**"
+            },
+            {
+              "en": "Now that you are all set up, you can install your package in a Node.js project with this command:",
+              "fr": "Maintenant que tout est en place, tu peux installer ton paquet dans un projet Node.js avec cette commande :"
+            },
+            {
+              "en": "## Updating Your Package",
+              "fr": "## Mettre à jour ton paquet"
+            },
+            {
+              "en": "If you need to make changes to your package after publishing it, you can update the package version in `package.json`.",
+              "fr": "Si tu dois apporter des changements à ton paquet après l'avoir publié, tu peux mettre à jour la version du paquet dans `package.json`."
+            },
+            {
+              "en": "This is the standard convention for semantic versioning:",
+              "fr": "Voici la convention standard pour le versionnage sémantique :"
+            },
+            {
+              "en": "* **First release:** `1.0.0`.\n    \n* **Patch release:** Increment the third digit. For example, updating from `1.0.0` to `1.0.1`.\n    \n* **Minor release:** Increment the middle digit and reset the last digit to zero. For example, updating `1.0.0` to `1.1.0`.\n    \n* **Major release:** Increment the first digit and reset the middle and last digits to zero. For example, updating `1.1.0` to `2.0.0`.\n    \nGreat work. Now you know how to publish your package to the npm registry and how to update it to fix bugs and add new features.",
+              "fr": "* **Première version :** `1.0.0`.\n    \n* **Version de patch :** Incrémente le troisième chiffre. Par exemple, passer de `1.0.0` à `1.0.1`.\n    \n* **Version mineure :** Incrémente le chiffre du milieu et remets le dernier chiffre à zéro. Par exemple, passer de `1.0.0` à `1.1.0`.\n    \n* **Version majeure :** Incrémente le premier chiffre et remets les chiffres du milieu et de la fin à zéro. Par exemple, passer de `1.1.0` à `2.0.0`.\n    \nBeau travail. Maintenant tu sais comment publier ton paquet sur le registre npm et comment le mettre à jour pour corriger des bugs et ajouter de nouvelles fonctionnalités."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the command used in the terminal to upload a package from your local machine to the npm registry?",
+              "fr": "Quelle est la commande utilisée dans le terminal pour téléverser un paquet depuis ta machine locale vers le registre npm ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This is the command that finalizes the process, making your package available for others to install.",
+              "fr": "C'est la commande qui finalise le processus, rendant ton paquet disponible pour que d'autres l'installent."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This is the command that finalizes the process, making your package available for others to install.",
+              "fr": "C'est la commande qui finalise le processus, rendant ton paquet disponible pour que d'autres l'installent."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This is the command that finalizes the process, making your package available for others to install.",
+              "fr": "C'est la commande qui finalise le processus, rendant ton paquet disponible pour que d'autres l'installent."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What file must be present in a directory to signal to the npm registry that the folder is a complete, installable package?",
+              "fr": "Quel fichier doit être présent dans un répertoire pour signaler au registre npm que le dossier est un paquet complet et installable ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that contains all the required metadata, dependencies, and configuration for an npm project.",
+              "fr": "Pense au fichier qui contient toutes les métadonnées, dépendances et configuration requises pour un projet npm."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that contains all the required metadata, dependencies, and configuration for an npm project.",
+              "fr": "Pense au fichier qui contient toutes les métadonnées, dépendances et configuration requises pour un projet npm."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the file that contains all the required metadata, dependencies, and configuration for an npm project.",
+              "fr": "Pense au fichier qui contient toutes les métadonnées, dépendances et configuration requises pour un projet npm."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which action should you take to ensure that sensitive information is **not** included when a package is published?",
+              "fr": "Quelle action devrais-tu prendre pour t'assurer que les informations sensibles ne sont **pas** incluses quand un paquet est publié ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Temporarily deleting the files from the project folder before running `npm publish`.",
+              "fr": "Supprimer temporairement les fichiers du dossier du projet avant d'exécuter `npm publish`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "npm uses a specific file to decide what to exclude from the published package.",
+              "fr": "npm utilise un fichier spécifique pour décider quoi exclure du paquet publié."
+            },
+            {
+              "en": "Using the `.ignore` file to list the sensitive files.",
+              "fr": "Utiliser le fichier `.ignore` pour lister les fichiers sensibles."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "npm uses a specific file to decide what to exclude from the published package.",
+              "fr": "npm utilise un fichier spécifique pour décider quoi exclure du paquet publié."
+            },
+            {
+              "en": "Using the `.npmignore` file to list the sensitive files.",
+              "fr": "Utiliser le fichier `.npmignore` pour lister les fichiers sensibles."
+            },
+            {
+              "en": "Setting the `private` field to `true` in `package.json`.",
+              "fr": "Définir le champ `private` sur `true` dans `package.json`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "npm uses a specific file to decide what to exclude from the published package.",
+              "fr": "npm utilise un fichier spécifique pour décider quoi exclure du paquet publié."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "692aba0a78ca391f10455b4b.md",
+      "id": "692aba0a78ca391f10455b4b",
+      "dashedName": "how-do-imports-and-exports-work-with-commonjs-modules",
+      "title": {
+        "en": "How Do Imports and Exports Work with CommonJS Modules?",
+        "fr": "Comment fonctionnent les imports et exports avec les modules CommonJS ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In modern web development, you can split your code into multiple files called \"modules.\"",
+              "fr": "Dans le développement web moderne, tu peux diviser ton code en plusieurs fichiers appelés « modules »."
+            },
+            {
+              "en": "You can think of a module as a self-contained and reusable code block.",
+              "fr": "Tu peux penser à un module comme un bloc de code autonome et réutilisable."
+            },
+            {
+              "en": "By importing modules into other modules, you can reuse their functionality while still keeping the code in separate files, which is more maintainable, especially for large and complex web applications.",
+              "fr": "En important des modules dans d'autres modules, tu peux réutiliser leur fonctionnalité tout en gardant le code dans des fichiers séparés, ce qui est plus maintenable, surtout pour les applications web grandes et complexes."
+            },
+            {
+              "en": "In Node.js, each file is considered a module.",
+              "fr": "Dans Node.js, chaque fichier est considéré comme un module."
+            },
+            {
+              "en": "Node has two different systems for working with modules: CommonJS and ES.",
+              "fr": "Node a deux systèmes différents pour travailler avec les modules : CommonJS et ES."
+            },
+            {
+              "en": "CommonJS is the original and default way of working with packages in Node.js. It loads modules synchronously, which means that it has to wait for a module to be fully loaded before it starts loading the next one or continues running the code.",
+              "fr": "CommonJS est la façon originale et par défaut de travailler avec les paquets dans Node.js. Il charge les modules de façon synchrone, ce qui signifie qu'il doit attendre qu'un module soit entièrement chargé avant de commencer à charger le suivant ou de continuer l'exécution du code."
+            },
+            {
+              "en": "It's still widely used, but it's gradually being replaced by the newer ES syntax.",
+              "fr": "Il est encore largement utilisé, mais il est progressivement remplacé par la syntaxe ES plus récente."
+            },
+            {
+              "en": "CommonJS uses the `require()` function to import a module, taking its relative path as an argument.",
+              "fr": "CommonJS utilise la fonction `require()` pour importer un module, en prenant son chemin relatif comme argument."
+            },
+            {
+              "en": "For example, let's say that we have a module called `math.js`, where we define basic mathematical operations.",
+              "fr": "Par exemple, disons que nous avons un module appelé `math.js`, où nous définissons des opérations mathématiques de base."
+            },
+            {
+              "en": "We'll only use a multiplication function here to keep this example simple and focused:",
+              "fr": "Nous n'utiliserons qu'une fonction de multiplication ici pour garder cet exemple simple et ciblé :"
+            },
+            {
+              "en": "How can we reuse this function outside our current module? By default, functions and variables defined in a Node.js module are **private** — other modules can't access them unless we explicitly export them. There are several ways to do this.",
+              "fr": "Comment pouvons-nous réutiliser cette fonction en dehors de notre module actuel ? Par défaut, les fonctions et variables définies dans un module Node.js sont **privées** — les autres modules ne peuvent pas y accéder sauf si nous les exportons explicitement. Il y a plusieurs façons de le faire."
+            },
+            {
+              "en": "One common way is to assign a value to `module.exports`. This object represents what the module will return when it is imported elsewhere, giving other modules access to the functions, variables, or objects you've chosen to expose.",
+              "fr": "Une façon courante est d'assigner une valeur à `module.exports`. Cet objet représente ce que le module renverra quand il sera importé ailleurs, donnant aux autres modules l'accès aux fonctions, variables ou objets que tu as choisi d'exposer."
+            },
+            {
+              "en": "In this example, we assign an object with a `multiply` property to `module.exports`. The value of that property is a reference to the `multiply` function we defined earlier. This will export the function, so we can call it from other modules if we need to.",
+              "fr": "Dans cet exemple, nous assignons un objet avec une propriété `multiply` à `module.exports`. La valeur de cette propriété est une référence à la fonction `multiply` que nous avons définie plus tôt. Cela exportera la fonction, pour que nous puissions l'appeler depuis d'autres modules si besoin."
+            },
+            {
+              "en": "Let's say that we try to import the `math.js` module into another module. We call the `require()` function, and pass the relative path as an argument. Then, we assign the object returned by `require()` to the `math` variable.",
+              "fr": "Disons que nous essayons d'importer le module `math.js` dans un autre module. Nous appelons la fonction `require()`, et passons le chemin relatif comme argument. Ensuite, nous assignons l'objet renvoyé par `require()` à la variable `math`."
+            },
+            {
+              "en": "Let's check out the value of `math` in the console by printing it with `console.log()`:",
+              "fr": "Vérifions la valeur de `math` dans la console en l'affichant avec `console.log()` :"
+            },
+            {
+              "en": "This is the output. It's an object with a `multiply` property and a function as the value:",
+              "fr": "Voici la sortie. C'est un objet avec une propriété `multiply` et une fonction comme valeur :"
+            },
+            {
+              "en": "If we call this function with `math.multiply()`, passing the numbers `6` and `7` as arguments, the output is `42`. The function runs successfully and yet, it's in another file! So our import statement worked correctly.",
+              "fr": "Si nous appelons cette fonction avec `math.multiply()`, en passant les nombres `6` et `7` comme arguments, la sortie est `42`. La fonction s'exécute avec succès et pourtant, elle est dans un autre fichier ! Donc notre instruction d'import a correctement fonctionné."
+            },
+            {
+              "en": "But there are other ways to export a function, variable, or object.",
+              "fr": "Mais il y a d'autres façons d'exporter une fonction, une variable ou un objet."
+            },
+            {
+              "en": "For example, if you only need to export a single function, variable, or object, you can assign it directly as the value of `module.exports`:",
+              "fr": "Par exemple, si tu n'as besoin d'exporter qu'une seule fonction, variable ou objet, tu peux l'assigner directement comme valeur de `module.exports` :"
+            },
+            {
+              "en": "If you need to export multiple functions, you just need to add them to the `module.exports` object, separated by a comma.",
+              "fr": "Si tu as besoin d'exporter plusieurs fonctions, tu dois juste les ajouter à l'objet `module.exports`, séparées par une virgule."
+            },
+            {
+              "en": "Here, you can see that the exported object has two properties: `subtract` and `multiply`. Their values are references to their corresponding functions, so you will have access to both of them in any module that imports `math.js`:",
+              "fr": "Ici, tu peux voir que l'objet exporté a deux propriétés : `subtract` et `multiply`. Leurs valeurs sont des références à leurs fonctions correspondantes, donc tu auras accès aux deux dans tout module qui importe `math.js` :"
+            },
+            {
+              "en": "When the `module.exports` object has multiple properties, you will have the option to choose if you want to import everything or import properties individually.",
+              "fr": "Quand l'objet `module.exports` a plusieurs propriétés, tu auras l'option de choisir si tu veux tout importer ou importer des propriétés individuellement."
+            },
+            {
+              "en": "In this example, we are importing the entire object that was exported by `math.js`, so we will have access to both `subtract` and `multiply`:",
+              "fr": "Dans cet exemple, nous importons l'objet entier qui a été exporté par `math.js`, donc nous aurons accès à la fois à `subtract` et `multiply` :"
+            },
+            {
+              "en": "If we only want to import `multiply` instead, we just need to write its name within curly braces, after the `const` keyword. Basically, you're using the destructuring assignment syntax to get its value from the exported object. Then, we can refer to it directly by its name in our code:",
+              "fr": "Si nous voulons n'importer que `multiply` à la place, nous devons juste écrire son nom entre accolades, après le mot-clé `const`. En gros, tu utilises la syntaxe d'affectation par déstructuration pour obtenir sa valeur depuis l'objet exporté. Ensuite, nous pouvons y faire référence directement par son nom dans notre code :"
+            },
+            {
+              "en": "This works for multiple elements too. You just need to separate them with a comma within the curly braces. Here, we are importing both the `subtract` and `multiply` functions:",
+              "fr": "Cela fonctionne aussi pour plusieurs éléments. Tu dois juste les séparer par une virgule entre les accolades. Ici, nous importons à la fois les fonctions `subtract` et `multiply` :"
+            },
+            {
+              "en": "By default, Node.js will treat the following as CommonJS modules:",
+              "fr": "Par défaut, Node.js traitera ce qui suit comme des modules CommonJS :"
+            },
+            {
+              "en": "* Files with a `.cjs` extension.\n    \n* Files with a `.js` extension when the nearest parent `package.json` file contains a top-level field `\"type\"` with a value of `\"commonjs\"`.\n    \n* Files with a `.js` extension or without an extension, when the nearest parent `package.json` file doesn't contain a top-level field `\"type\"`, or there is no `package.json` in any parent folder.\n    \n* Files with an extension that is not `.mjs`, `.cjs`, `.json`, `.node`, or `.js`.",
+              "fr": "* Les fichiers avec une extension `.cjs`.\n    \n* Les fichiers avec une extension `.js` quand le fichier `package.json` parent le plus proche contient un champ de premier niveau `\"type\"` avec une valeur de `\"commonjs\"`.\n    \n* Les fichiers avec une extension `.js` ou sans extension, quand le fichier `package.json` parent le plus proche ne contient pas de champ de premier niveau `\"type\"`, ou qu'il n'y a pas de `package.json` dans aucun dossier parent.\n    \n* Les fichiers avec une extension qui n'est pas `.mjs`, `.cjs`, `.json`, `.node` ou `.js`."
+            },
+            {
+              "en": "While ES Modules are gradually replacing CommonJS modules, understanding them is still essential for developers working with existing Node.js codebases and many npm packages.",
+              "fr": "Bien que les modules ES remplacent progressivement les modules CommonJS, les comprendre reste essentiel pour les développeurs qui travaillent avec des bases de code Node.js existantes et de nombreux paquets npm."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which function is used to import modules in CommonJS?",
+              "fr": "Quelle fonction est utilisée pour importer des modules en CommonJS ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in Node.js environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements Node.js."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in Node.js environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements Node.js."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in Node.js environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements Node.js."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the primary way to export a module in CommonJS?",
+              "fr": "Lequel des éléments suivants est la façon principale d'exporter un module en CommonJS ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which object is used to define what a module makes available to other files.",
+              "fr": "Pense à l'objet utilisé pour définir ce qu'un module rend disponible aux autres fichiers."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which object is used to define what a module makes available to other files.",
+              "fr": "Pense à l'objet utilisé pour définir ce qu'un module rend disponible aux autres fichiers."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which object is used to define what a module makes available to other files.",
+              "fr": "Pense à l'objet utilisé pour définir ce qu'un module rend disponible aux autres fichiers."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What type of loading does CommonJS use?",
+              "fr": "Quel type de chargement CommonJS utilise-t-il ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Asynchronous loading",
+              "fr": "Chargement asynchrone"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Does the code wait for a module to fully load before resuming its execution?",
+              "fr": "Le code attend-il qu'un module soit entièrement chargé avant de reprendre son exécution ?"
+            },
+            {
+              "en": "Lazy loading",
+              "fr": "Chargement paresseux"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Does the code wait for a module to fully load before resuming its execution?",
+              "fr": "Le code attend-il qu'un module soit entièrement chargé avant de reprendre son exécution ?"
+            },
+            {
+              "en": "Synchronous loading",
+              "fr": "Chargement synchrone"
+            },
+            {
+              "en": "Conditional loading",
+              "fr": "Chargement conditionnel"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Does the code wait for a module to fully load before resuming its execution?",
+              "fr": "Le code attend-il qu'un module soit entièrement chargé avant de reprendre son exécution ?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "692aba0a78ca391f10455b4c.md",
+      "id": "692aba0a78ca391f10455b4c",
+      "dashedName": "how-do-imports-and-exports-work-with-es-modules",
+      "title": {
+        "en": "How Do Imports and Exports Work with ES Modules?",
+        "fr": "Comment fonctionnent les imports et exports avec les modules ES ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Now that you understand the CommonJS module system, let's look at the ES module system.",
+              "fr": "Maintenant que tu comprends le système de modules CommonJS, regardons le système de modules ES."
+            },
+            {
+              "en": "ES modules, or ECMAScript modules, are the official, standardized module format for JavaScript defined by the ECMAScript specification. They use `import` and `export` statements, and in Node.js, they're loaded asynchronously, which is more efficient.",
+              "fr": "Les modules ES, ou modules ECMAScript, sont le format de module officiel et standardisé pour JavaScript défini par la spécification ECMAScript. Ils utilisent les instructions `import` et `export`, et dans Node.js, ils sont chargés de façon asynchrone, ce qui est plus efficace."
+            },
+            {
+              "en": "Node.js treats files as ES modules in the following cases:",
+              "fr": "Node.js traite les fichiers comme des modules ES dans les cas suivants :"
+            },
+            {
+              "en": "* Files with an `.mjs` extension.\n    \n* And files with a `.js` extension when the nearest parent `package.json` file contains a top-level `\"type\"` field with a value of `\"module\"`.",
+              "fr": "* Les fichiers avec une extension `.mjs`.\n    \n* Et les fichiers avec une extension `.js` quand le fichier `package.json` parent le plus proche contient un champ `\"type\"` de premier niveau avec une valeur de `\"module\"`."
+            },
+            {
+              "en": "Here we have the same `multiply` function you've seen before, but now we are going to use the ESM system. For this, we are assigning a `.mjs` extension to both modules.",
+              "fr": "Ici nous avons la même fonction `multiply` que tu as vue auparavant, mais maintenant nous allons utiliser le système ESM. Pour cela, nous assignons une extension `.mjs` aux deux modules."
+            },
+            {
+              "en": "To export the `multiply` function from the `math.mjs` module, use the `export` keyword followed by the name of the function, variable, or object that you want to export within curly brackets:",
+              "fr": "Pour exporter la fonction `multiply` depuis le module `math.mjs`, utilise le mot-clé `export` suivi du nom de la fonction, variable ou objet que tu veux exporter entre accolades :"
+            },
+            {
+              "en": "You can also export the function directly by using the `export` keyword before the `function` keyword. This is known as a named export. You can have multiple named exports per module:",
+              "fr": "Tu peux aussi exporter la fonction directement en utilisant le mot-clé `export` avant le mot-clé `function`. C'est ce qu'on appelle un export nommé. Tu peux avoir plusieurs exports nommés par module :"
+            },
+            {
+              "en": "Then, to import this module, use the `import` keyword followed by curly braces. Notice that we are using `import` instead of `require()`. That is one of the key differences between CommonJS and ES modules.",
+              "fr": "Ensuite, pour importer ce module, utilise le mot-clé `import` suivi d'accolades. Remarque que nous utilisons `import` au lieu de `require()`. C'est l'une des différences clés entre CommonJS et les modules ES."
+            },
+            {
+              "en": "Within the curly braces, we write the name of the function, variable, or object that we want to import. In this case, it's `multiply`. Then, use the `from` keyword and the relative path to the module. This code will run successfully and the output will be `42`.",
+              "fr": "Entre les accolades, nous écrivons le nom de la fonction, variable ou objet que nous voulons importer. Dans ce cas, c'est `multiply`. Ensuite, utilise le mot-clé `from` et le chemin relatif vers le module. Ce code s'exécutera avec succès et la sortie sera `42`."
+            },
+            {
+              "en": "In the ES system, you can set one default export per module. This way, you don't need to use curly braces to import it.",
+              "fr": "Dans le système ES, tu peux définir un export par défaut par module. Ainsi, tu n'as pas besoin d'utiliser des accolades pour l'importer."
+            },
+            {
+              "en": "Here is an example where we are setting the `multiply` function as the default export for the entire `math.mjs` module:",
+              "fr": "Voici un exemple où nous définissons la fonction `multiply` comme export par défaut pour tout le module `math.mjs` :"
+            },
+            {
+              "en": "Now we don't need the curly braces, since the function will be imported and assigned by default:",
+              "fr": "Maintenant nous n'avons pas besoin des accolades, puisque la fonction sera importée et assignée par défaut :"
+            },
+            {
+              "en": "If you don't use file extensions or the `package.json` file to tell Node.js explicitly what type of module system you want to use, it will inspect the source code to look for ES module syntax. If that syntax is found, it will run the code as an ES module; otherwise, it will run it as a CommonJS module.",
+              "fr": "Si tu n'utilises pas les extensions de fichier ni le fichier `package.json` pour dire explicitement à Node.js quel type de système de modules tu veux utiliser, il inspectera le code source pour chercher la syntaxe des modules ES. Si cette syntaxe est trouvée, il exécutera le code comme un module ES ; sinon, il l'exécutera comme un module CommonJS."
+            },
+            {
+              "en": "While CommonJS served as the default standard for Node.js in its early days, as developers increasingly adopt ESM for its efficiency and compatibility with modern JavaScript, it's important to know their differences and how to use both.",
+              "fr": "Bien que CommonJS ait servi de standard par défaut pour Node.js à ses débuts, alors que les développeurs adoptent de plus en plus ESM pour son efficacité et sa compatibilité avec le JavaScript moderne, il est important de connaître leurs différences et comment utiliser les deux."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which keyword is used to load modules in ES Modules?",
+              "fr": "Quel mot-clé est utilisé pour charger des modules dans les modules ES ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in modern JavaScript environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements JavaScript modernes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in modern JavaScript environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements JavaScript modernes."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which keyword is used to bring in external code in modern JavaScript environments.",
+              "fr": "Pense au mot-clé utilisé pour faire entrer du code externe dans les environnements JavaScript modernes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a way to export a single value as the primary export in ES?",
+              "fr": "Lequel des éléments suivants est une façon d'exporter une seule valeur comme export principal en ES ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which export method is used to provide a single, primary value from a module.",
+              "fr": "Pense à la méthode d'export utilisée pour fournir une seule valeur principale depuis un module."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which export method is used to provide a single, primary value from a module.",
+              "fr": "Pense à la méthode d'export utilisée pour fournir une seule valeur principale depuis un module."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which export method is used to provide a single, primary value from a module.",
+              "fr": "Pense à la méthode d'export utilisée pour fournir une seule valeur principale depuis un module."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What type of loading does ECMAScript Modules (ES) primarily use?",
+              "fr": "Quel type de chargement les modules ECMAScript (ES) utilisent-ils principalement ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Synchronous loading",
+              "fr": "Chargement synchrone"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how modern browsers import external JavaScript files.",
+              "fr": "Pense à la façon dont les navigateurs modernes importent des fichiers JavaScript externes."
+            },
+            {
+              "en": "Lazy loading",
+              "fr": "Chargement paresseux"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how modern browsers import external JavaScript files.",
+              "fr": "Pense à la façon dont les navigateurs modernes importent des fichiers JavaScript externes."
+            },
+            {
+              "en": "Asynchronous loading",
+              "fr": "Chargement asynchrone"
+            },
+            {
+              "en": "Conditional loading",
+              "fr": "Chargement conditionnel"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how modern browsers import external JavaScript files.",
+              "fr": "Pense à la façon dont les navigateurs modernes importent des fichiers JavaScript externes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

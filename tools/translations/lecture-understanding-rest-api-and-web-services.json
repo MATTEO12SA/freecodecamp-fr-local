@@ -1,0 +1,829 @@
+{
+  "workshop": "lecture-understanding-rest-api-and-web-services",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "697f1bf725c3210ceab3c440.md",
+      "id": "697f1bf725c3210ceab3c440",
+      "dashedName": "how-do-web-services-work",
+      "title": {
+        "en": "How Do Web Services Work?",
+        "fr": "Comment fonctionnent les services web ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Web services and REST APIs power most of the apps and websites you use every day. They allow different applications to communicate with each other and share data over a network, most commonly the internet.",
+              "fr": "Les services web et les API REST alimentent la plupart des apps et sites que tu utilises chaque jour. Ils permettent à différentes applications de communiquer entre elles et de partager des données sur un réseau, le plus souvent Internet."
+            },
+            {
+              "en": "An API (Application Programming Interface) is a general way for software to communicate with other software. A web service is a specific type of API that uses web technologies, such as HTTP, to exchange data over a network, usually the internet. Because of this, every web service is an API—but not every API is a web service. REST APIs are a common type of web service that follow a specific set of rules for how data is requested and returned.",
+              "fr": "Une API (Application Programming Interface) est un moyen général pour un logiciel de communiquer avec un autre logiciel. Un service web est un type d'API spécifique qui utilise des technologies web, comme HTTP, pour échanger des données sur un réseau, en général Internet. De ce fait, tout service web est une API — mais toute API n'est pas un service web. Les API REST sont un type courant de service web qui suivent un ensemble de règles précis sur la façon dont les données sont demandées et renvoyées."
+            },
+            {
+              "en": "This lesson will focus on what web services are at a high level, and the next one will go into more details about how REST APIs work.",
+              "fr": "Cette leçon se concentrera sur ce que sont les services web à haut niveau, et la suivante entrera plus dans le détail sur le fonctionnement des API REST."
+            },
+            {
+              "en": "You can think of a web service as a software-to-software bridge. It has no user interface and is not meant to be used directly. Instead, it is focused entirely on exchanging data between applications.",
+              "fr": "Tu peux voir un service web comme un pont logiciel-à-logiciel. Il n'a pas d'interface utilisateur et n'est pas destiné à être utilisé directement. Au contraire, il se concentre entièrement sur l'échange de données entre applications."
+            },
+            {
+              "en": "For any system to be considered a web service, it must have the following characteristics:",
+              "fr": "Pour qu'un système soit considéré comme un service web, il doit avoir les caractéristiques suivantes :"
+            },
+            {
+              "en": "* **Runs on a server**: a web service must be hosted online like a website, but instead of pages that users can see, it exposes data or some functionality\n    \n* **Machine-to-machine communication**: a web service is not made for humans to view directly, but for mobile apps and web apps to consume, so they can expose some data or functionality that the user can finally view\n    \n* **Language-agnostic**: a web service can be written in any language such as Java or C#, and any app should be able to interact with it, even if it's written in a different language\n    \n* **Platform-agnostic**: it doesn't matter which platform the machines run on. For example, a web service running on Linux should not prevent a device running Windows from communicating with it\n    \n* **Use standard web protocols**: a web service should typically use HTTP/HTTPS to transfer data over the internet, FTP for file transfer, and SMTP for email",
+              "fr": "* **Tourne sur un serveur** : un service web doit être hébergé en ligne comme un site, mais au lieu de pages visibles par les utilisateurs, il expose des données ou une fonctionnalité\n    \n* **Communication machine-à-machine** : un service web n'est pas fait pour que des humains le consultent directement, mais pour que des apps mobiles et web le consomment, afin d'exposer des données ou une fonctionnalité que l'utilisateur pourra enfin voir\n    \n* **Indépendant du langage** : un service web peut être écrit dans n'importe quel langage comme Java ou C#, et toute app devrait pouvoir interagir avec lui, même si elle est écrite dans un autre langage\n    \n* **Indépendant de la plateforme** : peu importe la plateforme sur laquelle tournent les machines. Par exemple, un service web sous Linux ne devrait pas empêcher un appareil sous Windows de communiquer avec lui\n    \n* **Utilise des protocoles web standard** : un service web devrait en général utiliser HTTP/HTTPS pour transférer des données sur Internet, FTP pour le transfert de fichiers, et SMTP pour l'e-mail"
+            },
+            {
+              "en": "**REST** and **SOAP** are two of the most well-known types of web services, although other approaches exist, such as **XML-RPC**.",
+              "fr": "**REST** et **SOAP** sont deux des types de services web les plus connus, même s'il existe d'autres approches, comme **XML-RPC**."
+            },
+            {
+              "en": "**REST**, which stands for **Representational State Transfer**, is by far the most widely used today. Most modern applications rely on RESTful web services because they are simple, flexible, and work naturally with the web.",
+              "fr": "**REST**, qui signifie **Representational State Transfer**, est de loin le plus utilisé aujourd'hui. La plupart des applications modernes s'appuient sur des services web RESTful parce qu'ils sont simples, flexibles, et fonctionnent naturellement avec le web."
+            },
+            {
+              "en": "REST APIs expose resources, which are usually represented by URL paths such as `/users` or `/users/20`. When a client requests a resource, the server returns a representation of that resource. This representation is often in JSON, but it can also be in formats like XML or even plain text.",
+              "fr": "Les API REST exposent des ressources, généralement représentées par des chemins d'URL comme `/users` ou `/users/20`. Quand un client demande une ressource, le serveur renvoie une représentation de cette ressource. Cette représentation est souvent en JSON, mais elle peut aussi être dans des formats comme XML ou même du texte brut."
+            },
+            {
+              "en": "Clients can specify the format they want by using HTTP headers, such as the `Accept` header. For example, a client can request a JSON response by setting the appropriate `Accept` value.",
+              "fr": "Les clients peuvent préciser le format qu'ils veulent en utilisant des en-têtes HTTP, comme l'en-tête `Accept`. Par exemple, un client peut demander une réponse JSON en définissant la valeur `Accept` appropriée."
+            },
+            {
+              "en": "And you can specify you want XML this way:",
+              "fr": "Et tu peux préciser que tu veux du XML de cette façon :"
+            },
+            {
+              "en": "The resource you get back can look like this if it is JSON:",
+              "fr": "La ressource que tu reçois peut ressembler à ceci si c'est du JSON :"
+            },
+            {
+              "en": "And this, if it is XML:",
+              "fr": "Et à ceci, si c'est du XML :"
+            },
+            {
+              "en": "SOAP stands for **Simple Object Access Protocol**. It only uses XML data format, and it is the most common in enterprise-level systems that need more strict standards and security.",
+              "fr": "SOAP signifie **Simple Object Access Protocol**. Il n'utilise que le format de données XML, et c'est le plus courant dans les systèmes d'entreprise qui ont besoin de standards et de sécurité plus stricts."
+            },
+            {
+              "en": "Here's what SOAP data could look like:",
+              "fr": "Voici à quoi pourraient ressembler des données SOAP :"
+            },
+            {
+              "en": "XML-RPC uses XML to encode its requests and responses. This makes it lightweight but less flexible than REST.",
+              "fr": "XML-RPC utilise XML pour encoder ses requêtes et réponses. Cela le rend léger mais moins flexible que REST."
+            },
+            {
+              "en": "As for UDDI, it is not a data exchange service but an XML-based directory where businesses can list, discover, and describe their available web services.",
+              "fr": "Quant à UDDI, ce n'est pas un service d'échange de données mais un annuaire basé sur XML où les entreprises peuvent lister, découvrir et décrire leurs services web disponibles."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does **SOAP** stand for?",
+              "fr": "Que signifie **SOAP** ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Structured Object Authorization Process",
+              "fr": "Structured Object Authorization Process"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of SOAP as a protocol that uses XML for exchanging structured data over a network.",
+              "fr": "Pense à SOAP comme un protocole qui utilise XML pour échanger des données structurées sur un réseau."
+            },
+            {
+              "en": "Server-Oriented API Protocol",
+              "fr": "Server-Oriented API Protocol"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of SOAP as a protocol that uses XML for exchanging structured data over a network.",
+              "fr": "Pense à SOAP comme un protocole qui utilise XML pour échanger des données structurées sur un réseau."
+            },
+            {
+              "en": "Simple Object Access Protocol",
+              "fr": "Simple Object Access Protocol"
+            },
+            {
+              "en": "Service-Oriented Application Procedure",
+              "fr": "Service-Oriented Application Procedure"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of SOAP as a protocol that uses XML for exchanging structured data over a network.",
+              "fr": "Pense à SOAP comme un protocole qui utilise XML pour échanger des données structurées sur un réseau."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does REST expose that clients can interact with, such as `/users` or `/users/20`?",
+              "fr": "Que expose REST avec quoi les clients peuvent interagir, comme `/users` ou `/users/20` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Functions",
+              "fr": "Des fonctions"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of what `/users` represents — it's not code or a database, but the thing being represented.",
+              "fr": "Pense à ce que `/users` représente — ce n'est pas du code ni une base de données, mais la chose représentée."
+            },
+            {
+              "en": "Resources",
+              "fr": "Des ressources"
+            },
+            {
+              "en": "Classes",
+              "fr": "Des classes"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of what `/users` represents — it's not code or a database, but the thing being represented.",
+              "fr": "Pense à ce que `/users` représente — ce n'est pas du code ni une base de données, mais la chose représentée."
+            },
+            {
+              "en": "Endpoint",
+              "fr": "Un endpoint"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of what `/users` represents — it's not code or a database, but the thing being represented.",
+              "fr": "Pense à ce que `/users` représente — ce n'est pas du code ni une base de données, mais la chose représentée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is **not** a characteristic of a web service?",
+              "fr": "Laquelle des affirmations suivantes n'est **pas** une caractéristique d'un service web ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It must have a user interface for humans to interact with.",
+              "fr": "Il doit avoir une interface utilisateur pour que les humains interagissent."
+            },
+            {
+              "en": "It runs on a server and exposes data or functionality.",
+              "fr": "Il tourne sur un serveur et expose des données ou une fonctionnalité."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the features that define web services.",
+              "fr": "Pense aux fonctionnalités qui définissent les services web."
+            },
+            {
+              "en": "It supports machine-to-machine communication.",
+              "fr": "Il prend en charge la communication machine-à-machine."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the features that define web services.",
+              "fr": "Pense aux fonctionnalités qui définissent les services web."
+            },
+            {
+              "en": "It is language-agnostic and platform-agnostic.",
+              "fr": "Il est indépendant du langage et de la plateforme."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the features that define web services.",
+              "fr": "Pense aux fonctionnalités qui définissent les services web."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697f1c0bc18ebdcf3213a25e.md",
+      "id": "697f1c0bc18ebdcf3213a25e",
+      "dashedName": "what-is-the-rest-architecture-and-how-does-it-work",
+      "title": {
+        "en": "What Is The REST Architecture and How Does It Work?",
+        "fr": "Qu'est-ce que l'architecture REST et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "**REST** stands for representational state transfer. Think of it as a set of guidelines that describe how web clients and servers should communicate with each other over the internet.",
+              "fr": "**REST** signifie representational state transfer. Vois-le comme un ensemble de lignes directrices qui décrivent comment les clients web et les serveurs devraient communiquer entre eux sur Internet."
+            },
+            {
+              "en": "In this lesson, you’ll learn what REST is, its key concepts, and how it works.",
+              "fr": "Dans cette leçon, tu vas apprendre ce qu'est REST, ses concepts clés, et comment il fonctionne."
+            },
+            {
+              "en": "REST defines a way for different systems to interact by using standard web technologies. With REST, clients such as web browsers, mobile apps, and APIs communicate with a server using common HTTP methods like `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`, which we discussed in a previous lesson.",
+              "fr": "REST définit une façon pour différents systèmes d'interagir en utilisant des technologies web standard. Avec REST, des clients comme les navigateurs web, les apps mobiles et les API communiquent avec un serveur en utilisant des méthodes HTTP courantes comme `GET`, `POST`, `PUT`, `PATCH` et `DELETE`, que nous avons vues dans une leçon précédente."
+            },
+            {
+              "en": "Some core concepts of REST include **statelessness**, **resources**, **HTTP methods**, and **response or status codes**.",
+              "fr": "Parmi les concepts centraux de REST, on trouve **l'absence d'état**, les **ressources**, les **méthodes HTTP**, et les **codes de réponse ou de statut**."
+            },
+            {
+              "en": "**Statelessness** means that each request a client sends to the server is handled independently. The server does not remember previous requests. Because of this, every request must include all the information needed to process it. For example, if a user is authenticated, their authentication token must be sent with each request.",
+              "fr": "**L'absence d'état** signifie que chaque requête qu'un client envoie au serveur est traitée indépendamment. Le serveur ne se souvient pas des requêtes précédentes. De ce fait, chaque requête doit inclure toutes les informations nécessaires pour la traiter. Par exemple, si un utilisateur est authentifié, son jeton d'authentification doit être envoyé avec chaque requête."
+            },
+            {
+              "en": "In REST, everything is treated as a resource. A resource is a piece of data that can be accessed or modified. Each resource is identified by a URL, such as `/products` for all products, or `/products/1` for a specific product.",
+              "fr": "En REST, tout est traité comme une ressource. Une ressource est une donnée qui peut être consultée ou modifiée. Chaque ressource est identifiée par une URL, comme `/products` pour tous les produits, ou `/products/1` pour un produit spécifique."
+            },
+            {
+              "en": "Below is an overview of HTTP methods, status codes, and a step-by-step example of how the REST architecture works.",
+              "fr": "Voici un aperçu des méthodes HTTP, des codes de statut, et un exemple étape par étape de comment l'architecture REST fonctionne."
+            },
+            {
+              "en": "## HTTP Methods",
+              "fr": "## Méthodes HTTP"
+            },
+            {
+              "en": "HTTP methods define the action to perform on a resource:",
+              "fr": "Les méthodes HTTP définissent l'action à effectuer sur une ressource :"
+            },
+            {
+              "en": "* `GET`: Retrieve a resource\n    \n* `POST`: Create a new resource\n    \n* `PUT / PATCH`: Update an existing resource\n    \n* `DELETE`: Remove a resource",
+              "fr": "* `GET` : Récupérer une ressource\n    \n* `POST` : Créer une nouvelle ressource\n    \n* `PUT / PATCH` : Mettre à jour une ressource existante\n    \n* `DELETE` : Supprimer une ressource"
+            },
+            {
+              "en": "## HTTP Status Codes",
+              "fr": "## Codes de statut HTTP"
+            },
+            {
+              "en": "After processing a request, the server responds with a **status code** that indicates the result:",
+              "fr": "Après avoir traité une requête, le serveur répond avec un **code de statut** qui indique le résultat :"
+            },
+            {
+              "en": "* `200` **(OK)**: The request was successful\n    \n* `201` **(Created)**: A new resource was created\n    \n* `400` **(Bad Request)**: The client sent invalid data\n    \n* `404` **(Not Found)**: The requested resource does not exist\n    \n* `500` **(Internal Server Error)**: An error occurred on the server",
+              "fr": "* `200` **(OK)** : La requête a réussi\n    \n* `201` **(Created)** : Une nouvelle ressource a été créée\n    \n* `400` **(Bad Request)** : Le client a envoyé des données invalides\n    \n* `404` **(Not Found)** : La ressource demandée n'existe pas\n    \n* `500` **(Internal Server Error)** : Une erreur s'est produite sur le serveur"
+            },
+            {
+              "en": "## How REST Works: A Step-by-Step Example",
+              "fr": "## Comment REST fonctionne : un exemple étape par étape"
+            },
+            {
+              "en": "### 1\\. Client Sends a Request",
+              "fr": "### 1\\. Le client envoie une requête"
+            },
+            {
+              "en": "* The client sends an HTTP request using a method like `GET` or `POST`\n    \n* The request includes a URL identifying the resource\n    \n* It may also include headers, metadata, and a request body",
+              "fr": "* Le client envoie une requête HTTP en utilisant une méthode comme `GET` ou `POST`\n    \n* La requête inclut une URL identifiant la ressource\n    \n* Elle peut aussi inclure des en-têtes, des métadonnées et un corps de requête"
+            },
+            {
+              "en": "### 2\\. Server Receives the Request",
+              "fr": "### 2\\. Le serveur reçoit la requête"
+            },
+            {
+              "en": "* The server validates the request format and authentication (if required)\n    \n* It identifies the target resource from the URL\n    \n* It determines the requested action based on the HTTP method\n    \n* It checks permissions and access control",
+              "fr": "* Le serveur valide le format de la requête et l'authentification (si nécessaire)\n    \n* Il identifie la ressource cible à partir de l'URL\n    \n* Il détermine l'action demandée selon la méthode HTTP\n    \n* Il vérifie les permissions et le contrôle d'accès"
+            },
+            {
+              "en": "### 3\\. Server Performs the Action",
+              "fr": "### 3\\. Le serveur effectue l'action"
+            },
+            {
+              "en": "* `GET`: Retrieve the resource\n    \n* `POST`: Create a new resource\n    \n* `PUT / PATCH`: Update the resource\n    \n* `DELETE`: Remove the resource\n    \n* Any other necessary logic is executed",
+              "fr": "* `GET` : Récupérer la ressource\n    \n* `POST` : Créer une nouvelle ressource\n    \n* `PUT / PATCH` : Mettre à jour la ressource\n    \n* `DELETE` : Supprimer la ressource\n    \n* Toute autre logique nécessaire est exécutée"
+            },
+            {
+              "en": "### 4\\. Server Builds the Response",
+              "fr": "### 4\\. Le serveur construit la réponse"
+            },
+            {
+              "en": "* The server selects an appropriate status code (for example, `200`, `201`, or `404`)\n    \n* It formats the response data, usually as **JSON**\n    \n* It adds relevant headers such as `Content-Type` or `Cache-Control`",
+              "fr": "* Le serveur choisit un code de statut approprié (par exemple, `200`, `201` ou `404`)\n    \n* Il formate les données de réponse, généralement en **JSON**\n    \n* Il ajoute des en-têtes pertinents comme `Content-Type` ou `Cache-Control`"
+            },
+            {
+              "en": "### 5\\. Server Sends the Response",
+              "fr": "### 5\\. Le serveur envoie la réponse"
+            },
+            {
+              "en": "* The response includes a status code, headers, and an optional body\n    \n* No client state is stored on the server (statelessness)",
+              "fr": "* La réponse inclut un code de statut, des en-têtes et un corps optionnel\n    \n* Aucun état client n'est stocké sur le serveur (absence d'état)"
+            },
+            {
+              "en": "### 6\\. Client Handles the Response",
+              "fr": "### 6\\. Le client gère la réponse"
+            },
+            {
+              "en": "* The client checks the status code to determine success or failure\n    \n* It processes any data returned by the server",
+              "fr": "* Le client vérifie le code de statut pour déterminer le succès ou l'échec\n    \n* Il traite les données éventuellement renvoyées par le serveur"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does statelessness mean in the REST architecture?",
+              "fr": "Que signifie l'absence d'état dans l'architecture REST ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The server stores client data between requests.",
+              "fr": "Le serveur stocke les données du client entre les requêtes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the server does not retain any memory of previous requests.",
+              "fr": "Pense à la façon dont le serveur ne conserve aucun souvenir des requêtes précédentes."
+            },
+            {
+              "en": "Each request is independent and contains all necessary information.",
+              "fr": "Chaque requête est indépendante et contient toutes les informations nécessaires."
+            },
+            {
+              "en": "The client must store all server data locally.",
+              "fr": "Le client doit stocker toutes les données du serveur localement."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the server does not retain any memory of previous requests.",
+              "fr": "Pense à la façon dont le serveur ne conserve aucun souvenir des requêtes précédentes."
+            },
+            {
+              "en": "Requests do not require authentication tokens.",
+              "fr": "Les requêtes ne nécessitent pas de jetons d'authentification."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the server does not retain any memory of previous requests.",
+              "fr": "Pense à la façon dont le serveur ne conserve aucun souvenir des requêtes précédentes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the REST architecture work step by step?",
+              "fr": "Comment l'architecture REST fonctionne-t-elle étape par étape ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The server sends a request to the client, and the client processes it before sending a response.",
+              "fr": "Le serveur envoie une requête au client, et le client la traite avant d'envoyer une réponse."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client always initiates the request, and the server responds accordingly.",
+              "fr": "Le client initie toujours la requête, et le serveur répond en conséquence."
+            },
+            {
+              "en": "The client connects to the server, which continuously updates resources without new requests.",
+              "fr": "Le client se connecte au serveur, qui met à jour les ressources en continu sans nouvelles requêtes."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client always initiates the request, and the server responds accordingly.",
+              "fr": "Le client initie toujours la requête, et le serveur répond en conséquence."
+            },
+            {
+              "en": "The client sends a request, the server processes it, performs an operation, and sends a response.",
+              "fr": "Le client envoie une requête, le serveur la traite, effectue une opération, et envoie une réponse."
+            },
+            {
+              "en": "The server automatically updates clients by pushing data without a request.",
+              "fr": "Le serveur met à jour automatiquement les clients en poussant des données sans requête."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client always initiates the request, and the server responds accordingly.",
+              "fr": "Le client initie toujours la requête, et le serveur répond en conséquence."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does REST stand for?",
+              "fr": "Que signifie REST ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Remote Execution and State Transfer",
+              "fr": "Remote Execution and State Transfer"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's a standard for web communication between clients and servers.",
+              "fr": "C'est un standard de communication web entre clients et serveurs."
+            },
+            {
+              "en": "Representational State Transfer",
+              "fr": "Representational State Transfer"
+            },
+            {
+              "en": "Rapid Encoding for Server Transactions",
+              "fr": "Rapid Encoding for Server Transactions"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's a standard for web communication between clients and servers.",
+              "fr": "C'est un standard de communication web entre clients et serveurs."
+            },
+            {
+              "en": "Reliable Endpoint Synchronization Technology",
+              "fr": "Reliable Endpoint Synchronization Technology"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's a standard for web communication between clients and servers.",
+              "fr": "C'est un standard de communication web entre clients et serveurs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697f1c0cc18ebdcf3213a25f.md",
+      "id": "697f1c0cc18ebdcf3213a25f",
+      "dashedName": "what-are-microservices",
+      "title": {
+        "en": "What Are Microservices?",
+        "fr": "Que sont les microservices ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the past, most applications, whether large or small-scale, were built as monoliths. A monolith is one giant codebase that contains everything in the web app.",
+              "fr": "Dans le passé, la plupart des applications, qu'elles soient grandes ou à petite échelle, étaient construites comme des monolithes. Un monolithe est une seule énorme base de code qui contient tout dans l'app web."
+            },
+            {
+              "en": "This monolith system means the UI, database, and API all live in one codebase.",
+              "fr": "Ce système monolithe signifie que l'UI, la base de données et l'API vivent toutes dans une seule base de code."
+            },
+            {
+              "en": "Imagine an eCommerce store like Amazon, where the product pages, checkout system, payment processing, authentication and authorization, alongside the API and databases that power them all reside in the same codebase.",
+              "fr": "Imagine une boutique e-commerce comme Amazon, où les pages produits, le système de paiement, le traitement des paiements, l'authentification et l'autorisation, ainsi que l'API et les bases de données qui les alimentent, résident toutes dans la même base de code."
+            },
+            {
+              "en": "The monolithic approach works well for small applications and early-stage startups. However, as an application grows and user demand increases, monoliths often become harder to maintain, slower to update, and difficult to scale. A small change in one area can require redeploying the entire system, and scaling one feature often means scaling the whole application.",
+              "fr": "L'approche monolithe fonctionne bien pour les petites applications et les startups en phase initiale. Cependant, quand une application grandit et que la demande des utilisateurs augmente, les monolithes deviennent souvent plus durs à maintenir, plus lents à mettre à jour, et difficiles à faire évoluer. Un petit changement dans une zone peut exiger de redéployer tout le système, et faire évoluer une fonctionnalité signifie souvent faire évoluer toute l'application."
+            },
+            {
+              "en": "These challenges led to the rise of microservices, which is an architectural approach designed to address the limitations of monolithic systems.",
+              "fr": "Ces défis ont mené à l'essor des microservices, une approche architecturale conçue pour répondre aux limites des systèmes monolithes."
+            },
+            {
+              "en": "In a microservices architecture, a large application is broken into smaller, independent services. Each service is responsible for a specific business capability, such as products, orders, authentication, payments, and so on. These services often have their own codebases and may even manage their own databases, and can have entirely different teams working on them.",
+              "fr": "Dans une architecture microservices, une grande application est découpée en services plus petits et indépendants. Chaque service est responsable d'une capacité métier spécifique, comme les produits, les commandes, l'authentification, les paiements, etc. Ces services ont souvent leurs propres bases de code et peuvent même gérer leurs propres bases de données, et des équipes entièrement différentes peuvent travailler dessus."
+            },
+            {
+              "en": "The services communicate with each other through APIs or message-based systems, allowing them to work together as a single application.",
+              "fr": "Les services communiquent entre eux via des API ou des systèmes basés sur des messages, ce qui leur permet de travailler ensemble comme une seule application."
+            },
+            {
+              "en": "With this approach, both web and mobile applications are easier to maintain, update, and scale. For example, an e-commerce platform might have separate services for products, carts, users, orders, and payments. Each service can be built, deployed, and scaled independently without affecting the others.",
+              "fr": "Avec cette approche, les applications web et mobiles sont plus faciles à maintenir, mettre à jour et faire évoluer. Par exemple, une plateforme e-commerce peut avoir des services séparés pour les produits, les paniers, les utilisateurs, les commandes et les paiements. Chaque service peut être construit, déployé et mis à l'échelle indépendamment sans affecter les autres."
+            },
+            {
+              "en": "Microservices offer several advantages, including faster development, better fault isolation, and greater flexibility. Different services can use different programming languages or frameworks—for example, a search service might use Java, a product service might use Node.js, and an authentication service might use .NET.",
+              "fr": "Les microservices offrent plusieurs avantages, dont un développement plus rapide, une meilleure isolation des pannes, et une plus grande flexibilité. Différents services peuvent utiliser différents langages ou frameworks — par exemple, un service de recherche peut utiliser Java, un service produit peut utiliser Node.js, et un service d'authentification peut utiliser .NET."
+            },
+            {
+              "en": "However, microservices also introduce new challenges. Debugging becomes more complex because issues can span multiple services. Deployment and infrastructure management are more complicated, and network overhead increases due to frequent communication between services.",
+              "fr": "Cependant, les microservices introduisent aussi de nouveaux défis. Le débogage devient plus complexe car les problèmes peuvent s'étendre sur plusieurs services. Le déploiement et la gestion de l'infrastructure sont plus compliqués, et la surcharge réseau augmente à cause des communications fréquentes entre services."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does **monolith** mean?",
+              "fr": "Que signifie **monolithe** ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A system where UI, database, and API are split into separate services.",
+              "fr": "Un système où l'UI, la base de données et l'API sont séparées en services distincts."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of monolith as one big \"all-in-one\" application.",
+              "fr": "Pense au monolithe comme une grande application « tout-en-un »."
+            },
+            {
+              "en": "A single, large codebase containing the entire application.",
+              "fr": "Une seule grande base de code contenant toute l'application."
+            },
+            {
+              "en": "A network of independent microservices working together.",
+              "fr": "Un réseau de microservices indépendants travaillant ensemble."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of monolith as one big \"all-in-one\" application.",
+              "fr": "Pense au monolithe comme une grande application « tout-en-un »."
+            },
+            {
+              "en": "A server dedicated to handling only database operations.",
+              "fr": "Un serveur dédié uniquement aux opérations de base de données."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of monolith as one big \"all-in-one\" application.",
+              "fr": "Pense au monolithe comme une grande application « tout-en-un »."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key characteristic of microservices?",
+              "fr": "Quelle est une caractéristique clé des microservices ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "All services share one codebase and one database.",
+              "fr": "Tous les services partagent une base de code et une base de données."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as small, independent apps that work together.",
+              "fr": "Pense aux microservices comme de petites apps indépendantes qui travaillent ensemble."
+            },
+            {
+              "en": "Services cannot be worked on by separate teams.",
+              "fr": "Les services ne peuvent pas être travaillés par des équipes séparées."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as small, independent apps that work together.",
+              "fr": "Pense aux microservices comme de petites apps indépendantes qui travaillent ensemble."
+            },
+            {
+              "en": "The entire application is deployed as a single unit.",
+              "fr": "Toute l'application est déployée comme une seule unité."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as small, independent apps that work together.",
+              "fr": "Pense aux microservices comme de petites apps indépendantes qui travaillent ensemble."
+            },
+            {
+              "en": "Each service is independent, with its own codebase and sometimes its own database.",
+              "fr": "Chaque service est indépendant, avec sa propre base de code et parfois sa propre base de données."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a benefit of microservices?",
+              "fr": "Lequel des éléments suivants est un avantage des microservices ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "All services must use the same programming language.",
+              "fr": "Tous les services doivent utiliser le même langage de programmation."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as letting teams pick the right tools for each service.",
+              "fr": "Pense aux microservices comme permettant aux équipes de choisir les bons outils pour chaque service."
+            },
+            {
+              "en": "A bug in one service brings down the entire system.",
+              "fr": "Un bug dans un service fait tomber tout le système."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as letting teams pick the right tools for each service.",
+              "fr": "Pense aux microservices comme permettant aux équipes de choisir les bons outils pour chaque service."
+            },
+            {
+              "en": "Different services can use different programming languages or frameworks.",
+              "fr": "Différents services peuvent utiliser différents langages ou frameworks."
+            },
+            {
+              "en": "Development is slower because teams must work on one large codebase.",
+              "fr": "Le développement est plus lent car les équipes doivent travailler sur une grande base de code."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of microservices as letting teams pick the right tools for each service.",
+              "fr": "Pense aux microservices comme permettant aux équipes de choisir les bons outils pour chaque service."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

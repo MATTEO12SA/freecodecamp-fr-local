@@ -218,7 +218,7 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 230/230 blocs, 1311/1311 fichiers — modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine priorité produit : Vague 5 (SRS, XP, PWA…) après fiabilité.
+- **JavaScript v9** : 230/230 blocs, 1311/1311 fichiers — modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
 
 ## Pièges
 

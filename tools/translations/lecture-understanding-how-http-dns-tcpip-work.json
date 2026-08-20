@@ -1,0 +1,1278 @@
+{
+  "workshop": "lecture-understanding-how-http-dns-tcpip-work",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "69661c7d084c85542e76a597.md",
+      "id": "69661c7d084c85542e76a597",
+      "dashedName": "what-is-a-server-and-how-does-it-work-on-a-higher-level",
+      "title": {
+        "en": "What is a Server and How Does it Work on a Higher Level?",
+        "fr": "Qu'est-ce qu'un serveur et comment fonctionne-t-il à un niveau élevé ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Servers are essential for the modern web. They power the online experiences that we rely on every day as users, and they will power most of the experiences that you will create as a developer.",
+              "fr": "Les serveurs sont essentiels pour le web moderne. Ils alimentent les expériences en ligne sur lesquelles nous comptons chaque jour en tant qu'utilisateurs, et ils alimenteront la plupart des expériences que tu créeras en tant que développeur."
+            },
+            {
+              "en": "Let’s learn more about them.",
+              "fr": "Apprenons-en davantage à leur sujet."
+            },
+            {
+              "en": "As you may know, the internet is a global system of interconnected computer networks. Servers are the central components that enable this communication by handling the process of exchanging data.",
+              "fr": "Comme tu le sais peut-être, Internet est un système mondial de réseaux informatiques interconnectés. Les serveurs sont les composants centraux qui permettent cette communication en gérant le processus d'échange de données."
+            },
+            {
+              "en": "A **server** is a computer or computer program that receives requests from other computers and sends data or services to them over the network as a response.",
+              "fr": "Un **serveur** est un ordinateur ou un programme informatique qui reçoit des requêtes d'autres ordinateurs et leur envoie des données ou des services via le réseau en réponse."
+            },
+            {
+              "en": "Server is a dual concept because it can refer to:",
+              "fr": "Serveur est un concept double car il peut désigner :"
+            },
+            {
+              "en": "* The actual physical, powerful computer **hardware** that is designed to run efficiently and continuously to provide these services. These machines are built and designed for reliability.\n    \n* Or to the actual computer **software** that is running on that physical hardware to provide the services.\n    \nThe physical computers that we refer to as “servers” are usually stored at data centers, which are large and secure facilities with controlled environments.",
+              "fr": "* Le **matériel** informatique physique et puissant, conçu pour fonctionner efficacement et en continu afin de fournir ces services. Ces machines sont construites et conçues pour la fiabilité.\n    \n* Ou le **logiciel** informatique qui tourne sur ce matériel physique pour fournir les services.\n    \nLes ordinateurs physiques que nous appelons « serveurs » sont généralement stockés dans des centres de données, de grandes installations sécurisées avec des environnements contrôlés."
+            },
+            {
+              "en": "Servers are an essential part of **The Client-Server Model**.",
+              "fr": "Les serveurs sont une partie essentielle du **modèle client-serveur**."
+            },
+            {
+              "en": "The Client-Server Model is a distributed system architecture where components are either clients or servers.",
+              "fr": "Le modèle client-serveur est une architecture de système distribué où les composants sont soit des clients, soit des serveurs."
+            },
+            {
+              "en": "* The **client** is the process or application that sends requests to servers for data or services. For example, a web browser.\n    \n* The **server** is the physical device or computer program that handles those requests and returns a response.",
+              "fr": "* Le **client** est le processus ou l'application qui envoie des requêtes aux serveurs pour des données ou des services. Par exemple, un navigateur web.\n    \n* Le **serveur** est l'appareil physique ou le programme informatique qui traite ces requêtes et renvoie une réponse."
+            },
+            {
+              "en": "Essentially, the client and the server are part of a request-response cycle, where the client sends a request to the server, and the server returns a response to the client.",
+              "fr": "Essentiellement, le client et le serveur font partie d'un cycle requête-réponse, où le client envoie une requête au serveur, et le serveur renvoie une réponse au client."
+            },
+            {
+              "en": "For example, when you use your browser (the client) to authenticate on an application with your username and password, your information is securely sent to a server. The server then checks if the username and password that you entered match the information that the platform currently has in its database. If there is a match, the server returns a successful response to the client (your browser), and you are successfully authenticated on the site.",
+              "fr": "Par exemple, quand tu utilises ton navigateur (le client) pour t'authentifier sur une application avec ton nom d'utilisateur et ton mot de passe, tes informations sont envoyées de façon sécurisée à un serveur. Le serveur vérifie ensuite si le nom d'utilisateur et le mot de passe que tu as saisis correspondent aux informations que la plateforme a actuellement dans sa base de données. S'il y a une correspondance, le serveur renvoie une réponse de succès au client (ton navigateur), et tu es authentifié avec succès sur le site."
+            },
+            {
+              "en": "If no match is found, the server returns a failure response to the client, and you’ll typically see an error or some sort of feedback explaining why your login attempt was unsuccessful.",
+              "fr": "Si aucune correspondance n'est trouvée, le serveur renvoie une réponse d'échec au client, et tu verras typiquement une erreur ou un feedback expliquant pourquoi ta tentative de connexion a échoué."
+            },
+            {
+              "en": "All of this authentication logic runs on the server. The server is responsible for validating credentials, interacting with the database, and deciding how to respond to each request.",
+              "fr": "Toute cette logique d'authentification s'exécute sur le serveur. Le serveur est responsable de la validation des identifiants, de l'interaction avec la base de données, et de décider comment répondre à chaque requête."
+            },
+            {
+              "en": "Each server response includes an HTTP status code, which tells the client what happened. These status codes let the client know whether a request succeeded or failed and why.",
+              "fr": "Chaque réponse du serveur inclut un code de statut HTTP, qui indique au client ce qui s'est passé. Ces codes de statut permettent au client de savoir si une requête a réussi ou échoué, et pourquoi."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "* 200 means that everything was OK.\n    \n* 404 means that the resource was not found on the server.\n    \n* 500 means that there was an internal server error.\n    \n* 503 means that the server is temporarily unavailable.\n    \n* And so on…",
+              "fr": "* 200 signifie que tout était OK.\n    \n* 404 signifie que la ressource n'a pas été trouvée sur le serveur.\n    \n* 500 signifie qu'il y a eu une erreur interne du serveur.\n    \n* 503 signifie que le serveur est temporairement indisponible.\n    \n* Et ainsi de suite…"
+            },
+            {
+              "en": "Each status code has its own unique meaning.",
+              "fr": "Chaque code de statut a sa propre signification unique."
+            },
+            {
+              "en": "Examples of real-world applications that use servers include e-commerce, search engines, gaming, video streaming, cloud storage and collaboration platforms, social media platforms, financial applications, and more.",
+              "fr": "Des exemples d'applications du monde réel qui utilisent des serveurs incluent le e-commerce, les moteurs de recherche, le jeu, le streaming vidéo, le stockage cloud et les plateformes de collaboration, les réseaux sociaux, les applications financières, et plus encore."
+            },
+            {
+              "en": "If the data is updated dynamically or the application needs some sort of communication with a database, servers are very likely key components of the communication process.",
+              "fr": "Si les données sont mises à jour dynamiquement ou si l'application a besoin d'une forme de communication avec une base de données, les serveurs sont très probablement des composants clés du processus de communication."
+            },
+            {
+              "en": "These are some of the main types of servers:",
+              "fr": "Voici quelques-uns des principaux types de serveurs :"
+            },
+            {
+              "en": "* **Web servers** deliver web content, such as HTML pages, images, and CSS files, to browsers.\n    \n* **Application servers** handle business logic, process user input, and coordinate responses.\n    \n* **Database servers** run database management systems and store, retrieve, and manage data.\n    \n* **Mail servers** send, receive, and store email messages.\n    \n* **File servers** manage access to files and allow them to be stored and shared across a network.\n    \n* **Proxy servers** act as intermediaries between clients and other servers, often used for caching, security, or traffic control.",
+              "fr": "* Les **serveurs web** délivrent du contenu web, comme des pages HTML, des images et des fichiers CSS, aux navigateurs.\n    \n* Les **serveurs d'application** gèrent la logique métier, traitent les entrées utilisateur et coordonnent les réponses.\n    \n* Les **serveurs de base de données** exécutent des systèmes de gestion de bases de données et stockent, récupèrent et gèrent les données.\n    \n* Les **serveurs de messagerie** envoient, reçoivent et stockent les messages e-mail.\n    \n* Les **serveurs de fichiers** gèrent l'accès aux fichiers et permettent de les stocker et de les partager sur un réseau.\n    \n* Les **serveurs proxy** agissent comme intermédiaires entre les clients et d'autres serveurs, souvent utilisés pour la mise en cache, la sécurité ou le contrôle du trafic."
+            },
+            {
+              "en": "Servers are the backbone of the powerful online platforms we use every day. They make it possible to run complex logic, store and process large amounts of data, and support millions of users at the same time. Without servers, the modern digital world we rely on would not exist.",
+              "fr": "Les serveurs sont l'épine dorsale des puissantes plateformes en ligne que nous utilisons chaque jour. Ils permettent d'exécuter une logique complexe, de stocker et traiter de grandes quantités de données, et de prendre en charge des millions d'utilisateurs en même temps. Sans serveurs, le monde numérique moderne sur lequel nous comptons n'existerait pas."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements best defines the dual concept of a server?",
+              "fr": "Lequel des énoncés suivants définit le mieux le concept double d'un serveur ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A server is always a massive supercomputer used only by organizations.",
+              "fr": "Un serveur est toujours un superordinateur massif utilisé uniquement par des organisations."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is running the service and what the service itself is.",
+              "fr": "Pense à ce qui exécute le service et à ce qu'est le service lui-même."
+            },
+            {
+              "en": "A server is exclusively the software application that delivers services, never the physical machine.",
+              "fr": "Un serveur est exclusivement l'application logicielle qui délivre des services, jamais la machine physique."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is running the service and what the service itself is.",
+              "fr": "Pense à ce qui exécute le service et à ce qu'est le service lui-même."
+            },
+            {
+              "en": "A server refers to both the dedicated physical computer hardware and the specialized software program that provides services.",
+              "fr": "Un serveur désigne à la fois le matériel informatique physique dédié et le programme logiciel spécialisé qui fournit des services."
+            },
+            {
+              "en": "A server is the connection cable that links clients to the internet network.",
+              "fr": "Un serveur est le câble de connexion qui relie les clients au réseau Internet."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what is running the service and what the service itself is.",
+              "fr": "Pense à ce qui exécute le service et à ce qu'est le service lui-même."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the Client-Server Model, what is the server's primary function in the Request-Response Cycle?",
+              "fr": "Dans le modèle client-serveur, quelle est la fonction principale du serveur dans le cycle requête-réponse ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To act as the client's firewall, blocking all incoming traffic.",
+              "fr": "Agir comme le pare-feu du client, en bloquant tout le trafic entrant."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship in the cycle: who asks for something, and who is responsible for providing it?",
+              "fr": "Pense à la relation dans le cycle : qui demande quelque chose, et qui est responsable de le fournir ?"
+            },
+            {
+              "en": "To generate the initial request that starts the communication process.",
+              "fr": "Générer la requête initiale qui démarre le processus de communication."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship in the cycle: who asks for something, and who is responsible for providing it?",
+              "fr": "Pense à la relation dans le cycle : qui demande quelque chose, et qui est responsable de le fournir ?"
+            },
+            {
+              "en": "To process the client's request, execute the necessary logic (like querying a database), and return the requested data.",
+              "fr": "Traiter la requête du client, exécuter la logique nécessaire (comme interroger une base de données), et renvoyer les données demandées."
+            },
+            {
+              "en": "To convert the data from analog signals to digital signals.",
+              "fr": "Convertir les données de signaux analogiques en signaux numériques."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship in the cycle: who asks for something, and who is responsible for providing it?",
+              "fr": "Pense à la relation dans le cycle : qui demande quelque chose, et qui est responsable de le fournir ?"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which status code is returned by a server when the requested resource cannot be found?",
+              "fr": "Quel code de statut est renvoyé par un serveur quand la ressource demandée ne peut pas être trouvée ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This code belongs to the 4xx family.",
+              "fr": "Ce code appartient à la famille 4xx."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This code belongs to the 4xx family.",
+              "fr": "Ce code appartient à la famille 4xx."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This code belongs to the 4xx family.",
+              "fr": "Ce code appartient à la famille 4xx."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69661d1a74e9aa63cb171957.md",
+      "id": "69661d1a74e9aa63cb171957",
+      "dashedName": "what-is-dns-and-how-does-it-work-at-a-high-level",
+      "title": {
+        "en": "What is DNS and How Does it Work at a High Level?",
+        "fr": "Qu'est-ce que le DNS et comment fonctionne-t-il à un niveau élevé ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When you visit a website, the first thing you do is type in a web address in your browser.",
+              "fr": "Quand tu visites un site web, la première chose que tu fais est de saisir une adresse web dans ton navigateur."
+            },
+            {
+              "en": "For example, to go to freeCodeCamp, you would enter `freecodecamp.org` in your browser’s address bar.",
+              "fr": "Par exemple, pour aller sur freeCodeCamp, tu entrerais `freecodecamp.org` dans la barre d'adresse de ton navigateur."
+            },
+            {
+              "en": "This is known as a domain name. It’s a unique human-readable identifier for that resource on the internet.",
+              "fr": "Cela s'appelle un nom de domaine. C'est un identifiant unique lisible par les humains pour cette ressource sur Internet."
+            },
+            {
+              "en": "Domain names are very closely related to the concept of DNS, which is the main topic of this lesson. Let’s start by talking a little bit about the domain name hierarchy, so you can understand how a DNS works behind the scenes.",
+              "fr": "Les noms de domaine sont très étroitement liés au concept de DNS, qui est le sujet principal de cette leçon. Commençons par parler un peu de la hiérarchie des noms de domaine, pour que tu puisses comprendre comment un DNS fonctionne en coulisses."
+            },
+            {
+              "en": "The domain name hierarchy is read from right to left, moving from the most general category to the most specific one.",
+              "fr": "La hiérarchie des noms de domaine se lit de droite à gauche, en allant de la catégorie la plus générale à la plus spécifique."
+            },
+            {
+              "en": "The main structure of a domain name is, from right to left:",
+              "fr": "La structure principale d'un nom de domaine est, de droite à gauche :"
+            },
+            {
+              "en": "* **Top-Level Domain (TLD):** the last segment of the domain name, located to the right. In the case of `freecodecamp.org`, that would be `.org`. Other examples include `.com` and `.edu`.\n    \n* **Second-Level Domain (SLD):** the name registered by the person or organization. That would be `freecodecamp` in `freecodecamp.org`. This is what you usually notice first when you see a web address.\n    \n* **Third-Level Domain (Subdomain):** used to identify a specific section of the main domain. For example, `www`, which stands for “World Wide Web.” Nowadays, modern web servers automatically handle domain routing, so you can access a website with or without entering `www`. Other examples of subdomains include `blog.`, `shop.`, `support.`, and `api.`.",
+              "fr": "* **Domaine de premier niveau (TLD) :** le dernier segment du nom de domaine, situé à droite. Dans le cas de `freecodecamp.org`, ce serait `.org`. D'autres exemples incluent `.com` et `.edu`.\n    \n* **Domaine de second niveau (SLD) :** le nom enregistré par la personne ou l'organisation. Ce serait `freecodecamp` dans `freecodecamp.org`. C'est ce que tu remarques généralement en premier quand tu vois une adresse web.\n    \n* **Domaine de troisième niveau (sous-domaine) :** utilisé pour identifier une section spécifique du domaine principal. Par exemple, `www`, qui signifie « World Wide Web ». De nos jours, les serveurs web modernes gèrent automatiquement le routage des domaines, donc tu peux accéder à un site avec ou sans saisir `www`. D'autres exemples de sous-domaines incluent `blog.`, `shop.`, `support.` et `api.`."
+            },
+            {
+              "en": "Domain names are very helpful to us as humans because they’re easy to remember and type into a browser. However, as you know, computers work with numbers. Your browser has to transform the domain name that you entered into something known as an IP address to find the website you are looking for.",
+              "fr": "Les noms de domaine sont très utiles pour nous, humains, car ils sont faciles à retenir et à saisir dans un navigateur. Cependant, comme tu le sais, les ordinateurs travaillent avec des nombres. Ton navigateur doit transformer le nom de domaine que tu as saisi en quelque chose appelé une adresse IP pour trouver le site web que tu cherches."
+            },
+            {
+              "en": "An **IP address** is a unique sequence of numbers that identifies a computer on a network, such as the internet.",
+              "fr": "Une **adresse IP** est une séquence unique de nombres qui identifie un ordinateur sur un réseau, comme Internet."
+            },
+            {
+              "en": "IP addresses are essential for allowing clients to send requests to the correct servers and get the appropriate responses. An example of an IPv4 address is `127.0.0.1`. The equivalent IP address in a newer standard called IPv6 would be `0:0:0:0:0:0:0:1`.",
+              "fr": "Les adresses IP sont essentielles pour permettre aux clients d'envoyer des requêtes aux bons serveurs et d'obtenir les réponses appropriées. Un exemple d'adresse IPv4 est `127.0.0.1`. L'adresse IP équivalente dans une norme plus récente appelée IPv6 serait `0:0:0:0:0:0:0:1`."
+            },
+            {
+              "en": "There is a lot to learn about IP addresses, and you might want to explore them in more depth as you continue learning. But for now, you just need to understand that they are the unique numerical addresses used to identify computers on a network.",
+              "fr": "Il y a beaucoup à apprendre sur les adresses IP, et tu pourrais vouloir les explorer plus en profondeur au fur et à mesure de ton apprentissage. Mais pour l'instant, tu dois juste comprendre qu'elles sont les adresses numériques uniques utilisées pour identifier les ordinateurs sur un réseau."
+            },
+            {
+              "en": "From the concepts of domain names and IP addresses, now we can reach the concept of DNS.",
+              "fr": "À partir des concepts de noms de domaine et d'adresses IP, nous pouvons maintenant arriver au concept de DNS."
+            },
+            {
+              "en": "DNS stands for **Domain Name System**. This is usually referred to as the “phone book” of the internet.",
+              "fr": "DNS signifie **Domain Name System** (système de noms de domaine). On le compare souvent à l'« annuaire téléphonique » d'Internet."
+            },
+            {
+              "en": "The DNS translates the domain name that you write on your browser to its corresponding IP address. It’s a hierarchical and decentralized naming system for computers and devices that are connected to the internet or a specific network.",
+              "fr": "Le DNS traduit le nom de domaine que tu écris dans ton navigateur en son adresse IP correspondante. C'est un système de nommage hiérarchique et décentralisé pour les ordinateurs et appareils connectés à Internet ou à un réseau spécifique."
+            },
+            {
+              "en": "When the user enters a domain name in the browser, such as `freecodecamp.org`, the DNS maps that name to the IP address of its corresponding server. Once the server has been identified, the client’s request is sent to the server. The server handles that request based on how it was programmed, and it finally sends a response to the client. This completes the request-response cycle.",
+              "fr": "Quand l'utilisateur saisit un nom de domaine dans le navigateur, comme `freecodecamp.org`, le DNS mappe ce nom à l'adresse IP de son serveur correspondant. Une fois le serveur identifié, la requête du client est envoyée au serveur. Le serveur traite cette requête selon sa programmation, et envoie enfin une réponse au client. Cela complète le cycle requête-réponse."
+            },
+            {
+              "en": "This is all possible thanks to the DNS that performed that initial conversion to the target IP address.",
+              "fr": "Tout cela est possible grâce au DNS qui a effectué cette conversion initiale vers l'adresse IP cible."
+            },
+            {
+              "en": "Let’s dive into the details of the DNS resolution process.",
+              "fr": "Plongeons dans les détails du processus de résolution DNS."
+            },
+            {
+              "en": "## The DNS Resolution Process",
+              "fr": "## Le processus de résolution DNS"
+            },
+            {
+              "en": "* DNS resolution works by sending a query through a chain of DNS servers.",
+              "fr": "* La résolution DNS fonctionne en envoyant une requête à travers une chaîne de serveurs DNS."
+            },
+            {
+              "en": "* When you (the user) enter a domain name on the browser, the **client** sends a request to a local DNS server. This local DNS server is known as the **Recursive Resolver**. This is usually managed by your internet service provider (ISP).\n    \n* The Recursive Resolver forwards that request to **Root Servers**. These are general servers that do not have direct information about IP addresses. They work by directing the Recursive Resolver to a more specific server, specifically to the Top-Level Domain (TLD) Server for the particular top-level domain of the request. For example, the server responsible for all `.org` domains.\n    \n* The Recursive Resolver then queries the **Top-Level Domain (TLD) Server**. This server returns the address of the specific Authoritative Name Server that holds the records for the domain that was requested (for example, `freecodecamp.org`).\n    \n* The Recursive Resolver starts a final query to the corresponding **Authoritative Name Server.** If the **DNS record** is found, it is returned to the Recursive Resolver.\n    \n* When the Recursive Resolver receives the IP Address, it delivers it to the client, so you can start browsing the website.",
+              "fr": "* Quand tu (l'utilisateur) saisis un nom de domaine dans le navigateur, le **client** envoie une requête à un serveur DNS local. Ce serveur DNS local est connu sous le nom de **résolveur récursif**. Il est généralement géré par ton fournisseur d'accès Internet (FAI).\n    \n* Le résolveur récursif transmet cette requête aux **serveurs racines**. Ce sont des serveurs généraux qui n'ont pas d'informations directes sur les adresses IP. Ils fonctionnent en dirigeant le résolveur récursif vers un serveur plus spécifique, notamment le serveur de domaine de premier niveau (TLD) pour le domaine de premier niveau particulier de la requête. Par exemple, le serveur responsable de tous les domaines `.org`.\n    \n* Le résolveur récursif interroge ensuite le **serveur de domaine de premier niveau (TLD)**. Ce serveur renvoie l'adresse du serveur de noms autoritatif spécifique qui détient les enregistrements pour le domaine demandé (par exemple, `freecodecamp.org`).\n    \n* Le résolveur récursif démarre une requête finale vers le **serveur de noms autoritatif** correspondant. Si l'**enregistrement DNS** est trouvé, il est renvoyé au résolveur récursif.\n    \n* Quand le résolveur récursif reçoit l'adresse IP, il la délivre au client, pour que tu puisses commencer à naviguer sur le site web."
+            },
+            {
+              "en": "The Authoritative Name Server returns **DNS Records**, not just IP addresses. DNS Records are structured text entries that contain important information about a domain, such as subdomain information, how long the information should be cached, and information required to perform the service requested.",
+              "fr": "Le serveur de noms autoritatif renvoie des **enregistrements DNS**, pas seulement des adresses IP. Les enregistrements DNS sont des entrées texte structurées qui contiennent des informations importantes sur un domaine, comme les informations de sous-domaine, combien de temps les informations doivent être mises en cache, et les informations nécessaires pour effectuer le service demandé."
+            },
+            {
+              "en": "To optimize the process, the Recursive Resolver caches the DNS Record temporarily to speed up the process. This way, you won’t be making the same request repeatedly in a short time period. That makes the overall process much more efficient.",
+              "fr": "Pour optimiser le processus, le résolveur récursif met en cache l'enregistrement DNS temporairement pour accélérer le processus. Ainsi, tu ne feras pas la même requête de façon répétée sur une courte période. Cela rend le processus global beaucoup plus efficace."
+            },
+            {
+              "en": "As you can see, DNS Servers are essential because they provide the initial, critical step of translating domain names into IP addresses. This translation process allows every client to locate and connect to the correct server. Without this directory system, the client-server model, the backbone of the modern web, would not be functional.",
+              "fr": "Comme tu peux le voir, les serveurs DNS sont essentiels car ils fournissent l'étape initiale et critique de traduction des noms de domaine en adresses IP. Ce processus de traduction permet à chaque client de localiser et de se connecter au bon serveur. Sans ce système d'annuaire, le modèle client-serveur, l'épine dorsale du web moderne, ne serait pas fonctionnel."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "The Domain Name System (DNS) is frequently compared to which real-world service?",
+              "fr": "Le système de noms de domaine (DNS) est fréquemment comparé à quel service du monde réel ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A Library Catalog",
+              "fr": "Un catalogue de bibliothèque"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The service it is compared to involves looking up a familiar name to find a corresponding numerical address.",
+              "fr": "Le service auquel il est comparé implique de chercher un nom familier pour trouver une adresse numérique correspondante."
+            },
+            {
+              "en": "A Phone Book or Directory",
+              "fr": "Un annuaire téléphonique"
+            },
+            {
+              "en": "A Global Positioning System (GPS)",
+              "fr": "Un système de positionnement global (GPS)"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The service it is compared to involves looking up a familiar name to find a corresponding numerical address.",
+              "fr": "Le service auquel il est comparé implique de chercher un nom familier pour trouver une adresse numérique correspondante."
+            },
+            {
+              "en": "A Barcode Scanner",
+              "fr": "Un scanner de codes-barres"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The service it is compared to involves looking up a familiar name to find a corresponding numerical address.",
+              "fr": "Le service auquel il est comparé implique de chercher un nom familier pour trouver une adresse numérique correspondante."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main problem that the Domain Name System (DNS) was invented to solve for internet users?",
+              "fr": "Quel est le principal problème que le système de noms de domaine (DNS) a été inventé pour résoudre pour les utilisateurs d'Internet ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To encrypt all communication between a client and a server for security.",
+              "fr": "Chiffrer toute la communication entre un client et un serveur pour la sécurité."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the difference between how humans prefer to identify things (names) and how computers need to identify them (numbers).",
+              "fr": "Concentre-toi sur la différence entre la façon dont les humains préfèrent identifier les choses (noms) et celle dont les ordinateurs ont besoin de les identifier (nombres)."
+            },
+            {
+              "en": "To compress website files so they load faster on slow connections.",
+              "fr": "Compresser les fichiers de sites web pour qu'ils se chargent plus vite sur des connexions lentes."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the difference between how humans prefer to identify things (names) and how computers need to identify them (numbers).",
+              "fr": "Concentre-toi sur la différence entre la façon dont les humains préfèrent identifier les choses (noms) et celle dont les ordinateurs ont besoin de les identifier (nombres)."
+            },
+            {
+              "en": "To host all website files and content on a single centralized server.",
+              "fr": "Héberger tous les fichiers et contenus de sites web sur un seul serveur centralisé."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the difference between how humans prefer to identify things (names) and how computers need to identify them (numbers).",
+              "fr": "Concentre-toi sur la différence entre la façon dont les humains préfèrent identifier les choses (noms) et celle dont les ordinateurs ont besoin de les identifier (nombres)."
+            },
+            {
+              "en": "To allow humans to use easy-to-remember domain names instead of complicated numerical IP addresses.",
+              "fr": "Permettre aux humains d'utiliser des noms de domaine faciles à retenir au lieu d'adresses IP numériques compliquées."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which component in the DNS resolution process is responsible for performing the multiple iterative queries to find the final IP address?",
+              "fr": "Quel composant du processus de résolution DNS est responsable d'effectuer les multiples requêtes itératives pour trouver l'adresse IP finale ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The Root Server",
+              "fr": "Le serveur racine"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This component acts as an intermediary, taking the client's single request and traversing the server hierarchy.",
+              "fr": "Ce composant agit comme un intermédiaire, prenant la requête unique du client et parcourant la hiérarchie des serveurs."
+            },
+            {
+              "en": "The TLD Server",
+              "fr": "Le serveur TLD"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This component acts as an intermediary, taking the client's single request and traversing the server hierarchy.",
+              "fr": "Ce composant agit comme un intermédiaire, prenant la requête unique du client et parcourant la hiérarchie des serveurs."
+            },
+            {
+              "en": "The Recursive Resolver",
+              "fr": "Le résolveur récursif"
+            },
+            {
+              "en": "The Authoritative Name Server",
+              "fr": "Le serveur de noms autoritatif"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This component acts as an intermediary, taking the client's single request and traversing the server hierarchy.",
+              "fr": "Ce composant agit comme un intermédiaire, prenant la requête unique du client et parcourant la hiérarchie des serveurs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69661d1d78d88af238dee253.md",
+      "id": "69661d1d78d88af238dee253",
+      "dashedName": "what-are-tcp-ip-and-http-and-what-is-the-basic-syntax-for-http",
+      "title": {
+        "en": "What are TCP/IP and HTTP and What is the Basic Syntax for HTTP?",
+        "fr": "Que sont TCP/IP et HTTP, et quelle est la syntaxe de base pour HTTP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The digital world as we know it today is based on the notion that devices can communicate with each other, sending and receiving data as needed.",
+              "fr": "Le monde numérique tel que nous le connaissons aujourd'hui repose sur la notion que les appareils peuvent communiquer entre eux, en envoyant et recevant des données selon les besoins."
+            },
+            {
+              "en": "But have you ever thought about how this process works behind the scenes?",
+              "fr": "Mais as-tu déjà réfléchi à la façon dont ce processus fonctionne en coulisses ?"
+            },
+            {
+              "en": "When you browse the internet, you constantly request and send data through the network. This is possible thanks to a detailed process based on standard rules and procedures that make sure that the information is sent and received correctly by the appropriate devices.",
+              "fr": "Quand tu navigues sur Internet, tu demandes et envoies constamment des données à travers le réseau. Cela est possible grâce à un processus détaillé basé sur des règles et procédures standard qui s'assurent que l'information est envoyée et reçue correctement par les appareils appropriés."
+            },
+            {
+              "en": "That set of rules and procedures is known as a **protocol**.",
+              "fr": "Cet ensemble de règles et procédures est connu sous le nom de **protocole**."
+            },
+            {
+              "en": "Protocols basically allow two or more devices to communicate with each other by making sure that they all follow certain standards, such as the format of the data that will be exchanged.",
+              "fr": "Les protocoles permettent essentiellement à deux ou plusieurs appareils de communiquer entre eux en s'assurant qu'ils suivent tous certaines normes, comme le format des données qui seront échangées."
+            },
+            {
+              "en": "Protocols make sure that all devices involved in the data exchange process will be able to understand each other. Figuratively, they will all know how to “speak the same language”.",
+              "fr": "Les protocoles s'assurent que tous les appareils impliqués dans le processus d'échange de données pourront se comprendre. Au figuré, ils sauront tous « parler la même langue »."
+            },
+            {
+              "en": "At their core, TCP/IP are the protocols that make the internet possible.",
+              "fr": "À leur cœur, TCP/IP sont les protocoles qui rendent Internet possible."
+            },
+            {
+              "en": "**TCP/IP** is a suite of communication protocols that determine how data is packaged, sent, routed, and received through a network. It ensures that information is transported reliably.",
+              "fr": "**TCP/IP** est une suite de protocoles de communication qui déterminent comment les données sont empaquetées, envoyées, routées et reçues à travers un réseau. Elle s'assure que l'information est transportée de façon fiable."
+            },
+            {
+              "en": "Specifically, the **IP**, where IP stands for **Internet Protocol**, is a protocol that makes sure that the data goes from the source to the correct destination in the network.",
+              "fr": "Plus précisément, le **IP**, où IP signifie **Internet Protocol** (protocole Internet), est un protocole qui s'assure que les données vont de la source à la bonne destination dans le réseau."
+            },
+            {
+              "en": "Why is this important? Remember that the internet is a global network of interconnected devices. For your device to send a request, first it has to know where to send that data. That is the main purpose of IP addresses, the foundation of the Internet Protocol (IP). They uniquely identify the devices on the network, so the source device knows where to send the data.",
+              "fr": "Pourquoi est-ce important ? Souviens-toi qu'Internet est un réseau mondial d'appareils interconnectés. Pour que ton appareil envoie une requête, il doit d'abord savoir où envoyer ces données. C'est le but principal des adresses IP, le fondement du protocole Internet (IP). Elles identifient de façon unique les appareils sur le réseau, pour que l'appareil source sache où envoyer les données."
+            },
+            {
+              "en": "By itself, the Internet Protocol is connectionless, which means that each unit of data (called a “packet”) is sent independently to its destination across the network, without previously establishing a connection or ensuring that it will be delivered correctly or in the right order. If they do reach their destination, the source is not notified at all.",
+              "fr": "À lui seul, le protocole Internet est sans connexion, ce qui signifie que chaque unité de données (appelée un « paquet ») est envoyée indépendamment vers sa destination à travers le réseau, sans établir préalablement une connexion ni s'assurer qu'elle sera livrée correctement ou dans le bon ordre. Si elles atteignent leur destination, la source n'en est pas notifiée du tout."
+            },
+            {
+              "en": "This is where protocols like TCP become really important.",
+              "fr": "C'est là que des protocoles comme TCP deviennent vraiment importants."
+            },
+            {
+              "en": "The **TCP** protocol, known as the **Transmission Control Protocol**, breaks the data into small segments. These fundamental data units are numbered and reassembled when they reach their destination using specific algorithms that detect if the data is complete and correct. These algorithms also check for errors and lost packets, so they can ask the source to resend them if needed, making sure that the information is received correctly.",
+              "fr": "Le protocole **TCP**, connu sous le nom de **Transmission Control Protocol** (protocole de contrôle de transmission), découpe les données en petits segments. Ces unités de données fondamentales sont numérotées et réassemblées à leur arrivée à destination à l'aide d'algorithmes spécifiques qui détectent si les données sont complètes et correctes. Ces algorithmes vérifient aussi les erreurs et les paquets perdus, pour pouvoir demander à la source de les renvoyer si nécessaire, en s'assurant que l'information est reçue correctement."
+            },
+            {
+              "en": "Together, the Transmission Control Protocol and the Internet Protocol set the rules and standards needed to ensure that data is transmitted in a reliable way across the internet.",
+              "fr": "Ensemble, le Transmission Control Protocol et l'Internet Protocol établissent les règles et normes nécessaires pour garantir que les données sont transmises de façon fiable à travers Internet."
+            },
+            {
+              "en": "In addition to TCP/IP, there is another very important protocol for modern internet: HTTP.",
+              "fr": "En plus de TCP/IP, il existe un autre protocole très important pour Internet moderne : HTTP."
+            },
+            {
+              "en": "HTTP works at the application level.",
+              "fr": "HTTP fonctionne au niveau application."
+            },
+            {
+              "en": "**HTTP** stands for **HyperText Transfer Protocol**. It defines the rules and standards for the communication between the client (like your browser) and the server.",
+              "fr": "**HTTP** signifie **HyperText Transfer Protocol** (protocole de transfert hypertexte). Il définit les règles et normes pour la communication entre le client (comme ton navigateur) et le serveur."
+            },
+            {
+              "en": "When you try to access a website on your browser, the browser sends an HTTP request to the server asking for that specific resource and its related assets. The server receives the HTTP request, executes its logic, and returns an HTTP response to the client with the content requested or some information indicating why the request was not successful.",
+              "fr": "Quand tu essaies d'accéder à un site web dans ton navigateur, le navigateur envoie une requête HTTP au serveur demandant cette ressource spécifique et ses assets associés. Le serveur reçoit la requête HTTP, exécute sa logique, et renvoie une réponse HTTP au client avec le contenu demandé ou des informations indiquant pourquoi la requête n'a pas réussi."
+            },
+            {
+              "en": "HTTP requests and HTTP responses have very similar structures, including:",
+              "fr": "Les requêtes HTTP et les réponses HTTP ont des structures très similaires, incluant :"
+            },
+            {
+              "en": "* A request line (the start line)\n    \n* Headers\n    \n* Body (optional)",
+              "fr": "* Une ligne de requête (la ligne de début)\n    \n* Des en-têtes\n    \n* Un corps (optionnel)"
+            },
+            {
+              "en": "## **HTTP Requests**",
+              "fr": "## **Requêtes HTTP**"
+            },
+            {
+              "en": "The **request line** of an HTTP request is divided into three main parts:",
+              "fr": "La **ligne de requête** d'une requête HTTP est divisée en trois parties principales :"
+            },
+            {
+              "en": "* A method, which describes the action that is being requested. For example, `GET` to retrieve data and `POST` to submit data. Other common methods include `PUT`, `PATCH`, `DELETE`, and `HEAD`.\n    \n* A path or URI, which describes the specific resource that the client is requesting.\n    \n* The version of the HTTP protocol being used for the communication process. For example, `HTTP/1.1`.",
+              "fr": "* Une méthode, qui décrit l'action demandée. Par exemple, `GET` pour récupérer des données et `POST` pour soumettre des données. D'autres méthodes courantes incluent `PUT`, `PATCH`, `DELETE` et `HEAD`.\n    \n* Un chemin ou URI, qui décrit la ressource spécifique que le client demande.\n    \n* La version du protocole HTTP utilisée pour le processus de communication. Par exemple, `HTTP/1.1`."
+            },
+            {
+              "en": "This is an example with the `GET` method on the root `/` path and HTTP version 1.1:",
+              "fr": "Voici un exemple avec la méthode `GET` sur le chemin racine `/` et la version HTTP 1.1 :"
+            },
+            {
+              "en": "The **header** contains key-value pairs with information about the request.",
+              "fr": "L'**en-tête** contient des paires clé-valeur avec des informations sur la requête."
+            },
+            {
+              "en": "For example: `Content-Type: application/json`.",
+              "fr": "Par exemple : `Content-Type: application/json`."
+            },
+            {
+              "en": "Below the header, there’s an empty line to indicate that the metadata (additional information about the request) is complete.",
+              "fr": "Sous l'en-tête, il y a une ligne vide pour indiquer que les métadonnées (informations supplémentaires sur la requête) sont complètes."
+            },
+            {
+              "en": "And finally, the **body**. This is optional. It’s sent when the client has to send information to the server, like when submitting new data with the `POST` method.",
+              "fr": "Et enfin, le **corps**. Il est optionnel. Il est envoyé quand le client doit envoyer des informations au serveur, comme lors de la soumission de nouvelles données avec la méthode `POST`."
+            },
+            {
+              "en": "This is an example of an HTTP request:",
+              "fr": "Voici un exemple de requête HTTP :"
+            },
+            {
+              "en": "## **HTTP responses**",
+              "fr": "## **Réponses HTTP**"
+            },
+            {
+              "en": "They have a very similar structure:",
+              "fr": "Elles ont une structure très similaire :"
+            },
+            {
+              "en": "* A status line\n    \n* Header\n    \n* Body",
+              "fr": "* Une ligne de statut\n    \n* En-tête\n    \n* Corps"
+            },
+            {
+              "en": "First, the **status line** contains information about the result of the request. You will usually find this:",
+              "fr": "D'abord, la **ligne de statut** contient des informations sur le résultat de la requête. Tu y trouveras généralement ceci :"
+            },
+            {
+              "en": "* The version of HTTP being used for the communication process. For example, `HTTP/1.1`.\n    \n* The status code, which indicates the result of the request.\n    \n* A reason phrase, a brief human-readable description of the status code. This is helpful to understand what happened.",
+              "fr": "* La version de HTTP utilisée pour le processus de communication. Par exemple, `HTTP/1.1`.\n    \n* Le code de statut, qui indique le résultat de la requête.\n    \n* Une phrase de raison, une brève description lisible par un humain du code de statut. Cela aide à comprendre ce qui s'est passé."
+            },
+            {
+              "en": "Common status codes include:",
+              "fr": "Les codes de statut courants incluent :"
+            },
+            {
+              "en": "* `200 OK`\n    \n* `201 CREATED`\n    \n* `400 BAD REQUEST`\n    \n* `404 NOT FOUND`\n    \n* `403 FORBIDDEN`\n    \n* `500 INTERNAL SERVER ERROR`",
+              "fr": "* `200 OK`\n    \n* `201 CREATED`\n    \n* `400 BAD REQUEST`\n    \n* `404 NOT FOUND`\n    \n* `403 FORBIDDEN`\n    \n* `500 INTERNAL SERVER ERROR`"
+            },
+            {
+              "en": "There are many status codes. They are categorized by their first digit from left to right.",
+              "fr": "Il existe de nombreux codes de statut. Ils sont catégorisés par leur premier chiffre de gauche à droite."
+            },
+            {
+              "en": "* `1xx` for informational responses.\n    \n* `2xx` for successful responses.\n    \n* `3xx` for redirection messages.\n    \n* `4xx` for client error responses.\n    \n* `5xx` for server error responses.",
+              "fr": "* `1xx` pour les réponses informatives.\n    \n* `2xx` pour les réponses réussies.\n    \n* `3xx` pour les messages de redirection.\n    \n* `4xx` pour les réponses d'erreur client.\n    \n* `5xx` pour les réponses d'erreur serveur."
+            },
+            {
+              "en": "Below the status line of an HTTP response, we find the **header** with metadata about the response. For example, `Content-Type: text/html`. This may also include the content length, date, location, and additional information that the client may find helpful.",
+              "fr": "Sous la ligne de statut d'une réponse HTTP, on trouve l'**en-tête** avec des métadonnées sur la réponse. Par exemple, `Content-Type: text/html`. Cela peut aussi inclure la longueur du contenu, la date, l'emplacement, et des informations supplémentaires que le client peut trouver utiles."
+            },
+            {
+              "en": "And finally, we find the HTTP response **body**, which contains the data that the client was requesting or an explanation of what happened if the request was not successful. This is optional, but it’s included in most responses.",
+              "fr": "Et enfin, on trouve le **corps** de la réponse HTTP, qui contient les données que le client demandait ou une explication de ce qui s'est passé si la requête n'a pas réussi. Il est optionnel, mais il est inclus dans la plupart des réponses."
+            },
+            {
+              "en": "This is an example of an HTTP response:",
+              "fr": "Voici un exemple de réponse HTTP :"
+            },
+            {
+              "en": "Now that you know about HTTP, you might be curious to know more about HTTPS.",
+              "fr": "Maintenant que tu connais HTTP, tu pourrais être curieux d'en savoir plus sur HTTPS."
+            },
+            {
+              "en": "You can think of HTTPS as a “secure” version of HTTP, where data sent between the browser and the server is encrypted for security purposes. Most modern web traffic uses HTTPS.",
+              "fr": "Tu peux penser à HTTPS comme une version « sécurisée » de HTTP, où les données envoyées entre le navigateur et le serveur sont chiffrées à des fins de sécurité. La plupart du trafic web moderne utilise HTTPS."
+            },
+            {
+              "en": "Protocols like TCP/IP and HTTP have made the World Wide Web and the internet as a whole become the essential tool that most of us rely on every single day. Thanks to them, devices can communicate properly over a network and exchange data all around the world.",
+              "fr": "Des protocoles comme TCP/IP et HTTP ont fait du World Wide Web et d'Internet dans son ensemble l'outil essentiel sur lequel la plupart d'entre nous comptons chaque jour. Grâce à eux, les appareils peuvent communiquer correctement sur un réseau et échanger des données partout dans le monde."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following protocols is primarily responsible for ensuring the reliable, ordered, and correct delivery of data across a network?",
+              "fr": "Lequel des protocoles suivants est principalement responsable d'assurer la livraison fiable, ordonnée et correcte des données à travers un réseau ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "HTTP",
+              "fr": "HTTP"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the set of rules that makes sure data arrives in the right order, confirms that it was received correctly, and asks for any missing data to be sent again.",
+              "fr": "Pense à l'ensemble de règles qui s'assure que les données arrivent dans le bon ordre, confirme qu'elles ont été reçues correctement, et demande que toute donnée manquante soit renvoyée."
+            },
+            {
+              "en": "TCP",
+              "fr": "TCP"
+            },
+            {
+              "en": "IP",
+              "fr": "IP"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the set of rules that makes sure data arrives in the right order, confirms that it was received correctly, and asks for any missing data to be sent again.",
+              "fr": "Pense à l'ensemble de règles qui s'assure que les données arrivent dans le bon ordre, confirme qu'elles ont été reçues correctement, et demande que toute donnée manquante soit renvoyée."
+            },
+            {
+              "en": "FTP",
+              "fr": "FTP"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the set of rules that makes sure data arrives in the right order, confirms that it was received correctly, and asks for any missing data to be sent again.",
+              "fr": "Pense à l'ensemble de règles qui s'assure que les données arrivent dans le bon ordre, confirme qu'elles ont été reçues correctement, et demande que toute donnée manquante soit renvoyée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the Internet Protocol (IP) within the TCP/IP suite?",
+              "fr": "Quel est le but principal du protocole Internet (IP) au sein de la suite TCP/IP ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To establish and terminate a reliable connection between the client and server.",
+              "fr": "Établir et terminer une connexion fiable entre le client et le serveur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific purpose of IP addresses in a network.",
+              "fr": "Pense au but spécifique des adresses IP dans un réseau."
+            },
+            {
+              "en": "To handle the addressing and routing of data packets across different networks.",
+              "fr": "Gérer l'adressage et le routage des paquets de données à travers différents réseaux."
+            },
+            {
+              "en": "To define the syntax and semantics of web content exchange.",
+              "fr": "Définir la syntaxe et la sémantique de l'échange de contenu web."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific purpose of IP addresses in a network.",
+              "fr": "Pense au but spécifique des adresses IP dans un réseau."
+            },
+            {
+              "en": "To ensure that all packets arrive in the correct sequential order.",
+              "fr": "S'assurer que tous les paquets arrivent dans le bon ordre séquentiel."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific purpose of IP addresses in a network.",
+              "fr": "Pense au but spécifique des adresses IP dans un réseau."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the context of web browsing, what is the main role of the HTTP protocol?",
+              "fr": "Dans le contexte de la navigation web, quel est le rôle principal du protocole HTTP ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To break data into small, numbered packets and route them to the correct address.",
+              "fr": "Découper les données en petits paquets numérotés et les router vers la bonne adresse."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of data HTTP is designed to manage.",
+              "fr": "Pense au type de données que HTTP est conçu pour gérer."
+            },
+            {
+              "en": "To encrypt all data using SSL/TLS before transmission.",
+              "fr": "Chiffrer toutes les données avec SSL/TLS avant la transmission."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of data HTTP is designed to manage.",
+              "fr": "Pense au type de données que HTTP est conçu pour gérer."
+            },
+            {
+              "en": "To define the structure and rules for clients (browsers) and servers to exchange web content.",
+              "fr": "Définir la structure et les règles pour que les clients (navigateurs) et les serveurs échangent du contenu web."
+            },
+            {
+              "en": "To establish a physical, dedicated circuit connection between the client and the server.",
+              "fr": "Établir une connexion de circuit physique dédiée entre le client et le serveur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what kind of data HTTP is designed to manage.",
+              "fr": "Pense au type de données que HTTP est conçu pour gérer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69661d2fc36411aa9e25ea64.md",
+      "id": "69661d2fc36411aa9e25ea64",
+      "dashedName": "what-are-some-common-http-response-codes",
+      "title": {
+        "en": "What are some common HTTP response codes?",
+        "fr": "Quels sont quelques codes de réponse HTTP courants ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let’s learn about common HTTP response codes.",
+              "fr": "Apprenons les codes de réponse HTTP courants."
+            },
+            {
+              "en": "HTTP response codes are three-digit numerical codes that web servers use to communicate with clients to let them know what happened with their requests.",
+              "fr": "Les codes de réponse HTTP sont des codes numériques à trois chiffres que les serveurs web utilisent pour communiquer avec les clients afin de leur faire savoir ce qui s'est passé avec leurs requêtes."
+            },
+            {
+              "en": "They provide information about whether the request was handled successfully or if there was an error while handling the request.",
+              "fr": "Ils fournissent des informations sur le fait que la requête a été traitée avec succès ou s'il y a eu une erreur lors du traitement de la requête."
+            },
+            {
+              "en": "We’ll cover some of the most common ones in this lecture.",
+              "fr": "Nous couvrirons certains des plus courants dans cette leçon."
+            },
+            {
+              "en": "## Success Codes",
+              "fr": "## Codes de succès"
+            },
+            {
+              "en": "Let’s start with **success codes**. These codes start with the number 2.",
+              "fr": "Commençons par les **codes de succès**. Ces codes commencent par le chiffre 2."
+            },
+            {
+              "en": "The code **200 OK** is the most common HTTP response code. It means that the request was successful and the server returned the information requested by the client.",
+              "fr": "Le code **200 OK** est le code de réponse HTTP le plus courant. Il signifie que la requête a réussi et que le serveur a renvoyé les informations demandées par le client."
+            },
+            {
+              "en": "The code **201 Created** is returned by the server when the client requests creating a resource and the process is completed successfully. For example, if a new user account is created successfully, the server returns this response code to the client.",
+              "fr": "Le code **201 Created** est renvoyé par le serveur quand le client demande la création d'une ressource et que le processus est terminé avec succès. Par exemple, si un nouveau compte utilisateur est créé avec succès, le serveur renvoie ce code de réponse au client."
+            },
+            {
+              "en": "The code **204 No Content** is returned when the request has been handled successfully but the server has no content to return. This can be used for processes that delete or update a resource in a database but have no data to return.",
+              "fr": "Le code **204 No Content** est renvoyé quand la requête a été traitée avec succès mais que le serveur n'a aucun contenu à renvoyer. Cela peut être utilisé pour des processus qui suppriment ou mettent à jour une ressource dans une base de données mais n'ont aucune donnée à renvoyer."
+            },
+            {
+              "en": "## **Redirection Codes**",
+              "fr": "## **Codes de redirection**"
+            },
+            {
+              "en": "Now let’s talk about **redirection codes**.",
+              "fr": "Parlons maintenant des **codes de redirection**."
+            },
+            {
+              "en": "These codes are returned by the server when the resource request by the client has been moved to a different location or when the client needs to take additional steps to complete the request.",
+              "fr": "Ces codes sont renvoyés par le serveur quand la ressource demandée par le client a été déplacée vers un autre emplacement ou quand le client doit prendre des mesures supplémentaires pour compléter la requête."
+            },
+            {
+              "en": "These codes start with the number 3.",
+              "fr": "Ces codes commencent par le chiffre 3."
+            },
+            {
+              "en": "The code **301 Moved Permanently** is returned when the resource requested by the client has been moved permanently to another location. In this case, the server should include a URL to the new location in the response and once the client receives the response, the user should be redirected to this URL.",
+              "fr": "Le code **301 Moved Permanently** est renvoyé quand la ressource demandée par le client a été déplacée de façon permanente vers un autre emplacement. Dans ce cas, le serveur devrait inclure une URL vers le nouvel emplacement dans la réponse et une fois que le client reçoit la réponse, l'utilisateur devrait être redirigé vers cette URL."
+            },
+            {
+              "en": "The code **302 Found** indicates that the resource requested by the client has been temporarily moved to another location. The server should provide the new URL in the response and the client should redirect the user to this URL. However, the original URL might be available in the future since the change is temporary. That is the main difference between the response codes 301 and 302.",
+              "fr": "Le code **302 Found** indique que la ressource demandée par le client a été temporairement déplacée vers un autre emplacement. Le serveur devrait fournir la nouvelle URL dans la réponse et le client devrait rediriger l'utilisateur vers cette URL. Cependant, l'URL originale pourrait être disponible à l'avenir puisque le changement est temporaire. C'est la principale différence entre les codes de réponse 301 et 302."
+            },
+            {
+              "en": "The code **304 Not Modified** is returned by the server to tell the client that the resource requested has not been modified since the last time it was requested. The server sends this code to avoid sending data that has already been sent if the content has not changed. It’s a performance optimization technique.",
+              "fr": "Le code **304 Not Modified** est renvoyé par le serveur pour indiquer au client que la ressource demandée n'a pas été modifiée depuis la dernière fois qu'elle a été demandée. Le serveur envoie ce code pour éviter d'envoyer des données déjà envoyées si le contenu n'a pas changé. C'est une technique d'optimisation des performances."
+            },
+            {
+              "en": "## Client Error Codes",
+              "fr": "## Codes d'erreur client"
+            },
+            {
+              "en": "Now we’ll start diving into **error codes**.",
+              "fr": "Nous allons maintenant plonger dans les **codes d'erreur**."
+            },
+            {
+              "en": "Errors can be caused by the client and by the server. We’ll talk about client error codes first.",
+              "fr": "Les erreurs peuvent être causées par le client et par le serveur. Nous parlerons d'abord des codes d'erreur client."
+            },
+            {
+              "en": "Client error codes are returned when the request could not be completed because of an issue generated by the client.",
+              "fr": "Les codes d'erreur client sont renvoyés quand la requête n'a pas pu être complétée à cause d'un problème généré par le client."
+            },
+            {
+              "en": "These error codes start with the number 4.",
+              "fr": "Ces codes d'erreur commencent par le chiffre 4."
+            },
+            {
+              "en": "The **400 Bad Request** code is returned when the server could not understand the request sent by the client. This can occur when the client sends a request with incorrect syntax, with invalid parameters, or invalid data.",
+              "fr": "Le code **400 Bad Request** est renvoyé quand le serveur n'a pas pu comprendre la requête envoyée par le client. Cela peut se produire quand le client envoie une requête avec une syntaxe incorrecte, des paramètres invalides, ou des données invalides."
+            },
+            {
+              "en": "The **401 Unauthorized** code is related to authentication. It indicates that the client has to provide certain authentication credentials to access the resource that is being requested. These credentials may include a username and a password.",
+              "fr": "Le code **401 Unauthorized** est lié à l'authentification. Il indique que le client doit fournir certains identifiants d'authentification pour accéder à la ressource demandée. Ces identifiants peuvent inclure un nom d'utilisateur et un mot de passe."
+            },
+            {
+              "en": "The **403 Forbidden** code is returned when the client is not authorized to access the requested resource. The difference between 401 and 403 is that in 403, the client doesn’t have the necessary permissions for the particular resource it’s requesting, even if it has valid authentication credentials.",
+              "fr": "Le code **403 Forbidden** est renvoyé quand le client n'est pas autorisé à accéder à la ressource demandée. La différence entre 401 et 403 est que dans 403, le client n'a pas les permissions nécessaires pour la ressource particulière qu'il demande, même s'il a des identifiants d'authentification valides."
+            },
+            {
+              "en": "The **404 Not Found** code is returned when the resource could not be found on the server. Maybe it was deleted or there is a typo in the URL that prevents the server from finding the resource. The server may also be experiencing a temporary issue that results in this error code.",
+              "fr": "Le code **404 Not Found** est renvoyé quand la ressource n'a pas pu être trouvée sur le serveur. Peut-être qu'elle a été supprimée ou qu'il y a une faute de frappe dans l'URL qui empêche le serveur de trouver la ressource. Le serveur peut aussi rencontrer un problème temporaire qui résulte en ce code d'erreur."
+            },
+            {
+              "en": "## Server Error Codes",
+              "fr": "## Codes d'erreur serveur"
+            },
+            {
+              "en": "Next, we have **server error codes**. These codes are returned by the server when the request could not be processed because of an issue on the server’s end.",
+              "fr": "Ensuite, nous avons les **codes d'erreur serveur**. Ces codes sont renvoyés par le serveur quand la requête n'a pas pu être traitée à cause d'un problème du côté du serveur."
+            },
+            {
+              "en": "The **500 Internal Server Error** error code indicates that there was an unexpected error on the server. This error could be caused by a wide range of issues, ranging from configuration issues to temporary issues.",
+              "fr": "Le code d'erreur **500 Internal Server Error** indique qu'il y a eu une erreur inattendue sur le serveur. Cette erreur peut être causée par un large éventail de problèmes, allant des problèmes de configuration aux problèmes temporaires."
+            },
+            {
+              "en": "The **502 Bad Gateway** error code is returned when the server was trying to communicate with another server but received an invalid response from that server. There is a wide range of causes for this type of error.",
+              "fr": "Le code d'erreur **502 Bad Gateway** est renvoyé quand le serveur essayait de communiquer avec un autre serveur mais a reçu une réponse invalide de ce serveur. Il y a un large éventail de causes pour ce type d'erreur."
+            },
+            {
+              "en": "The **503 Service Unavailable** error code indicates that the server will not be able to handle the request temporarily, so the client should try again later. Common causes for this error include maintenance tasks and high volume of requests that the server is currently unable to handle.",
+              "fr": "Le code d'erreur **503 Service Unavailable** indique que le serveur ne pourra pas traiter la requête temporairement, donc le client devrait réessayer plus tard. Les causes courantes de cette erreur incluent des tâches de maintenance et un volume élevé de requêtes que le serveur ne peut actuellement pas gérer."
+            },
+            {
+              "en": "HTTP response codes are essential for understanding the communication between clients and web servers. By understanding these codes, you can troubleshoot and debug your web applications.",
+              "fr": "Les codes de réponse HTTP sont essentiels pour comprendre la communication entre les clients et les serveurs web. En comprenant ces codes, tu peux dépanner et déboguer tes applications web."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which HTTP response code indicates that the server successfully processed the request and returned the requested content?",
+              "fr": "Quel code de réponse HTTP indique que le serveur a traité avec succès la requête et a renvoyé le contenu demandé ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "404 Not Found",
+              "fr": "404 Not Found"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a successful response from a web server.",
+              "fr": "Pense à une réponse réussie d'un serveur web."
+            },
+            {
+              "en": "500 Internal Server Error",
+              "fr": "500 Internal Server Error"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a successful response from a web server.",
+              "fr": "Pense à une réponse réussie d'un serveur web."
+            },
+            {
+              "en": "301 Moved Permanently",
+              "fr": "301 Moved Permanently"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a successful response from a web server.",
+              "fr": "Pense à une réponse réussie d'un serveur web."
+            },
+            {
+              "en": "200 OK",
+              "fr": "200 OK"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does a 404 Not Found response code indicate?",
+              "fr": "Qu'indique un code de réponse 404 Not Found ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The server could not understand the request.",
+              "fr": "Le serveur n'a pas pu comprendre la requête."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what it means when a resource cannot be found.",
+              "fr": "Pense à ce que cela signifie quand une ressource ne peut pas être trouvée."
+            },
+            {
+              "en": "The requested resource was not found on the server.",
+              "fr": "La ressource demandée n'a pas été trouvée sur le serveur."
+            },
+            {
+              "en": "The client is not authorized to access the resource.",
+              "fr": "Le client n'est pas autorisé à accéder à la ressource."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what it means when a resource cannot be found.",
+              "fr": "Pense à ce que cela signifie quand une ressource ne peut pas être trouvée."
+            },
+            {
+              "en": "The server is temporarily unavailable.",
+              "fr": "Le serveur est temporairement indisponible."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what it means when a resource cannot be found.",
+              "fr": "Pense à ce que cela signifie quand une ressource ne peut pas être trouvée."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which HTTP response code indicates a generic server-side error?",
+              "fr": "Quel code de réponse HTTP indique une erreur générique côté serveur ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "200 OK",
+              "fr": "200 OK"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about errors that occur on the server's side.",
+              "fr": "Pense aux erreurs qui se produisent du côté du serveur."
+            },
+            {
+              "en": "301 Moved Permanently",
+              "fr": "301 Moved Permanently"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about errors that occur on the server's side.",
+              "fr": "Pense aux erreurs qui se produisent du côté du serveur."
+            },
+            {
+              "en": "404 Not Found",
+              "fr": "404 Not Found"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about errors that occur on the server's side.",
+              "fr": "Pense aux erreurs qui se produisent du côté du serveur."
+            },
+            {
+              "en": "500 Internal Server Error",
+              "fr": "500 Internal Server Error"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

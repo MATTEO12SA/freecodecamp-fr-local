@@ -1,0 +1,785 @@
+{
+  "workshop": "lecture-understanding-the-http-request-response-model",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "68dd96cf8084504ca0322e98.md",
+      "id": "68dd96cf8084504ca0322e98",
+      "dashedName": "what-is-the-http-request-response-model",
+      "title": {
+        "en": "What Is the HTTP Request-Response Model?",
+        "fr": "Qu'est-ce que le modèle requête-réponse HTTP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The HTTP request-response model is the fundamental communication pattern that powers the World Wide Web (WWW). It has many components that make it efficient, so we can all access materials from the web.",
+              "fr": "Le modèle requête-réponse HTTP est le modèle de communication fondamental qui alimente le World Wide Web (WWW). Il a de nombreux composants qui le rendent efficace, pour que nous puissions tous accéder à des contenus depuis le web."
+            },
+            {
+              "en": "Let's look at what the HTTP request-response model is, the components that make it up, and how those components work together to bring efficiency into what powers the web.",
+              "fr": "Regardons ce qu'est le modèle requête-réponse HTTP, les composants qui le constituent, et comment ces composants travaillent ensemble pour apporter de l'efficacité à ce qui alimente le web."
+            },
+            {
+              "en": "The HTTP request-response model is a communication pattern in web interactions in which a client, usually a web browser, sends an **HTTP request** to a server, and the server processes the request and sends back an **HTTP response**.",
+              "fr": "Le modèle requête-réponse HTTP est un modèle de communication dans les interactions web où un client, généralement un navigateur web, envoie une **requête HTTP** à un serveur, et le serveur traite la requête et renvoie une **réponse HTTP**."
+            },
+            {
+              "en": "Here are the components that make up the HTTP request-response model:",
+              "fr": "Voici les composants qui constituent le modèle requête-réponse HTTP :"
+            },
+            {
+              "en": "* **Client**: A browser, mobile app, or any other software that sends HTTP requests to the server and interprets the HTTP responses it receives back.\n    \n* **Request**: The message sent by the client to the server. It includes the method, URL, headers, and an optional body.\n    \n* **HTTP method**: The action to perform — `GET` for retrieving data, `POST` for sending data, `PATCH` and `PUT` for modifying data, and `DELETE` for removing data.\n    \n* **URL (Uniform Resource Locator)**: The resource being requested from the server.\n    \n* **Headers**: The metadata sent with the request or response. For example, `Content-Type` and `Authorization`.\n    \n* **Body**: The data sent with the `POST`, `PUT`, `PATCH`, `DELETE` requests, often in JSON or form data format.\n    \n* **Server**: The back-end system that processes the request and generates a response. It can be written in any programming language that supports server-side programming.\n    \n* **Response**: The message sent back by the server. It contains a status code, headers, and an optional body.\n    \n* **Status Code or Response Code**: A numeric code indicating success, errors, or redirects.\n    \n* **Response Body**: The actual data sent back, typically in HTML, JSON, or XML format.",
+              "fr": "* **Client** : Un navigateur, une app mobile, ou tout autre logiciel qui envoie des requêtes HTTP au serveur et interprète les réponses HTTP qu'il reçoit.\n    \n* **Requête** : Le message envoyé par le client au serveur. Il inclut la méthode, l'URL, les en-têtes, et un corps optionnel.\n    \n* **Méthode HTTP** : L'action à effectuer — `GET` pour récupérer des données, `POST` pour envoyer des données, `PATCH` et `PUT` pour modifier des données, et `DELETE` pour supprimer des données.\n    \n* **URL (Uniform Resource Locator)** : La ressource demandée au serveur.\n    \n* **En-têtes** : Les métadonnées envoyées avec la requête ou la réponse. Par exemple, `Content-Type` et `Authorization`.\n    \n* **Corps** : Les données envoyées avec les requêtes `POST`, `PUT`, `PATCH`, `DELETE`, souvent au format JSON ou données de formulaire.\n    \n* **Serveur** : Le système back-end qui traite la requête et génère une réponse. Il peut être écrit dans n'importe quel langage de programmation qui prend en charge la programmation côté serveur.\n    \n* **Réponse** : Le message renvoyé par le serveur. Il contient un code de statut, des en-têtes, et un corps optionnel.\n    \n* **Code de statut ou code de réponse** : Un code numérique indiquant le succès, les erreurs, ou les redirections.\n    \n* **Corps de réponse** : Les données réelles renvoyées, typiquement au format HTML, JSON ou XML."
+            },
+            {
+              "en": "So how do all these components work together in the HTTP request-response cycle?",
+              "fr": "Alors comment tous ces composants travaillent-ils ensemble dans le cycle requête-réponse HTTP ?"
+            },
+            {
+              "en": "1. **The Client Initiates a Request**\n    \n    * A browser, mobile app, or API client sends an HTTP request meant to reach the server.\n        \n    * The request includes a method like `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, URL, headers, and sometimes a body.\n        \n2. **The Request is Sent to the Server**\n    \n    * The request travels over the internet to the server, a back-end system written with a programming language.\n        \n    * The server receives the request and extracts relevant information from it.\n        \n3. **The Server Processes the Request**\n    \n    * The server checks the request method and URL.\n        \n    * It may need to validate authentication (via headers like authorization).\n        \n    * If needed, it interacts with a database to fetch or modify the data.\n        \n4. **The Server Prepares a Response**\n    \n    * The server generates a response with a status code like 200, 404, 500, and so on.\n        \n    * The response includes headers, for example, `Content-Type: application/json`.\n        \n    * If applicable, a response body in either JSON, HTML, or XML is added.\n        \n5. **The Response is Sent to the Client**\n    \n    * The server sends the response back over the internet.\n        \n    * The client receives the response and processes the data.\n        \n6. **The Client Handles the Response**\n    \n    * If the response is successful (status code 200), the client displays the data, for example, renders the data on a webpage.\n        \n    * If an error occurs (`404 Not Found`, `500 Internal Server Error`, and so on), the client may show an error message.",
+              "fr": "1. **Le client initie une requête**\n    \n    * Un navigateur, une app mobile, ou un client API envoie une requête HTTP destinée à atteindre le serveur.\n        \n    * La requête inclut une méthode comme `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, une URL, des en-têtes, et parfois un corps.\n        \n2. **La requête est envoyée au serveur**\n    \n    * La requête voyage sur Internet jusqu'au serveur, un système back-end écrit avec un langage de programmation.\n        \n    * Le serveur reçoit la requête et en extrait les informations pertinentes.\n        \n3. **Le serveur traite la requête**\n    \n    * Le serveur vérifie la méthode de requête et l'URL.\n        \n    * Il peut devoir valider l'authentification (via des en-têtes comme authorization).\n        \n    * Si nécessaire, il interagit avec une base de données pour récupérer ou modifier les données.\n        \n4. **Le serveur prépare une réponse**\n    \n    * Le serveur génère une réponse avec un code de statut comme 200, 404, 500, et ainsi de suite.\n        \n    * La réponse inclut des en-têtes, par exemple, `Content-Type: application/json`.\n        \n    * Si applicable, un corps de réponse en JSON, HTML ou XML est ajouté.\n        \n5. **La réponse est envoyée au client**\n    \n    * Le serveur envoie la réponse via Internet.\n        \n    * Le client reçoit la réponse et traite les données.\n        \n6. **Le client gère la réponse**\n    \n    * Si la réponse est réussie (code de statut 200), le client affiche les données, par exemple, rend les données sur une page web.\n        \n    * Si une erreur se produit (`404 Not Found`, `500 Internal Server Error`, et ainsi de suite), le client peut afficher un message d'erreur."
+            },
+            {
+              "en": "This cycle repeats for every new request the client makes.",
+              "fr": "Ce cycle se répète pour chaque nouvelle requête que le client fait."
+            },
+            {
+              "en": "Here's a diagram that simplifies this process:",
+              "fr": "Voici un diagramme qui simplifie ce processus :"
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/lecture-what-is-the-HTTP-request-response-model.png\" alt=\"Diagram that shows HTTP Request going from the client to the server and HTTP Response going from the server to the client.\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/lecture-what-is-the-HTTP-request-response-model.png\" alt=\"Diagramme montrant la requête HTTP allant du client au serveur et la réponse HTTP allant du serveur au client.\">"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the role of the server in a request-response model?",
+              "fr": "Quel est le rôle du serveur dans un modèle requête-réponse ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It processes requests and generates responses.",
+              "fr": "Il traite les requêtes et génère des réponses."
+            },
+            {
+              "en": "It only stores data but does not process requests.",
+              "fr": "Il stocke uniquement des données mais ne traite pas les requêtes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the middle part of the lesson.",
+              "fr": "Revois la partie centrale de la leçon."
+            },
+            {
+              "en": "It only forwards requests to another system.",
+              "fr": "Il transmet uniquement les requêtes à un autre système."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the middle part of the lesson.",
+              "fr": "Revois la partie centrale de la leçon."
+            },
+            {
+              "en": "It must be written in a specific programming language.",
+              "fr": "Il doit être écrit dans un langage de programmation spécifique."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the middle part of the lesson.",
+              "fr": "Revois la partie centrale de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the HTTP method specify in an HTTP request?",
+              "fr": "Que spécifie la méthode HTTP dans une requête HTTP ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The data format to be sent",
+              "fr": "Le format de données à envoyer"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It defines what kind of operation the request performs on the resource.",
+              "fr": "Elle définit quel type d'opération la requête effectue sur la ressource."
+            },
+            {
+              "en": "The action to perform, such as retrieving, sending, modifying, or deleting data",
+              "fr": "L'action à effectuer, comme récupérer, envoyer, modifier ou supprimer des données"
+            },
+            {
+              "en": "The request headers",
+              "fr": "Les en-têtes de la requête"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It defines what kind of operation the request performs on the resource.",
+              "fr": "Elle définit quel type d'opération la requête effectue sur la ressource."
+            },
+            {
+              "en": "The server location",
+              "fr": "L'emplacement du serveur"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It defines what kind of operation the request performs on the resource.",
+              "fr": "Elle définit quel type d'opération la requête effectue sur la ressource."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the client handle an HTTP response?",
+              "fr": "Comment le client gère-t-il une réponse HTTP ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It always displays the data, regardless of the response status.",
+              "fr": "Il affiche toujours les données, quel que soit le statut de la réponse."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client must handle both successful and error responses appropriately.",
+              "fr": "Le client doit gérer à la fois les réponses réussies et les réponses d'erreur de façon appropriée."
+            },
+            {
+              "en": "It only processes responses with a 200 status code.",
+              "fr": "Il ne traite que les réponses avec un code de statut 200."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client must handle both successful and error responses appropriately.",
+              "fr": "Le client doit gérer à la fois les réponses réussies et les réponses d'erreur de façon appropriée."
+            },
+            {
+              "en": "It ignores error responses and retries automatically.",
+              "fr": "Il ignore les réponses d'erreur et réessaie automatiquement."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The client must handle both successful and error responses appropriately.",
+              "fr": "Le client doit gérer à la fois les réponses réussies et les réponses d'erreur de façon appropriée."
+            },
+            {
+              "en": "It handles successful responses by displaying data and errors by showing messages.",
+              "fr": "Il gère les réponses réussies en affichant les données et les erreurs en montrant des messages."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68dd97fbd18ede5ae983e342.md",
+      "id": "68dd97fbd18ede5ae983e342",
+      "dashedName": "what-are-the-different-kinds-of-assets-that-are-returned-in-an-http-response",
+      "title": {
+        "en": "What Are the Different Kinds of Assets That Are Returned in an HTTP Response?",
+        "fr": "Quels sont les différents types d'assets renvoyés dans une réponse HTTP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the last lesson, you learned that the server processes an HTTP request and sends back a response. That response includes various assets you see on the web.",
+              "fr": "Dans la dernière leçon, tu as appris que le serveur traite une requête HTTP et renvoie une réponse. Cette réponse inclut divers assets que tu vois sur le web."
+            },
+            {
+              "en": "The assets returned by an HTTP response include text-based assets, media assets, fonts, and so on. Each of these assets comes with a **Content-Type** header, which tells the browser how to process and display the asset correctly.",
+              "fr": "Les assets renvoyés par une réponse HTTP incluent des assets textuels, des assets média, des polices, et ainsi de suite. Chacun de ces assets est accompagné d'un en-tête **Content-Type**, qui indique au navigateur comment traiter et afficher correctement l'asset."
+            },
+            {
+              "en": "Text-based assets have always been a fundamental part of the web. In fact, the web started as pure text. These days, text-based assets include the following:",
+              "fr": "Les assets textuels ont toujours été une partie fondamentale du web. En fait, le web a commencé comme du texte pur. De nos jours, les assets textuels incluent les suivants :"
+            },
+            {
+              "en": "* **HTML (Hypertext Markup Language)**: The basic structure of any webpage. Without HTML, a webpage can't exist.\n    \n* **CSS (Cascading Stylesheet)**: The asset that controls how a webpage looks. With CSS, you apply styles like colors, fonts, and layout to the HTML.\n    \n* **JavaScript**: JavaScript adds interactivity and dynamic content to HTML and CSS.\n    \n* **JSON and XML**: These two formats let you transfer structured data between servers and browsers.\n    \nMedia assets include images, audios, and videos. They bring the web to life with visuals and sound.",
+              "fr": "* **HTML (Hypertext Markup Language)** : La structure de base de toute page web. Sans HTML, une page web ne peut pas exister.\n    \n* **CSS (Cascading Stylesheet)** : L'asset qui contrôle l'apparence d'une page web. Avec CSS, tu appliques des styles comme les couleurs, les polices et la mise en page au HTML.\n    \n* **JavaScript** : JavaScript ajoute de l'interactivité et du contenu dynamique au HTML et au CSS.\n    \n* **JSON et XML** : Ces deux formats te permettent de transférer des données structurées entre serveurs et navigateurs.\n    \nLes assets média incluent les images, les audios et les vidéos. Ils donnent vie au web avec des visuels et du son."
+            },
+            {
+              "en": "Many websites rely on images to communicate visual information. Images come in different formats like `JPG`, `JPEG`, `PNG`, `WEBP`, and `GIF`.",
+              "fr": "De nombreux sites web s'appuient sur les images pour communiquer des informations visuelles. Les images existent dans différents formats comme `JPG`, `JPEG`, `PNG`, `WEBP` et `GIF`."
+            },
+            {
+              "en": "Websites like YouTube and Vimeo serve video content with formats like `MP4`, `MOV`, `AVI`, `WebM`, and more.",
+              "fr": "Des sites comme YouTube et Vimeo servent du contenu vidéo avec des formats comme `MP4`, `MOV`, `AVI`, `WebM`, et plus encore."
+            },
+            {
+              "en": "Audio is a key part of many platforms as it lets users stream music, podcasts, and other sound content. Common audio formats include `MP3`, `AAC`, Ogg, and `WAV`. Platforms like Spotify and YouTube Music rely on these formats to deliver high-quality audio experiences.",
+              "fr": "L'audio est une partie clé de nombreuses plateformes car il permet aux utilisateurs de streamer de la musique, des podcasts et d'autres contenus sonores. Les formats audio courants incluent `MP3`, `AAC`, Ogg et `WAV`. Des plateformes comme Spotify et YouTube Music s'appuient sur ces formats pour offrir des expériences audio de haute qualité."
+            },
+            {
+              "en": "Other assets that are returned in an HTTP response are documents like `PDF`, `DOCX`, and `PAGES`, compressed archives like `ZIP` and `RAR`, font files like `WOFF`, `WOFF2`, and `TTF`, and executables like `EXE`.",
+              "fr": "D'autres assets renvoyés dans une réponse HTTP sont des documents comme `PDF`, `DOCX` et `PAGES`, des archives compressées comme `ZIP` et `RAR`, des fichiers de police comme `WOFF`, `WOFF2` et `TTF`, et des exécutables comme `EXE`."
+            },
+            {
+              "en": "Here's a table of these common assets and their content types:",
+              "fr": "Voici un tableau de ces assets courants et de leurs types de contenu :"
+            },
+            {
+              "en": "| Asset Type | Content-Type Header |\n| --- | --- |\n| HTML | text/html |\n| CSS | text/css |\n| JavaScript | application/javascript |\n| JPEG | image/jpeg |\n| PNG | image/png |\n| GIF | image/gif |\n| SVG | image/svg+xml |\n| WebP | image/webp |\n| WOFF | font/woff |\n| WOFF2 | font/woff2 |\n| TTF | font/ttf |\n| OTF | font/otf |\n| MP4 | video/mp4 |\n| WebM | video/webm |\n| Ogg (Video) | video/ogg |\n| MP3 | audio/mpeg |\n| AAC | audio/aac |\n| WAV | audio/wav |\n| Ogg (Audio) | audio/ogg |\n| JSON | application/json |\n| XML | application/xml |\n| PDF | application/pdf |\n| ZIP | application/zip |",
+              "fr": "| Asset Type | Content-Type Header |\n| --- | --- |\n| HTML | text/html |\n| CSS | text/css |\n| JavaScript | application/javascript |\n| JPEG | image/jpeg |\n| PNG | image/png |\n| GIF | image/gif |\n| SVG | image/svg+xml |\n| WebP | image/webp |\n| WOFF | font/woff |\n| WOFF2 | font/woff2 |\n| TTF | font/ttf |\n| OTF | font/otf |\n| MP4 | video/mp4 |\n| WebM | video/webm |\n| Ogg (Video) | video/ogg |\n| MP3 | audio/mpeg |\n| AAC | audio/aac |\n| WAV | audio/wav |\n| Ogg (Audio) | audio/ogg |\n| JSON | application/json |\n| XML | application/xml |\n| PDF | application/pdf |\n| ZIP | application/zip |"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a text-based asset used for structuring a webpage?",
+              "fr": "Lequel des éléments suivants est un asset textuel utilisé pour structurer une page web ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "JSON",
+              "fr": "JSON"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This asset defines the fundamental structure of a webpage.",
+              "fr": "Cet asset définit la structure fondamentale d'une page web."
+            },
+            {
+              "en": "CSS",
+              "fr": "CSS"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This asset defines the fundamental structure of a webpage.",
+              "fr": "Cet asset définit la structure fondamentale d'une page web."
+            },
+            {
+              "en": "JavaScript",
+              "fr": "JavaScript"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This asset defines the fundamental structure of a webpage.",
+              "fr": "Cet asset définit la structure fondamentale d'une page web."
+            },
+            {
+              "en": "HTML",
+              "fr": "HTML"
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct `Content-Type` header for serving a PDF file?",
+              "fr": "Quel est le bon en-tête `Content-Type` pour servir un fichier PDF ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "application/xml",
+              "fr": "application/xml"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the MIME type for PDF files that maintain formatting across devices.",
+              "fr": "Cherche le type MIME pour les fichiers PDF qui conservent la mise en forme sur tous les appareils."
+            },
+            {
+              "en": "application/json",
+              "fr": "application/json"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the MIME type for PDF files that maintain formatting across devices.",
+              "fr": "Cherche le type MIME pour les fichiers PDF qui conservent la mise en forme sur tous les appareils."
+            },
+            {
+              "en": "application/pdf",
+              "fr": "application/pdf"
+            },
+            {
+              "en": "text/html",
+              "fr": "text/html"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the MIME type for PDF files that maintain formatting across devices.",
+              "fr": "Cherche le type MIME pour les fichiers PDF qui conservent la mise en forme sur tous les appareils."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a common audio format used for streaming music and podcasts?",
+              "fr": "Lequel des éléments suivants est un format audio courant utilisé pour streamer de la musique et des podcasts ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "PNG",
+              "fr": "PNG"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the format widely used for compressing and streaming sound files.",
+              "fr": "Pense au format largement utilisé pour compresser et streamer des fichiers sonores."
+            },
+            {
+              "en": "MP3",
+              "fr": "MP3"
+            },
+            {
+              "en": "SVG",
+              "fr": "SVG"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the format widely used for compressing and streaming sound files.",
+              "fr": "Pense au format largement utilisé pour compresser et streamer des fichiers sonores."
+            },
+            {
+              "en": "GIF",
+              "fr": "GIF"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the format widely used for compressing and streaming sound files.",
+              "fr": "Pense au format largement utilisé pour compresser et streamer des fichiers sonores."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68dd97fbd18ede5ae983e343.md",
+      "id": "68dd97fbd18ede5ae983e343",
+      "dashedName": "what-happens-when-a-form-is-submitted-and-how-do-the-different-form-submissions-work",
+      "title": {
+        "en": "What Happens When a Form Is Submitted and How Do the Different Form Submissions Work?",
+        "fr": "Que se passe-t-il quand un formulaire est soumis et comment fonctionnent les différentes soumissions de formulaires ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Websites and apps need to collect data and process it, or generate something the user needs such as search results. So, just like text, forms are also a fundamental part of the web.",
+              "fr": "Les sites web et les apps ont besoin de collecter des données et de les traiter, ou de générer quelque chose dont l'utilisateur a besoin comme des résultats de recherche. Donc, tout comme le texte, les formulaires sont aussi une partie fondamentale du web."
+            },
+            {
+              "en": "With forms, users can register and log in to a site, send messages, and search for items. For instance, you get access to the Google search results page by typing your query in the most popular form on the web, the Google search input.",
+              "fr": "Avec les formulaires, les utilisateurs peuvent s'inscrire et se connecter à un site, envoyer des messages, et chercher des éléments. Par exemple, tu accèdes à la page de résultats de recherche Google en saisissant ta requête dans le formulaire le plus populaire du web, le champ de recherche Google."
+            },
+            {
+              "en": "Let's look at what makes up a form, like input fields, the `action` attribute, form methods, and most importantly, what happens when you submit a form.",
+              "fr": "Regardons ce qui compose un formulaire, comme les champs de saisie, l'attribut `action`, les méthodes de formulaire, et surtout, ce qui se passe quand tu soumets un formulaire."
+            },
+            {
+              "en": "Forms are embedded on a web page with the `form` element, but to get inputs to show up, you also need the `input` elements, based on your need. Some of those input elements are text, email, password, selection, file, hidden inputs, and more.",
+              "fr": "Les formulaires sont intégrés dans une page web avec l'élément `form`, mais pour faire apparaître des champs, tu as aussi besoin des éléments `input`, selon tes besoins. Certains de ces éléments d'entrée sont texte, e-mail, mot de passe, sélection, fichier, entrées cachées, et plus encore."
+            },
+            {
+              "en": "To use these input fields, you have to wrap them with the `form` element. Each of the inputs needs a `name` attribute so the server knows what data corresponds to each field.",
+              "fr": "Pour utiliser ces champs de saisie, tu dois les envelopper avec l'élément `form`. Chacun des champs a besoin d'un attribut `name` pour que le serveur sache quelles données correspondent à chaque champ."
+            },
+            {
+              "en": "Here is an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "The input fields also need to be validated to ensure the user enters the correct information.",
+              "fr": "Les champs de saisie doivent aussi être validés pour s'assurer que l'utilisateur saisit les bonnes informations."
+            },
+            {
+              "en": "This validation can happen on both the client-side and the server-side. HTML lets you do basic client-side validation with the `required` and `pattern` attributes. Even so, you should also validate server-side for added security, as HTML validation is mostly for user experience and immediate feedback.",
+              "fr": "Cette validation peut se faire à la fois côté client et côté serveur. HTML te permet de faire une validation basique côté client avec les attributs `required` et `pattern`. Même ainsi, tu devrais aussi valider côté serveur pour plus de sécurité, car la validation HTML est surtout pour l'expérience utilisateur et le feedback immédiat."
+            },
+            {
+              "en": "The `required` attribute specifies that the input field must be filled out, while the `pattern` attribute lets you enter regular expressions that force the user to type in the information the way you need it.",
+              "fr": "L'attribut `required` spécifie que le champ de saisie doit être rempli, tandis que l'attribut `pattern` te permet d'entrer des expressions régulières qui forcent l'utilisateur à saisir l'information de la façon dont tu en as besoin."
+            },
+            {
+              "en": "Here's an example of that for a username field:",
+              "fr": "Voici un exemple de cela pour un champ de nom d'utilisateur :"
+            },
+            {
+              "en": "After the input fields are validated, submission should take place. So what happens when the form is submitted?",
+              "fr": "Après la validation des champs de saisie, la soumission devrait avoir lieu. Alors que se passe-t-il quand le formulaire est soumis ?"
+            },
+            {
+              "en": "First, for submission to happen, the form needs to have an `action` attribute that specifies where the browser should send the values of the input fields to and a `method` attribute that specifies how the form data is submitted. More on the `method` attribute later.",
+              "fr": "D'abord, pour que la soumission se produise, le formulaire a besoin d'un attribut `action` qui spécifie où le navigateur doit envoyer les valeurs des champs de saisie et d'un attribut `method` qui spécifie comment les données du formulaire sont soumises. Plus d'informations sur l'attribut `method` plus tard."
+            },
+            {
+              "en": "Here's what an action attribute could look like:",
+              "fr": "Voici à quoi pourrait ressembler un attribut action :"
+            },
+            {
+              "en": "The `method` attribute can either be `GET`, `POST`, `PUT`, `PATCH`, or `DELETE`:",
+              "fr": "L'attribut `method` peut être soit `GET`, `POST`, `PUT`, `PATCH`, soit `DELETE` :"
+            },
+            {
+              "en": "* `GET` retrieves something from the server, for example, search results.\n    \n* `POST` sends something to the server, for example, login or register information entered through the input fields.\n    \n* `PUT` modifies something on the server.\n    \n* `PATCH` partially modifies something on the server.\n    \n* `DELETE` removes something from the server.\n    \nNote that HTML doesn't support the `PUT`, `PATCH`, and `DELETE` methods directly, but there are workarounds. If you work with vanilla JavaScript, you can use the Fetch API to specify the method, and in Node.js and Express, you can use the `method-override` package.",
+              "fr": "* `GET` récupère quelque chose du serveur, par exemple, des résultats de recherche.\n    \n* `POST` envoie quelque chose au serveur, par exemple, des informations de connexion ou d'inscription saisies via les champs de saisie.\n    \n* `PUT` modifie quelque chose sur le serveur.\n    \n* `PATCH` modifie partiellement quelque chose sur le serveur.\n    \n* `DELETE` supprime quelque chose du serveur.\n    \nNote que HTML ne prend pas en charge directement les méthodes `PUT`, `PATCH` et `DELETE`, mais il existe des solutions de contournement. Si tu travailles avec du JavaScript vanilla, tu peux utiliser la Fetch API pour spécifier la méthode, et dans Node.js et Express, tu peux utiliser le paquet `method-override`."
+            },
+            {
+              "en": "Here's what a form making a `GET` request could look like:",
+              "fr": "Voici à quoi pourrait ressembler un formulaire faisant une requête `GET` :"
+            },
+            {
+              "en": "And here's what a form making a `POST` request could look like:",
+              "fr": "Et voici à quoi pourrait ressembler un formulaire faisant une requête `POST` :"
+            },
+            {
+              "en": "After the `GET` or `POST` request, the server checks for server-side validation and either processes or rejects the input values.",
+              "fr": "Après la requête `GET` ou `POST`, le serveur vérifie la validation côté serveur et soit traite, soit rejette les valeurs d'entrée."
+            },
+            {
+              "en": "If the validation is successful, the server sends out the requested information or throws an error if the validation is unsuccessful.",
+              "fr": "Si la validation réussit, le serveur envoie les informations demandées ou renvoie une erreur si la validation échoue."
+            },
+            {
+              "en": "If the validation is successful, the response from the server could be a redirect in case of authentication or search, or a success message confirming the action.",
+              "fr": "Si la validation réussit, la réponse du serveur pourrait être une redirection en cas d'authentification ou de recherche, ou un message de succès confirmant l'action."
+            },
+            {
+              "en": "Here's a recap of what happens when a form is submitted:",
+              "fr": "Voici un récapitulatif de ce qui se passe quand un formulaire est soumis :"
+            },
+            {
+              "en": "* The user fills out the form fields.\n    \n* The browser checks for client-side validation (if any) and proceeds if the validation is successful.\n    \n* The browser sends the form data to the server based on the action and method attributes.\n    \n* The server receives the data and processes it (storing it in a database, registering a user, logging in a user, sending out search query, and so on).\n    \n* If there's a server-side validation, the server rechecks the data before processing.\n    \n* The server responds with a success message, error, or redirects the user based on the validation state (success or failure).\n    \n* The user sees feedback based on the server response.",
+              "fr": "* L'utilisateur remplit les champs du formulaire.\n    \n* Le navigateur vérifie la validation côté client (s'il y en a) et continue si la validation réussit.\n    \n* Le navigateur envoie les données du formulaire au serveur selon les attributs action et method.\n    \n* Le serveur reçoit les données et les traite (stockage dans une base de données, inscription d'un utilisateur, connexion d'un utilisateur, envoi d'une requête de recherche, et ainsi de suite).\n    \n* S'il y a une validation côté serveur, le serveur revérifie les données avant de les traiter.\n    \n* Le serveur répond avec un message de succès, une erreur, ou redirige l'utilisateur selon l'état de validation (succès ou échec).\n    \n* L'utilisateur voit un feedback basé sur la réponse du serveur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you perform client-side validation using HTML?",
+              "fr": "Comment peux-tu effectuer une validation côté client avec HTML ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the `validate` attribute",
+              "fr": "En utilisant l'attribut `validate`"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the attributes that help enforce input rules without JavaScript.",
+              "fr": "Pense aux attributs qui aident à appliquer des règles de saisie sans JavaScript."
+            },
+            {
+              "en": "By using JavaScript only",
+              "fr": "En utilisant uniquement JavaScript"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the attributes that help enforce input rules without JavaScript.",
+              "fr": "Pense aux attributs qui aident à appliquer des règles de saisie sans JavaScript."
+            },
+            {
+              "en": "By using the `required` and `pattern` attributes",
+              "fr": "En utilisant les attributs `required` et `pattern`"
+            },
+            {
+              "en": "By using server-side validation only",
+              "fr": "En utilisant uniquement la validation côté serveur"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the attributes that help enforce input rules without JavaScript.",
+              "fr": "Pense aux attributs qui aident à appliquer des règles de saisie sans JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What workaround is available for using the `PUT`, `PATCH`, and `DELETE` methods in an HTML form while working with Node.js or Express?",
+              "fr": "Quelle solution de contournement est disponible pour utiliser les méthodes `PUT`, `PATCH` et `DELETE` dans un formulaire HTML en travaillant avec Node.js ou Express ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "HTML natively supports these methods",
+              "fr": "HTML prend nativement en charge ces méthodes"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "HTML forms don't support these methods directly, but workarounds exist.",
+              "fr": "Les formulaires HTML ne prennent pas en charge ces méthodes directement, mais des solutions de contournement existent."
+            },
+            {
+              "en": "By using the Fetch API in JavaScript",
+              "fr": "En utilisant la Fetch API en JavaScript"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "HTML forms don't support these methods directly, but workarounds exist.",
+              "fr": "Les formulaires HTML ne prennent pas en charge ces méthodes directement, mais des solutions de contournement existent."
+            },
+            {
+              "en": "By using the `method=\"PUT\"` attribute in a form",
+              "fr": "En utilisant l'attribut `method=\"PUT\"` dans un formulaire"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "HTML forms don't support these methods directly, but workarounds exist.",
+              "fr": "Les formulaires HTML ne prennent pas en charge ces méthodes directement, mais des solutions de contournement existent."
+            },
+            {
+              "en": "By using the `method-override` package",
+              "fr": "En utilisant le paquet `method-override`"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between the `PUT` and `PATCH` HTTP methods?",
+              "fr": "Quelle est la différence entre les méthodes HTTP `PUT` et `PATCH` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`PUT` modifies something on the server, while `PATCH` partially modifies it",
+              "fr": "`PUT` modifie quelque chose sur le serveur, tandis que `PATCH` le modifie partiellement"
+            },
+            {
+              "en": "`PATCH` deletes data, while `PUT` updates it",
+              "fr": "`PATCH` supprime des données, tandis que `PUT` les met à jour"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the whole resource, while the other makes partial changes.",
+              "fr": "L'une met à jour toute la ressource, tandis que l'autre fait des changements partiels."
+            },
+            {
+              "en": "`PUT` is used for retrieving data, while `PATCH` is for sending data",
+              "fr": "`PUT` est utilisé pour récupérer des données, tandis que `PATCH` est pour envoyer des données"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the whole resource, while the other makes partial changes.",
+              "fr": "L'une met à jour toute la ressource, tandis que l'autre fait des changements partiels."
+            },
+            {
+              "en": "`PATCH` replaces the entire resource, while `PUT` modifies only parts of it",
+              "fr": "`PATCH` remplace toute la ressource, tandis que `PUT` ne modifie que des parties de celle-ci"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the whole resource, while the other makes partial changes.",
+              "fr": "L'une met à jour toute la ressource, tandis que l'autre fait des changements partiels."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1791 @@
+{
+  "workshop": "lecture-introduction-to-npm",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "695b93b7d61d4520790c3903.md",
+      "id": "695b93b7d61d4520790c3903",
+      "dashedName": "what-is-npm",
+      "title": {
+        "en": "What Is npm?",
+        "fr": "Qu'est-ce que npm ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When you build projects in JavaScript, you often need extra tools to help you get things done. Even simple apps may need features like saving data, logging in, routing to move between pages, and so on.",
+              "fr": "Quand tu construis des projets en JavaScript, tu as souvent besoin d'outils supplémentaires pour t'aider à avancer. Même des apps simples peuvent nécessiter des fonctionnalités comme sauvegarder des données, se connecter, router pour naviguer entre les pages, et ainsi de suite."
+            },
+            {
+              "en": "Instead of writing all of this code from scratch, you can use open-source packages that other developers have already built and shared.",
+              "fr": "Au lieu d'écrire tout ce code de zéro, tu peux utiliser des paquets open source que d'autres développeurs ont déjà construits et partagés."
+            },
+            {
+              "en": "This is where npm comes in. npm is a huge online registry of open-source software. Think of it like an app store for code — you can search for what you need, install it, and start using it in your project.",
+              "fr": "C'est là qu'intervient npm. npm est un énorme registre en ligne de logiciels open source. Pense-y comme un app store pour le code — tu peux chercher ce dont tu as besoin, l'installer, et commencer à l'utiliser dans ton projet."
+            },
+            {
+              "en": "Many people think npm stands for \"Node Package Manager,\" but that's not its official meaning. In older npm documentation, it was described as a \"recursive bacronymic abbreviation for 'npm is not an acronym.'\" In other words, npm doesn't officially stand for anything.",
+              "fr": "Beaucoup de gens pensent que npm signifie « Node Package Manager », mais ce n'est pas sa signification officielle. Dans d'anciennes documentations npm, il était décrit comme une « abréviation bacronymique récursive pour 'npm is not an acronym.' » En d'autres termes, npm ne signifie officiellement rien."
+            },
+            {
+              "en": "Today, npm refers to three related parts:",
+              "fr": "Aujourd'hui, npm désigne trois parties liées :"
+            },
+            {
+              "en": "* The website npmjs.com, where you can look up packages in the registry.\n    \n* The npm registry, which is a large public database that stores all the packages.\n    \n* The npm CLI tool that's installed with Node.js and lets you install and manage packages.",
+              "fr": "* Le site web npmjs.com, où tu peux chercher des paquets dans le registre.\n    \n* Le registre npm, qui est une grande base de données publique qui stocke tous les paquets.\n    \n* L'outil CLI npm installé avec Node.js et qui te permet d'installer et de gérer des paquets."
+            },
+            {
+              "en": "For example, if you need to manage state, handle dates, send emails, or make HTTP requests in your project, there's probably an npm package that already does that. With a simple `npm install` command, you can start using this ready-made software instead of doing all the work yourself.",
+              "fr": "Par exemple, si tu as besoin de gérer l'état, manipuler des dates, envoyer des e-mails ou faire des requêtes HTTP dans ton projet, il y a probablement un paquet npm qui le fait déjà. Avec une simple commande `npm install`, tu peux commencer à utiliser ce logiciel prêt à l'emploi au lieu de tout faire toi-même."
+            },
+            {
+              "en": "npm also helps you manage your project dependencies. This means it keeps track of the packages you use in your projects, and the version of each of those packages. It does this with the `package.json` and `package-lock.json` files, which you'll learn about in future lessons.",
+              "fr": "npm t'aide aussi à gérer les dépendances de ton projet. Cela signifie qu'il suit les paquets que tu utilises dans tes projets, et la version de chacun de ces paquets. Il le fait avec les fichiers `package.json` et `package-lock.json`, que tu découvriras dans de prochaines leçons."
+            },
+            {
+              "en": "Yarn, PNPM, and Bun are some alternatives to npm that have become popular over time. While each of them offer benefits in specific areas like installation speed and storage efficiency, npm is still the most widely used.",
+              "fr": "Yarn, PNPM et Bun sont des alternatives à npm qui sont devenues populaires avec le temps. Bien que chacune offre des avantages dans des domaines précis comme la vitesse d'installation et l'efficacité du stockage, npm reste le plus largement utilisé."
+            },
+            {
+              "en": "In upcoming lessons, you'll learn various npm commands, how to install packages, about the `package.json` and `package-lock.json` files, and even how to publish your own package to the npm registry.",
+              "fr": "Dans les prochaines leçons, tu apprendras diverses commandes npm, comment installer des paquets, les fichiers `package.json` et `package-lock.json`, et même comment publier ton propre paquet sur le registre npm."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does npm provide to developers?",
+              "fr": "Que fournit npm aux développeurs ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A platform for deploying websites directly to the cloud.",
+              "fr": "Une plateforme pour déployer des sites web directement dans le cloud."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps developers avoid reinventing the wheel by using ready-made solutions.",
+              "fr": "Il aide les développeurs à éviter de réinventer la roue en utilisant des solutions prêtes à l'emploi."
+            },
+            {
+              "en": "A browser-based tool for testing APIs.",
+              "fr": "Un outil dans le navigateur pour tester des API."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps developers avoid reinventing the wheel by using ready-made solutions.",
+              "fr": "Il aide les développeurs à éviter de réinventer la roue en utilisant des solutions prêtes à l'emploi."
+            },
+            {
+              "en": "A database system for storing user data.",
+              "fr": "Un système de base de données pour stocker des données utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps developers avoid reinventing the wheel by using ready-made solutions.",
+              "fr": "Il aide les développeurs à éviter de réinventer la roue en utilisant des solutions prêtes à l'emploi."
+            },
+            {
+              "en": "A registry of prebuilt software packages that solves common problems.",
+              "fr": "Un registre de paquets logiciels préconstruits qui résolvent des problèmes courants."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is *not* one of the three parts that npm refers to?",
+              "fr": "Lequel des éléments suivants n'est *pas* l'une des trois parties auxquelles npm fait référence ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The website, npmjs.com",
+              "fr": "Le site web, npmjs.com"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the three main components that make up npm and how they all work together.",
+              "fr": "Pense aux trois composants principaux qui forment npm et à la façon dont ils fonctionnent ensemble."
+            },
+            {
+              "en": "The Node.js runtime",
+              "fr": "L'environnement d'exécution Node.js"
+            },
+            {
+              "en": "The package registry",
+              "fr": "Le registre de paquets"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the three main components that make up npm and how they all work together.",
+              "fr": "Pense aux trois composants principaux qui forment npm et à la façon dont ils fonctionnent ensemble."
+            },
+            {
+              "en": "The command-line tool",
+              "fr": "L'outil en ligne de commande"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the three main components that make up npm and how they all work together.",
+              "fr": "Pense aux trois composants principaux qui forment npm et à la façon dont ils fonctionnent ensemble."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `npm install` command allow you to do?",
+              "fr": "Que te permet de faire la commande `npm install` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Create a new Node.js project from scratch",
+              "fr": "Créer un nouveau projet Node.js de zéro"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how developers reuse existing solutions instead of writing everything from scratch.",
+              "fr": "Pense à la façon dont les développeurs réutilisent des solutions existantes au lieu d'écrire tout de zéro."
+            },
+            {
+              "en": "Run your Node.js application on a local server",
+              "fr": "Exécuter ton application Node.js sur un serveur local"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how developers reuse existing solutions instead of writing everything from scratch.",
+              "fr": "Pense à la façon dont les développeurs réutilisent des solutions existantes au lieu d'écrire tout de zéro."
+            },
+            {
+              "en": "Add prebuilt packages to your project for common tasks",
+              "fr": "Ajouter des paquets préconstruits à ton projet pour des tâches courantes"
+            },
+            {
+              "en": "Uninstall unused dependencies from your project",
+              "fr": "Désinstaller les dépendances inutilisées de ton projet"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how developers reuse existing solutions instead of writing everything from scratch.",
+              "fr": "Pense à la façon dont les développeurs réutilisent des solutions existantes au lieu d'écrire tout de zéro."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f399.md",
+      "id": "695b93cb572125a6fb19f399",
+      "dashedName": "what-is-a-package-json-file",
+      "title": {
+        "en": "What Is a package.json File",
+        "fr": "Qu'est-ce qu'un fichier package.json"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "npm needs a way to store important details about your project – things like what packages it uses, the version of those packages, and what commands it can run. It does this with the `package.json` file.",
+              "fr": "npm a besoin d'un moyen de stocker des détails importants sur ton projet – des choses comme les paquets qu'il utilise, la version de ces paquets, et les commandes qu'il peut exécuter. Il le fait avec le fichier `package.json`."
+            },
+            {
+              "en": "Think of the `package.json` file as an npm configuration file for the project. It's a simple JSON file that describes your project using key-value pairs to keep track of things like:",
+              "fr": "Pense au fichier `package.json` comme à un fichier de configuration npm pour le projet. C'est un simple fichier JSON qui décrit ton projet avec des paires clé-valeur pour suivre des choses comme :"
+            },
+            {
+              "en": "* the project's name and version\n    \n* the author\n    \n* the main file that should be run first\n    \n* the license\n    \n* the code repository, keywords, and descriptions\n    \n* any dependencies the project needs",
+              "fr": "* le nom et la version du projet\n    \n* l'auteur\n    \n* le fichier principal qui doit être exécuté en premier\n    \n* la licence\n    \n* le dépôt de code, les mots-clés et les descriptions\n    \n* toutes les dépendances dont le projet a besoin"
+            },
+            {
+              "en": "Here's what a `package.json` file might look like:",
+              "fr": "Voici à quoi pourrait ressembler un fichier `package.json` :"
+            },
+            {
+              "en": "The `main` field is often set to `index.js`, and tells Node.js which file to run first.",
+              "fr": "Le champ `main` est souvent défini sur `index.js`, et indique à Node.js quel fichier exécuter en premier."
+            },
+            {
+              "en": "The `license` field is used to specify the legal terms under which other people can use, modify, and distribute the code in your package. There are many different licenses like `MIT`, `ISC`, or `GPL`, which all have different terms and permissions. The default is `ISC`, the Internet Systems Consortium License, which is a very permissive open source license.",
+              "fr": "Le champ `license` sert à préciser les conditions légales sous lesquelles d'autres personnes peuvent utiliser, modifier et distribuer le code de ton paquet. Il existe de nombreuses licences comme `MIT`, `ISC` ou `GPL`, qui ont toutes des conditions et permissions différentes. La valeur par défaut est `ISC`, la licence Internet Systems Consortium, une licence open source très permissive."
+            },
+            {
+              "en": "As your project grows and you install packages, npm adds them under one of two sections:",
+              "fr": "À mesure que ton projet grandit et que tu installes des paquets, npm les ajoute sous l'une de ces deux sections :"
+            },
+            {
+              "en": "* `dependencies`, which are packages your app needs to run in production\n    \n* `devDependencies`, which are packages you only need during development",
+              "fr": "* `dependencies`, qui sont les paquets dont ton app a besoin pour tourner en production\n    \n* `devDependencies`, qui sont les paquets dont tu as besoin uniquement pendant le développement"
+            },
+            {
+              "en": "For example, if your project uses React for its UI, that goes in `dependencies` because it's required for your project to work once it's deployed. A tool like Cypress, which is only used for end-to-end testing before deploying to production, belongs in `devDependencies`.",
+              "fr": "Par exemple, si ton projet utilise React pour son UI, cela va dans `dependencies` car c'est requis pour que ton projet fonctionne une fois déployé. Un outil comme Cypress, utilisé uniquement pour les tests end-to-end avant le déploiement en production, appartient à `devDependencies`."
+            },
+            {
+              "en": "There are a couple of easy ways to create a `package.json` file. The most common way is to run the following command:",
+              "fr": "Il y a quelques façons faciles de créer un fichier `package.json`. La plus courante est d'exécuter la commande suivante :"
+            },
+            {
+              "en": "You should run this in the root folder of your project. This command starts an interactive setup process where npm asks you a series of questions. Your answers are used to fill in fields like the project's name, version, description, scripts, keywords, author, and license.",
+              "fr": "Tu dois l'exécuter dans le dossier racine de ton projet. Cette commande démarre un processus de configuration interactif où npm te pose une série de questions. Tes réponses servent à remplir des champs comme le nom du projet, la version, la description, les scripts, les mots-clés, l'auteur et la licence."
+            },
+            {
+              "en": "If you prefer to skip the questions and create a `package.json` file with default values, you can run:",
+              "fr": "Si tu préfères sauter les questions et créer un fichier `package.json` avec des valeurs par défaut, tu peux exécuter :"
+            },
+            {
+              "en": "or",
+              "fr": "ou"
+            },
+            {
+              "en": "This instantly creates a `package.json` file for you with default values in many fields.",
+              "fr": "Cela crée instantanément un fichier `package.json` pour toi avec des valeurs par défaut dans de nombreux champs."
+            },
+            {
+              "en": "It's usually best to use `npm init` without the `-y` or `--yes` flag so you can go through each field and customize your project's information. If you don't answer a question, npm simply uses a default value. For example, if you leave the license question empty, npm will set it to `ISC` by default.",
+              "fr": "Il est généralement préférable d'utiliser `npm init` sans le drapeau `-y` ou `--yes` pour parcourir chaque champ et personnaliser les informations de ton projet. Si tu ne réponds pas à une question, npm utilise simplement une valeur par défaut. Par exemple, si tu laisses la question de la licence vide, npm la définira sur `ISC` par défaut."
+            },
+            {
+              "en": "Here's an example of what you'll see when running `npm init`:",
+              "fr": "Voici un exemple de ce que tu verras en exécutant `npm init` :"
+            },
+            {
+              "en": "You might notice that `dependencies` and `devDependencies` aren't listed yet. That's because these sections are only added after you install your first package.",
+              "fr": "Tu remarqueras peut-être que `dependencies` et `devDependencies` ne sont pas encore listés. C'est parce que ces sections ne sont ajoutées qu'après l'installation de ton premier paquet."
+            },
+            {
+              "en": "You'll also notice that the `repository` field is missing. Even though npm asked about it during `npm init`, it doesn't automatically fill it in later. For example, when you run commands like `git remote add origin` or `git push`, npm won't update the repository field for you — you have to add it manually if you want it included.",
+              "fr": "Tu remarqueras aussi que le champ `repository` est manquant. Même si npm a posé la question pendant `npm init`, il ne le remplit pas automatiquement ensuite. Par exemple, quand tu exécutes des commandes comme `git remote add origin` ou `git push`, npm ne mettra pas à jour le champ repository pour toi — tu dois l'ajouter manuellement si tu veux qu'il soit inclus."
+            },
+            {
+              "en": "In the next lessons, you'll learn more about dependencies in `package.json` and how to install, update, and remove them.",
+              "fr": "Dans les prochaines leçons, tu en apprendras plus sur les dépendances dans `package.json` et comment les installer, les mettre à jour et les supprimer."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you create a `package.json` file?",
+              "fr": "Comment peux-tu créer un fichier `package.json` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Only by downloading it from the npm website.",
+              "fr": "Uniquement en le téléchargeant depuis le site web npm."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that helps set up project details interactively.",
+              "fr": "Pense à la commande qui aide à configurer les détails du projet de façon interactive."
+            },
+            {
+              "en": "By running the `npm install` command.",
+              "fr": "En exécutant la commande `npm install`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that helps set up project details interactively.",
+              "fr": "Pense à la commande qui aide à configurer les détails du projet de façon interactive."
+            },
+            {
+              "en": "By running the `npm init` command.",
+              "fr": "En exécutant la commande `npm init`."
+            },
+            {
+              "en": "By importing it from another project.",
+              "fr": "En l'important depuis un autre projet."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that helps set up project details interactively.",
+              "fr": "Pense à la commande qui aide à configurer les détails du projet de façon interactive."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens to the `package.json` file when you install dependencies in a Node.js project?",
+              "fr": "Que se passe-t-il pour le fichier `package.json` quand tu installes des dépendances dans un projet Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It deletes existing configuration keys.",
+              "fr": "Il supprime les clés de configuration existantes."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores details of installed packages.",
+              "fr": "Pense à l'endroit où npm stocke les détails des paquets installés."
+            },
+            {
+              "en": "It creates a `dependencies` or `devDependencies` section based on the type of package installed.",
+              "fr": "Il crée une section `dependencies` ou `devDependencies` selon le type de paquet installé."
+            },
+            {
+              "en": "It automatically updates the project's version number.",
+              "fr": "Il met automatiquement à jour le numéro de version du projet."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores details of installed packages.",
+              "fr": "Pense à l'endroit où npm stocke les détails des paquets installés."
+            },
+            {
+              "en": "It removes unused packages from the project.",
+              "fr": "Il retire les paquets inutilisés du projet."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores details of installed packages.",
+              "fr": "Pense à l'endroit où npm stocke les détails des paquets installés."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following information does the `package.json` file store in a Node.js project?",
+              "fr": "Lequel des éléments suivants d'informations le fichier `package.json` stocke-t-il dans un projet Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Details like project `name`, `version`, `author`, entry file, and `license`",
+              "fr": "Des détails comme le `name`, la `version`, l'`author`, le fichier d'entrée et la `license` du projet"
+            },
+            {
+              "en": "Only the project's CSS styles and HTML templates",
+              "fr": "Uniquement les styles CSS et les templates HTML du projet"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what helps identify and describe a Node.js project.",
+              "fr": "Pense à ce qui aide à identifier et décrire un projet Node.js."
+            },
+            {
+              "en": "The compiled JavaScript output files",
+              "fr": "Les fichiers JavaScript compilés de sortie"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what helps identify and describe a Node.js project.",
+              "fr": "Pense à ce qui aide à identifier et décrire un projet Node.js."
+            },
+            {
+              "en": "User credentials and system environment variables",
+              "fr": "Les identifiants utilisateur et les variables d'environnement système"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what helps identify and describe a Node.js project.",
+              "fr": "Pense à ce qui aide à identifier et décrire un projet Node.js."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f39a.md",
+      "id": "695b93cb572125a6fb19f39a",
+      "dashedName": "what-are-package-dependencies-and-what-are-some-considerations-for-choosing-an-external-package",
+      "title": {
+        "en": "What Are Package Dependencies and What Are Some Considerations for Choosing an External Package?",
+        "fr": "Que sont les dépendances de paquets et quelles sont quelques considérations pour choisir un paquet externe ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In an earlier lesson, you learned what dependencies are. Here, you'll learn more about them and things to consider when choosing an external package to use for your project.",
+              "fr": "Dans une leçon précédente, tu as appris ce que sont les dépendances. Ici, tu en apprendras davantage et les points à considérer quand tu choisis un paquet externe pour ton projet."
+            },
+            {
+              "en": "A dependency is another piece of code your project needs in order to work. These are usually external packages that other developers have created and shared in the npm registry.",
+              "fr": "Une dépendance est un autre morceau de code dont ton projet a besoin pour fonctionner. Ce sont généralement des paquets externes que d'autres développeurs ont créés et partagés dans le registre npm."
+            },
+            {
+              "en": "Using dependencies saves you a lot of time. Instead of building everything yourself, you can install a package that already solves a common problem — things like creating a web server, handling routing, fetching data, managing authentication, and more.",
+              "fr": "Utiliser des dépendances te fait gagner beaucoup de temps. Au lieu de tout construire toi-même, tu peux installer un paquet qui résout déjà un problème courant — des choses comme créer un serveur web, gérer le routage, récupérer des données, gérer l'authentification, et plus encore."
+            },
+            {
+              "en": "In your `package.json` file, all the packages your project depends on are listed under the `dependencies` key:",
+              "fr": "Dans ton fichier `package.json`, tous les paquets dont ton projet dépend sont listés sous la clé `dependencies` :"
+            },
+            {
+              "en": "In the example `package.json` file above, `chalk` and `lodash` are listed as the project's dependencies. That means the project relies on these packages to work. If they're not installed—and listed in the `package.json` file—any features that use them will break.",
+              "fr": "Dans l'exemple de fichier `package.json` ci-dessus, `chalk` et `lodash` sont listés comme dépendances du projet. Cela signifie que le projet s'appuie sur ces paquets pour fonctionner. S'ils ne sont pas installés—et listés dans le fichier `package.json`—toute fonctionnalité qui les utilise cassera."
+            },
+            {
+              "en": "There's also another category of dependencies called `devDependencies`. These are packages you only need while building or testing your project, not when it's running in production. Common examples include:",
+              "fr": "Il existe aussi une autre catégorie de dépendances appelée `devDependencies`. Ce sont des paquets dont tu as besoin uniquement pendant la construction ou les tests de ton projet, pas quand il tourne en production. Des exemples courants incluent :"
+            },
+            {
+              "en": "* Nodemon for automatically restarting the project when there are updates\n    \n* Jest or Mocha for testing\n    \n* ESLint for code linting",
+              "fr": "* Nodemon pour redémarrer automatiquement le projet quand il y a des mises à jour\n    \n* Jest ou Mocha pour les tests\n    \n* ESLint pour le linting du code"
+            },
+            {
+              "en": "As you'd expect, `devDependencies` appear under the `devDependencies` section of the `package.json` file:",
+              "fr": "Comme tu t'y attendrais, les `devDependencies` apparaissent sous la section `devDependencies` du fichier `package.json` :"
+            },
+            {
+              "en": "When choosing which packages to use in your project, there are a few important things to keep in mind.",
+              "fr": "Quand tu choisis quels paquets utiliser dans ton projet, il y a quelques points importants à garder à l'esprit."
+            },
+            {
+              "en": "Security should always come first. Even a single unsafe package can create problems for your entire project. You should also consider performance, because a large or poorly optimized package can slow your project down.",
+              "fr": "La sécurité doit toujours venir en premier. Même un seul paquet non sûr peut créer des problèmes pour tout ton projet. Tu dois aussi considérer les performances, car un paquet volumineux ou mal optimisé peut ralentir ton projet."
+            },
+            {
+              "en": "It also helps to choose packages that are popular and well-supported. Popular packages usually have active communities, good documentation, and frequent updates. One easy way to check popularity is to look at the number of weekly downloads on npm. For example, the `chalk` package gets over 300,000 downloads each week:",
+              "fr": "Il est aussi utile de choisir des paquets populaires et bien pris en charge. Les paquets populaires ont généralement des communautés actives, une bonne documentation et des mises à jour fréquentes. Une façon facile de vérifier la popularité est de regarder le nombre de téléchargements hebdomadaires sur npm. Par exemple, le paquet `chalk` obtient plus de 300 000 téléchargements chaque semaine :"
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-package-dependencies-and-what-are-some-considerations-for-choosing-an-external-package-1.webp\" alt=\"screenshot from npm of chalk package statistics\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-package-dependencies-and-what-are-some-considerations-for-choosing-an-external-package-1.webp\" alt=\"capture d'écran npm des statistiques du paquet chalk\">"
+            },
+            {
+              "en": "Maintenance is important too. Well-maintained packages are updated regularly and work better with new versions of other software.",
+              "fr": "La maintenance est importante aussi. Les paquets bien maintenus sont mis à jour régulièrement et fonctionnent mieux avec les nouvelles versions des autres logiciels."
+            },
+            {
+              "en": "Finally, don't overlook documentation. Clear, thorough docs make it much easier to understand how to use a package and save you a lot of time when integrating it into your project.",
+              "fr": "Enfin, ne néglige pas la documentation. Des docs claires et complètes facilitent beaucoup la compréhension de l'usage d'un paquet et te font gagner beaucoup de temps quand tu l'intègres dans ton projet."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does a high number of downloads for an npm package usually indicate?",
+              "fr": "Qu'indique généralement un nombre élevé de téléchargements pour un paquet npm ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The package is new and untested.",
+              "fr": "Le paquet est nouveau et non testé."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what a high download count says about a package's popularity.",
+              "fr": "Pense à ce qu'un nombre élevé de téléchargements dit de la popularité d'un paquet."
+            },
+            {
+              "en": "The package is unpopular and rarely used.",
+              "fr": "Le paquet est impopulaire et rarement utilisé."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what a high download count says about a package's popularity.",
+              "fr": "Pense à ce qu'un nombre élevé de téléchargements dit de la popularité d'un paquet."
+            },
+            {
+              "en": "The package has strong community support and is likely more reliable.",
+              "fr": "Le paquet a un fort soutien de la communauté et est probablement plus fiable."
+            },
+            {
+              "en": "The package is only used for private projects.",
+              "fr": "Le paquet n'est utilisé que pour des projets privés."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what a high download count says about a package's popularity.",
+              "fr": "Pense à ce qu'un nombre élevé de téléchargements dit de la popularité d'un paquet."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which statement best describes the difference between `dependencies` and `devDependencies`?",
+              "fr": "Quelle affirmation décrit le mieux la différence entre `dependencies` et `devDependencies` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`dependencies` are only used for testing, while `devDependencies` are used in production.",
+              "fr": "`dependencies` ne sont utilisées que pour les tests, tandis que `devDependencies` sont utilisées en production."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of dependency is required for the app to function after deployment.",
+              "fr": "Pense au type de dépendance requis pour que l'app fonctionne après le déploiement."
+            },
+            {
+              "en": "`dependencies` are needed for the app to run, while `devDependencies` are only needed during development and testing.",
+              "fr": "`dependencies` sont nécessaires pour que l'app tourne, tandis que `devDependencies` ne sont nécessaires que pendant le développement et les tests."
+            },
+            {
+              "en": "`devDependencies` are automatically installed in production environments.",
+              "fr": "`devDependencies` sont automatiquement installées dans les environnements de production."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of dependency is required for the app to function after deployment.",
+              "fr": "Pense au type de dépendance requis pour que l'app fonctionne après le déploiement."
+            },
+            {
+              "en": "`devDependencies` are only for managing databases.",
+              "fr": "`devDependencies` servent uniquement à gérer les bases de données."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of dependency is required for the app to function after deployment.",
+              "fr": "Pense au type de dépendance requis pour que l'app fonctionne après le déploiement."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why are dependencies useful?",
+              "fr": "Pourquoi les dépendances sont-elles utiles ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They slow down project setup to ensure clean coding practices.",
+              "fr": "Elles ralentissent la mise en place du projet pour assurer de bonnes pratiques de code."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how dependencies help you avoid reinventing the wheel.",
+              "fr": "Pense à la façon dont les dépendances t'aident à éviter de réinventer la roue."
+            },
+            {
+              "en": "They prevent developers from installing third-party packages.",
+              "fr": "Elles empêchent les développeurs d'installer des paquets tiers."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how dependencies help you avoid reinventing the wheel.",
+              "fr": "Pense à la façon dont les dépendances t'aident à éviter de réinventer la roue."
+            },
+            {
+              "en": "They are required only for styling and front-end design.",
+              "fr": "Elles ne sont requises que pour le style et le design front-end."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how dependencies help you avoid reinventing the wheel.",
+              "fr": "Pense à la façon dont les dépendances t'aident à éviter de réinventer la roue."
+            },
+            {
+              "en": "They provide ready-made solutions for common tasks like routing and authentication.",
+              "fr": "Elles fournissent des solutions prêtes à l'emploi pour des tâches courantes comme le routage et l'authentification."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f39b.md",
+      "id": "695b93cb572125a6fb19f39b",
+      "dashedName": "what-is-semantic-versioning",
+      "title": {
+        "en": "What Is Semantic Versioning?",
+        "fr": "Qu'est-ce que le versionnage sémantique ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Semantic versioning, or SemVer, is a system that gives version numbers a clear meaning, so developers can quickly understand what kind of changes were made to software.",
+              "fr": "Le versionnage sémantique, ou SemVer, est un système qui donne un sens clair aux numéros de version, pour que les développeurs puissent rapidement comprendre quel type de changements a été apporté au logiciel."
+            },
+            {
+              "en": "SemVer uses this format:",
+              "fr": "SemVer utilise ce format :"
+            },
+            {
+              "en": "For example, the popular library `lodash` is currently version `4.17.21`.",
+              "fr": "Par exemple, la bibliothèque populaire `lodash` est actuellement en version `4.17.21`."
+            },
+            {
+              "en": "Here's what each part means:",
+              "fr": "Voici ce que signifie chaque partie :"
+            },
+            {
+              "en": "* MAJOR — Large changes that break existing code. Example: removing or renaming a function that existing code might depend on.\n    \n* MINOR — New features that don't break existing code. Example: adding a new function or optional parameter.\n    \n* PATCH — Small fixes and improvements. Example: fixing a bug or typo without changing how anything works.",
+              "fr": "* MAJOR — Grands changements qui cassent le code existant. Exemple : supprimer ou renommer une fonction dont le code existant pourrait dépendre.\n    \n* MINOR — Nouvelles fonctionnalités qui ne cassent pas le code existant. Exemple : ajouter une nouvelle fonction ou un paramètre optionnel.\n    \n* PATCH — Petites corrections et améliorations. Exemple : corriger un bug ou une faute de frappe sans changer le fonctionnement."
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-is-semantic-versioning-1.png\" alt=\"In the version number 4.17.21, 4 is the Major Version, it's changed for breaking changes, the 17 is the minor version, it's changed for non-breaking changes, and the 21 is the patch, it's changed for bug fixes and small features\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-is-semantic-versioning-1.png\" alt=\"Dans le numéro de version 4.17.21, 4 est la version majeure, changée pour les breaking changes, 17 est la version mineure, changée pour les changements non cassants, et 21 est le patch, changé pour les corrections de bugs et petites fonctionnalités\">"
+            },
+            {
+              "en": "Let's say you have a package called `my-package`. Here's an example of how its version number might change over time using semantic versioning:",
+              "fr": "Disons que tu as un paquet appelé `my-package`. Voici un exemple de la façon dont son numéro de version pourrait évoluer avec le versionnage sémantique :"
+            },
+            {
+              "en": "| Version | What Changed |\n| --- | --- |\n| 1.0.0 | Initial stable release |\n| 1.1.0 | New optional feature |\n| 1.1.1 | Small bug fix or feature |\n| 2.0.0 | Breaking changes introduced |",
+              "fr": "| Version | Ce qui a changé |\n| --- | --- |\n| 1.0.0 | Première version stable |\n| 1.1.0 | Nouvelle fonctionnalité optionnelle |\n| 1.1.1 | Petite correction de bug ou fonctionnalité |\n| 2.0.0 | Breaking changes introduits |"
+            },
+            {
+              "en": "But there's more to version numbers in npm. When you install a package, the version in your `package.json` file might look like this:",
+              "fr": "Mais il y a plus à savoir sur les numéros de version dans npm. Quand tu installes un paquet, la version dans ton fichier `package.json` peut ressembler à ceci :"
+            },
+            {
+              "en": "You already learned that `4` is the major version, `17` is the minor version, and `21` is the patch version. But what does the caret (`^`) in front mean?",
+              "fr": "Tu as déjà appris que `4` est la version majeure, `17` la version mineure, et `21` la version de patch. Mais que signifie le caret (`^`) devant ?"
+            },
+            {
+              "en": "The caret symbol allows npm to automatically install newer minor and patch versions (`4.x.x`), but not newer major versions (`5.x.x`), because major updates may include breaking changes.",
+              "fr": "Le symbole caret permet à npm d'installer automatiquement des versions mineures et de patch plus récentes (`4.x.x`), mais pas de nouvelles versions majeures (`5.x.x`), car les mises à jour majeures peuvent inclure des breaking changes."
+            },
+            {
+              "en": "When the major version is `0`, the caret becomes more restrictive. For example, `^0.2.3` would allow updates like `0.2.4`, but not `0.3.0`, since major versions starting with `0` are considered less stable.",
+              "fr": "Quand la version majeure est `0`, le caret devient plus restrictif. Par exemple, `^0.2.3` autoriserait des mises à jour comme `0.2.4`, mais pas `0.3.0`, car les versions majeures commençant par `0` sont considérées comme moins stables."
+            },
+            {
+              "en": "The caret is not the only symbol `npm` and other JavaScript package managers use for managing dependency versions.",
+              "fr": "Le caret n'est pas le seul symbole que `npm` et d'autres gestionnaires de paquets JavaScript utilisent pour gérer les versions des dépendances."
+            },
+            {
+              "en": "There is the tilde symbol (`~`) which allows updates to the patch version only. So, `~1.2.3` would accept `1.2.4` and `1.2.9`, but never `1.3.0`.",
+              "fr": "Il y a le symbole tilde (`~`) qui n'autorise que les mises à jour de la version de patch. Donc, `~1.2.3` accepterait `1.2.4` et `1.2.9`, mais jamais `1.3.0`."
+            },
+            {
+              "en": "You can also use the greater than (`>`), lesser than (`<`), and their \"or equals\" equivalents to accept versions between a range. For example, `>=1.2.3 <2.0.0` means any version from `1.2.3` up to, but not including, `2.0.0`.",
+              "fr": "Tu peux aussi utiliser le plus grand que (`>`), le plus petit que (`<`), et leurs équivalents « ou égal » pour accepter des versions dans une plage. Par exemple, `>=1.2.3 <2.0.0` signifie toute version de `1.2.3` jusqu'à, mais sans inclure, `2.0.0`."
+            },
+            {
+              "en": "The asterisk symbol (`*`), matches any version, so it accepts everything. This is ideal only for testing and not recommended for production.",
+              "fr": "Le symbole astérisque (`*`) correspond à n'importe quelle version, donc il accepte tout. C'est idéal uniquement pour les tests et non recommandé en production."
+            },
+            {
+              "en": "Finally, you can lock down an exact version by not prefixing the version number with any symbol. For instance, version `1.2.3` accepts only `1.2.3`.",
+              "fr": "Enfin, tu peux verrouiller une version exacte en ne préfixant le numéro de version d'aucun symbole. Par exemple, la version `1.2.3` n'accepte que `1.2.3`."
+            },
+            {
+              "en": "Here's a quick summary table:",
+              "fr": "Voici un tableau récapitulatif rapide :"
+            },
+            {
+              "en": "| Symbol | Meaning | Example Range |\n| --- | --- | --- |\n| `^` | Allow minor + patch updates | `^1.2.3` → `1.x.x` |\n| `~` | Allow patch updates only | `~1.2.3` → `1.2.x` |\n| `>`, `<`, `>=`, `<=` | Custom range | `>=1.2.3` or `<2.0.0` |\n| **\\*** | Any version | all versions |\n| none | Exact version | `1.2.3` |",
+              "fr": "| Symbole | Signification | Plage d'exemple |\n| --- | --- | --- |\n| `^` | Autoriser mises à jour mineures + patch | `^1.2.3` → `1.x.x` |\n| `~` | Autoriser mises à jour de patch uniquement | `~1.2.3` → `1.2.x` |\n| `>`, `<`, `>=`, `<=` | Plage personnalisée | `>=1.2.3` ou `<2.0.0` |\n| **\\*** | Toute version | toutes les versions |\n| aucun | Version exacte | `1.2.3` |"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does a major version indicate in semantic versioning?",
+              "fr": "Qu'indique une version majeure dans le versionnage sémantique ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Minor improvements or added features that don't break existing code.",
+              "fr": "Des améliorations mineures ou des fonctionnalités ajoutées qui ne cassent pas le code existant."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you rename or remove a function already used in your project.",
+              "fr": "Pense à ce qui se passe quand tu renommes ou supprimes une fonction déjà utilisée dans ton projet."
+            },
+            {
+              "en": "Bug fixes that don't affect the functionality.",
+              "fr": "Des corrections de bugs qui n'affectent pas la fonctionnalité."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you rename or remove a function already used in your project.",
+              "fr": "Pense à ce qui se passe quand tu renommes ou supprimes une fonction déjà utilisée dans ton projet."
+            },
+            {
+              "en": "Breaking changes that can cause existing code to stop working.",
+              "fr": "Des breaking changes qui peuvent faire cesser de fonctionner le code existant."
+            },
+            {
+              "en": "Updates to documentation or comments only.",
+              "fr": "Des mises à jour de la documentation ou des commentaires uniquement."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when you rename or remove a function already used in your project.",
+              "fr": "Pense à ce qui se passe quand tu renommes ou supprimes une fonction déjà utilisée dans ton projet."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If a version number is `5.18.4`, which part represents the patch version?",
+              "fr": "Si un numéro de version est `5.18.4`, quelle partie représente la version de patch ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the `MAJOR.MINOR.PATCH` order.",
+              "fr": "Pense à l'ordre `MAJOR.MINOR.PATCH`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the `MAJOR.MINOR.PATCH` order.",
+              "fr": "Pense à l'ordre `MAJOR.MINOR.PATCH`."
+            },
+            {
+              "en": "All of them",
+              "fr": "Toutes"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the `MAJOR.MINOR.PATCH` order.",
+              "fr": "Pense à l'ordre `MAJOR.MINOR.PATCH`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the tilde (`~`) symbol mean in semantic versioning?",
+              "fr": "Que signifie le symbole tilde (`~`) dans le versionnage sémantique ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It allows updates to both minor and major versions.",
+              "fr": "Il autorise les mises à jour des versions mineures et majeures."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which part of the version number can change when using `~1.2.3`.",
+              "fr": "Pense à quelle partie du numéro de version peut changer quand on utilise `~1.2.3`."
+            },
+            {
+              "en": "It allows updates to the major version only.",
+              "fr": "Il autorise les mises à jour de la version majeure uniquement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which part of the version number can change when using `~1.2.3`.",
+              "fr": "Pense à quelle partie du numéro de version peut changer quand on utilise `~1.2.3`."
+            },
+            {
+              "en": "It locks the dependency to a specific version.",
+              "fr": "Il verrouille la dépendance à une version spécifique."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which part of the version number can change when using `~1.2.3`.",
+              "fr": "Pense à quelle partie du numéro de version peut changer quand on utilise `~1.2.3`."
+            },
+            {
+              "en": "It allows updates to the patch version only.",
+              "fr": "Il autorise les mises à jour de la version de patch uniquement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f39c.md",
+      "id": "695b93cb572125a6fb19f39c",
+      "dashedName": "how-can-you-install-and-remove-dependencies",
+      "title": {
+        "en": "How Can You Install and Remove Dependencies?",
+        "fr": "Comment peux-tu installer et supprimer des dépendances ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In a previous lesson, you learned what dependencies are and how to choose the right ones for your project.",
+              "fr": "Dans une leçon précédente, tu as appris ce que sont les dépendances et comment choisir les bonnes pour ton projet."
+            },
+            {
+              "en": "In this lesson, you'll learn how to install and remove dependencies using npm.",
+              "fr": "Dans cette leçon, tu apprendras comment installer et supprimer des dépendances avec npm."
+            },
+            {
+              "en": "To install a dependency, use the `npm install` command like this:",
+              "fr": "Pour installer une dépendance, utilise la commande `npm install` comme ceci :"
+            },
+            {
+              "en": "You can also shorten `install` to `i` like this:",
+              "fr": "Tu peux aussi raccourcir `install` en `i` comme ceci :"
+            },
+            {
+              "en": "After installing a package, npm adds a new `dependencies` section to your `package.json` file (if it isn't already there) and lists the package you installed. For example, here's what it looks like when you install the `chalk` package:",
+              "fr": "Après l'installation d'un paquet, npm ajoute une nouvelle section `dependencies` à ton fichier `package.json` (si elle n'y est pas déjà) et y liste le paquet que tu as installé. Par exemple, voici à quoi cela ressemble quand tu installes le paquet `chalk` :"
+            },
+            {
+              "en": "When you install a dependency, two new things appear in your project's root folder:",
+              "fr": "Quand tu installes une dépendance, deux nouvelles choses apparaissent dans le dossier racine de ton projet :"
+            },
+            {
+              "en": "* `node_modules/`: a folder that contains the actual code for the packages you installed.\n    \n* `package-lock.json`: a file that stores detailed information about the exact versions of those packages, including their own dependencies. (You'll learn more about this file in a later lesson.)",
+              "fr": "* `node_modules/` : un dossier qui contient le code réel des paquets que tu as installés.\n    \n* `package-lock.json` : un fichier qui stocke des informations détaillées sur les versions exactes de ces paquets, y compris leurs propres dépendances. (Tu en apprendras plus sur ce fichier dans une leçon ultérieure.)"
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-can-you-install-and-remove-dependencies-1.png\" alt=\"\">",
+              "fr": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-can-you-install-and-remove-dependencies-1.png\" alt=\"\">"
+            },
+            {
+              "en": "Most projects need more than one dependency. Instead of installing them one at a time, npm lets you install multiple packages at once by entering a space-separated list of package names:",
+              "fr": "La plupart des projets ont besoin de plus d'une dépendance. Au lieu de les installer une par une, npm te permet d'installer plusieurs paquets à la fois en saisissant une liste de noms de paquets séparés par des espaces :"
+            },
+            {
+              "en": "Just like before, when you install multiple dependencies at once, npm updates your `package.json` and `package-lock.json` files and your `node_modules` to include them. Here's what the `package.json` would look like:",
+              "fr": "Comme avant, quand tu installes plusieurs dépendances à la fois, npm met à jour tes fichiers `package.json` et `package-lock.json` ainsi que ton `node_modules` pour les inclure. Voici à quoi ressemblerait le `package.json` :"
+            },
+            {
+              "en": "To install a `devDependency`, add the `--save-dev` flag to the `install` command. You can also use the shorter `-D` version:",
+              "fr": "Pour installer une `devDependency`, ajoute le drapeau `--save-dev` à la commande `install`. Tu peux aussi utiliser la version plus courte `-D` :"
+            },
+            {
+              "en": "After running this command, npm updates your `package.json` file and adds the package under the `devDependencies` section. Here's an example of what that looks like:",
+              "fr": "Après avoir exécuté cette commande, npm met à jour ton fichier `package.json` et ajoute le paquet sous la section `devDependencies`. Voici un exemple de ce à quoi cela ressemble :"
+            },
+            {
+              "en": "Whenever you run an `npm install` command, npm will show a message telling you whether the installation was successful or not. A success message usually looks something like this:",
+              "fr": "Chaque fois que tu exécutes une commande `npm install`, npm affichera un message indiquant si l'installation a réussi ou non. Un message de succès ressemble généralement à ceci :"
+            },
+            {
+              "en": "To uninstall or remove a package, use the `npm uninstall` command:",
+              "fr": "Pour désinstaller ou supprimer un paquet, utilise la commande `npm uninstall` :"
+            },
+            {
+              "en": "For example, to remove `chalk` from your project, you'd run this command:",
+              "fr": "Par exemple, pour retirer `chalk` de ton projet, tu exécuterais cette commande :"
+            },
+            {
+              "en": "You can also uninstall multiple packages at once by listing them with spaces between each package name:",
+              "fr": "Tu peux aussi désinstaller plusieurs paquets à la fois en les listant avec des espaces entre chaque nom de paquet :"
+            },
+            {
+              "en": "You will also get a message showing whether the uninstall command succeeded or failed:",
+              "fr": "Tu obtiendras aussi un message indiquant si la commande uninstall a réussi ou échoué :"
+            },
+            {
+              "en": "And your `package.json` file will be updated automatically:",
+              "fr": "Et ton fichier `package.json` sera mis à jour automatiquement :"
+            },
+            {
+              "en": "To uninstall a `devDependency`, you can simply run:",
+              "fr": "Pour désinstaller une `devDependency`, tu peux simplement exécuter :"
+            },
+            {
+              "en": "Note that you do not need the `-D` flag when uninstalling. npm will automatically remove the package from the correct section, `devDependencies` in this case.",
+              "fr": "Note que tu n'as pas besoin du drapeau `-D` lors de la désinstallation. npm retirera automatiquement le paquet de la bonne section, `devDependencies` dans ce cas."
+            },
+            {
+              "en": "After uninstalling the `devDependency`, your `package.json` will be updated again:",
+              "fr": "Après la désinstallation de la `devDependency`, ton `package.json` sera à nouveau mis à jour :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens to your `package.json` file after you install a new dependency like `chalk`?",
+              "fr": "Que se passe-t-il pour ton fichier `package.json` après avoir installé une nouvelle dépendance comme `chalk` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The file is deleted and replaced automatically.",
+              "fr": "Le fichier est supprimé et remplacé automatiquement."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm records the packages your project depends on.",
+              "fr": "Pense à l'endroit où npm enregistre les paquets dont ton projet dépend."
+            },
+            {
+              "en": "The package is installed without being recorded anywhere.",
+              "fr": "Le paquet est installé sans être enregistré nulle part."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm records the packages your project depends on.",
+              "fr": "Pense à l'endroit où npm enregistre les paquets dont ton projet dépend."
+            },
+            {
+              "en": "A new dependencies key is added with the package name listed under it.",
+              "fr": "Une nouvelle clé dependencies est ajoutée avec le nom du paquet listé dessous."
+            },
+            {
+              "en": "The `package.json` file becomes read-only.",
+              "fr": "Le fichier `package.json` devient en lecture seule."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm records the packages your project depends on.",
+              "fr": "Pense à l'endroit où npm enregistre les paquets dont ton projet dépend."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which folder and file are automatically added to your project after installing a dependency?",
+              "fr": "Quel dossier et quel fichier sont automatiquement ajoutés à ton projet après l'installation d'une dépendance ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`src` folder and [`readme.md`](http://readme.md) file",
+              "fr": "Dossier `src` et fichier [`readme.md`](http://readme.md)"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores installed packages and tracks their exact versions.",
+              "fr": "Pense à l'endroit où npm stocke les paquets installés et suit leurs versions exactes."
+            },
+            {
+              "en": "`node_modules` folder and `package-lock.json` file",
+              "fr": "Dossier `node_modules` et fichier `package-lock.json`"
+            },
+            {
+              "en": "`public` folder and `index.html` file",
+              "fr": "Dossier `public` et fichier `index.html`"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores installed packages and tracks their exact versions.",
+              "fr": "Pense à l'endroit où npm stocke les paquets installés et suit leurs versions exactes."
+            },
+            {
+              "en": "`dist` folder and `webpack.config.js` file",
+              "fr": "Dossier `dist` et fichier `webpack.config.js`"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where npm stores installed packages and tracks their exact versions.",
+              "fr": "Pense à l'endroit où npm stocke les paquets installés et suit leurs versions exactes."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which command correctly installs a `devDependency`?",
+              "fr": "Quelle commande installe correctement une `devDependency` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the flag used to install development-only dependencies.",
+              "fr": "Pense au drapeau utilisé pour installer des dépendances de développement uniquement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the flag used to install development-only dependencies.",
+              "fr": "Pense au drapeau utilisé pour installer des dépendances de développement uniquement."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the flag used to install development-only dependencies.",
+              "fr": "Pense au drapeau utilisé pour installer des dépendances de développement uniquement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f39d.md",
+      "id": "695b93cb572125a6fb19f39d",
+      "dashedName": "how-can-you-install-specific-versions-and-manage-dependencies",
+      "title": {
+        "en": "How Can You Install Specific Versions and Manage Dependencies?",
+        "fr": "Comment peux-tu installer des versions spécifiques et gérer les dépendances ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Keeping your dependencies up to date—and knowing how to install a specific version—is important for keeping your project stable. It helps you avoid unexpected bugs and gives you more control when new versions are released.",
+              "fr": "Garder tes dépendances à jour—et savoir comment installer une version spécifique—est important pour garder ton projet stable. Cela t'aide à éviter des bugs inattendus et te donne plus de contrôle quand de nouvelles versions sont publiées."
+            },
+            {
+              "en": "To install a specific version of a package, use this format:",
+              "fr": "Pour installer une version spécifique d'un paquet, utilise ce format :"
+            },
+            {
+              "en": "For example, if your project needs an older version of Express, say `4.21.2`, you can install it like this:",
+              "fr": "Par exemple, si ton projet a besoin d'une ancienne version d'Express, disons `4.21.2`, tu peux l'installer comme ceci :"
+            },
+            {
+              "en": "If you don't include a version number, npm will automatically install the latest version available.",
+              "fr": "Si tu n'inclus pas de numéro de version, npm installera automatiquement la dernière version disponible."
+            },
+            {
+              "en": "If you're not sure which versions exist, you can check them with this command:",
+              "fr": "Si tu n'es pas sûr des versions existantes, tu peux les vérifier avec cette commande :"
+            },
+            {
+              "en": "For instance:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "To update packages, you can update them individually or all at once. Before doing that, it's helpful to first see which ones are out of date:",
+              "fr": "Pour mettre à jour des paquets, tu peux les mettre à jour individuellement ou tous à la fois. Avant cela, il est utile de d'abord voir lesquels sont obsolètes :"
+            },
+            {
+              "en": "This will show you which dependencies have newer versions available, and you should see an output similar to this:",
+              "fr": "Cela te montrera quelles dépendances ont de nouvelles versions disponibles, et tu devrais voir une sortie similaire à ceci :"
+            },
+            {
+              "en": "Once you've checked which dependencies are outdated, you can start updating them.",
+              "fr": "Une fois que tu as vérifié quelles dépendances sont obsolètes, tu peux commencer à les mettre à jour."
+            },
+            {
+              "en": "To update a single dependency, use the following:",
+              "fr": "Pour mettre à jour une seule dépendance, utilise ce qui suit :"
+            },
+            {
+              "en": "This updates the package only within the version range allowed by your `package.json` file. For example, to update Express, you can use the following:",
+              "fr": "Cela met à jour le paquet uniquement dans la plage de versions autorisée par ton fichier `package.json`. Par exemple, pour mettre à jour Express, tu peux utiliser ce qui suit :"
+            },
+            {
+              "en": "If you want to skip the version range and install the latest version of a package, use the following command:",
+              "fr": "Si tu veux ignorer la plage de versions et installer la dernière version d'un paquet, utilise la commande suivante :"
+            },
+            {
+              "en": "To update all dependencies that fall within the allowed version ranges, run:",
+              "fr": "Pour mettre à jour toutes les dépendances qui entrent dans les plages de versions autorisées, exécute :"
+            },
+            {
+              "en": "However, note that `npm update` does not upgrade a package to a new major version if your `package.json` doesn't allow it. Major versions often contain breaking changes, so npm won't apply them automatically.",
+              "fr": "Cependant, note que `npm update` ne met pas à niveau un paquet vers une nouvelle version majeure si ton `package.json` ne l'autorise pas. Les versions majeures contiennent souvent des breaking changes, donc npm ne les applique pas automatiquement."
+            },
+            {
+              "en": "If you specifically want the newest major version, you must run:",
+              "fr": "Si tu veux spécifiquement la version majeure la plus récente, tu dois exécuter :"
+            },
+            {
+              "en": "This forces npm to install the most recent release, no matter what version range is in your `package.json`.",
+              "fr": "Cela force npm à installer la version la plus récente, quelle que soit la plage de versions dans ton `package.json`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which command correctly installs a specific version of an npm package?",
+              "fr": "Quelle commande installe correctement une version spécifique d'un paquet npm ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command you use to add packages and specify versions in Node.js.",
+              "fr": "Pense à la commande que tu utilises pour ajouter des paquets et spécifier des versions dans Node.js."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command you use to add packages and specify versions in Node.js.",
+              "fr": "Pense à la commande que tu utilises pour ajouter des paquets et spécifier des versions dans Node.js."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command you use to add packages and specify versions in Node.js.",
+              "fr": "Pense à la commande que tu utilises pour ajouter des paquets et spécifier des versions dans Node.js."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which command is used to check which dependencies are outdated in a Node.js project?",
+              "fr": "Quelle commande sert à vérifier quelles dépendances sont obsolètes dans un projet Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that specifically reports old package versions.",
+              "fr": "Pense à la commande qui signale spécifiquement les anciennes versions de paquets."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that specifically reports old package versions.",
+              "fr": "Pense à la commande qui signale spécifiquement les anciennes versions de paquets."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that specifically reports old package versions.",
+              "fr": "Pense à la commande qui signale spécifiquement les anciennes versions de paquets."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which command always updates a dependency to its latest major version in Node.js?",
+              "fr": "Quelle commande met toujours à jour une dépendance vers sa dernière version majeure dans Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that installs always installs the latest version.",
+              "fr": "Pense à la commande qui installe toujours la dernière version."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that installs always installs the latest version.",
+              "fr": "Pense à la commande qui installe toujours la dernière version."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the command that installs always installs the latest version.",
+              "fr": "Pense à la commande qui installe toujours la dernière version."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695b93cb572125a6fb19f39e.md",
+      "id": "695b93cb572125a6fb19f39e",
+      "dashedName": "what-is-the-package-lock-json-file",
+      "title": {
+        "en": "What Is the package-lock.json File?",
+        "fr": "Qu'est-ce que le fichier package-lock.json ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When you install dependencies with npm, especially in an existing project, npm looks at your `package.json` file to see which packages your project needs.",
+              "fr": "Quand tu installes des dépendances avec npm, surtout dans un projet existant, npm regarde ton fichier `package.json` pour voir quels paquets ton projet a besoin."
+            },
+            {
+              "en": "Each dependency in `package.json` includes a version number like this:",
+              "fr": "Chaque dépendance dans `package.json` inclut un numéro de version comme ceci :"
+            },
+            {
+              "en": "As you learned earlier, the **caret (^)** allows npm to install newer minor and patch versions like `4.18.0` or `4.17.22`. This flexibility is helpful, but it can also lead to problems.",
+              "fr": "Comme tu l'as appris plus tôt, le **caret (^)** permet à npm d'installer des versions mineures et de patch plus récentes comme `4.18.0` ou `4.17.22`. Cette flexibilité est utile, mais elle peut aussi entraîner des problèmes."
+            },
+            {
+              "en": "If two developers run `npm install` at different times, npm might install slightly different versions of the same package. Even small differences can cause bugs or unexpected behavior.",
+              "fr": "Si deux développeurs exécutent `npm install` à des moments différents, npm pourrait installer des versions légèrement différentes du même paquet. Même de petites différences peuvent causer des bugs ou un comportement inattendu."
+            },
+            {
+              "en": "The `package-lock.json` file solves this. It is created automatically the first time you run `npm install`, and it locks in the exact versions of every dependency that was installed—including all child dependencies, which are dependencies of dependencies.",
+              "fr": "Le fichier `package-lock.json` résout cela. Il est créé automatiquement la première fois que tu exécutes `npm install`, et il verrouille les versions exactes de chaque dépendance installée—y compris toutes les dépendances enfants, qui sont des dépendances de dépendances."
+            },
+            {
+              "en": "This guarantees that everyone working on the project gets the same versions of packages every time.",
+              "fr": "Cela garantit que tout le monde travaillant sur le projet obtient les mêmes versions de paquets à chaque fois."
+            },
+            {
+              "en": "Here's a simple `package.json` file with `lodash` as a dependency:",
+              "fr": "Voici un simple fichier `package.json` avec `lodash` comme dépendance :"
+            },
+            {
+              "en": "And here is the matching section from the `package-lock.json`:",
+              "fr": "Et voici la section correspondante du `package-lock.json` :"
+            },
+            {
+              "en": "Notice the difference:",
+              "fr": "Remarque la différence :"
+            },
+            {
+              "en": "* In `package.json`, `lodash` is listed as `^4.17.21` — a flexible rule.\n    \n* In `package-lock.json`, `lodash` is pinned to version `4.17.21`.",
+              "fr": "* Dans `package.json`, `lodash` est listé comme `^4.17.21` — une règle flexible.\n    \n* Dans `package-lock.json`, `lodash` est épinglé à la version `4.17.21`."
+            },
+            {
+              "en": "No matter when someone runs `npm install`, they will get that exact version.",
+              "fr": "Peu importe quand quelqu'un exécute `npm install`, il obtiendra cette version exacte."
+            },
+            {
+              "en": "This way, no matter when someone runs `npm install`, they will get the exact same version of Lodash every time.",
+              "fr": "Ainsi, peu importe quand quelqu'un exécute `npm install`, il obtiendra exactement la même version de Lodash à chaque fois."
+            },
+            {
+              "en": "Note that this also applies to child dependencies, which are dependencies of any dependencies you use for your project.",
+              "fr": "Note que cela s'applique aussi aux dépendances enfants, qui sont les dépendances de toute dépendance que tu utilises pour ton projet."
+            },
+            {
+              "en": "For example, here's part of the `package-lock.json` file for a project using Express:",
+              "fr": "Par exemple, voici une partie du fichier `package-lock.json` pour un projet utilisant Express :"
+            },
+            {
+              "en": "You can see that besides Express itself, there are other packages like `accepts`, `mime-types`, and `negotiator`. These are child dependencies, which are packages Express depends on internally to work.",
+              "fr": "Tu peux voir qu'en plus d'Express lui-même, il y a d'autres paquets comme `accepts`, `mime-types` et `negotiator`. Ce sont des dépendances enfants, des paquets dont Express dépend en interne pour fonctionner."
+            },
+            {
+              "en": "Also notice that, while the `dependencies` in `node_modules/express` do use caret characters for ranges, but if you find the entry for each child dependency like `node_modules/etags`, they're pinned to a specific version.",
+              "fr": "Remarque aussi que, bien que les `dependencies` dans `node_modules/express` utilisent des caractères caret pour les plages, si tu trouves l'entrée de chaque dépendance enfant comme `node_modules/etags`, elles sont épinglées à une version spécifique."
+            },
+            {
+              "en": "In short, the `package-lock.json` file keeps everyone on the same page and ensures consistency across developer machines, CI servers, deployments, and other environments.",
+              "fr": "En résumé, le fichier `package-lock.json` garde tout le monde sur la même longueur d'onde et assure la cohérence entre machines de développeurs, serveurs CI, déploiements et autres environnements."
+            },
+            {
+              "en": "It is important to always commit your `package-lock.json` file with Git so your team shares the same setup. Also, do not edit the `package-lock.json` file manually—npm will update it automatically whenever dependencies change.",
+              "fr": "Il est important de toujours committer ton fichier `package-lock.json` avec Git pour que ton équipe partage la même configuration. Aussi, ne modifie pas manuellement le fichier `package-lock.json`—npm le mettra à jour automatiquement quand les dépendances changent."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the `package-lock.json` file solve version inconsistency issues between different environments?",
+              "fr": "Comment le fichier `package-lock.json` résout-il les problèmes d'incohérence de versions entre différents environnements ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By automatically updating all dependencies to their latest versions.",
+              "fr": "En mettant automatiquement à jour toutes les dépendances vers leurs dernières versions."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it ensures everyone installs the same dependency versions.",
+              "fr": "Pense à la façon dont il assure que tout le monde installe les mêmes versions de dépendances."
+            },
+            {
+              "en": "By deleting old dependencies before installing new ones.",
+              "fr": "En supprimant les anciennes dépendances avant d'en installer de nouvelles."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it ensures everyone installs the same dependency versions.",
+              "fr": "Pense à la façon dont il assure que tout le monde installe les mêmes versions de dépendances."
+            },
+            {
+              "en": "By freezing the exact versions of dependencies that were installed.",
+              "fr": "En gelant les versions exactes des dépendances qui ont été installées."
+            },
+            {
+              "en": "By storing only the major version numbers of each dependency.",
+              "fr": "En stockant uniquement les numéros de version majeurs de chaque dépendance."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how it ensures everyone installs the same dependency versions.",
+              "fr": "Pense à la façon dont il assure que tout le monde installe les mêmes versions de dépendances."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why should you always commit your `package-lock.json` file to Git?",
+              "fr": "Pourquoi devrais-tu toujours committer ton fichier `package-lock.json` dans Git ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To make npm run faster on your machine.",
+              "fr": "Pour que npm tourne plus vite sur ta machine."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about keeping every developer's environment consistent.",
+              "fr": "Pense à garder l'environnement de chaque développeur cohérent."
+            },
+            {
+              "en": "To let your team share the same dependency versions and setup.",
+              "fr": "Pour que ton équipe partage les mêmes versions de dépendances et la même configuration."
+            },
+            {
+              "en": "To automatically update outdated dependencies.",
+              "fr": "Pour mettre automatiquement à jour les dépendances obsolètes."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about keeping every developer's environment consistent.",
+              "fr": "Pense à garder l'environnement de chaque développeur cohérent."
+            },
+            {
+              "en": "To reduce the size of your Git repository.",
+              "fr": "Pour réduire la taille de ton dépôt Git."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about keeping every developer's environment consistent.",
+              "fr": "Pense à garder l'environnement de chaque développeur cohérent."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are child dependencies?",
+              "fr": "Que sont les dépendances enfants ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Packages that are installed but never used in the project.",
+              "fr": "Des paquets qui sont installés mais jamais utilisés dans le projet."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about dependencies that your main dependencies themselves depend on.",
+              "fr": "Pense aux dépendances dont tes dépendances principales dépendent elles-mêmes."
+            },
+            {
+              "en": "Packages that depend on your project's main files to run.",
+              "fr": "Des paquets qui dépendent des fichiers principaux de ton projet pour tourner."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about dependencies that your main dependencies themselves depend on.",
+              "fr": "Pense aux dépendances dont tes dépendances principales dépendent elles-mêmes."
+            },
+            {
+              "en": "Packages that are only used during development.",
+              "fr": "Des paquets qui ne sont utilisés que pendant le développement."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about dependencies that your main dependencies themselves depend on.",
+              "fr": "Pense aux dépendances dont tes dépendances principales dépendent elles-mêmes."
+            },
+            {
+              "en": "Packages that your dependencies rely on internally to work.",
+              "fr": "Des paquets dont tes dépendances s'appuient en interne pour fonctionner."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

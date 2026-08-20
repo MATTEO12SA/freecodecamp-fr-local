@@ -1,0 +1,1845 @@
+{
+  "workshop": "lecture-working-with-node-core-modules",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "695cc6a5eefd305381ec90bc.md",
+      "id": "695cc6a5eefd305381ec90bc",
+      "dashedName": "what-is-the-fs-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the fs Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module fs et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Many languages and frameworks out there provide ways to work with files and folders. Node.js lets you do this with the `fs` or file system module.",
+              "fr": "De nombreux langages et frameworks offrent des moyens de travailler avec les fichiers et dossiers. Node.js te le permet avec le module `fs` ou file system."
+            },
+            {
+              "en": "This lesson will focus on the Node `fs` module, how it works, and the three different ways you can use the methods it provides.",
+              "fr": "Cette leçon se concentre sur le module Node `fs`, son fonctionnement, et les trois façons différentes d'utiliser les méthodes qu'il fournit."
+            },
+            {
+              "en": "The Node `fs` module provides you with methods for working with files and folders, including opening and closing, reading and writing, and deleting operations.",
+              "fr": "Le module Node `fs` te fournit des méthodes pour travailler avec les fichiers et dossiers, notamment ouvrir et fermer, lire et écrire, et supprimer."
+            },
+            {
+              "en": "The `fs` module is a Node.js standard module, so it's available to use as long as you have Node.js installed in your environment. To use the module, you import it this way:",
+              "fr": "Le module `fs` est un module standard de Node.js, donc il est disponible tant que Node.js est installé dans ton environnement. Pour l'utiliser, tu l'importes ainsi :"
+            },
+            {
+              "en": "The flexibility the `fs` module offers is that it allows you to use its methods both synchronously and asynchronously. The `fs` module methods are asynchronous by default, but for every method, there's a synchronous form:",
+              "fr": "La flexibilité du module `fs` est qu'il te permet d'utiliser ses méthodes de façon synchrone et asynchrone. Les méthodes du module `fs` sont asynchrones par défaut, mais pour chaque méthode, il existe une forme synchrone :"
+            },
+            {
+              "en": "It doesn't end there. Depending on your needs, you can use the methods in three ways:",
+              "fr": "Ce n'est pas tout. Selon tes besoins, tu peux utiliser les méthodes de trois façons :"
+            },
+            {
+              "en": "- with callbacks, for example `fs.writeFile()` (asynchronous)\n- with promises if you prefer the `async/await` syntax, for example `fs.promises.writeFile()`\n- synchronously, for example, `fs.writeFileSync()`",
+              "fr": "- avec des callbacks, par exemple `fs.writeFile()` (asynchrone)\n- avec des promises si tu préfères la syntaxe `async/await`, par exemple `fs.promises.writeFile()`\n- de façon synchrone, par exemple `fs.writeFileSync()`"
+            },
+            {
+              "en": "Here's the basic syntax for the asynchronous usage of the methods:",
+              "fr": "Voici la syntaxe de base pour l'utilisation asynchrone des méthodes :"
+            },
+            {
+              "en": "For the promises version, you can import that from `fs/promises` or chain `promises` to your `fs` import. Here's the syntax:",
+              "fr": "Pour la version promises, tu peux l'importer depuis `fs/promises` ou enchaîner `promises` à ton import `fs`. Voici la syntaxe :"
+            },
+            {
+              "en": "And here's the synchronous version:",
+              "fr": "Et voici la version synchrone :"
+            },
+            {
+              "en": "Note that using any of the methods synchronously is blocking. In other words, your program will stop running and wait until the operation is finished before moving on to the next line of code.",
+              "fr": "Note que l'utilisation de n'importe laquelle de ces méthodes de façon synchrone est bloquante. Autrement dit, ton programme s'arrête et attend que l'opération soit terminée avant de passer à la ligne de code suivante."
+            },
+            {
+              "en": "For quick scripts, small projects, or one-off tasks, synchronous methods are probably fine. But in real world applications, blocking I/O (input/output) becomes a problem because it can freeze other parts of your app while Node waits for the file system to finish its operations. That slows things down and hurts performance and user experience.",
+              "fr": "Pour des scripts rapides, de petits projets ou des tâches ponctuelles, les méthodes synchrones conviennent probablement. Mais dans les applications réelles, les I/O (entrées/sorties) bloquantes posent problème car elles peuvent figer d'autres parties de ton app pendant que Node attend que le système de fichiers termine. Cela ralentit tout et nuit aux performances et à l'expérience utilisateur."
+            },
+            {
+              "en": "That's why asynchronous methods exist. They let the rest of your program continue running while Node handles file operations in the background. Traditionally, this used callbacks, but those can get messy fast as your app grows.",
+              "fr": "C'est pour cela que les méthodes asynchrones existent. Elles laissent le reste de ton programme continuer pendant que Node gère les opérations sur les fichiers en arrière-plan. Traditionnellement, on utilisait des callbacks, mais ceux-ci deviennent vite difficiles à gérer quand ton app grandit."
+            },
+            {
+              "en": "Promises and `async/await` solve that problem. They are still non-blocking, but the code reads like normal synchronous code and is much easier to maintain.",
+              "fr": "Les promises et `async/await` résolvent ce problème. Elles restent non bloquantes, mais le code se lit comme du code synchrone normal et est bien plus facile à maintenir."
+            },
+            {
+              "en": "For this reason, the promises-based approach is generally preferred today, and that's what we'll use in the rest of this lesson.",
+              "fr": "Pour cette raison, l'approche basée sur les promises est généralement préférée aujourd'hui, et c'est celle que nous utiliserons dans le reste de cette leçon."
+            },
+            {
+              "en": "The `writeFile()` method lets you write to an existing file. If the file doesn't exist, it creates it in the current directory, then writes the specified content to it.",
+              "fr": "La méthode `writeFile()` te permet d'écrire dans un fichier existant. Si le fichier n'existe pas, elle le crée dans le répertoire courant, puis y écrit le contenu spécifié."
+            },
+            {
+              "en": "Here's how to use the `writeFile()` method:",
+              "fr": "Voici comment utiliser la méthode `writeFile()` :"
+            },
+            {
+              "en": "Here's the content of the article.md file after that:",
+              "fr": "Voici le contenu du fichier article.md après cela :"
+            },
+            {
+              "en": "The `appendFile()` method lets you add to the content of an existing file. Here's how to use it:",
+              "fr": "La méthode `appendFile()` te permet d'ajouter au contenu d'un fichier existant. Voici comment l'utiliser :"
+            },
+            {
+              "en": "The `readFile()` method lets you see what the content of a file is:",
+              "fr": "La méthode `readFile()` te permet de voir le contenu d'un fichier :"
+            },
+            {
+              "en": "If you don't specify the `utf8` character encoding, you will get the content of the file as a buffer:",
+              "fr": "Si tu ne spécifies pas l'encodage de caractères `utf8`, tu obtiens le contenu du fichier sous forme de buffer :"
+            },
+            {
+              "en": "In the next lesson, you will learn how to handle a buffer like this with the Node.js Buffer module.",
+              "fr": "Dans la prochaine leçon, tu apprendras à gérer un buffer comme celui-ci avec le module Buffer de Node.js."
+            },
+            {
+              "en": "Lastly, the `unlink()` method lets you delete a file:",
+              "fr": "Enfin, la méthode `unlink()` te permet de supprimer un fichier :"
+            },
+            {
+              "en": "If the file does not exist, you get an error message similar to this:",
+              "fr": "Si le fichier n'existe pas, tu obtiens un message d'erreur similaire à celui-ci :"
+            },
+            {
+              "en": "If it exists, the file is deleted, and you get the success message you set.",
+              "fr": "S'il existe, le fichier est supprimé, et tu obtiens le message de succès que tu as défini."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main purpose of the Node `fs` module?",
+              "fr": "Quel est le but principal du module Node `fs` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To create dynamic HTML pages in the browser.",
+              "fr": "Créer des pages HTML dynamiques dans le navigateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you handle files like text documents or folders directly from Node.js.",
+              "fr": "Pense à comment tu gères des fichiers comme des documents texte ou des dossiers directement depuis Node.js."
+            },
+            {
+              "en": "To connect Node.js to a database.",
+              "fr": "Connecter Node.js à une base de données."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you handle files like text documents or folders directly from Node.js.",
+              "fr": "Pense à comment tu gères des fichiers comme des documents texte ou des dossiers directement depuis Node.js."
+            },
+            {
+              "en": "To interact with the file system for file and folder CRUD operations.",
+              "fr": "Interagir avec le système de fichiers pour des opérations CRUD sur fichiers et dossiers."
+            },
+            {
+              "en": "To manage Node.js package installations.",
+              "fr": "Gérer les installations de packages Node.js."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you handle files like text documents or folders directly from Node.js.",
+              "fr": "Pense à comment tu gères des fichiers comme des documents texte ou des dossiers directement depuis Node.js."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method in the Node fs module lets you write content to a file, creating it if it doesn't exist?",
+              "fr": "Quelle méthode du module Node fs te permet d'écrire du contenu dans un fichier, en le créant s'il n'existe pas ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that both creates and writes content to a file.",
+              "fr": "Pense à la méthode qui crée et écrit du contenu dans un fichier."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that both creates and writes content to a file.",
+              "fr": "Pense à la méthode qui crée et écrit du contenu dans un fichier."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that both creates and writes content to a file.",
+              "fr": "Pense à la méthode qui crée et écrit du contenu dans un fichier."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is **NOT** one of the three ways you can use methods in the Node `fs` module?",
+              "fr": "Lequel des éléments suivants n'est **PAS** l'une des trois façons d'utiliser les méthodes du module Node `fs` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "With callbacks, for example `fs.writeFile()`.",
+              "fr": "Avec des callbacks, par exemple `fs.writeFile()`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Two are asynchronous, one is synchronous, and one doesn't exist.",
+              "fr": "Deux sont asynchrones, une est synchrone, et une n'existe pas."
+            },
+            {
+              "en": "With promises, for example `fs.promises.writeFile()`.",
+              "fr": "Avec des promises, par exemple `fs.promises.writeFile()`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Two are asynchronous, one is synchronous, and one doesn't exist.",
+              "fr": "Deux sont asynchrones, une est synchrone, et une n'existe pas."
+            },
+            {
+              "en": "Synchronously, for example `fs.writeFileSync()`.",
+              "fr": "De façon synchrone, par exemple `fs.writeFileSync()`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Two are asynchronous, one is synchronous, and one doesn't exist.",
+              "fr": "Deux sont asynchrones, une est synchrone, et une n'existe pas."
+            },
+            {
+              "en": "With JSON parsing, for example `fs.parseFile()`.",
+              "fr": "Avec le parsing JSON, par exemple `fs.parseFile()`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02c7.md",
+      "id": "695cc8f280fef0cc3bed02c7",
+      "dashedName": "what-is-the-buffer-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Buffer Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module Buffer et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "JavaScript was originally created to run in web browsers, where its main role was to make web pages interactive. Because of this, early JavaScript focused primarily on handling text in forms and manipulating the Document Object Model (DOM).",
+              "fr": "JavaScript a été créé à l'origine pour s'exécuter dans les navigateurs web, où son rôle principal était de rendre les pages interactives. Pour cette raison, le JavaScript précoce se concentrait surtout sur le texte des formulaires et la manipulation du Document Object Model (DOM)."
+            },
+            {
+              "en": "However, not all data on the web is text. Files, images, and videos are binary data, which require different handling mechanisms. In browsers, these types of data are typically processed by specialized components of the browser rather than by JavaScript itself.",
+              "fr": "Cependant, toutes les données sur le web ne sont pas du texte. Les fichiers, images et vidéos sont des données binaires, qui nécessitent d'autres mécanismes de traitement. Dans les navigateurs, ces types de données sont généralement traités par des composants spécialisés du navigateur plutôt que par JavaScript lui-même."
+            },
+            {
+              "en": "Modern browsers use rendering engines and JavaScript engines to manage these tasks — for example, Blink (with V8) in Chrome, WebKit (with JavaScriptCore) in Safari, and Gecko (with SpiderMonkey) in Firefox.",
+              "fr": "Les navigateurs modernes utilisent des moteurs de rendu et des moteurs JavaScript pour gérer ces tâches — par exemple Blink (avec V8) dans Chrome, WebKit (avec JavaScriptCore) dans Safari, et Gecko (avec SpiderMonkey) dans Firefox."
+            },
+            {
+              "en": "Node.js does not run in the browser, so it needed its own way to handle binary data, especially when handling file input and output (I/O) and TCP streams, where data comes in chunks. That's where the `Buffer` module comes in.",
+              "fr": "Node.js ne s'exécute pas dans le navigateur, il lui fallait donc sa propre façon de gérer les données binaires, surtout pour les entrées/sorties (I/O) de fichiers et les flux TCP, où les données arrivent par morceaux. C'est là qu'intervient le module `Buffer`."
+            },
+            {
+              "en": "The Node.js `Buffer` module lets you work with binary data like files, images, or network streams directly. With it, you can store and manipulate binaries directly in memory.",
+              "fr": "Le module Node.js `Buffer` te permet de travailler directement avec des données binaires comme des fichiers, images ou flux réseau. Avec lui, tu peux stocker et manipuler des binaires directement en mémoire."
+            },
+            {
+              "en": "Just like the `fs` module, `Buffer` is one of the core Node.js modules, so you don't need to install it separately before using it.",
+              "fr": "Comme le module `fs`, `Buffer` est l'un des modules de base de Node.js, donc tu n'as pas besoin de l'installer séparément avant de l'utiliser."
+            },
+            {
+              "en": "To use it, import the module first by destructuring:",
+              "fr": "Pour l'utiliser, importe d'abord le module par déstructuration :"
+            },
+            {
+              "en": "Then call `Buffer` with the methods it provides. For example, `Buffer.from()` lets you create a buffer from a string, array, or other raw data.",
+              "fr": "Puis appelle `Buffer` avec les méthodes qu'il fournit. Par exemple, `Buffer.from()` te permet de créer un buffer à partir d'une chaîne, d'un tableau ou d'autres données brutes."
+            },
+            {
+              "en": "Here's how to create a `Buffer` from a string and an array:",
+              "fr": "Voici comment créer un `Buffer` à partir d'une chaîne et d'un tableau :"
+            },
+            {
+              "en": "While it is possible to use some methods from the `Buffer` module without importing it first, other methods aren't available unless you explicitly import `Buffer`. So it's recommended that you always import Buffer whenever you use it in your projects.",
+              "fr": "Bien qu'il soit possible d'utiliser certaines méthodes du module `Buffer` sans l'importer d'abord, d'autres méthodes ne sont pas disponibles sauf si tu importes explicitement `Buffer`. Il est donc recommandé d'importer toujours Buffer dès que tu l'utilises dans tes projets."
+            },
+            {
+              "en": "You can access individual `buffer` elements just like an array:",
+              "fr": "Tu peux accéder aux éléments individuels d'un `buffer` comme à un tableau :"
+            },
+            {
+              "en": "You can also use the `toString()` method on the buffers to see what they really look like:",
+              "fr": "Tu peux aussi utiliser la méthode `toString()` sur les buffers pour voir à quoi ils ressemblent vraiment :"
+            },
+            {
+              "en": "`Buffer.alloc()` lets you create a new buffer of a given size (number of bytes). Every byte inside it is automatically filled with `0`:",
+              "fr": "`Buffer.alloc()` te permet de créer un nouveau buffer d'une taille donnée (nombre d'octets). Chaque octet à l'intérieur est automatiquement rempli avec `0` :"
+            },
+            {
+              "en": "You can see that the buffer is initialized with zeroes, based on the size passed into the `alloc()` method.",
+              "fr": "Tu peux voir que le buffer est initialisé avec des zéros, selon la taille passée à la méthode `alloc()`."
+            },
+            {
+              "en": "You can go ahead and use the `Buffer.write()` method to write to this buffer:",
+              "fr": "Tu peux ensuite utiliser la méthode `Buffer.write()` pour écrire dans ce buffer :"
+            },
+            {
+              "en": "If you write more data than the buffer can hold, it will be truncated:",
+              "fr": "Si tu écris plus de données que le buffer ne peut en contenir, elles seront tronquées :"
+            },
+            {
+              "en": "Finally, you can use `Buffer.byteLength()` to show the number of bytes needed to store a string in a certain encoding:",
+              "fr": "Enfin, tu peux utiliser `Buffer.byteLength()` pour afficher le nombre d'octets nécessaires pour stocker une chaîne dans un certain encodage :"
+            },
+            {
+              "en": "Other `Buffer` methods include:",
+              "fr": "D'autres méthodes `Buffer` incluent :"
+            },
+            {
+              "en": "- `Buffer.isBuffer()`: checks if a given object is a buffer\n- `Buffer.compare()`: compares two buffers and returns their sort order\n- `Buffer.concat()`: joins multiple buffers together into one",
+              "fr": "- `Buffer.isBuffer()` : vérifie si un objet donné est un buffer\n- `Buffer.compare()` : compare deux buffers et renvoie leur ordre de tri\n- `Buffer.concat()` : joint plusieurs buffers en un seul"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is **NOT** a Node.js `Buffer` method?",
+              "fr": "Laquelle de celles-ci n'est **PAS** une méthode Node.js `Buffer` ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles binary data outside of browsers.",
+              "fr": "Pense à comment Node.js gère les données binaires en dehors des navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles binary data outside of browsers.",
+              "fr": "Pense à comment Node.js gère les données binaires en dehors des navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles binary data outside of browsers.",
+              "fr": "Pense à comment Node.js gère les données binaires en dehors des navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why does Node.js provide the `Buffer` module?",
+              "fr": "Pourquoi Node.js fournit-il le module `Buffer` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To improve JavaScript performance in browsers.",
+              "fr": "Pour améliorer les performances de JavaScript dans les navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js deals with data that isn't just text.",
+              "fr": "Pense à comment Node.js traite les données qui ne sont pas seulement du texte."
+            },
+            {
+              "en": "To style web pages with binary-based CSS.",
+              "fr": "Pour styliser des pages web avec du CSS basé sur le binaire."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js deals with data that isn't just text.",
+              "fr": "Pense à comment Node.js traite les données qui ne sont pas seulement du texte."
+            },
+            {
+              "en": "To handle binary data like files, images, and TCP streams.",
+              "fr": "Pour gérer des données binaires comme fichiers, images et flux TCP."
+            },
+            {
+              "en": "To convert JavaScript code into machine code.",
+              "fr": "Pour convertir du code JavaScript en code machine."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles binary data outside of browsers.",
+              "fr": "Pense à comment Node.js gère les données binaires en dehors des navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you write more data than a buffer can hold?",
+              "fr": "Que se passe-t-il si tu écris plus de données qu'un buffer ne peut en contenir ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The buffer automatically resizes to fit all the data.",
+              "fr": "Le buffer se redimensionne automatiquement pour contenir toutes les données."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `\"Hello freeCodeCamp\"` becomes `\"Hello free\"` in one of the examples.",
+              "fr": "Pense à comment `\"Hello freeCodeCamp\"` devient `\"Hello free\"` dans l'un des exemples."
+            },
+            {
+              "en": "The extra data is truncated, and only what fits is stored.",
+              "fr": "Les données en trop sont tronquées, et seul ce qui tient est stocké."
+            },
+            {
+              "en": "Node.js throws an error and stops execution.",
+              "fr": "Node.js lève une erreur et arrête l'exécution."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `\"Hello freeCodeCamp\"` becomes `\"Hello free\"` in one of the examples.",
+              "fr": "Pense à comment `\"Hello freeCodeCamp\"` devient `\"Hello free\"` dans l'un des exemples."
+            },
+            {
+              "en": "The buffer overwrites data in nearby memory locations.",
+              "fr": "Le buffer écrase des données dans des emplacements mémoire voisins."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `\"Hello freeCodeCamp\"` becomes `\"Hello free\"` in one of the examples.",
+              "fr": "Pense à comment `\"Hello freeCodeCamp\"` devient `\"Hello free\"` dans l'un des exemples."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02c8.md",
+      "id": "695cc8f280fef0cc3bed02c8",
+      "dashedName": "what-is-the-crypto-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Crypto Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module Crypto et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Crypto is another core module that's built into Node.js. It includes tools for things like hashing, encryption, decryption, and creating digital signatures, all of which are used to protect sensitive information and keep your app secure.",
+              "fr": "Crypto est un autre module de base intégré à Node.js. Il inclut des outils pour le hachage, le chiffrement, le déchiffrement et la création de signatures numériques, tous utilisés pour protéger les informations sensibles et sécuriser ton app."
+            },
+            {
+              "en": "That said, `crypto` gives you low-level building blocks, not plug-and-play security. Writing your own encryption or authentication code can be unsafe if you're not careful. In most cases, it's best to use well-tested libraries like `bcrypt` for password hashing or `jsonwebtoken` (JWT) for handling logins and tokens.",
+              "fr": "Cela dit, `crypto` te donne des briques de bas niveau, pas de la sécurité clé en main. Écrire ton propre code de chiffrement ou d'authentification peut être dangereux si tu n'es pas prudent. Dans la plupart des cas, il vaut mieux utiliser des bibliothèques bien testées comme `bcrypt` pour le hachage de mots de passe ou `jsonwebtoken` (JWT) pour gérer les connexions et tokens."
+            },
+            {
+              "en": "That said, it's still useful to understand how some of the methods in the crypto module work.",
+              "fr": "Cela dit, il est toujours utile de comprendre comment certaines méthodes du module crypto fonctionnent."
+            },
+            {
+              "en": "To use these methods, you need to import the `crypto` module:",
+              "fr": "Pour utiliser ces méthodes, tu dois importer le module `crypto` :"
+            },
+            {
+              "en": "Some of the methods are used for data transformation purposes, such as the ones for hashing and encrypting data, and some others are for key and security management, such as the ones for generating random values and creating secrets.",
+              "fr": "Certaines méthodes servent à la transformation de données, comme celles pour hasher et chiffrer, et d'autres à la gestion des clés et de la sécurité, comme celles pour générer des valeurs aléatoires et créer des secrets."
+            },
+            {
+              "en": "Let's look at the methods for hashing and encrypting data first.",
+              "fr": "Regardons d'abord les méthodes pour hasher et chiffrer des données."
+            },
+            {
+              "en": "The `createHash()` method creates a hash object by taking in algorithms like `sha256`, `sha512`, or `md5`. It's a one-way operation, so you can't reverse it.",
+              "fr": "La méthode `createHash()` crée un objet de hachage en prenant des algorithmes comme `sha256`, `sha512` ou `md5`. C'est une opération à sens unique, donc tu ne peux pas l'inverser."
+            },
+            {
+              "en": "`createHash()` is useful for hashing passwords and fingerprinting files. To use it, you pass in your algorithm, use the `update()` method to feed in the data, and finally use `digest()` with an encoding to get the hash value:",
+              "fr": "`createHash()` est utile pour hasher des mots de passe et empreinter des fichiers. Pour l'utiliser, tu passes ton algorithme, tu utilises la méthode `update()` pour fournir les données, puis `digest()` avec un encodage pour obtenir la valeur de hachage :"
+            },
+            {
+              "en": "`createHmac()` does almost the same thing as `createHash()`, but it takes things to the next level by accepting a secret key, so only someone with that key can verify the hash. It is ideal for authentication and verifying data integrity:",
+              "fr": "`createHmac()` fait presque la même chose que `createHash()`, mais va plus loin en acceptant une clé secrète, afin que seule une personne ayant cette clé puisse vérifier le hachage. C'est idéal pour l'authentification et la vérification de l'intégrité des données :"
+            },
+            {
+              "en": "The `createCipheriv()` and `createDecipheriv()` methods encrypt and decrypt data. They both take in an algorithm, a key, and an `iv`, which is a block of random or unique data used at the start of the encryption process:",
+              "fr": "Les méthodes `createCipheriv()` et `createDecipheriv()` chiffrent et déchiffrent des données. Elles prennent toutes deux un algorithme, une clé et un `iv`, qui est un bloc de données aléatoires ou uniques utilisé au début du processus de chiffrement :"
+            },
+            {
+              "en": "To decrypt the data, the key must be the same, otherwise, the decryption will fail, and you'll either get an error or unreadable gibberish instead of the original message.",
+              "fr": "Pour déchiffrer les données, la clé doit être la même, sinon le déchiffrement échouera, et tu obtiendras soit une erreur, soit du charabia illisible au lieu du message d'origine."
+            },
+            {
+              "en": "Here are the two in action:",
+              "fr": "Voici les deux en action :"
+            },
+            {
+              "en": "Another crypto method for data transformation is `sign()` and `verify()`.",
+              "fr": "Une autre méthode crypto pour la transformation de données est `sign()` et `verify()`."
+            },
+            {
+              "en": "`sign()` creates a digital signature from some data using a private key. This signature proves that the data came from the holder of the private key and has not been tampered with.",
+              "fr": "`sign()` crée une signature numérique à partir de données en utilisant une clé privée. Cette signature prouve que les données viennent du détenteur de la clé privée et n'ont pas été altérées."
+            },
+            {
+              "en": "`verify()` then checks that signature, and it fails if the data or signature does not match.",
+              "fr": "`verify()` vérifie ensuite cette signature, et échoue si les données ou la signature ne correspondent pas."
+            },
+            {
+              "en": "Now, let's look at the crypto methods for generating random values and creating secrets.",
+              "fr": "Maintenant, regardons les méthodes crypto pour générer des valeurs aléatoires et créer des secrets."
+            },
+            {
+              "en": "`randomBytes()` takes in a `size` and generates cryptographically secured tokens. That makes it good for generating UUIDs (universally unique IDs). In addition, it's a good replacement for `Math.random()`, which is not secure for tokens and keys.",
+              "fr": "`randomBytes()` prend une `size` et génère des tokens cryptographiquement sécurisés. Cela en fait un bon choix pour générer des UUID (identifiants universellement uniques). De plus, c'est un bon remplacement de `Math.random()`, qui n'est pas sûr pour les tokens et les clés."
+            },
+            {
+              "en": "The output is a buffer by default. As you learned in the lesson on the Buffer module, you can convert that Buffer to a string with the `toString()` method:",
+              "fr": "La sortie est un buffer par défaut. Comme tu l'as appris dans la leçon sur le module Buffer, tu peux convertir ce Buffer en chaîne avec la méthode `toString()` :"
+            },
+            {
+              "en": "The `'hex'` argument in `toString('hex')` here tells Node to encode the binary data from the Buffer as a hexadecimal string.",
+              "fr": "L'argument `'hex'` dans `toString('hex')` indique ici à Node d'encoder les données binaires du Buffer en chaîne hexadécimale."
+            },
+            {
+              "en": "The `randomInt()` method takes in a `min` and `max` values and generates a secure random integer between them. It is useful for OTPs and random selection.",
+              "fr": "La méthode `randomInt()` prend des valeurs `min` et `max` et génère un entier aléatoire sécurisé entre elles. Elle est utile pour les OTP et la sélection aléatoire."
+            },
+            {
+              "en": "Again, the upgrade over `Math.random()` and `Math.floor()` is that the method uses cryptographically secure randomness under the hood, so attackers can't predict the resulting random number.",
+              "fr": "Encore une fois, l'avantage sur `Math.random()` et `Math.floor()` est que la méthode utilise une aléatoire cryptographiquement sécurisée sous le capot, donc les attaquants ne peuvent pas prédire le nombre aléatoire résultant."
+            },
+            {
+              "en": "Another method is `createSecretKey()`. It takes a buffer and generates a raw byte wrapped into a `KeyObject`:",
+              "fr": "Une autre méthode est `createSecretKey()`. Elle prend un buffer et génère des octets bruts encapsulés dans un `KeyObject` :"
+            },
+            {
+              "en": "You can then use the `export` method to send out that `KeyObject`:",
+              "fr": "Tu peux ensuite utiliser la méthode `export` pour envoyer ce `KeyObject` :"
+            },
+            {
+              "en": "And finally, use `toString()` on the buffer to see the string representation of it:",
+              "fr": "Et enfin, utiliser `toString()` sur le buffer pour voir sa représentation en chaîne :"
+            },
+            {
+              "en": "In addition to these, there are:",
+              "fr": "En plus de celles-ci, il y a :"
+            },
+            {
+              "en": "- `createPublicKey()` and `createPrivateKey()` that lets you work with keys generated elsewhere\n- `createDiffieHellman()` for two parties to generate a shared secret without sending the secret directly\n- `Certificate()` for working with the one used in HTTPS, so you can parse, export, and verify certificate contents",
+              "fr": "- `createPublicKey()` et `createPrivateKey()` qui te permettent de travailler avec des clés générées ailleurs\n- `createDiffieHellman()` pour que deux parties génèrent un secret partagé sans envoyer le secret directement\n- `Certificate()` pour travailler avec celui utilisé en HTTPS, afin de parser, exporter et vérifier le contenu des certificats"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is the correct way to import the Node.js crypto module?",
+              "fr": "Quelle est la bonne façon d'importer le module crypto de Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the syntax Node.js uses for requiring built-in modules.",
+              "fr": "Concentre-toi sur la syntaxe que Node.js utilise pour requérir les modules intégrés."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the syntax Node.js uses for requiring built-in modules.",
+              "fr": "Concentre-toi sur la syntaxe que Node.js utilise pour requérir les modules intégrés."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on the syntax Node.js uses for requiring built-in modules.",
+              "fr": "Concentre-toi sur la syntaxe que Node.js utilise pour requérir les modules intégrés."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these statements about `sign()` and `verify()` is correct?",
+              "fr": "Laquelle de ces affirmations sur `sign()` et `verify()` est correcte ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`sign()` uses a public key to create a signature, and `verify()` checks it with a private key.",
+              "fr": "`sign()` utilise une clé publique pour créer une signature, et `verify()` la vérifie avec une clé privée."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that digital signatures work with private–public key pairs.",
+              "fr": "Souviens-toi que les signatures numériques fonctionnent avec des paires de clés privée–publique."
+            },
+            {
+              "en": "Both `sign()` and `verify()` require only a private key.",
+              "fr": "`sign()` et `verify()` nécessitent toutes deux uniquement une clé privée."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that digital signatures work with private–public key pairs.",
+              "fr": "Souviens-toi que les signatures numériques fonctionnent avec des paires de clés privée–publique."
+            },
+            {
+              "en": "`sign()` creates a digital signature with a private key, and `verify()` checks it with the corresponding public key.",
+              "fr": "`sign()` crée une signature numérique avec une clé privée, et `verify()` la vérifie avec la clé publique correspondante."
+            },
+            {
+              "en": "`verify()` can check signatures without needing any key.",
+              "fr": "`verify()` peut vérifier des signatures sans avoir besoin d'aucune clé."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that digital signatures work with private–public key pairs.",
+              "fr": "Souviens-toi que les signatures numériques fonctionnent avec des paires de clés privée–publique."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What method in the crypto module creates a one-way hash object using algorithms like `sha256`, `sha512`, or `md5`?",
+              "fr": "Quelle méthode du module crypto crée un objet de hachage à sens unique avec des algorithmes comme `sha256`, `sha512` ou `md5` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method is often used for hashing passwords and fingerprinting files.",
+              "fr": "Cette méthode est souvent utilisée pour hasher des mots de passe et empreinter des fichiers."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method is often used for hashing passwords and fingerprinting files.",
+              "fr": "Cette méthode est souvent utilisée pour hasher des mots de passe et empreinter des fichiers."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method is often used for hashing passwords and fingerprinting files.",
+              "fr": "Cette méthode est souvent utilisée pour hasher des mots de passe et empreinter des fichiers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02c9.md",
+      "id": "695cc8f280fef0cc3bed02c9",
+      "dashedName": "what-is-the-os-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the os Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module os et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The OS module is another standard module that comes built into Node.js.",
+              "fr": "Le module OS est un autre module standard intégré à Node.js."
+            },
+            {
+              "en": "It lets you interact with the current operating system Node is running on so you can access vital information like the OS type, CPU details, available memory, total memory, network interfaces, and more.",
+              "fr": "Il te permet d'interagir avec le système d'exploitation sur lequel Node s'exécute pour accéder à des informations vitales comme le type d'OS, les détails du CPU, la mémoire disponible, la mémoire totale, les interfaces réseau, et plus encore."
+            },
+            {
+              "en": "To use the OS module, you import it this way:",
+              "fr": "Pour utiliser le module OS, tu l'importes ainsi :"
+            },
+            {
+              "en": "The OS module provides several methods you can use to make your application more system-aware. Let's look at some common ones.",
+              "fr": "Le module OS fournit plusieurs méthodes que tu peux utiliser pour rendre ton application plus consciente du système. Regardons quelques-unes des plus courantes."
+            },
+            {
+              "en": "The `platform()` method retrieves the operating system Node is currently running on:",
+              "fr": "La méthode `platform()` récupère le système d'exploitation sur lequel Node s'exécute actuellement :"
+            },
+            {
+              "en": "It can be useful for implementing cross-platform scripting:",
+              "fr": "Elle peut être utile pour implémenter des scripts multiplateformes :"
+            },
+            {
+              "en": "The `arch()` method shows a string representing the CPU architecture Node.js was compiled for:",
+              "fr": "La méthode `arch()` affiche une chaîne représentant l'architecture CPU pour laquelle Node.js a été compilé :"
+            },
+            {
+              "en": "This can be useful if you want users to download the correct binaries and dependencies for a given architecture.",
+              "fr": "Cela peut être utile si tu veux que les utilisateurs téléchargent les bons binaires et dépendances pour une architecture donnée."
+            },
+            {
+              "en": "Other possible values are `'x64'`, `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'ppc'`, and others.",
+              "fr": "D'autres valeurs possibles sont `'x64'`, `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'ppc'`, et d'autres."
+            },
+            {
+              "en": "`type()` gets the official OS name, so you can programmatically identify operating systems:",
+              "fr": "`type()` obtient le nom officiel de l'OS, pour que tu puisses identifier les systèmes d'exploitation par programme :"
+            },
+            {
+              "en": "`release()` shows the system's OS kernel version, the core part of the operating system that manages system resources and communication between hardware and software components. This method can be useful for tracking compatibility between OS kernel versions and server requirements.",
+              "fr": "`release()` affiche la version du noyau OS du système, la partie centrale du système d'exploitation qui gère les ressources système et la communication entre le matériel et les composants logiciels. Cette méthode peut être utile pour suivre la compatibilité entre les versions du noyau OS et les exigences du serveur."
+            },
+            {
+              "en": "It returns this as a string like `'20.6.0'`:",
+              "fr": "Elle renvoie cela sous forme de chaîne comme `'20.6.0'` :"
+            },
+            {
+              "en": "`version()` returns the specific operating system version with more details than the `release()` method:",
+              "fr": "`version()` renvoie la version spécifique du système d'exploitation avec plus de détails que la méthode `release()` :"
+            },
+            {
+              "en": "`cpus()` returns an array of objects with details about each logical CPU core. This can help monitor CPU load:",
+              "fr": "`cpus()` renvoie un tableau d'objets avec des détails sur chaque cœur CPU logique. Cela peut aider à surveiller la charge CPU :"
+            },
+            {
+              "en": "`uptime()` shows the time since the system was booted up. It can help determine how long servers have been running:",
+              "fr": "`uptime()` affiche le temps écoulé depuis le démarrage du système. Cela peut aider à déterminer depuis combien de temps les serveurs tournent :"
+            },
+            {
+              "en": "`totalmem()` and `freemem()` show the total amount of system memory in bytes and free system memory in bytes, respectively:",
+              "fr": "`totalmem()` et `freemem()` affichent respectivement la quantité totale de mémoire système en octets et la mémoire système libre en octets :"
+            },
+            {
+              "en": "`userInfo()` returns an object containing information about the current system user:",
+              "fr": "`userInfo()` renvoie un objet contenant des informations sur l'utilisateur système actuel :"
+            },
+            {
+              "en": "Lastly, `networkInterfaces()` returns an object containing only network interfaces that have been assigned a network address.",
+              "fr": "Enfin, `networkInterfaces()` renvoie un objet contenant uniquement les interfaces réseau auxquelles une adresse réseau a été assignée."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What do the `os.totalmem()` and `os.freemem()` methods in Node.js display?",
+              "fr": "Qu'affichent les méthodes `os.totalmem()` et `os.freemem()` dans Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The total and free memory used by Node.js only.",
+              "fr": "La mémoire totale et libre utilisée uniquement par Node.js."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These methods measure system-level memory, not app-level memory.",
+              "fr": "Ces méthodes mesurent la mémoire au niveau système, pas au niveau de l'app."
+            },
+            {
+              "en": "The total and free memory of a specific process.",
+              "fr": "La mémoire totale et libre d'un processus spécifique."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These methods measure system-level memory, not app-level memory.",
+              "fr": "Ces méthodes mesurent la mémoire au niveau système, pas au niveau de l'app."
+            },
+            {
+              "en": "The total and free disk storage space.",
+              "fr": "L'espace de stockage disque total et libre."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These methods measure system-level memory, not app-level memory.",
+              "fr": "Ces méthodes mesurent la mémoire au niveau système, pas au niveau de l'app."
+            },
+            {
+              "en": "The total and free system memory in bytes.",
+              "fr": "La mémoire système totale et libre en octets."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is a possible value returned by the `os.arch()` method in Node.js?",
+              "fr": "Laquelle de ces valeurs peut être renvoyée par la méthode `os.arch()` dans Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for what represents the CPU architecture Node.js was compiled for.",
+              "fr": "Repère ce qui représente l'architecture CPU pour laquelle Node.js a été compilé."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for what represents the CPU architecture Node.js was compiled for.",
+              "fr": "Repère ce qui représente l'architecture CPU pour laquelle Node.js a été compilé."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for what represents the CPU architecture Node.js was compiled for.",
+              "fr": "Repère ce qui représente l'architecture CPU pour laquelle Node.js a été compilé."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the Node.js OS module allow you to do?",
+              "fr": "Que te permet de faire le module OS de Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Interact with the current operating system to access details like CPU, memory, and network info.",
+              "fr": "Interagir avec le système d'exploitation actuel pour accéder à des détails comme le CPU, la mémoire et le réseau."
+            },
+            {
+              "en": "Interact with databases and perform SQL queries.",
+              "fr": "Interagir avec des bases de données et exécuter des requêtes SQL."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what gives Node access to system-level info such as OS type and memory details.",
+              "fr": "Concentre-toi sur ce qui donne à Node accès aux infos système comme le type d'OS et les détails mémoire."
+            },
+            {
+              "en": "Handle HTTP requests and responses between the client and server.",
+              "fr": "Gérer les requêtes et réponses HTTP entre le client et le serveur."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what gives Node access to system-level info such as OS type and memory details.",
+              "fr": "Concentre-toi sur ce qui donne à Node accès aux infos système comme le type d'OS et les détails mémoire."
+            },
+            {
+              "en": "Manage file uploads and read data from streams.",
+              "fr": "Gérer les téléversements de fichiers et lire des données depuis des flux."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on what gives Node access to system-level info such as OS type and memory details.",
+              "fr": "Concentre-toi sur ce qui donne à Node accès aux infos système comme le type d'OS et les détails mémoire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02ca.md",
+      "id": "695cc8f280fef0cc3bed02ca",
+      "dashedName": "what-is-the-path-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Path Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module Path et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The Node.js `path` module lets you work with files and directory paths. It provides several useful methods for handling and transforming directories, including joining, normalizing, and resolving the directories across different platforms and operating systems.",
+              "fr": "Le module Node.js `path` te permet de travailler avec les chemins de fichiers et de répertoires. Il fournit plusieurs méthodes utiles pour gérer et transformer les chemins, notamment joindre, normaliser et résoudre les chemins sur différentes plateformes et systèmes d'exploitation."
+            },
+            {
+              "en": "To use the `path` module, you can import it like this:",
+              "fr": "Pour utiliser le module `path`, tu peux l'importer ainsi :"
+            },
+            {
+              "en": "Let's look at some of the methods the `path` module provides and how they work.",
+              "fr": "Regardons quelques méthodes fournies par le module `path` et comment elles fonctionnent."
+            },
+            {
+              "en": "First, you should be aware of the Node.js global variables `__filename` and `__dirname`, AKA \"common JS\" variables. You don't need the `path` module to access them, which is why they are called global variables.",
+              "fr": "D'abord, tu dois connaître les variables globales Node.js `__filename` et `__dirname`, aussi appelées variables « common JS ». Tu n'as pas besoin du module `path` pour y accéder, c'est pourquoi elles sont appelées variables globales."
+            },
+            {
+              "en": "`__filename` is the absolute path of the current file and `__dirname` is the absolute path of the directory containing the current file.",
+              "fr": "`__filename` est le chemin absolu du fichier actuel et `__dirname` est le chemin absolu du répertoire contenant le fichier actuel."
+            },
+            {
+              "en": "For example, I have a `script.js` file I'm currently working with. Here's what the two methods return:",
+              "fr": "Par exemple, j'ai un fichier `script.js` avec lequel je travaille actuellement. Voici ce que renvoient les deux :"
+            },
+            {
+              "en": "You should also be aware of relative and absolute paths.",
+              "fr": "Tu dois aussi connaître les chemins relatifs et absolus."
+            },
+            {
+              "en": "A relative path points to a file or folder based on your current working directory. For example, `./assets/src/text-files`.",
+              "fr": "Un chemin relatif pointe vers un fichier ou dossier par rapport à ton répertoire de travail actuel. Par exemple, `./assets/src/text-files`."
+            },
+            {
+              "en": "An absolute path, on the other hand, gives the complete address of a file or folder from the root of your system, such as `/Users/johndoe/projects/app/assets/src/text-files.`",
+              "fr": "Un chemin absolu, en revanche, donne l'adresse complète d'un fichier ou dossier depuis la racine de ton système, comme `/Users/johndoe/projects/app/assets/src/text-files.`"
+            },
+            {
+              "en": "The `basename()` method shows the last part of the file, that is, the filename:",
+              "fr": "La méthode `basename()` affiche la dernière partie du fichier, c'est-à-dire le nom de fichier :"
+            },
+            {
+              "en": "`dirname()` returns the directory name of a path:",
+              "fr": "`dirname()` renvoie le nom du répertoire d'un chemin :"
+            },
+            {
+              "en": "`extname()` returns the extension of the current file:",
+              "fr": "`extname()` renvoie l'extension du fichier actuel :"
+            },
+            {
+              "en": "You can also specify a different file to return the extension of:",
+              "fr": "Tu peux aussi spécifier un autre fichier dont renvoyer l'extension :"
+            },
+            {
+              "en": "The `join()` method takes all the path segments you pass in and joins them into one clean, normalized path.",
+              "fr": "La méthode `join()` prend tous les segments de chemin que tu passes et les joint en un seul chemin propre et normalisé."
+            },
+            {
+              "en": "This could be useful if you want to merge related files in different folders so you can work with them together:",
+              "fr": "Cela peut être utile si tu veux fusionner des fichiers liés dans différents dossiers pour travailler avec eux ensemble :"
+            },
+            {
+              "en": "Windows uses backslashes to separate directories, so the result will be `src\\assets\\text-files`.",
+              "fr": "Windows utilise des backslashes pour séparer les chemins, donc le résultat sera `src\\assets\\text-files`."
+            },
+            {
+              "en": "In addition, the `join()` method automatically fixes wrong slashes and removes extra ones:",
+              "fr": "De plus, la méthode `join()` corrige automatiquement les mauvais slashs et supprime les slashs en trop :"
+            },
+            {
+              "en": "The `resolve()` method turns a sequence of path segments into an absolute path. It starts from your current working directory and results in a full path that points to the exact location on the device:",
+              "fr": "La méthode `resolve()` transforme une séquence de segments de chemin en un chemin absolu. Elle part de ton répertoire de travail actuel et produit un chemin complet qui pointe vers l'emplacement exact sur l'appareil :"
+            },
+            {
+              "en": "The difference between `join()` and `resolve()` is that `join()` creates a relative path, while `resolve()` returns an absolute path.",
+              "fr": "La différence entre `join()` et `resolve()` est que `join()` crée un chemin relatif, tandis que `resolve()` renvoie un chemin absolu."
+            },
+            {
+              "en": "Lastly, there are the `parse()` and `format()` methods.",
+              "fr": "Enfin, il y a les méthodes `parse()` et `format()`."
+            },
+            {
+              "en": "`parse()` takes a directory or file and returns an object that contains the breakdown of its parts, such as the system root, its directory, extension, and the filename:",
+              "fr": "`parse()` prend un répertoire ou un fichier et renvoie un objet qui contient la décomposition de ses parties, comme la racine système, son répertoire, l'extension et le nom de fichier :"
+            },
+            {
+              "en": "`format()`, on the other hand, builds a path from an object containing directory, name, and extension:",
+              "fr": "`format()`, en revanche, construit un chemin à partir d'un objet contenant le répertoire, le nom et l'extension :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between `path.dirname()` and `path.extname()` in Node.js?",
+              "fr": "Quelle est la différence entre `path.dirname()` et `path.extname()` dans Node.js ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`dirname()` removes the file extension, while `extname()` removes the directory name.",
+              "fr": "`dirname()` retire l'extension du fichier, tandis que `extname()` retire le nom du répertoire."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on which one deals with directories and which one deals with file extensions.",
+              "fr": "Concentre-toi sur laquelle traite les répertoires et laquelle traite les extensions de fichiers."
+            },
+            {
+              "en": "`dirname()` returns the full file path, while `extname()` returns the directory name.",
+              "fr": "`dirname()` renvoie le chemin complet du fichier, tandis que `extname()` renvoie le nom du répertoire."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on which one deals with directories and which one deals with file extensions.",
+              "fr": "Concentre-toi sur laquelle traite les répertoires et laquelle traite les extensions de fichiers."
+            },
+            {
+              "en": "`dirname()` returns the directory name of a path, while `extname()` returns the file's extension.",
+              "fr": "`dirname()` renvoie le nom du répertoire d'un chemin, tandis que `extname()` renvoie l'extension du fichier."
+            },
+            {
+              "en": "`dirname()` and `extname()` both return the same value but in different formats.",
+              "fr": "`dirname()` et `extname()` renvoient toutes deux la même valeur mais dans des formats différents."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Focus on which one deals with directories and which one deals with file extensions.",
+              "fr": "Concentre-toi sur laquelle traite les répertoires et laquelle traite les extensions de fichiers."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which `path` method builds a complete file path from an object containing directory, name, and extension properties?",
+              "fr": "Quelle méthode `path` construit un chemin de fichier complet à partir d'un objet contenant les propriétés directory, name et extension ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the opposite of `parse()` is.",
+              "fr": "Pense à ce qu'est l'opposé de `parse()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the opposite of `parse()` is.",
+              "fr": "Pense à ce qu'est l'opposé de `parse()`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the opposite of `parse()` is.",
+              "fr": "Pense à ce qu'est l'opposé de `parse()`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What do the Node.js global variables `__filename` and `__dirname` provide access to?",
+              "fr": "À quoi donnent accès les variables globales Node.js `__filename` et `__dirname` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The absolute path of the current file and its containing directory.",
+              "fr": "Le chemin absolu du fichier actuel et de son répertoire parent."
+            },
+            {
+              "en": "The name of the current module and its dependencies.",
+              "fr": "Le nom du module actuel et ses dépendances."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which variables automatically give you full file and folder paths without using the path module.",
+              "fr": "Pense aux variables qui te donnent automatiquement les chemins complets des fichiers et dossiers sans utiliser le module path."
+            },
+            {
+              "en": "The relative path to the Node.js installation directory.",
+              "fr": "Le chemin relatif vers le répertoire d'installation de Node.js."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which variables automatically give you full file and folder paths without using the path module.",
+              "fr": "Pense aux variables qui te donnent automatiquement les chemins complets des fichiers et dossiers sans utiliser le module path."
+            },
+            {
+              "en": "The URL of the running web server and its hostname.",
+              "fr": "L'URL du serveur web en cours d'exécution et son nom d'hôte."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which variables automatically give you full file and folder paths without using the path module.",
+              "fr": "Pense aux variables qui te donnent automatiquement les chemins complets des fichiers et dossiers sans utiliser le module path."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02cb.md",
+      "id": "695cc8f280fef0cc3bed02cb",
+      "dashedName": "what-is-the-process-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Process Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module Process et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "`process` is one of the most important Node.js core modules. It gives you access to information about the current Node.js process, and lets you control it while your app is running.",
+              "fr": "`process` est l'un des modules de base Node.js les plus importants. Il te donne accès aux informations sur le processus Node.js actuel, et te permet de le contrôler pendant que ton app s'exécute."
+            },
+            {
+              "en": "When you execute a command like `node script.js` in the terminal, Node.js starts a process, which is a running instance of the Node program that executes the `script.js` file. This process has its own memory, environment, and execution context.",
+              "fr": "Quand tu exécutes une commande comme `node script.js` dans le terminal, Node.js démarre un processus, qui est une instance en cours d'exécution du programme Node qui exécute le fichier `script.js`. Ce processus a sa propre mémoire, son environnement et son contexte d'exécution."
+            },
+            {
+              "en": "The current process is exposed globally through the `process` module, so you don't even need to import it. As long as you have Node.js installed, then you can call it anywhere.",
+              "fr": "Le processus actuel est exposé globalement via le module `process`, tu n'as même pas besoin de l'importer. Tant que Node.js est installé, tu peux l'appeler n'importe où."
+            },
+            {
+              "en": "The `process` module exposes properties and methods for you to get certain information about the current execution context.",
+              "fr": "Le module `process` expose des propriétés et méthodes pour obtenir certaines informations sur le contexte d'exécution actuel."
+            },
+            {
+              "en": "`process.env` gets you information about the current environment Node is running on. This always returns a giant object with many parameters, so here's how you can access some of the most important information directly:",
+              "fr": "`process.env` te donne des informations sur l'environnement actuel sur lequel Node s'exécute. Cela renvoie toujours un énorme objet avec de nombreux paramètres, voici donc comment accéder directement à certaines des infos les plus importantes :"
+            },
+            {
+              "en": "`process.argv` lets you read command-line arguments:",
+              "fr": "`process.argv` te permet de lire les arguments de la ligne de commande :"
+            },
+            {
+              "en": "The `cwd()` method shows the current working directory:",
+              "fr": "La méthode `cwd()` affiche le répertoire de travail actuel :"
+            },
+            {
+              "en": "Process events are a core feature of Node.js that let your app respond to key moments in its lifecycle, like when it's about to exit, encounters an error, or receives a system signal.",
+              "fr": "Les événements de processus sont une fonctionnalité centrale de Node.js qui permettent à ton app de réagir aux moments clés de son cycle de vie, comme juste avant de quitter, en cas d'erreur, ou à la réception d'un signal système."
+            },
+            {
+              "en": "The `exit` event, for example, runs right before the Node.js process finishes:",
+              "fr": "L'événement `exit`, par exemple, s'exécute juste avant que le processus Node.js se termine :"
+            },
+            {
+              "en": "The `uncaughtException` event is triggered when an error is not caught in your code, which can help you prevent crashes:",
+              "fr": "L'événement `uncaughtException` est déclenché quand une erreur n'est pas capturée dans ton code, ce qui peut t'aider à prévenir les plantages :"
+            },
+            {
+              "en": "Lastly, the `warning` event is triggered when Node.js emits a process warning:",
+              "fr": "Enfin, l'événement `warning` est déclenché quand Node.js émet un avertissement de processus :"
+            },
+            {
+              "en": "You can then use the `emitWarning()` method to trigger a custom warning:",
+              "fr": "Tu peux ensuite utiliser la méthode `emitWarning()` pour déclencher un avertissement personnalisé :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `process.emitWarning()` method do?",
+              "fr": "Que fait la méthode `process.emitWarning()` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It stops the process when a custom warning occurs.",
+              "fr": "Elle arrête le processus quand un avertissement personnalisé survient."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles custom warnings through events.",
+              "fr": "Pense à comment Node.js gère les avertissements personnalisés via les événements."
+            },
+            {
+              "en": "It triggers a custom warning event that can be handled by the warning listener.",
+              "fr": "Elle déclenche un événement d'avertissement personnalisé qui peut être géré par l'écouteur warning."
+            },
+            {
+              "en": "It logs an error and exits the process immediately.",
+              "fr": "Elle journalise une erreur et quitte le processus immédiatement."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles custom warnings through events.",
+              "fr": "Pense à comment Node.js gère les avertissements personnalisés via les événements."
+            },
+            {
+              "en": "It restarts the Node.js process after showing a warning.",
+              "fr": "Elle redémarre le processus Node.js après avoir affiché un avertissement."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles custom warnings through events.",
+              "fr": "Pense à comment Node.js gère les avertissements personnalisés via les événements."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you use the process module?",
+              "fr": "Comment utilises-tu le module process ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By calling it directly since it's a global object.",
+              "fr": "En l'appelant directement puisqu'il s'agit d'un objet global."
+            },
+            {
+              "en": "By enabling it in the Node.js configuration file.",
+              "fr": "En l'activant dans le fichier de configuration de Node.js."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you can access process anywhere without setup.",
+              "fr": "Pense à pourquoi tu peux accéder à process n'importe où sans configuration."
+            },
+            {
+              "en": "By installing it manually using npm before calling it.",
+              "fr": "En l'installant manuellement avec npm avant de l'appeler."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you can access process anywhere without setup.",
+              "fr": "Pense à pourquoi tu peux accéder à process n'importe où sans configuration."
+            },
+            {
+              "en": "By importing it using require('process') before each use.",
+              "fr": "En l'important avec require('process') avant chaque utilisation."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you can access process anywhere without setup.",
+              "fr": "Pense à pourquoi tu peux accéder à process n'importe où sans configuration."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are process events used for?",
+              "fr": "À quoi servent les événements de processus ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To define environment variables for the application.",
+              "fr": "À définir des variables d'environnement pour l'application."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js reacts to lifecycle changes during execution.",
+              "fr": "Pense à comment Node.js réagit aux changements du cycle de vie pendant l'exécution."
+            },
+            {
+              "en": "To create new processes for parallel execution.",
+              "fr": "À créer de nouveaux processus pour l'exécution parallèle."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js reacts to lifecycle changes during execution.",
+              "fr": "Pense à comment Node.js réagit aux changements du cycle de vie pendant l'exécution."
+            },
+            {
+              "en": "To listen for and respond to important lifecycle moments like exit, errors, or system signals.",
+              "fr": "À écouter et répondre aux moments importants du cycle de vie comme la sortie, les erreurs ou les signaux système."
+            },
+            {
+              "en": "To manage file paths and extensions in the system.",
+              "fr": "À gérer les chemins de fichiers et les extensions dans le système."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js reacts to lifecycle changes during execution.",
+              "fr": "Pense à comment Node.js réagit aux changements du cycle de vie pendant l'exécution."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "695cc8f280fef0cc3bed02cc.md",
+      "id": "695cc8f280fef0cc3bed02cc",
+      "dashedName": "what-is-the-stream-module-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Stream Module and How Does It Work?",
+        "fr": "Qu'est-ce que le module Stream et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The last core Node.js module we'll look at is `stream`. This module helps you handle data efficiently, especially when the data is too large to load all at once, like reading a big text file or downloading a large video.",
+              "fr": "Le dernier module de base Node.js que nous allons examiner est `stream`. Ce module t'aide à gérer les données efficacement, surtout quand elles sont trop volumineuses pour être chargées d'un coup, comme lire un gros fichier texte ou télécharger une grande vidéo."
+            },
+            {
+              "en": "Instead of waiting to read or write all the data before doing anything, streams process chunks of data as they arrive, similar to how you can start watching a YouTube video before the whole video finishes loading.",
+              "fr": "Au lieu d'attendre de lire ou d'écrire toutes les données avant de faire quoi que ce soit, les streams traitent des morceaux de données à mesure qu'ils arrivent, un peu comme tu peux commencer à regarder une vidéo YouTube avant que toute la vidéo ait fini de charger."
+            },
+            {
+              "en": "There are four main types of streams in Node.js: readable, writable, duplex, and transform:",
+              "fr": "Il y a quatre types principaux de streams dans Node.js : readable, writable, duplex et transform :"
+            },
+            {
+              "en": "- Readable streams let you read data in chunks (for example, reading a large file).\n- Writable streams let you write data in chunks (for example, saving a file).\n- Duplex streams can both read and write data.\n- Transform streams are a special kind of duplex stream that can change or process the data as it flows through.",
+              "fr": "- Les streams Readable te permettent de lire des données par morceaux (par exemple, lire un gros fichier).\n- Les streams Writable te permettent d'écrire des données par morceaux (par exemple, enregistrer un fichier).\n- Les streams Duplex peuvent à la fois lire et écrire des données.\n- Les streams Transform sont un type spécial de stream duplex qui peuvent modifier ou traiter les données pendant qu'elles circulent."
+            },
+            {
+              "en": "You can import the stream classes you need by destructuring them from the stream module:",
+              "fr": "Tu peux importer les classes de stream dont tu as besoin en les déstructurant depuis le module stream :"
+            },
+            {
+              "en": "Most of the time, you don't need to create custom stream classes yourself. For everyday file operations, built-in methods like `fs.createReadStream()` and `fs.createWriteStream()` are usually all you need.",
+              "fr": "La plupart du temps, tu n'as pas besoin de créer toi-même des classes de stream personnalisées. Pour les opérations fichiers du quotidien, des méthodes intégrées comme `fs.createReadStream()` et `fs.createWriteStream()` suffisent généralement."
+            },
+            {
+              "en": "These two methods take the path of the file to read or write. This means you also need the `fs` and `path` modules to implement streaming on many occasions.",
+              "fr": "Ces deux méthodes prennent le chemin du fichier à lire ou écrire. Cela signifie que tu as aussi besoin des modules `fs` et `path` pour implémenter le streaming dans bien des cas."
+            },
+            {
+              "en": "Here's how you can read data from a file, say an `input.txt` file:",
+              "fr": "Voici comment lire des données depuis un fichier, disons un fichier `input.txt` :"
+            },
+            {
+              "en": "This will not do anything yet, as you need to use the events from the stream to read the data. For example, you can listen to the `data` event this way:",
+              "fr": "Cela ne fera encore rien, car tu dois utiliser les événements du stream pour lire les données. Par exemple, tu peux écouter l'événement `data` ainsi :"
+            },
+            {
+              "en": "You can also log the chunk of data to the console:",
+              "fr": "Tu peux aussi journaliser le morceau de données dans la console :"
+            },
+            {
+              "en": "Since it returns a buffer, you can call the `toString()` method to convert it into readable text:",
+              "fr": "Comme il renvoie un buffer, tu peux appeler la méthode `toString()` pour le convertir en texte lisible :"
+            },
+            {
+              "en": "To implement a writable stream, particularly when you're reading from one file and writing to another, you need to create the read stream first, followed by the write stream:",
+              "fr": "Pour implémenter un stream writable, en particulier quand tu lis depuis un fichier et écris vers un autre, tu dois d'abord créer le read stream, puis le write stream :"
+            },
+            {
+              "en": "Next, use the `.pipe()` method to connect the readable stream to the writable stream. This lets Node.js automatically read data from the source and write it to the destination, chunk by chunk:",
+              "fr": "Ensuite, utilise la méthode `.pipe()` pour connecter le stream readable au stream writable. Cela permet à Node.js de lire automatiquement les données depuis la source et de les écrire vers la destination, morceau par morceau :"
+            },
+            {
+              "en": "Then you can listen for the `finish` and `error` events on the writable stream to know when the streaming is complete or if something goes wrong:",
+              "fr": "Tu peux ensuite écouter les événements `finish` et `error` sur le stream writable pour savoir quand le streaming est terminé ou si quelque chose tourne mal :"
+            },
+            {
+              "en": "The `finish` event tells you that the stream is complete and there is no more data to write, while the error event helps you catch problems that might happen during writing, like permissions issues or missing directories.",
+              "fr": "L'événement `finish` t'indique que le stream est terminé et qu'il n'y a plus de données à écrire, tandis que l'événement error t'aide à capturer les problèmes qui peuvent survenir pendant l'écriture, comme des problèmes de permissions ou des répertoires manquants."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these are the four main types of streams?",
+              "fr": "Lesquels de ceux-ci sont les quatre types principaux de streams ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Request, Response, Event, and Error streams.",
+              "fr": "Streams Request, Response, Event et Error."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles reading, writing, and transforming data.",
+              "fr": "Pense à comment Node.js gère la lecture, l'écriture et la transformation des données."
+            },
+            {
+              "en": "Readable, Editable, Duplex, and Transform streams.",
+              "fr": "Streams Readable, Editable, Duplex et Transform."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles reading, writing, and transforming data.",
+              "fr": "Pense à comment Node.js gère la lecture, l'écriture et la transformation des données."
+            },
+            {
+              "en": "Data, File, HTTP, and Buffer streams.",
+              "fr": "Streams Data, File, HTTP et Buffer."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles reading, writing, and transforming data.",
+              "fr": "Pense à comment Node.js gère la lecture, l'écriture et la transformation des données."
+            },
+            {
+              "en": "Readable, Writable, Duplex, and Transform streams.",
+              "fr": "Streams Readable, Writable, Duplex et Transform."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What lets you implement a custom readable and writable stream?",
+              "fr": "Qu'est-ce qui te permet d'implémenter un stream readable et writable personnalisé ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The `stream` module using Readable and Writable classes.",
+              "fr": "Le module `stream` en utilisant les classes Readable et Writable."
+            },
+            {
+              "en": "The `http` module.",
+              "fr": "Le module `http`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the module that provides base classes for creating custom streams.",
+              "fr": "Pense au module qui fournit les classes de base pour créer des streams personnalisés."
+            },
+            {
+              "en": "The `fs` module using `createReadStream()` and `createWriteStream()`.",
+              "fr": "Le module `fs` en utilisant `createReadStream()` et `createWriteStream()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles reading, writing, and transforming data.",
+              "fr": "Pense à comment Node.js gère la lecture, l'écriture et la transformation des données."
+            },
+            {
+              "en": "The events module.",
+              "fr": "Le module events."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Node.js handles reading, writing, and transforming data.",
+              "fr": "Pense à comment Node.js gère la lecture, l'écriture et la transformation des données."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What events can you use on a writable stream to know when streaming completes or an error occurs?",
+              "fr": "Quels événements peux-tu utiliser sur un stream writable pour savoir quand le streaming se termine ou qu'une erreur survient ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`end` and `close`.",
+              "fr": "`end` et `close`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the writable stream events that signal completion and failure.",
+              "fr": "Pense aux événements du stream writable qui signalent la fin et l'échec."
+            },
+            {
+              "en": "`finish` and `error`.",
+              "fr": "`finish` et `error`."
+            },
+            {
+              "en": "`start` and `stop`.",
+              "fr": "`start` et `stop`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the writable stream events that signal completion and failure.",
+              "fr": "Pense aux événements du stream writable qui signalent la fin et l'échec."
+            },
+            {
+              "en": "`done` and `fail`.",
+              "fr": "`done` et `fail`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the writable stream events that signal completion and failure.",
+              "fr": "Pense aux événements du stream writable qui signalent la fin et l'échec."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

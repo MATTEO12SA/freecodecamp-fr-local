@@ -61,6 +61,16 @@ async function main() {
     runStep('translation status', 'node', ['tools/translation-status.js']),
     runStep('translation drift', 'node', ['tools/check-translation-drift.js']),
     runStep('catalog tests', 'pnpm', ['-C', 'client', 'test', 'catalog']),
+    runStep('local feature tests', 'pnpm', [
+      '-C',
+      'client',
+      'test',
+      'local-profile',
+      'local-continue',
+      'fire-confetti',
+      'local-onboarding',
+      'sanitize-quiz-html'
+    ]),
     runStep('javascript-v9 challenge lint', 'pnpm', [
       '-C',
       'curriculum',
