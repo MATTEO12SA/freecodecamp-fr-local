@@ -100,10 +100,9 @@ La CI du fork et les contrôles locaux restent deux sujets distincts :
   `check-translation-drift.js` contrôlent sans écrire la traduction.
 - Le catalogue combine présence FR automatique et statut
   `absent` / `partial` / `complete` par carte.
-- État curriculum : JavaScript v9 `125/230` (521/1311 fichiers), modules 1 à 8 complets ; module 9
-  `dom-manipulation-and-events` à 7/12 (lecture DOM, storytelling, emoji-reactor, lecture Event,
-  favorite-icon, real-time-counter, lightbox). Prochaine cible : relire
-  `workshop-music-instrument-filter` (`reviewed: false` — ne pas appliquer).
+- État curriculum : JavaScript v9 `126/230` (535/1311 fichiers), modules 1 à 8 complets ; module 9
+  `dom-manipulation-and-events` à 8/12. Prochaine cible : relire
+  `workshop-rps-game` (`reviewed: false` — ne pas appliquer).
 
 ## Principes Non Négociables
 
