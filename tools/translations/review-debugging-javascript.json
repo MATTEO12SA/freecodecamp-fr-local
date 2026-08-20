@@ -1,0 +1,103 @@
+{
+  "workshop": "review-debugging-javascript",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723cd54fc196dbd053f9dfb.md",
+      "id": "6723cd54fc196dbd053f9dfb",
+      "dashedName": "review-debugging-javascript",
+      "title": {
+        "en": "Debugging JavaScript Review",
+        "fr": "Révision : débogage JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Common Types of Error Messages",
+              "fr": "## Types courants de messages d'erreur"
+            },
+            {
+              "en": "- **SyntaxError**: These errors happen when you write something incorrectly in your code, like missing a parenthesis, or a bracket. Think of it like a grammar mistake in a sentence.",
+              "fr": "- **SyntaxError** : Ces erreurs surviennent quand tu écris quelque chose d'incorrect dans ton code, comme une parenthèse ou un crochet manquant. Pense-y comme à une faute de grammaire dans une phrase."
+            },
+            {
+              "en": "- **ReferenceError**: There are several types of Reference Errors, triggered in different ways. The first type of reference error would be not defined variables. Another example of a ReferenceError is trying to access a variable, declared with `let` or `const`, before it has been defined.",
+              "fr": "- **ReferenceError** : Il existe plusieurs types d'erreurs de référence, déclenchés de différentes manières. Le premier type d'erreur de référence concerne les variables non définies. Un autre exemple de ReferenceError consiste à accéder à une variable, déclarée avec `let` ou `const`, avant qu'elle n'ait été définie."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **TypeError**: These errors occur when you try to perform an operation on the wrong type.",
+              "fr": "- **TypeError** : Ces erreurs surviennent quand tu essaies d'effectuer une opération sur le mauvais type."
+            },
+            {
+              "en": "- **RangeError**: These errors happen when your code tries to use a value that's outside the range of what JavaScript can handle.",
+              "fr": "- **RangeError** : Ces erreurs surviennent quand ton code essaie d'utiliser une valeur qui est en dehors de la plage que JavaScript peut gérer."
+            },
+            {
+              "en": "## The `throw` Statement",
+              "fr": "## L'instruction `throw`"
+            },
+            {
+              "en": "- **Definition**: The `throw` statement in JavaScript is used to throw a user defined exception. An exception in programming, is when an unexpected event happens and disrupts the normal flow of the program.",
+              "fr": "- **Définition** : L'instruction `throw` en JavaScript sert à lever une exception définie par l'utilisateur. Une exception en programmation, c'est quand un événement inattendu se produit et perturbe le flux normal du programme."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## `try...catch...finally`",
+              "fr": "## `try...catch...finally`"
+            },
+            {
+              "en": "- **Definition**: The `try` block is used to wrap code that might throw an error. It acts as a safe space to try something that could fail. The `catch` block captures and handles errors that occur in the try block. You can use the error object inside catch to inspect what went wrong. The `finally` block runs after the try and catch blocks, regardless of whether an error occurred. It's commonly used for cleanup tasks, such as closing files or releasing resources.",
+              "fr": "- **Définition** : Le bloc `try` sert à encapsuler du code qui pourrait lever une erreur. Il agit comme un espace sûr pour essayer quelque chose qui pourrait échouer. Le bloc `catch` capture et gère les erreurs qui surviennent dans le bloc try. Tu peux utiliser l'objet d'erreur à l'intérieur de catch pour inspecter ce qui s'est mal passé. Le bloc `finally` s'exécute après les blocs try et catch, qu'une erreur se soit produite ou non. Il est couramment utilisé pour des tâches de nettoyage, comme fermer des fichiers ou libérer des ressources."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Debugging Techniques",
+              "fr": "## Techniques de débogage"
+            },
+            {
+              "en": "- **`debugger` Statement**: This statement lets you pause your code at a specific line to investigate what's going on in the program.",
+              "fr": "- **Instruction `debugger`** : Cette instruction te permet de mettre en pause ton code à une ligne précise pour examiner ce qui se passe dans le programme."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Breakpoints**: Breakpoints let you pause the execution of your code at a specific line of your choice. After the pause, you can inspect variables, evaluate expressions, and examine the call stack.\n- **Watchers**: Watch expressions lets you monitor the values of variables or expressions as the code runs even if they are out of the current scope.\n- **Profiling**: Profiling helps you identify performance bottlenecks by letting you capture screenshots and record CPU usage, function calls, and execution time.\n- **`console.dir()`**: This method is used to display an interactive list of the properties of a specified JavaScript object. It outputs a hierarchical listing that can be expanded to see all nested properties.",
+              "fr": "- **Points d'arrêt** : Les points d'arrêt te permettent de mettre en pause l'exécution de ton code à une ligne précise de ton choix. Après la pause, tu peux inspecter les variables, évaluer des expressions et examiner la pile d'appels.\n- **Expressions de surveillance** : Les expressions de surveillance te permettent de suivre les valeurs de variables ou d'expressions pendant que le code s'exécute, même si elles sont hors de la portée actuelle.\n- **Profilage** : Le profilage t'aide à identifier les goulots d'étranglement de performance en te permettant de capturer des captures d'écran et d'enregistrer l'utilisation du processeur, les appels de fonction et le temps d'exécution.\n- **`console.dir()`** : Cette méthode sert à afficher une liste interactive des propriétés d'un objet JavaScript spécifié. Elle produit une liste hiérarchique qui peut être développée pour voir toutes les propriétés imbriquées."
+            },
+            {
+              "en": "- **`console.table()`**: This method displays tabular data as a table in the console. It takes one mandatory argument, which must be an array or an object, and one optional argument to specify which properties (columns) to display.",
+              "fr": "- **`console.table()`** : Cette méthode affiche des données tabulaires sous forme de tableau dans la console. Elle prend un argument obligatoire, qui doit être un tableau ou un objet, et un argument optionnel pour spécifier quelles propriétés (colonnes) afficher."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the Debugging JavaScript topics and concepts.",
+              "fr": "Révise les sujets et concepts du débogage JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
