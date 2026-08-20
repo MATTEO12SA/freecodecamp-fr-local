@@ -1,0 +1,129 @@
+{
+  "workshop": "lab-bookmark-manager-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66def5467aee701733aaf8cc.md",
+      "id": "66def5467aee701733aaf8cc",
+      "dashedName": "build-a-bookmark-manager-app",
+      "title": {
+        "en": "Build a Bookmark Manager App",
+        "fr": "Construire une application de gestion de favoris"
+      },
+      "description": [
+        {
+          "en": "For this lab, all the HTML and CSS has been provided to you. You will use JavaScript to complete the Bookmark Manager app so that it can store a collection of bookmarks in the local storage and read data from it.",
+          "fr": "Pour ce lab, tout le HTML et le CSS te sont fournis. Tu utiliseras JavaScript pour terminer l'application de gestion de favoris afin qu'elle puisse stocker une collection de favoris dans le local storage et en lire les données."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should have a `getBookmarks` function that returns the `bookmarks` array stored in the local storage. If the `bookmarks` key has not been set yet, or it doesn't contain a valid array with bookmarks, the `getBookmarks` function should return an empty array.\n1. The `bookmarks` key stored in the local storage should be an array of bookmark objects. Each bookmark object should have three keys: `name`, `category`, and `url`.\n1. You should have a function named `displayOrCloseForm` that toggles the `hidden` class on `#main-section` and `#form-section`.\n1. When you click `#add-bookmark-button`, you should update the inner text of `.category-name` to be the value of the selected option from `#category-dropdown` and call `displayOrCloseForm` to display the form section and hide the main section.\n1. When you click `#close-form-button`, you should run your function to hide the form section and display the main section.\n1. When you click `#add-bookmark-button-form`, you should update the `bookmarks` key stored in the local storage by adding a bookmark object to the end of the array. The object should have `name` set to the value of the `#name` input, `category` set to the value of the selected option from the category dropdown, and `url` set to the value of the `#url` input.\n1. Once the `bookmarks` key is updated, you should reset the value of `#name` and `#url` to an empty string before running your function to hide the form section and show the main section.\n1. You should have a function named `displayOrHideCategory` that toggles the `hidden` class on `#main-section` and `#bookmark-list-section`.\n1. When you click `#view-category-button`, you should update the inner text of `.category-name` to be the value of the selected option from `#category-dropdown`, modify the inner HTML of `#category-list` according to the user stories below, and call the `displayOrHideCategory` function.\n1. If none of the bookmarks in local storage have the category, you should set the inner HTML of the `#category-list` to a `p` element with the text `No Bookmarks Found`.\n1. If one or more bookmarks in local storage have the selected category, add a radio button for each bookmark to the innerHTML of the `#category-list`. Give each radio button an `id` and `value` set to the bookmark name, and a `name` that's the same for all the buttons.\n1. Each radio button should have a corresponding label containing an anchor element with the bookmark name and the `href` attribute set to the bookmark URL.\n1. When you click the `#close-list-button`, you should run your function to hide the `#bookmark-list-section` and display the main section.\n1. When you click the `#delete-bookmark-button`, you should delete the bookmark corresponding to the selected radio button and appropriate category from the local storage and update the displayed bookmark list.",
+          "fr": "1. Tu dois avoir une fonction `getBookmarks` qui renvoie le tableau `bookmarks` stocké dans le local storage. Si la clé `bookmarks` n'a pas encore été définie, ou si elle ne contient pas un tableau valide de favoris, la fonction `getBookmarks` doit renvoyer un tableau vide.\n1. La clé `bookmarks` stockée dans le local storage doit être un tableau d'objets favoris. Chaque objet favori doit avoir trois clés : `name`, `category` et `url`.\n1. Tu dois avoir une fonction nommée `displayOrCloseForm` qui bascule la classe `hidden` sur `#main-section` et `#form-section`.\n1. Quand tu cliques sur `#add-bookmark-button`, tu dois mettre à jour le texte intérieur de `.category-name` avec la valeur de l'option sélectionnée de `#category-dropdown` et appeler `displayOrCloseForm` pour afficher la section du formulaire et masquer la section principale.\n1. Quand tu cliques sur `#close-form-button`, tu dois exécuter ta fonction pour masquer la section du formulaire et afficher la section principale.\n1. Quand tu cliques sur `#add-bookmark-button-form`, tu dois mettre à jour la clé `bookmarks` stockée dans le local storage en ajoutant un objet favori à la fin du tableau. L'objet doit avoir `name` défini à la valeur de l'input `#name`, `category` défini à la valeur de l'option sélectionnée du menu déroulant de catégorie, et `url` défini à la valeur de l'input `#url`.\n1. Une fois la clé `bookmarks` mise à jour, tu dois réinitialiser la valeur de `#name` et `#url` à une chaîne vide avant d'exécuter ta fonction pour masquer la section du formulaire et afficher la section principale.\n1. Tu dois avoir une fonction nommée `displayOrHideCategory` qui bascule la classe `hidden` sur `#main-section` et `#bookmark-list-section`.\n1. Quand tu cliques sur `#view-category-button`, tu dois mettre à jour le texte intérieur de `.category-name` avec la valeur de l'option sélectionnée de `#category-dropdown`, modifier le HTML intérieur de `#category-list` conformément aux user stories ci-dessous, et appeler la fonction `displayOrHideCategory`.\n1. Si aucun des favoris du local storage n'a la catégorie, tu dois définir le HTML intérieur de `#category-list` à un élément `p` avec le texte `No Bookmarks Found`.\n1. Si un ou plusieurs favoris du local storage ont la catégorie sélectionnée, ajoute un bouton radio pour chaque favori au innerHTML de `#category-list`. Donne à chaque bouton radio un `id` et une `value` définis au nom du favori, et un `name` identique pour tous les boutons.\n1. Chaque bouton radio doit avoir un label correspondant contenant un élément d'ancre avec le nom du favori et l'attribut `href` défini à l'URL du favori.\n1. Quand tu cliques sur `#close-list-button`, tu dois exécuter ta fonction pour masquer `#bookmark-list-section` et afficher la section principale.\n1. Quand tu cliques sur `#delete-bookmark-button`, tu dois supprimer le favori correspondant au bouton radio sélectionné et à la catégorie appropriée du local storage et mettre à jour la liste de favoris affichée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `getBookmarks` function.",
+          "fr": "Tu dois avoir une fonction `getBookmarks`."
+        },
+        {
+          "en": "Your `getBookmarks` function should return an array.",
+          "fr": "Ta fonction `getBookmarks` doit renvoyer un tableau."
+        },
+        {
+          "en": "Your `getBookmarks` function should return the `bookmarks` key from `localStorage`.",
+          "fr": "Ta fonction `getBookmarks` doit renvoyer la clé `bookmarks` depuis `localStorage`."
+        },
+        {
+          "en": "When the `bookmarks` key is not set in `localStorage` or is an empty array, the `getBookmarks` function should return an empty array.",
+          "fr": "Quand la clé `bookmarks` n'est pas définie dans `localStorage` ou est un tableau vide, la fonction `getBookmarks` doit renvoyer un tableau vide."
+        },
+        {
+          "en": "When the `bookmarks` key in the `localStorage` does not contain a valid array of bookmark objects, the `getBookmarks` function should return an empty array.",
+          "fr": "Quand la clé `bookmarks` dans le `localStorage` ne contient pas un tableau valide d'objets favoris, la fonction `getBookmarks` doit renvoyer un tableau vide."
+        },
+        {
+          "en": "You should have a function named `displayOrCloseForm`.",
+          "fr": "Tu dois avoir une fonction nommée `displayOrCloseForm`."
+        },
+        {
+          "en": "Your `displayOrCloseForm` function should toggle the `hidden` class on `#main-section` and `#form-section`.",
+          "fr": "Ta fonction `displayOrCloseForm` doit basculer la classe `hidden` sur `#main-section` et `#form-section`."
+        },
+        {
+          "en": "When you click `#add-bookmark-button`, you should update the inner text of `.category-name` to be the value of the selected option from `#category-dropdown`.",
+          "fr": "Quand tu cliques sur `#add-bookmark-button`, tu dois mettre à jour le texte intérieur de `.category-name` avec la valeur de l'option sélectionnée de `#category-dropdown`."
+        },
+        {
+          "en": "When you click `#add-bookmark-button`, you should call `displayOrCloseForm` to display the form section and hide the main section.",
+          "fr": "Quand tu cliques sur `#add-bookmark-button`, tu dois appeler `displayOrCloseForm` pour afficher la section du formulaire et masquer la section principale."
+        },
+        {
+          "en": "When you click `#close-form-button`, you should call `displayOrCloseForm` to hide the form section and display the main section.",
+          "fr": "Quand tu cliques sur `#close-form-button`, tu dois appeler `displayOrCloseForm` pour masquer la section du formulaire et afficher la section principale."
+        },
+        {
+          "en": "When you click `#add-bookmark-button-form`, you should update the `bookmarks` key stored in the local storage by adding an object to the end of the array. The added object should have `name` set to the value of the `#name` input, `category` set to the value of the selected option from the category dropdown, and `url` set to the value of the `#url` input.",
+          "fr": "Quand tu cliques sur `#add-bookmark-button-form`, tu dois mettre à jour la clé `bookmarks` stockée dans le local storage en ajoutant un objet à la fin du tableau. L'objet ajouté doit avoir `name` défini à la valeur de l'input `#name`, `category` défini à la valeur de l'option sélectionnée du menu déroulant de catégorie, et `url` défini à la valeur de l'input `#url`."
+        },
+        {
+          "en": "When you click `#add-bookmark-button-form`, you should reset the value of `#name` and `#url` to an empty string.",
+          "fr": "Quand tu cliques sur `#add-bookmark-button-form`, tu dois réinitialiser la valeur de `#name` et `#url` à une chaîne vide."
+        },
+        {
+          "en": "When you click `#add-bookmark-button-form`, you should run `displayOrCloseForm` to hide the form section and show the main section.",
+          "fr": "Quand tu cliques sur `#add-bookmark-button-form`, tu dois exécuter `displayOrCloseForm` pour masquer la section du formulaire et afficher la section principale."
+        },
+        {
+          "en": "You should have a function named `displayOrHideCategory`.",
+          "fr": "Tu dois avoir une fonction nommée `displayOrHideCategory`."
+        },
+        {
+          "en": "Your `displayOrHideCategory` function should toggle the `hidden` class on `#main-section` and `#bookmark-list-section`.",
+          "fr": "Ta fonction `displayOrHideCategory` doit basculer la classe `hidden` sur `#main-section` et `#bookmark-list-section`."
+        },
+        {
+          "en": "When you click `#view-category-button`, you should update the inner text of `.category-name` to be the value of the selected option from `#category-dropdown`.",
+          "fr": "Quand tu cliques sur `#view-category-button`, tu dois mettre à jour le texte intérieur de `.category-name` avec la valeur de l'option sélectionnée de `#category-dropdown`."
+        },
+        {
+          "en": "When you click `#view-category-button`, you should add a `p` element with the text `No Bookmarks Found` to `#category-list`'s inner HTML if none of the bookmarks in local storage have the selected category.",
+          "fr": "Quand tu cliques sur `#view-category-button`, tu dois ajouter un élément `p` avec le texte `No Bookmarks Found` au HTML intérieur de `#category-list` si aucun des favoris du local storage n'a la catégorie sélectionnée."
+        },
+        {
+          "en": "When you click the `#view-category-button`, you should modify the `#category-list` element's inner HTML by adding a radio button. The radio button should have the `id` and `value` attributes set to the bookmark name for each bookmark in the selected category. Additionally, each radio button should have the same `name` attribute.",
+          "fr": "Quand tu cliques sur `#view-category-button`, tu dois modifier le HTML intérieur de l'élément `#category-list` en ajoutant un bouton radio. Le bouton radio doit avoir les attributs `id` et `value` définis au nom du favori pour chaque favori de la catégorie sélectionnée. De plus, chaque bouton radio doit avoir le même attribut `name`."
+        },
+        {
+          "en": "Each radio button added to `#category-list`'s inner HTML should have a corresponding label containing an anchor element with the bookmark name and the `href` attribute set to the bookmark URL.",
+          "fr": "Chaque bouton radio ajouté au HTML intérieur de `#category-list` doit avoir un label correspondant contenant un élément d'ancre avec le nom du favori et l'attribut `href` défini à l'URL du favori."
+        },
+        {
+          "en": "Each `label` element should contain an anchor element with the bookmark name as text, and the `href` attribute set to the bookmark URL.",
+          "fr": "Chaque élément `label` doit contenir un élément d'ancre avec le nom du favori comme texte, et l'attribut `href` défini à l'URL du favori."
+        },
+        {
+          "en": "When you click `#close-list-button`, you should hide `#bookmark-list-section` and display the main section.",
+          "fr": "Quand tu cliques sur `#close-list-button`, tu dois masquer `#bookmark-list-section` et afficher la section principale."
+        },
+        {
+          "en": "When you click the `#close-list-button` and then open any category, the `#category-list` should contain only data relevant for the selected category, without duplicating entries.",
+          "fr": "Quand tu cliques sur `#close-list-button` puis ouvres une catégorie quelconque, `#category-list` ne doit contenir que les données pertinentes pour la catégorie sélectionnée, sans dupliquer les entrées."
+        },
+        {
+          "en": "When you click the `#delete-bookmark-button`, you should delete the bookmark corresponding to the selected radio button and appropriate category from the local storage and update the displayed bookmark list.",
+          "fr": "Quand tu cliques sur `#delete-bookmark-button`, tu dois supprimer le favori correspondant au bouton radio sélectionné et à la catégorie appropriée du local storage et mettre à jour la liste de favoris affichée."
+        }
+      ]
+    }
+  ]
+}

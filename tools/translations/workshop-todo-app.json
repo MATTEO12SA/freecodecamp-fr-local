@@ -1,0 +1,2135 @@
+{
+  "workshop": "workshop-todo-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "64e4e4c4ec263b62ae7bf54d.md",
+      "id": "64e4e4c4ec263b62ae7bf54d",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this project, you will learn how `localStorage` works in JavaScript by building a Todo app. <dfn>LocalStorage</dfn> is a web storage feature of JavaScript that lets you persist data by storing the data as a **key:value** pair.",
+          "fr": "Dans ce projet, tu vas apprendre comment fonctionne `localStorage` en JavaScript en construisant une application Todo. <dfn>LocalStorage</dfn> est une fonctionnalité de stockage web de JavaScript qui te permet de faire persister des données en les stockant sous forme de paire **key:value**."
+        },
+        {
+          "en": "The HTML and CSS for this project have been provided for you. Take a look at the files to get yourself familiarized with them.",
+          "fr": "Le HTML et le CSS de ce projet t'ont été fournis. Jette un œil aux fichiers pour te familiariser avec eux."
+        },
+        {
+          "en": "Begin by accessing the `task-form`, `confirm-close-dialog`, and `open-task-form-btn` elements with the `getElementById()` method. Save them in the variables `taskForm`, `confirmCloseDialog`, and `openTaskFormBtn`.",
+          "fr": "Commence par accéder aux éléments `task-form`, `confirm-close-dialog` et `open-task-form-btn` avec la méthode `getElementById()`. Enregistre-les dans les variables `taskForm`, `confirmCloseDialog` et `openTaskFormBtn`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `getElementById()` to access the `task-form` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `task-form`."
+        },
+        {
+          "en": "You should assign the `task-form` element to the variable `taskForm`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `task-form` à la variable `taskForm`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `confirm-close-dialog` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `confirm-close-dialog`."
+        },
+        {
+          "en": "You should assign the `confirm-close-dialog` element to the variable `confirmCloseDialog`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `confirm-close-dialog` à la variable `confirmCloseDialog`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `open-task-form-btn` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `open-task-form-btn`."
+        },
+        {
+          "en": "You should assign the `open-task-form-btn` element to the variable `openTaskFormBtn`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `open-task-form-btn` à la variable `openTaskFormBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "64e4e6c86954de67a3e44ee3.md",
+      "id": "64e4e6c86954de67a3e44ee3",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "You need to access more elements with the `getElementById()` method. This time you need the `close-task-form-btn`, `add-or-update-task-btn`, and `cancel-btn` elements. Save them in the variables `closeTaskFormBtn`, `addOrUpdateTaskBtn`, and `cancelBtn`.",
+          "fr": "Tu dois accéder à d'autres éléments avec la méthode `getElementById()`. Cette fois, tu as besoin des éléments `close-task-form-btn`, `add-or-update-task-btn` et `cancel-btn`. Enregistre-les dans les variables `closeTaskFormBtn`, `addOrUpdateTaskBtn` et `cancelBtn`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `getElementById()` to access the `close-task-form-btn` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `close-task-form-btn`."
+        },
+        {
+          "en": "You should assign the `close-task-form-btn` element to the variable `closeTaskFormBtn`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `close-task-form-btn` à la variable `closeTaskFormBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `add-or-update-task-btn` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `add-or-update-task-btn`."
+        },
+        {
+          "en": "You should assign the `add-or-update-task-btn` element to the variable `addOrUpdateTaskBtn`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `add-or-update-task-btn` à la variable `addOrUpdateTaskBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `cancel-btn` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `cancel-btn`."
+        },
+        {
+          "en": "You should assign the `cancel-btn` element to the variable `cancelBtn`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `cancel-btn` à la variable `cancelBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "64e4e6fe78b5aa67ef2fc3e7.md",
+      "id": "64e4e6fe78b5aa67ef2fc3e7",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Next, access the `discard-btn`, `tasks-container`, and `title-input` elements using the `getElementById()` method. Save them in variables named `discardBtn`, `tasksContainer`, and `titleInput`, respectively.",
+          "fr": "Ensuite, accède aux éléments `discard-btn`, `tasks-container` et `title-input` en utilisant la méthode `getElementById()`. Enregistre-les dans les variables nommées `discardBtn`, `tasksContainer` et `titleInput`, respectivement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `getElementById()` to access the `discard-btn` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `discard-btn`."
+        },
+        {
+          "en": "You should assign the `discard-btn` element to the variable `discardBtn`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `discard-btn` à la variable `discardBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `tasks-container` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `tasks-container`."
+        },
+        {
+          "en": "You should assign the `tasks-container` element to the variable `tasksContainer`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `tasks-container` à la variable `tasksContainer`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `title-input` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `title-input`."
+        },
+        {
+          "en": "You should assign the `title-input` element to the variable `titleInput`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `title-input` à la variable `titleInput`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "64e4e7241f52bb682eeb8211.md",
+      "id": "64e4e7241f52bb682eeb8211",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "The last set of elements you need to get from the HTML file are the `date-input` and `description-input` elements. Save them in the variables `dateInput` and `descriptionInput` respectively.",
+          "fr": "Le dernier ensemble d'éléments que tu dois récupérer depuis le fichier HTML sont les éléments `date-input` et `description-input`. Enregistre-les dans les variables `dateInput` et `descriptionInput` respectivement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `getElementById()` to access the `date-input` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `date-input`."
+        },
+        {
+          "en": "You should assign the `date-input` element to the variable `dateInput`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `date-input` à la variable `dateInput`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `getElementById()` to access the `description-input` element.",
+          "fr": "Tu dois utiliser `getElementById()` pour accéder à l'élément `description-input`."
+        },
+        {
+          "en": "You should assign the `description-input` element to the variable `descriptionInput`. Don't forget to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `description-input` à la variable `descriptionInput`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "64e4e74d0fb4f0687bf4145d.md",
+      "id": "64e4e74d0fb4f0687bf4145d",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Create a `taskData` constant and set it to an empty array. This array will store all the tasks along with their associated data, including title, due date, and description. This storage will enable you to keep track of tasks, display them on the page, and save them to `localStorage`.",
+          "fr": "Crée une constante `taskData` et définis-la à un tableau vide. Ce tableau stockera toutes les tâches avec leurs données associées, y compris le titre, la date d'échéance et la description. Ce stockage te permettra de suivre les tâches, de les afficher sur la page et de les enregistrer dans `localStorage`."
+        },
+        {
+          "en": "Use `let` to create a `currentTask` variable and set it to an empty object. This variable will be used to track the state when editing and discarding tasks.",
+          "fr": "Utilise `let` pour créer une variable `currentTask` et définis-la à un objet vide. Cette variable servira à suivre l'état lors de l'édition et de l'abandon des tâches."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `const` variable called `taskData`.",
+          "fr": "Tu dois avoir une variable `const` appelée `taskData`."
+        },
+        {
+          "en": "You should assign an array to your `taskData` constant.",
+          "fr": "Tu dois assigner un tableau à ta constante `taskData`."
+        },
+        {
+          "en": "Your `taskData` array should be empty.",
+          "fr": "Ton tableau `taskData` doit être vide."
+        },
+        {
+          "en": "You should use `let` to create a `currentTask` variable.",
+          "fr": "Tu dois utiliser `let` pour créer une variable `currentTask`."
+        },
+        {
+          "en": "You should assign an object to your `currentTask` variable.",
+          "fr": "Tu dois assigner un objet à ta variable `currentTask`."
+        },
+        {
+          "en": "Your `currentTask` object should be empty.",
+          "fr": "Ton objet `currentTask` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64e4e78a7ea4a168de4e6a38.md",
+      "id": "64e4e78a7ea4a168de4e6a38",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Now, you will work on opening and closing the form modal.",
+          "fr": "Maintenant, tu vas travailler sur l'ouverture et la fermeture de la modale du formulaire."
+        },
+        {
+          "en": "In earlier projects, you learned how to add and remove classes from an element with `el.classList.add()` and `el.classList.remove()`. Another method to use with the `classList` property is the `toggle` method.",
+          "fr": "Dans des projets précédents, tu as appris à ajouter et supprimer des classes d'un élément avec `el.classList.add()` et `el.classList.remove()`. Une autre méthode à utiliser avec la propriété `classList` est la méthode `toggle`."
+        },
+        {
+          "en": "The `toggle` method will add the class if it is not present on the element, and remove the class if it is present on the element.",
+          "fr": "La méthode `toggle` ajoutera la classe si elle n'est pas présente sur l'élément, et la supprimera si elle est présente sur l'élément."
+        },
+        {
+          "en": "Add an event listener to the `openTaskFormBtn` element and pass in a `\"click\"` event for the first argument and an anonymous callback function for the second argument.",
+          "fr": "Ajoute un écouteur d'événement à l'élément `openTaskFormBtn` et passe un événement `\"click\"` pour le premier argument et une fonction de rappel anonyme pour le second argument."
+        },
+        {
+          "en": "Inside the callback function, use the `classList.toggle()` method to toggle the `\"hidden\"` class on the `taskForm` element.",
+          "fr": "À l'intérieur de la fonction de rappel, utilise la méthode `classList.toggle()` pour basculer la classe `\"hidden\"` sur l'élément `taskForm`."
+        },
+        {
+          "en": "Now you can `click` on the \"Add new Task\" button and see the form modal.",
+          "fr": "Tu peux maintenant `click` sur le bouton \"Add new Task\" et voir la modale du formulaire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `openTaskFormBtn` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `openTaskFormBtn`."
+        },
+        {
+          "en": "Your event listener should listen for a `click` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `click`."
+        },
+        {
+          "en": "Your event listener's callback function should use the `classList.toggle()` method to toggle the `hidden` class on the `taskForm` element. Refer back to the example provided in the description.",
+          "fr": "La fonction de rappel de ton écouteur d'événement doit utiliser la méthode `classList.toggle()` pour basculer la classe `hidden` sur l'élément `taskForm`. Reporte-toi à l'exemple fourni dans la description."
+        }
+      ]
+    },
+    {
+      "file": "64e4e7bbedb22d6939001ad3.md",
+      "id": "64e4e7bbedb22d6939001ad3",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "A <dfn>modal</dfn> is an element that prevents all interaction with elements outside it until the modal has been dismissed.",
+          "fr": "Une <dfn>modale</dfn> est un élément qui empêche toute interaction avec les éléments situés en dehors d'elle jusqu'à ce que la modale ait été fermée."
+        },
+        {
+          "en": "The HTML `dialog` element has a `showModal()` method that can be used to display a modal dialog box on a web page.",
+          "fr": "L'élément HTML `dialog` a une méthode `showModal()` qui peut être utilisée pour afficher une boîte de dialogue modale sur une page web."
+        },
+        {
+          "en": "Add an event listener to the `closeTaskFormBtn` variable and pass in a `click` event for the first argument and a callback function for the second argument.",
+          "fr": "Ajoute un écouteur d'événement à la variable `closeTaskFormBtn` et passe un événement `click` pour le premier argument et une fonction de rappel pour le second argument."
+        },
+        {
+          "en": "For the callback function, call the `showModal()` method on the `confirmCloseDialog` element. This will display a modal with the `Discard` and `Cancel` buttons.",
+          "fr": "Pour la fonction de rappel, appelle la méthode `showModal()` sur l'élément `confirmCloseDialog`. Cela affichera une modale avec les boutons `Discard` et `Cancel`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `closeTaskFormBtn` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `closeTaskFormBtn`."
+        },
+        {
+          "en": "Your event listener should listen for a `click` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `click`."
+        },
+        {
+          "en": "Your event listener's callback function should call the `showModal()` method on the `confirmCloseDialog` element.",
+          "fr": "La fonction de rappel de ton écouteur d'événement doit appeler la méthode `showModal()` sur l'élément `confirmCloseDialog`."
+        }
+      ]
+    },
+    {
+      "file": "64e4eaaa9070a66aecbfe603.md",
+      "id": "64e4eaaa9070a66aecbfe603",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "If the user clicks the `Cancel` button, you want to cancel the process and close the modal so the user can continue editing. The HTML `dialog` element has a `close()` method that can be used to close a modal dialog box on a web page.",
+          "fr": "Si l'utilisateur clique sur le bouton `Cancel`, tu veux annuler le processus et fermer la modale pour que l'utilisateur puisse continuer à éditer. L'élément HTML `dialog` a une méthode `close()` qui peut être utilisée pour fermer une boîte de dialogue modale sur une page web."
+        },
+        {
+          "en": "Add an event listener to the `cancelBtn` element and pass in a `click` event for the first argument and a callback function for the second argument.",
+          "fr": "Ajoute un écouteur d'événement à l'élément `cancelBtn` et passe un événement `click` pour le premier argument et une fonction de rappel pour le second argument."
+        },
+        {
+          "en": "For the callback function, call the `close()` method on the `confirmCloseDialog` element.",
+          "fr": "Pour la fonction de rappel, appelle la méthode `close()` sur l'élément `confirmCloseDialog`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `cancelBtn` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `cancelBtn`."
+        },
+        {
+          "en": "Your event listener should listen for a `click` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `click`."
+        },
+        {
+          "en": "Your event listener's callback function should call the `close()` method on `confirmCloseDialog` element.",
+          "fr": "La fonction de rappel de ton écouteur d'événement doit appeler la méthode `close()` sur l'élément `confirmCloseDialog`."
+        }
+      ]
+    },
+    {
+      "file": "64e4ebc7eabc5a6babd479cd.md",
+      "id": "64e4ebc7eabc5a6babd479cd",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "If the user clicks the `Discard` button, you want to close the modal showing the `Cancel` and `Discard` buttons, then hide the form modal.",
+          "fr": "Si l'utilisateur clique sur le bouton `Discard`, tu veux fermer la modale affichant les boutons `Cancel` et `Discard`, puis masquer la modale du formulaire."
+        },
+        {
+          "en": "Add a click event listener to `discardBtn`, then use the `close()` method on the `confirmCloseDialog` variable. Also, use `classList` to toggle the class `hidden` on `taskForm` so the form modal will close too.",
+          "fr": "Ajoute un écouteur d'événement click à `discardBtn`, puis utilise la méthode `close()` sur la variable `confirmCloseDialog`. Utilise aussi `classList` pour basculer la classe `hidden` sur `taskForm` afin que la modale du formulaire se ferme également."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `discardBtn` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `discardBtn`."
+        },
+        {
+          "en": "Your event listener should listen for a `click` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `click`."
+        },
+        {
+          "en": "You should use arrow syntax to set your event listener to an empty pair of curly braces.",
+          "fr": "Tu dois utiliser la syntaxe fléchée pour définir ton écouteur d'événement avec une paire vide d'accolades."
+        },
+        {
+          "en": "Your event listener should use the `close()` method on `confirmCloseDialog`.",
+          "fr": "Ton écouteur d'événement doit utiliser la méthode `close()` sur `confirmCloseDialog`."
+        },
+        {
+          "en": "Your event listener should use `classList` to toggle the class `hidden` on `taskForm`.",
+          "fr": "Ton écouteur d'événement doit utiliser `classList` pour basculer la classe `hidden` sur `taskForm`."
+        }
+      ]
+    },
+    {
+      "file": "64e4ecd7735a566c9266a338.md",
+      "id": "64e4ecd7735a566c9266a338",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Now that you've worked on opening and closing the modal, it's time to get the values from the input fields, save them into the `taskData` array, and display them on the page.",
+          "fr": "Maintenant que tu as travaillé sur l'ouverture et la fermeture de la modale, il est temps de récupérer les valeurs des champs de saisie, de les enregistrer dans le tableau `taskData`, et de les afficher sur la page."
+        },
+        {
+          "en": "To start, add a `submit` event listener to your `taskForm` element and pass in `e` as the parameter of your arrow function. Inside the curly braces, use the `preventDefault()` method to stop the browser from refreshing the page after submitting the form.",
+          "fr": "Pour commencer, ajoute un écouteur d'événement `submit` à ton élément `taskForm` et passe `e` comme paramètre de ta fonction fléchée. À l'intérieur des accolades, utilise la méthode `preventDefault()` pour empêcher le navigateur de rafraîchir la page après la soumission du formulaire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `taskForm` variable.",
+          "fr": "Tu dois appeler la méthode `addEventListener()` sur ta variable `taskForm`."
+        },
+        {
+          "en": "Your event listener should listen for a `submit` event.",
+          "fr": "Ton écouteur d'événement doit écouter un événement `submit`."
+        },
+        {
+          "en": "You should use arrow syntax to set your event listener to an empty pair of curly braces with `e` as the parameter.",
+          "fr": "Tu dois utiliser la syntaxe fléchée pour définir ton écouteur d'événement avec une paire vide d'accolades et `e` comme paramètre."
+        },
+        {
+          "en": "You should use the `e.preventDefault()` method to stop the browser from reloading the page.",
+          "fr": "Tu dois utiliser la méthode `e.preventDefault()` pour empêcher le navigateur de recharger la page."
+        }
+      ]
+    },
+    {
+      "file": "64e4eec13546c06d61a63d59.md",
+      "id": "64e4eec13546c06d61a63d59",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "You will need to determine whether the task being added to the `taskData` array already exists or not. If the task does not exist, you will add it to the array. If it does exist, you will update it. To accomplish this, you can use the <dfn>findIndex()</dfn> method.",
+          "fr": "Tu devras déterminer si la tâche ajoutée au tableau `taskData` existe déjà ou non. Si la tâche n'existe pas, tu l'ajouteras au tableau. Si elle existe, tu la mettras à jour. Pour cela, tu peux utiliser la méthode <dfn>findIndex()</dfn>."
+        },
+        {
+          "en": "The `findIndex()` array method finds and returns the index of the first element in an array that meets the criteria specified by a provided testing callback function. If no such element is found, the method returns `-1`. The callback should return a truthy value to indicate a matching element has been found, and a falsy value otherwise.",
+          "fr": "La méthode de tableau `findIndex()` trouve et renvoie l'indice du premier élément d'un tableau qui répond aux critères spécifiés par une fonction de rappel de test fournie. Si aucun élément de ce type n'est trouvé, la méthode renvoie `-1`. Le rappel doit renvoyer une valeur truthy pour indiquer qu'un élément correspondant a été trouvé, et une valeur falsy sinon."
+        },
+        {
+          "en": "Here's an example:",
+          "fr": "Voici un exemple :"
+        },
+        {
+          "en": "Use `const` to declare a variable called `dataArrIndex` and assign it the value of `taskData.findIndex()`. For the `findIndex()` method, pass in an arrow function with `item` as the parameter.",
+          "fr": "Utilise `const` pour déclarer une variable appelée `dataArrIndex` et assigne-lui la valeur de `taskData.findIndex()`. Pour la méthode `findIndex()`, passe une fonction fléchée avec `item` comme paramètre."
+        },
+        {
+          "en": "Within the arrow function, check if the `id` property of `item` is strictly equal to the `id` property of `currentTask`.",
+          "fr": "Dans la fonction fléchée, vérifie si la propriété `id` de `item` est strictement égale à la propriété `id` de `currentTask`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to declare a `dataArrIndex` variable and set it to `taskData.findIndex()`.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable `dataArrIndex` et la définir à `taskData.findIndex()`."
+        },
+        {
+          "en": "You should pass in `item` as the parameter of the arrow function callback. Don't use curly braces.",
+          "fr": "Tu dois passer `item` comme paramètre de la fonction de rappel fléchée. N'utilise pas d'accolades."
+        },
+        {
+          "en": "Your arrow function callback should check if `item.id === currentTask.id`.",
+          "fr": "Ta fonction de rappel fléchée doit vérifier si `item.id === currentTask.id`."
+        }
+      ]
+    },
+    {
+      "file": "660d86150a52ced178d567f3.md",
+      "id": "660d86150a52ced178d567f3",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "When a user creates a task, it should be saved in an object.",
+          "fr": "Lorsqu'un utilisateur crée une tâche, elle doit être enregistrée dans un objet."
+        },
+        {
+          "en": "Create a `const` variable called `taskObj` and assign it the value of an empty object.",
+          "fr": "Crée une variable `const` appelée `taskObj` et assigne-lui la valeur d'un objet vide."
+        },
+        {
+          "en": "Then below that, add a console statement that logs the value of `taskObj` to the console.",
+          "fr": "Ensuite, juste en dessous, ajoute une instruction console qui affiche la valeur de `taskObj` dans la console."
+        },
+        {
+          "en": "Open up the console to see the empty object.",
+          "fr": "Ouvre la console pour voir l'objet vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to create your `taskObj` variable.",
+          "fr": "Tu dois utiliser `const` pour créer ta variable `taskObj`."
+        },
+        {
+          "en": "You should assign an empty object to your `taskObj` variable.",
+          "fr": "Tu dois assigner un objet vide à ta variable `taskObj`."
+        },
+        {
+          "en": "You should use `console.log()` to log the value of `taskObj` to the console.",
+          "fr": "Tu dois utiliser `console.log()` pour afficher la valeur de `taskObj` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "660d8ca387f989d6b25a3343.md",
+      "id": "660d8ca387f989d6b25a3343",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Inside your `taskObj`, add an `id` property name. For the value use the value of the `titleInput`.",
+          "fr": "À l'intérieur de ton `taskObj`, ajoute un nom de propriété `id`. Pour la valeur, utilise la valeur de `titleInput`."
+        },
+        {
+          "en": "To see the new result, click on the `\"Add New Task\"` button. Then add a title and click on the `\"Add Task\"` button. Open up the console to see the result.",
+          "fr": "Pour voir le nouveau résultat, clique sur le bouton `\"Add New Task\"`. Puis ajoute un titre et clique sur le bouton `\"Add Task\"`. Ouvre la console pour voir le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `taskObj` should have an `id` property.",
+          "fr": "Ton `taskObj` doit avoir une propriété `id`."
+        },
+        {
+          "en": "The `id` property of your `taskObj` object should be set to `titleInput.value`.",
+          "fr": "La propriété `id` de ton objet `taskObj` doit être définie à `titleInput.value`."
+        }
+      ]
+    },
+    {
+      "file": "660d8d7bb2424cd7cdf90ec1.md",
+      "id": "660d8d7bb2424cd7cdf90ec1",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "The user should be able to input a title with upper and lowercase letters. But for the `id`, the value should be all lowercase.",
+          "fr": "L'utilisateur doit pouvoir saisir un titre avec des lettres majuscules et minuscules. Mais pour l'`id`, la valeur doit être entièrement en minuscules."
+        },
+        {
+          "en": "Update your `titleInput.value` to be all lowercase. You can use the `toLowerCase()` method to do this.",
+          "fr": "Mets à jour ton `titleInput.value` pour qu'il soit entièrement en minuscules. Tu peux utiliser la méthode `toLowerCase()` pour cela."
+        },
+        {
+          "en": "To see the new result, click on the `\"Add New Task\"` button. Then add a title of `WALK DOG` and click on the `\"Add Task\"` button. Open up the console to see the result of `\"walk dog\"`.",
+          "fr": "Pour voir le nouveau résultat, clique sur le bouton `\"Add New Task\"`. Puis ajoute un titre `WALK DOG` et clique sur le bouton `\"Add Task\"`. Ouvre la console pour voir le résultat `\"walk dog\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your value should be `titleInput.value.toLowerCase()`.",
+          "fr": "Ta valeur doit être `titleInput.value.toLowerCase()`."
+        }
+      ]
+    },
+    {
+      "file": "660d90b0ec1ef7da914c5e65.md",
+      "id": "660d90b0ec1ef7da914c5e65",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Right now, your `id` value is a lowercase string. But the final result should be a hyphenated string.",
+          "fr": "Pour l'instant, ta valeur `id` est une chaîne en minuscules. Mais le résultat final doit être une chaîne avec des tirets."
+        },
+        {
+          "en": "Start by chaining the `split` method to the `titleInput.value` to split the string into an array of words. For the separator, use a space character(`\" \"`).",
+          "fr": "Commence par chaîner la méthode `split` à `titleInput.value` pour découper la chaîne en un tableau de mots. Pour le séparateur, utilise un caractère espace(`\" \"`)."
+        },
+        {
+          "en": "To see the new result, click on the `\"Add New Task\"` button. Then add a title of `WALK DOG` and click on the `\"Add Task\"` button. Open up the console to see the result of `['walk', 'dog']`.",
+          "fr": "Pour voir le nouveau résultat, clique sur le bouton `\"Add New Task\"`. Puis ajoute un titre `WALK DOG` et clique sur le bouton `\"Add Task\"`. Ouvre la console pour voir le résultat `['walk', 'dog']`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain `split(\" \")` to `titleInput.value.toLowerCase()`.",
+          "fr": "Tu dois chaîner `split(\" \")` à `titleInput.value.toLowerCase()`."
+        }
+      ]
+    },
+    {
+      "file": "660d936a55565add0a27199b.md",
+      "id": "660d936a55565add0a27199b",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now that your `id` is an array of words, you can use the `join` method to turn the result back into a string. For the separator, use a hyphen(`-`).",
+          "fr": "Maintenant que ton `id` est un tableau de mots, tu peux utiliser la méthode `join` pour transformer le résultat en chaîne. Pour le séparateur, utilise un tiret(`-`)."
+        },
+        {
+          "en": "To see the new result, click on the `\"Add New Task\"` button. Then add a title of `WALK DOG` and click on the `\"Add Task\"` button. Open up the console to see the result of `\"walk-dog\"`.",
+          "fr": "Pour voir le nouveau résultat, clique sur le bouton `\"Add New Task\"`. Puis ajoute un titre `WALK DOG` et clique sur le bouton `\"Add Task\"`. Ouvre la console pour voir le résultat `\"walk-dog\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain `join(\"-\")` to `titleInput.value.toLowerCase().split(\" \")`.",
+          "fr": "Tu dois chaîner `join(\"-\")` à `titleInput.value.toLowerCase().split(\" \")`."
+        }
+      ]
+    },
+    {
+      "file": "660d9535e86fd2deb351aeb9.md",
+      "id": "660d9535e86fd2deb351aeb9",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "There is one last thing you will need to do to make this `id` unique.",
+          "fr": "Il reste une dernière chose à faire pour rendre cet `id` unique."
+        },
+        {
+          "en": "But first, place the entire value below inside an embedded expression `${}`.",
+          "fr": "Mais d'abord, place toute la valeur ci-dessous dans une expression intégrée `${}`."
+        },
+        {
+          "en": "Then wrap that value in template strings.",
+          "fr": "Puis enveloppe cette valeur dans des template strings."
+        },
+        {
+          "en": "In the next step, you will add a unique number to the end of the `id` value to make it truly unique.",
+          "fr": "Dans la prochaine étape, tu ajouteras un numéro unique à la fin de la valeur `id` pour la rendre vraiment unique."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your value should be `${titleInput.value.toLowerCase().split(\" \").join(\"-\")}`. Don't forget to wrap the entire value in template strings.",
+          "fr": "Ta valeur doit être `${titleInput.value.toLowerCase().split(\" \").join(\"-\")}`. N'oublie pas d'envelopper toute la valeur dans des template strings."
+        }
+      ]
+    },
+    {
+      "file": "650300a25b6f72964ab8aca6.md",
+      "id": "650300a25b6f72964ab8aca6",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "To make the `id` more unique, add another hyphen and use <dfn>Date.now()</dfn>.",
+          "fr": "Pour rendre l'`id` plus unique, ajoute un autre tiret et utilise <dfn>Date.now()</dfn>."
+        },
+        {
+          "en": "`Date.now()` returns the number of milliseconds elapsed since `January 1, 1970 00:00:00 UTC`.",
+          "fr": "`Date.now()` renvoie le nombre de millisecondes écoulées depuis `January 1, 1970 00:00:00 UTC`."
+        },
+        {
+          "en": "To see the new result, click on the `\"Add New Task\"` button. Then add a title of `WALK DOG` and click on the `\"Add Task\"` button. Open up the console to see the result.",
+          "fr": "Pour voir le nouveau résultat, clique sur le bouton `\"Add New Task\"`. Puis ajoute un titre `WALK DOG` et clique sur le bouton `\"Add Task\"`. Ouvre la console pour voir le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add `-${Date.now()}` to `${titleInput.value.toLowerCase().split(' ').join('-')}`. Don't forget it needs to be inside the template string.",
+          "fr": "Tu dois ajouter `-${Date.now()}` à `${titleInput.value.toLowerCase().split(' ').join('-')}`. N'oublie pas que cela doit être à l'intérieur de la template string."
+        }
+      ]
+    },
+    {
+      "file": "64ec89ee549ecf802de2b3e2.md",
+      "id": "64ec89ee549ecf802de2b3e2",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now it is time to add the remaining properties to the `taskObj` object.",
+          "fr": "Il est maintenant temps d'ajouter les propriétés restantes à l'objet `taskObj`."
+        },
+        {
+          "en": "Retrieve the values from the `titleInput`, `dateInput`, and `descriptionInput` fields, and then save them in the properties `title`, `date`, and `description` of the `taskObj` object.",
+          "fr": "Récupère les valeurs des champs `titleInput`, `dateInput` et `descriptionInput`, puis enregistre-les dans les propriétés `title`, `date` et `description` de l'objet `taskObj`."
+        },
+        {
+          "en": "Add a new task and open up the console to see the `taskObj` object with the new properties.",
+          "fr": "Ajoute une nouvelle tâche et ouvre la console pour voir l'objet `taskObj` avec les nouvelles propriétés."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `taskObj` object should have a `title` key and value of `titleInput.value`.",
+          "fr": "Ton objet `taskObj` doit avoir une clé `title` et la valeur `titleInput.value`."
+        },
+        {
+          "en": "Your `taskObj` object should have a `date` key and value of `dateInput.value`.",
+          "fr": "Ton objet `taskObj` doit avoir une clé `date` et la valeur `dateInput.value`."
+        },
+        {
+          "en": "Your `taskObj` object should have a `description` key and value of `descriptionInput.value`.",
+          "fr": "Ton objet `taskObj` doit avoir une clé `description` et la valeur `descriptionInput.value`."
+        }
+      ]
+    },
+    {
+      "file": "660d9cb6cc6415e6ca0509d8.md",
+      "id": "660d9cb6cc6415e6ca0509d8",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Now that you have finished testing your `taskObj`, you can remove the `console.log(taskObj)` statement.",
+          "fr": "Maintenant que tu as fini de tester ton `taskObj`, tu peux supprimer l'instruction `console.log(taskObj)`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not have a `console.log(taskObj)` statement in your code.",
+          "fr": "Tu ne dois pas avoir d'instruction `console.log(taskObj)` dans ton code."
+        }
+      ]
+    },
+    {
+      "file": "64ec8f717b261e824d82d6a5.md",
+      "id": "64ec8f717b261e824d82d6a5",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now that you have obtained the values from the input fields and generated an `id`, you want to add them to your `taskData` array to keep track of each task. However, you should only do this if the task is new. If the task already exists, you will set it up for editing. This is why you have the `dataArrIndex` variable, which provides the index of each task.",
+          "fr": "Maintenant que tu as obtenu les valeurs des champs de saisie et généré un `id`, tu veux les ajouter à ton tableau `taskData` pour suivre chaque tâche. Cependant, tu ne dois le faire que si la tâche est nouvelle. Si la tâche existe déjà, tu la prépareras pour l'édition. C'est pourquoi tu as la variable `dataArrIndex`, qui fournit l'indice de chaque tâche."
+        },
+        {
+          "en": "Create an `if` statement with the condition `dataArrIndex === -1`. Within the `if` statement, use the `unshift()` method to add the `taskObj` object to the beginning of the `taskData` array.",
+          "fr": "Crée une instruction `if` avec la condition `dataArrIndex === -1`. Dans l'instruction `if`, utilise la méthode `unshift()` pour ajouter l'objet `taskObj` au début du tableau `taskData`."
+        },
+        {
+          "en": "`unshift()` is an array method that is used to add one or more elements to the beginning of an array.",
+          "fr": "`unshift()` est une méthode de tableau utilisée pour ajouter un ou plusieurs éléments au début d'un tableau."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with the condition `dataArrIndex === -1`.",
+          "fr": "Tu dois créer une instruction `if` avec la condition `dataArrIndex === -1`."
+        },
+        {
+          "en": "Your `if` statement should have `taskData.unshift(taskObj)` in it's body.",
+          "fr": "Ton instruction `if` doit avoir `taskData.unshift(taskObj)` dans son corps."
+        }
+      ]
+    },
+    {
+      "file": "64ec9145e424d8835a4e0f28.md",
+      "id": "64ec9145e424d8835a4e0f28",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Now that you have saved the task in the `taskData` array, you should display the task on the page by looping through it.",
+          "fr": "Maintenant que tu as enregistré la tâche dans le tableau `taskData`, tu dois afficher la tâche sur la page en le parcourant."
+        },
+        {
+          "en": "Use `forEach()` on `taskData`, then destructure `id`, `title`, `date`, `description` as the parameters. Don't return anything yet.",
+          "fr": "Utilise `forEach()` sur `taskData`, puis déstructure `id`, `title`, `date`, `description` comme paramètres. Ne renvoie encore rien."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `forEach()` on `taskData`.",
+          "fr": "Tu dois utiliser `forEach()` sur `taskData`."
+        },
+        {
+          "en": "You should use `{id, title, date, description}` as the destructured parameters of the `forEach()` callback function.",
+          "fr": "Tu dois utiliser `{id, title, date, description}` comme paramètres déstructurés de la fonction de rappel `forEach()`."
+        }
+      ]
+    },
+    {
+      "file": "64ec9282cd547785258cecf2.md",
+      "id": "64ec9282cd547785258cecf2",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Using arrow syntax complete the `forEach` callback function. Inside the callback function body use an addition assignment to set the `innerHTML` of `tasksContainer` to empty backticks.",
+          "fr": "En utilisant la syntaxe fléchée, complète la fonction de rappel `forEach`. Dans le corps de la fonction de rappel, utilise une affectation additive pour définir le `innerHTML` de `tasksContainer` à des backticks vides."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not alter the existing `taskData.forEach()` and the values you destructured.",
+          "fr": "Tu ne dois pas modifier le `taskData.forEach()` existant ni les valeurs que tu as déstructurées."
+        },
+        {
+          "en": "You should use arrow syntax and attach `innerHTML` to `tasksContainer`.",
+          "fr": "Tu dois utiliser la syntaxe fléchée et attacher `innerHTML` à `tasksContainer`."
+        },
+        {
+          "en": "You should use addition assignment to set the `innerHTML` of `tasksContainer` to an empty pair of backticks.",
+          "fr": "Tu dois utiliser une affectation additive pour définir le `innerHTML` de `tasksContainer` à une paire vide de backticks."
+        }
+      ]
+    },
+    {
+      "file": "64ec9343769e8f85c1e17e05.md",
+      "id": "64ec9343769e8f85c1e17e05",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "Create a `div` element with the class of `task`. Utilize template strings to set the `id` attribute of the `div` to the `id` you destructured from the task data.",
+          "fr": "Crée un élément `div` avec la classe `task`. Utilise des template strings pour définir l'attribut `id` du `div` à l'`id` que tu as déstructuré depuis les données de la tâche."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `div` element with the class `task`.",
+          "fr": "Tu dois créer un élément `div` avec la classe `task`."
+        },
+        {
+          "en": "Your `div` element should have an `id` of `${id}`.",
+          "fr": "Ton élément `div` doit avoir un `id` de `${id}`."
+        }
+      ]
+    },
+    {
+      "file": "64ec94f0de20c086e09b0fc3.md",
+      "id": "64ec94f0de20c086e09b0fc3",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Create a `p` element and use template strings to set its content to the `title` you destructured. Right before the content of the `p` element, create a `strong` element with the text `Title:`.",
+          "fr": "Crée un élément `p` et utilise des template strings pour définir son contenu au `title` que tu as déstructuré. Juste avant le contenu de l'élément `p`, crée un élément `strong` avec le texte `Title:`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `p` element.",
+          "fr": "Tu dois créer un élément `p`."
+        },
+        {
+          "en": "You should interpolate `${title}` as the text of your `p` element.",
+          "fr": "Tu dois interpoler `${title}` comme texte de ton élément `p`."
+        },
+        {
+          "en": "You should create a `strong` element after the opening tag of your `p` element.",
+          "fr": "Tu dois créer un élément `strong` après la balise d'ouverture de ton élément `p`."
+        },
+        {
+          "en": "Your `strong` element should have the text `Title:`.",
+          "fr": "Ton élément `strong` doit avoir le texte `Title:`."
+        }
+      ]
+    },
+    {
+      "file": "64ec959a76336c8767f5cd4d.md",
+      "id": "64ec959a76336c8767f5cd4d",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Similarly to the previous step, create another `p` element, and interpolate the `date` you destructured as the text content. Inside this paragraph, create a `strong` element with the text `Date:`.",
+          "fr": "De façon similaire à l'étape précédente, crée un autre élément `p`, et interpole le `date` que tu as déstructuré comme contenu textuel. À l'intérieur de ce paragraphe, crée un élément `strong` avec le texte `Date:`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `p` element and interpolate `${date}` as the text.",
+          "fr": "Tu dois créer un élément `p` et interpoler `${date}` comme texte."
+        },
+        {
+          "en": "You should create a `strong` element with the text `Date:` after the opening tag of your `p` element.",
+          "fr": "Tu dois créer un élément `strong` avec le texte `Date:` après la balise d'ouverture de ton élément `p`."
+        }
+      ]
+    },
+    {
+      "file": "65099dbd8f137d58e5c0ff16.md",
+      "id": "65099dbd8f137d58e5c0ff16",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "Create one more `p` element and interpolate the `description` you destructured as the text. Also, create a `strong` element inside the paragraph with the text `Description:`.",
+          "fr": "Crée encore un élément `p` et interpole le `description` que tu as déstructuré comme texte. Crée aussi un élément `strong` à l'intérieur du paragraphe avec le texte `Description:`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `p` element with `${description}` as the text.",
+          "fr": "Tu dois créer un élément `p` avec `${description}` comme texte."
+        },
+        {
+          "en": "You should create a `strong` element with the text `Description:` after the opening tag of your `p` element.",
+          "fr": "Tu dois créer un élément `strong` avec le texte `Description:` après la balise d'ouverture de ton élément `p`."
+        }
+      ]
+    },
+    {
+      "file": "64ec96761156a187ed32b274.md",
+      "id": "64ec96761156a187ed32b274",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "To allow for task management, you need to include both a delete and an edit button for each task.",
+          "fr": "Pour permettre la gestion des tâches, tu dois inclure un bouton de suppression et un bouton d'édition pour chaque tâche."
+        },
+        {
+          "en": "Create two `button` elements with the `type` attribute set to `button` and the `class` attribute set to `btn`. Set the text of the first button to `Edit` and the text of the second button to `Delete`.",
+          "fr": "Crée deux éléments `button` avec l'attribut `type` défini à `button` et l'attribut `class` défini à `btn`. Définis le texte du premier bouton à `Edit` et le texte du second bouton à `Delete`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `button` element of type `button`, a class `btn` and `\"Edit\"` as the text, in that order.",
+          "fr": "Tu dois créer un élément `button` de type `button`, une classe `btn` et `\"Edit\"` comme texte, dans cet ordre."
+        },
+        {
+          "en": "You should create a `button` element of type `button` a class `btn` and `Delete` as the text, in that order.",
+          "fr": "Tu dois créer un élément `button` de type `button`, une classe `btn` et `Delete` comme texte, dans cet ordre."
+        }
+      ]
+    },
+    {
+      "file": "64ec9b10356c2d8aa05d9ce1.md",
+      "id": "64ec9b10356c2d8aa05d9ce1",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "After adding the task to the page, you should close the form modal to view the task. To do this, utilize `classList` to toggle the `hidden` class on the `taskForm` element.",
+          "fr": "Après avoir ajouté la tâche à la page, tu dois fermer la modale du formulaire pour voir la tâche. Pour cela, utilise `classList` pour basculer la classe `hidden` sur l'élément `taskForm`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `classList` to toggle the class `hidden` on `taskForm`.",
+          "fr": "Tu dois utiliser `classList` pour basculer la classe `hidden` sur `taskForm`."
+        }
+      ]
+    },
+    {
+      "file": "64ec9c55fdeef78bacd2fc3b.md",
+      "id": "64ec9c55fdeef78bacd2fc3b",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "If you attempt to add another task now, you'll notice that the input fields retain the values you entered for the previous task. To resolve this, you need to clear the input fields after adding a task.",
+          "fr": "Si tu tentes d'ajouter une autre tâche maintenant, tu remarqueras que les champs de saisie conservent les valeurs que tu as saisies pour la tâche précédente. Pour résoudre cela, tu dois vider les champs de saisie après avoir ajouté une tâche."
+        },
+        {
+          "en": "Instead of clearing the input fields one by one, it's a good practice to create a function that handles clearing those fields. You can then call this function whenever you need to clear the input fields again.",
+          "fr": "Au lieu de vider les champs de saisie un par un, c'est une bonne pratique de créer une fonction qui s'occupe de vider ces champs. Tu pourras ensuite appeler cette fonction chaque fois que tu auras besoin de vider à nouveau les champs de saisie."
+        },
+        {
+          "en": "Use arrow syntax to create a `reset` function and set it to a pair of curly braces.",
+          "fr": "Utilise la syntaxe fléchée pour créer une fonction `reset` et définis-la à une paire d'accolades."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` and arrow syntax to create a `reset` function.",
+          "fr": "Tu dois utiliser `const` et la syntaxe fléchée pour créer une fonction `reset`."
+        },
+        {
+          "en": "Your `reset` function should be empty.",
+          "fr": "Ta fonction `reset` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64fac365aeb8ad70b69b366f.md",
+      "id": "64fac365aeb8ad70b69b366f",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "Inside the `reset` function, set each value of `titleInput`, `dateInput`, `descriptionInput` to an empty string.",
+          "fr": "À l'intérieur de la fonction `reset`, définis chaque valeur de `titleInput`, `dateInput`, `descriptionInput` à une chaîne vide."
+        },
+        {
+          "en": "Also, use `classList` to toggle the class `hidden` on the `taskForm` and set `currentTask` to an empty object. That's because at this point, `currentTask` will be filled with the task the user might have added.",
+          "fr": "Utilise aussi `classList` pour basculer la classe `hidden` sur `taskForm` et définis `currentTask` à un objet vide. C'est parce qu'à ce stade, `currentTask` sera rempli avec la tâche que l'utilisateur aura pu ajouter."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `titleInput.value` to an empty string.",
+          "fr": "Tu dois définir `titleInput.value` à une chaîne vide."
+        },
+        {
+          "en": "You should set `dateInput.value` to an empty string.",
+          "fr": "Tu dois définir `dateInput.value` à une chaîne vide."
+        },
+        {
+          "en": "You should set `descriptionInput.value` to an empty string.",
+          "fr": "Tu dois définir `descriptionInput.value` à une chaîne vide."
+        },
+        {
+          "en": "You should use `classList` to toggle the class `hidden` on `taskForm`",
+          "fr": "Tu dois utiliser `classList` pour basculer la classe `hidden` sur `taskForm`"
+        },
+        {
+          "en": "You should set `currentTask` to an empty object.",
+          "fr": "Tu dois définir `currentTask` à un objet vide."
+        }
+      ]
+    },
+    {
+      "file": "64fac4d1773e7a719b1254de.md",
+      "id": "64fac4d1773e7a719b1254de",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "Remove the existing code toggling the class of `hidden` on `taskForm` and call the `reset` function instead. This would clear the input fields and also hide the form modal for the user to see the added task.",
+          "fr": "Supprime le code existant qui bascule la classe `hidden` sur `taskForm` et appelle la fonction `reset` à la place. Cela videra les champs de saisie et masquera aussi la modale du formulaire pour que l'utilisateur voie la tâche ajoutée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the code toggling the `hidden` class on `taskForm`.",
+          "fr": "Tu dois supprimer le code qui bascule la classe `hidden` sur `taskForm`."
+        },
+        {
+          "en": "You should call the `reset` function.",
+          "fr": "Tu dois appeler la fonction `reset`."
+        }
+      ]
+    },
+    {
+      "file": "64fac6a497811572b338e5e5.md",
+      "id": "64fac6a497811572b338e5e5",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "Also, remove the existing code toggling the class `hidden` on `taskForm` inside the `discardBtn` event listener and call the `reset` function instead. That's because when you click the `Discard` button, everything in the input fields should go away.",
+          "fr": "Supprime aussi le code existant qui bascule la classe `hidden` sur `taskForm` à l'intérieur de l'écouteur d'événement de `discardBtn` et appelle la fonction `reset` à la place. C'est parce que lorsque tu cliques sur le bouton `Discard`, tout le contenu des champs de saisie doit disparaître."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the code toggling the class `hidden` on `taskForm`.",
+          "fr": "Tu dois supprimer le code qui bascule la classe `hidden` sur `taskForm`."
+        },
+        {
+          "en": "You should call the `reset` function.",
+          "fr": "Tu dois appeler la fonction `reset`."
+        }
+      ]
+    },
+    {
+      "file": "64faca774fd9fd74bc084cc9.md",
+      "id": "64faca774fd9fd74bc084cc9",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "You should display the `Cancel` and `Discard` buttons to the user only if there is some text present in the input fields.",
+          "fr": "Tu dois afficher les boutons `Cancel` et `Discard` à l'utilisateur uniquement s'il y a du texte présent dans les champs de saisie."
+        },
+        {
+          "en": "Start by removing the `confirmCloseDialog.showModal();` line.",
+          "fr": "Commence par supprimer la ligne `confirmCloseDialog.showModal();`."
+        },
+        {
+          "en": "Then inside the `closeTaskFormBtn` event listener, write some logic to check if there is a value in the `titleInput`, `dateInput` **or** the `descriptionInput` field.",
+          "fr": "Ensuite, à l'intérieur de l'écouteur d'événement de `closeTaskFormBtn`, écris une logique pour vérifier s'il y a une valeur dans le champ `titleInput`, `dateInput` **ou** `descriptionInput`."
+        },
+        {
+          "en": "If any of those input fields has a value, then use the `showModal()` method on `confirmCloseDialog`. Otherwise, if there are no changes, call the `reset()` function to clear the input fields and hide the form modal.",
+          "fr": "Si l'un de ces champs de saisie a une valeur, utilise alors la méthode `showModal()` sur `confirmCloseDialog`. Sinon, s'il n'y a aucun changement, appelle la fonction `reset()` pour vider les champs de saisie et masquer la modale du formulaire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "If any of the input fields has a value, then the confirmation dialog should display. Otherwise, the `reset` function should be called.",
+          "fr": "Si l'un des champs de saisie a une valeur, alors la boîte de dialogue de confirmation doit s'afficher. Sinon, la fonction `reset` doit être appelée."
+        }
+      ]
+    },
+    {
+      "file": "64fad07f43a101779cb8692a.md",
+      "id": "64fad07f43a101779cb8692a",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "You can enhance code readability and maintainability by refactoring the `submit` event listener into two separate functions. The first function can be used to add the input values to `taskData`, while the second function can be responsible for adding the tasks to the DOM.",
+          "fr": "Tu peux améliorer la lisibilité et la maintenabilité du code en refactorisant l'écouteur d'événement `submit` en deux fonctions séparées. La première fonction peut servir à ajouter les valeurs de saisie à `taskData`, tandis que la seconde peut être responsable de l'ajout des tâches au DOM."
+        },
+        {
+          "en": "Use arrow syntax to create an `addOrUpdateTask` function. Then move the `dataArrIndex` variable, the `taskObj` object, and the `if` statement into the `addOrUpdateTask` function.",
+          "fr": "Utilise la syntaxe fléchée pour créer une fonction `addOrUpdateTask`. Puis déplace la variable `dataArrIndex`, l'objet `taskObj` et l'instruction `if` dans la fonction `addOrUpdateTask`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` and arrow syntax to create an `addOrUpdateTask` function.",
+          "fr": "Tu dois utiliser `const` et la syntaxe fléchée pour créer une fonction `addOrUpdateTask`."
+        },
+        {
+          "en": "You should move the `dataArrIndex` variable into the `addOrUpdateTask` function.",
+          "fr": "Tu dois déplacer la variable `dataArrIndex` dans la fonction `addOrUpdateTask`."
+        },
+        {
+          "en": "You should move the `taskObj` object into the `addOrUpdateTask` function.",
+          "fr": "Tu dois déplacer l'objet `taskObj` dans la fonction `addOrUpdateTask`."
+        },
+        {
+          "en": "You should move the `if` statement with the condition `dataArrIndex === -1` into your `addOrUpdateTask` function.",
+          "fr": "Tu dois déplacer l'instruction `if` avec la condition `dataArrIndex === -1` dans ta fonction `addOrUpdateTask`."
+        }
+      ]
+    },
+    {
+      "file": "64fad9cd2eeb1e7ca2ca8c8b.md",
+      "id": "64fad9cd2eeb1e7ca2ca8c8b",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "Use arrow syntax to create an `updateTaskContainer` function. Then move the `taskData.forEach()` and its content from the `taskForm`'s `submit` event listener into the newly created function.",
+          "fr": "Utilise la syntaxe fléchée pour créer une fonction `updateTaskContainer`. Puis déplace le `taskData.forEach()` et son contenu depuis le `taskForm` (écouteur d'événement `submit`) dans la fonction nouvellement créée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` and arrow syntax to create a `updateTaskContainer` function.",
+          "fr": "Tu dois utiliser `const` et la syntaxe fléchée pour créer une fonction `updateTaskContainer`."
+        },
+        {
+          "en": "You should move `taskData.forEach()` and its content into the `updateTaskContainer()` function.",
+          "fr": "Tu dois déplacer `taskData.forEach()` et son contenu dans la fonction `updateTaskContainer()`."
+        }
+      ]
+    },
+    {
+      "file": "64fadae4f2d51b7d5d8b98d8.md",
+      "id": "64fadae4f2d51b7d5d8b98d8",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "Inside the `addOrUpdateTask` function, call the `updateTaskContainer` and `reset` functions.",
+          "fr": "À l'intérieur de la fonction `addOrUpdateTask`, appelle les fonctions `updateTaskContainer` et `reset`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `updateTaskContainer` function.",
+          "fr": "Tu dois appeler la fonction `updateTaskContainer`."
+        },
+        {
+          "en": "You should call the `reset` function after calling the `updateTaskContainer` function.",
+          "fr": "Tu dois appeler la fonction `reset` après avoir appelé la fonction `updateTaskContainer`."
+        }
+      ]
+    },
+    {
+      "file": "64fadff23375f27ff06c6d40.md",
+      "id": "64fadff23375f27ff06c6d40",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "Now remove the `reset()` call inside the `taskForm` submit event listener and call the `addOrUpdateTask` function instead.",
+          "fr": "Supprime maintenant l'appel `reset()` à l'intérieur de l'écouteur d'événement submit de `taskForm` et appelle la fonction `addOrUpdateTask` à la place."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove `reset()` and call `addOrUpdateTask()`.",
+          "fr": "Tu dois supprimer `reset()` et appeler `addOrUpdateTask()`."
+        }
+      ]
+    },
+    {
+      "file": "64faf0418e828c0114a558a7.md",
+      "id": "64faf0418e828c0114a558a7",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "There's a problem. If you add a task, and then add another, the previous task gets duplicated. This means you need to clear out the existing contents of `tasksContainer` before adding a new task.",
+          "fr": "Il y a un problème. Si tu ajoutes une tâche, puis une autre, la tâche précédente est dupliquée. Cela signifie que tu dois vider le contenu existant de `tasksContainer` avant d'ajouter une nouvelle tâche."
+        },
+        {
+          "en": "Set the `innerHTML` of `tasksContainer` back to an empty string.",
+          "fr": "Définis le `innerHTML` de `tasksContainer` à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `innerHTML` of `tasksContainer` to an empty string.",
+          "fr": "Tu dois définir le `innerHTML` de `tasksContainer` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "64fae068bcdc9c805bd8399e.md",
+      "id": "64fae068bcdc9c805bd8399e",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "To enable editing and deleting for each task, add an `onclick` attribute to both buttons. Set the value of the `onclick` attribute to `editTask(this)` for the `Edit` button and `deleteTask(this)` for the `Delete` button. The `editTask(this)` function will handle editing, while the `deleteTask(this)` function will handle deletion.",
+          "fr": "Pour activer l'édition et la suppression pour chaque tâche, ajoute un attribut `onclick` aux deux boutons. Définis la valeur de l'attribut `onclick` à `editTask(this)` pour le bouton `Edit` et à `deleteTask(this)` pour le bouton `Delete`. La fonction `editTask(this)` gérera l'édition, tandis que la fonction `deleteTask(this)` gérera la suppression."
+        },
+        {
+          "en": "`this` is a keyword that refers to the current context. In this case, `this` points to the element that triggers the event – the buttons.",
+          "fr": "`this` est un mot-clé qui fait référence au contexte actuel. Dans ce cas, `this` pointe vers l'élément qui déclenche l'événement — les boutons."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add `onclick=\"editTask(this)\"` to your edit button.",
+          "fr": "Tu dois ajouter `onclick=\"editTask(this)\"` à ton bouton d'édition."
+        },
+        {
+          "en": "You should add `onclick=\"deleteTask(this)\"` to your delete button.",
+          "fr": "Tu dois ajouter `onclick=\"deleteTask(this)\"` à ton bouton de suppression."
+        }
+      ]
+    },
+    {
+      "file": "64faedcd16a1e985c4c2dc94.md",
+      "id": "64faedcd16a1e985c4c2dc94",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "Create a `deleteTask` function using arrow syntax. Pass `buttonEl` as the parameter and define an empty set of curly braces for the function body.",
+          "fr": "Crée une fonction `deleteTask` en utilisant la syntaxe fléchée. Passe `buttonEl` comme paramètre et définis un ensemble vide d'accolades pour le corps de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` and arrow syntax to create a `deleteTask` function.",
+          "fr": "Tu dois utiliser `const` et la syntaxe fléchée pour créer une fonction `deleteTask`."
+        },
+        {
+          "en": "Your `deleteTask` function should take a `buttonEl` parameter.",
+          "fr": "Ta fonction `deleteTask` doit prendre un paramètre `buttonEl`."
+        },
+        {
+          "en": "Your `deleteTask` function should be empty.",
+          "fr": "Ta fonction `deleteTask` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64faf65b22ad8d07df9be14d.md",
+      "id": "64faf65b22ad8d07df9be14d",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "You need to find the index of the task you want to delete first.",
+          "fr": "Tu dois d'abord trouver l'indice de la tâche que tu veux supprimer."
+        },
+        {
+          "en": "Create a `dataArrIndex` variable and set its value using the `findIndex()` method on the `taskData` array. Pass `item` as the parameter for the arrow callback function, and within the callback, check if the `id` of `item` is equal to the `id` of the `parentElement` of `buttonEl`.",
+          "fr": "Crée une variable `dataArrIndex` et définis sa valeur en utilisant la méthode `findIndex()` sur le tableau `taskData`. Passe `item` comme paramètre de la fonction de rappel fléchée, et dans le rappel, vérifie si l'`id` de `item` est égal à l'`id` du `parentElement` de `buttonEl`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not alter the `deleteTask` function.",
+          "fr": "Tu ne dois pas modifier la fonction `deleteTask`."
+        },
+        {
+          "en": "You should use `const` to declare a `dataArrIndex` variable and set it to `taskData.findIndex()`.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable `dataArrIndex` et la définir à `taskData.findIndex()`."
+        },
+        {
+          "en": "You should pass in `item` as the parameter of the `findIndex()` arrow function callback.",
+          "fr": "Tu dois passer `item` comme paramètre de la fonction de rappel fléchée de `findIndex()`."
+        },
+        {
+          "en": "Your arrow function callback should check if `item.id === buttonEl.parentElement.id`. Don't use curly braces.",
+          "fr": "Ta fonction de rappel fléchée doit vérifier si `item.id === buttonEl.parentElement.id`. N'utilise pas d'accolades."
+        }
+      ]
+    },
+    {
+      "file": "64faf874364ec308f875f636.md",
+      "id": "64faf874364ec308f875f636",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "You need to remove the task from the DOM using `remove()` and from the `taskData` array using `splice()`.",
+          "fr": "Tu dois supprimer la tâche du DOM avec `remove()` et du tableau `taskData` avec `splice()`."
+        },
+        {
+          "en": "`splice()` is an array method that modifies arrays by removing, replacing, or adding elements at a specified index, while also returning the removed elements. It can take up to three arguments: the first one is the mandatory index at which to start, the second is the number of items to remove, and the third is an optional replacement element. Here's an example:",
+          "fr": "`splice()` est une méthode de tableau qui modifie les tableaux en supprimant, remplaçant ou ajoutant des éléments à un indice spécifié, tout en renvoyant les éléments supprimés. Elle peut prendre jusqu'à trois arguments : le premier est l'indice obligatoire auquel démarrer, le deuxième est le nombre d'éléments à supprimer, et le troisième est un élément de remplacement optionnel. Voici un exemple :"
+        },
+        {
+          "en": "Use the `remove()` method to remove the `parentElement` of the `buttonEl` from the DOM. Then use `splice()` to remove the task from the `taskData` array. Pass in `dataArrIndex` and `1` as the arguments of your `splice()`.",
+          "fr": "Utilise la méthode `remove()` pour supprimer le `parentElement` de `buttonEl` du DOM. Puis utilise `splice()` pour supprimer la tâche du tableau `taskData`. Passe `dataArrIndex` et `1` comme arguments de ton `splice()`."
+        },
+        {
+          "en": "`dataArrIndex` is the index to start and `1` is the number of items to remove.",
+          "fr": "`dataArrIndex` est l'indice de départ et `1` est le nombre d'éléments à supprimer."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `remove()` method to remove the parent element of `buttonEl`.",
+          "fr": "Tu dois utiliser la méthode `remove()` pour supprimer l'élément parent de `buttonEl`."
+        },
+        {
+          "en": "You should use `splice()` on the `taskData` array.",
+          "fr": "Tu dois utiliser `splice()` sur le tableau `taskData`."
+        },
+        {
+          "en": "The first argument of your `splice()` method should be `dataArrIndex`.",
+          "fr": "Le premier argument de ta méthode `splice()` doit être `dataArrIndex`."
+        },
+        {
+          "en": "The second argument of your `splice()` method should be `1`.",
+          "fr": "Le second argument de ta méthode `splice()` doit être `1`."
+        }
+      ]
+    },
+    {
+      "file": "64fafac95328110a69bcb75f.md",
+      "id": "64fafac95328110a69bcb75f",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "Use arrow syntax to create an `editTask` function. Pass in `buttonEl` as the parameter and add empty curly braces for the body.",
+          "fr": "Utilise la syntaxe fléchée pour créer une fonction `editTask`. Passe `buttonEl` comme paramètre et ajoute des accolades vides pour le corps."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` and arrow syntax to create an `editTask` function.",
+          "fr": "Tu dois utiliser `const` et la syntaxe fléchée pour créer une fonction `editTask`."
+        },
+        {
+          "en": "Your `editTask` function should take a `buttonEl` parameter.",
+          "fr": "Ta fonction `editTask` doit prendre un paramètre `buttonEl`."
+        },
+        {
+          "en": "Your `editTask` function should be empty.",
+          "fr": "Ta fonction `editTask` doit être vide."
+        }
+      ]
+    },
+    {
+      "file": "64fb0fa0968f2b113b2d90e9.md",
+      "id": "64fb0fa0968f2b113b2d90e9",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "As you did in the `deleteTask` function, you need to find the index of the task to be edited.",
+          "fr": "Comme tu l'as fait dans la fonction `deleteTask`, tu dois trouver l'indice de la tâche à éditer."
+        },
+        {
+          "en": "Create a `dataArrIndex` variable. For its value, utilize the `findIndex()` method on `taskData`. Pass `item` as the parameter to its callback function and check if the `id` of `item` is equal to the `id` of the `parentElement` of `buttonEl`.",
+          "fr": "Crée une variable `dataArrIndex`. Pour sa valeur, utilise la méthode `findIndex()` sur `taskData`. Passe `item` comme paramètre de sa fonction de rappel et vérifie si l'`id` de `item` est égal à l'`id` du `parentElement` de `buttonEl`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not alter the `editTask` function.",
+          "fr": "Tu ne dois pas modifier la fonction `editTask`."
+        },
+        {
+          "en": "You should use `const` to declare a `dataArrIndex` variable and set it to `taskData.findIndex()`.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable `dataArrIndex` et la définir à `taskData.findIndex()`."
+        },
+        {
+          "en": "You should pass in `item` as the parameter of the `findIndex()` arrow function callback. Don't use curly braces.",
+          "fr": "Tu dois passer `item` comme paramètre de la fonction de rappel fléchée de `findIndex()`. N'utilise pas d'accolades."
+        },
+        {
+          "en": "Your arrow function callback should check if `item.id === buttonEl.parentElement.id`.",
+          "fr": "Ta fonction de rappel fléchée doit vérifier si `item.id === buttonEl.parentElement.id`."
+        }
+      ]
+    },
+    {
+      "file": "64fb1061ca838611ed6a7d6b.md",
+      "id": "64fb1061ca838611ed6a7d6b",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Use square bracket notation to retrieve the task to be edited from the `taskData` array using the `dataArrIndex`. Then, assign it to the `currentTask` object to keep track of it.",
+          "fr": "Utilise la notation entre crochets pour récupérer la tâche à éditer depuis le tableau `taskData` en utilisant `dataArrIndex`. Puis, assigne-la à l'objet `currentTask` pour la suivre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `taskData[dataArrIndex]` to `currentTask`.",
+          "fr": "Tu dois assigner `taskData[dataArrIndex]` à `currentTask`."
+        }
+      ]
+    },
+    {
+      "file": "64fb1321e189a6136d200f77.md",
+      "id": "64fb1321e189a6136d200f77",
+      "dashedName": "step-47",
+      "title": {
+        "en": "Step 47",
+        "fr": "Étape 47"
+      },
+      "description": [
+        {
+          "en": "The task to be edited is now in the `currentTask` object. Stage it for editing inside the input fields by setting the value of `titleInput` to `currentTask.title`, `dateInput` to `currentTask.date`, and `descriptionInput` to `currentTask.description`.",
+          "fr": "La tâche à éditer est maintenant dans l'objet `currentTask`. Prépare-la pour l'édition dans les champs de saisie en définissant la valeur de `titleInput` à `currentTask.title`, `dateInput` à `currentTask.date`, et `descriptionInput` à `currentTask.description`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `titleInput.value` to `currentTask.title`.",
+          "fr": "Tu dois définir `titleInput.value` à `currentTask.title`."
+        },
+        {
+          "en": "You should set `dateInput.value` to `currentTask.date`.",
+          "fr": "Tu dois définir `dateInput.value` à `currentTask.date`."
+        },
+        {
+          "en": "You should set `descriptionInput.value` to `currentTask.description`.",
+          "fr": "Tu dois définir `descriptionInput.value` à `currentTask.description`."
+        }
+      ]
+    },
+    {
+      "file": "64fb1436adef3e145b4c3501.md",
+      "id": "64fb1436adef3e145b4c3501",
+      "dashedName": "step-48",
+      "title": {
+        "en": "Step 48",
+        "fr": "Étape 48"
+      },
+      "description": [
+        {
+          "en": "Set the `innerText` of the `addOrUpdateTaskBtn` button to `Update Task`.",
+          "fr": "Définis le `innerText` du bouton `addOrUpdateTaskBtn` à `Update Task`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the inner text of the `addOrUpdateTaskBtn` button to `Update Task`",
+          "fr": "Tu dois définir le texte intérieur du bouton `addOrUpdateTaskBtn` à `Update Task`"
+        }
+      ]
+    },
+    {
+      "file": "64fb14d890415c14f93069ce.md",
+      "id": "64fb14d890415c14f93069ce",
+      "dashedName": "step-49",
+      "title": {
+        "en": "Step 49",
+        "fr": "Étape 49"
+      },
+      "description": [
+        {
+          "en": "Finally, display the `form` modal with the values of the input fields by using `classList` to toggle the `hidden` class on `taskForm`.",
+          "fr": "Enfin, affiche la modale `form` avec les valeurs des champs de saisie en utilisant `classList` pour basculer la classe `hidden` sur `taskForm`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `classList` to toggle the class `hidden` on `taskForm`.",
+          "fr": "Tu dois utiliser `classList` pour basculer la classe `hidden` sur `taskForm`."
+        }
+      ]
+    },
+    {
+      "file": "64fb154a7c48cd159924bb18.md",
+      "id": "64fb154a7c48cd159924bb18",
+      "dashedName": "step-50",
+      "title": {
+        "en": "Step 50",
+        "fr": "Étape 50"
+      },
+      "description": [
+        {
+          "en": "At this point, editing a task won't reflect when you submit the task. To make the editing functional, go back to the `if` statement inside the `addOrUpdateTask` function. Create an `else` block and set `taskData[dataArrIndex]` to `taskObj`.",
+          "fr": "À ce stade, l'édition d'une tâche ne se reflétera pas lorsque tu soumets la tâche. Pour rendre l'édition fonctionnelle, retourne à l'instruction `if` à l'intérieur de la fonction `addOrUpdateTask`. Crée un bloc `else` et définis `taskData[dataArrIndex]` à `taskObj`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `if` statement should have an `else` block.",
+          "fr": "Ton instruction `if` doit avoir un bloc `else`."
+        },
+        {
+          "en": "Your `else` block should have the code `taskData[dataArrIndex] = taskObj`.",
+          "fr": "Ton bloc `else` doit avoir le code `taskData[dataArrIndex] = taskObj`."
+        }
+      ]
+    },
+    {
+      "file": "64fb1c4dc0feb219149a7c7d.md",
+      "id": "64fb1c4dc0feb219149a7c7d",
+      "dashedName": "step-51",
+      "title": {
+        "en": "Step 51",
+        "fr": "Étape 51"
+      },
+      "description": [
+        {
+          "en": "If the user attempts to edit a task but decides not to make any changes before closing the form, there is no need to display the modal with the `Cancel` and `Discard` buttons.",
+          "fr": "Si l'utilisateur tente d'éditer une tâche mais décide de ne faire aucun changement avant de fermer le formulaire, il n'est pas nécessaire d'afficher la modale avec les boutons `Cancel` et `Discard`."
+        },
+        {
+          "en": "Inside the `closeTaskFormBtn` event listener, use `const` to create another variable named `formInputValuesUpdated`. Check if the user made changes while trying to edit a task by verifying that the `titleInput` value **is not equal to** `currentTask.title`, or the `dateInput` value **is not equal to** `currentTask.date`, or the `descriptionInput` value **is not equal to** `currentTask.description`.",
+          "fr": "À l'intérieur de l'écouteur d'événement de `closeTaskFormBtn`, utilise `const` pour créer une autre variable nommée `formInputValuesUpdated`. Vérifie si l'utilisateur a fait des changements en tentant d'éditer une tâche en vérifiant que la valeur de `titleInput` **n'est pas égale à** `currentTask.title`, ou que la valeur de `dateInput` **n'est pas égale à** `currentTask.date`, ou que la valeur de `descriptionInput` **n'est pas égale à** `currentTask.description`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `formInputValuesUpdated` variable should check if `titleInput.value` is not equal to `currentTask.title`.",
+          "fr": "Ta variable `formInputValuesUpdated` doit vérifier si `titleInput.value` n'est pas égal à `currentTask.title`."
+        },
+        {
+          "en": "Your `formInputValuesUpdated` variable should check if `titleInput.value` is not equal to `currentTask.title` or `dateInput.value` is not equal to `currentTask.date`.",
+          "fr": "Ta variable `formInputValuesUpdated` doit vérifier si `titleInput.value` n'est pas égal à `currentTask.title` ou si `dateInput.value` n'est pas égal à `currentTask.date`."
+        },
+        {
+          "en": "Your `formInputValuesUpdated` variable should check if `titleInput.value` is not equal to `currentTask.title`, `dateInput.value` is not equal to `currentTask.date`, or `descriptionInput.value` is not equal to `currentTask.description`.",
+          "fr": "Ta variable `formInputValuesUpdated` doit vérifier si `titleInput.value` n'est pas égal à `currentTask.title`, si `dateInput.value` n'est pas égal à `currentTask.date`, ou si `descriptionInput.value` n'est pas égal à `currentTask.description`."
+        }
+      ]
+    },
+    {
+      "file": "64fb285637fa1e1c222033e3.md",
+      "id": "64fb285637fa1e1c222033e3",
+      "dashedName": "step-52",
+      "title": {
+        "en": "Step 52",
+        "fr": "Étape 52"
+      },
+      "description": [
+        {
+          "en": "Now add `formInputValuesUpdated` as the second mandatory condition in the `if` statement using the `AND` operator.",
+          "fr": "Ajoute maintenant `formInputValuesUpdated` comme seconde condition obligatoire dans l'instruction `if` en utilisant l'opérateur `AND`."
+        },
+        {
+          "en": "This way, the `Cancel` and `Discard` buttons in the modal won't be displayed to the user if they haven't made any changes to the input fields while attempting to edit a task.",
+          "fr": "Ainsi, les boutons `Cancel` et `Discard` de la modale ne seront pas affichés à l'utilisateur s'il n'a fait aucun changement aux champs de saisie en tentant d'éditer une tâche."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `if` should have the condition `formInputsContainValues && formInputValuesUpdated`.",
+          "fr": "Ton `if` doit avoir la condition `formInputsContainValues && formInputValuesUpdated`."
+        }
+      ]
+    },
+    {
+      "file": "64fb29348a60361ccd45c1e2.md",
+      "id": "64fb29348a60361ccd45c1e2",
+      "dashedName": "step-53",
+      "title": {
+        "en": "Step 53",
+        "fr": "Étape 53"
+      },
+      "description": [
+        {
+          "en": "As you recall from previous lessons, `localStorage` is part of the Web Storage API that allows data to persist even after the browser window is closed or the page is refreshed.",
+          "fr": "Comme tu te le rappelles des leçons précédentes, `localStorage` fait partie de l'API Web Storage qui permet aux données de persister même après la fermeture de la fenêtre du navigateur ou le rafraîchissement de la page."
+        },
+        {
+          "en": "Here is a reminder of how to set an item in `localStorage`:",
+          "fr": "Voici un rappel de la façon de définir un élément dans `localStorage` :"
+        },
+        {
+          "en": "A `myTaskArr` array has been provided for you. Use the `setItem()` method to save it with a key of `data`.",
+          "fr": "Un tableau `myTaskArr` t'a été fourni. Utilise la méthode `setItem()` pour l'enregistrer avec une clé `data`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `localStorage.setItem()` should have a key of `\"data\"`.",
+          "fr": "Ton `localStorage.setItem()` doit avoir une clé `\"data\"`."
+        },
+        {
+          "en": "Your `localStorage.setItem()` should have a value of `myTaskArr`.",
+          "fr": "Ton `localStorage.setItem()` doit avoir une valeur `myTaskArr`."
+        }
+      ]
+    },
+    {
+      "file": "64fb29348a60361ccd45c1e3.md",
+      "id": "64fb29348a60361ccd45c1e3",
+      "dashedName": "step-54",
+      "title": {
+        "en": "Step 54",
+        "fr": "Étape 54"
+      },
+      "description": [
+        {
+          "en": "To view what's stored in `localStorage`, open the browser's developer tools and navigate to the local storage section:",
+          "fr": "Pour voir ce qui est stocké dans `localStorage`, ouvre les outils de développement du navigateur et navigue jusqu'à la section du local storage :"
+        },
+        {
+          "en": "- **Chrome/Edge:** Open DevTools (F12), navigate to `Application` > `Storage` and expand `Local Storage`. Click a domain to view its key-value pairs.\n- **Firefox:** Open DevTools (F12), navigate to `Storage` and expand `Local Storage`. Click a domain to view its key-value pairs.\n- **Safari:** Choose `Safari` > `Settings`, and click `Advanced`. At the bottom of the pane, select the `Show Develop menu in menu bar` checkbox. Once the developer tools are enabled, right-click on the page within browser, select `Inspect element`, go to the `Storage` tab, then select `Local Storage`. Click a domain to view its key-value pairs.",
+          "fr": "- **Chrome/Edge :** Ouvre les DevTools (F12), navigue vers `Application` > `Storage` et développe `Local Storage`. Clique sur un domaine pour voir ses paires clé-valeur.\n- **Firefox :** Ouvre les DevTools (F12), navigue vers `Storage` et développe `Local Storage`. Clique sur un domaine pour voir ses paires clé-valeur.\n- **Safari :** Choisis `Safari` > `Settings`, et clique sur `Advanced`. En bas du panneau, coche la case `Show Develop menu in menu bar`. Une fois les outils de développement activés, fais un clic droit sur la page dans le navigateur, sélectionne `Inspect element`, va dans l'onglet `Storage`, puis sélectionne `Local Storage`. Clique sur un domaine pour voir ses paires clé-valeur."
+        },
+        {
+          "en": "The data stored with the key `data` should be visible. Examine it and note what the values look like.",
+          "fr": "Les données stockées avec la clé `data` devraient être visibles. Examine-les et note à quoi ressemblent les valeurs."
+        },
+        {
+          "en": "Click the \"Check Your Code\" button to proceed to the next step.",
+          "fr": "Clique sur le bouton \"Check Your Code\" pour passer à l'étape suivante."
+        }
+      ],
+      "hints": [
+        {
+          "en": "This step has no tests. Click the \"Check Your Code\" button to continue.",
+          "fr": "Cette étape n'a pas de tests. Clique sur le bouton \"Check Your Code\" pour continuer."
+        }
+      ]
+    },
+    {
+      "file": "64fefebad99209211ec30537.md",
+      "id": "64fefebad99209211ec30537",
+      "dashedName": "step-55",
+      "title": {
+        "en": "Step 55",
+        "fr": "Étape 55"
+      },
+      "description": [
+        {
+          "en": "When you inspect the stored value, you may notice entries that look like `[object Object],[object Object],[object Object]`. This happens because `localStorage` can only store values as strings.",
+          "fr": "Lorsque tu inspectes la valeur stockée, tu peux remarquer des entrées qui ressemblent à `[object Object],[object Object],[object Object]`. Cela se produit parce que `localStorage` ne peut stocker des valeurs que sous forme de chaînes."
+        },
+        {
+          "en": "To fix this, convert `data` to a string before saving it by using `JSON.stringify()`. After storing it again, recheck `localStorage` to see how the data now appears.",
+          "fr": "Pour corriger cela, convertis `data` en chaîne avant de l'enregistrer en utilisant `JSON.stringify()`. Après l'avoir stocké à nouveau, revérifie `localStorage` pour voir comment les données apparaissent maintenant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `localStorage.setItem()` should have a key of `\"data\"`.",
+          "fr": "Ton `localStorage.setItem()` doit avoir une clé `\"data\"`."
+        },
+        {
+          "en": "You should wrap `JSON.stringify()` around `myTaskArr`.",
+          "fr": "Tu dois envelopper `JSON.stringify()` autour de `myTaskArr`."
+        }
+      ]
+    },
+    {
+      "file": "64ff0313700dad264d19dfe4.md",
+      "id": "64ff0313700dad264d19dfe4",
+      "dashedName": "step-56",
+      "title": {
+        "en": "Step 56",
+        "fr": "Étape 56"
+      },
+      "description": [
+        {
+          "en": "Now that you have the `myTaskArr` array saved in `localStorage` correctly, you can retrieve it with `getItem()` by specifying the key you used to save the item.",
+          "fr": "Maintenant que tu as le tableau `myTaskArr` correctement enregistré dans `localStorage`, tu peux le récupérer avec `getItem()` en spécifiant la clé que tu as utilisée pour enregistrer l'élément."
+        },
+        {
+          "en": "Use the `getItem()` method to retrieve the `myTaskArr` array and assign it to the variable `getTaskArr`. Then, log the `getTaskArr` variable to the console to see the result.",
+          "fr": "Utilise la méthode `getItem()` pour récupérer le tableau `myTaskArr` et assigne-le à la variable `getTaskArr`. Ensuite, affiche la variable `getTaskArr` dans la console pour voir le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to create a `getTaskArr` variable and assign `localStorage.getItem(\"data\")` to it.",
+          "fr": "Tu dois utiliser `const` pour créer une variable `getTaskArr` et lui assigner `localStorage.getItem(\"data\")`."
+        },
+        {
+          "en": "You should log the `getTaskArr` variable to the console.",
+          "fr": "Tu dois afficher la variable `getTaskArr` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "64ff04cc33779427a6412449.md",
+      "id": "64ff04cc33779427a6412449",
+      "dashedName": "step-57",
+      "title": {
+        "en": "Step 57",
+        "fr": "Étape 57"
+      },
+      "description": [
+        {
+          "en": "The item you retrieve is a string, as you saved it with `JSON.stringify()`. To view it in its original form before saving, you need to use `JSON.parse()`.",
+          "fr": "L'élément que tu récupères est une chaîne, car tu l'as enregistré avec `JSON.stringify()`. Pour le voir sous sa forme d'origine avant l'enregistrement, tu dois utiliser `JSON.parse()`."
+        },
+        {
+          "en": "Use `getItem()` to retrieve the `myTaskArr` array again. This time, wrap it inside `JSON.parse()`, assign it to the variable `getTaskArrObj` and log the `getTaskArrObj` to the console.",
+          "fr": "Utilise `getItem()` pour récupérer à nouveau le tableau `myTaskArr`. Cette fois, enveloppe-le dans `JSON.parse()`, assigne-le à la variable `getTaskArrObj` et affiche `getTaskArrObj` dans la console."
+        },
+        {
+          "en": "Check the console to see the difference between `getTaskArr` and `getTaskArrObj`.",
+          "fr": "Vérifie la console pour voir la différence entre `getTaskArr` et `getTaskArrObj`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to create a `getTaskArrObj` variable and assign it to `JSON.parse(localStorage.getItem('data'));`.",
+          "fr": "Tu dois utiliser `const` pour créer une variable `getTaskArrObj` et lui assigner `JSON.parse(localStorage.getItem('data'));`."
+        },
+        {
+          "en": "You should log the `getTaskArrObj` variable to the console.",
+          "fr": "Tu dois afficher la variable `getTaskArrObj` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "64ff068e0426eb288874ed79.md",
+      "id": "64ff068e0426eb288874ed79",
+      "dashedName": "step-58",
+      "title": {
+        "en": "Step 58",
+        "fr": "Étape 58"
+      },
+      "description": [
+        {
+          "en": "You can use `localStorage.removeItem()` to remove a specific item from the local storage.",
+          "fr": "Tu peux utiliser `localStorage.removeItem()` pour supprimer un élément spécifique du local storage."
+        },
+        {
+          "en": "Remove the `data` item from local storage and open the console to observe the result. You should see `null`.",
+          "fr": "Supprime l'élément `data` du local storage et ouvre la console pour observer le résultat. Tu devrais voir `null`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `localStorage.removeItem()` to remove the `data` item from the browser's local storage.",
+          "fr": "Tu dois utiliser `localStorage.removeItem()` pour supprimer l'élément `data` du local storage du navigateur."
+        }
+      ]
+    },
+    {
+      "file": "64ff24b80431f62ec6b93f65.md",
+      "id": "64ff24b80431f62ec6b93f65",
+      "dashedName": "step-59",
+      "title": {
+        "en": "Step 59",
+        "fr": "Étape 59"
+      },
+      "description": [
+        {
+          "en": "Remove the `myTaskArr` array and all of the code for `localStorage` because you don't need them anymore.",
+          "fr": "Supprime le tableau `myTaskArr` et tout le code lié à `localStorage` car tu n'en as plus besoin."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove `myTaskArr` and all the code related to `localStorage` that you've just learned.",
+          "fr": "Tu dois supprimer `myTaskArr` et tout le code lié à `localStorage` que tu viens d'apprendre."
+        },
+        {
+          "en": "You should remove any remaining references to `myTaskArr` anywhere in the code.",
+          "fr": "Tu dois supprimer toute référence restante à `myTaskArr` partout dans le code."
+        },
+        {
+          "en": "You should remove any reference to `localStorage.getItem` for the item `\"data\"`.",
+          "fr": "Tu dois supprimer toute référence à `localStorage.getItem` pour l'élément `\"data\"`."
+        },
+        {
+          "en": "You should remove any remaining references to `getTaskArrObj` anywhere in the code.",
+          "fr": "Tu dois supprimer toute référence restante à `getTaskArrObj` partout dans le code."
+        }
+      ]
+    },
+    {
+      "file": "65003986d17d1e1865b269c0.md",
+      "id": "65003986d17d1e1865b269c0",
+      "dashedName": "step-60",
+      "title": {
+        "en": "Step 60",
+        "fr": "Étape 60"
+      },
+      "description": [
+        {
+          "en": "Now you should save the task items to local storage when the user adds, updates, or removes a task.",
+          "fr": "Maintenant, tu dois enregistrer les éléments de tâche dans le local storage lorsque l'utilisateur ajoute, met à jour ou supprime une tâche."
+        },
+        {
+          "en": "Inside the `addOrUpdateTask` function, use `setItem()` to save the tasks with a key of `data`, then pass the `taskData` array as its argument. Ensure that you stringify the `taskData`.",
+          "fr": "À l'intérieur de la fonction `addOrUpdateTask`, utilise `setItem()` pour enregistrer les tâches avec une clé `data`, puis passe le tableau `taskData` comme argument. Assure-toi de stringifier le `taskData`."
+        },
+        {
+          "en": "This would persist data once the user adds or updates tasks.",
+          "fr": "Cela fera persister les données une fois que l'utilisateur ajoute ou met à jour des tâches."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `localStorage.setItem()` to save the tasks to the browser `local storage`.",
+          "fr": "Tu dois utiliser `localStorage.setItem()` pour enregistrer les tâches dans le `local storage` du navigateur."
+        },
+        {
+          "en": "You should pass in `\"data\"` as the first argument of your `localStorage.setItem()`.",
+          "fr": "Tu dois passer `\"data\"` comme premier argument de ton `localStorage.setItem()`."
+        },
+        {
+          "en": "You should pass in `JSON.stringify(taskData)` as the second argument of your `localStorage.setItem()`.",
+          "fr": "Tu dois passer `JSON.stringify(taskData)` comme second argument de ton `localStorage.setItem()`."
+        }
+      ]
+    },
+    {
+      "file": "650046832f92c01a35834bca.md",
+      "id": "650046832f92c01a35834bca",
+      "dashedName": "step-61",
+      "title": {
+        "en": "Step 61",
+        "fr": "Étape 61"
+      },
+      "description": [
+        {
+          "en": "You also want a deleted task to be removed from local storage. For this, you don't need the `removeItem()` or `clear()` methods. Since you already use `splice()` to remove the deleted task from `taskData`, all you need to do now is save `taskData` to local storage again.",
+          "fr": "Tu veux aussi qu'une tâche supprimée soit retirée du local storage. Pour cela, tu n'as pas besoin des méthodes `removeItem()` ou `clear()`. Comme tu utilises déjà `splice()` pour retirer la tâche supprimée de `taskData`, tout ce que tu dois faire maintenant est d'enregistrer à nouveau `taskData` dans le local storage."
+        },
+        {
+          "en": "Use `setItem()` to save the `taskData` array again. Pass in `data` as the key and ensure that `taskData` is stringified before saving.",
+          "fr": "Utilise `setItem()` pour enregistrer à nouveau le tableau `taskData`. Passe `data` comme clé et assure-toi que `taskData` est stringifié avant l'enregistrement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `localStorage.setItem()` to save the tasks to the browser `local storage`.",
+          "fr": "Tu dois utiliser `localStorage.setItem()` pour enregistrer les tâches dans le `local storage` du navigateur."
+        },
+        {
+          "en": "You should pass in `\"data\"` as the first argument of your `localStorage.setItem()`.",
+          "fr": "Tu dois passer `\"data\"` comme premier argument de ton `localStorage.setItem()`."
+        },
+        {
+          "en": "You should pass in `JSON.stringify(taskData)` as the second argument of your `localStorage.setItem()`.",
+          "fr": "Tu dois passer `JSON.stringify(taskData)` comme second argument de ton `localStorage.setItem()`."
+        }
+      ]
+    },
+    {
+      "file": "650048b0764f9c1b798200e2.md",
+      "id": "650048b0764f9c1b798200e2",
+      "dashedName": "step-62",
+      "title": {
+        "en": "Step 62",
+        "fr": "Étape 62"
+      },
+      "description": [
+        {
+          "en": "If you add, update, or remove a task, it should reflect in the UI. However, that's not happening now because you have yet to retrieve the tasks. To do this, you need to modify your initial `taskData` to load `data` from `localStorage`. If there is nothing in `localStorage` it should be assigned an empty array.",
+          "fr": "Si tu ajoutes, mets à jour ou supprimes une tâche, cela devrait se refléter dans l'interface. Cependant, ce n'est pas le cas maintenant car tu n'as pas encore récupéré les tâches. Pour cela, tu dois modifier ton `taskData` initial pour charger `data` depuis `localStorage`. S'il n'y a rien dans `localStorage`, un tableau vide doit lui être assigné."
+        },
+        {
+          "en": "Set `taskData` to the retrieval of `data` from local storage **or** an empty array. Make sure you parse the data coming with `JSON.parse()` because you saved it as a string.",
+          "fr": "Définis `taskData` à la récupération de `data` depuis le local storage **ou** un tableau vide. Assure-toi d'analyser les données avec `JSON.parse()` car tu les as enregistrées sous forme de chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `taskData` variable to `JSON.parse(localStorage.getItem(\"data\")) || [];`.",
+          "fr": "Tu dois définir la variable `taskData` à `JSON.parse(localStorage.getItem(\"data\")) || [];`."
+        }
+      ]
+    },
+    {
+      "file": "65004ba581d03d1d5628b41c.md",
+      "id": "65004ba581d03d1d5628b41c",
+      "dashedName": "step-63",
+      "title": {
+        "en": "Step 63",
+        "fr": "Étape 63"
+      },
+      "description": [
+        {
+          "en": "You've retrieved the task item(s) now, but they still don't reflect in the UI when the page loads. However, they appear when you add a new task.",
+          "fr": "Tu as maintenant récupéré le(s) élément(s) de tâche, mais ils ne se reflètent toujours pas dans l'interface au chargement de la page. Cependant, ils apparaissent lorsque tu ajoutes une nouvelle tâche."
+        },
+        {
+          "en": "You can check if there's a task inside `taskData` using the length of the array. Because `0` is a falsy value all you need for the condition is the array length.",
+          "fr": "Tu peux vérifier s'il y a une tâche dans `taskData` en utilisant la longueur du tableau. Comme `0` est une valeur falsy, tout ce dont tu as besoin pour la condition est la longueur du tableau."
+        },
+        {
+          "en": "Here is an example checking the length of an array:",
+          "fr": "Voici un exemple qui vérifie la longueur d'un tableau :"
+        },
+        {
+          "en": "In that example, if `arr` has a length greater than `0`, the code inside the `if` statement block will run. If `arr` has a length of `0`, the code inside the `if` statement block will not run.",
+          "fr": "Dans cet exemple, si `arr` a une longueur supérieure à `0`, le code à l'intérieur du bloc de l'instruction `if` s'exécutera. Si `arr` a une longueur de `0`, le code à l'intérieur du bloc de l'instruction `if` ne s'exécutera pas."
+        },
+        {
+          "en": "Check if there's a task inside `taskData`, then call the `updateTaskContainer()` inside the `if` statement block.",
+          "fr": "Vérifie s'il y a une tâche dans `taskData`, puis appelle `updateTaskContainer()` à l'intérieur du bloc de l'instruction `if`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with `(taskData.length)` as the condition. As a reminder, `0` is a falsy value.",
+          "fr": "Tu dois créer une instruction `if` avec `(taskData.length)` comme condition. Pour rappel, `0` est une valeur falsy."
+        },
+        {
+          "en": "You should call the `updateTaskContainer` function in your `if` statement.",
+          "fr": "Tu dois appeler la fonction `updateTaskContainer` dans ton instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "6632420f81f3cc554a5e540b.md",
+      "id": "6632420f81f3cc554a5e540b",
+      "dashedName": "step-64",
+      "title": {
+        "en": "Step 64",
+        "fr": "Étape 64"
+      },
+      "description": [
+        {
+          "en": "If you try to add a new task, edit that task, and then click on the `Add New Task` button, you will notice a bug.",
+          "fr": "Si tu tentes d'ajouter une nouvelle tâche, d'éditer cette tâche, puis de cliquer sur le bouton `Add New Task`, tu remarqueras un bug."
+        },
+        {
+          "en": "The form button will display the incorrect text of `\"Update Task\"` instead of `\"Add Task\"`. To fix this, you will need to assign the string `\"Add Task\"` to `addOrUpdateTaskBtn.innerText` inside your `reset` function.",
+          "fr": "Le bouton du formulaire affichera le texte incorrect `\"Update Task\"` au lieu de `\"Add Task\"`. Pour corriger cela, tu devras assigner la chaîne `\"Add Task\"` à `addOrUpdateTaskBtn.innerText` à l'intérieur de ta fonction `reset`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign the string `\"Add Task\"` to `addOrUpdateTaskBtn.innerText`.",
+          "fr": "Tu dois assigner la chaîne `\"Add Task\"` à `addOrUpdateTaskBtn.innerText`."
+        }
+      ]
+    },
+    {
+      "file": "66ad0f178ed5791ed898fe56.md",
+      "id": "66ad0f178ed5791ed898fe56",
+      "dashedName": "step-65",
+      "title": {
+        "en": "Step 65",
+        "fr": "Étape 65"
+      },
+      "description": [
+        {
+          "en": "There are two bugs left to fix. First, if you create a task with only spaces for the title, an empty task will be created even though the title is required.",
+          "fr": "Il reste deux bugs à corriger. Premièrement, si tu crées une tâche avec uniquement des espaces pour le titre, une tâche vide sera créée même si le titre est requis."
+        },
+        {
+          "en": "Fix that by adding a check at the beginning of the function for if `!titleInput.value.trim()`. If there's no title, show an alert with the text `Please provide a title` and `return` after that.",
+          "fr": "Corrige cela en ajoutant une vérification au début de la fonction pour `!titleInput.value.trim()`. S'il n'y a pas de titre, affiche une alerte avec le texte `Please provide a title` et `return` après cela."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement with the condition `!titleInput.value.trim()` inside `addOrUpdateTask` function.",
+          "fr": "Tu dois ajouter une instruction `if` avec la condition `!titleInput.value.trim()` à l'intérieur de la fonction `addOrUpdateTask`."
+        },
+        {
+          "en": "You should call the `alert(\"Please provide a title\")` in your `if` block.",
+          "fr": "Tu dois appeler `alert(\"Please provide a title\")` dans ton bloc `if`."
+        },
+        {
+          "en": "Your `if` statement should return from the function.",
+          "fr": "Ton instruction `if` doit renvoyer depuis la fonction."
+        }
+      ]
+    },
+    {
+      "file": "671682cd6d7aa95f0078f35f.md",
+      "id": "671682cd6d7aa95f0078f35f",
+      "dashedName": "step-66",
+      "title": {
+        "en": "Step 66",
+        "fr": "Étape 66"
+      },
+      "description": [
+        {
+          "en": "It is time to work on the final issue. If there is a to-do task with a special character like a quote inside of the name or description of the item, the application breaks. While it appears otherwise, the correct item will appear missing.",
+          "fr": "Il est temps de travailler sur le dernier problème. S'il y a une tâche to-do avec un caractère spécial comme un guillemet dans le nom ou la description de l'élément, l'application plante. Bien que cela paraisse autrement, l'élément correct apparaîtra manquant."
+        },
+        {
+          "en": "In order to fix this, we need to create a function called `removeSpecialChars` that takes a string as input and removes all special characters.",
+          "fr": "Pour corriger cela, nous devons créer une fonction appelée `removeSpecialChars` qui prend une chaîne en entrée et supprime tous les caractères spéciaux."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a `removeSpecialChars` function.",
+          "fr": "Tu dois définir une fonction `removeSpecialChars`."
+        },
+        {
+          "en": "Your `removeSpecialChars` should remove single quotes.",
+          "fr": "Ta `removeSpecialChars` doit supprimer les guillemets simples."
+        },
+        {
+          "en": "Your `removeSpecialChars` should remove double quotes.",
+          "fr": "Ta `removeSpecialChars` doit supprimer les guillemets doubles."
+        },
+        {
+          "en": "Your `removeSpecialChars` should remove underscores.",
+          "fr": "Ta `removeSpecialChars` doit supprimer les underscores."
+        }
+      ]
+    },
+    {
+      "file": "67168a7243b6396cb69c1bdf.md",
+      "id": "67168a7243b6396cb69c1bdf",
+      "dashedName": "step-67",
+      "title": {
+        "en": "Step 67",
+        "fr": "Étape 67"
+      },
+      "description": [
+        {
+          "en": "Finally, it is time to call the `removeSpecialChars` on the `id` property in your `taskObj`.",
+          "fr": "Enfin, il est temps d'appeler `removeSpecialChars` sur la propriété `id` dans ton `taskObj`."
+        },
+        {
+          "en": "This will help prevent issues caused by special characters in HTML element IDs.",
+          "fr": "Cela aidera à prévenir les problèmes causés par les caractères spéciaux dans les IDs d'éléments HTML."
+        },
+        {
+          "en": "With that you have completed the project.",
+          "fr": "Avec cela, tu as terminé le projet."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `removeSpecialChars` on `titleInput.value` when assigning the `id`.",
+          "fr": "Tu dois appeler `removeSpecialChars` sur `titleInput.value` lors de l'assignation de l'`id`."
+        }
+      ]
+    }
+  ]
+}

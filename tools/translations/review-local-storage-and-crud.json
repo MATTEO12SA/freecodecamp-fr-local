@@ -1,0 +1,124 @@
+{
+  "workshop": "review-local-storage-and-crud",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6723d0ac516099c902394e8b.md",
+      "id": "6723d0ac516099c902394e8b",
+      "dashedName": "review-local-storage-and-crud",
+      "title": {
+        "en": "Local Storage and CRUD Review",
+        "fr": "Révision du local storage et du CRUD"
+      },
+      "description": [
+        {
+          "en": "## Persistent Storage",
+          "fr": "## Stockage persistant"
+        },
+        {
+          "en": "- **Definition**: Persistent storage refers to a way of saving data in a way that it stays available even after the power is turned off or the device is restarted.",
+          "fr": "- **Définition** : Le stockage persistant désigne une façon de sauvegarder des données de sorte qu'elles restent disponibles même après une coupure d'alimentation ou un redémarrage de l'appareil."
+        },
+        {
+          "en": "## Create, Read, Update, Delete (CRUD)",
+          "fr": "## Create, Read, Update, Delete (CRUD)"
+        },
+        {
+          "en": "- **Create**: This refers to the process of creating new data. For example, in a web app, this could be when a user adds a new post to a blog.\n- **Read**: This is the operation where data is retrieved from a database. For instance, when you visit a blog post or view your profile on a website, you're performing a read operation to fetch and display data stored in the database.\n- **Update**: This involves modifying existing data in the database. An example would be editing a blog post or updating your profile information.\n- **Delete**: This is the operation that removes data from a database. For instance, when you delete a blog post or account, you're performing a delete operation.",
+          "fr": "- **Create** : Cela désigne le processus de création de nouvelles données. Par exemple, dans une application web, cela peut être lorsqu'un utilisateur ajoute un nouvel article à un blog.\n- **Read** : C'est l'opération où les données sont récupérées depuis une base de données. Par exemple, lorsque tu visites un article de blog ou que tu consultes ton profil sur un site, tu effectues une opération de lecture pour récupérer et afficher des données stockées dans la base de données.\n- **Update** : Cela consiste à modifier des données existantes dans la base de données. Un exemple serait la modification d'un article de blog ou la mise à jour des informations de ton profil.\n- **Delete** : C'est l'opération qui retire des données d'une base de données. Par exemple, lorsque tu supprimes un article de blog ou un compte, tu effectues une opération de suppression."
+        },
+        {
+          "en": "## HTTP Methods",
+          "fr": "## Méthodes HTTP"
+        },
+        {
+          "en": "- **Definition**: HTTP stands for Hypertext Transfer Protocol and it is the foundation for data communication on the web. There are HTTP methods which define the actions that can be performed on resources over the web. The common methods are GET, POST, PUT, PATCH, DELETE.\n- **`GET` Method**: This is used to fetch data from a server. \n- **`POST` Method**: This is used to submit data to a server which creates a new resource.\n- **`PUT` Method**: This is used to update a resource by replacing it entirely.\n- **`PATCH` Method**: This is used to partially update a resource.\n- **`DELETE` Method**: This is used to remove records from a database.",
+          "fr": "- **Définition** : HTTP signifie Hypertext Transfer Protocol et c'est le fondement de la communication de données sur le web. Il existe des méthodes HTTP qui définissent les actions pouvant être effectuées sur des ressources via le web. Les méthodes courantes sont GET, POST, PUT, PATCH, DELETE.\n- **Méthode `GET`** : Elle est utilisée pour récupérer des données depuis un serveur. \n- **Méthode `POST`** : Elle est utilisée pour envoyer des données à un serveur qui crée une nouvelle ressource.\n- **Méthode `PUT`** : Elle est utilisée pour mettre à jour une ressource en la remplaçant entièrement.\n- **Méthode `PATCH`** : Elle est utilisée pour mettre à jour partiellement une ressource.\n- **Méthode `DELETE`** : Elle est utilisée pour supprimer des enregistrements d'une base de données."
+        },
+        {
+          "en": "## `localStorage` and `sessionStorage` Properties",
+          "fr": "## Propriétés `localStorage` et `sessionStorage`"
+        },
+        {
+          "en": "- **Web Storage API**: This API provides a mechanism for browsers to store key-value pairs right within the browser, allowing developers to store information that can be used across different page reloads and sessions. The two main components for the Web Storage API are the `localStorage` and `sessionStorage` properties.\n- **`localStorage` Property**: `localStorage` is the part of the Web Storage API that allows data to persist even after the browser window is closed or the page is refreshed. This data remains available until it is explicitly removed by the application or the user.\n- **`localStorage.setItem()` Method**: This method is used to store a key-value pair in `localStorage`.",
+          "fr": "- **Web Storage API** : Cette API fournit un mécanisme permettant aux navigateurs de stocker des paires clé-valeur directement dans le navigateur, ce qui permet aux développeurs de stocker des informations utilisables à travers différents rechargements de page et sessions. Les deux composants principaux de la Web Storage API sont les propriétés `localStorage` et `sessionStorage`.\n- **Propriété `localStorage`** : `localStorage` est la partie de la Web Storage API qui permet aux données de persister même après la fermeture de la fenêtre du navigateur ou le rafraîchissement de la page. Ces données restent disponibles jusqu'à ce qu'elles soient explicitement retirées par l'application ou l'utilisateur.\n- **Méthode `localStorage.setItem()`** : Cette méthode est utilisée pour stocker une paire clé-valeur dans `localStorage`."
+        },
+        {
+          "en": "- **`localStorage.getItem()` Method**: This method is used to retrieve the value of a given key from `localStorage`.",
+          "fr": "- **Méthode `localStorage.getItem()`** : Cette méthode est utilisée pour récupérer la valeur d'une clé donnée depuis `localStorage`."
+        },
+        {
+          "en": "- **`localStorage.removeItem()` Method**: This method is used to remove a specific item from `localStorage` using its key.",
+          "fr": "- **Méthode `localStorage.removeItem()`** : Cette méthode est utilisée pour retirer un élément spécifique de `localStorage` à l'aide de sa clé."
+        },
+        {
+          "en": "- **`localStorage.clear()` Method**: This method is used to clear all of the stored data in `localStorage`.",
+          "fr": "- **Méthode `localStorage.clear()`** : Cette méthode est utilisée pour effacer toutes les données stockées dans `localStorage`."
+        },
+        {
+          "en": "- **`sessionStorage` Property**: Stores data that lasts only for the current session and is cleared when the browser tab or window is closed.\n- **`sessionStorage.setItem()` Method**: This method is used to store a key-value pair in `sessionStorage`.",
+          "fr": "- **Propriété `sessionStorage`** : Stocke des données qui ne durent que pour la session en cours et sont effacées lorsque l'onglet ou la fenêtre du navigateur est fermé.\n- **Méthode `sessionStorage.setItem()`** : Cette méthode est utilisée pour stocker une paire clé-valeur dans `sessionStorage`."
+        },
+        {
+          "en": "- **`sessionStorage.getItem()` Method**: This method is used to retrieve the value of a given key from `sessionStorage`.",
+          "fr": "- **Méthode `sessionStorage.getItem()`** : Cette méthode est utilisée pour récupérer la valeur d'une clé donnée depuis `sessionStorage`."
+        },
+        {
+          "en": "- **`sessionStorage.removeItem()` Method**: This method is used to remove a specific item from `sessionStorage` using its key.",
+          "fr": "- **Méthode `sessionStorage.removeItem()`** : Cette méthode est utilisée pour retirer un élément spécifique de `sessionStorage` à l'aide de sa clé."
+        },
+        {
+          "en": "- **`sessionStorage.clear()` Method**: This method is used to clear all data stored in `sessionStorage`.",
+          "fr": "- **Méthode `sessionStorage.clear()`** : Cette méthode est utilisée pour effacer toutes les données stockées dans `sessionStorage`."
+        },
+        {
+          "en": "## Working with Cookies",
+          "fr": "## Travailler avec les cookies"
+        },
+        {
+          "en": "- **Definition**: Cookies, also known as web cookies or browser cookies, are small pieces of data that a server sends to a user's web browser. These cookies are stored on the user's device and sent back to the server with subsequent requests. Cookies are essential in helping web applications maintain state and remember user information, which is especially important since HTTP is a stateless protocol.\n- **Session Cookies**: These cookies only last for the duration of the user's session on the website. Once the user closes the browser or tab, the session cookie is deleted. These cookies are typically used for tasks like keeping a user logged in during their visit.\n- **Secure Cookies**: These cookies are only sent over HTTPS, ensuring that they cannot be intercepted by an attacker in transit.\n- **HttpOnly Cookies**: These cookies cannot be accessed or modified by JavaScript running in the browser, making them more secure against cross-site scripting (XSS) attacks.\n- **Set-Cookie Header**: When you visit a website, the server can send a Set-Cookie header in the HTTP response. This header tells your browser to save a cookie with specific information. For example, it might store a unique ID that helps the site recognize you the next time you visit.\nYou can manually set a cookie in JavaScript using `document.cookie`:",
+          "fr": "- **Définition** : Les cookies, aussi appelés cookies web ou cookies de navigateur, sont de petits morceaux de données qu'un serveur envoie au navigateur web d'un utilisateur. Ces cookies sont stockés sur l'appareil de l'utilisateur et renvoyés au serveur avec les requêtes suivantes. Les cookies sont essentiels pour aider les applications web à maintenir un état et à se souvenir des informations utilisateur, ce qui est particulièrement important car HTTP est un protocole sans état.\n- **Cookies de session** : Ces cookies ne durent que le temps de la session de l'utilisateur sur le site. Une fois que l'utilisateur ferme le navigateur ou l'onglet, le cookie de session est supprimé. Ces cookies sont généralement utilisés pour des tâches comme garder un utilisateur connecté pendant sa visite.\n- **Cookies sécurisés (Secure)** : Ces cookies ne sont envoyés que via HTTPS, ce qui garantit qu'ils ne peuvent pas être interceptés par un attaquant en transit.\n- **Cookies HttpOnly** : Ces cookies ne peuvent pas être consultés ni modifiés par du JavaScript s'exécutant dans le navigateur, ce qui les rend plus sûrs face aux attaques de type cross-site scripting (XSS).\n- **En-tête Set-Cookie** : Lorsque tu visites un site web, le serveur peut envoyer un en-tête Set-Cookie dans la réponse HTTP. Cet en-tête indique à ton navigateur d'enregistrer un cookie avec des informations spécifiques. Par exemple, il peut stocker un ID unique qui aide le site à te reconnaître lors de ta prochaine visite.\nTu peux définir manuellement un cookie en JavaScript avec `document.cookie` :"
+        },
+        {
+          "en": "To delete a cookie, you can set its expiration date to a time in the past.",
+          "fr": "Pour supprimer un cookie, tu peux définir sa date d'expiration à une date passée."
+        },
+        {
+          "en": "## Cache API",
+          "fr": "## Cache API"
+        },
+        {
+          "en": "- **Definition**: Caching is the process of storing copies of files in a temporary storage location, so that they can be accessed more quickly.  The Cache API is used to store network requests and responses, making web applications work more efficiently and even function offline. It is part of the broader Service Worker API and is crucial for creating Progressive Web Apps (PWAs) that can work under unreliable or slow network conditions.\nThe Cache API is a storage mechanism that stores Request and Response objects. When a request is made to a server, the application can store the response and later retrieve it from the cache instead of making a new network request. This reduces load times, saves bandwidth, and improves the overall user experience.\n- **Cache Storage**: This is used to store key-value pairs of HTTP requests and their corresponding responses. This enables efficient retrieval of previously requested resources, reducing the need to fetch them from the network on subsequent visits and improving performance.\n- **Cache-Control**: Developers can define how long a cached resource should be kept, and if it should be revalidated or served directly from cache.\n- **Offline Support**: By using the Cache API, you can create offline-first web applications. For example, a PWA can serve cached assets when the user is disconnected from the network.",
+          "fr": "- **Définition** : La mise en cache est le processus qui consiste à stocker des copies de fichiers dans un emplacement de stockage temporaire, afin qu'elles puissent être consultées plus rapidement. La Cache API est utilisée pour stocker des requêtes et des réponses réseau, ce qui permet aux applications web de fonctionner plus efficacement et même hors ligne. Elle fait partie de la Service Worker API plus large et est cruciale pour créer des Progressive Web Apps (PWAs) capables de fonctionner dans des conditions réseau peu fiables ou lentes.\nLa Cache API est un mécanisme de stockage qui stocke des objets Request et Response. Lorsqu'une requête est faite à un serveur, l'application peut stocker la réponse et la récupérer plus tard depuis le cache au lieu de faire une nouvelle requête réseau. Cela réduit les temps de chargement, économise la bande passante et améliore l'expérience utilisateur globale.\n- **Cache Storage** : Ceci est utilisé pour stocker des paires clé-valeur de requêtes HTTP et de leurs réponses correspondantes. Cela permet une récupération efficace des ressources précédemment demandées, réduisant le besoin de les récupérer depuis le réseau lors des visites suivantes et améliorant les performances.\n- **Cache-Control** : Les développeurs peuvent définir combien de temps une ressource en cache doit être conservée, et si elle doit être revalidée ou servie directement depuis le cache.\n- **Support hors ligne** : En utilisant la Cache API, tu peux créer des applications web offline-first. Par exemple, une PWA peut servir des assets en cache lorsque l'utilisateur est déconnecté du réseau."
+        },
+        {
+          "en": "## Negative Patterns and Client Side Storage",
+          "fr": "## Patterns négatifs et stockage côté client"
+        },
+        {
+          "en": "- **Excessive Tracking**: This refers to the practice of collecting and storing an overabundance of user data in client-side storage (such as cookies, local storage, or session storage) without clear, informed consent or a legitimate need. This often involves tracking user behavior, preferences, and interactions across multiple sites or sessions, which can infringe on user privacy. \n- **Browser Fingerprinting**: A technique used to track and identify individual users based on unique characteristics of their device and browser, rather than relying on cookies or other traditional tracking methods. Unlike cookies, which are stored locally on a user's device, fingerprinting involves collecting a range of information that can be used to create a distinctive \"fingerprint\" of a user's browser session. \n- **Setting Passwords in LocalStorage**: This might seem like a more obvious negative pattern, but setting any sensitive data like passwords in local storage poses a security risk. Local Storage is not encrypted and can be accessed easily. So you should never store any type of sensitive data in there.",
+          "fr": "- **Suivi excessif** : Cela désigne la pratique qui consiste à collecter et stocker une quantité excessive de données utilisateur dans le stockage côté client (comme les cookies, le local storage ou le session storage) sans consentement clair et éclairé, ni besoin légitime. Cela implique souvent de suivre le comportement, les préférences et les interactions de l'utilisateur sur plusieurs sites ou sessions, ce qui peut porter atteinte à la vie privée de l'utilisateur. \n- **Empreinte du navigateur (Browser Fingerprinting)** : Une technique utilisée pour suivre et identifier des utilisateurs individuels à partir de caractéristiques uniques de leur appareil et de leur navigateur, plutôt qu'en s'appuyant sur des cookies ou d'autres méthodes de suivi traditionnelles. Contrairement aux cookies, qui sont stockés localement sur l'appareil de l'utilisateur, le fingerprinting consiste à collecter un ensemble d'informations pouvant servir à créer une « empreinte » distinctive de la session de navigateur d'un utilisateur. \n- **Stocker des mots de passe dans LocalStorage** : Cela peut sembler un pattern négatif plus évident, mais stocker des données sensibles comme des mots de passe dans le local storage représente un risque de sécurité. Le Local Storage n'est pas chiffré et peut être consulté facilement. Tu ne dois donc jamais y stocker de données sensibles d'aucune sorte."
+        },
+        {
+          "en": "## IndexedDB",
+          "fr": "## IndexedDB"
+        },
+        {
+          "en": "- **Definition**: IndexedDB is used for storing structured data in the browser. This is built into modern web browsers, allowing web apps to store and fetch JavaScript objects efficiently.",
+          "fr": "- **Définition** : IndexedDB est utilisé pour stocker des données structurées dans le navigateur. Elle est intégrée aux navigateurs web modernes, ce qui permet aux applications web de stocker et de récupérer efficacement des objets JavaScript."
+        },
+        {
+          "en": "## Cache/Service Workers",
+          "fr": "## Cache / Service Workers"
+        },
+        {
+          "en": "- **Definition**: A Service Worker is a script that runs in the background which is separate from your web page. It can intercept network requests, access the cache, and make the web app work offline. This is a key component of Progressive Web Apps.",
+          "fr": "- **Définition** : Un Service Worker est un script qui s'exécute en arrière-plan, séparément de ta page web. Il peut intercepter les requêtes réseau, accéder au cache et faire fonctionner l'application web hors ligne. C'est un composant clé des Progressive Web Apps."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

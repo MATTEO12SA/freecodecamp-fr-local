@@ -1,0 +1,165 @@
+{
+  "workshop": "lab-voting-system",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "673b567e3ba535dda140d278.md",
+      "id": "673b567e3ba535dda140d278",
+      "dashedName": "build-a-voting-system",
+      "title": {
+        "en": "Build a Voting System",
+        "fr": "Construire un système de vote"
+      },
+      "description": [
+        {
+          "en": "In this lab, you will build a voting system that uses `Map` to create a poll and `Set` to prevent duplicate voting.",
+          "fr": "Dans ce lab, tu vas construire un système de vote qui utilise `Map` pour créer un sondage et `Set` pour empêcher les votes en double."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplir les user stories ci-dessous et faire passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should initialize a `poll` variable to a new `Map` object.",
+          "fr": "1. Tu dois initialiser une variable `poll` avec un nouvel objet `Map`."
+        },
+        {
+          "en": "2. You should have a function `addOption` that accepts a parameter `option`.",
+          "fr": "2. Tu dois avoir une fonction `addOption` qui accepte un paramètre `option`."
+        },
+        {
+          "en": "3. In the `addOption` function:",
+          "fr": "3. Dans la fonction `addOption` :"
+        },
+        {
+          "en": "- If the `option` does not already exist in the poll, it should be added to the poll with an empty `Set` as its value to track voters. You should also return the message `Option \"<option>\" added to the poll.`",
+          "fr": "- Si l'`option` n'existe pas déjà dans le sondage, elle doit y être ajoutée avec un `Set` vide comme valeur pour suivre les votants. Tu dois aussi renvoyer le message `Option \"<option>\" added to the poll.`"
+        },
+        {
+          "en": "- If the `option` already exists, it should return the message `Option \"<option>\" already exists.`",
+          "fr": "- Si l'`option` existe déjà, elle doit renvoyer le message `Option \"<option>\" already exists.`"
+        },
+        {
+          "en": "- If you try to add an empty option, the function should return the message `Option cannot be empty.`",
+          "fr": "- Si tu essaies d'ajouter une option vide, la fonction doit renvoyer le message `Option cannot be empty.`"
+        },
+        {
+          "en": "4. You should have a function `vote` that accepts two parameters, `option` (the option to vote for) and `voterId` (a unique ID for the voter).",
+          "fr": "4. Tu dois avoir une fonction `vote` qui accepte deux paramètres, `option` (l'option pour laquelle voter) et `voterId` (un ID unique pour le votant)."
+        },
+        {
+          "en": "5. In the `vote` function:",
+          "fr": "5. Dans la fonction `vote` :"
+        },
+        {
+          "en": "- If the `option` does not exist in the poll, the function should return the message `Option \"<option>\" does not exist.`",
+          "fr": "- Si l'`option` n'existe pas dans le sondage, la fonction doit renvoyer le message `Option \"<option>\" does not exist.`"
+        },
+        {
+          "en": "- If the `option` exists, the function should check if the `voterId` has already voted for this `option`.",
+          "fr": "- Si l'`option` existe, la fonction doit vérifier si le `voterId` a déjà voté pour cette `option`."
+        },
+        {
+          "en": "- If the voter has already voted, the function should return the message `Voter <voterId> has already voted for \"<option>\".`",
+          "fr": "- Si le votant a déjà voté, la fonction doit renvoyer le message `Voter <voterId> has already voted for \"<option>\".`"
+        },
+        {
+          "en": "- If the voter has not voted, `voterId` should be added to the `Set` of `voters` for this option. The function should return the message `Voter <voterId> voted for \"<option>\".`",
+          "fr": "- Si le votant n'a pas encore voté, `voterId` doit être ajouté au `Set` de `voters` pour cette option. La fonction doit renvoyer le message `Voter <voterId> voted for \"<option>\".`"
+        },
+        {
+          "en": "6. You should have at least three options in your `poll`.",
+          "fr": "6. Tu dois avoir au moins trois options dans ton `poll`."
+        },
+        {
+          "en": "7. Your `poll` should have at least three votes.",
+          "fr": "7. Ton `poll` doit avoir au moins trois votes."
+        },
+        {
+          "en": "8. You should have a function `displayResults` that returns the poll results in the following format:",
+          "fr": "8. Tu dois avoir une fonction `displayResults` qui renvoie les résultats du sondage au format suivant :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `poll` variable initialized to a new `Map` object.",
+          "fr": "Tu dois avoir une variable `poll` initialisée avec un nouvel objet `Map`."
+        },
+        {
+          "en": "You should define a function `addOption` that accepts a parameter `option`.",
+          "fr": "Tu dois définir une fonction `addOption` qui accepte un paramètre `option`."
+        },
+        {
+          "en": "You should define a function `vote` that accepts two parameters, `option` and `voterId`.",
+          "fr": "Tu dois définir une fonction `vote` qui accepte deux paramètres, `option` et `voterId`."
+        },
+        {
+          "en": "You should define a function `displayResults` to display the poll results.",
+          "fr": "Tu dois définir une fonction `displayResults` pour afficher les résultats du sondage."
+        },
+        {
+          "en": "You should have at least three options in your `poll`.",
+          "fr": "Tu dois avoir au moins trois options dans ton `poll`."
+        },
+        {
+          "en": "Your `poll` should have at least three votes.",
+          "fr": "Ton `poll` doit avoir au moins trois votes."
+        },
+        {
+          "en": "You should ensure each voting option maps to a `Set` object.",
+          "fr": "Tu dois t'assurer que chaque option de vote correspond à un objet `Set`."
+        },
+        {
+          "en": "`addOption(\"Egypt\")` should return `Option \"Egypt\" added to the poll.`",
+          "fr": "`addOption(\"Egypt\")` devrait renvoyer `Option \"Egypt\" added to the poll.`"
+        },
+        {
+          "en": "Adding an empty option should return `\"Option cannot be empty.\"`",
+          "fr": "L'ajout d'une option vide devrait renvoyer `\"Option cannot be empty.\"`"
+        },
+        {
+          "en": "When `Turkey` is already added, `addOption(\"Turkey\")` should return `Option \"Turkey\" already exists.`",
+          "fr": "Quand `Turkey` est déjà ajouté, `addOption(\"Turkey\")` devrait renvoyer `Option \"Turkey\" already exists.`"
+        },
+        {
+          "en": "When `Malaysia` exists in the voting options, `vote(\"Malaysia\", \"traveler1\")` should return `Voter traveler1 voted for \"Malaysia\".`",
+          "fr": "Quand `Malaysia` existe dans les options de vote, `vote(\"Malaysia\", \"traveler1\")` devrait renvoyer `Voter traveler1 voted for \"Malaysia\".`"
+        },
+        {
+          "en": "`vote` should update the `Set` of voters for an option.",
+          "fr": "`vote` devrait mettre à jour le `Set` des votants pour une option."
+        },
+        {
+          "en": "When `traveler1` tries to vote for `Algeria` again, `vote(\"Algeria\", \"traveler1\")` should return `Voter traveler1 has already voted for \"Algeria\".`",
+          "fr": "Quand `traveler1` essaie de voter à nouveau pour `Algeria`, `vote(\"Algeria\", \"traveler1\")` devrait renvoyer `Voter traveler1 has already voted for \"Algeria\".`"
+        },
+        {
+          "en": "Duplicate votes should not increase the size of the `Set`.",
+          "fr": "Les votes en double ne devraient pas augmenter la taille du `Set`."
+        },
+        {
+          "en": "When `Nigeria` is not in the voting options, `vote(\"Nigeria\", \"traveler2\")` should return `Option \"Nigeria\" does not exist.`",
+          "fr": "Quand `Nigeria` n'est pas dans les options de vote, `vote(\"Nigeria\", \"traveler2\")` devrait renvoyer `Option \"Nigeria\" does not exist.`"
+        },
+        {
+          "en": "A unique option should be able to receive multiple votes.",
+          "fr": "Une option unique devrait pouvoir recevoir plusieurs votes."
+        },
+        {
+          "en": "When option `Turkey` gets two votes, option `Morocco` gets one vote, and option `Spain` doesn't get any vote, `displayResults()` should return `\"Poll Results:\\nTurkey: 2 votes\\nMorocco: 1 votes\\nSpain: 0 votes\"`.",
+          "fr": "Quand l'option `Turkey` obtient deux votes, l'option `Morocco` un vote, et l'option `Spain` aucun vote, `displayResults()` devrait renvoyer `\"Poll Results:\\nTurkey: 2 votes\\nMorocco: 1 votes\\nSpain: 0 votes\"`."
+        },
+        {
+          "en": "`displayResults()` should return the results in the correct format.",
+          "fr": "`displayResults()` devrait renvoyer les résultats au format correct."
+        }
+      ]
+    }
+  ]
+}

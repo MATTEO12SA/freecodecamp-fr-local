@@ -1,0 +1,2184 @@
+{
+  "workshop": "workshop-shopping-cart",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "63ec14d1c216aa063f0be4af.md",
+      "id": "63ec14d1c216aa063f0be4af",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "You will be building a shopping cart application. The HTML and CSS are already provided, but you will need to build the JavaScript to make the page interactive.",
+          "fr": "Tu vas construire une application de panier d'achat. Le HTML et le CSS sont déjà fournis, mais tu devras écrire le JavaScript pour rendre la page interactive."
+        },
+        {
+          "en": "To start, you will need to get some of your elements from the DOM. Start by using `document.getElementById()` to get the`#cart-container`, `#products-container`, and `#dessert-card-container` elements. Store them in variables named `cartContainer`, `productsContainer`, and `dessertCards`, respectively.",
+          "fr": "Pour commencer, tu auras besoin de récupérer certains éléments depuis le DOM. Commence par utiliser `document.getElementById()` pour obtenir les éléments `#cart-container`, `#products-container` et `#dessert-card-container`. Stocke-les dans les variables nommées `cartContainer`, `productsContainer` et `dessertCards`, respectivement."
+        },
+        {
+          "en": "Since these will not change, remember to use `const` to declare them.",
+          "fr": "Comme ceux-ci ne changeront pas, n'oublie pas d'utiliser `const` pour les déclarer."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `document.getElementById()` to get the `#cart-container` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#cart-container`."
+        },
+        {
+          "en": "You should assign the `#cart-container` element to a variable named `cartContainer`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#cart-container` à une variable nommée `cartContainer`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#products-container` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#products-container`."
+        },
+        {
+          "en": "You should assign the `#products-container` element to a variable named `productsContainer`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#products-container` à une variable nommée `productsContainer`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#dessert-card-container` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#dessert-card-container`."
+        },
+        {
+          "en": "You should assign the `#dessert-card-container` element to a variable named `dessertCards`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#dessert-card-container` à une variable nommée `dessertCards`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "63ec19978a066607e23439f8.md",
+      "id": "63ec19978a066607e23439f8",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Now you need to get your two buttons. Continuing the pattern, get the `#cart-btn` and `#clear-cart-btn` elements. Store them in variables named `cartBtn` and `clearCartBtn`, respectively.",
+          "fr": "Maintenant, tu dois récupérer tes deux boutons. En continuant le même schéma, récupère les éléments `#cart-btn` et `#clear-cart-btn`. Stocke-les dans les variables nommées `cartBtn` et `clearCartBtn`, respectivement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `document.getElementById()` to get the `#cart-btn` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#cart-btn`."
+        },
+        {
+          "en": "You should assign the `#cart-btn` element to a variable named `cartBtn`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#cart-btn` à une variable nommée `cartBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#clear-cart-btn` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#clear-cart-btn`."
+        },
+        {
+          "en": "You should assign the `#clear-cart-btn` element to a variable named `clearCartBtn`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#clear-cart-btn` à une variable nommée `clearCartBtn`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "63ec1a16f930b108b8a76806.md",
+      "id": "63ec1a16f930b108b8a76806",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Next is to get your totals. Get the `#total-items`, `#subtotal`, `#taxes`, and `#total` elements. Store them in variables named `totalNumberOfItems`, `cartSubTotal`, `cartTaxes`, and `cartTotal`, respectively.",
+          "fr": "Ensuite, récupère tes totaux. Récupère les éléments `#total-items`, `#subtotal`, `#taxes` et `#total`. Stocke-les dans les variables nommées `totalNumberOfItems`, `cartSubTotal`, `cartTaxes` et `cartTotal`, respectivement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `document.getElementById()` to get the `#total-items` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#total-items`."
+        },
+        {
+          "en": "You should assign the `#total-items` element to a variable named `totalNumberOfItems`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#total-items` à une variable nommée `totalNumberOfItems`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#subtotal` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#subtotal`."
+        },
+        {
+          "en": "You should assign the `#subtotal` element to a variable named `cartSubTotal`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#subtotal` à une variable nommée `cartSubTotal`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#taxes` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#taxes`."
+        },
+        {
+          "en": "You should assign the `#taxes` element to a variable named `cartTaxes`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#taxes` à une variable nommée `cartTaxes`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the `#total` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#total`."
+        },
+        {
+          "en": "You should assign the `#total` element to a variable named `cartTotal`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#total` à une variable nommée `cartTotal`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        }
+      ]
+    },
+    {
+      "file": "63ec1bbf5584390a7d08d41f.md",
+      "id": "63ec1bbf5584390a7d08d41f",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "The last element to get is the `#show-hide-cart` element. Store it in a variable named `showHideCartSpan`.",
+          "fr": "Le dernier élément à récupérer est l'élément `#show-hide-cart`. Stocke-le dans une variable nommée `showHideCartSpan`."
+        },
+        {
+          "en": "Then, use `let` to declare a variable named `isCartShowing` and set it to `false`.",
+          "fr": "Ensuite, utilise `let` pour déclarer une variable nommée `isCartShowing` et définis-la à `false`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `document.getElementById()` to get the `#show-hide-cart` element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément `#show-hide-cart`."
+        },
+        {
+          "en": "You should assign the `#show-hide-cart` element to a variable named `showHideCartSpan`. Remember to use `const` to declare the variable.",
+          "fr": "Tu dois assigner l'élément `#show-hide-cart` à une variable nommée `showHideCartSpan`. N'oublie pas d'utiliser `const` pour déclarer la variable."
+        },
+        {
+          "en": "You should use `let` to declare a variable named `isCartShowing`.",
+          "fr": "Tu dois utiliser `let` pour déclarer une variable nommée `isCartShowing`."
+        },
+        {
+          "en": "You should set the `isCartShowing` variable to `false`.",
+          "fr": "Tu dois définir la variable `isCartShowing` à `false`."
+        }
+      ]
+    },
+    {
+      "file": "63ec1cb59f2a4c0be5b6dfa0.md",
+      "id": "63ec1cb59f2a4c0be5b6dfa0",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "A shopping cart does not serve much purpose without products. Declare a `products` variable and set it to an empty array. Using an array will allow you to store multiple products.",
+          "fr": "Un panier d'achat ne sert pas à grand-chose sans produits. Déclare une variable `products` et définis-la à un tableau vide. Utiliser un tableau te permettra de stocker plusieurs produits."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `products` variable with `const`.",
+          "fr": "Tu dois déclarer une variable `products` avec `const`."
+        },
+        {
+          "en": "You should set the `products` variable to an empty array.",
+          "fr": "Tu dois définir la variable `products` à un tableau vide."
+        }
+      ]
+    },
+    {
+      "file": "63ec20a06fff670d37befbd9.md",
+      "id": "63ec20a06fff670d37befbd9",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "You now need to start adding products. Before you do that, you need to consider the structure of your product data. A product will need a unique identifier to distinguish it from other products, a price so people know how much it costs, and a name so people know what they are buying. You should also add a category to each product.",
+          "fr": "Tu dois maintenant commencer à ajouter des produits. Avant cela, tu dois réfléchir à la structure de tes données produit. Un produit aura besoin d'un identifiant unique pour le distinguer des autres produits, d'un prix pour que les gens sachent combien il coûte, et d'un nom pour qu'ils sachent ce qu'ils achètent. Tu devrais aussi ajouter une catégorie à chaque produit."
+        },
+        {
+          "en": "Add an object to your `products` array. Give this object an `id` property set to the number `1`, a `name` property set to the string `\"Vanilla Cupcakes (6 Pack)\"`, a `price` property set to the number `12.99`, and a `category` property set to the string `\"Cupcake\"`.",
+          "fr": "Ajoute un objet à ton tableau `products`. Donne à cet objet une propriété `id` définie au nombre `1`, une propriété `name` définie à la chaîne `\"Vanilla Cupcakes (6 Pack)\"`, une propriété `price` définie au nombre `12.99`, et une propriété `category` définie à la chaîne `\"Cupcake\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your products array should have one value.",
+          "fr": "Ton tableau products doit avoir une valeur."
+        },
+        {
+          "en": "Your products array should have an object as its first value.",
+          "fr": "Ton tableau products doit avoir un objet comme première valeur."
+        },
+        {
+          "en": "Your products array should have an object with an `id` property set to the number `1`.",
+          "fr": "Ton tableau products doit avoir un objet avec une propriété `id` définie au nombre `1`."
+        },
+        {
+          "en": "Your products array should have an object with a `name` property set to the string `\"Vanilla Cupcakes (6 Pack)\"`.",
+          "fr": "Ton tableau products doit avoir un objet avec une propriété `name` définie à la chaîne `\"Vanilla Cupcakes (6 Pack)\"`."
+        },
+        {
+          "en": "Your products array should have an object with a `price` property set to the number `12.99`.",
+          "fr": "Ton tableau products doit avoir un objet avec une propriété `price` définie au nombre `12.99`."
+        },
+        {
+          "en": "Your products array should have an object with a `category` property set to the string `\"Cupcake\"`.",
+          "fr": "Ton tableau products doit avoir un objet avec une propriété `category` définie à la chaîne `\"Cupcake\"`."
+        }
+      ]
+    },
+    {
+      "file": "63ec3287b182ec0efe8a3135.md",
+      "id": "63ec3287b182ec0efe8a3135",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Following that same data structure, add the products from this table (in order) to your `products` array. Increment the `id` for each product, counting up.",
+          "fr": "En suivant la même structure de données, ajoute les produits de ce tableau (dans l'ordre) à ton tableau `products`. Incrémente l'`id` pour chaque produit, en comptant vers le haut."
+        },
+        {
+          "en": "| `name`                         | `price` | `category`  |\n| ------------------------------ | ------- | ----------- |\n| `French Macaron`               | `3.99`  | `Macaron`   |\n| `Pumpkin Cupcake`              | `3.99`  | `Cupcake`   |\n| `Chocolate Cupcake`            | `5.99`  | `Cupcake`   |\n| `Chocolate Pretzels (4 Pack)`  | `10.99` | `Pretzel`   |\n| `Strawberry Ice Cream`         | `2.99`  | `Ice Cream` |\n| `Chocolate Macarons (4 Pack)`  | `9.99`  | `Macaron`   |\n| `Strawberry Pretzel`           | `4.99`  | `Pretzel`   |\n| `Butter Pecan Ice Cream`       | `2.99`  | `Ice Cream` |\n| `Rocky Road Ice Cream`         | `2.99`  | `Ice Cream` |\n| `Vanilla Macarons (5 Pack)`    | `11.99` | `Macaron`   |\n| `Lemon Cupcakes (4 Pack)`      | `12.99` | `Cupcake`   |",
+          "fr": "| `name`                         | `price` | `category`  |\n| ------------------------------ | ------- | ----------- |\n| `French Macaron`               | `3.99`  | `Macaron`   |\n| `Pumpkin Cupcake`              | `3.99`  | `Cupcake`   |\n| `Chocolate Cupcake`            | `5.99`  | `Cupcake`   |\n| `Chocolate Pretzels (4 Pack)`  | `10.99` | `Pretzel`   |\n| `Strawberry Ice Cream`         | `2.99`  | `Ice Cream` |\n| `Chocolate Macarons (4 Pack)`  | `9.99`  | `Macaron`   |\n| `Strawberry Pretzel`           | `4.99`  | `Pretzel`   |\n| `Butter Pecan Ice Cream`       | `2.99`  | `Ice Cream` |\n| `Rocky Road Ice Cream`         | `2.99`  | `Ice Cream` |\n| `Vanilla Macarons (5 Pack)`    | `11.99` | `Macaron`   |\n| `Lemon Cupcakes (4 Pack)`      | `12.99` | `Cupcake`   |"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your second object in the `products` array should have an `id` property set to the number `2`.",
+          "fr": "Ton deuxième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `2`."
+        },
+        {
+          "en": "Your second object in the `products` array should have a `name` property set to `French Macaron`.",
+          "fr": "Ton deuxième objet dans le tableau `products` doit avoir une propriété `name` définie à `French Macaron`."
+        },
+        {
+          "en": "Your second object in the `products` array should have a `price` property set to the number `3.99`.",
+          "fr": "Ton deuxième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `3.99`."
+        },
+        {
+          "en": "Your second object in the `products` array should have a `category` property set to `Macaron`.",
+          "fr": "Ton deuxième objet dans le tableau `products` doit avoir une propriété `category` définie à `Macaron`."
+        },
+        {
+          "en": "Your third object in the `products` array should have an `id` property set to the number `3`.",
+          "fr": "Ton troisième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `3`."
+        },
+        {
+          "en": "Your third object in the `products` array should have a `name` property set to `Pumpkin Cupcake`.",
+          "fr": "Ton troisième objet dans le tableau `products` doit avoir une propriété `name` définie à `Pumpkin Cupcake`."
+        },
+        {
+          "en": "Your third object in the `products` array should have a `price` property set to the number `3.99`.",
+          "fr": "Ton troisième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `3.99`."
+        },
+        {
+          "en": "Your third object in the `products` array should have a `category` property set to `Cupcake`.",
+          "fr": "Ton troisième objet dans le tableau `products` doit avoir une propriété `category` définie à `Cupcake`."
+        },
+        {
+          "en": "Your fourth object in the `products` array should have an `id` property set to the number `4`.",
+          "fr": "Ton quatrième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `4`."
+        },
+        {
+          "en": "Your fourth object in the `products` array should have a `name` property set to `Chocolate Cupcake`.",
+          "fr": "Ton quatrième objet dans le tableau `products` doit avoir une propriété `name` définie à `Chocolate Cupcake`."
+        },
+        {
+          "en": "Your fourth object in the `products` array should have a `price` property set to the number `5.99`.",
+          "fr": "Ton quatrième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `5.99`."
+        },
+        {
+          "en": "Your fourth object in the `products` array should have a `category` property set to `Cupcake`.",
+          "fr": "Ton quatrième objet dans le tableau `products` doit avoir une propriété `category` définie à `Cupcake`."
+        },
+        {
+          "en": "Your fifth object in the `products` array should have an `id` property set to the number `5`.",
+          "fr": "Ton cinquième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `5`."
+        },
+        {
+          "en": "Your fifth object in the `products` array should have a `name` property set to `Chocolate Pretzels (4 Pack)`.",
+          "fr": "Ton cinquième objet dans le tableau `products` doit avoir une propriété `name` définie à `Chocolate Pretzels (4 Pack)`."
+        },
+        {
+          "en": "Your fifth object in the `products` array should have a `price` property set to the number `10.99`.",
+          "fr": "Ton cinquième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `10.99`."
+        },
+        {
+          "en": "Your fifth object in the `products` array should have a `category` property set to `Pretzel`.",
+          "fr": "Ton cinquième objet dans le tableau `products` doit avoir une propriété `category` définie à `Pretzel`."
+        },
+        {
+          "en": "Your sixth object in the `products` array should have an `id` property set to the number `6`.",
+          "fr": "Ton sixième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `6`."
+        },
+        {
+          "en": "Your sixth object in the `products` array should have a `name` property set to `Strawberry Ice Cream`.",
+          "fr": "Ton sixième objet dans le tableau `products` doit avoir une propriété `name` définie à `Strawberry Ice Cream`."
+        },
+        {
+          "en": "Your sixth object in the `products` array should have a `price` property set to the number `2.99`.",
+          "fr": "Ton sixième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `2.99`."
+        },
+        {
+          "en": "Your sixth object in the `products` array should have a `category` property set to `Ice Cream`.",
+          "fr": "Ton sixième objet dans le tableau `products` doit avoir une propriété `category` définie à `Ice Cream`."
+        },
+        {
+          "en": "Your seventh object in the `products` array should have an `id` property set to the number `7`.",
+          "fr": "Ton septième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `7`."
+        },
+        {
+          "en": "Your seventh object in the `products` array should have a `name` property set to `Chocolate Macarons (4 Pack)`.",
+          "fr": "Ton septième objet dans le tableau `products` doit avoir une propriété `name` définie à `Chocolate Macarons (4 Pack)`."
+        },
+        {
+          "en": "Your seventh object in the `products` array should have a `price` property set to the number `9.99`.",
+          "fr": "Ton septième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `9.99`."
+        },
+        {
+          "en": "Your seventh object in the `products` array should have a `category` property set to `Macaron`.",
+          "fr": "Ton septième objet dans le tableau `products` doit avoir une propriété `category` définie à `Macaron`."
+        },
+        {
+          "en": "Your eighth object in the `products` array should have an `id` property set to the number `8`.",
+          "fr": "Ton huitième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `8`."
+        },
+        {
+          "en": "Your eighth object in the `products` array should have a `name` property set to `Strawberry Pretzel`.",
+          "fr": "Ton huitième objet dans le tableau `products` doit avoir une propriété `name` définie à `Strawberry Pretzel`."
+        },
+        {
+          "en": "Your eighth object in the `products` array should have a `price` property set to the number `4.99`.",
+          "fr": "Ton huitième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `4.99`."
+        },
+        {
+          "en": "Your eighth object in the `products` array should have a `category` property set to `Pretzel`.",
+          "fr": "Ton huitième objet dans le tableau `products` doit avoir une propriété `category` définie à `Pretzel`."
+        },
+        {
+          "en": "Your ninth object in the `products` array should have an `id` property set to the number `9`.",
+          "fr": "Ton neuvième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `9`."
+        },
+        {
+          "en": "Your ninth object in the `products` array should have a `name` property set to `Butter Pecan Ice Cream`.",
+          "fr": "Ton neuvième objet dans le tableau `products` doit avoir une propriété `name` définie à `Butter Pecan Ice Cream`."
+        },
+        {
+          "en": "Your ninth object in the `products` array should have a `price` property set to the number `2.99`.",
+          "fr": "Ton neuvième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `2.99`."
+        },
+        {
+          "en": "Your ninth object in the `products` array should have a `category` property set to `Ice Cream`.",
+          "fr": "Ton neuvième objet dans le tableau `products` doit avoir une propriété `category` définie à `Ice Cream`."
+        },
+        {
+          "en": "Your tenth object in the `products` array should have an `id` property set to the number `10`.",
+          "fr": "Ton dixième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `10`."
+        },
+        {
+          "en": "Your tenth object in the `products` array should have a `name` property set to `Rocky Road Ice Cream`.",
+          "fr": "Ton dixième objet dans le tableau `products` doit avoir une propriété `name` définie à `Rocky Road Ice Cream`."
+        },
+        {
+          "en": "Your tenth object in the `products` array should have a `price` property set to the number `2.99`.",
+          "fr": "Ton dixième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `2.99`."
+        },
+        {
+          "en": "Your tenth object in the `products` array should have a `category` property set to `Ice Cream`.",
+          "fr": "Ton dixième objet dans le tableau `products` doit avoir une propriété `category` définie à `Ice Cream`."
+        },
+        {
+          "en": "Your eleventh object in the `products` array should have an `id` property set to the number `11`.",
+          "fr": "Ton onzième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `11`."
+        },
+        {
+          "en": "Your eleventh object in the `products` array should have a `name` property set to `Vanilla Macarons (5 Pack)`.",
+          "fr": "Ton onzième objet dans le tableau `products` doit avoir une propriété `name` définie à `Vanilla Macarons (5 Pack)`."
+        },
+        {
+          "en": "Your eleventh object in the `products` array should have a `price` property set to the number `11.99`.",
+          "fr": "Ton onzième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `11.99`."
+        },
+        {
+          "en": "Your eleventh object in the `products` array should have a `category` property set to `Macaron`.",
+          "fr": "Ton onzième objet dans le tableau `products` doit avoir une propriété `category` définie à `Macaron`."
+        },
+        {
+          "en": "Your twelfth object in the `products` array should have an `id` property set to the number `12`.",
+          "fr": "Ton douzième objet dans le tableau `products` doit avoir une propriété `id` définie au nombre `12`."
+        },
+        {
+          "en": "Your twelfth object in the `products` array should have a `name` property set to `Lemon Cupcakes (4 Pack)`.",
+          "fr": "Ton douzième objet dans le tableau `products` doit avoir une propriété `name` définie à `Lemon Cupcakes (4 Pack)`."
+        },
+        {
+          "en": "Your twelfth object in the `products` array should have a `price` property set to the number `12.99`.",
+          "fr": "Ton douzième objet dans le tableau `products` doit avoir une propriété `price` définie au nombre `12.99`."
+        },
+        {
+          "en": "Your twelfth object in the `products` array should have a `category` property set to `Cupcake`.",
+          "fr": "Ton douzième objet dans le tableau `products` doit avoir une propriété `category` définie à `Cupcake`."
+        }
+      ]
+    },
+    {
+      "file": "63ec3427fc3e9214c9ed2a14.md",
+      "id": "63ec3427fc3e9214c9ed2a14",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Now that you have your list of products, you can use JavaScript to insert them into the HTML. With this approach, if you decide to add more products, the HTML will automatically reflect that.",
+          "fr": "Maintenant que tu as ta liste de produits, tu peux utiliser JavaScript pour les insérer dans le HTML. Avec cette approche, si tu décides d'ajouter plus de produits, le HTML reflétera automatiquement cela."
+        },
+        {
+          "en": "Start by calling the `.forEach` method of your `products` array. Use arrow syntax to create an empty callback function.",
+          "fr": "Commence par appeler la méthode `.forEach` de ton tableau `products`. Utilise la syntaxe fléchée pour créer une fonction de rappel vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `.forEach` method of your `products` array.",
+          "fr": "Tu dois appeler la méthode `.forEach` de ton tableau `products`."
+        },
+        {
+          "en": "You should use arrow syntax to create an empty callback function.",
+          "fr": "Tu dois utiliser la syntaxe fléchée pour créer une fonction de rappel vide."
+        },
+        {
+          "en": "You should pass your empty callback function to the `.forEach` method.",
+          "fr": "Tu dois passer ta fonction de rappel vide à la méthode `.forEach`."
+        }
+      ]
+    },
+    {
+      "file": "63ec36f6133df7160be3ec66.md",
+      "id": "63ec36f6133df7160be3ec66",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Remember that you can use destructuring to extract multiple values from an array or object in a single statement.",
+          "fr": "Souviens-toi que tu peux utiliser la destructuration pour extraire plusieurs valeurs d'un tableau ou d'un objet en une seule instruction."
+        },
+        {
+          "en": "For the first parameter of your callback function, destructure the `name`, `id`, `price`, and `category` properties from the object passed in.",
+          "fr": "Pour le premier paramètre de ta fonction de rappel, destructure les propriétés `name`, `id`, `price` et `category` de l'objet passé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use destructuring to declare `name`, `id`, `price`, and `category` parameters. For this test, order matters.",
+          "fr": "Tu dois utiliser la destructuration pour déclarer les paramètres `name`, `id`, `price` et `category`. Pour ce test, l'ordre compte."
+        },
+        {
+          "en": "Your destructuring should be the first parameter of the callback function.",
+          "fr": "Ta destructuration doit être le premier paramètre de la fonction de rappel."
+        }
+      ]
+    },
+    {
+      "file": "63ec47b454495519739486a7.md",
+      "id": "63ec47b454495519739486a7",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "You need to display the available products in your HTML. Start by using the addition assignment operator to add an empty template literal string to the `innerHTML` property of the `dessertCards` variable.",
+          "fr": "Tu dois afficher les produits disponibles dans ton HTML. Commence par utiliser l'opérateur d'affectation additive pour ajouter une chaîne littérale de modèle vide à la propriété `innerHTML` de la variable `dessertCards`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use access the `innerHTML` property of the `dessertCards` variable.",
+          "fr": "Tu dois accéder à la propriété `innerHTML` de la variable `dessertCards`."
+        },
+        {
+          "en": "You should use the addition assignment operator on the `innerHTML` property.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation additive sur la propriété `innerHTML`."
+        },
+        {
+          "en": "You should add an empty template literal string to the `innerHTML` property.",
+          "fr": "Tu dois ajouter une chaîne littérale de modèle vide à la propriété `innerHTML`."
+        }
+      ]
+    },
+    {
+      "file": "63ee5d38a5d29d0696f8d820.md",
+      "id": "63ee5d38a5d29d0696f8d820",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "In your template literal, create a `div` element with a class of `dessert-card`. In that `div`, create an `h2` element and give it the text of the `name` variable.",
+          "fr": "Dans ton littéral de modèle, crée un élément `div` avec une classe `dessert-card`. Dans ce `div`, crée un élément `h2` et donne-lui le texte de la variable `name`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `div` element.",
+          "fr": "Tu dois créer un élément `div`."
+        },
+        {
+          "en": "Your `div` element should have a class of `dessert-card`.",
+          "fr": "Ton élément `div` doit avoir une classe `dessert-card`."
+        },
+        {
+          "en": "You should create an `h2` element.",
+          "fr": "Tu dois créer un élément `h2`."
+        },
+        {
+          "en": "Your `h2` element should have the text of the `name` variable.",
+          "fr": "Ton élément `h2` doit avoir le texte de la variable `name`."
+        },
+        {
+          "en": "Your `h2` element should be inside the `div` element.",
+          "fr": "Ton élément `h2` doit être à l'intérieur de l'élément `div`."
+        }
+      ]
+    },
+    {
+      "file": "63ee5d8f9e7168076e932fe2.md",
+      "id": "63ee5d8f9e7168076e932fe2",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "After your `h2` element, create two `p` elements. Give the first a `class` of `dessert-price`, and set the text to a dollar sign `\"$\"` followed by the value of the `price` variable. Give the second a `class` of `product-category`, and the text `\"Category: \"` followed by the value of the `category` variable.",
+          "fr": "Après ton élément `h2`, crée deux éléments `p`. Donne au premier une `class` de `dessert-price`, et définis le texte à un signe dollar `\"$\"` suivi de la valeur de la variable `price`. Donne au second une `class` de `product-category`, et le texte `\"Category: \"` suivi de la valeur de la variable `category`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create two `p` elements.",
+          "fr": "Tu dois créer deux éléments `p`."
+        },
+        {
+          "en": "Your `p` elements should come after your `h2` element.",
+          "fr": "Tes éléments `p` doivent venir après ton élément `h2`."
+        },
+        {
+          "en": "Your first `p` element should have a `class` of `dessert-price`.",
+          "fr": "Ton premier élément `p` doit avoir une `class` de `dessert-price`."
+        },
+        {
+          "en": "Your first `p` element should have the dollar sign `\"$\"` followed by the value of the `price` variable.",
+          "fr": "Ton premier élément `p` doit avoir le signe dollar `\"$\"` suivi de la valeur de la variable `price`."
+        },
+        {
+          "en": "Your second `p` element should have a `class` of `product-category`.",
+          "fr": "Ton second élément `p` doit avoir une `class` de `product-category`."
+        },
+        {
+          "en": "Your second `p` element should have the text `\"Category: \"` followed by the value of the `category` variable.",
+          "fr": "Ton second élément `p` doit avoir le texte `\"Category: \"` suivi de la valeur de la variable `category`."
+        }
+      ]
+    },
+    {
+      "file": "63ee5e0f08e82208364c4128.md",
+      "id": "63ee5e0f08e82208364c4128",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Finally, after your `p` elements, create a `button` element. Give it an `id` set to the value of the `id` variable, a `class` of `btn add-to-cart-btn`, and use `\"Add to cart\"` for the text.",
+          "fr": "Enfin, après tes éléments `p`, crée un élément `button`. Donne-lui un `id` défini à la valeur de la variable `id`, une `class` de `btn add-to-cart-btn`, et utilise `\"Add to cart\"` pour le texte."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `button` element.",
+          "fr": "Tu dois créer un élément `button`."
+        },
+        {
+          "en": "Your `button` element should come after your `p` elements.",
+          "fr": "Ton élément `button` doit venir après tes éléments `p`."
+        },
+        {
+          "en": "Your `button` element should have an `id` set to the value of the `id` variable.",
+          "fr": "Ton élément `button` doit avoir un `id` défini à la valeur de la variable `id`."
+        },
+        {
+          "en": "Your `button` element should have a `class` of `btn add-to-cart-btn`.",
+          "fr": "Ton élément `button` doit avoir une `class` de `btn add-to-cart-btn`."
+        },
+        {
+          "en": "Your `button` element should have the text `\"Add to cart\"`.",
+          "fr": "Ton élément `button` doit avoir le texte `\"Add to cart\"`."
+        }
+      ]
+    },
+    {
+      "file": "63ee5ea8be892e0955ab346c.md",
+      "id": "63ee5ea8be892e0955ab346c",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "You are already familiar with an HTML `class`, but JavaScript also has a <dfn>class</dfn>. In JavaScript, a class is like a blueprint for creating objects. It allows you to define a set of properties and methods, and instantiate (or create) new objects with those properties and methods.",
+          "fr": "Tu es déjà familiarisé avec une `class` HTML, mais JavaScript a aussi une <dfn>class</dfn>. En JavaScript, une classe est comme un plan pour créer des objets. Elle te permet de définir un ensemble de propriétés et de méthodes, et d'instancier (ou créer) de nouveaux objets avec ces propriétés et méthodes."
+        },
+        {
+          "en": "The `class` keyword is used to declare a class. Here is an example of declaring a `Computer` class:",
+          "fr": "Le mot-clé `class` est utilisé pour déclarer une classe. Voici un exemple de déclaration d'une classe `Computer` :"
+        },
+        {
+          "en": "Declare a `ShoppingCart` class.",
+          "fr": "Déclare une classe `ShoppingCart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `ShoppingCart` variable.",
+          "fr": "Tu dois déclarer une variable `ShoppingCart`."
+        },
+        {
+          "en": "You should use the `class` keyword to declare a `ShoppingCart` class.",
+          "fr": "Tu dois utiliser le mot-clé `class` pour déclarer une classe `ShoppingCart`."
+        },
+        {
+          "en": "Your `ShoppingCart` class should be empty.",
+          "fr": "Ta classe `ShoppingCart` doit être empty."
+        }
+      ]
+    },
+    {
+      "file": "63ee5fc113bcb20a5db9214b.md",
+      "id": "63ee5fc113bcb20a5db9214b",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Classes have a special `constructor` method, which is called when a new instance of the class is created. The `constructor` method is a great place to initialize properties of the class. Here is an example of a class with a `constructor` method:",
+          "fr": "Les classes ont une méthode spéciale `constructor`, qui est appelée lorsqu'une nouvelle instance de la classe est créée. La méthode `constructor` est un excellent endroit pour initialiser les propriétés de la classe. Voici un exemple d'une classe avec une méthode `constructor` :"
+        },
+        {
+          "en": "Add an empty `constructor` method to the `ShoppingCart` class.",
+          "fr": "Ajoute une méthode `constructor` empty à la classe `ShoppingCart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `constructor` method to the `ShoppingCart` class.",
+          "fr": "Tu dois ajouter une méthode `constructor` à la classe `ShoppingCart`."
+        },
+        {
+          "en": "Your `constructor` method should be empty.",
+          "fr": "Ta méthode `constructor` doit être empty."
+        }
+      ]
+    },
+    {
+      "file": "63ee611d478dca0b77f6a393.md",
+      "id": "63ee611d478dca0b77f6a393",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "The `this` keyword in JavaScript is used to refer to the current object. Depending on where `this` is used, what it references changes. In the case of a class, it refers to the instance of the object being constructed. You can use the `this` keyword to set the properties of the object being instantiated. Here is an example:",
+          "fr": "Le mot-clé `this` en JavaScript est utilisé pour faire référence à l'objet courant. Selon l'endroit où `this` est utilisé, ce à quoi il fait référence change. Dans le cas d'une classe, il fait référence à l'instance de l'objet en cours de construction. Tu peux utiliser le mot-clé `this` pour définir les propriétés de l'objet en cours d'instanciation. Voici un exemple :"
+        },
+        {
+          "en": "In your constructor, use the `this` keyword to set the `items` property to an empty array. Also, set the `total` property to `0`, and the `taxRate` property to `8.25`.",
+          "fr": "Dans ton constructeur, utilise le mot-clé `this` pour définir la propriété `items` à un tableau vide. Définis aussi la propriété `total` à `0`, et la propriété `taxRate` à `8.25`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `this` keyword to set the `items` property of your class to an empty array.",
+          "fr": "Tu dois utiliser le mot-clé `this` pour définir la propriété `items` de ta classe à un tableau vide."
+        },
+        {
+          "en": "You should use the `this` keyword to set the `total` property of your class to `0`.",
+          "fr": "Tu dois utiliser le mot-clé `this` pour définir la propriété `total` de ta classe à `0`."
+        },
+        {
+          "en": "You should use the `this` keyword to set the `taxRate` property of your class to `8.25`.",
+          "fr": "Tu dois utiliser le mot-clé `this` pour définir la propriété `taxRate` de ta classe à `8.25`."
+        }
+      ]
+    },
+    {
+      "file": "63ee7c664f9b65137d925c8a.md",
+      "id": "63ee7c664f9b65137d925c8a",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Your `ShoppingCart` class needs the ability to add items. Create an empty `addItem` method, which takes two parameters: `id` and `products`. Creating a method might look like this:",
+          "fr": "Ta classe `ShoppingCart` a besoin de pouvoir ajouter des articles. Crée une méthode `addItem` empty, qui prend deux paramètres : `id` et `products`. Créer une méthode pourrait ressembler à ceci :"
+        },
+        {
+          "en": "The first parameter, `id`, is the `id` of the product the user has added to their cart. The second parameter, `products`, is an array of product objects. By using a parameter instead of directly referencing your existing `products` array, this method will be more flexible if you wanted to add additional product lists in the future.",
+          "fr": "Le premier paramètre, `id`, est l'`id` du produit que l'utilisateur a ajouté à son panier. Le second paramètre, `products`, est un tableau d'objets produit. En utilisant un paramètre plutôt que de référencer directement ton tableau `products` existant, cette méthode sera plus flexible si tu voulais ajouter des listes de produits supplémentaires à l'avenir."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `ShoppingCart` class should have an `addItem` method.",
+          "fr": "Ta classe `ShoppingCart` doit avoir une méthode `addItem`."
+        },
+        {
+          "en": "Your `addItem` method should take two parameters: `id` and `products`.",
+          "fr": "Ta méthode `addItem` doit prendre deux paramètres : `id` et `products`."
+        },
+        {
+          "en": "Your `addItem` method should be empty.",
+          "fr": "Ta méthode `addItem` doit être empty."
+        }
+      ]
+    },
+    {
+      "file": "63eea5cea403a81a68ae493c.md",
+      "id": "63eea5cea403a81a68ae493c",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "You need to find the product that the user is adding to the cart. Remember that arrays have a `.find()` method. In your `addItem` function, declare a `product` variable, and assign it the value of calling the `.find()` method on the `products` array.",
+          "fr": "Tu dois trouver le produit que l'utilisateur ajoute au panier. Souviens-toi que les tableaux ont une méthode `.find()`. Dans ta fonction `addItem`, déclare une variable `product`, et assigne-lui la valeur de l'appel à la méthode `.find()` sur le tableau `products`."
+        },
+        {
+          "en": "For the callback to `.find()`, pass a function that takes a single parameter `item`, and returns whether the `id` property of `item` is strictly equal to the `id` parameter passed to `addItem`.",
+          "fr": "Pour le callback de `.find()`, passe une fonction qui prend un seul paramètre `item`, et renvoie si la propriété `id` de `item` est strictement égale au paramètre `id` passé à `addItem`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `product` variable in your `addItem` function.",
+          "fr": "Tu dois déclarer une variable `product` dans ta fonction `addItem`."
+        },
+        {
+          "en": "You should call the `.find()` method on your `products` array.",
+          "fr": "Tu dois appeler la méthode `.find()` sur ton tableau `products`."
+        },
+        {
+          "en": "You should pass a callback function to the `.find()` method.",
+          "fr": "Tu dois passer une fonction de rappel à la méthode `.find()`."
+        },
+        {
+          "en": "The callback function should take a single parameter.",
+          "fr": "La fonction de rappel doit prendre un seul paramètre."
+        },
+        {
+          "en": "The callback function should return whether the `id` property of `item` is strictly equal to the `id` parameter passed to `addItem`.",
+          "fr": "La fonction de rappel doit renvoyer si la propriété `id` de `item` est strictement égale au paramètre `id` passé à `addItem`."
+        },
+        {
+          "en": "You should assign the value of the `.find()` method to the `product` variable.",
+          "fr": "Tu dois assigner la valeur de la méthode `.find()` à la variable `product`."
+        }
+      ]
+    },
+    {
+      "file": "63eea817673c8e1c22927fa6.md",
+      "id": "63eea817673c8e1c22927fa6",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Use `const` and destructuring to extract `name` and `price` variables from `product`.",
+          "fr": "Utilise `const` et la destructuration pour extraire les variables `name` et `price` de `product`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use destructuring to get the `name` and `price` variables.",
+          "fr": "Tu dois utiliser la destructuration pour obtenir les variables `name` et `price`."
+        },
+        {
+          "en": "You should use `const` to declare the `name` and `price` variables.",
+          "fr": "Tu dois utiliser `const` pour déclarer les variables `name` et `price`."
+        },
+        {
+          "en": "You should use destructuring to get the `name` and `price` variables from `product`.",
+          "fr": "Tu dois utiliser la destructuration pour obtenir les variables `name` et `price` de `product`."
+        }
+      ]
+    },
+    {
+      "file": "63eea8e1e143ae1d098c8c9d.md",
+      "id": "63eea8e1e143ae1d098c8c9d",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Now you need to push the `product` into the cart's `items` array. Remember to use the `this` keyword.",
+          "fr": "Maintenant, tu dois pousser le `product` dans le tableau `items` du panier. N'oublie pas d'utiliser le mot-clé `this`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `push` method on the `items` array.",
+          "fr": "Tu dois appeler la méthode `push` sur le tableau `items`."
+        },
+        {
+          "en": "Remember you need to use the `this` keyword to access the `items` array.",
+          "fr": "Souviens-toi que tu dois utiliser le mot-clé `this` pour accéder au tableau `items`."
+        },
+        {
+          "en": "You should `push` the `product` variable to the `items` array.",
+          "fr": "Tu dois `push` la variable `product` dans le tableau `items`."
+        }
+      ]
+    },
+    {
+      "file": "63eeb8e86becbf1e75c2cb0d.md",
+      "id": "63eeb8e86becbf1e75c2cb0d",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "You now need a total count of each product that the user has in the cart. Declare a `totalCountPerProduct` variable, and assign it an empty object.",
+          "fr": "Tu as maintenant besoin d'un compte total de chaque produit que l'utilisateur a dans le panier. Déclare une variable `totalCountPerProduct`, et assigne-lui un objet vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `totalCountPerProduct` variable in your `addItem` function.",
+          "fr": "Tu dois déclarer une variable `totalCountPerProduct` dans ta fonction `addItem`."
+        },
+        {
+          "en": "You should use `const` to declare `totalCountPerProduct`.",
+          "fr": "Tu dois utiliser `const` pour déclarer `totalCountPerProduct`."
+        },
+        {
+          "en": "You should assign an empty object to `totalCountPerProduct`.",
+          "fr": "Tu dois assigner un objet vide à `totalCountPerProduct`."
+        }
+      ]
+    },
+    {
+      "file": "63eedebb0ec0231ff1cede1a.md",
+      "id": "63eedebb0ec0231ff1cede1a",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Use the `.forEach()` method to loop through the `items` array. Pass an empty callback function that takes a single parameter `dessert`.",
+          "fr": "Utilise la méthode `.forEach()` pour parcourir le tableau `items`. Passe une fonction de rappel empty qui prend un seul paramètre `dessert`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `.forEach()` method on your `items` array.",
+          "fr": "Tu dois utiliser la méthode `.forEach()` sur ton tableau `items`."
+        },
+        {
+          "en": "Remember to use the `this` keyword to access the `items` array.",
+          "fr": "Souviens-toi d'utiliser le mot-clé `this` pour accéder au tableau `items`."
+        },
+        {
+          "en": "You should pass a callback function to the `.forEach()` method.",
+          "fr": "Tu dois passer une fonction de rappel à la méthode `.forEach()`."
+        },
+        {
+          "en": "Your callback function should take a single parameter.",
+          "fr": "Ta fonction de rappel doit prendre un seul paramètre."
+        },
+        {
+          "en": "Your callback function should be empty.",
+          "fr": "Ta fonction de rappel doit être empty."
+        }
+      ]
+    },
+    {
+      "file": "63efdbc22a0c56070beabed7.md",
+      "id": "63efdbc22a0c56070beabed7",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "You’re on the right track! However, let’s take a moment to address a common issue when working with objects in JavaScript.",
+          "fr": "Tu es sur la bonne voie ! Cependant, prenons un moment pour aborder un problème courant lorsqu'on travaille avec des objets en JavaScript."
+        },
+        {
+          "en": "When you try to access an object property that doesn’t exist, JavaScript returns `undefined`. If you then attempt to perform arithmetic operations on `undefined`, it can lead to unexpected results, such as `NaN`.",
+          "fr": "Lorsque tu essaies d'accéder à une propriété d'objet qui n'existe pas, JavaScript renvoie `undefined`. Si tu tentes ensuite d'effectuer des opérations arithmétiques sur `undefined`, cela peut mener à des résultats inattendus, comme `NaN`."
+        },
+        {
+          "en": "To prevent this, you can use the `||` (logical OR) operator to provide a default value.",
+          "fr": "Pour éviter cela, tu peux utiliser l'opérateur `||` (OU logique) pour fournir une valeur par défaut."
+        },
+        {
+          "en": "Now, let’s apply this concept to your `totalCountPerProduct` object in the `forEach` callback. Make sure that each `dessert.id` property is initialized properly.",
+          "fr": "Maintenant, appliquons ce concept à ton objet `totalCountPerProduct` dans le callback `forEach`. Assure-toi que chaque propriété `dessert.id` est correctement initialisée."
+        },
+        {
+          "en": "Initialize `totalCountPerProduct[dessert.id]` with a default value of `0` using the `||` operator.",
+          "fr": "Initialise `totalCountPerProduct[dessert.id]` avec une valeur par défaut de `0` en utilisant l'opérateur `||`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use dot notation to access the `id` property of `dessert`.",
+          "fr": "Tu dois utiliser la notation point pour accéder à la propriété `id` de `dessert`."
+        },
+        {
+          "en": "You should use bracket notation to access the property of `totalCountPerProduct` that corresponds to `dessert.id`.",
+          "fr": "Tu dois utiliser la notation crochet pour accéder à la propriété de `totalCountPerProduct` qui correspond à `dessert.id`."
+        },
+        {
+          "en": "You should initialize `totalCountPerProduct[dessert.id]` with `0` as a default value using `||` operator at the end of the expression.",
+          "fr": "Tu dois initialiser `totalCountPerProduct[dessert.id]` avec `0` comme valeur par défaut en utilisant l'opérateur `||` à la fin de l'expression."
+        }
+      ]
+    },
+    {
+      "file": "63efe370bbfc4a08d500118e.md",
+      "id": "63efe370bbfc4a08d500118e",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "In the `forEach` callback, wrap the right-hand assignment `totalCountPerProduct[dessert.id] || 0` in parentheses `()` to ensure proper evaluation, then increment the value by one.",
+          "fr": "Dans le callback `forEach`, enveloppe l'affectation de droite `totalCountPerProduct[dessert.id] || 0` entre parenthèses `()` pour assurer une évaluation correcte, puis incrémente la valeur de un."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use dot notation to access the `id` property of `dessert`.",
+          "fr": "Tu dois utiliser la notation point pour accéder à la propriété `id` de `dessert`."
+        },
+        {
+          "en": "You should use bracket notation to access the property of `totalCountPerProduct` that corresponds to `dessert.id`.",
+          "fr": "Tu dois utiliser la notation crochet pour accéder à la propriété de `totalCountPerProduct` qui correspond à `dessert.id`."
+        },
+        {
+          "en": "You should use the assignment operator to update the value of the property of `totalCountPerProduct` that corresponds to `dessert.id`.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation pour mettre à jour la valeur de la propriété de `totalCountPerProduct` qui correspond à `dessert.id`."
+        },
+        {
+          "en": "You should wrap `totalCountPerProduct[dessert.id] || 0` in parentheses `()` before incrementing it by one.",
+          "fr": "Tu dois envelopper `totalCountPerProduct[dessert.id] || 0` entre parenthèses `()` avant de l'incrémenter de un."
+        }
+      ]
+    },
+    {
+      "file": "63eff02f00e69a0b2ac10b43.md",
+      "id": "63eff02f00e69a0b2ac10b43",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Now you need to get prepared to update the display with the new product the user added. Declare a `currentProductCount` variable, and assign it the value of the `totalCountPerProduct` object's property matching the `id` of `product`.",
+          "fr": "Maintenant, tu dois te préparer à mettre à jour l'affichage avec le nouveau produit ajouté par l'utilisateur. Déclare une variable `currentProductCount`, et assigne-lui la valeur de la propriété de l'objet `totalCountPerProduct` correspondant à l'`id` de `product`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `currentProductCount` variable in your `addItem` function.",
+          "fr": "Tu dois déclarer une variable `currentProductCount` dans ta fonction `addItem`."
+        },
+        {
+          "en": "You should use `const` to declare `currentProductCount`.",
+          "fr": "Tu dois utiliser `const` pour déclarer `currentProductCount`."
+        },
+        {
+          "en": "You should assign the value of `totalCountPerProduct[product.id]` to `currentProductCount`.",
+          "fr": "Tu dois assigner la valeur de `totalCountPerProduct[product.id]` à `currentProductCount`."
+        }
+      ]
+    },
+    {
+      "file": "63eff98ffb1d5a0d24ec79cb.md",
+      "id": "63eff98ffb1d5a0d24ec79cb",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "You haven't written the code to generate the HTML yet, but if a product has already been added to the user's cart then there will be a matching element which you'll need.",
+          "fr": "Tu n'as pas encore écrit le code pour générer le HTML, mais si un produit a déjà été ajouté au panier de l'utilisateur, il y aura un élément correspondant dont tu auras besoin."
+        },
+        {
+          "en": "Use `.getElementById()` to get the matching element - you'll be setting the `id` value to `product-count-for-id${product.id}`, so use a template literal to query that value.",
+          "fr": "Utilise `.getElementById()` pour obtenir l'élément correspondant — tu définiras la valeur de l'`id` à `product-count-for-id${product.id}`, donc utilise un littéral de modèle pour interroger cette valeur."
+        },
+        {
+          "en": "Assign your query to a `currentProductCountSpan` variable.",
+          "fr": "Assigne ta requête à une variable `currentProductCountSpan`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `currentProductCountSpan` variable.",
+          "fr": "Tu dois déclarer une variable `currentProductCountSpan`."
+        },
+        {
+          "en": "You should use `const` to declare `currentProductCountSpan`.",
+          "fr": "Tu dois utiliser `const` pour déclarer `currentProductCountSpan`."
+        },
+        {
+          "en": "You should use `document.getElementById()` to get the matching element.",
+          "fr": "Tu dois utiliser `document.getElementById()` pour obtenir l'élément correspondant."
+        },
+        {
+          "en": "You should use a template literal to query the `id` value.",
+          "fr": "Tu dois utiliser un littéral de modèle pour interroger la valeur de l'`id`."
+        },
+        {
+          "en": "You should assign the value of `document.getElementById()` to `currentProductCountSpan`.",
+          "fr": "Tu dois assigner la valeur de `document.getElementById()` à `currentProductCountSpan`."
+        }
+      ]
+    },
+    {
+      "file": "63effe558c87a70e7072e447.md",
+      "id": "63effe558c87a70e7072e447",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "The behavior of the `addItem` method needs to change if the product is already in the cart or not. Create a ternary that checks if the current product is already in the cart. Use `undefined` for both the truthy and falsy expressions to avoid a syntax error.",
+          "fr": "Le comportement de la méthode `addItem` doit changer selon que le produit est déjà dans le panier ou non. Crée un ternaire qui vérifie si le produit courant est déjà dans le panier. Utilise `undefined` pour les expressions truthy et falsy afin d'éviter une erreur de syntaxe."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should check if `currentProductCount` is greater than `1`.",
+          "fr": "Tu dois vérifier si `currentProductCount` est supérieur à `1`."
+        },
+        {
+          "en": "You should use a ternary operator with your `currentProductCount > 1` condition.",
+          "fr": "Tu dois utiliser un opérateur ternaire avec ta condition `currentProductCount > 1`."
+        },
+        {
+          "en": "You should use `undefined` as the truthy expression.",
+          "fr": "Tu dois utiliser `undefined` comme expression truthy."
+        },
+        {
+          "en": "You should use `undefined` as the falsy expression.",
+          "fr": "Tu dois utiliser `undefined` comme expression falsy."
+        }
+      ]
+    },
+    {
+      "file": "63f0165121a9181342d5bc66.md",
+      "id": "63f0165121a9181342d5bc66",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "For your truthy expression, removing the `undefined`, you need to update the `textContent` of the `currentProductCountSpan` to be the `currentProductCount` followed by an `x`. Use a template literal to do so.",
+          "fr": "Pour ton expression truthy, en retirant le `undefined`, tu dois mettre à jour le `textContent` de `currentProductCountSpan` pour qu'il soit le `currentProductCount` suivi d'un `x`. Utilise un littéral de modèle pour cela."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `undefined` from your truthy expression.",
+          "fr": "Tu dois retirer le `undefined` de ton expression truthy."
+        },
+        {
+          "en": "You should access the `textContent` property of `currentProductCountSpan`.",
+          "fr": "Tu dois accéder à la propriété `textContent` de `currentProductCountSpan`."
+        },
+        {
+          "en": "You should use template literal syntax to update the `textContent` to be `${currentProductCount}x`.",
+          "fr": "Tu dois utiliser la syntaxe de littéral de modèle pour mettre à jour le `textContent` à `${currentProductCount}x`."
+        }
+      ]
+    },
+    {
+      "file": "63f017b4ad028a148eb713c0.md",
+      "id": "63f017b4ad028a148eb713c0",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "For your falsy expression, you'll need to add new HTML to your `productsContainer`. Start by removing the `undefined`, then use the addition assignment operator and template literal syntax to add a `div` with the `class` set to `product` and the `id` set to `dessert${id}` to the `innerHTML` property of the `productsContainer`.",
+          "fr": "Pour ton expression falsy, tu auras besoin d'ajouter du nouveau HTML à ton `productsContainer`. Commence par retirer le `undefined`, puis utilise l'opérateur d'affectation additive et la syntaxe de littéral de modèle pour ajouter un `div` avec la `class` définie à `product` et l'`id` défini à `dessert${id}` à la propriété `innerHTML` de `productsContainer`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the `undefined` from your falsy expression.",
+          "fr": "Tu dois retirer le `undefined` de ton expression falsy."
+        },
+        {
+          "en": "You should use the addition assignment operator to add HTML to the `productsContainer`. Remember that HTML goes in the `innerHTML` property.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation additive pour ajouter du HTML à `productsContainer`. Souviens-toi que le HTML va dans la propriété `innerHTML`."
+        },
+        {
+          "en": "You should use template literal syntax to add HTML to the `productsContainer`.",
+          "fr": "Tu dois utiliser la syntaxe de littéral de modèle pour ajouter du HTML à `productsContainer`."
+        },
+        {
+          "en": "You should add a `div` to the `productsContainer`.",
+          "fr": "Tu dois ajouter un `div` à `productsContainer`."
+        },
+        {
+          "en": "Your `div` should have the `class` set to `product`.",
+          "fr": "Ton `div` doit avoir la `class` définie à `product`."
+        },
+        {
+          "en": "Your `div` should have the `id` set to `dessert${id}`.",
+          "fr": "Ton `div` doit avoir l'`id` défini à `dessert${id}`."
+        }
+      ]
+    },
+    {
+      "file": "63f01861f813e01564c95315.md",
+      "id": "63f01861f813e01564c95315",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "Inside your `div`, add two `p` elements. Set the text of the second `p` element to be the value of the `price` variable.",
+          "fr": "À l'intérieur de ton `div`, ajoute deux éléments `p`. Définis le texte du second élément `p` à la valeur de la variable `price`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add two `p` elements inside your `div` element.",
+          "fr": "Tu dois ajouter deux éléments `p` à l'intérieur de ton élément `div`."
+        },
+        {
+          "en": "Your second `p` element should have the text of the `price` variable.",
+          "fr": "Ton second élément `p` doit avoir le texte de la variable `price`."
+        }
+      ]
+    },
+    {
+      "file": "63f018f04e487e164dc27bd9.md",
+      "id": "63f018f04e487e164dc27bd9",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "In your first `p` element, add a `span` element. Give the `span` a class of `product-count` and an `id` of `product-count-for-id${id}`. Then, after the span, give your `p` element the text of the `name` variable.",
+          "fr": "Dans ton premier élément `p`, ajoute un élément `span`. Donne au `span` une classe `product-count` et un `id` de `product-count-for-id${id}`. Ensuite, après le span, donne à ton élément `p` le texte de la variable `name`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your first `p` element should have a `span` element.",
+          "fr": "Ton premier élément `p` doit avoir un élément `span`."
+        },
+        {
+          "en": "Your `span` element should have a `class` of `product-count`.",
+          "fr": "Ton élément `span` doit avoir une `class` de `product-count`."
+        },
+        {
+          "en": "Your `span` element should have an `id` of `product-count-for-id${id}`.",
+          "fr": "Ton élément `span` doit avoir un `id` de `product-count-for-id${id}`."
+        },
+        {
+          "en": "Your first `p` element should have the text of the `name` variable. This should be outside the span.",
+          "fr": "Ton premier élément `p` doit avoir le texte de la variable `name`. Cela doit être en dehors du span."
+        }
+      ]
+    },
+    {
+      "file": "63f01c9791a0aa1751c73760.md",
+      "id": "63f01c9791a0aa1751c73760",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "There is still more functionality that your `ShoppingCart` class needs, but first you need to be able to test the code you have currently written. You'll need to <dfn>instantiate</dfn> a new `ShoppingCart` object and assign it to a variable. Here is an example of instantiating the `Computer` class from earlier examples:",
+          "fr": "Il reste encore plus de fonctionnalités dont ta classe `ShoppingCart` a besoin, mais d'abord tu dois pouvoir tester le code que tu as écrit actuellement. Tu auras besoin d'<dfn>instancier</dfn> un nouvel objet `ShoppingCart` et de l'assigner à une variable. Voici un exemple d'instanciation de la classe `Computer` des exemples précédents :"
+        },
+        {
+          "en": "Declare a `cart` variable, and assign it a new `ShoppingCart` object. Note the use of the `new` keyword when instantiating the object.",
+          "fr": "Déclare une variable `cart`, et assigne-lui un nouvel objet `ShoppingCart`. Note l'utilisation du mot-clé `new` lors de l'instanciation de l'objet."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to declare a `cart` variable.",
+          "fr": "Tu dois utiliser `const` pour déclarer une variable `cart`."
+        },
+        {
+          "en": "You should use the `new` keyword to instantiate a new `ShoppingCart` object.",
+          "fr": "Tu dois utiliser le mot-clé `new` pour instancier un nouvel objet `ShoppingCart`."
+        },
+        {
+          "en": "You should assign your new `ShoppingCart` object to the `cart` variable.",
+          "fr": "Tu dois assigner ton nouvel objet `ShoppingCart` à la variable `cart`."
+        }
+      ]
+    },
+    {
+      "file": "63f0224ceb16dc196d2c860a.md",
+      "id": "63f0224ceb16dc196d2c860a",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "You need to get all of the `Add to cart` buttons that you added to the DOM earlier. Declare an `addToCartBtns` variable, and assign it the value of calling the `getElementsByClassName()` method on the `document` object, passing in the string `\"add-to-cart-btn\"`.",
+          "fr": "Tu dois récupérer tous les boutons `Add to cart` que tu as ajoutés au DOM plus tôt. Déclare une variable `addToCartBtns`, et assigne-lui la valeur de l'appel à la méthode `getElementsByClassName()` sur l'objet `document`, en passant la chaîne `\"add-to-cart-btn\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to declare your `addToCartBtns` variable.",
+          "fr": "Tu dois utiliser `const` pour déclarer ta variable `addToCartBtns`."
+        },
+        {
+          "en": "You should call the `getElementsByClassName()` method on the `document` object.",
+          "fr": "Tu dois appeler la méthode `getElementsByClassName()` sur l'objet `document`."
+        },
+        {
+          "en": "You should pass the string `\"add-to-cart-btn\"` to the `getElementsByClassName()` method.",
+          "fr": "Tu dois passer la chaîne `\"add-to-cart-btn\"` à la méthode `getElementsByClassName()`."
+        },
+        {
+          "en": "You should assign the value returned by the `getElementsByClassName()` method to the `addToCartBtns` variable.",
+          "fr": "Tu dois assigner la valeur renvoyée par la méthode `getElementsByClassName()` à la variable `addToCartBtns`."
+        }
+      ]
+    },
+    {
+      "file": "63f026d041bc6c1a3d5cba0f.md",
+      "id": "63f026d041bc6c1a3d5cba0f",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "You need to iterate through the buttons in your `addToCartBtns` variable. However, `.getElementsByClassName()` returns a Collection, which does not have a `forEach` method.",
+          "fr": "Tu dois itérer à travers les boutons de ta variable `addToCartBtns`. Cependant, `.getElementsByClassName()` renvoie une Collection, qui n'a pas de méthode `forEach`."
+        },
+        {
+          "en": "Use the spread operator on the `addToCartBtns` variable to convert it into an array. Then, use the `forEach` method to iterate through the array. Do not pass a callback function yet.",
+          "fr": "Utilise l'opérateur spread sur la variable `addToCartBtns` pour la convertir en tableau. Ensuite, utilise la méthode `forEach` pour itérer à travers le tableau. Ne passe pas encore de fonction de rappel."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the spread operator on the `addToCartBtns` variable.",
+          "fr": "Tu dois utiliser l'opérateur spread sur la variable `addToCartBtns`."
+        },
+        {
+          "en": "You should spread the `addToCartBtns` variable into an array.",
+          "fr": "Tu dois spread la variable `addToCartBtns` dans un tableau."
+        },
+        {
+          "en": "You should use the `forEach` method on the array you created.",
+          "fr": "Tu dois utiliser la méthode `forEach` sur le tableau que tu as créé."
+        },
+        {
+          "en": "You should not pass a callback function to the `forEach` method.",
+          "fr": "Tu ne dois pas passer de fonction de rappel à la méthode `forEach`."
+        }
+      ]
+    },
+    {
+      "file": "63f0284532742c1b26c7a052.md",
+      "id": "63f0284532742c1b26c7a052",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "Add your callback function to the `forEach` method. It should take a `btn` parameter. Then, in the callback, add an event listener to the `btn`. The event listener should listen for a `click` event, and should take another callback with an `event` parameter. The second callback should be empty.",
+          "fr": "Ajoute ta fonction de rappel à la méthode `forEach`. Elle doit prendre un paramètre `btn`. Ensuite, dans le callback, ajoute un écouteur d'événement au `btn`. L'écouteur d'événement doit écouter un événement `click`, et doit prendre un autre callback avec un paramètre `event`. Le second callback doit être empty."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use arrow syntax to add a callback function to the `forEach` method which takes a `btn` parameter.",
+          "fr": "Tu dois utiliser la syntaxe fléchée pour ajouter une fonction de rappel à la méthode `forEach` qui prend un paramètre `btn`."
+        },
+        {
+          "en": "You should add an event listener to the `btn` variable.",
+          "fr": "Tu dois ajouter un écouteur d'événement à la variable `btn`."
+        },
+        {
+          "en": "You should listen for a `click` event on the `btn` variable.",
+          "fr": "Tu dois écouter un événement `click` sur la variable `btn`."
+        },
+        {
+          "en": "You should add an empty callback function to the event listener. Remember to give it an `event` parameter.",
+          "fr": "Tu dois ajouter une fonction de rappel empty à l'écouteur d'événement. N'oublie pas de lui donner un paramètre `event`."
+        }
+      ]
+    },
+    {
+      "file": "63f0289df84a581bbdbd29b7.md",
+      "id": "63f0289df84a581bbdbd29b7",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "In your event listener callback, call the `.addItem()` method of your `cart` object, and pass in the `event.target.id`. Remember that the `id` here will be a string, so you need to convert it to a number.",
+          "fr": "Dans le callback de ton écouteur d'événement, appelle la méthode `.addItem()` de ton objet `cart`, et passe `event.target.id`. Souviens-toi que l'`id` ici sera une chaîne, donc tu dois le convertir en nombre."
+        },
+        {
+          "en": "Pass your `products` array as the second argument.",
+          "fr": "Passe ton tableau `products` comme second argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your event listener callback should call the `.addItem()` method of your `cart` object.",
+          "fr": "Le callback de ton écouteur d'événement doit appeler la méthode `.addItem()` de ton objet `cart`."
+        },
+        {
+          "en": "Your `.addItem()` method should be called with the `event.target.id` as the first argument. Remember to convert the `id` to a number using `Number()`.",
+          "fr": "Ta méthode `.addItem()` doit être appelée avec `event.target.id` comme premier argument. N'oublie pas de convertir l'`id` en nombre avec `Number()`."
+        },
+        {
+          "en": "Your `.addItem()` method should be called with the `products` array as the second argument.",
+          "fr": "Ta méthode `.addItem()` doit être appelée avec le tableau `products` comme second argument."
+        }
+      ]
+    },
+    {
+      "file": "63f033fdb1fbcc254999fcc3.md",
+      "id": "63f033fdb1fbcc254999fcc3",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "Your cart currently isn't visible on the webpage. To make it visible, start by adding an event listener to the `cartBtn` variable, listening for the click event. The callback does not need any parameters.",
+          "fr": "Ton panier n'est actuellement pas visible sur la page web. Pour le rendre visible, commence par ajouter un écouteur d'événement à la variable `cartBtn`, écoutant l'événement click. Le callback n'a besoin d'aucun paramètre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an event listener to the `cartBtn` variable.",
+          "fr": "Tu dois ajouter un écouteur d'événement à la variable `cartBtn`."
+        },
+        {
+          "en": "You should listen for a `click` event on the `cartBtn` variable.",
+          "fr": "Tu dois écouter un événement `click` sur la variable `cartBtn`."
+        },
+        {
+          "en": "You should add an empty callback function (using arrow syntax) to the event listener. Remember that it does not need any parameters.",
+          "fr": "Tu dois ajouter une fonction de rappel empty (en utilisant la syntaxe fléchée) à l'écouteur d'événement. Souviens-toi qu'elle n'a besoin d'aucun paramètre."
+        }
+      ]
+    },
+    {
+      "file": "63f03446c2ed3e264be6c7fc.md",
+      "id": "63f03446c2ed3e264be6c7fc",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "Start by inverting the value of `isCartShowing`. Remember that you can use the logical not operator `!` to invert the value of a boolean. Assign the inverted value to `isCartShowing`.",
+          "fr": "Commence par inverser la valeur de `isCartShowing`. Souviens-toi que tu peux utiliser l'opérateur not logique `!` pour inverser la valeur d'un booléen. Assigne la valeur inversée à `isCartShowing`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should invert the value of `isCartShowing`.",
+          "fr": "Tu dois inverser la valeur de `isCartShowing`."
+        },
+        {
+          "en": "You should assign the inverted value of `isCartShowing` to `isCartShowing`.",
+          "fr": "Tu dois assigner la valeur inversée de `isCartShowing` à `isCartShowing`."
+        }
+      ]
+    },
+    {
+      "file": "63f0348a54a177272071a595.md",
+      "id": "63f0348a54a177272071a595",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "Now assign the `textContent` of the `showHideCartSpan` variable the result of a ternary expression which checks if `isCartShowing` is true. If it is, set the `textContent` to `\"Hide\"`, otherwise set it to `\"Show\"`.",
+          "fr": "Maintenant, assigne au `textContent` de la variable `showHideCartSpan` le résultat d'une expression ternaire qui vérifie si `isCartShowing` est vrai. Si c'est le cas, définis le `textContent` à `\"Hide\"`, sinon définis-le à `\"Show\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the assignment operator on the `textContent` property of the `showHideCartSpan` variable.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation sur la propriété `textContent` de la variable `showHideCartSpan`."
+        },
+        {
+          "en": "You should use ternary syntax to check if `isCartShowing` is true.",
+          "fr": "Tu dois utiliser la syntaxe ternaire pour vérifier si `isCartShowing` est vrai."
+        },
+        {
+          "en": "You should set the `textContent` of the `showHideCartSpan` variable to `\"Hide\"` if `isCartShowing` is true.",
+          "fr": "Tu dois définir le `textContent` de la variable `showHideCartSpan` à `\"Hide\"` si `isCartShowing` est vrai."
+        },
+        {
+          "en": "You should set the `textContent` of the `showHideCartSpan` variable to `\"Show\"` if `isCartShowing` is false.",
+          "fr": "Tu dois définir le `textContent` de la variable `showHideCartSpan` à `\"Show\"` si `isCartShowing` est faux."
+        }
+      ]
+    },
+    {
+      "file": "63f034d012f74627ce538d3a.md",
+      "id": "63f034d012f74627ce538d3a",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "Finally, update the `display` property of the `style` object of the `cartContainer` variable to another ternary which checks if `isCartShowing` is true. If it is, set the `display` property to `\"block\"`, otherwise set it to `\"none\"`.",
+          "fr": "Enfin, mets à jour la propriété `display` de l'objet `style` de la variable `cartContainer` avec un autre ternaire qui vérifie si `isCartShowing` est vrai. Si c'est le cas, définis la propriété `display` à `\"block\"`, sinon définis-la à `\"none\"`."
+        },
+        {
+          "en": "Now you should be able to see your cart and add items to it.",
+          "fr": "Tu devrais maintenant pouvoir voir ton panier et y ajouter des articles."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `display` property of the `style` property of the `cartContainer` variable.",
+          "fr": "Tu dois accéder à la propriété `display` de la propriété `style` de la variable `cartContainer`."
+        },
+        {
+          "en": "You should use the assignment operator on the `display` property of the `style` property of the `cartContainer` variable.",
+          "fr": "Tu dois utiliser l'opérateur d'affectation sur la propriété `display` de la propriété `style` de la variable `cartContainer`."
+        },
+        {
+          "en": "You should use ternary syntax to check if `isCartShowing` is true.",
+          "fr": "Tu dois utiliser la syntaxe ternaire pour vérifier si `isCartShowing` est vrai."
+        },
+        {
+          "en": "You should set the `display` property of the `style` property of the `cartContainer` variable to `\"block\"` if `isCartShowing` is true.",
+          "fr": "Tu dois définir la propriété `display` de la propriété `style` de la variable `cartContainer` à `\"block\"` si `isCartShowing` est vrai."
+        },
+        {
+          "en": "You should set the `display` property of the `style` property of the `cartContainer` variable to `\"none\"` if `isCartShowing` is false.",
+          "fr": "Tu dois définir la propriété `display` de la propriété `style` de la variable `cartContainer` à `\"none\"` si `isCartShowing` est faux."
+        }
+      ]
+    },
+    {
+      "file": "63f0295e673b661ccb299e8a.md",
+      "id": "63f0295e673b661ccb299e8a",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "You need a way to access the total number of items in the cart. The best way to do this is to add another method to your `ShoppingCart` class, rather than accessing the `items` array directly.",
+          "fr": "Tu as besoin d'un moyen d'accéder au nombre total d'articles dans le panier. La meilleure façon de le faire est d'ajouter une autre méthode à ta classe `ShoppingCart`, plutôt que d'accéder directement au tableau `items`."
+        },
+        {
+          "en": "Add a `getCounts` method to the `ShoppingCart` class. It should return the number of items in the `items` array.",
+          "fr": "Ajoute une méthode `getCounts` à la classe `ShoppingCart`. Elle doit renvoyer le nombre d'articles dans le tableau `items`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `ShoppingCart` class should have a `getCounts` method.",
+          "fr": "Ta classe `ShoppingCart` doit avoir une méthode `getCounts`."
+        },
+        {
+          "en": "Remember to use the `this` keyword to access the `items` array.",
+          "fr": "Souviens-toi d'utiliser le mot-clé `this` pour accéder au tableau `items`."
+        },
+        {
+          "en": "Your `getCounts` method should return the number of items in the `items` array.",
+          "fr": "Ta méthode `getCounts` doit renvoyer le nombre d'articles dans le tableau `items`."
+        }
+      ]
+    },
+    {
+      "file": "63f029b96b9e9e1df93be951.md",
+      "id": "63f029b96b9e9e1df93be951",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "Now you can update the total number of items on the webpage. Assign the value of your `cart` object's `.getCounts()` method to the `textContent` of the `totalNumberOfItems` variable.",
+          "fr": "Maintenant, tu peux mettre à jour le nombre total d'articles sur la page web. Assigne la valeur de la méthode `.getCounts()` de ton objet `cart` au `textContent` de la variable `totalNumberOfItems`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `textContent` property of the `totalNumberOfItems` variable.",
+          "fr": "Tu dois accéder à la propriété `textContent` de la variable `totalNumberOfItems`."
+        },
+        {
+          "en": "You should assign the value of your `cart` object's `.getCounts()` method to the `textContent` property of the `totalNumberOfItems` variable.",
+          "fr": "Tu dois assigner la valeur de la méthode `.getCounts()` de ton objet `cart` à la propriété `textContent` de la variable `totalNumberOfItems`."
+        }
+      ]
+    },
+    {
+      "file": "63f02a4ef92d711ec1ff618c.md",
+      "id": "63f02a4ef92d711ec1ff618c",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "You also need to update the total price of the cart when the user adds an item. Create a `calculateTotal` method in the `ShoppingCart` class.",
+          "fr": "Tu dois aussi mettre à jour le prix total du panier lorsque l'utilisateur ajoute un article. Crée une méthode `calculateTotal` dans la classe `ShoppingCart`."
+        },
+        {
+          "en": "In that method, declare a `subTotal` variable and use the `reduce` method on the `items` array to calculate the sum of the `price` property of each item in the array. Use `total` and `item` as the parameters for your callback.",
+          "fr": "Dans cette méthode, déclare une variable `subTotal` et utilise la méthode `reduce` sur le tableau `items` pour calculer la somme de la propriété `price` de chaque article du tableau. Utilise `total` et `item` comme paramètres de ton callback."
+        },
+        {
+          "en": "Remember to set your initial value in the `reduce` method.",
+          "fr": "N'oublie pas de définir ta valeur initiale dans la méthode `reduce`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `calculateTotal` method in the `ShoppingCart` class.",
+          "fr": "Tu dois créer une méthode `calculateTotal` dans la classe `ShoppingCart`."
+        },
+        {
+          "en": "Your `calculateTotal` method should have a `subTotal` variable declared with `const`.",
+          "fr": "Ta méthode `calculateTotal` doit avoir une variable `subTotal` déclarée avec `const`."
+        },
+        {
+          "en": "Your `calculateTotal` method should use the `reduce` method on the `items` array.",
+          "fr": "Ta méthode `calculateTotal` doit utiliser la méthode `reduce` sur le tableau `items`."
+        },
+        {
+          "en": "Your `reduce` callback should use `total` and `item` as the first and second parameter. Remember to use arrow function syntax.",
+          "fr": "Ton callback `reduce` doit utiliser `total` et `item` comme premier et second paramètre. N'oublie pas d'utiliser la syntaxe de fonction fléchée."
+        },
+        {
+          "en": "Your `reduce` callback should return the sum of `total` and `item.price`. Use an implicit return.",
+          "fr": "Ton callback `reduce` doit renvoyer la somme de `total` et `item.price`. Utilise un return implicite."
+        },
+        {
+          "en": "Your `reduce` call should have an initial value of `0`.",
+          "fr": "Ton appel `reduce` doit avoir une valeur initiale de `0`."
+        }
+      ]
+    },
+    {
+      "file": "63f02b22cce1c11fe9604381.md",
+      "id": "63f02b22cce1c11fe9604381",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "Part of the total cost will include the tax, so you need to calculate that as well. Create a `calculateTaxes` method in the `ShoppingCart` class. This method should take an `amount` parameter.",
+          "fr": "Une partie du coût total inclura la taxe, donc tu dois aussi la calculer. Crée une méthode `calculateTaxes` dans la classe `ShoppingCart`. Cette méthode doit prendre un paramètre `amount`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `calculateTaxes` method in the `ShoppingCart` class.",
+          "fr": "Tu dois créer une méthode `calculateTaxes` dans la classe `ShoppingCart`."
+        },
+        {
+          "en": "Your `calculateTaxes` method should take an `amount` parameter.",
+          "fr": "Ta méthode `calculateTaxes` doit prendre un paramètre `amount`."
+        }
+      ]
+    },
+    {
+      "file": "63f02bdeb9b428208b97eb6b.md",
+      "id": "63f02bdeb9b428208b97eb6b",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "Your `calculateTaxes` method should return the value of the `taxRate` (divided by 100, to convert it to a percent) multiplied by the `amount` parameter.",
+          "fr": "Ta méthode `calculateTaxes` doit renvoyer la valeur du `taxRate` (divisé par 100, pour le convertir en pourcentage) multiplié par le paramètre `amount`."
+        },
+        {
+          "en": "For clarity, wrap the `taxRate / 100` calculation in parentheses.",
+          "fr": "Pour plus de clarté, enveloppe le calcul `taxRate / 100` entre parenthèses."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should divide the `taxRate` by 100 in your `calculateTaxes` method. Remember to use the `this` keyword.",
+          "fr": "Tu dois diviser le `taxRate` par 100 dans ta méthode `calculateTaxes`. N'oublie pas d'utiliser le mot-clé `this`."
+        },
+        {
+          "en": "You should wrap the `this.taxRate / 100` calculation in parentheses.",
+          "fr": "Tu dois envelopper le calcul `this.taxRate / 100` entre parenthèses."
+        },
+        {
+          "en": "You should multiply the `amount` parameter by the `taxRate` divided by 100 in your `calculateTaxes` method.",
+          "fr": "Tu dois multiplier le paramètre `amount` par le `taxRate` divisé par 100 dans ta méthode `calculateTaxes`."
+        },
+        {
+          "en": "Your `calculateTaxes` method should return the value of the `taxRate` (divided by 100, to convert it to a percent) multiplied by the `amount` parameter.",
+          "fr": "Ta méthode `calculateTaxes` doit renvoyer la valeur du `taxRate` (divisé par 100, pour le convertir en pourcentage) multiplié par le paramètre `amount`."
+        }
+      ]
+    },
+    {
+      "file": "63f02c6e18773921ba50aa53.md",
+      "id": "63f02c6e18773921ba50aa53",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Because of the way computers store and work with numbers, calculations involving decimal numbers can result in some strange behavior. For example, `0.1 + 0.2` is not equal to `0.3`. This is because computers store decimal numbers as binary fractions, and some binary fractions cannot be represented exactly as decimal fractions.",
+          "fr": "À cause de la façon dont les ordinateurs stockent et travaillent avec les nombres, les calculs impliquant des nombres décimaux peuvent produire un comportement étrange. Par exemple, `0.1 + 0.2` n'est pas égal à `0.3`. C'est parce que les ordinateurs stockent les nombres décimaux comme des fractions binaires, et certaines fractions binaires ne peuvent pas être représentées exactement comme des fractions décimales."
+        },
+        {
+          "en": "We want to clean up the number result from your calculation. Wrap your calculation in parentheses (don't include the `return` statement!) and call the `.toFixed()` method on it. Pass the `.toFixed()` method the number `2` as an argument. This will round the number to two decimal places and return a string.",
+          "fr": "On veut nettoyer le résultat numérique de ton calcul. Enveloppe ton calcul entre parenthèses (n'inclus pas l'instruction `return` !) et appelle la méthode `.toFixed()` dessus. Passe à la méthode `.toFixed()` le nombre `2` comme argument. Cela arrondira le nombre à deux décimales et renverra une chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should wrap your calculation in parentheses.",
+          "fr": "Tu dois envelopper ton calcul entre parenthèses."
+        },
+        {
+          "en": "You should call the `.toFixed()` method on your calculation.",
+          "fr": "Tu dois appeler la méthode `.toFixed()` sur ton calcul."
+        },
+        {
+          "en": "You should pass the `.toFixed()` method the number `2` as an argument.",
+          "fr": "Tu dois passer à la méthode `.toFixed()` le nombre `2` comme argument."
+        }
+      ]
+    },
+    {
+      "file": "63f0311f5ea9382388d6124f.md",
+      "id": "63f0311f5ea9382388d6124f",
+      "dashedName": "step-47",
+      "title": {
+        "en": "Step 47",
+        "fr": "Étape 47"
+      },
+      "description": [
+        {
+          "en": "The issue with `.toFixed()` returning a string is that you want to be able to perform calculations with the tax rate. To fix this, you can pass the `.toFixed()` call (including the calculation) to the `parseFloat()` function. This will convert the fixed string back into a number, preserving the existing decimal places.",
+          "fr": "Le problème avec `.toFixed()` qui renvoie une chaîne, c'est que tu veux pouvoir effectuer des calculs avec le taux de taxe. Pour corriger cela, tu peux passer l'appel `.toFixed()` (y compris le calcul) à la fonction `parseFloat()`. Cela convertira la chaîne fixée de nouveau en nombre, en préservant les décimales existantes."
+        },
+        {
+          "en": "Pass your `.toFixed()` call to `parseFloat()`.",
+          "fr": "Passe ton appel `.toFixed()` à `parseFloat()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass your entire calculation (excluding the `return` statement) to `parseFloat()`.",
+          "fr": "Tu dois passer ton calcul entier (en excluant l'instruction `return`) à `parseFloat()`."
+        }
+      ]
+    },
+    {
+      "file": "63f03686c5ea863533ec71f4.md",
+      "id": "63f03686c5ea863533ec71f4",
+      "dashedName": "step-48",
+      "title": {
+        "en": "Step 48",
+        "fr": "Étape 48"
+      },
+      "description": [
+        {
+          "en": "Declare a variable `tax` and assign it the value of calling your new `.calculateTaxes()` method, passing `subTotal` as the argument.",
+          "fr": "Déclare une variable `tax` et assigne-lui la valeur de l'appel à ta nouvelle méthode `.calculateTaxes()`, en passant `subTotal` comme argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Use `const` to declare a variable named `tax`.",
+          "fr": "Utilise `const` pour déclarer une variable nommée `tax`."
+        },
+        {
+          "en": "Assign the value of calling your new `.calculateTaxes()` method, passing `subTotal` as the argument, to the `tax` variable. Remember to use the `this` keyword.",
+          "fr": "Assigne la valeur de l'appel à ta nouvelle méthode `.calculateTaxes()`, en passant `subTotal` comme argument, à la variable `tax`. N'oublie pas d'utiliser le mot-clé `this`."
+        }
+      ]
+    },
+    {
+      "file": "63f036ec91fdf238c90665f5.md",
+      "id": "63f036ec91fdf238c90665f5",
+      "dashedName": "step-49",
+      "title": {
+        "en": "Step 49",
+        "fr": "Étape 49"
+      },
+      "description": [
+        {
+          "en": "Update the `total` value to be the sum of the `subTotal` and `tax` values.",
+          "fr": "Mets à jour la valeur `total` pour qu'elle soit la somme des valeurs `subTotal` et `tax`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update the `total` value. Remember to use the `this` keyword.",
+          "fr": "Tu dois mettre à jour la valeur `total`. N'oublie pas d'utiliser le mot-clé `this`."
+        },
+        {
+          "en": "You should set the `total` value to be the sum of the `subTotal` and `tax` values.",
+          "fr": "Tu dois définir la valeur `total` à la somme des valeurs `subTotal` et `tax`."
+        }
+      ]
+    },
+    {
+      "file": "63f0370b340915399d31e5eb.md",
+      "id": "63f0370b340915399d31e5eb",
+      "dashedName": "step-50",
+      "title": {
+        "en": "Step 50",
+        "fr": "Étape 50"
+      },
+      "description": [
+        {
+          "en": "You're going to update the HTML in this method as well. Set the `textContent` of the `cartSubTotal` to be the value of `subTotal` to a fixed 2 decimal places. Use template literal syntax to add the dollar sign to the beginning of the value.",
+          "fr": "Tu vas aussi mettre à jour le HTML dans cette méthode. Définis le `textContent` de `cartSubTotal` à la valeur de `subTotal` à 2 décimales fixes. Utilise la syntaxe de littéral de modèle pour ajouter le signe dollar au début de la valeur."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `textContent` property of the `cartSubTotal` element.",
+          "fr": "Tu dois accéder à la propriété `textContent` de l'élément `cartSubTotal`."
+        },
+        {
+          "en": "You should call the `.toFixed()` method on the `subTotal` variable, passing `2` as the argument.",
+          "fr": "Tu dois appeler la méthode `.toFixed()` sur la variable `subTotal`, en passant `2` comme argument."
+        },
+        {
+          "en": "You should use template literal syntax to add the dollar sign before your `.toFixed()` call.",
+          "fr": "Tu dois utiliser la syntaxe de littéral de modèle pour ajouter le signe dollar avant ton appel `.toFixed()`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartSubTotal` element to your template string.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartSubTotal` à ta chaîne de modèle."
+        }
+      ]
+    },
+    {
+      "file": "63f0374d5351223a747c301d.md",
+      "id": "63f0374d5351223a747c301d",
+      "dashedName": "step-51",
+      "title": {
+        "en": "Step 51",
+        "fr": "Étape 51"
+      },
+      "description": [
+        {
+          "en": "Following the same pattern as your `cartSubTotal`, update the `cartTaxes` to display the `tax` value, and your `cartTotal` to display the `total` property.",
+          "fr": "En suivant le même schéma que pour `cartSubTotal`, mets à jour `cartTaxes` pour afficher la valeur `tax`, et `cartTotal` pour afficher la propriété `total`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `textContent` property of the `cartTaxes` element.",
+          "fr": "Tu dois accéder à la propriété `textContent` de l'élément `cartTaxes`."
+        },
+        {
+          "en": "You should call the `.toFixed()` method on the `tax` variable, passing `2` as the argument.",
+          "fr": "Tu dois appeler la méthode `.toFixed()` sur la variable `tax`, en passant `2` comme argument."
+        },
+        {
+          "en": "You should use template literal syntax to add the dollar sign before your `.toFixed()` call.",
+          "fr": "Tu dois utiliser la syntaxe de littéral de modèle pour ajouter le signe dollar avant ton appel `.toFixed()`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartTaxes` element to `tax.toFixed` template string.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartTaxes` à la chaîne de modèle `tax.toFixed`."
+        },
+        {
+          "en": "You should access the `textContent` property of the `cartTotal` element.",
+          "fr": "Tu dois accéder à la propriété `textContent` de l'élément `cartTotal`."
+        },
+        {
+          "en": "You should call the `.toFixed()` method on the `total` variable, passing `2` as the argument. Remember to use the `this` keyword.",
+          "fr": "Tu dois appeler la méthode `.toFixed()` sur la variable `total`, en passant `2` comme argument. N'oublie pas d'utiliser le mot-clé `this`."
+        },
+        {
+          "en": "You should use template literal syntax to add the dollar sign before your `.toFixed()` call.",
+          "fr": "Tu dois utiliser la syntaxe de littéral de modèle pour ajouter le signe dollar avant ton appel `.toFixed()`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartTotal` element to your `total.toFixed` template string.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartTotal` à ta chaîne de modèle `total.toFixed`."
+        }
+      ]
+    },
+    {
+      "file": "63f0378e173e3c3b7638b528.md",
+      "id": "63f0378e173e3c3b7638b528",
+      "dashedName": "step-52",
+      "title": {
+        "en": "Step 52",
+        "fr": "Étape 52"
+      },
+      "description": [
+        {
+          "en": "Finally, return the value of the `total` property. Remember your `this` keyword.",
+          "fr": "Enfin, renvoie la valeur de la propriété `total`. Souviens-toi de ton mot-clé `this`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `calculateTotal` method should return the value of the `total` property.",
+          "fr": "Ta méthode `calculateTotal` doit renvoyer la valeur de la propriété `total`."
+        }
+      ]
+    },
+    {
+      "file": "63f6721d5110af243ef8f3d9.md",
+      "id": "63f6721d5110af243ef8f3d9",
+      "dashedName": "step-53",
+      "title": {
+        "en": "Step 53",
+        "fr": "Étape 53"
+      },
+      "description": [
+        {
+          "en": "Now call your `.calculateTotal()` method inside your `forEach` loop.",
+          "fr": "Maintenant, appelle ta méthode `.calculateTotal()` à l'intérieur de ta boucle `forEach`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `cart.calculateTotal()` inside your `forEach` loop.",
+          "fr": "Tu dois appeler `cart.calculateTotal()` à l'intérieur de ta boucle `forEach`."
+        }
+      ]
+    },
+    {
+      "file": "63f038a0ae041d3c5b0cdf23.md",
+      "id": "63f038a0ae041d3c5b0cdf23",
+      "dashedName": "step-54",
+      "title": {
+        "en": "Step 54",
+        "fr": "Étape 54"
+      },
+      "description": [
+        {
+          "en": "Your last feature is to allow users to clear their cart. Add a `clearCart()` method to your `ShoppingCart` class.",
+          "fr": "Ta dernière fonctionnalité est de permettre aux utilisateurs de vider leur panier. Ajoute une méthode `clearCart()` à ta classe `ShoppingCart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `ShoppingCart` class should have a `clearCart` method.",
+          "fr": "Ta classe `ShoppingCart` doit avoir une méthode `clearCart`."
+        }
+      ]
+    },
+    {
+      "file": "63f038e671d3f73d5a041973.md",
+      "id": "63f038e671d3f73d5a041973",
+      "dashedName": "step-55",
+      "title": {
+        "en": "Step 55",
+        "fr": "Étape 55"
+      },
+      "description": [
+        {
+          "en": "The first thing you should do is check if the `items` array is empty. If it is, display an `alert` to the user with the text `Your shopping cart is already empty`, then return from the function.",
+          "fr": "La première chose que tu dois faire est de vérifier si le tableau `items` est vide. S'il l'est, affiche une `alert` à l'utilisateur avec le texte `Your shopping cart is already empty`, puis return depuis la fonction."
+        },
+        {
+          "en": "Remember that `0` is a falsy value, so you can use the `!` operator to check if the array is empty.",
+          "fr": "Souviens-toi que `0` est une valeur falsy, donc tu peux utiliser l'opérateur `!` pour vérifier si le tableau est vide."
+        },
+        {
+          "en": "After displaying the alert, return from the function to stop execution.",
+          "fr": "Après avoir affiché l'alerte, return depuis la fonction pour arrêter l'exécution."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement that checks if the `items` array is empty, using the negation operator.",
+          "fr": "Tu dois créer une instruction `if` qui vérifie si le tableau `items` est vide, en utilisant l'opérateur de négation."
+        },
+        {
+          "en": "Your `if` statement should display an `alert` to the user with the text `Your shopping cart is already empty`.",
+          "fr": "Ton instruction `if` doit afficher une `alert` à l'utilisateur avec le texte `Your shopping cart is already empty`."
+        },
+        {
+          "en": "Your `if` statement should return from the function.",
+          "fr": "Ton instruction `if` doit return depuis la fonction."
+        }
+      ]
+    },
+    {
+      "file": "63f039dbcef7673e4e758fa3.md",
+      "id": "63f039dbcef7673e4e758fa3",
+      "dashedName": "step-56",
+      "title": {
+        "en": "Step 56",
+        "fr": "Étape 56"
+      },
+      "description": [
+        {
+          "en": "Browsers have a built-in `confirm()` function which displays a confirmation prompt to the user. `confirm()` accepts a string, which is the message displayed to the user. It returns `true` if the user confirms, and `false` if the user cancels.",
+          "fr": "Les navigateurs ont une fonction intégrée `confirm()` qui affiche une invite de confirmation à l'utilisateur. `confirm()` accepte une chaîne, qui est le message affiché à l'utilisateur. Elle renvoie `true` si l'utilisateur confirme, et `false` s'il annule."
+        },
+        {
+          "en": "Declare a variable `isCartCleared` and assign it the value of calling `confirm()` with the string `\"Are you sure you want to clear all items from your shopping cart?\"`.",
+          "fr": "Déclare une variable `isCartCleared` et assigne-lui la valeur de l'appel à `confirm()` avec la chaîne `\"Are you sure you want to clear all items from your shopping cart?\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `const` to declare the `isCartCleared` variable.",
+          "fr": "Tu dois utiliser `const` pour déclarer la variable `isCartCleared`."
+        },
+        {
+          "en": "You should call the `confirm()` function.",
+          "fr": "Tu dois appeler la fonction `confirm()`."
+        },
+        {
+          "en": "You should pass the string `Are you sure you want to clear all items from your shopping cart?` to the `confirm()` function.",
+          "fr": "Tu dois passer la chaîne `Are you sure you want to clear all items from your shopping cart?` à la fonction `confirm()`."
+        },
+        {
+          "en": "You should assign the value of the `confirm()` function to the `isCartCleared` variable.",
+          "fr": "Tu dois assigner la valeur de la fonction `confirm()` à la variable `isCartCleared`."
+        }
+      ]
+    },
+    {
+      "file": "63f03a7143a6ef3f7f3344f0.md",
+      "id": "63f03a7143a6ef3f7f3344f0",
+      "dashedName": "step-57",
+      "title": {
+        "en": "Step 57",
+        "fr": "Étape 57"
+      },
+      "description": [
+        {
+          "en": "You only want to clear the cart if the user confirms the prompt. Create an `if` statement that checks if the user confirmed the prompt.",
+          "fr": "Tu ne veux vider le panier que si l'utilisateur confirme l'invite. Crée une instruction `if` qui vérifie si l'utilisateur a confirmé l'invite."
+        },
+        {
+          "en": "In the `if` statement, set the `items` property back to an empty array, then set the `total` property to `0`.",
+          "fr": "Dans l'instruction `if`, redéfinis la propriété `items` à un tableau vide, puis définis la propriété `total` à `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement that checks if the user confirmed the prompt. Remember that you can check the truthiness of `isCartCleared` directly.",
+          "fr": "Tu dois créer une instruction `if` qui vérifie si l'utilisateur a confirmé l'invite. Souviens-toi que tu peux vérifier directement la truthiness de `isCartCleared`."
+        },
+        {
+          "en": "Your `if` statement should set the `items` property back to an empty array.",
+          "fr": "Ton instruction `if` doit redéfinir la propriété `items` à un tableau vide."
+        },
+        {
+          "en": "Your `if` statement should set the `total` property to `0`.",
+          "fr": "Ton instruction `if` doit définir la propriété `total` à `0`."
+        }
+      ]
+    },
+    {
+      "file": "63f03ac2b428b2404a5a7518.md",
+      "id": "63f03ac2b428b2404a5a7518",
+      "dashedName": "step-58",
+      "title": {
+        "en": "Step 58",
+        "fr": "Étape 58"
+      },
+      "description": [
+        {
+          "en": "You also need to start clearing the HTML. Set the `innerHTML` property of the `productsContainer` back to an empty string.",
+          "fr": "Tu dois aussi commencer à vider le HTML. Redéfinis la propriété `innerHTML` de `productsContainer` à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "In your `if` statement, you should set the `innerHTML` property of the `productsContainer` back to an empty string.",
+          "fr": "Dans ton instruction `if`, tu dois redéfinir la propriété `innerHTML` de `productsContainer` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "63f03af535682e4138fdb915.md",
+      "id": "63f03af535682e4138fdb915",
+      "dashedName": "step-59",
+      "title": {
+        "en": "Step 59",
+        "fr": "Étape 59"
+      },
+      "description": [
+        {
+          "en": "Set the `textContent` of the `totalNumberOfItems`, `cartSubTotal`, `cartTaxes`, and `cartTotal` elements all to the number `0`.",
+          "fr": "Définis le `textContent` des éléments `totalNumberOfItems`, `cartSubTotal`, `cartTaxes` et `cartTotal` tous au nombre `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `textContent` of the `totalNumberOfItems` element to `0`.",
+          "fr": "Tu dois définir le `textContent` de l'élément `totalNumberOfItems` à `0`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartSubTotal` element to `0`.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartSubTotal` à `0`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartTaxes` element to `0`.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartTaxes` à `0`."
+        },
+        {
+          "en": "You should set the `textContent` of the `cartTotal` element to `0`.",
+          "fr": "Tu dois définir le `textContent` de l'élément `cartTotal` à `0`."
+        }
+      ]
+    },
+    {
+      "file": "63f03b1ed5ab15420c057463.md",
+      "id": "63f03b1ed5ab15420c057463",
+      "dashedName": "step-60",
+      "title": {
+        "en": "Step 60",
+        "fr": "Étape 60"
+      },
+      "description": [
+        {
+          "en": "Your final step is to make your clear button functional. Add a `click` event listener to the `clearCartBtn`. For the callback, you can pass in `cart.clearCart` directly.",
+          "fr": "Ta dernière étape est de rendre ton bouton clear fonctionnel. Ajoute un écouteur d'événement `click` à `clearCartBtn`. Pour le callback, tu peux passer `cart.clearCart` directement."
+        },
+        {
+          "en": "However, doing so will not work, because the context of `this` will be the `clearCartBtn` element. You need to bind the `clearCart` method to the `cart` object.",
+          "fr": "Cependant, cela ne fonctionnera pas, car le contexte de `this` sera l'élément `clearCartBtn`. Tu dois lier la méthode `clearCart` à l'objet `cart`."
+        },
+        {
+          "en": "You can do this by passing `cart.clearCart.bind(cart)` as the callback.",
+          "fr": "Tu peux le faire en passant `cart.clearCart.bind(cart)` comme callback."
+        },
+        {
+          "en": "And with that, the shopping cart workshop is complete!",
+          "fr": "Et avec cela, le workshop du panier d'achat est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an event listener to your `clearCartBtn` element.",
+          "fr": "Tu dois ajouter un écouteur d'événement à ton élément `clearCartBtn`."
+        },
+        {
+          "en": "Your event listener should listen for the `click` event.",
+          "fr": "Ton écouteur d'événement doit écouter l'événement `click`."
+        },
+        {
+          "en": "Your event listener should take `cart.clearCart.bind(cart)` as the callback.",
+          "fr": "Ton écouteur d'événement doit prendre `cart.clearCart.bind(cart)` comme callback."
+        }
+      ]
+    }
+  ]
+}

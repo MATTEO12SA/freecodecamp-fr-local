@@ -1,0 +1,1282 @@
+{
+  "workshop": "lecture-understanding-how-to-work-with-classes-in-javascript",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733affc29df1304e2c97e88.md",
+      "id": "6733affc29df1304e2c97e88",
+      "dashedName": "what-are-classes-and-how-do-they-work-in-javascript",
+      "title": {
+        "en": "What Are Classes, and How Do They Work in JavaScript?",
+        "fr": "Que sont les classes, et comment fonctionnent-elles en JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In modern JavaScript, classes are like blueprints that you can define in code for creating multiple objects of the same kind.",
+              "fr": "En JavaScript moderne, les classes sont comme des plans que tu peux définir dans le code pour créer plusieurs objets du même type."
+            },
+            {
+              "en": "For example, if you're modeling an inventory system, you'll need to create multiple objects per type of product.",
+              "fr": "Par exemple, si tu modélises un système d'inventaire, tu auras besoin de créer plusieurs objets par type de produit."
+            },
+            {
+              "en": "Each individual product will have its own properties and actions but products of the same kind can be created from the same \"blueprint\". That's what classes are used for.",
+              "fr": "Chaque produit individuel aura ses propres propriétés et actions, mais les produits du même type peuvent être créés à partir du même « plan ». C'est à cela que servent les classes."
+            },
+            {
+              "en": "Classes can be defined as either a class expression or class declaration.",
+              "fr": "Les classes peuvent être définies soit comme une expression de classe, soit comme une déclaration de classe."
+            },
+            {
+              "en": "Here is the basic syntax for a class declaration:",
+              "fr": "Voici la syntaxe de base d'une déclaration de classe :"
+            },
+            {
+              "en": "You start by writing the `class` keyword followed by the name of the class. When naming classes, you should use the `PascalCase` naming convention instead of `camelCase`.",
+              "fr": "Tu commences par écrire le mot-clé `class` suivi du nom de la classe. Pour nommer les classes, tu dois utiliser la convention `PascalCase` plutôt que `camelCase`."
+            },
+            {
+              "en": "The content inside the curly braces is known as the class body. This is where the constructor and methods will go.",
+              "fr": "Le contenu entre les accolades s'appelle le corps de la classe. C'est là que vont le constructeur et les méthodes."
+            },
+            {
+              "en": "The constructor is a special method that gets called automatically when a new object is created from the class. It is typically used to initialize the properties of the object.",
+              "fr": "Le constructeur est une méthode spéciale qui est appelée automatiquement lorsqu'un nouvel objet est créé à partir de la classe. Il sert typiquement à initialiser les propriétés de l'objet."
+            },
+            {
+              "en": "In this example, you can see a `Dog` class with a constructor.",
+              "fr": "Dans cet exemple, tu peux voir une classe `Dog` avec un constructeur."
+            },
+            {
+              "en": "The `this` keyword is used here to refer to the current instance of the `Dog` class, allowing you to assign the `name` property to the object being created. You will learn more about the `this` keyword in a future lesson.",
+              "fr": "Le mot-clé `this` est utilisé ici pour faire référence à l'instance courante de la classe `Dog`, ce qui te permet d'assigner la propriété `name` à l'objet en cours de création. Tu en apprendras davantage sur le mot-clé `this` dans une prochaine leçon."
+            },
+            {
+              "en": "Below the constructor, you can have what are called methods. Methods are functions defined inside a class that perform actions or operations. They are used to define behaviors that instances of the class can perform.",
+              "fr": "Sous le constructeur, tu peux avoir ce qu'on appelle des méthodes. Les méthodes sont des fonctions définies à l'intérieur d'une classe qui effectuent des actions ou des opérations. Elles servent à définir des comportements que les instances de la classe peuvent exécuter."
+            },
+            {
+              "en": "Here is an example of adding a method called `bark` to the `Dog` class.",
+              "fr": "Voici un exemple d'ajout d'une méthode appelée `bark` à la classe `Dog`."
+            },
+            {
+              "en": "When the `bark` method gets called the message will be logged to the console with the actual name that was passed into it. If you create a `Dog` instance with the name `\"Buddy\"`, calling the `bark()` method on that instance will print `\"Buddy says woof!\"` to the console.",
+              "fr": "Lorsque la méthode `bark` est appelée, le message sera affiché dans la console avec le nom réel qui lui a été passé. Si tu crées une instance de `Dog` avec le nom `\"Buddy\"`, appeler la méthode `bark()` sur cette instance affichera `\"Buddy says woof!\"` dans la console."
+            },
+            {
+              "en": "Once you have your class defined, you can create an instance of the class with the `new` keyword, the name of the class, and its arguments.",
+              "fr": "Une fois ta classe définie, tu peux créer une instance de la classe avec le mot-clé `new`, le nom de la classe et ses arguments."
+            },
+            {
+              "en": "In this example, we create a new `Dog` instance with the name `Gino` and then we assign it to the variable `dog`.",
+              "fr": "Dans cet exemple, on crée une nouvelle instance de `Dog` avec le nom `Gino`, puis on l'assigne à la variable `dog`."
+            },
+            {
+              "en": "When you write `new Dog(\"Gino\")` in your code, the new object is created and the constructor is called automatically with the given arguments.",
+              "fr": "Quand tu écris `new Dog(\"Gino\")` dans ton code, le nouvel objet est créé et le constructeur est appelé automatiquement avec les arguments fournis."
+            },
+            {
+              "en": "You can then access this property using the dot notation, like you can see in the following line of code:",
+              "fr": "Tu peux ensuite accéder à cette propriété avec la notation point, comme tu peux le voir dans la ligne de code suivante :"
+            },
+            {
+              "en": "Here is the full example:",
+              "fr": "Voici l'exemple complet :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "You can also call methods. In this example, we are calling the `bark()` method on the `dog` instance.",
+              "fr": "Tu peux aussi appeler des méthodes. Dans cet exemple, on appelle la méthode `bark()` sur l'instance `dog`."
+            },
+            {
+              "en": "Here is the full example with the method call included:",
+              "fr": "Voici l'exemple complet avec l'appel de méthode inclus :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "As mentioned earlier, you can also define classes as a class expression. This is where the class is anonymous and assigned to a variable.",
+              "fr": "Comme mentionné plus tôt, tu peux aussi définir des classes sous forme d'expression de classe. Dans ce cas, la classe est anonyme et assignée à une variable."
+            },
+            {
+              "en": "Here is what the earlier example looks like as a class expression:",
+              "fr": "Voici à quoi ressemble l'exemple précédent sous forme d'expression de classe :"
+            },
+            {
+              "en": "Most of the time, you'll use class declarations, but understanding class expressions is also valuable, as they can offer more flexibility, especially in dynamic programming situations.",
+              "fr": "La plupart du temps, tu utiliseras des déclarations de classe, mais comprendre les expressions de classe est aussi utile, car elles peuvent offrir plus de flexibilité, surtout dans des situations de programmation dynamique."
+            },
+            {
+              "en": "By using classes and understanding their basic syntax, you can create reusable code, organize it into logical units, and promote code modularity.",
+              "fr": "En utilisant les classes et en comprenant leur syntaxe de base, tu peux créer du code réutilisable, l'organiser en unités logiques et favoriser la modularité du code."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of a constructor in a JavaScript class?",
+              "fr": "Quel est le but principal d'un constructeur dans une classe JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To define the methods of the class.",
+              "fr": "Définir les méthodes de la classe."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the initialization process of an object.",
+              "fr": "Pense au processus d'initialisation d'un objet."
+            },
+            {
+              "en": "To initialize the properties of an object when it is created.",
+              "fr": "Initialiser les propriétés d'un objet lorsqu'il est créé."
+            },
+            {
+              "en": "To clone instance of the class.",
+              "fr": "Cloner une instance de la classe."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the initialization process of an object.",
+              "fr": "Pense au processus d'initialisation d'un objet."
+            },
+            {
+              "en": "To inherit properties and methods from another class.",
+              "fr": "Hériter des propriétés et méthodes d'une autre classe."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the initialization process of an object.",
+              "fr": "Pense au processus d'initialisation d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct way to create an instance of a JavaScript class?",
+              "fr": "Quelle est la bonne façon de créer une instance d'une classe JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Using the `new` keyword followed by the class name and arguments.",
+              "fr": "En utilisant le mot-clé `new` suivi du nom de la classe et des arguments."
+            },
+            {
+              "en": "By directly calling the class name.",
+              "fr": "En appelant directement le nom de la classe."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to create a new object based on a class definition.",
+              "fr": "Pense à la façon de créer un nouvel objet à partir de la définition d'une classe."
+            },
+            {
+              "en": "By using the `create` method of the class.",
+              "fr": "En utilisant la méthode `create` de la classe."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to create a new object based on a class definition.",
+              "fr": "Pense à la façon de créer un nouvel objet à partir de la définition d'une classe."
+            },
+            {
+              "en": "By using the `instantiate` keyword.",
+              "fr": "En utilisant le mot-clé `instantiate`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to create a new object based on a class definition.",
+              "fr": "Pense à la façon de créer un nouvel objet à partir de la définition d'une classe."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between a class and an object in JavaScript?",
+              "fr": "Quelle est la différence entre une classe et un objet en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A class is an instance of an object.",
+              "fr": "Une classe est une instance d'un objet."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship between a class and the objects it creates.",
+              "fr": "Pense à la relation entre une classe et les objets qu'elle crée."
+            },
+            {
+              "en": "An object is a clone of a class.",
+              "fr": "Un objet est un clone d'une classe."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship between a class and the objects it creates.",
+              "fr": "Pense à la relation entre une classe et les objets qu'elle crée."
+            },
+            {
+              "en": "There is no difference between a class and an object.",
+              "fr": "Il n'y a aucune différence entre une classe et un objet."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the relationship between a class and the objects it creates.",
+              "fr": "Pense à la relation entre une classe et les objets qu'elle crée."
+            },
+            {
+              "en": "A class is a blueprint for an object, while an object is a specific instance of that class.",
+              "fr": "Une classe est un plan pour un objet, tandis qu'un objet est une instance spécifique de cette classe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673403ca2bb16658309e3632.md",
+      "id": "673403ca2bb16658309e3632",
+      "dashedName": "how-does-the-this-keyword-work",
+      "title": {
+        "en": "How Does the This Keyword Work?",
+        "fr": "Comment fonctionne le mot-clé this ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "You learned that classes are like blueprints that you can use to create objects.",
+              "fr": "Tu as appris que les classes sont comme des plans que tu peux utiliser pour créer des objets."
+            },
+            {
+              "en": "These blueprints need a general way to refer to the specific object that is being created, accessed, or modified within the code. That's exactly what the `this` keyword is used for. It refers to the context where the code is supposed to run. If you use it within a method, the value of `this` will be a reference to the object associated to that method. This way, you can access the properties and methods of the object within the class and reuse the method on different objects.",
+              "fr": "Ces plans ont besoin d'un moyen général de faire référence à l'objet spécifique qui est créé, consulté ou modifié dans le code. C'est exactement à cela que sert le mot-clé `this`. Il fait référence au contexte dans lequel le code est censé s'exécuter. Si tu l'utilises dans une méthode, la valeur de `this` sera une référence à l'objet associé à cette méthode. Ainsi, tu peux accéder aux propriétés et méthodes de l'objet au sein de la classe et réutiliser la méthode sur différents objets."
+            },
+            {
+              "en": "For example, here we have a `Dessert` class. This time, we're defining a `hasPeanuts` property.",
+              "fr": "Par exemple, voici une classe `Dessert`. Cette fois, on définit une propriété `hasPeanuts`."
+            },
+            {
+              "en": "Notice that we're using the `this` keyword within the constructor. Remember that the constructor is called automatically when a new object of the class is created.",
+              "fr": "Remarque qu'on utilise le mot-clé `this` dans le constructeur. Souviens-toi que le constructeur est appelé automatiquement lorsqu'un nouvel objet de la classe est créé."
+            },
+            {
+              "en": "The `this` keyword is telling the program that `hasPeanuts` should be a property of the object that is currently being created.",
+              "fr": "Le mot-clé `this` indique au programme que `hasPeanuts` doit être une propriété de l'objet actuellement en cours de création."
+            },
+            {
+              "en": "The right-hand side of the assignment statement is assigning the value of the `hasPeanuts` parameter to the `hasPeanuts` property of the new object.",
+              "fr": "Le côté droit de l'instruction d'affectation assigne la valeur du paramètre `hasPeanuts` à la propriété `hasPeanuts` du nouvel objet."
+            },
+            {
+              "en": "That's in the context of the constructor but you can also use the `this` keyword within other methods.",
+              "fr": "C'est dans le contexte du constructeur, mais tu peux aussi utiliser le mot-clé `this` dans d'autres méthodes."
+            },
+            {
+              "en": "This is our `Dessert` class with a few changes. Now we have two properties: `name` and `price`.",
+              "fr": "Voici notre classe `Dessert` avec quelques changements. On a maintenant deux propriétés : `name` et `price`."
+            },
+            {
+              "en": "We also have a new `showPrice` method. In this method, we print a descriptive message to the console with the name and the price of the dessert object.",
+              "fr": "On a aussi une nouvelle méthode `showPrice`. Dans cette méthode, on affiche un message descriptif dans la console avec le nom et le prix de l'objet dessert."
+            },
+            {
+              "en": "Notice how we're using the `this` keyword to access the properties of the object within the `showPrice` method.",
+              "fr": "Remarque comment on utilise le mot-clé `this` pour accéder aux propriétés de l'objet dans la méthode `showPrice`."
+            },
+            {
+              "en": "What value will the `this` keyword have in the context of this method? It will refer to the object on which the method is being called. In this case, we're creating a new Dessert instance with the name `\"Brownie\"` and the price `$5.99`:",
+              "fr": "Quelle valeur aura le mot-clé `this` dans le contexte de cette méthode ? Il fera référence à l'objet sur lequel la méthode est appelée. Dans ce cas, on crée une nouvelle instance de Dessert avec le nom `\"Brownie\"` et le prix `$5.99` :"
+            },
+            {
+              "en": "If we call the `.showPrice()` method on this object:",
+              "fr": "Si on appelle la méthode `.showPrice()` sur cet objet :"
+            },
+            {
+              "en": "Here is the full example:",
+              "fr": "Voici l'exemple complet :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The name and price of the current object (`brownie`) are replaced in the string.",
+              "fr": "Le nom et le prix de l'objet courant (`brownie`) sont remplacés dans la chaîne."
+            },
+            {
+              "en": "This is all thanks to the `this` keyword, which gives you a general way to refer to the current object within the class. This allows you to reuse the method on different objects.",
+              "fr": "Tout cela grâce au mot-clé `this`, qui te donne un moyen général de faire référence à l'objet courant au sein de la classe. Cela te permet de réutiliser la méthode sur différents objets."
+            },
+            {
+              "en": "This is in the context of object methods but the `this` keyword will also have a value in standalone functions and arrow functions.",
+              "fr": "C'est dans le contexte des méthodes d'objet, mais le mot-clé `this` aura aussi une valeur dans les fonctions autonomes et les fonctions fléchées."
+            },
+            {
+              "en": "Its value within a standalone function typically refers to the global object (in non-strict mode) or `undefined` (in strict mode).",
+              "fr": "Sa valeur dans une fonction autonome fait typiquement référence à l'objet global (en mode non strict) ou à `undefined` (en mode strict)."
+            },
+            {
+              "en": "The value of the `this` keyword is a bit different in arrow functions. Arrow functions inherit the value of `this` from the enclosing scope where they are defined. They don't create their own `this` binding. That means that the value of `this` depends on the context where the arrow function is defined, not where or how the arrow function is called. This makes arrow functions helpful for callbacks or for preserving context.",
+              "fr": "La valeur du mot-clé `this` est un peu différente dans les fonctions fléchées. Les fonctions fléchées héritent de la valeur de `this` du scope englobant où elles sont définies. Elles ne créent pas leur propre liaison `this`. Cela signifie que la valeur de `this` dépend du contexte où la fonction fléchée est définie, et non de l'endroit ni de la façon dont elle est appelée. Cela rend les fonctions fléchées utiles pour les callbacks ou pour préserver le contexte."
+            },
+            {
+              "en": "However, because of this, the value of `this` will not refer to the current object in object methods, so this is something that you should keep in mind when working with arrow functions.",
+              "fr": "Cependant, pour cette raison, la valeur de `this` ne fera pas référence à l'objet courant dans les méthodes d'objet, donc c'est quelque chose à garder à l'esprit lorsque tu travailles avec des fonctions fléchées."
+            },
+            {
+              "en": "The same applies to arrow functions defined within other functions. They will inherit the value of `this` from their parent scope.",
+              "fr": "La même chose s'applique aux fonctions fléchées définies à l'intérieur d'autres fonctions. Elles hériteront de la valeur de `this` de leur scope parent."
+            },
+            {
+              "en": "The `this` keyword is a powerful tool for accessing and manipulating objects. Understanding how it works is essential for mastering object-oriented programming in JavaScript.",
+              "fr": "Le mot-clé `this` est un outil puissant pour accéder et manipuler les objets. Comprendre son fonctionnement est essentiel pour maîtriser la programmation orientée objet en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the `this` keyword in JavaScript?",
+              "fr": "Quel est le but principal du mot-clé `this` en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To define a new object.",
+              "fr": "Définir un nouvel objet."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `this` is used within methods.",
+              "fr": "Pense à la façon dont `this` est utilisé dans les méthodes."
+            },
+            {
+              "en": "To access properties and methods of the current object.",
+              "fr": "Accéder aux propriétés et méthodes de l'objet courant."
+            },
+            {
+              "en": "To create functions.",
+              "fr": "Créer des fonctions."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `this` is used within methods.",
+              "fr": "Pense à la façon dont `this` est utilisé dans les méthodes."
+            },
+            {
+              "en": "To call methods on other objects.",
+              "fr": "Appeler des méthodes sur d'autres objets."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `this` is used within methods.",
+              "fr": "Pense à la façon dont `this` est utilisé dans les méthodes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements is true about `this` in JavaScript methods?",
+              "fr": "Laquelle des affirmations suivantes est vraie à propos de `this` dans les méthodes JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`this` always refers to the global object.",
+              "fr": "`this` fait toujours référence à l'objet global."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the value of `this` can change based on the context.",
+              "fr": "Pense à la façon dont la valeur de `this` peut changer selon le contexte."
+            },
+            {
+              "en": "`this` is always bound to the object that the function is defined within.",
+              "fr": "`this` est toujours lié à l'objet dans lequel la fonction est définie."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the value of `this` can change based on the context.",
+              "fr": "Pense à la façon dont la valeur de `this` peut changer selon le contexte."
+            },
+            {
+              "en": "`this` can refer to different objects depending on the context in which it is used.",
+              "fr": "`this` peut faire référence à différents objets selon le contexte dans lequel il est utilisé."
+            },
+            {
+              "en": "`this` is only used in functional programming.",
+              "fr": "`this` n'est utilisé que dans la programmation fonctionnelle."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the value of `this` can change based on the context.",
+              "fr": "Pense à la façon dont la valeur de `this` peut changer selon le contexte."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which of the following scenarios would you typically use the `this` keyword?",
+              "fr": "Dans lequel des scénarios suivants utiliserais-tu typiquement le mot-clé `this` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When defining functions.",
+              "fr": "Lors de la définition de fonctions."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the common use cases for `this`.",
+              "fr": "Pense aux cas d'usage courants de `this`."
+            },
+            {
+              "en": "When accessing properties and methods of an object.",
+              "fr": "Lors de l'accès aux propriétés et méthodes d'un objet."
+            },
+            {
+              "en": "When calling functions.",
+              "fr": "Lors de l'appel de fonctions."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the common use cases for `this`.",
+              "fr": "Pense aux cas d'usage courants de `this`."
+            },
+            {
+              "en": "When creating new objects.",
+              "fr": "Lors de la création de nouveaux objets."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the common use cases for `this`.",
+              "fr": "Pense aux cas d'usage courants de `this`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673403d2aa52d8586a14a269.md",
+      "id": "673403d2aa52d8586a14a269",
+      "dashedName": "what-is-class-inheritance-and-how-does-it-work",
+      "title": {
+        "en": "What Is Class Inheritance, and How Does It Work?",
+        "fr": "Qu'est-ce que l'héritage de classe, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In programming, inheritance allows you to define classes that inherit properties and methods from other classes.",
+              "fr": "En programmation, l'héritage te permet de définir des classes qui héritent des propriétés et méthodes d'autres classes."
+            },
+            {
+              "en": "For example, a `Car` is a type of `Vehicle`, so you could define a `Vehicle` class with the most general properties and methods that are common to all types of vehicles and then define a `Car` class that inherits the properties and methods of the `Vehicle` class.",
+              "fr": "Par exemple, une `Car` est un type de `Vehicle`, donc tu pourrais définir une classe `Vehicle` avec les propriétés et méthodes les plus générales communes à tous les types de véhicules, puis définir une classe `Car` qui hérite des propriétés et méthodes de la classe `Vehicle`."
+            },
+            {
+              "en": "This \"is a\" relationship is characteristic of inheritance. In this example, `Car` is a more specialized form of `Vehicle`.",
+              "fr": "Cette relation « est un » est caractéristique de l'héritage. Dans cet exemple, `Car` est une forme plus spécialisée de `Vehicle`."
+            },
+            {
+              "en": "There are two main concepts that you should know about to start working with inheritance: parent class and child class.",
+              "fr": "Il y a deux concepts principaux que tu dois connaître pour commencer à travailler avec l'héritage : la classe parente et la classe enfant."
+            },
+            {
+              "en": "A parent class is a class that acts like a blueprint for other classes. It defines properties and methods that are inherited by other classes.",
+              "fr": "Une classe parente est une classe qui agit comme un plan pour d'autres classes. Elle définit des propriétés et méthodes qui sont héritées par d'autres classes."
+            },
+            {
+              "en": "A child class is a class that inherits the properties and methods of another class. Child classes can also extend the functionality of their parent classes by adding new properties and methods.",
+              "fr": "Une classe enfant est une classe qui hérite des propriétés et méthodes d'une autre classe. Les classes enfants peuvent aussi étendre les fonctionnalités de leurs classes parentes en ajoutant de nouvelles propriétés et méthodes."
+            },
+            {
+              "en": "In our previous example, `Vehicle` would be the parent class of the `Car` class while the `Car` class would be the child class of `Vehicle`.",
+              "fr": "Dans notre exemple précédent, `Vehicle` serait la classe parente de la classe `Car`, tandis que la classe `Car` serait la classe enfant de `Vehicle`."
+            },
+            {
+              "en": "A parent class can have multiple child classes.",
+              "fr": "Une classe parente peut avoir plusieurs classes enfants."
+            },
+            {
+              "en": "In JavaScript, we use the `extends` keyword to implement inheritance. This keyword indicates that a class is the child class of another class.",
+              "fr": "En JavaScript, on utilise le mot-clé `extends` pour implémenter l'héritage. Ce mot-clé indique qu'une classe est la classe enfant d'une autre classe."
+            },
+            {
+              "en": "In this example, in which we only have the first lines of the class definitions, you can see that the `Car` class extends the `Vehicle` class, so `Car` inherits from `Vehicle`.",
+              "fr": "Dans cet exemple, où l'on n'a que les premières lignes des définitions de classes, tu peux voir que la classe `Car` étend la classe `Vehicle`, donc `Car` hérite de `Vehicle`."
+            },
+            {
+              "en": "Let's say that the `Vehicle` class has two properties: `brand` and `year`. You can see this in the updated code.",
+              "fr": "Disons que la classe `Vehicle` a deux propriétés : `brand` et `year`. Tu peux le voir dans le code mis à jour."
+            },
+            {
+              "en": "`Car` has a method called `honk`. However, notice that the `Car` class doesn't have its own constructor. Let's see if it does inherit the properties.",
+              "fr": "`Car` a une méthode appelée `honk`. Cependant, remarque que la classe `Car` n'a pas son propre constructeur. Voyons si elle hérite bien des propriétés."
+            },
+            {
+              "en": "To define an instance of `Car`, you'll need to pass two arguments: `brand` and `year`. In this case, the brand is `freeCodeCamp Motors` and the year is `2019`.",
+              "fr": "Pour définir une instance de `Car`, tu devras passer deux arguments : `brand` et `year`. Dans ce cas, la marque est `freeCodeCamp Motors` et l'année est `2019`."
+            },
+            {
+              "en": "If you try to access these properties and call the method using dot notation:",
+              "fr": "Si tu essaies d'accéder à ces propriétés et d'appeler la méthode avec la notation point :"
+            },
+            {
+              "en": "Here is the full example:",
+              "fr": "Voici l'exemple complet :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Indeed, the output is correct, so these properties and method are defined in the `Car` instance and you just saved yourself a lot of code repetition by inheriting these properties from the `Vehicle` class.",
+              "fr": "En effet, la sortie est correcte, donc ces propriétés et cette méthode sont définies dans l'instance `Car`, et tu viens de t'éviter beaucoup de répétition de code en héritant de ces propriétés de la classe `Vehicle`."
+            },
+            {
+              "en": "In this example, the child class didn't have any additional properties. That's why the class didn't have a constructor, only a method.",
+              "fr": "Dans cet exemple, la classe enfant n'avait aucune propriété supplémentaire. C'est pourquoi la classe n'avait pas de constructeur, seulement une méthode."
+            },
+            {
+              "en": "If you do need to add additional properties, you'll need to define a constructor.",
+              "fr": "Si tu as besoin d'ajouter des propriétés supplémentaires, tu devras définir un constructeur."
+            },
+            {
+              "en": "Let's see an example.",
+              "fr": "Voyons un exemple."
+            },
+            {
+              "en": "This time, we'll add a `numDoors` property to the `Car` subclass.",
+              "fr": "Cette fois, on ajoutera une propriété `numDoors` à la sous-classe `Car`."
+            },
+            {
+              "en": "You can see that now this class has a constructor in the updated code. Within the constructor, there's a call to `super()`, passing the arguments `brand` and `year`.",
+              "fr": "Tu peux voir que cette classe a maintenant un constructeur dans le code mis à jour. Dans le constructeur, il y a un appel à `super()`, en passant les arguments `brand` et `year`."
+            },
+            {
+              "en": "`super()` invokes the constructor of the superclass, so by using `super(brand, year)` you will essentially be defining the properties of the superclass in the subclass. This is another terminology you can use- superclass is the parent class and the subclass is the child class.",
+              "fr": "`super()` invoque le constructeur de la superclasse, donc en utilisant `super(brand, year)` tu définiras essentiellement les propriétés de la superclasse dans la sous-classe. C'est une autre terminologie que tu peux utiliser : la superclasse est la classe parente et la sous-classe est la classe enfant."
+            },
+            {
+              "en": "Then, `this.numDoors = numDoors` line defines a new property that belongs exclusively to the `Car` class, the number of doors (`numDoors`).",
+              "fr": "Ensuite, la ligne `this.numDoors = numDoors` définit une nouvelle propriété qui appartient exclusivement à la classe `Car`, le nombre de portes (`numDoors`)."
+            },
+            {
+              "en": "This is a way to extend the `Vehicle` class, adding a property that is exclusive to `Car` instances.",
+              "fr": "C'est une façon d'étendre la classe `Vehicle`, en ajoutant une propriété exclusive aux instances de `Car`."
+            },
+            {
+              "en": "That's is an example of extensibility, one of the fundamental advantages of inheritance.",
+              "fr": "C'est un exemple d'extensibilité, l'un des avantages fondamentaux de l'héritage."
+            },
+            {
+              "en": "Now, if you create an instance of the `Car` class, you'll see that it has the three properties: `brand`, `year`, and `numDoors`. You'll also need to pass the necessary arguments when you create the instance.",
+              "fr": "Maintenant, si tu crées une instance de la classe `Car`, tu verras qu'elle a les trois propriétés : `brand`, `year` et `numDoors`. Tu devras aussi passer les arguments nécessaires lorsque tu créeras l'instance."
+            },
+            {
+              "en": "If you print the values of these properties with `console.log()`:",
+              "fr": "Si tu affiches les valeurs de ces propriétés avec `console.log()` :"
+            },
+            {
+              "en": "Here is the full example:",
+              "fr": "Voici l'exemple complet :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The main advantages of inheritance are code reusability, modularity, extensibility, and improved code structure.",
+              "fr": "Les principaux avantages de l'héritage sont la réutilisabilité du code, la modularité, l'extensibilité et une meilleure structure du code."
+            },
+            {
+              "en": "By implementing a hierarchy, you can reuse code that you already wrote for a parent class in the child class, avoiding repetition.",
+              "fr": "En mettant en place une hiérarchie, tu peux réutiliser du code déjà écrit pour une classe parente dans la classe enfant, en évitant la répétition."
+            },
+            {
+              "en": "Inheritance also promotes modularity by breaking down complex systems into simpler components in the hierarchy.",
+              "fr": "L'héritage favorise aussi la modularité en décomposant des systèmes complexes en composants plus simples dans la hiérarchie."
+            },
+            {
+              "en": "Also, being able to extend the functionality of the parent class makes it easier to adapt to changing requirements and add new features later on in the development process.",
+              "fr": "De plus, pouvoir étendre les fonctionnalités de la classe parente facilite l'adaptation aux exigences changeantes et l'ajout de nouvelles fonctionnalités plus tard dans le processus de développement."
+            },
+            {
+              "en": "Finally, the hierarchical structure can make your code easier to understand and maintain.",
+              "fr": "Enfin, la structure hiérarchique peut rendre ton code plus facile à comprendre et à maintenir."
+            },
+            {
+              "en": "Those are the fundamentals of inheritance. By understanding how inheritance works, you can design well-structured, maintainable, and extensible object-oriented programs.",
+              "fr": "Voilà les fondamentaux de l'héritage. En comprenant comment fonctionne l'héritage, tu peux concevoir des programmes orientés objet bien structurés, maintenables et extensibles."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of inheritance in object-oriented programming?",
+              "fr": "Quel est le but principal de l'héritage en programmation orientée objet ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To create new objects.",
+              "fr": "Créer de nouveaux objets."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how inheritance helps with code reusability and organization.",
+              "fr": "Pense à la façon dont l'héritage aide à la réutilisabilité et à l'organisation du code."
+            },
+            {
+              "en": "To define methods for a class.",
+              "fr": "Définir des méthodes pour une classe."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how inheritance helps with code reusability and organization.",
+              "fr": "Pense à la façon dont l'héritage aide à la réutilisabilité et à l'organisation du code."
+            },
+            {
+              "en": "To reuse code and create hierarchical relationships between classes.",
+              "fr": "Réutiliser du code et créer des relations hiérarchiques entre les classes."
+            },
+            {
+              "en": "To encapsulate data within objects.",
+              "fr": "Encapsuler des données dans des objets."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how inheritance helps with code reusability and organization.",
+              "fr": "Pense à la façon dont l'héritage aide à la réutilisabilité et à l'organisation du code."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the keyword used to inherit from a parent class in JavaScript?",
+              "fr": "Quel mot-clé est utilisé pour hériter d'une classe parente en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword that establishes the inheritance relationship.",
+              "fr": "Pense au mot-clé qui établit la relation d'héritage."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword that establishes the inheritance relationship.",
+              "fr": "Pense au mot-clé qui établit la relation d'héritage."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the keyword that establishes the inheritance relationship.",
+              "fr": "Pense au mot-clé qui établit la relation d'héritage."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between a parent class and a child class?",
+              "fr": "Quelle est la différence entre une classe parente et une classe enfant ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A parent class is a specialized version of a child class.",
+              "fr": "Une classe parente est une version spécialisée d'une classe enfant."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the hierarchical relationship between classes.",
+              "fr": "Pense à la relation hiérarchique entre les classes."
+            },
+            {
+              "en": "A child class is a specialized version of a parent class.",
+              "fr": "Une classe enfant est une version spécialisée d'une classe parente."
+            },
+            {
+              "en": "There is no difference between parent and child classes.",
+              "fr": "Il n'y a aucune différence entre les classes parentes et enfants."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the hierarchical relationship between classes.",
+              "fr": "Pense à la relation hiérarchique entre les classes."
+            },
+            {
+              "en": "Parent classes are always larger than child classes.",
+              "fr": "Les classes parentes sont toujours plus grandes que les classes enfants."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the hierarchical relationship between classes.",
+              "fr": "Pense à la relation hiérarchique entre les classes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "673403dbf5c9835898632c84.md",
+      "id": "673403dbf5c9835898632c84",
+      "dashedName": "what-are-static-properties-and-methods-in-classes",
+      "title": {
+        "en": "What Are Static Properties and Methods in Classes?",
+        "fr": "Que sont les propriétés et méthodes statiques dans les classes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Static properties and methods belong to the class itself, not to the individual instances of the class. You can access them directly on the class name without creating an instance of the class. They are defined within classes to encapsulate related functionality.",
+              "fr": "Les propriétés et méthodes statiques appartiennent à la classe elle-même, et non aux instances individuelles de la classe. Tu peux y accéder directement via le nom de la classe sans créer d'instance. Elles sont définies dans les classes pour encapsuler des fonctionnalités liées."
+            },
+            {
+              "en": "You can define a static method by writing the `static` keyword before the name of the method.",
+              "fr": "Tu peux définir une méthode statique en écrivant le mot-clé `static` avant le nom de la méthode."
+            },
+            {
+              "en": "Then, you can call the static method on the class directly, using dot notation and passing any necessary arguments:",
+              "fr": "Ensuite, tu peux appeler la méthode statique directement sur la classe, avec la notation point et en passant les arguments nécessaires :"
+            },
+            {
+              "en": "Notice that you are able to call the method without creating an instance of the class. That's one of the key characteristics of static methods.",
+              "fr": "Remarque que tu peux appeler la méthode sans créer d'instance de la classe. C'est l'une des caractéristiques clés des méthodes statiques."
+            },
+            {
+              "en": "Here's an example. Let's say that we are creating a movies application and we want to be able to compare movies based on their rating.",
+              "fr": "Voici un exemple. Disons qu'on crée une application de films et qu'on veut pouvoir comparer des films selon leur note."
+            },
+            {
+              "en": "We could consider this comparison method as a higher level method that is not specific to any movie:",
+              "fr": "On pourrait considérer cette méthode de comparaison comme une méthode de plus haut niveau qui n'est pas spécifique à un film en particulier :"
+            },
+            {
+              "en": "It's like a more general method related to the `Movie` class.",
+              "fr": "C'est comme une méthode plus générale liée à la classe `Movie`."
+            },
+            {
+              "en": "For readability and maintainability purposes, it would be helpful to define it within the `Movie` class to keep all related methods relatively close to each other.",
+              "fr": "Pour la lisibilité et la maintenabilité, il serait utile de la définir dans la classe `Movie` afin de garder toutes les méthodes liées relativement proches les unes des autres."
+            },
+            {
+              "en": "Therefore, this is a perfect candidate for a static method. You can see it here, just below the constructor:",
+              "fr": "Par conséquent, c'est un candidat parfait pour une méthode statique. Tu peux la voir ici, juste sous le constructeur :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The static method is defined with the `static` keyword and it's called `compareMovies`. It has two parameters: `movieA` and `movieB`. These will be instances of the `Movie` class.",
+              "fr": "La méthode statique est définie avec le mot-clé `static` et s'appelle `compareMovies`. Elle a deux paramètres : `movieA` et `movieB`. Ce seront des instances de la classe `Movie`."
+            },
+            {
+              "en": "We will compare them based on their rating, on a range from `0` to `100`. This logic is implemented with a conditional and it will print an appropriate message based on which movie has a higher rating.",
+              "fr": "On les comparera selon leur note, sur une échelle de `0` à `100`. Cette logique est implémentée avec une conditionnelle et affichera un message approprié selon quel film a la note la plus élevée."
+            },
+            {
+              "en": "Once the method has been defined, you can call it on the class. But first, you need to have the arguments ready and defined in your program.",
+              "fr": "Une fois la méthode définie, tu peux l'appeler sur la classe. Mais d'abord, tu dois avoir les arguments prêts et définis dans ton programme."
+            },
+            {
+              "en": "In this case, the method takes two movie instances as arguments, so we define these instances here:",
+              "fr": "Dans ce cas, la méthode prend deux instances de film comme arguments, donc on définit ces instances ici :"
+            },
+            {
+              "en": "You can see that `movieA` has a higher rating than `movieB`. Let's see the output of this method.",
+              "fr": "Tu peux voir que `movieA` a une note plus élevée que `movieB`. Voyons la sortie de cette méthode."
+            },
+            {
+              "en": "To call the method, you just need to use dot notation on the class itself.\nYou write the name of the class (`Movie`), followed by a dot, and then the name of the static method (`compareMovies`).",
+              "fr": "Pour appeler la méthode, tu n'as qu'à utiliser la notation point sur la classe elle-même.\nTu écris le nom de la classe (`Movie`), suivi d'un point, puis le nom de la méthode statique (`compareMovies`)."
+            },
+            {
+              "en": "Then, you pass the arguments within parentheses. In this case, they are the two movie instances that the method requires.",
+              "fr": "Ensuite, tu passes les arguments entre parenthèses. Dans ce cas, ce sont les deux instances de film dont la méthode a besoin."
+            },
+            {
+              "en": "Here is the updated example:",
+              "fr": "Voici l'exemple mis à jour :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Static methods are also helpful for implementing \"factory\" methods. A factory method is a method that you define in addition to the constructor to create objects based on specific criteria.",
+              "fr": "Les méthodes statiques sont aussi utiles pour implémenter des méthodes « factory ». Une méthode factory est une méthode que tu définis en plus du constructeur pour créer des objets selon des critères spécifiques."
+            },
+            {
+              "en": "Here's an example with a `Pizza` class. The static method `createMargherita` is a factory method that you can call to create a Margherita pizza instance with its type and price already set.",
+              "fr": "Voici un exemple avec une classe `Pizza`. La méthode statique `createMargherita` est une méthode factory que tu peux appeler pour créer une instance de pizza Margherita avec son type et son prix déjà définis."
+            },
+            {
+              "en": "This also brings up something very important about static methods.",
+              "fr": "Cela met aussi en évidence quelque chose de très important à propos des méthodes statiques."
+            },
+            {
+              "en": "The value of the `this` keyword in static methods is the class itself, since the static method belongs to the class.",
+              "fr": "La valeur du mot-clé `this` dans les méthodes statiques est la classe elle-même, puisque la méthode statique appartient à la classe."
+            },
+            {
+              "en": "That's why we can use `this` to create a new instance of the `Pizza` class.",
+              "fr": "C'est pourquoi on peut utiliser `this` pour créer une nouvelle instance de la classe `Pizza`."
+            },
+            {
+              "en": "If you call this method on the `Pizza` class itself and assign the returned instance to a variable, like in this example:",
+              "fr": "Si tu appelles cette méthode sur la classe `Pizza` elle-même et que tu assignes l'instance renvoyée à une variable, comme dans cet exemple :"
+            },
+            {
+              "en": "You can use it wherever you need to in your code. For example, you can print it to the console:",
+              "fr": "Tu peux l'utiliser partout où tu en as besoin dans ton code. Par exemple, tu peux l'afficher dans la console :"
+            },
+            {
+              "en": "This is the output:",
+              "fr": "Voici la sortie :"
+            },
+            {
+              "en": "You can also use dot notation to call its methods and access its properties, like this:",
+              "fr": "Tu peux aussi utiliser la notation point pour appeler ses méthodes et accéder à ses propriétés, comme ceci :"
+            },
+            {
+              "en": "Here is the full example:",
+              "fr": "Voici l'exemple complet :"
+            },
+            {
+              "en": "In addition to methods, you can also define static properties with the `static` keyword.",
+              "fr": "En plus des méthodes, tu peux aussi définir des propriétés statiques avec le mot-clé `static`."
+            },
+            {
+              "en": "In this example, we have a static `numberOfPizzasSold` property.",
+              "fr": "Dans cet exemple, on a une propriété statique `numberOfPizzasSold`."
+            },
+            {
+              "en": "It's static because it doesn't belong to any particular pizza instance, it belongs to the class itself.",
+              "fr": "Elle est statique parce qu'elle n'appartient à aucune instance de pizza en particulier, elle appartient à la classe elle-même."
+            },
+            {
+              "en": "It has an initial value of `0` and it's updated every time a new instance is created.",
+              "fr": "Elle a une valeur initiale de `0` et elle est mise à jour chaque fois qu'une nouvelle instance est créée."
+            },
+            {
+              "en": "If you create two pizza instances, the value will be updated twice:",
+              "fr": "Si tu crées deux instances de pizza, la valeur sera mise à jour deux fois :"
+            },
+            {
+              "en": "To access the value of a static property, you just need to use dot notation on the class itself, since the property belongs to the class.",
+              "fr": "Pour accéder à la valeur d'une propriété statique, tu n'as qu'à utiliser la notation point sur la classe elle-même, puisque la propriété appartient à la classe."
+            },
+            {
+              "en": "In this case, the output is `2` because two pizzas were sold.",
+              "fr": "Dans ce cas, la sortie est `2` parce que deux pizzas ont été vendues."
+            },
+            {
+              "en": "These are the fundamentals of static properties and methods in JavaScript. Understanding static members is essential for creating reusable and efficient classes.",
+              "fr": "Voilà les fondamentaux des propriétés et méthodes statiques en JavaScript. Comprendre les membres statiques est essentiel pour créer des classes réutilisables et efficaces."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of a static method in a JavaScript class?",
+              "fr": "Quel est le but principal d'une méthode statique dans une classe JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To create new instances of the class.",
+              "fr": "Créer de nouvelles instances de la classe."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static methods are related to the class itself, not to individual objects.",
+              "fr": "Pense à la façon dont les méthodes statiques sont liées à la classe elle-même, et non aux objets individuels."
+            },
+            {
+              "en": "To access the properties of the class instance.",
+              "fr": "Accéder aux propriétés de l'instance de la classe."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static methods are related to the class itself, not to individual objects.",
+              "fr": "Pense à la façon dont les méthodes statiques sont liées à la classe elle-même, et non aux objets individuels."
+            },
+            {
+              "en": "To define methods that can be accessed without creating an instance of the class.",
+              "fr": "Définir des méthodes accessibles sans créer d'instance de la classe."
+            },
+            {
+              "en": "To inherit properties and methods from a parent class.",
+              "fr": "Hériter des propriétés et méthodes d'une classe parente."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static methods are related to the class itself, not to individual objects.",
+              "fr": "Pense à la façon dont les méthodes statiques sont liées à la classe elle-même, et non aux objets individuels."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference between a static method and an instance method in JavaScript?",
+              "fr": "Quelle est la principale différence entre une méthode statique et une méthode d'instance en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Static methods can only be used within the class, while instance methods can be used outside the class.",
+              "fr": "Les méthodes statiques ne peuvent être utilisées qu'à l'intérieur de la classe, tandis que les méthodes d'instance peuvent être utilisées à l'extérieur de la classe."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the scope and accessibility of static and instance methods.",
+              "fr": "Pense à la portée et à l'accessibilité des méthodes statiques et d'instance."
+            },
+            {
+              "en": "Static methods can access instance properties, while instance methods cannot access instance properties.",
+              "fr": "Les méthodes statiques peuvent accéder aux propriétés d'instance, tandis que les méthodes d'instance ne peuvent pas accéder aux propriétés d'instance."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the scope and accessibility of static and instance methods.",
+              "fr": "Pense à la portée et à l'accessibilité des méthodes statiques et d'instance."
+            },
+            {
+              "en": "Static methods are associated with the class itself, while instance methods are associated with specific instances of the class.",
+              "fr": "Les méthodes statiques sont associées à la classe elle-même, tandis que les méthodes d'instance sont associées à des instances spécifiques de la classe."
+            },
+            {
+              "en": "Static methods are always public, while instance methods can be public or private.",
+              "fr": "Les méthodes statiques sont toujours publiques, tandis que les méthodes d'instance peuvent être publiques ou privées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the scope and accessibility of static and instance methods.",
+              "fr": "Pense à la portée et à l'accessibilité des méthodes statiques et d'instance."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you access a static property of a class in JavaScript?",
+              "fr": "Comment peux-tu accéder à une propriété statique d'une classe en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the `this` keyword.",
+              "fr": "En utilisant le mot-clé `this`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static properties are associated with the class itself.",
+              "fr": "Pense à la façon dont les propriétés statiques sont associées à la classe elle-même."
+            },
+            {
+              "en": "By creating an instance of the class and accessing the property through the instance.",
+              "fr": "En créant une instance de la classe et en accédant à la propriété via l'instance."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static properties are associated with the class itself.",
+              "fr": "Pense à la façon dont les propriétés statiques sont associées à la classe elle-même."
+            },
+            {
+              "en": "By directly using the class name and the property name.",
+              "fr": "En utilisant directement le nom de la classe et le nom de la propriété."
+            },
+            {
+              "en": "By using the prototype property of the class.",
+              "fr": "En utilisant la propriété prototype de la classe."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how static properties are associated with the class itself.",
+              "fr": "Pense à la façon dont les propriétés statiques sont associées à la classe elle-même."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

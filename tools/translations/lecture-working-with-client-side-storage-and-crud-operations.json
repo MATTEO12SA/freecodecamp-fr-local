@@ -1,0 +1,2277 @@
+{
+  "workshop": "lecture-working-with-client-side-storage-and-crud-operations",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733ab64775d35f78f5238fe.md",
+      "id": "6733ab64775d35f78f5238fe",
+      "dashedName": "what-does-crud-stand-for-and-how-do-the-basic-operations-work",
+      "title": {
+        "en": "What Does CRUD Stand For, and How Do the Basic Operations Work?",
+        "fr": "Que signifie CRUD, et comment fonctionnent les opérations de base ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "CRUD is an acronym that stands for Create, Read, Update, and Delete. These are the four operations of persistent storage.",
+              "fr": "CRUD est un acronyme qui signifie Create, Read, Update et Delete (Créer, Lire, Mettre à jour et Supprimer). Ce sont les quatre opérations du stockage persistant."
+            },
+            {
+              "en": "Persistent storage refers to saving data in a way that makes it available even after the power is turned off or the device is restarted.",
+              "fr": "Le stockage persistant consiste à enregistrer des données de façon à ce qu'elles restent disponibles même après une coupure d'alimentation ou un redémarrage de l'appareil."
+            },
+            {
+              "en": "Understanding how the basic operation of CRUD works is crucial to web development because it forms the foundation for working with databases and building applications where users can add, view, modify, and delete data.",
+              "fr": "Comprendre le fonctionnement de base du CRUD est crucial en développement web, car cela constitue le fondement du travail avec les bases de données et de la construction d'applications où les utilisateurs peuvent ajouter, consulter, modifier et supprimer des données."
+            },
+            {
+              "en": "Now, let’s take a look at each part of CRUD more closely",
+              "fr": "Maintenant, regardons de plus près chaque partie du CRUD"
+            },
+            {
+              "en": "- Create refers to the process of creating new data. For example, in a web app, this could be when a user adds a new post to a blog.",
+              "fr": "- Create désigne le processus de création de nouvelles données. Par exemple, dans une application web, cela peut être lorsqu'un utilisateur ajoute un nouvel article à un blog."
+            },
+            {
+              "en": "- Read is the operation where data is retrieved from a database. For instance, when you visit a blog post or view your profile on a website, you’re performing a read operation to fetch and display data stored in the database.",
+              "fr": "- Read est l'opération où les données sont récupérées depuis une base de données. Par exemple, lorsque tu consultes un article de blog ou que tu affiches ton profil sur un site, tu effectues une opération de lecture pour récupérer et afficher des données stockées dans la base de données."
+            },
+            {
+              "en": "- Update involves modifying existing data in the database. An example would be editing a blog post or updating your profile information.",
+              "fr": "- Update consiste à modifier des données existantes dans la base de données. Un exemple serait l'édition d'un article de blog ou la mise à jour des informations de ton profil."
+            },
+            {
+              "en": "- Delete is the operation that removes data from a database. For instance, when you delete a blog post or account, you’re performing a delete operation.",
+              "fr": "- Delete est l'opération qui supprime des données d'une base de données. Par exemple, lorsque tu supprimes un article de blog ou un compte, tu effectues une opération de suppression."
+            },
+            {
+              "en": "CRUD is used when working with databases, the UI, and RESTful APIs. RESTful APIs are a set of conventions for building web services that allow the client to interact with a database or back-end system by performing CRUD operations through standard HTTP methods.",
+              "fr": "Le CRUD est utilisé lorsqu'on travaille avec des bases de données, l'interface utilisateur et les API RESTful. Les API RESTful sont un ensemble de conventions pour construire des services web qui permettent au client d'interagir avec une base de données ou un système back-end en effectuant des opérations CRUD via des méthodes HTTP standard."
+            },
+            {
+              "en": "HTTP stands for Hypertext Transfer Protocol and it is the foundation for data communication on the web. There are HTTP methods which define the actions that can be performed on resources over the web. The common methods are `GET`, `POST`, `PUT`, `PATCH`, `DELETE`.",
+              "fr": "HTTP signifie Hypertext Transfer Protocol et c'est le fondement de la communication de données sur le web. Il existe des méthodes HTTP qui définissent les actions pouvant être effectuées sur des ressources via le web. Les méthodes courantes sont `GET`, `POST`, `PUT`, `PATCH`, `DELETE`."
+            },
+            {
+              "en": "You will learn more about RESTful APIs and HTTP in future lessons, but here is a quick break down of how CRUD maps to the different HTTP methods.",
+              "fr": "Tu en apprendras davantage sur les API RESTful et HTTP dans de futures leçons, mais voici un rapide aperçu de la façon dont le CRUD correspond aux différentes méthodes HTTP."
+            },
+            {
+              "en": "- `POST` is used to create a new resource.",
+              "fr": "- `POST` est utilisé pour créer une nouvelle ressource."
+            },
+            {
+              "en": "- `GET` is used to retrieve or read data.",
+              "fr": "- `GET` est utilisé pour récupérer ou lire des données."
+            },
+            {
+              "en": "- `PUT` is used to update a resource by replacing it entirely.",
+              "fr": "- `PUT` est utilisé pour mettre à jour une ressource en la remplaçant entièrement."
+            },
+            {
+              "en": "- `PATCH` is used to partially update a resource.",
+              "fr": "- `PATCH` est utilisé pour mettre à jour partiellement une ressource."
+            },
+            {
+              "en": "- `DELETE` is used to remove a resource.",
+              "fr": "- `DELETE` est utilisé pour supprimer une ressource."
+            },
+            {
+              "en": "Here’s an example of how CRUD operations might be represented in code using a simple array in JavaScript:",
+              "fr": "Voici un exemple de la façon dont les opérations CRUD peuvent être représentées en code à l'aide d'un simple tableau en JavaScript :"
+            },
+            {
+              "en": "In this example:",
+              "fr": "Dans cet exemple :"
+            },
+            {
+              "en": "- We create an item by pushing it into an array.",
+              "fr": "- On crée un élément en l'ajoutant dans un tableau."
+            },
+            {
+              "en": "- We read the items by returning the array.",
+              "fr": "- On lit les éléments en renvoyant le tableau."
+            },
+            {
+              "en": "- We update an item by modifying the array element at a given index.",
+              "fr": "- On met à jour un élément en modifiant l'élément du tableau à un indice donné."
+            },
+            {
+              "en": "- We delete an item by removing it from the array using `splice()`.",
+              "fr": "- On supprime un élément en le retirant du tableau avec `splice()`."
+            },
+            {
+              "en": "This is a basic representation of how CRUD operations work at a conceptual level.",
+              "fr": "Ceci est une représentation basique du fonctionnement des opérations CRUD au niveau conceptuel."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `C` in CRUD stand for?",
+              "fr": "Que signifie le `C` dans CRUD ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which operation involves adding new data.",
+              "fr": "Pense à quelle opération consiste à ajouter de nouvelles données."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which operation involves adding new data.",
+              "fr": "Pense à quelle opération consiste à ajouter de nouvelles données."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which operation involves adding new data.",
+              "fr": "Pense à quelle opération consiste à ajouter de nouvelles données."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which HTTP method is typically used for the `Read` operation in CRUD?",
+              "fr": "Quelle méthode HTTP est typiquement utilisée pour l'opération `Read` dans le CRUD ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Which method is used to request data from a server?",
+              "fr": "Quelle méthode est utilisée pour demander des données à un serveur ?"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Which method is used to request data from a server?",
+              "fr": "Quelle méthode est utilisée pour demander des données à un serveur ?"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Which method is used to request data from a server?",
+              "fr": "Quelle méthode est utilisée pour demander des données à un serveur ?"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `Delete` operation in CRUD?",
+              "fr": "Quel est le but de l'opération `Delete` dans le CRUD ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To modify data.",
+              "fr": "Modifier des données."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you no longer need certain data.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu n'as plus besoin de certaines données."
+            },
+            {
+              "en": "To remove data.",
+              "fr": "Supprimer des données."
+            },
+            {
+              "en": "To add new data.",
+              "fr": "Ajouter de nouvelles données."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you no longer need certain data.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu n'as plus besoin de certaines données."
+            },
+            {
+              "en": "To read data.",
+              "fr": "Lire des données."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you no longer need certain data.",
+              "fr": "Réfléchis à ce qui se passe lorsque tu n'as plus besoin de certaines données."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ff4a9319c8486750886c.md",
+      "id": "6733ff4a9319c8486750886c",
+      "dashedName": "what-is-localstorage-and-what-are-some-common-methods",
+      "title": {
+        "en": "What Is localStorage, and What Are Some Common Methods?",
+        "fr": "Qu'est-ce que localStorage, et quelles sont quelques méthodes courantes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The Web Storage API provides a mechanism for browsers to store key-value pairs right within the browser, allowing developers to store information that can be used across different page reloads and sessions.",
+              "fr": "L'API Web Storage fournit un mécanisme permettant aux navigateurs de stocker des paires clé-valeur directement dans le navigateur, ce qui permet aux développeurs de stocker des informations utilisables d'un rechargement de page à l'autre et d'une session à l'autre."
+            },
+            {
+              "en": "The two main components in the Web Storage API are `localStorage` and `sessionStorage`.",
+              "fr": "Les deux principaux composants de l'API Web Storage sont `localStorage` et `sessionStorage`."
+            },
+            {
+              "en": "`localStorage` is the part of the Web Storage API that allows data to persist even after the browser window is closed or the page is refreshed. This data remains available until it is explicitly removed by the application or the user.",
+              "fr": "`localStorage` est la partie de l'API Web Storage qui permet aux données de persister même après la fermeture de la fenêtre du navigateur ou le rafraîchissement de la page. Ces données restent disponibles jusqu'à ce qu'elles soient explicitement supprimées par l'application ou l'utilisateur."
+            },
+            {
+              "en": "`sessionStorage` is another part of the Web Storage API that stores data for the duration of the page session, meaning the data is available as long as the browser tab or window is open. However, unlike `localStorage`, the data in `sessionStorage` is cleared when the tab or window is closed. You will learn more about `sessionStorage` in the next lesson.",
+              "fr": "`sessionStorage` est une autre partie de l'API Web Storage qui stocke des données pendant la durée de la session de page, c'est-à-dire que les données sont disponibles tant que l'onglet ou la fenêtre du navigateur est ouvert. Cependant, contrairement à `localStorage`, les données de `sessionStorage` sont effacées lorsque l'onglet ou la fenêtre est fermé. Tu en apprendras davantage sur `sessionStorage` dans la prochaine leçon."
+            },
+            {
+              "en": "Common use cases for `localStorage` include storing user settings, such as themes or language preferences, remembering form data across browser sessions, and caching small pieces of information to improve the performance of web apps.",
+              "fr": "Les cas d'usage courants de `localStorage` incluent le stockage des paramètres utilisateur, comme les thèmes ou les préférences de langue, la mémorisation des données de formulaire d'une session de navigateur à l'autre, et la mise en cache de petites informations pour améliorer les performances des applications web."
+            },
+            {
+              "en": "Caching refers to storing frequently accessed data in a temporary storage location, known as a cache, so that subsequent requests for that data can be served more quickly without having to recompute or fetch it from a slower data source, such as a database or external server.",
+              "fr": "La mise en cache consiste à stocker des données fréquemment consultées dans un emplacement de stockage temporaire, appelé cache, afin que les requêtes suivantes pour ces données puissent être servies plus rapidement sans avoir à les recalculer ou à les récupérer depuis une source plus lente, comme une base de données ou un serveur externe."
+            },
+            {
+              "en": "Some common `localStorage` methods include the `setItem`, `getItem`, `removeItem` and `clear` methods.",
+              "fr": "Parmi les méthodes courantes de `localStorage`, on trouve les méthodes `setItem`, `getItem`, `removeItem` et `clear`."
+            },
+            {
+              "en": "Here is an example of using the `setItem()` method which stores a key-value pair in `localStorage`.",
+              "fr": "Voici un exemple d'utilisation de la méthode `setItem()` qui stocke une paire clé-valeur dans `localStorage`."
+            },
+            {
+              "en": "Then if we want retrieve that value of a given key from `localStorage`, we can use the `getItem()` method.",
+              "fr": "Ensuite, si on veut récupérer la valeur d'une clé donnée depuis `localStorage`, on peut utiliser la méthode `getItem()`."
+            },
+            {
+              "en": "To remove an item from `localStorage` using its key, you can use the `removeItem()` method.",
+              "fr": "Pour supprimer un élément de `localStorage` à l'aide de sa clé, tu peux utiliser la méthode `removeItem()`."
+            },
+            {
+              "en": "To clear all data in `localStorage`, you can use the `clear()` method.",
+              "fr": "Pour effacer toutes les données de `localStorage`, tu peux utiliser la méthode `clear()`."
+            },
+            {
+              "en": "Now, let’s take a look at an example where we use `localStorage` to store the preferred theme of a user.",
+              "fr": "Maintenant, regardons un exemple où on utilise `localStorage` pour stocker le thème préféré d'un utilisateur."
+            },
+            {
+              "en": "In this example:",
+              "fr": "Dans cet exemple :"
+            },
+            {
+              "en": "- We first store a theme choice (`dark`) for the user.",
+              "fr": "- On stocke d'abord un choix de thème (`dark`) pour l'utilisateur."
+            },
+            {
+              "en": "- We then retrieve that theme and output it to the console.",
+              "fr": "- Ensuite, on récupère ce thème et on l'affiche dans la console."
+            },
+            {
+              "en": "- Finally, we demonstrate how to remove a specific item or clear all stored data.",
+              "fr": "- Enfin, on montre comment supprimer un élément spécifique ou effacer toutes les données stockées."
+            },
+            {
+              "en": "`localStorage` is very useful for storing small pieces of data that need to persist between sessions, but it's important to note that `localStorage` should not be used to store sensitive information, such as passwords, because it can pose security risks.",
+              "fr": "`localStorage` est très utile pour stocker de petites données qui doivent persister entre les sessions, mais il est important de noter que `localStorage` ne doit pas être utilisé pour stocker des informations sensibles, comme des mots de passe, car cela peut présenter des risques de sécurité."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the Web Storage API?",
+              "fr": "Quel est le but de l'API Web Storage ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To send small pieces of data to the server with every HTTP request.",
+              "fr": "Envoyer de petites données au serveur à chaque requête HTTP."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The Web Storage API helps you store data directly in the user's browser.",
+              "fr": "L'API Web Storage t'aide à stocker des données directement dans le navigateur de l'utilisateur."
+            },
+            {
+              "en": "To store key-value pairs in the browser.",
+              "fr": "Stocker des paires clé-valeur dans le navigateur."
+            },
+            {
+              "en": "To store sensitive data in encrypted form.",
+              "fr": "Stocker des données sensibles sous forme chiffrée."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The Web Storage API helps you store data directly in the user's browser.",
+              "fr": "L'API Web Storage t'aide à stocker des données directement dans le navigateur de l'utilisateur."
+            },
+            {
+              "en": "To run JavaScript code on the server.",
+              "fr": "Exécuter du code JavaScript sur le serveur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The Web Storage API helps you store data directly in the user's browser.",
+              "fr": "L'API Web Storage t'aide à stocker des données directement dans le navigateur de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method is used to save data in local storage?",
+              "fr": "Quelle méthode est utilisée pour enregistrer des données dans le local storage ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method starts with `set` and involves setting a key-value pair.",
+              "fr": "La méthode commence par `set` et consiste à définir une paire clé-valeur."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method starts with `set` and involves setting a key-value pair.",
+              "fr": "La méthode commence par `set` et consiste à définir une paire clé-valeur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method starts with `set` and involves setting a key-value pair.",
+              "fr": "La méthode commence par `set` et consiste à définir une paire clé-valeur."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does `localStorage` differ from `sessionStorage`?",
+              "fr": "En quoi `localStorage` diffère-t-il de `sessionStorage` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`localStorage` data is cleared when the tab is closed, `sessionStorage` is permanent.",
+              "fr": "Les données de `localStorage` sont effacées à la fermeture de l'onglet, `sessionStorage` est permanent."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to `localStorage` when you close and reopen the browser.",
+              "fr": "Réfléchis à ce qui arrive à `localStorage` lorsque tu fermes et rouvres le navigateur."
+            },
+            {
+              "en": "`localStorage` persists across browser sessions, while `sessionStorage` is cleared when the browser or tab is closed.",
+              "fr": "`localStorage` persiste d'une session de navigateur à l'autre, tandis que `sessionStorage` est effacé lorsque le navigateur ou l'onglet est fermé."
+            },
+            {
+              "en": "`localStorage` sends data to the server, `sessionStorage` stores data locally.",
+              "fr": "`localStorage` envoie des données au serveur, `sessionStorage` stocke des données localement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to `localStorage` when you close and reopen the browser.",
+              "fr": "Réfléchis à ce qui arrive à `localStorage` lorsque tu fermes et rouvres le navigateur."
+            },
+            {
+              "en": "Both behave the same way and there is no difference.",
+              "fr": "Les deux se comportent de la même façon et il n'y a aucune différence."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to `localStorage` when you close and reopen the browser.",
+              "fr": "Réfléchis à ce qui arrive à `localStorage` lorsque tu fermes et rouvres le navigateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ff5814129c48b4fca88e.md",
+      "id": "6733ff5814129c48b4fca88e",
+      "dashedName": "what-is-sessionstorage-and-what-are-some-common-methods",
+      "title": {
+        "en": "What Is sessionStorage, and What Are Some Common Methods?",
+        "fr": "Qu'est-ce que sessionStorage, et quelles sont quelques méthodes courantes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, we learned about working with `localStorage` and were briefly introduced to `sessionStorage`.",
+              "fr": "Dans la leçon précédente, nous avons appris à travailler avec `localStorage` et avons été brièvement présentés à `sessionStorage`."
+            },
+            {
+              "en": "Recall, that `sessionStorage` is when the data is cleared as soon as the user closes the tab or window in which the web application is running. It’s ideal for situations where data only needs to persist for the length of a single session, such as maintaining form data during navigation or storing temporary state information during a checkout process.",
+              "fr": "Rappelle-toi que `sessionStorage` efface les données dès que l'utilisateur ferme l'onglet ou la fenêtre dans laquelle l'application web s'exécute. C'est idéal pour les situations où les données n'ont besoin de persister que pendant une seule session, comme le maintien des données de formulaire pendant la navigation ou le stockage d'informations d'état temporaires pendant un processus de paiement."
+            },
+            {
+              "en": "Much like `localStorage`, `sessionStorage` uses key-value pairs to store and retrieve data. The methods used with `sessionStorage` are also the same as `localStorage`, with the only real difference being how long the data is stored.",
+              "fr": "Tout comme `localStorage`, `sessionStorage` utilise des paires clé-valeur pour stocker et récupérer des données. Les méthodes utilisées avec `sessionStorage` sont aussi les mêmes que pour `localStorage`, la seule réelle différence étant la durée de stockage des données."
+            },
+            {
+              "en": "Here are a few examples of working with the different methods:",
+              "fr": "Voici quelques exemples d'utilisation des différentes méthodes :"
+            },
+            {
+              "en": "- `sessionStorage.setItem()`: Stores a key-value pair in `sessionStorage`.",
+              "fr": "- `sessionStorage.setItem()` : Stocke une paire clé-valeur dans `sessionStorage`."
+            },
+            {
+              "en": "- `sessionStorage.getItem()`: Retrieves the value of a given key from `sessionStorage`.",
+              "fr": "- `sessionStorage.getItem()` : Récupère la valeur d'une clé donnée depuis `sessionStorage`."
+            },
+            {
+              "en": "- `sessionStorage.removeItem()`: Removes a specific item from `sessionStorage` using its key.",
+              "fr": "- `sessionStorage.removeItem()` : Supprime un élément spécifique de `sessionStorage` à l'aide de sa clé."
+            },
+            {
+              "en": "- `sessionStorage.clear()`: Clears all data stored in `sessionStorage`.",
+              "fr": "- `sessionStorage.clear()` : Efface toutes les données stockées dans `sessionStorage`."
+            },
+            {
+              "en": "Let’s look at an example where we store data in `sessionStorage` which only lasts as long as the browser tab or window is open:",
+              "fr": "Regardons un exemple où on stocke des données dans `sessionStorage` qui ne durent que tant que l'onglet ou la fenêtre du navigateur est ouvert :"
+            },
+            {
+              "en": "In this example, we:",
+              "fr": "Dans cet exemple, on :"
+            },
+            {
+              "en": "1. Store the current user’s name (`JohnDoe`) in `sessionStorage`.",
+              "fr": "1. Stocke le nom de l'utilisateur actuel (`JohnDoe`) dans `sessionStorage`."
+            },
+            {
+              "en": "2. Retrieve and display it.",
+              "fr": "2. Le récupère et l'affiche."
+            },
+            {
+              "en": "3. Remove the item associated with the key `currentUser`.",
+              "fr": "3. Supprime l'élément associé à la clé `currentUser`."
+            },
+            {
+              "en": "4. Clear all `sessionStorage` data.",
+              "fr": "4. Efface toutes les données de `sessionStorage`."
+            },
+            {
+              "en": "The key difference from `localStorage` is that as soon as the user closes the tab, all stored session data will be lost.",
+              "fr": "La différence clé par rapport à `localStorage` est que dès que l'utilisateur ferme l'onglet, toutes les données de session stockées seront perdues."
+            },
+            {
+              "en": "`sessionStorage` is particularly useful in scenarios like:",
+              "fr": "`sessionStorage` est particulièrement utile dans des scénarios comme :"
+            },
+            {
+              "en": "- Storing temporary data such as form entries during a multi-page form process.",
+              "fr": "- Le stockage de données temporaires telles que les saisies de formulaire pendant un processus de formulaire multi-pages."
+            },
+            {
+              "en": "- Storing temporary selections or preferences that don’t need to persist across sessions.",
+              "fr": "- Le stockage de sélections ou de préférences temporaires qui n'ont pas besoin de persister d'une session à l'autre."
+            },
+            {
+              "en": "- Maintaining state on a single-page application that doesn’t need to be remembered once the tab is closed.",
+              "fr": "- Le maintien de l'état dans une application monopage qui n'a pas besoin d'être mémorisé une fois l'onglet fermé."
+            },
+            {
+              "en": "`sessionStorage` ensures that once the user leaves the page, the session data is cleared, which is great for scenarios where you don’t want to hold onto information beyond the current session.",
+              "fr": "`sessionStorage` garantit qu'une fois que l'utilisateur quitte la page, les données de session sont effacées, ce qui est idéal pour les scénarios où tu ne veux pas conserver d'informations au-delà de la session actuelle."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens to the data stored in `sessionStorage` when the browser tab is closed?",
+              "fr": "Que deviennent les données stockées dans `sessionStorage` lorsque l'onglet du navigateur est fermé ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The data is permanently stored until manually removed.",
+              "fr": "Les données sont stockées de façon permanente jusqu'à leur suppression manuelle."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`sessionStorage` only persists for the length of a browser session.",
+              "fr": "`sessionStorage` ne persiste que pendant la durée d'une session de navigateur."
+            },
+            {
+              "en": "The data persists until the computer is turned off.",
+              "fr": "Les données persistent jusqu'à l'extinction de l'ordinateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`sessionStorage` only persists for the length of a browser session.",
+              "fr": "`sessionStorage` ne persiste que pendant la durée d'une session de navigateur."
+            },
+            {
+              "en": "The data is cleared when the tab or window is closed.",
+              "fr": "Les données sont effacées lorsque l'onglet ou la fenêtre est fermé."
+            },
+            {
+              "en": "The data is synced with `localStorage`.",
+              "fr": "Les données sont synchronisées avec `localStorage`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "`sessionStorage` only persists for the length of a browser session.",
+              "fr": "`sessionStorage` ne persiste que pendant la durée d'une session de navigateur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following methods is used to remove a single key-value pair from `sessionStorage`?",
+              "fr": "Laquelle des méthodes suivantes est utilisée pour supprimer une seule paire clé-valeur de `sessionStorage` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method name begins with `remove` and affects one specific item.",
+              "fr": "Le nom de la méthode commence par `remove` et concerne un élément spécifique."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method name begins with `remove` and affects one specific item.",
+              "fr": "Le nom de la méthode commence par `remove` et concerne un élément spécifique."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The method name begins with `remove` and affects one specific item.",
+              "fr": "Le nom de la méthode commence par `remove` et concerne un élément spécifique."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which of the following scenarios would `sessionStorage` be more appropriate than `localStorage`?",
+              "fr": "Dans lequel des scénarios suivants `sessionStorage` serait-il plus approprié que `localStorage` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Storing user settings like themes that persist across sessions.",
+              "fr": "Stocker des paramètres utilisateur comme les thèmes qui persistent d'une session à l'autre."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what data only needs to persist for a single session.",
+              "fr": "Réfléchis aux données qui n'ont besoin de persister que pour une seule session."
+            },
+            {
+              "en": "Storing form data that is only needed during the current browser session.",
+              "fr": "Stocker des données de formulaire nécessaires uniquement pendant la session de navigateur actuelle."
+            },
+            {
+              "en": "Storing sensitive user information like passwords.",
+              "fr": "Stocker des informations utilisateur sensibles comme des mots de passe."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what data only needs to persist for a single session.",
+              "fr": "Réfléchis aux données qui n'ont besoin de persister que pour une seule session."
+            },
+            {
+              "en": "Storing data that needs to be shared between different browser windows.",
+              "fr": "Stocker des données qui doivent être partagées entre différentes fenêtres de navigateur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what data only needs to persist for a single session.",
+              "fr": "Réfléchis aux données qui n'ont besoin de persister que pour une seule session."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ff6f02dde548ebe4a6d5.md",
+      "id": "6733ff6f02dde548ebe4a6d5",
+      "dashedName": "what-are-cookies-and-how-do-they-work",
+      "title": {
+        "en": "What Are Cookies, and How Do They Work?",
+        "fr": "Que sont les cookies, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Cookies, also known as web cookies or browser cookies, are small pieces of data that a server sends to a user's web browser. These cookies are stored on the user's device and sent back to the server with subsequent requests.",
+              "fr": "Les cookies, aussi appelés cookies web ou cookies de navigateur, sont de petites données qu'un serveur envoie au navigateur web d'un utilisateur. Ces cookies sont stockés sur l'appareil de l'utilisateur et renvoyés au serveur avec les requêtes suivantes."
+            },
+            {
+              "en": "Cookies are essential in helping web applications maintain state and remember user information, which is especially important since HTTP is a stateless protocol.",
+              "fr": "Les cookies sont essentiels pour aider les applications web à maintenir l'état et à mémoriser les informations utilisateur, ce qui est particulièrement important car HTTP est un protocole sans état."
+            },
+            {
+              "en": "Cookies can store a variety of information such as user preferences, session data, or tracking information.",
+              "fr": "Les cookies peuvent stocker divers types d'informations telles que les préférences utilisateur, les données de session ou les informations de suivi."
+            },
+            {
+              "en": "Cookies are always stored as name-value pairs. This means each cookie has a name (key) and an associated value.",
+              "fr": "Les cookies sont toujours stockés sous forme de paires nom-valeur. Cela signifie que chaque cookie a un nom (clé) et une valeur associée."
+            },
+            {
+              "en": "For example, a cookie might store a user's session ID like this: `sessionId=abc123`. The key is `sessionId`, and the value is `abc123`. Each time the browser communicates with the server, the browser sends these cookies in the form of name-value pairs.",
+              "fr": "Par exemple, un cookie peut stocker l'ID de session d'un utilisateur comme ceci : `sessionId=abc123`. La clé est `sessionId`, et la valeur est `abc123`. Chaque fois que le navigateur communique avec le serveur, le navigateur envoie ces cookies sous forme de paires nom-valeur."
+            },
+            {
+              "en": "When a user visits a website, the server can send one or more cookies to the user's browser by including a Set-Cookie header in the HTTP response. A header is a key-value pair that provides additional information about the HTTP request or response. You will learn more about HTTP requests and responses in future lessons.",
+              "fr": "Lorsqu'un utilisateur visite un site web, le serveur peut envoyer un ou plusieurs cookies au navigateur de l'utilisateur en incluant un en-tête Set-Cookie dans la réponse HTTP. Un en-tête est une paire clé-valeur qui fournit des informations supplémentaires sur la requête ou la réponse HTTP. Tu en apprendras davantage sur les requêtes et réponses HTTP dans de futures leçons."
+            },
+            {
+              "en": "Once the cookies are set, the browser stores them and automatically includes them in the Cookie header with every subsequent request to the same domain. This allows the server to access the stored cookies and use them for things like maintaining user sessions or tracking preferences.",
+              "fr": "Une fois les cookies définis, le navigateur les stocke et les inclut automatiquement dans l'en-tête Cookie à chaque requête suivante vers le même domaine. Cela permet au serveur d'accéder aux cookies stockés et de les utiliser pour des choses comme le maintien des sessions utilisateur ou le suivi des préférences."
+            },
+            {
+              "en": "Here’s an example of how a cookie is set in an HTTP response:",
+              "fr": "Voici un exemple de la façon dont un cookie est défini dans une réponse HTTP :"
+            },
+            {
+              "en": "The browser will store the cookie, and in future requests to the same server, it will include the cookie in the `Cookie` header:",
+              "fr": "Le navigateur stockera le cookie, et dans les futures requêtes vers le même serveur, il inclura le cookie dans l'en-tête `Cookie` :"
+            },
+            {
+              "en": "The server can then read the cookie and use the stored session ID to retrieve information about the user, such as whether they are logged in.",
+              "fr": "Le serveur peut alors lire le cookie et utiliser l'ID de session stocké pour récupérer des informations sur l'utilisateur, comme savoir s'il est connecté."
+            },
+            {
+              "en": "Here is a breakdown of the different types of cookies.",
+              "fr": "Voici un aperçu des différents types de cookies."
+            },
+            {
+              "en": "- Session Cookies only last for the duration of the user's session on the website. Once the user closes the browser or tab, the session cookie is deleted. These cookies are typically used for tasks like keeping a user logged in during their visit.",
+              "fr": "- Les cookies de session ne durent que pendant la durée de la session de l'utilisateur sur le site. Une fois que l'utilisateur ferme le navigateur ou l'onglet, le cookie de session est supprimé. Ces cookies sont typiquement utilisés pour des tâches comme garder un utilisateur connecté pendant sa visite."
+            },
+            {
+              "en": "- Persistent Cookies have an expiration date and remain stored on the user's device until that date is reached. Persistent cookies are often used for remembering user preferences or login details across sessions.",
+              "fr": "- Les cookies persistants ont une date d'expiration et restent stockés sur l'appareil de l'utilisateur jusqu'à cette date. Les cookies persistants sont souvent utilisés pour mémoriser les préférences utilisateur ou les détails de connexion d'une session à l'autre."
+            },
+            {
+              "en": "- Secure Cookies are only sent over HTTPS, ensuring that they cannot be intercepted by an attacker in transit.",
+              "fr": "- Les cookies sécurisés (Secure) ne sont envoyés que via HTTPS, ce qui garantit qu'ils ne peuvent pas être interceptés en transit par un attaquant."
+            },
+            {
+              "en": "- HttpOnly Cookies cannot be accessed or modified by JavaScript running in the browser, making them more secure against cross-site scripting (XSS) attacks. Cross-site scripting (XSS) attacks happen when an attacker injects malicious scripts into a web page that is viewed by other users. These scripts can then execute in the context of the victim's browser, potentially stealing cookies, session data, or performing other malicious actions without the user's knowledge or consent. By marking cookies as HttpOnly, they are protected from being accessed via JavaScript, reducing the risk of such attacks.",
+              "fr": "- Les cookies HttpOnly ne peuvent pas être accessibles ni modifiés par JavaScript s'exécutant dans le navigateur, ce qui les rend plus sécurisés contre les attaques de scripts intersites (XSS). Les attaques XSS se produisent lorsqu'un attaquant injecte des scripts malveillants dans une page web consultée par d'autres utilisateurs. Ces scripts peuvent alors s'exécuter dans le contexte du navigateur de la victime, potentiellement en volant des cookies, des données de session, ou en effectuant d'autres actions malveillantes sans la connaissance ni le consentement de l'utilisateur. En marquant les cookies comme HttpOnly, ils sont protégés contre l'accès via JavaScript, ce qui réduit le risque de telles attaques."
+            },
+            {
+              "en": "You can create cookies via server responses using the `Set-Cookie` header or through JavaScript using `document.cookie`.",
+              "fr": "Tu peux créer des cookies via les réponses du serveur en utilisant l'en-tête `Set-Cookie` ou via JavaScript avec `document.cookie`."
+            },
+            {
+              "en": "Here's an example of setting a cookie using JavaScript:",
+              "fr": "Voici un exemple de définition d'un cookie avec JavaScript :"
+            },
+            {
+              "en": "This command sets a cookie named `username` with the value `\"JohnDoe\"` that will expire at the end of 2021. You can update an existing cookie by simply setting it again with a new value.",
+              "fr": "Cette commande définit un cookie nommé `username` avec la valeur `\"JohnDoe\"` qui expirera à la fin de 2021. Tu peux mettre à jour un cookie existant simplement en le définissant à nouveau avec une nouvelle valeur."
+            },
+            {
+              "en": "To delete a cookie, you set its expiration date in the past:",
+              "fr": "Pour supprimer un cookie, tu définis sa date d'expiration dans le passé :"
+            },
+            {
+              "en": "This will remove the `username` cookie from the browser.",
+              "fr": "Cela supprimera le cookie `username` du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of cookies in web applications?",
+              "fr": "Quel est le but principal des cookies dans les applications web ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To store large amounts of data permanently.",
+              "fr": "Stocker de grandes quantités de données de façon permanente."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how cookies help web applications remember user-specific data between requests.",
+              "fr": "Réfléchis à la façon dont les cookies aident les applications web à mémoriser des données spécifiques à l'utilisateur entre les requêtes."
+            },
+            {
+              "en": "To store data that helps maintain state and remembers user information across requests.",
+              "fr": "Stocker des données qui aident à maintenir l'état et à mémoriser les informations utilisateur d'une requête à l'autre."
+            },
+            {
+              "en": "To replace server-side databases.",
+              "fr": "Remplacer les bases de données côté serveur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how cookies help web applications remember user-specific data between requests.",
+              "fr": "Réfléchis à la façon dont les cookies aident les applications web à mémoriser des données spécifiques à l'utilisateur entre les requêtes."
+            },
+            {
+              "en": "To enhance JavaScript performance in the browser.",
+              "fr": "Améliorer les performances de JavaScript dans le navigateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how cookies help web applications remember user-specific data between requests.",
+              "fr": "Réfléchis à la façon dont les cookies aident les applications web à mémoriser des données spécifiques à l'utilisateur entre les requêtes."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following attributes ensures that a cookie is only sent over HTTPS?",
+              "fr": "Lequel des attributs suivants garantit qu'un cookie n'est envoyé que via HTTPS ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This attribute protects cookies from being sent over unsecured HTTP connections.",
+              "fr": "Cet attribut protège les cookies contre l'envoi sur des connexions HTTP non sécurisées."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This attribute protects cookies from being sent over unsecured HTTP connections.",
+              "fr": "Cet attribut protège les cookies contre l'envoi sur des connexions HTTP non sécurisées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This attribute protects cookies from being sent over unsecured HTTP connections.",
+              "fr": "Cet attribut protège les cookies contre l'envoi sur des connexions HTTP non sécurisées."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you delete a cookie using JavaScript?",
+              "fr": "Comment peux-tu supprimer un cookie avec JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By setting its value to `null`.",
+              "fr": "En définissant sa valeur à `null`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how setting an expiration date affects the lifespan of a cookie.",
+              "fr": "Réfléchis à l'effet d'une date d'expiration sur la durée de vie d'un cookie."
+            },
+            {
+              "en": "By setting its expiration date to a past date.",
+              "fr": "En définissant sa date d'expiration à une date passée."
+            },
+            {
+              "en": "By using the `document.cookie.remove()` method.",
+              "fr": "En utilisant la méthode `document.cookie.remove()`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how setting an expiration date affects the lifespan of a cookie.",
+              "fr": "Réfléchis à l'effet d'une date d'expiration sur la durée de vie d'un cookie."
+            },
+            {
+              "en": "By reloading the page.",
+              "fr": "En rechargeant la page."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how setting an expiration date affects the lifespan of a cookie.",
+              "fr": "Réfléchis à l'effet d'une date d'expiration sur la durée de vie d'un cookie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ff8d06376149474a0c0d.md",
+      "id": "6733ff8d06376149474a0c0d",
+      "dashedName": "what-is-the-cache-api-and-how-does-that-work",
+      "title": {
+        "en": "What Is the Cache API, and How Does It Work?",
+        "fr": "Qu'est-ce que l'API Cache, et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The `Cache` API is used to store network requests and responses, making web applications work more efficiently and even function offline. It is part of the broader Service Worker API and is critical for creating Progressive Web Apps (PWAs) that can work under unreliable or slow network conditions.",
+              "fr": "L'API `Cache` est utilisée pour stocker des requêtes et réponses réseau, ce qui rend les applications web plus efficaces et leur permet même de fonctionner hors ligne. Elle fait partie de l'API Service Worker plus large et est essentielle pour créer des Progressive Web Apps (PWA) qui peuvent fonctionner dans des conditions réseau peu fiables ou lentes."
+            },
+            {
+              "en": "Before we continue with the `Cache` API, we first need to understand how service workers, PWAs, and network requests work on a basic level.",
+              "fr": "Avant de continuer avec l'API `Cache`, nous devons d'abord comprendre comment les service workers, les PWA et les requêtes réseau fonctionnent à un niveau de base."
+            },
+            {
+              "en": "A network request is a request made by a web browser or application to a server to retrieve data or resources over the internet. For example, when you visit a website, your browser sends a network request to the web server to get the files (such as HTML, images, or videos) needed to display the page.",
+              "fr": "Une requête réseau est une requête faite par un navigateur web ou une application à un serveur pour récupérer des données ou des ressources via Internet. Par exemple, lorsque tu visites un site web, ton navigateur envoie une requête réseau au serveur web pour obtenir les fichiers (comme le HTML, les images ou les vidéos) nécessaires pour afficher la page."
+            },
+            {
+              "en": "A service worker is a special type of JavaScript file that runs in the background of a web application, separate from the main browser thread. It acts as a middleman between the web page and the network, allowing developers to intercept network requests, cache resources, and handle things like push notifications or background sync.",
+              "fr": "Un service worker est un type spécial de fichier JavaScript qui s'exécute en arrière-plan d'une application web, séparément du fil principal du navigateur. Il agit comme un intermédiaire entre la page web et le réseau, permettant aux développeurs d'intercepter les requêtes réseau, de mettre des ressources en cache, et de gérer des choses comme les notifications push ou la synchronisation en arrière-plan."
+            },
+            {
+              "en": "A PWA, or Progressive Web App, is a type of web application that uses modern web technologies to provide a native app-like experience on the web. PWAs are designed to work reliably on any device, regardless of network conditions, and can be accessed through a browser or installed on a user's device like a traditional app.",
+              "fr": "Une PWA, ou Progressive Web App, est un type d'application web qui utilise des technologies web modernes pour offrir une expérience proche d'une application native sur le web. Les PWA sont conçues pour fonctionner de façon fiable sur n'importe quel appareil, quelles que soient les conditions réseau, et peuvent être accessibles via un navigateur ou installées sur l'appareil d'un utilisateur comme une application traditionnelle."
+            },
+            {
+              "en": "Now that we have a better understanding of service workers, PWAs, and network requests, we can dive deeper into the Cache API.",
+              "fr": "Maintenant que nous comprenons mieux les service workers, les PWA et les requêtes réseau, nous pouvons approfondir l'API Cache."
+            },
+            {
+              "en": "The `Cache` API is a storage mechanism that stores `Request` and `Response` objects. When a request is made to a server, the application can store the response and later retrieve it from the cache instead of making a new network request. This reduces load times, saves bandwidth, and improves the overall user experience.",
+              "fr": "L'API `Cache` est un mécanisme de stockage qui stocke des objets `Request` et `Response`. Lorsqu'une requête est faite à un serveur, l'application peut stocker la réponse et la récupérer plus tard depuis le cache au lieu de faire une nouvelle requête réseau. Cela réduit les temps de chargement, économise la bande passante et améliore l'expérience utilisateur globale."
+            },
+            {
+              "en": "The browser provides a storage area known as `CacheStorage`, where developers can save key-value pairs of network requests and their corresponding responses.",
+              "fr": "Le navigateur fournit une zone de stockage appelée `CacheStorage`, où les développeurs peuvent enregistrer des paires clé-valeur de requêtes réseau et de leurs réponses correspondantes."
+            },
+            {
+              "en": "With the `Cache-Control` header, developers can specify how long a cached resource should remain stored, as well as whether it should be revalidated or served directly from the cache.",
+              "fr": "Avec l'en-tête `Cache-Control`, les développeurs peuvent spécifier combien de temps une ressource mise en cache doit rester stockée, ainsi que si elle doit être revalidée ou servie directement depuis le cache."
+            },
+            {
+              "en": "By using the `Cache` API, developers can build offline-first web applications, allowing a PWA, for example, to serve cached assets when the user is disconnected from the network.",
+              "fr": "En utilisant l'API `Cache`, les développeurs peuvent construire des applications web offline-first, permettant par exemple à une PWA de servir des ressources mises en cache lorsque l'utilisateur est déconnecté du réseau."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main purpose of the Cache API in web applications?",
+              "fr": "Quel est le but principal de l'API Cache dans les applications web ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To handle user authentication and sessions.",
+              "fr": "Gérer l'authentification et les sessions utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the Cache API does in terms of web performance, offline functionality, and caching network requests.",
+              "fr": "Réfléchis à ce que fait l'API Cache en termes de performances web, de fonctionnalités hors ligne et de mise en cache des requêtes réseau."
+            },
+            {
+              "en": "To store and manage network requests and responses for offline access.",
+              "fr": "Stocker et gérer les requêtes et réponses réseau pour un accès hors ligne."
+            },
+            {
+              "en": "To enable push notifications and background sync.",
+              "fr": "Activer les notifications push et la synchronisation en arrière-plan."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the Cache API does in terms of web performance, offline functionality, and caching network requests.",
+              "fr": "Réfléchis à ce que fait l'API Cache en termes de performances web, de fonctionnalités hors ligne et de mise en cache des requêtes réseau."
+            },
+            {
+              "en": "To create and manage service workers.",
+              "fr": "Créer et gérer des service workers."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the Cache API does in terms of web performance, offline functionality, and caching network requests.",
+              "fr": "Réfléchis à ce que fait l'API Cache en termes de performances web, de fonctionnalités hors ligne et de mise en cache des requêtes réseau."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes the role of a service worker in a web application?",
+              "fr": "Laquelle des options suivantes décrit le mieux le rôle d'un service worker dans une application web ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A background script that handles UI rendering.",
+              "fr": "Un script en arrière-plan qui gère le rendu de l'interface utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what service workers do to intercept network requests and enable offline behavior in web apps.",
+              "fr": "Réfléchis à ce que font les service workers pour intercepter les requêtes réseau et activer le comportement hors ligne dans les applications web."
+            },
+            {
+              "en": "A tool for managing user authentication and sessions.",
+              "fr": "Un outil pour gérer l'authentification et les sessions utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what service workers do to intercept network requests and enable offline behavior in web apps.",
+              "fr": "Réfléchis à ce que font les service workers pour intercepter les requêtes réseau et activer le comportement hors ligne dans les applications web."
+            },
+            {
+              "en": "A special JavaScript file that runs in the background, managing network requests and caching resources.",
+              "fr": "Un fichier JavaScript spécial qui s'exécute en arrière-plan, gérant les requêtes réseau et la mise en cache des ressources."
+            },
+            {
+              "en": "A library for enabling offline data synchronization with a server.",
+              "fr": "Une bibliothèque pour activer la synchronisation hors ligne des données avec un serveur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what service workers do to intercept network requests and enable offline behavior in web apps.",
+              "fr": "Réfléchis à ce que font les service workers pour intercepter les requêtes réseau et activer le comportement hors ligne dans les applications web."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a network request in the context of a web application?",
+              "fr": "Qu'est-ce qu'une requête réseau dans le contexte d'une application web ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A request made by a web browser to retrieve files from a local storage database.",
+              "fr": "Une requête faite par un navigateur web pour récupérer des fichiers depuis une base de données de stockage local."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when a user visits a website and how resources like images, scripts, and data are loaded into the browser.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'un utilisateur visite un site web et comment les ressources comme les images, les scripts et les données sont chargées dans le navigateur."
+            },
+            {
+              "en": "A request made by a web browser or application to a server to retrieve data or resources over the internet.",
+              "fr": "Une requête faite par un navigateur web ou une application à un serveur pour récupérer des données ou des ressources via Internet."
+            },
+            {
+              "en": "A request made by a web server to push updates to a user's device.",
+              "fr": "Une requête faite par un serveur web pour pousser des mises à jour vers l'appareil d'un utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when a user visits a website and how resources like images, scripts, and data are loaded into the browser.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'un utilisateur visite un site web et comment les ressources comme les images, les scripts et les données sont chargées dans le navigateur."
+            },
+            {
+              "en": "A request made by the server to verify the authentication of a user.",
+              "fr": "Une requête faite par le serveur pour vérifier l'authentification d'un utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when a user visits a website and how resources like images, scripts, and data are loaded into the browser.",
+              "fr": "Réfléchis à ce qui se passe lorsqu'un utilisateur visite un site web et comment les ressources comme les images, les scripts et les données sont chargées dans le navigateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ff9d2fb9c449af68ad99.md",
+      "id": "6733ff9d2fb9c449af68ad99",
+      "dashedName": "what-are-some-negative-patterns-associated-with-client-side-storage",
+      "title": {
+        "en": "What Are Some Negative Patterns Associated with Client-Side Storage?",
+        "fr": "Quels sont quelques motifs négatifs associés au stockage côté client ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Client-side storage allows websites to store data on a user's device. However, like many technologies, it can be misused.",
+              "fr": "Le stockage côté client permet aux sites web de stocker des données sur l'appareil d'un utilisateur. Cependant, comme beaucoup de technologies, il peut être mal utilisé."
+            },
+            {
+              "en": "Let’s explore some negative patterns associated with client-side storage, focusing on cookies and their misuse for tracking and fingerprinting.",
+              "fr": "Explorons quelques motifs négatifs associés au stockage côté client, en nous concentrant sur les cookies et leur mauvais usage pour le suivi et le fingerprinting."
+            },
+            {
+              "en": "Let's start with cookies.",
+              "fr": "Commençons par les cookies."
+            },
+            {
+              "en": "In an earlier lesson, you learned that cookies are data stored on a user's device when they visit a web app. A common misuse of cookies is excessive tracking.",
+              "fr": "Dans une leçon précédente, tu as appris que les cookies sont des données stockées sur l'appareil d'un utilisateur lorsqu'il visite une application web. Un mauvais usage courant des cookies est le suivi excessif."
+            },
+            {
+              "en": "Websites use cookies to track a user's interactions with a web app, creating a history of their digital activities. This is done for targeted advertising but can raise significant privacy concerns.",
+              "fr": "Les sites web utilisent des cookies pour suivre les interactions d'un utilisateur avec une application web, créant un historique de ses activités numériques. Cela est fait pour la publicité ciblée mais peut soulever d'importantes préoccupations en matière de vie privée."
+            },
+            {
+              "en": "For example, a shopping website might use a tracking cookie like this:",
+              "fr": "Par exemple, un site de shopping pourrait utiliser un cookie de suivi comme ceci :"
+            },
+            {
+              "en": "This code sets a cookie named `userID` with a value of `123`. The cookie will be sent with every request to the website, allowing it to track the user's actions. While this might seem harmless, imagine hundreds of websites sharing this information – it could create a very detailed picture of your online life and choices.",
+              "fr": "Ce code définit un cookie nommé `userID` avec une valeur de `123`. Le cookie sera envoyé avec chaque requête vers le site, lui permettant de suivre les actions de l'utilisateur. Bien que cela puisse sembler inoffensif, imagine des centaines de sites partageant ces informations — cela pourrait créer une image très détaillée de ta vie en ligne et de tes choix."
+            },
+            {
+              "en": "Another concerning practice is browser fingerprinting.",
+              "fr": "Une autre pratique préoccupante est le fingerprinting de navigateur."
+            },
+            {
+              "en": "This technique uses client-side information to create a unique \"fingerprint\" of a user's browser. Websites have the ability to gather information about your browser version, installed plugins, screen resolution, and other data to uniquely identify you.",
+              "fr": "Cette technique utilise des informations côté client pour créer une « empreinte » unique du navigateur d'un utilisateur. Les sites web ont la capacité de collecter des informations sur ta version de navigateur, les plugins installés, la résolution d'écran et d'autres données pour t'identifier de façon unique."
+            },
+            {
+              "en": "Here's a simple example of how a website can create a fingerprint of you:",
+              "fr": "Voici un exemple simple de la façon dont un site peut créer une empreinte de toi :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "This code combines your browser's user agent with your screen dimensions. While this is a basic example, real fingerprinting methods are much more complex and can be highly accurate in identifying users.",
+              "fr": "Ce code combine l'agent utilisateur de ton navigateur avec les dimensions de ton écran. Bien que ce soit un exemple basique, les vraies méthodes de fingerprinting sont bien plus complexes et peuvent être très précises pour identifier les utilisateurs."
+            },
+            {
+              "en": "`localStorage` can also be misused as some websites use it to store sensitive information insecurely. For instance:",
+              "fr": "`localStorage` peut aussi être mal utilisé, car certains sites l'utilisent pour stocker des informations sensibles de façon non sécurisée. Par exemple :"
+            },
+            {
+              "en": "This code stores a user's password in `localStorage`. This is a serious security risk as the data in `localStorage` is not encrypted and can be accessed easily.",
+              "fr": "Ce code stocke le mot de passe d'un utilisateur dans `localStorage`. C'est un risque de sécurité sérieux car les données dans `localStorage` ne sont pas chiffrées et peuvent être accessibles facilement."
+            },
+            {
+              "en": "In conclusion, while client-side storage offers many benefits, it's crucial to use it responsibly. As you continue your web development journey, always consider the privacy and security of your users' data on the client side.",
+              "fr": "En conclusion, bien que le stockage côté client offre de nombreux avantages, il est crucial de l'utiliser de façon responsable. Au fur et à mesure de ton parcours en développement web, considère toujours la vie privée et la sécurité des données de tes utilisateurs côté client."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a potential negative use of cookies in web development?",
+              "fr": "Quel est un usage potentiellement négatif des cookies en développement web ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Remembering user login information.",
+              "fr": "Mémoriser les informations de connexion de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which option might raise privacy concerns.",
+              "fr": "Réfléchis à quelle option pourrait soulever des préoccupations de vie privée."
+            },
+            {
+              "en": "Tracking user behavior across multiple websites.",
+              "fr": "Suivre le comportement de l'utilisateur sur plusieurs sites web."
+            },
+            {
+              "en": "Storing user preferences.",
+              "fr": "Stocker les préférences de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which option might raise privacy concerns.",
+              "fr": "Réfléchis à quelle option pourrait soulever des préoccupations de vie privée."
+            },
+            {
+              "en": "Improving website load times.",
+              "fr": "Améliorer les temps de chargement du site."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which option might raise privacy concerns.",
+              "fr": "Réfléchis à quelle option pourrait soulever des préoccupations de vie privée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is browser fingerprinting?",
+              "fr": "Qu'est-ce que le fingerprinting de navigateur ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A technique to improve browser security.",
+              "fr": "Une technique pour améliorer la sécurité du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which option relates to identifying individual users.",
+              "fr": "Réfléchis à quelle option concerne l'identification d'utilisateurs individuels."
+            },
+            {
+              "en": "A method to create unique browser themes.",
+              "fr": "Une méthode pour créer des thèmes de navigateur uniques."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which option relates to identifying individual users.",
+              "fr": "Réfléchis à quelle option concerne l'identification d'utilisateurs individuels."
+            },
+            {
+              "en": "A way to identify users based on browser and system characteristics.",
+              "fr": "Une façon d'identifier les utilisateurs à partir des caractéristiques du navigateur et du système."
+            },
+            {
+              "en": "A process to optimize website performance for different browsers.",
+              "fr": "Un processus pour optimiser les performances d'un site pour différents navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which option relates to identifying individual users.",
+              "fr": "Réfléchis à quelle option concerne l'identification d'utilisateurs individuels."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is storing sensitive information like passwords in `localStorage` a security risk?",
+              "fr": "Pourquoi stocker des informations sensibles comme des mots de passe dans `localStorage` est-il un risque de sécurité ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`localStorage` has limited capacity.",
+              "fr": "`localStorage` a une capacité limitée."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the security features (or lack thereof) in `localStorage`.",
+              "fr": "Réfléchis aux fonctionnalités de sécurité (ou à leur absence) dans `localStorage`."
+            },
+            {
+              "en": "Data in `localStorage` is not encrypted.",
+              "fr": "Les données dans `localStorage` ne sont pas chiffrées."
+            },
+            {
+              "en": "`localStorage` is slower than cookies.",
+              "fr": "`localStorage` est plus lent que les cookies."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the security features (or lack thereof) in `localStorage`.",
+              "fr": "Réfléchis aux fonctionnalités de sécurité (ou à leur absence) dans `localStorage`."
+            },
+            {
+              "en": "`localStorage` doesn't work in all browsers.",
+              "fr": "`localStorage` ne fonctionne pas dans tous les navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the security features (or lack thereof) in `localStorage`.",
+              "fr": "Réfléchis aux fonctionnalités de sécurité (ou à leur absence) dans `localStorage`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ffacd0ad1e49ec2af051.md",
+      "id": "6733ffacd0ad1e49ec2af051",
+      "dashedName": "how-can-you-use-cookies-to-store-arbitrary-data-normally-controlled-by-http-headers",
+      "title": {
+        "en": "How Can You Use Cookies to Store Arbitrary Data, Normally Controlled by HTTP Headers?",
+        "fr": "Comment peux-tu utiliser les cookies pour stocker des données arbitraires, normalement contrôlées par les en-têtes HTTP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As you learned in previous lessons, cookies are simple data that websites can store on a user's device.",
+              "fr": "Comme tu l'as appris dans les leçons précédentes, les cookies sont de simples données que les sites web peuvent stocker sur l'appareil d'un utilisateur."
+            },
+            {
+              "en": "However, you can actually store more complex data structures in cookies. One common method is to use JSON to store objects or arrays. Here's an example:",
+              "fr": "Cependant, tu peux en fait stocker des structures de données plus complexes dans les cookies. Une méthode courante est d'utiliser JSON pour stocker des objets ou des tableaux. Voici un exemple :"
+            },
+            {
+              "en": "In this example, we're creating an object with user data, converting it to a JSON string, and then storing it in a cookie. When we want to retrieve this data, we can parse the JSON string into an object using `JSON.parse()`.",
+              "fr": "Dans cet exemple, on crée un objet avec des données utilisateur, on le convertit en chaîne JSON, puis on le stocke dans un cookie. Lorsque l'on veut récupérer ces données, on peut analyser la chaîne JSON en objet avec `JSON.parse()`."
+            },
+            {
+              "en": "Now, you might be wondering about the \"HTTP headers\" aspect of our topic. Typically, cookies are set by the server using HTTP headers.",
+              "fr": "Maintenant, tu te demandes peut-être ce qu'il en est de l'aspect « en-têtes HTTP » de notre sujet. Typiquement, les cookies sont définis par le serveur à l'aide d'en-têtes HTTP."
+            },
+            {
+              "en": "For example, a server might send a header like this:",
+              "fr": "Par exemple, un serveur pourrait envoyer un en-tête comme ceci :"
+            },
+            {
+              "en": "This header tells the browser to set a cookie.",
+              "fr": "Cet en-tête indique au navigateur de définir un cookie."
+            },
+            {
+              "en": "We can also set cookies directly in the browser using JavaScript. This is useful for storing data that doesn't need to be sent to the server immediately.",
+              "fr": "On peut aussi définir des cookies directement dans le navigateur avec JavaScript. C'est utile pour stocker des données qui n'ont pas besoin d'être envoyées immédiatement au serveur."
+            },
+            {
+              "en": "Please note that cookies have a size limit of around 4KB, and storing too much data in them may slow down your web app.",
+              "fr": "Note que les cookies ont une limite de taille d'environ 4 Ko, et stocker trop de données dedans peut ralentir ton application web."
+            },
+            {
+              "en": "Storing large amounts of data in cookies can increase network traffic as cookies are sent with every HTTP request.",
+              "fr": "Stocker de grandes quantités de données dans les cookies peut augmenter le trafic réseau car les cookies sont envoyés avec chaque requête HTTP."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the 'expires' parameter when setting a cookie?",
+              "fr": "Quel est le but du paramètre 'expires' lors de la définition d'un cookie ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It specifies which pages can access the cookie.",
+              "fr": "Il spécifie quelles pages peuvent accéder au cookie."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to a cookie after a certain time has passed.",
+              "fr": "Réfléchis à ce qui arrive à un cookie après qu'un certain temps se soit écoulé."
+            },
+            {
+              "en": "It sets the maximum size of the cookie.",
+              "fr": "Il définit la taille maximale du cookie."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to a cookie after a certain time has passed.",
+              "fr": "Réfléchis à ce qui arrive à un cookie après qu'un certain temps se soit écoulé."
+            },
+            {
+              "en": "It tells the browser when to delete the cookie.",
+              "fr": "Il indique au navigateur quand supprimer le cookie."
+            },
+            {
+              "en": "It encrypts the cookie data.",
+              "fr": "Il chiffre les données du cookie."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens to a cookie after a certain time has passed.",
+              "fr": "Réfléchis à ce qui arrive à un cookie après qu'un certain temps se soit écoulé."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you store a complex data structure like an object in a cookie?",
+              "fr": "Comment peux-tu stocker une structure de données complexe comme un objet dans un cookie ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Objects can be directly stored in cookies.",
+              "fr": "Les objets peuvent être stockés directement dans les cookies."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format might be used to represent an object as a string.",
+              "fr": "Réfléchis à quel format pourrait être utilisé pour représenter un objet sous forme de chaîne."
+            },
+            {
+              "en": "By converting the object to a JSON string.",
+              "fr": "En convertissant l'objet en chaîne JSON."
+            },
+            {
+              "en": "By using multiple cookies for each object property.",
+              "fr": "En utilisant plusieurs cookies pour chaque propriété de l'objet."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format might be used to represent an object as a string.",
+              "fr": "Réfléchis à quel format pourrait être utilisé pour représenter un objet sous forme de chaîne."
+            },
+            {
+              "en": "Complex data structures cannot be stored in cookies.",
+              "fr": "Les structures de données complexes ne peuvent pas être stockées dans les cookies."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what format might be used to represent an object as a string.",
+              "fr": "Réfléchis à quel format pourrait être utilisé pour représenter un objet sous forme de chaîne."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a potential drawback of storing large amounts of data in cookies?",
+              "fr": "Quel est un inconvénient potentiel du stockage de grandes quantités de données dans les cookies ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It can slow down your web application.",
+              "fr": "Cela peut ralentir ton application web."
+            },
+            {
+              "en": "Cookies have unlimited storage capacity.",
+              "fr": "Les cookies ont une capacité de stockage illimitée."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when cookies are sent with every HTTP request.",
+              "fr": "Réfléchis à ce qui se passe lorsque les cookies sont envoyés avec chaque requête HTTP."
+            },
+            {
+              "en": "It makes the website more secure.",
+              "fr": "Cela rend le site plus sécurisé."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when cookies are sent with every HTTP request.",
+              "fr": "Réfléchis à ce qui se passe lorsque les cookies sont envoyés avec chaque requête HTTP."
+            },
+            {
+              "en": "It improves server performance.",
+              "fr": "Cela améliore les performances du serveur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what happens when cookies are sent with every HTTP request.",
+              "fr": "Réfléchis à ce qui se passe lorsque les cookies sont envoyés avec chaque requête HTTP."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ffb59c62ee4a23522efe.md",
+      "id": "6733ffb59c62ee4a23522efe",
+      "dashedName": "what-is-indexeddb-and-how-does-it-work",
+      "title": {
+        "en": "What Is IndexedDB, and How Does It Work?",
+        "fr": "Qu'est-ce qu'IndexedDB, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "`IndexedDB` is a tool for storing structured data in the browser. This is built into modern web browsers, allowing web apps to store and fetch JavaScript objects efficiently.",
+              "fr": "`IndexedDB` est un outil pour stocker des données structurées dans le navigateur. Il est intégré aux navigateurs web modernes, permettant aux applications web de stocker et de récupérer des objets JavaScript efficacement."
+            },
+            {
+              "en": "Unlike other storage mechanisms like `localStorage`, which is limited to storing strings, `IndexedDB` can store JavaScript objects, files, and pretty much any other type of data. This makes it easy for web applications that need to work with large and complex data structures.",
+              "fr": "Contrairement à d'autres mécanismes de stockage comme `localStorage`, qui est limité au stockage de chaînes, `IndexedDB` peut stocker des objets JavaScript, des fichiers, et à peu près n'importe quel autre type de données. Cela facilite la vie des applications web qui doivent travailler avec de grandes structures de données complexes."
+            },
+            {
+              "en": "Now, let's look at how `IndexedDB` works.",
+              "fr": "Maintenant, voyons comment `IndexedDB` fonctionne."
+            },
+            {
+              "en": "The first step is to open a database. Here's an example:",
+              "fr": "La première étape est d'ouvrir une base de données. Voici un exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "In this code, we're opening a database named `\"Sample DB\"` with version 1. We provide two callback functions: one for handling errors, and another for when the database is successfully opened. The `db` object we get in the success callback is what we'll use to interact with the database.",
+              "fr": "Dans ce code, on ouvre une base de données nommée `\"Sample DB\"` avec la version 1. On fournit deux fonctions de rappel : une pour gérer les erreurs, et une autre pour lorsque la base de données est ouverte avec succès. L'objet `db` que l'on obtient dans le rappel de succès est ce que l'on utilisera pour interagir avec la base de données."
+            },
+            {
+              "en": "If you check the browser dev tools application interface, you will see your `Sample DB` in the `IndexedDb` section has been opened. Once you have your database open, you can start working with object stores.",
+              "fr": "Si tu vérifies l'interface Application des outils de développement du navigateur, tu verras que ta `Sample DB` a été ouverte dans la section `IndexedDb`. Une fois ta base de données ouverte, tu peux commencer à travailler avec les object stores."
+            },
+            {
+              "en": "Object stores in IndexedDB are similar to tables in traditional databases. They hold the actual data you want to store. Here's how to create an object store:",
+              "fr": "Les object stores dans IndexedDB sont similaires aux tables dans les bases de données traditionnelles. Ils contiennent les données réelles que tu veux stocker. Voici comment créer un object store :"
+            },
+            {
+              "en": "This code creates an object store named `\"customers\"` with `\"id\"` as its key path. The key path is like a primary key in a traditional database - it's used to uniquely identify each record.",
+              "fr": "Ce code crée un object store nommé `\"customers\"` avec `\"id\"` comme chemin de clé. Le chemin de clé est comme une clé primaire dans une base de données traditionnelle — il est utilisé pour identifier de façon unique chaque enregistrement."
+            },
+            {
+              "en": "To add data to our object store, we'd do something like this. The `db` in this example represents the `IndexedDB` database instance.",
+              "fr": "Pour ajouter des données à notre object store, on ferait quelque chose comme ceci. Le `db` dans cet exemple représente l'instance de la base de données `IndexedDB`."
+            },
+            {
+              "en": "This code adds a new customer to our `\"customers\"` object store. We start a transaction (which is how we group database operations), get a reference to our object store, and then add our data.",
+              "fr": "Ce code ajoute un nouveau client à notre object store `\"customers\"`. On démarre une transaction (c'est ainsi que l'on regroupe les opérations de base de données), on obtient une référence à notre object store, puis on ajoute nos données."
+            },
+            {
+              "en": "Retrieving data works in a similar way. We start a transaction, get our object store, and then use methods like `get` to retrieve data:",
+              "fr": "La récupération de données fonctionne de façon similaire. On démarre une transaction, on obtient notre object store, puis on utilise des méthodes comme `get` pour récupérer les données :"
+            },
+            {
+              "en": "This code retrieves the customer with `id` of `1` from our `\"customers\"` object store.",
+              "fr": "Ce code récupère le client avec l'`id` de `1` depuis notre object store `\"customers\"`."
+            },
+            {
+              "en": "One of the key features of `IndexedDB` is that it's asynchronous.",
+              "fr": "L'une des caractéristiques clés d'`IndexedDB` est qu'il est asynchrone."
+            },
+            {
+              "en": "This means that when you interact with `IndexedDB`, operations don't block the main thread of the web application. This ensures that your web application remains responsive even when dealing with large amounts of data.",
+              "fr": "Cela signifie que lorsque tu interagis avec `IndexedDB`, les opérations ne bloquent pas le fil principal de l'application web. Cela garantit que ton application web reste réactive même lorsqu'elle traite de grandes quantités de données."
+            },
+            {
+              "en": "While `IndexedDB` provides powerful capabilities, it has a steeper learning curve compared to other simpler storage API options which can be challenging for beginners. However, for applications that need to handle large amounts of structured data on the client-side, `IndexedDB` offers unparalleled capabilities.",
+              "fr": "Bien qu'`IndexedDB` offre des capacités puissantes, il a une courbe d'apprentissage plus raide que les autres options d'API de stockage plus simples, ce qui peut être un défi pour les débutants. Cependant, pour les applications qui doivent gérer de grandes quantités de données structurées côté client, `IndexedDB` offre des capacités inégalées."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key characteristic of `IndexedDB` operations?",
+              "fr": "Quelle est une caractéristique clé des opérations `IndexedDB` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They are always synchronous.",
+              "fr": "Elles sont toujours synchrones."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `IndexedDB` operations interact with the main thread of a web application.",
+              "fr": "Réfléchis à la façon dont les opérations `IndexedDB` interagissent avec le fil principal d'une application web."
+            },
+            {
+              "en": "They are always asynchronous.",
+              "fr": "Elles sont toujours asynchrones."
+            },
+            {
+              "en": "They only work with string data.",
+              "fr": "Elles ne fonctionnent qu'avec des données de type chaîne."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `IndexedDB` operations interact with the main thread of a web application.",
+              "fr": "Réfléchis à la façon dont les opérations `IndexedDB` interagissent avec le fil principal d'une application web."
+            },
+            {
+              "en": "They require a constant internet connection.",
+              "fr": "Elles nécessitent une connexion Internet constante."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how `IndexedDB` operations interact with the main thread of a web application.",
+              "fr": "Réfléchis à la façon dont les opérations `IndexedDB` interagissent avec le fil principal d'une application web."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary advantage of using `IndexedDB` over `localStorage`?",
+              "fr": "Quel est le principal avantage d'utiliser `IndexedDB` par rapport à `localStorage` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`IndexedDB` is easier to use.",
+              "fr": "`IndexedDB` est plus facile à utiliser."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of data each storage method can handle and how this affects their use cases.",
+              "fr": "Réfléchis aux types de données que chaque méthode de stockage peut gérer et à la façon dont cela affecte leurs cas d'usage."
+            },
+            {
+              "en": "`IndexedDB` supports storing complex JavaScript objects directly.",
+              "fr": "`IndexedDB` permet de stocker directement des objets JavaScript complexes."
+            },
+            {
+              "en": "`IndexedDB` is synchronous.",
+              "fr": "`IndexedDB` est synchrone."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of data each storage method can handle and how this affects their use cases.",
+              "fr": "Réfléchis aux types de données que chaque méthode de stockage peut gérer et à la façon dont cela affecte leurs cas d'usage."
+            },
+            {
+              "en": "`IndexedDB` is supported in older browsers.",
+              "fr": "`IndexedDB` est pris en charge dans les anciens navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the types of data each storage method can handle and how this affects their use cases.",
+              "fr": "Réfléchis aux types de données que chaque méthode de stockage peut gérer et à la façon dont cela affecte leurs cas d'usage."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In `IndexedDB`, what is an object store most similar to in traditional relational databases?",
+              "fr": "Dans `IndexedDB`, à quoi un object store ressemble-t-il le plus dans les bases de données relationnelles traditionnelles ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A database.",
+              "fr": "Une base de données."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data is organized in `IndexedDB` compared to a traditional SQL database.",
+              "fr": "Réfléchis à la façon dont les données sont organisées dans `IndexedDB` par rapport à une base de données SQL traditionnelle."
+            },
+            {
+              "en": "A table.",
+              "fr": "Une table."
+            },
+            {
+              "en": "A row.",
+              "fr": "Une ligne."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data is organized in `IndexedDB` compared to a traditional SQL database.",
+              "fr": "Réfléchis à la façon dont les données sont organisées dans `IndexedDB` par rapport à une base de données SQL traditionnelle."
+            },
+            {
+              "en": "A column.",
+              "fr": "Une colonne."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how data is organized in `IndexedDB` compared to a traditional SQL database.",
+              "fr": "Réfléchis à la façon dont les données sont organisées dans `IndexedDB` par rapport à une base de données SQL traditionnelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733ffc7353af34a61ed683a.md",
+      "id": "6733ffc7353af34a61ed683a",
+      "dashedName": "what-are-cache-service-workers-and-how-do-they-work",
+      "title": {
+        "en": "What Are Cache and Service Workers, and How Do They Work?",
+        "fr": "Que sont le cache et les service workers, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Caching is the process of storing copies of files in a temporary storage location so they can be accessed more quickly.",
+              "fr": "La mise en cache est le processus de stockage de copies de fichiers dans un emplacement de stockage temporaire afin qu'ils puissent être accessibles plus rapidement."
+            },
+            {
+              "en": "When you visit a website, your browser can save certain files (such as images, CSS, and JavaScript) locally. This means that the next time you visit the same site, it can load these files from your device instead of fetching them again from a server, making the site load faster.",
+              "fr": "Lorsque tu visites un site web, ton navigateur peut enregistrer certains fichiers (comme les images, le CSS et le JavaScript) localement. Cela signifie que la prochaine fois que tu visites le même site, il peut charger ces fichiers depuis ton appareil au lieu de les récupérer à nouveau depuis un serveur, ce qui accélère le chargement du site."
+            },
+            {
+              "en": "A service worker is a script that runs in the background, separate from your web page. It can intercept network requests, access the cache, and enable the web app to work offline. It is a key component of Progressive Web Apps.",
+              "fr": "Un service worker est un script qui s'exécute en arrière-plan, séparément de ta page web. Il peut intercepter les requêtes réseau, accéder au cache, et permettre à l'application web de fonctionner hors ligne. C'est un composant clé des Progressive Web Apps."
+            },
+            {
+              "en": "So, how do cache and service workers work together in Progressive Web Apps?",
+              "fr": "Alors, comment le cache et les service workers fonctionnent-ils ensemble dans les Progressive Web Apps ?"
+            },
+            {
+              "en": "PWAs are web apps that can offer an app-like experience. They can work offline, send push notifications, and even be installed on the home screen of a mobile device or computer.",
+              "fr": "Les PWA sont des applications web qui peuvent offrir une expérience proche d'une application. Elles peuvent fonctionner hors ligne, envoyer des notifications push, et même être installées sur l'écran d'accueil d'un appareil mobile ou d'un ordinateur."
+            },
+            {
+              "en": "When a user first visits a PWA, the service worker can cache important files.",
+              "fr": "Lorsqu'un utilisateur visite une PWA pour la première fois, le service worker peut mettre en cache des fichiers importants."
+            },
+            {
+              "en": "Users can continue to use the app offline, and when they come back online, any upcoming changes can be synced with the server.",
+              "fr": "Les utilisateurs peuvent continuer à utiliser l'application hors ligne, et lorsqu'ils reviennent en ligne, les changements à venir peuvent être synchronisés avec le serveur."
+            },
+            {
+              "en": "The combination of caching and service workers enables web apps to provide a fast and reliable experience even in poor network conditions.",
+              "fr": "La combinaison de la mise en cache et des service workers permet aux applications web de fournir une expérience rapide et fiable même dans de mauvaises conditions réseau."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of a service worker in a Progressive Web App?",
+              "fr": "Quel est le but principal d'un service worker dans une Progressive Web App ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To style web pages.",
+              "fr": "Styliser les pages web."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what allows PWAs to work offline.",
+              "fr": "Réfléchis à ce qui permet aux PWA de fonctionner hors ligne."
+            },
+            {
+              "en": "To handle server-side logic.",
+              "fr": "Gérer la logique côté serveur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what allows PWAs to work offline.",
+              "fr": "Réfléchis à ce qui permet aux PWA de fonctionner hors ligne."
+            },
+            {
+              "en": "To intercept network requests and manage caching.",
+              "fr": "Intercepter les requêtes réseau et gérer la mise en cache."
+            },
+            {
+              "en": "To create user interfaces.",
+              "fr": "Créer des interfaces utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what allows PWAs to work offline.",
+              "fr": "Réfléchis à ce qui permet aux PWA de fonctionner hors ligne."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the context of PWAs, what does caching primarily help with?",
+              "fr": "Dans le contexte des PWA, à quoi la mise en cache aide-t-elle principalement ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Increasing server capacity.",
+              "fr": "Augmenter la capacité du serveur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how caching affects the loading of web resources.",
+              "fr": "Réfléchis à la façon dont la mise en cache affecte le chargement des ressources web."
+            },
+            {
+              "en": "Improving application security.",
+              "fr": "Améliorer la sécurité de l'application."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how caching affects the loading of web resources.",
+              "fr": "Réfléchis à la façon dont la mise en cache affecte le chargement des ressources web."
+            },
+            {
+              "en": "Enhancing offline functionality and speed.",
+              "fr": "Améliorer les fonctionnalités hors ligne et la vitesse."
+            },
+            {
+              "en": "Creating backups of user data.",
+              "fr": "Créer des sauvegardes des données utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how caching affects the loading of web resources.",
+              "fr": "Réfléchis à la façon dont la mise en cache affecte le chargement des ressources web."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key characteristic of Progressive Web Apps (PWAs)?",
+              "fr": "Quelle est une caractéristique clé des Progressive Web Apps (PWA) ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They can only be accessed through app stores.",
+              "fr": "Elles ne sont accessibles que via les stores d'applications."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how PWAs blend features of web and native apps.",
+              "fr": "Réfléchis à la façon dont les PWA mélangent les fonctionnalités des applications web et natives."
+            },
+            {
+              "en": "They require constant internet connection.",
+              "fr": "Elles nécessitent une connexion Internet constante."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how PWAs blend features of web and native apps.",
+              "fr": "Réfléchis à la façon dont les PWA mélangent les fonctionnalités des applications web et natives."
+            },
+            {
+              "en": "They can work offline and be installed on home screens.",
+              "fr": "Elles peuvent fonctionner hors ligne et être installées sur les écrans d'accueil."
+            },
+            {
+              "en": "They are only available on mobile devices.",
+              "fr": "Elles ne sont disponibles que sur les appareils mobiles."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how PWAs blend features of web and native apps.",
+              "fr": "Réfléchis à la façon dont les PWA mélangent les fonctionnalités des applications web et natives."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

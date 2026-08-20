@@ -1,0 +1,111 @@
+{
+  "workshop": "review-javascript-maps-and-sets",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723d027b02e4cc6ee5944da.md",
+      "id": "6723d027b02e4cc6ee5944da",
+      "dashedName": "review-javascript-maps-and-sets",
+      "title": {
+        "en": "JavaScript Maps and Sets Review",
+        "fr": "Révision des Maps et Sets en JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Sets in JavaScript",
+              "fr": "## Les Sets en JavaScript"
+            },
+            {
+              "en": "- A `Set` is a built-in option for managing data collection.\n- Sets ensure that each value in it appears only once, making it useful for eliminating duplicates from an array or handling collections of distinct values.\n- You can create a `Set` using the `Set()` constructor:",
+              "fr": "- Un `Set` est une option intégrée pour gérer une collection de données.\n- Les Sets garantissent que chaque valeur n'y apparaît qu'une seule fois, ce qui les rend utiles pour éliminer les doublons d'un tableau ou gérer des collections de valeurs distinctes.\n- Tu peux créer un `Set` avec le constructeur `Set()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- Sets can be manipulated using these methods:",
+              "fr": "- Les Sets peuvent être manipulés avec ces méthodes :"
+            },
+            {
+              "en": "- `add()`: Adds a new element to the `Set`.\n  - `delete()`: Removes an element from the `Set`.\n  - `has()`: Checks if an element exists in the `Set`.\n  - `clear()`: Removes all elements from the `Set`.\n  - `keys()` and `values()`: Both returns a `SetIterator` that contains the values of the `Set`. They are the same because `keys()` is an alias for `values()`.\n  - `forEach()`: for iterating over the values of the `Set`.",
+              "fr": "- `add()` : ajoute un nouvel élément au `Set`.\n  - `delete()` : retire un élément du `Set`.\n  - `has()` : vérifie si un élément existe dans le `Set`.\n  - `clear()` : retire tous les éléments du `Set`.\n  - `keys()` et `values()` : renvoient toutes deux un `SetIterator` qui contient les valeurs du `Set`. Elles sont identiques car `keys()` est un alias de `values()`.\n  - `forEach()` : pour parcourir les valeurs du `Set`."
+            },
+            {
+              "en": "## Weaksets in JavaScript",
+              "fr": "## Les WeakSets en JavaScript"
+            },
+            {
+              "en": "- `WeakSet` is a collection of objects that allows you to store weakly held objects.",
+              "fr": "- Un `WeakSet` est une collection d'objets qui te permet de stocker des objets détenus faiblement."
+            },
+            {
+              "en": "## Sets vs WeakSets",
+              "fr": "## Sets vs WeakSets"
+            },
+            {
+              "en": "- Unlike Sets, a `WeakSet` does not support primitives like numbers or strings.\n- A `WeakSet` only stores objects, and the references to those objects are \"weak,\" meaning that if the object is not being used anywhere else in your code, it is removed automatically to free up memory.",
+              "fr": "- Contrairement aux Sets, un `WeakSet` ne prend pas en charge les primitives comme les nombres ou les chaînes.\n- Un `WeakSet` ne stocke que des objets, et les références à ces objets sont « faibles », ce qui signifie que si l'objet n'est utilisé nulle part ailleurs dans ton code, il est retiré automatiquement pour libérer de la mémoire."
+            },
+            {
+              "en": "## Maps in JavaScript",
+              "fr": "## Les Maps en JavaScript"
+            },
+            {
+              "en": "- A `Map` is a built-in object that holds key-value pairs just like an object. \n- Maps differ from the standard JavaScript objects with their ability to allow keys of any type, including objects, and functions.\n- A `Map` provides better performance over the standard object when it comes to frequent addition and removals of key-value pairs.\n- You can create a `Map` using the `Map()` constructor:",
+              "fr": "- Un `Map` est un objet intégré qui stocke des paires clé-valeur, comme un objet.\n- Les Maps diffèrent des objets JavaScript standard par leur capacité à autoriser des clés de n'importe quel type, y compris des objets et des fonctions.\n- Un `Map` offre de meilleures performances qu'un objet standard pour les ajouts et suppressions fréquents de paires clé-valeur.\n- Tu peux créer un `Map` avec le constructeur `Map()` :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- Maps can be manipulated using these methods:",
+              "fr": "- Les Maps peuvent être manipulés avec ces méthodes :"
+            },
+            {
+              "en": "- `set()`: Adds a new key-value pair to the `Map`.\n  - `get()`: Retrieves the value of a key from the `Map`.\n  - `delete()`: Removes a key-value pair from the `Map`.\n  - `has()`: Checks if a key exists in the `Map`.\n  - `clear()`: Removes all key-value pairs from the `Map`.",
+              "fr": "- `set()` : ajoute une nouvelle paire clé-valeur au `Map`.\n  - `get()` : récupère la valeur d'une clé dans le `Map`.\n  - `delete()` : retire une paire clé-valeur du `Map`.\n  - `has()` : vérifie si une clé existe dans le `Map`.\n  - `clear()` : retire toutes les paires clé-valeur du `Map`."
+            },
+            {
+              "en": "Note that both Maps and Sets have the `size` property that returns the number of unique elements in them.",
+              "fr": "Note que les Maps et les Sets ont tous deux la propriété `size`, qui renvoie le nombre d'éléments uniques qu'ils contiennent."
+            },
+            {
+              "en": "## WeakMaps in JavaScript",
+              "fr": "## Les WeakMaps en JavaScript"
+            },
+            {
+              "en": "- A `WeakMap` is a collection of key-value pairs just like `Map`, but with weak references to the keys. The keys must be an object and the values can be anything you like.",
+              "fr": "- Un `WeakMap` est une collection de paires clé-valeur comme un `Map`, mais avec des références faibles aux clés. Les clés doivent être des objets et les valeurs peuvent être de n'importe quel type."
+            },
+            {
+              "en": "## Maps vs WeakMaps",
+              "fr": "## Maps vs WeakMaps"
+            },
+            {
+              "en": "- WeakMaps are similar to WeakSets in that they only store objects and the references to those objects are \"weak\".",
+              "fr": "- Les WeakMaps sont similaires aux WeakSets : ils ne stockent que des objets et les références à ces objets sont « faibles »."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Maps, Sets, and JSON topics and concepts.",
+              "fr": "Révise les sujets et concepts JavaScript Maps, Sets et JSON."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
