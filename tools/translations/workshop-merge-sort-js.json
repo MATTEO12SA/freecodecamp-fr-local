@@ -1,0 +1,665 @@
+{
+  "workshop": "workshop-merge-sort-js",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69b2713ff6c21fed2d3ad88b.md",
+      "id": "69b2713ff6c21fed2d3ad88b",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "Merge sort is a sorting algorithm that uses the divide-and-conquer principle to sort collections of data. That is, it \"divides\" a collection into smaller sub-parts, and \"conquers\" the sub-parts by sorting them independently, then merges the sorted sub-parts.",
+          "fr": "Le tri fusion (merge sort) est un algorithme de tri qui utilise le principe diviser pour régner pour trier des collections de données. Autrement dit, il « divise » une collection en sous-parties plus petites, et « conquiert » ces sous-parties en les triant indépendamment, puis fusionne les sous-parties triées."
+        },
+        {
+          "en": "Begin by creating a function called `mergeSort` that takes the parameter `array`.",
+          "fr": "Commence par créer une fonction appelée `mergeSort` qui prend le paramètre `array`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a function named `mergeSort` with a single `array` parameter.",
+          "fr": "Tu dois déclarer une fonction nommée `mergeSort` avec un seul paramètre `array`."
+        }
+      ]
+    },
+    {
+      "file": "69b2762b17d23fbee40a6c00.md",
+      "id": "69b2762b17d23fbee40a6c00",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "The merge sort algorithm performs three actions:",
+          "fr": "L'algorithme de tri fusion effectue trois actions :"
+        },
+        {
+          "en": "- Divide an unsorted sequence of items into sub-parts\n- Sort the items in the sub-parts\n- Merge the sorted sub-parts",
+          "fr": "- Diviser une séquence non triée d'éléments en sous-parties\n- Trier les éléments dans les sous-parties\n- Fusionner les sous-parties triées"
+        },
+        {
+          "en": "The above happens recursively until the sub-parts are merged into the complete sorted sequence. Let's start by dividing the sequence.",
+          "fr": "Ce qui précède se produit de façon récursive jusqu'à ce que les sous-parties soient fusionnées en la séquence triée complète. Commençons par diviser la séquence."
+        },
+        {
+          "en": "First, inside the `mergeSort` function, declare a variable `middlePoint` using `const` and assign it `Math.floor(array.length / 2)` so you can split the sequence in half before recursing.",
+          "fr": "D'abord, à l'intérieur de la fonction `mergeSort`, déclare une variable `middlePoint` avec `const` et assigne-lui `Math.floor(array.length / 2)` afin de pouvoir couper la séquence en deux avant de récursiver."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `middlePoint` variable and assign `Math.floor(array.length / 2)` to it.",
+          "fr": "Tu dois déclarer une variable `middlePoint` et lui assigner `Math.floor(array.length / 2)`."
+        }
+      ]
+    },
+    {
+      "file": "69b278519ef46b2fd8bf1546.md",
+      "id": "69b278519ef46b2fd8bf1546",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "You already have a `middlePoint` value. Use it to split the array into two halves and keep the left portion ready for sorting.",
+          "fr": "Tu as déjà une valeur `middlePoint`. Utilise-la pour couper le tableau en deux moitiés et garder la portion gauche prête pour le tri."
+        },
+        {
+          "en": "Use the slice syntax to extract the left half of `array` and assign it to a variable named `leftPart`.",
+          "fr": "Utilise la syntaxe slice pour extraire la moitié gauche de `array` et assigne-la à une variable nommée `leftPart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `leftPart` variable inside the `mergeSort` function.",
+          "fr": "Tu dois déclarer une variable `leftPart` à l'intérieur de la fonction `mergeSort`."
+        },
+        {
+          "en": "You should assign `array.slice(0, middlePoint)` to `leftPart`.",
+          "fr": "Tu dois assigner `array.slice(0, middlePoint)` à `leftPart`."
+        }
+      ]
+    },
+    {
+      "file": "69b278d82f0e514f32acb724.md",
+      "id": "69b278d82f0e514f32acb724",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "After slicing the left half, you still need the right side to complete the merge step.",
+          "fr": "Après avoir découpé la moitié gauche, tu as encore besoin du côté droit pour compléter l'étape de fusion."
+        },
+        {
+          "en": "Use the slice syntax to extract the right half of `array` and assign it to a variable named `rightPart`.",
+          "fr": "Utilise la syntaxe slice pour extraire la moitié droite de `array` et assigne-la à une variable nommée `rightPart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `rightPart` variable inside the `mergeSort` function.",
+          "fr": "Tu dois avoir une variable `rightPart` à l'intérieur de la fonction `mergeSort`."
+        },
+        {
+          "en": "You should use the slice syntax to extract the right half of the array and assign it to the `rightPart` variable.",
+          "fr": "Tu dois utiliser la syntaxe slice pour extraire la moitié droite du tableau et l'assigner à la variable `rightPart`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cef.md",
+      "id": "69b279bae0f20eda63163cef",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Now that you've divided the `array` list into two separate lists, you'll keep dividing each list until every element stands alone in its own list. A list with a single number is always sorted.",
+          "fr": "Maintenant que tu as divisé la liste `array` en deux listes séparées, tu vas continuer à diviser chaque liste jusqu'à ce que chaque élément soit seul dans sa propre liste. Une liste avec un seul nombre est toujours triée."
+        },
+        {
+          "en": "To do that, recursively call `mergeSort` inside your function and pass `leftPart` as the argument to the call.",
+          "fr": "Pour cela, appelle `mergeSort` de façon récursive à l'intérieur de ta fonction et passe `leftPart` comme argument à l'appel."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `mergeSort(leftPart)` inside the same `mergeSort` function.",
+          "fr": "Tu dois appeler `mergeSort(leftPart)` à l'intérieur de la même fonction `mergeSort`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf0.md",
+      "id": "69b279bae0f20eda63163cf0",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "At the bottom of your function body, call the `mergeSort()` function again. This time, pass in `rightPart` as the argument to the function call.",
+          "fr": "En bas du corps de ta fonction, appelle à nouveau la fonction `mergeSort()`. Cette fois, passe `rightPart` comme argument à l'appel de fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `mergeSort()` with the argument `rightPart` at the bottom of your function body.",
+          "fr": "Tu dois appeler `mergeSort()` avec l'argument `rightPart` en bas du corps de ta fonction."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf1.md",
+      "id": "69b279bae0f20eda63163cf1",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now it's time to sort and merge the lists (`leftPart` and `rightPart`) into the original `array`.",
+          "fr": "Il est maintenant temps de trier et de fusionner les listes (`leftPart` et `rightPart`) dans le `array` d'origine."
+        },
+        {
+          "en": "You can do this by comparing elements on both lists, and merging the smaller element to the main list. You are going to do this comparison for all the indexes in `leftPart` and `rightPart`.",
+          "fr": "Tu peux le faire en comparant les éléments des deux listes, et en fusionnant le plus petit élément dans la liste principale. Tu vas faire cette comparaison pour tous les indices de `leftPart` et `rightPart`."
+        },
+        {
+          "en": "Create three variables: `leftArrayIndex`, `rightArrayIndex`, and `sortedIndex`, and set their values to `0`. These variables will help you keep track of each index during the sorting process.",
+          "fr": "Crée trois variables : `leftArrayIndex`, `rightArrayIndex` et `sortedIndex`, et définis leurs valeurs à `0`. Ces variables t'aideront à suivre chaque indice pendant le processus de tri."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `leftArrayIndex` variable initialized to `0`.",
+          "fr": "Tu dois déclarer une variable `leftArrayIndex` initialisée à `0`."
+        },
+        {
+          "en": "You should declare a `rightArrayIndex` variable initialized to `0`.",
+          "fr": "Tu dois déclarer une variable `rightArrayIndex` initialisée à `0`."
+        },
+        {
+          "en": "You should declare a `sortedIndex` variable initialized to `0`.",
+          "fr": "Tu dois déclarer une variable `sortedIndex` initialisée à `0`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf2.md",
+      "id": "69b279bae0f20eda63163cf2",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Next, you need to create a loop that continues as long as there are elements remaining in both `leftPart` and `rightPart`.",
+          "fr": "Ensuite, tu dois créer une boucle qui continue tant qu'il reste des éléments dans `leftPart` et dans `rightPart`."
+        },
+        {
+          "en": "For that, create a `while` loop with two conditions: one that checks whether the `leftArrayIndex` is less than the length of `leftPart` and another condition that checks whether `rightArrayIndex` is less than the length of `rightPart`.",
+          "fr": "Pour cela, crée une boucle `while` avec deux conditions : l'une qui vérifie si `leftArrayIndex` est inférieur à la longueur de `leftPart` et une autre qui vérifie si `rightArrayIndex` est inférieur à la longueur de `rightPart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop that checks if `leftArrayIndex` is less than the length of `leftPart` and if `rightArrayIndex` is less than the length of `rightPart`.",
+          "fr": "Tu dois créer une boucle `while` qui vérifie si `leftArrayIndex` est inférieur à la longueur de `leftPart` et si `rightArrayIndex` est inférieur à la longueur de `rightPart`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf3.md",
+      "id": "69b279bae0f20eda63163cf3",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Inside the loop, start comparing the current elements from each half so you can merge the smaller value first.",
+          "fr": "À l'intérieur de la boucle, commence par comparer les éléments courants de chaque moitié afin de fusionner d'abord la plus petite valeur."
+        },
+        {
+          "en": "Add an `if` block that checks if the current element in `leftPart` is less than the current element in `rightPart`.",
+          "fr": "Ajoute un bloc `if` qui vérifie si l'élément courant dans `leftPart` est inférieur à l'élément courant dans `rightPart`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `if` condition should check if `leftPart[leftArrayIndex]` is less than `rightPart[rightArrayIndex]`.",
+          "fr": "La condition `if` doit vérifier si `leftPart[leftArrayIndex]` est inférieur à `rightPart[rightArrayIndex]`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf4.md",
+      "id": "69b279bae0f20eda63163cf4",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "When the `if` condition evaluates to `true`, it means that the element in the `leftPart` list is smaller than the element it is being compared to in the `rightPart` list.",
+          "fr": "Quand la condition `if` s'évalue à `true`, cela signifie que l'élément de la liste `leftPart` est plus petit que l'élément auquel il est comparé dans la liste `rightPart`."
+        },
+        {
+          "en": "In that case, you can put the element found at `leftArrayIndex` in `leftPart` within the sorted array.",
+          "fr": "Dans ce cas, tu peux placer l'élément trouvé à `leftArrayIndex` dans `leftPart` dans le tableau trié."
+        },
+        {
+          "en": "Inside the `if` block, assign `leftPart[leftArrayIndex]` to `array[sortedIndex]`.",
+          "fr": "À l'intérieur du bloc `if`, assigne `leftPart[leftArrayIndex]` à `array[sortedIndex]`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `leftPart[leftArrayIndex]` to `array[sortedIndex]` inside the `if`.",
+          "fr": "Tu dois assigner `leftPart[leftArrayIndex]` à `array[sortedIndex]` à l'intérieur du `if`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf5.md",
+      "id": "69b279bae0f20eda63163cf5",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "After assigning the element in `leftPart` to the sorted array, increment `leftArrayIndex` by `1`.",
+          "fr": "Après avoir assigné l'élément de `leftPart` au tableau trié, incrémente `leftArrayIndex` de `1`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add to the current value of `leftArrayIndex` after inserting the element into the sorted array.",
+          "fr": "Tu dois ajouter à la valeur actuelle de `leftArrayIndex` après avoir inséré l'élément dans le tableau trié."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf6.md",
+      "id": "69b279bae0f20eda63163cf6",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "In a previous step, you assigned the element in the `leftPart` to the `array` list because it was smaller. But this will not always be the case. In some comparison cases, the element on the right could be smaller.",
+          "fr": "Dans une étape précédente, tu as assigné l'élément de `leftPart` à la liste `array` parce qu'il était plus petit. Mais ce ne sera pas toujours le cas. Dans certaines comparaisons, l'élément de droite pourrait être plus petit."
+        },
+        {
+          "en": "Create an `else` clause to execute when the element in `leftPart` is not less than the element in `rightPart`.",
+          "fr": "Crée une clause `else` à exécuter quand l'élément de `leftPart` n'est pas inférieur à l'élément de `rightPart`."
+        },
+        {
+          "en": "Inside the `else` block, assign `rightPart[rightArrayIndex]` to `array[sortedIndex]`.",
+          "fr": "À l'intérieur du bloc `else`, assigne `rightPart[rightArrayIndex]` à `array[sortedIndex]`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `else` block that contains `array[sortedIndex] = rightPart[rightArrayIndex]`.",
+          "fr": "Tu dois créer un bloc `else` qui contient `array[sortedIndex] = rightPart[rightArrayIndex]`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf7.md",
+      "id": "69b279bae0f20eda63163cf7",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Still within the `else` block, increment `rightArrayIndex` by `1`.",
+          "fr": "Toujours dans le bloc `else`, incrémente `rightArrayIndex` de `1`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should increment `rightArrayIndex` after inserting the element into the sorted array.",
+          "fr": "Tu dois incrémenter `rightArrayIndex` après avoir inséré l'élément dans le tableau trié."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf8.md",
+      "id": "69b279bae0f20eda63163cf8",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "The `if` and `else` statements you created in the previous steps will assign elements to the sorted array.",
+          "fr": "Les instructions `if` et `else` que tu as créées dans les étapes précédentes assignent des éléments au tableau trié."
+        },
+        {
+          "en": "Each element assigned to the sorted array takes up an index in the list. So you have to move to the next index in the sorted array after each assignment.",
+          "fr": "Chaque élément assigné au tableau trié occupe un indice dans la liste. Tu dois donc passer à l'indice suivant du tableau trié après chaque assignation."
+        },
+        {
+          "en": "Below the `if`/`else` block, but still within the `while` loop, increment `sortedIndex` by `1`.",
+          "fr": "Sous le bloc `if`/`else`, mais toujours dans la boucle `while`, incrémente `sortedIndex` de `1`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should increment the current value of `sortedIndex` by `1` after your `else` clause.",
+          "fr": "Tu dois incrémenter la valeur actuelle de `sortedIndex` de `1` après ta clause `else`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cf9.md",
+      "id": "69b279bae0f20eda63163cf9",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "The `while` loop you created compares one element from `leftPart` with another in `rightPart`, then adds the smaller element to the main `array` list.",
+          "fr": "La boucle `while` que tu as créée compare un élément de `leftPart` avec un autre de `rightPart`, puis ajoute le plus petit élément à la liste principale `array`."
+        },
+        {
+          "en": "It will continue this operation until there are no elements left to be compared. But `leftPart` may still have elements left while `rightPart` has none, and vice versa.",
+          "fr": "Elle continue cette opération jusqu'à ce qu'il ne reste plus d'éléments à comparer. Mais `leftPart` peut encore avoir des éléments alors que `rightPart` n'en a plus, et inversement."
+        },
+        {
+          "en": "Create another `while` loop that runs when `leftArrayIndex` is less than the length of `leftPart`. In the next steps, you'll use it to copy the remaining elements in `leftPart` into the `array` list.",
+          "fr": "Crée une autre boucle `while` qui s'exécute quand `leftArrayIndex` est inférieur à la longueur de `leftPart`. Dans les prochaines étapes, tu l'utiliseras pour copier les éléments restants de `leftPart` dans la liste `array`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop with the condition `leftArrayIndex < leftPart.length`.",
+          "fr": "Tu dois créer une boucle `while` avec la condition `leftArrayIndex < leftPart.length`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cfa.md",
+      "id": "69b279bae0f20eda63163cfa",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Copy the remaining left values into `array` by assigning `leftPart[leftArrayIndex]` to `array[sortedIndex]`.",
+          "fr": "Copie les valeurs restantes de gauche dans `array` en assignant `leftPart[leftArrayIndex]` à `array[sortedIndex]`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The loop body should assign `leftPart[leftArrayIndex]` to `array[sortedIndex]`.",
+          "fr": "Le corps de la boucle doit assigner `leftPart[leftArrayIndex]` à `array[sortedIndex]`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cfb.md",
+      "id": "69b279bae0f20eda63163cfb",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Still within the `while` loop, increment the value of `leftArrayIndex` by 1.",
+          "fr": "Toujours dans la boucle `while`, incrémente la valeur de `leftArrayIndex` de 1."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should increment the current value of `leftArrayIndex` by `1` after assigning the left part element to the sorted array.",
+          "fr": "Tu dois incrémenter la valeur actuelle de `leftArrayIndex` de `1` après avoir assigné l'élément de la partie gauche au tableau trié."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cfc.md",
+      "id": "69b279bae0f20eda63163cfc",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "The last thing to do for the `while` loop is to move to the next index in the sorted array.",
+          "fr": "La dernière chose à faire pour la boucle `while` est de passer à l'indice suivant du tableau trié."
+        },
+        {
+          "en": "Add `1` to the value of `sortedIndex`.",
+          "fr": "Ajoute `1` à la valeur de `sortedIndex`."
+        },
+        {
+          "en": "Note that the increment should be done after assigning the left part element to the sorted array.",
+          "fr": "Note que l'incrémentation doit se faire après avoir assigné l'élément de la partie gauche au tableau trié."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should increment the current value of `sortedIndex` by one within the `while` loop.",
+          "fr": "Tu dois incrémenter la valeur actuelle de `sortedIndex` d'un à l'intérieur de la boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cfd.md",
+      "id": "69b279bae0f20eda63163cfd",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Finally, you should copy any remaining values from the right half into `array`.",
+          "fr": "Enfin, tu dois copier les valeurs restantes de la moitié droite dans `array`."
+        },
+        {
+          "en": "To do this, add a `while` loop that runs as long as `rightArrayIndex` is less than `rightPart.length`, assigns `rightPart[rightArrayIndex]` into `array[sortedIndex]`, and increments both `rightArrayIndex` and `sortedIndex`.",
+          "fr": "Pour cela, ajoute une boucle `while` qui s'exécute tant que `rightArrayIndex` est inférieur à `rightPart.length`, assigne `rightPart[rightArrayIndex]` dans `array[sortedIndex]`, et incrémente à la fois `rightArrayIndex` et `sortedIndex`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop with the condition `rightArrayIndex < rightPart.length`.",
+          "fr": "Tu dois créer une boucle `while` avec la condition `rightArrayIndex < rightPart.length`."
+        },
+        {
+          "en": "The loop body should move `rightPart[rightArrayIndex]` into `array[sortedIndex]`.",
+          "fr": "Le corps de la boucle doit déplacer `rightPart[rightArrayIndex]` dans `array[sortedIndex]`."
+        },
+        {
+          "en": "You should increment both `rightArrayIndex` and `sortedIndex` after the assignment.",
+          "fr": "Tu dois incrémenter à la fois `rightArrayIndex` et `sortedIndex` après l'assignation."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cfe.md",
+      "id": "69b279bae0f20eda63163cfe",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Before testing the `mergeSort()` function, you need to create a base case that stops the function execution when the length of `array` is less than or equal to `1`.",
+          "fr": "Avant de tester la fonction `mergeSort()`, tu dois créer un cas de base qui arrête l'exécution de la fonction quand la longueur de `array` est inférieure ou égale à `1`."
+        },
+        {
+          "en": "This base case will stop the recursion call. Without it, the merge sort operation would continue to run even when the list has been sorted or has no elements in it.",
+          "fr": "Ce cas de base arrêtera l'appel récursif. Sans lui, l'opération de tri fusion continuerait même quand la liste a été triée ou n'a plus d'éléments."
+        },
+        {
+          "en": "Right after the function declaration, create an `if` statement that checks if `array.length` is less than or equal to 1. Within the body of the `if` statement, add a `return` statement to stop the execution of the function.",
+          "fr": "Juste après la déclaration de la fonction, crée une instruction `if` qui vérifie si `array.length` est inférieur ou égal à 1. Dans le corps de l'instruction `if`, ajoute une instruction `return` pour arrêter l'exécution de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with the condition `array.length <= 1`.",
+          "fr": "Tu dois créer une instruction `if` avec la condition `array.length <= 1`."
+        },
+        {
+          "en": "You should have a `return` statement in the body of the `if` statement.",
+          "fr": "Tu dois avoir une instruction `return` dans le corps de l'instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163cff.md",
+      "id": "69b279bae0f20eda63163cff",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Outside the function definition, create an array `numbers` with the following values: `[4, 10, 6, 14, 2, 1, 8, 5]`.",
+          "fr": "En dehors de la définition de la fonction, crée un tableau `numbers` avec les valeurs suivantes : `[4, 10, 6, 14, 2, 1, 8, 5]`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an array called `numbers` with these values: `[4, 10, 6, 14, 2, 1, 8, 5]`",
+          "fr": "Tu dois créer un tableau appelé `numbers` avec ces valeurs : `[4, 10, 6, 14, 2, 1, 8, 5]`"
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163d00.md",
+      "id": "69b279bae0f20eda63163d00",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Log the string `'Unsorted array: '` to the console.",
+          "fr": "Affiche la chaîne `'Unsorted array: '` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log the specified string by using `console.log('Unsorted array: ')`.",
+          "fr": "Tu dois afficher la chaîne spécifiée en utilisant `console.log('Unsorted array: ')`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163d01.md",
+      "id": "69b279bae0f20eda63163d01",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "After printing the string, log the `numbers` array itself so the unsorted list appears next.",
+          "fr": "Après avoir affiché la chaîne, affiche le tableau `numbers` lui-même pour que la liste non triée apparaisse ensuite."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `console.log(numbers);` after the `'Unsorted array: '` message.",
+          "fr": "Tu dois appeler `console.log(numbers);` après le message `'Unsorted array: '`."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163d02.md",
+      "id": "69b279bae0f20eda63163d02",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "After logging the unsorted array, call the `mergeSort` function and pass in the `numbers` array as an argument.",
+          "fr": "Après avoir affiché le tableau non trié, appelle la fonction `mergeSort` et passe-lui le tableau `numbers` en argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `mergeSort(numbers)` after logging the unsorted array.",
+          "fr": "Tu dois appeler `mergeSort(numbers)` après avoir affiché le tableau non trié."
+        }
+      ]
+    },
+    {
+      "file": "69b279bae0f20eda63163d03.md",
+      "id": "69b279bae0f20eda63163d03",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Now that `numbers` is sorted, log `'Sorted array: '` to the console followed by the `numbers` array.",
+          "fr": "Maintenant que `numbers` est trié, affiche `'Sorted array: '` dans la console suivi du tableau `numbers`."
+        },
+        {
+          "en": "With that, the merge sort algorithm is complete.",
+          "fr": "Avec cela, l'algorithme de tri fusion est terminé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `'Sorted array: '` to the console.",
+          "fr": "Tu dois afficher `'Sorted array: '` dans la console."
+        },
+        {
+          "en": "You should log the `numbers` array to the console after logging `'Sorted array: '`.",
+          "fr": "Tu dois afficher le tableau `numbers` dans la console après avoir affiché `'Sorted array: '`."
+        }
+      ]
+    }
+  ]
+}

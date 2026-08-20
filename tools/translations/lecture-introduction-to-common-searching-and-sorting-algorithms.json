@@ -1,0 +1,476 @@
+{
+  "workshop": "lecture-introduction-to-common-searching-and-sorting-algorithms",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "69691f96a3a2f3f6c220ab52.md",
+      "id": "69691f96a3a2f3f6c220ab52",
+      "dashedName": "what-is-binary-search-and-how-does-it-differ-from-linear-search",
+      "title": {
+        "en": "What Is Binary Search and How Does It Differ From Linear Search?",
+        "fr": "Qu'est-ce que la recherche binaire et en quoi diffère-t-elle de la recherche linéaire ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Searching through a list of items is a common occurrence in computer science. There are two key algorithms you should know about when it comes to searching: linear search and binary search.",
+              "fr": "Parcourir une liste d'éléments est une opération courante en informatique. Il y a deux algorithmes clés que tu dois connaître pour la recherche : la recherche linéaire et la recherche binaire."
+            },
+            {
+              "en": "Linear search starts at the beginning of a list and iterates through each item until it finds the target value it is looking for.",
+              "fr": "La recherche linéaire commence au début d'une liste et parcourt chaque élément jusqu'à trouver la valeur cible recherchée."
+            },
+            {
+              "en": "If the target value is found, the index where it's located in the list is returned. If the target value isn't found, `-1` is returned. We return `-1` because it's not a valid index in most programming languages.",
+              "fr": "Si la valeur cible est trouvée, l'indice où elle se trouve dans la liste est renvoyé. Si la valeur cible n'est pas trouvée, `-1` est renvoyé. On renvoie `-1` parce que ce n'est pas un indice valide dans la plupart des langages de programmation."
+            },
+            {
+              "en": "Here is what the code looks like for linear search:",
+              "fr": "Voici à quoi ressemble le code pour la recherche linéaire :"
+            },
+            {
+              "en": "If the list we'll search through is `[13, 4, 7, 9, 10]` and the target value is `9`, the function would return `3` because `9` is at index `3`.",
+              "fr": "Si la liste à parcourir est `[13, 4, 7, 9, 10]` et que la valeur cible est `9`, la fonction renverrait `3` parce que `9` est à l'indice `3`."
+            },
+            {
+              "en": "If we changed the target value to `5`, the function would return `-1` because `5` is not in the list.",
+              "fr": "Si on changeait la valeur cible en `5`, la fonction renverrait `-1` parce que `5` n'est pas dans la liste."
+            },
+            {
+              "en": "While this is a relatively straightforward algorithm, it is not the most efficient. If you have a large list of items, linear search can take a long time to find the target value.",
+              "fr": "Bien que cet algorithme soit relativement simple, ce n'est pas le plus efficace. Si tu as une grande liste d'éléments, la recherche linéaire peut prendre longtemps pour trouver la valeur cible."
+            },
+            {
+              "en": "The time complexity of linear search is `O(n)` because the time it takes to search through the list grows linearly with the size of the list.",
+              "fr": "La complexité temporelle de la recherche linéaire est `O(n)` parce que le temps nécessaire pour parcourir la liste croît linéairement avec la taille de la liste."
+            },
+            {
+              "en": "The space complexity of linear search is `O(1)` because it doesn't require any additional space to search through the list.",
+              "fr": "La complexité spatiale de la recherche linéaire est `O(1)` parce qu'elle ne nécessite aucun espace supplémentaire pour parcourir la liste."
+            },
+            {
+              "en": "Binary search is a more efficient algorithm for searching through a large list of items. The condition here is that the list must be sorted in ascending order.",
+              "fr": "La recherche binaire est un algorithme plus efficace pour parcourir une grande liste d'éléments. La condition est que la liste doit être triée par ordre croissant."
+            },
+            {
+              "en": "Binary search works by dividing the list in half and checking if the target value is in the middle of the list. If the target value is in the middle of the list, the index of the target value is returned. Otherwise, the algorithm checks if the target value is in the left or right half of the list.",
+              "fr": "La recherche binaire fonctionne en divisant la liste en deux et en vérifiant si la valeur cible est au milieu de la liste. Si la valeur cible est au milieu de la liste, l'indice de la valeur cible est renvoyé. Sinon, l'algorithme vérifie si la valeur cible est dans la moitié gauche ou droite de la liste."
+            },
+            {
+              "en": "It continues to divide the remaining parts of the list into halves until the target value is found. If the target value is not in the list, it returns `-1`",
+              "fr": "Il continue à diviser les parties restantes de la liste en moitiés jusqu'à ce que la valeur cible soit trouvée. Si la valeur cible n'est pas dans la liste, il renvoie `-1`"
+            },
+            {
+              "en": "Here is what the code looks like for binary search:",
+              "fr": "Voici à quoi ressemble le code pour la recherche binaire :"
+            },
+            {
+              "en": "We start by identifying a `low` and `high` index. This represents the range of the list we are searching through.",
+              "fr": "On commence par identifier un indice `low` et un indice `high`. Cela représente la plage de la liste que l'on parcourt."
+            },
+            {
+              "en": "We then check the condition of `low` being less than or equal to `high`. If `low` is greater than `high`, we have searched through the entire list and the target value is not found. In that case we stop the search and return `-1`.",
+              "fr": "On vérifie ensuite la condition que `low` soit inférieur ou égal à `high`. Si `low` est supérieur à `high`, on a parcouru toute la liste et la valeur cible n'a pas été trouvée. Dans ce cas, on arrête la recherche et on renvoie `-1`."
+            },
+            {
+              "en": "If the `low` index is less than or equal to the `high` index, we calculate the middle index of the list, `mid`. We then check if the target value is at the middle index. If it is, we return the middle index.",
+              "fr": "Si l'indice `low` est inférieur ou égal à l'indice `high`, on calcule l'indice du milieu de la liste, `mid`. On vérifie ensuite si la valeur cible est à l'indice du milieu. Si c'est le cas, on renvoie l'indice du milieu."
+            },
+            {
+              "en": "Otherwise, we check if the value at the midpoint is less than the target. If it is, we update the low index to be the middle index plus one. This means we will search the right half of the list.",
+              "fr": "Sinon, on vérifie si la valeur au milieu est inférieure à la cible. Si c'est le cas, on met à jour l'indice bas pour qu'il soit l'indice du milieu plus un. Cela signifie qu'on cherchera dans la moitié droite de la liste."
+            },
+            {
+              "en": "Lastly, if none of the other conditions are `True`, we update the `high` index to be the middle index minus one. This means we will search the left half of the list.",
+              "fr": "Enfin, si aucune des autres conditions n'est `True`, on met à jour l'indice `high` pour qu'il soit l'indice du milieu moins un. Cela signifie qu'on cherchera dans la moitié gauche de la liste."
+            },
+            {
+              "en": "We continue to repeat this process until we find the target or determine that the target is not in the list.",
+              "fr": "On continue à répéter ce processus jusqu'à trouver la cible ou déterminer que la cible n'est pas dans la liste."
+            },
+            {
+              "en": "The time complexity of binary search is `O(log n)` because the time it takes to search through the list grows logarithmically with the size of the list.",
+              "fr": "La complexité temporelle de la recherche binaire est `O(log n)` parce que le temps nécessaire pour parcourir la liste croît de façon logarithmique avec la taille de la liste."
+            },
+            {
+              "en": "The space complexity of binary search is `O(1)` because it doesn't require any additional space to search through the list.",
+              "fr": "La complexité spatiale de la recherche binaire est `O(1)` parce qu'elle ne nécessite aucun espace supplémentaire pour parcourir la liste."
+            },
+            {
+              "en": "Binary search and linear search can be used for a variety of problems you will encounter in computer science. It is important to understand the differences between the two algorithms and when to use each one.",
+              "fr": "La recherche binaire et la recherche linéaire peuvent servir pour une variété de problèmes que tu rencontreras en informatique. Il est important de comprendre les différences entre les deux algorithmes et quand utiliser chacun."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main difference between linear search and binary search?",
+              "fr": "Quelle est la principale différence entre la recherche linéaire et la recherche binaire ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Linear search is faster than binary search.",
+              "fr": "La recherche linéaire est plus rapide que la recherche binaire."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the requirements and efficiency of each algorithm.",
+              "fr": "Considère les exigences et l'efficacité de chaque algorithme."
+            },
+            {
+              "en": "Binary search requires a sorted list, while linear search does not.",
+              "fr": "La recherche binaire nécessite une liste triée, tandis que la recherche linéaire non."
+            },
+            {
+              "en": "Linear search can only be used with numbers.",
+              "fr": "La recherche linéaire ne peut être utilisée qu'avec des nombres."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the requirements and efficiency of each algorithm.",
+              "fr": "Considère les exigences et l'efficacité de chaque algorithme."
+            },
+            {
+              "en": "Binary search always returns the first occurrence of a target.",
+              "fr": "La recherche binaire renvoie toujours la première occurrence d'une cible."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the requirements and efficiency of each algorithm.",
+              "fr": "Considère les exigences et l'efficacité de chaque algorithme."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the time complexity of linear search?",
+              "fr": "Quelle est la complexité temporelle de la recherche linéaire ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the time to complete the search changes with the size of the list.",
+              "fr": "Réfléchis à la façon dont le temps pour terminer la recherche change avec la taille de la liste."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the time to complete the search changes with the size of the list.",
+              "fr": "Réfléchis à la façon dont le temps pour terminer la recherche change avec la taille de la liste."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the time to complete the search changes with the size of the list.",
+              "fr": "Réfléchis à la façon dont le temps pour terminer la recherche change avec la taille de la liste."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In binary search, what happens if the target value is not found in the list?",
+              "fr": "Dans la recherche binaire, que se passe-t-il si la valeur cible n'est pas trouvée dans la liste ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It returns the middle index.",
+              "fr": "Elle renvoie l'indice du milieu."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Reflect on what the function is designed to do when the target is absent.",
+              "fr": "Réfléchis à ce que la fonction est conçue pour faire quand la cible est absente."
+            },
+            {
+              "en": "It returns `-1`.",
+              "fr": "Elle renvoie `-1`."
+            },
+            {
+              "en": "It returns the last index checked.",
+              "fr": "Elle renvoie le dernier indice vérifié."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Reflect on what the function is designed to do when the target is absent.",
+              "fr": "Réfléchis à ce que la fonction est conçue pour faire quand la cible est absente."
+            },
+            {
+              "en": "It enters an infinite loop.",
+              "fr": "Elle entre dans une boucle infinie."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Reflect on what the function is designed to do when the target is absent.",
+              "fr": "Réfléchis à ce que la fonction est conçue pour faire quand la cible est absente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69691ff777d428294168d47e.md",
+      "id": "69691ff777d428294168d47e",
+      "dashedName": "what-is-divide-and-conquer-and-how-does-merge-sort-work",
+      "title": {
+        "en": "What Is Divide and Conquer, and How Does Merge Sort Work?",
+        "fr": "Qu'est-ce que diviser pour régner, et comment fonctionne le tri fusion ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The divide and conquer paradigm in computer science is a technique for recursively breaking down problems into smaller sub-problems. One of the key aspects of this technique is recursion, which happens when a function calls itself repeatedly until a base case is reached. In this lesson, we will take a look at the merge sort algorithm to better understand how the divide and conquer technique works.",
+              "fr": "Le paradigme diviser pour régner en informatique est une technique pour décomposer récursivement des problèmes en sous-problèmes plus petits. Un des aspects clés de cette technique est la récursion, qui se produit quand une fonction s'appelle elle-même de façon répétée jusqu'à atteindre un cas de base. Dans cette leçon, on va examiner l'algorithme de tri fusion pour mieux comprendre comment fonctionne la technique diviser pour régner."
+            },
+            {
+              "en": "Let's say we had this list of numbers:",
+              "fr": "Disons qu'on avait cette liste de nombres :"
+            },
+            {
+              "en": "The goal is to sort that list from smallest to largest using the merge sort algorithm. The first step is to divide that list in half:",
+              "fr": "Le but est de trier cette liste du plus petit au plus grand avec l'algorithme de tri fusion. La première étape est de diviser cette liste en deux :"
+            },
+            {
+              "en": "Then we need to look at the left side of the list:",
+              "fr": "Ensuite, on doit regarder le côté gauche de la liste :"
+            },
+            {
+              "en": "We take that sub list and divide in half again until each sub list has only one item in it:",
+              "fr": "On prend cette sous-liste et on la divise encore en deux jusqu'à ce que chaque sous-liste n'ait qu'un seul élément :"
+            },
+            {
+              "en": "A list with only one item in it is sorted by default. Next we need to merge each of those one element sub lists into a sorted list:",
+              "fr": "Une liste avec un seul élément est triée par défaut. Ensuite, on doit fusionner chacune de ces sous-listes d'un élément en une liste triée :"
+            },
+            {
+              "en": "Then we follow the same process for the right side of the original list:",
+              "fr": "Puis on suit le même processus pour le côté droit de la liste d'origine :"
+            },
+            {
+              "en": "Now that both halves of the original list are sorted, we merge those two halves together and sort the elements:",
+              "fr": "Maintenant que les deux moitiés de la liste d'origine sont triées, on fusionne ces deux moitiés et on trie les éléments :"
+            },
+            {
+              "en": "Here is what the algorithm looks like in code:",
+              "fr": "Voici à quoi ressemble l'algorithme en code :"
+            },
+            {
+              "en": "The time complexity for merge sort would be `O(n log n)` because the list is continuously divided in half (`log n`) and then merged together (`O(n)`). Unlike other sorting algorithms like bubble sort, merge sort is not sorted in place and has a space complexity of `O(n)`.",
+              "fr": "La complexité temporelle du tri fusion serait `O(n log n)` parce que la liste est continuellement divisée en deux (`log n`) puis fusionnée (`O(n)`). Contrairement à d'autres algorithmes de tri comme le tri à bulles, le tri fusion n'est pas trié sur place et a une complexité spatiale de `O(n)`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the divide and conquer paradigm in computer science?",
+              "fr": "Qu'est-ce que le paradigme diviser pour régner en informatique ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A technique for detecting a cycle in function value iterations using just two iterators.",
+              "fr": "Une technique pour détecter un cycle dans les itérations de valeurs de fonction en utilisant seulement deux itérateurs."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson.",
+              "fr": "Revois le début de la leçon."
+            },
+            {
+              "en": "An algorithm for comparing two elements and swapping them from smallest to largest if needed.",
+              "fr": "Un algorithme pour comparer deux éléments et les échanger du plus petit au plus grand si besoin."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson.",
+              "fr": "Revois le début de la leçon."
+            },
+            {
+              "en": "A technique for recursively breaking down problems into smaller sub-problems.",
+              "fr": "Une technique pour décomposer récursivement des problèmes en sous-problèmes plus petits."
+            },
+            {
+              "en": "An algorithm to compute the shortest connecting network for points in a plane.",
+              "fr": "Un algorithme pour calculer le plus court réseau de connexion de points dans un plan."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson.",
+              "fr": "Revois le début de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the time complexity for the merge sort algorithm?",
+              "fr": "Quelle est la complexité temporelle de l'algorithme de tri fusion ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the space complexity for the merge sort algorithm?",
+              "fr": "Quelle est la complexité spatiale de l'algorithme de tri fusion ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson.",
+              "fr": "Revois la fin de la leçon."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

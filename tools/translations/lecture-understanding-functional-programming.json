@@ -1,0 +1,506 @@
+{
+  "workshop": "lecture-understanding-functional-programming",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733b0451d6be0065430b418.md",
+      "id": "6733b0451d6be0065430b418",
+      "dashedName": "what-is-functional-programming",
+      "title": {
+        "en": "What Is Functional Programming?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Functional programming is about writing code that is clean, predictable, and easier to test and debug. Two key concepts we'll explore today are pure functions and avoiding side effects.",
+              "fr": ""
+            },
+            {
+              "en": "Let's start with pure functions.",
+              "fr": ""
+            },
+            {
+              "en": "A pure function is a function that, given the same input, will always return the same output, and it doesn't modify anything outside of itself.",
+              "fr": ""
+            },
+            {
+              "en": "Here's an example of a pure function:",
+              "fr": ""
+            },
+            {
+              "en": "This function is pure because it always returns the same result for the same inputs, and it doesn't change anything outside of itself. No matter how many times you call `add(2, 3)`, it will always return `5`, and it won't affect any other part of your program.",
+              "fr": ""
+            },
+            {
+              "en": "Now, let's contrast this with an impure function:",
+              "fr": ""
+            },
+            {
+              "en": "This function is impure because it modifies a variable outside of itself (`total`). The result of `addToTotal(5)` will be different depending on what `total` was before the function was called. This unpredictability can make our code harder to understand and debug.",
+              "fr": ""
+            },
+            {
+              "en": "This brings us to our next important concept and that is side effects.",
+              "fr": ""
+            },
+            {
+              "en": "A side effect is any change that occurs in the state of the program when a function is called. This could include modifying a global variable, writing to a file, or making an API call.",
+              "fr": ""
+            },
+            {
+              "en": "Pure functions have no side effects but impure functions have these.",
+              "fr": ""
+            },
+            {
+              "en": "Avoiding side effects is a key principle of functional programming. When we minimize side effects, our code becomes more predictable and easier to test.",
+              "fr": ""
+            },
+            {
+              "en": "While writing code, our main goal should be to make functions do one thing and they should do it very well without changing other parts of our program.",
+              "fr": ""
+            },
+            {
+              "en": "Here's an example of a function with a side effect:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "This function has a side effect because it interacts with the outside world by logging to the console.",
+              "fr": ""
+            },
+            {
+              "en": "In functional programming, we might rewrite this as:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Now `greet` is a pure function that simply returns a string, and we handle the side effect (logging to the console) separately.",
+              "fr": ""
+            },
+            {
+              "en": "Functional programming encourages us to compose our programs using pure functions by breaking our code into small, predictable pieces. And thus, we can build programs that are easier to understand, test, and maintain.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a key characteristic of a pure function?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It always modifies global state.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding the predictability of pure functions.",
+              "fr": ""
+            },
+            {
+              "en": "It produces different outputs for the same input.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding the predictability of pure functions.",
+              "fr": ""
+            },
+            {
+              "en": "It always produces the same output for the same input.",
+              "fr": ""
+            },
+            {
+              "en": "It always performs I/O operations.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what we said regarding the predictability of pure functions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is considered a side effect in functional programming?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Returning a value from a function.",
+              "fr": ""
+            },
+            {
+              "en": "Creating a new object within a function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we discussed about functions interacting with their external environment.",
+              "fr": ""
+            },
+            {
+              "en": "Modifying a global variable.",
+              "fr": ""
+            },
+            {
+              "en": "Using local variables within a function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we discussed about functions interacting with their external environment.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 14,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a benefit of avoiding side effects in functional programming?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It makes the code run faster.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we said about the predictability and testability of code without side effects.",
+              "fr": ""
+            },
+            {
+              "en": "It reduces the amount of code needed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we said about the predictability and testability of code without side effects.",
+              "fr": ""
+            },
+            {
+              "en": "It makes the code easier to understand and test.",
+              "fr": ""
+            },
+            {
+              "en": "It eliminates the need for functions altogether.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what we said about the predictability and testability of code without side effects.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6734061fe116df617a564a37.md",
+      "id": "6734061fe116df617a564a37",
+      "dashedName": "what-is-currying-and-how-does-it-work",
+      "title": {
+        "en": "What Is Currying, and How Does It Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Currying is a technique where we transform a function that takes multiple arguments into a sequence of functions, each taking a single argument.",
+              "fr": ""
+            },
+            {
+              "en": "Let's start with a basic example. Imagine we have a function that adds two numbers:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "This is a function that takes two arguments and returns their sum. Now, let's see how we can curry this function:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "In this curry converted code, instead of taking two arguments at once, we have a function that takes the first argument and returns another function. This returned function then takes the second argument and performs the addition. We call it like `curriedAdd(3)(4)`, where each pair of parentheses represents a function call.",
+              "fr": ""
+            },
+            {
+              "en": "But why would we want to do this?",
+              "fr": ""
+            },
+            {
+              "en": "Currying allows us to create some special functions easily. For example, we could create a function that always adds five to any number:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Here, `addFive` is a function that's always ready to add five to whatever number we give it. This is a simple example of partial application, where we fix a certain number of arguments to a function, producing another function that takes fewer arguments.",
+              "fr": ""
+            },
+            {
+              "en": "While our examples have focused on functions with two arguments, currying can be applied to functions with any number of arguments.",
+              "fr": ""
+            },
+            {
+              "en": "As you continue your journey in JavaScript, you'll likely find many situations where currying can make your code cleaner and more expressive.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of currying in functional programming?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To make functions run faster.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how currying changes the way we pass arguments to a function.",
+              "fr": ""
+            },
+            {
+              "en": "To transform a function with multiple arguments into a sequence of functions with single arguments.",
+              "fr": ""
+            },
+            {
+              "en": "To eliminate the need for function parameters.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how currying changes the way we pass arguments to a function.",
+              "fr": ""
+            },
+            {
+              "en": "To combine multiple functions into one.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how currying changes the way we pass arguments to a function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the context of currying, what is partial application?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Applying a function to only some of its arguments.",
+              "fr": ""
+            },
+            {
+              "en": "Applying a function to all of its arguments at once.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we said about \"fixing\" some arguments to a function.",
+              "fr": ""
+            },
+            {
+              "en": "Creating a new function from scratch.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we said about \"fixing\" some arguments to a function.",
+              "fr": ""
+            },
+            {
+              "en": "Splitting a function into multiple smaller functions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Recall what we said about \"fixing\" some arguments to a function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of a curried function in JavaScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This is a regular function that takes all parameters at once.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This function accepts all parameters at once and calls them like functions, which does not follow the definition of a curried function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The inner function is never returned, so `add(2)` will return `undefined` and `add(2)(3)` will throw an error.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

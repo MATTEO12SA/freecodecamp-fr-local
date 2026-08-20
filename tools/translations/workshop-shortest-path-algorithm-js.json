@@ -1,0 +1,826 @@
+{
+  "workshop": "workshop-shortest-path-algorithm-js",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "0095d0567b6817114989a1dd.md",
+      "id": "0095d0567b6817114989a1dd",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will implement the shortest path algorithm in JavaScript. You will write a function that computes the shortest path between nodes in a weighted graph and returns both the distances and the paths taken.",
+          "fr": ""
+        },
+        {
+          "en": "For example, given a graph where cities are connected by roads with different distances, the algorithm will find the shortest route from one city to another. If you want to travel from City A to City D, the algorithm might find that going A ⇨ B ⇨ C ⇨ D (total: 15km) is shorter than going directly A ⇨ D (20km).",
+          "fr": ""
+        },
+        {
+          "en": "To get started, define a variable named `INF` and assign it the value `Infinity`. Later, you'll use it to indicate that there is no direct connection between two nodes.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a variable named `INF`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `INF` variable should have the value `Infinity`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1baba.md",
+      "id": "69c918841987bf16c1d1baba",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "You will need a 2D array to represent the adjacency matrix of the graph. Each value represents the weight (distance) of the edge between two nodes. A value of `INF` means there is no direct edge.",
+          "fr": ""
+        },
+        {
+          "en": "Create another variable named `adjMatrix` and assign it a 2D array with the following values:",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `adjMatrix`.",
+          "fr": ""
+        },
+        {
+          "en": "`adjMatrix` should be a 2D array with 6 rows and 6 columns.",
+          "fr": ""
+        },
+        {
+          "en": "`adjMatrix` should contain the correct values.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1babb.md",
+      "id": "69c918841987bf16c1d1babb",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Now you will create the main function that does all the work.",
+          "fr": ""
+        },
+        {
+          "en": "Create a function named `shortestPath` that takes three parameters: `matrix`, `startNode`, and `targetNode`.",
+          "fr": ""
+        },
+        {
+          "en": "Over the next few steps, you will build out the logic for this function.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a function named `shortestPath`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `shortestPath` function should have the parameters `matrix`, `startNode`, and `targetNode`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c937c73f23b1140bcd297a.md",
+      "id": "69c937c73f23b1140bcd297a",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "The `targetNode` parameter is optional. When not provided, the function will compute shortest paths from `startNode` to all other nodes in the graph.",
+          "fr": ""
+        },
+        {
+          "en": "Give the `targetNode` parameter a default value of `null`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `targetNode` parameter of your `shortestPath` function should default to `null`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1babc.md",
+      "id": "69c918841987bf16c1d1babc",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "You need to store the number of nodes in the graph.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `shortestPath` function, create a variable named `n` and assign it `matrix.length`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable `n` inside the `shortestPath` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `n` variable should have the value `matrix.length`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1babd.md",
+      "id": "69c918841987bf16c1d1babd",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "You need to keep track of the shortest known distance from the start node to every other node. To begin, you'll assume every node is infinitely far away.",
+          "fr": ""
+        },
+        {
+          "en": "In JavaScript, you can create an array pre-filled with a value using `new Array(n).fill(value)`. For example, `new Array(3).fill(0)` creates `[0, 0, 0]`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `shortestPath` function, create a variable named `distances` and assign it `new Array(n).fill(INF)`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `distances` inside `shortestPath`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `distances` variable should be set to `new Array(n).fill(INF)`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1babe.md",
+      "id": "69c918841987bf16c1d1babe",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "The distance from the starting node to itself is always `0`. You have to update the `distances` array to reflect this.",
+          "fr": ""
+        },
+        {
+          "en": "After the `distances` array, set `distances[startNode]` to `0`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `distances[startNode]` to `0`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1babf.md",
+      "id": "69c918841987bf16c1d1babf",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "You also need to track the actual path taken to reach each node. You will store a list of paths where each entry is an array of node indices representing the route taken.",
+          "fr": ""
+        },
+        {
+          "en": "Initially, each node's path will just contain itself. You can create this structure using `Array.from()`:",
+          "fr": ""
+        },
+        {
+          "en": "This creates an array of `n` elements, where the element at index `i` is `[i]`.",
+          "fr": ""
+        },
+        {
+          "en": "Still within the `shortestPath` function, create a variable named `paths` and assign it `Array.from({ length: n }, (_, i) => [i])`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable `paths` inside the `shortestPath` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `paths` variable should be initialized using `Array.from`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `paths` variable should use `{ length: n }` as the first argument to `Array.from`.",
+          "fr": ""
+        },
+        {
+          "en": "The second argument to `Array.from` should be a callback `(_, i) => [i]`, where `_` is a placeholder for the unused element and `i` is the index. It should return `[i]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac0.md",
+      "id": "69c918841987bf16c1d1bac0",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "As the algorithm runs, you need to track which nodes have already been processed so you don't revisit them.",
+          "fr": ""
+        },
+        {
+          "en": "Create a variable named `visited` and assign it `new Array(n).fill(false)`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `visited`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `visited` variable should be set to `new Array(n).fill(false)`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac1.md",
+      "id": "69c918841987bf16c1d1bac1",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Now you'll add the main loop that drives the algorithm. It runs once for each node in the graph, selecting the closest unvisited node each time.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `shortestPath` function, add a `for` loop that runs `n` times using `i` as the loop variable.",
+          "fr": ""
+        },
+        {
+          "en": "At the start of the loop body, using `let`, declare two variables `minDistance` and `current` set to `INF`, and `-1` respectively. These will track the closest unvisited node found in each iteration.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `for` loop inside `shortestPath` that runs `n` times. Don't forget to set `i` with `let` inside it.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `minDistance` variable set to `INF` inside the loop.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `current` variable set to `-1` inside the loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac2.md",
+      "id": "69c918841987bf16c1d1bac2",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Inside the loop, you need to scan every node to find the one with the smallest known distance that hasn't been visited yet.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `for` loop inside the main loop that iterates through each node. Use `nodeNo` as the loop variable going from `0` to `n`.",
+          "fr": ""
+        },
+        {
+          "en": "Leave the body empty for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a second (inner) `for` loop inside the main loop with `nodeNo` as its loop variable.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac3.md",
+      "id": "69c918841987bf16c1d1bac3",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Inside the inner `for` loop, you need to check whether the current node is unvisited and closer than the best you've found so far.",
+          "fr": ""
+        },
+        {
+          "en": "Add an `if` statement that checks if `nodeNo` has not been visited and `distances[nodeNo]` is less than `minDistance`.",
+          "fr": ""
+        },
+        {
+          "en": "Leave the body empty for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement with the condition `!visited[nodeNo] && distances[nodeNo] < minDistance` inside the inner `for` loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac4.md",
+      "id": "69c918841987bf16c1d1bac4",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "If the condition is true, the current node is the best unvisited candidate found so far. You need to update your tracking variables to reflect that.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `if` statement, update `minDistance` to `distances[nodeNo]` and `current` to `nodeNo`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `minDistance` to `distances[nodeNo]` inside the `if` block.",
+          "fr": ""
+        },
+        {
+          "en": "You should set `current` to `nodeNo` inside the `if` block.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac5.md",
+      "id": "69c918841987bf16c1d1bac5",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "After scanning all nodes to find the closest unvisited one, you need to handle the case where no valid node is found. This happens when all remaining nodes are unreachable.",
+          "fr": ""
+        },
+        {
+          "en": "After the inner `for` loop, but still inside the outer loop, add an `if` statement that checks if `current` is strictly equal to `-1`. If that is true, use `break` inside the `if` block to stop the outer loop early.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement that checks if `current === -1`.",
+          "fr": ""
+        },
+        {
+          "en": "You should use `break` inside the `if` block.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac6.md",
+      "id": "69c918841987bf16c1d1bac6",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Once you've confirmed a valid node was found, mark it as visited so the algorithm won't process it again.",
+          "fr": ""
+        },
+        {
+          "en": "After the `if` statement with the condition `current === -1`, set `visited[current]` to `true`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `visited[current]` to `true`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac7.md",
+      "id": "69c918841987bf16c1d1bac7",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now that the current node is marked as visited, you need to look at all its neighbors to see if you can reach them more efficiently through the current node.",
+          "fr": ""
+        },
+        {
+          "en": "After `visited[current] = true`, add a neighbor `for` loop that iterates through each `nodeNo` from `0` to `n`. Note that this is another inner loop on the same level as the first.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the loop, declare a variable named `distance` and assign it `matrix[current][nodeNo]`. This gives you the edge weight between the current node and its neighbor.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a neighbor `for` loop after marking the current node as visited.",
+          "fr": ""
+        },
+        {
+          "en": "The neighbor `for` loop should iterate from `0` to `n`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `distance` variable assigned to `matrix[current][nodeNo]` inside the neighbor loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac8.md",
+      "id": "69c918841987bf16c1d1bac8",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Before updating distances, you need to verify the neighbor is worth considering. There must be an actual edge to it (`distance !== INF`) and it must not have been visited yet.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the neighbor `for` loop, add an `if` statement that checks if `distance` is not strictly equal to `INF` **and** if `nodeNo` is not visited.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `if` block, declare a variable `newDistance` assigned to `distances[current] + distance`. This is the total cost of reaching the neighbor through the current node.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement with the condition `distance !== INF && !visited[nodeNo]`.",
+          "fr": ""
+        },
+        {
+          "en": "You should declare a `newDistance` with the value `distances[current] + distance` inside the `if` block.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bac9.md",
+      "id": "69c918841987bf16c1d1bac9",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Now you should check whether going through the current node gives a shorter route to the neighbor. If `newDistance` is better than what's already stored, then you should update it.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the existing `if` block, add a nested `if` statement that checks if `newDistance` is less than `distances[nodeNo]`. Inside that nested `if` block, update `distances[nodeNo]` to `newDistance`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a nested `if` statement with the condition `newDistance < distances[nodeNo]`.",
+          "fr": ""
+        },
+        {
+          "en": "You should update `distances[nodeNo]` to `newDistance` inside the nested `if` block.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1baca.md",
+      "id": "69c918841987bf16c1d1baca",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "When you find a shorter path to a neighbor, you also need to update the recorded path to reach it.",
+          "fr": ""
+        },
+        {
+          "en": "In JavaScript, you can create a new array combining an existing array and a new element using the spread operator:",
+          "fr": ""
+        },
+        {
+          "en": "Inside the nested `if` block, update `paths[nodeNo]` to be the path to the current node with `nodeNo` appended at the end using spread syntax like so: `[...paths[current], nodeNo]`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update `paths[nodeNo]` inside the nested `if` block.",
+          "fr": ""
+        },
+        {
+          "en": "`paths[nodeNo]` should be set to `[...paths[current], nodeNo]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bacb.md",
+      "id": "69c918841987bf16c1d1bacb",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Once the main loop finishes, you need to decide which node(s) to display results for.",
+          "fr": ""
+        },
+        {
+          "en": "If a specific `targetNode` was provided, only show results for that node. Otherwise, show results for all nodes.",
+          "fr": ""
+        },
+        {
+          "en": "In JavaScript, you can get all indices of an array as an iterable using `[...Array(n).keys()]`.",
+          "fr": ""
+        },
+        {
+          "en": "After the outer `for` loop, create a variable named `targets`. Using a ternary expression, if `targetNode` is strictly not `null`, assign `[targetNode]`, otherwise assign `[...Array(n).keys()]`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable `targets` after the main loop.",
+          "fr": ""
+        },
+        {
+          "en": "Your `targets` variable should use a ternary checking `targetNode !== null`.",
+          "fr": ""
+        },
+        {
+          "en": "When a target is provided, `targets` should be `[targetNode]`, otherwise it should be `[...Array(n).keys()]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bacc.md",
+      "id": "69c918841987bf16c1d1bacc",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now loop through the target nodes to display results for each one.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `for...of` loop that iterates over `targets` using `nodeNo` as the loop variable. Leave the body empty for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `for...of` loop with the variable `nodeNo` iterating over `targets`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bacd.md",
+      "id": "69c918841987bf16c1d1bacd",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "You only want to display results for nodes that are reachable and different from the start node.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `for...of` loop, add an `if` statement that checks if `nodeNo` is strictly equal to `startNode` **or** `distances[nodeNo]` is strictly equal to `INF`. If either is true, use `continue` inside the `if` block to skip to the next iteration.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement with the condition `nodeNo === startNode || distances[nodeNo] === INF` inside your `for...of` loop.",
+          "fr": ""
+        },
+        {
+          "en": "You should use `continue` in the `if` block.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bace.md",
+      "id": "69c918841987bf16c1d1bace",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Now that you know the node is reachable and not the start, format its path into a readable string.",
+          "fr": ""
+        },
+        {
+          "en": "The `paths[nodeNo]` array holds the sequence of node indices visited to reach `nodeNo`. You can turn that into a human-readable string like `0 -> 2 -> 3` using the `.join()` method.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `for...of` loop, after the `if` statement with `continue`, declare a variable named `path` and assign it the value `paths[nodeNo].join(' -> ')`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `path` inside the `for...of` loop.",
+          "fr": ""
+        },
+        {
+          "en": "Your `path` variable should have the value `paths[nodeNo].join(' -> ')`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bacf.md",
+      "id": "69c918841987bf16c1d1bacf",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "Now, you should print the result for each reachable node.",
+          "fr": ""
+        },
+        {
+          "en": "After the `path` variable, add a `console.log()` call with a template literal that outputs:",
+          "fr": ""
+        },
+        {
+          "en": "For example, if `startNode` is `0` and `nodeNo` is `3`, the output should look like this:",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `console.log()` inside the `for...of` loop.",
+          "fr": ""
+        },
+        {
+          "en": "The `console.log()` should use a template literal containing `${startNode}-${nodeNo} distance: ${distances[nodeNo]}`.",
+          "fr": ""
+        },
+        {
+          "en": "The template literal should also include `${path}`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bad0.md",
+      "id": "69c918841987bf16c1d1bad0",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "The function should return the computed data so callers can use it programmatically.",
+          "fr": ""
+        },
+        {
+          "en": "After the `for...of` loop, add a `return` statement that returns an array containing `distances` and `paths`, in that order.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should return `[distances, paths]` after the `for...of` loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69c918841987bf16c1d1bad1.md",
+      "id": "69c918841987bf16c1d1bad1",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "The function is complete. Now call it to see the results.",
+          "fr": ""
+        },
+        {
+          "en": "At the bottom of the file (outside the function), call `shortestPath` with `adjMatrix` as the matrix, `0` as the start node, and `5` as the target node.",
+          "fr": ""
+        },
+        {
+          "en": "This will print the shortest path from node `0` to node `5` in the adjacency matrix.",
+          "fr": ""
+        },
+        {
+          "en": "With that, your shortest path algorithm workshop is complete!",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `shortestPath` function with `adjMatrix, 0, 5`.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

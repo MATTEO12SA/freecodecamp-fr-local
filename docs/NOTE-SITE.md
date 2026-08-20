@@ -44,7 +44,7 @@ Juillet mesuré : 6,7 / 10. Août matin (relecture code) : 7,8 / 10.
 
 ## Ce qui empêche 9+
 
-- Curriculum JS v9 à 195/230 blocs (~87 %). Modules 1-12 complets.
+- Curriculum JS v9 à 204/230 blocs (~91 %). Modules 1-12 complets.
 - Examen honor-system, HTML des quizzes rendu tel quel.
 - GitHub Actions ne lance pas qualité FR, tsc client, ni Axe.
 - Lecture maps/sets `lecture-working-with-maps-and-sets.json` extraite, `reviewed: false` — ne pas appliquer. Vague 5 : Continuer, onboarding, export/import profil, confettis reduced-motion.

@@ -1,0 +1,2175 @@
+{
+  "workshop": "lecture-understanding-graphs-and-trees-js",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "697dc70689d5b6e7499670e4.md",
+      "id": "697dc70689d5b6e7499670e4",
+      "dashedName": "what-are-graphs-in-computer-science",
+      "title": {
+        "en": "What Are Graphs in Computer Science?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Graphs are data structures used to represent the connections or relationships between objects or entities. They're often used to model networks.",
+              "fr": ""
+            },
+            {
+              "en": "The types of networks that you can model with a graph include social networks, transportation networks, communications networks, and even recommendation systems.",
+              "fr": ""
+            },
+            {
+              "en": "For example, graphs can represent connections between users on a social media platform, or connections between cities on a road network.",
+              "fr": ""
+            },
+            {
+              "en": "They're very versatile.",
+              "fr": ""
+            },
+            {
+              "en": "A graph is often represented as a collection of points or circles connected by lines.",
+              "fr": ""
+            },
+            {
+              "en": "These circles and lines represent the two main components of a graph: nodes and edges.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"A simple graph showing five nodes labeled A, B, C, D, and E connected by edges. Node A connects to B, B connects to A, C, and D, C connects to B and D, D connects to B, C, and E, and E connects to D.\">",
+              "fr": ""
+            },
+            {
+              "en": "**Nodes**, also known as vertices, represent the objects or entities that are part of the network modeled by the graph. They could be users, products, stations, cities, or any other entities in the model.",
+              "fr": ""
+            },
+            {
+              "en": "In this example, nodes are represented as circles and labeled with the letters A, B, C, D, and E to distinguish them visually.",
+              "fr": ""
+            },
+            {
+              "en": "**Edges** are the connections between the nodes. If two nodes are connected by an edge, that means that they're somehow connected in the network.",
+              "fr": ""
+            },
+            {
+              "en": "In this example, there are five edges connecting the different pairs of nodes. Node A is connected to node B. node B is connected to nodes A, C, and D and so on.",
+              "fr": ""
+            },
+            {
+              "en": "The specific meaning of the connection will depend on the context. It may be physical, like a real road that connects two cities, or it could be more abstract, like the connection between two users on a social media platform.",
+              "fr": ""
+            },
+            {
+              "en": "If two nodes are directly connected by an edge, like nodes A and B in this example, they're known as **adjacent nodes**.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-2.png\" alt=\"The same graph with nodes A and B highlighted to illustrate adjacent nodes - two nodes that are directly connected by an edge.\">",
+              "fr": ""
+            },
+            {
+              "en": "## Types of Graphs",
+              "fr": ""
+            },
+            {
+              "en": "There are different types of graphs with different characteristics and applications. Let's go over some of them.",
+              "fr": ""
+            },
+            {
+              "en": "### Undirected Graphs",
+              "fr": ""
+            },
+            {
+              "en": "**Undirected graphs** are graphs where the edges don't have a specific direction. This type of edge is usually represented with a straight line between the nodes.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-1.png\" alt=\"An example of an undirected graph where all edges are represented as straight lines without arrows, demonstrating that connections work in both directions between nodes.\">",
+              "fr": ""
+            },
+            {
+              "en": "This means that, if there's an edge connecting nodes A and B, the connection works in both directions: from node A to node B and from node B to node A.",
+              "fr": ""
+            },
+            {
+              "en": "Depending on the network that is being modeled by the graph, this connection can have different meanings.",
+              "fr": ""
+            },
+            {
+              "en": "For example, if you're modeling connections between users of a social media platform, this means that user A is connected to user B and user B is connected to user A. The connection is bidirectional.",
+              "fr": ""
+            },
+            {
+              "en": "### Directed Graphs",
+              "fr": ""
+            },
+            {
+              "en": "In contrast, **directed graphs** are graphs where the edges do have a specific direction.",
+              "fr": ""
+            },
+            {
+              "en": "If there is a connection from node A to node B, that doesn't necessarily imply that there is a connection from node B to node A.",
+              "fr": ""
+            },
+            {
+              "en": "The edges of a directed graph are often represented as straight lines that end with an arrow to indicate the direction.",
+              "fr": ""
+            },
+            {
+              "en": "Here's an example. In this graph, you can go from node A to node B but not from node B to node A because of the direction of the edge.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-4.png\" alt=\"A directed graph example showing the same nodes as before but with arrows indicating specific one-way connections: from A to B, B to C, C to D, D to B, and D to E, demonstrating unidirectional edges.\">",
+              "fr": ""
+            },
+            {
+              "en": "For example, if you are modeling a road network, this would be helpful to model one-way streets or roads. You can go from city A to city B through that road, but not from city B to city A. You'll need to take a different route.",
+              "fr": ""
+            },
+            {
+              "en": "If there is a two-way connection between the nodes of a directed graph, you can represent this with two directed edges between them.",
+              "fr": ""
+            },
+            {
+              "en": "Here you can see an example. You can go from node B to node D and from node D to node B because there are two edges connecting them, but each edge has a direction.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-5.png\" alt=\"A directed graph showing bidirectional connection between nodes B and D with two arrows, one pointing from B to D and another from D to B.\">",
+              "fr": ""
+            },
+            {
+              "en": "## Vertex Labeled Graphs",
+              "fr": ""
+            },
+            {
+              "en": "A **vertex labeled graph** is a graph in which each node is associated with a label or identifier in addition to its data. These labels are used to identify the nodes, represent them visually, and store additional information about them.",
+              "fr": ""
+            },
+            {
+              "en": "For example, in a transportation network graph, nodes could be cities and their labels could be their names, coordinates, or any other characteristic that would be helpful for the purposes of the model.",
+              "fr": ""
+            },
+            {
+              "en": "## Cyclic Graphs",
+              "fr": ""
+            },
+            {
+              "en": "**Cyclic graphs** are directed graphs with at least one cycle.",
+              "fr": ""
+            },
+            {
+              "en": "A **cycle** is a path that you can follow through the edges of a graph that will take you back to the initial node where you started.",
+              "fr": ""
+            },
+            {
+              "en": "In this example, we have a directed graph. If you look more closely, you'll notice that it has a cycle. If we start at node B, go to node C, and then to node D, we can go back to node B again through the directed edges.",
+              "fr": ""
+            },
+            {
+              "en": "This is a cycle, so this is a cyclic graph.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-6.png\" alt=\"A directed graph showing a cycle where you can start at node B, go to node C, then to node D, and back to node B, forming a complete cycle.\">",
+              "fr": ""
+            },
+            {
+              "en": "## Edge Labeled Graphs",
+              "fr": ""
+            },
+            {
+              "en": "In **edge labeled graphs**, edges are associated with labels. These labels are usually drawn next to their corresponding edges.",
+              "fr": ""
+            },
+            {
+              "en": "## Weighted Graphs",
+              "fr": ""
+            },
+            {
+              "en": "**Weighted graphs** are a specific type of edge labeled graph in which the labels on the edges represent values that can be compared and used to perform arithmetic operations.",
+              "fr": ""
+            },
+            {
+              "en": "Some edges have a higher weight, while others have a lower weight. These weights represent the \"cost\" of the edge.",
+              "fr": ""
+            },
+            {
+              "en": "For example, they may represent the distance between two cities or the time it takes to get from one city to the next.",
+              "fr": ""
+            },
+            {
+              "en": "This is an example of a weighted graph. We write each weight next to its corresponding edge. The \"cost\" of going from node B to node D is 3, and since this is an undirected graph, that's the same cost of going from node D back to node B.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-7.png\" alt=\"A weighted graph showing nodes connected by edges with numerical weights labeled next to each edge, such as weight 3 between nodes B and D.\">",
+              "fr": ""
+            },
+            {
+              "en": "## Directed Acyclic Graph",
+              "fr": ""
+            },
+            {
+              "en": "Another very common type of graph in computer science is the **directed acyclic graph**, which is a directed graph with no cycles.",
+              "fr": ""
+            },
+            {
+              "en": "Here's an example. It's a directed graph because each edge has a direction.",
+              "fr": ""
+            },
+            {
+              "en": "It's acyclic because it doesn't have any cycles. Why? Notice that, if you start at a specific node, you cannot go back to it because of the direction of the edges.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-8.png\" alt=\"A directed acyclic graph (DAG) with connections from A to B, B to C, B to D, C to D, and D to E, demonstrating how the directional flow prevents any cycles from forming.\">",
+              "fr": ""
+            },
+            {
+              "en": "## Disconnected Graph",
+              "fr": ""
+            },
+            {
+              "en": "And the last type of graph that we'll cover in this lesson is the **disconnected graph**.",
+              "fr": ""
+            },
+            {
+              "en": "A disconnected graph is a graph with two or more groups of nodes that are not connected by any edges.",
+              "fr": ""
+            },
+            {
+              "en": "A real-world example would be a social media network, where you have two or more groups of people who don't know each other and who have no friends in common.",
+              "fr": ""
+            },
+            {
+              "en": "This is an example. The first component has the nodes A, B, and C. The second component has the nodes D and E. These components don't have any edges between them, so this is a disconnected graph.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-graphs-in-computer-science-9.png\" alt=\"A disconnected graph showing two separate components: the first component has nodes A, B, and C connected in sequence (A connects to B, B connects to C), and the second component has nodes D and E connected to each other, with no connections between the two components.\">",
+              "fr": ""
+            },
+            {
+              "en": "You can implement graphs in a variety of ways, including sets, functions, and arrays. You'll learn more about this in the coming lessons.",
+              "fr": ""
+            },
+            {
+              "en": "Understanding graphs and the characteristics of the different types of graphs is essential for solving a wide range of problems in computer science and other fields.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a graph in computer science?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A data structure used to represent relationships between objects.",
+              "fr": ""
+            },
+            {
+              "en": "A mathematical equation.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how graphs are used to model connections and relationships.",
+              "fr": ""
+            },
+            {
+              "en": "A visual representation of data.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how graphs are used to model connections and relationships.",
+              "fr": ""
+            },
+            {
+              "en": "A programming language.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how graphs are used to model connections and relationships.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are the two main components of a graph?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Points and lines",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the basic building blocks of a graph.",
+              "fr": ""
+            },
+            {
+              "en": "Vertices and nodes",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the basic building blocks of a graph.",
+              "fr": ""
+            },
+            {
+              "en": "Nodes and edges",
+              "fr": ""
+            },
+            {
+              "en": "Elements and vertices",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the basic building blocks of a graph.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a directed graph?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A graph where edges do not have a direction.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether the connections between nodes have a specific direction.",
+              "fr": ""
+            },
+            {
+              "en": "A graph where edges have a direction.",
+              "fr": ""
+            },
+            {
+              "en": "A graph with more nodes than edges.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether the connections between nodes have a specific direction.",
+              "fr": ""
+            },
+            {
+              "en": "A graph with more edges than nodes.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about whether the connections between nodes have a specific direction.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697dc755c709772fad37de9d.md",
+      "id": "697dc755c709772fad37de9d",
+      "dashedName": "how-do-depth-first-and-breadth-first-search-work",
+      "title": {
+        "en": "How Do Depth First and Breadth First Search Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As you start working with data structures and algorithms, you'll soon realize that one of the common operations that you'll need to perform is visiting each node.",
+              "fr": ""
+            },
+            {
+              "en": "This process is known as \"traversing\" the data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Traversals are used to do something with every single node in the data structure, like printing their values, finding a specific value, or performing certain operations on the nodes.",
+              "fr": ""
+            },
+            {
+              "en": "By systematically visiting each node, you make sure that the process won't skip any nodes.",
+              "fr": ""
+            },
+            {
+              "en": "But how do you determine the order in which you should traverse the data structure? Where should the process start, and how should the next node be selected?",
+              "fr": ""
+            },
+            {
+              "en": "Without a clear way to traverse the data structure, going through it would be like walking through a maze without a specific path to follow.",
+              "fr": ""
+            },
+            {
+              "en": "That's where algorithms like breadth-first search (BFS) and depth-first search (DFS) become really important. They are commonly used to traverse graphs and for finding a path between two nodes.",
+              "fr": ""
+            },
+            {
+              "en": "When they are used to traverse a data structure, they define the order in which the nodes should be visited to make sure that none of them is skipped.",
+              "fr": ""
+            },
+            {
+              "en": "Let's start with breadth-first search (BFS).",
+              "fr": ""
+            },
+            {
+              "en": "## Breadth-First Search (BFS)",
+              "fr": ""
+            },
+            {
+              "en": "**Breadth-first search (BFS)** is an algorithm that visits all neighboring nodes before moving to the next level in the graph.",
+              "fr": ""
+            },
+            {
+              "en": "It can be used to find the shortest path between two nodes in an unweighted graph because it analyzes all the nodes at each level, so it finds the path with fewest edges first.",
+              "fr": ""
+            },
+            {
+              "en": "This algorithm is commonly implemented using a queue data structure to keep track of the nodes that have been visited. Queues follow the FIFO (first in, first out) method, where the first node that was added to the queue is the first one to be removed.",
+              "fr": ""
+            },
+            {
+              "en": "The algorithm works like this:",
+              "fr": ""
+            },
+            {
+              "en": "* You start at a specific node.\n    \n* That node is marked as visited and added to the queue.\n    \n* While the queue is not empty, the current node is removed from the queue (dequeued). Then, for each one of its neighbors, if the neighbor has not been visited, it is marked as visited and added to the queue.",
+              "fr": ""
+            },
+            {
+              "en": "One important consideration is that, since breadth-first search (BFS) requires storing a queue in memory, and this queue may have a large number of nodes, the space requirements of this algorithm can be considerable. This is especially true for graphs with a large number of nodes on the same level.",
+              "fr": ""
+            },
+            {
+              "en": "Let's see an example of BFS applied to a specific type of graph called a tree.",
+              "fr": ""
+            },
+            {
+              "en": "You will learn more about trees in an upcoming lesson, but they are essentially graphs with no cycles, where nodes are organized in a hierarchy. Cycles are paths that start and end at the same node.",
+              "fr": ""
+            },
+            {
+              "en": "Let's apply the breadth-first search (BFS) algorithm to this tree:",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-1.png\" alt=\"A tree diagram showing nodes A through G arranged in a hierarchy. Node A is at the root, with children B and C. Node B has children D and E, and node C has children F and G.\">",
+              "fr": ""
+            },
+            {
+              "en": "**Step 1:**",
+              "fr": ""
+            },
+            {
+              "en": "We start at the root of the tree, node A. We add A to the queue and immediately mark it as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[A]`\n    \n* **Visited:** `{A}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 2:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue node A. We add its unvisited children (node B and then node C), to the queue and mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[B, C]`\n    \n* **Visited:** `{A, B, C}`",
+              "fr": ""
+            },
+            {
+              "en": "The order in which nodes at the same level are added to the queue is defined by the implementation of the data structure and the order in which the edges (connections) are stored in the graph representation.",
+              "fr": ""
+            },
+            {
+              "en": "If the implementation is consistent, the specific order in which the nodes at the same level are traversed will not affect the correctness of the algorithm. It will still visit every node level by level.",
+              "fr": ""
+            },
+            {
+              "en": "**Step 3:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue node B. We add its unvisited children, (node D and then node E), to the queue and mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[C, D, E]`\n    \n* **Visited:** `{A, B, C, D, E}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 4:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue node C. We add its unvisited children, (node F and then node G), to the queue and mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[D, E, F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 5:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue node D. This node does not have any unvisited children, so nothing changes in the visited set.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[E, F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 6:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue node E. This node does not have any unvisited children, so nothing changes in the visited set.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[F, G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 7:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue F. This node does not have any unvisited children, so nothing changes in the visited set.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 8:**",
+              "fr": ""
+            },
+            {
+              "en": "We dequeue G. This node does not have any unvisited children, so nothing changes in the visited set.",
+              "fr": ""
+            },
+            {
+              "en": "* **Queue:** `[]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "When the queue is empty, the traversal is complete.",
+              "fr": ""
+            },
+            {
+              "en": "The nodes were traversed in this order:",
+              "fr": ""
+            },
+            {
+              "en": "**A → B → C → D → E → F → G**",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-2.png\" alt=\"The same tree diagram with arrows showing the BFS traversal order: A to B to C to D to E to F to G, demonstrating level-by-level visitation.\">",
+              "fr": ""
+            },
+            {
+              "en": "Notice how the algorithm visits the nodes per level.",
+              "fr": ""
+            },
+            {
+              "en": "We start at node A, then move to the next level to visit nodes B and C, then to the next level to nodes D, E, F, and G. That is the core principle of breadth-first search (BFS).",
+              "fr": ""
+            },
+            {
+              "en": "## Depth-First Search (DFS)",
+              "fr": ""
+            },
+            {
+              "en": "While breadth-first search (BFS) first visits all the neighboring nodes at the same level, **depth-first search (DFS)** follows each branch as deep as possible before it backtracks.",
+              "fr": ""
+            },
+            {
+              "en": "You can imagine this algorithm as exploring a maze by choosing a specific path and following it until you reach a dead end or the exit. If you reach a dead end, you go back and choose a different path.",
+              "fr": ""
+            },
+            {
+              "en": "Depth-first search (DFS) is commonly used to solve puzzles with a single solution, detecting cycles in a graph, and finding connected graph components.",
+              "fr": ""
+            },
+            {
+              "en": "This algorithm can be implemented using recursion or a stack data structure to keep track of the visited nodes.",
+              "fr": ""
+            },
+            {
+              "en": "Stacks follow the LIFO (last in, first out) method, where the last node that was added to the stack is the first one to be removed from the stack.",
+              "fr": ""
+            },
+            {
+              "en": "The algorithm works like this:",
+              "fr": ""
+            },
+            {
+              "en": "* Start at a specific node.\n    \n* That node is marked as visited and added to the stack.\n    \n* While the stack is not empty, the current node is popped (removed). This is when we \"visit\" or process it (for example, by printing its value). Then, all of its unvisited neighbors are marked as visited and added to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "One of the limitations of this algorithm is that it's not always guaranteed to find the shortest path between two nodes in an unweighted graph.",
+              "fr": ""
+            },
+            {
+              "en": "Let's see an example of Depth-First Search (DFS) applied to our tree example.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-3.png\" alt=\"The same tree diagram as before, showing nodes A through G in their hierarchical structure, ready for DFS demonstration.\">",
+              "fr": ""
+            },
+            {
+              "en": "**Step 1:**",
+              "fr": ""
+            },
+            {
+              "en": "We start at the root node A. We mark it as visited and add it to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[A]`\n    \n* **Visited:** `{A}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 2:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node A from the stack.",
+              "fr": ""
+            },
+            {
+              "en": "Then, we add its unvisited children, node B and node C, to the stack. We'll add them in reverse order, `C` then `B`, so that `B` is on top (LIFO) and will be processed next. We also mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[C, B]`\n    \n* **Visited:** `{A, B, C}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 3:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node B from the stack.",
+              "fr": ""
+            },
+            {
+              "en": "Then, we add its unvisited children, node D and node E, to the stack in reverse order (`E` then `D`). We also mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[C, E, D]`\n    \n* **Visited:** `{A, B, C, D, E}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 4:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node D from the stack. This node has no children to add to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[C, E]`\n    \n* **Visited:** `{A, B, C, D, E}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 5:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node E from the stack. This node has no children to add to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[C]`\n    \n* **Visited:** `{A, B, C, D, E}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 6:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node C.",
+              "fr": ""
+            },
+            {
+              "en": "Then, we add its children, node F and node G, to the stack in reverse order (node G then node F) and we mark them as visited.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[G, F]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 7:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node F from the stack. This node has no children to add to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[G]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "**Step 8:**",
+              "fr": ""
+            },
+            {
+              "en": "We pop node G. This node has no children to add to the stack.",
+              "fr": ""
+            },
+            {
+              "en": "* **Stack:** `[]`\n    \n* **Visited:** `{A, B, C, D, E, F, G}`",
+              "fr": ""
+            },
+            {
+              "en": "When the stack is empty, the traversal is completed and all nodes have been visited.",
+              "fr": ""
+            },
+            {
+              "en": "The algorithm visited the nodes in this order:",
+              "fr": ""
+            },
+            {
+              "en": "**A → B → D → E → C → F → G**",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-depth-first-and-breadth-first-search-work-4.png\" alt=\"The tree diagram with numbers showing the DFS traversal order: A(1), B(2), D(3), E(4), C(5), F(6), G(7), demonstrating depth-first exploration of branches.\">",
+              "fr": ""
+            },
+            {
+              "en": "Notice how we start at node A, and then move all the way down the tree to node B, and nodes D and E, before we move up again to node C and then nodes F and G. This is the core principle of depth-first search (DFS), traversing full paths before backtracking and finding other paths.",
+              "fr": ""
+            },
+            {
+              "en": "In this case, we solved this example using a stack. Alternatively, depth-first search (DFS) can be implemented using recursion, where the function processes the current node and then calls itself for each of its unvisited neighbors. The function call stack implicitly manages the LIFO (last-in, first-out) order.",
+              "fr": ""
+            },
+            {
+              "en": "Both breadth-first search (BFS) and depth-first search (DFS) are essential algorithms for traversing graphs and trees. Breadth-first search (BFS) explores nodes level by level, which is perfect for finding the shortest path in an unweighted graph. On the other hand, depth-first search (DFS) follows one branch as deep as possible before backtracking, which is perfect for solving mazes and detecting cycles. Understanding their pros and cons is helpful for choosing the right one for a particular problem.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following data structures is commonly used to implement a standard breadth-first search (BFS) algorithm?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Stack",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
+              "fr": ""
+            },
+            {
+              "en": "Queue",
+              "fr": ""
+            },
+            {
+              "en": "Linked List",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
+              "fr": ""
+            },
+            {
+              "en": "Tree",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a queue processes data and how that relates to visiting nodes level by level.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements about depth-first search (DFS) is true?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Depth-first search is guaranteed to find the shortest path between two nodes in an unweighted graph.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Depth-first search visits all neighbors at the current level before moving to the next level.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Depth-first search is always more space-efficient than BFS.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the strategy that depth-first search (DFS) uses to traverse the data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Depth-first search is typically implemented using recursion or a stack.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If you wanted to find the shortest path from a starting node to a target node in an unweighted graph, which algorithm would be the most suitable choice?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Breadth-first search (BFS)",
+              "fr": ""
+            },
+            {
+              "en": "Depth-first search (DFS)",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
+              "fr": ""
+            },
+            {
+              "en": "Binary search",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
+              "fr": ""
+            },
+            {
+              "en": "Merge sort",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the core traversal strategy of breadth-first search and depth-first search and which one guarantees finding the shortest path between two nodes.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697dc755c709772fad37de9e.md",
+      "id": "697dc755c709772fad37de9e",
+      "dashedName": "how-do-matrices-and-adjacency-lists-work",
+      "title": {
+        "en": "How Do Matrices and Adjacency Lists Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Graphs are very powerful data structures made by a set of nodes, also known as vertices, and edges that connect them.",
+              "fr": ""
+            },
+            {
+              "en": "There are two common ways to implement graphs in your code:",
+              "fr": ""
+            },
+            {
+              "en": "* Adjacency matrices\n    \n* Adjacency lists",
+              "fr": ""
+            },
+            {
+              "en": "Let's look more into these, and go over their advantages and limitations.",
+              "fr": ""
+            },
+            {
+              "en": "## Adjacency Matrices",
+              "fr": ""
+            },
+            {
+              "en": "We'll start with adjacency matrices.",
+              "fr": ""
+            },
+            {
+              "en": "An adjacency matrix is a two-dimensional array in which the rows and columns represent the graph's vertices.",
+              "fr": ""
+            },
+            {
+              "en": "The values in the matrix represent the edges or connections between the nodes.",
+              "fr": ""
+            },
+            {
+              "en": "For example, if you have a matrix stored in a variable named `matrix`, the value stored at `matrix[i][j]`, where `i` is the row and `j` is the column, represents the edge or connection between node `i` and node `j`.",
+              "fr": ""
+            },
+            {
+              "en": "The values may have different meanings depending on whether the graph is weighted or unweighted:",
+              "fr": ""
+            },
+            {
+              "en": "* If the graph is unweighted, a value of `1` means that there is an edge connecting these nodes, while a value of `0` means there is no edge between them.\n    \n* If the graph is weighted, the value would represent the weight of the edge that connects the nodes.",
+              "fr": ""
+            },
+            {
+              "en": "One of the great advantages of using an adjacency matrix is that checking if there is an edge between two nodes takes constant time `O(1)`. This is because the program only needs to find that particular value in the 2D array.",
+              "fr": ""
+            },
+            {
+              "en": "However, this efficiency in finding the edges comes with a tradeoff. Adjacency matrices have a large quadratic space requirement `O(V²)`, where `V` is the number of nodes in the graph.",
+              "fr": ""
+            },
+            {
+              "en": "This is inefficient for sparse graphs, which are graphs that only have a few edges. Why? Because if the graph is sparse, you will be storing many 0s in the matrix to represent the lack of edges between the nodes, and these 0s will still take space in memory.",
+              "fr": ""
+            },
+            {
+              "en": "Adjacency matrices are also inefficient for finding a node's neighbors because the program has to iterate over the entire row or column to find the 0s and 1s that represent the edges. In the worst case, this process can take `O(V)` time, where `V` is the number of nodes in the graph.",
+              "fr": ""
+            },
+            {
+              "en": "Let's see an example of an adjacency matrix for this particular graph:",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"A graph with four nodes labeled A, B, C, and D. Node A connects to B, C, and D. Node B connects to A and D. Node C connects to A. Node D connects to A and B.\">",
+              "fr": ""
+            },
+            {
+              "en": "In the adjacency matrix:",
+              "fr": ""
+            },
+            {
+              "en": "* Each row represents a node. The first row represents node A, the second row represents node B, and so on.\n    \n* Each column represents a node too.\n    \n* Each value in the matrix represents whether there is an edge between each pair of nodes. A value of 0 means there isn't an edge connecting these nodes, while a value of 1 means there is an edge.\n    \nThe values in the diagonal represent whether or not each node has a self-loop, an edge that connects the node to itself. In our example, they are all 0s because the graph doesn't have any self-loops.",
+              "fr": ""
+            },
+            {
+              "en": "This is a visual representation of the adjacency matrix to show you how the rows and columns represent the corresponding nodes.",
+              "fr": ""
+            },
+            {
+              "en": "For example, the first row is `[0, 1, 1, 1]` because node A has edges connecting it to nodes B, C, and D:",
+              "fr": ""
+            },
+            {
+              "en": "And this is the same adjacency matrix, but implemented in JavaScript code:",
+              "fr": ""
+            },
+            {
+              "en": "## Adjacency Lists",
+              "fr": ""
+            },
+            {
+              "en": "Another common way to represent graphs is by using adjacency lists.",
+              "fr": ""
+            },
+            {
+              "en": "An adjacency list is an array or object (or a `Map`) that stores all the neighbors of each node.",
+              "fr": ""
+            },
+            {
+              "en": "There are two common ways to implement adjacency lists:",
+              "fr": ""
+            },
+            {
+              "en": "* As an array, where each index represents a node and the array stored at that index contains its neighbors.\n* As an object (or `Map`), where each key represents a node and the value associated to that key (an array) contains its neighbors.",
+              "fr": ""
+            },
+            {
+              "en": "Adjacency lists are more efficient than adjacency matrices in terms of space requirements. They have a `O(V + E)` space complexity, where `V` is the number of vertices (nodes) and `E` is the number of edges.",
+              "fr": ""
+            },
+            {
+              "en": "It's also efficient for finding all neighbor nodes, since this operation only requires accessing the list associated to the node.",
+              "fr": ""
+            },
+            {
+              "en": "However, there is also a tradeoff.",
+              "fr": ""
+            },
+            {
+              "en": "Adjacency lists are less efficient than adjacency matrices for determining if there is an edge between two nodes.",
+              "fr": ""
+            },
+            {
+              "en": "The search process typically takes `O(deg(v))` time (where `deg(v)` is the number of neighbors of the node you’re checking), and in the worst case it can be `O(V)` if a node is connected to all the other nodes in the graph.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of an adjacency list for this graph:",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-matrices-and-adjacency-lists-work-1.png\" alt=\"A graph with four nodes labeled A, B, C, and D. Node A connects to B, C, and D. Node B connects to A and D. Node C connects to A. Node D connects to A and B. It's the same image as before.\">",
+              "fr": ""
+            },
+            {
+              "en": "This adjacency list is implemented as an object. Every key in the object represents a node, and the value associated to that key is an array with all the neighbors of the corresponding node:",
+              "fr": ""
+            },
+            {
+              "en": "Alternatively, we could implement it as a 2D array, where each index represents a node. For example, index 0 represents node A, index 1 represents node B, and so on:",
+              "fr": ""
+            },
+            {
+              "en": "Notice that even if this 2D array may look similar to the adjacency matrix, they are quite different.",
+              "fr": ""
+            },
+            {
+              "en": "* The adjacency matrix stores 0s, 1s, or other values that represent the edges or weights of the edges in the graph.",
+              "fr": ""
+            },
+            {
+              "en": "* The adjacency list stores the actual list of all the neighbors of each node.",
+              "fr": ""
+            },
+            {
+              "en": "This is a very important difference that you should be familiar with.",
+              "fr": ""
+            },
+            {
+              "en": "Both adjacency matrices and adjacency lists are very important for implementing graphs. Choosing between them depends on the graph's size and how you need to use the data. Adjacency matrices are helpful for dense graphs with many edges, while adjacency lists are usually the preferred choice for real-world scenarios, where sparse graphs are more common.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "For which of the following scenarios is an adjacency matrix the most efficient choice for representing a graph?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A social network with billions of people and very few connections per person.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
+              "fr": ""
+            },
+            {
+              "en": "A computer network with only five connections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
+              "fr": ""
+            },
+            {
+              "en": "A dense graph where every node is connected to most other nodes.",
+              "fr": ""
+            },
+            {
+              "en": "A graph where the main operation is to find all neighbors of a specific node.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how much memory a matrix uses and how that changes based on the number of connections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When would it be more efficient to use an adjacency list over an adjacency matrix?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When the graph is dense and has many edges.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
+              "fr": ""
+            },
+            {
+              "en": "When you need to check if an edge exists between two nodes very quickly.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
+              "fr": ""
+            },
+            {
+              "en": "When the graph has a high number of vertices and many connections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how an adjacency list saves memory when a graph is not very connected.",
+              "fr": ""
+            },
+            {
+              "en": "When the graph is sparse, with a high number of vertices and a low number of edges.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following operations is faster in an adjacency matrix compared to an adjacency list?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Finding all neighbors of a single node.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
+              "fr": ""
+            },
+            {
+              "en": "Checking if a direct edge exists between two specific nodes.",
+              "fr": ""
+            },
+            {
+              "en": "Iterating through all nodes in the graph.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
+              "fr": ""
+            },
+            {
+              "en": "Adding a new node to the graph.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you would perform each of these operations in a grid and a list-based structure.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697dc755c709772fad37de9f.md",
+      "id": "697dc755c709772fad37de9f",
+      "dashedName": "what-are-trees-and-tries-and-how-do-they-work",
+      "title": {
+        "en": "What Are Trees and Tries and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Trees are very important in the world of computer science.",
+              "fr": ""
+            },
+            {
+              "en": "A **tree** is a specific type of graph.",
+              "fr": ""
+            },
+            {
+              "en": "For a graph to be classified as a tree, it must:",
+              "fr": ""
+            },
+            {
+              "en": "* Have no loops or cycles (paths where the start and end nodes are the same).\n    \n* Be connected (every node can be reached from every other node).",
+              "fr": ""
+            },
+            {
+              "en": "Trees are non-linear data structures that organize nodes in a hierarchy, where nodes may have children, siblings, and parent nodes.",
+              "fr": ""
+            },
+            {
+              "en": "The root node is the very top of a tree. It's the only node in the tree without a parent node. This is the node where you will start traversing the entire data structure, usually with algorithms like breadth-first search (BFS) or depth-first search (DFS).",
+              "fr": ""
+            },
+            {
+              "en": "This is a graphical example of a tree:",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"A tree diagram showing a hierarchical structure with node A at the root, nodes B and C as children of A, and nodes D and E as children of C. Node B is a leaf node.\">",
+              "fr": ""
+            },
+            {
+              "en": "Since nodes are organized in a hierarchy, they have relationships between them.",
+              "fr": ""
+            },
+            {
+              "en": "A **parent node** is a node that is immediately connected to other nodes below it. In the diagram, node A is the parent node of nodes B and C.",
+              "fr": ""
+            },
+            {
+              "en": "A **child node** is a node that is immediately connected to a node above it. In the diagram, node D and E are the child nodes of node C.",
+              "fr": ""
+            },
+            {
+              "en": "Nodes D and E are also classified as **leaves**. A leaf is a node that has no child nodes. You can think of them as the end of the \"branches\" of the tree.",
+              "fr": ""
+            },
+            {
+              "en": "Tree nodes also have important properties:",
+              "fr": ""
+            },
+            {
+              "en": "* **Depth**: the length of the path from the root to that node. For example, in the diagram, node D has depth 2 because if you start at the root, you have to go through two edges to reach it.\n    \n* **Height**: the length of the path from that node down to a leaf. For example, node C has a height of 1 because it's one level above the leaf nodes.\n    \n* **Degree:** the number of child nodes each node has. In the diagram, node B has degree 0 because it's a leaf node, so it has no child nodes. Node C has degree 2 because it has two child nodes.",
+              "fr": ""
+            },
+            {
+              "en": "Trees also have a **height**. The height of a tree is the height of its root node.",
+              "fr": ""
+            },
+            {
+              "en": "There are many different types of trees, including Binary Trees, Binary Search Trees, AVL trees, Red-Black Trees, and B-Trees.",
+              "fr": ""
+            },
+            {
+              "en": "## Binary Trees and Binary Search Trees",
+              "fr": ""
+            },
+            {
+              "en": "These are two of the most commonly used types of trees.",
+              "fr": ""
+            },
+            {
+              "en": "A **binary tree** is a type of tree in which each node can have at most two child nodes, a left child node and a right child node. Yes, this means that the example that you have seen so far is a binary tree!",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-1.png\" alt=\"The same binary tree example highlighting that it's a binary tree, with each node having at most two children.\">",
+              "fr": ""
+            },
+            {
+              "en": "A **binary search tree** is a more specific version of a binary tree, with a very particular ordering property.",
+              "fr": ""
+            },
+            {
+              "en": "To understand it, first you need to understand subtrees. A **subtree** is a section of a tree that is a tree itself.",
+              "fr": ""
+            },
+            {
+              "en": "In our tree example, nodes C, D, and E form a tree by themselves, so they are considered a subtree.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-3.png\" alt=\"A diagram highlighting a subtree within the main tree, showing nodes C, D, and E forming their own tree structure.\">",
+              "fr": ""
+            },
+            {
+              "en": "The ordering property of binary search trees (BST) establishes that for every node, all values in its left subtree are less than the node's value, and all values in its right subtree are greater than the node's value.",
+              "fr": ""
+            },
+            {
+              "en": "The left and right subtrees must also be binary search trees themselves.",
+              "fr": ""
+            },
+            {
+              "en": "This ordering makes search, insertion, and deletion operations very efficient if the tree is balanced.",
+              "fr": ""
+            },
+            {
+              "en": "A balanced tree is a tree in which the heights of the left and right subtrees of any node are very similar to make sure that operations remain efficient.",
+              "fr": ""
+            },
+            {
+              "en": "## Tries",
+              "fr": ""
+            },
+            {
+              "en": "Now that you know more about trees and binary search trees, let's dive into tries.",
+              "fr": ""
+            },
+            {
+              "en": "**Tries** are tree data structures used to store a set of strings.",
+              "fr": ""
+            },
+            {
+              "en": "Tries are also known as **prefix trees** because they are very efficient for operations that require finding strings based on their prefixes.",
+              "fr": ""
+            },
+            {
+              "en": "Each node in the trie represents a single character of a string.",
+              "fr": ""
+            },
+            {
+              "en": "The root node does not represent any particular character, so you can think of it as representing an empty string.",
+              "fr": ""
+            },
+            {
+              "en": "As you traverse the trie down from the root, the path to a node defines a specific prefix. To find a word, you follow that prefix until you reach the node with the word you are looking for.",
+              "fr": ""
+            },
+            {
+              "en": "Nodes that represent complete words are assigned end-of-word markers.",
+              "fr": ""
+            },
+            {
+              "en": "This is an example of a trie with the words \"top\", \"tea\" and \"ten\".",
+              "fr": ""
+            },
+            {
+              "en": "Notice how the words \"tea\" and \"ten\" share the same prefix \"te\", so the data structure follows the same path until the last character, which is marked as an end-of-word character. In this diagram, this is represented with a red border around the node:",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/what-are-trees-and-tries-and-how-do-they-work-4.png\" alt=\"A trie data structure showing the words 'top', 'tea', and 'ten'. The root node branches to 't', which then branches to 'o' (leading to 'top') and 'e' (leading to 'tea' and 'ten'). End-of-word nodes are marked with red borders.\">",
+              "fr": ""
+            },
+            {
+              "en": "The worst-case time complexity for the search operation is O(L), where L is the length of the string that you are looking for.",
+              "fr": ""
+            },
+            {
+              "en": "Insertion is also efficient. This operation only requires creating new nodes for the characters that don't exist in the trie yet.",
+              "fr": ""
+            },
+            {
+              "en": "The great advantage of this data structure is that when multiple strings share the same prefix, their paths overlap, so the prefix itself is only stored once.",
+              "fr": ""
+            },
+            {
+              "en": "This efficiency makes tries perfect for implementing features like autocomplete and spell checkers.",
+              "fr": ""
+            },
+            {
+              "en": "However, tries are not efficient for all sets of strings. They can be inefficient if the set of strings has many unique characters. This would require storing many unique characters as individual nodes. These nodes would have to be traversed to find the words, which would not be optimal.",
+              "fr": ""
+            },
+            {
+              "en": "Now that you are familiar with the different types of trees and what they are used for, you can start using them in real-world scenarios. Knowing how to choose the right one is a valuable skill to have when you need to tackle challenges in your daily work.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following statements about a Binary Search Tree (BST) is always true?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "All values in the left subtree of a node are less than the node's value.",
+              "fr": ""
+            },
+            {
+              "en": "Every node can have up to three children.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
+              "fr": ""
+            },
+            {
+              "en": "The tree is guaranteed to be perfectly balanced after every insertion.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
+              "fr": ""
+            },
+            {
+              "en": "It is a specialized tree-like structure optimized for storing strings.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the specific rule that governs how numbers are organized in a Binary Search Tree (BST) to allow for efficient searching.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "For which of the following tasks is a trie, or prefix tree most effective?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Finding the smallest value in a large dataset.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
+              "fr": ""
+            },
+            {
+              "en": "Managing a hierarchical file system on a computer.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
+              "fr": ""
+            },
+            {
+              "en": "Implementing an autocomplete feature.",
+              "fr": ""
+            },
+            {
+              "en": "Storing an unordered list of unique numbers.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main advantage of a trie's structure and how it's built based on characters.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the fundamental difference between a general tree and a Binary Tree?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A Binary Tree can only store numbers, while a general tree can store any data type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
+              "fr": ""
+            },
+            {
+              "en": "A Binary Tree has a root node, but a general tree does not.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
+              "fr": ""
+            },
+            {
+              "en": "A Binary Tree has no parent-child relationships, unlike a general tree.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the number of connections each node in a Binary Tree can have, compared to general trees.",
+              "fr": ""
+            },
+            {
+              "en": "A Binary Tree restricts each node to a maximum of two children, while a general tree does not.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "697dc755c709772fad37dea0.md",
+      "id": "697dc755c709772fad37dea0",
+      "dashedName": "how-do-priority-queues-and-heaps-work",
+      "title": {
+        "en": "How Do Priority Queues and Heaps Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "A **priority queue** is an abstract data type (ADT) that works similarly to a queue or stack, but with one key difference.",
+              "fr": ""
+            },
+            {
+              "en": "As you may already know, standard queues follow a FIFO (First-in, First-out) approach, where the first element added to the queue is the first one to be removed from the queue.",
+              "fr": ""
+            },
+            {
+              "en": "Stacks follow a LIFO (Last-in, First-out) approach, where the last element added to the stack is the first one to be removed from the stack.",
+              "fr": ""
+            },
+            {
+              "en": "Queues and stacks only consider the order of insertion of the elements.",
+              "fr": ""
+            },
+            {
+              "en": "However, priority queues take the \"priority\" of the elements into account. The priority is used to determine which element should be removed next.",
+              "fr": ""
+            },
+            {
+              "en": "Usually, the element with the highest priority is removed first, but some implementations may also choose to remove the element with the lowest priority first. This will depend on the requirements of your program.",
+              "fr": ""
+            },
+            {
+              "en": "Priority queues are very helpful for practical applications like finding the shortest path between two locations, scheduling tasks in operating systems, simulating traffic, compressing data, and managing networks.",
+              "fr": ""
+            },
+            {
+              "en": "In practice, priority queues are commonly implemented using a heap data structure.",
+              "fr": ""
+            },
+            {
+              "en": "A **heap** is a tree data structure with a very specific property called the **heap property**. This property determines the relationship between each node and its children, based on the type of heap.",
+              "fr": ""
+            },
+            {
+              "en": "There are two primary types of heaps:",
+              "fr": ""
+            },
+            {
+              "en": "* Max-heap\n    \n* Min-heap",
+              "fr": ""
+            },
+            {
+              "en": "In a **max-heap**, the value of each node is greater than or equal to the value of its children.",
+              "fr": ""
+            },
+            {
+              "en": "In this example, you can see a tree structure with the nodes 8, 7, 5, 2, and 1. Note that node 7 is greater than node 2 and node 1, following the heap property. This is true for all the other nodes as well.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-1.png\" alt=\"A max-heap tree structure showing nodes with values 8 at the root, 7 and 5 as children of 8, and 2 and 1 as children of 7, demonstrating that each parent node is greater than its children.\">",
+              "fr": ""
+            },
+            {
+              "en": "In contrast, in a **min-heap**, the value of each node is less than or equal to the value of its children.",
+              "fr": ""
+            },
+            {
+              "en": "In this example, we have nodes with values 4, 7, 9, 12, and 15. For example, node 7 is less than node 12 and node 15, following the heap property. This is also true for all the other nodes.",
+              "fr": ""
+            },
+            {
+              "en": "<img src=\"https://cdn.freecodecamp.org/curriculum/lecture-transcripts/how-do-priority-queues-and-heaps-work-2.png\" alt=\"A min-heap tree structure showing nodes with values 4 at the root, 7 and 9 as children of 4, and 12 and 15 as children of 7, demonstrating that each parent node is less than its children.\">",
+              "fr": ""
+            },
+            {
+              "en": "The heap property is key because it ensures that the maximum (or minimum) element (depending on the type of heap) always stays at the top, which makes it very easy to remove.",
+              "fr": ""
+            },
+            {
+              "en": "In practice, heaps are typically implemented as arrays to access parent and child nodes efficiently.",
+              "fr": ""
+            },
+            {
+              "en": "Using arrays simplifies the logic for accessing these values or \"nodes\" because behind the scenes, if the heap maintains the structure of a complete binary tree, the array implementation only requires simple mathematical operations based on their indices to find where the elements are located in memory.",
+              "fr": ""
+            },
+            {
+              "en": "JavaScript doesn't have a built-in heap module, but you can implement a min-heap using an array.",
+              "fr": ""
+            },
+            {
+              "en": "Here is a basic min-heap implementation in JavaScript:",
+              "fr": ""
+            },
+            {
+              "en": "To use this heap, you can create an empty heap. This will be the underlying data structure for the heap:",
+              "fr": ""
+            },
+            {
+              "en": "To add elements to the heap, you would call `push()`. This will automatically add the element where it should be, to preserve the heap property:",
+              "fr": ""
+            },
+            {
+              "en": "To get the element with the highest priority (in this case, the smallest value), you would call `pop()`:",
+              "fr": ""
+            },
+            {
+              "en": "`pushPop()` combines both operations into one call.",
+              "fr": ""
+            },
+            {
+              "en": "This is more efficient than calling them in a sequence separately, especially when the heap is large, since it only performs one reordering operation:",
+              "fr": ""
+            },
+            {
+              "en": "If you already have an array and you want to transform it into a heap, you could call `heapify()`:",
+              "fr": ""
+            },
+            {
+              "en": "But currently, we are sorting the elements by their values, right?",
+              "fr": ""
+            },
+            {
+              "en": "What if we want to sort them by their \"priority\" instead?",
+              "fr": ""
+            },
+            {
+              "en": "You could do this by storing arrays with this structure: `[priority, element]`.",
+              "fr": ""
+            },
+            {
+              "en": "In JavaScript, arrays are not automatically compared element by element for ordering, so you pass a comparison function to the heap that compares priorities first.",
+              "fr": ""
+            },
+            {
+              "en": "Please note that, in this case, lower values will represent higher priorities. This means that an item with priority of 1 will have a **higher** priority than an item with priority of 3:",
+              "fr": ""
+            },
+            {
+              "en": "If you need elements with the same priority to be removed in the order that they were inserted, you could consider including a unique counter as the second element of your item to break the tie, like this `[priority, counter, element]`.",
+              "fr": ""
+            },
+            {
+              "en": "For example, you can compare by priority first, and then by the counter:",
+              "fr": ""
+            },
+            {
+              "en": "Now let's talk about the efficiency of heaps.",
+              "fr": ""
+            },
+            {
+              "en": "The average and worst case time complexities for inserting and extracting the minimum or maximum value from a heap (depending on the type of heap) are logarithmic, `O(log n)`, because the number of swaps required is usually proportional to the height of the heap, which is log(n).",
+              "fr": ""
+            },
+            {
+              "en": "The average and worst case time complexity for the \"peek\" operation is constant time, O(1). Peeking involves getting the minimum or maximum value (depending on the type of heap) without removing it.",
+              "fr": ""
+            },
+            {
+              "en": "The \"heapify\" operation, where the heap is built from an unsorted list, has linear time complexity, O(n), in the average and worst cases.",
+              "fr": ""
+            },
+            {
+              "en": "Similarly, both searching for and deleting an arbitrary element have linear average and worst case time complexities of O(n), since they potentially require traversing the entire heap.",
+              "fr": ""
+            },
+            {
+              "en": "And how much space do they require?",
+              "fr": ""
+            },
+            {
+              "en": "The space complexity of the heap is linear, O(n), where `n` is the number of elements it contains. It only needs to store the elements and a small additional overhead for the array object itself.",
+              "fr": ""
+            },
+            {
+              "en": "Priority queues and heaps are very important in computer science. They let you quickly find and use the most important elements from a list. This efficiency is crucial for many computer programs that perform critical real-world tasks, such as finding the fastest route on a map.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary characteristic that distinguishes a priority queue from a standard queue or stack?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It allows elements to be accessed by their index.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main factor that determines which element is removed next.",
+              "fr": ""
+            },
+            {
+              "en": "It always processes elements in the order they were inserted.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main factor that determines which element is removed next.",
+              "fr": ""
+            },
+            {
+              "en": "It retrieves elements based on an assigned priority.",
+              "fr": ""
+            },
+            {
+              "en": "It only stores elements of the same data type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the main factor that determines which element is removed next.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a common real-world application where a priority queue would be helpful?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Scheduling tasks in an operating system where some tasks are more urgent.",
+              "fr": ""
+            },
+            {
+              "en": "Managing a playlist where songs play in a fixed order.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about scenarios where some items are more important and need to be handled first.",
+              "fr": ""
+            },
+            {
+              "en": "Storing a list of grocery items.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about scenarios where some items are more important and need to be handled first.",
+              "fr": ""
+            },
+            {
+              "en": "Keeping track of customer names in alphabetical order.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about scenarios where some items are more important and need to be handled first.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main reason why heaps are typically implemented as arrays in practice, despite being conceptualized as trees?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Arrays are always faster than any other data structure.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Arrays simplify the logic for accessing parent and child nodes using mathematical formulas.",
+              "fr": ""
+            },
+            {
+              "en": "Arrays allow for direct random access to any element, which is a core heap operation.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
+              "fr": ""
+            },
+            {
+              "en": "Arrays are the only data structure that can guarantee the heap property.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the tree-like structure of a heap can be efficiently mapped to a linear data structure.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

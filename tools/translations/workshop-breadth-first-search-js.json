@@ -1,0 +1,422 @@
+{
+  "workshop": "workshop-breadth-first-search-js",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6989eb65324d97775c4965fe.md",
+      "id": "6989eb65324d97775c4965fe",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll implement a function that generates all valid combinations of parentheses using a breadth-first search (BFS) approach. For example, the valid combinations of two pairs of parentheses are `(())` and `()()`.",
+          "fr": ""
+        },
+        {
+          "en": "Start by creating a function named `genParentheses` with a single parameter `pairs`. For now, return an empty array from the function.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a function named `genParentheses`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `genParentheses` function should have a single parameter named `pairs`.",
+          "fr": ""
+        },
+        {
+          "en": "Your function should return an empty array.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989ef885db3a3488a13b426.md",
+      "id": "6989ef885db3a3488a13b426",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Before implementing the core algorithm, you need to validate the input. The `pairs` parameter should be an integer, as it represents the number of parentheses pairs to generate.",
+          "fr": ""
+        },
+        {
+          "en": "Add an `if` statement at the beginning of your function to check if `pairs` is not an integer. Use the `Number.isInteger()` method for that.",
+          "fr": ""
+        },
+        {
+          "en": "If the condition is true, return the string `The number of pairs should be an integer`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an if statement with the condition `!Number.isInteger(pairs)` inside the `genParentheses` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should return a string when the input is not an integer.",
+          "fr": ""
+        },
+        {
+          "en": "You should return the string `The number of pairs should be an integer` when the input is a string.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f10a72ad424d4ad6d514.md",
+      "id": "6989f10a72ad424d4ad6d514",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Next, you need to validate that the number of pairs is at least one, since you can't generate parentheses combinations with zero or negative pairs.",
+          "fr": ""
+        },
+        {
+          "en": "Add another `if` statement to check if `pairs` is less than `1`. If this condition is true, return the string `The number of pairs should be at least 1`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a second `if` statement with the condition `pairs < 1`.",
+          "fr": ""
+        },
+        {
+          "en": "You should return the string `The number of pairs should be at least 1` when `pairs` is less than `1`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f1ba358acba651d5ee6b.md",
+      "id": "6989f1ba358acba651d5ee6b",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now you'll set up the data structure to store your results. Create a variable named `result` and initialize it to an empty array. This array will store all the valid parentheses combinations you generate.",
+          "fr": ""
+        },
+        {
+          "en": "Update your return statement to return `result` instead of an empty array.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `result` in your `genParentheses` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should initialize `result` to an empty array.",
+          "fr": ""
+        },
+        {
+          "en": "You should return `result` at the end of your function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f207306332c06b0add39.md",
+      "id": "6989f207306332c06b0add39",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "For the breadth-first search approach, you'll use a queue to track different states as you build the parentheses combinations. Each state will be represented as an array containing three elements:",
+          "fr": ""
+        },
+        {
+          "en": "- The current string being built\n- The number of opening parentheses used so far\n- The number of closing parentheses used so far",
+          "fr": ""
+        },
+        {
+          "en": "Create a variable named `queue` and initialize it to an array containing one array: `['', 0, 0]`. This represents the starting state with an empty string and zero parentheses used.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `queue` in your `genParentheses` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should initialize `queue` with an array containing the array `['', 0, 0]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f2e35e6941e13e445156.md",
+      "id": "6989f2e35e6941e13e445156",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Now you'll implement the main BFS loop. Create a `while` loop that continues as long as the `queue` is not empty, that is, `queue.length` is greater than `0`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the loop, log `queue` to the console.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop with the condition `queue.length > 0`.",
+          "fr": ""
+        },
+        {
+          "en": "You should log `queue` to the console inside your `while` loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f3632f8b8bdf168aa321.md",
+      "id": "6989f3632f8b8bdf168aa321",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Inside your `while` loop, use `queue.shift()` to remove and get the first element from the queue. This implements the first-in-first-out (FIFO) behavior characteristic of BFS.",
+          "fr": ""
+        },
+        {
+          "en": "Destructure this array into three variables: `current`, `opensUsed`, and `closesUsed`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `queue.shift()` to get the first element from the queue.",
+          "fr": ""
+        },
+        {
+          "en": "You should destructure the result into three variables: `current`, `opensUsed`, and `closesUsed`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f46b6e9366b0e6ad32fe.md",
+      "id": "6989f46b6e9366b0e6ad32fe",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Before you keep working on the BFS logic, call `genParentheses(1)` and log the result to the console.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `genParentheses(1)` to the console.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f48c3f0292c84f8d8938.md",
+      "id": "6989f48c3f0292c84f8d8938",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Now you need to identify when you've built a complete parentheses combination. A complete combination has a length equal to twice the number of pairs (since each pair contributes one opening and one closing parenthesis).",
+          "fr": ""
+        },
+        {
+          "en": "Inside your `while` loop, add an `if` statement to check if `current.length === 2 * pairs`. When this condition is true, push `current` to the `result` array.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement with the condition `current.length === 2 * pairs` inside your `while` loop.",
+          "fr": ""
+        },
+        {
+          "en": "You should push `current` to the `result` array inside your new `if` statement.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f555728e63ad8b349d84.md",
+      "id": "6989f555728e63ad8b349d84",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "If the current string isn't complete yet, you need to explore the next possible states. Add an `else` clause for the current `if` statement.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `else` block, you'll handle adding opening parentheses. Add an `if` statement to check if `opensUsed` is less than `pairs`. This ensures you don't use more opening parentheses than allowed.",
+          "fr": ""
+        },
+        {
+          "en": "If this condition is `true`, push a new array to the `queue`: `[current + '(', opensUsed + 1, closesUsed]`. This represents the state after adding an opening parenthesis.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `else` clause for your `if` statement inside the `while` loop.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an `if` statement inside the `else` block with the condition `opensUsed < pairs`.",
+          "fr": ""
+        },
+        {
+          "en": "You should push `[current + '(', opensUsed + 1, closesUsed]` to the queue when the condition is `true`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f5bf7f1a1d0fc8ebd1e8.md",
+      "id": "6989f5bf7f1a1d0fc8ebd1e8",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Now you need to handle adding closing parentheses. The key rule is that you can only add a closing parenthesis if it maintains balance, meaning there must be more opening parentheses used than closing parentheses.",
+          "fr": ""
+        },
+        {
+          "en": "Still within the `else` block, add a second `if` statement to check if `closesUsed` is less than `opensUsed`.",
+          "fr": ""
+        },
+        {
+          "en": "If this condition is true, push another new array to the `queue`: `[current + ')', opensUsed, closesUsed + 1]`. This represents the state after adding a closing parenthesis.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a second `if` statement with the condition `closesUsed < opensUsed` inside your `else` block.",
+          "fr": ""
+        },
+        {
+          "en": "You should push `[current + ')', opensUsed, closesUsed + 1]` to the queue when the condition is true.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f711e57008f3a23482f2.md",
+      "id": "6989f711e57008f3a23482f2",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Your function is now complete. Test it again by logging `genParentheses(2)` instead of `genParentheses(1)`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `genParentheses(2)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should not have `console.log(genParentheses(1))` in your code.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f788362592a7238b1f94.md",
+      "id": "6989f788362592a7238b1f94",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now you don't need to log the queue anymore. So remove `console.log(queue)` from your `while` loop.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not have `console.log(queue)` in your `while` loop.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6989f7d2f0bac8cfe05a068d.md",
+      "id": "6989f7d2f0bac8cfe05a068d",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Finally, call `genParentheses` with `3` as its argument to generate all five valid combinations of three pairs of parentheses and log the result to the console.",
+          "fr": ""
+        },
+        {
+          "en": "With that, your breadth-first search workshop is complete.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `genParentheses(3)`.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

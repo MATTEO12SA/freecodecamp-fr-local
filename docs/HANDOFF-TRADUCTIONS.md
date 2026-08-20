@@ -12,9 +12,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Structures de données (195/230)
+### JavaScript v9 — Algorithmes (204/230)
 
-État actuel : 195 blocs FR sur 230 (1146/1311 fichiers, ~87 %). Modules récursion + structures de données **100 %**. Prochaine cible : extraire/traduire `tools/translations/lecture-introduction-to-common-searching-and-sorting-algorithms.json` (`reviewed: false` — ne pas appliquer).
+État actuel : 204 blocs FR sur 230 (1195/1311 fichiers, ~91 %). Modules récursion + structures de données + algorithmes **100 %**. Prochaine cible : extraire/traduire `tools/translations/lecture-understanding-graphs-and-trees-js.json` (`reviewed: false` — ne pas appliquer).
 
 Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (195/230 blocs, 1146/1311 fichiers). Modules 1–12 + form-validation **100 %**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : extraire/traduire `lecture-introduction-to-common-searching-and-sorting-algorithms` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (204/230 blocs, 1195/1311 fichiers). Modules 1–12 + form-validation **100 %**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : extraire/traduire `lecture-understanding-graphs-and-trees-js` (`reviewed: false` — ne pas appliquer).
 
 ### Lister ce qui manque dans un module
 
@@ -286,7 +286,7 @@ timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; 
 compteurs sont affichés dans la sortie et protégés par
 `axe-test-regression.mjs`.
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 195/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 204/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -296,7 +296,7 @@ compteurs sont affichés dans la sortie et protégés par
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1–12 + form-validation **100 %** (195/230) ; prochaine cible = extraire/traduire `lecture-introduction-to-common-searching-and-sorting-algorithms` (`reviewed: false` — ne pas appliquer).
+3. Continuer JavaScript v9 : modules 1–12 + form-validation **100 %** (204/230) ; prochaine cible = extraire/traduire `lecture-understanding-graphs-and-trees-js` (`reviewed: false` — ne pas appliquer).
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -312,23 +312,23 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 ---
 
 **Dernière session (2026-08-20, audio/vidéo + onboarding)** :
-JS v9 à 195/230 (1146/1311). Module audio/vidéo + lab drum-machine. Site : onboarding
+JS v9 à 204/230 (1195/1311). Module audio/vidéo + lab drum-machine. Site : onboarding
 premier lancement, export/import profil (Dev FR), Continuer, confettis a11y.
 Piège music-player step-43 : fence EN indentée ` ```js` — préserver l'espace
 devant la fence FR. Prochaine cible : `lecture-working-with-maps-and-sets.json`
 (`reviewed: false`).
 
 **Dernière session (2026-08-20, dates module)** :
-JS v9 à 195/230 (1146/1311). Module dates traduit. Prochaine cible : `lecture-working-with-audio-and-video.json` (`reviewed: false`).
+JS v9 à 204/230 (1195/1311). Module dates traduit. Prochaine cible : `lecture-working-with-audio-and-video.json` (`reviewed: false`).
 
 **Dernière session (2026-08-20, form-validation + Continuer)** :
-JS v9 à 195/230 (1146/1311). Module form-validation : lecture, workshop-calorie-counter
+JS v9 à 204/230 (1195/1311). Module form-validation : lecture, workshop-calorie-counter
 (97 étapes), lab-customer-complaint-form, review/quiz. Site : bouton nav Continuer
 (`local-continue.ts` + Header). Prochaine cible : `lecture-working-with-dates.json`
 (`reviewed: false`) — **ne pas appliquer**.
 
 **Dernière session (2026-08-20, modules 10–12 a11y + debugging + regex)** :
-JS v9 à 195/230 blocs (1146/1311 fichiers), modules 1-12 **100 %**. Modules 10–11
+JS v9 à 204/230 blocs (1195/1311 fichiers), modules 1-12 **100 %**. Modules 10–11
 précédemment ; module 12 regex : lecture, spam-filter (32 étapes), 5 labs,
 review/quiz. Site : confettis + `prefers-reduced-motion`. Prochaine cible déjà
 extraite : `lab-markdown-to-html-converter.json` (`reviewed: false`) — **ne pas

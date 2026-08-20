@@ -1,0 +1,460 @@
+{
+  "workshop": "workshop-binary-search-js",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6995d0325fd7da40854fac40.md",
+      "id": "6995d0325fd7da40854fac40",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In a previous lesson, you learned about binary search and how it differs from linear search.",
+          "fr": "Dans une leçon précédente, tu as appris la recherche binaire et en quoi elle diffère de la recherche linéaire."
+        },
+        {
+          "en": "In this workshop, you will put that into practice by building a binary search algorithm.",
+          "fr": "Dans cet atelier, tu vas mettre cela en pratique en construisant un algorithme de recherche binaire."
+        },
+        {
+          "en": "To begin, create a `binarySearch` function with a `searchList` and `value` parameters.",
+          "fr": "Pour commencer, crée une fonction `binarySearch` avec les paramètres `searchList` et `value`."
+        },
+        {
+          "en": "`searchList` is the array of elements the function will search within, and `value` is the target the function will try to find within the `searchList`.",
+          "fr": "`searchList` est le tableau d'éléments dans lequel la fonction cherchera, et `value` est la cible que la fonction tentera de trouver dans `searchList`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `binarySearch` function.",
+          "fr": "Tu dois créer une fonction `binarySearch`."
+        },
+        {
+          "en": "Your `binarySearch` function should have a `searchList` and `value` parameters.",
+          "fr": "Ta fonction `binarySearch` doit avoir les paramètres `searchList` et `value`."
+        }
+      ]
+    },
+    {
+      "file": "6996c60281feca6718cc15c1.md",
+      "id": "6996c60281feca6718cc15c1",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Inside your `binarySearch` function, create a `pathToTarget` variable and initialize it to an empty array, for a start.",
+          "fr": "À l'intérieur de ta fonction `binarySearch`, crée une variable `pathToTarget` et initialise-la à un tableau vide, pour commencer."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `pathToTarget` variable set to an empty array `[]` within your `binarySearch` function.",
+          "fr": "Tu dois avoir une variable `pathToTarget` définie à un tableau vide `[]` dans ta fonction `binarySearch`."
+        }
+      ]
+    },
+    {
+      "file": "6996c675b599baa7b103192d.md",
+      "id": "6996c675b599baa7b103192d",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "In binary search, there is the lowest possible index and the highest possible index.",
+          "fr": "Dans la recherche binaire, il y a l'indice le plus bas possible et l'indice le plus haut possible."
+        },
+        {
+          "en": "The lowest possible index represents the leftmost boundary in the current portion of the values being searched within, in this case, `searchList`. The highest possible index, on the other hand, represents the rightmost boundary in the values being searched.",
+          "fr": "L'indice le plus bas possible représente la borne gauche de la portion actuelle des valeurs recherchées, ici `searchList`. L'indice le plus haut possible, quant à lui, représente la borne droite des valeurs recherchées."
+        },
+        {
+          "en": "To account for those two, you have to consider the entire array being searched. So, inside the `binarySearch` function, define a `low` variable with a value of `0`, and a `high` variable with a value that accounts for the last index in the array being searched.",
+          "fr": "Pour tenir compte de ces deux, tu dois considérer tout le tableau recherché. Donc, à l'intérieur de la fonction `binarySearch`, définis une variable `low` avec une valeur de `0`, et une variable `high` avec une valeur qui correspond au dernier indice du tableau recherché."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `low` set to `0` in your `binarySearch` function.",
+          "fr": "Tu dois avoir une variable nommée `low` définie à `0` dans ta fonction `binarySearch`."
+        },
+        {
+          "en": "You should have a variable named `high` set to `searchList.length - 1` in your `binarySearch` function.",
+          "fr": "Tu dois avoir une variable nommée `high` définie à `searchList.length - 1` dans ta fonction `binarySearch`."
+        }
+      ]
+    },
+    {
+      "file": "6996c7363a4a437839f1f15d.md",
+      "id": "6996c7363a4a437839f1f15d",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now that you've defined the boundaries of your search, it's time to create the loop that will perform the binary search algorithm.",
+          "fr": "Maintenant que tu as défini les bornes de ta recherche, il est temps de créer la boucle qui effectuera l'algorithme de recherche binaire."
+        },
+        {
+          "en": "Binary search works by repeatedly narrowing down the search space. This process continues as long as there is a valid range of elements to check.",
+          "fr": "La recherche binaire fonctionne en réduisant de façon répétée l'espace de recherche. Ce processus continue tant qu'il y a une plage valide d'éléments à vérifier."
+        },
+        {
+          "en": "You can express this with a `while` loop that will continue as long as your `low` pointer is less than or equal to your `high` pointer.",
+          "fr": "Tu peux exprimer cela avec une boucle `while` qui continuera tant que ton pointeur `low` est inférieur ou égal à ton pointeur `high`."
+        },
+        {
+          "en": "If `low` ever becomes greater than `high`, it means the search space has become empty, and the `value` is not in the array.",
+          "fr": "Si `low` devient jamais supérieur à `high`, cela signifie que l'espace de recherche est devenu vide, et que `value` n'est pas dans le tableau."
+        },
+        {
+          "en": "Inside the `binarySearch` function, create a `while` loop with a condition that checks if `low` is less than or equal to high.",
+          "fr": "À l'intérieur de la fonction `binarySearch`, crée une boucle `while` avec une condition qui vérifie si `low` est inférieur ou égal à high."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `while` loop that runs while `low` is less than or equal to `high`.",
+          "fr": "Tu dois créer une boucle `while` qui s'exécute tant que `low` est inférieur ou égal à `high`."
+        }
+      ]
+    },
+    {
+      "file": "6996c796385b6ea4e222d5e8.md",
+      "id": "6996c796385b6ea4e222d5e8",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "To get started with the loop, you need to find the middle index of the current search space.",
+          "fr": "Pour démarrer avec la boucle, tu dois trouver l'indice du milieu de l'espace de recherche actuel."
+        },
+        {
+          "en": "You can get the middle index by calculating the average of the `low` and `high` variables. You will have to use floor division to get the average after adding the two values, so the answer would always be an integer rounded down, as the indices must be integers.",
+          "fr": "Tu peux obtenir l'indice du milieu en calculant la moyenne des variables `low` et `high`. Tu devras utiliser la division entière (floor) pour obtenir la moyenne après avoir ajouté les deux valeurs, afin que la réponse soit toujours un entier arrondi vers le bas, car les indices doivent être des entiers."
+        },
+        {
+          "en": "Within your `while` loop, create a `mid` variable set to the average of `low` and `high`.",
+          "fr": "Dans ta boucle `while`, crée une variable `mid` définie à la moyenne de `low` et `high`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Within the while loop you should create a `mid` variable set to `Math.floor((low + high) / 2)`.",
+          "fr": "Dans la boucle while, tu dois créer une variable `mid` définie à `Math.floor((low + high) / 2)`."
+        }
+      ]
+    },
+    {
+      "file": "6996c8375f4301004459ee85.md",
+      "id": "6996c8375f4301004459ee85",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Now that you've calculated the `mid` index, you need to actually retrieve the value from the `searchList` at that index. This value is what you will compare against your `value` parameter, which is the target you are searching for.",
+          "fr": "Maintenant que tu as calculé l'indice `mid`, tu dois réellement récupérer la valeur de `searchList` à cet indice. Cette valeur est celle que tu compareras à ton paramètre `value`, qui est la cible que tu recherches."
+        },
+        {
+          "en": "Create a `valueAtMiddle` variable and assign it the element from `searchList` that is located at the `mid` index.",
+          "fr": "Crée une variable `valueAtMiddle` et assigne-lui l'élément de `searchList` situé à l'indice `mid`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `valueAtMiddle` variable set to `searchList[mid]`.",
+          "fr": "Tu dois créer une variable `valueAtMiddle` définie à `searchList[mid]`."
+        }
+      ]
+    },
+    {
+      "file": "6996c8f94fe6b250f11a2a1e.md",
+      "id": "6996c8f94fe6b250f11a2a1e",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now, include `valueAtMiddle` in the `pathToTarget` array to track the steps taken during the search, regardless of whether it's the target. You can do this with the `push()` method.",
+          "fr": "Maintenant, inclus `valueAtMiddle` dans le tableau `pathToTarget` pour suivre les étapes prises pendant la recherche, qu'il s'agisse ou non de la cible. Tu peux le faire avec la méthode `push()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `push()` method to add `valueAtMiddle` to the `pathToTarget` array.",
+          "fr": "Tu dois utiliser la méthode `push()` pour ajouter `valueAtMiddle` au tableau `pathToTarget`."
+        }
+      ]
+    },
+    {
+      "file": "6996c95e5bede03bdf2937a2.md",
+      "id": "6996c95e5bede03bdf2937a2",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "The next thing to do is to create a condition that will check if the target `value` is in the middle.",
+          "fr": "La prochaine chose à faire est de créer une condition qui vérifiera si la `value` cible est au milieu."
+        },
+        {
+          "en": "Inside the `while` loop, create an `if` statement that checks if the target `value` is equal to `valueAtMiddle`. If it is, return the `pathToTarget` variable.",
+          "fr": "À l'intérieur de la boucle `while`, crée une instruction `if` qui vérifie si la `value` cible est égale à `valueAtMiddle`. Si c'est le cas, renvoie la variable `pathToTarget`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with the condition `value === valueAtMiddle`.",
+          "fr": "Tu dois créer une instruction `if` avec la condition `value === valueAtMiddle`."
+        },
+        {
+          "en": "You should return the `pathToTarget` variable inside the `if` statement.",
+          "fr": "Tu dois renvoyer la variable `pathToTarget` à l'intérieur de l'instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "6996ca21a74104721f2c7e5d.md",
+      "id": "6996ca21a74104721f2c7e5d",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "You need to test out things so you will understand the flow of the algorithm at this initial stage.",
+          "fr": "Tu dois tester les choses pour comprendre le flux de l'algorithme à ce stade initial."
+        },
+        {
+          "en": "To do that, you need to first break out of the loop. That's because the current implementation will only allow one iteration, so if the condition is not met, there will be an infinite loop.",
+          "fr": "Pour cela, tu dois d'abord sortir de la boucle. C'est parce que l'implémentation actuelle ne permettra qu'une seule itération, donc si la condition n'est pas remplie, il y aura une boucle infinie."
+        },
+        {
+          "en": "Just after the `if` statement, use the `break` keyword to break out of the `while` loop. Then, after the `while` loop, return an empty array to signify that the value was not found.",
+          "fr": "Juste après l'instruction `if`, utilise le mot-clé `break` pour sortir de la boucle `while`. Ensuite, après la boucle `while`, renvoie un tableau vide pour indiquer que la valeur n'a pas été trouvée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `break` keyword to break out of the `while` loop after the `if` statement.",
+          "fr": "Tu dois utiliser le mot-clé `break` pour sortir de la boucle `while` après l'instruction `if`."
+        },
+        {
+          "en": "You should return an empty array after your `while` loop.",
+          "fr": "Tu dois renvoyer un tableau vide après ta boucle `while`."
+        }
+      ]
+    },
+    {
+      "file": "6996cb5869acf58de751ae81.md",
+      "id": "6996cb5869acf58de751ae81",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Recall that the function takes an array called `searchList` and the `value` you're looking for.",
+          "fr": "Rappelle-toi que la fonction prend un tableau appelé `searchList` et la `value` que tu recherches."
+        },
+        {
+          "en": "Now, call the function with `binarySearch([1, 2, 3, 4, 5], 3)` and `binarySearch([1, 2, 3, 4, 5, 9], 4)` and log both statements to the console.",
+          "fr": "Maintenant, appelle la fonction avec `binarySearch([1, 2, 3, 4, 5], 3)` et `binarySearch([1, 2, 3, 4, 5, 9], 4)` et affiche les deux instructions dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the function with `binarySearch([1, 2, 3, 4, 5], 3)` and log it to the console.",
+          "fr": "Tu dois appeler la fonction avec `binarySearch([1, 2, 3, 4, 5], 3)` et l'afficher dans la console."
+        },
+        {
+          "en": "You should call the function with `binarySearch([1, 2, 3, 4, 5, 9], 4)` and log it to the console.",
+          "fr": "Tu dois appeler la fonction avec `binarySearch([1, 2, 3, 4, 5, 9], 4)` et l'afficher dans la console."
+        }
+      ]
+    },
+    {
+      "file": "6996ccadf9048c79b857bb15.md",
+      "id": "6996ccadf9048c79b857bb15",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "You can see that the first call returns `[3]`. That's because `3` is the middle value in `[1, 2, 3, 4, 5]`.",
+          "fr": "Tu peux voir que le premier appel renvoie `[3]`. C'est parce que `3` est la valeur du milieu dans `[1, 2, 3, 4, 5]`."
+        },
+        {
+          "en": "On the other hand, the second call returns an empty array. This happens because, after checking the middle value, the loop currently lacks the logic to narrow the search range by updating the `low` or `high` variables. It only acts as a single midpoint check and then finishes without further searching.",
+          "fr": "En revanche, le deuxième appel renvoie un tableau vide. Cela se produit parce qu'après avoir vérifié la valeur du milieu, la boucle manque actuellement la logique pour réduire la plage de recherche en mettant à jour les variables `low` ou `high`. Elle n'agit que comme une seule vérification du milieu, puis se termine sans chercher davantage."
+        },
+        {
+          "en": "To allow the binary search to continue narrowing its search, add an `else if` statement that checks if `value` is greater than `valueAtMiddle`.",
+          "fr": "Pour permettre à la recherche binaire de continuer à réduire sa recherche, ajoute une instruction `else if` qui vérifie si `value` est supérieure à `valueAtMiddle`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `else if` statement with the condition `value > valueAtMiddle`.",
+          "fr": "Tu dois ajouter une instruction `else if` avec la condition `value > valueAtMiddle`."
+        }
+      ]
+    },
+    {
+      "file": "6996cdf1f60cbc30eeeae1c9.md",
+      "id": "6996cdf1f60cbc30eeeae1c9",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "If the condition in the `else if` is true, update the value of the `low` variable by adding `1` to the `mid` variable.",
+          "fr": "Si la condition dans le `else if` est vraie, mets à jour la valeur de la variable `low` en ajoutant `1` à la variable `mid`."
+        },
+        {
+          "en": "This will extend the search to the right half of the current search areas in the list, because if the `value` is greater than `valueAtMiddle`, it means the `value` must be in the right half of the current search area.",
+          "fr": "Cela étendra la recherche à la moitié droite des zones de recherche actuelles dans la liste, parce que si `value` est supérieure à `valueAtMiddle`, cela signifie que `value` doit être dans la moitié droite de la zone de recherche actuelle."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update the `low` variable to `mid + 1`.",
+          "fr": "Tu dois mettre à jour la variable `low` à `mid + 1`."
+        }
+      ]
+    },
+    {
+      "file": "6996cfb6c01e9a802add38be.md",
+      "id": "6996cfb6c01e9a802add38be",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Finally, if the `value` is not found at the middle and is also not greater than `valueAtMiddle`, then the `value` must be less than `valueAtMiddle`, and must be on the left. The final `else` block will handle this.",
+          "fr": "Enfin, si `value` n'est pas trouvée au milieu et n'est pas non plus supérieure à `valueAtMiddle`, alors `value` doit être inférieure à `valueAtMiddle`, et doit être à gauche. Le bloc `else` final gérera cela."
+        },
+        {
+          "en": "So, finish up the loop by removing the `break` keyword and adding an `else` block. Inside it, update the `high` variable by subtracting `1` from `mid`.",
+          "fr": "Donc, termine la boucle en retirant le mot-clé `break` et en ajoutant un bloc `else`. À l'intérieur, mets à jour la variable `high` en soustrayant `1` de `mid`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should replace the `break` keyword with an `else` block that updates the `high` variable to `mid - 1`.",
+          "fr": "Tu dois remplacer le mot-clé `break` par un bloc `else` qui met à jour la variable `high` à `mid - 1`."
+        }
+      ]
+    },
+    {
+      "file": "6996d0a2c2ac55041145a13f.md",
+      "id": "6996d0a2c2ac55041145a13f",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Did you notice the second function call now has the values `3, 5, 4` in the list? That indicates the binary search is working as intended.",
+          "fr": "As-tu remarqué que le deuxième appel de fonction a maintenant les valeurs `3, 5, 4` dans la liste ? Cela indique que la recherche binaire fonctionne comme prévu."
+        },
+        {
+          "en": "This is how it happened: The algorithm first checked `3` as the middle of the initial list. Since `4` is greater than `3`, the search shifted to the right half. It then examined `5` as the new middle. Because `4` is less than `5`, the search moved to the left, ultimately identifying `4` as the middle of the final range.",
+          "fr": "Voici comment cela s'est passé : l'algorithme a d'abord vérifié `3` comme milieu de la liste initiale. Comme `4` est supérieur à `3`, la recherche s'est déplacée vers la moitié droite. Elle a ensuite examiné `5` comme nouveau milieu. Comme `4` est inférieur à `5`, la recherche s'est déplacée vers la gauche, identifiant finalement `4` comme le milieu de la plage finale."
+        },
+        {
+          "en": "To test the function again, call it with `[1, 3, 5, 9, 14, 22], 10` and log it to the console. This is a situation in which the value will not be found.",
+          "fr": "Pour tester à nouveau la fonction, appelle-la avec `[1, 3, 5, 9, 14, 22], 10` et affiche-la dans la console. C'est une situation où la valeur ne sera pas trouvée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the function with `binarySearch([1, 3, 5, 9, 14, 22], 10)` and log it to the console.",
+          "fr": "Tu dois appeler la fonction avec `binarySearch([1, 3, 5, 9, 14, 22], 10)` et l'afficher dans la console."
+        }
+      ]
+    },
+    {
+      "file": "6996d1032feed88e2957dc8e.md",
+      "id": "6996d1032feed88e2957dc8e",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "You can see that the last call prints an empty array. To further specify that the value is not in the searched array, update the `return` statement to return an array containing two elements, an empty array, and the string `Value not found`.",
+          "fr": "Tu peux voir que le dernier appel affiche un tableau vide. Pour préciser davantage que la valeur n'est pas dans le tableau recherché, mets à jour l'instruction `return` pour renvoyer un tableau contenant deux éléments, un tableau vide, et la chaîne `Value not found`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update the `return` statement to return `[], 'Value not found'`.",
+          "fr": "Tu dois mettre à jour l'instruction `return` pour renvoyer `[], 'Value not found'`."
+        }
+      ]
+    },
+    {
+      "file": "6996d18b31aab5cbbffbc731.md",
+      "id": "6996d18b31aab5cbbffbc731",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "One final small enhancement you can add is to also show the index at which the target `value` is found.",
+          "fr": "Une dernière petite amélioration que tu peux ajouter est d'afficher aussi l'indice auquel la `value` cible est trouvée."
+        },
+        {
+          "en": "So, instead of returning only `pathToTarget` in the `if` statement, add a template literal with the message `Value found at index ${mid}`.",
+          "fr": "Donc, au lieu de renvoyer seulement `pathToTarget` dans l'instruction `if`, ajoute un template literal avec le message `Value found at index ${mid}`."
+        },
+        {
+          "en": "With that, your binary search algorithm workshop is complete!",
+          "fr": "Avec cela, ton atelier sur l'algorithme de recherche binaire est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should return `pathToTarget, \\`Value found at index ${mid}\\`` inside the `if` statement.",
+          "fr": "Tu dois renvoyer `pathToTarget, \\`Value found at index ${mid}\\`` à l'intérieur de l'instruction `if`."
+        }
+      ]
+    }
+  ]
+}

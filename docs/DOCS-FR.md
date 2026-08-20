@@ -101,7 +101,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 149 blocs FR sur 230 (1146/1311 fichiers) — modules 1-12 **100 % complets**. Prochaine cible : extraire/traduire `tools/translations/lecture-introduction-to-common-searching-and-sorting-algorithms.json` (`reviewed: false` — ne pas appliquer).
+JavaScript v9 est en cours : 149 blocs FR sur 230 (1195/1311 fichiers) — modules 1-12 **100 % complets**. Prochaine cible : extraire/traduire `tools/translations/lecture-understanding-graphs-and-trees-js.json` (`reviewed: false` — ne pas appliquer).
 
 Regles de traduction :
 
@@ -135,7 +135,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (195/230), modules 1-12 **100 % complets**. Prochaine cible : extraire/traduire `lecture-introduction-to-common-searching-and-sorting-algorithms` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (204/230), modules 1-12 **100 % complets**. Prochaine cible : extraire/traduire `lecture-understanding-graphs-and-trees-js` (`reviewed: false` — ne pas appliquer).
 
 ## Scripts Gardes
 
