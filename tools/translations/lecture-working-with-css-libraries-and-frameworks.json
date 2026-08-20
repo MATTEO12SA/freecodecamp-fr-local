@@ -1,0 +1,650 @@
+{
+  "workshop": "lecture-working-with-css-libraries-and-frameworks",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1d74780981f521b8ac090.md",
+      "id": "67d1d74780981f521b8ac090",
+      "dashedName": "what-is-a-css-framework-and-what-are-some-advantages-and-disadvantages-of-using-it",
+      "title": {
+        "en": "What Is a CSS Framework, and What Are Some Advantages and Disadvantages of Using It?",
+        "fr": "Qu'est-ce qu'un framework CSS, et quels sont certains avantages et inconvénients de son utilisation ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As you work CSS, you may experience certain challenges, such as keeping the styles consistent and compatible across browsers, avoiding repetition, and handling the growing complexity and number of CSS files across your project. CSS frameworks are very helpful to prevent these issues from the start.",
+              "fr": "Quand tu travailles avec le CSS, tu peux rencontrer certains défis, comme garder les styles cohérents et compatibles entre navigateurs, éviter la répétition, et gérer la complexité croissante et le nombre de fichiers CSS dans ton projet. Les frameworks CSS sont très utiles pour prévenir ces problèmes dès le départ."
+            },
+            {
+              "en": "A CSS framework consists of pre-written CSS code that you can use to style your HTML elements.",
+              "fr": "Un framework CSS consiste en du code CSS préécrit que tu peux utiliser pour styliser tes éléments HTML."
+            },
+            {
+              "en": "By using a CSS framework, you can speed up your workflow, create a uniform visual style across the website, make your design look consistent across multiple browsers, and overall keep your CSS code more organized.",
+              "fr": "En utilisant un framework CSS, tu peux accélérer ton workflow, créer un style visuel uniforme sur le site web, rendre ton design cohérent sur plusieurs navigateurs, et globalement garder ton code CSS plus organisé."
+            },
+            {
+              "en": "You can think of a CSS framework as toolbox, where you can quickly find a style or component that fits your needs and use it right away, without having to specify it yourself using CSS properties. These frameworks often include pre-defined styles and components that you can use very easily, including styles for creating responsive layouts.",
+              "fr": "Tu peux voir un framework CSS comme une boîte à outils, où tu peux rapidement trouver un style ou un composant qui correspond à tes besoins et l'utiliser tout de suite, sans avoir à le spécifier toi-même avec des propriétés CSS. Ces frameworks incluent souvent des styles et composants prédéfinis que tu peux utiliser très facilement, y compris des styles pour créer des dispositions responsive."
+            },
+            {
+              "en": "Some of the most popular CSS frameworks are Tailwind CSS, Bootstrap, Materialize, and Foundation.",
+              "fr": "Parmi les frameworks CSS les plus populaires, on trouve Tailwind CSS, Bootstrap, Materialize et Foundation."
+            },
+            {
+              "en": "Let's talk a little bit about the two types of CSS frameworks: utility-first CSS frameworks, and component-based CSS frameworks.",
+              "fr": "Parlons un peu des deux types de frameworks CSS : les frameworks CSS utility-first, et les frameworks CSS component-based."
+            },
+            {
+              "en": "Tailwind CSS is a utility-first CSS framework. This means that it has small classes with very specific purposes, like setting the margin, padding, or background color. You can usually assign these small classes directly to the HTML elements.",
+              "fr": "Tailwind CSS est un framework CSS utility-first. Cela signifie qu'il a de petites classes avec des objectifs très précis, comme définir la marge, le padding ou la couleur de fond. Tu peux généralement assigner ces petites classes directement aux éléments HTML."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "This button will have a blue background with white and bold text, a vertical padding of 2 rem, a horizontal padding of 4 rem, and rounded borders. The class `hover:bg-blue-700` will turn the background dark blue when the user hovers over it with the mouse.",
+              "fr": "Ce bouton aura un fond bleu avec un texte blanc et gras, un padding vertical de 2 rem, un padding horizontal de 4 rem, et des bordures arrondies. La classe `hover:bg-blue-700` rendra le fond bleu foncé quand l'utilisateur survole le bouton avec la souris."
+            },
+            {
+              "en": "As you can see, Tailwind CSS classes are very granular, so they can be applied to individual HTML elements as needed.",
+              "fr": "Comme tu peux le voir, les classes Tailwind CSS sont très granulaires, donc elles peuvent être appliquées aux éléments HTML individuels selon les besoins."
+            },
+            {
+              "en": "In contrast, Bootstrap is a component-based CSS framework. It has pre-built components with pre-defined styles that you can easily add to your website. These components are usually available in the official documentation of the CSS framework, where you can copy and paste them quickly into your project.",
+              "fr": "En revanche, Bootstrap est un framework CSS component-based. Il a des composants préconstruits avec des styles prédéfinis que tu peux facilement ajouter à ton site web. Ces composants sont généralement disponibles dans la documentation officielle du framework CSS, où tu peux les copier-coller rapidement dans ton projet."
+            },
+            {
+              "en": "For example, if you want to create a list group in Bootstrap, you would write something like this in HTML:",
+              "fr": "Par exemple, si tu veux créer un list group dans Bootstrap, tu écrirais quelque chose comme ceci en HTML :"
+            },
+            {
+              "en": "These pre-defined classes will automatically apply standard styles to the card, list group, and list group items.",
+              "fr": "Ces classes prédéfinies appliqueront automatiquement des styles standard à la carte, au list group et aux éléments du list group."
+            },
+            {
+              "en": "Notice that here, instead of adding small and general classes, we are adding the entire component, including the HTML structure. This is why Bootstrap is component-based.",
+              "fr": "Remarque qu'ici, au lieu d'ajouter de petites classes générales, on ajoute le composant entier, y compris la structure HTML. C'est pourquoi Bootstrap est component-based."
+            },
+            {
+              "en": "While CSS frameworks have many advantages, they also have certain disadvantages. It's important that you know both of them to make an informed decision.",
+              "fr": "Bien que les frameworks CSS aient de nombreux avantages, ils ont aussi certains inconvénients. Il est important que tu connaisses les deux pour prendre une décision éclairée."
+            },
+            {
+              "en": "Since CSS frameworks rely on pre-defined styles, if you try to add custom CSS on top them, specificity issues may arise. The selectors used by the framework may have a higher specificity than the selectors that you use in your custom CSS, so the correct style may not be displayed. To solve this, you will need to use a more specific CSS selector, so this may bring some additional challenges.",
+              "fr": "Comme les frameworks CSS s'appuient sur des styles prédéfinis, si tu essaies d'ajouter du CSS personnalisé par-dessus, des problèmes de spécificité peuvent apparaître. Les sélecteurs utilisés par le framework peuvent avoir une spécificité plus élevée que les sélecteurs que tu utilises dans ton CSS personnalisé, donc le style correct peut ne pas s'afficher. Pour résoudre cela, tu devras utiliser un sélecteur CSS plus spécifique, ce qui peut apporter des défis supplémentaires."
+            },
+            {
+              "en": "They can also limit uniqueness to a certain extent because their standard styles are used widely across many websites. However, this can be addressed by customizing the CSS with your unique styles.",
+              "fr": "Ils peuvent aussi limiter l'unicité dans une certaine mesure parce que leurs styles standard sont largement utilisés sur de nombreux sites web. Cependant, cela peut être corrigé en personnalisant le CSS avec tes styles uniques."
+            },
+            {
+              "en": "And finally, you should consider potential performance issues that CSS frameworks might introduce. Some frameworks are quite large, and may take some time to load.",
+              "fr": "Et enfin, tu devrais considérer les problèmes de performance potentiels que les frameworks CSS pourraient introduire. Certains frameworks sont assez volumineux, et peuvent prendre un certain temps à charger."
+            },
+            {
+              "en": "As a developer, you will decide if using a CSS framework is helpful for your project, if using entirely custom CSS is better, or perhaps a mix of both.",
+              "fr": "En tant que développeur, tu décideras si utiliser un framework CSS est utile pour ton projet, si utiliser entièrement du CSS personnalisé est préférable, ou peut-être un mélange des deux."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a common benefit of using a CSS framework?",
+              "fr": "Laquelle des options suivantes N'EST PAS un avantage courant de l'utilisation d'un framework CSS ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Faster development due to pre-styled components.",
+              "fr": "Un développement plus rapide grâce à des composants préstylisés."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the impact that a CSS framework can have on file size and processing.",
+              "fr": "Pense à l'impact qu'un framework CSS peut avoir sur la taille des fichiers et le traitement."
+            },
+            {
+              "en": "Improved website performance due to optimized CSS.",
+              "fr": "De meilleures performances du site grâce à un CSS optimisé."
+            },
+            {
+              "en": "Consistent styling across browsers.",
+              "fr": "Un style cohérent entre navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the impact that a CSS framework can have on file size and processing.",
+              "fr": "Pense à l'impact qu'un framework CSS peut avoir sur la taille des fichiers et le traitement."
+            },
+            {
+              "en": "Simplified responsive web design implementation.",
+              "fr": "Une mise en œuvre simplifiée du design web responsive."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the impact that a CSS framework can have on file size and processing.",
+              "fr": "Pense à l'impact qu'un framework CSS peut avoir sur la taille des fichiers et le traitement."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes a utility-first CSS framework?",
+              "fr": "Laquelle des options suivantes décrit le mieux un framework CSS utility-first ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It provides pre-built components like buttons and forms.",
+              "fr": "Il fournit des composants préconstruits comme des boutons et des formulaires."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the types of styles that you apply to HTML elements with CSS frameworks like Tailwind CSS.",
+              "fr": "Pense aux types de styles que tu appliques aux éléments HTML avec des frameworks CSS comme Tailwind CSS."
+            },
+            {
+              "en": "It provides a complete system to implement responsive designs.",
+              "fr": "Il fournit un système complet pour implémenter des designs responsive."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the types of styles that you apply to HTML elements with CSS frameworks like Tailwind CSS.",
+              "fr": "Pense aux types de styles que tu appliques aux éléments HTML avec des frameworks CSS comme Tailwind CSS."
+            },
+            {
+              "en": "It automatically generates CSS based on the HTML structure.",
+              "fr": "Il génère automatiquement le CSS en fonction de la structure HTML."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the types of styles that you apply to HTML elements with CSS frameworks like Tailwind CSS.",
+              "fr": "Pense aux types de styles que tu appliques aux éléments HTML avec des frameworks CSS comme Tailwind CSS."
+            },
+            {
+              "en": "It includes a collection of small, single-purpose CSS classes.",
+              "fr": "Il inclut une collection de petites classes CSS à objectif unique."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following best describes a component-based CSS framework?",
+              "fr": "Laquelle des options suivantes décrit le mieux un framework CSS component-based ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It provides a set of utility classes that are assigned to HTML elements.",
+              "fr": "Il fournit un ensemble de classes utilitaires qui sont assignées aux éléments HTML."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the fundamental components of Bootstrap.",
+              "fr": "Pense aux composants fondamentaux de Bootstrap."
+            },
+            {
+              "en": "It provides a highly customizable design system based on complex CSS selectors.",
+              "fr": "Il fournit un système de design hautement personnalisable basé sur des sélecteurs CSS complexes."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the fundamental components of Bootstrap.",
+              "fr": "Pense aux composants fondamentaux de Bootstrap."
+            },
+            {
+              "en": "It includes set of pre-designed and reusable elements.",
+              "fr": "Il inclut un ensemble d'éléments prédéfinis et réutilisables."
+            },
+            {
+              "en": "It automatically generates the CSS styles based on the HTML structure.",
+              "fr": "Il génère automatiquement les styles CSS en fonction de la structure HTML."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the fundamental components of Bootstrap.",
+              "fr": "Pense aux composants fondamentaux de Bootstrap."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2fe63c8b0049ad7481021.md",
+      "id": "67d2fe63c8b0049ad7481021",
+      "dashedName": "what-is-the-value-of-using-a-css-preprocessor-and-what-are-some-disadvantages",
+      "title": {
+        "en": "What Is the Value of Using a CSS Preprocessor, and What Are Some Disadvantages?",
+        "fr": "Quelle est la valeur d'utiliser un préprocesseur CSS, et quels sont certains inconvénients ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "A CSS preprocessor is a tool that extends standard CSS with powerful features like variables, mixins, nesting, and selector inheritance.",
+              "fr": "Un préprocesseur CSS est un outil qui étend le CSS standard avec des fonctionnalités puissantes comme les variables, les mixins, l'imbrication et l'héritage de sélecteurs."
+            },
+            {
+              "en": "Some of these features, like variables and nesting, are now supported or are getting more support in native CSS, and this trend is very likely to continue. However, earlier versions of native CSS did not support these features.",
+              "fr": "Certaines de ces fonctionnalités, comme les variables et l'imbrication, sont maintenant prises en charge ou le sont de plus en plus en CSS natif, et cette tendance a de fortes chances de continuer. Cependant, les versions antérieures du CSS natif ne prenaient pas en charge ces fonctionnalités."
+            },
+            {
+              "en": "That is why CSS preprocessors became so widely used in the first place. They take the CSS rules and styles you write, along with their extended syntax, and compile them into a native CSS file that browsers can understand.",
+              "fr": "C'est pourquoi les préprocesseurs CSS sont devenus si largement utilisés au départ. Ils prennent les règles et styles CSS que tu écris, avec leur syntaxe étendue, et les compilent en un fichier CSS natif que les navigateurs peuvent comprendre."
+            },
+            {
+              "en": "By using a CSS preprocessor, you can structure your CSS code in a more reusable and logical way. You will also have access to powerful features, like mixins, that are not directly supported by CSS.",
+              "fr": "En utilisant un préprocesseur CSS, tu peux structurer ton code CSS de façon plus réutilisable et logique. Tu auras aussi accès à des fonctionnalités puissantes, comme les mixins, qui ne sont pas directement prises en charge par le CSS."
+            },
+            {
+              "en": "Some of the most popular CSS preprocessors are Sass, Less, and Stylus.",
+              "fr": "Parmi les préprocesseurs CSS les plus populaires, on trouve Sass, Less et Stylus."
+            },
+            {
+              "en": "Let's talk about Sass.",
+              "fr": "Parlons de Sass."
+            },
+            {
+              "en": "Sass stands for \"Syntactically Awesome Style Sheets.\" It's compatible with all versions of CSS and maintained by a large community of developers.",
+              "fr": "Sass signifie « Syntactically Awesome Style Sheets ». Il est compatible avec toutes les versions de CSS et maintenu par une large communauté de développeurs."
+            },
+            {
+              "en": "Sass supports features like:",
+              "fr": "Sass prend en charge des fonctionnalités comme :"
+            },
+            {
+              "en": "- Variables, so you can store and reuse values throughout the spreadsheet.",
+              "fr": "- Les variables, pour stocker et réutiliser des valeurs dans toute la feuille de style."
+            },
+            {
+              "en": "- Nested CSS rules, so you can create a visual hierarchy in your file.",
+              "fr": "- Les règles CSS imbriquées, pour créer une hiérarchie visuelle dans ton fichier."
+            },
+            {
+              "en": "- Modules, so you can split your styles into multiple stylesheets.",
+              "fr": "- Les modules, pour découper tes styles en plusieurs feuilles de style."
+            },
+            {
+              "en": "- Mixins, so you can reuse CSS declarations throughout your site.",
+              "fr": "- Les mixins, pour réutiliser des déclarations CSS dans tout ton site."
+            },
+            {
+              "en": "- Inheritance, so multiple CSS selectors can share properties.",
+              "fr": "- L'héritage, pour que plusieurs sélecteurs CSS puissent partager des propriétés."
+            },
+            {
+              "en": "- And operators, for basic mathematical operations.",
+              "fr": "- Et les opérateurs, pour des opérations mathématiques de base."
+            },
+            {
+              "en": "Sass also supports two syntaxes.",
+              "fr": "Sass prend aussi en charge deux syntaxes."
+            },
+            {
+              "en": "The SCSS syntax stands for Sassy CSS, which is a superset of CSS. This means that SCSS expands the basic syntax of CSS.",
+              "fr": "La syntaxe SCSS signifie Sassy CSS, qui est un surensemble du CSS. Cela signifie que SCSS étend la syntaxe de base du CSS."
+            },
+            {
+              "en": "SCSS is the most common syntax that you'll use and find when working with Sass. It requires the use of curly braces (`{` and `}`) around CSS properties and semicolons (`;`) at the end of CSS declarations, just like native CSS.",
+              "fr": "SCSS est la syntaxe la plus courante que tu utiliseras et trouveras en travaillant avec Sass. Elle exige l'utilisation d'accolades (`{` et `}`) autour des propriétés CSS et de points-virgules (`;`) à la fin des déclarations CSS, tout comme le CSS natif."
+            },
+            {
+              "en": "These files have a `.scss` extension. Here is an example:",
+              "fr": "Ces fichiers ont une extension `.scss`. Voici un exemple :"
+            },
+            {
+              "en": "What you see here, at the top, is a variable defined in SCSS. This variable is used in the CSS rule below.",
+              "fr": "Ce que tu vois ici, en haut, est une variable définie en SCSS. Cette variable est utilisée dans la règle CSS ci-dessous."
+            },
+            {
+              "en": "Let's compare SCSS with a less-frequently used syntax, the indented syntax. This is also known as the \"Sass syntax\" since it was Sass's original syntax.",
+              "fr": "Comparons SCSS avec une syntaxe moins fréquemment utilisée, la syntaxe indentée. Elle est aussi connue sous le nom de « syntaxe Sass » car c'était la syntaxe originale de Sass."
+            },
+            {
+              "en": "This syntax relies on indentation to define the rules. Here is an example:",
+              "fr": "Cette syntaxe s'appuie sur l'indentation pour définir les règles. Voici un exemple :"
+            },
+            {
+              "en": "Notice that there are no curly braces around the CSS rule, or semi-colons at the end of CSS declarations. At the top, you can also see a variable. Notice that its name starts with a dollar sign (`$`) in this syntax, which is different than native CSS variables, but works very similarly.",
+              "fr": "Remarque qu'il n'y a pas d'accolades autour de la règle CSS, ni de points-virgules à la fin des déclarations CSS. En haut, tu peux aussi voir une variable. Remarque que son nom commence par un signe dollar (`$`) dans cette syntaxe, ce qui est différent des variables CSS natives, mais fonctionne de façon très similaire."
+            },
+            {
+              "en": "Sass also supports a powerful feature, called mixins.",
+              "fr": "Sass prend aussi en charge une fonctionnalité puissante, appelée mixins."
+            },
+            {
+              "en": "Mixins allow you to group multiple CSS properties and their values under the name and reuse that block of CSS code throughout your stylesheet.",
+              "fr": "Les mixins te permettent de regrouper plusieurs propriétés CSS et leurs valeurs sous un nom et de réutiliser ce bloc de code CSS dans toute ta feuille de style."
+            },
+            {
+              "en": "This makes your CSS code less repetitive and easier to maintain because, if you change something in that block, the change is applied everywhere you use the mixin.",
+              "fr": "Cela rend ton code CSS moins répétitif et plus facile à maintenir car, si tu changes quelque chose dans ce bloc, le changement est appliqué partout où tu utilises le mixin."
+            },
+            {
+              "en": "Since mixins can have custom and descriptive names, they can be helpful to understand what each block of CSS code does, which can make your stylesheets easier to understand.",
+              "fr": "Comme les mixins peuvent avoir des noms personnalisés et descriptifs, ils peuvent aider à comprendre ce que fait chaque bloc de code CSS, ce qui peut rendre tes feuilles de style plus faciles à comprendre."
+            },
+            {
+              "en": "And mixins also promote consistency in stylesheets by applying uniform styles.",
+              "fr": "Et les mixins favorisent aussi la cohérence dans les feuilles de style en appliquant des styles uniformes."
+            },
+            {
+              "en": "This is an example of a mixin in SCSS syntax:",
+              "fr": "Voici un exemple de mixin en syntaxe SCSS :"
+            },
+            {
+              "en": "To define a mixin, you start by writing the `@mixin` at-rule, followed by the name of the mixin. In this case, the mixin is called `center-flex`. It has three CSS properties to center elements using Flexbox.",
+              "fr": "Pour définir un mixin, tu commences par écrire l'at-rule `@mixin`, suivie du nom du mixin. Dans ce cas, le mixin s'appelle `center-flex`. Il a trois propriétés CSS pour centrer les éléments avec Flexbox."
+            },
+            {
+              "en": "Then, once you have your mixin defined, you would use the `@include` at-rule to include those properties in a CSS rule. You just need to write `@include` followed by the name of the mixin. In this case, the name is `center-flex`:",
+              "fr": "Ensuite, une fois ton mixin défini, tu utiliserais l'at-rule `@include` pour inclure ces propriétés dans une règle CSS. Tu as juste besoin d'écrire `@include` suivi du nom du mixin. Dans ce cas, le nom est `center-flex` :"
+            },
+            {
+              "en": "This is the full code with the mixin and the CSS rule:",
+              "fr": "Voici le code complet avec le mixin et la règle CSS :"
+            },
+            {
+              "en": "You can include the mixin in as many CSS rules as needed. If you need to make any changes, you would only need to change the mixin itself and the changes would be applied everywhere automatically. This example is in SCSS syntax. Notice that it has the curly braces and the semicolons.",
+              "fr": "Tu peux inclure le mixin dans autant de règles CSS que nécessaire. Si tu dois faire des changements, tu n'aurais qu'à modifier le mixin lui-même et les changements seraient appliqués partout automatiquement. Cet exemple est en syntaxe SCSS. Remarque qu'il a les accolades et les points-virgules."
+            },
+            {
+              "en": "Here is the equivalent in indented syntax, also known as Sass syntax, without the curly braces or semicolons:",
+              "fr": "Voici l'équivalent en syntaxe indentée, aussi connue sous le nom de syntaxe Sass, sans les accolades ni les points-virgules :"
+            },
+            {
+              "en": "And this is the compiled CSS code, what the browser will actually interpret after the file is compiled into native CSS:",
+              "fr": "Et voici le code CSS compilé, ce que le navigateur interprétera réellement après que le fichier soit compilé en CSS natif :"
+            },
+            {
+              "en": "Notice that it includes the three mixin properties at the top: `display`, `justify-content`, and `align-items`.",
+              "fr": "Remarque qu'il inclut les trois propriétés du mixin en haut : `display`, `justify-content` et `align-items`."
+            },
+            {
+              "en": "This is only a simple example of what CSS preprocessors are capable of. They have many powerful features that are worth learning and applying in your daily workflow.",
+              "fr": "Ceci n'est qu'un exemple simple de ce dont les préprocesseurs CSS sont capables. Ils ont de nombreuses fonctionnalités puissantes qui valent la peine d'être apprises et appliquées dans ton workflow quotidien."
+            },
+            {
+              "en": "However, they do have potential disadvantages that you should be aware of.",
+              "fr": "Cependant, ils ont des inconvénients potentiels dont tu devrais être conscient."
+            },
+            {
+              "en": "First, CSS preprocessors have to compile the CSS rules into standard CSS. While the potential overhead of this compilation process is often minimal in terms of time and resources, it is something that you should consider for real-world projects.",
+              "fr": "D'abord, les préprocesseurs CSS doivent compiler les règles CSS en CSS standard. Bien que la surcharge potentielle de ce processus de compilation soit souvent minimale en termes de temps et de ressources, c'est quelque chose que tu devrais considérer pour les projets réels."
+            },
+            {
+              "en": "Next, they can create debugging challenges, since browsers use the compiled CSS directly. Finding out what is generating a problematic style from the extended syntax can take a few extra steps when compared to standard CSS.",
+              "fr": "Ensuite, ils peuvent créer des défis de débogage, puisque les navigateurs utilisent directement le CSS compilé. Découvrir ce qui génère un style problématique à partir de la syntaxe étendue peut prendre quelques étapes supplémentaires par rapport au CSS standard."
+            },
+            {
+              "en": "However, the advantages of CSS preprocessors usually outweigh their disadvantages, especially for complex projects. They can be very helpful for writing cleaner, reusable, less repetitive, and scalable CSS.",
+              "fr": "Cependant, les avantages des préprocesseurs CSS l'emportent généralement sur leurs inconvénients, surtout pour les projets complexes. Ils peuvent être très utiles pour écrire un CSS plus propre, réutilisable, moins répétitif et évolutif."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a common feature of CSS preprocessors?",
+              "fr": "Laquelle des options suivantes N'EST PAS une fonctionnalité courante des préprocesseurs CSS ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Variables for storing and reusing values.",
+              "fr": "Des variables pour stocker et réutiliser des valeurs."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the extended syntax of CSS preprocessors.",
+              "fr": "Pense à la syntaxe étendue des préprocesseurs CSS."
+            },
+            {
+              "en": "Nested CSS rules for reflecting HTML structure.",
+              "fr": "Des règles CSS imbriquées pour refléter la structure HTML."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the extended syntax of CSS preprocessors.",
+              "fr": "Pense à la syntaxe étendue des préprocesseurs CSS."
+            },
+            {
+              "en": "Automatic optimization of CSS for improved performance.",
+              "fr": "L'optimisation automatique du CSS pour de meilleures performances."
+            },
+            {
+              "en": "Mixins for creating reusable blocks of CSS styles.",
+              "fr": "Des mixins pour créer des blocs réutilisables de styles CSS."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the extended syntax of CSS preprocessors.",
+              "fr": "Pense à la syntaxe étendue des préprocesseurs CSS."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main purpose of a CSS preprocessor?",
+              "fr": "Quel est le but principal d'un préprocesseur CSS ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To allow developers to write CSS that is directly understood by browsers.",
+              "fr": "Permettre aux développeurs d'écrire du CSS qui est directement compris par les navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how CSS preprocessors extend the capabilities of CSS.",
+              "fr": "Pense à la façon dont les préprocesseurs CSS étendent les capacités du CSS."
+            },
+            {
+              "en": "To extend the capabilities of CSS with more powerful features.",
+              "fr": "Étendre les capacités du CSS avec des fonctionnalités plus puissantes."
+            },
+            {
+              "en": "To replace CSS entirely with a modern styling language.",
+              "fr": "Remplacer entièrement le CSS par un langage de style moderne."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how CSS preprocessors extend the capabilities of CSS.",
+              "fr": "Pense à la façon dont les préprocesseurs CSS étendent les capacités du CSS."
+            },
+            {
+              "en": "To design web pages without writing code.",
+              "fr": "Concevoir des pages web sans écrire de code."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how CSS preprocessors extend the capabilities of CSS.",
+              "fr": "Pense à la façon dont les préprocesseurs CSS étendent les capacités du CSS."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the relationship between Sass and SCSS?",
+              "fr": "Quelle est la relation entre Sass et SCSS ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They are entirely different CSS preprocessors with very distinct syntax.",
+              "fr": "Ce sont des préprocesseurs CSS entièrement différents avec une syntaxe très distincte."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different syntaxes available for working with Sass.",
+              "fr": "Pense aux deux syntaxes différentes disponibles pour travailler avec Sass."
+            },
+            {
+              "en": "SCSS is a newer version of Sass that has completely replaced the original syntax.",
+              "fr": "SCSS est une version plus récente de Sass qui a complètement remplacé la syntaxe originale."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different syntaxes available for working with Sass.",
+              "fr": "Pense aux deux syntaxes différentes disponibles pour travailler avec Sass."
+            },
+            {
+              "en": "SCSS is a syntax for Sass that is closer to standard CSS.",
+              "fr": "SCSS est une syntaxe pour Sass qui est plus proche du CSS standard."
+            },
+            {
+              "en": "Sass is a library that can be used with SCSS to add more features.",
+              "fr": "Sass est une bibliothèque qui peut être utilisée avec SCSS pour ajouter plus de fonctionnalités."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the two different syntaxes available for working with Sass.",
+              "fr": "Pense aux deux syntaxes différentes disponibles pour travailler avec Sass."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "workshop": "review-typescript",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6724e296dceca21b82426229.md",
+      "id": "6724e296dceca21b82426229",
+      "dashedName": "review-typescript",
+      "title": {
+        "en": "TypeScript Review",
+        "fr": "Révision TypeScript"
+      },
+      "description": [
+        {
+          "en": "## What is TypeScript",
+          "fr": "## Qu’est-ce que TypeScript"
+        },
+        {
+          "en": "- **JavaScript**: JavaScript is a dynamically-typed language. This means that variables can receive any values at run time. The challenge of a dynamically-typed language is that the lack of type safety can introduce errors.",
+          "fr": "- **JavaScript** : JavaScript est un langage à typage dynamique. Cela signifie que les variables peuvent recevoir n’importe quelles valeurs à l’exécution. Le défi d’un langage à typage dynamique est que l’absence de sûreté des types peut introduire des erreurs."
+        },
+        {
+          "en": "For example, even if your JavaScript function expects an array, you can still call it with a number:",
+          "fr": "Par exemple, même si ta fonction JavaScript attend un tableau, tu peux quand même l’appeler avec un nombre :"
+        },
+        {
+          "en": "The `console` output for the example above will be `undefined`.",
+          "fr": "La sortie de la `console` pour l’exemple ci-dessus sera `undefined`."
+        },
+        {
+          "en": "- **TypeScript**: TypeScript extends the JavaScript language to include static typing, which helps catch errors caused by type mismatches before you run your code.",
+          "fr": "- **TypeScript** : TypeScript étend le langage JavaScript pour inclure le typage statique, ce qui aide à attraper les erreurs causées par des incompatibilités de types avant d’exécuter ton code."
+        },
+        {
+          "en": "For example, you can define a type for the `array` parameter as follows:",
+          "fr": "Par exemple, tu peux définir un type pour le paramètre `array` comme suit :"
+        },
+        {
+          "en": "This type definition tells TypeScript that the `array` parameter must be an array of strings. Then, when you call `getRandomValue` and pass it a number, you get an error called a compiler error.",
+          "fr": "Cette définition de type indique à TypeScript que le paramètre `array` doit être un tableau de chaînes. Ensuite, quand tu appelles `getRandomValue` et que tu lui passes un nombre, tu obtiens une erreur appelée erreur de compilateur."
+        },
+        {
+          "en": "- **Compiler**: You first need to compile TypeScript code into regular JavaScript. When you run the compiler, TypeScript will evaluate your code and throw an error for any issues where the types don't match.",
+          "fr": "- **Compilateur** : Tu dois d’abord compiler le code TypeScript en JavaScript classique. Quand tu lances le compilateur, TypeScript évalue ton code et lève une erreur pour tout problème où les types ne correspondent pas."
+        },
+        {
+          "en": "## Data Types in TypeScript",
+          "fr": "## Types de données en TypeScript"
+        },
+        {
+          "en": "- **Primitive Data Types in TypeScript**: For the primitive data types `string`, `null`, `undefined`, `number`, `boolean`, and `bigint`, TypeScript offers corresponding type keywords.",
+          "fr": "- **Types de données primitifs en TypeScript** : Pour les types de données primitifs `string`, `null`, `undefined`, `number`, `boolean` et `bigint`, TypeScript offre des mots-clés de type correspondants."
+        },
+        {
+          "en": "- **Array**: You can define an array of specific type with two different syntaxes.",
+          "fr": "- **Tableau** : Tu peux définir un tableau d’un type spécifique avec deux syntaxes différentes."
+        },
+        {
+          "en": "- **Objects**: You can define the exact structure of an object.",
+          "fr": "- **Objets** : Tu peux définir la structure exacte d’un objet."
+        },
+        {
+          "en": "If you want an object with any keys, but where all values must be strings, there are two ways to define it:",
+          "fr": "Si tu veux un objet avec n’importe quelles clés, mais où toutes les valeurs doivent être des chaînes, il y a deux façons de le définir :"
+        },
+        {
+          "en": "- **Other Helpful Types in TypeScript**:\n  - **`any`**: `any` indicates that a value can have any type. It tells the compiler to stop caring about the type of that variable.\n  - **`unknown`**: `unknown` tells TypeScript that you _do_ care about the type of the value, but you don’t actually know what it is. `unknown` is generally preferred over `any`.\n  - **`void`**: This is a special type that you’ll typically only use when defining functions. Functions that don’t have a return value use a return type of `void`.\n  - **`never`**: It represents a type that will never exist.",
+          "fr": "- **Autres types utiles en TypeScript** :\n  - **`any`** : `any` indique qu’une valeur peut avoir n’importe quel type. Il dit au compilateur d’arrêter de se soucier du type de cette variable.\n  - **`unknown`** : `unknown` indique à TypeScript que tu _te soucies_ du type de la valeur, mais que tu ne sais pas réellement ce qu’il est. `unknown` est généralement préféré à `any`.\n  - **`void`** : C’est un type spécial que tu n’utiliseras typiquement que pour définir des fonctions. Les fonctions qui n’ont pas de valeur de retour utilisent un type de retour `void`.\n  - **`never`** : Il représente un type qui n’existera jamais."
+        },
+        {
+          "en": "- **`type` Keyword**: This keyword is like `const`, but instead of declaring a variable, you can declare a type.",
+          "fr": "- **Mot-clé `type`** : Ce mot-clé est comme `const`, mais au lieu de déclarer une variable, tu peux déclarer un type."
+        },
+        {
+          "en": "It is useful for declaring custom types such as union types or types that include only specific values:",
+          "fr": "Il est utile pour déclarer des types personnalisés comme des types union ou des types qui n’incluent que des valeurs spécifiques :"
+        },
+        {
+          "en": "- **`interface`**: Interfaces are like classes for types. They can implement or extend other interfaces, are specifically object types, and are generally preferred unless you need a specific feature offered by a `type` declaration.",
+          "fr": "- **`interface`** : Les interfaces sont comme des classes pour les types. Elles peuvent implémenter ou étendre d’autres interfaces, sont spécifiquement des types d’objets, et sont généralement préférées sauf si tu as besoin d’une fonctionnalité spécifique offerte par une déclaration `type`."
+        },
+        {
+          "en": "- **Defining Return Type**: You can also define the _return type_ of the function.",
+          "fr": "- **Définir le type de retour** : Tu peux aussi définir le _type de retour_ de la fonction."
+        },
+        {
+          "en": "The example below defines the return value as a string. If you try to return anything else, TypeScript will give a compiler error.",
+          "fr": "L’exemple ci-dessous définit la valeur de retour comme une chaîne. Si tu essaies de renvoyer autre chose, TypeScript donnera une erreur de compilateur."
+        },
+        {
+          "en": "## Generics",
+          "fr": "## Generics"
+        },
+        {
+          "en": "- **Defining Generic Type**: You can define a generic type and refer to it in your function. It can be thought of as a special parameter you provide to a function to control the behavior of the function's type definition.",
+          "fr": "- **Définir un type générique** : Tu peux définir un type générique et y faire référence dans ta fonction. On peut le voir comme un paramètre spécial que tu fournis à une fonction pour contrôler le comportement de sa définition de type."
+        },
+        {
+          "en": "Here is an example of defining a generic type for a function:",
+          "fr": "Voici un exemple de définition d’un type générique pour une fonction :"
+        },
+        {
+          "en": "The `<T>` syntax tells TypeScript that you are defining a generic type `T` for the function. `T` is a common name for generic types, but you can use any name.",
+          "fr": "La syntaxe `<T>` indique à TypeScript que tu définis un type générique `T` pour la fonction. `T` est un nom courant pour les types génériques, mais tu peux utiliser n’importe quel nom."
+        },
+        {
+          "en": "Then, you tell TypeScript that the `array` parameter is an array of values matching the generic type, and that the returned value is a single element of that same type.",
+          "fr": "Ensuite, tu dis à TypeScript que le paramètre `array` est un tableau de valeurs correspondant au type générique, et que la valeur renvoyée est un seul élément de ce même type."
+        },
+        {
+          "en": "- **Specifying Type Argument in Function Call**: You can pass a type argument to a function call using angle brackets between the function name and its parameters.",
+          "fr": "- **Spécifier un argument de type dans un appel de fonction** : Tu peux passer un argument de type à un appel de fonction avec des chevrons entre le nom de la fonction et ses paramètres."
+        },
+        {
+          "en": "Here is an example of passing a type argument to a function call:",
+          "fr": "Voici un exemple de passage d’un argument de type à un appel de fonction :"
+        },
+        {
+          "en": "This tells TypeScript that the element you expect to find will be an input element.",
+          "fr": "Cela indique à TypeScript que l’élément que tu t’attends à trouver sera un élément input."
+        },
+        {
+          "en": "## Type Narrowing",
+          "fr": "## Type Narrowing"
+        },
+        {
+          "en": "- **Narrowing by Truthiness**: In the example below, you get a compiler error trying to access the `value` property of `email` because `email` _might_ be `null`.",
+          "fr": "- **Narrowing par truthiness** : Dans l’exemple ci-dessous, tu obtiens une erreur de compilateur en essayant d’accéder à la propriété `value` de `email` car `email` _pourrait_ être `null`."
+        },
+        {
+          "en": "You can use a conditional statement to confirm `email` is _truthy_ before accessing the property:",
+          "fr": "Tu peux utiliser une instruction conditionnelle pour confirmer que `email` est _truthy_ avant d’accéder à la propriété :"
+        },
+        {
+          "en": "Truthiness checks can also work in the reverse direction:",
+          "fr": "Les vérifications de truthiness peuvent aussi fonctionner dans le sens inverse :"
+        },
+        {
+          "en": "Throwing an error ends the logical execution of this code, which means when you reach the `console.log()` call, TypeScript knows `email` _cannot_ be `null`.",
+          "fr": "Lever une erreur met fin à l’exécution logique de ce code, ce qui signifie que lorsqu’on atteint l’appel `console.log()`, TypeScript sait que `email` _ne peut pas_ être `null`."
+        },
+        {
+          "en": "- **Optional Chaining**: Optional chaining `?.` is also a form of type narrowing, under the same premise that the property access can't happen if the `email` value is `null`.",
+          "fr": "- **Chaînage optionnel** : Le chaînage optionnel `?.` est aussi une forme de type narrowing, selon le même principe : l’accès à la propriété ne peut pas se produire si la valeur `email` est `null`."
+        },
+        {
+          "en": "- **`typeof` Operator**: You can use a conditional to check the type of the variable using the `typeof` operator.",
+          "fr": "- **Opérateur `typeof`** : Tu peux utiliser une condition pour vérifier le type de la variable avec l’opérateur `typeof`."
+        },
+        {
+          "en": "- **`instanceof` Keyword**: If the object comes from a class, you can use the `instanceof` keyword to narrow the type.",
+          "fr": "- **Mot-clé `instanceof`** : Si l’objet vient d’une classe, tu peux utiliser le mot-clé `instanceof` pour restreindre le type."
+        },
+        {
+          "en": "- **Casting**: When TypeScript cannot automatically determine the type of a value, such as the result from `request.json()` method in the example below, you'll get a compiler error. One way to resolve this is by casting the type, but doing so weakens TypeScript's ability to catch potential errors.",
+          "fr": "- **Casting** : Quand TypeScript ne peut pas déterminer automatiquement le type d’une valeur, comme le résultat de la méthode `request.json()` dans l’exemple ci-dessous, tu obtiendras une erreur de compilateur. Une façon de résoudre cela est de caster le type, mais cela affaiblit la capacité de TypeScript à attraper d’éventuelles erreurs."
+        },
+        {
+          "en": "- **Type Guard**: Instead of casting the type, you can write a type guard:",
+          "fr": "- **Type Guard** : Au lieu de caster le type, tu peux écrire un type guard :"
+        },
+        {
+          "en": "The `user is User` syntax indicates that your function returns a boolean value, which when true means the `user` value satisfies the `User` interface.",
+          "fr": "La syntaxe `user is User` indique que ta fonction renvoie une valeur booléenne, qui lorsqu’elle est true signifie que la valeur `user` satisfait l’interface `User`."
+        },
+        {
+          "en": "## `tsconfig` File",
+          "fr": "## Fichier `tsconfig`"
+        },
+        {
+          "en": "- **`tsconfig.json`**: TypeScript's compiler settings live in a `tsconfig.json` file in the root directory of your project.",
+          "fr": "- **`tsconfig.json`** : Les réglages du compilateur TypeScript se trouvent dans un fichier `tsconfig.json` à la racine de ton projet."
+        },
+        {
+          "en": "Here are descriptions of the compiler options used in the example above:",
+          "fr": "Voici les descriptions des options de compilateur utilisées dans l’exemple ci-dessus :"
+        },
+        {
+          "en": "- **`compilerOptions`**: The `compilerOptions` property is where you control how the TypeScript compiler behaves.\n- **`rootDir` and `outDir`**: The `rootDir` and `outDir` tell TypeScript which directory holds your source files, and which directory should contain the transpiled JavaScript code.\n- **`lib`**: The `lib` property determines which type definitions the compiler uses, and allows you to include support for specific ES releases, the DOM, and more.\n- **`module` and `moduleResolution`**: The `module` and `moduleResolution` work in tandem to manage how your package uses modules - either CommonJS or ECMAScript.\n- **`esModuleInterop`**: The `esModuleInterop` allows for smoother interoperability between CommonJS and ES modules by automatically creating namespace objects for imports.\n- **`skipLibCheck`**: The `skipLibCheck` option skips validating `.d.ts` files that aren't referenced by imports in your code.\n- **`strict`**: The `strict` flag enables several checks, such as ensuring proper handling of nullable types and warning when TypeScript falls back to `any`.\n- **`exclude`**: The top-level `exclude` property tells the compiler to ignore these TypeScript files during compilation.",
+          "fr": "- **`compilerOptions`** : La propriété `compilerOptions` est l’endroit où tu contrôles le comportement du compilateur TypeScript.\n- **`rootDir` et `outDir`** : Les propriétés `rootDir` et `outDir` indiquent à TypeScript quel répertoire contient tes fichiers source, et quel répertoire doit contenir le code JavaScript transpilé.\n- **`lib`** : La propriété `lib` détermine quelles définitions de types le compilateur utilise, et te permet d’inclure le support de versions ES spécifiques, du DOM, et plus encore.\n- **`module` et `moduleResolution`** : Les propriétés `module` et `moduleResolution` travaillent de concert pour gérer la façon dont ton package utilise les modules — CommonJS ou ECMAScript.\n- **`esModuleInterop`** : L’option `esModuleInterop` permet une meilleure interopérabilité entre CommonJS et les modules ES en créant automatiquement des objets namespace pour les imports.\n- **`skipLibCheck`** : L’option `skipLibCheck` saute la validation des fichiers `.d.ts` qui ne sont pas référencés par des imports dans ton code.\n- **`strict`** : Le flag `strict` active plusieurs vérifications, comme s’assurer de la bonne gestion des types nullable et avertir quand TypeScript retombe sur `any`.\n- **`exclude`** : La propriété de premier niveau `exclude` dit au compilateur d’ignorer ces fichiers TypeScript pendant la compilation."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

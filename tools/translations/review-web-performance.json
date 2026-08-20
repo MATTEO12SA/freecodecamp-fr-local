@@ -1,0 +1,164 @@
+{
+  "workshop": "review-web-performance",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6724e18296fa40173cc2437c.md",
+      "id": "6724e18296fa40173cc2437c",
+      "dashedName": "review-web-performance",
+      "title": {
+        "en": "Web Performance Review",
+        "fr": "Révision : performance web"
+      },
+      "description": [
+        {
+          "en": "## Differences Between Real and Perceived Performance",
+          "fr": "## Différences entre performance réelle et performance perçue"
+        },
+        {
+          "en": "- **Perceived Performance**: This is how users perceive the performance of a website. It's how they evaluate it in terms of responsiveness and reliability. This is a subjective measurement, so it's hard to quantify it, but it's very important, since the user experience determines the success or failure of a website.\n- **Real Performance**: This is the objective and measurable performance of the website. It's measured using metrics like page load time, server response time, and rendering time. These measurements are influenced by multiple factors related to the network and to the code itself.",
+          "fr": "- **Performance perçue** : C'est la façon dont les utilisateurs perçoivent la performance d'un site web. Ils l'évaluent en termes de réactivité et de fiabilité. C'est une mesure subjective, donc difficile à quantifier, mais très importante, car l'expérience utilisateur détermine le succès ou l'échec d'un site.\n- **Performance réelle** : C'est la performance objective et mesurable du site. Elle se mesure avec des métriques comme le temps de chargement de la page, le temps de réponse du serveur et le temps de rendu. Ces mesures dépendent de plusieurs facteurs liés au réseau et au code lui-même."
+        },
+        {
+          "en": "## Techniques for Improving Perceived Performance",
+          "fr": "## Techniques pour améliorer la performance perçue"
+        },
+        {
+          "en": "- **Lazy Loading**: This technique reduces the initial load time as much as possible by loading non-essential resources in the background. \n- **Minimize Font Delays**: If your website has custom fonts, you should also try to minimize font loading delays, since this may result in flickering or in showing the fallback font while the custom font is being loaded. A suggestion for this is using a fallback font that is similar to the custom font, so in case this happens, the change will be more subtle.\n- **Use of Loading Indicators**: Showing a loading indicator for a long-running process as soon as the user clicks on an element can help the user feel connected and engaged with the process, making the wait time feel shorter.",
+          "fr": "- **Lazy loading** : Cette technique réduit autant que possible le temps de chargement initial en chargeant les ressources non essentielles en arrière-plan.\n- **Minimiser les délais de polices** : Si ton site utilise des polices personnalisées, tu devrais aussi essayer de minimiser les délais de chargement des polices, car cela peut provoquer un scintillement ou l'affichage de la police de secours pendant le chargement. Une suggestion est d'utiliser une police de secours proche de la police personnalisée, pour que le changement soit plus subtil.\n- **Indicateurs de chargement** : Afficher un indicateur de chargement pour un processus long dès que l'utilisateur clique sur un élément peut l'aider à se sentir connecté et engagé, ce qui raccourcit la sensation d'attente."
+        },
+        {
+          "en": "## Core Performance Concepts",
+          "fr": "## Concepts clés de performance"
+        },
+        {
+          "en": "- **Source order**: This refers to the way HTML elements are structured in the document. This determines what loads first and can significantly impact performance and accessibility.",
+          "fr": "- **Ordre source** : Cela désigne la façon dont les éléments HTML sont structurés dans le document. Cela détermine ce qui se charge en premier et peut fortement impacter la performance et l'accessibilité."
+        },
+        {
+          "en": "Some best practices for source order include:",
+          "fr": "Quelques bonnes pratiques pour l'ordre source incluent :"
+        },
+        {
+          "en": "- Placing critical content such as headings, navigation or main text higher in the HTML structure.\n- Deferring non-essential scripts such as ones for analytics, or third-party widgets, so they don't block rendering.\n- Using progressive enhancement, to ensure the core experience works even before styles and scripts load. Progressive enhancement is a way of building websites and applications based on the idea that you should make your page work with HTML first.",
+          "fr": "- Placer le contenu critique comme les titres, la navigation ou le texte principal plus haut dans la structure HTML.\n- Différer les scripts non essentiels comme ceux d'analytique ou les widgets tiers, pour qu'ils ne bloquent pas le rendu.\n- Utiliser l'amélioration progressive, pour que l'expérience de base fonctionne même avant le chargement des styles et scripts. L'amélioration progressive consiste à construire des sites et applications en partant du principe que ta page doit d'abord fonctionner avec HTML."
+        },
+        {
+          "en": "Here is an example of good source order, using the best practices we just went through:",
+          "fr": "Voici un exemple de bon ordre source, en suivant les bonnes pratiques qu'on vient de voir :"
+        },
+        {
+          "en": "- **Critical Rendering Path**: This is the sequence of steps the browser follows to convert code into pixels on the screen.\n- **Latency**: This is the time it takes for a request to travel between the browser and the server. So in other words, high latency equals slow pages.",
+          "fr": "- **Critical Rendering Path** : C'est la séquence d'étapes que suit le navigateur pour convertir le code en pixels à l'écran.\n- **Latence** : C'est le temps qu'une requête met pour aller du navigateur au serveur. Autrement dit, une latence élevée égale des pages lentes."
+        },
+        {
+          "en": "Some ways of reducing latency include:",
+          "fr": "Quelques façons de réduire la latence :"
+        },
+        {
+          "en": "- Using CDNs, or Content Delivery Networks, to serve files from closer locations.\n- Enabling compression using things such as Gzip to reduce file sizes.\n- Optimizing images and using lazy loading.",
+          "fr": "- Utiliser des CDN, ou Content Delivery Networks, pour servir les fichiers depuis des emplacements plus proches.\n- Activer la compression avec des outils comme Gzip pour réduire la taille des fichiers.\n- Optimiser les images et utiliser le lazy loading."
+        },
+        {
+          "en": "## Improving INP",
+          "fr": "## Améliorer l'INP"
+        },
+        {
+          "en": "- **Definition**: INP (Interaction to Next Paint) assesses a page's overall responsiveness by measuring the time from when a user interacts, like a click or key press, to the next time the browser updates the display. A lower INP indicates a more responsive page.",
+          "fr": "- **Définition** : L'INP (Interaction to Next Paint) évalue la réactivité globale d'une page en mesurant le temps entre une interaction utilisateur (clic ou touche) et la prochaine mise à jour de l'affichage par le navigateur. Un INP plus bas indique une page plus réactive."
+        },
+        {
+          "en": "Here are some ways to improve INP:",
+          "fr": "Voici quelques façons d'améliorer l'INP :"
+        },
+        {
+          "en": "- Reduce main thread work by breaking up long JavaScript tasks.\n- Use `requestIdleCallback()` for non-critical scripts. This will queue a function to be called during a browser's idle periods.\n- Defer or lazy-load heavy assets which were covered earlier.\n- Optimize event handlers. If these handlers run too frequently or perform heavy operations, they can slow down the page and increase INP. The solution for this is debouncing. Debouncing ensures that the function only runs after the user stops typing for a short delay - so for example 300ms. This prevents unnecessary calculations and improves performance.",
+          "fr": "- Réduire le travail du thread principal en découpant les longues tâches JavaScript.\n- Utiliser `requestIdleCallback()` pour les scripts non critiques. Cela met une fonction en file d'attente pour qu'elle soit appelée pendant les périodes d'inactivité du navigateur.\n- Différer ou lazy-loader les assets lourds, comme vu plus tôt.\n- Optimiser les gestionnaires d'événements. S'ils s'exécutent trop souvent ou font des opérations lourdes, ils peuvent ralentir la page et augmenter l'INP. La solution est le debouncing. Le debouncing fait en sorte que la fonction ne s'exécute qu'après que l'utilisateur a arrêté de taper pendant un court délai — par exemple 300 ms. Cela évite des calculs inutiles et améliore la performance."
+        },
+        {
+          "en": "## How Rendering Works in the Browser",
+          "fr": "## Comment le rendu fonctionne dans le navigateur"
+        },
+        {
+          "en": "- **How Rendering works**: First the browser parses the HTML and builds the DOM. Next, the browser processes the CSS, constructing the CSS Object Model, or CSSOM. This is another tree structure that dictates how elements should be styled. Finally, the browser paints the pixels to the screen, rendering each element based on the calculated styles and layout. In complex pages, this might involve multiple layers that are composited together to form the final visual output.",
+          "fr": "- **Comment fonctionne le rendu** : D'abord le navigateur parse le HTML et construit le DOM. Ensuite, il traite le CSS et construit le CSS Object Model, ou CSSOM. C'est une autre structure en arbre qui dicte comment les éléments doivent être stylés. Enfin, le navigateur peint les pixels à l'écran, en rendant chaque élément selon les styles et la mise en page calculés. Sur des pages complexes, cela peut impliquer plusieurs couches composées ensemble pour former le rendu final."
+        },
+        {
+          "en": "## How Performance Impacts Sustainability",
+          "fr": "## Comment la performance impacte la durabilité"
+        },
+        {
+          "en": "- **Background Information**: The internet accounts for around 2% of global carbon emissions—that's the same as the airline industry! Every byte transferred requires electricity, from data centers to user devices. Larger files and inefficient scripts mean more power consumption. A high-performance website isn't just faster, it also reduces unnecessary processing and energy use.",
+          "fr": "- **Contexte** : Internet représente environ 2 % des émissions mondiales de carbone — autant que l'industrie aérienne ! Chaque octet transféré consomme de l'électricité, des centres de données aux appareils des utilisateurs. Des fichiers plus lourds et des scripts inefficaces signifient plus de consommation d'énergie. Un site performant n'est pas seulement plus rapide : il réduit aussi le traitement et la consommation d'énergie inutiles."
+        },
+        {
+          "en": "## Ways to Reduce Page Loading Times",
+          "fr": "## Façons de réduire les temps de chargement"
+        },
+        {
+          "en": "- **Optimize Media Assets**: Large images and videos are common culprits for slow load times. By optimizing these assets, you can significantly speed up your site. This includes things like compressing images, using modern formats like WebP and using lazy loading for assets.\n- **Leverage Browser Caching**: Caching allows browsers to store parts of your website locally, reducing load times for returning visitors.\n- **Minify and Compress Files**: Reducing the size of your files can lead to quicker downloads. This includes reducing the size of transmitted files and minifying CSS and JavaScript files.",
+          "fr": "- **Optimiser les médias** : Les grandes images et vidéos sont souvent responsables des chargements lents. En optimisant ces assets, tu peux accélérer nettement ton site. Cela inclut compresser les images, utiliser des formats modernes comme WebP et le lazy loading.\n- **Tirer parti du cache navigateur** : Le cache permet aux navigateurs de stocker localement des parties de ton site, ce qui réduit les temps de chargement pour les visiteurs qui reviennent.\n- **Minifier et compresser les fichiers** : Réduire la taille de tes fichiers accélère les téléchargements. Cela inclut réduire la taille des fichiers transmis et minifier le CSS et le JavaScript."
+        },
+        {
+          "en": "## Improving \"time to usable\"",
+          "fr": "## Améliorer le « time to usable »"
+        },
+        {
+          "en": "- **Definition**: \"time to usable\" is the interval from when a user requests a page to when they can meaningfully interact with it. To improve \"time to usable\" you can lazy load your asset or minimize render-blocking resources.",
+          "fr": "- **Définition** : Le « time to usable » est l'intervalle entre la demande d'une page par l'utilisateur et le moment où il peut interagir utilement avec elle. Pour l'améliorer, tu peux lazy-loader tes assets ou minimiser les ressources qui bloquent le rendu."
+        },
+        {
+          "en": "## Key Metrics for Measuring Performance",
+          "fr": "## Métriques clés pour mesurer la performance"
+        },
+        {
+          "en": "- **First Contentful Paint or FCP**: It measures how quickly the first piece of content—text or image—appears on the screen. A good FCP is regarded as a time below 1.8 seconds, and a poor FCP is above 3 seconds. You can check your FCP using Chrome DevTools and checking the performance tab.\n- **Total Blocking Time**: This shows how long the main thread is blocked by heavy JavaScript tasks. If Total Blocking Time (TBT) is high, users experience sluggish interactions. To improve TBT, break up long tasks and defer non-essential scripts.\n- **Bounce Rate**: This is the percentage of visitors who leave without interacting. If your site has high bounce rates it might be because your page is too slow.\n- **Unique Users**: This metric tracks how many individual visitors come to your site. To view the Bounce Rate and Unique Users, you can use Google Analytics. It will allow you to monitor these metrics and improve engagement.",
+          "fr": "- **First Contentful Paint ou FCP** : Elle mesure la vitesse à laquelle le premier contenu — texte ou image — apparaît à l'écran. Un bon FCP est en dessous de 1,8 seconde, et un mauvais FCP au-dessus de 3 secondes. Tu peux vérifier ton FCP avec Chrome DevTools, dans l'onglet Performance.\n- **Total Blocking Time** : Cela montre combien de temps le thread principal est bloqué par de lourdes tâches JavaScript. Si le Total Blocking Time (TBT) est élevé, les interactions semblent lentes. Pour l'améliorer, découpe les longues tâches et diffère les scripts non essentiels.\n- **Taux de rebond** : C'est le pourcentage de visiteurs qui partent sans interagir. Un taux de rebond élevé peut venir d'une page trop lente.\n- **Utilisateurs uniques** : Cette métrique suit le nombre de visiteurs individuels. Pour voir le taux de rebond et les utilisateurs uniques, tu peux utiliser Google Analytics. Cela te permet de suivre ces métriques et d'améliorer l'engagement."
+        },
+        {
+          "en": "## Common Performance Measurement Tools",
+          "fr": "## Outils courants de mesure de performance"
+        },
+        {
+          "en": "- **Chrome DevTools**: Chrome DevTools is a built-in tool inside Google Chrome that lets you analyze and debug performance in real-time. DevTools will show loading times, CPU usage, and render delays. It's especially useful for measuring First Contentful Paint, or FCP, is how fast a user sees the first visible content. If your website feels slow, DevTools will help you spot the bottlenecks. \n- **Lighthouse**: This is an automated tool that checks performance, SEO, and accessibility. \n- **WebPageTest**: This tool lets you test how your site loads from different locations and devices. This tool gives you a detailed breakdown of your site's Speed Index, Total Blocking Time, and other key performance metrics. If you want to know how real users experience your site globally, WebPageTest is the tool for that.\n- **PageSpeed Insights**: This tool analyzes your website and suggests quick improvements for both mobile and desktop. It will tell you what's slowing your site down and give specific recommendations like optimizing images, removing render-blocking scripts, and reducing server response times. PageSpeed Insights is a fast and easy way to check how Google sees your site's performance.\n- **Real User Monitoring**: RUM tools track actual user behavior, showing how real visitors experience your site. Popular RUM tools include Google Analytics, which tracks page load times and bounce rates, and New Relic or Datadog, which monitor real-time performance issues. If you want data from actual users, RUM tools are essential.",
+          "fr": "- **Chrome DevTools** : Chrome DevTools est un outil intégré à Google Chrome qui te permet d'analyser et de déboguer la performance en temps réel. DevTools montre les temps de chargement, l'usage CPU et les délais de rendu. C'est particulièrement utile pour mesurer le First Contentful Paint, ou FCP : la vitesse à laquelle un utilisateur voit le premier contenu visible. Si ton site semble lent, DevTools t'aidera à repérer les goulots d'étranglement.\n- **Lighthouse** : C'est un outil automatisé qui vérifie la performance, le SEO et l'accessibilité.\n- **WebPageTest** : Cet outil te permet de tester le chargement de ton site depuis différents lieux et appareils. Il te donne une analyse détaillée du Speed Index, du Total Blocking Time et d'autres métriques clés. Si tu veux savoir comment de vrais utilisateurs vivent ton site dans le monde, WebPageTest est l'outil adapté.\n- **PageSpeed Insights** : Cet outil analyse ton site et suggère des améliorations rapides pour mobile et desktop. Il te dit ce qui ralentit ton site et donne des recommandations précises comme optimiser les images, retirer les scripts qui bloquent le rendu, et réduire les temps de réponse serveur. PageSpeed Insights est un moyen rapide et simple de voir comment Google perçoit la performance de ton site.\n- **Real User Monitoring** : Les outils RUM suivent le comportement réel des utilisateurs, en montrant comment de vrais visiteurs vivent ton site. Parmi les outils RUM populaires : Google Analytics, qui suit les temps de chargement et les taux de rebond, et New Relic ou Datadog, qui surveillent les problèmes de performance en temps réel. Si tu veux des données de vrais utilisateurs, les outils RUM sont essentiels."
+        },
+        {
+          "en": "## Working with Performance Web APIs",
+          "fr": "## Travailler avec les Performance Web APIs"
+        },
+        {
+          "en": "- **Definition**: Performance Web APIs let developers track how efficiently a webpage loads and responds directly in the code. These APIs allow you to measure page load times, track rendering and interaction delays and analyze JavaScript execution time.\n- **`performance.now()`**: This API gives you high-precision timestamps (in milliseconds) to measure how long different parts of your site take to load.",
+          "fr": "- **Définition** : Les Performance Web APIs permettent aux développeurs de suivre dans le code l'efficacité du chargement et de la réactivité d'une page. Ces APIs te permettent de mesurer les temps de chargement, de suivre les délais de rendu et d'interaction, et d'analyser le temps d'exécution JavaScript.\n- **`performance.now()`** : Cette API te donne des horodatages haute précision (en millisecondes) pour mesurer combien de temps différentes parties de ton site mettent à charger."
+        },
+        {
+          "en": "- **Performance Timing API**: This API gives you a breakdown of every stage of page loading, from DNS lookup to `DOMContentLoaded`.",
+          "fr": "- **Performance Timing API** : Cette API te donne une décomposition de chaque étape du chargement de page, de la résolution DNS à `DOMContentLoaded`."
+        },
+        {
+          "en": "- **`PerformanceObserver`**: This API listens for performance events such as layout shifts, long tasks, and user interactions.",
+          "fr": "- **`PerformanceObserver`** : Cette API écoute les événements de performance comme les layout shifts, les longues tâches et les interactions utilisateur."
+        },
+        {
+          "en": "## Techniques for Improving CSS Performance",
+          "fr": "## Techniques pour améliorer la performance CSS"
+        },
+        {
+          "en": "- **CSS Animations**: Animating certain CSS properties, such as dimensions, position, and layout, triggers a process called \"reflow\", during which the browser recalculates the position and geometry of certain elements on the page. This requires a repaint, which is computationally expensive. Therefore, it's recommended to reduce the number of CSS animations as much as possible or at least give the user an option to toggle them on or off.",
+          "fr": "- **Animations CSS** : Animer certaines propriétés CSS, comme les dimensions, la position et la mise en page, déclenche un processus appelé « reflow », pendant lequel le navigateur recalcule la position et la géométrie de certains éléments. Cela nécessite un repaint, coûteux en calcul. Il est donc recommandé de réduire le nombre d'animations CSS autant que possible, ou au moins de laisser l'utilisateur les activer ou les désactiver."
+        },
+        {
+          "en": "## Techniques for Improving JavaScript Performance",
+          "fr": "## Techniques pour améliorer la performance JavaScript"
+        },
+        {
+          "en": "- **Code Splitting**: Splitting your JavaScript code into modules that perform critical and non-critical tasks is also helpful. This way, you'll be able to preload the critical ones as soon as possible and defer the non-critical ones to render the page as fast as possible.\n- **DOM Manipulation**: Remember that DOM Manipulation refers to the process of dynamically changing the content of a page with JavaScript by interacting with the Document Object Model (DOM). Manipulating the DOM is computationally expensive. By reducing the amount of DOM manipulation in your JavaScript code will improve performance.",
+          "fr": "- **Code splitting** : Découper ton code JavaScript en modules pour les tâches critiques et non critiques est aussi utile. Ainsi, tu pourras précharger les modules critiques dès que possible et différer les non critiques pour rendre la page plus vite.\n- **Manipulation du DOM** : Souviens-toi que la manipulation du DOM consiste à modifier dynamiquement le contenu d'une page avec JavaScript en interagissant avec le Document Object Model (DOM). Manipuler le DOM est coûteux en calcul. Réduire la quantité de manipulations DOM dans ton JavaScript améliorera la performance."
+        }
+      ],
+      "hints": []
+    }
+  ]
+}

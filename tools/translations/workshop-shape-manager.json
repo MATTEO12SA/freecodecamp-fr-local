@@ -1,0 +1,1639 @@
+{
+  "workshop": "workshop-shape-manager",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69934d84e861d41ee06a84a3.md",
+      "id": "69934d84e861d41ee06a84a3",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll practice the fundamentals of TypeScript by building a shape manager that calculates the areas of a circle, triangle, and rectangle.",
+          "fr": ""
+        },
+        {
+          "en": "The HTML and CSS for the project have been provided for you so you can focus on the TypeScript.",
+          "fr": ""
+        },
+        {
+          "en": "To get started, you need to reference the elements from the HTML to start adding interactivity to them.",
+          "fr": ""
+        },
+        {
+          "en": "Use `document.getElementById()` method to select the elements with the ids `result-card` and `result-text`. Assign them to the constants `resultCard` and `resultText` respectively.",
+          "fr": ""
+        },
+        {
+          "en": "Since the elements exist in the HTML, use the non-null assertion operator `!` at the end of each `getElementById()` method.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should select the element with id `result-card`.",
+          "fr": ""
+        },
+        {
+          "en": "You should assign the selection to a `resultCard` constant.",
+          "fr": ""
+        },
+        {
+          "en": "You should use the non-null assertion operator `!` on the `result-card` selection.",
+          "fr": ""
+        },
+        {
+          "en": "You should select the element with id `result-text`.",
+          "fr": ""
+        },
+        {
+          "en": "You should assign the selection to a `resultText` constant.",
+          "fr": ""
+        },
+        {
+          "en": "You should use the non-null assertion operator `!` on the `result-text` selection.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934d8f1d9687e903e7aad2.md",
+      "id": "69934d8f1d9687e903e7aad2",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "To make sure the setup is working, you should make the result card visible immediately.",
+          "fr": ""
+        },
+        {
+          "en": "If you take a look at the CSS, there's a class `visible` that controls opacity.",
+          "fr": ""
+        },
+        {
+          "en": "Access the `classList` property of `resultCard` and call the `add` method with the string `\"visible\"`.",
+          "fr": ""
+        },
+        {
+          "en": "After doing that, you should see a card appear under the shape selector.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `classList` of `resultCard`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `add` method with `visible`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934d945aecf10f2b9192a4.md",
+      "id": "69934d945aecf10f2b9192a4",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Now you should set some initial text so you know something is going on in the UI.",
+          "fr": ""
+        },
+        {
+          "en": "Set the `textContent` property of `resultText` to the string `\"Enter a radius to see the area\"`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `textContent` property of the `resultText` to `Enter a radius to see the area`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934d9a6c9d9df8cb7d9984.md",
+      "id": "69934d9a6c9d9df8cb7d9984",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now you can start by implementing the area of circle calculation. You would have to select the elements for it and cast the selection using the `as` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "The `as` keyword is used for type assertions. It tells TypeScript to treat a value as a specific type without changing the value itself. This is useful when TypeScript cannot automatically know the exact type of a value. Here's a typical usage of it:",
+          "fr": ""
+        },
+        {
+          "en": "Get the element with the id `circle-props` and assign it to a constant named `circleGroup`. This is the `div` element that contains the circle inputs. Cast this element as an `HTMLElement` using the `as` keyword.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should get the element with id `circle-props`.",
+          "fr": ""
+        },
+        {
+          "en": "You should assign the selection to a constant `circleGroup`.",
+          "fr": ""
+        },
+        {
+          "en": "You should cast the `circleGroup` selection as `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934d9e75af58a7c2d42afd.md",
+      "id": "69934d9e75af58a7c2d42afd",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "You also need to access the input field for the radius. So, select the element with the id `radius` and assign it to a constant named `radiusInput`.",
+          "fr": ""
+        },
+        {
+          "en": "Cast this element as `HTMLInputElement` using the `as` keyword, so TypeScript knows it has a `value` property.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should get the element with id `radius`.",
+          "fr": ""
+        },
+        {
+          "en": "You should assign the selection to a constant `radiusInput`.",
+          "fr": ""
+        },
+        {
+          "en": "You should cast the `radius` element selection as `HTMLInputElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934da2bdf08dc065664ae3.md",
+      "id": "69934da2bdf08dc065664ae3",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "The circle inputs are hidden by default through the CSS. To show them, access the `classList` of `circleGroup` and call the `remove` method with the string `hidden`.",
+          "fr": ""
+        },
+        {
+          "en": "For now, selecting the other shapes won't reveal their input fields. You will handle that later.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `remove` on the `classList` of `circleGroup` with `hidden` as the argument.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934da7fc6f3a9937b5197f.md",
+      "id": "69934da7fc6f3a9937b5197f",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Now you should work on calculating the area whenever the user enters a value into the radius input.",
+          "fr": ""
+        },
+        {
+          "en": "Add the `input` event to `radiusInput` using the `addEventListener()` method. For now, pass in an empty arrow function as the second argument.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `addEventListener()` method to add an `input` event to the `radiusInput` element.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass in an empty arrow function as the second parameter of your `input` event listener.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934db03655ea8a2b70f46d.md",
+      "id": "69934db03655ea8a2b70f46d",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Inside the event listener, you need to get the value of the radius. Values from HTML inputs are always strings, so you must convert it.",
+          "fr": ""
+        },
+        {
+          "en": "Create a constant named `radius`. Assign it the result of calling `Number()` on `radiusInput.value`. Also, handle invalid input like empty strings by using the logical OR operator `||` to default to `0`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `radius` constant.",
+          "fr": ""
+        },
+        {
+          "en": "You should set the `radius` constant to `radiusInput.value` and make sure it is converted to a number.",
+          "fr": ""
+        },
+        {
+          "en": "Your `radius` constant should default to `0`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934db46439c3e19ae8073e.md",
+      "id": "69934db46439c3e19ae8073e",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "It's time to calculate the area of the circle. Remember the formula for this is πr², which can be programmatically represented with `Math.PI * radius ** 2;`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the event listener, create a constant named `area`. For the value, use `Math.PI` multiplied by `radius` to the power of `2`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a constant named `area`.",
+          "fr": ""
+        },
+        {
+          "en": "You should set the value of the `area` constant to the programmatic representation of the formula for calculating the area of a circle.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69934dbd9f8b2a16ff8a571f.md",
+      "id": "69934dbd9f8b2a16ff8a571f",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "To display the result, set the `textContent` of `resultText` to a template literal showing `Area of Circle: `, followed by the `area` formatted to 2 decimal places using the `toFixed()` method.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `textContent` of `resultText` to show the calculated circle area.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff37f55fb2122df640cd78.md",
+      "id": "68ff37f55fb2122df640cd78",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "You have a working circle area calculation logic now. You can type in a radius and see the area update instantly.",
+          "fr": ""
+        },
+        {
+          "en": "However, if you continue writing this way for rectangles and triangles, things will become a clutter of loose variables and repeated logic. To prevent this, you can structure the data using **interfaces**, and create a function that handles all area calculation cases.",
+          "fr": ""
+        },
+        {
+          "en": "An interface defines the structure of an object by specifying its property types. Here's what an interface looks like in TypeScript.",
+          "fr": ""
+        },
+        {
+          "en": "Create a base interface named `Shape`. Inside it, set `type` to `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an interface named `Shape`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Shape` interface should have a `type` set to `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff41972b5bb84f802ee6ca.md",
+      "id": "68ff41972b5bb84f802ee6ca",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Extending an interface allows an interface to inherit the properties of another, creating a \"child\" interface that includes everything from the \"parent\" and allowing you to add new, more specific requirements:",
+          "fr": ""
+        },
+        {
+          "en": "`Circle` and other shapes need to extend the `Shape` interface so all the shapes in the app share a common structure. This will allow the app to handle the shapes in a consistent and type-safe way.",
+          "fr": ""
+        },
+        {
+          "en": "Create an interface named `Circle` that extends the `Shape` interface. Inside it, set `type` to the string `circle` and `radius` to `number`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `Circle` interface that extends the `Shape` interface.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Circle` interface should have a `type` set to the string `circle` and a `radius` set to `number`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff420e11f90153864d39e2.md",
+      "id": "68ff420e11f90153864d39e2",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Create an interface named `Rectangle` that extends the `Shape` interface. Inside it, set `type` to the string `rectangle`, `width` to `number`, and `height` to `number`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an interface `Rectangle` that extends `Shape`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Rectangle` interface should have a `type` set to the string `rectangle`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Rectangle` interface should have a `width` of `number`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Rectangle` interface should have a `height` of `number`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff42692df48e5ab1429b79.md",
+      "id": "68ff42692df48e5ab1429b79",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Create an interface named `Triangle` that extends the `Shape` interface. Inside it, set `type` to the string `triangle`, `base` to `number`, and `height` to `number`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an interface `Triangle` that extends `Shape`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Triangle` interface should have a `type` set to the string `triangle`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Triangle` interface should have a `base` of `number`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Triangle` interface should have a `height` of `number`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff42cfa7004f6353fbb5f0.md",
+      "id": "68ff42cfa7004f6353fbb5f0",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Now, create a `type` named `Shapes` with the union of `Circle`, `Triangle`, and `Rectangle`.",
+          "fr": ""
+        },
+        {
+          "en": "Here's what a union type looks like:",
+          "fr": ""
+        },
+        {
+          "en": "The `Shapes` union type tells TypeScript that a shape can be a circle, rectangle, or triangle, so some functions you will define later know which properties each shape has.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `type` named `Shapes`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Shapes` type should be set to a union of the `Circle`, `Triangle`, and `Rectangle` interfaces.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff495abf98da70d59e6f44.md",
+      "id": "68ff495abf98da70d59e6f44",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "You need to select the HTML elements to work with. For this, you can create a function that gets an element and throws an error when the element is not found.",
+          "fr": ""
+        },
+        {
+          "en": "Create a `getElement` function and leave it empty. You will supply the types and parameters in the next step.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `getElement` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6964bcefeca39b7ac54c8779.md",
+      "id": "6964bcefeca39b7ac54c8779",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Now you need to supply the parameter and its type. Here's an example that shows how to create a function with parameter type in TypeScript:",
+          "fr": ""
+        },
+        {
+          "en": "Give your `getElement` function an `id` of type `string`. For now, leave the return type and the function block empty.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getElement` function should have an `id` parameter of type `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ff4d778884847a60af06a5.md",
+      "id": "68ff4d778884847a60af06a5",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Your `getElement` function needs a return type. In TypeScript, a return type is the type of value a function gives back when it is done running.",
+          "fr": ""
+        },
+        {
+          "en": "Here's how to specify a return type:",
+          "fr": ""
+        },
+        {
+          "en": "Here the return type is `number`, specified as `: number`, just after the parameters bracket.",
+          "fr": ""
+        },
+        {
+          "en": "For the return type of the `getElement` function, make it `HTMLElement`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getElement` function should have a return type of `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692804fad5603e1a78d3b589.md",
+      "id": "692804fad5603e1a78d3b589",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now, inside the `getElement` function, use the `getElementById()` method to find the element with the given `id`. Assign that to a variable of your choice and return the variable.",
+          "fr": ""
+        },
+        {
+          "en": "You also need to account for a situation the element might be missing. For that, create an `if` statement that checks if choice variable is falsy. If it is, throw an error with the message `Element not found: ${id}`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `getElement` function should return the element with the given ID.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getElement` function should throw an error when the element is not found. Use the provided format for the error message.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6914547efa31c01853d24fb0.md",
+      "id": "6914547efa31c01853d24fb0",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "The next few steps will focus on using `let` to declare variables with type annotations that will later be assigned DOM element references. This is also called an inline type.",
+          "fr": ""
+        },
+        {
+          "en": "Here's an example of that with a one-line inline type:",
+          "fr": ""
+        },
+        {
+          "en": "Use `let` to declare a variable `shapeTypeSelect` with the type `HTMLSelectElement`. Don't assign any value yet. This will hold the dropdown element for selecting shapes.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create a `shapeTypeSelect` variable.",
+          "fr": ""
+        },
+        {
+          "en": "Your `shapeTypeSelect` variable should have the type `HTMLSelectElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6914579719bb4621b7e3f0bd.md",
+      "id": "6914579719bb4621b7e3f0bd",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "You can also define inline object types. For example:",
+          "fr": ""
+        },
+        {
+          "en": "Create another variable named `propertyGroups`. Give it an inline object type with the properties `circle`, `rectangle`, and `triangle`, each with a type of `HTMLElement`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create a `propertyGroups` variable with an object inline type.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyGroups` should have `circle`, `rectangle`, and `triangle` properties, each of type `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6914582d975d2d277026a8c4.md",
+      "id": "6914582d975d2d277026a8c4",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Create a `propertyInputs` variable. Give it an object inline type with the properties `radius`, `width`, and `height`, each with the type `HTMLInputElement`. This will hold the input fields to type in numbers that will calculate the area of each shape.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create a `propertyInputs` variable with an object inline type.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` variable should have `radius`, `width`,  and `height` properties, each set to `HTMLInputElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "691c252d4dde25176ec1234f.md",
+      "id": "691c252d4dde25176ec1234f",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Now, add the remaining `base` and `triangleHeight` properties, with each set to `HTMLInputElement`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `propertyInputs` inline type should have a `base` property of type `HTMLInputElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` inline type should have a `triangleHeight` property of type `HTMLInputElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6994d9f10efe45942d548629.md",
+      "id": "6994d9f10efe45942d548629",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "You've been using some early circle-only code to display results and test the UI quickly.",
+          "fr": ""
+        },
+        {
+          "en": "Now it's time to introduce the proper shape types and structure for the project, so you don't need the area of circle calculation logic anymore.",
+          "fr": ""
+        },
+        {
+          "en": "Remove the earlier circle-specific setup from the `resultCard` variable to the input event listener.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove the earlier logic calculating the area of a circle with the variables.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "691458e6fdf1a6300a9f6105.md",
+      "id": "691458e6fdf1a6300a9f6105",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Now, use `let` to create two variables `resultText` and `resultCard`, both of type `HTMLElement`. These will hold the elements that display the calculated area result, not just for the circle but for the other shapes as well.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use let to create a `resultText` variable of type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should use let to create a `resultCard` variable of type `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145951b67f9b34b66215d3.md",
+      "id": "69145951b67f9b34b66215d3",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "You need a way to dynamically show only the input fields relevant to the shape selected. For this, create a `chooseShape` function with a `shapeType` parameter set to a type of `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `chooseShape` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `chooseShape` function should have a `shapeType` parameter of type `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145a9503ed163b83adbbde.md",
+      "id": "69145a9503ed163b83adbbde",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "To make the `chooseShape` function work as intended, you can use `Object.entries()` with `forEach()` to loop through the `propertyGroups` object. The callback for the `forEach()` has to receive `name` and `group` as destructured parameters.",
+          "fr": ""
+        },
+        {
+          "en": "Then inside the `forEach()` loop, check if `name` is equal to `shapeType`. If it is, use `classList` to remove the `hidden` class from `group`. Otherwise, add the `hidden` class to the `group`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the selected shape is a circle, only the input field for circle should be shown.",
+          "fr": ""
+        },
+        {
+          "en": "When the selected shape is a rectangle, only the input fields for rectangle should be shown.",
+          "fr": ""
+        },
+        {
+          "en": "When the selected shape is a triangle, only the input fields for triangle should be shown.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145aefce21f93ed77b626c.md",
+      "id": "69145aefce21f93ed77b626c",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "You also need to toggle the result card on and off based on what is calculated and the result to show.",
+          "fr": ""
+        },
+        {
+          "en": "For this, create a `toggleResultCard` function that takes a boolean type parameter called `show`. If `show` is true, add the `visible` class to `resultCard`. Otherwise, remove it.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `toggleResultCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `toggleResultCard` function should have a `show` parameter set to a type of `boolean`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `toggleResultCard` function should add the `visible` class to `resultCard` when `show` is `true`, and remove it otherwise.",
+          "fr": ""
+        },
+        {
+          "en": "",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145b634bdd4245697bf344.md",
+      "id": "69145b634bdd4245697bf344",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "Now, you should work on the function that calculates the areas of the shapes. It will do this based on the shape selected and the figures entered in the input fields.",
+          "fr": ""
+        },
+        {
+          "en": "Create a `calculateArea` function with a `shape` parameter of type `Shapes`.",
+          "fr": ""
+        },
+        {
+          "en": "You will work on the proper calculations in the coming steps.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `calculateArea` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `calculateArea` function should have a `shape` parameter of type `Shapes`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145bb447c0c14bf43bff1f.md",
+      "id": "69145bb447c0c14bf43bff1f",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "To get the function to calculate the results, you can use an `if...else if` or `switch` statement.",
+          "fr": ""
+        },
+        {
+          "en": "First, make the return type of the function `string`, then calculate the result of the area for a circle, rectangle, triangle, and a case of shape that doesn't exist.",
+          "fr": ""
+        },
+        {
+          "en": "For now, handle the case for circle by using the formula `Math.PI * shape.radius ** 2`, then add a default case that uses the `never` type.",
+          "fr": ""
+        },
+        {
+          "en": "The `never` type in the default case acts as an exhaustiveness check. If a new shape is ever added to the `Shapes` union, TypeScript will catch it here because `shape` would no longer narrow to `never`, giving you a compile error that reminds you to handle it.",
+          "fr": ""
+        },
+        {
+          "en": "Here's an example:",
+          "fr": ""
+        },
+        {
+          "en": "For now, you can return an empty string in the cases for both rectangle and triangle so the test can pass.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `calculateArea` function should have a `string` as its return type.",
+          "fr": ""
+        },
+        {
+          "en": "Your `calculateArea` function should return the correct result of calculating the area of a circle.",
+          "fr": ""
+        },
+        {
+          "en": "You should use the `never` type.",
+          "fr": ""
+        },
+        {
+          "en": "Your `calculateArea` function should handle non-existent shapes using the `never` type.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6964cf876e580cc2f22f7588.md",
+      "id": "6964cf876e580cc2f22f7588",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "Now handle the case for rectangle and triangle. The formula to use for rectangle is `shape.width * shape.height` and that of triangle is `0.5 * shape.base * shape.height`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `calculateArea` function should return the correct result of calculating the area of a rectangle.",
+          "fr": ""
+        },
+        {
+          "en": "Your `calculateArea` function should return the correct result of calculating the area of a triangle.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145da9693cb9620fffa595.md",
+      "id": "69145da9693cb9620fffa595",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "Now, create an `updateResult` function. Inside it, create a `shape` variable set to `shapeTypeSelect.value`, then use `let` to create a `result` variable of type `string` set to an empty string. Under that, use the `textContent` property to set the content of `resultText` to `result`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `updateResult` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should create a `shape` variable set to `shapeTypeSelect.value` inside your `updateResult` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should use `let` to create a `result` variable set to an empty string inside your `updateResult` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `result` variable should have `string` as its type.",
+          "fr": ""
+        },
+        {
+          "en": "You should set the `textContent` of `resultText` to `result`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69145fa5538ad66a9cc848a8.md",
+      "id": "69145fa5538ad66a9cc848a8",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "The `updateResult` function will read the selected shape type from the dropdown, gather the corresponding input values, create a `shape` object, pass it to the `calculateArea()` function to compute the area, and display the calculated result in the `resultText` element.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the function, check the selected shape and build the correct object to pass into the `calculateArea` function.",
+          "fr": ""
+        },
+        {
+          "en": "If the shape is `\"circle\"`, call the `calculateArea` function with an object containing the type and the numeric value of the radius input.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `updateResult` function should correctly update the result text when the shape is circle.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6964e083368e3e6e90e8cefc.md",
+      "id": "6964e083368e3e6e90e8cefc",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "Using `else if` blocks, check if the shape is `\"rectangle\"` and `\"triangle\"`.",
+          "fr": ""
+        },
+        {
+          "en": "For `\"rectangle\"`, call the `calculateArea` function with the rectangle type, `width`, and `height` from the inputs. And for `\"triangle\"`, call the `calculateArea` function with the triangle type, `base`, and `height` from the inputs.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `updateResult` function should correctly update the result text when the shape is rectangle.",
+          "fr": ""
+        },
+        {
+          "en": "Your `updateResult` function should correctly update the result text when the shape is triangle.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "691475d76745ed889b1a39cb.md",
+      "id": "691475d76745ed889b1a39cb",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "You should also work on a function that will clear the input fields.",
+          "fr": ""
+        },
+        {
+          "en": "Create a `clearInputFields` function. Inside it, use `querySelectorAll` to get all the input fields and loop through them using `forEach()`. Inside the `forEach()`, set the value of each `input` to an empty string.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `clearInputFields` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `clearInputFields` function should set each input field to an empty string.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "691476d751bc8592c46da5be.md",
+      "id": "691476d751bc8592c46da5be",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "You need a way to respond when users change the shape selection in the dropdown. For this, create a `handleShapeSelect` function with an `e` parameter typed `Event`.",
+          "fr": ""
+        },
+        {
+          "en": "This function will handle the dropdown change by clearing all inputs, preventing the default behavior, validating the selection, showing and hiding the result card based on whether a shape is selected, displaying the appropriate input fields for the chosen shape, and recalculating the area.",
+          "fr": ""
+        },
+        {
+          "en": "Leave the function empty for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `handleShapeSelect` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `handleShapeSelect` function should have an `e` parameter with the type `Event`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "691598c8e3b1671f01f70c7a.md",
+      "id": "691598c8e3b1671f01f70c7a",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "Inside the `handleShapeSelect` function, call the `.preventDefault()` method on `e`, and call the `clearInputFields()` function to clear the input fields.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `.preventDefault()` on `e`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `clearInputFields` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69159948e52168265730f74f.md",
+      "id": "69159948e52168265730f74f",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "You need a way to safely access the select element and guard against `null` values. For that, create a `val` constant with the value `e.currentTarget` and type it `HTMLSelectElement` using the `as` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "Under the constant, use an `if` statement to check if `val` is falsy by negating it. In the `if` block, return `target value not found`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a constant called `val`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `val` constant should have a `e.currentTarget` value typed `HTMLSelectElement` using the `as` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an `if` statement that checks if `val` is null.",
+          "fr": ""
+        },
+        {
+          "en": "Your `if` statement should return `target value not found`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69159a1480af042cdc6bb7ff.md",
+      "id": "69159a1480af042cdc6bb7ff",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "Still inside the `handleShapeSelect` function, create a `hasSelection` variable that checks if `val.value` exists. Make sure it is wrapped in `Boolean()`.",
+          "fr": ""
+        },
+        {
+          "en": "Under that, call the `toggleResultCard()` function with your `hasSelection` variable.",
+          "fr": ""
+        },
+        {
+          "en": "This will show the result card only when a shape is actually selected.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `hasSelection` variable.",
+          "fr": ""
+        },
+        {
+          "en": "You should wrap `Boolean()` around your `hasSelection` value.",
+          "fr": ""
+        },
+        {
+          "en": "Your `hasSelection` should be set to a value that checks if `val.value` exists and is not an empty string.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `toggleResultCard` function with your `hasSelection` variable.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69159aef42f9f83752e8e80a.md",
+      "id": "69159aef42f9f83752e8e80a",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "Now, call the `chooseShape()` function with `val.value` to show the correct input fields, then call `updateResult()` to recalculate and display the area.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `chooseShape` function with `val.value`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `updateResult()` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a0e270dd52416cd4ae5a.md",
+      "id": "6915a0e270dd52416cd4ae5a",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "You need a function to validate the numbers entered and make sure they are not negative.",
+          "fr": ""
+        },
+        {
+          "en": "For that, create a `handleInput` function with an `e` parameter of type `Event`. Inside it, create a `value` variable set to the value of the target value. Make sure it is converted to a number and cast to the `HTMLInputElement` type using the `as` keyword.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `handleInput` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `handleInput` function should have an `e` parameter with the type `Event`.",
+          "fr": ""
+        },
+        {
+          "en": "You should create a `value` variable inside your `handleInput` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `value` variable value should be wrapped with the `Number()` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `value` variable value should be set to the value of the target.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a2eaf470eb4734728e9e.md",
+      "id": "6915a2eaf470eb4734728e9e",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "Now, create an `if` statement that checks if `value` is less than `0`. If that is true, it means the value entered is negative. So, using an alert, show the message `Negative values are not allowed.` to the user, then clear the input fields by calling the `clearInputFields()` function.",
+          "fr": ""
+        },
+        {
+          "en": "Under the `if` statement, call the `updateResult` function to recalculate the area.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `if` statement with the condition `value < 0` inside your `handleInput` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should alert `Negative values are not allowed.` inside your `if` statement.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `clearInputFields` function inside your `if` statement.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `updateResult` function under your `if` statement.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a372c993bf4c92aee240.md",
+      "id": "6915a372c993bf4c92aee240",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "Now, create an `initializeApp` function and leave it empty for now.",
+          "fr": ""
+        },
+        {
+          "en": "This will initialize the entire app once the DOM is loaded. So, it's the function you will soon pass into a `DOMContentLoaded` event that will get the app working.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create an `initializeApp` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69207366266db1326ddf3b13.md",
+      "id": "69207366266db1326ddf3b13",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "Add the `DOMContentLoaded` event to the root document and pass in `initializeApp` as the callback function to run. This ensures all initialization happens only after the DOM is fully loaded.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the `DOMContentLoaded` event to the root `document`.",
+          "fr": ""
+        },
+        {
+          "en": "You should reference `initializeApp` as the function to run in your event listener.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a641acd82d52d8040de0.md",
+      "id": "6915a641acd82d52d8040de0",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "Back to the `initializeApp` function, this is where you will put the inline types and `getElement()` function you created earlier into use by getting the DOM elements needed for the app.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `initializeApp` function, reassign `shapeTypeSelect` by calling `getElement()` with `\"shape-type\"`, then use the `as` keyword to cast the result to `HTMLSelectElement`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should reassign `shapeTypeSelect` with the appropriate value.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `getElement` function with `shape-type` and assign it to `shapeTypeSelect`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call `getElement` with `HTMLSelectElement` as the type of `shapeTypeSelect` using the `as` keyword.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a808bf21675d5640a4e3.md",
+      "id": "6915a808bf21675d5640a4e3",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Now, you should select the shapes. Each of them is in a `div` with the id `[shape]-props`. Instead of selecting them one after the other, assign an object with `circle`, `rectangle`, and `triangle` properties to the `propertyGroups` variable you declared before.",
+          "fr": ""
+        },
+        {
+          "en": "Each of the properties should use the `getElement` function with `HTMLElement` type to get elements with ids `circle-props`, `rectangle-props`, and `triangle-props` respectively.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign an object to the `propertyGroups` variable declared before.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyGroups` should have a `circle` property with its value calling `getElement()` with `circle-props` and casting it `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyGroups` should have a `rectangle` property with its value calling `getElement()` with `rectangle-props` and casting it `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyGroups` should have a `triangle` property with its value calling `getElement()` with `triangle-props` and casting it `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a89c51615a64942515aa.md",
+      "id": "6915a89c51615a64942515aa",
+      "dashedName": "step-47",
+      "title": {
+        "en": "Step 47",
+        "fr": "Étape 47"
+      },
+      "description": [
+        {
+          "en": "Now, create an object with `radius`, `width`, `height`, `base`, and `triangleHeight` properties.",
+          "fr": ""
+        },
+        {
+          "en": "For each property, use `getElement`, this time with the `HTMLInputElement` type, to grab the input element with the corresponding id. Assign the object to the `propertyInputs` variable previously declared.",
+          "fr": ""
+        },
+        {
+          "en": "This represents all the input fields where you will enter the number for different shape properties so the area will be calculated.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign an object to the `propertyInputs` variable previously declared.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` object should have a `radius` property with its value calling `getElement()` with `radius` and casting it `HTMLInputElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` object should have a `width` property with its value calling `getElement()` with `width` and casting it `HTMLInputElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` object should have a `height` property with its value calling `getElement()` with `height` and casting it `HTMLInputElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` object should have a `base` property with its value calling `getElement()` with `base` and casting it `HTMLInputElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `propertyInputs` object should have a `triangleHeight` property with its value calling `getElement()` with `triangle-height` and casting it `HTMLInputElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915a8fed59e336bc937f5f2.md",
+      "id": "6915a8fed59e336bc937f5f2",
+      "dashedName": "step-48",
+      "title": {
+        "en": "Step 48",
+        "fr": "Étape 48"
+      },
+      "description": [
+        {
+          "en": "The last set of elements to select are the result elements. Use your `getElement` function to get the element with the ids `result-text` and `result-card`. Both should use `HTMLElement` as the type.",
+          "fr": ""
+        },
+        {
+          "en": "Remember you have already declared the `resultText` and `resultCard` variables for them, so you only need to assign them.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign a value to the `resultText` variable.",
+          "fr": ""
+        },
+        {
+          "en": "`resultText` should select the `result-text` element.",
+          "fr": ""
+        },
+        {
+          "en": "You should use `HTMLElement` as the type of the `getElement` you're using to select the `result-text` element.",
+          "fr": ""
+        },
+        {
+          "en": "You should assign a value to the `resultCard` variable.",
+          "fr": ""
+        },
+        {
+          "en": "`resultCard` should select the `result-card` element.",
+          "fr": ""
+        },
+        {
+          "en": "You should use `HTMLElement` as the type of the `getElement` you're using to select the `result-card` element.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915aa2ea2f30176eccd9307.md",
+      "id": "6915aa2ea2f30176eccd9307",
+      "dashedName": "step-49",
+      "title": {
+        "en": "Step 49",
+        "fr": "Étape 49"
+      },
+      "description": [
+        {
+          "en": "Use the `oninput` event on `shapeTypeSelect` and set it to `handleShapeSelect`. This will make the function run each time the shape selection changes.",
+          "fr": ""
+        },
+        {
+          "en": "After doing that, you should be able to see the input fields of each shape. But the calculations won't work yet, and that's what you will handle next.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `shapeTypeSelect.oninput` to `handleShapeSelect`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915ab1afa7f7d7ecaef5050.md",
+      "id": "6915ab1afa7f7d7ecaef5050",
+      "dashedName": "step-50",
+      "title": {
+        "en": "Step 50",
+        "fr": "Étape 50"
+      },
+      "description": [
+        {
+          "en": "To finally show the calculations, loop through the `propertyInputs` object by using a `for...of` loop with `Object.entries()`. You can ignore the key by using a comma before `input` in the loop declaration.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a `for...of` loop that destructures each entry from `Object.entries(propertyInputs)` by skipping the key and keeping only `input`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `for...of` loop should iterate over `Object.entries(propertyInputs)`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6915abb14ee980884ed93cc7.md",
+      "id": "6915abb14ee980884ed93cc7",
+      "dashedName": "step-51",
+      "title": {
+        "en": "Step 51",
+        "fr": "Étape 51"
+      },
+      "description": [
+        {
+          "en": "Inside the loop, set the `oninput` event of each `input` element to the `handleInput` function.",
+          "fr": ""
+        },
+        {
+          "en": "With that, the shape manager workshop is complete!",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `input.oninput` to the `handleInput` function.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

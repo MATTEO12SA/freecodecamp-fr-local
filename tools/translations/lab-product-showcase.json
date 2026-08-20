@@ -1,0 +1,269 @@
+{
+  "workshop": "lab-product-showcase",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "696920c0c98a1ed58eb86293.md",
+      "id": "696920c0c98a1ed58eb86293",
+      "dashedName": "lab-product-showcase",
+      "title": {
+        "en": "Build a Product Showcase",
+        "fr": "Construire une vitrine de produits"
+      },
+      "description": [
+        {
+          "en": "For this lab, you have been provided with all the HTML and CSS. You will complete a product showcase using TypeScript.",
+          "fr": "Pour ce lab, tout le HTML et le CSS t’ont été fournis. Tu vas compléter une vitrine de produits avec TypeScript."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should create an interface named `Item` with:\n   - A `type` property that can only be `\"book\"`, `\"electronics\"`, or `\"clothing\"`.\n   - An `id` property of type `string`.\n   - A `price` property of type `number`.",
+          "fr": "1. Tu dois créer une interface nommée `Item` avec :\n   - Une propriété `type` qui ne peut être que `\"book\"`, `\"electronics\"`, ou `\"clothing\"`.\n   - Une propriété `id` de type `string`.\n   - Une propriété `price` de type `number`."
+        },
+        {
+          "en": "1. You should create an interface named `Book` that extends `Item`. Its `type` property should be set to the literal `\"book\"`. It should also have `title` and `author` properties of type `string`.",
+          "fr": "1. Tu dois créer une interface nommée `Book` qui étend `Item`. Sa propriété `type` doit être définie sur le littéral `\"book\"`. Elle doit aussi avoir des propriétés `title` et `author` de type `string`."
+        },
+        {
+          "en": "1. You should create an interface named `Electronics` that extends `Item`. Its `type` property should be set to the literal `\"electronics\"`. It should also have `item` and `model` properties of type `string`, and an optional `warranty` property of type `number`.",
+          "fr": "1. Tu dois créer une interface nommée `Electronics` qui étend `Item`. Sa propriété `type` doit être définie sur le littéral `\"electronics\"`. Elle doit aussi avoir des propriétés `item` et `model` de type `string`, et une propriété optionnelle `warranty` de type `number`."
+        },
+        {
+          "en": "1. You should create an interface named `Clothing` that extends `Item`. Its `type` property should be set to the literal `\"clothing\"`. It should also have `item` and `brand` properties of type `string`, and an optional `size` property that can only be `\"S\"`, `\"M\"`, or `\"L\"`.",
+          "fr": "1. Tu dois créer une interface nommée `Clothing` qui étend `Item`. Sa propriété `type` doit être définie sur le littéral `\"clothing\"`. Elle doit aussi avoir des propriétés `item` et `brand` de type `string`, et une propriété optionnelle `size` qui ne peut être que `\"S\"`, `\"M\"`, ou `\"L\"`."
+        },
+        {
+          "en": "1. You should create a union type named `Product` that combines the `Book`, `Electronics`, and `Clothing` interfaces.",
+          "fr": "1. Tu dois créer un type union nommé `Product` qui combine les interfaces `Book`, `Electronics` et `Clothing`."
+        },
+        {
+          "en": "1. You should create a generic class named `Collection` with a type parameter `T`. The constructor should accept an array of items of type `T` and store them in a property named `items`.",
+          "fr": "1. Tu dois créer une classe générique nommée `Collection` avec un paramètre de type `T`. Le constructeur doit accepter un tableau d’éléments de type `T` et les stocker dans une propriété nommée `items`."
+        },
+        {
+          "en": "1. The `Collection` class should have a `getAll()` method that returns all items in the collection.",
+          "fr": "1. La classe `Collection` doit avoir une méthode `getAll()` qui renvoie tous les éléments de la collection."
+        },
+        {
+          "en": "1. The `Collection` class should have a `filter()` method that accepts a callback and returns only the elements from the `items` array that satisfy the given condition. The callback should receive an element of type `T` and return a boolean.",
+          "fr": "1. La classe `Collection` doit avoir une méthode `filter()` qui accepte un callback et renvoie uniquement les éléments du tableau `items` qui satisfont la condition donnée. Le callback doit recevoir un élément de type `T` et renvoyer un booléen."
+        },
+        {
+          "en": "1. You should create a function named `renderProduct` with a parameter of type `Product`. It should return an HTML string representing a product with:\n   - An element with the class `item` and an ID with the value of the product `id`.\n   - An element with the class `price` and the text of the product `price`.\n   - An element containing additional product information.",
+          "fr": "1. Tu dois créer une fonction nommée `renderProduct` avec un paramètre de type `Product`. Elle doit renvoyer une chaîne HTML représentant un produit avec :\n   - Un élément avec la classe `item` et un ID égal à la valeur de l’`id` du produit.\n   - Un élément avec la classe `price` et le texte du `price` du produit.\n   - Un élément contenant des informations supplémentaires sur le produit."
+        },
+        {
+          "en": "1. The `renderProduct` function should use type narrowing to render different HTML depending on the product type:",
+          "fr": "1. La fonction `renderProduct` doit utiliser le type narrowing pour rendre un HTML différent selon le type de produit :"
+        },
+        {
+          "en": "- For books, the rendered HTML should have the format `Book: [title] by [author]`, where `[title]` and `[author]` should be replaced by the title and the author, respectively.\n   - For electronics, the rendered HTML should have the format `Electronics: [item] - [model]`. If the product has a warranty, append ` - Warranty: [warranty] year(s)` to the format. Replace `[item]`, `[model]`, and `[warranty]` with the item, the model, and the warranty, respectively.\n   - For clothing, the rendered HTML should have the format `Clothing: [item] by [brand]`. If the product has a size, append ` - Size [size]` to the format. Replace `[item]`, `[brand]`, and `[size]` with the item, the brand, and the size, respectively.\n   - If an invalid product type is encountered, throw an error with the format: `Unknown product type: [product]`, where `[product]` should be replaced by the invalid product object. Use `JSON.stringify` to convert the invalid product into a string.",
+          "fr": "- Pour les livres, le HTML rendu doit avoir le format `Book: [title] by [author]`, où `[title]` et `[author]` doivent être remplacés respectivement par le titre et l’auteur.\n   - Pour l’électronique, le HTML rendu doit avoir le format `Electronics: [item] - [model]`. Si le produit a une garantie, ajoute ` - Warranty: [warranty] year(s)` au format. Remplace `[item]`, `[model]` et `[warranty]` respectivement par l’article, le modèle et la garantie.\n   - Pour les vêtements, le HTML rendu doit avoir le format `Clothing: [item] by [brand]`. Si le produit a une taille, ajoute ` - Size [size]` au format. Remplace `[item]`, `[brand]` et `[size]` respectivement par l’article, la marque et la taille.\n   - Si un type de produit invalide est rencontré, lève une erreur avec le format : `Unknown product type: [product]`, où `[product]` doit être remplacé par l’objet produit invalide. Utilise `JSON.stringify` pour convertir le produit invalide en chaîne."
+        },
+        {
+          "en": "1. You should create a `Collection<Product>` instance that includes at least one item for each product type and assign the instance to a variable named `products`.",
+          "fr": "1. Tu dois créer une instance `Collection<Product>` qui inclut au moins un élément pour chaque type de produit et assigner l’instance à une variable nommée `products`."
+        },
+        {
+          "en": "1. You should create a `showProducts` function that displays products in the `#output` element. It should accept an optional filter representing a product type; when omitted, show all products; when provided, show only products of that type.",
+          "fr": "1. Tu dois créer une fonction `showProducts` qui affiche les produits dans l’élément `#output`. Elle doit accepter un filtre optionnel représentant un type de produit ; s’il est omis, montre tous les produits ; s’il est fourni, montre uniquement les produits de ce type."
+        },
+        {
+          "en": "1. You should render products by converting each product to an HTML string using the `renderProduct` function and injecting the combined result into the `#output` element.",
+          "fr": "1. Tu dois afficher les produits en convertissant chaque produit en chaîne HTML avec la fonction `renderProduct` et en injectant le résultat combiné dans l’élément `#output`."
+        },
+        {
+          "en": "1. Clicking the `#all`, `#books`, `#electronics`, and `#clothing` buttons should display the corresponding set of products in the `#output` element.",
+          "fr": "1. Cliquer sur les boutons `#all`, `#books`, `#electronics` et `#clothing` doit afficher l’ensemble de produits correspondant dans l’élément `#output`."
+        },
+        {
+          "en": "1. On page load, all products should be shown by default.",
+          "fr": "1. Au chargement de la page, tous les produits doivent être affichés par défaut."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an interface named `Item`.",
+          "fr": "Tu dois avoir une interface nommée `Item`."
+        },
+        {
+          "en": "Your `Item` interface should have a `type` property that can only be `\"book\"`, `\"electronics\"`, or `\"clothing\"`.",
+          "fr": "Ton interface `Item` doit avoir une propriété `type` qui ne peut être que `\"book\"`, `\"electronics\"`, ou `\"clothing\"`."
+        },
+        {
+          "en": "Your `Item` interface should have an `id` property of type `string`.",
+          "fr": "Ton interface `Item` doit avoir une propriété `id` de type `string`."
+        },
+        {
+          "en": "Your `Item` interface should have a `price` property of type `number`.",
+          "fr": "Ton interface `Item` doit avoir une propriété `price` de type `number`."
+        },
+        {
+          "en": "You should have an interface named `Book`.",
+          "fr": "Tu dois avoir une interface nommée `Book`."
+        },
+        {
+          "en": "Your `Book` interface should extend `Item`.",
+          "fr": "Ton interface `Book` doit étendre `Item`."
+        },
+        {
+          "en": "Your `Book` interface should have a `type` property set to `\"book\"`.",
+          "fr": "Ton interface `Book` doit avoir une propriété `type` définie sur `\"book\"`."
+        },
+        {
+          "en": "Your `Book` interface should have a `title` property of type `string`.",
+          "fr": "Ton interface `Book` doit avoir une propriété `title` de type `string`."
+        },
+        {
+          "en": "Your `Book` interface should have an `author` property of type `string`.",
+          "fr": "Ton interface `Book` doit avoir une propriété `author` de type `string`."
+        },
+        {
+          "en": "You should have an interface named `Electronics`.",
+          "fr": "Tu dois avoir une interface nommée `Electronics`."
+        },
+        {
+          "en": "Your `Electronics` interface should extend `Item`.",
+          "fr": "Ton interface `Electronics` doit étendre `Item`."
+        },
+        {
+          "en": "Your `Electronics` interface should have a `type` property set to `\"electronics\"`.",
+          "fr": "Ton interface `Electronics` doit avoir une propriété `type` définie sur `\"electronics\"`."
+        },
+        {
+          "en": "Your `Electronics` interface should have an `item` property of type `string`.",
+          "fr": "Ton interface `Electronics` doit avoir une propriété `item` de type `string`."
+        },
+        {
+          "en": "Your `Electronics` interface should have a `model` property of type `string`.",
+          "fr": "Ton interface `Electronics` doit avoir une propriété `model` de type `string`."
+        },
+        {
+          "en": "Your `Electronics` interface should have an optional `warranty` property of type `number`.",
+          "fr": "Ton interface `Electronics` doit avoir une propriété optionnelle `warranty` de type `number`."
+        },
+        {
+          "en": "You should have an interface named `Clothing`.",
+          "fr": "Tu dois avoir une interface nommée `Clothing`."
+        },
+        {
+          "en": "Your `Clothing` interface should extend `Item`.",
+          "fr": "Ton interface `Clothing` doit étendre `Item`."
+        },
+        {
+          "en": "Your `Clothing` interface should have a `type` property set to `\"clothing\"`.",
+          "fr": "Ton interface `Clothing` doit avoir une propriété `type` définie sur `\"clothing\"`."
+        },
+        {
+          "en": "Your `Clothing` interface should have an `item` property of type `string`.",
+          "fr": "Ton interface `Clothing` doit avoir une propriété `item` de type `string`."
+        },
+        {
+          "en": "Your `Clothing` interface should have a `brand` property of type `string`.",
+          "fr": "Ton interface `Clothing` doit avoir une propriété `brand` de type `string`."
+        },
+        {
+          "en": "Your `Clothing` interface should have an optional `size` property that can only be `\"S\"`, `\"M\"`, or `\"L\"`.",
+          "fr": "Ton interface `Clothing` doit avoir une propriété optionnelle `size` qui ne peut être que `\"S\"`, `\"M\"`, ou `\"L\"`."
+        },
+        {
+          "en": "You should create a union type named `Product` that combines the `Book`, `Electronics`, and `Clothing` interfaces.",
+          "fr": "Tu dois créer un type union nommé `Product` qui combine les interfaces `Book`, `Electronics` et `Clothing`."
+        },
+        {
+          "en": "You should have a `Collection` class with a type parameter `T`.",
+          "fr": "Tu dois avoir une classe `Collection` avec un paramètre de type `T`."
+        },
+        {
+          "en": "The constructor of your `Collection` class should accept an array of items of type `T` and store them in a property named `items`.",
+          "fr": "Le constructeur de ta classe `Collection` doit accepter un tableau d’éléments de type `T` et les stocker dans une propriété nommée `items`."
+        },
+        {
+          "en": "Your `Collection` class should have a `getAll` method.",
+          "fr": "Ta classe `Collection` doit avoir une méthode `getAll`."
+        },
+        {
+          "en": "Your `getAll` method should return all items in the collection.",
+          "fr": "Ta méthode `getAll` doit renvoyer tous les éléments de la collection."
+        },
+        {
+          "en": "Your `Collection` class should have a `filter` method.",
+          "fr": "Ta classe `Collection` doit avoir une méthode `filter`."
+        },
+        {
+          "en": "Your `filter` method should accept a callback function and return an array containing the elements of the `items` property that satisfy the given condition.",
+          "fr": "Ta méthode `filter` doit accepter une fonction callback et renvoyer un tableau contenant les éléments de la propriété `items` qui satisfont la condition donnée."
+        },
+        {
+          "en": "You should have a function named `renderProduct`.",
+          "fr": "Tu dois avoir une fonction nommée `renderProduct`."
+        },
+        {
+          "en": "`renderProduct(product)` should return a string containing an element with the class of `item` and the ID equal to `product.id`.",
+          "fr": "`renderProduct(product)` doit renvoyer une chaîne contenant un élément avec la classe `item` et l’ID égal à `product.id`."
+        },
+        {
+          "en": "`renderProduct(product)` should return a string containing an element with the class of `price` and the text equal to `product.price`.",
+          "fr": "`renderProduct(product)` doit renvoyer une chaîne contenant un élément avec la classe `price` et le texte égal à `product.price`."
+        },
+        {
+          "en": "When `renderProduct` is called with a `Book` product `p`, it should return a string containing an element with the text following the format `Book: [title] by [author]`. Replace `[title]` and `[author]` with the corresponding properties of `p`.",
+          "fr": "Quand `renderProduct` est appelée avec un produit `Book` `p`, elle doit renvoyer une chaîne contenant un élément avec le texte au format `Book: [title] by [author]`. Remplace `[title]` et `[author]` par les propriétés correspondantes de `p`."
+        },
+        {
+          "en": "When `renderProduct` is called with an `Electronics` product `p`, it should return a string containing an element with the text following either the format `Electronics: [item] - [model]` or `Electronics: [item] - [model] - Warranty: [warranty] year(s)` if `p.warranty` is not undefined. Replace `[item]`, `[model]`, and `[warranty]` with the corresponding properties of `p`.",
+          "fr": "Quand `renderProduct` est appelée avec un produit `Electronics` `p`, elle doit renvoyer une chaîne contenant un élément avec le texte au format `Electronics: [item] - [model]` ou `Electronics: [item] - [model] - Warranty: [warranty] year(s)` si `p.warranty` n’est pas undefined. Remplace `[item]`, `[model]` et `[warranty]` par les propriétés correspondantes de `p`."
+        },
+        {
+          "en": "When `renderProduct` is called with a `Clothing` product `p`, it should return a string containing an element with the text following either the format `Clothing: [item] by [brand]` or `Clothing: [item] by [brand] - Size [size]` if `p.size` is not undefined. Replace `[item]`, `[brand]`, and `[size]` with the corresponding properties of `p`.",
+          "fr": "Quand `renderProduct` est appelée avec un produit `Clothing` `p`, elle doit renvoyer une chaîne contenant un élément avec le texte au format `Clothing: [item] by [brand]` ou `Clothing: [item] by [brand] - Size [size]` si `p.size` n’est pas undefined. Remplace `[item]`, `[brand]` et `[size]` par les propriétés correspondantes de `p`."
+        },
+        {
+          "en": "When `renderProduct` is called with an invalid product, it should throw an error with the format `Unknown product type: [p]`. Replace `[p]` with the invalid product stringified with `JSON.stringify`.",
+          "fr": "Quand `renderProduct` est appelée avec un produit invalide, elle doit lever une erreur au format `Unknown product type: [p]`. Remplace `[p]` par le produit invalide stringifié avec `JSON.stringify`."
+        },
+        {
+          "en": "You should create a `Collection<Product>` instance and assign it to a variable named `products`.",
+          "fr": "Tu dois créer une instance `Collection<Product>` et l’assigner à une variable nommée `products`."
+        },
+        {
+          "en": "Your `products` variable should contain at least one item for each product type.",
+          "fr": "Ta variable `products` doit contenir au moins un élément pour chaque type de produit."
+        },
+        {
+          "en": "You should have a function named `showProducts`.",
+          "fr": "Tu dois avoir une fonction nommée `showProducts`."
+        },
+        {
+          "en": "Clicking the `#all` button should display all the products in the `#output` element.",
+          "fr": "Cliquer sur le bouton `#all` doit afficher tous les produits dans l’élément `#output`."
+        },
+        {
+          "en": "Clicking the `#books` button should display the corresponding set of products in the `#output` element.",
+          "fr": "Cliquer sur le bouton `#books` doit afficher l’ensemble de produits correspondant dans l’élément `#output`."
+        },
+        {
+          "en": "Clicking the `#electronics` button should display the corresponding set of products in the `#output` element.",
+          "fr": "Cliquer sur le bouton `#electronics` doit afficher l’ensemble de produits correspondant dans l’élément `#output`."
+        },
+        {
+          "en": "Clicking the `#clothing` button should display the corresponding set of products in the `#output` element.",
+          "fr": "Cliquer sur le bouton `#clothing` doit afficher l’ensemble de produits correspondant dans l’élément `#output`."
+        },
+        {
+          "en": "All products should be visible by default when the page loads. Use the `DOMContentLoaded` event to ensure it.",
+          "fr": "Tous les produits doivent être visibles par défaut au chargement de la page. Utilise l’événement `DOMContentLoaded` pour t’en assurer."
+        }
+      ]
+    }
+  ]
+}

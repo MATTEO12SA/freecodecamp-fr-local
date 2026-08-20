@@ -1,0 +1,225 @@
+{
+  "workshop": "lecture-working-with-typescript-configuration-files",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d301cc87b84eaa42bdcdbe.md",
+      "id": "67d301cc87b84eaa42bdcdbe",
+      "dashedName": "what-is-a-tsconfig-file-and-why-is-it-important-to-include-in-your-typescript-projects",
+      "title": {
+        "en": "What Is a tsconfig File, and Why Is It Important to Include in Your TypeScript Projects?",
+        "fr": "Qu’est-ce qu’un fichier tsconfig, et pourquoi est-il important de l’inclure dans tes projets TypeScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "TypeScript's compiler settings can be configured to meet your project's needs. That configuration lives in a `tsconfig.json` file in the root directory of your project. In fact, without it, the compiler will not run unless you pass it command flags directly. But what exactly does this file do? Well, let's take a look at an example file:",
+              "fr": "Les réglages du compilateur TypeScript peuvent être configurés pour répondre aux besoins de ton projet. Cette configuration se trouve dans un fichier `tsconfig.json` à la racine de ton projet. En fait, sans lui, le compilateur ne s’exécutera pas sauf si tu lui passes des flags de commande directement. Mais que fait exactement ce fichier ? Eh bien, regardons un exemple de fichier :"
+            },
+            {
+              "en": "This seems like a lot! So let's break it down. The `compilerOptions` property is going to contain the \"meat\" of your configuration - this is where you control how the TypeScript compiler behaves. Looking at that nested object…",
+              "fr": "Ça semble beaucoup ! Alors décortiquons. La propriété `compilerOptions` va contenir le « cœur » de ta configuration — c’est là que tu contrôles le comportement du compilateur TypeScript. En regardant cet objet imbriqué…"
+            },
+            {
+              "en": "The `rootDir` and `outDir` tell TypeScript which directory holds your source files, and which directory should contain the transpiled JavaScript code.",
+              "fr": "Les propriétés `rootDir` et `outDir` indiquent à TypeScript quel répertoire contient tes fichiers source, et quel répertoire doit contenir le code JavaScript transpilé."
+            },
+            {
+              "en": "The `lib` property determines which type definitions the compiler uses, and allows you to include support for specific ES releases, the DOM, and more.",
+              "fr": "La propriété `lib` détermine quelles définitions de types le compilateur utilise, et te permet d’inclure le support de versions ES spécifiques, du DOM, et plus encore."
+            },
+            {
+              "en": "`module` and `moduleResolution` effectively work in tandem to manage how your package uses modules - either CommonJS or ECMAScript.",
+              "fr": "`module` et `moduleResolution` travaillent effectivement de concert pour gérer la façon dont ton package utilise les modules — CommonJS ou ECMAScript."
+            },
+            {
+              "en": "`esModuleInterop` allows for smoother interoperability between CommonJS and ES modules by automatically creating namespace objects for imports, making it easier to use modules from different systems together in your TypeScript projects, and the `skipLibCheck` option skips validating `.d.ts` files that aren't referenced by imports in your code.",
+              "fr": "`esModuleInterop` permet une meilleure interopérabilité entre CommonJS et les modules ES en créant automatiquement des objets namespace pour les imports, ce qui facilite l’utilisation de modules de systèmes différents ensemble dans tes projets TypeScript, et l’option `skipLibCheck` saute la validation des fichiers `.d.ts` qui ne sont pas référencés par des imports dans ton code."
+            },
+            {
+              "en": "And finally we reach the `strict` mode. One might argue that TypeScript isn't truly helpful without this flag enabled, as it toggles quite a few other checks, such as requiring you to properly handle nullable types, or warn when TypeScript can't infer a type and falls back to any.",
+              "fr": "Et enfin, nous arrivons au mode `strict`. On pourrait soutenir que TypeScript n’est pas vraiment utile sans ce flag activé, car il bascule plusieurs autres vérifications, comme t’obliger à gérer correctement les types nullable, ou avertir quand TypeScript ne peut pas déduire un type et retombe sur any."
+            },
+            {
+              "en": "Before we finish, a quick note about the top-level `exclude` property - when you've defined a source directory, you may have TypeScript code outside of that directory which you don't want compiled as part of your production code. For example, your test code. The `exclude` array tells the compiler to ignore these TypeScript files during compilation, but still allows tooling like Intellisense to expose potential issues.",
+              "fr": "Avant de terminer, une note rapide sur la propriété de premier niveau `exclude` — quand tu as défini un répertoire source, tu peux avoir du code TypeScript hors de ce répertoire que tu ne veux pas compiler dans ton code de production. Par exemple, ton code de tests. Le tableau `exclude` dit au compilateur d’ignorer ces fichiers TypeScript pendant la compilation, tout en permettant aux outils comme Intellisense de signaler d’éventuels problèmes."
+            },
+            {
+              "en": "There are a ton of other compiler options you can explore - over 50! I encourage you to explore the documentation and experiment to find the configuration that works for your project's needs.",
+              "fr": "Il y a une tonne d’autres options de compilateur que tu peux explorer — plus de 50 ! Je t’encourage à explorer la documentation et à expérimenter pour trouver la configuration qui convient aux besoins de ton projet."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which property in the `tsconfig.json` file affects how the compiler behaves?",
+              "fr": "Quelle propriété dans le fichier `tsconfig.json` affecte le comportement du compilateur ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This property is an object containing options for the compiler.",
+              "fr": "Cette propriété est un objet contenant des options pour le compilateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This property is an object containing options for the compiler.",
+              "fr": "Cette propriété est un objet contenant des options pour le compilateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This property is an object containing options for the compiler.",
+              "fr": "Cette propriété est un objet contenant des options pour le compilateur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `strict` option in the `tsconfig.json` file do?",
+              "fr": "Que fait l’option `strict` dans le fichier `tsconfig.json` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It only checks for nullable types.",
+              "fr": "Elle vérifie uniquement les types nullable."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This option enables various checks, including handling of nullable types.",
+              "fr": "Cette option active diverses vérifications, y compris la gestion des types nullable."
+            },
+            {
+              "en": "It enforces the use of CommonJS modules.",
+              "fr": "Elle impose l’utilisation des modules CommonJS."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This option enables various checks, including handling of nullable types.",
+              "fr": "Cette option active diverses vérifications, y compris la gestion des types nullable."
+            },
+            {
+              "en": "It toggles several type-checking options.",
+              "fr": "Elle bascule plusieurs options de vérification de types."
+            },
+            {
+              "en": "It excludes test files from compilation.",
+              "fr": "Elle exclut les fichiers de test de la compilation."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This option enables various checks, including handling of nullable types.",
+              "fr": "Cette option active diverses vérifications, y compris la gestion des types nullable."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `exclude` array in the `tsconfig.json` file?",
+              "fr": "Quel est le rôle du tableau `exclude` dans le fichier `tsconfig.json` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To specify which files to compile.",
+              "fr": "Spécifier quels fichiers compiler."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "You can use this to exclude test code from compilation.",
+              "fr": "Tu peux l’utiliser pour exclure le code de tests de la compilation."
+            },
+            {
+              "en": "To list additional libraries to include.",
+              "fr": "Lister des bibliothèques supplémentaires à inclure."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "You can use this to exclude test code from compilation.",
+              "fr": "Tu peux l’utiliser pour exclure le code de tests de la compilation."
+            },
+            {
+              "en": "To ignore certain files during compilation.",
+              "fr": "Ignorer certains fichiers pendant la compilation."
+            },
+            {
+              "en": "To define output directories for compiled files.",
+              "fr": "Définir les répertoires de sortie pour les fichiers compilés."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "You can use this to exclude test code from compilation.",
+              "fr": "Tu peux l’utiliser pour exclure le code de tests de la compilation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

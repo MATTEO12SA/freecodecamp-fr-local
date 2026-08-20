@@ -136,7 +136,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 compte 149 blocs FR sur 230 (1311/1311 fichiers). Les modules 1-12 sont **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+Etat actuel : JavaScript v9 compte 149 blocs FR sur 230 (1311/1311 fichiers). Les modules 1-12 sont **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
 
 Workflow rapide mais relu manuellement :
 

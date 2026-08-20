@@ -1,0 +1,257 @@
+{
+  "workshop": "lab-digital-pet-game",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "68c362b379059c388d3874f2.md",
+      "id": "68c362b379059c388d3874f2",
+      "dashedName": "lab-digital-pet-game",
+      "title": {
+        "en": "Build a Digital Pet Game",
+        "fr": "Construire un jeu d’animal numérique"
+      },
+      "description": [
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "The application should have two views. The requirements for each view are encompassed by the rest of the user stories:",
+          "fr": "L’application doit avoir deux vues. Les exigences de chaque vue sont couvertes par le reste des user stories :"
+        },
+        {
+          "en": "The first view:",
+          "fr": "La première vue :"
+        },
+        {
+          "en": "- Should contain a form that accepts a single string input.\n- Should ask the user to name their pet.\n- Should contain a button for submission that will start the game.\n- Should disappear on submission.",
+          "fr": "- Doit contenir un formulaire qui accepte une seule saisie de type string.\n- Doit demander à l’utilisateur de nommer son animal.\n- Doit contenir un bouton de soumission qui démarre le jeu.\n- Doit disparaître à la soumission."
+        },
+        {
+          "en": "The second view:",
+          "fr": "La deuxième vue :"
+        },
+        {
+          "en": "- Should appear upon submission of the first view.\n- Should contain three `<button>` elements.\n- Each button element should pertain to one each of the three following actions: `[EAT, PLAY, SLEEP]`.",
+          "fr": "- Doit apparaître à la soumission de la première vue.\n- Doit contenir trois éléments `<button>`.\n- Chaque élément bouton doit correspondre à l’une des trois actions suivantes : `[EAT, PLAY, SLEEP]`."
+        },
+        {
+          "en": "- The `EAT` button should reduce the pets `Hunger` value, and increase the pets `Energy` value.\n  - The `PLAY` button should reduce the pets `Energy` value, and increase the pets `Happiness` value.\n  - The `SLEEP` button should increase the pets `Hunger` value, and increase the pets `Energy` value.",
+          "fr": "- Le bouton `EAT` doit réduire la valeur `Hunger` de l’animal et augmenter sa valeur `Energy`.\n  - Le bouton `PLAY` doit réduire la valeur `Energy` de l’animal et augmenter sa valeur `Happiness`.\n  - Le bouton `SLEEP` doit augmenter la valeur `Hunger` de l’animal et augmenter sa valeur `Energy`."
+        },
+        {
+          "en": "- Should visually track three properties of the pet. These are: `['Hunger', 'Happiness', 'Energy']`.\n- Each element that tracks each of the three properties should:",
+          "fr": "- Doit suivre visuellement trois propriétés de l’animal. Ce sont : `['Hunger', 'Happiness', 'Energy']`.\n- Chaque élément qui suit chacune des trois propriétés doit :"
+        },
+        {
+          "en": "- Contain the text relevant to that property, case insensitive, e.g., `hunger`, `Hunger`, `hUnGeR`, are all valid.\n  - NOT contain the text relevant to other properties, i.e., the `Hunger` tracking element must NOT contain the text `Happiness`.\n  - Contain a clear numeric representation of that properties current value.",
+          "fr": "- Contenir le texte lié à cette propriété, sans distinction de casse, par ex. `hunger`, `Hunger`, `hUnGeR`, sont tous valides.\n  - NE PAS contenir le texte lié aux autres propriétés, c.-à-d. l’élément de suivi `Hunger` ne doit PAS contenir le texte `Happiness`.\n  - Contenir une représentation numérique claire de la valeur actuelle de cette propriété."
+        },
+        {
+          "en": "- Each `Action` available to the pet should be encompassed by an enumerator.\n- Each `Action` `button` should contain one each of the following `id`'s relevant to that button's action: `['eat-action', 'play-action', 'sleep-action']`.\n- The pet should have the following moods, encompassed by a `PetMood` enumerator: `['Happy', 'Excited', 'Content', 'Sad', 'Tired', 'Sick', 'Hungry']`.",
+          "fr": "- Chaque `Action` disponible pour l’animal doit être encapsulée par un énumérateur.\n- Chaque `button` d’`Action` doit contenir l’un des `id` suivants correspondant à l’action du bouton : `['eat-action', 'play-action', 'sleep-action']`.\n- L’animal doit avoir les humeurs suivantes, encapsulées par un énumérateur `PetMood` : `['Happy', 'Excited', 'Content', 'Sad', 'Tired', 'Sick', 'Hungry']`."
+        },
+        {
+          "en": "- The pet should be `Hungry` if `Hunger > 70`.\n  - The pet should be `Tired` if `Energy < 30`.\n  - The pet should be `Sad` if `Happiness < 30`.\n  - The pet should be `Excited` if `Happiness > 80` and `Energy > 70`.\n  - The pet should be `Happy` if `Happiness > 60`.\n  - Otherwise, the pet should be `Content`.",
+          "fr": "- L’animal doit être `Hungry` si `Hunger > 70`.\n  - L’animal doit être `Tired` si `Energy < 30`.\n  - L’animal doit être `Sad` si `Happiness < 30`.\n  - L’animal doit être `Excited` si `Happiness > 80` et `Energy > 70`.\n  - L’animal doit être `Happy` si `Happiness > 60`.\n  - Sinon, l’animal doit être `Content`."
+        },
+        {
+          "en": "- The pet should have a number of images or emoji tied to each `Mood`.",
+          "fr": "- L’animal doit avoir un certain nombre d’images ou d’emoji liés à chaque `Mood`."
+        },
+        {
+          "en": "- These emoji or images should be tied to the current `PetMood`, with a `Record`.\n  - The key of each `Record` entry should be the relevant `PetMood` enum value.",
+          "fr": "- Ces emoji ou images doivent être liés au `PetMood` actuel, avec un `Record`.\n  - La clé de chaque entrée du `Record` doit être la valeur d’enum `PetMood` correspondante."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the page loads, there should be a visible `form` element.",
+          "fr": "Quand la page se charge, il doit y avoir un élément `form` visible."
+        },
+        {
+          "en": "This form should contain an input field with an id of `pet-name`.",
+          "fr": "Ce formulaire doit contenir un champ de saisie avec un id `pet-name`."
+        },
+        {
+          "en": "This form should contain a `button`.",
+          "fr": "Ce formulaire doit contenir un `button`."
+        },
+        {
+          "en": "When the input is given a value and the button is pressed, the form should no longer be visible.",
+          "fr": "Quand une valeur est donnée à l’input et que le bouton est pressé, le formulaire ne doit plus être visible."
+        },
+        {
+          "en": "The second view should contain an element with class `pet-name`.",
+          "fr": "La deuxième vue doit contenir un élément avec la classe `pet-name`."
+        },
+        {
+          "en": "The second view should contain the provided pet name.",
+          "fr": "La deuxième vue doit contenir le nom d’animal fourni."
+        },
+        {
+          "en": "The second view should contain three `button`s.",
+          "fr": "La deuxième vue doit contenir trois `button`s."
+        },
+        {
+          "en": "Exactly one button should contain the id `#eat-action`.",
+          "fr": "Exactement un bouton doit contenir l’id `#eat-action`."
+        },
+        {
+          "en": "Exactly one button should contain the id `#play-action`.",
+          "fr": "Exactement un bouton doit contenir l’id `#play-action`."
+        },
+        {
+          "en": "Exactly one button should contain the id `#sleep-action`.",
+          "fr": "Exactement un bouton doit contenir l’id `#sleep-action`."
+        },
+        {
+          "en": "There should be exactly three elements with the class `.stat`.",
+          "fr": "Il doit y avoir exactement trois éléments avec la classe `.stat`."
+        },
+        {
+          "en": "Each pet stat should contain exactly one element with class `.stat-value`.",
+          "fr": "Chaque statistique de l’animal doit contenir exactement un élément avec la classe `.stat-value`."
+        },
+        {
+          "en": "Each `.stat-value` element should contain one number.",
+          "fr": "Chaque élément `.stat-value` doit contenir un nombre."
+        },
+        {
+          "en": "Each `.stat-value` number should be within the range `[0,100]`, inclusive.",
+          "fr": "Chaque nombre `.stat-value` doit être dans l’intervalle `[0,100]`, inclus."
+        },
+        {
+          "en": "Exactly one `.stat` element should contain the text `Hunger`, case insensitive.",
+          "fr": "Exactement un élément `.stat` doit contenir le texte `Hunger`, sans distinction de casse."
+        },
+        {
+          "en": "One `.stat` element should contain the text `Energy`, case insensitive.",
+          "fr": "Un élément `.stat` doit contenir le texte `Energy`, sans distinction de casse."
+        },
+        {
+          "en": "One `.stat` element should contain the text `Happiness`, case insensitive.",
+          "fr": "Un élément `.stat` doit contenir le texte `Happiness`, sans distinction de casse."
+        },
+        {
+          "en": "The `Hunger` stat should start at 0.",
+          "fr": "La statistique `Hunger` doit commencer à 0."
+        },
+        {
+          "en": "The `Energy` stat should start at 100.",
+          "fr": "La statistique `Energy` doit commencer à 100."
+        },
+        {
+          "en": "The `Happiness` stat should start at 100.",
+          "fr": "La statistique `Happiness` doit commencer à 100."
+        },
+        {
+          "en": "Clicking the `Eat` button should reduce the `Hunger` value and increase the `Energy` value. If `Hunger` is 0 or `Energy` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Eat` doit réduire la valeur `Hunger` et augmenter la valeur `Energy`. Si `Hunger` vaut 0 ou `Energy` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "Clicking the `Play` button should reduce the `Energy` value and increase the `Happiness` value. If `Energy` is 0 or `Happiness` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Play` doit réduire la valeur `Energy` et augmenter la valeur `Happiness`. Si `Energy` vaut 0 ou `Happiness` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "Clicking the `Sleep` button should increase the `Hunger` value and increase the `Energy` value. If `Hunger` is 100 or `Energy` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Sleep` doit augmenter la valeur `Hunger` et augmenter la valeur `Energy`. Si `Hunger` vaut 100 ou `Energy` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "The `Hunger` stat should be 100 after an excessive period of idle time.",
+          "fr": "La statistique `Hunger` doit valoir 100 après une période d’inactivité excessive."
+        },
+        {
+          "en": "The `Energy` stat should be 100 after an excessive period of idle time.",
+          "fr": "La statistique `Energy` doit valoir 100 après une période d’inactivité excessive."
+        },
+        {
+          "en": "The `Happiness` stat should be 0 after an excessive period of idle time.",
+          "fr": "La statistique `Happiness` doit valoir 0 après une période d’inactivité excessive."
+        },
+        {
+          "en": "Clicking the `Eat` button should reduce the `Hunger` value and increase the `Energy` value. If `Hunger` is 0 or `Energy` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Eat` doit réduire la valeur `Hunger` et augmenter la valeur `Energy`. Si `Hunger` vaut 0 ou `Energy` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "Clicking the `Play` button should reduce the `Energy` value and increase the `Happiness` value. If `Energy` is 0 or `Happiness` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Play` doit réduire la valeur `Energy` et augmenter la valeur `Happiness`. Si `Energy` vaut 0 ou `Happiness` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "Clicking the `Sleep` button should increase the `Hunger` value and increase the `Energy` value. If `Hunger` is 100 or `Energy` is 100, that value must not change.",
+          "fr": "Cliquer sur le bouton `Sleep` doit augmenter la valeur `Hunger` et augmenter la valeur `Energy`. Si `Hunger` vaut 100 ou `Energy` vaut 100, cette valeur ne doit pas changer."
+        },
+        {
+          "en": "There should be a `PetMood` enumerator.",
+          "fr": "Il doit y avoir un énumérateur `PetMood`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `HAPPY`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `HAPPY`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `EXCITED`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `EXCITED`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `CONTENT`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `CONTENT`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `SAD`'.",
+          "fr": "L’énumérateur `PetMood` doit contenir `SAD`'."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `TIRED`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `TIRED`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `SICK`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `SICK`."
+        },
+        {
+          "en": "The `PetMood` enumerator should contain `HUNGRY`.",
+          "fr": "L’énumérateur `PetMood` doit contenir `HUNGRY`."
+        },
+        {
+          "en": "There should be a `Record<PetMood, string` to map a value to each `PetMood`.",
+          "fr": "Il doit y avoir un `Record<PetMood, string` pour associer une valeur à chaque `PetMood`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.HAPPY`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.HAPPY`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.EXCITED`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.EXCITED`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.CONTENT`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.CONTENT`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.SAD`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.SAD`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.TIRED`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.TIRED`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.SICK`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.SICK`."
+        },
+        {
+          "en": "There should be a value mapped to `PetMood.HUNGRY`.",
+          "fr": "Il doit y avoir une valeur associée à `PetMood.HUNGRY`."
+        }
+      ]
+    }
+  ]
+}

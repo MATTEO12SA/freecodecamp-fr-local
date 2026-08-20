@@ -1,0 +1,567 @@
+{
+  "workshop": "workshop-bug-emoji-picker",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "690fe8b8e39ebd4a4d217d6b.md",
+      "id": "690fe8b8e39ebd4a4d217d6b",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll learn about TypeScript abstract classes and generics by building a bug species selector that displays different bug emojis.",
+          "fr": ""
+        },
+        {
+          "en": "The HTML and CSS for the project have been provided for you so you can focus on the TypeScript. You can check the files to learn about the elements you will select later.",
+          "fr": ""
+        },
+        {
+          "en": "To start, you'll need an abstract base class for all bugs. Abstract classes cannot be instantiated directly and are meant to be extended by other classes.",
+          "fr": ""
+        },
+        {
+          "en": "Create an abstract class named `Bug` with a generic type parameter `T`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an abstract class named `Bug`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bug` class should have a generic type parameter `T`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "690ffbe80b0429c0d448050c.md",
+      "id": "690ffbe80b0429c0d448050c",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Now you need to define the properties that all bugs will have.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `Bug` class, declare a property named `emoji` with the type `T` using the definite assignment assertion operator (`!`). This tells TypeScript that the property will be assigned later.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bug` class should have a property named `emoji`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `emoji` property should have the type `T`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `emoji` property should use the definite assignment assertion operator (`!`).",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "6927b1bf0ec0410912d6f738.md",
+      "id": "6927b1bf0ec0410912d6f738",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Still inside the `Bug` class, declare a property named `emojiElement` with the type `HTMLParagraphElement`. This property will hold a reference to the HTML paragraph element where the bug emoji will be displayed.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bug` class should have a property named `emojiElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `emojiElement` property should have the type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `emojiElement` property should use the definite assignment assertion operator (`!`).",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb0d9ee52ab2403d8bfe7.md",
+      "id": "692fb0d9ee52ab2403d8bfe7",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Next, create a constructor for the `Bug` class that takes a single parameter named `emojiElement` of type `HTMLParagraphElement`. Inside the constructor, assign the `emojiElement` parameter to the `emojiElement` property of the class.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bug` class should have a constructor.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bug` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bug` constructor should assign `emojiElement` to `this.emojiElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb24a233fc22e2923e3f2.md",
+      "id": "692fb24a233fc22e2923e3f2",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "After the constructor, create an abstract `render` method that has a return type of `void`. You'll use this in subclasses to update the displayed emoji.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bug` class should have an abstract `render` method.",
+          "fr": ""
+        },
+        {
+          "en": "Your `render` method should have a return type of `void`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb38f7a5889378e93655f.md",
+      "id": "692fb38f7a5889378e93655f",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Next, create a subclass named `Bee` that extends the `Bug` class with the generic type parameter set to `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a class named `Bee`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bee` class should extend `Bug`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bee` class should extend `Bug` with a type argument of `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb4da06eeff4114b47433.md",
+      "id": "692fb4da06eeff4114b47433",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Inside the `Bee` class, create a constructor that takes a single parameter `emojiElement` of type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the constructor, call the `super` function with the `emojiElement` parameter to invoke the constructor of the parent `Bug` class. Then, set the `emoji` property to the string value `\"🐝\"`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bee` class should have a constructor.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bee` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bee` constructor should call `super` with the `emojiElement` parameter.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Bee` constructor should set `this.emoji` to `\"🐝\"`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb5ed756efe49f8531441.md",
+      "id": "692fb5ed756efe49f8531441",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Inside the `Bee` class, implement the `render` method, prefixed by the `override` keyword, to update the `innerText` property of the `emojiElement` with the value of the `emoji` property.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Bee` class should have a `render` method using the `override` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "You should set `this.emojiElement.innerText` to `this.emoji` inside the `render` method of `Bee`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb7ad64801c563e8391b7.md",
+      "id": "692fb7ad64801c563e8391b7",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Create a subclass `Spider` that extends the `Bug` class with the generic type parameter set to `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a class named `Spider`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` class should extend `Bug`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` class should extend `Bug` with a type argument of `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb81e768aab5a1a6a0381.md",
+      "id": "692fb81e768aab5a1a6a0381",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Inside the `Spider` class, create a constructor that takes a single parameter `emojiElement` of type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the constructor, call the `super` function with the `emojiElement` parameter to invoke the constructor of the parent `Bug` class. Then, set the `emoji` property to the string value `\"🕷️\"`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Spider` class should have a constructor.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` constructor should have a parameter named `emojiElement` of type `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` constructor should call `super` with the `emojiElement` parameter.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` constructor should set `this.emoji` to `\"🕷️\"`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb94bf8221362ce6f54c5.md",
+      "id": "692fb94bf8221362ce6f54c5",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Inside the `Spider` class, implement the `render` method, prefixed by the `override` keyword, to update the `innerText` property of the `emojiElement` with the value of the `emoji` property.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `Spider` class should have a `render` method.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` `render` method should use the `override` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Spider` `render` method should set `this.emojiElement.innerText` to `this.emoji`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fb9f4046f1d677f1f6e4e.md",
+      "id": "692fb9f4046f1d677f1f6e4e",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Create a function named `isSelect` that takes a single parameter `element` of type `EventTarget | null`. This function will check if the selected element is a `<select>` HTML element.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `isSelect`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `isSelect` function should have a parameter named `element` of type `EventTarget | null`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `isSelect` function should have a return type of `element is HTMLSelectElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fbce895711f7c574c1e81.md",
+      "id": "692fbce895711f7c574c1e81",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now inside the `isSelect` function, return a boolean indicating whether the `element` is an instance of `HTMLSelectElement`. Use the `instanceof` operator to perform this check.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `isSelect` function should return `element instanceof HTMLSelectElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fbdf423ea7685453dbbf9.md",
+      "id": "692fbdf423ea7685453dbbf9",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "You will now start referencing the needed DOM elements.",
+          "fr": ""
+        },
+        {
+          "en": "Get the paragraph element with the ID of `bug-emoji` and store it in a constant named `bugEmojiElement`. Use the `!` non-null assertion operator to assert that the element is not `null`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a constant named `bugEmojiElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `bugEmojiElement` should query the element with the ID `bug-emoji` using `document.querySelector` with a type argument of `HTMLParagraphElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `bugEmojiElement` should use the non-null assertion operator (`!`).",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "692fbf63c8fe56907977f450.md",
+      "id": "692fbf63c8fe56907977f450",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Next, define an object named `bugMap` with the type `Record<string, Bug<string>>` and assign it an empty object for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a constant named `bugMap`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `bugMap` should have a type annotation of `Record<string, Bug<string>>`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `bugMap` should be initialized to an empty object.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69d902c4f58b8a0d48d19c67.md",
+      "id": "69d902c4f58b8a0d48d19c67",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now populate `bugMap` with two entries. Add `\"bee\"` as a key mapped to a new `Bee` instance, and `\"spider\"` as a key mapped to a new `Spider` instance. Pass in `bugEmojiElement` as the argument of both.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `bugMap` should have a `\"bee\"` entry set to `new Bee(bugEmojiElement)`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `bugMap` should have a `\"spider\"` entry set to `new Spider(bugEmojiElement)`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69386f3bce81c60f2b3feeb8.md",
+      "id": "69386f3bce81c60f2b3feeb8",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Get the `select` element with ID `species` from the DOM and store it in a constant named `selectElement`. Use the `!` non-null assertion operator to assert that the element is not `null`",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a constant named `selectElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `selectElement` should query the element with the ID `species` using `document.querySelector` with a type argument of `HTMLSelectElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `selectElement` should use the non-null assertion operator (`!`).",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "693874cf5bf4aa32aded7ce5.md",
+      "id": "693874cf5bf4aa32aded7ce5",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Up until now, nothing changes when you select a different bug.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `change` event listener to `selectElement`. In the callback, use `isSelect` to check if `e.target` is an `HTMLSelectElement`. You don't need to do anything inside the `if` block yet.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `selectElement` should have a `change` event listener with a callback that takes an event parameter.",
+          "fr": ""
+        },
+        {
+          "en": "Your event listener callback should have an `if` statement with the condition `isSelect(e.target)`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69d909f2946a3fcabed720c6.md",
+      "id": "69d909f2946a3fcabed720c6",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now that the `if` check is in place, use `e.target.value` to look up the corresponding bug in `bugMap` and call its `render` method. After that, you should be able to select the bugs and see the result right away.",
+          "fr": ""
+        },
+        {
+          "en": "With that, your Bug Emoji Picker workshop is complete!",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `render` method on the corresponding bug from `bugMap`.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

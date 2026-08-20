@@ -1,0 +1,473 @@
+{
+  "workshop": "workshop-type-safe-user-profile",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "699b4e284291adcfcb90df47.md",
+      "id": "699b4e284291adcfcb90df47",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will practice working with primitive types as well as object and array types by building out a type safe user profile.",
+          "fr": ""
+        },
+        {
+          "en": "Start by creating a variable called `profile` and assign it an object. Your object should have these three properties and values:",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `profile`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `profile` variable should be an object.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `username` property in your `profile` object.",
+          "fr": ""
+        },
+        {
+          "en": "Your `username` property should have a value of `\"codeLearner\"`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `profile` object should have an `age` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `age` property should have a value of `25`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `profile` object should have an `isLoggedIn` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `isLoggedIn` property should have a value of `false`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b5370a43e299b4673bcaa.md",
+      "id": "699b5370a43e299b4673bcaa",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "It would be helpful to see the `profile` object properties in the console as you build it out.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `console.log` that logs `profile` to the console.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `profile` to the console.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b58c5abecfda9dc81c4ec.md",
+      "id": "699b58c5abecfda9dc81c4ec",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Right now the `profile` object only has three properties. But it would be nice to have a few more.",
+          "fr": ""
+        },
+        {
+          "en": "Add a property called `mood` to the `profile` object. Its value should be `null`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `profile` object should have a `mood` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `mood` property should have a value of `null`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b5b7cb68b6d35afca61b7.md",
+      "id": "699b5b7cb68b6d35afca61b7",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "While it is possible to continue to add properties like this to the `profile` object, it would be nice to restrict the types of properties that should be allowed. It would be better to define the shape of the `profile` object beforehand.",
+          "fr": ""
+        },
+        {
+          "en": "In prior lessons, you learned how to work with object types like this:",
+          "fr": ""
+        },
+        {
+          "en": "In this example, `composer` is an object with an inline object type. This object has three required properties of `name`, `instrument` and `isActive`. The first two properties must be of type `string` and `isActive` must be of type `boolean`.",
+          "fr": ""
+        },
+        {
+          "en": "Update your existing `profile` object to include an inline object type. `username` should be typed to a `string`, `age` should be typed to a `number` and `isLoggedIn` should be typed to a `boolean`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `profile` object should have an inline object type with a `username` property set to `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `profile` object should have an inline object type with an `age` property set to `number`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `profile` object should have an inline object type with an `isLoggedIn` property set to `boolean`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b61ca8c9cb9bc1968364e.md",
+      "id": "699b61ca8c9cb9bc1968364e",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "If you open up the console, you should see the following error message:",
+          "fr": ""
+        },
+        {
+          "en": "In vanilla JavaScript, you were allowed to add whatever properties and values you liked to the `profile` object. But in TypeScript, the compiler checks that the object only has the properties you defined (`username`, `age`, and `isLoggedIn` in this case). Since `mood` wasn't included in the type, TypeScript treats it as an invalid property and throws an error.",
+          "fr": ""
+        },
+        {
+          "en": "Remove the `mood: null` from your code.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should no longer have `mood: null` in your code.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b62c99ec8c63470313365.md",
+      "id": "699b62c99ec8c63470313365",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Now it is time to add another property to your `profile` object.",
+          "fr": ""
+        },
+        {
+          "en": "Start by updating the inline object type to include a `bio` property with a type set to `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update the inline object type to include a `bio` property set to `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b64096301fd75e3efeb1b.md",
+      "id": "699b64096301fd75e3efeb1b",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "If you open the console again, you will see a different error message:",
+          "fr": ""
+        },
+        {
+          "en": "As you recall in prior lessons, you can mark properties as optional by using the `?` symbol next to the property name like this:",
+          "fr": ""
+        },
+        {
+          "en": "In this example, `numberOfAlbums` is marked optional so TypeScript will not throw an error in this case.",
+          "fr": ""
+        },
+        {
+          "en": "Update your `bio` property to be marked as optional.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `bio` property should be marked as optional.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b65caf17a8e8d340af27d.md",
+      "id": "699b65caf17a8e8d340af27d",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Now it is time to add the last property to the `profile` object.",
+          "fr": ""
+        },
+        {
+          "en": "In prior lessons, you learned how to work with array types. You learned about different array types like `string[]`, or `number[]`:",
+          "fr": ""
+        },
+        {
+          "en": "In this example, the `scores` array only accepts numbers. If you try to add another type like a `string`, or `null` then TypeScript will throw an error.",
+          "fr": ""
+        },
+        {
+          "en": "Update your `profile` object to add a `programmingLanguages` property, typed as a `string[]`. Inside the object literal, set this property to `[\"JavaScript\", \"Python\", \"C++\"]`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `programmingLanguages` property inside of your `profile` object.",
+          "fr": ""
+        },
+        {
+          "en": "Your `programmingLanguages` property should have the value of `[\"JavaScript\", \"Python\", \"C++\"]`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `programmingLanguages` property should be typed as a `string[]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b68f94a0d154c2a7a5ce0.md",
+      "id": "699b68f94a0d154c2a7a5ce0",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Now that the `profile` object is complete, it is time to build out a new object which represents the user roles.",
+          "fr": ""
+        },
+        {
+          "en": "Create a new variable called `userRoles` and assign it an object. Your object should have the following properties and values:",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `userRoles`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `userRoles` variable should be an object.",
+          "fr": ""
+        },
+        {
+          "en": "Your `userRoles` object should have an `admin` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `admin` property should have a value of `\"full-access\"`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `userRoles` object should have an `editor` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `editor` property should have a value of `\"limited-access\"`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `userRoles` object should have a `viewer` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `viewer` property should have a value of `\"read-only\"`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b6d91cde15459d3619c4a.md",
+      "id": "699b6d91cde15459d3619c4a",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Just like the `profile` object, it would be nice to see the `userRoles` object in the console.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `console.log()` to log the `userRoles` object.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should log `userRoles` to the console.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b6dd1a2961bd38491ef2e.md",
+      "id": "699b6dd1a2961bd38491ef2e",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "The `profile` object had strict keys and types. If you tried to add a property that wasn't defined, or assign an incompatible type, TypeScript would throw an error.",
+          "fr": ""
+        },
+        {
+          "en": "It would be nice if the `userRoles` object wasn't as strict and had more flexible keys.",
+          "fr": ""
+        },
+        {
+          "en": "As you recall in the prior lessons, you can achieve this result by using the `Record` type:",
+          "fr": ""
+        },
+        {
+          "en": "In this `studentGrades` example, TypeScript doesn't need to know all of the subjects upfront. This allows you to add more subjects like `Art` or `Music` later on. TypeScript only cares that the values for each key is a number.",
+          "fr": ""
+        },
+        {
+          "en": "Update your `userRoles` object by adding an inline `Record` type. Set it to `<string, string>` so that each key can be any string, and each value must be a string.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `userRoles` object should have an inline `Record` type set to `Record<string, string>`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b70b10ae344c802d106b0.md",
+      "id": "699b70b10ae344c802d106b0",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Now it is time to add a couple more properties to the `userRoles` object.",
+          "fr": ""
+        },
+        {
+          "en": "Add a `moderator` property with a value of `\"medium-access\"`.",
+          "fr": ""
+        },
+        {
+          "en": "Then below that, add a `guest` property with a value of `3`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `userRoles` object should have a `moderator` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `moderator` property should have a value of `\"medium-access\"`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `userRoles` object should have a `guest` property.",
+          "fr": ""
+        },
+        {
+          "en": "Your `guest` property should have a value of the number `3`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "699b71d98c820ac7ab9eea2a.md",
+      "id": "699b71d98c820ac7ab9eea2a",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "If you open the console again, you will see a new error message:",
+          "fr": ""
+        },
+        {
+          "en": "This is happening because you are attempting to add a `guest` property with a number value.",
+          "fr": ""
+        },
+        {
+          "en": "To remove the TypeScript error, change the `guest` property value to `\"read-only\"`.",
+          "fr": ""
+        },
+        {
+          "en": "With that last change, your user profile workshop is complete!",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `guest` property for the `userRoles` object should have the value of `\"read-only\"`.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

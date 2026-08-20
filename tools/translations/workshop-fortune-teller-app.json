@@ -1,0 +1,1935 @@
+{
+  "workshop": "workshop-fortune-teller-app",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "68c38c3275a149b3cfed312a.md",
+      "id": "68c38c3275a149b3cfed312a",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will continue to practice working with TypeScript by building a fortune telling app.",
+          "fr": ""
+        },
+        {
+          "en": "Begin by declaring an interface named `Card`. Inside the `Card` interface, add the following properties: `name`, `name_short` and `value`. The `name`, and `name_short` properties should have the types set to `string` and the `value` should have a union type set to `string | number`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare an interface named `Card`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Card` interface should have a `name` property of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Card` interface should have a `name_short` property of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Card` interface should have a `value` property with a union type of `string` and `number`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68d5b152417f6e8d1d88635f.md",
+      "id": "68d5b152417f6e8d1d88635f",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "There are more properties to add to the `Card` interface. Start by setting `value_int` to type `number`. All other properties should be of type `string`: `suit`, `type`, `img`, `meaning_up`, `meaning_rev`, and `desc`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a property `value_int` with a type of `number`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `suit` with a type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `type` with a type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `img` with a type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `meaning_up` with a type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `meaning_rev` with a type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a property `desc` with a type of `string`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68d45de79b36aa640a46f57e.md",
+      "id": "68d45de79b36aa640a46f57e",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "You need another interface called `Deck`. This interface should have a `cards` property, which is an array of the previous interface.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare an interface named `Deck`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `Deck` interface should have a property `cards` of type `Card[]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68de9361073cce61cc49cc1b.md",
+      "id": "68de9361073cce61cc49cc1b",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "In a previous lecture, you learned that type inference is TypeScript's ability to automatically determine and assign types to variables, function returns, and expressions based on their usage and context.",
+          "fr": ""
+        },
+        {
+          "en": "In TypeScript, generics make functions, classes, and types more flexible. Generics allow the creation of type variables, eliminating the need to explicitly define types each time. This enables the same function to work safely with different types.",
+          "fr": ""
+        },
+        {
+          "en": "Here is a simple example of generics:",
+          "fr": ""
+        },
+        {
+          "en": "",
+          "fr": ""
+        },
+        {
+          "en": "Functions can use two or more generics. `T` is used by convention, and additional type variables like `S` can be added as needed.",
+          "fr": ""
+        },
+        {
+          "en": "Create a function `getElement` that takes `selector` of type `string` as a parameter. It should also take a generic type `T` that extends `HTMLElement`, and have a return type `T`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an arrow function named `getElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getElement` function should take a parameter named `selector` of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "The generic type parameter `T` should extend the `HTMLElement` type.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getElement` function should have a return type of `T`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68decb1aa8a51651ab36557c.md",
+      "id": "68decb1aa8a51651ab36557c",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Inside the `getElement` function, use `querySelector` with the generics and store the result in a variable. Add an `if` statement to check if the element does not exist, and if so, throw an error with the message `Element not found: ${error message here}`. If the element exists, return it.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `el` inside the `getElement` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `el` variable should be assigned the value `document.querySelector<T>(selector)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have if statement that check if `el` is not found.",
+          "fr": ""
+        },
+        {
+          "en": "You should throw a new Error with the message `Element not found: ${selector}` inside your `if` statement.",
+          "fr": ""
+        },
+        {
+          "en": "You should return the `el` variable inside the getElement function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68deccc163f7e0733208079d.md",
+      "id": "68deccc163f7e0733208079d",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Next, you need to create a function to hide elements from the DOM. Declare a `hideElements` function that takes `...elements` as a parameter with the type `HTMLElement[]`.",
+          "fr": ""
+        },
+        {
+          "en": "This function, with a CSS `hidden` class, will be used throughout the app to toggle the visibility of UI elements.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have declared a function named `hideElements`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `hideElements` function should have a parameter named `...elements` with the type `HTMLElement[]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ded29daa36f4e42ae63e97.md",
+      "id": "68ded29daa36f4e42ae63e97",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Wrap up the function by using the `forEach` array method to iterate over the elements argument. Inside the callback function, add the hidden class to each element by using the `.add()` method of `classList`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `forEach` method attached to the `elements` parameter.",
+          "fr": ""
+        },
+        {
+          "en": "Your forEach method should take a parameter named `el`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the forEach method, you should add the hidden class using the `classList.add` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ded35072c5b0f2741634db.md",
+      "id": "68ded35072c5b0f2741634db",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "You need another function that shows elements in the DOM. Similar to the last function, create a function named `showElements`. This time use `classList.remove(\"hidden\")`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `showElements`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `showElements` function should have a parameter named `...elements` with the type `HTMLElement[]`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `showElements` function you should have a `forEach` method attached to the `elements` parameter.",
+          "fr": ""
+        },
+        {
+          "en": "Your `forEach` method should take a parameter named `el`.",
+          "fr": ""
+        },
+        {
+          "en": "You should remove the `hidden` class using the `classList.remove` method inside the `forEach` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ded461befea207a2f11a9a.md",
+      "id": "68ded461befea207a2f11a9a",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "So far, you have three functions: `getElement`, `hideElements`, and `showElements`.\nNow you need a function that helps you get a random fortune.",
+          "fr": ""
+        },
+        {
+          "en": "Declare a function named `getRandomItem` that takes an array of `items` as an argument. Use generics for this function.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the function, use `Math.random()` and `Math.floor()` to select a random fortune from the `items` array.\nDon’t forget to return the selected fortune.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a function named `getRandomItem`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getRandomItem` function should use the generic type parameter `T`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getRandomItem` function should have a parameter named `items` with the type `T[]`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getRandomItem` function should have a return type of `T`.",
+          "fr": ""
+        },
+        {
+          "en": "You should declare a variable named `index` inside the `getRandomItem` function.",
+          "fr": ""
+        },
+        {
+          "en": "The `index` variable should use `Math.floor()` and `Math.random()` with `items.length` to produce a random index.",
+          "fr": ""
+        },
+        {
+          "en": "Your `getRandomItem` function should return `items[index]`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ded620ab19272a3fa97592.md",
+      "id": "68ded620ab19272a3fa97592",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Since the project now works with HTML DOM elements, you need a way to render the fortune to the DOM.",
+          "fr": ""
+        },
+        {
+          "en": "Declare a function named `renderCard` that takes four arguments: `drawingType`, `isReversed`, `shortName`, and `img`.",
+          "fr": ""
+        },
+        {
+          "en": "The parameters `drawingType`, `shortName`, and `img` must be of type `string`, while `isReversed` must be of type `boolean`. The function should have a return type of `string`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `renderCard`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `renderCard` function should have four parameters.",
+          "fr": ""
+        },
+        {
+          "en": "Your first parameter should be `drawingType` of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your second parameter should be `isReversed` of type `boolean`.",
+          "fr": ""
+        },
+        {
+          "en": "Your third parameter should be `shortName` of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your fourth parameter should be `img` of type `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `renderCard` function should have a return type of `string`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `renderCard` function should return a template literal.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68e023b93769353c635fb93a.md",
+      "id": "68e023b93769353c635fb93a",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Now, inside the template literal of the `renderCard` function, create a `div` element. Inside the `div`, add an `h2` element that outputs `drawingType`, and a `figure` element with the class `card_container ${isReversed ? \"reversed-card\" : \"\"}` and the attribute `data-id=\"${shortName}\"`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `div` element in the template literal of the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an `h2` element that interpolates `drawingType` inside the `div` element.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `figure` element inside the `div` element.",
+          "fr": ""
+        },
+        {
+          "en": "Your `figure` element should have the class `card_container` and use a ternary to conditionally add `reversed-card`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `figure` element should have a `data-id` attribute set to `${shortName}`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69e113baa731600992be8090.md",
+      "id": "69e113baa731600992be8090",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "A default image for the card and the URL to make an API request to have been provided, you only need some variables to save them in.",
+          "fr": ""
+        },
+        {
+          "en": "Create a `CDN_URL` variable and set it to `https://cdn.freecodecamp.org/curriculum/typescript/tarot-app`. Also create a `defaultImg` variable with the value `new URL(\"default.svg\", import.meta.url)`, and a `LOCAL_DEFAULT_IMG` variable with the value `defaultImg`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `CDN_URL`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `CDN_URL` variable should be set to `\"https://cdn.freecodecamp.org/curriculum/typescript/tarot-app\"`.",
+          "fr": ""
+        },
+        {
+          "en": "You should create a variable named `defaultImg`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `defaultImg` variable should be set to `new URL(\"default.svg\", import.meta.url)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should create a variable named `LOCAL_DEFAULT_IMG`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `LOCAL_DEFAULT_IMG` variable should be set to `defaultImg`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68e0280810407794171d6558.md",
+      "id": "68e0280810407794171d6558",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now, add a `div` with the class `img-loader`. After that, create an `img` element and give it a conditional URL for the image using `{img ? ${CDN_URL}/${img} : LOCAL_DEFAULT_IMG}`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `div` element inside your `figure` element.",
+          "fr": ""
+        },
+        {
+          "en": "Your `div` should have a class `img-loader`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an `img` element inside your `figure` element.",
+          "fr": ""
+        },
+        {
+          "en": "The `img` element should use `CDN_URL` and `img` for its `src` when `img` is provided, and fall back to `LOCAL_DEFAULT_IMG` when it is not.",
+          "fr": ""
+        },
+        {
+          "en": "Your `img` element should have the classes `card-img` and `hidden`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68e41d22815bf83a559a9e7b.md",
+      "id": "68e41d22815bf83a559a9e7b",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Now, use the `onload` event to remove the `hidden` class when the image loads and hide the loading placeholder using its `previousElementSibling`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `img` element should have an `onload` handler.",
+          "fr": ""
+        },
+        {
+          "en": "Your `onload` handler should use `classList.remove` to remove the `hidden` class. Don't forget you need the `this` keyword here.",
+          "fr": ""
+        },
+        {
+          "en": "Your `onload` handler should set `previousElementSibling.style.display` to `'none'`. Don't forget you need the `this` keyword to do this.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68e420817107eb7cb2d4d4d6.md",
+      "id": "68e420817107eb7cb2d4d4d6",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Add an `onerror` handler to the image element to handle loading failures. On the first failure, mark it using `dataset.failed` and replace the source with the local default image. If the image fails again, remove the hidden class and hide the loading placeholder using `previousElementSibling`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `img` element should have an `onerror` handler.",
+          "fr": ""
+        },
+        {
+          "en": "Your `onerror` handler should contain an `if` statement that checks if `dataset.failed` is falsy.",
+          "fr": ""
+        },
+        {
+          "en": "`dataset.failed` should be set to `'1'` inside your `if` block. Don't forget the `this` keyword here.",
+          "fr": ""
+        },
+        {
+          "en": "Your `if` block should update `this.src` to the local default image. Don't forget the `this` keyword here.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an `else` block should that removes the `hidden` class. Don't forget the `this` keyword here.",
+          "fr": ""
+        },
+        {
+          "en": "Your `else` block should set `previousElementSibling.style.display` to `'none'`. Don't forget the `this` keyword here.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68e4220fadf4239b7e722e0a.md",
+      "id": "68e4220fadf4239b7e722e0a",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Since the fortune app only has three moments Past, Present, and Future, declare an enum named `DrawingType` with three properties: `Past`, `Present`, and `Future`. Each property should have a string value corresponding to its name.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have `enum` named `DrawingType`.",
+          "fr": ""
+        },
+        {
+          "en": "Your enum should have a `Past` property with a string value of `past`.",
+          "fr": ""
+        },
+        {
+          "en": "Your enum should have a `Present` property with a string value of `present`.",
+          "fr": ""
+        },
+        {
+          "en": "Your enum should have a `Future` property with a string value of `future`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed40e9b9a39c757618f302.md",
+      "id": "68ed40e9b9a39c757618f302",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Now you need a main class that will help render the UI dynamically in the DOM.",
+          "fr": ""
+        },
+        {
+          "en": "Create a class named `Game`. Inside it, add a property called `cards` of type `Card[]`, and for now, initialize it with an empty array.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have class named `Game`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `cards` property inside the `Game` class.",
+          "fr": ""
+        },
+        {
+          "en": "Your `cards` property should have a type of `Card[]`.",
+          "fr": ""
+        },
+        {
+          "en": "Your cards property should be set to an empty `array`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed42285f674a9475629831.md",
+      "id": "68ed42285f674a9475629831",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Inside the class, add a private `elements` property as an object. Inside it, add the properties `singleCardBtn`, `singleCard`, and `multipleCardsBtn`, each typed as `HTMLElement`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `private` property named `elements` inside the `Game` class.",
+          "fr": ""
+        },
+        {
+          "en": "Your `elements` private property should have a `singleCardBtn` property typed as `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `elements` private property should have a `multipleCardsBtn` property typed as `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `elements` private property should have a `singleCard` property typed as `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed42f744fc8aa6d479e926.md",
+      "id": "68ed42f744fc8aa6d479e926",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now add the remaining properties to the private `elements` object. They are: `multipleCard`, `title`, `newReadingBtn`, `fortuneContainer`, `fortuneDescription`, `headerTitle`, `subTitle`, `cardTitle`, `description`, and `text`. Make sure each property uses the `HTMLElement` type.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have the `multipleCard` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `title` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `newReadingBtn` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `fortuneContainer` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `fortuneDescription` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `headerTitle` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `subTitle` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `cardTitle` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `description` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have the `text` property inside the `elements` property assigned the type `HTMLElement`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed43845b59b9b3787eb175.md",
+      "id": "68ed43845b59b9b3787eb175",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Add a `constructor` inside the class. In the constructor, you need to use the elements you created earlier to select the corresponding DOM elements using the `getElement` function.",
+          "fr": ""
+        },
+        {
+          "en": "For now, handle `singleCardBtn` and `singleCard`. For `singleCardBtn`, pass in `#btn-single-card`, and for `singleCard`, pass in the `.single_card`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `Game` class should have a `constructor`.",
+          "fr": ""
+        },
+        {
+          "en": "Your constructor should assign `this.elements`.",
+          "fr": ""
+        },
+        {
+          "en": "`singleCardBtn` should be set using `getElement` with `'#btn-single-card'`.",
+          "fr": ""
+        },
+        {
+          "en": "`singleCard` should be set using `getElement` with `'.single_card'`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed43f08c01c7bca5b4e66f.md",
+      "id": "68ed43f08c01c7bca5b4e66f",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now, do the same for the rest of the properties. Use the `getElement` function to select each one:",
+          "fr": ""
+        },
+        {
+          "en": "| Property | Selector | \n| ---------- | ---------- |\n| `multipleCardsBtn` | `#btn-multiple-cards` | \n| `multipleCard` | `.multiple_card` | \n| `title` | `.title` | \n| `newReadingBtn` | `.btn_reveal` | \n| `fortuneContainer` | `.fortune_container` | \n| `fortuneDescription` | `.fortune_description` | \n| `headerTitle` | `.header_title` | \n| `subTitle` | `.sub_title` | \n| `cardTitle` | `.desc_title` | \n| `description` | `.description` | \n| `text` | `.text` |",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `multipleCardsBtn` by using the `getElement` method and passing `#btn-multiple-cards`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `multipleCard` by using the `getElement` method and passing `.multiple_card`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `title` by using the `getElement` method and passing `.title`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `newReadingBtn` by using the `getElement` method and passing `.btn_reveal`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `fortuneContainer` by using the `getElement` method and passing `.fortune_container`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `fortuneDescription` by using the `getElement` method and passing `.fortune_description`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `headerTitle` by using the `getElement` method and passing `.header_title`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `subTitle` by using the `getElement` method and passing `.sub_title`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `cardTitle` by using the `getElement` method and passing `.desc_title`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `description` by using the `getElement` method and passing `.description`.",
+          "fr": ""
+        },
+        {
+          "en": "You should access the `text` by using the `getElement` method and passing `.text`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed4446ffffb4c52a7d40d1.md",
+      "id": "68ed4446ffffb4c52a7d40d1",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Inside the constructor, add calls to `fetchCardsData()` and `initializeEventListeners()` using the `this` keyword, so they run when the class is initialized.",
+          "fr": ""
+        },
+        {
+          "en": "The `fetchCardsData` method will handle loading the tarot card data from an API, and `initializeEventListeners` will set up the button click handlers. You'll create both methods in the coming steps.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `fetchCardsData()` method inside the `constructor`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call `initializeEventListeners()` method inside the constructor.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed44cdcb4ff9d0caea0e84.md",
+      "id": "68ed44cdcb4ff9d0caea0e84",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Since you're calling `fetchCardsData` and `initializeEventListeners` inside the constructor, you now need to define them inside the class. Create both as `private` methods. Make sure `fetchCardsData` is asynchronous since it will handle API calls.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `private` method named `fetchCardsData`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `fetchCardsData` method should be `async`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `private` method named `initializeEventListeners`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed4585f6a1d6e07b9d09c5.md",
+      "id": "68ed4585f6a1d6e07b9d09c5",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "Inside the `fetchCardsData` method, declare a variable named `response` and assign it by calling the `fetch` function with the following URL: `` `${CDN_URL}/card_data.json` ``.",
+          "fr": ""
+        },
+        {
+          "en": "Add the `await` keyword before the `fetch` call, and wrap the entire logic inside a `try...catch` block.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `response` variable inside the `fetchCardsData` method.",
+          "fr": ""
+        },
+        {
+          "en": "Your `response` variable should be assigned by calling `await fetch` with the URL `` `${CDN_URL}/card_data.json` ``.",
+          "fr": ""
+        },
+        {
+          "en": "Your `fetch` call should be wrapped inside a `try...catch` block, with `error` as the `catch` parameter.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed45dbb7ee60e86543369f.md",
+      "id": "68ed45dbb7ee60e86543369f",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "After fetching the data, store the response in a variable and parse it to JSON. Give the parsed data the type `Deck`, and then assign it to the `cards` property. Inside the `catch` block, make sure to log the error with this message: `\"Error fetching cards:\", error`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `data` inside `fetchCardsData`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `data` variable should have the type `Deck`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `data` variable should be assigned by parsing the response as JSON.",
+          "fr": ""
+        },
+        {
+          "en": "You should store `data.cards` in `this.cards`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `catch` block should use `console.error()` to log the error with the message `\"Error fetching cards:\", error`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ed4621677e86eeefa59fe6.md",
+      "id": "68ed4621677e86eeefa59fe6",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Now you will start working on the `initializeEventListeners()` method. First, give it the return type `void`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `initializeEventListeners` method should have a return type of `void`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6b09fce1154556413f7e.md",
+      "id": "68ee6b09fce1154556413f7e",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "Inside the `initializeEventListeners` method, attach a `click` event listener to `singleCardBtn`. Within the event handler, call the `singleCardSelected` method. remember to get the `singleCardBtn` from `elements`.",
+          "fr": ""
+        },
+        {
+          "en": "You will create this method in the coming steps.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should attach a `click` event to the `singleCardBtn` element. Don't forget you need the `this` keyword here.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the event callback, you should call the `singleCardSelected` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6b473452fc4b0071a3da.md",
+      "id": "68ee6b473452fc4b0071a3da",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "Now do the same for `multipleCardsBtn` and `newReadingBtn` by attaching a click event listener to `multipleCardsBtn` that calls `multipleCardSelected`, and another to `newReadingBtn` that calls `newReading`.",
+          "fr": ""
+        },
+        {
+          "en": "You will create the two methods in the coming steps.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should attach a `click` event to the `multipleCardsBtn` element.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `multipleCardsBtn` callback event, you should call the `multipleCardSelected` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should attach a `click` event to the `newReadingBtn` element.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `newReadingBtn` callback event, you should call the `newReading` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6bb2b7ed9654f2b7ae8b.md",
+      "id": "68ee6bb2b7ed9654f2b7ae8b",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "Add another event listener to the global `document` object that calls the `showFortune` function. Inside the callback, include a parameter `e` of type `Event`, and pass `e` as an argument to the `showFortune` method.",
+          "fr": ""
+        },
+        {
+          "en": "`showFortune` will handle card click events, like reading the clicked card ID from the DOM and displaying the matching card fortune details. You will create it in the coming steps.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign a `click` event listener to the global `document`.",
+          "fr": ""
+        },
+        {
+          "en": "Your event listener should have a callback parameter named `e`.",
+          "fr": ""
+        },
+        {
+          "en": "Your callback parameter should have the type `Event`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the callback, you should call the `showFortune` function",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `showFortune` function, you should pass the argument `e`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6c080484ad5c9dbcb742.md",
+      "id": "68ee6c080484ad5c9dbcb742",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "Now you will start creating the methods.",
+          "fr": ""
+        },
+        {
+          "en": "Create a method called `singleCardSelected`. Inside it, call the `hideElements` function and pass the following properties: `singleCardBtn`, `multipleCardsBtn`, `multipleCard`, `text`, and `headerTitle`.",
+          "fr": ""
+        },
+        {
+          "en": "Remember you must access all of them using `this.elements`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a method named `singleCardSelected`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside `singleCardSelected`, you should call the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `singleCardBtn` to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCardsBtn` to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCard` to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `text` to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `headerTitle` to the `hideElements` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6c4b4c764b62d77df717.md",
+      "id": "68ee6c4b4c764b62d77df717",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "In some cases, the cards need to be reversed, since they are not always in the correct position.",
+          "fr": ""
+        },
+        {
+          "en": "Declare a variable called `isReversed` inside the `singleCardSelected` method. Use the `Math.random()` method to generate a random boolean value. To ensure the value stays within bounds, compare it with `0.5`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `isReversed`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `isReversed` variable should use `Math.random()` to randomly decide if the card is reversed.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6c8c274515694ead0024.md",
+      "id": "68ee6c8c274515694ead0024",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "The fortune must be random, so a helper function is required to select a random fortune. Declare a variable named `chosenCard` inside the `singleCardSelected` method. Use the `getRandomItem` method to obtain a random card and pass `cards` as an argument.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `chosenCard` inside `singleCardSelected`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `chosenCard` variable should be assigned by calling `getRandomItem(this.cards)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `this.cards` as the argument to `getRandomItem`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6dad1fde608174a5bd66.md",
+      "id": "68ee6dad1fde608174a5bd66",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "Within the `singleCardSelected` method, retrieve the `singleCard` element and update its `innerHTML` by calling the `renderCard` function. Pass `\"Click the card and reveal the fortune\"` as the first argument, and `isReversed` as the second argument.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update `this.elements.singleCard.innerHTML` by calling the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "Your `renderCard` call should have `\"Click the card and reveal the fortune\"` as the first argument.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `isReversed` as the second argument to `renderCard`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6deac960fb8749de2c7c.md",
+      "id": "68ee6deac960fb8749de2c7c",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "Include the remaining arguments `chosenCard.name_short` and `chosenCard.img`. Then outside the `renderCard` function, reset the `multipleCard` element's `innerHTML` to an empty string.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass `chosenCard.name_short` as an argument to `renderCard`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `chosenCard.img` as the last argument to `renderCard`.",
+          "fr": ""
+        },
+        {
+          "en": "You should reset `this.elements.multipleCard.innerHTML` to an empty string.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6e2121719a8c9417e698.md",
+      "id": "68ee6e2121719a8c9417e698",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "Right after you clear `multipleCard`, inside the `singleCardSelected` method, call the `showElements` function and pass `singleCard` as the first argument and `fortuneContainer` as the second argument.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `showElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `elements.singleCard` as the first argument.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `elements.fortuneContainer` as the second argument.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6e763d74b2940b7e6b63.md",
+      "id": "68ee6e763d74b2940b7e6b63",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "The fortune-teller app supports rendering multiple cards, so you need to have a method that can help render multiple cards. Declare a method called `multipleCardSelected`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the method, call the `hideElements` function and pass in the properties `singleCard`, `singleCardBtn`, `multipleCardsBtn`, and `headerTitle`.vDon't forget you have to access them from `this.elements`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `multipleCardSelected` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `hideElements` function inside the `multipleCardSelected` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `singleCard` as the first argument to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `singleCardBtn` as an argument to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCardsBtn` as an argument to the `hideElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `headerTitle` as an argument to the `hideElements` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6ee57151a99e41ecadb4.md",
+      "id": "68ee6ee57151a99e41ecadb4",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "Now call the `showElements` function and pass in `multipleCard`, `fortuneContainer`, and `text` as properties.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `showElements` function inside the `multipleCardSelected` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCard` as the first argument to the `showElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `fortuneContainer` as an argument to the `showElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `text` as an argument to the `showElements` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee6fb20fa718afa0416e95.md",
+      "id": "68ee6fb20fa718afa0416e95",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "As done for the previous `multipleCard`, get the `multipleCard` element again and set its `innerHTML` by iterating through `DrawingType`. Use `Object.values()` and call the `map` method on it, passing `type` as an argument.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `multipleCard.innerHTML` by calling `Object.values`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `DrawingType` to the `Object.values` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `map` method on `Object.values`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `map` method should have a parameter named `type`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee7042eb146abc74eb76c5.md",
+      "id": "68ee7042eb146abc74eb76c5",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "Again, you need to make the card random and reversed. Declare a variable named `isReversed` and `card`. For the first one, call the `Math.random` method and compare it with `< 0.5`. For the second one, call `getRandomItem` and pass `this.cards`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `isReversed`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `isReversed` variable should use `Math.random()` to randomly decide if the card is reversed.",
+          "fr": ""
+        },
+        {
+          "en": "You should declare a variable named `card`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `card` variable should be assigned by calling the `getRandomItem` method with `this.cards` as an argument.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68ee70a2d75ee9c53aea9c19.md",
+      "id": "68ee70a2d75ee9c53aea9c19",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "Inside the `map`, return the `renderCard` function by passing `type`, `isReversed`, `name_short`, and `img` as arguments, and add the `join` method on the `map` with an empty string.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should return the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `type` as the first argument in the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `isReversed` as the second argument in the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `card.name_short` as an argument in the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `card.img` as an argument in the `renderCard` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should attach `join(\"\")` on the `map` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1161c31ae5d484f1eaba7.md",
+      "id": "68f1161c31ae5d484f1eaba7",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "Now add another method called `showFortune`. As a parameter, pass `e` and give it the type `Event`. Also create a `newReading` method and leave it empty for now.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a method named `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `showFortune` method should have an `e` parameter with the type `Event`.",
+          "fr": ""
+        },
+        {
+          "en": "You should declare a method named `newReading`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "69e1d8348807b3c099da83b0.md",
+      "id": "69e1d8348807b3c099da83b0",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "You should test your progress so far. Create an instance of the `Game` class and assign it to a `game` variable.",
+          "fr": ""
+        },
+        {
+          "en": "At this point, you'll see that you can see the cards when you click the Single Card Reading and\nThree Card Spread buttons.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `game`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `game` variable should be initialized with `new Game()`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e43a5f890b51774d93c4.md",
+      "id": "68f1e43a5f890b51774d93c4",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "Inside `showFortune` method declare a variable called `target` and assign it to `e.target` and create another empty if statement.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `target` inside `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `target` variable should be assigned to `e.target`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have an empty `if` statement right after your `target` variable.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e4e3200cc9561cc7288f.md",
+      "id": "68f1e4e3200cc9561cc7288f",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "For the condition of the `if` statement, check if the `target` is not an instance of `HTMLElement`. Then inside it, add a `return`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should check in your `if` statement should have the condition `!(target instanceof  HTMLElement)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `return` inside your `if` statement.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e6a98bc05e67cc2b85e6.md",
+      "id": "68f1e6a98bc05e67cc2b85e6",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "Declare a variable named `cardElement` and use the `card_container` class to get the element. Use the `closest` selector to get it from the `target`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `cardElement` inside `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `cardElement` should use `target?.closest` to find the `.card_container`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `.card_container` as the argument to `closest`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e75ac2ceaa6e3189e9cb.md",
+      "id": "68f1e75ac2ceaa6e3189e9cb",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Check if `cardElement` is not an instance of `HTMLElement`, and if so, add a `return`",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add another `if` statement with the condition `!(cardElement instanceof HTMLElement)`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `return` inside your `if` statement.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e7ab1db80271d5fed0dd.md",
+      "id": "68f1e7ab1db80271d5fed0dd",
+      "dashedName": "step-47",
+      "title": {
+        "en": "Step 47",
+        "fr": "Étape 47"
+      },
+      "description": [
+        {
+          "en": "Check if `cardElement` is falsy, and if so, return without showing any message.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement with the condition `!cardElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have a `return` inside your `if` statement.",
+          "fr": ""
+        },
+        {
+          "en": "",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e852f705eb77f6bcb893.md",
+      "id": "68f1e852f705eb77f6bcb893",
+      "dashedName": "step-48",
+      "title": {
+        "en": "Step 48",
+        "fr": "Étape 48"
+      },
+      "description": [
+        {
+          "en": "Declare a variable named `cardId`, and assign it the value of the `data-id` attribute from `cardElement` using the `getAttribute()` method.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `cardId` inside `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `cardId` variable should be assigned by calling `cardElement.getAttribute(\"data-id\")`.",
+          "fr": ""
+        },
+        {
+          "en": "You should use the `getAttribute` method on `cardElement`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `'data-id'` to `getAttribute`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e8de2731b07d62e738d2.md",
+      "id": "68f1e8de2731b07d62e738d2",
+      "dashedName": "step-49",
+      "title": {
+        "en": "Step 49",
+        "fr": "Étape 49"
+      },
+      "description": [
+        {
+          "en": "Declare another variable named `foundCard`, and assign it to the result of calling the `find()` method on `cards`. Pass in `card` as the callback parameter, and compare `card.name_short` with `cardId` to find the matching card using strict equality.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `foundCard` inside `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "Your `foundCard` should be assigned by calling `find` on `this.cards` with the correct callback.",
+          "fr": ""
+        },
+        {
+          "en": "The `find` callback should have a parameter named `card`.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the callback, `card.name_short` should be compared with `cardId`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e955fdb3c88261c530b6.md",
+      "id": "68f1e955fdb3c88261c530b6",
+      "dashedName": "step-50",
+      "title": {
+        "en": "Step 50",
+        "fr": "Étape 50"
+      },
+      "description": [
+        {
+          "en": "Add an `if` statement to check whether `foundCard` exists before updating the elements with its data or content block.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare an `if` statement with the condition `foundCard`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1e9e9e745c787c19031f2.md",
+      "id": "68f1e9e9e745c787c19031f2",
+      "dashedName": "step-51",
+      "title": {
+        "en": "Step 51",
+        "fr": "Étape 51"
+      },
+      "description": [
+        {
+          "en": "Inside the `if` statement, get the `cardTitle` element and set its `textContent` to `foundCard.name`. Do the same for the `description` element by setting its `textContent` to `foundCard.desc`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `cardTitle` `textContent` to `foundCard.name`. Don't forget to use the `this` keyword.",
+          "fr": ""
+        },
+        {
+          "en": "You should set the `description` `textContent` to `foundCard.desc`. Don't forget to use the `this` keyword.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1ea50270f838c35fe4cda.md",
+      "id": "68f1ea50270f838c35fe4cda",
+      "dashedName": "step-52",
+      "title": {
+        "en": "Step 52",
+        "fr": "Étape 52"
+      },
+      "description": [
+        {
+          "en": "Now do the same for `subTitle` by assigning it to `meaning_up`, and for `title` assign it to `foundCard.name`. After that, call the `showElements` method and pass `fortuneDescription` from the elements.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `this.elements.subTitle.textContent` to `foundCard.meaning_up`.",
+          "fr": ""
+        },
+        {
+          "en": "You should set `this.elements.title.textContent` to `foundCard.name`.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `showElements` function inside `showFortune`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `this.elements.fortuneDescription` as an argument to `showElements`.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1eb2bb413b893f8661ff2.md",
+      "id": "68f1eb2bb413b893f8661ff2",
+      "dashedName": "step-53",
+      "title": {
+        "en": "Step 53",
+        "fr": "Étape 53"
+      },
+      "description": [
+        {
+          "en": "At this point, you should be able to see the fortune each card shows once you click a card. The only thing left to do is to make the new reading button work.",
+          "fr": ""
+        },
+        {
+          "en": "Inside the `newReading` method, call `showElements()` and `hideElements()`.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `showElements` function inside the `newReading` method.",
+          "fr": ""
+        },
+        {
+          "en": "You should call the `hideElements` function inside the `newReading` method.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1ebc05a602f99d49d701d.md",
+      "id": "68f1ebc05a602f99d49d701d",
+      "dashedName": "step-54",
+      "title": {
+        "en": "Step 54",
+        "fr": "Étape 54"
+      },
+      "description": [
+        {
+          "en": "Now inside the `showElements`, pass these as arguments: `singleCardBtn`, `multipleCardsBtn`, and `headerTitle`. Remember you get them from the `elements`, and access them with the `this` keyword.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass `singleCardBtn` as the first argument to the `showElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCardsBtn` as the second argument to the `showElements` function.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `headerTitle` as an argument to the `showElements` function.",
+          "fr": ""
+        }
+      ]
+    },
+    {
+      "file": "68f1ec48c0e7969eddbef24c.md",
+      "id": "68f1ec48c0e7969eddbef24c",
+      "dashedName": "step-55",
+      "title": {
+        "en": "Step 55",
+        "fr": "Étape 55"
+      },
+      "description": [
+        {
+          "en": "Finally, inside the `hideElements`, pass the arguments `singleCard`, `multipleCard`, `fortuneContainer`, and `fortuneDescription`. Remember to get them from the elements.",
+          "fr": ""
+        },
+        {
+          "en": "With that, your Fortune Telling app is complete!",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass `singleCard` as the first argument to `hideElements`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `multipleCard` as an argument to `hideElements`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `fortuneContainer` as an argument to `hideElements`.",
+          "fr": ""
+        },
+        {
+          "en": "You should pass `fortuneDescription` as an argument to `hideElements`.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}

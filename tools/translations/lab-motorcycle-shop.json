@@ -1,0 +1,133 @@
+{
+  "workshop": "lab-motorcycle-shop",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "694175528a794a090ea0ba74.md",
+      "id": "694175528a794a090ea0ba74",
+      "dashedName": "lab-motorcycle-shop",
+      "title": {
+        "en": "Lab Motorcycle Shop ",
+        "fr": "Lab Boutique de motos "
+      },
+      "description": [
+        {
+          "en": "For this lab, you have been provided with all the HTML and CSS. You are going to use TypeScript to complete the functionalities of a motorcycle shop page.",
+          "fr": "Pour ce lab, tout le HTML et le CSS t’ont été fournis. Tu vas utiliser TypeScript pour compléter les fonctionnalités d’une page de boutique de motos."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** Remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should create a `type` called `Category` that consists of the following possible values: `'Sport'`, `'Cruiser'`, `'Touring'`, `'Dirt'`, `'Adventure'`, `'Naked'`, `'Electric'`.\n2. You should create an `interface` called `Motorcycle` that has the following properties: an `id` of type `string`, an `name` of type `string`, an `manufacturer` of type `string`, a `category` of type `Category`, a `price` of type `number`, an `image_url` of type `string`, an `created_at` property of type `Date`, an `description` of type `string`, and a year of type `number` \n3. You should create a function named `fetchMotorcycles` that returns a `Promise` resolving to an array of `Motorcycle` objects.\n4. You should load `Motorcycle` data from the `https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json` endpoint. \n5. You should create a function named `renderMotorcycleCard` that takes a single `Motorcycle` object as a parameter and returns a string containing the HTML that contains a formatted HTML string for the motorcycle card. \n   1. The `renderMotorCycleCard` function should take a parameter called `motorcycle` of type `Motorcycle`. \n   2. The `renderMotorCycleCard` function should return a type of `string`. \n   3. Each motorcycle card component should have an `img` element that has a valid image and a class of `motorcycle-card-image-container`.\n   4. Each motorcycle card component should have an element with an class of `motorcycle-card-year-badge` that lists the year in plain text.\n   5. Each motorcycle card component should have an element with a class of `motorcycle-card-title` that lists the name of the motorcycle in plain text.\n   6. Each motorcycle card component should have an element with a class of `motorcycle-card-manufacturer` that lists the name of the motorcycle manufacturer in plain text.\n   7. Each motorcycle card component should have an element with a class of `motorcycle-card-category` that lists the category of the motorcycle in plain text. \n   8. Each motorcycle card component should have an element with a class of `motorcycle-card-description` that lists the description of the motorcycle in plain text. \n   9.  Each motorcycle card component should have an element with a class of `motorcycle-card-price` that lists the price of the motorcycle in plain text. \n   10. Each motorcycle card component should have an element with a class of `motorcycle-card-engine` that lists the horsepower of each engine.\n6. You  should have a class called `MotorcycleGalleryApp`. \n   1. The class should have a `private` array called `allMotorcycles` that is statically typed to a type of an array of `Motorcycle` objects. \n   2. That class should have a function called `renderMotorcycles` that renders the equivalent motorcycle card components of the `allMotorcycles` variable inside the element with id of `motorcycle-grid`. \n7. The number of `Motorcycle` elements that are displayed should be listed inside of an element with an id of `results-number`.\n8.  The filter should be updated on an `input` event.",
+          "fr": "1. Tu dois créer un `type` appelé `Category` qui comporte les valeurs possibles suivantes : `'Sport'`, `'Cruiser'`, `'Touring'`, `'Dirt'`, `'Adventure'`, `'Naked'`, `'Electric'`.\n2. Tu dois créer une `interface` appelée `Motorcycle` qui a les propriétés suivantes : un `id` de type `string`, un `name` de type `string`, un `manufacturer` de type `string`, un `category` de type `Category`, un `price` de type `number`, un `image_url` de type `string`, une propriété `created_at` de type `Date`, une `description` de type `string`, et une année de type `number` \n3. Tu dois créer une fonction nommée `fetchMotorcycles` qui renvoie une `Promise` se résolvant en un tableau d’objets `Motorcycle`.\n4. Tu dois charger les données `Motorcycle` depuis l’endpoint `https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json`. \n5. Tu dois créer une fonction nommée `renderMotorcycleCard` qui prend un seul objet `Motorcycle` en paramètre et renvoie une chaîne contenant le HTML formaté pour la carte de la moto. \n   1. La fonction `renderMotorCycleCard` doit prendre un paramètre appelé `motorcycle` de type `Motorcycle`. \n   2. La fonction `renderMotorCycleCard` doit renvoyer un type `string`. \n   3. Chaque composant de carte moto doit avoir un élément `img` avec une image valide et une classe `motorcycle-card-image-container`.\n   4. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-year-badge` qui affiche l’année en texte brut.\n   5. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-title` qui affiche le nom de la moto en texte brut.\n   6. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-manufacturer` qui affiche le nom du fabricant en texte brut.\n   7. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-category` qui affiche la catégorie de la moto en texte brut. \n   8. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-description` qui affiche la description de la moto en texte brut. \n   9.  Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-price` qui affiche le prix de la moto en texte brut. \n   10. Chaque composant de carte moto doit avoir un élément avec une classe `motorcycle-card-engine` qui affiche la puissance de chaque moteur.\n6. Tu dois avoir une classe appelée `MotorcycleGalleryApp`. \n   1. La classe doit avoir un tableau `private` appelé `allMotorcycles` typé statiquement comme un tableau d’objets `Motorcycle`. \n   2. Cette classe doit avoir une fonction appelée `renderMotorcycles` qui affiche les composants de carte moto correspondant à la variable `allMotorcycles` dans l’élément avec l’id `motorcycle-grid`. \n7. Le nombre d’éléments `Motorcycle` affichés doit être listé dans un élément avec l’id `results-number`.\n8.  Le filtre doit être mis à jour sur un événement `input`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `type` called `Category`.",
+          "fr": "Tu dois avoir un `type` appelé `Category`."
+        },
+        {
+          "en": "Your `Category` type should be set to a union of the correct values.",
+          "fr": "Ton type `Category` doit être défini comme une union des valeurs correctes."
+        },
+        {
+          "en": "You should have an `interface` called `Motorcycle`.",
+          "fr": "Tu dois avoir une `interface` appelée `Motorcycle`."
+        },
+        {
+          "en": "You should have all specified properties on the `Motorcycle` interface.",
+          "fr": "Tu dois avoir toutes les propriétés spécifiées sur l’interface `Motorcycle`."
+        },
+        {
+          "en": "You should have a function named `fetchMotorcycles`.",
+          "fr": "Tu dois avoir une fonction nommée `fetchMotorcycles`."
+        },
+        {
+          "en": "You should use the `https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json` endpoint.",
+          "fr": "Tu dois utiliser l’endpoint `https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json`."
+        },
+        {
+          "en": "You should return a promise of 25 `Motorcycle` objects from `fetchMotorcycles`.",
+          "fr": "Tu dois renvoyer une promesse de 25 objets `Motorcycle` depuis `fetchMotorcycles`."
+        },
+        {
+          "en": "You should have a function named `renderMotorcycleCard`.",
+          "fr": "Tu dois avoir une fonction nommée `renderMotorcycleCard`."
+        },
+        {
+          "en": "The `renderMotorcycle` function should accept a statically typed parameter of `Motorcycle`.",
+          "fr": "La fonction `renderMotorcycle` doit accepter un paramètre typé statiquement de type `Motorcycle`."
+        },
+        {
+          "en": "The `renderMotorcycleCard` function should explicitly return a type of `string`.",
+          "fr": "La fonction `renderMotorcycleCard` doit renvoyer explicitement un type `string`."
+        },
+        {
+          "en": "The `renderMotorcycleCard` function should return a `string`.",
+          "fr": "La fonction `renderMotorcycleCard` doit renvoyer une `string`."
+        },
+        {
+          "en": "You should have a class named `MotorcycleGalleryApp`.",
+          "fr": "Tu dois avoir une classe nommée `MotorcycleGalleryApp`."
+        },
+        {
+          "en": "The `MotorcycleGalleryApp` should have an array named `allMotorcycles`.",
+          "fr": "La classe `MotorcycleGalleryApp` doit avoir un tableau nommé `allMotorcycles`."
+        },
+        {
+          "en": "The `allMotorcycles` property should be `private`.",
+          "fr": "La propriété `allMotorcycles` doit être `private`."
+        },
+        {
+          "en": "The `allMotorcycles` property should be statically typed to `Motorcycle[]`.",
+          "fr": "La propriété `allMotorcycles` doit être typée statiquement en `Motorcycle[]`."
+        },
+        {
+          "en": "The `MotorcycleGalleryApp` should have a function named `renderMotorcycles`",
+          "fr": "La classe `MotorcycleGalleryApp` doit avoir une fonction nommée `renderMotorcycles`"
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-image-container`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-image-container`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-year-badge`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-year-badge`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-title`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-title`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-manufacturer`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-manufacturer`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-category`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-category`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-description`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-description`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-price`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-price`."
+        },
+        {
+          "en": "The `renderMotorcycles` function should render 25 elements with a class of `motorcycle-card-engine`.",
+          "fr": "La fonction `renderMotorcycles` doit afficher 25 éléments avec une classe `motorcycle-card-engine`."
+        }
+      ]
+    }
+  ]
+}

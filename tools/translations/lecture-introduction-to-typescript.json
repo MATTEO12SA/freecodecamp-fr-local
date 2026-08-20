@@ -1,0 +1,948 @@
+{
+  "workshop": "lecture-introduction-to-typescript",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1d96532bc095aee051657.md",
+      "id": "67d1d96532bc095aee051657",
+      "dashedName": "what-is-typescript-and-why-is-it-used-in-the-industry",
+      "title": {
+        "en": "What Is TypeScript, and Why Is It Used in the Industry?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "JavaScript is considered a dynamically-typed language. This means that variables can receive any values at run time - declaring a variable as a number does not prevent you from assigning it a string value later, and function parameters can be passed any value.",
+              "fr": ""
+            },
+            {
+              "en": "The challenge of a dynamically-typed language is that the lack of type safety can introduce errors if you are not careful. TypeScript extends the JavaScript language to include static typing, which helps catch those errors before you even deploy your code. But how does it work?",
+              "fr": ""
+            },
+            {
+              "en": "Consider this JavaScript function:",
+              "fr": ""
+            },
+            {
+              "en": "Our `getRandomValue` function takes an array and returns a random value from that array. But because JavaScript does not validate types, there is nothing preventing you from calling the function with a number:",
+              "fr": ""
+            },
+            {
+              "en": "The console output for the current example will return `undefined` because it was expecting an array instead of a number.",
+              "fr": ""
+            },
+            {
+              "en": "But with TypeScript you can define a type for the array parameter:",
+              "fr": ""
+            },
+            {
+              "en": "This type definition tells TypeScript that the array argument must be an array of strings. Then when you call `getRandomValue` and pass it a number, you get a different type of error called a compiler error.",
+              "fr": ""
+            },
+            {
+              "en": "Most JavaScript runtime environments, such as a browser or Node.js, cannot run TypeScript natively. Instead, you first need to compile, or translate, TypeScript code into regular JavaScript. You can do that with the built-in compiler that comes with the TypeScript language. When you run the compiler, TypeScript will evaluate your code and throw an error for any issues where the types don't match - such as passing a number into a function that expects an array.",
+              "fr": ""
+            },
+            {
+              "en": "You'll learn more about how these types work in the next few lessons. But it's this extra safety that makes TypeScript an appealing language for many developers and organizations.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main advantage of TypeScript over JavaScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It runs faster in browsers.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript extends JavaScript to include a feature that helps catch errors before deployment.",
+              "fr": ""
+            },
+            {
+              "en": "It provides static typing.",
+              "fr": ""
+            },
+            {
+              "en": "It has more built-in functions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript extends JavaScript to include a feature that helps catch errors before deployment.",
+              "fr": ""
+            },
+            {
+              "en": "It uses less memory.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript extends JavaScript to include a feature that helps catch errors before deployment.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the TypeScript example, what does `array: string[]` indicate?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The function returns an array of strings.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This syntax defines the type of the parameter passed to the function.",
+              "fr": ""
+            },
+            {
+              "en": "The function accepts an array of any type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This syntax defines the type of the parameter passed to the function.",
+              "fr": ""
+            },
+            {
+              "en": "The function accepts an array of strings.",
+              "fr": ""
+            },
+            {
+              "en": "The function can only work with strings.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This syntax defines the type of the parameter passed to the function.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you try to run TypeScript directly in most JavaScript environments?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It runs normally without any issues.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript requires an additional step before it can be executed in typical JavaScript runtime environments.",
+              "fr": ""
+            },
+            {
+              "en": "It throws a compiler error.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript requires an additional step before it can be executed in typical JavaScript runtime environments.",
+              "fr": ""
+            },
+            {
+              "en": "It automatically compiles to JavaScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "TypeScript requires an additional step before it can be executed in typical JavaScript runtime environments.",
+              "fr": ""
+            },
+            {
+              "en": "It cannot run.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d3018062fe6ba92b7d8299.md",
+      "id": "67d3018062fe6ba92b7d8299",
+      "dashedName": "how-do-primitive-types-work-in-typescript",
+      "title": {
+        "en": "How Do Primitive Types Work in TypeScript?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In this lesson, you will learn how to work with basic primitive types and how type annotations work for variables.",
+              "fr": ""
+            },
+            {
+              "en": "For the primitive data types `string`, `null`, `undefined`, `number`, `boolean`, and `bigint`, TypeScript offers corresponding type keywords.",
+              "fr": ""
+            },
+            {
+              "en": "For this lesson, we will focus on the commonly used primitives and not go into much detail for `bigint`. The `bigint` data type is a numeric data type in JavaScript to represent numbers larger than the standard integer type.",
+              "fr": ""
+            },
+            {
+              "en": "Let's take a look at each of these primitive types starting with `string`. Here is how you can type a string in TypeScript:",
+              "fr": ""
+            },
+            {
+              "en": "Unlike vanilla JavaScript, the variable `firstName` is expecting a `string` type. So if you try to reassign it with a value of a number, then you will get an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "The next type we will look at is the `number` type. Here is an example:",
+              "fr": ""
+            },
+            {
+              "en": "You can assign integer and floats to the `number` type. But if you were to try and reassign a value that is a `bigint` type, then you will get an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "The next type we will look at is the `boolean` type. Here are some examples:",
+              "fr": ""
+            },
+            {
+              "en": "The last two types are the `null` and `undefined` types.",
+              "fr": ""
+            },
+            {
+              "en": "As you recall from earlier JavaScript lessons, `null` represents an intentional absence of a value. `undefined` means a variable has been declared but has not been assigned a value.",
+              "fr": ""
+            },
+            {
+              "en": "You will see examples of how to work with these types later on when you learn about function types and union types.",
+              "fr": ""
+            },
+            {
+              "en": "Now that you have seen how type annotations work with variables, the question arises on if you need to always explicitly type out your variables.",
+              "fr": ""
+            },
+            {
+              "en": "If you have a simple type annotation like this, then you might not need to use an explicit type.",
+              "fr": ""
+            },
+            {
+              "en": "Reason being is because TypeScript will try to automatically infer the types based on its value. So if you write this, TypeScript will understand it is a string.",
+              "fr": ""
+            },
+            {
+              "en": "You should explicitly type your variables when TypeScript cannot clearly infer the type or when you want to enforce a specific type for situations like function parameters or complex objects.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to explicitly add a type annotation to a number variable?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson for number types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson for number types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson for number types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a primitive data type?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When should you explicitly type your variables in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When you are working with `number` and `bigint` types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "When you are working with `null` and `undefined` types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "When TypeScript cannot clearly infer the type.",
+              "fr": ""
+            },
+            {
+              "en": "You should always have explicit types in your code.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "698f515e99f9a25a3462f97f.md",
+      "id": "698f515e99f9a25a3462f97f",
+      "dashedName": "how-do-function-types-work",
+      "title": {
+        "en": "How do Function Types Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In this lesson, you will learn how to work with function types. Let's start with parameter type annotations.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of a basic function:",
+              "fr": ""
+            },
+            {
+              "en": "Right now, TypeScript would display a message of `Parameter 'radius' implicitly has an 'any' type`. The `any` type indicates that a value can have any type. You will learn more about this type in a future lesson.",
+              "fr": ""
+            },
+            {
+              "en": "To get rid of the error and explicitly type the parameter, you can type it like this:",
+              "fr": ""
+            },
+            {
+              "en": "If you try to call the `circleArea` function with a different type that is not a number, TypeScript will display an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "If you try to provide more arguments then the function expects, TypeScript will display an error:",
+              "fr": ""
+            },
+            {
+              "en": "If you provide too few arguments, then TypeScript will also display an error:",
+              "fr": ""
+            },
+            {
+              "en": "You can make parameters optional by the using the `?` symbol near the parameter like this:",
+              "fr": ""
+            },
+            {
+              "en": "The conditional check inside of the function is there in case the `height` argument is not provided.",
+              "fr": ""
+            },
+            {
+              "en": "If you want to type your return values, you can add return type annotations like this:",
+              "fr": ""
+            },
+            {
+              "en": "The return type annotation goes after the parameter list. Similar to variable type annotations, most of the time TypeScript will be smart enough to infer the return type. So use an explicit return type annotation when you want to make the function's intent clearer or prevent unintended changes to the return value.",
+              "fr": ""
+            },
+            {
+              "en": "The next example we will look at will deal with asynchronous functions and promises. If your function is going to return a promise, you can use the `Promise` type like this:",
+              "fr": ""
+            },
+            {
+              "en": "In this situation, if you try to remove the return type, TypeScript might infer the return as `Promise<any>`. So this would be a good situation to explicitly type the return value.",
+              "fr": ""
+            },
+            {
+              "en": "Up till this point, we have only looked at named function examples. But how do types work with anonymous functions?",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example using an anonymous function in the callback passed to a `forEach`:",
+              "fr": ""
+            },
+            {
+              "en": "The `lang` parameter does not have a type annotation. Instead, TypeScript uses contextual typing which means it infers the type from the context in which it appears.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following TypeScript types indicates that a value can have any type?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens if you provide too many arguments in a function call?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "TypeScript will ignore the extra arguments.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where this was discussed.",
+              "fr": ""
+            },
+            {
+              "en": "Nothing will happen.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where this was discussed.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript will display an error message.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript will use all of the arguments.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where this was discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is contextual typing?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It infers the type from the context in which it appears.",
+              "fr": ""
+            },
+            {
+              "en": "It always defaults variables to the type `any`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "It forces you to declare the type explicitly every time.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "It automatically changes a variable's type to match the first value assigned.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "698f53374f7ad3a078dafbc0.md",
+      "id": "698f53374f7ad3a078dafbc0",
+      "dashedName": "how-do-types-work-with-objects-and-arrays",
+      "title": {
+        "en": "How Do Types Work with Objects and Arrays?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In this lesson, you will learn how to add types for objects and arrays.",
+              "fr": ""
+            },
+            {
+              "en": "Let's take a look at arrays first.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of an array of programming languages:",
+              "fr": ""
+            },
+            {
+              "en": "If you wanted to explicitly type that array as an array of strings, then you can type it as `string[]`:",
+              "fr": ""
+            },
+            {
+              "en": "As you learned earlier, TypeScript will be smart enough to infer the type as an array of strings if you just write this:",
+              "fr": ""
+            },
+            {
+              "en": "But explicitly typing it will help in situations if you attempt to add another type to the array like this:",
+              "fr": ""
+            },
+            {
+              "en": "Another way to type arrays is to use this syntax:",
+              "fr": ""
+            },
+            {
+              "en": "Fundamentally, these two syntaxes are the same, and the choice between the two is generally a matter of preference.",
+              "fr": ""
+            },
+            {
+              "en": "Now, let's take a look at typing objects.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of an object literal:",
+              "fr": ""
+            },
+            {
+              "en": "To explicitly type the object properties, you can use this syntax:",
+              "fr": ""
+            },
+            {
+              "en": "If you try to add or remove properties from the object, then you will get an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "You can make object properties optional by using the `?` after the property name like this:",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript will no longer display an error because the `isEmployed` property has been marked as optional.",
+              "fr": ""
+            },
+            {
+              "en": "So far, all of the object examples have had restrictive properties. That means we explicitly listed every property the object is allowed to have:",
+              "fr": ""
+            },
+            {
+              "en": "But what if you don't know all of the property names ahead of time? What if you want an object that can have any number of properties but all of the values must follow a specific type?",
+              "fr": ""
+            },
+            {
+              "en": "Well, there are two ways to accomplish this. The first way is to use a `Record` which is a built-in generic utility type in TypeScript.",
+              "fr": ""
+            },
+            {
+              "en": "Here is the basic syntax:",
+              "fr": ""
+            },
+            {
+              "en": "The first type represents the type of the keys while the second type represents the type of the values.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of using a `Record` for a `userRoles` object:",
+              "fr": ""
+            },
+            {
+              "en": "This `userRoles` object can have any string keys, and all of the values must be strings. If you try to assign a non-string value, you’ll get an error:",
+              "fr": ""
+            },
+            {
+              "en": "The second way to write the same idea is with an index signature:",
+              "fr": ""
+            },
+            {
+              "en": "The syntax above says that any property with a string key must have a string value. Here is an example for a `settings` object:",
+              "fr": ""
+            },
+            {
+              "en": "Just like earlier, if you have incorrect value types, TypeScript will display an error message:",
+              "fr": ""
+            },
+            {
+              "en": "Both `Record` and index signatures are fundamentally the same. So choosing between them is mostly a matter of preference.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to type an array of strings?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to mark an object property as optional?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the earlier object section where optional properties were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the earlier object section where optional properties were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the earlier object section where optional properties were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to use a `Record` for an object?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the last part of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the last part of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the last part of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

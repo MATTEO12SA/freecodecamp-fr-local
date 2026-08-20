@@ -1,0 +1,1097 @@
+{
+  "workshop": "lecture-understanding-type-composition",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "698f4f9ff24a150af1b1fa06.md",
+      "id": "698f4f9ff24a150af1b1fa06",
+      "dashedName": "how-do-the-any-never-unknown-and-void-types-work",
+      "title": {
+        "en": "How Do The any, never, unknown and void Types Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In prior lessons, you have learned how to work with primitive types as well as union types, and interfaces.",
+              "fr": ""
+            },
+            {
+              "en": "But TypeScript has some special types that you should be aware of. Let's start by looking at the `any` type.",
+              "fr": ""
+            },
+            {
+              "en": "The `any` type is used to represent any type of value.",
+              "fr": ""
+            },
+            {
+              "en": "With this type, you have to be careful because it can be easily overused and misused. You don't want to type everything with the `any` type just to silence TypeScript error messages. That defeats the purpose of using TypeScript and adding type safety in the first place.",
+              "fr": ""
+            },
+            {
+              "en": "A safer counterpart to the `any` type would be the `unknown` type. `unknown` is similar to `any` but with the `unknown` type, you have to do a type check for the variable before using it.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, the type checks ensure that operations are only performed on values of the correct type. Values that don't match the expected types are ignored.",
+              "fr": ""
+            },
+            {
+              "en": "The next type we will look at is the `never` type. This type represents something that will never happen.",
+              "fr": ""
+            },
+            {
+              "en": "In most situations, you will not be writing out type annotations using `never`. Instead, you will most likely see the `never` type show up in error messages like this:",
+              "fr": ""
+            },
+            {
+              "en": "Inside the `else` clause of the example above, the `value` has a `never` type. This is because the `else` branch is now impossible to reach and there's no remaining type left. If you tried to call the function with a value other than `string` or `number` it would show an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "The last type we will look at is the `void` type. When you have a function that doesn't return a value, that would be a `void` type.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, the `onChange` property for the `Handler` type doesn't return anything which is why `void` is being used.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which TypeScript type allows you to store any kind of value but should be used carefully to avoid losing type safety?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `never` type in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It represents a value that can be any type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where the `never` type was taught.",
+              "fr": ""
+            },
+            {
+              "en": "It represents a function return type that is optional.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where the `never` type was taught.",
+              "fr": ""
+            },
+            {
+              "en": "It represents something that will never happen.",
+              "fr": ""
+            },
+            {
+              "en": "It represents a variable that can hold any type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where the `never` type was taught.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which type would you use for a function that doesn't return a value?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "698f5a372871b5dfb9e01698.md",
+      "id": "698f5a372871b5dfb9e01698",
+      "dashedName": "what-are-union-types-and-how-do-they-work",
+      "title": {
+        "en": "What are Union Types and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the prior lessons, you learned how to work with primitive types like `string`, and `boolean`. But TypeScript allows you to build new types from existing ones. One example of this would be the union type.",
+              "fr": ""
+            },
+            {
+              "en": "A union type is a type that combines two or more other types.",
+              "fr": ""
+            },
+            {
+              "en": "Here is the basic syntax:",
+              "fr": ""
+            },
+            {
+              "en": "Let's take a look at some examples to better understand the concept.",
+              "fr": ""
+            },
+            {
+              "en": "Here is a variable called `id` with a union type for `string` or `number`:",
+              "fr": ""
+            },
+            {
+              "en": "The value can be updated to a number which is still valid for the union type:",
+              "fr": ""
+            },
+            {
+              "en": "If you tried to assign another value that isn't a `string` or `number`, then TypeScript will display an error message:",
+              "fr": ""
+            },
+            {
+              "en": "When working with union types, it is important to use methods that work for all of the types, otherwise TypeScript will throw an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "There is a solution for this which involves narrowing the union. But you will learn more about that as well as how union types work with type aliases in future lessons.",
+              "fr": ""
+            },
+            {
+              "en": "Union types are also helpful when working with `null` and `undefined` values.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example where a variable might contain a `string` value, or it might be `null` if no value has been set yet:",
+              "fr": ""
+            },
+            {
+              "en": "In this case, `username` can either be a `string` or `null`, but nothing else. You might use `null` when you want to intentionally represent the absence of a value.",
+              "fr": ""
+            },
+            {
+              "en": "Here is another example using `undefined`:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, `score` can either be a `number` or `undefined`. You might use `undefined` when a value has not been assigned yet.",
+              "fr": ""
+            },
+            {
+              "en": "Using union types with `null` and `undefined` makes it clear when a value might be missing, while still allowing TypeScript to catch invalid assignments.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to create a union type?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which assignment would be considered valid for the following?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will happen if you call a method that only exists on a string for a union `type string | number` without using type narrowing?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Nothing will happen.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "It will convert the number to a string.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "The method will be ignored at runtime.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript will throw an error.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "698f5a3a492176259d1afcf9.md",
+      "id": "698f5a3a492176259d1afcf9",
+      "dashedName": "what-are-interfaces-and-how-do-they-work",
+      "title": {
+        "en": "What are Interfaces and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In a prior lesson, you learned how to work with type aliases and saw examples on how to name object types.",
+              "fr": ""
+            },
+            {
+              "en": "As you recall, one way to name an object type would be to use the `type` keyword like this:",
+              "fr": ""
+            },
+            {
+              "en": "Another way to name an object type would be to use an `interface` declaration like this:",
+              "fr": ""
+            },
+            {
+              "en": "`type` and `interface` are similar but one key difference is that interfaces use the `extends` keyword to build on other interfaces, while `type` aliases use intersection types (`&`) to combine types.",
+              "fr": ""
+            },
+            {
+              "en": "Let's look at some examples:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, `User` starts with `id` and `name`. The `Admin` interface extends `User`, meaning it includes `id` and `name` and adds a new property called `role`.",
+              "fr": ""
+            },
+            {
+              "en": "If you wanted to extend a `type`, you would use an intersection type (`&`) like this:",
+              "fr": ""
+            },
+            {
+              "en": "`Admin` combines the `User` type with a new object type that includes `role`. The result is the same shape as the interface example which is an object with `id`, `name`, and `role`.",
+              "fr": ""
+            },
+            {
+              "en": "Both `type` and `interface` can describe the shape of an object. If you're unsure which to use, remember that `interface` is specifically designed for object shapes, while `type` is more flexible and can also represent union types, primitives, and more complex type combinations.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which TypeScript feature allows you to create a new type by combining multiple existing types using `&`?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where intersection types were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where intersection types were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where intersection types were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to create an `interface`?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is true about type aliases in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They can represent unions and intersections.",
+              "fr": ""
+            },
+            {
+              "en": "They can only describe object shapes.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "They must use extends to build on other types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "They cannot be assigned to variables.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "69945fc2cd3160713372860e.md",
+      "id": "69945fc2cd3160713372860e",
+      "dashedName": "what-are-type-aliases-and-how-do-they-work",
+      "title": {
+        "en": "What are Type Aliases and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the prior lesson, you learned how to work with union types. One common way to work with union types is to use a type alias.",
+              "fr": ""
+            },
+            {
+              "en": "A type alias is a name for a type. Here is an example of providing a name for a union type:",
+              "fr": ""
+            },
+            {
+              "en": "Often times in your projects, you will create type aliases and use them throughout your program like this:",
+              "fr": ""
+            },
+            {
+              "en": "This example uses two types named `ID` and `User`. `ID` would be a union type for `number` or `string` while `User` is an object type with `id` and `name` properties. The `id` is specified with the `ID` type while the `name` has the `string` type.",
+              "fr": ""
+            },
+            {
+              "en": "The `getUserId` function has one parameter called `user` and its type is `User`. The return type for the `getUserId` function would be `ID`.",
+              "fr": ""
+            },
+            {
+              "en": "Type aliases are a great way to describe the shape of an object. It is common to create object types and use them in arrays like this:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, the `users` array must be filled with only `User` objects. If you forget a property in one of the objects, then TypeScript will throw an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "You might have noticed the use of PascalCase when it came to naming the type aliases. This is because by convention using PascalCase helps distinguish types from variables. It also helps with readability. When you see `User[]`, you will know it's an array of objects of type `User`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a type alias in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A built-in TypeScript keyword used only for arrays.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "A special class that stores multiple values.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "A name given to a type, such as a union or object type.",
+              "fr": ""
+            },
+            {
+              "en": "A function that automatically converts one type to another.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the type of `id` inside of the `User` type here?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is PascalCase commonly used when naming type aliases in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Because it is required by TypeScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "To help distinguish types from variables and improve readability.",
+              "fr": ""
+            },
+            {
+              "en": "To make the code run faster.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "To allow the type to be used in arrays.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "699460b8cd3160713372860f.md",
+      "id": "699460b8cd3160713372860f",
+      "dashedName": "what-are-type-assertions-and-how-do-they-work",
+      "title": {
+        "en": "What are Type Assertions and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Sometimes there will be situations where you will know more about a type than TypeScript does. This is where type assertions come in handy.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example using the `querySelector()` method to access an element with the `id` of `submit`:",
+              "fr": ""
+            },
+            {
+              "en": "Right now, TypeScript only knows that this `submitBtn` is some sort of `Element` or possibly `null`. TypeScript will not look at the corresponding HTML to figure it out.",
+              "fr": ""
+            },
+            {
+              "en": "This is good place to use a type assertion to tell TypeScript what type of element this is. Here is an example:",
+              "fr": ""
+            },
+            {
+              "en": "Now, TypeScript will treat this as a `button` element because of that type assertion.",
+              "fr": ""
+            },
+            {
+              "en": "There are limits to using the `as` keyword. For example, you can't do stuff like this without TypeScript throwing an error:",
+              "fr": ""
+            },
+            {
+              "en": "In this example, it doesn't make much sense to try and assert that the string `\"awesome\"` should be viewed as a number type. TypeScript only allows type assertions between compatible or overlapping types.",
+              "fr": ""
+            },
+            {
+              "en": "One way to remove that error would be to use a double assertion like this:",
+              "fr": ""
+            },
+            {
+              "en": "Even though this works in TypeScript, it is still not recommended because logically it doesn't make much sense.",
+              "fr": ""
+            },
+            {
+              "en": "Another way to write type assertions is to use angle bracket syntax like this:",
+              "fr": ""
+            },
+            {
+              "en": "You need to be careful with this syntax when using `tsx` files because TypeScript will think you are trying to render a component and throw an error like this:",
+              "fr": ""
+            },
+            {
+              "en": "In most situations, you will see the first syntax using the `as` keyword being used over the second option.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main purpose of a type assertion in TypeScript?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To convert a value at runtime to a different type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "To tell TypeScript to treat a value as a more specific type.",
+              "fr": ""
+            },
+            {
+              "en": "To prevent values from being `null`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "To automatically check the DOM for the correct element type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why does TypeScript throw an error for this code?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "TypeScript does not allow type assertions with strings and numbers.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where limitations of the `as` keyword were discussed.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript requires using `unknown` for all type assertions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where limitations of the `as` keyword were discussed.",
+              "fr": ""
+            },
+            {
+              "en": "String and number do not sufficiently overlap as types.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript requires using `any` for all type assertions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the middle of the lesson where limitations of the `as` keyword were discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why should you be careful when using angle bracket syntax for type assertions in `tsx` files?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is deprecated in TypeScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "It only works with primitive types.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "It automatically converts values at runtime.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson.",
+              "fr": ""
+            },
+            {
+              "en": "TypeScript may interpret it as JSX syntax.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

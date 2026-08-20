@@ -1,0 +1,3698 @@
+{
+  "workshop": "lecture-understanding-performance-in-web-applications",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1d6af27858c4f487d3f4c.md",
+      "id": "67d1d6af27858c4f487d3f4c",
+      "dashedName": "what-is-the-difference-between-real-performance-and-perceived-performance",
+      "title": {
+        "en": "What Is the Difference Between Real Performance and Perceived Performance?",
+        "fr": "Quelle est la différence entre performance réelle et performance perçue ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When we talk about performance, the term itself can feel a bit subjective, right? What is good performance? What is bad performance?",
+              "fr": "Quand on parle de performance, le terme lui-même peut sembler un peu subjectif, non ? Qu'est-ce qu'une bonne performance ? Qu'est-ce qu'une mauvaise performance ?"
+            },
+            {
+              "en": "Is there a standard way to measure performance or is it completely dependent on the user's personal preferences and perception? Let's see.",
+              "fr": "Y a-t-il une façon standard de mesurer la performance, ou dépend-elle entièrement des préférences personnelles et de la perception de l'utilisateur ? Voyons cela."
+            },
+            {
+              "en": "We can classify a website's performance into two different categories: perceived performance and real performance.",
+              "fr": "On peut classer la performance d'un site web en deux catégories : la performance perçue et la performance réelle."
+            },
+            {
+              "en": "The perceived performance is how users perceive the performance of a website. It's how they evaluate it in terms of responsiveness and reliability. This is a subjective measurement, so it's hard to quantify it, but it's very important, since the user experience determines the success or failure of a website.",
+              "fr": "La performance perçue est la façon dont les utilisateurs perçoivent la performance d'un site. Ils l'évaluent en termes de réactivité et de fiabilité. C'est une mesure subjective, donc difficile à quantifier, mais très importante, car l'expérience utilisateur détermine le succès ou l'échec d'un site."
+            },
+            {
+              "en": "In contrast, real performance is the objective and measurable performance of the website. It's measured using metrics like page load time, server response time, and rendering time. These measurements are influenced by multiple factors related to the network and to the code itself.",
+              "fr": "En contraste, la performance réelle est la performance objective et mesurable du site. Elle se mesure avec des métriques comme le temps de chargement de la page, le temps de réponse du serveur et le temps de rendu. Ces mesures dépendent de plusieurs facteurs liés au réseau et au code lui-même."
+            },
+            {
+              "en": "Even a website with excellent perceived performance can be further optimized for an even better user experience.",
+              "fr": "Même un site avec une excellente performance perçue peut encore être optimisé pour une expérience utilisateur encore meilleure."
+            },
+            {
+              "en": "There are several techniques for improving perceived performance.",
+              "fr": "Il existe plusieurs techniques pour améliorer la performance perçue."
+            },
+            {
+              "en": "Reducing the initial load time as much as possible by loading non-essential resources in the background is essential. This technique is known as \"lazy loading.\" That first impression can determine what users will think about your website.",
+              "fr": "Réduire autant que possible le temps de chargement initial en chargeant les ressources non essentielles en arrière-plan est essentiel. Cette technique s'appelle le « lazy loading ». Cette première impression peut déterminer ce que les utilisateurs penseront de ton site."
+            },
+            {
+              "en": "Lazy loading will also impact the real performance of your website. By using this technique, you can reduce the amount of content that has to be loaded upfront, so the page will load faster, which is a real performance metric.",
+              "fr": "Le lazy loading impacte aussi la performance réelle de ton site. Avec cette technique, tu réduis la quantité de contenu à charger d'emblée, donc la page charge plus vite — une vraie métrique de performance réelle."
+            },
+            {
+              "en": "It's also very important to provide quick response and feedback to user interactions.",
+              "fr": "Il est aussi très important de fournir une réponse et un retour rapides aux interactions utilisateur."
+            },
+            {
+              "en": "For example, showing a loading indicator for a long-running process as soon as the user clicks on an element can help the user feel connected and engaged with the process, making the wait time feel shorter - or at least they'll feel more involved.",
+              "fr": "Par exemple, afficher un indicateur de chargement pour un processus long dès que l'utilisateur clique sur un élément peut l'aider à se sentir connecté et engagé, ce qui raccourcit la sensation d'attente — ou du moins il se sentira plus impliqué."
+            },
+            {
+              "en": "Keeping users actively engaged with your website is very important for improving their time perception. Displaying text as soon as it arrives is helpful for keeping users engaged from the start, even if other resources, like images, have not been loaded yet.",
+              "fr": "Garder les utilisateurs activement engagés avec ton site est très important pour améliorer leur perception du temps. Afficher le texte dès qu'il arrive aide à les engager dès le début, même si d'autres ressources, comme les images, ne sont pas encore chargées."
+            },
+            {
+              "en": "If a user is waiting for a long-running task to be completed, keep them informed on the progress and update it regularly.",
+              "fr": "Si un utilisateur attend qu'une tâche longue se termine, tiens-le informé de la progression et mets-la à jour régulièrement."
+            },
+            {
+              "en": "Another tip is to avoid content reflow and jumping content. For example, when ads or images are being loaded, the website might jump or readjust to make room for these new resources if they don't already have a space in the layout.",
+              "fr": "Un autre conseil : éviter le reflow du contenu et le contenu qui saute. Par exemple, quand des pubs ou des images se chargent, le site peut sauter ou se réajuster pour faire de la place si ces ressources n'ont pas déjà d'espace dans la mise en page."
+            },
+            {
+              "en": "These sudden changes can result in a bad user experience because users may feel like the website is still loading. To avoid this, plan ahead and assign space for these elements from the start.",
+              "fr": "Ces changements soudains peuvent donner une mauvaise expérience utilisateur, car les utilisateurs peuvent avoir l'impression que le site charge encore. Pour l'éviter, planifie à l'avance et réserve de l'espace pour ces éléments dès le départ."
+            },
+            {
+              "en": "If your website has custom fonts, you should also try to minimize font loading delays, since this may result in flickering - or showing the fallback font while the custom font is being loaded. A suggestion for this is using a fallback font that is similar to the custom font, so in case this happens, the change will be much more subtle.",
+              "fr": "Si ton site a des polices personnalisées, tu devrais aussi essayer de minimiser les délais de chargement des polices, car cela peut provoquer un scintillement — ou l'affichage de la police de secours pendant le chargement. Une suggestion est d'utiliser une police de secours proche de la police personnalisée, pour que le changement soit beaucoup plus subtil."
+            },
+            {
+              "en": "Also, be sure that the interface elements are active. The user should be able to interact with them with minimal lag.",
+              "fr": "Assure-toi aussi que les éléments d'interface sont actifs. L'utilisateur devrait pouvoir interagir avec eux avec un décalage minimal."
+            },
+            {
+              "en": "We will go into these techniques in more detail in the next few lessons.",
+              "fr": "On détaillera ces techniques dans les prochaines leçons."
+            },
+            {
+              "en": "While real performance is important, perceived performance can have a tremendous impact on user experience. By optimizing for both, you can create websites that are and feel faster, creating a smooth and engaging user experience.",
+              "fr": "Même si la performance réelle est importante, la performance perçue peut avoir un impact énorme sur l'expérience utilisateur. En optimisant les deux, tu peux créer des sites qui sont et se sentent plus rapides, pour une expérience fluide et engageante."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary difference between real performance and perceived performance?",
+              "fr": "Quelle est la principale différence entre performance réelle et performance perçue ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Real performance is measured by user experience, while perceived performance is measured by technical metrics.",
+              "fr": "La performance réelle se mesure par l'expérience utilisateur, tandis que la performance perçue se mesure par des métriques techniques."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a website can be technically fast but feel slow to a user.",
+              "fr": "Pense à comment un site peut être techniquement rapide mais sembler lent à un utilisateur."
+            },
+            {
+              "en": "Real performance is measured by technical metrics, while perceived performance is measured by user experience.",
+              "fr": "La performance réelle se mesure par des métriques techniques, tandis que la performance perçue se mesure par l'expérience utilisateur."
+            },
+            {
+              "en": "There is no difference between real and perceived performance. They are equivalent because both refer to how users experience the performance of a website.",
+              "fr": "Il n'y a pas de différence entre performance réelle et perçue. Elles sont équivalentes car les deux désignent la façon dont les utilisateurs vivent la performance d'un site."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a website can be technically fast but feel slow to a user.",
+              "fr": "Pense à comment un site peut être techniquement rapide mais sembler lent à un utilisateur."
+            },
+            {
+              "en": "Perceived performance is more important than real performance because it is based on objective system metrics, while real performance is based on the user's subjective experience.",
+              "fr": "La performance perçue est plus importante que la performance réelle car elle repose sur des métriques système objectives, tandis que la performance réelle repose sur l'expérience subjective de l'utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a website can be technically fast but feel slow to a user.",
+              "fr": "Pense à comment un site peut être techniquement rapide mais sembler lent à un utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it important to optimize for both real and perceived performance?",
+              "fr": "Pourquoi est-il important d'optimiser à la fois la performance réelle et la performance perçue ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To improve search engine rankings.",
+              "fr": "Pour améliorer le classement dans les moteurs de recherche."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the overall impact of performance on website success.",
+              "fr": "Pense à l'impact global de la performance sur le succès d'un site."
+            },
+            {
+              "en": "To reduce server costs.",
+              "fr": "Pour réduire les coûts serveur."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the overall impact of performance on website success.",
+              "fr": "Pense à l'impact global de la performance sur le succès d'un site."
+            },
+            {
+              "en": "To enhance the user experience.",
+              "fr": "Pour améliorer l'expérience utilisateur."
+            },
+            {
+              "en": "To make websites more accessible.",
+              "fr": "Pour rendre les sites plus accessibles."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the overall impact of performance on website success.",
+              "fr": "Pense à l'impact global de la performance sur le succès d'un site."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following techniques can help improve perceived performance?",
+              "fr": "Laquelle des techniques suivantes peut aider à améliorer la performance perçue ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Using large images.",
+              "fr": "Utiliser de grandes images."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to reduce initial load time and improve perceived responsiveness.",
+              "fr": "Pense à comment réduire le temps de chargement initial et améliorer la réactivité perçue."
+            },
+            {
+              "en": "Loading all JavaScript files at once.",
+              "fr": "Charger tous les fichiers JavaScript d'un coup."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to reduce initial load time and improve perceived responsiveness.",
+              "fr": "Pense à comment réduire le temps de chargement initial et améliorer la réactivité perçue."
+            },
+            {
+              "en": "Using lazy loading for non-essential resources.",
+              "fr": "Utiliser le lazy loading pour les ressources non essentielles."
+            },
+            {
+              "en": "Avoiding browser caching.",
+              "fr": "Éviter le cache navigateur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to reduce initial load time and improve perceived responsiveness.",
+              "fr": "Pense à comment réduire le temps de chargement initial et améliorer la réactivité perçue."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f6a63acd9e781b4b5061.md",
+      "id": "67d2f6a63acd9e781b4b5061",
+      "dashedName": "what-are-the-key-performance-concepts",
+      "title": {
+        "en": "What Are the Key Performance Concepts?",
+        "fr": "Quels sont les concepts clés de performance ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Why do some websites feel snappy and responsive, while others feel sluggish? The answer lies in key performance concepts that affect how a page loads and renders. Understanding key web performance concepts is essential for building fast, smooth, and user-friendly websites.",
+              "fr": "Pourquoi certains sites semblent-ils vifs et réactifs, tandis que d'autres semblent lents ? La réponse se trouve dans des concepts clés de performance qui affectent le chargement et le rendu d'une page. Comprendre ces concepts est essentiel pour construire des sites rapides, fluides et agréables à utiliser."
+            },
+            {
+              "en": "Let's break down source order, the critical rendering path, latency, and more.",
+              "fr": "Décortiquons l'ordre source, le critical rendering path, la latence, et plus encore."
+            },
+            {
+              "en": "Let's look at source order first.",
+              "fr": "Regardons d'abord l'ordre source."
+            },
+            {
+              "en": "Source order refers to the way HTML elements are structured in the document. This determines what loads first and can significantly impact performance and accessibility.",
+              "fr": "L'ordre source désigne la façon dont les éléments HTML sont structurés dans le document. Cela détermine ce qui se charge en premier et peut fortement impacter la performance et l'accessibilité."
+            },
+            {
+              "en": "Some best practices for this include:",
+              "fr": "Quelques bonnes pratiques incluent :"
+            },
+            {
+              "en": "- Placing critical content such as headings, navigation or main text higher in the HTML structure.",
+              "fr": "- Placer le contenu critique comme les titres, la navigation ou le texte principal plus haut dans la structure HTML."
+            },
+            {
+              "en": "- Deferring non-essential scripts such as ones for analytics, or third-party widgets, so they don't block rendering.",
+              "fr": "- Différer les scripts non essentiels comme ceux d'analytique ou les widgets tiers, pour qu'ils ne bloquent pas le rendu."
+            },
+            {
+              "en": "- Using progressive enhancement, to ensure the core experience works even before styles and scripts load. Progressive enhancement is a way of building websites and applications based on the idea that you should make your page work with HTML first.",
+              "fr": "- Utiliser l'amélioration progressive, pour que l'expérience de base fonctionne même avant le chargement des styles et scripts. L'amélioration progressive consiste à construire des sites et applications en partant du principe que ta page doit d'abord fonctionner avec HTML."
+            },
+            {
+              "en": "Here is an example of good source order, using the best practices we just went through.",
+              "fr": "Voici un exemple de bon ordre source, en suivant les bonnes pratiques qu'on vient de voir."
+            },
+            {
+              "en": "By optimizing source order, we make sure users see important content as soon as possible.",
+              "fr": "En optimisant l'ordre source, on s'assure que les utilisateurs voient le contenu important dès que possible."
+            },
+            {
+              "en": "Now let's look at critical rendering path.",
+              "fr": "Regardons maintenant le critical rendering path."
+            },
+            {
+              "en": "The critical rendering path is the sequence of steps the browser follows to convert code into pixels on the screen.",
+              "fr": "Le critical rendering path est la séquence d'étapes que suit le navigateur pour convertir le code en pixels à l'écran."
+            },
+            {
+              "en": "Here are the key steps that we will go into later:",
+              "fr": "Voici les étapes clés qu'on détaillera plus tard :"
+            },
+            {
+              "en": "1. Parsing HTML: Builds the DOM (Document Object Model)",
+              "fr": "1. Parsing HTML : construit le DOM (Document Object Model)"
+            },
+            {
+              "en": "2. Parsing CSS: Builds the CSSOM (CSS Object Model)",
+              "fr": "2. Parsing CSS : construit le CSSOM (CSS Object Model)"
+            },
+            {
+              "en": "3. JavaScript Execution: Can modify the DOM & CSSOM",
+              "fr": "3. Exécution JavaScript : peut modifier le DOM et le CSSOM"
+            },
+            {
+              "en": "4. Render Tree Construction: Combines the DOM & CSSOM",
+              "fr": "4. Construction de l'arbre de rendu : combine le DOM et le CSSOM"
+            },
+            {
+              "en": "5. Layout & Painting: Determines element sizes & draws pixels",
+              "fr": "5. Layout et painting : détermine les tailles des éléments et dessine les pixels"
+            },
+            {
+              "en": "6. Optimizations:",
+              "fr": "6. Optimisations :"
+            },
+            {
+              "en": "- Minimize render-blocking resources (e.g., large CSS files, unused JS).",
+              "fr": "- Minimiser les ressources qui bloquent le rendu (par ex. gros fichiers CSS, JS inutilisé)."
+            },
+            {
+              "en": "- Use async and defer attributes for scripts:",
+              "fr": "- Utiliser les attributs async et defer pour les scripts :"
+            },
+            {
+              "en": "- Load only essential styles first; defer non-critical CSS.",
+              "fr": "- Charger d'abord uniquement les styles essentiels ; différer le CSS non critique."
+            },
+            {
+              "en": "Overall, a shorter critical rendering path equals a faster perceived performance. We will go into this in more detail later on.",
+              "fr": "Dans l'ensemble, un critical rendering path plus court égale une performance perçue plus rapide. On y reviendra plus en détail plus tard."
+            },
+            {
+              "en": "And finally, let's look at latency.",
+              "fr": "Et enfin, regardons la latence."
+            },
+            {
+              "en": "Latency is the time it takes for a request to travel between the browser and the server. So in other words, high latency equals slow pages.",
+              "fr": "La latence est le temps qu'une requête met pour aller du navigateur au serveur. Autrement dit, une latence élevée égale des pages lentes."
+            },
+            {
+              "en": "Some ways of reducing latency include:",
+              "fr": "Quelques façons de réduire la latence :"
+            },
+            {
+              "en": "- Using CDNs, or in other words, Content Delivery Networks, to serve files from closer locations.",
+              "fr": "- Utiliser des CDN, autrement dit des Content Delivery Networks, pour servir les fichiers depuis des emplacements plus proches."
+            },
+            {
+              "en": "- Enabling compression using things such as Gzip to reduce file sizes.",
+              "fr": "- Activer la compression avec des outils comme Gzip pour réduire la taille des fichiers."
+            },
+            {
+              "en": "- Optimizing images and using lazy loading - which we will also go into later.",
+              "fr": "- Optimiser les images et utiliser le lazy loading — qu'on détaillera aussi plus tard."
+            },
+            {
+              "en": "By reducing latency, we make interactions feel instant.",
+              "fr": "En réduisant la latence, on fait ressentir les interactions comme instantanées."
+            },
+            {
+              "en": "So in conclusion, by optimizing source order, reducing the critical path, and cutting down latency, you can make your website feel fast.",
+              "fr": "En conclusion, en optimisant l'ordre source, en réduisant le critical path et en coupant la latence, tu peux faire sentir ton site rapide."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is source order?",
+              "fr": "Qu'est-ce que l'ordre source ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The order in which a browser executes JavaScript.",
+              "fr": "L'ordre dans lequel un navigateur exécute le JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what determines which content appears first in the document.",
+              "fr": "Pense à ce qui détermine quel contenu apparaît en premier dans le document."
+            },
+            {
+              "en": "The structure of a website's CSS files.",
+              "fr": "La structure des fichiers CSS d'un site."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what determines which content appears first in the document.",
+              "fr": "Pense à ce qui détermine quel contenu apparaît en premier dans le document."
+            },
+            {
+              "en": "The way HTML elements are arranged in the document.",
+              "fr": "La façon dont les éléments HTML sont arrangés dans le document."
+            },
+            {
+              "en": "The time it takes to load a webpage.",
+              "fr": "Le temps qu'il faut pour charger une page web."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what determines which content appears first in the document.",
+              "fr": "Pense à ce qui détermine quel contenu apparaît en premier dans le document."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you optimize the critical rendering path?",
+              "fr": "Comment peux-tu optimiser le critical rendering path ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By adding more scripts to the `head` section.",
+              "fr": "En ajoutant plus de scripts dans la section `head`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about reducing delays in rendering important content first.",
+              "fr": "Pense à réduire les délais pour rendre d'abord le contenu important."
+            },
+            {
+              "en": "By minimizing render-blocking resources and deferring scripts.",
+              "fr": "En minimisant les ressources qui bloquent le rendu et en différant les scripts."
+            },
+            {
+              "en": "By removing HTML elements.",
+              "fr": "En retirant des éléments HTML."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about reducing delays in rendering important content first.",
+              "fr": "Pense à réduire les délais pour rendre d'abord le contenu important."
+            },
+            {
+              "en": "By increasing latency.",
+              "fr": "En augmentant la latence."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about reducing delays in rendering important content first.",
+              "fr": "Pense à réduire les délais pour rendre d'abord le contenu important."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is latency?",
+              "fr": "Qu'est-ce que la latence ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The delay in network requests.",
+              "fr": "Le délai dans les requêtes réseau."
+            },
+            {
+              "en": "The process of rendering HTML and CSS.",
+              "fr": "Le processus de rendu du HTML et du CSS."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how long it takes for data to travel between the server and the user.",
+              "fr": "Pense au temps que mettent les données pour voyager entre le serveur et l'utilisateur."
+            },
+            {
+              "en": "The amount of images on a webpage.",
+              "fr": "La quantité d'images sur une page web."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how long it takes for data to travel between the server and the user.",
+              "fr": "Pense au temps que mettent les données pour voyager entre le serveur et l'utilisateur."
+            },
+            {
+              "en": "The size of a website's JavaScript files.",
+              "fr": "La taille des fichiers JavaScript d'un site."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how long it takes for data to travel between the server and the user.",
+              "fr": "Pense au temps que mettent les données pour voyager entre le serveur et l'utilisateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f6b17844ae7898583eb3.md",
+      "id": "67d2f6b17844ae7898583eb3",
+      "dashedName": "what-is-inp",
+      "title": {
+        "en": "What Is INP?",
+        "fr": "Qu'est-ce que l'INP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Have you ever clicked on a webpage and felt like nothing happened? This delay impacts user experience and is measured by a metric called Interaction to Next Paint, or INP.",
+              "fr": "As-tu déjà cliqué sur une page et eu l'impression que rien ne se passait ? Ce délai impacte l'expérience utilisateur et se mesure avec une métrique appelée Interaction to Next Paint, ou INP."
+            },
+            {
+              "en": "INP assesses a page's overall responsiveness by measuring the time from when a user interacts — like a click or key press — to the next time the browser updates the display. A lower INP indicates a more responsive page.",
+              "fr": "L'INP évalue la réactivité globale d'une page en mesurant le temps entre une interaction utilisateur — comme un clic ou une touche — et la prochaine mise à jour de l'affichage par le navigateur. Un INP plus bas indique une page plus réactive."
+            },
+            {
+              "en": "But why is INP important? A high INP can make users feel that a page is unresponsive, leading to frustration. Optimizing INP ensures that users receive timely feedback, enhancing their experience.",
+              "fr": "Mais pourquoi l'INP est-il important ? Un INP élevé peut faire sentir aux utilisateurs qu'une page ne répond pas, ce qui mène à la frustration. Optimiser l'INP garantit que les utilisateurs reçoivent un retour en temps voulu, ce qui améliore leur expérience."
+            },
+            {
+              "en": "Tools like Chrome's DevTools and web performance APIs can help measure INP by tracking interaction delays.",
+              "fr": "Des outils comme Chrome DevTools et les APIs de performance web peuvent aider à mesurer l'INP en suivant les délais d'interaction."
+            },
+            {
+              "en": "To improve INP, minimize main thread work, optimize event handlers, and ensure that user interactions trigger timely visual updates.",
+              "fr": "Pour améliorer l'INP, minimise le travail du thread principal, optimise les gestionnaires d'événements, et assure-toi que les interactions déclenchent des mises à jour visuelles en temps voulu."
+            },
+            {
+              "en": "By understanding and optimizing INP, you can create web experiences that feel fast and responsive, keeping your users satisfied.",
+              "fr": "En comprenant et en optimisant l'INP, tu peux créer des expériences web qui se sentent rapides et réactives, et garder tes utilisateurs satisfaits."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does INP measure?",
+              "fr": "Que mesure l'INP ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The time it takes for a page to load.",
+              "fr": "Le temps qu'il faut à une page pour charger."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the time between a user's action and when they see a response.",
+              "fr": "Pense au temps entre l'action d'un utilisateur et le moment où il voit une réponse."
+            },
+            {
+              "en": "The delay between user interaction and a visual update.",
+              "fr": "Le délai entre l'interaction utilisateur et une mise à jour visuelle."
+            },
+            {
+              "en": "The total size of a webpage.",
+              "fr": "La taille totale d'une page web."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the time between a user's action and when they see a response.",
+              "fr": "Pense au temps entre l'action d'un utilisateur et le moment où il voit une réponse."
+            },
+            {
+              "en": "The number of images on a page.",
+              "fr": "Le nombre d'images sur une page."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the time between a user's action and when they see a response.",
+              "fr": "Pense au temps entre l'action d'un utilisateur et le moment où il voit une réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is a low INP value important?",
+              "fr": "Pourquoi une valeur INP basse est-elle importante ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It reduces the number of server requests.",
+              "fr": "Elle réduit le nombre de requêtes serveur."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how users feel when a page responds quickly to their actions.",
+              "fr": "Pense à ce que ressentent les utilisateurs quand une page répond vite à leurs actions."
+            },
+            {
+              "en": "It ensures timely feedback to user interactions.",
+              "fr": "Elle garantit un retour en temps voulu aux interactions utilisateur."
+            },
+            {
+              "en": "It decreases the overall page size.",
+              "fr": "Elle diminue la taille globale de la page."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how users feel when a page responds quickly to their actions.",
+              "fr": "Pense à ce que ressentent les utilisateurs quand une page répond vite à leurs actions."
+            },
+            {
+              "en": "It increases the number of page views.",
+              "fr": "Elle augmente le nombre de vues de page."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how users feel when a page responds quickly to their actions.",
+              "fr": "Pense à ce que ressentent les utilisateurs quand une page répond vite à leurs actions."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which tool can help measure INP?",
+              "fr": "Quel outil peut aider à mesurer l'INP ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Photoshop",
+              "fr": "Photoshop"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools used for web development and performance analysis.",
+              "fr": "Pense aux outils utilisés pour le développement web et l'analyse de performance."
+            },
+            {
+              "en": "Chrome DevTools",
+              "fr": "Chrome DevTools"
+            },
+            {
+              "en": "Microsoft Word",
+              "fr": "Microsoft Word"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools used for web development and performance analysis.",
+              "fr": "Pense aux outils utilisés pour le développement web et l'analyse de performance."
+            },
+            {
+              "en": "VLC Media Player",
+              "fr": "VLC Media Player"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools used for web development and performance analysis.",
+              "fr": "Pense aux outils utilisés pour le développement web et l'analyse de performance."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f6cea4916d78d5a27ad3.md",
+      "id": "67d2f6cea4916d78d5a27ad3",
+      "dashedName": "how-to-measure-and-improve-inp",
+      "title": {
+        "en": "How to Measure and Improve INP?",
+        "fr": "Comment mesurer et améliorer l'INP ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's walk through a practical way to measure Interaction to Next Paint, or INP, using Chrome DevTools.",
+              "fr": "Parcourons une façon pratique de mesurer l'Interaction to Next Paint, ou INP, avec Chrome DevTools."
+            },
+            {
+              "en": "First of all, let's open DevTools by pressing \"F12\" or Right-click and click on \"Inspect\".",
+              "fr": "D'abord, ouvrons DevTools en appuyant sur « F12 » ou en faisant un clic droit puis « Inspecter »."
+            },
+            {
+              "en": "Now, let's say you have a search bar on your webpage.",
+              "fr": "Maintenant, disons que tu as une barre de recherche sur ta page."
+            },
+            {
+              "en": "Imagine a user types a query, but it takes 600ms before the suggestion dropdown appears. Chrome DevTools would mark this high INP value.",
+              "fr": "Imagine qu'un utilisateur tape une requête, mais qu'il faille 600 ms avant que le menu déroulant de suggestions apparaisse. Chrome DevTools marquerait cette valeur INP élevée."
+            },
+            {
+              "en": "You can optimize by deferring heavy JavaScript, reducing long tasks, and improving event handling. The INP would then drop to 150ms, making interactions feel instant.",
+              "fr": "Tu peux optimiser en différant le JavaScript lourd, en réduisant les longues tâches et en améliorant la gestion des événements. L'INP passerait alors à 150 ms, ce qui rend les interactions instantanées."
+            },
+            {
+              "en": "Cool, right?",
+              "fr": "Cool, non ?"
+            },
+            {
+              "en": "Now, let's look at a practical measurement technique that helps identify interaction delays so you can create a faster and smoother user experience!",
+              "fr": "Regardons maintenant une technique de mesure pratique qui aide à identifier les délais d'interaction, pour créer une expérience utilisateur plus rapide et plus fluide !"
+            },
+            {
+              "en": "First, we would open Chrome DevTools. We would do so, once again, by opening Google Chrome, navigating to a webpage that we want to analyze, and pressing \"F12\" or right-clicking the page and clicking \"Inspect\". Now, let's head to the \"Performance\" tab - and there is everything that you need.",
+              "fr": "D'abord, on ouvrirait Chrome DevTools. On le ferait, encore une fois, en ouvrant Google Chrome, en naviguant vers une page à analyser, et en appuyant sur « F12 » ou en faisant un clic droit puis « Inspecter ». Allons maintenant dans l'onglet « Performance » — et tu as tout ce qu'il te faut."
+            },
+            {
+              "en": "Now we are ready to identify the Interaction to Next Paint, or INP. We are going to look for the longest interaction delay recorded. A good INP is generally below 200ms, and a poor INP is above 500ms. And that's it!",
+              "fr": "On est maintenant prêts à identifier l'Interaction to Next Paint, ou INP. On va chercher le plus long délai d'interaction enregistré. Un bon INP est généralement en dessous de 200 ms, et un mauvais INP au-dessus de 500 ms. Et voilà !"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you open Chrome DevTools?",
+              "fr": "Comment ouvres-tu Chrome DevTools ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By pressing \"F12\" or Right-clicking and selecting \"Inspect\".",
+              "fr": "En appuyant sur « F12 » ou en faisant un clic droit et en sélectionnant « Inspecter »."
+            },
+            {
+              "en": "By typing \"DevTools\" in the browser search bar.",
+              "fr": "En tapant « DevTools » dans la barre de recherche du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the easiest way to access developer tools in Chrome.",
+              "fr": "Pense à la façon la plus simple d'accéder aux outils de développement dans Chrome."
+            },
+            {
+              "en": "By clicking on the Chrome settings menu.",
+              "fr": "En cliquant sur le menu des paramètres de Chrome."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the easiest way to access developer tools in Chrome.",
+              "fr": "Pense à la façon la plus simple d'accéder aux outils de développement dans Chrome."
+            },
+            {
+              "en": "By installing a separate software.",
+              "fr": "En installant un logiciel séparé."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the easiest way to access developer tools in Chrome.",
+              "fr": "Pense à la façon la plus simple d'accéder aux outils de développement dans Chrome."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does a high INP value indicate?",
+              "fr": "Que indique une valeur INP élevée ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The webpage loads quickly.",
+              "fr": "La page charge rapidement."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you click something and have to wait for a response.",
+              "fr": "Pense à ce qui se passe quand tu cliques sur quelque chose et que tu dois attendre une réponse."
+            },
+            {
+              "en": "There is a delay between a user interaction and the visual update.",
+              "fr": "Il y a un délai entre une interaction utilisateur et la mise à jour visuelle."
+            },
+            {
+              "en": "The browser has cached all resources efficiently.",
+              "fr": "Le navigateur a mis en cache toutes les ressources efficacement."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you click something and have to wait for a response.",
+              "fr": "Pense à ce qui se passe quand tu cliques sur quelque chose et que tu dois attendre une réponse."
+            },
+            {
+              "en": "The webpage does not have any JavaScript.",
+              "fr": "La page n'a aucun JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what happens when you click something and have to wait for a response.",
+              "fr": "Pense à ce qui se passe quand tu cliques sur quelque chose et que tu dois attendre une réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a way to improve INP?",
+              "fr": "Laquelle des options suivantes N'EST PAS une façon d'améliorer l'INP ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Reducing main thread work.",
+              "fr": "Réduire le travail du thread principal."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options makes performance worse instead of better.",
+              "fr": "L'une de ces options empire la performance au lieu de l'améliorer."
+            },
+            {
+              "en": "Using `requestIdleCallback()` for non-critical scripts.",
+              "fr": "Utiliser `requestIdleCallback()` pour les scripts non critiques."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options makes performance worse instead of better.",
+              "fr": "L'une de ces options empire la performance au lieu de l'améliorer."
+            },
+            {
+              "en": "Adding more large images and scripts to the page.",
+              "fr": "Ajouter plus de grandes images et de scripts à la page."
+            },
+            {
+              "en": "Deferring or lazy-loading heavy assets.",
+              "fr": "Différer ou lazy-loader les assets lourds."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options makes performance worse instead of better.",
+              "fr": "L'une de ces options empire la performance au lieu de l'améliorer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f6e2836565795d789ab7.md",
+      "id": "67d2f6e2836565795d789ab7",
+      "dashedName": "how-does-a-browser-render-a-page",
+      "title": {
+        "en": "How Does a Browser Render a Page?",
+        "fr": "Comment un navigateur rend-il une page ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Have you ever wondered what happens behind the scenes when you enter a URL and press enter? How does the browser transform code into the interactive pages we see?",
+              "fr": "T'es-tu déjà demandé ce qui se passe en coulisses quand tu saisis une URL et appuies sur Entrée ? Comment le navigateur transforme-t-il le code en pages interactives que l'on voit ?"
+            },
+            {
+              "en": "Understanding how a browser renders a web page is essential for developers aiming to optimize performance and enhance user experience.",
+              "fr": "Comprendre comment un navigateur rend une page web est essentiel pour les développeurs qui veulent optimiser la performance et améliorer l'expérience utilisateur."
+            },
+            {
+              "en": "In this lesson, we'll demystify the rendering process, breaking it down into clear, digestible steps.",
+              "fr": "Dans cette leçon, on démystifiera le processus de rendu, en le découpant en étapes claires et digestes."
+            },
+            {
+              "en": "First the browser parses the HTML and builds the DOM.",
+              "fr": "D'abord, le navigateur parse le HTML et construit le DOM."
+            },
+            {
+              "en": "The process begins with the browser fetching the HTML content of the page. It parses this HTML to construct the Document Object Model, or DOM — a tree-like structure representing the page's content.",
+              "fr": "Le processus commence quand le navigateur récupère le contenu HTML de la page. Il parse ce HTML pour construire le Document Object Model, ou DOM — une structure en arbre qui représente le contenu de la page."
+            },
+            {
+              "en": "Consider this simple HTML snippet:",
+              "fr": "Regarde ce simple extrait HTML :"
+            },
+            {
+              "en": "The browser parses this to create a DOM tree with `html` as the root, containing `body`, which in turn contains `h1` and `p` elements.",
+              "fr": "Le navigateur le parse pour créer un arbre DOM avec `html` comme racine, contenant `body`, qui contient à son tour des éléments `h1` et `p`."
+            },
+            {
+              "en": "Next, the browser processes the CSS, constructing the CSS Object Model, or CSSOM. This is another tree structure that dictates how elements should be styled.",
+              "fr": "Ensuite, le navigateur traite le CSS et construit le CSS Object Model, ou CSSOM. C'est une autre structure en arbre qui dicte comment les éléments doivent être stylés."
+            },
+            {
+              "en": "Given this CSS:",
+              "fr": "Avec ce CSS :"
+            },
+            {
+              "en": "The CSS Object Model specifies that `h1` elements are blue and `p` elements have a font size of 16 pixels.",
+              "fr": "Le CSS Object Model spécifie que les éléments `h1` sont bleus et que les éléments `p` ont une taille de police de 16 pixels."
+            },
+            {
+              "en": "The browser then combines the DOM and CSS Object Model to form the render tree. This tree includes only the nodes needed to render the page, each paired with its corresponding styles.",
+              "fr": "Le navigateur combine ensuite le DOM et le CSS Object Model pour former l'arbre de rendu. Cet arbre n'inclut que les nœuds nécessaires pour rendre la page, chacun associé à ses styles correspondants."
+            },
+            {
+              "en": "For our example, the render tree consists of the `h1` and `p` elements, styled appropriately.",
+              "fr": "Dans notre exemple, l'arbre de rendu se compose des éléments `h1` et `p`, stylés correctement."
+            },
+            {
+              "en": "With the render tree in hand, the browser calculates the exact position and size of each element in a process called layout or reflow. This ensures that elements appear in the correct location and dimensions on the screen.",
+              "fr": "Avec l'arbre de rendu en main, le navigateur calcule la position et la taille exactes de chaque élément dans un processus appelé layout ou reflow. Cela garantit que les éléments apparaissent au bon endroit et avec les bonnes dimensions à l'écran."
+            },
+            {
+              "en": "Finally, the browser paints the pixels to the screen, rendering each element based on the calculated styles and layout. In complex pages, this might involve multiple layers that are composited together to form the final visual output.",
+              "fr": "Enfin, le navigateur peint les pixels à l'écran, en rendant chaque élément selon les styles et la mise en page calculés. Sur des pages complexes, cela peut impliquer plusieurs couches composées ensemble pour former le rendu final."
+            },
+            {
+              "en": "In conclusion, from parsing HTML and CSS to painting pixels on the screen, the browser's rendering process is a sophisticated sequence of steps.",
+              "fr": "En conclusion, du parsing HTML et CSS jusqu'à la peinture des pixels à l'écran, le processus de rendu du navigateur est une séquence sophistiquée d'étapes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the browser do first?",
+              "fr": "Que fait le navigateur en premier ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The browser processes the CSS, constructing the CSSOM.",
+              "fr": "Le navigateur traite le CSS et construit le CSSOM."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the structure of web pages.",
+              "fr": "Pense à la structure des pages web."
+            },
+            {
+              "en": "The browser parses the HTML and builds the DOM.",
+              "fr": "Le navigateur parse le HTML et construit le DOM."
+            },
+            {
+              "en": "The browser combines the DOM and CSSOM to form the render tree.",
+              "fr": "Le navigateur combine le DOM et le CSSOM pour former l'arbre de rendu."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the structure of web pages.",
+              "fr": "Pense à la structure des pages web."
+            },
+            {
+              "en": "The browser paints the pixels to the screen.",
+              "fr": "Le navigateur peint les pixels à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the structure of web pages.",
+              "fr": "Pense à la structure des pages web."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the CSSOM stand for?",
+              "fr": "Que signifie CSSOM ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The Custom CSS System Object Model.",
+              "fr": "The Custom CSS System Object Model."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about traditional object oriented design.",
+              "fr": "Pense à la conception orientée objet traditionnelle."
+            },
+            {
+              "en": "The CSS Operating Model.",
+              "fr": "The CSS Operating Model."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about traditional object oriented design.",
+              "fr": "Pense à la conception orientée objet traditionnelle."
+            },
+            {
+              "en": "The Custom CSS System Operating Model.",
+              "fr": "The Custom CSS System Operating Model."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about traditional object oriented design.",
+              "fr": "Pense à la conception orientée objet traditionnelle."
+            },
+            {
+              "en": "The CSS Object Model.",
+              "fr": "The CSS Object Model."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does constructing the CSSOM do?",
+              "fr": "Que fait la construction du CSSOM ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Creates a DOM tree with `html` as the root.",
+              "fr": "Crée un arbre DOM avec `html` comme racine."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what CSS does.",
+              "fr": "Pense à ce que fait le CSS."
+            },
+            {
+              "en": "Dictates how elements should be styled.",
+              "fr": "Dicte comment les éléments doivent être stylés."
+            },
+            {
+              "en": "Fetches the HTML content of the page.",
+              "fr": "Récupère le contenu HTML de la page."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what CSS does.",
+              "fr": "Pense à ce que fait le CSS."
+            },
+            {
+              "en": "Paints the pixels to the screen.",
+              "fr": "Peint les pixels à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what CSS does.",
+              "fr": "Pense à ce que fait le CSS."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f70278179479d3eed390.md",
+      "id": "67d2f70278179479d3eed390",
+      "dashedName": "how-does-performance-impact-sustainability",
+      "title": {
+        "en": "How Does Performance Impact Sustainability?",
+        "fr": "Comment la performance impacte-t-elle la durabilité ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Improving web performance is crucial for delivering a fast and efficient user experience. But did you know that optimizing your website's performance doesn't just improve speed — it also helps the environment?",
+              "fr": "Améliorer la performance web est crucial pour offrir une expérience utilisateur rapide et efficace. Mais savais-tu qu'optimiser la performance de ton site n'améliore pas seulement la vitesse — cela aide aussi l'environnement ?"
+            },
+            {
+              "en": "Every time a page loads, energy is consumed. And when sites are inefficient, they use more resources, leading to higher carbon emissions.",
+              "fr": "Chaque fois qu'une page charge, de l'énergie est consommée. Et quand les sites sont inefficaces, ils utilisent plus de ressources, ce qui mène à plus d'émissions de carbone."
+            },
+            {
+              "en": "Let's break down how performance impacts sustainability and show you practical ways to optimize your code for a greener web.",
+              "fr": "Décortiquons comment la performance impacte la durabilité et voyons des façons pratiques d'optimiser ton code pour un web plus vert."
+            },
+            {
+              "en": "The internet accounts for around 2% of global carbon emissions — that's the same as the airline industry! Every byte transferred requires electricity, from data centers to user devices. Larger files and inefficient scripts mean more power consumption. A high-performance website isn't just faster, it also reduces unnecessary processing and energy use.",
+              "fr": "Internet représente environ 2 % des émissions mondiales de carbone — autant que l'industrie aérienne ! Chaque octet transféré consomme de l'électricité, des centres de données aux appareils des utilisateurs. Des fichiers plus lourds et des scripts inefficaces signifient plus de consommation d'énergie. Un site performant n'est pas seulement plus rapide : il réduit aussi le traitement et la consommation d'énergie inutiles."
+            },
+            {
+              "en": "Here's an example of inefficient JavaScript:",
+              "fr": "Voici un exemple de JavaScript inefficace :"
+            },
+            {
+              "en": "This script runs excessive console logs, wasting CPU cycles and energy.",
+              "fr": "Ce script exécute trop de console logs, gaspillant des cycles CPU et de l'énergie."
+            },
+            {
+              "en": "Now, let's optimize it:",
+              "fr": "Maintenant, optimisons-le :"
+            },
+            {
+              "en": "By removing unnecessary loops and using `async`/`await`, we lower processing time and energy consumption.",
+              "fr": "En retirant les boucles inutiles et en utilisant `async`/`await`, on réduit le temps de traitement et la consommation d'énergie."
+            },
+            {
+              "en": "Here are some practical optimization tips you can use in your future projects.",
+              "fr": "Voici quelques conseils d'optimisation pratiques que tu pourras utiliser dans tes futurs projets."
+            },
+            {
+              "en": "1. Minify Your Assets: Use tools like Terser or UglifyJS to shrink JavaScript and CSS files. Smaller files load faster and require less energy.",
+              "fr": "1. Minifie tes assets : utilise des outils comme Terser ou UglifyJS pour réduire les fichiers JavaScript et CSS. Des fichiers plus petits chargent plus vite et consomment moins d'énergie."
+            },
+            {
+              "en": "2. Optimize Images: Use next-gen formats like WebP instead of PNGs or JPEGs to reduce file size without quality loss.",
+              "fr": "2. Optimise les images : utilise des formats nouvelle génération comme WebP au lieu de PNG ou JPEG pour réduire la taille sans perte de qualité."
+            },
+            {
+              "en": "3. Reduce Network Requests: Each request adds overhead. Combine CSS and JavaScript files and use lazy loading to reduce load times.",
+              "fr": "3. Réduis les requêtes réseau : chaque requête ajoute du surcoût. Combine les fichiers CSS et JavaScript et utilise le lazy loading pour réduire les temps de chargement."
+            },
+            {
+              "en": "4. Use Efficient Algorithms: A poorly optimized loop can increase CPU usage. This is the same as writing inefficient JavaScript that we saw in the example previously.",
+              "fr": "4. Utilise des algorithmes efficaces : une boucle mal optimisée peut augmenter l'usage CPU. C'est la même chose que d'écrire du JavaScript inefficace, comme dans l'exemple précédent."
+            },
+            {
+              "en": "5. Leverage Caching & CDNs: Caching prevents repeated downloads, and CDNs deliver content closer to users, reducing transmission energy.",
+              "fr": "5. Tire parti du cache et des CDN : le cache évite les téléchargements répétés, et les CDN livrent le contenu plus près des utilisateurs, ce qui réduit l'énergie de transmission."
+            },
+            {
+              "en": "And now, what if you want to measure your impact and just how green your site is?",
+              "fr": "Et maintenant, et si tu veux mesurer ton impact et à quel point ton site est vert ?"
+            },
+            {
+              "en": "Use tools like Google Lighthouse to analyze performance and estimate energy savings. Or, for a deeper sustainability check, try the Website Carbon Calculator — as it estimates your page's environmental impact.",
+              "fr": "Utilise des outils comme Google Lighthouse pour analyser la performance et estimer les économies d'énergie. Ou, pour un contrôle de durabilité plus poussé, essaie le Website Carbon Calculator — il estime l'impact environnemental de ta page."
+            },
+            {
+              "en": "In conclusion, by understanding and implementing these performance fundamentals, developers can create web applications that are not only faster and more responsive but also more sustainable.",
+              "fr": "En conclusion, en comprenant et en appliquant ces fondamentaux de performance, les développeurs peuvent créer des applications web non seulement plus rapides et réactives, mais aussi plus durables."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is not a way to optimize your assets?",
+              "fr": "Laquelle de ces options n'est pas une façon d'optimiser tes assets ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Minify Your Assets.",
+              "fr": "Minifie tes assets."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what increases website performance, not aesthetics.",
+              "fr": "Pense à ce qui augmente la performance du site, pas l'esthétique."
+            },
+            {
+              "en": "Reduce Network Requests.",
+              "fr": "Réduis les requêtes réseau."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what increases website performance, not aesthetics.",
+              "fr": "Pense à ce qui augmente la performance du site, pas l'esthétique."
+            },
+            {
+              "en": "Use Light Mode.",
+              "fr": "Utilise le mode clair."
+            },
+            {
+              "en": "Leverage Caching & CDNs.",
+              "fr": "Tire parti du cache et des CDN."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what increases website performance, not aesthetics.",
+              "fr": "Pense à ce qui augmente la performance du site, pas l'esthétique."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What percentage of global carbon emissions does the internet account for?",
+              "fr": "Quel pourcentage des émissions mondiales de carbone Internet représente-t-il ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It is the same as the airline industry.",
+              "fr": "C'est le même pourcentage que l'industrie aérienne."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It is the same as the airline industry.",
+              "fr": "C'est le même pourcentage que l'industrie aérienne."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It is the same as the airline industry.",
+              "fr": "C'est le même pourcentage que l'industrie aérienne."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens every time a page loads?",
+              "fr": "Que se passe-t-il chaque fois qu'une page charge ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Energy is consumed.",
+              "fr": "De l'énergie est consommée."
+            },
+            {
+              "en": "Energy is released.",
+              "fr": "De l'énergie est libérée."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think what happens when you use more resources.",
+              "fr": "Pense à ce qui se passe quand tu utilises plus de ressources."
+            },
+            {
+              "en": "Energy is created.",
+              "fr": "De l'énergie est créée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think what happens when you use more resources.",
+              "fr": "Pense à ce qui se passe quand tu utilises plus de ressources."
+            },
+            {
+              "en": "Energy is drained.",
+              "fr": "De l'énergie est drainée."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think what happens when you use more resources.",
+              "fr": "Pense à ce qui se passe quand tu utilises plus de ressources."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f7183a537d7a4908a9ff.md",
+      "id": "67d2f7183a537d7a4908a9ff",
+      "dashedName": "what-are-some-ways-to-reduce-page-loading-times",
+      "title": {
+        "en": "What Are Some Ways to Reduce Page Loading Times?",
+        "fr": "Quelles sont quelques façons de réduire les temps de chargement ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Have you ever left a website because it took too long to load? Slow page loading can frustrate users and increase bounce rates. Today, we'll explore practical ways to reduce page loading times, ensuring your audience stays engaged.",
+              "fr": "As-tu déjà quitté un site parce qu'il mettait trop longtemps à charger ? Un chargement lent peut frustrer les utilisateurs et augmenter les taux de rebond. Aujourd'hui, on explorera des façons pratiques de réduire les temps de chargement, pour que ton audience reste engagée."
+            },
+            {
+              "en": "Number 1: optimize media assets. Large images and videos are common culprits for slow load times. By optimizing these assets, you can significantly speed up your site:",
+              "fr": "Numéro 1 : optimiser les médias. Les grandes images et vidéos sont souvent responsables des chargements lents. En optimisant ces assets, tu peux accélérer nettement ton site :"
+            },
+            {
+              "en": "- Compress Images: Use tools like TinyPNG to reduce image file sizes without compromising quality.",
+              "fr": "- Compresser les images : utilise des outils comme TinyPNG pour réduire la taille des fichiers images sans compromettre la qualité."
+            },
+            {
+              "en": "- Use Modern Formats: Implement formats like WebP for images and AV1 for videos to achieve better compression rates.",
+              "fr": "- Utiliser des formats modernes : implémente des formats comme WebP pour les images et AV1 pour les vidéos afin d'obtenir de meilleurs taux de compression."
+            },
+            {
+              "en": "- Lazy Loading: Defer loading off-screen images and videos until they're needed. In HTML, add the `loading=\"lazy\"` attribute to your media tags.",
+              "fr": "- Lazy loading : diffère le chargement des images et vidéos hors écran jusqu'à ce qu'elles soient nécessaires. En HTML, ajoute l'attribut `loading=\"lazy\"` à tes balises média."
+            },
+            {
+              "en": "Next, we have to minimize HTTP requests. Each file your website requests adds to the load time. Reducing the number of HTTP requests can lead to faster page loads. You can:",
+              "fr": "Ensuite, il faut minimiser les requêtes HTTP. Chaque fichier demandé par ton site ajoute au temps de chargement. Réduire le nombre de requêtes HTTP peut mener à des chargements plus rapides. Tu peux :"
+            },
+            {
+              "en": "- Combine Files: Merge CSS and JavaScript files to reduce the number of requests.",
+              "fr": "- Combiner les fichiers : fusionne les fichiers CSS et JavaScript pour réduire le nombre de requêtes."
+            },
+            {
+              "en": "- Use Inline Critical CSS: Place essential CSS directly in the HTML to speed up initial rendering.",
+              "fr": "- Utiliser du CSS critique en ligne : place le CSS essentiel directement dans le HTML pour accélérer le rendu initial."
+            },
+            {
+              "en": "- Use CSS Sprites: Combine multiple images into a single sprite sheet to minimize requests.",
+              "fr": "- Utiliser des CSS sprites : combine plusieurs images en une seule sprite sheet pour minimiser les requêtes."
+            },
+            {
+              "en": "And, of course, you can Leverage Browser Caching. Caching allows browsers to store parts of your website locally, reducing load times for returning visitors:",
+              "fr": "Et, bien sûr, tu peux tirer parti du cache navigateur. Le cache permet aux navigateurs de stocker localement des parties de ton site, ce qui réduit les temps de chargement pour les visiteurs qui reviennent :"
+            },
+            {
+              "en": "- Set Expiry Headers: Use the `Cache-Control` header to specify how long browsers should keep files.",
+              "fr": "- Définir des en-têtes d'expiration : utilise l'en-tête `Cache-Control` pour spécifier combien de temps les navigateurs doivent garder les fichiers."
+            },
+            {
+              "en": "- Version Assets: When updating files, change their names or use query strings to ensure browsers fetch the latest versions.",
+              "fr": "- Versionner les assets : lors de la mise à jour des fichiers, change leurs noms ou utilise des query strings pour que les navigateurs récupèrent les dernières versions."
+            },
+            {
+              "en": "You can do this along with minifying and Compressing files, which will reduce the size of your files can lead to quicker downloads:",
+              "fr": "Tu peux faire cela en plus de minifier et compresser les fichiers, ce qui réduira leur taille et mènera à des téléchargements plus rapides :"
+            },
+            {
+              "en": "- Minify CSS and JavaScript: Remove unnecessary whitespace and comments using tools like UglifyJS for JavaScript and cssnano for CSS.",
+              "fr": "- Minifier le CSS et le JavaScript : retire les espaces et commentaires inutiles avec des outils comme UglifyJS pour JavaScript et cssnano pour CSS."
+            },
+            {
+              "en": "- Enable Compression: Configure your server to use Gzip to reduce the size of transmitted files.",
+              "fr": "- Activer la compression : configure ton serveur pour utiliser Gzip afin de réduire la taille des fichiers transmis."
+            },
+            {
+              "en": "You can also optimize web fonts. Web fonts can enhance design but may also slow down your site if not handled properly:",
+              "fr": "Tu peux aussi optimiser les polices web. Les polices web peuvent enrichir le design mais aussi ralentir ton site si elles ne sont pas bien gérées :"
+            },
+            {
+              "en": "- Limit Font Variants: Only include the character sets and styles you need.",
+              "fr": "- Limiter les variantes de police : n'inclus que les jeux de caractères et styles dont tu as besoin."
+            },
+            {
+              "en": "- Use `font-display`: Control how fonts are displayed during loading by setting the `font-display` property in your CSS.",
+              "fr": "- Utiliser `font-display` : contrôle comment les polices s'affichent pendant le chargement en définissant la propriété `font-display` dans ton CSS."
+            },
+            {
+              "en": "So in conclusion, by implementing all these strategies, you can significantly reduce your page loading times, leading to a better user experience and improved site performance.",
+              "fr": "En conclusion, en appliquant toutes ces stratégies, tu peux nettement réduire les temps de chargement, ce qui mène à une meilleure expérience utilisateur et une meilleure performance du site."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you best optimize web fonts?",
+              "fr": "Comment optimiser au mieux les polices web ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Do not use the font color `red`.",
+              "fr": "Ne pas utiliser la couleur de police `red`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to limit font variants.",
+              "fr": "Pense à comment limiter les variantes de police."
+            },
+            {
+              "en": "Only include the character sets and styles you need.",
+              "fr": "N'inclure que les jeux de caractères et styles dont tu as besoin."
+            },
+            {
+              "en": "Only use titles.",
+              "fr": "N'utiliser que des titres."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to limit font variants.",
+              "fr": "Pense à comment limiter les variantes de police."
+            },
+            {
+              "en": "Only use paragraphs.",
+              "fr": "N'utiliser que des paragraphes."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to limit font variants.",
+              "fr": "Pense à comment limiter les variantes de police."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you set expiry headers?",
+              "fr": "Comment définis-tu des en-têtes d'expiration ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Use the Cache-Expiration header to specify how long the internet should keep files.",
+              "fr": "Utiliser l'en-tête Cache-Expiration pour spécifier combien de temps Internet doit garder les fichiers."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where files are viewed by you.",
+              "fr": "Pense à l'endroit où les fichiers sont consultés par toi."
+            },
+            {
+              "en": "Use the Cache-Control header to specify how long browsers should keep files.",
+              "fr": "Utiliser l'en-tête Cache-Control pour spécifier combien de temps les navigateurs doivent garder les fichiers."
+            },
+            {
+              "en": "Use the Cache-Control header to define how long a server should store files before serving new versions.",
+              "fr": "Utiliser l'en-tête Cache-Control pour définir combien de temps un serveur doit stocker les fichiers avant de servir de nouvelles versions."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where files are viewed by you.",
+              "fr": "Pense à l'endroit où les fichiers sont consultés par toi."
+            },
+            {
+              "en": "Use the Expires header to specify the exact expiration time of the file.",
+              "fr": "Utiliser l'en-tête Expires pour spécifier l'heure exacte d'expiration du fichier."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about where files are viewed by you.",
+              "fr": "Pense à l'endroit où les fichiers sont consultés par toi."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you ensure browsers fetch the latest versions of assets?",
+              "fr": "Comment t'assurer que les navigateurs récupèrent les dernières versions des assets ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "When updating files, change their names or use query strings.",
+              "fr": "Lors de la mise à jour des fichiers, change leurs noms ou utilise des query strings."
+            },
+            {
+              "en": "Keep refreshing the browser at least 10 times.",
+              "fr": "Continuer à rafraîchir le navigateur au moins 10 fois."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can change an asset so the browser thinks it is new.",
+              "fr": "Pense à comment tu peux changer un asset pour que le navigateur croie qu'il est nouveau."
+            },
+            {
+              "en": "Use browsers that have cute names.",
+              "fr": "Utiliser des navigateurs qui ont des noms mignons."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can change an asset so the browser thinks it is new.",
+              "fr": "Pense à comment tu peux changer un asset pour que le navigateur croie qu'il est nouveau."
+            },
+            {
+              "en": "Avoiding browser caching.",
+              "fr": "Éviter le cache navigateur."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can change an asset so the browser thinks it is new.",
+              "fr": "Pense à comment tu peux changer un asset pour que le navigateur croie qu'il est nouveau."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f738dcef5d7abfe4243a.md",
+      "id": "67d2f738dcef5d7abfe4243a",
+      "dashedName": "how-do-you-improve-time-to-usable",
+      "title": {
+        "en": "How Do You Improve \"Time to Usable\"?",
+        "fr": "Comment améliorer le « time to usable » ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Improving the \"time to usable\", or in other words the interval from when a user requests a page to when they can meaningfully interact with it, is crucial for enhancing user experience.",
+              "fr": "Améliorer le « time to usable », autrement dit l'intervalle entre la demande d'une page par l'utilisateur et le moment où il peut interagir utilement avec elle, est crucial pour améliorer l'expérience utilisateur."
+            },
+            {
+              "en": "Let's explore effective strategies to achieve a faster time to usable.",
+              "fr": "Explorons des stratégies efficaces pour obtenir un time to usable plus rapide."
+            },
+            {
+              "en": "Begin by focusing on the content that the user sees first. This means loading essential elements immediately and deferring non-critical components.",
+              "fr": "Commence par te concentrer sur le contenu que l'utilisateur voit en premier. Cela signifie charger immédiatement les éléments essentiels et différer les composants non critiques."
+            },
+            {
+              "en": "For example, you could try to implement lazy loading.",
+              "fr": "Par exemple, tu pourrais essayer d'implémenter le lazy loading."
+            },
+            {
+              "en": "We have already covered lazy loading, but here is an example of lazy load images as a refresher:",
+              "fr": "On a déjà couvert le lazy loading, mais voici un exemple de lazy load d'images en rappel :"
+            },
+            {
+              "en": "All you need to do is add the `loading=\"lazy\"` attribute to image tags. This defers the loading of images until they are needed, typically when they enter the user's viewport. By loading images and videos only when they enter the viewport, we are conserving bandwidth as well as causing the speed up of initial rendering.",
+              "fr": "Il te suffit d'ajouter l'attribut `loading=\"lazy\"` aux balises image. Cela diffère le chargement des images jusqu'à ce qu'elles soient nécessaires, typiquement quand elles entrent dans le viewport de l'utilisateur. En chargeant images et vidéos seulement quand elles entrent dans le viewport, on économise de la bande passante et on accélère le rendu initial."
+            },
+            {
+              "en": "Normally, a webpage loads all images at once, even those not visible on the screen. With lazy loading, images below the fold, or in other words off-screen, they are only loaded when the user scrolls down to them.",
+              "fr": "Normalement, une page charge toutes les images d'un coup, même celles qui ne sont pas visibles à l'écran. Avec le lazy loading, les images sous la ligne de flottaison, autrement dit hors écran, ne sont chargées que lorsque l'utilisateur défile jusqu'à elles."
+            },
+            {
+              "en": "And here is an example of lazy load iframes:",
+              "fr": "Et voici un exemple de lazy load d'iframes :"
+            },
+            {
+              "en": "You can apply the same attribute that you did before, but this time to iframes, and the same concept will apply.",
+              "fr": "Tu peux appliquer le même attribut qu'avant, mais cette fois aux iframes, et le même concept s'appliquera."
+            },
+            {
+              "en": "You can also use the `defer` attribute to delay non-critical JavaScript until after the initial page load. Here is an example of us doing just that:",
+              "fr": "Tu peux aussi utiliser l'attribut `defer` pour différer le JavaScript non critique jusqu'après le chargement initial de la page. Voici un exemple où on fait exactement cela :"
+            },
+            {
+              "en": "You could also consider minimizing render-blocking resources.",
+              "fr": "Tu pourrais aussi envisager de minimiser les ressources qui bloquent le rendu."
+            },
+            {
+              "en": "Render-blocking resources delay the page from becoming interactive.",
+              "fr": "Les ressources qui bloquent le rendu retardent le moment où la page devient interactive."
+            },
+            {
+              "en": "To avoid this, you could try loading CSS asynchronously. For non-critical CSS, use the `media` attribute to load stylesheets conditionally. Here is an example of us doing just that:",
+              "fr": "Pour l'éviter, tu pourrais essayer de charger le CSS de façon asynchrone. Pour le CSS non critique, utilise l'attribut `media` pour charger les feuilles de style conditionnellement. Voici un exemple où on fait exactement cela :"
+            },
+            {
+              "en": "By specifying media value as `print`, the `print.css` will only be loaded when the page is printed or previewed on screen. In this next example, by passing `min-width: 800px` as the value to the `media` attribute, we are saying we only want `desktop.css` to load for screens wider than 800px:",
+              "fr": "En spécifiant la valeur média `print`, le fichier `print.css` ne sera chargé que lorsque la page est imprimée ou prévisualisée à l'écran. Dans l'exemple suivant, en passant `min-width: 800px` comme valeur à l'attribut `media`, on dit qu'on ne veut charger `desktop.css` que pour les écrans plus larges que 800 px :"
+            },
+            {
+              "en": "This saves bandwidth by skipping unnecessary styles.",
+              "fr": "Cela économise de la bande passante en sautant les styles inutiles."
+            },
+            {
+              "en": "So, in conclusion, by implementing these strategies, you can significantly reduce the \"time to usable\" for your website, ensuring users can interact with your content promptly.",
+              "fr": "En conclusion, en appliquant ces stratégies, tu peux nettement réduire le « time to usable » de ton site, en t'assurant que les utilisateurs peuvent interagir rapidement avec ton contenu."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the best way to describe \"time to usable\"?",
+              "fr": "Quelle est la meilleure façon de décrire le « time to usable » ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The time intervals in the `setTimeout` method.",
+              "fr": "Les intervalles de temps dans la méthode `setTimeout`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting to use a web page.",
+              "fr": "Pense à un utilisateur qui attend pour utiliser une page web."
+            },
+            {
+              "en": "The time from when a user requests a page to when they can meaningfully interact with it.",
+              "fr": "Le temps entre la demande d'une page par l'utilisateur et le moment où il peut interagir utilement avec elle."
+            },
+            {
+              "en": "The amount of time it takes for the server to process a user's request and return a response.",
+              "fr": "Le temps qu'il faut au serveur pour traiter la requête d'un utilisateur et renvoyer une réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting to use a web page.",
+              "fr": "Pense à un utilisateur qui attend pour utiliser une page web."
+            },
+            {
+              "en": "The period during which a user can only view content but not interact with it.",
+              "fr": "La période pendant laquelle un utilisateur peut seulement voir le contenu mais pas interagir avec."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting to use a web page.",
+              "fr": "Pense à un utilisateur qui attend pour utiliser une page web."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these sentences is true?",
+              "fr": "Laquelle de ces phrases est vraie ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Normally, a webpage loads only images that are visible on the screen.",
+              "fr": "Normalement, une page charge uniquement les images visibles à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why we would need concepts such as lazy loading.",
+              "fr": "Pense à pourquoi on aurait besoin de concepts comme le lazy loading."
+            },
+            {
+              "en": "Normally, a webpage loads only images that are not visible on the screen.",
+              "fr": "Normalement, une page charge uniquement les images qui ne sont pas visibles à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why we would need concepts such as lazy loading.",
+              "fr": "Pense à pourquoi on aurait besoin de concepts comme le lazy loading."
+            },
+            {
+              "en": "Normally, a webpage loads some images, even those not visible on the screen.",
+              "fr": "Normalement, une page charge quelques images, même celles qui ne sont pas visibles à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why we would need concepts such as lazy loading.",
+              "fr": "Pense à pourquoi on aurait besoin de concepts comme le lazy loading."
+            },
+            {
+              "en": "Normally, a webpage loads all images at once, even those not visible on the screen.",
+              "fr": "Normalement, une page charge toutes les images d'un coup, même celles qui ne sont pas visibles à l'écran."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What do Render-blocking resources do?",
+              "fr": "Que font les ressources qui bloquent le rendu ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Render-blocking resources stop pages loading completely.",
+              "fr": "Les ressources qui bloquent le rendu empêchent les pages de charger complètement."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you cannot interact with websites sometimes.",
+              "fr": "Pense à pourquoi tu ne peux parfois pas interagir avec des sites."
+            },
+            {
+              "en": "Render-blocking resources can crash websites.",
+              "fr": "Les ressources qui bloquent le rendu peuvent faire planter des sites."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you cannot interact with websites sometimes.",
+              "fr": "Pense à pourquoi tu ne peux parfois pas interagir avec des sites."
+            },
+            {
+              "en": "Render-blocking resources delay the page from becoming interactive.",
+              "fr": "Les ressources qui bloquent le rendu retardent le moment où la page devient interactive."
+            },
+            {
+              "en": "Render-blocking resources can cause power outages.",
+              "fr": "Les ressources qui bloquent le rendu peuvent provoquer des coupures d'électricité."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why you cannot interact with websites sometimes.",
+              "fr": "Pense à pourquoi tu ne peux parfois pas interagir avec des sites."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f759154eac7b4d5cb1bf.md",
+      "id": "67d2f759154eac7b4d5cb1bf",
+      "dashedName": "how-to-improve-the-perceived-performance-of-features",
+      "title": {
+        "en": "How to Improve the Perceived Performance of Features?",
+        "fr": "Comment améliorer la performance perçue des fonctionnalités ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As we know, perceived performance isn't just about how fast a site actually is — it's about how fast it feels to users. So, for example, if you have ever used a website that felt slow, even though it wasn't? That's perceived performance — how fast a site feels to the user.",
+              "fr": "Comme on le sait, la performance perçue ne concerne pas seulement la vitesse réelle d'un site — c'est la vitesse à laquelle il se sent pour les utilisateurs. Par exemple, as-tu déjà utilisé un site qui semblait lent, même s'il ne l'était pas ? C'est la performance perçue — la vitesse à laquelle un site se sent pour l'utilisateur."
+            },
+            {
+              "en": "Small tweaks can make a huge difference in the user experience. Let's explore some practical ways to improve perceived performance!",
+              "fr": "De petits ajustements peuvent faire une énorme différence dans l'expérience utilisateur. Explorons quelques façons pratiques d'améliorer la performance perçue !"
+            },
+            {
+              "en": "Spinners can make users feel like they're waiting longer than they actually are. Instead, try skeleton screens — gray placeholders that mimic real content and gradually load in:",
+              "fr": "Les spinners peuvent faire sentir aux utilisateurs qu'ils attendent plus longtemps qu'en réalité. À la place, essaie les skeleton screens — des placeholders gris qui imitent le vrai contenu et se chargent progressivement :"
+            },
+            {
+              "en": "Users feel like the page is loading progressively, rather than waiting in the dark.",
+              "fr": "Les utilisateurs sentent que la page charge progressivement, plutôt que d'attendre dans le noir."
+            },
+            {
+              "en": "In addition to this, users shouldn't have to wait for everything to load before they can start interacting. Load important content first, then load the rest in the background. We looked at this previously with lazy loading:",
+              "fr": "En plus de cela, les utilisateurs ne devraient pas avoir à tout attendre avant de pouvoir commencer à interagir. Charge d'abord le contenu important, puis le reste en arrière-plan. On a déjà vu cela avec le lazy loading :"
+            },
+            {
+              "en": "This makes the page feel responsive, even if not everything has loaded yet.",
+              "fr": "Cela rend la page réactive, même si tout n'est pas encore chargé."
+            },
+            {
+              "en": "Now - what if your site could predict what the user will click next? With preloading, you can fetch the next page before they request it:",
+              "fr": "Maintenant — et si ton site pouvait prédire ce que l'utilisateur cliquera ensuite ? Avec le preloading, tu peux récupérer la page suivante avant qu'il ne la demande :"
+            },
+            {
+              "en": "This reduces perceived loading time to near zero when users navigate.",
+              "fr": "Cela réduit le temps de chargement perçu quasi à zéro quand les utilisateurs naviguent."
+            },
+            {
+              "en": "And finally, users don't like uncertainty. When they click a button, acknowledge their action instantly:",
+              "fr": "Et enfin, les utilisateurs n'aiment pas l'incertitude. Quand ils cliquent sur un bouton, accuse réception de leur action instantanément :"
+            },
+            {
+              "en": "This means that, even if there's a delay, the user feels like something is happening.",
+              "fr": "Cela signifie que, même s'il y a un délai, l'utilisateur sent que quelque chose se passe."
+            },
+            {
+              "en": "So, in conclusion, improving perceived performance isn't just about raw speed, it's about how speed feels to the user. Use skeleton screens, prioritize important content, preload smartly, and give instant feedback to make your site feel faster.",
+              "fr": "En conclusion, améliorer la performance perçue ne concerne pas seulement la vitesse brute : c'est la façon dont la vitesse se sent pour l'utilisateur. Utilise des skeleton screens, priorise le contenu important, précharge intelligemment, et donne un retour instantané pour que ton site se sente plus rapide."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the perceived performance?",
+              "fr": "Qu'est-ce que la performance perçue ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "How fast a site feels to the user.",
+              "fr": "La vitesse à laquelle un site se sent pour l'utilisateur."
+            },
+            {
+              "en": "How fast a page loads.",
+              "fr": "La vitesse à laquelle une page charge."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting for a web page to load.",
+              "fr": "Pense à un utilisateur qui attend qu'une page charge."
+            },
+            {
+              "en": "How slow a page loads.",
+              "fr": "La lenteur à laquelle une page charge."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting for a web page to load.",
+              "fr": "Pense à un utilisateur qui attend qu'une page charge."
+            },
+            {
+              "en": "How fast a users performance is.",
+              "fr": "La vitesse de performance d'un utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how a user is waiting for a web page to load.",
+              "fr": "Pense à un utilisateur qui attend qu'une page charge."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of preloading?",
+              "fr": "Lequel des éléments suivants est un exemple de preloading ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Fetching the next page before a user requests it.",
+              "fr": "Récupérer la page suivante avant qu'un utilisateur ne la demande."
+            },
+            {
+              "en": "Fetching a webpage's content after a user interacts with the page.",
+              "fr": "Récupérer le contenu d'une page après qu'un utilisateur a interagi avec la page."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about predicting what the user will click next.",
+              "fr": "Pense à prédire ce que l'utilisateur cliquera ensuite."
+            },
+            {
+              "en": "Displaying placeholder content while waiting for resources to load.",
+              "fr": "Afficher un contenu placeholder en attendant le chargement des ressources."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about predicting what the user will click next.",
+              "fr": "Pense à prédire ce que l'utilisateur cliquera ensuite."
+            },
+            {
+              "en": "Caching assets for offline use after the page has loaded.",
+              "fr": "Mettre en cache les assets pour une utilisation hors ligne après le chargement de la page."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about predicting what the user will click next.",
+              "fr": "Pense à prédire ce que l'utilisateur cliquera ensuite."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is an example of a skeleton screen?",
+              "fr": "Qu'est-ce qu'un exemple de skeleton screen ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A screen displaying an image of a skeleton.",
+              "fr": "Un écran affichant une image de squelette."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about users feeling like the page is loading progressively, rather than waiting in the dark.",
+              "fr": "Pense à des utilisateurs qui sentent que la page charge progressivement, plutôt que d'attendre dans le noir."
+            },
+            {
+              "en": "The bare bones of a web page.",
+              "fr": "Les os d'une page web."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about users feeling like the page is loading progressively, rather than waiting in the dark.",
+              "fr": "Pense à des utilisateurs qui sentent que la page charge progressivement, plutôt que d'attendre dans le noir."
+            },
+            {
+              "en": "A gray placeholder that mimics real content and gradually loads in.",
+              "fr": "Un placeholder gris qui imite le vrai contenu et se charge progressivement."
+            },
+            {
+              "en": "A loading screen that shows simple shapes or text as the page content loads.",
+              "fr": "Un écran de chargement qui montre des formes simples ou du texte pendant que le contenu de la page charge."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about users feeling like the page is loading progressively, rather than waiting in the dark.",
+              "fr": "Pense à des utilisateurs qui sentent que la page charge progressivement, plutôt que d'attendre dans le noir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f778a856c37bd31c5022.md",
+      "id": "67d2f778a856c37bd31c5022",
+      "dashedName": "what-are-some-key-metrics-for-measuring-performance",
+      "title": {
+        "en": "What Are Some Key Metrics for Measuring Performance?",
+        "fr": "Quelles sont quelques métriques clés pour mesurer la performance ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "To measure and improve web performance, we use key performance metrics like First Contentful Paint (or FCP), Speed Index, Total Blocking Time (or TBT), Bounce Rate, and Unique Users. Let's look at all of these metrics individually.",
+              "fr": "Pour mesurer et améliorer la performance web, on utilise des métriques clés comme First Contentful Paint (ou FCP), Speed Index, Total Blocking Time (ou TBT), le taux de rebond et les utilisateurs uniques. Regardons chacune de ces métriques individuellement."
+            },
+            {
+              "en": "First Contentful Paint, or FCP. This measures how quickly the first piece of content, like a text or image, appears on the screen. A good FCP is regarded as a time below 1.8 seconds, and a poor FCP is usually above 3 seconds. You can check your FCP using Chrome DevTools like this:",
+              "fr": "First Contentful Paint, ou FCP. Cela mesure la vitesse à laquelle le premier morceau de contenu, comme un texte ou une image, apparaît à l'écran. Un bon FCP est en dessous de 1,8 seconde, et un mauvais FCP est généralement au-dessus de 3 secondes. Tu peux vérifier ton FCP avec Chrome DevTools comme ceci :"
+            },
+            {
+              "en": "Step 1: Open Chrome DevTools",
+              "fr": "Étape 1 : Ouvrir Chrome DevTools"
+            },
+            {
+              "en": "- Open Google Chrome.",
+              "fr": "- Ouvre Google Chrome."
+            },
+            {
+              "en": "- Go to the webpage you want to test.",
+              "fr": "- Va sur la page que tu veux tester."
+            },
+            {
+              "en": "- Press \"F12\" or Right-click and \"Inspect\".",
+              "fr": "- Appuie sur « F12 » ou fais un clic droit puis « Inspecter »."
+            },
+            {
+              "en": "Step 2: Find and click the \"Lighthouse\" tab in the DevTools.",
+              "fr": "Étape 2 : Trouve et clique sur l'onglet « Lighthouse » dans DevTools."
+            },
+            {
+              "en": "Step 3: Click the \"Analyze page load\" button and wait for the analyzation to finish.",
+              "fr": "Étape 3 : Clique sur le bouton « Analyze page load » et attends que l'analyse se termine."
+            },
+            {
+              "en": "Now we can analyze the results. We do this by scrolling down to the \"Metrics\" section and looking for the \"First Contentful Paint\" marker. We can see the exact time in milliseconds or seconds.",
+              "fr": "On peut maintenant analyser les résultats. On le fait en descendant jusqu'à la section « Metrics » et en cherchant le marqueur « First Contentful Paint ». On peut voir le temps exact en millisecondes ou en secondes."
+            },
+            {
+              "en": "FCP and Interaction to Next Paint (or INP), that we looked at previously, are both performance metrics, but they measure different aspects of user experience. It's important not to get them mixed up.",
+              "fr": "Le FCP et l'Interaction to Next Paint (ou INP), qu'on a vus précédemment, sont tous deux des métriques de performance, mais ils mesurent des aspects différents de l'expérience utilisateur. Il est important de ne pas les confondre."
+            },
+            {
+              "en": "As a reminder, FCP is about how fast users see content after loading, and INP is about how fast users see feedback after clicking or typing.",
+              "fr": "Pour rappel, le FCP concerne la vitesse à laquelle les utilisateurs voient du contenu après le chargement, et l'INP concerne la vitesse à laquelle les utilisateurs voient un retour après un clic ou une saisie."
+            },
+            {
+              "en": "Next we have the Speed Index.",
+              "fr": "Ensuite, on a le Speed Index."
+            },
+            {
+              "en": "Speed Index measures how quickly visible parts of the page are painted. Lower scores mean better performance! You can check your Speed Index in the Lighthouse Reports.",
+              "fr": "Le Speed Index mesure la vitesse à laquelle les parties visibles de la page sont peintes. Des scores plus bas signifient une meilleure performance ! Tu peux vérifier ton Speed Index dans les rapports Lighthouse."
+            },
+            {
+              "en": "We also have Total Blocking Time or TBT. This shows how long the main thread is blocked by heavy JavaScript tasks. If TBT is high, users experience laggy interactions. To improve TBT, break up long tasks and defer non-essential scripts.",
+              "fr": "On a aussi le Total Blocking Time, ou TBT. Cela montre combien de temps le thread principal est bloqué par de lourdes tâches JavaScript. Si le TBT est élevé, les utilisateurs vivent des interactions lentes. Pour améliorer le TBT, découpe les longues tâches et diffère les scripts non essentiels."
+            },
+            {
+              "en": "Next we have the Bounce Rate. This is the percentage of visitors who leave without interacting. If your site has high bounce rates, it might be because your page is too slow.",
+              "fr": "Ensuite, on a le taux de rebond. C'est le pourcentage de visiteurs qui partent sans interagir. Si ton site a un taux de rebond élevé, c'est peut-être parce que ta page est trop lente."
+            },
+            {
+              "en": "And finally we have unique users. This metric tracks how many individual visitors come to your site. To view the bounce rate and unique users, you can use Google Analytics. It will allow you to monitor these metrics and improve engagement.",
+              "fr": "Et enfin, on a les utilisateurs uniques. Cette métrique suit le nombre de visiteurs individuels sur ton site. Pour voir le taux de rebond et les utilisateurs uniques, tu peux utiliser Google Analytics. Cela te permettra de suivre ces métriques et d'améliorer l'engagement."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does First Contentful Paint (FCP) measure?",
+              "fr": "Que mesure le First Contentful Paint (FCP) ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "How quickly the entire page loads.",
+              "fr": "La vitesse à laquelle la page entière charge."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when a user first sees something on the screen.",
+              "fr": "Pense au moment où un utilisateur voit quelque chose à l'écran pour la première fois."
+            },
+            {
+              "en": "When the first visible content appears.",
+              "fr": "Quand le premier contenu visible apparaît."
+            },
+            {
+              "en": "How many users visit the page.",
+              "fr": "Combien d'utilisateurs visitent la page."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when a user first sees something on the screen.",
+              "fr": "Pense au moment où un utilisateur voit quelque chose à l'écran pour la première fois."
+            },
+            {
+              "en": "The total time a page takes to load.",
+              "fr": "Le temps total qu'une page met à charger."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when a user first sees something on the screen.",
+              "fr": "Pense au moment où un utilisateur voit quelque chose à l'écran pour la première fois."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which metric tracks how quickly a page visually loads?",
+              "fr": "Quelle métrique suit la vitesse à laquelle une page se charge visuellement ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Bounce Rate.",
+              "fr": "Bounce Rate."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It measures how fast content appears, not just how many visitors you get.",
+              "fr": "Elle mesure la vitesse à laquelle le contenu apparaît, pas seulement le nombre de visiteurs."
+            },
+            {
+              "en": "Total Blocking Time.",
+              "fr": "Total Blocking Time."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It measures how fast content appears, not just how many visitors you get.",
+              "fr": "Elle mesure la vitesse à laquelle le contenu apparaît, pas seulement le nombre de visiteurs."
+            },
+            {
+              "en": "Speed Index.",
+              "fr": "Speed Index."
+            },
+            {
+              "en": "Unique Users.",
+              "fr": "Unique Users."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It measures how fast content appears, not just how many visitors you get.",
+              "fr": "Elle mesure la vitesse à laquelle le contenu apparaît, pas seulement le nombre de visiteurs."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What can cause a high Total Blocking Time (TBT)?",
+              "fr": "Qu'est-ce qui peut causer un Total Blocking Time (TBT) élevé ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Excessive DOM manipulation causing layout recalculations.",
+              "fr": "Une manipulation excessive du DOM provoquant des recalculs de layout."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what slows down user interactions.",
+              "fr": "Pense à ce qui ralentit les interactions utilisateur."
+            },
+            {
+              "en": "Too many large images slowing down the page load.",
+              "fr": "Trop de grandes images qui ralentissent le chargement de la page."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what slows down user interactions.",
+              "fr": "Pense à ce qui ralentit les interactions utilisateur."
+            },
+            {
+              "en": "Long JavaScript tasks blocking the main thread.",
+              "fr": "De longues tâches JavaScript qui bloquent le thread principal."
+            },
+            {
+              "en": "Using a simple CSS file with multiple selectors and high specificity.",
+              "fr": "Utiliser un fichier CSS simple avec plusieurs sélecteurs et une haute spécificité."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what slows down user interactions.",
+              "fr": "Pense à ce qui ralentit les interactions utilisateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f7a69809807c59a44002.md",
+      "id": "67d2f7a69809807c59a44002",
+      "dashedName": "what-are-some-common-performance-measurement-tools",
+      "title": {
+        "en": "What Are Some Common Performance Measurement Tools?",
+        "fr": "Quels sont quelques outils courants de mesure de performance ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "If you want to make your website faster and more responsive, you need the right tools to measure and optimize performance. Let's explore some common performance measurement tools and how they help.",
+              "fr": "Si tu veux rendre ton site plus rapide et plus réactif, tu as besoin des bons outils pour mesurer et optimiser la performance. Explorons quelques outils courants et comment ils aident."
+            },
+            {
+              "en": "First up, we have Chrome DevTools.",
+              "fr": "Pour commencer, on a Chrome DevTools."
+            },
+            {
+              "en": "Chrome DevTools is a built-in tool inside Google Chrome that lets you analyze and debug performance in real-time. DevTools will show loading times, CPU usage, and render delays. It's especially useful for measuring First Contentful Paint, or FCP, which we know by now, is how fast a user sees the first visible content. If your website feels slow, DevTools will help you spot the bottlenecks.",
+              "fr": "Chrome DevTools est un outil intégré à Google Chrome qui te permet d'analyser et de déboguer la performance en temps réel. DevTools montre les temps de chargement, l'usage CPU et les délais de rendu. C'est particulièrement utile pour mesurer le First Contentful Paint, ou FCP, qui est, on le sait maintenant, la vitesse à laquelle un utilisateur voit le premier contenu visible. Si ton site semble lent, DevTools t'aidera à repérer les goulots d'étranglement."
+            },
+            {
+              "en": "Next up, Lighthouse.",
+              "fr": "Ensuite, Lighthouse."
+            },
+            {
+              "en": "Lighthouse is an automated tool that checks performance, SEO, and accessibility. To use it, simply open Chrome DevTools and go to the \"Lighthouse\" tab. Next, click \"Analyze page load\" and it will give you a score on how fast and optimized your site is, as well as provide recommendations to improve it. If you want a quick performance audit, Lighthouse is your go-to tool.",
+              "fr": "Lighthouse est un outil automatisé qui vérifie la performance, le SEO et l'accessibilité. Pour l'utiliser, ouvre simplement Chrome DevTools et va dans l'onglet « Lighthouse ». Ensuite, clique sur « Analyze page load » et il te donnera un score sur la vitesse et l'optimisation de ton site, ainsi que des recommandations pour l'améliorer. Si tu veux un audit de performance rapide, Lighthouse est ton outil de référence."
+            },
+            {
+              "en": "Now, let's talk about WebPageTest.",
+              "fr": "Maintenant, parlons de WebPageTest."
+            },
+            {
+              "en": "WebPageTest lets you test how your site loads from different locations and devices. All you have to do is visit WebPageTest.org, enter your website URL, choose a test location and browser and click \"Start Test\". It gives a detailed breakdown of your site's Speed Index, Total Blocking Time, and other key performance metrics. If you want to know how real users experience your site globally, WebPageTest is the tool for that.",
+              "fr": "WebPageTest te permet de tester le chargement de ton site depuis différents lieux et appareils. Il te suffit d'aller sur WebPageTest.org, d'entrer l'URL de ton site, de choisir un lieu de test et un navigateur, puis de cliquer sur « Start Test ». Il donne une analyse détaillée du Speed Index, du Total Blocking Time et d'autres métriques clés. Si tu veux savoir comment de vrais utilisateurs vivent ton site dans le monde, WebPageTest est l'outil adapté."
+            },
+            {
+              "en": "Another great tool is Google PageSpeed Insights.",
+              "fr": "Un autre excellent outil est Google PageSpeed Insights."
+            },
+            {
+              "en": "This tool analyzes your website and suggests quick improvements for both mobile and desktop. Just go to PageSpeed Insights, enter your URL, and click \"Analyze\". It will tell you what's slowing your site down and give specific recommendations — like optimizing images, removing render-blocking scripts, and reducing server response times. PageSpeed Insights is a fast and easy way to check how Google sees your site's performance.",
+              "fr": "Cet outil analyse ton site et suggère des améliorations rapides pour mobile et desktop. Va simplement sur PageSpeed Insights, entre ton URL, et clique sur « Analyze ». Il te dira ce qui ralentit ton site et donnera des recommandations précises — comme optimiser les images, retirer les scripts qui bloquent le rendu, et réduire les temps de réponse serveur. PageSpeed Insights est un moyen rapide et simple de voir comment Google perçoit la performance de ton site."
+            },
+            {
+              "en": "Lastly, let's talk about Real User Monitoring, or RUM tools. Unlike lab tests, RUM tools track actual user behavior, showing how real visitors experience your site. Popular RUM tools include Google Analytics, which tracks page load times and bounce rates. And New Relic or Datadog, which Monitors real-time performance issues. If you want data from actual users, RUM tools are essential.",
+              "fr": "Enfin, parlons du Real User Monitoring, ou outils RUM. Contrairement aux tests en labo, les outils RUM suivent le comportement réel des utilisateurs, en montrant comment de vrais visiteurs vivent ton site. Parmi les outils RUM populaires : Google Analytics, qui suit les temps de chargement et les taux de rebond. Et New Relic ou Datadog, qui surveillent les problèmes de performance en temps réel. Si tu veux des données de vrais utilisateurs, les outils RUM sont essentiels."
+            },
+            {
+              "en": "Each tool has different strengths, so use a combination to get the best insights. Start by testing with Chrome DevTools or Lighthouse, then dive deeper with WebPageTest and RUM tools.",
+              "fr": "Chaque outil a des forces différentes, donc utilise une combinaison pour obtenir les meilleurs insights. Commence par tester avec Chrome DevTools ou Lighthouse, puis approfondis avec WebPageTest et les outils RUM."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is Lighthouse used for?",
+              "fr": "À quoi sert Lighthouse ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Running automated performance audits.",
+              "fr": "Exécuter des audits de performance automatisés."
+            },
+            {
+              "en": "Measuring real user behavior.",
+              "fr": "Mesurer le comportement réel des utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a tool that scores speed, accessibility, and SEO.",
+              "fr": "Pense à un outil qui note la vitesse, l'accessibilité et le SEO."
+            },
+            {
+              "en": "Checking DNS settings.",
+              "fr": "Vérifier les paramètres DNS."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a tool that scores speed, accessibility, and SEO.",
+              "fr": "Pense à un outil qui note la vitesse, l'accessibilité et le SEO."
+            },
+            {
+              "en": "Monitoring server logs.",
+              "fr": "Surveiller les logs serveur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a tool that scores speed, accessibility, and SEO.",
+              "fr": "Pense à un outil qui note la vitesse, l'accessibilité et le SEO."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which tool measures real user experience instead of lab tests?",
+              "fr": "Quel outil mesure l'expérience utilisateur réelle plutôt que des tests en labo ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Google Lighthouse",
+              "fr": "Google Lighthouse"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools like Google Analytics and New Relic.",
+              "fr": "Pense à des outils comme Google Analytics et New Relic."
+            },
+            {
+              "en": "Chrome DevTools",
+              "fr": "Chrome DevTools"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools like Google Analytics and New Relic.",
+              "fr": "Pense à des outils comme Google Analytics et New Relic."
+            },
+            {
+              "en": "RUM (Real User Monitoring) Tools",
+              "fr": "Outils RUM (Real User Monitoring)"
+            },
+            {
+              "en": "WebPageTest",
+              "fr": "WebPageTest"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about tools like Google Analytics and New Relic.",
+              "fr": "Pense à des outils comme Google Analytics et New Relic."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does WebPageTest allow you to do?",
+              "fr": "Que te permet de faire WebPageTest ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Test from different locations and devices.",
+              "fr": "Tester depuis différents lieux et appareils."
+            },
+            {
+              "en": "Only analyze server logs.",
+              "fr": "Analyser uniquement les logs serveur."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about testing how a website loads in different regions.",
+              "fr": "Pense à tester comment un site charge dans différentes régions."
+            },
+            {
+              "en": "Edit a webpage's code directly.",
+              "fr": "Éditer le code d'une page directement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about testing how a website loads in different regions.",
+              "fr": "Pense à tester comment un site charge dans différentes régions."
+            },
+            {
+              "en": "Monitor social media traffic.",
+              "fr": "Surveiller le trafic des réseaux sociaux."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about testing how a website loads in different regions.",
+              "fr": "Pense à tester comment un site charge dans différentes régions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f7cf63fafe7d20270498.md",
+      "id": "67d2f7cf63fafe7d20270498",
+      "dashedName": "how-can-you-use-performance-web-apis-to-create-your-own-performance-measurement-tools",
+      "title": {
+        "en": "How Can You Use Performance Web APIs to Create Your Own Performance Measurement Tools?",
+        "fr": "Comment utiliser les Performance Web APIs pour créer tes propres outils de mesure de performance ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "While tools like Lighthouse and Chrome DevTools are great, sometimes you need custom insights tailored to your site.",
+              "fr": "Même si des outils comme Lighthouse et Chrome DevTools sont excellents, parfois tu as besoin d'insights personnalisés adaptés à ton site."
+            },
+            {
+              "en": "That's where Performance Web APIs come in!",
+              "fr": "C'est là qu'interviennent les Performance Web APIs !"
+            },
+            {
+              "en": "In this lesson, we'll break down how to use three key Web APIs to measure and analyze your website's speed.",
+              "fr": "Dans cette leçon, on découpera comment utiliser trois Web APIs clés pour mesurer et analyser la vitesse de ton site."
+            },
+            {
+              "en": "But first, what are Performance Web APIs?",
+              "fr": "Mais d'abord, que sont les Performance Web APIs ?"
+            },
+            {
+              "en": "Performance Web APIs let developers track how efficiently a webpage loads and responds, directly from code. These APIs allow you to measure page load times, track rendering and interaction delays and analyze JavaScript execution time.",
+              "fr": "Les Performance Web APIs permettent aux développeurs de suivre dans le code l'efficacité du chargement et de la réactivité d'une page. Ces APIs te permettent de mesurer les temps de chargement, de suivre les délais de rendu et d'interaction, et d'analyser le temps d'exécution JavaScript."
+            },
+            {
+              "en": "With these APIs, you can build your own performance monitoring tools without relying on third-party software!",
+              "fr": "Avec ces APIs, tu peux construire tes propres outils de suivi de performance sans dépendre de logiciels tiers !"
+            },
+            {
+              "en": "Let's explore three powerful Web APIs you can use today.",
+              "fr": "Explorons trois Web APIs puissantes que tu peux utiliser dès aujourd'hui."
+            },
+            {
+              "en": "First up, `performance.now()`.",
+              "fr": "Pour commencer, `performance.now()`."
+            },
+            {
+              "en": "This API gives you high-precision timestamps (in milliseconds) to measure how long different parts of your site take to load.",
+              "fr": "Cette API te donne des horodatages haute précision (en millisecondes) pour mesurer combien de temps différentes parties de ton site mettent à charger."
+            },
+            {
+              "en": "Let's say you want to measure how fast a function runs:",
+              "fr": "Disons que tu veux mesurer la vitesse d'exécution d'une fonction :"
+            },
+            {
+              "en": "This is more accurate than using `Date.now()` because it measures time in milliseconds with microsecond precision, avoiding clock drift issues. You can use it to track script execution time, event response delays, and animation performance.",
+              "fr": "C'est plus précis que d'utiliser `Date.now()` car elle mesure le temps en millisecondes avec une précision à la microseconde, en évitant les problèmes de dérive d'horloge. Tu peux l'utiliser pour suivre le temps d'exécution des scripts, les délais de réponse aux événements, et la performance des animations."
+            },
+            {
+              "en": "Next, the Performance Timing API.",
+              "fr": "Ensuite, la Performance Timing API."
+            },
+            {
+              "en": "This API gives you a breakdown on every single stage of page loading, from DNS lookup to `DOMContentLoaded`.",
+              "fr": "Cette API te donne une décomposition de chaque étape du chargement de page, de la résolution DNS à `DOMContentLoaded`."
+            },
+            {
+              "en": "Want to measure how long your page takes to fully load?",
+              "fr": "Tu veux mesurer combien de temps ta page met à charger entièrement ?"
+            },
+            {
+              "en": "Key metrics you can track with this API are DNS lookup time - or in other words the connection speed, Time to First Byte (TTFB) - or server response speed, and  `DOMContentLoaded` - or in other words, when the page is ready for interaction.",
+              "fr": "Les métriques clés que tu peux suivre avec cette API sont le temps de résolution DNS — autrement dit la vitesse de connexion, le Time to First Byte (TTFB) — autrement dit la vitesse de réponse serveur, et `DOMContentLoaded` — autrement dit quand la page est prête pour l'interaction."
+            },
+            {
+              "en": "If your page load times are slow, this API pinpoints exactly where the delay happens!",
+              "fr": "Si les temps de chargement de ta page sont lents, cette API pinpointe exactement où se trouve le délai !"
+            },
+            {
+              "en": "And finally, let's talk about `PerformanceObserver`.",
+              "fr": "Et enfin, parlons de `PerformanceObserver`."
+            },
+            {
+              "en": "This API listens for performance events such as layout shifts, long tasks, and user interactions.",
+              "fr": "Cette API écoute les événements de performance comme les layout shifts, les longues tâches et les interactions utilisateur."
+            },
+            {
+              "en": "Want to monitor long-running JavaScript tasks?",
+              "fr": "Tu veux surveiller les longues tâches JavaScript ?"
+            },
+            {
+              "en": "And what can this API track? Well, it can track long tasks - or in other words, JavaScript that blocks rendering, layout shifts to detect UI jank, and First Input Delay (FID) - or how fast a page responds to user input.",
+              "fr": "Et que peut suivre cette API ? Eh bien, elle peut suivre les longues tâches — autrement dit le JavaScript qui bloque le rendu, les layout shifts pour détecter le jank UI, et le First Input Delay (FID) — autrement dit la vitesse à laquelle une page répond à une saisie utilisateur."
+            },
+            {
+              "en": "If you want real-time performance tracking, this API is a game-changer.",
+              "fr": "Si tu veux un suivi de performance en temps réel, cette API change la donne."
+            },
+            {
+              "en": "So, which API should you use? Here's a quick comparison:",
+              "fr": "Alors, quelle API utiliser ? Voici une comparaison rapide :"
+            },
+            {
+              "en": "| Performance API        | Best For                                           |\n| :--------------------- | :------------------------------------------------- |\n| `performance.now()`    | Precise timing of functions and scripts            |\n| Performance Timing API | Measuring full page load performance               |\n| Performance Observer   | Real-time monitoring of interactions and rendering |",
+              "fr": "| Performance API        | Best For                                           |\n| :--------------------- | :------------------------------------------------- |\n| `performance.now()`    | Precise timing of functions and scripts            |\n| Performance Timing API | Measuring full page load performance               |\n| Performance Observer   | Real-time monitoring of interactions and rendering |"
+            },
+            {
+              "en": "By combining these APIs, you can build your own performance measurement tools and track exactly what matters for your site most.",
+              "fr": "En combinant ces APIs, tu peux construire tes propres outils de mesure de performance et suivre exactement ce qui compte le plus pour ton site."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main advantage of using `performance.now()` over `Date.now()`?",
+              "fr": "Quel est le principal avantage d'utiliser `performance.now()` plutôt que `Date.now()` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It's more accurate and measures time in milliseconds with microsecond precision.",
+              "fr": "C'est plus précis et mesure le temps en millisecondes avec une précision à la microseconde."
+            },
+            {
+              "en": "It works only on mobile devices and is not supported on desktops.",
+              "fr": "Cela ne fonctionne que sur mobile et n'est pas supporté sur desktop."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why precision matters when measuring speed.",
+              "fr": "Pense à pourquoi la précision compte quand on mesure la vitesse."
+            },
+            {
+              "en": "It measures system memory usage, including the browser's memory footprint.",
+              "fr": "Elle mesure l'usage mémoire du système, y compris l'empreinte mémoire du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why precision matters when measuring speed.",
+              "fr": "Pense à pourquoi la précision compte quand on mesure la vitesse."
+            },
+            {
+              "en": "It helps with CSS animations.",
+              "fr": "Elle aide avec les animations CSS."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about why precision matters when measuring speed.",
+              "fr": "Pense à pourquoi la précision compte quand on mesure la vitesse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which API can track long JavaScript tasks that slow down your site?",
+              "fr": "Quelle API peut suivre les longues tâches JavaScript qui ralentissent ton site ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Performance Timing API",
+              "fr": "Performance Timing API"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that listens for performance events in real-time.",
+              "fr": "Pense à une API qui écoute les événements de performance en temps réel."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that listens for performance events in real-time.",
+              "fr": "Pense à une API qui écoute les événements de performance en temps réel."
+            },
+            {
+              "en": "Performance Observer",
+              "fr": "Performance Observer"
+            },
+            {
+              "en": "PageSpeed Insights",
+              "fr": "PageSpeed Insights"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that listens for performance events in real-time.",
+              "fr": "Pense à une API qui écoute les événements de performance en temps réel."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the Performance Timing API help measure?",
+              "fr": "Que aide à mesurer la Performance Timing API ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Individual JavaScript function execution time.",
+              "fr": "Le temps d'exécution de fonctions JavaScript individuelles."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that tracks every stage of page loading.",
+              "fr": "Pense à une API qui suit chaque étape du chargement de page."
+            },
+            {
+              "en": "Full page load performance, including DNS lookup and TTFB.",
+              "fr": "La performance de chargement complète de la page, y compris la résolution DNS et le TTFB."
+            },
+            {
+              "en": "User interactions like button clicks.",
+              "fr": "Les interactions utilisateur comme les clics sur des boutons."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that tracks every stage of page loading.",
+              "fr": "Pense à une API qui suit chaque étape du chargement de page."
+            },
+            {
+              "en": "The number of images on a webpage.",
+              "fr": "Le nombre d'images sur une page web."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about an API that tracks every stage of page loading.",
+              "fr": "Pense à une API qui suit chaque étape du chargement de page."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f7e9d895bf7dcef00408.md",
+      "id": "67d2f7e9d895bf7dcef00408",
+      "dashedName": "what-are-some-techniques-for-improving-css-performance",
+      "title": {
+        "en": "What Are Some Techniques for Improving CSS Performance?",
+        "fr": "Quelles sont quelques techniques pour améliorer la performance CSS ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Every project is unique and you should carefully consider which ones of these techniques will be most helpful for your web application.",
+              "fr": "Chaque projet est unique et tu devrais soigneusement considérer lesquelles de ces techniques seront les plus utiles pour ton application web."
+            },
+            {
+              "en": "First, since all styles are parsed, you should remove any unnecessary styles from your CSS stylesheets.",
+              "fr": "D'abord, comme tous les styles sont parsés, tu devrais retirer tout style inutile de tes feuilles de style CSS."
+            },
+            {
+              "en": "You should also split your CSS styles into multiple files. This way, if a file is not required to render a specific web page, it will not be loaded and it won't block the rendering process.",
+              "fr": "Tu devrais aussi découper tes styles CSS en plusieurs fichiers. Ainsi, si un fichier n'est pas requis pour rendre une page spécifique, il ne sera pas chargé et ne bloquera pas le processus de rendu."
+            },
+            {
+              "en": "By default, the browser assumes that all stylesheets should block the rendering process. But you can tell the browser when a stylesheet should be loaded by using the `media` attribute and a media query.",
+              "fr": "Par défaut, le navigateur suppose que toutes les feuilles de style doivent bloquer le rendu. Mais tu peux lui dire quand une feuille de style doit être chargée en utilisant l'attribut `media` et une media query."
+            },
+            {
+              "en": "In this example, the `print.css` stylesheet will only be applied when the document is being printed because it has the `media` attribute with the value `print`:",
+              "fr": "Dans cet exemple, la feuille de style `print.css` ne sera appliquée que lorsque le document est imprimé, car elle a l'attribut `media` avec la valeur `print` :"
+            },
+            {
+              "en": "You can also minify your CSS files automatically to reduce their size during the build process and compress these files in the server where you host your web application.",
+              "fr": "Tu peux aussi minifier automatiquement tes fichiers CSS pour réduire leur taille pendant le build, et compresser ces fichiers sur le serveur où tu héberges ton application web."
+            },
+            {
+              "en": "Try to keep your CSS selectors as simple as possible and don't try to select more elements than necessary.",
+              "fr": "Essaie de garder tes sélecteurs CSS aussi simples que possible et ne sélectionne pas plus d'éléments que nécessaire."
+            },
+            {
+              "en": "Take advantage of the cascading nature of CSS whenever possible. Some styles will be inherited.",
+              "fr": "Profite de la nature en cascade du CSS dès que possible. Certains styles seront hérités."
+            },
+            {
+              "en": "Preloading resources with `rel=\"preload\"` is another important technique. Critical assets should be loaded first.",
+              "fr": "Précharger les ressources avec `rel=\"preload\"` est une autre technique importante. Les assets critiques devraient être chargés en premier."
+            },
+            {
+              "en": "Remember that CSS animations can have an impact on performance.",
+              "fr": "Souviens-toi que les animations CSS peuvent avoir un impact sur la performance."
+            },
+            {
+              "en": "Animating certain CSS properties, such as dimensions, position, and layout, triggers a process called \"reflow,\" during which the browser recalculates the position and geometry of certain elements on the page. This requires a repaint, which is computationally expensive.",
+              "fr": "Animer certaines propriétés CSS, comme les dimensions, la position et la mise en page, déclenche un processus appelé « reflow », pendant lequel le navigateur recalcule la position et la géométrie de certains éléments. Cela nécessite un repaint, coûteux en calcul."
+            },
+            {
+              "en": "Therefore, it's recommended to reduce the number of CSS animations as much as possible or at least give the user an option to toggle them on or off.",
+              "fr": "Il est donc recommandé de réduire le nombre d'animations CSS autant que possible, ou au moins de laisser l'utilisateur les activer ou les désactiver."
+            },
+            {
+              "en": "And even though fonts can enhance the visual presentation of your web application, they can have an impact on performance. Some fonts have large files, up to multiple megabytes. Try to use two or three fonts at most and use web-safe fonts whenever possible.",
+              "fr": "Et même si les polices peuvent enrichir la présentation visuelle de ton application, elles peuvent impacter la performance. Certaines polices ont de gros fichiers, jusqu'à plusieurs mégaoctets. Essaie d'utiliser deux ou trois polices au maximum et utilise des polices web-safe dès que possible."
+            },
+            {
+              "en": "You may also consider preloading the most important fonts to have them ready for quick use.",
+              "fr": "Tu peux aussi envisager de précharger les polices les plus importantes pour les avoir prêtes à l'emploi rapidement."
+            },
+            {
+              "en": "These are some of the most important and commonly used techniques for optimizing CSS in web development. By incorporating them, you can optimize your website's performance to create a smooth user experience.",
+              "fr": "Voici quelques-unes des techniques les plus importantes et couramment utilisées pour optimiser le CSS en développement web. En les intégrant, tu peux optimiser la performance de ton site pour créer une expérience utilisateur fluide."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary benefit of minifying CSS files?",
+              "fr": "Quel est le principal bénéfice de minifier les fichiers CSS ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Improved readability of the CSS code.",
+              "fr": "Une meilleure lisibilité du code CSS."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minifying CSS affects the size of the CSS file.",
+              "fr": "Pense à comment minifier le CSS affecte la taille du fichier CSS."
+            },
+            {
+              "en": "Enhanced security for the website.",
+              "fr": "Une sécurité renforcée pour le site."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minifying CSS affects the size of the CSS file.",
+              "fr": "Pense à comment minifier le CSS affecte la taille du fichier CSS."
+            },
+            {
+              "en": "Faster website loading times.",
+              "fr": "Des temps de chargement plus rapides."
+            },
+            {
+              "en": "Better cross-browser compatibility.",
+              "fr": "Une meilleure compatibilité entre navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minifying CSS affects the size of the CSS file.",
+              "fr": "Pense à comment minifier le CSS affecte la taille du fichier CSS."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What attribute should you add to preload an asset?",
+              "fr": "Quel attribut dois-tu ajouter pour précharger un asset ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell the browser that an asset is critical and should be prioritized.",
+              "fr": "Pense à comment tu peux dire au navigateur qu'un asset est critique et doit être priorisé."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell the browser that an asset is critical and should be prioritized.",
+              "fr": "Pense à comment tu peux dire au navigateur qu'un asset est critique et doit être priorisé."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how you can tell the browser that an asset is critical and should be prioritized.",
+              "fr": "Pense à comment tu peux dire au navigateur qu'un asset est critique et doit être priorisé."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which one of the following options is recommended for CSS optimization?",
+              "fr": "Laquelle des options suivantes est recommandée pour l'optimisation CSS ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Writing complex CSS selectors.",
+              "fr": "Écrire des sélecteurs CSS complexes."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which one of these options could reduce the time required to parse the CSS.",
+              "fr": "Pense à laquelle de ces options pourrait réduire le temps requis pour parser le CSS."
+            },
+            {
+              "en": "Having multiple complex animations.",
+              "fr": "Avoir plusieurs animations complexes."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which one of these options could reduce the time required to parse the CSS.",
+              "fr": "Pense à laquelle de ces options pourrait réduire le temps requis pour parser le CSS."
+            },
+            {
+              "en": "Loading multiple fonts simultaneously.",
+              "fr": "Charger plusieurs polices simultanément."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which one of these options could reduce the time required to parse the CSS.",
+              "fr": "Pense à laquelle de ces options pourrait réduire le temps requis pour parser le CSS."
+            },
+            {
+              "en": "Removing unnecessary styles.",
+              "fr": "Retirer les styles inutiles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f80313efe77e43182e86.md",
+      "id": "67d2f80313efe77e43182e86",
+      "dashedName": "what-are-some-techniques-for-improving-javascript-performance",
+      "title": {
+        "en": "What Are Some Techniques for Improving JavaScript Performance?",
+        "fr": "Quelles sont quelques techniques pour améliorer la performance JavaScript ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's review some of the most important techniques for improving JavaScript performance specifically.",
+              "fr": "Révisons quelques-unes des techniques les plus importantes pour améliorer spécifiquement la performance JavaScript."
+            },
+            {
+              "en": "You may find this surprising, but the first technique is using less JavaScript whenever possible.",
+              "fr": "Tu pourrais trouver cela surprenant, mais la première technique est d'utiliser moins de JavaScript dès que possible."
+            },
+            {
+              "en": "If you're developing a simple static website, you may be able to do exactly the same without frameworks that rely on JavaScript.",
+              "fr": "Si tu développes un site statique simple, tu pourrais peut-être faire exactement la même chose sans frameworks qui dépendent de JavaScript."
+            },
+            {
+              "en": "You should also try to remove any unused JavaScript code and use simpler solutions, if possible.",
+              "fr": "Tu devrais aussi essayer de retirer tout code JavaScript inutilisé et utiliser des solutions plus simples, si possible."
+            },
+            {
+              "en": "For example, you may consider using built-in browser features instead of custom ones. These built-in browser features include form validation, the browser's built-in video player, and CSS animations instead of custom JavaScript animations.",
+              "fr": "Par exemple, tu peux envisager d'utiliser des fonctionnalités intégrées au navigateur plutôt que des solutions personnalisées. Ces fonctionnalités incluent la validation de formulaires, le lecteur vidéo intégré du navigateur, et les animations CSS plutôt que des animations JavaScript personnalisées."
+            },
+            {
+              "en": "Use as few animations as possible.",
+              "fr": "Utilise aussi peu d'animations que possible."
+            },
+            {
+              "en": "Reduce the amount of DOM manipulation on your JavaScript code, since this is computationally expensive.",
+              "fr": "Réduis la quantité de manipulations DOM dans ton code JavaScript, car c'est coûteux en calcul."
+            },
+            {
+              "en": "Splitting your JavaScript code into modules that perform critical and non-critical tasks is also helpful. This way, you'll be able to preload the critical ones as soon as possible and defer the non-critical ones to render the page as fast as possible.",
+              "fr": "Découper ton code JavaScript en modules pour les tâches critiques et non critiques est aussi utile. Ainsi, tu pourras précharger les modules critiques dès que possible et différer les non critiques pour rendre la page plus vite."
+            },
+            {
+              "en": "Pre-loading files does not guarantee that they will be available when you use them, but the download will start sooner, so the overall waiting time should be shorter.",
+              "fr": "Précharger des fichiers ne garantit pas qu'ils seront disponibles quand tu les utilises, mais le téléchargement commencera plus tôt, donc le temps d'attente global devrait être plus court."
+            },
+            {
+              "en": "Once your code is split into multiple files, you can minify them automatically during the build process to reduce their size and optimize their load time.",
+              "fr": "Une fois ton code découpé en plusieurs fichiers, tu peux les minifier automatiquement pendant le build pour réduire leur taille et optimiser leur temps de chargement."
+            },
+            {
+              "en": "If an event listener is no longer necessary, you should remove it:",
+              "fr": "Si un écouteur d'événements n'est plus nécessaire, tu devrais le retirer :"
+            },
+            {
+              "en": "In this example, we remove the event listener for the `mousemove` event, so the `handleMouseMove` function is no longer called when the event is triggered. If you keep the event listener, the program will continue performing calculations that are no longer necessary, affecting the overall performance. This effect will be even more noticeable if you have multiple active event listeners simultaneously.",
+              "fr": "Dans cet exemple, on retire l'écouteur d'événements pour l'événement `mousemove`, donc la fonction `handleMouseMove` n'est plus appelée quand l'événement est déclenché. Si tu gardes l'écouteur, le programme continuera à faire des calculs qui ne sont plus nécessaires, ce qui affecte la performance globale. Cet effet sera encore plus visible si tu as plusieurs écouteurs actifs simultanément."
+            },
+            {
+              "en": "And since we're on the topic of events, it's recommended to use event delegation whenever possible.",
+              "fr": "Et puisqu'on parle d'événements, il est recommandé d'utiliser la délégation d'événements dès que possible."
+            },
+            {
+              "en": "This means that you don't need to set the event listeners on individual child elements. You can set it directly on the parent and the event will bubble up until it finds a parent that can handle it.",
+              "fr": "Cela signifie que tu n'as pas besoin de poser les écouteurs sur chaque élément enfant individuellement. Tu peux le poser directement sur le parent, et l'événement remontera jusqu'à trouver un parent qui peut le gérer."
+            },
+            {
+              "en": "Optimizing JavaScript is crucial for developing fast and responsive web applications. In a real-world project, you'll constantly analyze the performance of your website to find areas for improvement.",
+              "fr": "Optimiser le JavaScript est crucial pour développer des applications web rapides et réactives. Dans un projet réel, tu analyseras constamment la performance de ton site pour trouver des axes d'amélioration."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary benefit of minifying JavaScript files?",
+              "fr": "Quel est le principal bénéfice de minifier les fichiers JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Improved readability of the JavaScript code.",
+              "fr": "Une meilleure lisibilité du code JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minification affects the size of the JavaScript file.",
+              "fr": "Pense à comment la minification affecte la taille du fichier JavaScript."
+            },
+            {
+              "en": "Enhanced security for the website.",
+              "fr": "Une sécurité renforcée pour le site."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minification affects the size of the JavaScript file.",
+              "fr": "Pense à comment la minification affecte la taille du fichier JavaScript."
+            },
+            {
+              "en": "Faster website loading times.",
+              "fr": "Des temps de chargement plus rapides."
+            },
+            {
+              "en": "Better cross-browser compatibility.",
+              "fr": "Une meilleure compatibilité entre navigateurs."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how minification affects the size of the JavaScript file.",
+              "fr": "Pense à comment la minification affecte la taille du fichier JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the impact of using too many event listeners on performance?",
+              "fr": "Quel est l'impact d'utiliser trop d'écouteurs d'événements sur la performance ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It can improve performance by making the code more responsive.",
+              "fr": "Cela peut améliorer la performance en rendant le code plus réactif."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how event listeners can affect the browser's event loop.",
+              "fr": "Pense à comment les écouteurs d'événements peuvent affecter la boucle d'événements du navigateur."
+            },
+            {
+              "en": "It can degrade performance by consuming more memory and CPU resources.",
+              "fr": "Cela peut dégrader la performance en consommant plus de mémoire et de ressources CPU."
+            },
+            {
+              "en": "It has no impact on performance.",
+              "fr": "Cela n'a aucun impact sur la performance."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how event listeners can affect the browser's event loop.",
+              "fr": "Pense à comment les écouteurs d'événements peuvent affecter la boucle d'événements du navigateur."
+            },
+            {
+              "en": "It can make the code more complex and harder to maintain.",
+              "fr": "Cela peut rendre le code plus complexe et plus difficile à maintenir."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how event listeners can affect the browser's event loop.",
+              "fr": "Pense à comment les écouteurs d'événements peuvent affecter la boucle d'événements du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the goal of preloading critical JavaScript files and deferring non-critical JavaScript files?",
+              "fr": "Quel est l'objectif de précharger les fichiers JavaScript critiques et de différer les fichiers JavaScript non critiques ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To improve the initial page load time.",
+              "fr": "Améliorer le temps de chargement initial de la page."
+            },
+            {
+              "en": "To reduce the number of HTTP requests.",
+              "fr": "Réduire le nombre de requêtes HTTP."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to prioritize the loading of essential JavaScript files.",
+              "fr": "Pense à comment prioriser le chargement des fichiers JavaScript essentiels."
+            },
+            {
+              "en": "To minify the JavaScript code.",
+              "fr": "Minifier le code JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to prioritize the loading of essential JavaScript files.",
+              "fr": "Pense à comment prioriser le chargement des fichiers JavaScript essentiels."
+            },
+            {
+              "en": "To optimize the order of CSS styles",
+              "fr": "Optimiser l'ordre des styles CSS"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how to prioritize the loading of essential JavaScript files.",
+              "fr": "Pense à comment prioriser le chargement des fichiers JavaScript essentiels."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

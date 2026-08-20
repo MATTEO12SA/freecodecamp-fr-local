@@ -14,7 +14,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### JavaScript v9 — TERMINÉ (230/230)
 
-État actuel : JS v9 **230/230**, RWD v9 **158/158**, Back End APIs v9 **16/16**. Prochaine cible : ront-end-development-libraries-v9.
+État actuel : JS v9 **230/230**, RWD v9 **158/158**, Back End APIs v9 **16/16**. Front-end libraries v9 **en cours ~49/62** (React + perf/testing + CSS/Tailwind + partie TypeScript). Restant : lectures/workshops TS majeurs + blocs comingSoon.
 
 Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (230/230 blocs, 1311/1311 fichiers). Modules 1–12 + form-validation **100 %**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+Suite en cours : JavaScript v9 (230/230 blocs, 1311/1311 fichiers). Modules 1–12 + form-validation **100 %**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
 
 ### Lister ce qui manque dans un module
 

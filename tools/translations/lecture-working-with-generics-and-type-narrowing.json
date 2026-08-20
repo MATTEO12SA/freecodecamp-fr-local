@@ -1,0 +1,502 @@
+{
+  "workshop": "lecture-working-with-generics-and-type-narrowing",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d30191adb999a9909109ef.md",
+      "id": "67d30191adb999a9909109ef",
+      "dashedName": "what-are-generics-and-how-do-they-work",
+      "title": {
+        "en": "What Are Generics, and How Do They Work?",
+        "fr": "Que sont les generics, et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "You have actually seen a generic type in a previous lesson: `Array<string>`. But you'll usually use generic types in functions. In fact, they can be thought of as a special parameter you provide to a function to control the behavior of the function's type definition.",
+              "fr": "Tu as déjà vu un type générique dans une leçon précédente : `Array<string>`. Mais tu utiliseras généralement les types génériques dans les fonctions. En fait, on peut les voir comme un paramètre spécial que tu fournis à une fonction pour contrôler le comportement de sa définition de type."
+            },
+            {
+              "en": "Let's go back to our previous example of a function to get a random value from an array:",
+              "fr": "Revenons à notre exemple précédent d’une fonction qui récupère une valeur aléatoire dans un tableau :"
+            },
+            {
+              "en": "Our function accepts an array of strings and returns a string. But what if we wanted to pass in an array of numbers and return a number?",
+              "fr": "Notre fonction accepte un tableau de chaînes et renvoie une chaîne. Mais que se passe-t-il si on voulait passer un tableau de nombres et renvoyer un nombre ?"
+            },
+            {
+              "en": "You could use a union type:",
+              "fr": "Tu pourrais utiliser un type union :"
+            },
+            {
+              "en": "But with this approach, even though we have passed in an array of only numbers, TypeScript determines that the `val` variable could be a number OR a string.",
+              "fr": "Mais avec cette approche, même si on a passé un tableau composé uniquement de nombres, TypeScript détermine que la variable `val` pourrait être un nombre OU une chaîne."
+            },
+            {
+              "en": "Instead, you can define a generic type for the function:",
+              "fr": "À la place, tu peux définir un type générique pour la fonction :"
+            },
+            {
+              "en": "There are a couple of important components in our new example. First, the `<T>` syntax tells TypeScript that you are defining a generic type `T` for the function. `T` is a common name for generic types, but you can actually name it whatever you want (within JavaScript's variable conventions).",
+              "fr": "Il y a quelques éléments importants dans notre nouvel exemple. D’abord, la syntaxe `<T>` indique à TypeScript que tu définis un type générique `T` pour la fonction. `T` est un nom courant pour les types génériques, mais tu peux en fait le nommer comme tu veux (dans les conventions de variables JavaScript)."
+            },
+            {
+              "en": "Then, we tell TypeScript that the array parameter is an array of values matching the generic type, and that the returned value is a single element of that same type. This allows TypeScript to properly detect that `val` will be a number, because the array we passed consists solely of numbers.",
+              "fr": "Ensuite, on dit à TypeScript que le paramètre tableau est un tableau de valeurs correspondant au type générique, et que la valeur renvoyée est un seul élément de ce même type. Cela permet à TypeScript de détecter correctement que `val` sera un nombre, car le tableau passé ne contient que des nombres."
+            },
+            {
+              "en": "But what about functions you don't control? Let's take a look at the `document.querySelector()` method:",
+              "fr": "Mais qu’en est-il des fonctions que tu ne contrôles pas ? Regardons la méthode `document.querySelector()` :"
+            },
+            {
+              "en": "Because we're querying with an ID selector, TypeScript doesn't know what kind of element we are querying. It knows it's an `Element` of some sort, but our attempt to access the `value` property will throw an error because the top-level element interface does not have that property.",
+              "fr": "Parce qu’on interroge avec un sélecteur d’ID, TypeScript ne sait pas quel type d’élément on interroge. Il sait que c’est un `Element` d’une certaine sorte, mais notre tentative d’accéder à la propriété `value` lèvera une erreur car l’interface d’élément de premier niveau n’a pas cette propriété."
+            },
+            {
+              "en": "Thankfully, we can pass a type argument to the function call:",
+              "fr": "Heureusement, on peut passer un argument de type à l’appel de fonction :"
+            },
+            {
+              "en": "Notice how we're using the angle bracket syntax again (`<HTMLInputElement>`), but this time in a function call. This tells TypeScript that the element we expect to find will be an `input` element, and we no longer get an error on the value property because input elements do have that property. Of course, `querySelector` can return `null` if an element is not found, and TypeScript will throw a compiler error here because we do not handle that case.",
+              "fr": "Remarque qu’on utilise à nouveau la syntaxe des chevrons (`<HTMLInputElement>`), mais cette fois dans un appel de fonction. Cela indique à TypeScript que l’élément qu’on s’attend à trouver sera un élément `input`, et on n’a plus d’erreur sur la propriété value car les éléments input ont bien cette propriété. Bien sûr, `querySelector` peut renvoyer `null` si un élément n’est pas trouvé, et TypeScript lèvera une erreur de compilateur ici car on ne gère pas ce cas."
+            },
+            {
+              "en": "But you'll learn about that in the next lesson.",
+              "fr": "Mais tu apprendras cela dans la prochaine leçon."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct syntax for defining a generic type in a function?",
+              "fr": "Quelle est la syntaxe correcte pour définir un type générique dans une fonction ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The generic type is defined using angle brackets before the function's parameter list.",
+              "fr": "Le type générique est défini avec des chevrons avant la liste des paramètres de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The generic type is defined using angle brackets before the function's parameter list.",
+              "fr": "Le type générique est défini avec des chevrons avant la liste des paramètres de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The generic type is defined using angle brackets before the function's parameter list.",
+              "fr": "Le type générique est défini avec des chevrons avant la liste des paramètres de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does `T[]` represent in the following example?",
+              "fr": "Que représente `T[]` dans l’exemple suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "An array of any type.",
+              "fr": "Un tableau de n’importe quel type."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The square brackets after `T` indicate an array of that type.",
+              "fr": "Les crochets après `T` indiquent un tableau de ce type."
+            },
+            {
+              "en": "An array of the generic type `T`.",
+              "fr": "Un tableau du type générique `T`."
+            },
+            {
+              "en": "A tuple of type `T`.",
+              "fr": "Un tuple de type `T`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The square brackets after `T` indicate an array of that type.",
+              "fr": "Les crochets après `T` indiquent un tableau de ce type."
+            },
+            {
+              "en": "A single element of type `T`.",
+              "fr": "Un seul élément de type `T`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The square brackets after `T` indicate an array of that type.",
+              "fr": "Les crochets après `T` indiquent un tableau de ce type."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you specify a type argument when calling `document.querySelector()`?",
+              "fr": "Comment peux-tu spécifier un argument de type lors de l’appel de `document.querySelector()` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The type argument is passed using angle brackets between the function name and its parameters.",
+              "fr": "L’argument de type est passé avec des chevrons entre le nom de la fonction et ses paramètres."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The type argument is passed using angle brackets between the function name and its parameters.",
+              "fr": "L’argument de type est passé avec des chevrons entre le nom de la fonction et ses paramètres."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The type argument is passed using angle brackets between the function name and its parameters.",
+              "fr": "L’argument de type est passé avec des chevrons entre le nom de la fonction et ses paramètres."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d301a5f536d1a9e5df1a8c.md",
+      "id": "67d301a5f536d1a9e5df1a8c",
+      "dashedName": "what-is-type-narrowing-and-how-does-it-work",
+      "title": {
+        "en": "What Is Type Narrowing, and How Does It Work?",
+        "fr": "Qu’est-ce que le type narrowing, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "There are going to be times where you have a value with a broad type and you need to narrow it down to a more specific type. For example, maybe you need to ensure an object matches an interface you defined. Or a string is within a specific list of values. There are quite a few ways to achieve this.",
+              "fr": "Il y aura des moments où tu as une valeur avec un type large et tu dois le restreindre à un type plus spécifique. Par exemple, tu dois peut-être t’assurer qu’un objet correspond à une interface que tu as définie. Ou qu’une chaîne fait partie d’une liste précise de valeurs. Il y a plusieurs façons d’y parvenir."
+            },
+            {
+              "en": "The first is narrowing by truthiness. Consider our example from the last lesson:",
+              "fr": "La première est le narrowing par vérité (truthiness). Prenons notre exemple de la leçon précédente :"
+            },
+            {
+              "en": "We get a compiler error trying to access the `value` property of `email`, because `email` might be `null`. However, we can use a conditional statement to confirm `email` is truthy before accessing the property:",
+              "fr": "On obtient une erreur de compilateur en essayant d’accéder à la propriété `value` de `email`, car `email` pourrait être `null`. Cependant, on peut utiliser une instruction conditionnelle pour confirmer que `email` est truthy avant d’accéder à la propriété :"
+            },
+            {
+              "en": "In this updated example, because `null` is not a truthy value, TypeScript is able to infer that `email` MUST be an `input` element within the conditional block. So it no longer throws a compiler error.",
+              "fr": "Dans cet exemple mis à jour, comme `null` n’est pas une valeur truthy, TypeScript peut déduire que `email` DOIT être un élément `input` dans le bloc conditionnel. Il ne lève donc plus d’erreur de compilateur."
+            },
+            {
+              "en": "Truthiness checks can also work in the reverse direction:",
+              "fr": "Les vérifications de truthiness peuvent aussi fonctionner dans le sens inverse :"
+            },
+            {
+              "en": "With this approach, we throw an error if `email` is falsy. `null` is a falsy value. Throwing an error ends the logical execution of this code, which means when we reach the `console.log()` call TypeScript knows `email` cannot be `null`.",
+              "fr": "Avec cette approche, on lève une erreur si `email` est falsy. `null` est une valeur falsy. Lever une erreur met fin à l’exécution logique de ce code, ce qui signifie que lorsqu’on atteint l’appel `console.log()`, TypeScript sait que `email` ne peut pas être `null`."
+            },
+            {
+              "en": "Optional chaining is also a form of type narrowing, under the same premise that the property access can't happen if the `email` value is `null`.",
+              "fr": "Le chaînage optionnel est aussi une forme de type narrowing, selon le même principe : l’accès à la propriété ne peut pas se produire si la valeur `email` est `null`."
+            },
+            {
+              "en": "But what about other types? Well, you can also narrow types using the `typeof` operator. Let's look at an example of a variable we have indicated might be a string OR a number:",
+              "fr": "Mais qu’en est-il des autres types ? Eh bien, tu peux aussi restreindre les types avec l’opérateur `typeof`. Regardons l’exemple d’une variable indiquée comme pouvant être une chaîne OU un nombre :"
+            },
+            {
+              "en": "In this example, we see a compiler error because we cannot perform arithmetic on a string value. But we can use a conditional to check the `typeof` the `myVal` variable:",
+              "fr": "Dans cet exemple, on voit une erreur de compilateur car on ne peut pas faire d’arithmétique sur une valeur de type string. Mais on peut utiliser une condition pour vérifier le `typeof` de la variable `myVal` :"
+            },
+            {
+              "en": "Because we have used the `typeof` keyword, TypeScript now knows that `myVal` has to be a number, and we can safely perform arithmetic with it.",
+              "fr": "Parce qu’on a utilisé le mot-clé `typeof`, TypeScript sait maintenant que `myVal` doit être un nombre, et on peut faire de l’arithmétique en toute sécurité."
+            },
+            {
+              "en": "But what about more complex object types? If the object in question happens to come from a class, you can actually use the `instanceof` keyword to narrow the type. Going back to our `querySelector()` example:",
+              "fr": "Mais qu’en est-il des types d’objets plus complexes ? Si l’objet en question vient d’une classe, tu peux en fait utiliser le mot-clé `instanceof` pour restreindre le type. En revenant à notre exemple `querySelector()` :"
+            },
+            {
+              "en": "Rather than passing a generic type and telling TypeScript what the element is, we can use `instanceof` to narrow the type and write safer code:",
+              "fr": "Plutôt que de passer un type générique et de dire à TypeScript ce qu’est l’élément, on peut utiliser `instanceof` pour restreindre le type et écrire un code plus sûr :"
+            },
+            {
+              "en": "This approach may seem the same as our previous one, but `instanceof` is a runtime validation - which means, if we somehow got the TypeScript type wrong, our JavaScript code will still confirm that `email` is an `input` element.",
+              "fr": "Cette approche peut sembler identique à la précédente, mais `instanceof` est une validation à l’exécution — ce qui signifie que si on s’était trompé sur le type TypeScript, notre code JavaScript confirmera quand même que `email` est un élément `input`."
+            },
+            {
+              "en": "Next, let's look at an example where we fetch a `User` object from an API and try to print the information:",
+              "fr": "Ensuite, regardons un exemple où on récupère un objet `User` depuis une API et on essaie d’afficher les informations :"
+            },
+            {
+              "en": "We'll get a compiler error trying to pass `myUser` into the function because, even though we know the API returns the correct object, TypeScript does not. And the `.json()` method does not take a generic type.",
+              "fr": "On obtiendra une erreur de compilateur en essayant de passer `myUser` à la fonction car, même si on sait que l’API renvoie le bon objet, TypeScript ne le sait pas. Et la méthode `.json()` n’accepte pas de type générique."
+            },
+            {
+              "en": "The \"easy\" way to resolve this issue would be to cast the type:",
+              "fr": "La façon « facile » de résoudre ce problème serait de caster le type :"
+            },
+            {
+              "en": "But whenever you cast the type, you're essentially weakening TypeScript's ability to catch potential errors. So instead of casting the type, you can write a type guard:",
+              "fr": "Mais chaque fois que tu castes le type, tu affaiblis essentiellement la capacité de TypeScript à attraper d’éventuelles erreurs. Alors, au lieu de caster le type, tu peux écrire un type guard :"
+            },
+            {
+              "en": "The return type here is the key component of this function definition. The `user is User` syntax indicates that our function returns a boolean value, which when `true` means the `user` value satisfies the `User` interface. We then do some basic checks to ensure that the structure of the `user` object matches - note the use of a truthiness (`!!user`) narrowing and a `typeof` narrowing. We must do this because `typeof null` returns `\"object\"`:",
+              "fr": "Le type de retour est ici l’élément clé de cette définition de fonction. La syntaxe `user is User` indique que notre fonction renvoie une valeur booléenne, qui lorsqu’elle est `true` signifie que la valeur `user` satisfait l’interface `User`. On fait ensuite quelques vérifications de base pour s’assurer que la structure de l’objet `user` correspond — note l’utilisation d’un narrowing de truthiness (`!!user`) et d’un narrowing `typeof`. On doit le faire car `typeof null` renvoie `\"object\"` :"
+            },
+            {
+              "en": "Now, if we combine all of our logic together, we no longer get compiler errors and can successfully build our code.",
+              "fr": "Maintenant, si on combine toute notre logique, on n’a plus d’erreurs de compilateur et on peut compiler notre code avec succès."
+            },
+            {
+              "en": "Type narrowing is a powerful feature that helps you write safer, less error-prone code - but remember that TypeScript types are not completely rigid, so avoid practices like casting the type of a value without narrowing it.",
+              "fr": "Le type narrowing est une fonctionnalité puissante qui t’aide à écrire un code plus sûr et moins sujet aux erreurs — mais souviens-toi que les types TypeScript ne sont pas complètement rigides, donc évite des pratiques comme caster le type d’une valeur sans le restreindre."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a method of type narrowing discussed in the lesson?",
+              "fr": "Lequel des éléments suivants N’EST PAS une méthode de type narrowing abordée dans la leçon ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Truthiness checks.",
+              "fr": "Les vérifications de truthiness."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "While all of these can be used to narrow a type, one of them wasn't mentioned.",
+              "fr": "Bien que tous ceux-ci puissent servir à restreindre un type, l’un d’eux n’a pas été mentionné."
+            },
+            {
+              "en": "Optional chaining.",
+              "fr": "Le chaînage optionnel."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "While all of these can be used to narrow a type, one of them wasn't mentioned.",
+              "fr": "Bien que tous ceux-ci puissent servir à restreindre un type, l’un d’eux n’a pas été mentionné."
+            },
+            {
+              "en": "`typeof` operator.",
+              "fr": "L’opérateur `typeof`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "While all of these can be used to narrow a type, one of them wasn't mentioned.",
+              "fr": "Bien que tous ceux-ci puissent servir à restreindre un type, l’un d’eux n’a pas été mentionné."
+            },
+            {
+              "en": "Switch statements.",
+              "fr": "Les instructions switch."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `user is User` syntax in the type guard function?",
+              "fr": "Quel est le rôle de la syntaxe `user is User` dans la fonction type guard ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It casts the `user` parameter to the `User` type.",
+              "fr": "Elle caste le paramètre `user` vers le type `User`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the word `is`, and how the phrase `user is User` works.",
+              "fr": "Pense au mot `is`, et à la façon dont la phrase `user is User` fonctionne."
+            },
+            {
+              "en": "It indicates that the function returns a boolean value.",
+              "fr": "Elle indique que la fonction renvoie une valeur booléenne."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the word `is`, and how the phrase `user is` User works.",
+              "fr": "Pense au mot `is`, et à la façon dont la phrase `user is` User fonctionne."
+            },
+            {
+              "en": "It indicated that `user` satisfies the `User` interface.",
+              "fr": "Elle indiquait que `user` satisfait l’interface `User`."
+            },
+            {
+              "en": "It creates a new instance of the `User` interface.",
+              "fr": "Elle crée une nouvelle instance de l’interface `User`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the word `is`, and how the phrase `user is` User works.",
+              "fr": "Pense au mot `is`, et à la façon dont la phrase `user is` User fonctionne."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is true about type casting in TypeScript?",
+              "fr": "Lequel des énoncés suivants est vrai à propos du type casting en TypeScript ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It's the recommended way to resolve type issues.",
+              "fr": "C’est la façon recommandée de résoudre les problèmes de types."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Type casting should be done as a last resort.",
+              "fr": "Le type casting devrait être fait en dernier recours."
+            },
+            {
+              "en": "It strengthens TypeScript's ability to catch errors.",
+              "fr": "Il renforce la capacité de TypeScript à attraper les erreurs."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Type casting should be done as a last resort.",
+              "fr": "Le type casting devrait être fait en dernier recours."
+            },
+            {
+              "en": "It's done using the `as` keyword.",
+              "fr": "Il se fait avec le mot-clé `as`."
+            },
+            {
+              "en": "It should always be used instead of type guards.",
+              "fr": "Il devrait toujours être utilisé à la place des type guards."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Type casting should be done as a last resort.",
+              "fr": "Le type casting devrait être fait en dernier recours."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

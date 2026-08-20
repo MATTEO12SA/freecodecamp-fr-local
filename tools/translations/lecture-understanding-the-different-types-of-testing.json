@@ -1,0 +1,3659 @@
+{
+  "workshop": "lecture-understanding-the-different-types-of-testing",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1d844d84c8b540297bbe4.md",
+      "id": "67d1d844d84c8b540297bbe4",
+      "dashedName": "what-is-the-overall-purpose-of-testing-your-applications",
+      "title": {
+        "en": "What Is the Overall Purpose of Testing Your Applications?",
+        "fr": "Quel est l'objectif global des tests de tes applications ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Up until this point, you have been building tons of small projects in languages like HTML, CSS, JavaScript, and more. But how do you know if your projects are working correctly?",
+              "fr": "Jusqu'ici, tu as construit plein de petits projets dans des langages comme HTML, CSS, JavaScript, et plus encore. Mais comment savoir si tes projets fonctionnent correctement ?"
+            },
+            {
+              "en": "One option is to do what is called manual testing. This is where a tester will go through each part of the application and test out all of the different features to make sure it works correctly. If any bugs are uncovered in the testing process, the tester will report those bugs back to the software team so they can be fixed.",
+              "fr": "Une option est de faire ce qu'on appelle des tests manuels. Un testeur parcourt chaque partie de l'application et teste toutes les fonctionnalités pour s'assurer qu'elles marchent correctement. Si des bugs sont découverts, le testeur les signale à l'équipe logicielle pour qu'ils soient corrigés."
+            },
+            {
+              "en": "While it is important to manually test out your applications, often times it will not be enough. Real-world applications involve many components and services and can often be complex in nature. So only relying on manual testing will result in many bugs lying beneath the surface that can hurt the usability and maintainability of an application.",
+              "fr": "Même s'il est important de tester manuellement tes applications, ce n'est souvent pas suffisant. Les applications du monde réel impliquent de nombreux composants et services, et peuvent être complexes. Se fier uniquement aux tests manuels laissera beaucoup de bugs sous la surface, ce qui peut nuire à l'utilisabilité et à la maintenabilité d'une application."
+            },
+            {
+              "en": "This is where automated testing comes in. You can write separate test code to check whether your application behaves as expected, without needing to manually click through it. Both manual and automated tests can be grouped into different types, depending on what they are testing.",
+              "fr": "C'est là qu'interviennent les tests automatisés. Tu peux écrire un code de test séparé pour vérifier si ton application se comporte comme prévu, sans avoir à cliquer manuellement partout. Les tests manuels et automatisés peuvent être regroupés en différents types, selon ce qu'ils testent."
+            },
+            {
+              "en": "Over the next few lessons, we are going to cover the different types of testing used in the industry like unit testing, end-to-end testing, functional testing and more.",
+              "fr": "Dans les prochaines leçons, on couvrira les différents types de tests utilisés dans l'industrie : tests unitaires, tests de bout en bout, tests fonctionnels, et plus encore."
+            },
+            {
+              "en": "Writing tests for your applications will help ensure that your code is doing what it is supposed to be doing. It is important that you start to familiarize yourself with the basics of testing because it will be something that you will need in a developer job.",
+              "fr": "Écrire des tests pour tes applications aidera à s'assurer que ton code fait ce qu'il est censé faire. Il est important de commencer à te familiariser avec les bases des tests, car ce sera quelque chose dont tu auras besoin dans un poste de développeur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it important to test your applications?",
+              "fr": "Pourquoi est-il important de tester tes applications ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "You want to ensure that your applications look professional.",
+              "fr": "Tu veux t'assurer que tes applications ont l'air professionnelles."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how your application is expected to work.",
+              "fr": "Pense à comment ton application est censée fonctionner."
+            },
+            {
+              "en": "You want to ensure that your applications work as expected.",
+              "fr": "Tu veux t'assurer que tes applications fonctionnent comme prévu."
+            },
+            {
+              "en": "You want to ensure that your applications are responsive.",
+              "fr": "Tu veux t'assurer que tes applications sont responsive."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how your application is expected to work.",
+              "fr": "Pense à comment ton application est censée fonctionner."
+            },
+            {
+              "en": "You want to ensure that your applications run slower.",
+              "fr": "Tu veux t'assurer que tes applications tournent plus lentement."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how your application is expected to work.",
+              "fr": "Pense à comment ton application est censée fonctionner."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is manual testing?",
+              "fr": "Qu'est-ce que les tests manuels ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This involves running security audits on your site to ensure there are no security risks in your application.",
+              "fr": "Cela implique de lancer des audits de sécurité sur ton site pour s'assurer qu'il n'y a pas de risques de sécurité dans ton application."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was mentioned.",
+              "fr": "Revois le début de la leçon où cela a été mentionné."
+            },
+            {
+              "en": "This involves only testing your JavaScript and CSS files to ensure there are no bugs in them.",
+              "fr": "Cela implique de tester uniquement tes fichiers JavaScript et CSS pour s'assurer qu'il n'y a pas de bugs."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was mentioned.",
+              "fr": "Revois le début de la leçon où cela a été mentionné."
+            },
+            {
+              "en": "This involves running accessibility audits with automated tools to check for any accessibility errors.",
+              "fr": "Cela implique de lancer des audits d'accessibilité avec des outils automatisés pour vérifier d'éventuelles erreurs d'accessibilité."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was mentioned.",
+              "fr": "Revois le début de la leçon où cela a été mentionné."
+            },
+            {
+              "en": "This involves going through your application and making sure all of the features and sections work as expected.",
+              "fr": "Cela implique de parcourir ton application et de s'assurer que toutes les fonctionnalités et sections marchent comme prévu."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a type of testing used in the industry?",
+              "fr": "Lequel des éléments suivants N'EST PAS un type de test utilisé dans l'industrie ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Fisher Yates testing",
+              "fr": "Fisher Yates testing"
+            },
+            {
+              "en": "End-to-end testing",
+              "fr": "End-to-end testing"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was mentioned.",
+              "fr": "Revois la fin de la leçon où cela a été mentionné."
+            },
+            {
+              "en": "Unit testing",
+              "fr": "Unit testing"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was mentioned.",
+              "fr": "Revois la fin de la leçon où cela a été mentionné."
+            },
+            {
+              "en": "Functional testing",
+              "fr": "Functional testing"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was mentioned.",
+              "fr": "Revois la fin de la leçon où cela a été mentionné."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff1996e4ae9e67170502.md",
+      "id": "67d2ff1996e4ae9e67170502",
+      "dashedName": "what-is-unit-testing",
+      "title": {
+        "en": "What Is Unit Testing?",
+        "fr": "Qu'est-ce que les tests unitaires ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As you design your applications, you will often have a series of small functions responsible for one thing. This is known as the \"single responsibility principle.\" When you have a series of small functions, it is best to test these functions to ensure that everything works as expected. In this lesson, we will take a look at how to create a unit test using the popular Jest testing framework.",
+              "fr": "Quand tu conçois tes applications, tu auras souvent une série de petites fonctions responsables d'une seule chose. C'est ce qu'on appelle le « principe de responsabilité unique ». Quand tu as une série de petites fonctions, il est préférable de les tester pour s'assurer que tout fonctionne comme prévu. Dans cette leçon, on verra comment créer un test unitaire avec le framework de test populaire Jest."
+            },
+            {
+              "en": "In this example, we are going to create a function that is responsible for returning a newly formatted string:",
+              "fr": "Dans cet exemple, on va créer une fonction responsable de renvoyer une chaîne nouvellement formatée :"
+            },
+            {
+              "en": "This `getFormattedWord` function has a parameter called `str` and will first check if the `str` is empty. If so, then an empty string is returned. Otherwise, a new string is returned where the first letter is capitalized. We are exporting this function so we can use it in a test file.",
+              "fr": "Cette fonction `getFormattedWord` a un paramètre appelé `str` et vérifie d'abord si `str` est vide. Si oui, une chaîne vide est renvoyée. Sinon, une nouvelle chaîne est renvoyée où la première lettre est en majuscule. On exporte cette fonction pour pouvoir l'utiliser dans un fichier de test."
+            },
+            {
+              "en": "In a separate `getFormattedWord.test.js` file, we can write some tests to verify that the function is doing what it is supposed to be doing.",
+              "fr": "Dans un fichier séparé `getFormattedWord.test.js`, on peut écrire des tests pour vérifier que la fonction fait ce qu'elle est censée faire."
+            },
+            {
+              "en": "At the top of the `getFormattedWord.test.js` file, we need to first import the function like this:",
+              "fr": "En haut du fichier `getFormattedWord.test.js`, on doit d'abord importer la fonction comme ceci :"
+            },
+            {
+              "en": "Then we need to install the Jest package by using `npm i jest`. Then we can add a test to check that a word made up of lowercase characters, `hello`, is properly formatted to `Hello`, which starts with a capital `H`:",
+              "fr": "Ensuite, on doit installer le paquet Jest avec `npm i jest`. Puis on peut ajouter un test pour vérifier qu'un mot en minuscules, `hello`, est correctement formaté en `Hello`, qui commence par un `H` majuscule :"
+            },
+            {
+              "en": "The `expect` function is used to test a value. It's combined with a matcher, which is a function that checks whether the value behaves as expected. In this case the matcher is `toBe()`. Jest has a variety of matchers to help you test for truthiness, strings, numbers, and more.",
+              "fr": "La fonction `expect` sert à tester une valeur. Elle est combinée avec un matcher, une fonction qui vérifie si la valeur se comporte comme prévu. Dans ce cas, le matcher est `toBe()`. Jest a une variété de matchers pour t'aider à tester la vérité, les chaînes, les nombres, et plus encore."
+            },
+            {
+              "en": "One way to run your tests is by adding an npm script to your `package.json` file. Here's an example script for the Jest framework:",
+              "fr": "Une façon d'exécuter tes tests est d'ajouter un script npm à ton fichier `package.json`. Voici un exemple de script pour le framework Jest :"
+            },
+            {
+              "en": "Then just run `npm run test` in your terminal to run your tests. If your tests pass, you should see something in the terminal like this:",
+              "fr": "Ensuite, lance simplement `npm run test` dans ton terminal pour exécuter tes tests. Si tes tests passent, tu devrais voir quelque chose comme ceci dans le terminal :"
+            },
+            {
+              "en": "To see what a failing test looks like, we can intentionally break the test by updating the function to the following:",
+              "fr": "Pour voir à quoi ressemble un test qui échoue, on peut intentionnellement casser le test en mettant à jour la fonction comme suit :"
+            },
+            {
+              "en": "Now when you run the `npm run test` command, there will be an error message because the test was expecting a different result:",
+              "fr": "Maintenant, quand tu lances la commande `npm run test`, il y aura un message d'erreur car le test attendait un résultat différent :"
+            },
+            {
+              "en": "Now we can update our function back to the original here:",
+              "fr": "On peut maintenant remettre notre fonction à l'original ici :"
+            },
+            {
+              "en": "Add another test to check for cases where no argument is provided to `getFormattedWord`:",
+              "fr": "Ajoute un autre test pour vérifier les cas où aucun argument n'est fourni à `getFormattedWord` :"
+            },
+            {
+              "en": "There are other tests you can add to make things more robust, but these first couple of tests are a good introduction to unit testing.",
+              "fr": "Il y a d'autres tests que tu peux ajouter pour rendre les choses plus robustes, mais ces premiers tests sont une bonne introduction aux tests unitaires."
+            },
+            {
+              "en": "When it comes to testing JavaScript applications some common testing frameworks include Jest, Mocha, and Vitest.",
+              "fr": "Pour tester des applications JavaScript, des frameworks courants incluent Jest, Mocha et Vitest."
+            },
+            {
+              "en": "Unit testing is important because it will help you catch more bugs in your programs, and ensure that everything works as expected. It also can serve as a form of documentation for your application because it is meant to represent the expected behavior for your code.",
+              "fr": "Les tests unitaires sont importants car ils t'aideront à attraper plus de bugs dans tes programmes, et à s'assurer que tout fonctionne comme prévu. Ils peuvent aussi servir de documentation pour ton application, car ils sont censés représenter le comportement attendu de ton code."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following refers to the principle where a function should only be responsible for one thing?",
+              "fr": "Lequel des éléments suivants désigne le principe selon lequel une fonction ne devrait être responsable que d'une seule chose ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Single responsibility principle",
+              "fr": "Single responsibility principle"
+            },
+            {
+              "en": "Multiple responsibility principle",
+              "fr": "Multiple responsibility principle"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Single request principle",
+              "fr": "Single request principle"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Multiple response principle",
+              "fr": "Multiple response principle"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a commonly used testing framework in the JavaScript ecosystem?",
+              "fr": "Lequel des éléments suivants N'EST PAS un framework de test couramment utilisé dans l'écosystème JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "JUnit",
+              "fr": "JUnit"
+            },
+            {
+              "en": "Jest",
+              "fr": "Jest"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Vitest",
+              "fr": "Vitest"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Mocha",
+              "fr": "Mocha"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What can you add to a `package.json` file to run your tests in the terminal?",
+              "fr": "Que peux-tu ajouter à un fichier `package.json` pour lancer tes tests dans le terminal ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that you can create custom scripts in your `package.json` file.",
+              "fr": "Souviens-toi que tu peux créer des scripts personnalisés dans ton fichier `package.json`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that you can create custom scripts in your `package.json` file.",
+              "fr": "Souviens-toi que tu peux créer des scripts personnalisés dans ton fichier `package.json`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that you can create custom scripts in your `package.json` file.",
+              "fr": "Souviens-toi que tu peux créer des scripts personnalisés dans ton fichier `package.json`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff33452ce69ea169c872.md",
+      "id": "67d2ff33452ce69ea169c872",
+      "dashedName": "what-is-functional-testing-and-how-does-it-differ-from-unit-testing",
+      "title": {
+        "en": "What Is Functional Testing, and How Does It Differ from Unit Testing?",
+        "fr": "Qu'est-ce que les tests fonctionnels, et en quoi diffèrent-ils des tests unitaires ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In prior lessons, you learned how to test small units of code through unit testing. Well, unit testing is part of functional testing. Functional testing checks if the features and functions of the application work as expected.",
+              "fr": "Dans les leçons précédentes, tu as appris à tester de petites unités de code via les tests unitaires. Eh bien, les tests unitaires font partie des tests fonctionnels. Les tests fonctionnels vérifient si les fonctionnalités de l'application marchent comme prévu."
+            },
+            {
+              "en": "In this lesson, we will take a look at the differences between functional and non-functional testing.",
+              "fr": "Dans cette leçon, on regardera les différences entre tests fonctionnels et non fonctionnels."
+            },
+            {
+              "en": "The goal of functional testing is to test the system as a whole against multiple scenarios to ensure that the system works as expected. An example of functional testing would be smoke testing. Smoke testing is where you perform a preliminary check on the system for basic or critical issues before more extensive testing is done.",
+              "fr": "L'objectif des tests fonctionnels est de tester le système dans son ensemble face à plusieurs scénarios pour s'assurer qu'il fonctionne comme prévu. Un exemple de test fonctionnel serait le smoke testing. Le smoke testing consiste à faire une vérification préliminaire du système pour des problèmes basiques ou critiques avant des tests plus poussés."
+            },
+            {
+              "en": "In contrast, non-functional testing focuses on things like performance and reliability.",
+              "fr": "En contraste, les tests non fonctionnels se concentrent sur des aspects comme la performance et la fiabilité."
+            },
+            {
+              "en": "A real test scenario for functional testing would be a user login. A user should be able to log in to the application with their username and password. If successful, they should be able to access their account information. If there is an issue, then that error needs to be handled properly. When you are writing tests, you need to account for all types of success and failure scenarios.",
+              "fr": "Un vrai scénario de test fonctionnel serait une connexion utilisateur. Un utilisateur devrait pouvoir se connecter à l'application avec son nom d'utilisateur et son mot de passe. En cas de succès, il devrait pouvoir accéder aux informations de son compte. S'il y a un problème, cette erreur doit être gérée correctement. Quand tu écris des tests, tu dois prendre en compte tous les types de scénarios de succès et d'échec."
+            },
+            {
+              "en": "An example of non-functional testing would be to test the performance of your application under different network conditions. In a future lesson, you will learn more about performance testing.",
+              "fr": "Un exemple de test non fonctionnel serait de tester la performance de ton application sous différentes conditions réseau. Dans une prochaine leçon, tu en apprendras plus sur les tests de performance."
+            },
+            {
+              "en": "The reasons why functional testing is so important is because you want to identify bugs early on in your application. You also want to make sure that your application meets the requirements that were laid out at the beginning of the planning phase. Lastly, you want to ensure that your users have a good user experience. Users should not struggle to use your application or be blocked by broken features and system failures.",
+              "fr": "Les raisons pour lesquelles les tests fonctionnels sont si importants : tu veux identifier les bugs tôt dans ton application. Tu veux aussi t'assurer que ton application répond aux exigences définies au début de la phase de planification. Enfin, tu veux t'assurer que tes utilisateurs ont une bonne expérience. Les utilisateurs ne devraient pas peiner à utiliser ton application ni être bloqués par des fonctionnalités cassées et des pannes système."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is functional testing?",
+              "fr": "Qu'est-ce que les tests fonctionnels ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This tests for accessibility issues only and ensures there is 100% test coverage.",
+              "fr": "Cela teste uniquement les problèmes d'accessibilité et s'assure d'une couverture de tests à 100 %."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This tests for performance issues and ensures the application performance is strong.",
+              "fr": "Cela teste les problèmes de performance et s'assure que la performance de l'application est solide."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This tests the system as a whole to ensure that the system works as expected.",
+              "fr": "Cela teste le système dans son ensemble pour s'assurer qu'il fonctionne comme prévu."
+            },
+            {
+              "en": "This tests for CSS issues only and ensures there is 100% test coverage.",
+              "fr": "Cela teste uniquement les problèmes CSS et s'assure d'une couverture de tests à 100 %."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of non-functional testing?",
+              "fr": "Lequel des éléments suivants est un exemple de test non fonctionnel ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Testing the CSS of your application to make sure the styles look correct.",
+              "fr": "Tester le CSS de ton application pour s'assurer que les styles ont l'air corrects."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the HTML of your application to ensure there are no bugs.",
+              "fr": "Tester le HTML de ton application pour s'assurer qu'il n'y a pas de bugs."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the JavaScript files in your application to ensure they only use arrow functions.",
+              "fr": "Tester les fichiers JavaScript de ton application pour s'assurer qu'ils n'utilisent que des fonctions fléchées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the performance of your application under different network conditions.",
+              "fr": "Tester la performance de ton application sous différentes conditions réseau."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of functional testing?",
+              "fr": "Lequel des éléments suivants est un exemple de test fonctionnel ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Agile testing",
+              "fr": "Agile testing"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Regex testing",
+              "fr": "Regex testing"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Smoke testing",
+              "fr": "Smoke testing"
+            },
+            {
+              "en": "Class testing",
+              "fr": "Class testing"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff4231359d9f21d1437a.md",
+      "id": "67d2ff4231359d9f21d1437a",
+      "dashedName": "what-is-end-to-end-testing",
+      "title": {
+        "en": "What Is End-to-End Testing?",
+        "fr": "Qu'est-ce que les tests de bout en bout ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "End-to-end testing, or E2E for short, tests real-world scenarios from the user's perspective. Examples of E2E testing scenarios include testing the registration and login process or testing the checkout for an e-commerce site.",
+              "fr": "Les tests de bout en bout, ou E2E, testent des scénarios réels du point de vue de l'utilisateur. Des exemples de scénarios E2E incluent tester le processus d'inscription et de connexion, ou tester le checkout d'un site e-commerce."
+            },
+            {
+              "en": "To better understand how end-to-end testing works, let's take a look at a real-world example from the freeCodeCamp codebase. This example uses Playwright, a popular end-to-end testing framework developed by Microsoft.",
+              "fr": "Pour mieux comprendre comment fonctionnent les tests de bout en bout, regardons un exemple réel issu du dépôt freeCodeCamp. Cet exemple utilise Playwright, un framework E2E populaire développé par Microsoft."
+            },
+            {
+              "en": "Inside the freeCodeCamp codebase, there is a directory called `e2e` which holds tests for donations, certifications, exams and more. Inside the directory, there is a `donate-page-donor.spec.ts` file which has tests for the authenticated donor supporter page.",
+              "fr": "Dans le dépôt freeCodeCamp, il y a un répertoire appelé `e2e` qui contient des tests pour les dons, les certifications, les examens, et plus encore. Dans ce répertoire, il y a un fichier `donate-page-donor.spec.ts` avec des tests pour la page supporter du donateur authentifié."
+            },
+            {
+              "en": "The first step is to navigate to the donation page as a demo user who is already a supporter:",
+              "fr": "La première étape est de naviguer vers la page de dons en tant qu'utilisateur démo qui est déjà supporter :"
+            },
+            {
+              "en": "Since there are multiple tests in this file, the `beforeEach` hook will run before each of the tests.",
+              "fr": "Comme il y a plusieurs tests dans ce fichier, le hook `beforeEach` s'exécutera avant chacun des tests."
+            },
+            {
+              "en": "Once the user is on the donation page, they will see a thank you message with suggestions on how to support freeCodeCamp further. Here are just a few of the tests to check for some of the text found on the donation page:",
+              "fr": "Une fois sur la page de dons, l'utilisateur verra un message de remerciement avec des suggestions pour soutenir freeCodeCamp davantage. Voici juste quelques tests qui vérifient une partie du texte trouvé sur la page de dons :"
+            },
+            {
+              "en": "There are also tests to check that the donor has a supporter link in the menu bar, as well as a special stylized border around their avatar to indicate they are a supporter:",
+              "fr": "Il y a aussi des tests pour vérifier que le donateur a un lien supporter dans la barre de menu, ainsi qu'une bordure stylisée spéciale autour de son avatar pour indiquer qu'il est supporter :"
+            },
+            {
+              "en": "By having these types of detailed tests, you can increase the test coverage for your application beyond just unit tests. End-to-end tests also help ensure that your application behaves correctly, and is predictable for users. Examples of other end-to-end testing tools include Cypress, Selenium, and Puppeteer.",
+              "fr": "En ayant ce type de tests détaillés, tu peux augmenter la couverture de tests de ton application au-delà des seuls tests unitaires. Les tests de bout en bout aident aussi à s'assurer que ton application se comporte correctement et de façon prévisible pour les utilisateurs. D'autres outils E2E incluent Cypress, Selenium et Puppeteer."
+            },
+            {
+              "en": "While end-to-end testing is important, it is expensive because it is time-consuming to set up, design, and maintain. E2E tests are great for critical user flows, while unit tests are great for testing small units in the application.",
+              "fr": "Même si les tests de bout en bout sont importants, ils sont coûteux car longs à mettre en place, concevoir et maintenir. Les tests E2E sont excellents pour les parcours utilisateur critiques, tandis que les tests unitaires sont excellents pour tester de petites unités dans l'application."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT an example of a commonly used E2E testing tool?",
+              "fr": "Lequel des éléments suivants N'EST PAS un exemple d'outil E2E couramment utilisé ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Cypress",
+              "fr": "Cypress"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Selenium",
+              "fr": "Selenium"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Agile",
+              "fr": "Agile"
+            },
+            {
+              "en": "Puppeteer",
+              "fr": "Puppeteer"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a popular end-to-end testing framework developed by Microsoft?",
+              "fr": "Lequel des éléments suivants est un framework de tests de bout en bout populaire développé par Microsoft ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Playwright",
+              "fr": "Playwright"
+            },
+            {
+              "en": "Java",
+              "fr": "Java"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Angular",
+              "fr": "Angular"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "JUnit",
+              "fr": "JUnit"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a commonly used test scenario for end-to-end tests?",
+              "fr": "Lequel des éléments suivants est un scénario de test couramment utilisé pour les tests de bout en bout ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Testing the validity of CSS code.",
+              "fr": "Tester la validité du code CSS."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the performance for an application.",
+              "fr": "Tester la performance d'une application."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the validity of HTML code.",
+              "fr": "Tester la validité du code HTML."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing the user login process.",
+              "fr": "Tester le processus de connexion utilisateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff5f14f6ce9f6d3cbe22.md",
+      "id": "67d2ff5f14f6ce9f6d3cbe22",
+      "dashedName": "what-is-usability-testing-and-what-does-the-process-look-like",
+      "title": {
+        "en": "What Is Usability Testing, and What Does the Process Look Like?",
+        "fr": "Qu'est-ce que les tests d'utilisabilité, et à quoi ressemble le processus ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Usability testing is when you have real users interacting with the application to discover if there are any design, user experience, or functionality issues in the app. This type of testing is important because this feedback will help ensure that the application meets the needs of the users.",
+              "fr": "Les tests d'utilisabilité consistent à faire interagir de vrais utilisateurs avec l'application pour découvrir s'il y a des problèmes de design, d'expérience utilisateur ou de fonctionnalités. Ce type de test est important car ces retours aident à s'assurer que l'application répond aux besoins des utilisateurs."
+            },
+            {
+              "en": "The four common types of usability testing are explorative, comparative, assessment and validation testing.",
+              "fr": "Les quatre types courants de tests d'utilisabilité sont : exploratoire, comparatif, évaluation et validation."
+            },
+            {
+              "en": "Let's first start with explorative usability testing. This type of testing involves users interacting with the different features of the application to better understand how they work. The goal here is to identify any potential issues in the application so they can be addressed early on and resolved.",
+              "fr": "Commençons par les tests d'utilisabilité exploratoires. Ce type implique que les utilisateurs interagissent avec les différentes fonctionnalités de l'application pour mieux comprendre comment elles marchent. L'objectif est d'identifier les problèmes potentiels tôt pour qu'ils puissent être traités et résolus."
+            },
+            {
+              "en": "The second type of usability testing is comparative testing. This is where you compare your application's user experience with similar applications in the marketplace. The goal is to see where your application falls short compared to the competition so those areas can be improved on.",
+              "fr": "Le deuxième type est le test comparatif. Tu compares l'expérience utilisateur de ton application avec des applications similaires sur le marché. L'objectif est de voir où ton application est en retard par rapport à la concurrence, pour pouvoir améliorer ces zones."
+            },
+            {
+              "en": "The third type of usability testing is assessment testing. This is where you study how intuitive the application is to use and if there are any major blockers for users. This type of testing will result in reduced costs and headaches once the application is live to thousands or even millions of users down the line.",
+              "fr": "Le troisième type est le test d'évaluation. Tu étudies à quel point l'application est intuitive à utiliser et s'il y a des bloqueurs majeurs pour les utilisateurs. Ce type de test réduira les coûts et les maux de tête une fois l'application en ligne pour des milliers, voire des millions d'utilisateurs."
+            },
+            {
+              "en": "The last type of usability testing is validation testing. This is where you identify any major issues that will prevent the user from using the application effectively. This type of testing usually happens after the initial development stage and just before the final release of the application.",
+              "fr": "Le dernier type est le test de validation. Tu identifies les problèmes majeurs qui empêcheraient l'utilisateur d'utiliser l'application efficacement. Ce type de test se produit généralement après le développement initial et juste avant la sortie finale de l'application."
+            },
+            {
+              "en": "There are many tools out there to assist with usability testing, but here are a few popular ones to be aware of:",
+              "fr": "Il existe de nombreux outils pour aider aux tests d'utilisabilité, mais en voici quelques-uns populaires à connaître :"
+            },
+            {
+              "en": "- Loop11",
+              "fr": "- Loop11"
+            },
+            {
+              "en": "- Maze",
+              "fr": "- Maze"
+            },
+            {
+              "en": "- Userbrain",
+              "fr": "- Userbrain"
+            },
+            {
+              "en": "- UserTesting and",
+              "fr": "- UserTesting et"
+            },
+            {
+              "en": "- UXTweak",
+              "fr": "- UXTweak"
+            },
+            {
+              "en": "It is important to note that functional testing is not the same as usability testing. Functional testing focuses on the functionality of the application while usability testing focuses on the intuitiveness of the application by users.",
+              "fr": "Il est important de noter que les tests fonctionnels ne sont pas la même chose que les tests d'utilisabilité. Les tests fonctionnels se concentrent sur les fonctionnalités de l'application, tandis que les tests d'utilisabilité se concentrent sur le caractère intuitif de l'application pour les utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT an example of usability testing?",
+              "fr": "Lequel des éléments suivants N'EST PAS un exemple de test d'utilisabilité ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Comparative testing",
+              "fr": "Comparative testing"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Agile testing",
+              "fr": "Agile testing"
+            },
+            {
+              "en": "Validation testing",
+              "fr": "Validation testing"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Explorative testing",
+              "fr": "Explorative testing"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a commonly used tool for usability testing?",
+              "fr": "Lequel des éléments suivants est un outil couramment utilisé pour les tests d'utilisabilité ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Maze",
+              "fr": "Maze"
+            },
+            {
+              "en": "JUnit",
+              "fr": "JUnit"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Jest",
+              "fr": "Jest"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Mocha",
+              "fr": "Mocha"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between functional and usability testing?",
+              "fr": "Quelle est la différence entre tests fonctionnels et tests d'utilisabilité ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Usability testing focuses on performance issues in the application, while functional testing focuses on the intuitiveness of the application by users.",
+              "fr": "Les tests d'utilisabilité se concentrent sur les problèmes de performance dans l'application, tandis que les tests fonctionnels se concentrent sur le caractère intuitif de l'application pour les utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Functional testing focuses on the functionality of the application, while usability testing focuses on the intuitiveness of the application by users.",
+              "fr": "Les tests fonctionnels se concentrent sur les fonctionnalités de l'application, tandis que les tests d'utilisabilité se concentrent sur le caractère intuitif de l'application pour les utilisateurs."
+            },
+            {
+              "en": "Usability testing focuses on the functionality of the application, while functional testing focuses on the intuitiveness of the application by users.",
+              "fr": "Les tests d'utilisabilité se concentrent sur les fonctionnalités de l'application, tandis que les tests fonctionnels se concentrent sur le caractère intuitif de l'application pour les utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Functional testing focuses on accessibility issues, while usability testing focuses on the intuitiveness of the application by users.",
+              "fr": "Les tests fonctionnels se concentrent sur les problèmes d'accessibilité, tandis que les tests d'utilisabilité se concentrent sur le caractère intuitif de l'application pour les utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff6f069dce9feacb7d25.md",
+      "id": "67d2ff6f069dce9feacb7d25",
+      "dashedName": "what-is-compatibility-testing",
+      "title": {
+        "en": "What Is Compatibility Testing?",
+        "fr": "Qu'est-ce que les tests de compatibilité ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When you build out web applications at scale, you will need to think beyond your personal computing environment. How will these applications work on a variety of devices, operating systems, and browsers? Well, this is where compatibility testing comes in.",
+              "fr": "Quand tu construis des applications web à grande échelle, tu dois penser au-delà de ton environnement informatique personnel. Comment ces applications fonctionneront-elles sur une variété d'appareils, de systèmes d'exploitation et de navigateurs ? C'est là qu'interviennent les tests de compatibilité."
+            },
+            {
+              "en": "The goal of compatibility testing is to see how well your software works in a variety of different computing environments. This provides the team with the ability to catch bugs before they reach production and will help contribute to a smoother product launch.",
+              "fr": "L'objectif des tests de compatibilité est de voir à quel point ton logiciel fonctionne dans une variété d'environnements informatiques. Cela permet à l'équipe d'attraper les bugs avant la production et contribue à un lancement produit plus fluide."
+            },
+            {
+              "en": "Different types of compatibility testing include backwards and forwards compatibility, hardware testing, operating systems, networks, browsers, and mobile devices.",
+              "fr": "Les différents types de tests de compatibilité incluent la compatibilité ascendante et descendante, les tests matériels, les systèmes d'exploitation, les réseaux, les navigateurs et les appareils mobiles."
+            },
+            {
+              "en": "Let's take a look at each of the types in more detail by starting with backwards and forwards compatibility. Backwards compatibility refers to when current software is compatible with earlier versions. Forwards compatibility is when software and systems will work with future versions of itself.",
+              "fr": "Regardons chaque type plus en détail en commençant par la compatibilité ascendante et descendante. La compatibilité ascendante (backwards) signifie que le logiciel actuel est compatible avec les versions antérieures. La compatibilité descendante (forwards) signifie que le logiciel et les systèmes fonctionneront avec les versions futures."
+            },
+            {
+              "en": "The next type of testing is for hardware. Hardware compatibility testing focuses on the software's ability to work properly in different hardware configurations. This includes different types of processors, memory, storage, and graphics cards.",
+              "fr": "Le type suivant concerne le matériel. Les tests de compatibilité matérielle se concentrent sur la capacité du logiciel à fonctionner correctement dans différentes configurations matérielles. Cela inclut différents types de processeurs, de mémoire, de stockage et de cartes graphiques."
+            },
+            {
+              "en": "Another type of compatibility testing is for operating systems. You don't want to design software that works smoothly on Mac devices but has bugs on Windows or vice versa. You also need to consider Linux distributions like Ubuntu and Fedora.",
+              "fr": "Un autre type de test de compatibilité concerne les systèmes d'exploitation. Tu ne veux pas concevoir un logiciel qui marche bien sur Mac mais a des bugs sous Windows, ou l'inverse. Tu dois aussi considérer les distributions Linux comme Ubuntu et Fedora."
+            },
+            {
+              "en": "The next type of testing is network compatibility testing. You will have users working with different network speeds, protocols, security settings, and more. Therefore, software teams will need to be mindful of all of those different conditions when testing.",
+              "fr": "Le type suivant est le test de compatibilité réseau. Tu auras des utilisateurs avec différentes vitesses réseau, protocoles, paramètres de sécurité, et plus encore. Les équipes logicielles doivent donc tenir compte de toutes ces conditions différentes lors des tests."
+            },
+            {
+              "en": "Then, there's browser compatibility testing. There are a few popular browsers in the market like Google Chrome, Safari, Firefox, and more. Since all browsers work slightly differently, it's important to test your web application thoroughly and make sure your web applications work consistently across many browsers.",
+              "fr": "Ensuite, il y a les tests de compatibilité navigateurs. Il y a quelques navigateurs populaires sur le marché comme Google Chrome, Safari, Firefox, et d'autres. Comme tous les navigateurs fonctionnent légèrement différemment, il est important de tester ton application web en profondeur et de s'assurer qu'elle fonctionne de façon cohérente sur de nombreux navigateurs."
+            },
+            {
+              "en": "The last type of testing is mobile testing. There was a time in web development when most developers didn't think about testing for mobile devices. This was because, in the early 2000s, mobile devices weren't nearly as powerful or widely used as they are today. But now, tens of millions of people visit websites on phones and tablets. So, it is important to ensure that your software applications work on a variety of Android and iOS devices.",
+              "fr": "Le dernier type est le test mobile. Il y a eu une époque en développement web où la plupart des développeurs ne pensaient pas à tester pour les appareils mobiles. C'est parce qu'au début des années 2000, les appareils mobiles n'étaient pas aussi puissants ni aussi répandus qu'aujourd'hui. Mais maintenant, des dizaines de millions de personnes visitent des sites sur téléphones et tablettes. Il est donc important de s'assurer que tes applications fonctionnent sur une variété d'appareils Android et iOS."
+            },
+            {
+              "en": "Those are just a few types of testing that you will need to consider when building out your applications. While this might seem like a lot of extra work, it is important to perform compatibility tests because you do want to ensure that your applications work in a variety of computing environments.",
+              "fr": "Ce ne sont que quelques types de tests à considérer quand tu construis tes applications. Même si cela peut sembler beaucoup de travail supplémentaire, il est important de faire des tests de compatibilité car tu veux t'assurer que tes applications fonctionnent dans une variété d'environnements informatiques."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main goal of compatibility testing?",
+              "fr": "Quel est l'objectif principal des tests de compatibilité ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To ensure that your applications have no accessibility errors.",
+              "fr": "S'assurer que tes applications n'ont aucune erreur d'accessibilité."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "To ensure that your applications are free from linting and formatting errors.",
+              "fr": "S'assurer que tes applications sont exemptes d'erreurs de linting et de formatage."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "To ensure that your applications work in a variety of computing environments.",
+              "fr": "S'assurer que tes applications fonctionnent dans une variété d'environnements informatiques."
+            },
+            {
+              "en": "To ensure that your applications only work for different Linux distributions.",
+              "fr": "S'assurer que tes applications ne fonctionnent que pour différentes distributions Linux."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following refers to when current software is compatible with earlier versions?",
+              "fr": "Lequel des éléments suivants désigne le cas où le logiciel actuel est compatible avec les versions antérieures ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "CPU compatibility",
+              "fr": "CPU compatibility"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how software will work with older versions.",
+              "fr": "Pense à comment le logiciel fonctionnera avec les versions plus anciennes."
+            },
+            {
+              "en": "Accessible compatibility",
+              "fr": "Accessible compatibility"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how software will work with older versions.",
+              "fr": "Pense à comment le logiciel fonctionnera avec les versions plus anciennes."
+            },
+            {
+              "en": "Forwards compatibility",
+              "fr": "Forwards compatibility"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how software will work with older versions.",
+              "fr": "Pense à comment le logiciel fonctionnera avec les versions plus anciennes."
+            },
+            {
+              "en": "Backwards compatibility",
+              "fr": "Backwards compatibility"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT typically targeted in compatibility testing?",
+              "fr": "Lequel des éléments suivants N'EST typiquement PAS ciblé dans les tests de compatibilité ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Mobile operating systems",
+              "fr": "Mobile operating systems"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to computer memory.",
+              "fr": "L'une de ces options désigne la mémoire d'un ordinateur."
+            },
+            {
+              "en": "RAM size",
+              "fr": "RAM size"
+            },
+            {
+              "en": "Hardware configuration",
+              "fr": "Hardware configuration"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to computer memory.",
+              "fr": "L'une de ces options désigne la mémoire d'un ordinateur."
+            },
+            {
+              "en": "Network environments",
+              "fr": "Network environments"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to computer memory.",
+              "fr": "L'une de ces options désigne la mémoire d'un ordinateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff7a461f62a03e3d1861.md",
+      "id": "67d2ff7a461f62a03e3d1861",
+      "dashedName": "what-is-performance-testing",
+      "title": {
+        "en": "What Is Performance Testing?",
+        "fr": "Qu'est-ce que les tests de performance ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "If a software application is slow to respond or unstable, that will lead to a poor user experience. Performance testing is what you do when you test an application's speed, responsiveness, scalability, and stability under different workloads. The goal is to resolve any type of performance bottleneck before it reaches your users.",
+              "fr": "Si une application logicielle est lente à répondre ou instable, cela mènera à une mauvaise expérience utilisateur. Les tests de performance consistent à tester la vitesse, la réactivité, la scalabilité et la stabilité d'une application sous différentes charges. L'objectif est de résoudre tout goulot d'étranglement de performance avant qu'il n'atteigne tes utilisateurs."
+            },
+            {
+              "en": "In this lesson, we will go through a few types of performance testing.",
+              "fr": "Dans cette leçon, on passera en revue quelques types de tests de performance."
+            },
+            {
+              "en": "The first type is load testing. A load in this context refers to the amount of work or demand put on a system. Load testing determines how a system behaves during normal and peak load times. The goal is to analyze metrics like response times and resource usage and determine if the current software build is ready or not.",
+              "fr": "Le premier type est le load testing. Une charge dans ce contexte désigne la quantité de travail ou de demande mise sur un système. Le load testing détermine comment un système se comporte en charge normale et en pic. L'objectif est d'analyser des métriques comme les temps de réponse et l'usage des ressources, et de déterminer si le build logiciel actuel est prêt ou non."
+            },
+            {
+              "en": "Another type of testing is stress testing. This is where you test your application in extreme loads and see how well your system responds to the higher load. The goal here is to identify any bottlenecks and vulnerabilities by testing the system beyond its limits.",
+              "fr": "Un autre type est le stress testing. Tu testes ton application sous des charges extrêmes et tu vois comment le système répond. L'objectif est d'identifier les goulots d'étranglement et les vulnérabilités en testant le système au-delà de ses limites."
+            },
+            {
+              "en": "The next type of performance testing is soak testing, also known as endurance testing. This is a type of load testing where you test the system with a higher load for an extended period of time. The goal here is to determine any types of memory leaks and performance degradation.",
+              "fr": "Le type suivant est le soak testing, aussi appelé endurance testing. C'est un type de load testing où tu testes le système avec une charge élevée pendant une période prolongée. L'objectif est de détecter d'éventuelles fuites mémoire et dégradations de performance."
+            },
+            {
+              "en": "Another type of testing is spike testing. This is where you dramatically increase and decrease the loads and analyze the system's reactions to the changes. The goal here is to see if your system will fail with these dramatic changes in the load.",
+              "fr": "Un autre type est le spike testing. Tu augmentes et diminues dramatiquement les charges et tu analyses les réactions du système. L'objectif est de voir si ton système échouera face à ces changements dramatiques de charge."
+            },
+            {
+              "en": "Finally, there's breakpoint testing, also known as capacity testing. This is where the load will slowly increment over time to the point where the system starts to fail or degrade. The goal here is to better understand the system's limits and capacities.",
+              "fr": "Enfin, il y a le breakpoint testing, aussi appelé capacity testing. La charge augmente lentement au fil du temps jusqu'au point où le système commence à échouer ou à se dégrader. L'objectif est de mieux comprendre les limites et capacités du système."
+            },
+            {
+              "en": "These are just a few types of performance testing you can do on your applications. Since performance plays a vital role in software development, it is important that you perform these types of tests to ensure that your application doesn't have any major issues and provides a smooth experience for users.",
+              "fr": "Ce ne sont que quelques types de tests de performance que tu peux faire sur tes applications. Comme la performance joue un rôle vital dans le développement logiciel, il est important de réaliser ces tests pour t'assurer que ton application n'a pas de problèmes majeurs et offre une expérience fluide aux utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is performance testing?",
+              "fr": "Qu'est-ce que les tests de performance ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Testing for an application's linting, formatting, and stability under different workloads.",
+              "fr": "Tester le linting, le formatage et la stabilité d'une application sous différentes charges."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing for an application's accessibility, scalability and linting under different workloads.",
+              "fr": "Tester l'accessibilité, la scalabilité et le linting d'une application sous différentes charges."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing for an application's version control, scalability and formatting under different workloads.",
+              "fr": "Tester le contrôle de version, la scalabilité et le formatage d'une application sous différentes charges."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing for an application's speed, responsiveness, scalability and stability under different workloads.",
+              "fr": "Tester la vitesse, la réactivité, la scalabilité et la stabilité d'une application sous différentes charges."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a type of performance testing?",
+              "fr": "Lequel des éléments suivants N'EST PAS un type de test de performance ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "CPU testing",
+              "fr": "CPU testing"
+            },
+            {
+              "en": "Load testing",
+              "fr": "Load testing"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to the \"brain\" of a computer and is not a type of performance testing.",
+              "fr": "L'une de ces options désigne le « cerveau » d'un ordinateur et n'est pas un type de test de performance."
+            },
+            {
+              "en": "Stress testing",
+              "fr": "Stress testing"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to the \"brain\" of a computer and is not a type of performance testing.",
+              "fr": "L'une de ces options désigne le « cerveau » d'un ordinateur et n'est pas un type de test de performance."
+            },
+            {
+              "en": "Breakpoint testing",
+              "fr": "Breakpoint testing"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options refers to the \"brain\" of a computer and is not a type of performance testing.",
+              "fr": "L'une de ces options désigne le « cerveau » d'un ordinateur et n'est pas un type de test de performance."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following tests dramatically increase and decrease the loads and analyze the system's reactions to the changes?",
+              "fr": "Lequel des éléments suivants augmente et diminue dramatiquement les charges et analyse les réactions du système ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Load testing",
+              "fr": "Load testing"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Spike testing",
+              "fr": "Spike testing"
+            },
+            {
+              "en": "Accessibility testing",
+              "fr": "Accessibility testing"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Stress testing",
+              "fr": "Stress testing"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2ff887d2583a079c02e78.md",
+      "id": "67d2ff887d2583a079c02e78",
+      "dashedName": "what-is-security-testing",
+      "title": {
+        "en": "What Is Security Testing?",
+        "fr": "Qu'est-ce que les tests de sécurité ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The web is a powerful place filled with a wealth of information and activities. But it can also be a dangerous place if you are not careful. There are many hackers and cyber criminals out there looking for new ways to breach websites and compromise data.",
+              "fr": "Le web est un endroit puissant rempli d'informations et d'activités. Mais ce peut aussi être un endroit dangereux si tu n'es pas prudent. Il y a de nombreux hackers et cybercriminels qui cherchent de nouvelles façons de pirater des sites et de compromettre des données."
+            },
+            {
+              "en": "You've probably heard of a few high-profile data breaches that affected billion-dollar companies like Meta and Microsoft. When it comes to working on web applications, you will need to do thorough security testing to help identity vulnerabilities and weaknesses.",
+              "fr": "Tu as probablement entendu parler de quelques fuites de données très médiatisées qui ont touché des entreprises milliardaires comme Meta et Microsoft. Quand tu travailles sur des applications web, tu devras faire des tests de sécurité approfondis pour aider à identifier les vulnérabilités et les faiblesses."
+            },
+            {
+              "en": "Here are a few principles to be aware of when it comes to performing security audits and testing:",
+              "fr": "Voici quelques principes à connaître quand tu fais des audits et des tests de sécurité :"
+            },
+            {
+              "en": "- Confidentiality: This protects against the release of sensitive information to other recipients that aren't the intended recipient.",
+              "fr": "- Confidentialité : cela protège contre la divulgation d'informations sensibles à des destinataires non prévus."
+            },
+            {
+              "en": "- Integrity: This involves preventing malicious users from modifying user information.",
+              "fr": "- Intégrité : cela implique d'empêcher des utilisateurs malveillants de modifier les informations utilisateur."
+            },
+            {
+              "en": "- Authentication: This involves verifying the user's identity to ensure that they are allowed to use that system.",
+              "fr": "- Authentification : cela implique de vérifier l'identité de l'utilisateur pour s'assurer qu'il est autorisé à utiliser le système."
+            },
+            {
+              "en": "- Authorization: This is the process of determining what actions authenticated users are allowed to perform or which parts of the system they are permitted to access.",
+              "fr": "- Autorisation : c'est le processus qui détermine quelles actions les utilisateurs authentifiés peuvent effectuer, ou quelles parties du système ils peuvent accéder."
+            },
+            {
+              "en": "- Availability: This ensures that information and services are available to authorized users when they need it.",
+              "fr": "- Disponibilité : cela garantit que les informations et services sont disponibles pour les utilisateurs autorisés quand ils en ont besoin."
+            },
+            {
+              "en": "- Non-repudiation: This ensures that both the sender and recipient have proof of delivery and verification of the sender's identity. It protects against the sender denying having sent the information.",
+              "fr": "- Non-répudiation : cela garantit que l'émetteur et le destinataire ont une preuve de livraison et une vérification de l'identité de l'émetteur. Cela protège contre le déni d'avoir envoyé l'information."
+            },
+            {
+              "en": "Now that we understand the reasoning behind security testing, let's take a look at a few common security threats:",
+              "fr": "Maintenant qu'on comprend le raisonnement derrière les tests de sécurité, regardons quelques menaces de sécurité courantes :"
+            },
+            {
+              "en": "- Cross-site Scripting (XSS): You learned about this in an earlier lesson. But as a refresher, XSS attacks happen when an attacker injects malicious scripts into a web page that is viewed by other users. These scripts can then execute in the context of the victim's browser, potentially stealing cookies and session data or performing other malicious actions without the user's knowledge or consent.",
+              "fr": "- Cross-site Scripting (XSS) : tu as appris cela dans une leçon précédente. Pour rappel, les attaques XSS surviennent quand un attaquant injecte des scripts malveillants dans une page web vue par d'autres utilisateurs. Ces scripts peuvent alors s'exécuter dans le contexte du navigateur de la victime, potentiellement voler des cookies et des données de session, ou effectuer d'autres actions malveillantes sans le savoir ni le consentement de l'utilisateur."
+            },
+            {
+              "en": "- SQL Injection: SQL is a language for managing and storing information in a relational database. SQL injection allows malicious users to inject malicious code into a database. You will learn more SQL, relational databases, and SQL injection in a future module.",
+              "fr": "- Injection SQL : SQL est un langage pour gérer et stocker des informations dans une base de données relationnelle. L'injection SQL permet à des utilisateurs malveillants d'injecter du code malveillant dans une base de données. Tu en apprendras plus sur SQL, les bases relationnelles et l'injection SQL dans un futur module."
+            },
+            {
+              "en": "- Denial-of-Service (DoS) attack: This is when malicious users flood a website with a high number of requests or traffic, causing the server to slow down and possibly crash, making the site unavailable to users.",
+              "fr": "- Attaque par déni de service (DoS) : c'est quand des utilisateurs malveillants inondent un site d'un grand nombre de requêtes ou de trafic, ce qui ralentit le serveur et peut le faire planter, rendant le site indisponible."
+            },
+            {
+              "en": "There are many more types of security threats, but there are many tools you can use to help protect your web applications and make them more secure. Here are the broad categories that security testing tools fall into:",
+              "fr": "Il y a bien d'autres types de menaces de sécurité, mais aussi de nombreux outils pour aider à protéger tes applications web et les rendre plus sécurisées. Voici les grandes catégories dans lesquelles tombent les outils de tests de sécurité :"
+            },
+            {
+              "en": "- Static application security testing: These tools are used to evaluate the source code for an application to identify security vulnerabilities.",
+              "fr": "- Static application security testing : ces outils évaluent le code source d'une application pour identifier des vulnérabilités de sécurité."
+            },
+            {
+              "en": "- Dynamic application security testing (DAST): These tools interface with the application's front-end to uncover potential security weaknesses. Unlike static application security testing, DAST tools do not have access to the source code.",
+              "fr": "- Dynamic application security testing (DAST) : ces outils s'interfacent avec le front-end de l'application pour découvrir des faiblesses de sécurité potentielles. Contrairement au SAST, les outils DAST n'ont pas accès au code source."
+            },
+            {
+              "en": "Another type of security testing is penetration testing (or pentest for short). This involves creating simulated cyberattacks on the application to identify any vulnerabilities in the system. Mid to large-sized companies might have a team of dedicated cybersecurity professionals that perform pentests on a regular basis as part of their regular security audits.",
+              "fr": "Un autre type de test de sécurité est le test de pénétration (ou pentest). Cela consiste à créer des cyberattaques simulées sur l'application pour identifier des vulnérabilités dans le système. Les entreprises de taille moyenne à grande peuvent avoir une équipe de professionnels de la cybersécurité dédiés qui réalisent des pentests régulièrement dans le cadre de leurs audits de sécurité."
+            },
+            {
+              "en": "The world of cybersecurity is very vast and detailed. But every developer should understand a few common threats against web applications and ways to guard against them.",
+              "fr": "Le monde de la cybersécurité est très vaste et détaillé. Mais chaque développeur devrait comprendre quelques menaces courantes contre les applications web et des façons de s'en protéger."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a core principle when it comes to performing security audits and testing?",
+              "fr": "Lequel des éléments suivants N'EST PAS un principe fondamental pour les audits et tests de sécurité ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Integrity",
+              "fr": "Integrity"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is a type of attack and not a core principle for security testing.",
+              "fr": "L'une de ces options est un type d'attaque et non un principe fondamental des tests de sécurité."
+            },
+            {
+              "en": "Cross Scripting",
+              "fr": "Cross Scripting"
+            },
+            {
+              "en": "Availability",
+              "fr": "Availability"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is a type of attack and not a core principle for security testing.",
+              "fr": "L'une de ces options est un type d'attaque et non un principe fondamental des tests de sécurité."
+            },
+            {
+              "en": "Non-repudiation",
+              "fr": "Non-repudiation"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is a type of attack and not a core principle for security testing.",
+              "fr": "L'une de ces options est un type d'attaque et non un principe fondamental des tests de sécurité."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following involves malicious users to inject malicious code into a database?",
+              "fr": "Lequel des éléments suivants implique que des utilisateurs malveillants injectent du code malveillant dans une base de données ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "SQL injection",
+              "fr": "SQL injection"
+            },
+            {
+              "en": "Denial-of-Service (DoS) attack",
+              "fr": "Denial-of-Service (DoS) attack"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi au début de la leçon où les menaces de sécurité courantes ont été discutées."
+            },
+            {
+              "en": "Static application injection",
+              "fr": "Static application injection"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi au début de la leçon où les menaces de sécurité courantes ont été discutées."
+            },
+            {
+              "en": "Cross-site Scripting (XSS)",
+              "fr": "Cross-site Scripting (XSS)"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi au début de la leçon où les menaces de sécurité courantes ont été discutées."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following involves creating simulated cyberattacks on the application to identify any vulnerabilities in the system?",
+              "fr": "Lequel des éléments suivants consiste à créer des cyberattaques simulées sur l'application pour identifier des vulnérabilités dans le système ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Penetration testing",
+              "fr": "Penetration testing"
+            },
+            {
+              "en": "Unit testing",
+              "fr": "Unit testing"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où les menaces de sécurité courantes ont été discutées."
+            },
+            {
+              "en": "Smoke testing",
+              "fr": "Smoke testing"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où les menaces de sécurité courantes ont été discutées."
+            },
+            {
+              "en": "Integration testing",
+              "fr": "Integration testing"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where common security threats were discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où les menaces de sécurité courantes ont été discutées."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db30fedfa0b22a1a2a570c.md",
+      "id": "67db30fedfa0b22a1a2a570c",
+      "dashedName": "what-is-the-software-development-life-cycle-and-how-does-it-relate-to-testing",
+      "title": {
+        "en": "What Is the Software Development Life Cycle, and How Does It Relate to Testing?",
+        "fr": "Qu'est-ce que le cycle de vie du développement logiciel, et comment est-il lié aux tests ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "When working on software teams, it is important to have a process for designing and building out new products and services. The Software Development Life Cycle is commonly used by software teams to build and deploy applications.",
+              "fr": "Quand tu travailles en équipes logicielles, il est important d'avoir un processus pour concevoir et construire de nouveaux produits et services. Le cycle de vie du développement logiciel (Software Development Life Cycle) est couramment utilisé par les équipes pour construire et déployer des applications."
+            },
+            {
+              "en": "In this lesson, we will break down the different stages of the Software Development Life Cycle (SDLC) and the role that testing plays in it.",
+              "fr": "Dans cette leçon, on découpera les différentes étapes du Software Development Life Cycle (SDLC) et le rôle que jouent les tests."
+            },
+            {
+              "en": "Here are the standard stages used in the Software Development Life Cycle:",
+              "fr": "Voici les étapes standard utilisées dans le Software Development Life Cycle :"
+            },
+            {
+              "en": "- Planning stage",
+              "fr": "- Étape de planification"
+            },
+            {
+              "en": "- Design stage",
+              "fr": "- Étape de conception"
+            },
+            {
+              "en": "- Implementation stage",
+              "fr": "- Étape d'implémentation"
+            },
+            {
+              "en": "- Testing stage",
+              "fr": "- Étape de tests"
+            },
+            {
+              "en": "- Deployment stage and",
+              "fr": "- Étape de déploiement et"
+            },
+            {
+              "en": "- Maintenance stage",
+              "fr": "- Étape de maintenance"
+            },
+            {
+              "en": "Let's take a closer look at all of those stages in more detail.",
+              "fr": "Regardons de plus près toutes ces étapes en détail."
+            },
+            {
+              "en": "In the planning stage, the development team collects requirements for the proposed work from the stakeholders. A stakeholder is someone with a vested interest in the success of the product or service. Examples of stakeholders could be investors, owners, or even other employees. The planning phase also includes estimating costs for the work and creating a schedule for when the work will be completed.",
+              "fr": "À l'étape de planification, l'équipe de développement recueille les exigences du travail proposé auprès des parties prenantes. Une partie prenante est quelqu'un qui a un intérêt dans le succès du produit ou du service. Des exemples de parties prenantes peuvent être des investisseurs, des propriétaires, ou même d'autres employés. La phase de planification inclut aussi l'estimation des coûts et la création d'un planning pour la fin du travail."
+            },
+            {
+              "en": "The next stage is the Design stage. In this phase, the software team breaks down the requirements and decide on the best approaches for solutions. This includes deciding on which external tools can be used to help things along and what internal tooling needs to be built to get the job done.",
+              "fr": "L'étape suivante est l'étape de conception. Dans cette phase, l'équipe logicielle décompose les exigences et décide des meilleures approches pour les solutions. Cela inclut de décider quels outils externes peuvent aider et quel outillage interne doit être construit pour faire le travail."
+            },
+            {
+              "en": "After the design stage, you have the implementation stage. This involves the software team breaking down the requirements into manageable tasks that they divide up amongst themselves and build out.",
+              "fr": "Après l'étape de conception, tu as l'étape d'implémentation. L'équipe logicielle découpe les exigences en tâches gérables qu'elle se répartit et construit."
+            },
+            {
+              "en": "Once the implementation stage is complete, the software team moves into the testing stage. This involves manual and automated testing for the new work. Sometimes the team tests out the application throughout the entire development stage to catch and fix any issues that come up.",
+              "fr": "Une fois l'étape d'implémentation terminée, l'équipe passe à l'étape de tests. Cela implique des tests manuels et automatisés pour le nouveau travail. Parfois, l'équipe teste l'application tout au long du développement pour attraper et corriger les problèmes qui apparaissent."
+            },
+            {
+              "en": "The next stage is the deployment stage. This is where the team deploys the new changes to a build or testing environment. This allows the team to test out the application some more and fix any issues before the changes go to production. The production application is the app that end users will use.",
+              "fr": "L'étape suivante est le déploiement. L'équipe déploie les nouveaux changements dans un environnement de build ou de test. Cela permet de tester encore l'application et de corriger les problèmes avant que les changements n'aillent en production. L'application en production est celle que les utilisateurs finaux utiliseront."
+            },
+            {
+              "en": "The last stage is the maintenance stage. This involves fixing any issues that arise from customers in the production application. This also involves monitoring the system for any possible improvements on the software.",
+              "fr": "La dernière étape est la maintenance. Cela implique de corriger les problèmes signalés par les clients dans l'application en production. Cela implique aussi de surveiller le système pour d'éventuelles améliorations du logiciel."
+            },
+            {
+              "en": "Finally, there are different models of the Software Development Life Cycle used in the industry, such as Waterfall and Agile. The Waterfall model is where each phase of the life cycle needs to be completed before the next phase can begin. In contrast, the Agile model focuses on iterative development by breaking down work into sprints so teams can quickly make changes and deliver work over time.",
+              "fr": "Enfin, il existe différents modèles du Software Development Life Cycle utilisés dans l'industrie, comme Waterfall et Agile. Dans le modèle Waterfall, chaque phase du cycle doit être terminée avant que la suivante puisse commencer. En contraste, le modèle Agile se concentre sur le développement itératif en découpant le travail en sprints, pour que les équipes puissent rapidement faire des changements et livrer au fil du temps."
+            },
+            {
+              "en": "By going through the Software Development Life Cycle, the development team and stakeholders can be on the same page when it comes to requirements, cost estimates, and schedules. This makes for more efficient collaboration and communication across the board.",
+              "fr": "En passant par le Software Development Life Cycle, l'équipe de développement et les parties prenantes peuvent être alignées sur les exigences, les estimations de coûts et les plannings. Cela favorise une collaboration et une communication plus efficaces pour tout le monde."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a stage used in the Software Development Life Cycle?",
+              "fr": "Laquelle des étapes suivantes N'EST PAS utilisée dans le Software Development Life Cycle ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Planning Stage",
+              "fr": "Planning Stage"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Testing Stage",
+              "fr": "Testing Stage"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Regression Stage",
+              "fr": "Regression Stage"
+            },
+            {
+              "en": "Deployment Stage",
+              "fr": "Deployment Stage"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the design stage?",
+              "fr": "Qu'est-ce que l'étape de conception ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This is where the team will collect requirements and deadlines from stakeholders.",
+              "fr": "C'est là que l'équipe recueille les exigences et les échéances auprès des parties prenantes."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where the team will break down the requirements and design solutions.",
+              "fr": "C'est là que l'équipe décompose les exigences et conçoit des solutions."
+            },
+            {
+              "en": "This is where the team will only focus on UI development.",
+              "fr": "C'est là que l'équipe se concentre uniquement sur le développement UI."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where the team will only create Figma and Sketch mockups of the work to be done.",
+              "fr": "C'est là que l'équipe crée uniquement des maquettes Figma et Sketch du travail à faire."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the Agile model focus on?",
+              "fr": "Sur quoi se concentre le modèle Agile ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Iterative development",
+              "fr": "Le développement itératif"
+            },
+            {
+              "en": "Slow development",
+              "fr": "Le développement lent"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Expensive development",
+              "fr": "Le développement coûteux"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "UI/UX development",
+              "fr": "Le développement UI/UX"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db31349f3ace2c5c803c33.md",
+      "id": "67db31349f3ace2c5c803c33",
+      "dashedName": "what-are-bdd-and-tdd",
+      "title": {
+        "en": "What Are BDD and TDD?",
+        "fr": "Que sont BDD et TDD ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "There are two types of testing approaches that you should be aware of in software development. Those approaches are TDD (Test-Driven Development) and BDD (Behavior-Driven Development).",
+              "fr": "Il y a deux approches de tests dont tu devrais être conscient en développement logiciel. Ces approches sont le TDD (Test-Driven Development) et le BDD (Behavior-Driven Development)."
+            },
+            {
+              "en": "Let's first take a look at TDD. Test-Driven Development is a methodology that emphasizes writing tests first before building out the features for an application.",
+              "fr": "Regardons d'abord le TDD. Le Test-Driven Development est une méthodologie qui met l'accent sur l'écriture des tests avant de construire les fonctionnalités d'une application."
+            },
+            {
+              "en": "Here is the typical process for TDD:",
+              "fr": "Voici le processus typique du TDD :"
+            },
+            {
+              "en": "1. Write a test",
+              "fr": "1. Écrire un test"
+            },
+            {
+              "en": "2. Ensure that it fails",
+              "fr": "2. S'assurer qu'il échoue"
+            },
+            {
+              "en": "3. Write the code for that test",
+              "fr": "3. Écrire le code pour ce test"
+            },
+            {
+              "en": "4. Ensure that the test passes this time",
+              "fr": "4. S'assurer que le test passe cette fois"
+            },
+            {
+              "en": "5. Make any necessary refactors to the code",
+              "fr": "5. Faire les éventuels refactorings nécessaires du code"
+            },
+            {
+              "en": "Repeat steps 1-5.",
+              "fr": "Répéter les étapes 1 à 5."
+            },
+            {
+              "en": "Writing tests before building out features provides real-time feedback to developers during the development process. It also helps with catching bugs earlier on in the development stage.",
+              "fr": "Écrire les tests avant de construire les fonctionnalités donne un retour en temps réel aux développeurs pendant le développement. Cela aide aussi à attraper les bugs plus tôt dans la phase de développement."
+            },
+            {
+              "en": "While some software teams will choose to follow the TDD approach, TDD is a polarizing topic in the industry. You will find tons of articles and videos out there both advocating for or bashing TDD. Regardless of how you feel about this approach, it is important to be aware of it because you might come across it in real-world scenarios.",
+              "fr": "Même si certaines équipes logicielles choisissent de suivre l'approche TDD, le TDD est un sujet polarisant dans l'industrie. Tu trouveras plein d'articles et de vidéos qui défendent ou critiquent le TDD. Quoi que tu penses de cette approche, il est important d'en être conscient car tu pourrais la rencontrer dans des scénarios réels."
+            },
+            {
+              "en": "The second testing approach we will take a look at is Behavior-Driven Development (BDD). Behavior-Driven Development is the approach of aligning a series of tests with business goals. These tests should be written in a language that can be understood by both technical and non-technical individuals.",
+              "fr": "La deuxième approche de tests qu'on regardera est le Behavior-Driven Development (BDD). Le BDD consiste à aligner une série de tests sur les objectifs métier. Ces tests doivent être écrits dans un langage compréhensible par les personnes techniques et non techniques."
+            },
+            {
+              "en": "When testing for specific behaviors in a software application, BDD commonly uses the Gherkin language, which is used in businesses to describe behaviors and scenarios. The Gherkin language uses Given, When, and Then statements when describing scenarios.",
+              "fr": "Quand on teste des comportements spécifiques dans une application logicielle, le BDD utilise couramment le langage Gherkin, utilisé en entreprise pour décrire des comportements et des scénarios. Le langage Gherkin utilise des instructions Given, When et Then pour décrire les scénarios."
+            },
+            {
+              "en": "Here is an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "**Scenario:** Creating a New Blog Post",
+              "fr": "**Scenario :** Créer un nouvel article de blog"
+            },
+            {
+              "en": "**Given** the user is logged into their account and is on the \"Create New Post\" page,",
+              "fr": "**Given** l'utilisateur est connecté à son compte et se trouve sur la page « Create New Post »,"
+            },
+            {
+              "en": "**When** the user enters a title and content for the post and clicks the \"Publish\" button,",
+              "fr": "**When** l'utilisateur saisit un titre et un contenu pour l'article et clique sur le bouton « Publish »,"
+            },
+            {
+              "en": "**Then** the blog post should be saved and displayed on the homepage with the correct title, content, and timestamp.",
+              "fr": "**Then** l'article de blog devrait être enregistré et affiché sur la page d'accueil avec le bon titre, contenu et horodatage."
+            },
+            {
+              "en": "You first want to define a scenario. Example scenarios include when a user logs into an application or places an order on a website. In this example, the scenario is for a user creating a new blog post on a site.",
+              "fr": "Tu veux d'abord définir un scénario. Des exemples de scénarios incluent quand un utilisateur se connecte à une application ou passe une commande sur un site. Dans cet exemple, le scénario concerne un utilisateur qui crée un nouvel article de blog sur un site."
+            },
+            {
+              "en": "After the scenario is defined, you should start with a Given statement. This provides context for where the user is starting before performing an action. The When statement is used to represent the action taken by the user.",
+              "fr": "Après avoir défini le scénario, tu devrais commencer par une instruction Given. Cela donne le contexte de où se trouve l'utilisateur avant d'effectuer une action. L'instruction When représente l'action prise par l'utilisateur."
+            },
+            {
+              "en": "Finally, the Then statement is used to represent the desired outcome from the previous action taken by the user. Once you define all of your scenarios, you can write tests for each scenario.",
+              "fr": "Enfin, l'instruction Then représente le résultat souhaité de l'action précédente de l'utilisateur. Une fois tous tes scénarios définis, tu peux écrire des tests pour chacun."
+            },
+            {
+              "en": "Examples of BDD testing frameworks include Cucumber, JBehave, and SpecFlow.",
+              "fr": "Des exemples de frameworks de test BDD incluent Cucumber, JBehave et SpecFlow."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does TDD stand for?",
+              "fr": "Que signifie TDD ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Tab-Driven Development",
+              "fr": "Tab-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Test-Driven Development",
+              "fr": "Test-Driven Development"
+            },
+            {
+              "en": "Table-Driven Development",
+              "fr": "Table-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "TCP-Driven Development",
+              "fr": "TCP-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does BDD stand for?",
+              "fr": "Que signifie BDD ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Babel-Driven Development",
+              "fr": "Babel-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Byte-Driven Development",
+              "fr": "Byte-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Behavior-Driven Development",
+              "fr": "Behavior-Driven Development"
+            },
+            {
+              "en": "Back-End-Driven Development",
+              "fr": "Back-End-Driven Development"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following languages is used in businesses to describe behaviors and scenarios?",
+              "fr": "Lequel des langages suivants est utilisé en entreprise pour décrire des comportements et des scénarios ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Gherkin",
+              "fr": "Gherkin"
+            },
+            {
+              "en": "Rust",
+              "fr": "Rust"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Chai",
+              "fr": "Chai"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "JUnit",
+              "fr": "JUnit"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db3180830cf02eb662ecaf.md",
+      "id": "67db3180830cf02eb662ecaf",
+      "dashedName": "how-do-assertions-work-in-unit-testing",
+      "title": {
+        "en": "How Do Assertions Work in Unit Testing?",
+        "fr": "Comment fonctionnent les assertions dans les tests unitaires ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "You were first introduced to assertions and unit testing in a previous lesson. But as a review, unit testing is when you check the output of individual functions or components independently, in contrast with testing the final output of the entire program. Assertions are used to test that the code is behaving as expected.",
+              "fr": "Tu as été introduit aux assertions et aux tests unitaires dans une leçon précédente. Pour rappel, les tests unitaires consistent à vérifier la sortie de fonctions ou composants individuels de façon indépendante, par contraste avec le test de la sortie finale de tout le programme. Les assertions servent à vérifier que le code se comporte comme prévu."
+            },
+            {
+              "en": "In this lesson, we are going to take a closer look at assertions in unit tests and explore some best practices.",
+              "fr": "Dans cette leçon, on regardera de plus près les assertions dans les tests unitaires et on explorera quelques bonnes pratiques."
+            },
+            {
+              "en": "A commonly used assertion library is Chai. This is the same library used inside of the freeCodeCamp codebase. Whenever you go through a workshop or lab, there is an automated test suite that runs against your code to ensure that your code is behaving the way it is supposed to.",
+              "fr": "Une bibliothèque d'assertions couramment utilisée est Chai. C'est la même bibliothèque utilisée dans le dépôt freeCodeCamp. Chaque fois que tu parcours un workshop ou un lab, une suite de tests automatisés s'exécute contre ton code pour s'assurer qu'il se comporte comme prévu."
+            },
+            {
+              "en": "Let's take a look at a few examples that are from the Full-Stack Developer Curriculum.",
+              "fr": "Regardons quelques exemples issus du Full-Stack Developer Curriculum."
+            },
+            {
+              "en": "In Build a Calculator workshop, Step 1 is testing for a function called `addTwoAndSeven`:",
+              "fr": "Dans le workshop Build a Calculator, l'étape 1 teste une fonction appelée `addTwoAndSeven` :"
+            },
+            {
+              "en": "That assertion checks that the provided code contains a function named `addTwoAndSeven`. If the user creates an array, string, or anything else that's not a function and assigns it to `addTwoAndSeven`, then the test will fail.",
+              "fr": "Cette assertion vérifie que le code fourni contient une fonction nommée `addTwoAndSeven`. Si l'utilisateur crée un tableau, une chaîne, ou autre chose qui n'est pas une fonction et l'assigne à `addTwoAndSeven`, alors le test échouera."
+            },
+            {
+              "en": "Let's take a look at another assertion from later in the workshop:",
+              "fr": "Regardons une autre assertion plus loin dans le workshop :"
+            },
+            {
+              "en": "This assertion checks that the return value from the `addThreeAndFour` function is equal to the number `7`. If the return value does not equal `7`, then the test will fail.",
+              "fr": "Cette assertion vérifie que la valeur renvoyée par la fonction `addThreeAndFour` est égale au nombre `7`. Si la valeur renvoyée n'est pas égale à `7`, alors le test échouera."
+            },
+            {
+              "en": "There are many more asserts built into Chai, like ones that check if a value is a boolean, if an object has a certain property name, or if a value is `null`. Other common JavaScript assertion libraries are should.js and expect.js.",
+              "fr": "Il y a bien d'autres asserts intégrés à Chai, comme ceux qui vérifient si une valeur est un booléen, si un objet a un certain nom de propriété, ou si une valeur est `null`. D'autres bibliothèques d'assertions JavaScript courantes sont should.js et expect.js."
+            },
+            {
+              "en": "Regardless of which assertion library you are working with, there are a few best practices to be aware of. The first is to write clear assert messages. Clear and meaningful assert messages should describe the intent behind it. Otherwise, it will be difficult to locate which tests are failing.",
+              "fr": "Quelle que soit la bibliothèque d'assertions avec laquelle tu travailles, il y a quelques bonnes pratiques à connaître. La première est d'écrire des messages d'assertion clairs. Des messages clairs et significatifs devraient décrire l'intention. Sinon, il sera difficile de localiser quels tests échouent."
+            },
+            {
+              "en": "Another best practice is to write descriptive failure messages. A descriptive failure message should state which condition is true. This will help you figure out why a particular assert is failing.",
+              "fr": "Une autre bonne pratique est d'écrire des messages d'échec descriptifs. Un message d'échec descriptif devrait indiquer quelle condition est vraie. Cela t'aidera à comprendre pourquoi une assertion particulière échoue."
+            },
+            {
+              "en": "As you continue learning to code, it's important to familiarize yourself with testing and start writing tests for your personal projects. Doing this will go a long way in helping you prepare for your first developer job.",
+              "fr": "En continuant à apprendre à coder, il est important de te familiariser avec les tests et de commencer à écrire des tests pour tes projets personnels. Cela t'aidera beaucoup à te préparer pour ton premier poste de développeur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following asserts is used in Chai to test that a value is a function?",
+              "fr": "Laquelle des assertions suivantes est utilisée dans Chai pour tester qu'une valeur est une fonction ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following assert is used in Chai to test if two values are equal?",
+              "fr": "Laquelle des assertions suivantes est utilisée dans Chai pour tester si deux valeurs sont égales ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a commonly used assertion library?",
+              "fr": "Laquelle des bibliothèques suivantes N'EST PAS une bibliothèque d'assertions couramment utilisée ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "expect.js",
+              "fr": "expect.js"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Chai",
+              "fr": "Chai"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "should.js",
+              "fr": "should.js"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Gherkin",
+              "fr": "Gherkin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db31c7ed46f430ce6c2da6.md",
+      "id": "67db31c7ed46f430ce6c2da6",
+      "dashedName": "what-are-the-differences-between-mocking-faking-and-stubbing",
+      "title": {
+        "en": "What Are the Differences Between Mocking, Faking, and Stubbing?",
+        "fr": "Quelles sont les différences entre mocking, faking et stubbing ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Mocking is the process of replacing real data with false data that simulates the behavior of real components. This allows testers and developers to test for specific components in the application without having to rely on external dependencies.",
+              "fr": "Le mocking consiste à remplacer de vraies données par de fausses données qui simulent le comportement de vrais composants. Cela permet aux testeurs et développeurs de tester des composants spécifiques de l'application sans dépendre de dépendances externes."
+            },
+            {
+              "en": "A common use case for mocking data would be when dealing with API calls. Imagine you have a fetch call like this in your application:",
+              "fr": "Un cas d'usage courant pour mocker des données serait quand on traite des appels API. Imagine que tu as un appel fetch comme ceci dans ton application :"
+            },
+            {
+              "en": "If you need to test the `postService` function, you could mock the API response instead of making continuous API calls to fetch the data. Fetching from an API takes time and depends on external factors like network availability and server responses. Mocking the API response removes those external factors and allows testers to work with a predictable, controlled data set.",
+              "fr": "Si tu dois tester la fonction `postService`, tu pourrais mocker la réponse de l'API au lieu de faire des appels API continus pour récupérer les données. Récupérer depuis une API prend du temps et dépend de facteurs externes comme la disponibilité du réseau et les réponses serveur. Moquer la réponse de l'API retire ces facteurs externes et permet aux testeurs de travailler avec un jeu de données prévisible et contrôlé."
+            },
+            {
+              "en": "Here is an example mock API response:",
+              "fr": "Voici un exemple de réponse API mockée :"
+            },
+            {
+              "en": "Now that we understand what mocking is, let's compare it with stubbing. Stubs are objects that return pre-defined responses or dummy data for an expected behavior in an application. For example, you can stub the behavior for a database connection in your tests without having to rely on an actual database connection.",
+              "fr": "Maintenant qu'on comprend ce qu'est le mocking, comparons-le au stubbing. Les stubs sont des objets qui renvoient des réponses prédéfinies ou des données factices pour un comportement attendu dans une application. Par exemple, tu peux stubber le comportement d'une connexion à une base de données dans tes tests sans dépendre d'une vraie connexion."
+            },
+            {
+              "en": "Here is an example of a stub in Jest:",
+              "fr": "Voici un exemple de stub dans Jest :"
+            },
+            {
+              "en": "`db.fetchPosts.mockResolvedValue(fakePosts);` is the stub in this example.",
+              "fr": "`db.fetchPosts.mockResolvedValue(fakePosts);` est le stub dans cet exemple."
+            },
+            {
+              "en": "The last component to discuss are fakes. Fakes are simplified versions of real components without the complexity or side effects of the real thing. For example, you can fake a database by storing the data in memory instead of interacting with the real database. This will allow you to mimic database operations in memory, which will be much faster than dealing with the real database. Another common example would be to use fakes when working with file systems. You can create a fake file system in place of the real one when it comes to testing.",
+              "fr": "Le dernier composant à discuter, ce sont les fakes. Les fakes sont des versions simplifiées de vrais composants, sans la complexité ni les effets de bord du vrai. Par exemple, tu peux faker une base de données en stockant les données en mémoire au lieu d'interagir avec la vraie base. Cela te permet de mimer les opérations de base de données en mémoire, bien plus vite qu'avec la vraie base. Un autre exemple courant serait d'utiliser des fakes avec les systèmes de fichiers. Tu peux créer un faux système de fichiers à la place du vrai pour les tests."
+            },
+            {
+              "en": "As you continue to build out more complex software applications, consider using mocks, stubs, or fakes where appropriate in your testing.",
+              "fr": "En continuant à construire des applications logicielles plus complexes, envisage d'utiliser des mocks, stubs ou fakes là où c'est approprié dans tes tests."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a common use case to use a mock in testing?",
+              "fr": "Lequel des éléments suivants est un cas d'usage courant pour un mock en test ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Mocking HTML changes.",
+              "fr": "Moquer des changements HTML."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Mocking CSS changes.",
+              "fr": "Moquer des changements CSS."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Mocking API calls.",
+              "fr": "Moquer des appels API."
+            },
+            {
+              "en": "Mocking JavaScript string methods.",
+              "fr": "Moquer des méthodes de chaînes JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are stubs in testing?",
+              "fr": "Que sont les stubs en test ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Objects that return null in testing environments.",
+              "fr": "Des objets qui renvoient null dans les environnements de test."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what controlled responses you want to work with in testing scenarios.",
+              "fr": "Pense aux réponses contrôlées avec lesquelles tu veux travailler dans les scénarios de test."
+            },
+            {
+              "en": "Objects that return pre-defined responses.",
+              "fr": "Des objets qui renvoient des réponses prédéfinies."
+            },
+            {
+              "en": "Objects that make multiple API calls.",
+              "fr": "Des objets qui font plusieurs appels API."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what controlled responses you want to work with in testing scenarios.",
+              "fr": "Pense aux réponses contrôlées avec lesquelles tu veux travailler dans les scénarios de test."
+            },
+            {
+              "en": "Objects that make several updates to the UI in React applications.",
+              "fr": "Des objets qui font plusieurs mises à jour de l'UI dans des applications React."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what controlled responses you want to work with in testing scenarios.",
+              "fr": "Pense aux réponses contrôlées avec lesquelles tu veux travailler dans les scénarios de test."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is a common use case for a fake?",
+              "fr": "Lequel des éléments suivants est un cas d'usage courant pour un fake ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Faking API calls for post requests.",
+              "fr": "Faker des appels API pour des requêtes post."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Faking the styles for an application.",
+              "fr": "Faker les styles d'une application."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Faking an HTML file.",
+              "fr": "Faker un fichier HTML."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Faking a database.",
+              "fr": "Faker une base de données."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db3238375ff8340ee1ff90.md",
+      "id": "67db3238375ff8340ee1ff90",
+      "dashedName": "what-is-ab-testing",
+      "title": {
+        "en": "What Is A/B Testing?",
+        "fr": "Qu'est-ce que les tests A/B ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Most of you have a select group of websites that you visit every day. This might include sites like X, Discord, or freeCodeCamp. But have you ever wondered why you often see small changes to the design of your most frequently visited pages? Well, this doesn't happen by accident.",
+              "fr": "La plupart d'entre nous ont un groupe sélectionné de sites qu'on visite chaque jour. Cela peut inclure des sites comme X, Discord ou freeCodeCamp. Mais t'es-tu déjà demandé pourquoi tu vois souvent de petits changements dans le design de tes pages les plus fréquentées ? Eh bien, cela n'arrive pas par accident."
+            },
+            {
+              "en": "Companies spend a lot of time analyzing analytics and studying user behavior. They do this to identify pain points in the user experience for their site or application. These companies then use that data to come up with solutions to create a smoother user experience.",
+              "fr": "Les entreprises passent beaucoup de temps à analyser les analytics et à étudier le comportement utilisateur. Elles le font pour identifier les points de douleur dans l'expérience utilisateur de leur site ou application. Ces entreprises utilisent ensuite ces données pour trouver des solutions et créer une expérience plus fluide."
+            },
+            {
+              "en": "One of the techniques companies employ is called A/B testing. This type of testing involves comparing two versions of a page or application and studying which version performs better. Sometimes, this type of testing is known as bucket or split testing.",
+              "fr": "L'une des techniques employées par les entreprises s'appelle le test A/B. Ce type de test compare deux versions d'une page ou d'une application et étudie laquelle performe mieux. Parfois, ce type de test est connu sous le nom de bucket testing ou split testing."
+            },
+            {
+              "en": "Let's take a look at an example so you can better understand the concept. Imagine you have a landing page with some introductory text and a CTA (call to action) button. Remember that a CTA button is used to encourage users to perform a specific action, like donate or log in.",
+              "fr": "Regardons un exemple pour mieux comprendre le concept. Imagine que tu as une landing page avec du texte d'introduction et un bouton CTA (call to action). Souviens-toi qu'un bouton CTA sert à encourager les utilisateurs à effectuer une action spécifique, comme donner ou se connecter."
+            },
+            {
+              "en": "As you go through the site analytics, you realize that the click-through rate for the CTA is low. So you try redesigning that button so it's more prominent on the page. You increase the size of the button and change the button color from blue to green. To actually see if those changes made a difference, you can use A/B testing.",
+              "fr": "En parcourant les analytics du site, tu réalises que le taux de clic pour le CTA est bas. Tu essaies donc de redesign le bouton pour qu'il soit plus proéminent sur la page. Tu augmentes la taille du bouton et changes la couleur du bleu au vert. Pour vraiment voir si ces changements ont fait une différence, tu peux utiliser le test A/B."
+            },
+            {
+              "en": "You can randomly divide your users into two groups. Group A is the control group, which sees the original version of the page with the  smaller blue button, while group B is the experimental group, which see the new version of the page with the larger green button. If the new version of the page results in a higher click-through rate, then you can confidently replace the old button styling with the new one.",
+              "fr": "Tu peux diviser aléatoirement tes utilisateurs en deux groupes. Le groupe A est le groupe de contrôle, qui voit la version originale de la page avec le plus petit bouton bleu, tandis que le groupe B est le groupe expérimental, qui voit la nouvelle version de la page avec le plus grand bouton vert. Si la nouvelle version de la page résulte en un taux de clic plus élevé, tu peux remplacer en toute confiance l'ancien style du bouton par le nouveau."
+            },
+            {
+              "en": "Examples of tools to use for A/B testing include GrowthBook and LaunchDarkly.",
+              "fr": "Des exemples d'outils pour les tests A/B incluent GrowthBook et LaunchDarkly."
+            },
+            {
+              "en": "There are many common use cases for A/B testing like testing ads, email campaigns, or new product features. A/B testing allows you to make more data-driven decisions and continually improve the user experience.",
+              "fr": "Il y a de nombreux cas d'usage courants pour les tests A/B, comme tester des pubs, des campagnes email, ou de nouvelles fonctionnalités produit. Les tests A/B te permettent de prendre des décisions plus fondées sur les données et d'améliorer continuellement l'expérience utilisateur."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is A/B testing?",
+              "fr": "Qu'est-ce que le test A/B ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This test compares two versions of a page or application and studies which version performs better.",
+              "fr": "Ce test compare deux versions d'une page ou d'une application et étudie laquelle performe mieux."
+            },
+            {
+              "en": "This test checks that each unit of code is working correctly.",
+              "fr": "Ce test vérifie que chaque unité de code fonctionne correctement."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This test checks for any accessibility errors in your applications and automatically applies suggestions for fixes.",
+              "fr": "Ce test vérifie d'éventuelles erreurs d'accessibilité dans tes applications et applique automatiquement des suggestions de correctifs."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This test sees how compatible your application is with different operating systems.",
+              "fr": "Ce test voit à quel point ton application est compatible avec différents systèmes d'exploitation."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is one benefit of using A/B testing?",
+              "fr": "Quel est un bénéfice d'utiliser les tests A/B ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This allows you to make more impulsive decisions as well as continually redesign your website.",
+              "fr": "Cela te permet de prendre des décisions plus impulsives ainsi que de redesign continuellement ton site."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This allows you to ensure there are no linting or formatting errors in your code.",
+              "fr": "Cela te permet de t'assurer qu'il n'y a pas d'erreurs de linting ou de formatage dans ton code."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This allows you to make more data driven decisions as well as continually improve the user experience.",
+              "fr": "Cela te permet de prendre des décisions plus fondées sur les données ainsi que d'améliorer continuellement l'expérience utilisateur."
+            },
+            {
+              "en": "This ensures that your applications will run 10x faster in Linux and Mac environments.",
+              "fr": "Cela garantit que tes applications tourneront 10x plus vite dans les environnements Linux et Mac."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a common use case for using A/B testing?",
+              "fr": "Lequel des éléments suivants N'EST PAS un cas d'usage courant pour les tests A/B ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "New features",
+              "fr": "New features"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is an internal change and will have no effect on user experience.",
+              "fr": "L'une de ces options est un changement interne et n'aura aucun effet sur l'expérience utilisateur."
+            },
+            {
+              "en": "Ads",
+              "fr": "Ads"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is an internal change and will have no effect on user experience.",
+              "fr": "L'une de ces options est un changement interne et n'aura aucun effet sur l'expérience utilisateur."
+            },
+            {
+              "en": "API failures",
+              "fr": "API failures"
+            },
+            {
+              "en": "Email campaigns",
+              "fr": "Email campaigns"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these options is an internal change and will have no effect on user experience.",
+              "fr": "L'une de ces options est un changement interne et n'aura aucun effet sur l'expérience utilisateur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db3248eceee03588a22b8f.md",
+      "id": "67db3248eceee03588a22b8f",
+      "dashedName": "what-is-alpha-and-beta-testing",
+      "title": {
+        "en": "What Is Alpha and Beta Testing?",
+        "fr": "Qu'est-ce que les tests alpha et bêta ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Once the initial development and software testing are complete, it is important to have the application tested by testers and real users. This is where alpha and beta testing come in.",
+              "fr": "Une fois le développement initial et les tests logiciels terminés, il est important de faire tester l'application par des testeurs et de vrais utilisateurs. C'est là qu'interviennent les tests alpha et bêta."
+            },
+            {
+              "en": "Alpha testing is done by a select group of testers who go through the application to ensure there are no bugs before it is released into the marketplace. This is part of acceptance testing, which ensures that the software application meets the needs of users before its release.",
+              "fr": "Les tests alpha sont réalisés par un groupe sélectionné de testeurs qui parcourent l'application pour s'assurer qu'il n'y a pas de bugs avant sa sortie sur le marché. Cela fait partie des tests d'acceptation, qui s'assurent que l'application logicielle répond aux besoins des utilisateurs avant sa sortie."
+            },
+            {
+              "en": "Alpha testing also utilizes both white and black box testing techniques. Black box testing only focuses on the expected behavior of the application, whereas white box testing involves the tester knowing the internal components and performing tests on that.",
+              "fr": "Les tests alpha utilisent aussi des techniques de tests en boîte blanche et en boîte noire. Les tests en boîte noire se concentrent uniquement sur le comportement attendu de l'application, tandis que les tests en boîte blanche impliquent que le testeur connaisse les composants internes et effectue des tests dessus."
+            },
+            {
+              "en": "After the alpha testing phase, there is the beta testing phase. This is where the application is made available to real users. Actual users can interact with the application and provide feedback. This is a form of user acceptance testing which ensures that the application meets the business requirements as well as user needs.",
+              "fr": "Après la phase de tests alpha, il y a la phase de tests bêta. L'application est rendue disponible à de vrais utilisateurs. Les utilisateurs réels peuvent interagir avec l'application et fournir des retours. C'est une forme de tests d'acceptation utilisateur qui s'assure que l'application répond aux exigences métier ainsi qu'aux besoins des utilisateurs."
+            },
+            {
+              "en": "While both stages of testing can be time-consuming, it is important to perform alpha and beta tests on your applications. This will help ensure that the application is truly ready for the marketplace and meets the needs of its users.",
+              "fr": "Même si les deux étapes de tests peuvent être longues, il est important de réaliser des tests alpha et bêta sur tes applications. Cela aidera à s'assurer que l'application est vraiment prête pour le marché et répond aux besoins de ses utilisateurs."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which type of testing is performed by internal testers to identify bugs before releasing the application to users?",
+              "fr": "Quel type de test est réalisé par des testeurs internes pour identifier des bugs avant de publier l'application aux utilisateurs ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Accessibility testing",
+              "fr": "Accessibility testing"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Beta testing",
+              "fr": "Beta testing"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Alpha testing",
+              "fr": "Alpha testing"
+            },
+            {
+              "en": "A/B testing",
+              "fr": "A/B testing"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which techniques are utilized in alpha testing?",
+              "fr": "Quelles techniques sont utilisées dans les tests alpha ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Yellow and brown box testing",
+              "fr": "Yellow and brown box testing"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "White and black box testing",
+              "fr": "White and black box testing"
+            },
+            {
+              "en": "Red and black box testing",
+              "fr": "Red and black box testing"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "White and blue box testing",
+              "fr": "White and blue box testing"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following ensures that the application meets the business requirements as well as user needs?",
+              "fr": "Lequel des éléments suivants s'assure que l'application répond aux exigences métier ainsi qu'aux besoins des utilisateurs ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "User Accessibility Testing",
+              "fr": "User Accessibility Testing"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was discussed.",
+              "fr": "Revois la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "User Acceptance Testing",
+              "fr": "User Acceptance Testing"
+            },
+            {
+              "en": "User Development Testing",
+              "fr": "User Development Testing"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was discussed.",
+              "fr": "Revois la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "User Interface Testing",
+              "fr": "User Interface Testing"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where this was discussed.",
+              "fr": "Revois la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67db32542c7075361b06024c.md",
+      "id": "67db32542c7075361b06024c",
+      "dashedName": "what-is-regression-testing",
+      "title": {
+        "en": "What Is Regression Testing?",
+        "fr": "Qu'est-ce que les tests de régression ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As an application continues to grow, it is not uncommon to have situations where new changes unintentionally break existing functionality. This is known as a regression.",
+              "fr": "Au fur et à mesure qu'une application grandit, il n'est pas rare d'avoir des situations où de nouveaux changements cassent involontairement des fonctionnalités existantes. C'est ce qu'on appelle une régression."
+            },
+            {
+              "en": "To help catch these issues before they happen, you can use regression testing. Regression testing is when you re-run functional tests against parts of your application to ensure that everything still works as expected. If you've implemented bug fixes, enhancements, or even have updates to your configuration, then it's a good idea to perform regression testing.",
+              "fr": "Pour aider à attraper ces problèmes avant qu'ils n'arrivent, tu peux utiliser les tests de régression. Les tests de régression consistent à réexécuter des tests fonctionnels sur des parties de ton application pour t'assurer que tout fonctionne encore comme prévu. Si tu as implémenté des correctifs de bugs, des améliorations, ou même des mises à jour de configuration, c'est une bonne idée de faire des tests de régression."
+            },
+            {
+              "en": "There are different tools that you can use to perform regression testing. They include Puppeteer, Playwright, Selenium, and Cypress.",
+              "fr": "Il existe différents outils que tu peux utiliser pour les tests de régression. Ils incluent Puppeteer, Playwright, Selenium et Cypress."
+            },
+            {
+              "en": "There are also a few testing techniques to be aware of when it comes to regression testing. The first is called unit regression testing. This is where you have a list of items that need to be tested each time major changes or fixes are implemented into the app.",
+              "fr": "Il y a aussi quelques techniques de test à connaître pour les tests de régression. La première s'appelle les tests de régression unitaires. Tu as une liste d'éléments à tester chaque fois que des changements majeurs ou des correctifs sont implémentés dans l'app."
+            },
+            {
+              "en": "Another testing technique is called partial regression testing. This involves targeted approaches to ensure that new changes have not broken specific aspects of the application.",
+              "fr": "Une autre technique s'appelle les tests de régression partiels. Cela implique des approches ciblées pour s'assurer que les nouveaux changements n'ont pas cassé des aspects spécifiques de l'application."
+            },
+            {
+              "en": "Finally, there's complete regression testing. This is the most time-consuming and detailed option, which looks at all the functionalities affected by the recent changes in the codebase and runs tests against them.",
+              "fr": "Enfin, il y a les tests de régression complets. C'est l'option la plus longue et la plus détaillée, qui regarde toutes les fonctionnalités affectées par les changements récents dans le codebase et exécute des tests contre elles."
+            },
+            {
+              "en": "It's important to note that retesting and regression testing are different. Retesting is used to check for known issues and ensure that they have been resolved, whereas regression testing searches for unknown issues that might have occurred through recent changes in the codebase.",
+              "fr": "Il est important de noter que le retesting et les tests de régression sont différents. Le retesting sert à vérifier des problèmes connus et à s'assurer qu'ils ont été résolus, tandis que les tests de régression cherchent des problèmes inconnus qui auraient pu apparaître suite à des changements récents dans le codebase."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is retesting?",
+              "fr": "Qu'est-ce que le retesting ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This re-runs tests for issues found in JavaScript files only and fixes them.",
+              "fr": "Cela réexécute des tests pour des problèmes trouvés uniquement dans les fichiers JavaScript et les corrige."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson where this was discussed.",
+              "fr": "Revois la dernière partie de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This tests for unknown issues that might have resulted in recent additions to the codebase.",
+              "fr": "Cela teste des problèmes inconnus qui auraient pu résulter d'ajouts récents au codebase."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson where this was discussed.",
+              "fr": "Revois la dernière partie de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This re-runs tests for known HTML-related issues and fixes them.",
+              "fr": "Cela réexécute des tests pour des problèmes HTML connus et les corrige."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson where this was discussed.",
+              "fr": "Revois la dernière partie de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This tests for known issues and ensures that they have been resolved.",
+              "fr": "Cela teste des problèmes connus et s'assure qu'ils ont été résolus."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a regression in software?",
+              "fr": "Qu'est-ce qu'une régression en logiciel ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "This is where new changes unintentionally break JavaScript code only.",
+              "fr": "C'est quand de nouveaux changements cassent involontairement uniquement le code JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where changes break existing HTML and CSS code only.",
+              "fr": "C'est quand des changements cassent uniquement le code HTML et CSS existant."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where new changes unintentionally break existing functionality.",
+              "fr": "C'est quand de nouveaux changements cassent involontairement des fonctionnalités existantes."
+            },
+            {
+              "en": "This is where new changes enhance existing functionality.",
+              "fr": "C'est quand de nouveaux changements améliorent des fonctionnalités existantes."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a commonly used tool for regression testing?",
+              "fr": "Lequel des éléments suivants N'EST PAS un outil couramment utilisé pour les tests de régression ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Svelte",
+              "fr": "Svelte"
+            },
+            {
+              "en": "Puppeteer",
+              "fr": "Puppeteer"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Playwright",
+              "fr": "Playwright"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Selenium",
+              "fr": "Selenium"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where this was discussed.",
+              "fr": "Revois le début de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
