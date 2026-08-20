@@ -1,0 +1,1313 @@
+{
+  "workshop": "lecture-understanding-aria-expanded-aria-live-and-common-aria-states",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "672a54ce90c19e9038f481d7.md",
+      "id": "672a54ce90c19e9038f481d7",
+      "dashedName": "what-is-the-aria-expanded-attribute",
+      "title": {
+        "en": "What Is the aria-expanded Attribute, and How Does It Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `aria-expanded` attribute is used for accessibility purposes to indicate if a control is expanded or collapsed. It's used in conjunction with collapsible widgets like menus, accordions and other disclosure widgets that control the visibility of content. The `aria-expanded` attribute is set to `true` if the control is expanded, or `false` if it is collapsed.",
+              "fr": ""
+            },
+            {
+              "en": "The information provided by `aria-expanded` allows people using screen readers to understand the current state of the control (whether it is expanded or collapsed).",
+              "fr": ""
+            },
+            {
+              "en": "The `aria-expanded` attribute is applied to the interactive element that toggles the visibility of a collapsible widget. For example, if a button toggles an expandable menu, the `aria-expanded` attribute is placed on the button.",
+              "fr": ""
+            },
+            {
+              "en": "When the menu is expanded, the `aria-expanded` attribute should be set to `true` like in this example:",
+              "fr": ""
+            },
+            {
+              "en": "When the menu is collapsed, it should be set to `false` instead.",
+              "fr": ""
+            },
+            {
+              "en": "You must always have the `aria-expanded` attribute set to either `true` or `false` on the controlling element. For example, if a button toggles the visibility of a menu, the default value for `aria-expanded` should be  based on the default visibility of the menu.",
+              "fr": ""
+            },
+            {
+              "en": "If the menu is expanded by default, `aria-expanded` should initially be set to `true`. If the menu is collapsed by default, `aria-expanded` should initially be set of `false`.",
+              "fr": ""
+            },
+            {
+              "en": "The value of `aria-expanded` should be updated dynamically using JavaScript as the user interacts with the element.",
+              "fr": ""
+            },
+            {
+              "en": "Additionally, the properties, `aria-controls` and `aria-owns` can be used in combination with `aria-expanded` to establish a programmatic connection between the controlling element and the element it controls.",
+              "fr": ""
+            },
+            {
+              "en": "Let's start with `aria-controls`. When used with `aria-expanded`, the `aria-controls` attribute is used to specify the element being controlled. For example, a button might expand or collapse a list acting as a menu. The value of `aria-controls` will be the `id` of the controlled element (the menu list in this example).",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Notice that the list immediately follows the controlling button. For expandable controls like this, it is best to have the expanded content immediately follow the element that controls it in the DOM. This prevents screen reader users from having to search for the expanded content, and makes it easier for keyboard users to navigate through any interactive controls in the expanded content.",
+              "fr": ""
+            },
+            {
+              "en": "If it is not possible to place the expanded content immediately after the controlling element, the `aria-owns` attribute allows you to virtually move it after the control in the accessibility tree. This allows assistive technology like screen readers to pretend the expanded content is placed directly after the control in the DOM.",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "There are drawbacks to using the `aria-owns` attribute. It creates unnecessary verbosity for screen reader users since most screen readers will automatically read out the entire contents of the expanded element when first expanded. It also does not change the tab order, potentially forcing keyboard users to tab through all of the other interactive controls on the page before reaching the expanded content, unless you manage the tabbing order with JavaScript.",
+              "fr": ""
+            },
+            {
+              "en": "Ideally, the expandable content should be placed after the control element, and the `aria-owns` attribute should only be used in a worst case scenario when that is not possible. If it must be used, you will need to thoroughly test with a wide range of screen readers and browsers to ensure that your implementation is accessible for everyone.",
+              "fr": ""
+            },
+            {
+              "en": "And just a reminder, when you use either `aria-controls` or `aria-owns`, the value of `aria-expanded` must continue to be updated as the control is expanded and collapsed.",
+              "fr": ""
+            },
+            {
+              "en": "The `aria-expanded` attribute indicates whether a control  is expanded or collapsed. This information is essential for screen reader users, helping them understand the current state of collapsible elements like menus, accordions, and other similar disclosure widgets.",
+              "fr": ""
+            },
+            {
+              "en": "By using `aria-expanded` correctly, you can create an intuitive user experience for everyone.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the `aria-expanded` attribute?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To define the visual appearance of an element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-expanded` provides information to assistive technologies.",
+              "fr": ""
+            },
+            {
+              "en": "To improve website performance.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-expanded` provides information to assistive technologies.",
+              "fr": ""
+            },
+            {
+              "en": "To indicate whether an element is expanded or collapsed.",
+              "fr": ""
+            },
+            {
+              "en": "To enhance browser compatibility.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-expanded` provides information to assistive technologies.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When should the `aria-expanded` attribute be used?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "For all elements on a web page.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the context in which `aria-expanded` is most useful.",
+              "fr": ""
+            },
+            {
+              "en": "For elements that are visually hidden.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the context in which `aria-expanded` is most useful.",
+              "fr": ""
+            },
+            {
+              "en": "For collapsible elements like menus and accordions.",
+              "fr": ""
+            },
+            {
+              "en": "For elements with dynamic content.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the context in which `aria-expanded` is most useful.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are the possible values for the `aria-expanded` attribute?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`true`, `false`, `yes`, `no`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the states an element can be in regarding expansion or collapse.",
+              "fr": ""
+            },
+            {
+              "en": "`open`, `closed`, `expanded`, `collapsed`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the states an element can be in regarding expansion or collapse.",
+              "fr": ""
+            },
+            {
+              "en": "`show`, `hide`, `visible`, `invisible`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the states an element can be in regarding expansion or collapse.",
+              "fr": ""
+            },
+            {
+              "en": "`true`, `false`.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "672a54dff9dc439089f1a219.md",
+      "id": "672a54dff9dc439089f1a219",
+      "dashedName": "what-is-the-aria-live-attribute",
+      "title": {
+        "en": "What Is the aria-live Attribute, and How Does It Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `aria-live` attribute creates a live region on your page which can be used to notify screen reader users of dynamic content changes in the live region as they occur.",
+              "fr": ""
+            },
+            {
+              "en": "Common uses of live regions include messages that are displayed after an action has been taken (such as an error message or confirmation), content that updates periodically (such as a ticker, marquee, or countdown timer), or general status messages (such as updates about a process).",
+              "fr": ""
+            },
+            {
+              "en": "Because the reading focus for screen readers can only be at one place at a time, screen reader users will not notice a content change if their focus is on another part of the page. Live regions allow screen reader users to be automatically notified of changes that happen on the page in real time. Without a live region, screen reader users might miss important content updates available to sighted users, since a sighted user has the ability to scan the entire page.",
+              "fr": ""
+            },
+            {
+              "en": "There are three possible values for this attribute, based on the priority of the information.",
+              "fr": ""
+            },
+            {
+              "en": "If you set `aria-live` to the value `assertive` that means that the update is very important. It has the highest priority, so the user should be notified immediately.",
+              "fr": ""
+            },
+            {
+              "en": "This means that the screen reader will interrupt any announcement it is currently making to announce the content change in the live region. Such interruptions can be extremely disruptive, so the `assertive` value should only be used for time-sensitive or critical notifications.",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The next value in order of priority is `polite`.",
+              "fr": ""
+            },
+            {
+              "en": "This value means that the update is not urgent, so the screen reader can wait until any current announcement is finished or until the user stops typing before announcing the update. Most live regions will use the `polite` value.",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The lowest priority value for `aria-live` is `off` which means that the update will not be announced unless the content is in an element that currently has keyboard focus. Realistically, this value is almost never used as the use case is very narrow and it is not implemented consistently (if at all) across screen readers. If you need live regions, plan on using `polite` for everything except critical messages that need `assertive`.",
+              "fr": ""
+            },
+            {
+              "en": "It's also important to note that the `aria-live` attribute is not required if the updated information is contained in an element with an ARIA role of `alert`, `log`, `marquee`, `status`, or `timer`, as these roles already have default `aria-live` values. But the default value can be changed by explicitly setting `aria-live` on the element.",
+              "fr": ""
+            },
+            {
+              "en": "Choosing the right `aria-live` value depends on the priority of the updated information.",
+              "fr": ""
+            },
+            {
+              "en": "If the updates are urgent, you should notify the user immediately with `assertive`. But you should use this only if the updates are really urgent because sudden interruptions can potentially disorient users and affect the user experience.",
+              "fr": ""
+            },
+            {
+              "en": "If the update can wait until the current task is finished, you should use `polite` instead.",
+              "fr": ""
+            },
+            {
+              "en": "The `aria-live` attribute lets assistive technologies know when the content is changing dynamically on a web page. This helps users with disabilities stay updated on important announcements and updates.",
+              "fr": ""
+            },
+            {
+              "en": "By using `aria-live` appropriately, you can ensure that users are aware of these updates based on their priority.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of the `aria-live` attribute?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To define the visual appearance of an element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-live` helps assistive technologies understand the content.",
+              "fr": ""
+            },
+            {
+              "en": "To improve website performance.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-live` helps assistive technologies understand the content.",
+              "fr": ""
+            },
+            {
+              "en": "To indicate that an element's content is changing dynamically.",
+              "fr": ""
+            },
+            {
+              "en": "To enhance browser compatibility.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how `aria-live` helps assistive technologies understand the content.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following values can be used for the `aria-live` attribute?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`true`, `false`, `off`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
+              "fr": ""
+            },
+            {
+              "en": "`visible`, `hidden`, `off`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
+              "fr": ""
+            },
+            {
+              "en": "`assertive`, `polite`, `off`.",
+              "fr": ""
+            },
+            {
+              "en": "`open`, `closed`, `off`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the different levels of urgency for announcing changes to dynamic content.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between the `polite` and `assertive` values for the `aria-live` attribute?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`polite` announces updates immediately, while `assertive` announces updates when the focus is on another element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the level of urgency for announcing dynamic content.",
+              "fr": ""
+            },
+            {
+              "en": "`polite` announces updates after the current task is finished, while `assertive` announces updates immediately.",
+              "fr": ""
+            },
+            {
+              "en": "There is no difference between `polite` and `assertive`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the level of urgency for announcing dynamic content.",
+              "fr": ""
+            },
+            {
+              "en": "`polite` is used for important updates, while `assertive` is used for less urgent updates.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the level of urgency for announcing dynamic content.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "672a54f29d783890d1f94740.md",
+      "id": "672a54f29d783890d1f94740",
+      "dashedName": "what-are-some-common-aria-states-used-on-custom-control-elements",
+      "title": {
+        "en": "What Are Some Common ARIA States Used on Custom Control Elements?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Semantic form control elements like `input`, `select`, `textarea`, `button`, and `fieldset` have built-in states that are conveyed to assistive technologies.",
+              "fr": ""
+            },
+            {
+              "en": "For example, you could use the `disabled` attribute to disable a button or the `checked` attribute to indicate that a checkbox is checked.",
+              "fr": ""
+            },
+            {
+              "en": "But if you are creating a custom control element, you need to use ARIA attributes to convey the state of the control to assistive technologies.",
+              "fr": ""
+            },
+            {
+              "en": "In this lesson, we will discuss a few common ARIA states that you can use on custom control elements.",
+              "fr": ""
+            },
+            {
+              "en": "The first ARIA state we will discuss is `aria-selected`. This state is used to indicate that an element is selected. You can use this state on custom controls like a tabbed interface, a listbox, or a grid.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of how you can use `aria-selected` on a custom tab control:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Tabs are used to display multiple panels of content in a limited space. The `aria-selected` state is used to indicate which tab is currently selected.",
+              "fr": ""
+            },
+            {
+              "en": "When the user selects a tab, the `aria-selected` state of the selected tab is set to `true`, and the `aria-selected` state of the other tabs is set to `false`.",
+              "fr": ""
+            },
+            {
+              "en": "Another common ARIA state is `aria-disabled`. This state is used to indicate that an element is disabled only to people using assistive technologies, such as screen readers. It is important to note that `aria-disabled` does not actually disable the element. It is up to you, the developer, to make it look and act like a disabled element. This attribute is also commonly used on native HTML elements in place of the `disabled` attribute. Which one you choose will depend on the context the button is being used.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of how you can use `aria-disabled` on a custom edit button:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The `aria-disabled` attribute is used to tell screen reader users that the edit button is disabled and cannot be interacted with. Again, it does not actually disable the button. When using `aria-disabled`,you will need to apply styling and JavaScript to make the control look and behave like a disabled button.",
+              "fr": ""
+            },
+            {
+              "en": "In most cases, you will probably use the native button element, but there are cases where you might need to use a custom control. So, it is essential to know how to convey the state of the control to assistive technologies.",
+              "fr": ""
+            },
+            {
+              "en": "The next ARIA state we will discuss is `aria-haspopup`. This state is used to indicate that an interactive element will trigger a popup element when activated. You can only use the `aria-haspopup` attribute when the popup has one of the following roles: `menu`, `listbox`, `tree`, `grid`, or `dialog`. The value of `aria-haspopup` must be either one of these roles or `true`, which defaults to the `menu` role.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of a file editor menu that uses `aria-haspopup`:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The `aria-haspopup` state is used to indicate that the `File` menu button will open a popup menu when activated. Screen reader users may hear this additional information when they navigate to the button.",
+              "fr": ""
+            },
+            {
+              "en": "You will need to use JavaScript to show and hide the popup menu, and to implement proper keyboard support for interacting with the menu. Also, please note that the ARIA `menu` role refers to a very specific type of menu. It generally refers to a list of actions that the user can invoke, similar to a menu on a desktop application. It does not include more common uses of what we typically refer to as \"menus\", such as navigation menus. Realistically, most \"menus\" you create on the web will not be ARIA menus and you will not use `aria-haspopup` with them.",
+              "fr": ""
+            },
+            {
+              "en": "The next ARIA state we will discuss is `aria-required`. The `aria-required` attribute is used to indicate that a field needs to be filled out before the form is submitted.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of working with the `aria-required` attribute for a custom form control.",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "We need to use the `contenteditable` attribute so users can type in their input. We are also using the `aria-required` attribute set to `true` to indicate that this custom form control is required.",
+              "fr": ""
+            },
+            {
+              "en": "To make the form control look like a normal form control, you would need to add CSS. You would also need to add JavaScript to prevent the form from being submitted without content.",
+              "fr": ""
+            },
+            {
+              "en": "If the label already has the word `required`, then you should omit the `aria-required` attribute. This ensures that screen readers only announce the word required once.",
+              "fr": ""
+            },
+            {
+              "en": "In most cases, you will probably use the native `label` and `form` elements with the `required` attribute. But if you need to create a custom form control, then it is important to add the `aria-required` attribute when necessary.",
+              "fr": ""
+            },
+            {
+              "en": "Additionally, the `aria-required` attribute can also be used on native form inputs, such as the `input`, `textarea`, and `select` elements. This is often preferred to the native required attribute, since the required attribute may have potential usability and accessibility concerns, particularly with the default error handling provided by the browser. Ultimately, you will need to test in order to determine which attribute is best for your situation.",
+              "fr": ""
+            },
+            {
+              "en": "The last ARIA state we will discuss is `aria-checked`. This attribute is used to indicate whether an element is in the checked state. It is most commonly used when creating custom checkboxes, radio buttons, switches, and listboxes.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of how you can use `aria-checked` on a custom checkbox control:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Native checkbox elements have a built-in `checked` state that is conveyed to assistive technologies. But if you are creating a custom checkbox control, you will need to use the `aria-checked` attribute to indicate its state.",
+              "fr": ""
+            },
+            {
+              "en": "When the user interacts with the custom checkbox control, you will need to use the `aria-checked` state to reflect the new state of the checkbox. When the checkbox is checked, the `aria-checked` attribute is set to `true`. When it is unchecked, it is set to `false`.",
+              "fr": ""
+            },
+            {
+              "en": "Native elements typically have better support and built-in accessibility features.",
+              "fr": ""
+            },
+            {
+              "en": "However, if you must create custom controls, using ARIA attributes is essential to convey the state of these controls to assistive technologies effectively.",
+              "fr": ""
+            },
+            {
+              "en": "As always, test your work to ensure that ARIA attributes are applied correctly and that the custom control functions in a way that is both accessible and user-friendly.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What ARIA state would you use to indicate that a tab is currently selected?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows which tab is active.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows which tab is active.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows which tab is active.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the context of custom controls, which ARIA state is used to indicate that an element is currently disabled?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows that an element cannot be interacted with.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows that an element cannot be interacted with.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This state shows that an element cannot be interacted with.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When you want to indicate that a menu item has a submenu, which ARIA state should be used?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of the state heavily suggests that a popup is present.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of the state heavily suggests that a popup is present.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of the state heavily suggests that a popup is present.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "672a5507d857a891139abc7f.md",
+      "id": "672a5507d857a891139abc7f",
+      "dashedName": "what-is-the-aria-controls-attribute",
+      "title": {
+        "en": "What Is the aria-controls Attribute, and How Does It Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `aria-controls` attribute is used to create a programmatic relationship between an element that controls the presence of another element on the page, and the element it controls. This relationship can help screen reader users better understand how the control works. Common uses include a set of tabs that control the visibility of different sections of content, or a button that toggles the visibility of a menu.",
+              "fr": ""
+            },
+            {
+              "en": "Let's take a look at an example to see how this works. In this example of a tabbed interface, we have a `div` element with a set of three buttons:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The `div` uses `role=\"tablist\"` to indicate that it serves as a container element for a group of tabs.",
+              "fr": ""
+            },
+            {
+              "en": "Each button represents a tab and has a `role` attribute set to `tab`. In most tabbed interfaces, the first tab panel is visible by default, so the first tab button has an `aria-selected` attribute set to `true` to indicate that its associated section of content is currently visible. The `aria-controls` attribute is used to associate each button with the section of content that it controls.",
+              "fr": ""
+            },
+            {
+              "en": "Here are the three sections of content that correspond to the tabs:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Each section of content has a `role` attribute set to `tabpanel` and an `aria-labelledby` attribute that points to the corresponding tab to give the panel an accessible name. The `hidden` attribute is used to hide the sections of content that are not currently selected. Each section ID matches the value of the `aria-controls` attribute on the corresponding button. The `section1` ID matches the `aria-controls` attribute on the first button, `section2` matches the `aria-controls` attribute on the second button, and `section3` matches the `aria-controls` attribute on the third button. This is how the association between the tabs and their sections of content is established.",
+              "fr": ""
+            },
+            {
+              "en": "To switch between the different sections you will need to use JavaScript to update the `hidden` attribute on the section and the `aria-selected` attribute on the button based on which section is currently visible. Only one section can be visible at a time and it should not have the `hidden` attribute and `aria-selected` should be set to `true` on its button. The remaining hidden sections should all have the `hidden` attribute and `aria-selected` should be set to `false` on their buttons.",
+              "fr": ""
+            },
+            {
+              "en": "Tabs are a common use case for the `aria-controls` attribute, but it can be used in other scenarios where one element controls the visibility or behavior of another element. Other examples include accordions, dropdown menus, and modals.",
+              "fr": ""
+            },
+            {
+              "en": "The next time you design a user interface that involves controlling the visibility  of elements, consider using the `aria-controls` attribute to establish the relationship between the controlling element and the controlled element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `aria-controls` attribute in the context of tabs?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To specify which tab is currently active.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the association between tabs and content sections.",
+              "fr": ""
+            },
+            {
+              "en": "To hide or show sections of content.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the association between tabs and content sections.",
+              "fr": ""
+            },
+            {
+              "en": "To associate a tab with the section it controls.",
+              "fr": ""
+            },
+            {
+              "en": "To set the role of the element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the association between tabs and content sections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the `aria-controls` attribute affect the content sections in the example?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It automatically updates the content based on user input.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the attribute is used to control the visibility of content sections.",
+              "fr": ""
+            },
+            {
+              "en": "It hides or shows sections based on which tab is selected.",
+              "fr": ""
+            },
+            {
+              "en": "It changes the tab's style to indicate it is selected.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the attribute is used to control the visibility of content sections.",
+              "fr": ""
+            },
+            {
+              "en": "It defines the visual appearance of the tab.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the attribute is used to control the visibility of content sections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the provided example, how is the `aria-labelledby` attribute used?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To specify which tab controls which content section.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It links the tab to the content section it controls.",
+              "fr": ""
+            },
+            {
+              "en": "To identify the content section that a tab controls.",
+              "fr": ""
+            },
+            {
+              "en": "To define the role of the tab and content sections.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It links the tab to the content section it controls.",
+              "fr": ""
+            },
+            {
+              "en": "To automatically switch between content sections when a tab is clicked.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It links the tab to the content section it controls.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "689b189ab38ff6d72cee593f.md",
+      "id": "689b189ab38ff6d72cee593f",
+      "dashedName": "how-do-you-make-dynamic-and-interactive-content-accessible",
+      "title": {
+        "en": "How Do You Make Dynamic and Interactive Content Accessible?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "You previously learned how semantic markup and ARIA attributes make content accessible. In real-world apps, content is rarely static, and pages often update dynamically through JavaScript. When this happens, it's important to make sure these changes also are reflected in the HTML. This allows screen readers to accurately convey the updated state to users. Without this, people relying on assistive tools might never know that something changed, or could be given outdated or misleading information.",
+              "fr": ""
+            },
+            {
+              "en": "Let's look at a common scenario where JavaScript changes the state of an element, and how you can keep your HTML accessible by updating ARIA attributes.",
+              "fr": ""
+            },
+            {
+              "en": "Suppose you have a button that opens and closes a dropdown menu:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The HTML sets up a button that controls a dropdown menu. The button uses `aria-expanded` to indicate whether the menu is open, and `aria-controls` to link it to the menu by referencing the menu's `id`.",
+              "fr": ""
+            },
+            {
+              "en": "The JavaScript listens for clicks on the menu button. When clicked, it toggles the value of `aria-expanded` and updates the `hidden` property on the menu. This keeps the menu's visibility and the accessibility information in sync, so both sighted users and screen reader users know whether the menu is open or closed.",
+              "fr": ""
+            },
+            {
+              "en": "You will learn more about those ARIA attributes in the upcoming lessons. For now, just remember that when your JavaScript changes the state of an element, you should also update the relevant ARIA attributes so assistive technologies accurately reflect what's actually on the screen.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it important to update the HTML when JavaScript changes the state of a page element?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "So assistive technologies can accurately communicate the current state to users.",
+              "fr": ""
+            },
+            {
+              "en": "So users with assistive technologies can interact with the element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
+              "fr": ""
+            },
+            {
+              "en": "So the page doesn't crash upon state change.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
+              "fr": ""
+            },
+            {
+              "en": "So the element's state can be saved automatically between page loads.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what users with assistive technologies might miss if ARIA attributes don't match what's shown on the page.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `aria-controls` attribute on the menu button specify?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The default state of the menu when the page loads.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
+              "fr": ""
+            },
+            {
+              "en": "The keyboard shortcut used to activate the menu.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
+              "fr": ""
+            },
+            {
+              "en": "The class name of the element that the button controls.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-controls` is explained.",
+              "fr": ""
+            },
+            {
+              "en": "The ID of the element that the button controls.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `aria-expanded` attribute on the menu button indicate?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Whether the menu button has been clicked.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
+              "fr": ""
+            },
+            {
+              "en": "Whether the menu button is enabled or disabled.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
+              "fr": ""
+            },
+            {
+              "en": "Whether the menu is open or closed.",
+              "fr": ""
+            },
+            {
+              "en": "Whether the menu contains a submenu.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer back to the part of the lesson where `aria-expanded` is explained.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

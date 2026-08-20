@@ -218,7 +218,7 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 126/230 blocs, 535/1311 fichiers — modules 1-8 **100 % complets**. Module 9 `dom-manipulation-and-events` : 8/12. Prochaine cible : relire `tools/translations/workshop-rps-game.json` (`reviewed: false` — ne pas appliquer). Le pipeline gère lectures, workshops/labs, reviews et quizzes.
+- **JavaScript v9** : 130/230 blocs, 552/1311 fichiers — modules 1-9 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-understanding-aria-expanded-aria-live-and-common-aria-states.json` (`reviewed: false` — ne pas appliquer). Le pipeline gère lectures, workshops/labs, reviews et quizzes.
 
 ## Pièges
 

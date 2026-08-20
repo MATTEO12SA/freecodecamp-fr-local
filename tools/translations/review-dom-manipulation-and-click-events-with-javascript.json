@@ -1,0 +1,299 @@
+{
+  "workshop": "review-dom-manipulation-and-click-events-with-javascript",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723cc7a8e7aa3b9befd4bac.md",
+      "id": "6723cc7a8e7aa3b9befd4bac",
+      "dashedName": "review-dom-manipulation-and-click-events-with-javascript",
+      "title": {
+        "en": "DOM Manipulation and Click Events with JavaScript Review",
+        "fr": "Révision : manipulation du DOM et événements de clic avec JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Working with the DOM and Web APIs",
+              "fr": "## Travailler avec le DOM et les API web"
+            },
+            {
+              "en": "- **API**: An API (Application Programming Interface) is a set of rules and protocols that allow software applications to communicate with each other and exchange data efficiently.\n- **Web API**: Web APIs are specifically designed for web applications. These types of APIs are often divided into two main categories: browser APIs and third-party APIs.\n- **Browser APIs**: These APIs expose data from the browser. As a web developer, you can access and manipulate this data using JavaScript.\n- **Third-Party APIs**: These are not built into the browser by default. You have to retrieve their code in some way. Usually, they will have detailed documentation explaining how to use their services. An example is the Google Maps API, which you can use to display interactive maps on your website.\n- **DOM**: The DOM stands for Document Object Model. It's a programming interface that lets you interact with HTML documents. With the DOM, you can add, modify, or delete elements on a webpage. The root of the DOM tree is the `html` element. It's the top-level container for all the content of an HTML document. All other nodes are descendants of this root node. Then, below the root node, we find other nodes in the hierarchy. A parent node is an element that contains other elements. A child node is an element that is contained within another element.\n- **`navigator` Interface**: This provides information about the browser environment, such as the user agent string, the platform, and the version of the browser. A user agent string is a text string that identifies the browser and operating system being used.\n- **`window` Interface**: This represents the browser window that contains the DOM document. It provides methods and properties for interacting with the browser window, such as resizing the window, opening new windows, and navigating to different URLs.",
+              "fr": "- **API** : Une API (Application Programming Interface) est un ensemble de règles et de protocoles qui permettent aux applications de communiquer entre elles et d'échanger des données efficacement.\n- **API web** : Les API web sont conçues spécifiquement pour les applications web. Ces types d'API sont souvent divisés en deux catégories principales : les API navigateur et les API tierces.\n- **API navigateur** : Ces API exposent des données du navigateur. En tant que développeur web, tu peux accéder à ces données et les manipuler avec JavaScript.\n- **API tierces** : Elles ne sont pas intégrées au navigateur par défaut. Tu dois récupérer leur code d'une manière ou d'une autre. Habituellement, elles ont une documentation détaillée expliquant comment utiliser leurs services. Un exemple est l'API Google Maps, que tu peux utiliser pour afficher des cartes interactives sur ton site.\n- **DOM** : Le DOM signifie Document Object Model. C'est une interface de programmation qui te permet d'interagir avec des documents HTML. Avec le DOM, tu peux ajouter, modifier ou supprimer des éléments sur une page. La racine de l'arbre DOM est l'élément `html`. C'est le conteneur de plus haut niveau de tout le contenu d'un document HTML. Tous les autres nœuds sont des descendants de ce nœud racine. Ensuite, sous le nœud racine, on trouve d'autres nœuds dans la hiérarchie. Un nœud parent est un élément qui contient d'autres éléments. Un nœud enfant est un élément contenu dans un autre élément.\n- **Interface `navigator`** : Elle fournit des informations sur l'environnement du navigateur, comme la chaîne user-agent, la plateforme et la version du navigateur. Une chaîne user-agent est une chaîne de texte qui identifie le navigateur et le système d'exploitation utilisés.\n- **Interface `window`** : Elle représente la fenêtre du navigateur qui contient le document DOM. Elle fournit des méthodes et des propriétés pour interagir avec la fenêtre du navigateur, comme redimensionner la fenêtre, ouvrir de nouvelles fenêtres et naviguer vers différentes URL."
+            },
+            {
+              "en": "## Working with the `querySelector()`, `querySelectorAll()` and `getElementById()` Methods",
+              "fr": "## Travailler avec les méthodes `querySelector()`, `querySelectorAll()` et `getElementById()`"
+            },
+            {
+              "en": "- **`getElementById()` Method**: This method is used to get an object that represents the HTML element with the specified `id`. Remember that ids must be unique in every HTML document, so this method will only return one Element object.",
+              "fr": "- **Méthode `getElementById()`** : Cette méthode sert à obtenir un objet qui représente l'élément HTML avec l'`id` spécifié. Souviens-toi que les ids doivent être uniques dans chaque document HTML, donc cette méthode ne renverra qu'un seul objet Element."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`querySelector()` Method**: This method is used to get the first element in the HTML document that matches the CSS selector passed as an argument.",
+              "fr": "- **Méthode `querySelector()`** : Cette méthode sert à obtenir le premier élément du document HTML qui correspond au sélecteur CSS passé en argument."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`querySelectorAll()` Method**: You can use this method to get a list of all the DOM elements that match a specific CSS selector.",
+              "fr": "- **Méthode `querySelectorAll()`** : Tu peux utiliser cette méthode pour obtenir une liste de tous les éléments DOM qui correspondent à un sélecteur CSS spécifique."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Working with the `innerText()`, `innerHTML()`, `createElement()` and `textContent()` Methods",
+              "fr": "## Travailler avec les méthodes `innerText()`, `innerHTML()`, `createElement()` et `textContent()`"
+            },
+            {
+              "en": "- **`innerHTML` Property**: This is a property of the `Element` that is used to set or update parts of the HTML markup.",
+              "fr": "- **Propriété `innerHTML`** : C'est une propriété de `Element` utilisée pour définir ou mettre à jour des parties du marquage HTML."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`createElement` Method**: This is used to create an HTML element.",
+              "fr": "- **Méthode `createElement`** : Elle sert à créer un élément HTML."
+            },
+            {
+              "en": "- **`innerText`**: This represents the visible text content of the HTML element and its descendants.",
+              "fr": "- **`innerText`** : Cela représente le contenu texte visible de l'élément HTML et de ses descendants."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`textContent`**: This returns the plain text content of an element, including all the text within its descendants.",
+              "fr": "- **`textContent`** : Cela renvoie le contenu texte brut d'un élément, y compris tout le texte de ses descendants."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Working with the `appendChild()` and `removeChild()` Methods",
+              "fr": "## Travailler avec les méthodes `appendChild()` et `removeChild()`"
+            },
+            {
+              "en": "- **`appendChild()` Method**: This method is used to add a node to the end of the list of children of a specified parent node.",
+              "fr": "- **Méthode `appendChild()`** : Cette méthode sert à ajouter un nœud à la fin de la liste des enfants d'un nœud parent spécifié."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`removeChild()` Method**: This method is used to remove a node from the DOM.",
+              "fr": "- **Méthode `removeChild()`** : Cette méthode sert à retirer un nœud du DOM."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Work with the `setAttribute()` Method",
+              "fr": "## Travailler avec la méthode `setAttribute()`"
+            },
+            {
+              "en": "- **Definition**: This method is used to set the attribute for a given element. If the attribute already exists, then the value is updated. Otherwise, a new attribute is added with a value.",
+              "fr": "- **Définition** : Cette méthode sert à définir l'attribut d'un élément donné. Si l'attribut existe déjà, la valeur est mise à jour. Sinon, un nouvel attribut est ajouté avec une valeur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Event Object",
+              "fr": "## Objet Event"
+            },
+            {
+              "en": "- **Definition**: The `Event` object is a payload that triggers when a user interacts with your web page in some way. These interactions can be anything from clicking on a button or focusing an input to shaking their mobile device. All `Event` objects will have the `type` property. This property reveals the type of event that triggered the payload, such as keydown or click. These values will correspond to the same values you might pass to `addEventListener()`, where you can capture and utilize the `Event` object.",
+              "fr": "- **Définition** : L'objet `Event` est une charge utile déclenchée quand un utilisateur interagit d'une manière ou d'une autre avec ta page. Ces interactions peuvent aller du clic sur un bouton ou de la prise de focus d'un champ jusqu'au secouement d'un appareil mobile. Tous les objets `Event` ont la propriété `type`. Cette propriété révèle le type d'événement qui a déclenché la charge utile, comme keydown ou click. Ces valeurs correspondent aux mêmes valeurs que tu pourrais passer à `addEventListener()`, où tu peux capturer et utiliser l'objet `Event`."
+            },
+            {
+              "en": "## `addEventListener()` and `removeEventListener()` Methods",
+              "fr": "## Méthodes `addEventListener()` et `removeEventListener()`"
+            },
+            {
+              "en": "- **`addEventListener` Method**: This method is used to listen for events. It takes two arguments: the event you want to listen for and a function that will be called when the event occurs. Some common examples of events would be click events, input events, and change events.",
+              "fr": "- **Méthode `addEventListener`** : Cette méthode sert à écouter des événements. Elle prend deux arguments : l'événement que tu veux écouter et une fonction qui sera appelée quand l'événement se produit. Parmi les exemples courants : événements click, input et change."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`removeEventListener()` Method**: This method is used to remove an event listener that was previously added to an element using the `addEventListener()` method. This is useful when you want to stop listening for a particular event on an element.",
+              "fr": "- **Méthode `removeEventListener()`** : Cette méthode sert à retirer un écouteur d'événement précédemment ajouté à un élément avec `addEventListener()`. C'est utile quand tu veux arrêter d'écouter un événement particulier sur un élément."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Inline Event Handlers**: Inline event handlers are special attributes on an HTML element that are used to execute JavaScript code when an event occurs. In modern JavaScript, inline event handlers are not considered best practice. It is preferred to use the `addEventListener` method instead.",
+              "fr": "- **Gestionnaires d'événements en ligne** : Les gestionnaires d'événements en ligne sont des attributs spéciaux sur un élément HTML utilisés pour exécuter du code JavaScript quand un événement se produit. En JavaScript moderne, ils ne sont pas considérés comme une bonne pratique. Il est préférable d'utiliser la méthode `addEventListener` à la place."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## The Change Event",
+              "fr": "## L'événement change"
+            },
+            {
+              "en": "- **Definition**: The change event is a special event which is fired when the user modifies the value of certain input elements. Examples would include when a checkbox or a radio button is ticked. Or when the user makes a selection from something like a date picker or dropdown menu.",
+              "fr": "- **Définition** : L'événement change est un événement spécial déclenché quand l'utilisateur modifie la valeur de certains éléments de saisie. Par exemple quand une case à cocher ou un bouton radio est coché, ou quand l'utilisateur fait une sélection dans un sélecteur de date ou un menu déroulant."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Event Bubbling",
+              "fr": "## Bubbling d'événements"
+            },
+            {
+              "en": "- **Definition**: Event bubbling, or propagation, refers to how an event \"bubbles up\" to parent objects when triggered.\n- **`stopPropagation()` Method**: This method prevents further propagation for an event.",
+              "fr": "- **Définition** : Le bubbling (ou propagation) d'événements désigne la façon dont un événement « remonte » vers les objets parents quand il est déclenché.\n- **Méthode `stopPropagation()`** : Cette méthode empêche la propagation ultérieure d'un événement."
+            },
+            {
+              "en": "## Event Delegation",
+              "fr": "## Délégation d'événements"
+            },
+            {
+              "en": "- **Definition**: Event delegation is the process of listening to events that have bubbled up to a parent, rather than handling them directly on the element that triggered them.",
+              "fr": "- **Définition** : La délégation d'événements est le processus d'écouter des événements qui ont remonté vers un parent, plutôt que de les gérer directement sur l'élément qui les a déclenchés."
+            },
+            {
+              "en": "## DOMContentLoaded",
+              "fr": "## DOMContentLoaded"
+            },
+            {
+              "en": "- **Definition**: The `DOMContentLoaded` event is fired when everything in the HTML document has been loaded and parsed. If you have external stylesheets, or images, the `DOMContentLoaded` event will not wait for those to be loaded. It will only wait for the HTML to be loaded.",
+              "fr": "- **Définition** : L'événement `DOMContentLoaded` est déclenché quand tout le document HTML a été chargé et analysé. S'il y a des feuilles de style externes ou des images, `DOMContentLoaded` n'attendra pas qu'elles soient chargées. Il n'attendra que le HTML."
+            },
+            {
+              "en": "## Working with `style` and `classList`",
+              "fr": "## Travailler avec `style` et `classList`"
+            },
+            {
+              "en": "- **`Element.style` Property**: This property is a read-only property that represents the inline style of an element. You can use this property to get or set the style of an element.",
+              "fr": "- **Propriété `Element.style`** : Cette propriété en lecture seule représente le style en ligne d'un élément. Tu peux l'utiliser pour obtenir ou définir le style d'un élément."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`Element.classList` Property**: This property is a read-only property that can be used to add, remove, or toggle classes on an element.",
+              "fr": "- **Propriété `Element.classList`** : Cette propriété en lecture seule peut servir à ajouter, retirer ou basculer des classes sur un élément."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Working with the `setTimeout()` and `setInterval()` Methods",
+              "fr": "## Travailler avec les méthodes `setTimeout()` et `setInterval()`"
+            },
+            {
+              "en": "- **`setTimeout()` Method**: This method lets you delay an action for a specified time.",
+              "fr": "- **Méthode `setTimeout()`** : Cette méthode te permet de retarder une action pendant un temps donné."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`setInterval()` Method**: This method keeps runs a piece of code repeatedly at a set interval. Since `setInterval()` keeps executing the provided function at the specified interval, you might want to stop it. For this, you have to use the `clearInterval()` method.",
+              "fr": "- **Méthode `setInterval()`** : Cette méthode exécute un morceau de code de façon répétée à un intervalle fixe. Comme `setInterval()` continue d'exécuter la fonction fournie à l'intervalle indiqué, tu pourrais vouloir l'arrêter. Pour cela, tu dois utiliser `clearInterval()`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## The `requestAnimationFrame()` Method",
+              "fr": "## La méthode `requestAnimationFrame()`"
+            },
+            {
+              "en": "- **Definition**: This method allows you to schedule the next step of your animation before the next screen repaint, resulting in a fluid and visually appealing experience. The next screen repaint refers to the moment when the browser refreshes the visual display of the web page. This happens multiple times per second, typically around 60 times (or 60 frames per second) on most displays.",
+              "fr": "- **Définition** : Cette méthode te permet de planifier la prochaine étape de ton animation avant le prochain rafraîchissement de l'écran, pour une expérience fluide et agréable. Le prochain rafraîchissement de l'écran désigne le moment où le navigateur actualise l'affichage visuel de la page. Cela se produit plusieurs fois par seconde, généralement autour de 60 fois (ou 60 images par seconde) sur la plupart des écrans."
+            },
+            {
+              "en": "## Web Animations API",
+              "fr": "## Web Animations API"
+            },
+            {
+              "en": "- **Definition**: The Web Animations API lets you create and control animations directly inside JavaScript.",
+              "fr": "- **Définition** : La Web Animations API te permet de créer et de contrôler des animations directement en JavaScript."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## The Canvas API",
+              "fr": "## L'API Canvas"
+            },
+            {
+              "en": "- **Definition**: The Canvas API is a powerful tool that lets you manipulate graphics right inside your JavaScript file. To work with the Canvas API, you first need to provide a `canvas` element in HTML. This element acts as a drawing surface you can manipulate with the instance methods and properties of the interfaces in the Canvas API. This API has interfaces like `HTMLCanvasElement`, `CanvasRenderingContext2D`, `CanvasGradient`, `CanvasPattern`, and `TextMetrics` which contain methods and properties you can use to create graphics in your JavaScript file.",
+              "fr": "- **Définition** : L'API Canvas est un outil puissant qui te permet de manipuler des graphiques directement dans ton fichier JavaScript. Pour travailler avec l'API Canvas, tu dois d'abord fournir un élément `canvas` en HTML. Cet élément sert de surface de dessin que tu peux manipuler avec les méthodes et propriétés d'instance des interfaces de l'API Canvas. Cette API a des interfaces comme `HTMLCanvasElement`, `CanvasRenderingContext2D`, `CanvasGradient`, `CanvasPattern` et `TextMetrics` qui contiennent des méthodes et propriétés pour créer des graphiques dans ton JavaScript."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Opening and Closing Dialogs and Modals with JavaScript",
+              "fr": "## Ouvrir et fermer des dialogs et des modales avec JavaScript"
+            },
+            {
+              "en": "- **Modal and Dialog Definitions**: Dialogs let you display important information or actions to users. With the HTML built-in dialog element, you can easily create these dialogs (both modal and non-modal dialogs) in your web apps. A modal dialog is a type of dialog that forces the user to interact with it before they can access the rest of the application or webpage. In contrast, a non-modal dialog allows the user to continue interacting with other parts of the page or application even when the dialog is open. It doesn't prevent access to the rest of the content.\n- **`showModal()` Method**: This method is used to open a modal.",
+              "fr": "- **Définitions modal et dialog** : Les dialogs te permettent d'afficher des informations ou des actions importantes aux utilisateurs. Avec l'élément HTML intégré dialog, tu peux facilement créer ces dialogs (modaux et non modaux) dans tes applications web. Un dialog modal force l'utilisateur à interagir avec lui avant de pouvoir accéder au reste de l'application ou de la page. À l'inverse, un dialog non modal permet à l'utilisateur de continuer à interagir avec d'autres parties de la page même quand le dialog est ouvert. Il n'empêche pas l'accès au reste du contenu.\n- **Méthode `showModal()`** : Cette méthode sert à ouvrir une modale."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`close()` Method**: This method is used to close the modal.",
+              "fr": "- **Méthode `close()`** : Cette méthode sert à fermer la modale."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the DOM Manipulation and Click Events with JavaScript topics and concepts.",
+              "fr": "Révise les sujets et concepts de manipulation du DOM et d'événements de clic avec JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
