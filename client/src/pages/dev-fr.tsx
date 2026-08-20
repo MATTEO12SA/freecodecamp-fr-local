@@ -4,6 +4,11 @@ import LearnLayout from '../components/layouts/learn';
 import SEO from '../components/seo';
 import { getAllAttempts } from '../utils/exam-history';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
+import {
+  exportLocalProfile,
+  importLocalProfile,
+  serializeLocalProfile
+} from '../utils/local-profile';
 import { formatSnapshotAge } from '../utils/snapshot-age';
 
 import './dev-fr.css';
@@ -306,6 +311,56 @@ function DevFrPage(): JSX.Element {
                             : 'aucun'}
                         </strong>
                       </div>
+                    </div>
+                    <div className='dev-fr-profile-actions'>
+                      <button
+                        type='button'
+                        className='dev-fr-btn'
+                        onClick={() => {
+                          const blob = new Blob(
+                            [serializeLocalProfile(exportLocalProfile())],
+                            { type: 'application/json' }
+                          );
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = `fcc-fr-local-profile-${new Date()
+                            .toISOString()
+                            .slice(0, 10)}.json`;
+                          a.click();
+                          URL.revokeObjectURL(url);
+                        }}
+                      >
+                        Exporter le profil local
+                      </button>
+                      <label className='dev-fr-btn dev-fr-btn-file'>
+                        Importer un profil
+                        <input
+                          type='file'
+                          accept='application/json,.json'
+                          hidden
+                          onChange={event => {
+                            const file = event.target.files?.[0];
+                            if (!file) return;
+                            const reader = new FileReader();
+                            reader.onload = () => {
+                              try {
+                                importLocalProfile(String(reader.result || ''));
+                                setBrowserSummary(readBrowserSummary());
+                                window.alert('Profil importé.');
+                              } catch (err) {
+                                window.alert(
+                                  err instanceof Error
+                                    ? err.message
+                                    : 'Import impossible'
+                                );
+                              }
+                            };
+                            reader.readAsText(file);
+                            event.target.value = '';
+                          }}
+                        />
+                      </label>
                     </div>
                   </section>
 

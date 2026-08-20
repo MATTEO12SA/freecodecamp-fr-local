@@ -100,7 +100,11 @@ function checkFile(enPath, frPath, file, issues) {
     const where = `${file} ${frChunks[i].marker} #${i + 1}`;
 
     if (!frText.trim()) {
-      issues.push({ level: 'error', msg: `${where}: chunk FR vide.` });
+      // EN may contain whitespace-only prose chunks (e.g. space before a
+      // mis-indented ``` fence). Matching empty FR is intentional then.
+      if (enText.trim()) {
+        issues.push({ level: 'error', msg: `${where}: chunk FR vide.` });
+      }
       continue;
     }
 

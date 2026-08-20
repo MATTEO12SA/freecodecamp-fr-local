@@ -1,0 +1,131 @@
+{
+  "workshop": "review-javascript-audio-and-video",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723cf27c6e9a0c3f3041385.md",
+      "id": "6723cf27c6e9a0c3f3041385",
+      "dashedName": "review-javascript-audio-and-video",
+      "title": {
+        "en": "JavaScript Audio and Video Review",
+        "fr": "Révision de l'audio et de la vidéo en JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## `Audio` Constructor and Common Methods",
+              "fr": "## Constructeur `Audio` et méthodes courantes"
+            },
+            {
+              "en": "- **Definition**: The `Audio` constructor, like other constructors, is a special function called with the `new` keyword. It returns an `HTMLAudioElement`, which you can then use to play audio for the user or append to the DOM for the user to control themselves. When you call the constructor, you can optionally pass a URL as the (only) argument. This URL should point to the source of the audio file you want to play. Or, if you need to change the source dynamically, you can assign the URL to the `src` property of the returned audio element.\n- **`play()` Method**: This method is used with the `audio` or `video` elements to begin playback for the media.",
+              "fr": "- **Définition** : le constructeur `Audio`, comme les autres constructeurs, est une fonction spéciale appelée avec le mot-clé `new`. Il renvoie un `HTMLAudioElement`, que tu peux ensuite utiliser pour lire de l'audio pour l'utilisateur ou ajouter au DOM pour que l'utilisateur le contrôle lui-même. Quand tu appelles le constructeur, tu peux éventuellement passer une URL comme (seul) argument. Cette URL doit pointer vers la source du fichier audio que tu veux lire. Ou, si tu as besoin de changer la source dynamiquement, tu peux assigner l'URL à la propriété `src` de l'élément audio renvoyé.\n- **Méthode `play()`** : cette méthode s'utilise avec les éléments `audio` ou `video` pour démarrer la lecture du média."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`pause()` Method**: This method is used with the `audio` or `video` elements to pause playback for the media. It maintains the current position, so if `play()` is called, it starts from that position.",
+              "fr": "- **Méthode `pause()`** : cette méthode s'utilise avec les éléments `audio` ou `video` pour mettre en pause la lecture du média. Elle conserve la position actuelle, donc si `play()` est appelé, la lecture reprend à partir de cette position."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`addTextTrack()` Method**: This method allows you to specify a text track to associate with the media element - which is especially helpful for adding subtitles to a video.\n- **`fastSeek()` Method**: This method allows you to move the playback position to a specific time within the media.",
+              "fr": "- **Méthode `addTextTrack()`** : cette méthode te permet de spécifier une piste de texte à associer à l'élément média — ce qui est particulièrement utile pour ajouter des sous-titres à une vidéo.\n- **Méthode `fastSeek()`** : cette méthode te permet de déplacer la position de lecture à un moment précis dans le média."
+            },
+            {
+              "en": "The `Audio()` constructor has properties just as it has methods. Those properties include:",
+              "fr": "Le constructeur `Audio()` a des propriétés tout comme il a des méthodes. Ces propriétés incluent :"
+            },
+            {
+              "en": "- `currentTime`: for getting the current playback time of an audio\n- `loop`: for making the audio play continuously by automatically restarting when it reaches the end\n- `muted`: for silencing the audio output of a media element regardless of volume setting",
+              "fr": "- `currentTime` : pour obtenir le temps de lecture actuel d'un audio\n- `loop` : pour faire jouer l'audio en continu en le redémarrant automatiquement quand il atteint la fin\n- `muted` : pour couper la sortie audio d'un élément média, indépendamment du réglage de volume"
+            },
+            {
+              "en": "## Different Audio and Video Formats",
+              "fr": "## Différents formats audio et vidéo"
+            },
+            {
+              "en": "- **MIME type**: A MIME type, standing for Multipurpose Internet Mail Extensions, is a standardized way to programmatically indicate a file type. The MIME type can tell an application, such as your browser, how to handle a specific file. In the case of audio and video, the MIME type indicates it is a multimedia format that can be embedded in the web page.\n- **`source` Element**: This is used to specify a file type and source - and can include multiple different types by using multiple source elements. When you do this, the browser will determine the best format to use for the user's current environment.\n- **MP3**: This is a type of digital file format used to store music, audio, or sound. It's a compressed version of a sound recording that makes the file size smaller, so it's easier to store and share. MP3 has the widest browser support and the MIME type of `audio/mpeg`.\n- **MP4**: An MP4 is a type of digital file format used to store video and audio. It serves as a container that holds both the video (images) and the sound (music or speech) in one file. An MP4, can have the MIME type `audio/mp4` OR `video/mp4`, depending on whether it's a video file or audio-only.\n- Other formats are `WMV` which is associated with the Windows Media Player app, `OGG`, `MKV`, `AVI`, and more.",
+              "fr": "- **Type MIME** : un type MIME, pour Multipurpose Internet Mail Extensions, est une façon standardisée d'indiquer programmatiquement un type de fichier. Le type MIME peut indiquer à une application, comme ton navigateur, comment gérer un fichier spécifique. Dans le cas de l'audio et de la vidéo, le type MIME indique qu'il s'agit d'un format multimédia qui peut être intégré dans la page web.\n- **Élément `source`** : il sert à spécifier un type de fichier et une source — et tu peux inclure plusieurs types différents en utilisant plusieurs éléments source. Quand tu fais cela, le navigateur déterminera le meilleur format à utiliser pour l'environnement actuel de l'utilisateur.\n- **MP3** : c'est un type de format de fichier numérique utilisé pour stocker de la musique, de l'audio ou du son. C'est une version compressée d'un enregistrement sonore qui réduit la taille du fichier, ce qui le rend plus facile à stocker et à partager. Le MP3 a le support navigateur le plus large et le type MIME `audio/mpeg`.\n- **MP4** : un MP4 est un type de format de fichier numérique utilisé pour stocker de la vidéo et de l'audio. Il sert de conteneur qui regroupe à la fois la vidéo (images) et le son (musique ou parole) dans un seul fichier. Un MP4 peut avoir le type MIME `audio/mp4` OU `video/mp4`, selon qu'il s'agit d'un fichier vidéo ou audio uniquement.\n- D'autres formats sont `WMV`, associé à l'application Windows Media Player, `OGG`, `MKV`, `AVI`, et bien d'autres."
+            },
+            {
+              "en": "## codecs",
+              "fr": "## Codecs"
+            },
+            {
+              "en": "- **Definition**: A codec, short for \"encoder/decoder\", is an algorithm or software that can convert audio and video between analogue and digital formats. Codecs can be specified as part of the MIME type. The basic syntax to define a codec is to add a semi-colon after the media type, then `codecs=` and the codec.",
+              "fr": "- **Définition** : un codec, abréviation de « encoder/decoder », est un algorithme ou un logiciel qui peut convertir l'audio et la vidéo entre formats analogiques et numériques. Les codecs peuvent être spécifiés dans le type MIME. La syntaxe de base pour définir un codec est d'ajouter un point-virgule après le type de média, puis `codecs=` et le codec."
+            },
+            {
+              "en": "## HTMLMediaElement API",
+              "fr": "## API HTMLMediaElement"
+            },
+            {
+              "en": "- **Definition**: The `HTMLMediaElement` API is used to control the behavior of audio and video elements on your page. It extends the base `HTMLElement` interface, so you have access to the base properties, methods as well as these helpful events like `waiting`, `ended`, `canplay`, `canplaythrough`, and more. Examples of the methods include `play()`, `fastSeek()`, `pause()`, and `canPlayType()` for checking if a browser is likely to be able to play an audio file.",
+              "fr": "- **Définition** : l'API `HTMLMediaElement` sert à contrôler le comportement des éléments audio et vidéo sur ta page. Elle étend l'interface de base `HTMLElement`, donc tu as accès aux propriétés et méthodes de base ainsi qu'à des événements utiles comme `waiting`, `ended`, `canplay`, `canplaythrough`, et plus encore. Des exemples de méthodes incluent `play()`, `fastSeek()`, `pause()`, et `canPlayType()` pour vérifier si un navigateur est susceptible de pouvoir lire un fichier audio."
+            },
+            {
+              "en": "## Media Capture and Streams API",
+              "fr": "## API Media Capture and Streams"
+            },
+            {
+              "en": "- **Definition**: The Media Capture and Streams API, or the MediaStream API, is used to capture audio and video from your device. In order to use the API, you need to create the `MediaStream` object. You could do this with the constructor, but it would not be tied to the user's hardware. Instead, the `mediaDevices` property of the `global` navigator object has a `getUserMedia()` method for you to use.",
+              "fr": "- **Définition** : l'API Media Capture and Streams, ou l'API MediaStream, sert à capturer de l'audio et de la vidéo depuis ton appareil. Pour utiliser l'API, tu dois créer l'objet `MediaStream`. Tu pourrais le faire avec le constructeur, mais il ne serait pas lié au matériel de l'utilisateur. À la place, la propriété `mediaDevices` de l'objet `global` navigator a une méthode `getUserMedia()` à utiliser."
+            },
+            {
+              "en": "## Screen Capture API",
+              "fr": "## API Screen Capture"
+            },
+            {
+              "en": "- **Definition**: The Screen Capture API is used to record a user's screen. This API is exposed by calling the `getDisplayMedia()` method of the `mediaDevices` object and consuming the returned media stream.",
+              "fr": "- **Définition** : l'API Screen Capture sert à enregistrer l'écran d'un utilisateur. Cette API est exposée en appelant la méthode `getDisplayMedia()` de l'objet `mediaDevices` et en consommant le flux média renvoyé."
+            },
+            {
+              "en": "## MediaStream Recording API",
+              "fr": "## API MediaStream Recording"
+            },
+            {
+              "en": "- **Definition**: The MediaStream Recording API works in tandem with the MediaStreams APIs, allowing you to record a MediaStream (or even an `HTMLMediaElement` directly).",
+              "fr": "- **Définition** : l'API MediaStream Recording fonctionne de concert avec les API MediaStreams, te permettant d'enregistrer un MediaStream (ou même un `HTMLMediaElement` directement)."
+            },
+            {
+              "en": "## Media Source Extensions API",
+              "fr": "## API Media Source Extensions"
+            },
+            {
+              "en": "- **topic**: The Media Source Extensions API is what allows you to directly pass a user's webcam feed to a video element with the `srcObject` property.",
+              "fr": "- **Sujet** : l'API Media Source Extensions est ce qui te permet de passer directement le flux de la webcam d'un utilisateur à un élément vidéo avec la propriété `srcObject`."
+            },
+            {
+              "en": "## Web Audio API",
+              "fr": "## API Web Audio"
+            },
+            {
+              "en": "- **Definition**: The Web Audio API which powers everything audible on the web. This API includes important objects like an `AudioBuffer` (representing a Buffer specifically containing audio data) or the `AudioContext`, used to represent an audio-processing graph.",
+              "fr": "- **Définition** : l'API Web Audio alimente tout ce qui est audible sur le web. Cette API inclut des objets importants comme un `AudioBuffer` (représentant un Buffer contenant spécifiquement des données audio) ou l'`AudioContext`, utilisé pour représenter un graphe de traitement audio."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Audio and Video topics and concepts.",
+              "fr": "Révise les sujets et concepts JavaScript Audio et Vidéo."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

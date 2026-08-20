@@ -1,0 +1,1454 @@
+{
+  "workshop": "workshop-music-player",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "67471d60ce8e6268fe9e12f6.md",
+      "id": "67471d60ce8e6268fe9e12f6",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop you will create a music player app capable of playing, pausing, and skipping songs from a playlist.",
+          "fr": "Dans ce workshop, tu vas créer une application de lecteur de musique capable de lire, mettre en pause et passer des chansons d'une playlist."
+        },
+        {
+          "en": "The HTML and CSS of this project have been provided for you, so you can focus on the JavaScript.",
+          "fr": "Le HTML et le CSS de ce projet t'ont déjà été fournis, pour que tu puisses te concentrer sur le JavaScript."
+        },
+        {
+          "en": "Start by accessing the `#playlist-songs`, `#play`, and `#pause` elements and assign them to the variables `playlistSongs`, `playButton` and `pauseButton`, respectively.",
+          "fr": "Commence par accéder aux éléments `#playlist-songs`, `#play` et `#pause`, et assigne-les respectivement aux variables `playlistSongs`, `playButton` et `pauseButton`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `playlistSongs`.",
+          "fr": "Tu devrais avoir une variable appelée `playlistSongs`."
+        },
+        {
+          "en": "You should assign the `#playlist-songs` element to the variable `playlistSongs`.",
+          "fr": "Tu devrais assigner l'élément `#playlist-songs` à la variable `playlistSongs`."
+        },
+        {
+          "en": "You should have a variable called `playButton`.",
+          "fr": "Tu devrais avoir une variable appelée `playButton`."
+        },
+        {
+          "en": "You should assign the `#play` element to the variable `playButton`.",
+          "fr": "Tu devrais assigner l'élément `#play` à la variable `playButton`."
+        },
+        {
+          "en": "You should have a variable called `pauseButton`.",
+          "fr": "Tu devrais avoir une variable appelée `pauseButton`."
+        },
+        {
+          "en": "You should assign the `#pause` element to the variable `pauseButton`.",
+          "fr": "Tu devrais assigner l'élément `#pause` à la variable `pauseButton`."
+        }
+      ]
+    },
+    {
+      "file": "6747237371f13173c9f6c27e.md",
+      "id": "6747237371f13173c9f6c27e",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Access the `#next` and `#previous` elements from the HTML file.",
+          "fr": "Accède aux éléments `#next` et `#previous` du fichier HTML."
+        },
+        {
+          "en": "Assign them to variables named `nextButton`, and `previousButton`, respectively.",
+          "fr": "Assigne-les respectivement aux variables nommées `nextButton` et `previousButton`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `nextButton`.",
+          "fr": "Tu devrais avoir une variable appelée `nextButton`."
+        },
+        {
+          "en": "You should assign the `#next` element to the variable `nextButton`.",
+          "fr": "Tu devrais assigner l'élément `#next` à la variable `nextButton`."
+        },
+        {
+          "en": "You should have a variable called `previousButton`.",
+          "fr": "Tu devrais avoir une variable appelée `previousButton`."
+        },
+        {
+          "en": "You should assign the `#previous` element to the variable `previousButton`.",
+          "fr": "Tu devrais assigner l'élément `#previous` à la variable `previousButton`."
+        }
+      ]
+    },
+    {
+      "file": "674724ff8af92f7733e6d980.md",
+      "id": "674724ff8af92f7733e6d980",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Next, create an empty array named `allSongs` to store all the songs.",
+          "fr": "Ensuite, crée un tableau vide nommé `allSongs` pour stocker toutes les chansons."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable called `allSongs`.",
+          "fr": "Tu devrais avoir une variable appelée `allSongs`."
+        },
+        {
+          "en": "You should assign an array to your `allSongs` variable.",
+          "fr": "Tu devrais assigner un tableau à ta variable `allSongs`."
+        },
+        {
+          "en": "Your array should be empty.",
+          "fr": "Ton tableau devrait être vide."
+        }
+      ]
+    },
+    {
+      "file": "6747257cdf5412781e138bb2.md",
+      "id": "6747257cdf5412781e138bb2",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Inside the `allSongs` array, create an object with the following properties and values:",
+          "fr": "À l'intérieur du tableau `allSongs`, crée un objet avec les propriétés et valeurs suivantes :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `allSongs` array should have one value.",
+          "fr": "Ton tableau `allSongs` devrait avoir une valeur."
+        },
+        {
+          "en": "Your `allSongs` array should have an object as its first value.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet comme première valeur."
+        },
+        {
+          "en": "Your `allSongs` array should have an object with an `id` property set to the number `0`.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet avec une propriété `id` définie au nombre `0`."
+        },
+        {
+          "en": "Your `allSongs` array should have an object with a `title` property set to the string `\"Scratching The Surface\"`.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet avec une propriété `title` définie à la chaîne `\"Scratching The Surface\"`."
+        },
+        {
+          "en": "Your `allSongs` array should have an object with an `artist` property set to the string `\"Quincy Larson\"`.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet avec une propriété `artist` définie à la chaîne `\"Quincy Larson\"`."
+        },
+        {
+          "en": "Your `allSongs` array should have an object with a `duration` property set to the string `\"4:25\"`.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet avec une propriété `duration` définie à la chaîne `\"4:25\"`."
+        },
+        {
+          "en": "Your `allSongs` array should have an object with a `src` property set to the string `\"https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3\"`.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet avec une propriété `src` définie à la chaîne `\"https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3\"`."
+        }
+      ]
+    },
+    {
+      "file": "6747274264e8a5799fb3e0b5.md",
+      "id": "6747274264e8a5799fb3e0b5",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Add a second object with the following keys and values:",
+          "fr": "Ajoute un deuxième objet avec les clés et valeurs suivantes :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `allSongs` array should have two values.",
+          "fr": "Ton tableau `allSongs` devrait avoir deux valeurs."
+        },
+        {
+          "en": "Your `allSongs` array should have an object as its second value.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet comme deuxième valeur."
+        },
+        {
+          "en": "The second object in your `allSongs` array should have an `id` property set to the number `1`.",
+          "fr": "Le deuxième objet de ton tableau `allSongs` devrait avoir une propriété `id` définie au nombre `1`."
+        },
+        {
+          "en": "The second object in your `allSongs` array should have a `title` property set to the string `\"Can't Stay Down\"`.",
+          "fr": "Le deuxième objet de ton tableau `allSongs` devrait avoir une propriété `title` définie à la chaîne `\"Can't Stay Down\"`."
+        },
+        {
+          "en": "The second object in your `allSongs` array should have an `artist` property set to the string `\"Quincy Larson\"`.",
+          "fr": "Le deuxième objet de ton tableau `allSongs` devrait avoir une propriété `artist` définie à la chaîne `\"Quincy Larson\"`."
+        },
+        {
+          "en": "The second object in your `allSongs` array should have a `duration` property set to the string `\"4:15\"`.",
+          "fr": "Le deuxième objet de ton tableau `allSongs` devrait avoir une propriété `duration` définie à la chaîne `\"4:15\"`."
+        },
+        {
+          "en": "The second object in your `allSongs` array should have a `src` property set to the string `\"https://cdn.freecodecamp.org/curriculum/js-music-player/can't-stay-down.mp3\"`.",
+          "fr": "Le deuxième objet de ton tableau `allSongs` devrait avoir une propriété `src` définie à la chaîne `\"https://cdn.freecodecamp.org/curriculum/js-music-player/can't-stay-down.mp3\"`."
+        }
+      ]
+    },
+    {
+      "file": "674728eda5829d7b4c360643.md",
+      "id": "674728eda5829d7b4c360643",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Add a third object with the following properties and values:",
+          "fr": "Ajoute un troisième objet avec les propriétés et valeurs suivantes :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `allSongs` array should have an object as its third value.",
+          "fr": "Ton tableau `allSongs` devrait avoir un objet comme troisième valeur."
+        },
+        {
+          "en": "The third object in your `allSongs` array should have an `id` property set to the number `2`.",
+          "fr": "Le troisième objet de ton tableau `allSongs` devrait avoir une propriété `id` définie au nombre `2`."
+        },
+        {
+          "en": "The third object in your `allSongs` array should have a `title` property set to the string `\"Still Learning\"`.",
+          "fr": "Le troisième objet de ton tableau `allSongs` devrait avoir une propriété `title` définie à la chaîne `\"Still Learning\"`."
+        },
+        {
+          "en": "The third object in your `allSongs` array should have an `artist` property set to the string `\"Quincy Larson\"`.",
+          "fr": "Le troisième objet de ton tableau `allSongs` devrait avoir une propriété `artist` définie à la chaîne `\"Quincy Larson\"`."
+        },
+        {
+          "en": "The third object in your `allSongs` array should have a `duration` property set to the string `\"3:51\"`.",
+          "fr": "Le troisième objet de ton tableau `allSongs` devrait avoir une propriété `duration` définie à la chaîne `\"3:51\"`."
+        },
+        {
+          "en": "The third object in your `allSongs` array should have a `src` property set to the string `\"https://cdn.freecodecamp.org/curriculum/js-music-player/still-learning.mp3\"`.",
+          "fr": "Le troisième objet de ton tableau `allSongs` devrait avoir une propriété `src` définie à la chaîne `\"https://cdn.freecodecamp.org/curriculum/js-music-player/still-learning.mp3\"`."
+        }
+      ]
+    },
+    {
+      "file": "6747299cbed5107c6a00d64c.md",
+      "id": "6747299cbed5107c6a00d64c",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "The rest of the songs has been added to the `allSongs` array for you.",
+          "fr": "Le reste des chansons a été ajouté au tableau `allSongs` pour toi."
+        },
+        {
+          "en": "In previous lessons, you learned about the <dfn>Web Audio API</dfn> and how to use it to play songs. All modern browsers support the Web Audio API, which lets you generate and process audio in web applications.",
+          "fr": "Dans les leçons précédentes, tu as appris l'<dfn>API Web Audio</dfn> et comment l'utiliser pour lire des chansons. Tous les navigateurs modernes prennent en charge l'API Web Audio, qui te permet de générer et de traiter de l'audio dans des applications web."
+        },
+        {
+          "en": "Create a variable named `audio` and set it equal to `new Audio()`. This will create a new HTML5 `audio` element.",
+          "fr": "Crée une variable nommée `audio` et définis-la égale à `new Audio()`. Cela créera un nouvel élément HTML5 `audio`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `audio`.",
+          "fr": "Tu devrais avoir une variable nommée `audio`."
+        },
+        {
+          "en": "You should assign a new instance of the `Audio` object to the variable named `audio`.",
+          "fr": "Tu devrais assigner une nouvelle instance de l'objet `Audio` à la variable nommée `audio`."
+        }
+      ]
+    },
+    {
+      "file": "67472ab9f570797dbb01568a.md",
+      "id": "67472ab9f570797dbb01568a",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Your music player should keep track of the songs, the current song playing, and the time of the current song. To do this, you will need to create an object to store this information.",
+          "fr": "Ton lecteur de musique devrait garder la trace des chansons, de la chanson en cours de lecture et du temps de la chanson actuelle. Pour cela, tu auras besoin de créer un objet pour stocker ces informations."
+        },
+        {
+          "en": "Start by declaring a new variable called `userData` and assign it an empty object.",
+          "fr": "Commence par déclarer une nouvelle variable appelée `userData` et assigne-lui un objet vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `userData`.",
+          "fr": "Tu devrais avoir une variable nommée `userData`."
+        },
+        {
+          "en": "You should assign an empty object to your `userData` variable.",
+          "fr": "Tu devrais assigner un objet vide à ta variable `userData`."
+        }
+      ]
+    },
+    {
+      "file": "67472eef7b4b7ba77b50929b.md",
+      "id": "67472eef7b4b7ba77b50929b",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "In your `userData` object, create a `songs` property and set its value to the `allSongs` array.",
+          "fr": "Dans ton objet `userData`, crée une propriété `songs` et définis sa valeur au tableau `allSongs`."
+        },
+        {
+          "en": "Then, to handle the current song's information and track its playback time, create a `currentSong` and `songCurrentTime` properties. Set the values to `null` and `0`, respectively.",
+          "fr": "Ensuite, pour gérer les informations de la chanson actuelle et suivre son temps de lecture, crée les propriétés `currentSong` et `songCurrentTime`. Définis les valeurs respectivement à `null` et `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `userData` object should have a `songs` key set to the `allSongs` array.",
+          "fr": "Ton objet `userData` devrait avoir une clé `songs` définie au tableau `allSongs`."
+        },
+        {
+          "en": "Your `userData` object should have a `currentSong` key set to `null`.",
+          "fr": "Ton objet `userData` devrait avoir une clé `currentSong` définie à `null`."
+        },
+        {
+          "en": "Your `userData` object should have a `songCurrentTime` key set to `0`.",
+          "fr": "Ton objet `userData` devrait avoir une clé `songCurrentTime` définie à `0`."
+        }
+      ]
+    },
+    {
+      "file": "67473042e8751eac62fafc82.md",
+      "id": "67473042e8751eac62fafc82",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "It's time to begin implementing the functionality for playing the displayed songs.",
+          "fr": "Il est temps de commencer à implémenter la fonctionnalité pour lire les chansons affichées."
+        },
+        {
+          "en": "Define a `playSong` function that takes an single parameter which will represent the unique identifier of the song you want to play.",
+          "fr": "Définis une fonction `playSong` qui prend un seul paramètre représentant l'identifiant unique de la chanson que tu veux lire."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an empty function named `playSong`.",
+          "fr": "Tu devrais avoir une fonction vide nommée `playSong`."
+        },
+        {
+          "en": "Your `playSong` function should take a single parameter.",
+          "fr": "Ta fonction `playSong` devrait prendre un seul paramètre."
+        }
+      ]
+    },
+    {
+      "file": "674735e3b28351b8b8f05807.md",
+      "id": "674735e3b28351b8b8f05807",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "The `find()` method retrieves the first element within an array that fulfills the conditions specified in the provided callback function. If no element satisfies the condition, the method returns `undefined`.",
+          "fr": "La méthode `find()` récupère le premier élément d'un tableau qui remplit les conditions spécifiées dans la fonction de rappel fournie. Si aucun élément ne satisfait la condition, la méthode renvoie `undefined`."
+        },
+        {
+          "en": "In the example below, the `find()` method is used to find the first number greater than 25:",
+          "fr": "Dans l'exemple ci-dessous, la méthode `find()` est utilisée pour trouver le premier nombre supérieur à 25 :"
+        },
+        {
+          "en": "Within your `playSong` function, use the `find()` method on the `userData.songs` array to search for a song which has an `id` strictly equal to the `id` passed into the `playSong` function. Assign the `find` call to a variable named `song`.",
+          "fr": "À l'intérieur de ta fonction `playSong`, utilise la méthode `find()` sur le tableau `userData.songs` pour chercher une chanson dont l'`id` est strictement égal à l'`id` passé à la fonction `playSong`. Assigne l'appel `find` à une variable nommée `song`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `playSong` function should call the `find` method on `userData.songs`.",
+          "fr": "Ta fonction `playSong` devrait appeler la méthode `find` sur `userData.songs`."
+        },
+        {
+          "en": "Your `find` call should return a song whose `id` is strictly equal to the `id` passed into the `playSong` function.",
+          "fr": "Ton appel `find` devrait renvoyer une chanson dont l'`id` est strictement égal à l'`id` passé à la fonction `playSong`."
+        },
+        {
+          "en": "You should assign your `find` call to a variable named `song`.",
+          "fr": "Tu devrais assigner ton appel `find` à une variable nommée `song`."
+        }
+      ]
+    },
+    {
+      "file": "674757668684f9deaa6ac3c0.md",
+      "id": "674757668684f9deaa6ac3c0",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Still inside the `playSong` function, set the `audio.src` property equal to `song.src`. This tells the audio element where to find the audio data for the selected song.",
+          "fr": "Toujours à l'intérieur de la fonction `playSong`, définis la propriété `audio.src` égale à `song.src`. Cela indique à l'élément audio où trouver les données audio de la chanson sélectionnée."
+        },
+        {
+          "en": "Also, set the `audio.title` property equal to `song.title`. This tells the audio element what to display as the title of the song.",
+          "fr": "Définis aussi la propriété `audio.title` égale à `song.title`. Cela indique à l'élément audio quoi afficher comme titre de la chanson."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `audio.src` property equal to `song.src` inside your `playSong` function.",
+          "fr": "Tu devrais définir la propriété `audio.src` égale à `song.src` à l'intérieur de ta fonction `playSong`."
+        },
+        {
+          "en": "You should set the `audio.title` property equal to `song.title` inside your `playSong` function.",
+          "fr": "Tu devrais définir la propriété `audio.title` égale à `song.title` à l'intérieur de ta fonction `playSong`."
+        }
+      ]
+    },
+    {
+      "file": "674dda6c6ae8bb538678e125.md",
+      "id": "674dda6c6ae8bb538678e125",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Before playing the song, you need to make sure it starts from the beginning. This can be achieved by the use of the `currentTime` property on the `audio` object.",
+          "fr": "Avant de lire la chanson, tu dois t'assurer qu'elle démarre depuis le début. Cela peut se faire avec la propriété `currentTime` de l'objet `audio`."
+        },
+        {
+          "en": "Add an `if` statement to check if no current song is playing by verifying that `userData.currentSong` is falsy.\nInside `if` block, set the `currentTime` property of the `audio` object to `0`.",
+          "fr": "Ajoute une instruction `if` pour vérifier qu'aucune chanson n'est en cours de lecture en vérifiant que `userData.currentSong` est falsy.\nÀ l'intérieur du bloc `if`, définis la propriété `currentTime` de l'objet `audio` à `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `playSong` function should set the `currentTime` property of the `audio` object to `0` when no current song is playing.",
+          "fr": "Ta fonction `playSong` devrait définir la propriété `currentTime` de l'objet `audio` à `0` quand aucune chanson n'est en cours de lecture."
+        }
+      ]
+    },
+    {
+      "file": "674de4ee2039496c30a31b71.md",
+      "id": "674de4ee2039496c30a31b71",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Add an `else` block to handle the song's current playback time. This allows you to resume the current song at the point where it was paused.",
+          "fr": "Ajoute un bloc `else` pour gérer le temps de lecture actuel de la chanson. Cela te permet de reprendre la chanson actuelle au point où elle a été mise en pause."
+        },
+        {
+          "en": "Within the `else` block, set the `currentTime` property of the `audio` object to the value stored in `userData.songCurrentTime`.",
+          "fr": "À l'intérieur du bloc `else`, définis la propriété `currentTime` de l'objet `audio` à la valeur stockée dans `userData.songCurrentTime`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `playSong` function should set the `currentTime` property of the `audio` object to the value stored in `userData.songCurrentTime` when there's a current song playing.",
+          "fr": "Ta fonction `playSong` devrait définir la propriété `currentTime` de l'objet `audio` à la valeur stockée dans `userData.songCurrentTime` quand une chanson est en cours de lecture."
+        },
+        {
+          "en": "You should not modify the existing `if` statement and its content.",
+          "fr": "Tu ne devrais pas modifier l'instruction `if` existante ni son contenu."
+        }
+      ]
+    },
+    {
+      "file": "674836ba82e9057dfee1849c.md",
+      "id": "674836ba82e9057dfee1849c",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Next, use the `classList` property and the `add()` method to add the `playing` class to the `playButton` element. This will look for the class `playing` in the CSS file and add it to the `playButton` element.",
+          "fr": "Ensuite, utilise la propriété `classList` et la méthode `add()` pour ajouter la classe `playing` à l'élément `playButton`. Cela cherchera la classe `playing` dans le fichier CSS et l'ajoutera à l'élément `playButton`."
+        },
+        {
+          "en": "Then, set `userData.currentSong` to `song`, and to finally play the song, use the `play()` method on the `audio` variable. `play()` is a method from the web audio API for playing an mp3 file.",
+          "fr": "Puis, définis `userData.currentSong` à `song`, et pour enfin lire la chanson, utilise la méthode `play()` sur la variable `audio`. `play()` est une méthode de l'API Web Audio pour lire un fichier mp3."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add the `playing` class to the `playButton` element within your `playSong` function.",
+          "fr": "Tu devrais ajouter la classe `playing` à l'élément `playButton` à l'intérieur de ta fonction `playSong`."
+        },
+        {
+          "en": "You should set `userData.currentSong` to `song` within your `playSong` function.",
+          "fr": "Tu devrais définir `userData.currentSong` à `song` à l'intérieur de ta fonction `playSong`."
+        },
+        {
+          "en": "You should call the `play()` method on the `audio` variable within your `playSong` function.",
+          "fr": "Tu devrais appeler la méthode `play()` sur la variable `audio` à l'intérieur de ta fonction `playSong`."
+        }
+      ]
+    },
+    {
+      "file": "674850b437668dd08edddbe2.md",
+      "id": "674850b437668dd08edddbe2",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "In previous steps you built out the functionality for playing a song. Now you need to add the functionality to the play button.",
+          "fr": "Dans les étapes précédentes, tu as construit la fonctionnalité pour lire une chanson. Maintenant, tu dois ajouter la fonctionnalité au bouton de lecture."
+        },
+        {
+          "en": "Use the `addEventListener()` method on `playButton` and pass in a `\"click\"` event for the first argument. For now, use a callback that calls `playSong(0)` as the second argument.",
+          "fr": "Utilise la méthode `addEventListener()` sur `playButton` et passe un événement `\"click\"` comme premier argument. Pour l'instant, utilise comme deuxième argument un rappel qui appelle `playSong(0)`."
+        },
+        {
+          "en": "Then, test it by clicking the play button.",
+          "fr": "Ensuite, teste en cliquant sur le bouton de lecture."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an event listener for the `click` event to the `playButton` and pass a callback function that calls `playSong(0)` as the second argument to the `addEventListener` method.",
+          "fr": "Tu devrais ajouter un écouteur d'événement pour l'événement `click` au `playButton` et passer une fonction de rappel qui appelle `playSong(0)` comme deuxième argument de la méthode `addEventListener`."
+        }
+      ]
+    },
+    {
+      "file": "674e316e3892d32108ad2bb9.md",
+      "id": "674e316e3892d32108ad2bb9",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Anytime you click the play button, the first song of your playlist will always play. To fix this, within the arrow function of the event listener, replace `playSong(0)` with an `if` statement that checks if `userData.currentSong` is `null`.",
+          "fr": "À chaque clic sur le bouton de lecture, la première chanson de ta playlist sera toujours lue. Pour corriger cela, à l'intérieur de la fonction fléchée de l'écouteur d'événement, remplace `playSong(0)` par une instruction `if` qui vérifie si `userData.currentSong` est `null`."
+        },
+        {
+          "en": "Inside the `if` block, call the `playSong` function with the `id` of the first song in the `userData.songs` array.",
+          "fr": "À l'intérieur du bloc `if`, appelle la fonction `playSong` avec l'`id` de la première chanson du tableau `userData.songs`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should modify the callback of the event listener to call the `playSong` function with the `id` of the first song in the `userData.songs` array when `userData.currentSong` is `null`.",
+          "fr": "Tu devrais modifier le rappel de l'écouteur d'événement pour appeler la fonction `playSong` avec l'`id` de la première chanson du tableau `userData.songs` quand `userData.currentSong` est `null`."
+        }
+      ]
+    },
+    {
+      "file": "674e34c42ee8f1237e4623cc.md",
+      "id": "674e34c42ee8f1237e4623cc",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Add an `else` block. Inside the `else` block, call the `playSong` function with the `id` of the currently playing song as an argument.",
+          "fr": "Ajoute un bloc `else`. À l'intérieur du bloc `else`, appelle la fonction `playSong` avec l'`id` de la chanson en cours de lecture comme argument."
+        },
+        {
+          "en": "This ensures that the currently playing song will continue to play when the play button is clicked.",
+          "fr": "Cela garantit que la chanson en cours de lecture continuera à être lue quand on clique sur le bouton de lecture."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the `playButton` is clicked and `userData.currentSong` is not `null`, you should call the `playSong` function with the `id` of the currently playing song.",
+          "fr": "Quand on clique sur le `playButton` et que `userData.currentSong` n'est pas `null`, tu devrais appeler la fonction `playSong` avec l'`id` de la chanson en cours de lecture."
+        },
+        {
+          "en": "You should still call the `playSong` function with the `id` of the first song in your playlist when the `playButton` is clicked and `userData.currentSong` is `null`,",
+          "fr": "Tu devrais toujours appeler la fonction `playSong` avec l'`id` de la première chanson de ta playlist quand on clique sur le `playButton` et que `userData.currentSong` est `null`."
+        }
+      ]
+    },
+    {
+      "file": "6758a61fc7e949923716ec41.md",
+      "id": "6758a61fc7e949923716ec41",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now, use the `querySelectorAll` method to target the `.playlist-song` elements and store them in a variable named `songs`.",
+          "fr": "Maintenant, utilise la méthode `querySelectorAll` pour cibler les éléments `.playlist-song` et stocke-les dans une variable nommée `songs`."
+        },
+        {
+          "en": "Then, call the `forEach` method on `songs`. Pass in a callback function that uses `song` as the parameter to the method. Leave the curly braces empty for now.",
+          "fr": "Ensuite, appelle la méthode `forEach` sur `songs`. Passe une fonction de rappel qui utilise `song` comme paramètre de la méthode. Laisse les accolades vides pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `songs`.",
+          "fr": "Tu devrais avoir une variable nommée `songs`."
+        },
+        {
+          "en": "You should assign the collection of all `.playlist-song` elements to your `songs` variable.",
+          "fr": "Tu devrais assigner la collection de tous les éléments `.playlist-song` à ta variable `songs`."
+        },
+        {
+          "en": "You should call the `forEach` method on `songs` and pass in a callback that uses `song` as the parameter to the method.",
+          "fr": "Tu devrais appeler la méthode `forEach` sur `songs` et passer un rappel qui utilise `song` comme paramètre de la méthode."
+        }
+      ]
+    },
+    {
+      "file": "67594f37fa0c684835f1b064.md",
+      "id": "67594f37fa0c684835f1b064",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "When you click a song of your playlist you want to play that song. For that you'll need to add an event listener for the `click` event on each `button` element which is a child of a `song` element.",
+          "fr": "Quand tu cliques sur une chanson de ta playlist, tu veux lire cette chanson. Pour cela, tu auras besoin d'ajouter un écouteur d'événement pour l'événement `click` sur chaque élément `button` enfant d'un élément `song`."
+        },
+        {
+          "en": "Complete the callback of your `forEach` to do that. Inside the `addEventListener` callback, call `playSong(n)`, where `n` is the song id that you can get from the `id` attribute of `song`.",
+          "fr": "Complète le rappel de ton `forEach` pour faire cela. À l'intérieur du rappel de `addEventListener`, appelle `playSong(n)`, où `n` est l'id de la chanson que tu peux obtenir depuis l'attribut `id` de `song`."
+        },
+        {
+          "en": "Note that each `song` has an `id` attribute of `song-n`: you'll need to get the `n` part and convert it into a number before passing it to `playSong()`.",
+          "fr": "Note que chaque `song` a un attribut `id` de la forme `song-n` : tu auras besoin d'obtenir la partie `n` et de la convertir en nombre avant de la passer à `playSong()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an event listener for the `click` event on each `button` element which is a child of a `.playlist-song` element and call `playSong` with the `id` of the corresponding song.",
+          "fr": "Tu devrais ajouter un écouteur d'événement pour l'événement `click` sur chaque élément `button` enfant d'un élément `.playlist-song` et appeler `playSong` avec l'`id` de la chanson correspondante."
+        }
+      ]
+    },
+    {
+      "file": "6748567229cc8fe3f706de02.md",
+      "id": "6748567229cc8fe3f706de02",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now you need to work on pausing the currently playing song.",
+          "fr": "Maintenant, tu dois travailler sur la mise en pause de la chanson en cours de lecture."
+        },
+        {
+          "en": "Define a `pauseSong` function that takes no parameters. Within your new function, to store the current time of the song when it is paused, set the `songCurrentTime` of the `userData` object to the `currentTime` of the `audio` variable.",
+          "fr": "Définis une fonction `pauseSong` qui ne prend aucun paramètre. À l'intérieur de ta nouvelle fonction, pour stocker le temps actuel de la chanson quand elle est mise en pause, définis le `songCurrentTime` de l'objet `userData` au `currentTime` de la variable `audio`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `pauseSong` function.",
+          "fr": "Tu devrais avoir une fonction `pauseSong`."
+        },
+        {
+          "en": "Your `pauseSong` function should set the `songCurrentTime` of the `userData` object to the `currentTime` of the `audio` variable.",
+          "fr": "Ta fonction `pauseSong` devrait définir le `songCurrentTime` de l'objet `userData` au `currentTime` de la variable `audio`."
+        }
+      ]
+    },
+    {
+      "file": "6748bab9827a356c39559214.md",
+      "id": "6748bab9827a356c39559214",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Use `classList` and `remove()` method to remove the `playing` class from the `playButton`, since the song will be paused at this point.",
+          "fr": "Utilise `classList` et la méthode `remove()` pour retirer la classe `playing` de `playButton`, puisque la chanson sera en pause à ce moment."
+        },
+        {
+          "en": "To finally pause the song, use the `pause()` method on the `audio` variable. `pause()` is a method of the Web Audio API for pausing music files.",
+          "fr": "Pour enfin mettre la chanson en pause, utilise la méthode `pause()` sur la variable `audio`. `pause()` est une méthode de l'API Web Audio pour mettre en pause des fichiers musicaux."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `pauseSong` function should remove the `playing` class from the `playButton`.",
+          "fr": "Ta fonction `pauseSong` devrait retirer la classe `playing` de `playButton`."
+        },
+        {
+          "en": "Your `pauseSong` function should call the `pause()` method on `audio`.",
+          "fr": "Ta fonction `pauseSong` devrait appeler la méthode `pause()` sur `audio`."
+        }
+      ]
+    },
+    {
+      "file": "674e2e4e04eb381ccfe92e15.md",
+      "id": "674e2e4e04eb381ccfe92e15",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Now it is time to test out the pause button.",
+          "fr": "Il est maintenant temps de tester le bouton de pause."
+        },
+        {
+          "en": "Add a `\"click\"` event listener to the `pauseButton` element, then pass in `pauseSong` as the second argument of the event listener. This is the function the event listener will run.",
+          "fr": "Ajoute un écouteur d'événement `\"click\"` à l'élément `pauseButton`, puis passe `pauseSong` comme deuxième argument de l'écouteur d'événement. C'est la fonction que l'écouteur d'événement exécutera."
+        },
+        {
+          "en": "Test out your app by first clicking on the play button followed by the pause button. You should see that everything is working as expected.",
+          "fr": "Teste ton application en cliquant d'abord sur le bouton de lecture, puis sur le bouton de pause. Tu devrais voir que tout fonctionne comme prévu."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `pauseButton` variable.",
+          "fr": "Tu devrais appeler la méthode `addEventListener()` sur ta variable `pauseButton`."
+        },
+        {
+          "en": "Your event listener should listen for a `\"click\"` event.",
+          "fr": "Ton écouteur d'événement devrait écouter un événement `\"click\"`."
+        },
+        {
+          "en": "You should pass in `pauseSong` as the second argument of your `addEventListener` method.",
+          "fr": "Tu devrais passer `pauseSong` comme deuxième argument de ta méthode `addEventListener`."
+        }
+      ]
+    },
+    {
+      "file": "674e305b7bda7c1f4f37a930.md",
+      "id": "674e305b7bda7c1f4f37a930",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "Before you start working on playing the next and previous song, you need to get the index of each song in the `songs` property of `userData`. To do that you can use the `indexOf()` array method, which returns the first index at which a given element can be found in the array, or `-1` if the element is not present.",
+          "fr": "Avant de commencer à travailler sur la lecture de la chanson suivante et précédente, tu dois obtenir l'indice de chaque chanson dans la propriété `songs` de `userData`. Pour cela, tu peux utiliser la méthode de tableau `indexOf()`, qui renvoie le premier indice auquel un élément donné peut être trouvé dans le tableau, ou `-1` si l'élément n'est pas présent."
+        },
+        {
+          "en": "Create a function named `getCurrentSongIndex` that returns the index at which `userData.currentSong` can be found in `userData.songs` and `-1` when the current song is `null`.",
+          "fr": "Crée une fonction nommée `getCurrentSongIndex` qui renvoie l'indice auquel `userData.currentSong` peut être trouvé dans `userData.songs` et `-1` quand la chanson actuelle est `null`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `getCurrentSongIndex`.",
+          "fr": "Tu devrais avoir une fonction nommée `getCurrentSongIndex`."
+        },
+        {
+          "en": "Your `getCurrentSongIndex` function should return the index at which `userData.currentSong` can be found in `userData.songs`.",
+          "fr": "Ta fonction `getCurrentSongIndex` devrait renvoyer l'indice auquel `userData.currentSong` peut être trouvé dans `userData.songs`."
+        },
+        {
+          "en": "Your `getCurrentSongIndex` function should return `-1` when `userData.currentSong` is `null`.",
+          "fr": "Ta fonction `getCurrentSongIndex` devrait renvoyer `-1` quand `userData.currentSong` est `null`."
+        }
+      ]
+    },
+    {
+      "file": "674f489bf617af2bea9b92b5.md",
+      "id": "674f489bf617af2bea9b92b5",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Now, create a function named `getNextSong`. Make it return the song that can be found at `getCurrentSongIndex()` plus one in `userData.songs`, or `undefined` if the current song is the last one in the playlist.",
+          "fr": "Maintenant, crée une fonction nommée `getNextSong`. Fais-lui renvoyer la chanson qui se trouve à `getCurrentSongIndex()` plus un dans `userData.songs`, ou `undefined` si la chanson actuelle est la dernière de la playlist."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `getNextSong`.",
+          "fr": "Tu devrais avoir une fonction nommée `getNextSong`."
+        },
+        {
+          "en": "Your `getNextSong` function should call `getCurrentSongIndex`.",
+          "fr": "Ta fonction `getNextSong` devrait appeler `getCurrentSongIndex`."
+        },
+        {
+          "en": "Your `getNextSong` function should return the song next to the current song.",
+          "fr": "Ta fonction `getNextSong` devrait renvoyer la chanson suivante de la chanson actuelle."
+        },
+        {
+          "en": "Your `getNextSong` function should return `undefined` when the current song is the last one in the playlist.",
+          "fr": "Ta fonction `getNextSong` devrait renvoyer `undefined` quand la chanson actuelle est la dernière de la playlist."
+        }
+      ]
+    },
+    {
+      "file": "674f50cce486fb404751a29c.md",
+      "id": "674f50cce486fb404751a29c",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Now that you know how to find the next song to play, create a function named `playNextSong`. Inside the `playNextSong` function, create an `if` statement to check if the `currentSong` of `userData` is strictly equal to `null`. This will check if there's no current song playing in the `userData` object.",
+          "fr": "Maintenant que tu sais comment trouver la chanson suivante à lire, crée une fonction nommée `playNextSong`. À l'intérieur de la fonction `playNextSong`, crée une instruction `if` pour vérifier si le `currentSong` de `userData` est strictement égal à `null`. Cela vérifiera s'il n'y a aucune chanson en cours de lecture dans l'objet `userData`."
+        },
+        {
+          "en": "If the condition is true, call the `playSong` function with the `id` of the first song in the `userData.songs` array as an argument.",
+          "fr": "Si la condition est vraie, appelle la fonction `playSong` avec l'`id` de la première chanson du tableau `userData.songs` comme argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `playNextSong`.",
+          "fr": "Tu devrais avoir une fonction nommée `playNextSong`."
+        },
+        {
+          "en": "When the `currentSong` of `userData` is strictly equal to `null`, your `playNextSong` function should call the `playSong` function with the `id` of the first song in the `userData.songs` array as an argument.",
+          "fr": "Quand le `currentSong` de `userData` est strictement égal à `null`, ta fonction `playNextSong` devrait appeler la fonction `playSong` avec l'`id` de la première chanson du tableau `userData.songs` comme argument."
+        }
+      ]
+    },
+    {
+      "file": "674f534fa181f64a789ffcf9.md",
+      "id": "674f534fa181f64a789ffcf9",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "If `userData.currentSong` is not `null` you need to find the next song to play. Remember that you can use `getNextSong` for that.",
+          "fr": "Si `userData.currentSong` n'est pas `null`, tu dois trouver la chanson suivante à lire. Souviens-toi que tu peux utiliser `getNextSong` pour cela."
+        },
+        {
+          "en": "Complete your `playNextSong` function so that it plays the next song in the playlist. If the current song is the last one, set `userData.currentSong` to `null`, `userData.songCurrentTime` to zero and call the `pauseSong` function.",
+          "fr": "Complète ta fonction `playNextSong` pour qu'elle lise la chanson suivante de la playlist. Si la chanson actuelle est la dernière, définis `userData.currentSong` à `null`, `userData.songCurrentTime` à zéro et appelle la fonction `pauseSong`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When the `currentSong` of `userData` is truthy and not the last song of the playlist, the `playNextSong` function should play the song next to the current song.",
+          "fr": "Quand le `currentSong` de `userData` est truthy et n'est pas la dernière chanson de la playlist, la fonction `playNextSong` devrait lire la chanson suivante de la chanson actuelle."
+        },
+        {
+          "en": "When the `currentSong` of `userData` is the last song of the playlist, the `playNextSong` function should set `userData.currentSong` to `null`.",
+          "fr": "Quand le `currentSong` de `userData` est la dernière chanson de la playlist, la fonction `playNextSong` devrait définir `userData.currentSong` à `null`."
+        },
+        {
+          "en": "When the `currentSong` of `userData` is the last song of the playlist, the `playNextSong` function should set `userData.songCurrentTime` to `0`.",
+          "fr": "Quand le `currentSong` de `userData` est la dernière chanson de la playlist, la fonction `playNextSong` devrait définir `userData.songCurrentTime` à `0`."
+        },
+        {
+          "en": "When the `currentSong` of `userData` is the last song of the playlist, the `playNextSong` function should call the `pauseSong` function.",
+          "fr": "Quand le `currentSong` de `userData` est la dernière chanson de la playlist, la fonction `playNextSong` devrait appeler la fonction `pauseSong`."
+        },
+        {
+          "en": "When the `currentSong` of `userData` is equal to `null`, your `playNextSong` function should still call the `playSong` function with the `id` of the first song in the `userData.songs` array as an argument.",
+          "fr": "Quand le `currentSong` de `userData` est égal à `null`, ta fonction `playNextSong` devrait toujours appeler la fonction `playSong` avec l'`id` de la première chanson du tableau `userData.songs` comme argument."
+        }
+      ]
+    },
+    {
+      "file": "67503cecd563135d4f27b38e.md",
+      "id": "67503cecd563135d4f27b38e",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "Now it is time to test out the `playNextSong` function.",
+          "fr": "Il est maintenant temps de tester la fonction `playNextSong`."
+        },
+        {
+          "en": "Add a `\"click\"` event listener to the `nextButton` element, then pass in `playNextSong` as the second argument of your event listener. This is the function the event listener will run.",
+          "fr": "Ajoute un écouteur d'événement `\"click\"` à l'élément `nextButton`, puis passe `playNextSong` comme deuxième argument de ton écouteur d'événement. C'est la fonction que l'écouteur d'événement exécutera."
+        },
+        {
+          "en": "Test out your app by first clicking on the play button followed by the next button. You should see that everything is working as expected.",
+          "fr": "Teste ton application en cliquant d'abord sur le bouton de lecture, puis sur le bouton suivant. Tu devrais voir que tout fonctionne comme prévu."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `nextButton` variable.",
+          "fr": "Tu devrais appeler la méthode `addEventListener()` sur ta variable `nextButton`."
+        },
+        {
+          "en": "Your event listener should listen for a `\"click\"` event.",
+          "fr": "Ton écouteur d'événement devrait écouter un événement `\"click\"`."
+        },
+        {
+          "en": "You should pass in `playNextSong` as the second argument of your `addEventListener` method.",
+          "fr": "Tu devrais passer `playNextSong` comme deuxième argument de ta méthode `addEventListener`."
+        }
+      ]
+    },
+    {
+      "file": "675057ce9acd418619127da4.md",
+      "id": "675057ce9acd418619127da4",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "Now, create a function named `getPreviousSong`. Make it return the song that can be found at `getCurrentSongIndex()` minus one in `userData.songs`, or `undefined` if the current song is the first one in the playlist.",
+          "fr": "Maintenant, crée une fonction nommée `getPreviousSong`. Fais-lui renvoyer la chanson qui se trouve à `getCurrentSongIndex()` moins un dans `userData.songs`, ou `undefined` si la chanson actuelle est la première de la playlist."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `getPreviousSong`.",
+          "fr": "Tu devrais avoir une fonction nommée `getPreviousSong`."
+        },
+        {
+          "en": "Your `getPreviousSong` function should call `getCurrentSongIndex`.",
+          "fr": "Ta fonction `getPreviousSong` devrait appeler `getCurrentSongIndex`."
+        },
+        {
+          "en": "Your `getPreviousSong` function should return the song before the current song.",
+          "fr": "Ta fonction `getPreviousSong` devrait renvoyer la chanson précédente de la chanson actuelle."
+        },
+        {
+          "en": "Your `getPreviousSong` function should return `undefined` when the current song is the first one in the playlist.",
+          "fr": "Ta fonction `getPreviousSong` devrait renvoyer `undefined` quand la chanson actuelle est la première de la playlist."
+        }
+      ]
+    },
+    {
+      "file": "67505d3a32d45997d2af4c0f.md",
+      "id": "67505d3a32d45997d2af4c0f",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "Create a function named `playPreviousSong`. Inside your new function, use the value returned by the `getPreviousSong` function to find the song to play. When `getPreviousSong()` is `undefined`, play the first song in your playlist. Otherwise, play the song before the current song playing.",
+          "fr": "Crée une fonction nommée `playPreviousSong`. À l'intérieur de ta nouvelle fonction, utilise la valeur renvoyée par la fonction `getPreviousSong` pour trouver la chanson à lire. Quand `getPreviousSong()` est `undefined`, lis la première chanson de ta playlist. Sinon, lis la chanson précédente de celle en cours de lecture."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `playPreviousSong`.",
+          "fr": "Tu devrais avoir une fonction nommée `playPreviousSong`."
+        },
+        {
+          "en": "The `playPreviousSong` function should play the song before the current song playing in the playlist.",
+          "fr": "La fonction `playPreviousSong` devrait lire la chanson précédente de celle en cours de lecture dans la playlist."
+        },
+        {
+          "en": "When `getPreviousSong()` is `undefined`, the `playPreviousSong` function should play the first song in the playlist.",
+          "fr": "Quand `getPreviousSong()` est `undefined`, la fonction `playPreviousSong` devrait lire la première chanson de la playlist."
+        }
+      ]
+    },
+    {
+      "file": "675069b67b8267b36fa550b3.md",
+      "id": "675069b67b8267b36fa550b3",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "Add a `\"click\"` event listener to the `previousButton` element, then pass in `playPreviousSong` as the second argument.",
+          "fr": "Ajoute un écouteur d'événement `\"click\"` à l'élément `previousButton`, puis passe `playPreviousSong` comme deuxième argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `addEventListener()` method on your `previousButton` variable.",
+          "fr": "Tu devrais appeler la méthode `addEventListener()` sur ta variable `previousButton`."
+        },
+        {
+          "en": "Your event listener should listen for a `\"click\"` event.",
+          "fr": "Ton écouteur d'événement devrait écouter un événement `\"click\"`."
+        },
+        {
+          "en": "You should pass in `playPreviousSong` as the second argument of your `addEventListener` method.",
+          "fr": "Tu devrais passer `playPreviousSong` comme deuxième argument de ta méthode `addEventListener`."
+        }
+      ]
+    },
+    {
+      "file": "6750712ee950facad5edc203.md",
+      "id": "6750712ee950facad5edc203",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "If you play a bit with your player you'll notice a few bugs. First, when you play a song, pause it and then press either the previous button or next button, the song won't start from the beginning.",
+          "fr": "Si tu joues un peu avec ton lecteur, tu remarqueras quelques bugs. D'abord, quand tu lis une chanson, la mets en pause, puis appuies sur le bouton précédent ou suivant, la chanson ne redémarre pas depuis le début."
+        },
+        {
+          "en": "To start fixing that, add second parameter named `start` to your `playSong` function. Give it the default value of `true`.",
+          "fr": "Pour commencer à corriger cela, ajoute un deuxième paramètre nommé `start` à ta fonction `playSong`. Donne-lui la valeur par défaut `true`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `playSong` function should have a second parameter named `start` with the default value of `true`.",
+          "fr": "Ta fonction `playSong` devrait avoir un deuxième paramètre nommé `start` avec la valeur par défaut `true`."
+        }
+      ]
+    },
+    {
+      "file": "67516a431252ed30832fa7c6.md",
+      "id": "67516a431252ed30832fa7c6",
+      "dashedName": "step-33",
+      "title": {
+        "en": "Step 33",
+        "fr": "Étape 33"
+      },
+      "description": [
+        {
+          "en": "Now, use the **OR** operator to add the `start` parameter as a second condition to the `if` statement after `userData.currentSong === null`.",
+          "fr": "Maintenant, utilise l'opérateur **OR** pour ajouter le paramètre `start` comme deuxième condition à l'instruction `if` après `userData.currentSong === null`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the **OR** operator to add the `start` parameter as a second condition to the `if` statement after `userData.currentSong === null`.",
+          "fr": "Tu devrais utiliser l'opérateur **OR** pour ajouter le paramètre `start` comme deuxième condition à l'instruction `if` après `userData.currentSong === null`."
+        }
+      ]
+    },
+    {
+      "file": "67516ca9b7fe6636208c5ab5.md",
+      "id": "67516ca9b7fe6636208c5ab5",
+      "dashedName": "step-34",
+      "title": {
+        "en": "Step 34",
+        "fr": "Étape 34"
+      },
+      "description": [
+        {
+          "en": "Finally, pass `false` as the second argument to the `playSong(userData.currentSong.id)` function call. Then, test that everything works as expected by playing a song, pausing it and then pressing either the previous button or the next button.",
+          "fr": "Enfin, passe `false` comme deuxième argument à l'appel de fonction `playSong(userData.currentSong.id)`. Ensuite, teste que tout fonctionne comme prévu en lisant une chanson, en la mettant en pause, puis en appuyant sur le bouton précédent ou suivant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass `false` as the second argument to the `playSong(userData.currentSong.id)` function call.",
+          "fr": "Tu devrais passer `false` comme deuxième argument à l'appel de fonction `playSong(userData.currentSong.id)`."
+        }
+      ]
+    },
+    {
+      "file": "675340b809683f45cae96539.md",
+      "id": "675340b809683f45cae96539",
+      "dashedName": "step-35",
+      "title": {
+        "en": "Step 35",
+        "fr": "Étape 35"
+      },
+      "description": [
+        {
+          "en": "If you press the previous button when no song is playing, the first song will play. To fix this, add an `if` statement at the beginning of the `playPreviousSong` function. Check if the current song is `null` and stop the function execution with a `return` statement.",
+          "fr": "Si tu appuies sur le bouton précédent quand aucune chanson n'est en lecture, la première chanson sera lue. Pour corriger cela, ajoute une instruction `if` au début de la fonction `playPreviousSong`. Vérifie si la chanson actuelle est `null` et arrête l'exécution de la fonction avec une instruction `return`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `if` statement that checks if `userData.currentSong === null` and stops the function execution with a `return` statement inside your `playPreviousSong` function.",
+          "fr": "Tu devrais ajouter une instruction `if` qui vérifie si `userData.currentSong === null` et arrête l'exécution de la fonction avec une instruction `return` à l'intérieur de ta fonction `playPreviousSong`."
+        }
+      ]
+    },
+    {
+      "file": "67516e888477083c31614dc7.md",
+      "id": "67516e888477083c31614dc7",
+      "dashedName": "step-36",
+      "title": {
+        "en": "Step 36",
+        "fr": "Étape 36"
+      },
+      "description": [
+        {
+          "en": "If you check closely, you'd see the currently playing song is not highlighted in the playlist, so you don't really know which song is playing. You can fix this by creating a function to highlight any song that is being played.",
+          "fr": "Si tu regardes de près, tu verras que la chanson en cours de lecture n'est pas mise en évidence dans la playlist, donc tu ne sais pas vraiment quelle chanson est lue. Tu peux corriger cela en créant une fonction pour mettre en évidence toute chanson en cours de lecture."
+        },
+        {
+          "en": "Create a function named `highlightCurrentSong`. Inside the function, check that a `.playlist-song` element with `aria-current=\"true\"` exists. If so, use the `removeAttribute` method to remove the `aria-current` attribute from it.",
+          "fr": "Crée une fonction nommée `highlightCurrentSong`. À l'intérieur de la fonction, vérifie qu'un élément `.playlist-song` avec `aria-current=\"true\"` existe. Si c'est le cas, utilise la méthode `removeAttribute` pour retirer l'attribut `aria-current` de cet élément."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `highlightCurrentSong`.",
+          "fr": "Tu devrais avoir une fonction nommée `highlightCurrentSong`."
+        },
+        {
+          "en": "Your `highlightCurrentSong` function should use the `removeAttribute` method to remove the `aria-current` attribute from the `.playlist-song` element with `aria-current=\"true\"` if that element exists.",
+          "fr": "Ta fonction `highlightCurrentSong` devrait utiliser la méthode `removeAttribute` pour retirer l'attribut `aria-current` de l'élément `.playlist-song` avec `aria-current=\"true\"` si cet élément existe."
+        }
+      ]
+    },
+    {
+      "file": "67517ef2fae05b65108212db.md",
+      "id": "67517ef2fae05b65108212db",
+      "dashedName": "step-37",
+      "title": {
+        "en": "Step 37",
+        "fr": "Étape 37"
+      },
+      "description": [
+        {
+          "en": "You need to get the `id` of the currently playing song. For this, you can use `userData.currentSong?.id`.",
+          "fr": "Tu dois obtenir l'`id` de la chanson en cours de lecture. Pour cela, tu peux utiliser `userData.currentSong?.id`."
+        },
+        {
+          "en": "Use `getElementById()` to select the currently playing song: pass a template literal to prefix the `id` with `song-`. Assign it to a variable named `songToHighlight`.",
+          "fr": "Utilise `getElementById()` pour sélectionner la chanson en cours de lecture : passe un littéral de gabarit pour préfixer l'`id` avec `song-`. Assigne-le à une variable nommée `songToHighlight`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not modify the existing `highlightCurrentSong` function and its content.",
+          "fr": "Tu ne devrais pas modifier la fonction `highlightCurrentSong` existante ni son contenu."
+        },
+        {
+          "en": "You should use `document.getElementById()` and pass in `` `song-${userData.currentSong?.id}` ``.",
+          "fr": "Tu devrais utiliser `document.getElementById()` et passer `` `song-${userData.currentSong?.id}` ``."
+        },
+        {
+          "en": "You should assign your `getElementById()` to a `songToHighlight` variable.",
+          "fr": "Tu devrais assigner ton `getElementById()` à une variable `songToHighlight`."
+        }
+      ]
+    },
+    {
+      "file": "6751d5d32e58d065652e26a5.md",
+      "id": "6751d5d32e58d065652e26a5",
+      "dashedName": "step-38",
+      "title": {
+        "en": "Step 38",
+        "fr": "Étape 38"
+      },
+      "description": [
+        {
+          "en": "Now, you need to add the `aria-current` attribute to the currently playing song.",
+          "fr": "Maintenant, tu dois ajouter l'attribut `aria-current` à la chanson en cours de lecture."
+        },
+        {
+          "en": "Check if `songToHighlight` exists. If so, use the `setAttribute` method on `songToHighlight` and pass in `\"aria-current\"` and `\"true\"` as the first and second arguments.",
+          "fr": "Vérifie si `songToHighlight` existe. Si c'est le cas, utilise la méthode `setAttribute` sur `songToHighlight` et passe `\"aria-current\"` et `\"true\"` comme premier et deuxième arguments."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`highlightCurrentSong` should add the `aria-current` attribute to the currently playing song and remove the attribute from the previously played song.",
+          "fr": "`highlightCurrentSong` devrait ajouter l'attribut `aria-current` à la chanson en cours de lecture et retirer l'attribut de la chanson précédemment lue."
+        }
+      ]
+    },
+    {
+      "file": "6751e1c117350b7d3f356e1b.md",
+      "id": "6751e1c117350b7d3f356e1b",
+      "dashedName": "step-39",
+      "title": {
+        "en": "Step 39",
+        "fr": "Étape 39"
+      },
+      "description": [
+        {
+          "en": "Inside the `playSong` function, call the `highlightCurrentSong` function.",
+          "fr": "À l'intérieur de la fonction `playSong`, appelle la fonction `highlightCurrentSong`."
+        },
+        {
+          "en": "After that, play around with the control buttons to see how the `highlightCurrentSong` function works.",
+          "fr": "Ensuite, joue avec les boutons de contrôle pour voir comment la fonction `highlightCurrentSong` fonctionne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `highlightCurrentSong` inside the `playSong` function.",
+          "fr": "Tu devrais appeler `highlightCurrentSong` à l'intérieur de la fonction `playSong`."
+        }
+      ]
+    },
+    {
+      "file": "6757f2b25418da4f73e29eb6.md",
+      "id": "6757f2b25418da4f73e29eb6",
+      "dashedName": "step-40",
+      "title": {
+        "en": "Step 40",
+        "fr": "Étape 40"
+      },
+      "description": [
+        {
+          "en": "Next, you need to display the current song title and artist in the player display.",
+          "fr": "Ensuite, tu dois afficher le titre et l'artiste de la chanson actuelle dans l'affichage du lecteur."
+        },
+        {
+          "en": "As a first step, access the `#player-song-title` and `#player-song-artist` elements, responsible for displaying the song title and artist, and store them into the variables `playingSong` and `songArtist`, respectively.",
+          "fr": "Comme première étape, accède aux éléments `#player-song-title` et `#player-song-artist`, responsables de l'affichage du titre et de l'artiste, et stocke-les respectivement dans les variables `playingSong` et `songArtist`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `playingSong`.",
+          "fr": "Tu devrais avoir une variable nommée `playingSong`."
+        },
+        {
+          "en": "Your `playingSong` variable should have the value of the `#player-song-title` element.",
+          "fr": "Ta variable `playingSong` devrait avoir la valeur de l'élément `#player-song-title`."
+        },
+        {
+          "en": "You should have a variable named `songArtist`.",
+          "fr": "Tu devrais avoir une variable nommée `songArtist`."
+        },
+        {
+          "en": "Your `songArtist` variable should have the value of the `#player-song-artist` element.",
+          "fr": "Ta variable `songArtist` devrait avoir la valeur de l'élément `#player-song-artist`."
+        }
+      ]
+    },
+    {
+      "file": "6752c62efa90554c01415e7b.md",
+      "id": "6752c62efa90554c01415e7b",
+      "dashedName": "step-41",
+      "title": {
+        "en": "Step 41",
+        "fr": "Étape 41"
+      },
+      "description": [
+        {
+          "en": "Create a function named `setPlayerDisplay`. Inside the function, set the `textContent` of `playingSong` to the current song's title, if defined. Otherwise, set it to an empty string.",
+          "fr": "Crée une fonction nommée `setPlayerDisplay`. À l'intérieur de la fonction, définis le `textContent` de `playingSong` au titre de la chanson actuelle, s'il est défini. Sinon, définis-le à une chaîne vide."
+        },
+        {
+          "en": "Below that, set the `textContent` of `songArtist` to the current song's artist, if defined. Otherwise, set it to empty string.",
+          "fr": "En dessous, définis le `textContent` de `songArtist` à l'artiste de la chanson actuelle, s'il est défini. Sinon, définis-le à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `setPlayerDisplay`.",
+          "fr": "Tu devrais avoir une fonction nommée `setPlayerDisplay`."
+        },
+        {
+          "en": "Your `setPlayerDisplay` function should set the `textContent` of `playingSong` to the current song's title, if defined, or to an empty string.",
+          "fr": "Ta fonction `setPlayerDisplay` devrait définir le `textContent` de `playingSong` au titre de la chanson actuelle, s'il est défini, ou à une chaîne vide."
+        },
+        {
+          "en": "Your `setPlayerDisplay` function should set the `textContent` of `songArtist` to the current song's artist, if defined, or to an empty string.",
+          "fr": "Ta fonction `setPlayerDisplay` devrait définir le `textContent` de `songArtist` à l'artiste de la chanson actuelle, s'il est défini, ou à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "6752ecd811c96d5dc33ae853.md",
+      "id": "6752ecd811c96d5dc33ae853",
+      "dashedName": "step-42",
+      "title": {
+        "en": "Step 42",
+        "fr": "Étape 42"
+      },
+      "description": [
+        {
+          "en": "To ensure the player's display updates whenever a new song begins playing, call the `setPlayerDisplay()` function within the `playSong()` function.",
+          "fr": "Pour garantir que l'affichage du lecteur se mette à jour chaque fois qu'une nouvelle chanson commence à être lue, appelle la fonction `setPlayerDisplay()` à l'intérieur de la fonction `playSong()`."
+        },
+        {
+          "en": "Now you should see the song title and the artist show up in the display.",
+          "fr": "Tu devrais maintenant voir le titre de la chanson et l'artiste apparaître dans l'affichage."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `setPlayerDisplay` within your `playSong` function.",
+          "fr": "Tu devrais appeler `setPlayerDisplay` à l'intérieur de ta fonction `playSong`."
+        }
+      ]
+    },
+    {
+      "file": "6752edba757ff96404faf9e9.md",
+      "id": "6752edba757ff96404faf9e9",
+      "dashedName": "step-43",
+      "title": {
+        "en": "Step 43",
+        "fr": "Étape 43"
+      },
+      "description": [
+        {
+          "en": "To make the application more accessible, it is important that the play button describes the current song or the first song in the playlist.",
+          "fr": "Pour rendre l'application plus accessible, il est important que le bouton de lecture décrive la chanson actuelle ou la première chanson de la playlist."
+        },
+        {
+          "en": "Create a function named `setPlayButtonAccessibleText`. Inside the function, set the `aria-label` attribute of the play button to `Play` followed by a space and the current song's title. If `userData.currentSong` is `null`, set it to `Play`.",
+          "fr": "Crée une fonction nommée `setPlayButtonAccessibleText`. À l'intérieur de la fonction, définis l'attribut `aria-label` du bouton de lecture à `Play` suivi d'un espace et du titre de la chanson actuelle. Si `userData.currentSong` est `null`, définis-le à `Play`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `setPlayButtonAccessibleText`.",
+          "fr": "Tu devrais avoir une fonction nommée `setPlayButtonAccessibleText`."
+        },
+        {
+          "en": "Your `setPlayButtonAccessibleText` function should set the `aria-label` attribute of the play button to `Play` followed by a space and the current song's title.",
+          "fr": "Ta fonction `setPlayButtonAccessibleText` devrait définir l'attribut `aria-label` du bouton de lecture à `Play` suivi d'un espace et du titre de la chanson actuelle."
+        },
+        {
+          "en": "When `userData.currentSong` is `null`, `setPlayButtonAccessibleText` should set the `aria-label` attribute of the play button to `Play`.",
+          "fr": "Quand `userData.currentSong` est `null`, `setPlayButtonAccessibleText` devrait définir l'attribut `aria-label` du bouton de lecture à `Play`."
+        }
+      ]
+    },
+    {
+      "file": "675304e7937e62902e08a3ab.md",
+      "id": "675304e7937e62902e08a3ab",
+      "dashedName": "step-44",
+      "title": {
+        "en": "Step 44",
+        "fr": "Étape 44"
+      },
+      "description": [
+        {
+          "en": "Now, call the `setPlayButtonAccessibleText` function inside the `playSong` function.",
+          "fr": "Maintenant, appelle la fonction `setPlayButtonAccessibleText` à l'intérieur de la fonction `playSong`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call the `setPlayButtonAccessibleText` function inside the `playSong` function.",
+          "fr": "Tu devrais appeler la fonction `setPlayButtonAccessibleText` à l'intérieur de la fonction `playSong`."
+        }
+      ]
+    },
+    {
+      "file": "67532282ab9b95d7083617ee.md",
+      "id": "67532282ab9b95d7083617ee",
+      "dashedName": "step-45",
+      "title": {
+        "en": "Step 45",
+        "fr": "Étape 45"
+      },
+      "description": [
+        {
+          "en": "Inside the `playNextSong` function, call the `setPlayerDisplay`, `highlightCurrentSong`, and `setPlayButtonAccessibleText` functions to correctly update the player when the playlist ends.",
+          "fr": "À l'intérieur de la fonction `playNextSong`, appelle les fonctions `setPlayerDisplay`, `highlightCurrentSong` et `setPlayButtonAccessibleText` pour mettre correctement à jour le lecteur quand la playlist se termine."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `setPlayerDisplay` within the `else` statement of your `playNextSong` function.",
+          "fr": "Tu devrais appeler `setPlayerDisplay` à l'intérieur de l'instruction `else` de ta fonction `playNextSong`."
+        },
+        {
+          "en": "You should call `highlightCurrentSong` within the `else` statement of your `playNextSong` function.",
+          "fr": "Tu devrais appeler `highlightCurrentSong` à l'intérieur de l'instruction `else` de ta fonction `playNextSong`."
+        },
+        {
+          "en": "You should call `setPlayButtonAccessibleText` within the `else` statement of your `playNextSong` function.",
+          "fr": "Tu devrais appeler `setPlayButtonAccessibleText` à l'intérieur de l'instruction `else` de ta fonction `playNextSong`."
+        }
+      ]
+    },
+    {
+      "file": "675309b2795c2a9ae03b8812.md",
+      "id": "675309b2795c2a9ae03b8812",
+      "dashedName": "step-46",
+      "title": {
+        "en": "Step 46",
+        "fr": "Étape 46"
+      },
+      "description": [
+        {
+          "en": "Notice that the album art in the HTML and songs in the `userData.songs` array have changed. We've swapped out the original songs for shorter ones that you can use to test your app.",
+          "fr": "Remarque que la pochette d'album dans le HTML et les chansons du tableau `userData.songs` ont changé. Nous avons remplacé les chansons d'origine par des plus courtes que tu peux utiliser pour tester ton application."
+        },
+        {
+          "en": "All the core functionalities are now in place. The only issue now is that the next song does not automatically play when the currently playing song ends.",
+          "fr": "Toutes les fonctionnalités principales sont maintenant en place. Le seul problème maintenant est que la chanson suivante ne se lit pas automatiquement quand la chanson en cours se termine."
+        },
+        {
+          "en": "To fix that, you can set up an event listener which will detect when the currently playing song ends. The `\"ended\"` event listener is appropriate for this. It is fired when the playback of a media reaches the end.",
+          "fr": "Pour corriger cela, tu peux configurer un écouteur d'événement qui détectera quand la chanson en cours se termine. L'écouteur d'événement `\"ended\"` est approprié pour cela. Il est déclenché quand la lecture d'un média atteint la fin."
+        },
+        {
+          "en": "Add an event listener to the `audio` element which listens for the `\"ended\"` event and pass in a reference to the `playNextSong` function. With that the music player project is complete!",
+          "fr": "Ajoute un écouteur d'événement à l'élément `audio` qui écoute l'événement `\"ended\"` et passe une référence à la fonction `playNextSong`. Avec cela, le projet du lecteur de musique est terminé !"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain the `addEventListener()` method to your `audio` variable.",
+          "fr": "Tu devrais chaîner la méthode `addEventListener()` à ta variable `audio`."
+        },
+        {
+          "en": "The event listener you used on your `audio` variable should listen for an `\"ended\"` event.",
+          "fr": "L'écouteur d'événement que tu as utilisé sur ta variable `audio` devrait écouter un événement `\"ended\"`."
+        },
+        {
+          "en": "You should pass in a reference to `playNextSong` to your `\"ended\"` event listener.",
+          "fr": "Tu devrais passer une référence à `playNextSong` à ton écouteur d'événement `\"ended\"`."
+        }
+      ]
+    }
+  ]
+}

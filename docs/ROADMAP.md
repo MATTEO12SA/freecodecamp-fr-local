@@ -100,7 +100,7 @@ La CI du fork et les contrôles locaux restent deux sujets distincts :
   `check-translation-drift.js` contrôlent sans écrire la traduction.
 - Le catalogue combine présence FR automatique et statut
   `absent` / `partial` / `complete` par carte.
-- État curriculum : JavaScript v9 `159/230` (757/1311 fichiers), modules 1 à 12 complets.
+- État curriculum : JavaScript v9 `164/230` (812/1311 fichiers), modules 1 à 12 complets.
   Prochaine cible : relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states`
   (`reviewed: false` — ne pas appliquer).
 
@@ -267,8 +267,8 @@ cohérent, console exploitable et performances mesurées sur la production.
 Ces éléments restent volontairement après les quatre vagues correctives :
 
 1. célébrations/confettis avec `prefers-reduced-motion` (**fait** : `client/src/utils/fire-confetti.ts` + test) ;
-2. onboarding du premier lancement ;
-3. export/import du profil local ;
+2. onboarding du premier lancement (**fait** : `LocalOnboarding`) ;
+3. export/import du profil local (**fait** : `local-profile` + Dev FR) ;
 4. bouton global Continuer (**fait** : client/src/utils/local-continue.ts + nav) ;
 5. répétition espacée (SRS) ;
 6. XP et niveaux ;
