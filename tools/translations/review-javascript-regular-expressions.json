@@ -1,0 +1,211 @@
+{
+  "workshop": "review-javascript-regular-expressions",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723cdfa4ae237bf6b7e32eb.md",
+      "id": "6723cdfa4ae237bf6b7e32eb",
+      "dashedName": "review-javascript-regular-expressions",
+      "title": {
+        "en": "JavaScript Regular Expressions Review",
+        "fr": "Révision des expressions régulières JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Regular Expressions and Common Methods",
+              "fr": "## Expressions régulières et méthodes courantes"
+            },
+            {
+              "en": "- **Definition**: Regular Expressions, or Regex, are used to create a \"pattern\", which you can then use to check against a string, extract text, and more.",
+              "fr": "- **Définition** : les expressions régulières, ou regex, servent à créer un « motif » (pattern), que tu peux ensuite utiliser pour vérifier une chaîne, en extraire du texte, et plus encore."
+            },
+            {
+              "en": "- **`test()` Method**: This method accepts a string, which is the string to test for matches against the regular expression. This method will return a boolean if the string matches the regex.",
+              "fr": "- **Méthode `test()`** : cette méthode accepte une chaîne, qui est la chaîne à tester pour des correspondances avec l'expression régulière. Cette méthode renvoie un booléen si la chaîne correspond à la regex."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`match()` Method**: This method accepts a regular expression, although you can also pass a string which will be constructed into a regular expression. The `match` method returns the match array for the string.",
+              "fr": "- **Méthode `match()`** : cette méthode accepte une expression régulière, bien que tu puisses aussi passer une chaîne qui sera transformée en expression régulière. La méthode `match` renvoie le tableau de correspondance pour la chaîne."
+            },
+            {
+              "en": "- **`replace()` Method**: This method accepts two arguments: the regular expression to match (or a string), and the string to replace the match with (or a function to run against each match).",
+              "fr": "- **Méthode `replace()`** : cette méthode accepte deux arguments : l'expression régulière à faire correspondre (ou une chaîne), et la chaîne par laquelle remplacer la correspondance (ou une fonction à exécuter sur chaque correspondance)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`replaceAll` Method**: This method is used to replace all occurrences of a specified pattern with a new string. This method will throw an error if you give it a regular expression without the global modifier.",
+              "fr": "- **Méthode `replaceAll`** : cette méthode sert à remplacer toutes les occurrences d'un motif spécifié par une nouvelle chaîne. Cette méthode lèvera une erreur si tu lui donnes une expression régulière sans le modificateur global."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`matchAll` Method**: This method is used to retrieve all matches of a given regular expression in a string, including capturing groups, and returns them as an iterator. An iterator is an object that allows you to go through (or \"iterate over\") a collection of items.",
+              "fr": "- **Méthode `matchAll`** : cette méthode sert à récupérer toutes les correspondances d'une expression régulière donnée dans une chaîne, y compris les groupes de capture, et les renvoie sous forme d'itérateur. Un itérateur est un objet qui te permet de parcourir (ou « itérer ») une collection d'éléments."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Regular Expression Modifiers",
+              "fr": "## Modificateurs d'expressions régulières"
+            },
+            {
+              "en": "- **Definition**: Modifiers, often referred to as \"flags\", modify the behavior of a regular expression. \n- **`i` Flag**: This flag makes a regex ignore case.",
+              "fr": "- **Définition** : les modificateurs, souvent appelés « drapeaux » (flags), modifient le comportement d'une expression régulière. \n- **Drapeau `i`** : ce drapeau rend une regex insensible à la casse."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`g` Flag**: This flag, or global modifier, allows your regular expression to match a pattern more than once.",
+              "fr": "- **Drapeau `g`** : ce drapeau, ou modificateur global, permet à ton expression régulière de faire correspondre un motif plus d'une fois."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **Anchor Definition**: The `^` anchor, at the beginning of the regular expression, says \"match the start of the string\". The `$` anchor, at the end of the regular expression, says \"match the end of the string\".",
+              "fr": "- **Définition des ancres** : l'ancre `^`, au début de l'expression régulière, signifie « correspondre au début de la chaîne ». L'ancre `$`, à la fin de l'expression régulière, signifie « correspondre à la fin de la chaîne »."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`m` Flag**: Anchors look for the beginning and end of the entire string. But you can make a regex handle multiple lines with the `m` flag, or the multi-line modifier.flag, or the multi-line modifier.",
+              "fr": "- **Drapeau `m`** : les ancres cherchent le début et la fin de la chaîne entière. Mais tu peux faire en sorte qu'une regex gère plusieurs lignes avec le drapeau `m`, ou le modificateur multi-ligne."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`d` Flag**: This flag expands the information you get in a match object.",
+              "fr": "- **Drapeau `d`** : ce drapeau enrichit les informations que tu obtiens dans un objet de correspondance."
+            },
+            {
+              "en": "And the result is:",
+              "fr": "Et le résultat est :"
+            },
+            {
+              "en": "- **`u` Flag**: This expands the functionality of a regular expression to allow it to match special unicode characters. The `u` flag gives you access to special classes like the `Extended_Pictographic` to match most emoji. There is also a `v` flag, which further expands the functionality of the unicode matching.\n- **`y` Flag**: The sticky modifier behaves very similarly to the global modifier, but with a few exceptions. The biggest one is that a global regular expression will start from lastIndex and search the entire remainder of the string for another match, but a sticky regular expression will return null and reset the lastIndex to 0 if there is not immediately a match at the previous lastIndex.\n- **`s` Flag**: The single-line modifier allows a wildcard character, represented by a `.` in regex, to match linebreaks - effectively treating the string as a single line of text.",
+              "fr": "- **Drapeau `u`** : cela étend les fonctionnalités d'une expression régulière pour lui permettre de correspondre à des caractères unicode spéciaux. Le drapeau `u` te donne accès à des classes spéciales comme `Extended_Pictographic` pour correspondre à la plupart des emoji. Il existe aussi un drapeau `v`, qui étend encore les fonctionnalités de la correspondance unicode.\n- **Drapeau `y`** : le modificateur sticky se comporte de façon très similaire au modificateur global, mais avec quelques exceptions. La principale est qu'une expression régulière globale commencera à lastIndex et cherchera une autre correspondance dans tout le reste de la chaîne, tandis qu'une expression régulière sticky renverra null et réinitialisera lastIndex à 0 s'il n'y a pas immédiatement de correspondance à lastIndex précédent.\n- **Drapeau `s`** : le modificateur single-line permet à un caractère joker, représenté par un `.` en regex, de correspondre aux sauts de ligne — en traitant effectivement la chaîne comme une seule ligne de texte."
+            },
+            {
+              "en": "## Character Classes",
+              "fr": "## Classes de caractères"
+            },
+            {
+              "en": "- **Wildcard `.`**: Character classes are a special syntax you can use to match sets or subsets of characters. The first character class you should learn is the wild card class. The wild card is represented by a period, or dot, and matches ANY single character EXCEPT line breaks. To allow the wildcard class to match line breaks, remember that you would need to use the `s` flag.",
+              "fr": "- **Joker `.`** : les classes de caractères sont une syntaxe spéciale que tu peux utiliser pour faire correspondre des ensembles ou des sous-ensembles de caractères. La première classe de caractères à apprendre est la classe joker. Le joker est représenté par un point, et correspond à N'IMPORTE QUEL caractère unique SAUF les sauts de ligne. Pour permettre à la classe joker de correspondre aux sauts de ligne, souviens-toi qu'il faut utiliser le drapeau `s`."
+            },
+            {
+              "en": "- **`\\d`**: This will match all digits (`0-9`) in a string.",
+              "fr": "- **`\\d`** : cela correspondra à tous les chiffres (`0-9`) dans une chaîne."
+            },
+            {
+              "en": "- **`\\w`**: This is used to match any word character (`a-z0-9_`) in a string. A word character is defined as any letter, from a to z, or a number from 0 to 9, or the underscore character.",
+              "fr": "- **`\\w`** : cela sert à correspondre à n'importe quel caractère de mot (`a-z0-9_`) dans une chaîne. Un caractère de mot est défini comme n'importe quelle lettre, de a à z, ou un chiffre de 0 à 9, ou le caractère underscore."
+            },
+            {
+              "en": "- **`\\s`**: The white-space class `\\s`, represented by a backslash followed by an `s`. This character class will match any white space, including new lines, spaces, tabs, and special unicode space characters.\n- **Negating Special Character Classes**: To negate one of these character classes, instead of using a lowercase letter after the backslash, you can use the uppercase equivalent. The following example does not match a numerical character. Instead, it matches any single character that is NOT a numerical character.",
+              "fr": "- **`\\s`** : la classe d'espaces blancs `\\s`, représentée par une barre oblique inversée suivie d'un `s`. Cette classe de caractères correspondra à tout espace blanc, y compris les nouvelles lignes, les espaces, les tabulations et les caractères d'espace unicode spéciaux.\n- **Négation des classes de caractères spéciales** : pour nier l'une de ces classes de caractères, au lieu d'utiliser une lettre minuscule après la barre oblique inversée, tu peux utiliser l'équivalent en majuscule. L'exemple suivant ne correspond pas à un caractère numérique. Au lieu de cela, il correspond à n'importe quel caractère unique qui N'EST PAS un caractère numérique."
+            },
+            {
+              "en": "- **Custom Character Classes**: You can create custom character classes by placing the character you wish match inside a set of square brackets.",
+              "fr": "- **Classes de caractères personnalisées** : tu peux créer des classes de caractères personnalisées en plaçant le caractère que tu souhaites faire correspondre à l'intérieur d'un ensemble de crochets."
+            },
+            {
+              "en": "## Lookahead and Lookbehind Assertions",
+              "fr": "## Assertions lookahead et lookbehind"
+            },
+            {
+              "en": "- **Definition**: Lookahead and lookbehind assertions allow you to match specific patterns based on the presence or lack of surrounding patterns.\n- **Positive Lookahead Assertion**: This assertion will match a pattern when the pattern is followed by another pattern. To construct a positive lookahead, you need to start with the pattern you want to match. Then, use parentheses to wrap the pattern you want to use as your condition. After the opening parenthesis, use `?=` to define that pattern as a positive lookahead.",
+              "fr": "- **Définition** : les assertions lookahead et lookbehind te permettent de faire correspondre des motifs spécifiques selon la présence ou l'absence de motifs environnants.\n- **Assertion lookahead positive** : cette assertion fera correspondre un motif lorsque le motif est suivi d'un autre motif. Pour construire un lookahead positif, tu dois commencer par le motif que tu veux faire correspondre. Ensuite, utilise des parenthèses pour envelopper le motif que tu veux utiliser comme condition. Après la parenthèse ouvrante, utilise `?=` pour définir ce motif comme un lookahead positif."
+            },
+            {
+              "en": "- **Negative Lookahead Assertion**: This is a type of condition used in regular expressions to check that a certain pattern does not occur ahead in the string.",
+              "fr": "- **Assertion lookahead négative** : c'est un type de condition utilisé dans les expressions régulières pour vérifier qu'un certain motif ne se produit pas plus loin dans la chaîne."
+            },
+            {
+              "en": "- **Positive Lookbehind Assertion**: This assertion will match a pattern only if it is preceded by another specific pattern, without including the preceding pattern in the match.",
+              "fr": "- **Assertion lookbehind positive** : cette assertion fera correspondre un motif seulement s'il est précédé d'un autre motif spécifique, sans inclure le motif précédent dans la correspondance."
+            },
+            {
+              "en": "- **Negative Lookbehind Assertion**: This assertion ensures that a pattern is not preceded by another specific pattern. It matches only if the specified pattern is not immediately preceded by the given sequence, without including the preceding sequence in the match.",
+              "fr": "- **Assertion lookbehind négative** : cette assertion garantit qu'un motif n'est pas précédé d'un autre motif spécifique. Elle ne correspond que si le motif spécifié n'est pas immédiatement précédé de la séquence donnée, sans inclure la séquence précédente dans la correspondance."
+            },
+            {
+              "en": "## Regex Quantifiers",
+              "fr": "## Quantificateurs regex"
+            },
+            {
+              "en": "- **Definition**: Quantifiers in regular expressions specify how many times a pattern (or part of a pattern) should appear. They help control the number of occurrences of characters or groups in a match. The following example is used to match the previous character exactly four times.",
+              "fr": "- **Définition** : les quantificateurs dans les expressions régulières précisent combien de fois un motif (ou une partie d'un motif) doit apparaître. Ils aident à contrôler le nombre d'occurrences de caractères ou de groupes dans une correspondance. L'exemple suivant sert à faire correspondre le caractère précédent exactement quatre fois."
+            },
+            {
+              "en": "- **`*`** : Matches 0 or more occurrences of the preceding element.\n- **`+`**: Matches 1 or more occurrences of the preceding element.\n- **`?`**: Matches 0 or 1 occurrence of the preceding element.\n- **`{n}`**: Matches exactly n occurrences of the preceding element.\n- **`{n,}`**: Matches n or more occurrences of the preceding element.\n- **`{n,m}`**: Matches between n and m occurrences of the preceding element.",
+              "fr": "- **`*`** : correspond à 0 occurrence ou plus de l'élément précédent.\n- **`+`** : correspond à 1 occurrence ou plus de l'élément précédent.\n- **`?`** : correspond à 0 ou 1 occurrence de l'élément précédent.\n- **`{n}`** : correspond à exactement n occurrences de l'élément précédent.\n- **`{n,}`** : correspond à n occurrences ou plus de l'élément précédent.\n- **`{n,m}`** : correspond à un nombre d'occurrences compris entre n et m de l'élément précédent."
+            },
+            {
+              "en": "## Capturing Groups and Backreferences",
+              "fr": "## Groupes de capture et références arrières"
+            },
+            {
+              "en": "- **Capturing Groups**: A capturing group allows you to \"capture\" a portion of the matched string to use however you might need. Capturing groups are defined by parentheses containing the pattern to capture, with no leading characters like a lookahead.",
+              "fr": "- **Groupes de capture** : un groupe de capture te permet de « capturer » une portion de la chaîne correspondante pour l'utiliser comme tu en as besoin. Les groupes de capture sont définis par des parenthèses contenant le motif à capturer, sans caractères initiaux comme un lookahead."
+            },
+            {
+              "en": "- **Non-Capturing Groups**: A non-capturing group is similar to a capturing group but does not store the matched portion of the string for later use. Non-capturing groups are defined by `(?:...)`.",
+              "fr": "- **Groupes non capturants** : un groupe non capturant est similaire à un groupe de capture mais ne stocke pas la portion correspondante de la chaîne pour une utilisation ultérieure. Les groupes non capturants sont définis par `(?:...)`."
+            },
+            {
+              "en": "- **Backreferences**: A backreference in regular expressions refers to a way to reuse a part of the pattern that was matched earlier in the same expression. It allows you to refer to a captured group (a part of the pattern in parentheses) by its number. For example, `$1` refers to the first captured group.",
+              "fr": "- **Références arrières** : une référence arrière dans les expressions régulières désigne une façon de réutiliser une partie du motif qui a été correspondue plus tôt dans la même expression. Elle te permet de faire référence à un groupe capturé (une partie du motif entre parenthèses) par son numéro. Par exemple, `$1` fait référence au premier groupe capturé."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- You can use backreferences within the regex itself to match the same text captured by a previous group with a backslash and the capture group number. For example:",
+              "fr": "- Tu peux utiliser des références arrières au sein de la regex elle-même pour faire correspondre le même texte capturé par un groupe précédent avec une barre oblique inversée et le numéro du groupe de capture. Par exemple :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Regular Expressions topics and concepts.",
+              "fr": "Révise les sujets et concepts des expressions régulières JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

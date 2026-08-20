@@ -1,0 +1,1320 @@
+{
+  "workshop": "workshop-spam-filter",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "641cd18eb67c661d8a9e11f3.md",
+      "id": "641cd18eb67c661d8a9e11f3",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "To begin the project, retrieve the `#message-input`, `#result-message`, and `#check-message-btn` elements from the HTML document, and assign them to the variables `messageInput`, `result`, and `checkMessageButton`, respectively.",
+          "fr": "Pour commencer le projet, récupère les éléments `#message-input`, `#result-message` et `#check-message-btn` du document HTML, et assigne-les respectivement aux variables `messageInput`, `result` et `checkMessageButton`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `messageInput` variable.",
+          "fr": "Tu devrais déclarer une variable `messageInput`."
+        },
+        {
+          "en": "Your `messageInput` variable should have the value of the `#message-input` element.",
+          "fr": "Ta variable `messageInput` devrait avoir pour valeur l'élément `#message-input`."
+        },
+        {
+          "en": "You should declare a `result` variable.",
+          "fr": "Tu devrais déclarer une variable `result`."
+        },
+        {
+          "en": "Your `result` variable should have the value of the `#result-message` element.",
+          "fr": "Ta variable `result` devrait avoir pour valeur l'élément `#result-message`."
+        },
+        {
+          "en": "You should declare a `checkMessageButton` variable.",
+          "fr": "Tu devrais déclarer une variable `checkMessageButton`."
+        },
+        {
+          "en": "Your `checkMessageButton` variable should have the value of the `#check-message-btn` element.",
+          "fr": "Ta variable `checkMessageButton` devrait avoir pour valeur l'élément `#check-message-btn`."
+        }
+      ]
+    },
+    {
+      "file": "641cd91d28bebe226f765d86.md",
+      "id": "641cd91d28bebe226f765d86",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Attach an event listener to your `checkMessageButton`, listening for the `click` event.",
+          "fr": "Attache un écouteur d'événements à ton `checkMessageButton`, qui écoute l'événement `click`."
+        },
+        {
+          "en": "If the `messageInput` is empty, display an alert to the user with the message `\"Please enter a message.\"`.",
+          "fr": "Si le `messageInput` est vide, affiche une alerte à l'utilisateur avec le message `\"Please enter a message.\"`."
+        },
+        {
+          "en": "Then, exit the function execution.",
+          "fr": "Ensuite, quitte l'exécution de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When you click your `checkMessageButton` and the `messageInput` is empty, you should alert the user with the message `\"Please enter a message.\"`.",
+          "fr": "Quand tu cliques sur ton `checkMessageButton` et que le `messageInput` est vide, tu devrais alerter l'utilisateur avec le message `\"Please enter a message.\"`."
+        },
+        {
+          "en": "When you click your `checkMessageButton` you should only alert the user if `messageInput` is empty.",
+          "fr": "Quand tu cliques sur ton `checkMessageButton`, tu ne devrais alerter l'utilisateur que si `messageInput` est vide."
+        }
+      ]
+    },
+    {
+      "file": "641cdefa704f232675ed98aa.md",
+      "id": "641cdefa704f232675ed98aa",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Create an `isSpam` function that takes a single parameter. Make it return `false` for now.",
+          "fr": "Crée une fonction `isSpam` qui prend un seul paramètre. Fais-la renvoyer `false` pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `isSpam`.",
+          "fr": "Tu devrais avoir une fonction nommée `isSpam`."
+        },
+        {
+          "en": "Your `isSpam` function should have a single parameter.",
+          "fr": "Ta fonction `isSpam` devrait avoir un seul paramètre."
+        },
+        {
+          "en": "Your `isSpam` function should return `false`.",
+          "fr": "Ta fonction `isSpam` devrait renvoyer `false`."
+        }
+      ]
+    },
+    {
+      "file": "641cdf57c3f7ee276e1d9b32.md",
+      "id": "641cdf57c3f7ee276e1d9b32",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Back in your event listener, you need to update the text of the `result` element. You can use a ternary operator to achieve this task.",
+          "fr": "De retour dans ton écouteur d'événements, tu dois mettre à jour le texte de l'élément `result`. Tu peux utiliser un opérateur ternaire pour accomplir cette tâche."
+        },
+        {
+          "en": "Here is an example of assigning the result of a ternary operator to an element's text content:",
+          "fr": "Voici un exemple d'assignation du résultat d'un opérateur ternaire au contenu textuel d'un élément :"
+        },
+        {
+          "en": "After the `if` statement, update the text of the `result` element based on the truthiness of calling `isSpam()` with `messageInput.value` as the argument. If true, set the `textContent` property on the `result` element to `\"Oh no! This looks like a spam message.\"`. Otherwise, set it to `\"This message does not seem to contain any spam.\"`",
+          "fr": "Après l'instruction `if`, mets à jour le texte de l'élément `result` selon la vérité de l'appel à `isSpam()` avec `messageInput.value` comme argument. Si c'est vrai, définis la propriété `textContent` de l'élément `result` à `\"Oh no! This looks like a spam message.\"`. Sinon, définis-la à `\"This message does not seem to contain any spam.\"`"
+        },
+        {
+          "en": "Then set the `messageInput` element's `value` property to an empty string.",
+          "fr": "Ensuite, définis sur l'élément `messageInput` la propriété `value` à une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "When you click your `checkMessageButton` and the `isSpam(messageInput.value)` is truthy, you should set the `textContent` property of `result` to `\"Oh no! This looks like a spam message.\"`.",
+          "fr": "Quand tu cliques sur ton `checkMessageButton` et que `isSpam(messageInput.value)` est truthy, tu devrais définir la propriété `textContent` de `result` à `\"Oh no! This looks like a spam message.\"`."
+        },
+        {
+          "en": "When you click your `checkMessageButton` and the `isSpam(messageInput.value)` is falsy, you should set the `textContent` property of `result` to `\"This message does not seem to contain any spam.\"`.",
+          "fr": "Quand tu cliques sur ton `checkMessageButton` et que `isSpam(messageInput.value)` est falsy, tu devrais définir la propriété `textContent` de `result` à `\"This message does not seem to contain any spam.\"`."
+        },
+        {
+          "en": "After setting the `textContent` of `result`, you should reset the `value` property on the `messageInput` element to an empty string.",
+          "fr": "Après avoir défini le `textContent` de `result`, tu devrais réinitialiser la propriété `value` de l'élément `messageInput` à une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "641ce03dfeca10293e05dad7.md",
+      "id": "641ce03dfeca10293e05dad7",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Your first regular expression will be used to catch help requests. Declare a `helpRegex` variable, and assign it a regular expression that matches the string `please help`.",
+          "fr": "Ta première expression régulière servira à détecter les demandes d'aide. Déclare une variable `helpRegex`, et assigne-lui une expression régulière qui correspond à la chaîne `please help`."
+        },
+        {
+          "en": "As a refresher, here is a regular expression to match the string `hello world`:",
+          "fr": "Pour te rafraîchir la mémoire, voici une expression régulière qui correspond à la chaîne `hello world` :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `helpRegex` variable.",
+          "fr": "Tu devrais déclarer une variable `helpRegex`."
+        },
+        {
+          "en": "Your `helpRegex` variable should be a regular expression.",
+          "fr": "Ta variable `helpRegex` devrait être une expression régulière."
+        },
+        {
+          "en": "Your `helpRegex` variable should match the string `please help`.",
+          "fr": "Ta variable `helpRegex` devrait correspondre à la chaîne `please help`."
+        }
+      ]
+    },
+    {
+      "file": "641ce3065c50e62f97406973.md",
+      "id": "641ce3065c50e62f97406973",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Regular expressions can take <dfn>flags</dfn> to modify their behavior. For instance, the `i` flag can be used to make the expression ignore case, causing it to match `hello`, `HELLO`, and `Hello` for the expression `/hello/`.",
+          "fr": "Les expressions régulières peuvent prendre des <dfn>flags</dfn> pour modifier leur comportement. Par exemple, le flag `i` peut être utilisé pour rendre l'expression insensible à la casse, ce qui lui fait correspondre `hello`, `HELLO` et `Hello` pour l'expression `/hello/`."
+        },
+        {
+          "en": "Flags are added after the trailing slash. Add the `i` flag to your `helpRegex`.",
+          "fr": "Les flags s'ajoutent après la barre oblique finale. Ajoute le flag `i` à ton `helpRegex`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `helpRegex` should have the case-insensitive `i` flag.",
+          "fr": "Ton `helpRegex` devrait avoir le flag `i` insensible à la casse."
+        }
+      ]
+    },
+    {
+      "file": "641ce3dcd0aec8309fbc9971.md",
+      "id": "641ce3dcd0aec8309fbc9971",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Strings have a `.match()` method, which accepts a regular expression as an argument and determines if the string matches that expression.",
+          "fr": "Les chaînes ont une méthode `.match()`, qui accepte une expression régulière comme argument et détermine si la chaîne correspond à cette expression."
+        },
+        {
+          "en": "Update your `isSpam` function to return the result of calling the `.match()` method on `msg`, passing `helpRegex` as the argument.",
+          "fr": "Mets à jour ta fonction `isSpam` pour qu'elle renvoie le résultat de l'appel à la méthode `.match()` sur `msg`, en passant `helpRegex` comme argument."
+        },
+        {
+          "en": "Then, try entering some messages on your page and see the result.",
+          "fr": "Ensuite, essaie de saisir quelques messages sur ta page et observe le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `isSpam` function should return the result of calling `.match()` on `msg`, passing `helpRegex` as the argument.",
+          "fr": "Ta fonction `isSpam` devrait renvoyer le résultat de l'appel à `.match()` sur `msg`, en passant `helpRegex` comme argument."
+        }
+      ]
+    },
+    {
+      "file": "641ceed81533263283835c3d.md",
+      "id": "641ceed81533263283835c3d",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Instead of using the `.match()` method, you can use the `.test()` method of a regular expression to test if a string matches the pattern. Unlike `.match()`, `.test()` returns a boolean value indicating whether or not the string matches the pattern.",
+          "fr": "Au lieu d'utiliser la méthode `.match()`, tu peux utiliser la méthode `.test()` d'une expression régulière pour tester si une chaîne correspond au motif. Contrairement à `.match()`, `.test()` renvoie une valeur booléenne indiquant si la chaîne correspond ou non au motif."
+        },
+        {
+          "en": "Update your `isSpam()` function to use the `.test()` method on `helpRegex` to test if `msg` is a match.",
+          "fr": "Mets à jour ta fonction `isSpam()` pour utiliser la méthode `.test()` sur `helpRegex` afin de tester si `msg` est une correspondance."
+        },
+        {
+          "en": "Then, try entering some messages on your page and see the result.",
+          "fr": "Ensuite, essaie de saisir quelques messages sur ta page et observe le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `isSpam()` function should use the `.test()` method.",
+          "fr": "Ta fonction `isSpam()` devrait utiliser la méthode `.test()`."
+        },
+        {
+          "en": "Your `isSpam()` function should call the `.test()` method on `helpRegex` with `msg` as the argument.",
+          "fr": "Ta fonction `isSpam()` devrait appeler la méthode `.test()` sur `helpRegex` avec `msg` comme argument."
+        },
+        {
+          "en": "Your `isSpam()` function should return the result of `helpRegex.test(msg)`.",
+          "fr": "Ta fonction `isSpam()` devrait renvoyer le résultat de `helpRegex.test(msg)`."
+        }
+      ]
+    },
+    {
+      "file": "641cf198ec366c33d6504854.md",
+      "id": "641cf198ec366c33d6504854",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "The <dfn>alternate sequence</dfn> `|` can be used to match either the text on the left or the text on the right of the `|`. For example, the regular expression `/yes|no/` will match either `yes` or `no`.",
+          "fr": "La <dfn>séquence d'alternance</dfn> `|` peut être utilisée pour correspondre soit au texte à gauche, soit au texte à droite du `|`. Par exemple, l'expression régulière `/yes|no/` correspondra soit à `yes`, soit à `no`."
+        },
+        {
+          "en": "Update your `helpRegex` to match either `please help` or `assist me`.",
+          "fr": "Mets à jour ton `helpRegex` pour qu'il corresponde soit à `please help`, soit à `assist me`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `helpRegex` should use the `|` alternate sequence.",
+          "fr": "Ton `helpRegex` devrait utiliser la séquence d'alternance `|`."
+        },
+        {
+          "en": "Your `helpRegex` should match the string `please help`.",
+          "fr": "Ton `helpRegex` devrait correspondre à la chaîne `please help`."
+        },
+        {
+          "en": "Your `helpRegex` should match the string `assist me`.",
+          "fr": "Ton `helpRegex` devrait correspondre à la chaîne `assist me`."
+        }
+      ]
+    },
+    {
+      "file": "6421f6f59d665615c9e94d8a.md",
+      "id": "6421f6f59d665615c9e94d8a",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Before you start creating additional regular expressions, you need to update your application to check more than one regular expression.",
+          "fr": "Avant de commencer à créer d'autres expressions régulières, tu dois mettre à jour ton application pour qu'elle vérifie plus d'une expression régulière."
+        },
+        {
+          "en": "Start by declaring a `denyList` variable. Assign it an array containing your `helpRegex`.",
+          "fr": "Commence par déclarer une variable `denyList`. Assigne-lui un tableau contenant ton `helpRegex`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `denyList` variable.",
+          "fr": "Tu devrais déclarer une variable `denyList`."
+        },
+        {
+          "en": "Your `denyList` variable should be an array.",
+          "fr": "Ta variable `denyList` devrait être un tableau."
+        },
+        {
+          "en": "Your `denyList` array should have `helpRegex` as its only element.",
+          "fr": "Ton tableau `denyList` devrait avoir `helpRegex` comme seul élément."
+        }
+      ]
+    },
+    {
+      "file": "6421f98f4999d1179ce37cb4.md",
+      "id": "6421f98f4999d1179ce37cb4",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Arrays have a `some()` method. Like the `filter()` method, `some()` accepts a callback function which should take an element of the array as the argument. The `some()` method will return `true` if the callback function returns `true` for at least one element in the array.",
+          "fr": "Les tableaux ont une méthode `some()`. Comme la méthode `filter()`, `some()` accepte une fonction de rappel qui devrait prendre un élément du tableau comme argument. La méthode `some()` renverra `true` si la fonction de rappel renvoie `true` pour au moins un élément du tableau."
+        },
+        {
+          "en": "Here is an example of a `.some()` method call to check if any element in the array is an uppercase letter.",
+          "fr": "Voici un exemple d'appel à la méthode `.some()` pour vérifier si un élément du tableau est une lettre majuscule."
+        },
+        {
+          "en": "Update the `isSpam()` function to use the `some()` method, which will check if testing `msg` against any of the regular expressions in `denyList` returns `true`.\"",
+          "fr": "Mets à jour la fonction `isSpam()` pour utiliser la méthode `some()`, qui vérifiera si le test de `msg` contre l'une des expressions régulières de `denyList` renvoie `true`.\""
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `isSpam` function should use the `.some()` method.",
+          "fr": "Ta fonction `isSpam` devrait utiliser la méthode `.some()`."
+        },
+        {
+          "en": "Your `isSpam` function should call `denyList.some()`.",
+          "fr": "Ta fonction `isSpam` devrait appeler `denyList.some()`."
+        },
+        {
+          "en": "Your `isSpam` function should return the result of `denyList.some()`, where its callback should evaluate `.test(msg)` on each item of `denyList`.",
+          "fr": "Ta fonction `isSpam` devrait renvoyer le résultat de `denyList.some()`, où sa fonction de rappel devrait évaluer `.test(msg)` sur chaque élément de `denyList`."
+        }
+      ]
+    },
+    {
+      "file": "642205fa6376c818f78bb24e.md",
+      "id": "642205fa6376c818f78bb24e",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "The next regular expression you will work on is one that matches mentions of dollar amounts.",
+          "fr": "La prochaine expression régulière sur laquelle tu travailleras est celle qui correspond aux mentions de montants en dollars."
+        },
+        {
+          "en": "Declare a `dollarRegex` variable, and assign it a case-insensitive regular expression that matches the text `dollars`.",
+          "fr": "Déclare une variable `dollarRegex`, et assigne-lui une expression régulière insensible à la casse qui correspond au texte `dollars`."
+        },
+        {
+          "en": "Add your `dollarRegex` to the `denyList` array so that you can test the regular expression. Then try entering a message in your app.",
+          "fr": "Ajoute ton `dollarRegex` au tableau `denyList` afin de pouvoir tester l'expression régulière. Ensuite, essaie de saisir un message dans ton application."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `dollarRegex` variable.",
+          "fr": "Tu devrais déclarer une variable `dollarRegex`."
+        },
+        {
+          "en": "Your `dollarRegex` variable should be a regular expression.",
+          "fr": "Ta variable `dollarRegex` devrait être une expression régulière."
+        },
+        {
+          "en": "Your `dollarRegex` should match `dollars`.",
+          "fr": "Ton `dollarRegex` devrait correspondre à `dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should be case-insensitive.",
+          "fr": "Ton `dollarRegex` devrait être insensible à la casse."
+        },
+        {
+          "en": "Your `denyList` array should contain `helpRegex` and `dollarRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `helpRegex` et `dollarRegex`."
+        }
+      ]
+    },
+    {
+      "file": "642206e054eef81b5e3092ed.md",
+      "id": "642206e054eef81b5e3092ed",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "You need to match a number before the text `dollars`. While you could write out `0|1|2` and so on, regular expressions have a feature that makes this easier.",
+          "fr": "Tu dois faire correspondre un nombre avant le texte `dollars`. Bien que tu puisses écrire `0|1|2` et ainsi de suite, les expressions régulières ont une fonctionnalité qui rend cela plus facile."
+        },
+        {
+          "en": "A <dfn>character class</dfn> is defined by square brackets, and matches any character within the brackets. For example, `[aeiou]` matches any character in the list `aeiou`. You can also define a range of characters to match using a hyphen. For example, `[a-z]` matches any character from `a` to `z`.",
+          "fr": "Une <dfn>classe de caractères</dfn> est définie par des crochets, et correspond à n'importe quel caractère entre les crochets. Par exemple, `[aeiou]` correspond à n'importe quel caractère de la liste `aeiou`. Tu peux aussi définir une plage de caractères à faire correspondre avec un tiret. Par exemple, `[a-z]` correspond à n'importe quel caractère de `a` à `z`."
+        },
+        {
+          "en": "Add a character class to match the digits `0` through `9` to your `dollarRegex` expression - remember the digit must come before the word `dollars`, and there should be a space between the digit and the word.",
+          "fr": "Ajoute une classe de caractères pour correspondre aux chiffres `0` à `9` dans ton expression `dollarRegex` — souviens-toi que le chiffre doit venir avant le mot `dollars`, et qu'il doit y avoir un espace entre le chiffre et le mot."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` should use a character class.",
+          "fr": "Ton `dollarRegex` devrait utiliser une classe de caractères."
+        },
+        {
+          "en": "Your character class should be `0-9`.",
+          "fr": "Ta classe de caractères devrait être `0-9`."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `\"1 dollars\"`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `\"1 dollars\"`."
+        },
+        {
+          "en": "Your `dollarRegex` should be case-insensitive.",
+          "fr": "Ton `dollarRegex` devrait être insensible à la casse."
+        }
+      ]
+    },
+    {
+      "file": "642208bc4d44701c6fd6f65e.md",
+      "id": "642208bc4d44701c6fd6f65e",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "The dollar value may be more than one digit. To match this, the `+` quantifier can be used - this matches one or more consecutive occurrences. For example, the regular expression `/a+/` matches one or more consecutive `a` characters.",
+          "fr": "La valeur en dollars peut comporter plus d'un chiffre. Pour y correspondre, le quantificateur `+` peut être utilisé — il correspond à une ou plusieurs occurrences consécutives. Par exemple, l'expression régulière `/a+/` correspond à un ou plusieurs caractères `a` consécutifs."
+        },
+        {
+          "en": "Update your regular expression to match one or more consecutive digits.",
+          "fr": "Mets à jour ton expression régulière pour qu'elle corresponde à un ou plusieurs chiffres consécutifs."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` should use the `+` quantifier.",
+          "fr": "Ton `dollarRegex` devrait utiliser le quantificateur `+`."
+        },
+        {
+          "en": "Your `dollarRegex` should use the `+` quantifier on your `[0-9]` character class.",
+          "fr": "Ton `dollarRegex` devrait utiliser le quantificateur `+` sur ta classe de caractères `[0-9]`."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `\"100 dollars\"`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `\"100 dollars\"`."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `\"3 dollars\"`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `\"3 dollars\"`."
+        },
+        {
+          "en": "Your `dollarRegex` should be case-insensitive.",
+          "fr": "Ton `dollarRegex` devrait être insensible à la casse."
+        }
+      ]
+    },
+    {
+      "file": "64220e8cb589f61e625bf453.md",
+      "id": "64220e8cb589f61e625bf453",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "A <dfn>capture group</dfn> is a way to define a part of the expression that should be captured and saved for later reference. You can define a capture group by wrapping a part of your expression in parentheses. For example, `/h(i|ey) camper/` would match either `hi camper` or `hey camper`, and would capture `i` or `ey` in a group.",
+          "fr": "Un <dfn>groupe de capture</dfn> est un moyen de définir une partie de l'expression qui doit être capturée et sauvegardée pour une référence ultérieure. Tu peux définir un groupe de capture en entourant une partie de ton expression de parenthèses. Par exemple, `/h(i|ey) camper/` correspondrait soit à `hi camper`, soit à `hey camper`, et capturerait `i` ou `ey` dans un groupe."
+        },
+        {
+          "en": "Between your digits and your `dollars` text, you want to catch place values.",
+          "fr": "Entre tes chiffres et ton texte `dollars`, tu veux capturer les ordres de grandeur."
+        },
+        {
+          "en": "Add a capture group to your `dollarRegex` and use the `|` token inside it to allow `hundred`, `thousand`, `million`, or `billion` between your digits and your `dollars` text.",
+          "fr": "Ajoute un groupe de capture à ton `dollarRegex` et utilise le jeton `|` à l'intérieur pour autoriser `hundred`, `thousand`, `million` ou `billion` entre tes chiffres et ton texte `dollars`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` should use a capture group.",
+          "fr": "Ton `dollarRegex` devrait utiliser un groupe de capture."
+        },
+        {
+          "en": "Your `dollarRegex` should use the `|` token.",
+          "fr": "Ton `dollarRegex` devrait utiliser le jeton `|`."
+        },
+        {
+          "en": "Your `dollarRegex` should have three `|` tokens.",
+          "fr": "Ton `dollarRegex` devrait avoir trois jetons `|`."
+        },
+        {
+          "en": "Your `hundred|thousand|million|billion` pattern should be a capture group.",
+          "fr": "Ton motif `hundred|thousand|million|billion` devrait être un groupe de capture."
+        },
+        {
+          "en": "Your `dollarRegex` should match `1 hundred dollars`.",
+          "fr": "Ton `dollarRegex` devrait correspondre à `1 hundred dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should match `1 thousand dollars`.",
+          "fr": "Ton `dollarRegex` devrait correspondre à `1 thousand dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should match `1 million dollars`.",
+          "fr": "Ton `dollarRegex` devrait correspondre à `1 million dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should match `1 billion dollars`.",
+          "fr": "Ton `dollarRegex` devrait correspondre à `1 billion dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should be case-insensitive.",
+          "fr": "Ton `dollarRegex` devrait être insensible à la casse."
+        }
+      ]
+    },
+    {
+      "file": "64220fb017c57d20612de8b8.md",
+      "id": "64220fb017c57d20612de8b8",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now that you have your capture group, you can mark the entire pattern as an optional match. The `?` quantifier matches zero or one occurrence of the preceding character or group. For example, the regular expression `/colou?r/` matches both `color` and `colour`, because the `u` is optional.",
+          "fr": "Maintenant que tu as ton groupe de capture, tu peux marquer le motif entier comme une correspondance optionnelle. Le quantificateur `?` correspond à zéro ou une occurrence du caractère ou du groupe précédent. Par exemple, l'expression régulière `/colou?r/` correspond à la fois à `color` et à `colour`, car le `u` est optionnel."
+        },
+        {
+          "en": "Mark your capture group as optional.",
+          "fr": "Marque ton groupe de capture comme optionnel."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` should use the `?` quantifier.",
+          "fr": "Ton `dollarRegex` devrait utiliser le quantificateur `?`."
+        },
+        {
+          "en": "Your `(hundred|thousand|million|billion)` capture group should be optional.",
+          "fr": "Ton groupe de capture `(hundred|thousand|million|billion)` devrait être optionnel."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `1 million dollars`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `1 million dollars`."
+        }
+      ]
+    },
+    {
+      "file": "66bb6467b4b7381178420970.md",
+      "id": "66bb6467b4b7381178420970",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "While this expression does match `1 hundred dollars`, it will not match `1  hundred  dollars`, or `10 dollars`.",
+          "fr": "Bien que cette expression corresponde à `1 hundred dollars`, elle ne correspondra pas à `1  hundred  dollars`, ni à `10 dollars`."
+        },
+        {
+          "en": "Spam messages can and will find a way to exploit flaws in your detection. Time to improve your regex.",
+          "fr": "Les messages de spam peuvent et vont trouver un moyen d'exploiter les failles de ta détection. Il est temps d'améliorer ta regex."
+        },
+        {
+          "en": "Replace the first literal space with the `\\s*` expression. The `\\s` character class matches whitespace, such as spaces, tabs, and new lines. The `*` quantifier means \"match the previous character 0 or more times\".",
+          "fr": "Remplace le premier espace littéral par l'expression `\\s*`. La classe de caractères `\\s` correspond aux espaces blancs, comme les espaces, les tabulations et les sauts de ligne. Le quantificateur `*` signifie « correspondre au caractère précédent 0 fois ou plus »."
+        },
+        {
+          "en": "Replace the second literal space with `\\s+`. The `+` quantifier means \"match the previous character at least one time\".",
+          "fr": "Remplace le second espace littéral par `\\s+`. Le quantificateur `+` signifie « correspondre au caractère précédent au moins une fois »."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` must not use literal spaces.",
+          "fr": "Ton `dollarRegex` ne doit pas utiliser d'espaces littéraux."
+        },
+        {
+          "en": "Your `dollarRegex` must allow any number of spaces before the dollar quantity, and one or more spaces after.",
+          "fr": "Ton `dollarRegex` doit autoriser n'importe quel nombre d'espaces avant la quantité en dollars, et un ou plusieurs espaces après."
+        }
+      ]
+    },
+    {
+      "file": "64221007887f38213fa57827.md",
+      "id": "64221007887f38213fa57827",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "One last thing with this expression. You don't actually need the match value from your capture group, so you can turn it into a <dfn>non-capturing group</dfn>. This will allow you to group the characters together without preserving the result.",
+          "fr": "Une dernière chose avec cette expression. Tu n'as en réalité pas besoin de la valeur capturée de ton groupe de capture, tu peux donc le transformer en <dfn>groupe non capturant</dfn>. Cela te permettra de regrouper les caractères sans préserver le résultat."
+        },
+        {
+          "en": "To create a non-capturing group in a regular expression, you can add `?:` after the opening parenthesis of a group. For instance, `(?:a|b)` will match either `a` or `b`, but it will not capture the result.",
+          "fr": "Pour créer un groupe non capturant dans une expression régulière, tu peux ajouter `?:` après la parenthèse ouvrante d'un groupe. Par exemple, `(?:a|b)` correspondra soit à `a`, soit à `b`, mais ne capturera pas le résultat."
+        },
+        {
+          "en": "Update your regular expression to use a non-capturing group.",
+          "fr": "Mets à jour ton expression régulière pour utiliser un groupe non capturant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dollarRegex` should use `?:`.",
+          "fr": "Ton `dollarRegex` devrait utiliser `?:`."
+        },
+        {
+          "en": "Your `dollarRegex` should use a non-capturing group.",
+          "fr": "Ton `dollarRegex` devrait utiliser un groupe non capturant."
+        },
+        {
+          "en": "Your `(hundred|thousand|million|billion)` should be a non-capturing group.",
+          "fr": "Ton `(hundred|thousand|million|billion)` devrait être un groupe non capturant."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `10hundred dollars`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `10hundred dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `10 hundred  dollars`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `10 hundred  dollars`."
+        },
+        {
+          "en": "Your `dollarRegex` should still match `100 dollars`.",
+          "fr": "Ton `dollarRegex` devrait toujours correspondre à `100 dollars`."
+        }
+      ]
+    },
+    {
+      "file": "642213bf8d38b0227ed6ab0b.md",
+      "id": "642213bf8d38b0227ed6ab0b",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Your next regular expression will look for strings like `free money`. Declare a `freeRegex` variable and assign it a regular expression that will match the string `free money`. Remember to make it case-insensitive.",
+          "fr": "Ta prochaine expression régulière cherchera des chaînes comme `free money`. Déclare une variable `freeRegex` et assigne-lui une expression régulière qui correspondra à la chaîne `free money`. Souviens-toi de la rendre insensible à la casse."
+        },
+        {
+          "en": "Then, add your new regular expression to your `denyList` array so you can test it.",
+          "fr": "Ensuite, ajoute ta nouvelle expression régulière à ton tableau `denyList` afin de pouvoir la tester."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `freeRegex` variable.",
+          "fr": "Tu devrais déclarer une variable `freeRegex`."
+        },
+        {
+          "en": "Your `freeRegex` variable should be a regular expression.",
+          "fr": "Ta variable `freeRegex` devrait être une expression régulière."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money`."
+        },
+        {
+          "en": "Your `freeRegex` should be case-insensitive.",
+          "fr": "Ton `freeRegex` devrait être insensible à la casse."
+        },
+        {
+          "en": "Your `denyList` array should include your `freeRegex` variable.",
+          "fr": "Ton tableau `denyList` devrait inclure ta variable `freeRegex`."
+        },
+        {
+          "en": "Your `denyList` array should include your `dollarRegex` variable.",
+          "fr": "Ton tableau `denyList` devrait inclure ta variable `dollarRegex`."
+        },
+        {
+          "en": "Your `denyList` array should include your `helpRegex` variable.",
+          "fr": "Ton tableau `denyList` devrait inclure ta variable `helpRegex`."
+        }
+      ]
+    },
+    {
+      "file": "64233094a1293c079b5b0996.md",
+      "id": "64233094a1293c079b5b0996",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Spam messages often use numbers instead of letters to bypass filters. Your regular expression should catch these.",
+          "fr": "Les messages de spam utilisent souvent des chiffres à la place de lettres pour contourner les filtres. Ton expression régulière devrait les détecter."
+        },
+        {
+          "en": "Replace the `e` characters in your regular expression with character classes that match `e` and `3`.",
+          "fr": "Remplace les caractères `e` dans ton expression régulière par des classes de caractères qui correspondent à `e` et `3`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `freeRegex` should use a character class.",
+          "fr": "Ton `freeRegex` devrait utiliser une classe de caractères."
+        },
+        {
+          "en": "Your `freeRegex` should use a character class to match `e` and `3`.",
+          "fr": "Ton `freeRegex` devrait utiliser une classe de caractères pour correspondre à `e` et `3`."
+        },
+        {
+          "en": "Your `freeRegex` should use three character classes to match `e` and `3`.",
+          "fr": "Ton `freeRegex` devrait utiliser trois classes de caractères pour correspondre à `e` et `3`."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money`."
+        },
+        {
+          "en": "Your `freeRegex` should match `fr33 mon3y`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `fr33 mon3y`."
+        }
+      ]
+    },
+    {
+      "file": "6423322e71f8d108608005cb.md",
+      "id": "6423322e71f8d108608005cb",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Now update your `o` character to match `o` and `0` (the digit).",
+          "fr": "Maintenant, mets à jour ton caractère `o` pour qu'il corresponde à `o` et `0` (le chiffre)."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `freeRegex` should use a character class to match `o` and `0`.",
+          "fr": "Ton `freeRegex` devrait utiliser une classe de caractères pour correspondre à `o` et `0`."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money`."
+        },
+        {
+          "en": "Your `freeRegex` should match `fr33 m0n3y`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `fr33 m0n3y`."
+        }
+      ]
+    },
+    {
+      "file": "6423331f0527840934183aba.md",
+      "id": "6423331f0527840934183aba",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Your regex should match whole words, not partial words. That is, you do not want to match `hands-free money management`.",
+          "fr": "Ta regex devrait correspondre à des mots entiers, pas à des mots partiels. C'est-à-dire que tu ne veux pas correspondre à `hands-free money management`."
+        },
+        {
+          "en": "To do this, start by checking for spaces before and after your pattern. You can do this by using the meta character `\\s`, which will match spaces, tabs, and line breaks.",
+          "fr": "Pour cela, commence par vérifier la présence d'espaces avant et après ton motif. Tu peux le faire avec le méta-caractère `\\s`, qui correspondra aux espaces, tabulations et sauts de ligne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `freeRegex` should use the `\\s` token.",
+          "fr": "Ton `freeRegex` devrait utiliser le jeton `\\s`."
+        },
+        {
+          "en": "Your `freeRegex` should look for spaces at the beginning and end of your pattern.",
+          "fr": "Ton `freeRegex` devrait chercher des espaces au début et à la fin de ton motif."
+        }
+      ]
+    },
+    {
+      "file": "642335220b7d830a69eb59fb.md",
+      "id": "642335220b7d830a69eb59fb",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "If you try entering the message `free money`, you'll notice it doesn't match your expression! This is because `\\s` doesn't match the beginning or end of the text.",
+          "fr": "Si tu essaies de saisir le message `free money`, tu remarqueras qu'il ne correspond pas à ton expression ! C'est parce que `\\s` ne correspond pas au début ni à la fin du texte."
+        },
+        {
+          "en": "To match the beginning of the text, you can use the `^` anchor. This asserts that your pattern match starts at the beginning of the full string.",
+          "fr": "Pour correspondre au début du texte, tu peux utiliser l'ancre `^`. Elle affirme que ta correspondance de motif commence au début de la chaîne complète."
+        },
+        {
+          "en": "Replace your first `\\s` character with a non-capturing group that matches `\\s` or `^`.",
+          "fr": "Remplace ton premier caractère `\\s` par un groupe non capturant qui correspond à `\\s` ou `^`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `freeRegex` should use a non-capturing group.",
+          "fr": "Ton `freeRegex` devrait utiliser un groupe non capturant."
+        },
+        {
+          "en": "Your `freeRegex` should use a non-capturing group to match `\\s` or `^`.",
+          "fr": "Ton `freeRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `^`."
+        },
+        {
+          "en": "Your `freeRegex` should match `it's free money time`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `it's free money time`."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money time`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money time`."
+        },
+        {
+          "en": "Your `freeRegex` should not match `hands-free money time`.",
+          "fr": "Ton `freeRegex` ne devrait pas correspondre à `hands-free money time`."
+        }
+      ]
+    },
+    {
+      "file": "642335d232d7690b2d67dbaf.md",
+      "id": "642335d232d7690b2d67dbaf",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "You still aren't matching `free money` yet, because you need to match the end of the string as well.",
+          "fr": "Tu ne corresponds toujours pas à `free money`, car tu dois aussi correspondre à la fin de la chaîne."
+        },
+        {
+          "en": "Like the `^` anchor, you can use the `$` anchor to match the end of the string.",
+          "fr": "Comme l'ancre `^`, tu peux utiliser l'ancre `$` pour correspondre à la fin de la chaîne."
+        },
+        {
+          "en": "Update your regular expression to match either the end of the string or a space, like you did for the beginning of the string.",
+          "fr": "Mets à jour ton expression régulière pour correspondre soit à la fin de la chaîne, soit à un espace, comme tu l'as fait pour le début de la chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `freeRegex` should use a second non-capturing group.",
+          "fr": "Ton `freeRegex` devrait utiliser un second groupe non capturant."
+        },
+        {
+          "en": "Your `freeRegex` should use a non-capturing group to match `\\s` or `$`.",
+          "fr": "Ton `freeRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `$`."
+        },
+        {
+          "en": "Your `freeRegex` should match `it's free money time`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `it's free money time`."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money time`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money time`."
+        },
+        {
+          "en": "Your `freeRegex` should match `it's free money`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `it's free money`."
+        },
+        {
+          "en": "Your `freeRegex` should match `free money`.",
+          "fr": "Ton `freeRegex` devrait correspondre à `free money`."
+        },
+        {
+          "en": "Your `freeRegex` should not match `hands-free money time`.",
+          "fr": "Ton `freeRegex` ne devrait pas correspondre à `hands-free money time`."
+        },
+        {
+          "en": "Your `freeRegex` should not match `free money-management`.",
+          "fr": "Ton `freeRegex` ne devrait pas correspondre à `free money-management`."
+        }
+      ]
+    },
+    {
+      "file": "64233d08f234a310e73f9496.md",
+      "id": "64233d08f234a310e73f9496",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Your next regular expression will match strings like `stock alert`. Declare a `stockRegex` variable and assign it a regular expression that will match the string `stock alert`. Remember to make it case insensitive.",
+          "fr": "Ta prochaine expression régulière correspondra à des chaînes comme `stock alert`. Déclare une variable `stockRegex` et assigne-lui une expression régulière qui correspondra à la chaîne `stock alert`. Souviens-toi de la rendre insensible à la casse."
+        },
+        {
+          "en": "Add it to your `denyList` array as well.",
+          "fr": "Ajoute-la aussi à ton tableau `denyList`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `stockRegex` variable.",
+          "fr": "Tu devrais déclarer une variable `stockRegex`."
+        },
+        {
+          "en": "Your `stockRegex` variable should be assigned a regular expression.",
+          "fr": "Ta variable `stockRegex` devrait être assignée à une expression régulière."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should be case-insensitive.",
+          "fr": "Ton `stockRegex` devrait être insensible à la casse."
+        },
+        {
+          "en": "Your `denyList` array should contain `stockRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `stockRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `freeRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `freeRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `dollarRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `dollarRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `helpRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `helpRegex`."
+        }
+      ]
+    },
+    {
+      "file": "642344dc9390c712080432c7.md",
+      "id": "642344dc9390c712080432c7",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Like your `freeRegex`, update your `stockRegex` to replace the `e` and `o` characters with character classes to match the letter and the corresponding number.",
+          "fr": "Comme pour ton `freeRegex`, mets à jour ton `stockRegex` pour remplacer les caractères `e` et `o` par des classes de caractères correspondant à la lettre et au chiffre associé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `stockRegex` should use a character class to match the letter `e` and the number `3`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à la lettre `e` et au chiffre `3`."
+        },
+        {
+          "en": "Your `stockRegex` should use a character class to match the letter `o` and the number `0`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à la lettre `o` et au chiffre `0`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `st0ck al3rt`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `st0ck al3rt`."
+        }
+      ]
+    },
+    {
+      "file": "64234598ef08dd13114edae5.md",
+      "id": "64234598ef08dd13114edae5",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "Next update your `s` and `t` characters to also match `5` and `7` respectively.",
+          "fr": "Ensuite, mets à jour tes caractères `s` et `t` pour qu'ils correspondent aussi respectivement à `5` et `7`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `stockRegex` should use a character class to match the letter `s` and the number `5`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à la lettre `s` et au chiffre `5`."
+        },
+        {
+          "en": "Your `stockRegex` should use a character class to match the letter `t` and the number `7`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à la lettre `t` et au chiffre `7`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `570ck al3r7`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `570ck al3r7`."
+        }
+      ]
+    },
+    {
+      "file": "6423462975f33b14056583de.md",
+      "id": "6423462975f33b14056583de",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "Character classes can take more than two characters. Replace your `a` character with a character class that matches `a`, `@`, and `4`.",
+          "fr": "Les classes de caractères peuvent contenir plus de deux caractères. Remplace ton caractère `a` par une classe de caractères qui correspond à `a`, `@` et `4`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `stockRegex` should use a character class to match `a`, `@`, and `4`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à `a`, `@` et `4`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock @lert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock @lert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock 4lert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock 4lert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `570ck 4l3r7`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `570ck 4l3r7`."
+        }
+      ]
+    },
+    {
+      "file": "6423472aeed932150e8984b6.md",
+      "id": "6423472aeed932150e8984b6",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "Using the same syntax, update `c` to match `c`, `{`, `[`, and `(`.",
+          "fr": "En utilisant la même syntaxe, mets à jour `c` pour qu'il corresponde à `c`, `{`, `[` et `(`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `stockRegex` should use a character class to match `c`, `{`, `[`, and `(`.",
+          "fr": "Ton `stockRegex` devrait utiliser une classe de caractères pour correspondre à `c`, `{`, `[` et `(`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `570(k 4l3r7`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `570(k 4l3r7`."
+        },
+        {
+          "en": "Your `stockRegex` should match `sto{k alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `sto{k alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `sto[k alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `sto[k alert`."
+        }
+      ]
+    },
+    {
+      "file": "64234797d84734163088961a.md",
+      "id": "64234797d84734163088961a",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "Finally, allow your regex to match whole words (like you did with `freeRegex`).",
+          "fr": "Enfin, autorise ta regex à correspondre à des mots entiers (comme tu l'as fait avec `freeRegex`)."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `stockRegex` should use a non-capturing group.",
+          "fr": "Ton `stockRegex` devrait utiliser un groupe non capturant."
+        },
+        {
+          "en": "Your `stockRegex` should use a non-capturing group to match `\\s` or `^`.",
+          "fr": "Ton `stockRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `^`."
+        },
+        {
+          "en": "Your `stockRegex` should use a second non-capturing group.",
+          "fr": "Ton `stockRegex` devrait utiliser un second groupe non capturant."
+        },
+        {
+          "en": "Your `stockRegex` should use a non-capturing group to match `\\s` or `$`.",
+          "fr": "Ton `stockRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `$`."
+        },
+        {
+          "en": "Your `stockRegex` should match `it's stock alert time`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `it's stock alert time`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert time`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert time`."
+        },
+        {
+          "en": "Your `stockRegex` should match `it's stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `it's stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should match `stock alert`.",
+          "fr": "Ton `stockRegex` devrait correspondre à `stock alert`."
+        },
+        {
+          "en": "Your `stockRegex` should not match `hands-stock alert time`.",
+          "fr": "Ton `stockRegex` ne devrait pas correspondre à `hands-stock alert time`."
+        },
+        {
+          "en": "Your `stockRegex` should not match `stock alert-management`.",
+          "fr": "Ton `stockRegex` ne devrait pas correspondre à `stock alert-management`."
+        }
+      ]
+    },
+    {
+      "file": "6423491485db5e1786dd6434.md",
+      "id": "6423491485db5e1786dd6434",
+      "dashedName": "step-31",
+      "title": {
+        "en": "Step 31",
+        "fr": "Étape 31"
+      },
+      "description": [
+        {
+          "en": "Your final regular expression will look for strings like `dear friend`. Declare a `dearRegex` and assign it a regular expression that will match the string `dear friend`. Remember to make it case insensitive, and add it to your `denyList` array.",
+          "fr": "Ta dernière expression régulière cherchera des chaînes comme `dear friend`. Déclare un `dearRegex` et assigne-lui une expression régulière qui correspondra à la chaîne `dear friend`. Souviens-toi de la rendre insensible à la casse, et ajoute-la à ton tableau `denyList`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a `dearRegex` variable.",
+          "fr": "Tu devrais déclarer une variable `dearRegex`."
+        },
+        {
+          "en": "Your `dearRegex` variable should be assigned a regular expression.",
+          "fr": "Ta variable `dearRegex` devrait être assignée à une expression régulière."
+        },
+        {
+          "en": "Your `dearRegex` should match `dear friend`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `dear friend`."
+        },
+        {
+          "en": "Your `dearRegex` should be case-insensitive.",
+          "fr": "Ton `dearRegex` devrait être insensible à la casse."
+        },
+        {
+          "en": "Your `denyList` array should contain `dearRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `dearRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `stockRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `stockRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `freeRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `freeRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `dollarRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `dollarRegex`."
+        },
+        {
+          "en": "Your `denyList` array should contain `helpRegex`.",
+          "fr": "Ton tableau `denyList` devrait contenir `helpRegex`."
+        }
+      ]
+    },
+    {
+      "file": "642349b5b7bae31af21cd5f8.md",
+      "id": "642349b5b7bae31af21cd5f8",
+      "dashedName": "step-32",
+      "title": {
+        "en": "Step 32",
+        "fr": "Étape 32"
+      },
+      "description": [
+        {
+          "en": "To put everything you have learned together, update your `dearRegex` to map the vowels to the corresponding numbers (note that `i` should match `1`, and also match the pipe symbol `|`), and to match whole words.",
+          "fr": "Pour tout mettre ensemble, mets à jour ton `dearRegex` pour faire correspondre les voyelles aux chiffres associés (note que `i` devrait correspondre à `1`, et aussi au symbole pipe `|`), et pour correspondre à des mots entiers."
+        },
+        {
+          "en": "With that, your spam filter project is complete.",
+          "fr": "Avec cela, ton projet de filtre anti-spam est terminé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `dearRegex` should use a character class to match `e` or `3`.",
+          "fr": "Ton `dearRegex` devrait utiliser une classe de caractères pour correspondre à `e` ou `3`."
+        },
+        {
+          "en": "Your `dearRegex` should use a character class to match `a`, `@`, or `4`.",
+          "fr": "Ton `dearRegex` devrait utiliser une classe de caractères pour correspondre à `a`, `@` ou `4`."
+        },
+        {
+          "en": "Your `dearRegex` should use a character class to match `i`, `1`, or `|`.",
+          "fr": "Ton `dearRegex` devrait utiliser une classe de caractères pour correspondre à `i`, `1` ou `|`."
+        },
+        {
+          "en": "Your `dearRegex` should use a non-capturing group.",
+          "fr": "Ton `dearRegex` devrait utiliser un groupe non capturant."
+        },
+        {
+          "en": "Your `dearRegex` should use a non-capturing group to match `\\s` or `^`.",
+          "fr": "Ton `dearRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `^`."
+        },
+        {
+          "en": "Your `dearRegex` should use a second non-capturing group.",
+          "fr": "Ton `dearRegex` devrait utiliser un second groupe non capturant."
+        },
+        {
+          "en": "Your `dearRegex` should use a non-capturing group to match `\\s` or `$`.",
+          "fr": "Ton `dearRegex` devrait utiliser un groupe non capturant pour correspondre à `\\s` ou `$`."
+        },
+        {
+          "en": "Your `dearRegex` should match `dear friend`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `dear friend`."
+        },
+        {
+          "en": "Your `dearRegex` should match `d34r fr13nd`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `d34r fr13nd`."
+        },
+        {
+          "en": "Your `dearRegex` should match `d3@r fr|3nd`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `d3@r fr|3nd`."
+        },
+        {
+          "en": "Your `dearRegex` should match `my dear friend Naomi`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `my dear friend Naomi`."
+        },
+        {
+          "en": "Your `dearRegex` should match `dear friend Naomi`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `dear friend Naomi`."
+        },
+        {
+          "en": "Your `dearRegex` should match `my dear friend`.",
+          "fr": "Ton `dearRegex` devrait correspondre à `my dear friend`."
+        },
+        {
+          "en": "Your `dearRegex` should not match `non-dear friend`.",
+          "fr": "Ton `dearRegex` ne devrait pas correspondre à `non-dear friend`."
+        },
+        {
+          "en": "Your `dearRegex` should not match `dear friend-o`.",
+          "fr": "Ton `dearRegex` ne devrait pas correspondre à `dear friend-o`."
+        }
+      ]
+    }
+  ]
+}

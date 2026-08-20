@@ -1,0 +1,113 @@
+{
+  "workshop": "lab-regex-sandbox",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66e028680eca7d21db7e1aee.md",
+      "id": "66e028680eca7d21db7e1aee",
+      "dashedName": "lab-regex-sandbox",
+      "title": {
+        "en": "Build a RegEx Sandbox",
+        "fr": "Crée un bac à sable RegEx"
+      },
+      "description": [
+        {
+          "en": "For this lab, you start with the CSS and HTML already written for you. You will use JavaScript to enable the regex sandbox to test a regular expression against a string and highlight the results.\n \n**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "Pour ce lab, le CSS et le HTML sont déjà écrits pour toi. Tu utiliseras JavaScript pour permettre au bac à sable regex de tester une expression régulière contre une chaîne et de surligner les résultats.\n \n**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should access the `#pattern`, `#test-string`, `#test-btn`, and `#result` elements and save them in the variables `regexPattern`, `stringToTest`, `testButton`, and `testResult`, respectively.\n1. You should access the `#i` and `#g` flag checkboxes and save them in the variables `caseInsensitiveFlag` and `globalFlag`, respectively.\n1. You should have a function named `getFlags` that returns a string containing the flags from checked flag checkboxes, or an empty string if none of them have been checked.\n1. When you click the `testButton` button, if the regex pattern matches the test string, the matched text should be highlighted. To highlight the matches, replace each match with the same text surrounded by a `span` element with the class of `highlight`. Note that the CSS for that has been already added for you.\n1. When there's a match, the matched text should be displayed inside `#result`. In case of multiple matches, each matched text should be separated from the next one by a comma and a space.\n1. When there's no match, the text `no match` should be displayed inside `#result`.",
+          "fr": "1. Tu dois accéder aux éléments `#pattern`, `#test-string`, `#test-btn` et `#result` et les enregistrer respectivement dans les variables `regexPattern`, `stringToTest`, `testButton` et `testResult`.\n1. Tu dois accéder aux cases à cocher des drapeaux `#i` et `#g` et les enregistrer respectivement dans les variables `caseInsensitiveFlag` et `globalFlag`.\n1. Tu dois avoir une fonction nommée `getFlags` qui renvoie une chaîne contenant les drapeaux des cases à cocher cochées, ou une chaîne vide si aucune n'est cochée.\n1. Quand tu cliques sur le bouton `testButton`, si le motif regex correspond à la chaîne de test, le texte correspondant doit être surligné. Pour surligner les correspondances, remplace chaque correspondance par le même texte entouré d'un élément `span` avec la classe `highlight`. Note que le CSS pour cela a déjà été ajouté pour toi.\n1. Quand il y a une correspondance, le texte correspondant doit s'afficher dans `#result`. En cas de correspondances multiples, chaque texte correspondant doit être séparé du suivant par une virgule et un espace.\n1. Quand il n'y a pas de correspondance, le texte `no match` doit s'afficher dans `#result`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should access the `#pattern` element and save it in the `regexPattern` variable.",
+          "fr": "Tu dois accéder à l'élément `#pattern` et l'enregistrer dans la variable `regexPattern`."
+        },
+        {
+          "en": "You should access the `#test-string` element and save it in the `stringToTest` variable.",
+          "fr": "Tu dois accéder à l'élément `#test-string` et l'enregistrer dans la variable `stringToTest`."
+        },
+        {
+          "en": "You should access the `#test-btn` element and save it in the `testButton` variable.",
+          "fr": "Tu dois accéder à l'élément `#test-btn` et l'enregistrer dans la variable `testButton`."
+        },
+        {
+          "en": "You should access the `#result` element and save it in the `testResult` variable.",
+          "fr": "Tu dois accéder à l'élément `#result` et l'enregistrer dans la variable `testResult`."
+        },
+        {
+          "en": "You should access the `#i` flag checkbox and save it in the `caseInsensitiveFlag`.",
+          "fr": "Tu dois accéder à la case à cocher du drapeau `#i` et l'enregistrer dans `caseInsensitiveFlag`."
+        },
+        {
+          "en": "You should access the `#g` flag checkbox and save it in the `globalFlag` variable.",
+          "fr": "Tu dois accéder à la case à cocher du drapeau `#g` et l'enregistrer dans la variable `globalFlag`."
+        },
+        {
+          "en": "You should have a `getFlags` function.",
+          "fr": "Tu dois avoir une fonction `getFlags`."
+        },
+        {
+          "en": "The `getFlags` function should return `\"i\"` if the `#i` checkbox is checked.",
+          "fr": "La fonction `getFlags` doit renvoyer `\"i\"` si la case `#i` est cochée."
+        },
+        {
+          "en": "The `getFlags` function should return `\"g\"` if the `#g` checkbox is checked.",
+          "fr": "La fonction `getFlags` doit renvoyer `\"g\"` si la case `#g` est cochée."
+        },
+        {
+          "en": "The `getFlags` function should return either `\"ig\"` or `\"gi\"` if both checkboxes are checked.",
+          "fr": "La fonction `getFlags` doit renvoyer soit `\"ig\"` soit `\"gi\"` si les deux cases sont cochées."
+        },
+        {
+          "en": "The `getFlags` function should return an empty string if both checkboxes are not checked.",
+          "fr": "La fonction `getFlags` doit renvoyer une chaîne vide si les deux cases ne sont pas cochées."
+        },
+        {
+          "en": "When the inner HTML of `stringToTest` is `Gu1n34 P1g5`, the value of `regexPattern` is `\\d+`,  and no flag is checked, `stringToTest.innerHTML` should become `Gu<span class=\"highlight\">1</span>n34 P1g5` by clicking the `testButton` button.",
+          "fr": "Quand le HTML interne de `stringToTest` est `Gu1n34 P1g5`, que la valeur de `regexPattern` est `\\d+`, et qu'aucun drapeau n'est coché, `stringToTest.innerHTML` doit devenir `Gu<span class=\"highlight\">1</span>n34 P1g5` en cliquant sur le bouton `testButton`."
+        },
+        {
+          "en": "When the inner HTML of `stringToTest` is `Gu1n34 P1g5`, the value of `regexPattern` is `\\d+`,  and the global flag is checked, `stringToTest.innerHTML` should become `Gu<span class=\"highlight\">1</span>n<span class=\"highlight\">34</span> P<span class=\"highlight\">1</span>g<span class=\"highlight\">5</span>` by clicking the `testButton` button.",
+          "fr": "Quand le HTML interne de `stringToTest` est `Gu1n34 P1g5`, que la valeur de `regexPattern` est `\\d+`, et que le drapeau global est coché, `stringToTest.innerHTML` doit devenir `Gu<span class=\"highlight\">1</span>n<span class=\"highlight\">34</span> P<span class=\"highlight\">1</span>g<span class=\"highlight\">5</span>` en cliquant sur le bouton `testButton`."
+        },
+        {
+          "en": "When the inner HTML of `stringToTest` is `Gu1n34 P1g5`, the value of `regexPattern` is `G`,  and both the global and case insensitive flags are checked, `stringToTest.innerHTML` should become `<span class=\"highlight\">G</span>u1n34 P1<span class=\"highlight\">g</span>5` by clicking the `testButton` button.",
+          "fr": "Quand le HTML interne de `stringToTest` est `Gu1n34 P1g5`, que la valeur de `regexPattern` est `G`, et que les drapeaux global et insensible à la casse sont tous deux cochés, `stringToTest.innerHTML` doit devenir `<span class=\"highlight\">G</span>u1n34 P1<span class=\"highlight\">g</span>5` en cliquant sur le bouton `testButton`."
+        },
+        {
+          "en": "When you click the `testButton` button, if the regex pattern matches the test string, the matched text should be surrounded by a `span` element with the class of `highlight`.",
+          "fr": "Quand tu cliques sur le bouton `testButton`, si le motif regex correspond à la chaîne de test, le texte correspondant doit être entouré d'un élément `span` avec la classe `highlight`."
+        },
+        {
+          "en": "When there's no match, the test string shouldn't be modified.",
+          "fr": "Quand il n'y a pas de correspondance, la chaîne de test ne doit pas être modifiée."
+        },
+        {
+          "en": "When the inner HTML of `stringToTest` is `Gu1n34 P1g5`, the value of `regexPattern` is `\\d+`,  and no flag is checked, the inner text of `#result` should become `1` by clicking the `testButton` button.",
+          "fr": "Quand le HTML interne de `stringToTest` est `Gu1n34 P1g5`, que la valeur de `regexPattern` est `\\d+`, et qu'aucun drapeau n'est coché, le texte interne de `#result` doit devenir `1` en cliquant sur le bouton `testButton`."
+        },
+        {
+          "en": "When the inner HTML of `stringToTest` is `Gu1n34 P1g5`, the value of `regexPattern` is `\\d+`,  and the global flag is checked, the inner text of `#result` should become `1, 34, 1, 5` by clicking the `testButton` button.",
+          "fr": "Quand le HTML interne de `stringToTest` est `Gu1n34 P1g5`, que la valeur de `regexPattern` est `\\d+`, et que le drapeau global est coché, le texte interne de `#result` doit devenir `1, 34, 1, 5` en cliquant sur le bouton `testButton`."
+        },
+        {
+          "en": "When there's a match, the matched text should be displayed inside `#result`.",
+          "fr": "Quand il y a une correspondance, le texte correspondant doit s'afficher dans `#result`."
+        },
+        {
+          "en": "When there's no match, the text `no match` should be displayed inside `#result`.",
+          "fr": "Quand il n'y a pas de correspondance, le texte `no match` doit s'afficher dans `#result`."
+        }
+      ]
+    }
+  ]
+}

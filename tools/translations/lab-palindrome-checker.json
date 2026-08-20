@@ -1,0 +1,117 @@
+{
+  "workshop": "lab-palindrome-checker",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "657bdc55a322aae1eac3838f.md",
+      "id": "657bdc55a322aae1eac3838f",
+      "dashedName": "build-a-palindrome-checker",
+      "title": {
+        "en": "Build a Palindrome Checker",
+        "fr": "Crée un vérificateur de palindrome"
+      },
+      "description": [
+        {
+          "en": "A <dfn>palindrome</dfn> is a word or phrase that can be read the same way forwards and backwards, ignoring punctuation, case, and spacing.",
+          "fr": "Un <dfn>palindrome</dfn> est un mot ou une phrase qui se lit de la même façon de gauche à droite et de droite à gauche, en ignorant la ponctuation, la casse et les espaces."
+        },
+        {
+          "en": "**Note:** You'll need to remove **all non-alphanumeric characters** (punctuation, spaces and symbols) and turn everything into the same case (lower or upper case) in order to check for palindromes.",
+          "fr": "**Remarque :** tu devras supprimer **tous les caractères non alphanumériques** (ponctuation, espaces et symboles) et tout convertir dans la même casse (minuscules ou majuscules) afin de vérifier les palindromes."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. You should have an `input` element with an `id` of `\"text-input\"`.\n1. You should have a `button` element with an `id` of `\"check-btn\"`.\n1. You should have a `div`, `span` or `p` element with an `id` of `\"result\"`.\n1. When you click on the `#check-btn` element without entering a value into the `#text-input` element, an alert should appear with the text `Please input a value`.\n1. When the `#text-input` element only contains the letter `A` and the `#check-btn` element is clicked, the `#result` element should contain the text `A is a palindrome`.\n1. When the `#text-input` element contains the text `eye` and the `#check-btn` element is clicked, the `#result` element should contain the text `eye is a palindrome`.\n1. When the `#text-input` element contains the text `_eye` and the `#check-btn` element is clicked, the `#result` element should contain the text `_eye is a palindrome`.\n1. When the `#text-input` element contains the text `race car` and the `#check-btn` element is clicked, the `#result` element should contain the text `race car is a palindrome`.\n1. When the `#text-input` element contains the text `not a palindrome` and the `#check-btn` element is clicked, the `#result` element should contain the text `not a palindrome is not a palindrome`.\n1. When the `#text-input` element contains the text `A man, a plan, a canal. Panama` and the `#check-btn` element is clicked, the `#result` element should contain the text `A man, a plan, a canal. Panama is a palindrome`.\n1. When the `#text-input` element contains the text `never odd or even` and the `#check-btn` element is clicked, the `#result` element should contain the text `never odd or even is a palindrome`.\n1. When the `#text-input` element contains the text `nope` and the `#check-btn` element is clicked, the `#result` element should contain the text `nope is not a palindrome`.\n1. When the `#text-input` element contains the text `almostomla` and the `#check-btn` element is clicked, the `#result` element should contain the text `almostomla is not a palindrome`.\n1. When the `#text-input` element contains the text `My age is 0, 0 si ega ym.` and the `#check-btn` element is clicked, the `#result` element should contain the text `My age is 0, 0 si ega ym. is a palindrome`.\n1. When the `#text-input` element contains the text `1 eye for of 1 eye.` and the `#check-btn` element is clicked, the `#result` element should contain the text `1 eye for of 1 eye. is not a palindrome`.\n1. When the `#text-input` element contains the text `0_0 (: /-\\ :) 0-0` and the `#check-btn` element is clicked, the `#result` element should contain the text `0_0 (: /-\\ :) 0-0 is a palindrome`.\n1. When the `#text-input` element contains the text `five|\\_/|four` and the `#check-btn` element is clicked, the `#result` element should contain the text `five|\\_/|four is not a palindrome`.",
+          "fr": "1. Tu dois avoir un élément `input` avec un `id` de `\"text-input\"`.\n1. Tu dois avoir un élément `button` avec un `id` de `\"check-btn\"`.\n1. Tu dois avoir un élément `div`, `span` ou `p` avec un `id` de `\"result\"`.\n1. Quand tu cliques sur l'élément `#check-btn` sans saisir de valeur dans l'élément `#text-input`, une alerte doit apparaître avec le texte `Please input a value`.\n1. Quand l'élément `#text-input` ne contient que la lettre `A` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `A is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `eye` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `eye is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `_eye` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `_eye is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `race car` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `race car is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `not a palindrome` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `not a palindrome is not a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `A man, a plan, a canal. Panama` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `A man, a plan, a canal. Panama is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `never odd or even` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `never odd or even is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `nope` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `nope is not a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `almostomla` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `almostomla is not a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `My age is 0, 0 si ega ym.` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `My age is 0, 0 si ega ym. is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `1 eye for of 1 eye.` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `1 eye for of 1 eye. is not a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `0_0 (: /-\\ :) 0-0` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `0_0 (: /-\\ :) 0-0 is a palindrome`.\n1. Quand l'élément `#text-input` contient le texte `five|\\_/|four` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `five|\\_/|four is not a palindrome`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `input` element with an `id` of `\"text-input\"`.",
+          "fr": "Tu dois avoir un élément `input` avec un `id` de `\"text-input\"`."
+        },
+        {
+          "en": "You should have a `button` element with an `id` of `\"check-btn\"`.",
+          "fr": "Tu dois avoir un élément `button` avec un `id` de `\"check-btn\"`."
+        },
+        {
+          "en": "You should have a `div`, `span`, or `p` element with an `id` of `\"result\"`.",
+          "fr": "Tu dois avoir un élément `div`, `span` ou `p` avec un `id` de `\"result\"`."
+        },
+        {
+          "en": "When you click on the `#check-btn` element without entering a value into the `#text-input` element, an alert should appear with the text `Please input a value`.",
+          "fr": "Quand tu cliques sur l'élément `#check-btn` sans saisir de valeur dans l'élément `#text-input`, une alerte doit apparaître avec le texte `Please input a value`."
+        },
+        {
+          "en": "When the `#text-input` element only contains the letter `A` and the `#check-btn` element is clicked, the `#result` element should contain the text `A is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` ne contient que la lettre `A` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `A is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `eye` and the `#check-btn` element is clicked, the `#result` element should contain the text `eye is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `eye` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `eye is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `_eye` and the `#check-btn` element is clicked, the `#result` element should contain the text `_eye is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `_eye` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `_eye is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `race car` and the `#check-btn` element is clicked, the `#result` element should contain the text `race car is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `race car` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `race car is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `not a palindrome` and the `#check-btn` element is clicked, the `#result` element should contain the text `not a palindrome is not a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `not a palindrome` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `not a palindrome is not a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `A man, a plan, a canal. Panama` and the `#check-btn` element is clicked, the `#result` element should contain the text `A man, a plan, a canal. Panama is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `A man, a plan, a canal. Panama` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `A man, a plan, a canal. Panama is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `never odd or even` and the `#check-btn` element is clicked, the `#result` element should contain the text `never odd or even is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `never odd or even` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `never odd or even is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `nope` and the `#check-btn` element is clicked, the `#result` element should contain the text `nope is not a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `nope` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `nope is not a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `almostomla` and the `#check-btn` element is clicked, the `#result` element should contain the text `almostomla is not a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `almostomla` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `almostomla is not a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `My age is 0, 0 si ega ym.` and the `#check-btn` element is clicked, the `#result` element should contain the text `My age is 0, 0 si ega ym. is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `My age is 0, 0 si ega ym.` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `My age is 0, 0 si ega ym. is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `1 eye for of 1 eye.` and the `#check-btn` element is clicked, the `#result` element should contain the text `1 eye for of 1 eye. is not a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `1 eye for of 1 eye.` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `1 eye for of 1 eye. is not a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `0_0 (: /-\\ :) 0-0` and the `#check-btn` element is clicked, the `#result` element should contain the text `0_0 (: /-\\ :) 0-0 is a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `0_0 (: /-\\ :) 0-0` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `0_0 (: /-\\ :) 0-0 is a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains the text `five|\\_/|four` and the `#check-btn` element is clicked, the `#result` element should contain the text `five|\\_/|four is not a palindrome`.",
+          "fr": "Quand l'élément `#text-input` contient le texte `five|\\_/|four` et que l'élément `#check-btn` est cliqué, l'élément `#result` doit contenir le texte `five|\\_/|four is not a palindrome`."
+        },
+        {
+          "en": "When the `#text-input` element contains an alphanumeric palindrome, the `#result` element should correctly identify it as a palindrome.",
+          "fr": "Quand l'élément `#text-input` contient un palindrome alphanumérique, l'élément `#result` doit l'identifier correctement comme un palindrome."
+        },
+        {
+          "en": "When the `#text-input` element contains a random sequence of alphanumeric characters that is not a palindrome, the `#result` element should say it is not a palindrome.",
+          "fr": "Quand l'élément `#text-input` contient une séquence aléatoire de caractères alphanumériques qui n'est pas un palindrome, l'élément `#result` doit indiquer que ce n'est pas un palindrome."
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-working-with-regular-expressions",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-are-regular-expressions-and-what-are-some-common-methods",
       "title": {
         "en": "What Are Regular Expressions, and What Are Some Common Methods?",
-        "fr": ""
+        "fr": "Que sont les expressions régulières, et quelles sont quelques méthodes courantes ?"
       },
       "sections": [
         {
@@ -19,135 +19,135 @@
           "chunks": [
             {
               "en": "Regular expressions, or regex, are a feature supported by many different programming languages.",
-              "fr": ""
+              "fr": "Les expressions régulières, ou regex, sont une fonctionnalité prise en charge par de nombreux langages de programmation différents."
             },
             {
               "en": "A regular expression is a special syntax to create a \"pattern\", which you can then use to check against a string, extract text, and more.",
-              "fr": ""
+              "fr": "Une expression régulière est une syntaxe spéciale pour créer un « motif » (pattern), que tu peux ensuite utiliser pour vérifier une chaîne, en extraire du texte, et plus encore."
             },
             {
               "en": "Let's take a look at a basic regular expression:",
-              "fr": ""
+              "fr": "Regardons une expression régulière basique :"
             },
             {
               "en": "Notice how, in JavaScript, you define a regular expression by creating your pattern between two forward slashes (`/`). Try not to confuse this with a comment, where the text comes after both forward slashes.",
-              "fr": ""
+              "fr": "Remarque qu'en JavaScript, tu définis une expression régulière en créant ton motif entre deux barres obliques (`/`). Essaie de ne pas confondre cela avec un commentaire, où le texte vient après les deux barres obliques."
             },
             {
               "en": "This particular regular expression will match the text `freeCodeCamp`, with capital `C`s, anywhere in a string. But how can you actually do that?",
-              "fr": ""
+              "fr": "Cette expression régulière particulière correspondra au texte `freeCodeCamp`, avec des `C` majuscules, n'importe où dans une chaîne. Mais comment faire concrètement ?"
             },
             {
               "en": "That brings us to our first method – the `test()` method. The `test()` method is present on `RegExp` objects, which are objects representing a regular expression (such as the one we just defined).",
-              "fr": ""
+              "fr": "Cela nous amène à notre première méthode – la méthode `test()`. La méthode `test()` est présente sur les objets `RegExp`, qui sont des objets représentant une expression régulière (comme celle que l'on vient de définir)."
             },
             {
               "en": "The `test()` method accepts a string, which is the string to test for matches against the regular expression. For example, let's try testing the string `e`:",
-              "fr": ""
+              "fr": "La méthode `test()` accepte une chaîne, qui est la chaîne à tester pour des correspondances avec l'expression régulière. Par exemple, essayons de tester la chaîne `e` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "You can see we've called the `test()` method on our new regex, and passed the string `e` as the argument.",
-              "fr": ""
+              "fr": "Tu peux voir que nous avons appelé la méthode `test()` sur notre nouvelle regex, et passé la chaîne `e` comme argument."
             },
             {
               "en": "The `test()` method returned `false` because the string `e` does not match the pattern `freeCodeCamp`. Even though the pattern `freeCodeCamp` includes the letter `e`, that's the opposite direction of how regular expressions work.",
-              "fr": ""
+              "fr": "La méthode `test()` a renvoyé `false` parce que la chaîne `e` ne correspond pas au motif `freeCodeCamp`. Même si le motif `freeCodeCamp` inclut la lettre `e`, c'est le sens inverse du fonctionnement des expressions régulières."
             },
             {
               "en": "Let's take a look at a few more examples. Take a moment to consider these:",
-              "fr": ""
+              "fr": "Regardons encore quelques exemples. Prends un moment pour les examiner :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Notice how the first three strings returned `true`. These strings all contain the text, `freeCodeCamp`, exactly, somewhere in the string.",
-              "fr": ""
+              "fr": "Remarque que les trois premières chaînes ont renvoyé `true`. Ces chaînes contiennent toutes le texte `freeCodeCamp`, exactement, quelque part dans la chaîne."
             },
             {
               "en": "Lines 5 and 6 return `false`. While they contain the text `freecodecamp`, the case does not match. Regular expressions are case-sensitive by default.",
-              "fr": ""
+              "fr": "Les lignes 5 et 6 renvoient `false`. Bien qu'elles contiennent le texte `freecodecamp`, la casse ne correspond pas. Les expressions régulières sont sensibles à la casse par défaut."
             },
             {
               "en": "Finally, while the last three contain a portion of the pattern, the strings do not contain the entire pattern.",
-              "fr": ""
+              "fr": "Enfin, bien que les trois dernières contiennent une portion du motif, les chaînes ne contiennent pas le motif entier."
             },
             {
               "en": "The `test()` method returns a `boolean`, indicating whether the string matches the regular expression at all.",
-              "fr": ""
+              "fr": "La méthode `test()` renvoie un `boolean`, indiquant si la chaîne correspond du tout à l'expression régulière."
             },
             {
               "en": "But what if you wanted more information than that? Well, strings have a `match()` method. This method accepts a regular expression, although you can also pass a string which will be constructed into a regular expression.",
-              "fr": ""
+              "fr": "Mais et si tu voulais plus d'informations que cela ? Eh bien, les chaînes ont une méthode `match()`. Cette méthode accepte une expression régulière, bien que tu puisses aussi passer une chaîne qui sera transformée en expression régulière."
             },
             {
               "en": "`match()` returns the match array for the string. What's a match array? Well, let's take a look:",
-              "fr": ""
+              "fr": "`match()` renvoie le tableau de correspondance pour la chaîne. Qu'est-ce qu'un tableau de correspondance ? Eh bien, regardons :"
             },
             {
               "en": "If we run this, we get an array back! But it's a strange looking array. It's got some extra properties:",
-              "fr": ""
+              "fr": "Si on exécute ceci, on obtient un tableau ! Mais c'est un tableau d'apparence étrange. Il a quelques propriétés supplémentaires :"
             },
             {
               "en": "The `groups` property would show any captured groups. You will learn what that means in a future lesson.",
-              "fr": ""
+              "fr": "La propriété `groups` montrerait les groupes capturés. Tu apprendras ce que cela signifie dans une leçon future."
             },
             {
               "en": "The `index` property tells you at what character in the string the match was found. In our case, it was found at the beginning of the string.",
-              "fr": ""
+              "fr": "La propriété `index` te dit à quel caractère de la chaîne la correspondance a été trouvée. Dans notre cas, elle a été trouvée au début de la chaîne."
             },
             {
               "en": "The `input` property tells you the string the `match()` method was called on.",
-              "fr": ""
+              "fr": "La propriété `input` te dit la chaîne sur laquelle la méthode `match()` a été appelée."
             },
             {
               "en": "Let's try a few more again, and see how the result changes:",
-              "fr": ""
+              "fr": "Essayons encore quelques exemples, et voyons comment le résultat change :"
             },
             {
               "en": "We know already that the first three strings should produce a match, so let's take a look at those:",
-              "fr": ""
+              "fr": "On sait déjà que les trois premières chaînes devraient produire une correspondance, alors regardons celles-là :"
             },
             {
               "en": "Is that what you expected? You can see how the `input` and `index` have changed depending on the string provided, and the location of the match in the string.",
-              "fr": ""
+              "fr": "Est-ce ce à quoi tu t'attendais ? Tu peux voir comment `input` et `index` ont changé selon la chaîne fournie, et l'emplacement de la correspondance dans la chaîne."
             },
             {
               "en": "The other three lines, which do not match, return `null` instead of an array.",
-              "fr": ""
+              "fr": "Les trois autres lignes, qui ne correspondent pas, renvoient `null` au lieu d'un tableau."
             },
             {
               "en": "Now that we can test and match strings with our regular expression, what if we want to replace the content of a string? Maybe someone has written `freecodecamp` in all lowercase, and we want to automatically fix the casing for them.",
-              "fr": ""
+              "fr": "Maintenant que nous pouvons tester et faire correspondre des chaînes avec notre expression régulière, et si nous voulions remplacer le contenu d'une chaîne ? Peut-être que quelqu'un a écrit `freecodecamp` entièrement en minuscules, et que nous voulons corriger automatiquement la casse pour lui."
             },
             {
               "en": "First, we need to update our regular expression to match the lowercase form of `freecodecamp`, and create our test string:",
-              "fr": ""
+              "fr": "D'abord, nous devons mettre à jour notre expression régulière pour correspondre à la forme en minuscules de `freecodecamp`, et créer notre chaîne de test :"
             },
             {
               "en": "Now, strings have a `replace()` method which accepts two arguments: the regular expression to match (or a string, if you don't need all of the features of regex), and the string to replace the match with (or a function to run against each match).",
-              "fr": ""
+              "fr": "Maintenant, les chaînes ont une méthode `replace()` qui accepte deux arguments : l'expression régulière à faire correspondre (ou une chaîne, si tu n'as pas besoin de toutes les fonctionnalités des regex), et la chaîne par laquelle remplacer la correspondance (ou une fonction à exécuter sur chaque correspondance)."
             },
             {
               "en": "So if we wanted to replace our `freecodecamp` with the proper casing:",
-              "fr": ""
+              "fr": "Donc si nous voulions remplacer notre `freecodecamp` par la bonne casse :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "You can see that `replace()` returns the updated string with the matching pattern `replaced`.",
-              "fr": ""
+              "fr": "Tu peux voir que `replace()` renvoie la chaîne mise à jour avec le motif correspondant `replaced`."
             },
             {
               "en": "Regular expressions, and all of the methods associated with them, can seem complex and overwhelming. But you'll get the chance to explore them further in this next set of lessons.",
-              "fr": ""
+              "fr": "Les expressions régulières, et toutes les méthodes associées, peuvent sembler complexes et écrasantes. Mais tu auras l'occasion de les explorer davantage dans ce prochain ensemble de leçons."
             }
           ]
         },
@@ -157,7 +157,7 @@
           "chunks": [
             {
               "en": "In JavaScript, how is a basic regular expression defined?",
-              "fr": ""
+              "fr": "En JavaScript, comment définit-on une expression régulière basique ?"
             }
           ]
         },
@@ -167,7 +167,7 @@
           "chunks": [
             {
               "en": "Using single quotes: `'pattern'`",
-              "fr": ""
+              "fr": "En utilisant des guillemets simples : `'pattern'`"
             }
           ]
         },
@@ -177,11 +177,11 @@
           "chunks": [
             {
               "en": "The lesson shows a specific syntax for defining a regular expression.",
-              "fr": ""
+              "fr": "La leçon montre une syntaxe spécifique pour définir une expression régulière."
             },
             {
               "en": "Using double quotes: `\"pattern\"`",
-              "fr": ""
+              "fr": "En utilisant des guillemets doubles : `\"pattern\"`"
             }
           ]
         },
@@ -191,15 +191,15 @@
           "chunks": [
             {
               "en": "The lesson shows a specific syntax for defining a regular expression.",
-              "fr": ""
+              "fr": "La leçon montre une syntaxe spécifique pour définir une expression régulière."
             },
             {
               "en": "Using forward slashes: `/pattern/`",
-              "fr": ""
+              "fr": "En utilisant des barres obliques : `/pattern/`"
             },
             {
               "en": "Using parentheses: `(pattern)`",
-              "fr": ""
+              "fr": "En utilisant des parenthèses : `(pattern)`"
             }
           ]
         },
@@ -209,7 +209,7 @@
           "chunks": [
             {
               "en": "The lesson shows a specific syntax for defining a regular expression.",
-              "fr": ""
+              "fr": "La leçon montre une syntaxe spécifique pour définir une expression régulière."
             }
           ]
         },
@@ -219,7 +219,7 @@
           "chunks": [
             {
               "en": "What does the `test()` method return when used with a regular expression?",
-              "fr": ""
+              "fr": "Que renvoie la méthode `test()` lorsqu'elle est utilisée avec une expression régulière ?"
             }
           ]
         },
@@ -229,7 +229,7 @@
           "chunks": [
             {
               "en": "An array of matches.",
-              "fr": ""
+              "fr": "Un tableau de correspondances."
             }
           ]
         },
@@ -239,15 +239,15 @@
           "chunks": [
             {
               "en": "Think about what type of result the `test()` method provides.",
-              "fr": ""
+              "fr": "Réfléchis au type de résultat que fournit la méthode `test()`."
             },
             {
               "en": "A boolean value.",
-              "fr": ""
+              "fr": "Une valeur booléenne."
             },
             {
               "en": "The matched string.",
-              "fr": ""
+              "fr": "La chaîne correspondante."
             }
           ]
         },
@@ -257,11 +257,11 @@
           "chunks": [
             {
               "en": "Think about what type of result the `test()` method provides.",
-              "fr": ""
+              "fr": "Réfléchis au type de résultat que fournit la méthode `test()`."
             },
             {
               "en": "The index of the match.",
-              "fr": ""
+              "fr": "L'indice de la correspondance."
             }
           ]
         },
@@ -271,7 +271,7 @@
           "chunks": [
             {
               "en": "Think about what type of result the `test()` method provides.",
-              "fr": ""
+              "fr": "Réfléchis au type de résultat que fournit la méthode `test()`."
             }
           ]
         },
@@ -281,7 +281,7 @@
           "chunks": [
             {
               "en": "What happens when you use the `match()` method with a regular expression on a string that doesn't contain a match?",
-              "fr": ""
+              "fr": "Que se passe-t-il lorsque tu utilises la méthode `match()` avec une expression régulière sur une chaîne qui ne contient pas de correspondance ?"
             }
           ]
         },
@@ -291,7 +291,7 @@
           "chunks": [
             {
               "en": "It returns an empty array.",
-              "fr": ""
+              "fr": "Elle renvoie un tableau vide."
             }
           ]
         },
@@ -301,11 +301,11 @@
           "chunks": [
             {
               "en": "The lesson describes the result of `match()` for non-matching strings.",
-              "fr": ""
+              "fr": "La leçon décrit le résultat de `match()` pour les chaînes sans correspondance."
             },
             {
               "en": "It returns `false`.",
-              "fr": ""
+              "fr": "Elle renvoie `false`."
             }
           ]
         },
@@ -315,15 +315,15 @@
           "chunks": [
             {
               "en": "The lesson describes the result of `match()` for non-matching strings.",
-              "fr": ""
+              "fr": "La leçon décrit le résultat de `match()` pour les chaînes sans correspondance."
             },
             {
               "en": "It returns `null`.",
-              "fr": ""
+              "fr": "Elle renvoie `null`."
             },
             {
               "en": "It throws an error.",
-              "fr": ""
+              "fr": "Elle lève une erreur."
             }
           ]
         },
@@ -333,7 +333,7 @@
           "chunks": [
             {
               "en": "The lesson describes the result of `match()` for non-matching strings.",
-              "fr": ""
+              "fr": "La leçon décrit le résultat de `match()` pour les chaînes sans correspondance."
             }
           ]
         }
@@ -345,7 +345,7 @@
       "dashedName": "what-are-some-common-regular-expression-modifiers-used-for-searching",
       "title": {
         "en": "What Are Some Common Regular Expression Modifiers Used for Searching?",
-        "fr": ""
+        "fr": "Quels sont quelques modificateurs d'expressions régulières courants utilisés pour la recherche ?"
       },
       "sections": [
         {
@@ -354,187 +354,187 @@
           "chunks": [
             {
               "en": "Modifiers, often referred to as \"flags\", modify the behavior of a regular expression. Let's recall our example from an earlier lesson:",
-              "fr": ""
+              "fr": "Les modificateurs, souvent appelés « flags » (drapeaux), modifient le comportement d'une expression régulière. Rappelons notre exemple d'une leçon précédente :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "If you remember, the all-lowercase and all-uppercase `freeCodeCamp` strings failed to match the pattern. This is because, by default, regular expressions are case-sensitive.",
-              "fr": ""
+              "fr": "Si tu te souviens, les chaînes `freeCodeCamp` entièrement en minuscules et entièrement en majuscules n'ont pas réussi à correspondre au motif. C'est parce que, par défaut, les expressions régulières sont sensibles à la casse."
             },
             {
               "en": "But what if we could tell the regular expression to be case-insensitive? Well, there's a modifier for that. The `i` flag makes a regex ignore case. How can we use it? Flags go after the closing forward slash in a regular expression:",
-              "fr": ""
+              "fr": "Mais et si nous pouvions dire à l'expression régulière d'ignorer la casse ? Eh bien, il y a un modificateur pour cela. Le flag `i` fait qu'une regex ignore la casse. Comment l'utiliser ? Les flags vont après la barre oblique fermante d'une expression régulière :"
             },
             {
               "en": "Notice the change to the regular expression on the first line. Now we can check how this changes things:",
-              "fr": ""
+              "fr": "Remarque le changement de l'expression régulière à la première ligne. Maintenant, on peut vérifier comment cela change les choses :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Because our regular expression is now case-insensitive, the all-lowercase and all-uppercase strings have \"passed\" the test. This can also work for a string with a random mix of uppercase and lowercase letters:",
-              "fr": ""
+              "fr": "Parce que notre expression régulière est maintenant insensible à la casse, les chaînes entièrement en minuscules et entièrement en majuscules ont « réussi » le test. Cela peut aussi fonctionner pour une chaîne avec un mélange aléatoire de majuscules et de minuscules :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "There are quite a few other flags that you can use. The `g` flag, or global modifier, allows your regular expression to match a pattern more than once.",
-              "fr": ""
+              "fr": "Il y a plusieurs autres flags que tu peux utiliser. Le flag `g`, ou modificateur global, permet à ton expression régulière de correspondre à un motif plus d'une fois."
             },
             {
               "en": "Let's see how that affects our code. You'll notice we kept the `i` flag – a regular expression can use multiple flags (as many as needed) to achieve your desired behavior:",
-              "fr": ""
+              "fr": "Voyons comment cela affecte notre code. Tu remarqueras que nous avons gardé le flag `i` – une expression régulière peut utiliser plusieurs flags (autant que nécessaire) pour obtenir le comportement souhaité :"
             },
             {
               "en": "Wait a second... what's this? It would seem that the global modifier is making some of our strings that should be passing fail instead:",
-              "fr": ""
+              "fr": "Attends une seconde… qu'est-ce que c'est ? Il semblerait que le modificateur global fasse échouer certaines de nos chaînes qui devraient réussir :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Why? Well, the global modifier makes your regular expression stateful. This means it keeps track of where it has previously matched a pattern. So when it matches the first `freeCodeCamp` string, it remembers that it found a match starting at index `0`.",
-              "fr": ""
+              "fr": "Pourquoi ? Eh bien, le modificateur global rend ton expression régulière à état (stateful). Cela signifie qu'elle garde la trace de l'endroit où elle a précédemment fait correspondre un motif. Donc quand elle correspond à la première chaîne `freeCodeCamp`, elle se souvient qu'elle a trouvé une correspondance commençant à l'indice `0`."
             },
             {
               "en": "We then test it against `freeCodeCamp is great`, but it doesn't start at index `0`. The regular expression \"knows\" it found a match at index `0` already, so even though this is a different string, it starts from the end index of the match.",
-              "fr": ""
+              "fr": "Nous la testons ensuite contre `freeCodeCamp is great`, mais cela ne commence pas à l'indice `0`. L'expression régulière « sait » qu'elle a déjà trouvé une correspondance à l'indice `0`, donc même si c'est une chaîne différente, elle repart de l'indice de fin de la correspondance."
             },
             {
               "en": "`freeCodeCamp` is `12` characters long, so a match at `0` ends at index `11`. The matching will resume at index `12`. And since `is great` does not match `freeCodeCamp`, it returns `false`.",
-              "fr": ""
+              "fr": "`freeCodeCamp` fait `12` caractères de long, donc une correspondance à `0` se termine à l'indice `11`. La recherche reprendra à l'indice `12`. Et comme `is great` ne correspond pas à `freeCodeCamp`, elle renvoie `false`."
             },
             {
               "en": "Then, because it fails to find a match, it \"loses\" its state and starts the following match back at `0`.",
-              "fr": ""
+              "fr": "Ensuite, parce qu'elle échoue à trouver une correspondance, elle « perd » son état et recommence la correspondance suivante à `0`."
             },
             {
               "en": "If we switch our logs around so that a string with the match at `0` is followed immediately by a string that has a match later than index `11`:",
-              "fr": ""
+              "fr": "Si nous inversons nos logs pour qu'une chaîne avec la correspondance à `0` soit immédiatement suivie d'une chaîne qui a une correspondance après l'indice `11` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "When a regular expression is global, it gets a new property called `lastIndex`. Grabbing our previous code, let's see how this property works:",
-              "fr": ""
+              "fr": "Quand une expression régulière est globale, elle obtient une nouvelle propriété appelée `lastIndex`. En reprenant notre code précédent, voyons comment cette propriété fonctionne :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Looking at this example, you can see how the state of the regular expression changes with each test call using the `lastIndex` to track its previous matches.",
-              "fr": ""
+              "fr": "En regardant cet exemple, tu peux voir comment l'état de l'expression régulière change à chaque appel de test en utilisant `lastIndex` pour suivre ses correspondances précédentes."
             },
             {
               "en": "The global flag is great when you need to get multiple matches from a single string. But if you're testing multiple strings with the same regular expression it's best to leave the `g` flag off.",
-              "fr": ""
+              "fr": "Le flag global est parfait quand tu as besoin d'obtenir plusieurs correspondances depuis une seule chaîne. Mais si tu testes plusieurs chaînes avec la même expression régulière, il vaut mieux laisser le flag `g` de côté."
             },
             {
               "en": "Before learning about the next flag, you need to learn about anchors. The caret (`^`) anchor, at the beginning of the regular expression, says \"match the start of the string\":",
-              "fr": ""
+              "fr": "Avant d'apprendre le prochain flag, tu dois apprendre les ancres. L'ancre caret (`^`), au début de l'expression régulière, dit « correspondre au début de la chaîne » :"
             },
             {
               "en": "The dollar sign (`$`) anchor, at the end of the regular expression, says \"match the end of the string\":",
-              "fr": ""
+              "fr": "L'ancre dollar (`$`), à la fin de l'expression régulière, dit « correspondre à la fin de la chaîne » :"
             },
             {
               "en": "Take a moment to compare the outputs on the right:",
-              "fr": ""
+              "fr": "Prends un moment pour comparer les sorties à droite :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "See how the start anchor only matches at the beginning of the string, and the end anchor only matches at the end of the string? But what about matching across multiple lines? Let's take a look at that:",
-              "fr": ""
+              "fr": "Tu vois comment l'ancre de début ne correspond qu'au début de la chaîne, et l'ancre de fin uniquement à la fin de la chaîne ? Mais qu'en est-il de la correspondance sur plusieurs lignes ? Regardons cela :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Even though `freecodecamp` is in there on its own line, it fails both tests. This is because, by default, anchors look for the beginning and end of the entire string.",
-              "fr": ""
+              "fr": "Même si `freecodecamp` est là sur sa propre ligne, les deux tests échouent. C'est parce que, par défaut, les ancres cherchent le début et la fin de la chaîne entière."
             },
             {
               "en": "But you can make a regex handle multiple lines with the `m` flag, or the multi-line modifier. Let's add that to our regular expressions to see what we get:",
-              "fr": ""
+              "fr": "Mais tu peux faire gérer plusieurs lignes à une regex avec le flag `m`, ou le modificateur multi-ligne. Ajoutons-le à nos expressions régulières pour voir ce que l'on obtient :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now they both match! Because the `freecodecamp` is entirely on its own line, the start anchor matches the beginning of that line, and the end anchor matches the end of that line.",
-              "fr": ""
+              "fr": "Maintenant elles correspondent toutes les deux ! Parce que `freecodecamp` est entièrement sur sa propre ligne, l'ancre de début correspond au début de cette ligne, et l'ancre de fin correspond à la fin de cette ligne."
             },
             {
               "en": "Finally, you have the `d` flag, or indices modifier. Remember that the `i` flag is for case-insensitivity, so the indices modifier needed a different flag.",
-              "fr": ""
+              "fr": "Enfin, tu as le flag `d`, ou modificateur d'indices. Souviens-toi que le flag `i` sert à l'insensibilité à la casse, donc le modificateur d'indices avait besoin d'un flag différent."
             },
             {
               "en": "The `d` flag expands the information you get in a match object. Let's add it to our regular expression:",
-              "fr": ""
+              "fr": "Le flag `d` étend les informations que tu obtiens dans un objet de correspondance. Ajoutons-le à notre expression régulière :"
             },
             {
               "en": "And the result is:",
-              "fr": ""
+              "fr": "Et le résultat est :"
             },
             {
               "en": "Our match object gets a new `indices` property! This property is an array of two numbers, the first being the index in the original string where the match starts, and the second being the index after the match ended. This array also has an extra `groups` property, which is also for named capture groups.",
-              "fr": ""
+              "fr": "Notre objet de correspondance obtient une nouvelle propriété `indices` ! Cette propriété est un tableau de deux nombres, le premier étant l'indice dans la chaîne d'origine où la correspondance commence, et le second étant l'indice après la fin de la correspondance. Ce tableau a aussi une propriété `groups` supplémentaire, qui sert aussi aux groupes de capture nommés."
             },
             {
               "en": "There are a few other flags that you should know are available to you, but are less common in typical code.",
-              "fr": ""
+              "fr": "Il y a quelques autres flags que tu dois savoir disponibles, mais qui sont moins courants dans le code typique."
             },
             {
               "en": "The first is the unicode modifier, or `u` flag. This expands the functionality of a regular expression to allow it to match special unicode characters.",
-              "fr": ""
+              "fr": "Le premier est le modificateur unicode, ou flag `u`. Il étend les fonctionnalités d'une expression régulière pour lui permettre de correspondre à des caractères unicode spéciaux."
             },
             {
               "en": "You'll learn more about character classes in a future lesson, but the `u` flag gives you access to special classes like `Extended_Pictographic` to match most emoji:",
-              "fr": ""
+              "fr": "Tu en apprendras plus sur les classes de caractères dans une leçon future, mais le flag `u` te donne accès à des classes spéciales comme `Extended_Pictographic` pour correspondre à la plupart des emoji :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "There is also a `v` flag, which further expands the functionality of the unicode matching.",
-              "fr": ""
+              "fr": "Il y a aussi un flag `v`, qui étend encore davantage les fonctionnalités de la correspondance unicode."
             },
             {
               "en": "The second is the sticky modifier, or the `y` flag. The sticky modifier behaves very similarly to the global modifier, but with a few exceptions.",
-              "fr": ""
+              "fr": "Le deuxième est le modificateur sticky, ou flag `y`. Le modificateur sticky se comporte de façon très similaire au modificateur global, mais avec quelques exceptions."
             },
             {
               "en": "The biggest one is that a global regular expression will start from `lastIndex` and search the entire remainder of the string for another match, but a sticky regular expression will return `null` and reset the `lastIndex` to `0` if there is not immediately a match at the previous `lastIndex`.",
-              "fr": ""
+              "fr": "La plus importante est qu'une expression régulière globale partira de `lastIndex` et cherchera dans tout le reste de la chaîne une autre correspondance, mais une expression régulière sticky renverra `null` et réinitialisera `lastIndex` à `0` s'il n'y a pas immédiatement une correspondance au précédent `lastIndex`."
             },
             {
               "en": "And the last is the single-line modifier, or the `s` flag. Remember that the multiline modifier allows start and end anchors to match the start and end of a line, instead of the entire string.",
-              "fr": ""
+              "fr": "Et le dernier est le modificateur single-line, ou flag `s`. Souviens-toi que le modificateur multi-ligne permet aux ancres de début et de fin de correspondre au début et à la fin d'une ligne, au lieu de la chaîne entière."
             },
             {
               "en": "The single-line modifier allows a wildcard character, represented by a period (`.`) in regex, to match linebreaks – effectively treating the string as a single line of text.",
-              "fr": ""
+              "fr": "Le modificateur single-line permet à un caractère joker, représenté par un point (`.`) en regex, de correspondre aux sauts de ligne – traitant efficacement la chaîne comme une seule ligne de texte."
             },
             {
               "en": "There are quite a few of these modifiers, but the `i` and `g` flags are the ones you'll use most frequently, and are the most important to remember.",
-              "fr": ""
+              "fr": "Il y a pas mal de ces modificateurs, mais les flags `i` et `g` sont ceux que tu utiliseras le plus fréquemment, et les plus importants à retenir."
             }
           ]
         },
@@ -544,7 +544,7 @@
           "chunks": [
             {
               "en": "What would the following code output?",
-              "fr": ""
+              "fr": "Que produirait le code suivant ?"
             }
           ]
         },
@@ -554,7 +554,7 @@
           "chunks": [
             {
               "en": "The `i` flag makes the regex case-insensitive, so `freeCodeCamp` matches regardless of case, as long as the letters are the same.",
-              "fr": ""
+              "fr": "Le flag `i` rend la regex insensible à la casse, donc `freeCodeCamp` correspond quelle que soit la casse, tant que les lettres sont les mêmes."
             }
           ]
         },
@@ -564,7 +564,7 @@
           "chunks": [
             {
               "en": "The `i` flag makes the regex case-insensitive, so `freeCodeCamp` matches regardless of case, as long as the letters are the same.",
-              "fr": ""
+              "fr": "Le flag `i` rend la regex insensible à la casse, donc `freeCodeCamp` correspond quelle que soit la casse, tant que les lettres sont les mêmes."
             }
           ]
         },
@@ -574,7 +574,7 @@
           "chunks": [
             {
               "en": "The `i` flag makes the regex case-insensitive, so `freeCodeCamp` matches regardless of case, as long as the letters are the same.",
-              "fr": ""
+              "fr": "Le flag `i` rend la regex insensible à la casse, donc `freeCodeCamp` correspond quelle que soit la casse, tant que les lettres sont les mêmes."
             }
           ]
         },
@@ -584,7 +584,7 @@
           "chunks": [
             {
               "en": "When would you NOT want to use the global (`g`) flag in a regular expression?",
-              "fr": ""
+              "fr": "Quand voudrais-tu NE PAS utiliser le flag global (`g`) dans une expression régulière ?"
             }
           ]
         },
@@ -594,7 +594,7 @@
           "chunks": [
             {
               "en": "When you want to match a pattern multiple times within a single string.",
-              "fr": ""
+              "fr": "Quand tu veux faire correspondre un motif plusieurs fois dans une seule chaîne."
             }
           ]
         },
@@ -604,11 +604,11 @@
           "chunks": [
             {
               "en": "The `g` flag is stateful, meaning it tracks the last match, which can cause issues when testing multiple strings.",
-              "fr": ""
+              "fr": "Le flag `g` est à état (stateful), ce qui signifie qu'il suit la dernière correspondance, ce qui peut causer des problèmes quand on teste plusieurs chaînes."
             },
             {
               "en": "When you want the match to start fresh with each new test.",
-              "fr": ""
+              "fr": "Quand tu veux que la correspondance reparte de zéro à chaque nouveau test."
             }
           ]
         },
@@ -618,11 +618,11 @@
           "chunks": [
             {
               "en": "The `g` flag is stateful, meaning it tracks the last match, which can cause issues when testing multiple strings.",
-              "fr": ""
+              "fr": "Le flag `g` est à état (stateful), ce qui signifie qu'il suit la dernière correspondance, ce qui peut causer des problèmes quand on teste plusieurs chaînes."
             },
             {
               "en": "When you want to make the regex case-insensitive.",
-              "fr": ""
+              "fr": "Quand tu veux rendre la regex insensible à la casse."
             }
           ]
         },
@@ -632,11 +632,11 @@
           "chunks": [
             {
               "en": "The `g` flag is stateful, meaning it tracks the last match, which can cause issues when testing multiple strings.",
-              "fr": ""
+              "fr": "Le flag `g` est à état (stateful), ce qui signifie qu'il suit la dernière correspondance, ce qui peut causer des problèmes quand on teste plusieurs chaînes."
             },
             {
               "en": "When you are testing multiple strings and don't need to track match state.",
-              "fr": ""
+              "fr": "Quand tu testes plusieurs chaînes et que tu n'as pas besoin de suivre l'état des correspondances."
             }
           ]
         },
@@ -646,7 +646,7 @@
           "chunks": [
             {
               "en": "What does the multi-line (`m`) modifier do in a regular expression?",
-              "fr": ""
+              "fr": "Que fait le modificateur multi-ligne (`m`) dans une expression régulière ?"
             }
           ]
         },
@@ -656,11 +656,11 @@
           "chunks": [
             {
               "en": "It allows anchors (`^` and `$`) to match the start and end of each line, not just the entire string.",
-              "fr": ""
+              "fr": "Il permet aux ancres (`^` et `$`) de correspondre au début et à la fin de chaque ligne, pas seulement de la chaîne entière."
             },
             {
               "en": "It makes the regular expression case-insensitive.",
-              "fr": ""
+              "fr": "Il rend l'expression régulière insensible à la casse."
             }
           ]
         },
@@ -670,11 +670,11 @@
           "chunks": [
             {
               "en": "The `m` modifier enables matching at the start and end of lines in multi-line strings.",
-              "fr": ""
+              "fr": "Le modificateur `m` permet la correspondance au début et à la fin des lignes dans les chaînes multi-lignes."
             },
             {
               "en": "It allows the regular expression to match linebreaks.",
-              "fr": ""
+              "fr": "Il permet à l'expression régulière de correspondre aux sauts de ligne."
             }
           ]
         },
@@ -684,11 +684,11 @@
           "chunks": [
             {
               "en": "The `m` modifier enables matching at the start and end of lines in multi-line strings.",
-              "fr": ""
+              "fr": "Le modificateur `m` permet la correspondance au début et à la fin des lignes dans les chaînes multi-lignes."
             },
             {
               "en": "It makes the regular expression match globally.",
-              "fr": ""
+              "fr": "Il fait correspondre l'expression régulière de façon globale."
             }
           ]
         },
@@ -698,7 +698,7 @@
           "chunks": [
             {
               "en": "The `m` modifier enables matching at the start and end of lines in multi-line strings.",
-              "fr": ""
+              "fr": "Le modificateur `m` permet la correspondance au début et à la fin des lignes dans les chaînes multi-lignes."
             }
           ]
         }
@@ -710,7 +710,7 @@
       "dashedName": "how-can-you-match-and-replace-all-occurrences-in-a-string",
       "title": {
         "en": "How Can You Match and Replace All Occurrences in a String?",
-        "fr": ""
+        "fr": "Comment peux-tu faire correspondre et remplacer toutes les occurrences dans une chaîne ?"
       },
       "sections": [
         {
@@ -719,103 +719,103 @@
           "chunks": [
             {
               "en": "Let's learn how to match or replace all occurrences of a pattern in a string.",
-              "fr": ""
+              "fr": "Apprenons comment faire correspondre ou remplacer toutes les occurrences d'un motif dans une chaîne."
             },
             {
               "en": "You have previously learned about the `replace()` and `match()` methods, as well as the global `g` modifier. Now you can combine that knowledge to handle all patterns in a string. Let's recall our original match code:",
-              "fr": ""
+              "fr": "Tu as déjà appris les méthodes `replace()` et `match()`, ainsi que le modificateur global `g`. Tu peux maintenant combiner ces connaissances pour gérer tous les motifs dans une chaîne. Rappelons notre code de correspondance d'origine :"
             },
             {
               "en": "And our resulting match object:",
-              "fr": ""
+              "fr": "Et notre objet de correspondance résultant :"
             },
             {
               "en": "But what if we have a string with multiple occurrences of `freecodecamp` to match? Let's take a look at how `match()` behaves with that. We'll throw in our old `replace()` example too, just to compare:",
-              "fr": ""
+              "fr": "Mais et si nous avons une chaîne avec plusieurs occurrences de `freecodecamp` à faire correspondre ? Regardons comment `match()` se comporte dans ce cas. On ajoutera aussi notre ancien exemple `replace()`, juste pour comparer :"
             },
             {
               "en": "And the result is this:",
-              "fr": ""
+              "fr": "Et le résultat est celui-ci :"
             },
             {
               "en": "Oh no! `match()` only returned the first match, and `replace()` only replaced the first match. This is because, by default, `match()` and `replace()` only operate against the first pattern occurrence.",
-              "fr": ""
+              "fr": "Oh non ! `match()` n'a renvoyé que la première correspondance, et `replace()` n'a remplacé que la première correspondance. C'est parce que, par défaut, `match()` et `replace()` n'opèrent que sur la première occurrence du motif."
             },
             {
               "en": "Thankfully, you can avoid this by using the global modifier on your regular expression. Let's add that to ours:",
-              "fr": ""
+              "fr": "Heureusement, tu peux éviter cela en utilisant le modificateur global sur ton expression régulière. Ajoutons-le à la nôtre :"
             },
             {
               "en": "And confirm the result:",
-              "fr": ""
+              "fr": "Et confirmons le résultat :"
             },
             {
               "en": "That worked! Our replace call replaced all of the lowercase `freecodecamp` strings, and our `match()` method matched both of them.",
-              "fr": ""
+              "fr": "Ça a marché ! Notre appel replace a remplacé toutes les chaînes `freecodecamp` en minuscules, et notre méthode `match()` a trouvé les deux."
             },
             {
               "en": "What's interesting here is that when you use the global modifier with `match()`, you lose the extra information about capture groups and string indices that would come in the match array.",
-              "fr": ""
+              "fr": "Ce qui est intéressant ici, c'est que lorsque tu utilises le modificateur global avec `match()`, tu perds les informations supplémentaires sur les groupes de capture et les indices de chaîne qui se trouveraient dans le tableau de correspondance."
             },
             {
               "en": "Thankfully, 2019's ECMAScript update brought us two new methods: `matchAll()` and `replaceAll()`. Like their singular counterparts, these methods accept a string or regular expression, and `replaceAll()` also accepts a second argument as the string to replace with.",
-              "fr": ""
+              "fr": "Heureusement, la mise à jour ECMAScript de 2019 nous a apporté deux nouvelles méthodes : `matchAll()` et `replaceAll()`. Comme leurs homologues au singulier, ces méthodes acceptent une chaîne ou une expression régulière, et `replaceAll()` accepte aussi un second argument comme chaîne de remplacement."
             },
             {
               "en": "But unlike the previous methods, `replaceAll()` and `matchAll()` will throw an error if you give them a regular expression without the global modifier. Let's update our code to use these new methods:",
-              "fr": ""
+              "fr": "Mais contrairement aux méthodes précédentes, `replaceAll()` et `matchAll()` lèveront une erreur si tu leur donnes une expression régulière sans le modificateur global. Mettons à jour notre code pour utiliser ces nouvelles méthodes :"
             },
             {
               "en": "And our result:",
-              "fr": ""
+              "fr": "Et notre résultat :"
             },
             {
               "en": "Good news! Our `replaceAll()` worked exactly as we wanted – it replaced all occurrences of the lowercased `freecodecamp` with the properly camelCased version.",
-              "fr": ""
+              "fr": "Bonne nouvelle ! Notre `replaceAll()` a fonctionné exactement comme on le voulait – il a remplacé toutes les occurrences de `freecodecamp` en minuscules par la version correctement en camelCase."
             },
             {
               "en": "But what is that empty object? Well, `matchAll()` returns a special type of object called an `Iterator`, which the freeCodeCamp console isn't prepared to handle.",
-              "fr": ""
+              "fr": "Mais qu'est-ce que cet objet vide ? Eh bien, `matchAll()` renvoie un type spécial d'objet appelé `Iterator`, que la console freeCodeCamp n'est pas préparée à gérer."
             },
             {
               "en": "If we peek in our browser console, the `Iterator` has a `next()` method, which we can call to get the next value:",
-              "fr": ""
+              "fr": "Si on regarde dans la console du navigateur, l'`Iterator` a une méthode `next()`, que l'on peut appeler pour obtenir la valeur suivante :"
             },
             {
               "en": "Let's go ahead and call `matched.next()`, and log the result:",
-              "fr": ""
+              "fr": "Allons-y et appelons `matched.next()`, et affichons le résultat :"
             },
             {
               "en": "There's our match array! `next()` gives us an object with two values: `done`, which is `false` when there are more elements available in the iterator, and `value` which is the value we just iterated over. So, if we call it one more time:",
-              "fr": ""
+              "fr": "Voilà notre tableau de correspondance ! `next()` nous donne un objet avec deux valeurs : `done`, qui est `false` quand il reste des éléments disponibles dans l'itérateur, et `value` qui est la valeur que l'on vient de parcourir. Donc, si on l'appelle encore une fois :"
             },
             {
               "en": "Wait, why does it say `done` is still `false`? There should only be two matches in the array, right? Let's call it a third time and see what we get:",
-              "fr": ""
+              "fr": "Attends, pourquoi dit-il que `done` est encore `false` ? Il ne devrait y avoir que deux correspondances dans le tableau, non ? Appelons-le une troisième fois et voyons ce que l'on obtient :"
             },
             {
               "en": "`done` is finally `true`, but why is that value `undefined`? Well, as it turns out, the `matchAll()` iterator is lazy. It doesn't find all of your matches at once. It only finds a match when you tell it to by calling `next()`.",
-              "fr": ""
+              "fr": "`done` est enfin `true`, mais pourquoi cette valeur est-elle `undefined` ? Eh bien, il s'avère que l'itérateur de `matchAll()` est paresseux (lazy). Il ne trouve pas toutes tes correspondances d'un coup. Il ne trouve une correspondance que lorsque tu le lui demandes en appelant `next()`."
             },
             {
               "en": "As long as it finds a match, it isn't `done`. Once it fails to find a match and brings back `undefined`, it is `done`. This may seem inconvenient, but it can be quite helpful when your regular expression is computationally expensive.",
-              "fr": ""
+              "fr": "Tant qu'il trouve une correspondance, il n'est pas `done`. Une fois qu'il échoue à trouver une correspondance et ramène `undefined`, il est `done`. Cela peut sembler peu pratique, mais cela peut être très utile quand ton expression régulière est coûteuse en calcul."
             },
             {
               "en": "If your example is less so, like ours, you can skip that feature and extract all of the matches at once by converting it to an array. This is achieved by calling `Array.from()` and passing your iterator as the argument.",
-              "fr": ""
+              "fr": "Si ton exemple l'est moins, comme le nôtre, tu peux ignorer cette fonctionnalité et extraire toutes les correspondances d'un coup en le convertissant en tableau. Cela s'obtient en appelant `Array.from()` et en passant ton itérateur comme argument."
             },
             {
               "en": "Let's update our code to use that – we'll go ahead and clean up our `replaceAll` calls since we know that works:",
-              "fr": ""
+              "fr": "Mettons à jour notre code pour utiliser cela – on va aussi nettoyer nos appels `replaceAll` puisque l'on sait que ça marche :"
             },
             {
               "en": "And we finally get our array of matches:",
-              "fr": ""
+              "fr": "Et on obtient enfin notre tableau de correspondances :"
             },
             {
               "en": "These powerful methods can help you manipulate and extract data from strings without having to sacrifice performance or readability.",
-              "fr": ""
+              "fr": "Ces méthodes puissantes peuvent t'aider à manipuler et extraire des données depuis des chaînes sans sacrifier les performances ni la lisibilité."
             }
           ]
         },
@@ -825,7 +825,7 @@
           "chunks": [
             {
               "en": "What modifier should be added to a regular expression to match all occurrences of a pattern in a string?",
-              "fr": ""
+              "fr": "Quel modificateur faut-il ajouter à une expression régulière pour faire correspondre toutes les occurrences d'un motif dans une chaîne ?"
             }
           ]
         },
@@ -835,7 +835,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific modifier for global matching.",
-              "fr": ""
+              "fr": "La leçon mentionne un modificateur spécifique pour la correspondance globale."
             }
           ]
         },
@@ -845,7 +845,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific modifier for global matching.",
-              "fr": ""
+              "fr": "La leçon mentionne un modificateur spécifique pour la correspondance globale."
             }
           ]
         },
@@ -855,7 +855,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific modifier for global matching.",
-              "fr": ""
+              "fr": "La leçon mentionne un modificateur spécifique pour la correspondance globale."
             }
           ]
         },
@@ -865,7 +865,7 @@
           "chunks": [
             {
               "en": "What is the main difference between `match()` and `matchAll()` methods when used with a global regular expression?",
-              "fr": ""
+              "fr": "Quelle est la principale différence entre les méthodes `match()` et `matchAll()` lorsqu'elles sont utilisées avec une expression régulière globale ?"
             }
           ]
         },
@@ -875,11 +875,11 @@
           "chunks": [
             {
               "en": "`match()` returns an array, while `matchAll()` returns an Iterator.",
-              "fr": ""
+              "fr": "`match()` renvoie un tableau, tandis que `matchAll()` renvoie un Iterator."
             },
             {
               "en": "`matchAll()` is faster than `match()`.",
-              "fr": ""
+              "fr": "`matchAll()` est plus rapide que `match()`."
             }
           ]
         },
@@ -889,11 +889,11 @@
           "chunks": [
             {
               "en": "The lesson describes a special type of object returned by `matchAll()`.",
-              "fr": ""
+              "fr": "La leçon décrit un type spécial d'objet renvoyé par `matchAll()`."
             },
             {
               "en": "`match()` can only find the first occurrence, while `matchAll()` finds all occurrences.",
-              "fr": ""
+              "fr": "`match()` ne peut trouver que la première occurrence, tandis que `matchAll()` trouve toutes les occurrences."
             }
           ]
         },
@@ -903,11 +903,11 @@
           "chunks": [
             {
               "en": "The lesson describes a special type of object returned by `matchAll()`.",
-              "fr": ""
+              "fr": "La leçon décrit un type spécial d'objet renvoyé par `matchAll()`."
             },
             {
               "en": "There is no difference, they are interchangeable",
-              "fr": ""
+              "fr": "Il n'y a pas de différence, elles sont interchangeables"
             }
           ]
         },
@@ -917,7 +917,7 @@
           "chunks": [
             {
               "en": "The lesson describes a special type of object returned by `matchAll()`.",
-              "fr": ""
+              "fr": "La leçon décrit un type spécial d'objet renvoyé par `matchAll()`."
             }
           ]
         },
@@ -927,7 +927,7 @@
           "chunks": [
             {
               "en": "How can you convert the result of `matchAll()` into an array containing all matches?",
-              "fr": ""
+              "fr": "Comment peux-tu convertir le résultat de `matchAll()` en un tableau contenant toutes les correspondances ?"
             }
           ]
         },
@@ -937,7 +937,7 @@
           "chunks": [
             {
               "en": "By using a `for...of` loop",
-              "fr": ""
+              "fr": "En utilisant une boucle `for...of`"
             }
           ]
         },
@@ -947,11 +947,11 @@
           "chunks": [
             {
               "en": "The lesson demonstrates a specific method to convert the `Iterator` to an array.",
-              "fr": ""
+              "fr": "La leçon démontre une méthode spécifique pour convertir l'`Iterator` en tableau."
             },
             {
               "en": "By calling the `toArray()` method on the result.",
-              "fr": ""
+              "fr": "En appelant la méthode `toArray()` sur le résultat."
             }
           ]
         },
@@ -961,15 +961,15 @@
           "chunks": [
             {
               "en": "The lesson demonstrates a specific method to convert the `Iterator` to an array.",
-              "fr": ""
+              "fr": "La leçon démontre une méthode spécifique pour convertir l'`Iterator` en tableau."
             },
             {
               "en": "By using `Array.from()` with the result as an argument.",
-              "fr": ""
+              "fr": "En utilisant `Array.from()` avec le résultat comme argument."
             },
             {
               "en": "By spreading the result into an array literal.",
-              "fr": ""
+              "fr": "En répandant (spreading) le résultat dans un littéral de tableau."
             }
           ]
         },
@@ -979,7 +979,7 @@
           "chunks": [
             {
               "en": "The lesson demonstrates a specific method to convert the Iterator to an array.",
-              "fr": ""
+              "fr": "La leçon démontre une méthode spécifique pour convertir l'Iterator en tableau."
             }
           ]
         }
@@ -991,7 +991,7 @@
       "dashedName": "what-are-character-classes-and-what-are-some-common-examples",
       "title": {
         "en": "What Are Character Classes, and What Are Some Common Examples?",
-        "fr": ""
+        "fr": "Que sont les classes de caractères, et quels sont quelques exemples courants ?"
       },
       "sections": [
         {
@@ -1000,119 +1000,119 @@
           "chunks": [
             {
               "en": "Let's learn about character classes in regular expressions, including some common examples.",
-              "fr": ""
+              "fr": "Apprenons les classes de caractères dans les expressions régulières, y compris quelques exemples courants."
             },
             {
               "en": "Character classes are a special syntax you can use to match sets or subsets of characters.",
-              "fr": ""
+              "fr": "Les classes de caractères sont une syntaxe spéciale que tu peux utiliser pour faire correspondre des ensembles ou des sous-ensembles de caractères."
             },
             {
               "en": "The first character class you should learn is the wildcard class.",
-              "fr": ""
+              "fr": "La première classe de caractères que tu devrais apprendre est la classe joker (wildcard)."
             },
             {
               "en": "The wildcard is represented by a period or dot (`.`), and matches any single character except line breaks. To allow the wildcard class to match line breaks, remember that you would need to use the `s` flag.",
-              "fr": ""
+              "fr": "Le joker est représenté par un point (`.`), et correspond à n'importe quel caractère unique sauf les sauts de ligne. Pour permettre à la classe joker de correspondre aux sauts de ligne, souviens-toi qu'il faudrait utiliser le flag `s`."
             },
             {
               "en": "A regular expression that matched the letter `a` followed by one single character might look like:",
-              "fr": ""
+              "fr": "Une expression régulière qui correspondrait à la lettre `a` suivie d'un seul caractère pourrait ressembler à :"
             },
             {
               "en": "This can be helpful when you are looking for specific patterns in a string, but don't know what might be between those two patterns. But you can also use character classes to narrow down your matches.",
-              "fr": ""
+              "fr": "Cela peut être utile quand tu cherches des motifs spécifiques dans une chaîne, mais que tu ne sais pas ce qui pourrait se trouver entre ces deux motifs. Mais tu peux aussi utiliser les classes de caractères pour affiner tes correspondances."
             },
             {
               "en": "For example, what if you wanted to match a numerical character? You might have to write out every possible digit, separating them with the or operator (`|`):",
-              "fr": ""
+              "fr": "Par exemple, et si tu voulais faire correspondre un caractère numérique ? Tu pourrais devoir écrire chaque chiffre possible, en les séparant avec l'opérateur ou (`|`) :"
             },
             {
               "en": "A character class exists for this exact pattern, and gives you a shorthand syntax for writing the same thing. In this case, the character class is written as a backslash (`\\`) followed by a `d` character:",
-              "fr": ""
+              "fr": "Une classe de caractères existe pour ce motif exact, et te donne une syntaxe abrégée pour écrire la même chose. Dans ce cas, la classe de caractères s'écrit comme une barre oblique inversée (`\\`) suivie d'un caractère `d` :"
             },
             {
               "en": "This regular expression will match the exact same pattern as our previous expression: a single numerical character anywhere in the string.",
-              "fr": ""
+              "fr": "Cette expression régulière correspondra au motif exactement identique à notre expression précédente : un seul caractère numérique n'importe où dans la chaîne."
             },
             {
               "en": "Now consider a regular expression which also needs to match any letter character `a` through `z`. You could write out each individual character separated by the or operator. Or you could use another character class.",
-              "fr": ""
+              "fr": "Maintenant, considère une expression régulière qui doit aussi correspondre à n'importe quel caractère lettre de `a` à `z`. Tu pourrais écrire chaque caractère individuellement séparé par l'opérateur ou. Ou tu pourrais utiliser une autre classe de caractères."
             },
             {
               "en": "The `\\w` class, which is a backslash followed by a `w`, represents any word character:",
-              "fr": ""
+              "fr": "La classe `\\w`, qui est une barre oblique inversée suivie d'un `w`, représente n'importe quel caractère de mot :"
             },
             {
               "en": "A word character is defined as any letter, from `a` to `z`, or a number from `0` to `9`, or the underscore (`_`) character.",
-              "fr": ""
+              "fr": "Un caractère de mot est défini comme n'importe quelle lettre, de `a` à `z`, ou un chiffre de `0` à `9`, ou le caractère underscore (`_`)."
             },
             {
               "en": "The inclusion of the underscore might seem strange, but consider the naming conventions for variables – variable names can often include underscores, so `\\w` is designed to match that as well.",
-              "fr": ""
+              "fr": "L'inclusion de l'underscore peut sembler étrange, mais pense aux conventions de nommage des variables – les noms de variables peuvent souvent inclure des underscores, donc `\\w` est conçu pour correspondre à cela aussi."
             },
             {
               "en": "There is one more special character class to consider: the whitespace class `\\s`, represented by a backslash followed by an `s`. This character class will match any whitespace, including new lines, spaces, tabs, and special unicode space characters.",
-              "fr": ""
+              "fr": "Il y a encore une classe de caractères spéciale à considérer : la classe d'espaces `\\s`, représentée par une barre oblique inversée suivie d'un `s`. Cette classe de caractères correspondra à n'importe quel espace, y compris les nouvelles lignes, les espaces, les tabulations, et les caractères d'espace unicode spéciaux."
             },
             {
               "en": "These special character classes can be negated. To negate one of these character classes, instead of using a lowercase letter after the backslash, use the uppercase equivalent:",
-              "fr": ""
+              "fr": "Ces classes de caractères spéciales peuvent être niées. Pour nier l'une de ces classes de caractères, au lieu d'utiliser une lettre minuscule après la barre oblique inversée, utilise l'équivalent en majuscule :"
             },
             {
               "en": "This regular expression, for example, does not match a numerical character. Instead, it matches any single character that is not a numerical character.",
-              "fr": ""
+              "fr": "Cette expression régulière, par exemple, ne correspond pas à un caractère numérique. Au lieu de cela, elle correspond à n'importe quel caractère unique qui n'est pas un caractère numérique."
             },
             {
               "en": "Negating the `\\w` class would match any character that is not `a` to `z`, `0` to `9`, or an underscore, and negating the `\\s` character class would match any character that is not a whitespace.",
-              "fr": ""
+              "fr": "Nier la classe `\\w` correspondrait à n'importe quel caractère qui n'est pas `a` à `z`, `0` à `9`, ou un underscore, et nier la classe de caractères `\\s` correspondrait à n'importe quel caractère qui n'est pas un espace."
             },
             {
               "en": "But what if you wanted to match more specific subsets of characters?",
-              "fr": ""
+              "fr": "Mais et si tu voulais faire correspondre des sous-ensembles de caractères plus spécifiques ?"
             },
             {
               "en": "Maybe you're a professor grading papers, and you need to make sure your grades are valid. A valid grade can be `A`, `B`, `C`, `D`, or `F`. You can use square brackets to construct your own character class:",
-              "fr": ""
+              "fr": "Peut-être es-tu un professeur qui note des copies, et tu dois t'assurer que tes notes sont valides. Une note valide peut être `A`, `B`, `C`, `D`, ou `F`. Tu peux utiliser des crochets pour construire ta propre classe de caractères :"
             },
             {
               "en": "This regular expression will match a single character that is in the list `a`, `b`, `c`, `d`, or `f`.",
-              "fr": ""
+              "fr": "Cette expression régulière correspondra à un seul caractère qui est dans la liste `a`, `b`, `c`, `d`, ou `f`."
             },
             {
               "en": "What about checking only grades that pass? A passing grade would be an `A`, `B`, `C`, or `D`. You can modify your character class to stop matching `f` by removing that character from the list:",
-              "fr": ""
+              "fr": "Et pour vérifier uniquement les notes qui passent ? Une note qui passe serait un `A`, `B`, `C`, ou `D`. Tu peux modifier ta classe de caractères pour ne plus correspondre à `f` en retirant ce caractère de la liste :"
             },
             {
               "en": "You may have noticed now that our character class consists only of consecutive characters. `a`, `b`, `c`, and `d` are all directly next to each other in the alphabet. For numbers, consecutive characters might be `4`, `5`, and `6`.",
-              "fr": ""
+              "fr": "Tu as peut-être remarqué maintenant que notre classe de caractères ne consiste qu'en des caractères consécutifs. `a`, `b`, `c`, et `d` sont tous directement voisins dans l'alphabet. Pour les nombres, des caractères consécutifs pourraient être `4`, `5`, et `6`."
             },
             {
               "en": "When you have consecutive characters, you can create a range using the hyphen character.",
-              "fr": ""
+              "fr": "Quand tu as des caractères consécutifs, tu peux créer une plage en utilisant le caractère tiret."
             },
             {
               "en": "Using a range, we can turn our regular expression into a shorter syntax while matching the exact same pattern.",
-              "fr": ""
+              "fr": "En utilisant une plage, on peut transformer notre expression régulière en une syntaxe plus courte tout en correspondant au motif exactement identique."
             },
             {
               "en": "Remember that regular expressions are case-sensitive by default. This means our character class will only match the lowercase variants of `a`, `b`, `c`, and `d`. You could use the `i` flag to achieve this, but you can also bake it directly into your character class by including the uppercase variants:",
-              "fr": ""
+              "fr": "Souviens-toi que les expressions régulières sont sensibles à la casse par défaut. Cela signifie que notre classe de caractères ne correspondra qu'aux variantes minuscules de `a`, `b`, `c`, et `d`. Tu pourrais utiliser le flag `i` pour y arriver, mais tu peux aussi l'intégrer directement dans ta classe de caractères en incluant les variantes majuscules :"
             },
             {
               "en": "You can also mix digits and numbers in your character class. For example, if you wanted the behavior of the `\\w` class without the underscore, you could construct your own:",
-              "fr": ""
+              "fr": "Tu peux aussi mélanger chiffres et lettres dans ta classe de caractères. Par exemple, si tu voulais le comportement de la classe `\\w` sans l'underscore, tu pourrais construire la tienne :"
             },
             {
               "en": "Note that if you want your character class to match a literal hyphen, you need to place a hyphen at the beginning or end of the class:",
-              "fr": ""
+              "fr": "Note que si tu veux que ta classe de caractères corresponde à un tiret littéral, tu dois placer un tiret au début ou à la fin de la classe :"
             },
             {
               "en": "And finally, you can include special character classes in your custom class. Maybe you want to include a hyphen in the set matched by `\\w`:",
-              "fr": ""
+              "fr": "Et enfin, tu peux inclure des classes de caractères spéciales dans ta classe personnalisée. Peut-être veux-tu inclure un tiret dans l'ensemble correspondant à `\\w` :"
             },
             {
               "en": "Character classes are a powerful tool that gives you incredible control over your pattern matching.",
-              "fr": ""
+              "fr": "Les classes de caractères sont un outil puissant qui te donne un contrôle incroyable sur la correspondance de motifs."
             }
           ]
         },
@@ -1122,7 +1122,7 @@
           "chunks": [
             {
               "en": "Which character class matches any single character EXCEPT line breaks?",
-              "fr": ""
+              "fr": "Quelle classe de caractères correspond à n'importe quel caractère unique SAUF les sauts de ligne ?"
             }
           ]
         },
@@ -1132,7 +1132,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"wild card\" class represented by a specific symbol.",
-              "fr": ""
+              "fr": "La leçon mentionne une classe « wild card » représentée par un symbole spécifique."
             }
           ]
         },
@@ -1142,7 +1142,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"wild card\" class represented by a specific symbol.",
-              "fr": ""
+              "fr": "La leçon mentionne une classe « wild card » représentée par un symbole spécifique."
             }
           ]
         },
@@ -1152,7 +1152,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"wild card\" class represented by a specific symbol.",
-              "fr": ""
+              "fr": "La leçon mentionne une classe « wild card » représentée par un symbole spécifique."
             }
           ]
         },
@@ -1162,7 +1162,7 @@
           "chunks": [
             {
               "en": "What does the character class `\\w` match?",
-              "fr": ""
+              "fr": "À quoi correspond la classe de caractères `\\w` ?"
             }
           ]
         },
@@ -1172,7 +1172,7 @@
           "chunks": [
             {
               "en": "Only lowercase letters.",
-              "fr": ""
+              "fr": "Uniquement les lettres minuscules."
             }
           ]
         },
@@ -1182,11 +1182,11 @@
           "chunks": [
             {
               "en": "The lesson defines what constitutes a \"word character\" in regular expressions.",
-              "fr": ""
+              "fr": "La leçon définit ce qui constitue un « caractère de mot » dans les expressions régulières."
             },
             {
               "en": "Only uppercase letters.",
-              "fr": ""
+              "fr": "Uniquement les lettres majuscules."
             }
           ]
         },
@@ -1196,15 +1196,15 @@
           "chunks": [
             {
               "en": "The lesson defines what constitutes a \"word character\" in regular expressions.",
-              "fr": ""
+              "fr": "La leçon définit ce qui constitue un « caractère de mot » dans les expressions régulières."
             },
             {
               "en": "Any letter, number, or underscore.",
-              "fr": ""
+              "fr": "N'importe quelle lettre, chiffre, ou underscore."
             },
             {
               "en": "Only white space characters.",
-              "fr": ""
+              "fr": "Uniquement les caractères d'espace."
             }
           ]
         },
@@ -1214,7 +1214,7 @@
           "chunks": [
             {
               "en": "The lesson defines what constitutes a \"word character\" in regular expressions.",
-              "fr": ""
+              "fr": "La leçon définit ce qui constitue un « caractère de mot » dans les expressions régulières."
             }
           ]
         },
@@ -1224,7 +1224,7 @@
           "chunks": [
             {
               "en": "How would you create a custom character class that matches any uppercase or lowercase letter, but NOT numbers or underscores?",
-              "fr": ""
+              "fr": "Comment créerais-tu une classe de caractères personnalisée qui correspond à n'importe quelle lettre majuscule ou minuscule, mais PAS aux chiffres ni aux underscores ?"
             }
           ]
         },
@@ -1234,7 +1234,7 @@
           "chunks": [
             {
               "en": "Think about how the lesson describes creating ranges within square brackets.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la leçon décrit la création de plages entre crochets."
             }
           ]
         },
@@ -1244,7 +1244,7 @@
           "chunks": [
             {
               "en": "Think about how the lesson describes creating ranges within square brackets.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la leçon décrit la création de plages entre crochets."
             }
           ]
         },
@@ -1254,7 +1254,7 @@
           "chunks": [
             {
               "en": "Think about how the lesson describes creating ranges within square brackets.",
-              "fr": ""
+              "fr": "Réfléchis à la façon dont la leçon décrit la création de plages entre crochets."
             }
           ]
         }
@@ -1266,7 +1266,7 @@
       "dashedName": "what-are-lookaheads-and-lookbehind-assertions-and-how-do-they-work",
       "title": {
         "en": "What Are Lookahead and Lookbehind Assertions, and How Do They Work?",
-        "fr": ""
+        "fr": "Que sont les assertions lookahead et lookbehind, et comment fonctionnent-elles ?"
       },
       "sections": [
         {
@@ -1275,87 +1275,87 @@
           "chunks": [
             {
               "en": "Lookahead and lookbehind assertions allow you to match specific patterns based on the presence or lack of surrounding patterns. There are four variations of these assertions.",
-              "fr": ""
+              "fr": "Les assertions lookahead et lookbehind te permettent de faire correspondre des motifs spécifiques selon la présence ou l'absence de motifs environnants. Il y a quatre variantes de ces assertions."
             },
             {
               "en": "First is the positive lookahead assertion. This assertion will match a pattern when the pattern is followed by another pattern.",
-              "fr": ""
+              "fr": "La première est l'assertion lookahead positive. Cette assertion fera correspondre un motif lorsque le motif est suivi d'un autre motif."
             },
             {
               "en": "To construct a positive lookahead, you need to start with the pattern you want to match. Then, use parentheses to wrap the pattern you want to use as your condition. After the opening parenthesis, use `?=` to define that pattern as a positive lookahead.",
-              "fr": ""
+              "fr": "Pour construire un lookahead positif, tu dois commencer par le motif que tu veux faire correspondre. Ensuite, utilise des parenthèses pour envelopper le motif que tu veux utiliser comme condition. Après la parenthèse ouvrante, utilise `?=` pour définir ce motif comme un lookahead positif."
             },
             {
               "en": "This pattern will only match the word `free` if it is followed by `code`:",
-              "fr": ""
+              "fr": "Ce motif ne correspondra au mot `free` que s'il est suivi de `code` :"
             },
             {
               "en": "Let's test the behavior of our pattern:",
-              "fr": ""
+              "fr": "Testons le comportement de notre motif :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Notice how only the string where `free` is immediately followed by `code` passes the test.",
-              "fr": ""
+              "fr": "Remarque que seule la chaîne où `free` est immédiatement suivi de `code` réussit le test."
             },
             {
               "en": "But what if you want to match the presence of `free` when it is NOT followed by `code`? You can turn your positive lookahead into a negative lookahead to invert the behavior. To do this, change your `?=` to `?!`:",
-              "fr": ""
+              "fr": "Mais et si tu veux faire correspondre la présence de `free` quand il n'est PAS suivi de `code` ? Tu peux transformer ton lookahead positif en lookahead négatif pour inverser le comportement. Pour cela, change ton `?=` en `?!` :"
             },
             {
               "en": "Let's test this against our same strings:",
-              "fr": ""
+              "fr": "Testons cela contre nos mêmes chaînes :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "As expected, the results are reversed. The only string that fails is the first string, where `free` is immediately followed by `code`.",
-              "fr": ""
+              "fr": "Comme prévu, les résultats sont inversés. La seule chaîne qui échoue est la première, où `free` est immédiatement suivi de `code`."
             },
             {
               "en": "Lookbehind assertions function similarly to lookahead assertions, except that, instead of matching conditionally based on a following pattern, they match conditionally based on a preceding pattern. Let's take a look at a positive lookbehind.",
-              "fr": ""
+              "fr": "Les assertions lookbehind fonctionnent de façon similaire aux assertions lookahead, sauf que, au lieu de correspondre conditionnellement selon un motif suivant, elles correspondent conditionnellement selon un motif précédent. Regardons un lookbehind positif."
             },
             {
               "en": "A positive lookbehind is denoted with `?<=` instead of `?=`. Let's make our regular expression match `code` when it is preceded by `free`:",
-              "fr": ""
+              "fr": "Un lookbehind positif est noté avec `?<=` au lieu de `?=`. Faisons correspondre notre expression régulière à `code` quand il est précédé de `free` :"
             },
             {
               "en": "Just like with our positive lookahead, our positive lookbehind matches the first string because `code` is immediately preceded by `free`:",
-              "fr": ""
+              "fr": "Tout comme avec notre lookahead positif, notre lookbehind positif correspond à la première chaîne parce que `code` est immédiatement précédé de `free` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "To match `code` when it is NOT preceded by `free`, we can use a negative lookbehind. A negative lookbehind is defined by replacing `?<=` with `?<!`:",
-              "fr": ""
+              "fr": "Pour faire correspondre `code` quand il n'est PAS précédé de `free`, on peut utiliser un lookbehind négatif. Un lookbehind négatif se définit en remplaçant `?<=` par `?<!` :"
             },
             {
               "en": "This would match any occurrence of `code` that is NOT immediately preceded by `free`:",
-              "fr": ""
+              "fr": "Cela correspondrait à toute occurrence de `code` qui n'est PAS immédiatement précédée de `free` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Remember that `Regex.prototype.test` only confirms whether a string matches the regular expression. Let's use our negative lookbehind with `String.prototype.match` to see how assertions affect that:",
-              "fr": ""
+              "fr": "Souviens-toi que `Regex.prototype.test` ne confirme que si une chaîne correspond à l'expression régulière. Utilisons notre lookbehind négatif avec `String.prototype.match` pour voir comment les assertions affectent cela :"
             },
             {
               "en": "Notice how even though our regular expression uses a lookbehind to check for the presence of `free`, it does not match `free`. The only text included in the match is `code`.",
-              "fr": ""
+              "fr": "Remarque que même si notre expression régulière utilise un lookbehind pour vérifier la présence de `free`, elle ne correspond pas à `free`. Le seul texte inclus dans la correspondance est `code`."
             },
             {
               "en": "Lookaheads and lookbehinds are incredibly useful for conditionally matching text without impacting the returned value of your match.",
-              "fr": ""
+              "fr": "Les lookaheads et lookbehinds sont incroyablement utiles pour faire correspondre conditionnellement du texte sans impacter la valeur renvoyée de ta correspondance."
             }
           ]
         },
@@ -1365,7 +1365,7 @@
           "chunks": [
             {
               "en": "What is the syntax for a positive lookahead assertion in a regular expression?",
-              "fr": ""
+              "fr": "Quelle est la syntaxe d'une assertion lookahead positive dans une expression régulière ?"
             }
           ]
         },
@@ -1375,7 +1375,7 @@
           "chunks": [
             {
               "en": "The lesson describes how to construct a positive lookahead using a specific syntax.",
-              "fr": ""
+              "fr": "La leçon décrit comment construire un lookahead positif en utilisant une syntaxe spécifique."
             }
           ]
         },
@@ -1385,7 +1385,7 @@
           "chunks": [
             {
               "en": "The lesson describes how to construct a positive lookahead using a specific syntax.",
-              "fr": ""
+              "fr": "La leçon décrit comment construire un lookahead positif en utilisant une syntaxe spécifique."
             }
           ]
         },
@@ -1395,7 +1395,7 @@
           "chunks": [
             {
               "en": "The lesson describes how to construct a positive lookahead using a specific syntax.",
-              "fr": ""
+              "fr": "La leçon décrit comment construire un lookahead positif en utilisant une syntaxe spécifique."
             }
           ]
         },
@@ -1405,7 +1405,7 @@
           "chunks": [
             {
               "en": "Which assertion would you use to match a word only if it is NOT followed by a specific pattern?",
-              "fr": ""
+              "fr": "Quelle assertion utiliserais-tu pour faire correspondre un mot uniquement s'il n'est PAS suivi d'un motif spécifique ?"
             }
           ]
         },
@@ -1415,7 +1415,7 @@
           "chunks": [
             {
               "en": "Positive lookahead.",
-              "fr": ""
+              "fr": "Lookahead positif."
             }
           ]
         },
@@ -1425,15 +1425,15 @@
           "chunks": [
             {
               "en": "Think about which assertion \"inverts\" the behavior of a positive lookahead.",
-              "fr": ""
+              "fr": "Réfléchis à quelle assertion « inverse » le comportement d'un lookahead positif."
             },
             {
               "en": "Negative lookahead.",
-              "fr": ""
+              "fr": "Lookahead négatif."
             },
             {
               "en": "Positive lookbehind.",
-              "fr": ""
+              "fr": "Lookbehind positif."
             }
           ]
         },
@@ -1443,11 +1443,11 @@
           "chunks": [
             {
               "en": "Think about which assertion \"inverts\" the behavior of a positive lookahead.",
-              "fr": ""
+              "fr": "Réfléchis à quelle assertion « inverse » le comportement d'un lookahead positif."
             },
             {
               "en": "Negative lookbehind.",
-              "fr": ""
+              "fr": "Lookbehind négatif."
             }
           ]
         },
@@ -1457,7 +1457,7 @@
           "chunks": [
             {
               "en": "Think about which assertion \"inverts\" the behavior of a positive lookahead.",
-              "fr": ""
+              "fr": "Réfléchis à quelle assertion « inverse » le comportement d'un lookahead positif."
             }
           ]
         },
@@ -1467,7 +1467,7 @@
           "chunks": [
             {
               "en": "When using a lookbehind assertion with `String.prototype.match`, what part of the string is actually included in the match result?",
-              "fr": ""
+              "fr": "Lorsqu'on utilise une assertion lookbehind avec `String.prototype.match`, quelle partie de la chaîne est réellement incluse dans le résultat de la correspondance ?"
             }
           ]
         },
@@ -1477,7 +1477,7 @@
           "chunks": [
             {
               "en": "The entire string.",
-              "fr": ""
+              "fr": "La chaîne entière."
             }
           ]
         },
@@ -1487,11 +1487,11 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this with an example using a negative lookbehind.",
-              "fr": ""
+              "fr": "La leçon démontre cela avec un exemple utilisant un lookbehind négatif."
             },
             {
               "en": "The pattern in the lookbehind assertion.",
-              "fr": ""
+              "fr": "Le motif dans l'assertion lookbehind."
             }
           ]
         },
@@ -1501,15 +1501,15 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this with an example using a negative lookbehind.",
-              "fr": ""
+              "fr": "La leçon démontre cela avec un exemple utilisant un lookbehind négatif."
             },
             {
               "en": "The pattern after the lookbehind assertion.",
-              "fr": ""
+              "fr": "Le motif après l'assertion lookbehind."
             },
             {
               "en": "Both the lookbehind pattern and the pattern after it.",
-              "fr": ""
+              "fr": "À la fois le motif lookbehind et le motif après."
             }
           ]
         },
@@ -1519,7 +1519,7 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this with an example using a negative lookbehind.",
-              "fr": ""
+              "fr": "La leçon démontre cela avec un exemple utilisant un lookbehind négatif."
             }
           ]
         }
@@ -1531,7 +1531,7 @@
       "dashedName": "what-are-regex-quantifiers-and-how-do-they-work",
       "title": {
         "en": "What Are Regex Quantifiers, and How Do They Work?",
-        "fr": ""
+        "fr": "Que sont les quantificateurs regex, et comment fonctionnent-ils ?"
       },
       "sections": [
         {
@@ -1540,119 +1540,119 @@
           "chunks": [
             {
               "en": "Let's learn about quantifiers in regular expressions.",
-              "fr": ""
+              "fr": "Apprenons les quantificateurs dans les expressions régulières."
             },
             {
               "en": "Consider a scenario where you want to match a four-digit identification code. You know you can use the `\\d` character class, so you might write that four times. And to avoid any extraneous characters, you'd include both the start and end anchors:",
-              "fr": ""
+              "fr": "Considère un scénario où tu veux faire correspondre un code d'identification à quatre chiffres. Tu sais que tu peux utiliser la classe de caractères `\\d`, donc tu pourrais l'écrire quatre fois. Et pour éviter tout caractère parasite, tu inclurais les ancres de début et de fin :"
             },
             {
               "en": "And this does work – it will match four numerical characters. But rather than having to write out the same class multiple times, you can give it a quantifier.",
-              "fr": ""
+              "fr": "Et cela fonctionne – cela correspondra à quatre caractères numériques. Mais plutôt que d'avoir à écrire la même classe plusieurs fois, tu peux lui donner un quantificateur."
             },
             {
               "en": "Quantifiers are defined by curly braces containing one or two numbers. Let's use a quantifier in our pattern:",
-              "fr": ""
+              "fr": "Les quantificateurs sont définis par des accolades contenant un ou deux nombres. Utilisons un quantificateur dans notre motif :"
             },
             {
               "en": "Notice how our quantifier contains only the number `4`. This syntax means \"match the previous character exactly four times\". Let's see how that behaves:",
-              "fr": ""
+              "fr": "Remarque que notre quantificateur ne contient que le nombre `4`. Cette syntaxe signifie « faire correspondre le caractère précédent exactement quatre fois ». Voyons comment cela se comporte :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The pattern only matches the string with exactly four digits, because we have used the anchors and our quantifier only allows exactly four digits. But maybe the identification code only needs to be a minimum of four digits.",
-              "fr": ""
+              "fr": "Le motif ne correspond qu'à la chaîne avec exactement quatre chiffres, parce que nous avons utilisé les ancres et que notre quantificateur n'autorise qu'exactement quatre chiffres. Mais peut-être que le code d'identification n'a besoin que d'un minimum de quatre chiffres."
             },
             {
               "en": "To allow for four or more digits, add a comma after the number in your quantifier:",
-              "fr": ""
+              "fr": "Pour autoriser quatre chiffres ou plus, ajoute une virgule après le nombre dans ton quantificateur :"
             },
             {
               "en": "Now, our syntax allows the pattern to match four or more digits. Let's test it:",
-              "fr": ""
+              "fr": "Maintenant, notre syntaxe permet au motif de correspondre à quatre chiffres ou plus. Testons-le :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "A seven-digit identifier is rather long. These identifiers should have a maximum of 6 digits, and a minimum of 4 digits. To achieve this, you can add a second number to your quantifier after the comma:",
-              "fr": ""
+              "fr": "Un identifiant à sept chiffres est plutôt long. Ces identifiants devraient avoir un maximum de 6 chiffres, et un minimum de 4 chiffres. Pour y arriver, tu peux ajouter un second nombre à ton quantificateur après la virgule :"
             },
             {
               "en": "And now our pattern no longer matches the seven-digit identifier, because it is greater than our six-digit maximum.",
-              "fr": ""
+              "fr": "Et maintenant notre motif ne correspond plus à l'identifiant à sept chiffres, parce qu'il est supérieur à notre maximum de six chiffres."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Note that you cannot use this syntax to set a maximum alone – you must always set a minimum. But if you set the minimum to `1`, you can effectively achieve the same result.",
-              "fr": ""
+              "fr": "Note que tu ne peux pas utiliser cette syntaxe pour définir un maximum seul – tu dois toujours définir un minimum. Mais si tu définis le minimum à `1`, tu peux effectivement obtenir le même résultat."
             },
             {
               "en": "We've received updated requirements from our users. Identifiers can now optionally start with a letter. We already know the character class for this, so let's add that to our regular expression:",
-              "fr": ""
+              "fr": "Nous avons reçu des exigences mises à jour de nos utilisateurs. Les identifiants peuvent maintenant optionnellement commencer par une lettre. On connaît déjà la classe de caractères pour cela, alors ajoutons-la à notre expression régulière :"
             },
             {
               "en": "But now we mandate the presence of a letter. How can we make it optional?",
-              "fr": ""
+              "fr": "Mais maintenant on impose la présence d'une lettre. Comment la rendre optionnelle ?"
             },
             {
               "en": "You could use the quantifier syntax with `0` as the minimum and `1` as the maximum:",
-              "fr": ""
+              "fr": "Tu pourrais utiliser la syntaxe de quantificateur avec `0` comme minimum et `1` comme maximum :"
             },
             {
               "en": "But there's actually a special shorthand quantifier for a single optional character – the question mark (`?`). Let's replace our quantifier with the question mark:",
-              "fr": ""
+              "fr": "Mais il y a en fait un quantificateur abrégé spécial pour un seul caractère optionnel – le point d'interrogation (`?`). Remplaçons notre quantificateur par le point d'interrogation :"
             },
             {
               "en": "We should validate the result:",
-              "fr": ""
+              "fr": "On devrait valider le résultat :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Our pattern now allows for a single optional letter, followed by four to six digits.",
-              "fr": ""
+              "fr": "Notre motif autorise maintenant une seule lettre optionnelle, suivie de quatre à six chiffres."
             },
             {
               "en": "Unfortunately, we've just realized we read the requirements wrong. We need to allow for any number of letters before the numbers. We can use our quantifier with a `0` minimum and no defined maximum:",
-              "fr": ""
+              "fr": "Malheureusement, on vient de réaliser qu'on a mal lu les exigences. On doit autoriser n'importe quel nombre de lettres avant les chiffres. On peut utiliser notre quantificateur avec un minimum de `0` et sans maximum défini :"
             },
             {
               "en": "But our pattern is getting long again. Thankfully, there's another short-hand for \"match the previous character zero or more times\" –  the asterisk (`*`) symbol. Let's replace our quantifier with that in the pattern, and test it:",
-              "fr": ""
+              "fr": "Mais notre motif redevient long. Heureusement, il y a une autre abréviation pour « faire correspondre le caractère précédent zéro fois ou plus » – le symbole astérisque (`*`). Remplaçons notre quantificateur par celui-ci dans le motif, et testons-le :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now we successfully match any identifier with zero or more letters followed by four to six numbers. But it turns out this is crashing our system – we actually have to require at least one letter.",
-              "fr": ""
+              "fr": "Maintenant on fait correspondre avec succès n'importe quel identifiant avec zéro lettre ou plus suivi de quatre à six chiffres. Mais il s'avère que cela fait planter notre système – on doit en fait exiger au moins une lettre."
             },
             {
               "en": "Again, we could use a quantifier with a minimum of one and no defined maximum, or we could use yet another special syntax – the plus (`+`) symbol:",
-              "fr": ""
+              "fr": "Encore une fois, on pourrait utiliser un quantificateur avec un minimum de un et sans maximum défini, ou on pourrait utiliser encore une autre syntaxe spéciale – le symbole plus (`+`) :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now the identifiers that do not start with at least one letter fail, regardless of how many numbers there are.",
-              "fr": ""
+              "fr": "Maintenant les identifiants qui ne commencent pas par au moins une lettre échouent, quel que soit le nombre de chiffres."
             },
             {
               "en": "You can use quantifiers to greatly enhance the brevity and readability of your regular expressions.",
-              "fr": ""
+              "fr": "Tu peux utiliser les quantificateurs pour grandement améliorer la brièveté et la lisibilité de tes expressions régulières."
             }
           ]
         },
@@ -1662,7 +1662,7 @@
           "chunks": [
             {
               "en": "What does the quantifier `{4,6}` mean in a regular expression?",
-              "fr": ""
+              "fr": "Que signifie le quantificateur `{4,6}` dans une expression régulière ?"
             }
           ]
         },
@@ -1672,7 +1672,7 @@
           "chunks": [
             {
               "en": "Match exactly four or six times.",
-              "fr": ""
+              "fr": "Correspondre exactement quatre ou six fois."
             }
           ]
         },
@@ -1682,15 +1682,15 @@
           "chunks": [
             {
               "en": "Think about the minimum and maximum values specified in the quantifier.",
-              "fr": ""
+              "fr": "Réfléchis aux valeurs minimale et maximale spécifiées dans le quantificateur."
             },
             {
               "en": "Match at least four times, but no more than six times.",
-              "fr": ""
+              "fr": "Correspondre au moins quatre fois, mais pas plus de six fois."
             },
             {
               "en": "Match four to six characters in total.",
-              "fr": ""
+              "fr": "Correspondre à quatre à six caractères au total."
             }
           ]
         },
@@ -1700,11 +1700,11 @@
           "chunks": [
             {
               "en": "Think about the minimum and maximum values specified in the quantifier.",
-              "fr": ""
+              "fr": "Réfléchis aux valeurs minimale et maximale spécifiées dans le quantificateur."
             },
             {
               "en": "Match either four or six digits.",
-              "fr": ""
+              "fr": "Correspondre à soit quatre, soit six chiffres."
             }
           ]
         },
@@ -1714,7 +1714,7 @@
           "chunks": [
             {
               "en": "Think about the minimum and maximum values specified in the quantifier.",
-              "fr": ""
+              "fr": "Réfléchis aux valeurs minimale et maximale spécifiées dans le quantificateur."
             }
           ]
         },
@@ -1724,7 +1724,7 @@
           "chunks": [
             {
               "en": "Which quantifier symbol is equivalent to `{0,1}` in regular expressions?",
-              "fr": ""
+              "fr": "Quel symbole de quantificateur est équivalent à `{0,1}` dans les expressions régulières ?"
             }
           ]
         },
@@ -1734,7 +1734,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"special shorthand quantifier for a single optional character\".",
-              "fr": ""
+              "fr": "La leçon mentionne un « quantificateur abrégé spécial pour un seul caractère optionnel »."
             }
           ]
         },
@@ -1744,7 +1744,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"special shorthand quantifier for a single optional character\".",
-              "fr": ""
+              "fr": "La leçon mentionne un « quantificateur abrégé spécial pour un seul caractère optionnel »."
             }
           ]
         },
@@ -1754,7 +1754,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a \"special shorthand quantifier for a single optional character\".",
-              "fr": ""
+              "fr": "La leçon mentionne un « quantificateur abrégé spécial pour un seul caractère optionnel »."
             }
           ]
         },
@@ -1764,7 +1764,7 @@
           "chunks": [
             {
               "en": "What does the `+` quantifier mean in a regular expression?",
-              "fr": ""
+              "fr": "Que signifie le quantificateur `+` dans une expression régulière ?"
             }
           ]
         },
@@ -1774,7 +1774,7 @@
           "chunks": [
             {
               "en": "Match zero or more times.",
-              "fr": ""
+              "fr": "Correspondre zéro fois ou plus."
             }
           ]
         },
@@ -1784,11 +1784,11 @@
           "chunks": [
             {
               "en": "The lesson describes this quantifier as requiring \"at least one\" of the preceding element.",
-              "fr": ""
+              "fr": "La leçon décrit ce quantificateur comme exigeant « au moins un » de l'élément précédent."
             },
             {
               "en": "Match exactly one time.",
-              "fr": ""
+              "fr": "Correspondre exactement une fois."
             }
           ]
         },
@@ -1798,15 +1798,15 @@
           "chunks": [
             {
               "en": "The lesson describes this quantifier as requiring \"at least one\" of the preceding element.",
-              "fr": ""
+              "fr": "La leçon décrit ce quantificateur comme exigeant « au moins un » de l'élément précédent."
             },
             {
               "en": "Match one or more times.",
-              "fr": ""
+              "fr": "Correspondre une fois ou plus."
             },
             {
               "en": "Match zero or one time.",
-              "fr": ""
+              "fr": "Correspondre zéro ou une fois."
             }
           ]
         },
@@ -1816,7 +1816,7 @@
           "chunks": [
             {
               "en": "The lesson describes this quantifier as requiring \"at least one\" of the preceding element.",
-              "fr": ""
+              "fr": "La leçon décrit ce quantificateur comme exigeant « au moins un » de l'élément précédent."
             }
           ]
         }
@@ -1828,7 +1828,7 @@
       "dashedName": "what-are-capturing-groups-and-backreferences-and-how-do-they-work",
       "title": {
         "en": "What Are Capturing Groups and Backreferences, and How Do They Work?",
-        "fr": ""
+        "fr": "Que sont les groupes de capture et les backreferences, et comment fonctionnent-ils ?"
       },
       "sections": [
         {
@@ -1837,139 +1837,139 @@
           "chunks": [
             {
               "en": "A capturing group allows you to \"capture\" a portion of the matched string to use however you might need. Capturing groups are defined by parentheses containing the pattern to capture, with no leading characters like a lookahead.",
-              "fr": ""
+              "fr": "Un groupe de capture te permet de « capturer » une portion de la chaîne correspondante pour l'utiliser comme tu en as besoin. Les groupes de capture sont définis par des parenthèses contenant le motif à capturer, sans caractères avant comme un lookahead."
             },
             {
               "en": "Let's capture the `code` from our `freeCodeCamp` regular expression. To do that, we'll enclose `code` in parentheses and define it as a capture group:",
-              "fr": ""
+              "fr": "Capturons le `code` de notre expression régulière `freeCodeCamp`. Pour cela, on enfermera `code` entre parenthèses et on le définira comme un groupe de capture :"
             },
             {
               "en": "To confirm the behavior, we can test it against a `freecodecamp` string:",
-              "fr": ""
+              "fr": "Pour confirmer le comportement, on peut le tester contre une chaîne `freecodecamp` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "But this doesn't actually make use of our captured group. Instead, let's take a look at the result of using `match`:",
-              "fr": ""
+              "fr": "Mais cela n'utilise pas réellement notre groupe capturé. Au lieu de cela, regardons le résultat de l'utilisation de `match` :"
             },
             {
               "en": "Here we can see that our `match` array has a second element, which is the portion of the string which was captured by our capture group.",
-              "fr": ""
+              "fr": "Ici on peut voir que notre tableau `match` a un second élément, qui est la portion de la chaîne capturée par notre groupe de capture."
             },
             {
               "en": "Notice how the capture group matches the exact pattern `code`, where a character class would match a single character from the list `c`, `o`, `d`, and `e`.",
-              "fr": ""
+              "fr": "Remarque que le groupe de capture correspond au motif exact `code`, alors qu'une classe de caractères correspondrait à un seul caractère de la liste `c`, `o`, `d`, et `e`."
             },
             {
               "en": "But how can we actually use this? Well, capture groups are often used when replacing contents of a string. Let's set up some code to do that. We're going to turn `freecodecamp` into `paidcodeworld`:",
-              "fr": ""
+              "fr": "Mais comment l'utiliser concrètement ? Eh bien, les groupes de capture sont souvent utilisés lors du remplacement du contenu d'une chaîne. Mettons en place du code pour cela. On va transformer `freecodecamp` en `paidcodeworld` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This works on its own, but what if we didn't know how many `o`'s were in `code`? If we need a quantifier for one or more `o`s:",
-              "fr": ""
+              "fr": "Cela fonctionne tout seul, mais et si on ne savait pas combien de `o` il y avait dans `code` ? S'il nous faut un quantificateur pour un ou plusieurs `o` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "We're getting `paidcodeworld` as our result. We want to preserve the number of `o`'s, so we need to reuse what was captured by the regular expression.",
-              "fr": ""
+              "fr": "On obtient `paidcodeworld` comme résultat. On veut préserver le nombre de `o`, donc on doit réutiliser ce qui a été capturé par l'expression régulière."
             },
             {
               "en": "This is where a backreference comes in. Instead of hardcoding the `code` portion of our replacement string, we can reference the captured group directly.",
-              "fr": ""
+              "fr": "C'est là qu'intervient une backreference. Au lieu de coder en dur la portion `code` de notre chaîne de remplacement, on peut référencer directement le groupe capturé."
             },
             {
               "en": "In a `replace` call, you achieve a backreference by using a dollar sign (`$`) followed by the number of the capture group to use. In our case, that would be `$1`, since `code` is captured in the first capture group:",
-              "fr": ""
+              "fr": "Dans un appel `replace`, tu obtiens une backreference en utilisant un signe dollar (`$`) suivi du numéro du groupe de capture à utiliser. Dans notre cas, ce serait `$1`, puisque `code` est capturé dans le premier groupe de capture :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "We have now successfully preserved an unknown number of `o` characters when converting `freecodecamp` into `paidcodeworld`. But backreferences aren't just limited to the replace call. You can actually use them directly in a regular expression.",
-              "fr": ""
+              "fr": "On a maintenant réussi à préserver un nombre inconnu de caractères `o` en convertissant `freecodecamp` en `paidcodeworld`. Mais les backreferences ne sont pas limitées à l'appel replace. Tu peux en fait les utiliser directement dans une expression régulière."
             },
             {
               "en": "This would allow you to match a previously captured pattern later on in the regular expression.",
-              "fr": ""
+              "fr": "Cela te permettrait de faire correspondre un motif précédemment capturé plus loin dans l'expression régulière."
             },
             {
               "en": "Let's say we want to match `freecodecamp` twice, with the same number of `o`'s, but anywhere in the string.",
-              "fr": ""
+              "fr": "Disons que l'on veut faire correspondre `freecodecamp` deux fois, avec le même nombre de `o`, mais n'importe où dans la chaîne."
             },
             {
               "en": "First, we need to separate them with our wildcard character, and allow any number of characters to match that wildcard:",
-              "fr": ""
+              "fr": "D'abord, on doit les séparer avec notre caractère joker, et autoriser n'importe quel nombre de caractères à correspondre à ce joker :"
             },
             {
               "en": "This current expression won't ensure that the number of `o` characters is the same, however. To achieve that, we need to replace the second capture group with a reference to the first.",
-              "fr": ""
+              "fr": "Cette expression actuelle ne garantira cependant pas que le nombre de caractères `o` soit le même. Pour y arriver, on doit remplacer le second groupe de capture par une référence au premier."
             },
             {
               "en": "Inside a regular expression, a backreference is denoted with a backslash followed by the number of the capture group:",
-              "fr": ""
+              "fr": "À l'intérieur d'une expression régulière, une backreference est notée avec une barre oblique inversée suivie du numéro du groupe de capture :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "And with that, we can see that a string with the correct number of `o`s matches, while a string with two different numbers of `o`s does not.",
-              "fr": ""
+              "fr": "Et avec cela, on peut voir qu'une chaîne avec le bon nombre de `o` correspond, tandis qu'une chaîne avec deux nombres différents de `o` ne correspond pas."
             },
             {
               "en": "This syntax is great, but can quickly get confusing when you are referencing multiple capture groups. Thankfully, instead of using numbers, you can give your groups names.",
-              "fr": ""
+              "fr": "Cette syntaxe est géniale, mais peut rapidement devenir confuse quand tu références plusieurs groupes de capture. Heureusement, au lieu d'utiliser des numéros, tu peux donner des noms à tes groupes."
             },
             {
               "en": "To define a named capture group, you add a question mark (`?`) followed by the name enclosed in less than and greater than signs to the beginning of the group. Let's name our capture group `code`:",
-              "fr": ""
+              "fr": "Pour définir un groupe de capture nommé, tu ajoutes un point d'interrogation (`?`) suivi du nom enfermé entre signes inférieur et supérieur au début du groupe. Nommons notre groupe de capture `code` :"
             },
             {
               "en": "Now we can update our backreference in the regular expression to refer to this group. A named backreference starts with a backslash followed by the letter `k` in JavaScript. Then you add the name, again enclosed in less than (`<`) and greater than (`>`) signs. Let's take a look at that:",
-              "fr": ""
+              "fr": "Maintenant on peut mettre à jour notre backreference dans l'expression régulière pour se référer à ce groupe. Une backreference nommée commence par une barre oblique inversée suivie de la lettre `k` en JavaScript. Ensuite tu ajoutes le nom, à nouveau enfermé entre signes inférieur (`<`) et supérieur (`>`). Regardons cela :"
             },
             {
               "en": "Now if we check our `test()` call, we can see that we still pass:",
-              "fr": ""
+              "fr": "Maintenant si on vérifie notre appel `test()`, on peut voir que l'on réussit toujours :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "To use our named capture group in a `replace()` call, we'd insert a dollar sign into the string, followed by the name enclosed in less than and greater than signs:",
-              "fr": ""
+              "fr": "Pour utiliser notre groupe de capture nommé dans un appel `replace()`, on insérerait un signe dollar dans la chaîne, suivi du nom enfermé entre signes inférieur et supérieur :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Finally, sometimes you want to create a group of characters, but don't need the captured result.",
-              "fr": ""
+              "fr": "Enfin, parfois tu veux créer un groupe de caractères, mais tu n'as pas besoin du résultat capturé."
             },
             {
               "en": "Let's say we want to match either `freecodecamp` or `freecandycamp`. You could create two patterns separated by an OR assertion:",
-              "fr": ""
+              "fr": "Disons que l'on veut faire correspondre soit `freecodecamp` soit `freecandycamp`. Tu pourrais créer deux motifs séparés par une assertion OR :"
             },
             {
               "en": "But this can become quite lengthy for larger-scale regular expressions. Instead, you can create a non-capturing group around the characters that you need to OR:",
-              "fr": ""
+              "fr": "Mais cela peut devenir assez long pour des expressions régulières à plus grande échelle. Au lieu de cela, tu peux créer un groupe non capturant autour des caractères que tu dois mettre en OR :"
             },
             {
               "en": "A non-capturing group does not store the `code|candy` match separately in memory. But it can be helpful for creating alternate patterns without sacrificing readability or performance.",
-              "fr": ""
+              "fr": "Un groupe non capturant ne stocke pas la correspondance `code|candy` séparément en mémoire. Mais il peut être utile pour créer des motifs alternatifs sans sacrifier la lisibilité ni les performances."
             }
           ]
         },
@@ -1979,7 +1979,7 @@
           "chunks": [
             {
               "en": "How do you create a named capturing group in a regular expression?",
-              "fr": ""
+              "fr": "Comment crées-tu un groupe de capture nommé dans une expression régulière ?"
             }
           ]
         },
@@ -1989,7 +1989,7 @@
           "chunks": [
             {
               "en": "The lesson describes a specific syntax for naming a capture group, involving angle brackets.",
-              "fr": ""
+              "fr": "La leçon décrit une syntaxe spécifique pour nommer un groupe de capture, impliquant des chevrons."
             }
           ]
         },
@@ -1999,7 +1999,7 @@
           "chunks": [
             {
               "en": "The lesson describes a specific syntax for naming a capture group, involving angle brackets.",
-              "fr": ""
+              "fr": "La leçon décrit une syntaxe spécifique pour nommer un groupe de capture, impliquant des chevrons."
             }
           ]
         },
@@ -2009,7 +2009,7 @@
           "chunks": [
             {
               "en": "The lesson describes a specific syntax for naming a capture group, involving angle brackets.",
-              "fr": ""
+              "fr": "La leçon décrit une syntaxe spécifique pour nommer un groupe de capture, impliquant des chevrons."
             }
           ]
         },
@@ -2019,7 +2019,7 @@
           "chunks": [
             {
               "en": "In a `replace()` method, how would you reference the first capturing group in the replacement string?",
-              "fr": ""
+              "fr": "Dans une méthode `replace()`, comment référencerais-tu le premier groupe de capture dans la chaîne de remplacement ?"
             }
           ]
         },
@@ -2029,7 +2029,7 @@
           "chunks": [
             {
               "en": "The lesson mentions using a specific symbol followed by a number to reference capture groups in a replace call.",
-              "fr": ""
+              "fr": "La leçon mentionne l'utilisation d'un symbole spécifique suivi d'un numéro pour référencer les groupes de capture dans un appel replace."
             }
           ]
         },
@@ -2039,7 +2039,7 @@
           "chunks": [
             {
               "en": "The lesson mentions using a specific symbol followed by a number to reference capture groups in a replace call.",
-              "fr": ""
+              "fr": "La leçon mentionne l'utilisation d'un symbole spécifique suivi d'un numéro pour référencer les groupes de capture dans un appel replace."
             }
           ]
         },
@@ -2049,7 +2049,7 @@
           "chunks": [
             {
               "en": "The lesson mentions using a specific symbol followed by a number to reference capture groups in a replace call.",
-              "fr": ""
+              "fr": "La leçon mentionne l'utilisation d'un symbole spécifique suivi d'un numéro pour référencer les groupes de capture dans un appel replace."
             }
           ]
         },
@@ -2059,7 +2059,7 @@
           "chunks": [
             {
               "en": "What is the purpose of a non-capturing group in a regular expression?",
-              "fr": ""
+              "fr": "Quel est le but d'un groupe non capturant dans une expression régulière ?"
             }
           ]
         },
@@ -2069,7 +2069,7 @@
           "chunks": [
             {
               "en": "To capture a group without storing it in memory",
-              "fr": ""
+              "fr": "Capturer un groupe sans le stocker en mémoire"
             }
           ]
         },
@@ -2079,15 +2079,15 @@
           "chunks": [
             {
               "en": "The lesson describes a specific use case for non-capturing groups related to creating alternate patterns.",
-              "fr": ""
+              "fr": "La leçon décrit un cas d'usage spécifique pour les groupes non capturants lié à la création de motifs alternatifs."
             },
             {
               "en": "To create alternate patterns without sacrificing readability or performance",
-              "fr": ""
+              "fr": "Créer des motifs alternatifs sans sacrifier la lisibilité ni les performances"
             },
             {
               "en": "To name a capturing group",
-              "fr": ""
+              "fr": "Nommer un groupe de capture"
             }
           ]
         },
@@ -2097,11 +2097,11 @@
           "chunks": [
             {
               "en": "The lesson describes a specific use case for non-capturing groups related to creating alternate patterns.",
-              "fr": ""
+              "fr": "La leçon décrit un cas d'usage spécifique pour les groupes non capturants lié à la création de motifs alternatifs."
             },
             {
               "en": "To reference a previously captured group",
-              "fr": ""
+              "fr": "Référencer un groupe précédemment capturé"
             }
           ]
         },
@@ -2111,7 +2111,7 @@
           "chunks": [
             {
               "en": "The lesson describes a specific use case for non-capturing groups related to creating alternate patterns.",
-              "fr": ""
+              "fr": "La leçon décrit un cas d'usage spécifique pour les groupes non capturants lié à la création de motifs alternatifs."
             }
           ]
         }

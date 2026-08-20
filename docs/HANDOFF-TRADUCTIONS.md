@@ -12,9 +12,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Module 11 Terminé (140/230)
+### JavaScript v9 — Module 12 Terminé (149/230)
 
-État actuel : 140 blocs FR sur 230 (602/1311 fichiers, ~46 %). Les modules 1-11 sont **100 % traduits**. Prochaine cible : relire `tools/translations/lecture-working-with-regular-expressions.json` (module 12 regex, `reviewed: false` — **ne pas appliquer**).
+État actuel : 149 blocs FR sur 230 (648/1311 fichiers, ~49 %). Les modules 1-12 sont **100 % traduits**. Prochaine cible : relire `tools/translations/lab-markdown-to-html-converter.json` (projet cert markdown, `reviewed: false` — **ne pas appliquer**).
 
 Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (140/230 blocs, 602/1311 fichiers). Modules 1-11 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `lecture-working-with-regular-expressions` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (149/230 blocs, 648/1311 fichiers). Modules 1-12 **100 % complets**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `lab-markdown-to-html-converter` (`reviewed: false` — ne pas appliquer).
 
 ### Lister ce qui manque dans un module
 
@@ -286,7 +286,7 @@ timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; 
 compteurs sont affichés dans la sortie et protégés par
 `axe-test-regression.mjs`.
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 140/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 149/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -296,7 +296,7 @@ compteurs sont affichés dans la sortie et protégés par
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-11 **100 % complets** (140/230) ; prochaine cible = relire `lecture-working-with-regular-expressions` (`reviewed: false` — ne pas appliquer).
+3. Continuer JavaScript v9 : modules 1-12 **100 % complets** (149/230) ; prochaine cible = relire `lab-markdown-to-html-converter` (`reviewed: false` — ne pas appliquer).
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -310,6 +310,13 @@ Pour vérifier l'ordre exact des blocs/modules :
 Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le navigateur (Ctrl + Shift + R). Si tu crées un nouveau `.md` (nouveau bloc ou nouveau fichier dans un bloc existant), le `fs.watch` recursive le détecte automatiquement sans redémarrer le serveur — ET si c'est le premier fichier d'un block jamais vu, `has-french-intro.ts` est touché pour mettre à jour le filtre catalog + badge cours-fr.
 
 ---
+
+**Dernière session (2026-08-20, modules 10–12 a11y + debugging + regex)** :
+JS v9 à 149/230 blocs (648/1311 fichiers), modules 1-12 **100 %**. Modules 10–11
+précédemment ; module 12 regex : lecture, spam-filter (32 étapes), 5 labs,
+review/quiz. Site : confettis + `prefers-reduced-motion`. Prochaine cible déjà
+extraite : `lab-markdown-to-html-converter.json` (`reviewed: false`) — **ne pas
+appliquer**. Goal actif : finir JS v9 + optimiser le fork.
 
 **Dernière session (2026-08-20, modules 10–11 a11y + debugging + confettis)** :
 JS v9 à 140/230 blocs (602/1311 fichiers), modules 1-11 **100 %**. Module 10 :

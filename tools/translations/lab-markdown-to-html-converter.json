@@ -1,0 +1,261 @@
+{
+  "workshop": "lab-markdown-to-html-converter",
+  "kind": "workshop",
+  "reviewed": false,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "66f55eac933ff64ce654ca74.md",
+      "id": "66f55eac933ff64ce654ca74",
+      "dashedName": "build-a-markdown-to-html-converter",
+      "title": {
+        "en": "Build a Markdown to HTML Converter",
+        "fr": ""
+      },
+      "description": [
+        {
+          "en": "Markdown is a markup language used to add formatting elements to plain-text documents. For this lab, all the HTML and CSS has been provided to you. You will use JavaScript to complete the Markdown to HTML Converter app so that it can handle the conversion of basic Markdown constructs into HTML elements.",
+          "fr": ""
+        },
+        {
+          "en": "**Note:** The final result won't be a comprehensive Markdown to HTML converter, but you can add extra functionalities to it if you would like.",
+          "fr": ""
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": ""
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": ""
+        },
+        {
+          "en": "1. You should have a function named `convertMarkdown` that takes no parameters.\n1. The `convertMarkdown` function should use regular expressions to convert the markdown input from `#markdown-input` into HTML and should return a string containing the HTML code.\n1. The `convertMarkdown` function should convert headings of level one, two, and three into the corresponding `h1`, `h2`, and `h3` elements. A heading in markdown is indicated by as many `#` character as its level followed by a space and the heading text. `#` characters should be placed at the beginning of the line: there can be spaces but no other characters before it.\n1. The `convertMarkdown` function should convert bold text into `strong` elements. Bold text in markdown is indicated either by a pair of double asterisks or a pair of double underscores enclosing the text.\n1. The `convertMarkdown` function should convert italic text into `em` elements. Italic text in markdown is indicated either by a pair of asterisks or a pair of underscores enclosing the text.\n1. The `convertMarkdown` function should convert images into `img` elements. An image in markdown is indicated by `![alt-text](image-source)`, where `alt-text` is the value of the `alt` attribute and `image-source` is the value of the `src` attribute.\n1. The `convertMarkdown` function should convert links into anchor elements. A link in markdown is indicated by `[link text](URL)`, where `link text` is the text to enclosed within the anchor tags and `URL` is the value of `href` attribute.\n1. The `convertMarkdown` function should convert quotes into `blockquote` elements. A quote in markdown is indicated by a `>` followed by a space and the quote text. The `>` character should be placed at the beginning of the line: there can be spaces but no other characters before it.\n1. When you input text inside `#markdown-input`, the raw HTML code returned by `convertMarkdown` should be displayed inside `#html-output`.\n1. When you input text inside `#markdown-input`, the HTML code returned by `convertMarkdown` should be rendered inside `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "Note: you should work with the `input` event for this project.",
+          "fr": ""
+        },
+        {
+          "en": "Here's a table containing all the markdown that `convertMarkdown` should be able to handle and the expected HTML after conversion:",
+          "fr": ""
+        },
+        {
+          "en": "<table>\n  <thead>\n    <tr>\n      <th>Markdown</th>\n      <th>HTML</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td><code># heading 1</code></th>\n      <td><code>&lth1&gtheading 1&lt/h1&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>## heading 2</code></th>\n      <td><code>&lth2&gtheading 2&lt/h2&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>### heading 3</code></th>\n      <td><code>&lth3&gtheading 3&lt/h3&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>**bold text**</code> or <code>__bold text__</code></th>\n      <td><code>&ltstrong&gtbold text&lt/strong&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>*italic text*</code> or <code>_italic text_</code></th>\n      <td><code>&ltem&gtitalic text&lt/em&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>![alt-text](image-source)</code></th>\n      <td><code>&ltimg alt=\"alt-text\" src=\"image-source\"&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>[link text](URL)</code></th>\n      <td><code>&lta href=\"URL\"&gtlink text&lt/a&gt</code></th>\n    </tr>\n    <tr>\n      <td><code>> quote</code></th>\n      <td><code>&ltblockquote&gtquote&lt/blockquote&gt</code></th>\n    </tr>\n  </tbody>\n</table>",
+          "fr": ""
+        },
+        {
+          "en": "**Note:** Be sure to link your JavaScript file in your HTML.",
+          "fr": ""
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `convertMarkdown`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `# title 1`, `convertMarkdown()` should return `<h1>title 1</h1>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `# title 1`, `<h1>title 1</h1>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `# title 1`, an `h1` element with the text of `title 1` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `some text # title 1`, `convertMarkdown()` should not convert `# title 1` into an `h1` element.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `# title 1` followed by `# alternate title` on a new line, `convertMarkdown()` should return `<h1>title 1</h1><h1>alternate title</h1>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `## title 2`, `convertMarkdown()` should return `<h2>title 2</h2>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `## title 2`, `<h2>title 2</h2>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `## title 2`, an `h2` element with the text of `title 2` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `some text ## title 2`, `convertMarkdown()` should not convert `## title 2` into an `h2` element.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `## title 2` followed by `## title 2 alt` on a new line, `convertMarkdown()` should return `<h2>title 2</h2><h2>title 2 alt</h2>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `### title 3`, `convertMarkdown()` should return `<h3>title 3</h3>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `### title 3`, `<h3>title 3</h3>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `### title 3`, an `h3` element with the text of `title 3` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `some text ### title 3`, `convertMarkdown()` should not convert `### title 3` into an `h3` element.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `### title 3` followed by `### third title` on a new line, `convertMarkdown()` should return `<h3>title 3</h3><h3>third title</h3>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `**this is bold**`, `convertMarkdown()` should return `<strong>this is bold</strong>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `**this is bold**`, `<strong>this is bold</strong>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `**this is bold**`, a `strong` element with the text of `this is bold` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `**this is bold**` followed by `**this is also bold**` on a new line, `convertMarkdown()` should return `<strong>this is bold</strong><strong>this is also bold</strong>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `__this is bold__`, `<strong>this is bold</strong>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `__this is bold__`, a `strong` element with the text of `this is bold` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `__this is bold__` followed by `__this is also bold__` on a new line, `convertMarkdown()` should return `<strong>this is bold</strong><strong>this is also bold</strong>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `*this is italic*`, `convertMarkdown()` should return `<em>this is italic</em>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `*this is italic*`, `<em>this is italic</em>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `*this is italic*`, an `em` element with the text of `this is italic` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `*this is italic*` followed by `*this is also italic*` on a new line, `convertMarkdown()` should return `<em>this is italic</em><em>this is also italic</em>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `_this is italic_`, `convertMarkdown()` should return `<em>this is italic</em>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `_this is italic_`, `<em>this is italic</em>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `_this is italic_`, an `em` element with the text of `this is italic` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `_this is italic_` followed by `_this is also italic_` on a new line, `convertMarkdown()` should return `<em>this is italic</em><em>this is also italic</em>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is either `# **title 1**` or `# __title 1__`, `convertMarkdown()` should return `<h1><strong>title 1</strong></h1>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is either `# **title 1**` or `# __title 1__`, `<h1><strong>title 1</strong></h1>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is either `# **title 1**` or `# __title 1__`, you set the inner HTML of `#preview` to `<h1><strong>title 1</strong></h1>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `![alt-text](image-source)`, `convertMarkdown()` should return `<img alt=\"alt-text\" src=\"image-source\">`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `![alt-text](image-source)`, `<img alt=\"alt-text\" src=\"image-source\">` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `![alt-text](image-source)`, `<img alt=\"alt-text\" src=\"image-source\">` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `![alt-text](image-source)` followed by `![alt-text-2](image-source-2)` on a new line, `convertMarkdown()` should return `<img alt=\"alt-text\" src=\"image-source\"><img alt=\"alt-text-2\" src=\"image-source-2\">`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `[link text](URL)`, `convertMarkdown()` should return `<a href=\"URL\">link text</a>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `[link text](URL)`, `<a href=\"URL\">link text</a>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `[link text](URL)`, `<a href=\"URL\">link text</a>` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `[link text](URL)` followed by `[link text 2](URL2)` on a new line, `convertMarkdown()` should return `<a href=\"URL\">link text</a><a href=\"URL2\">link text 2</a>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> this is a quote`, `convertMarkdown()` should return `<blockquote>this is a quote</blockquote>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> this is a quote`, `<blockquote>this is a quote</blockquote>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> this is a quote`, `<blockquote>this is a quote</blockquote>` should be appended as a child of `#preview`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> this is a quote` followed by `> this is another quote` on a new line, `convertMarkdown()` should return `<blockquote>this is a quote</blockquote><blockquote>this is another quote</blockquote>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `some text > not a quote anymore`, `convertMarkdown()` should not convert `> not a quote anymore` into a `blockquote` element.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> **this is a *quote***`, `convertMarkdown()` should return `<blockquote><strong>this is a <em>quote</em></strong></blockquote>`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> **this is a *quote***`, `<blockquote><strong>this is a <em>quote</em></strong></blockquote>` should be displayed inside `#html-output`.",
+          "fr": ""
+        },
+        {
+          "en": "When the value of `#markdown-input` is `> **this is a *quote***`, you should set the inner HTML of `#preview` to `<blockquote><strong>this is a <em>quote</em></strong></blockquote>`.",
+          "fr": ""
+        },
+        {
+          "en": "You should have only one `script` element in your HTML.",
+          "fr": ""
+        }
+      ]
+    }
+  ]
+}
