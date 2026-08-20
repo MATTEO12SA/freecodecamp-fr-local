@@ -136,7 +136,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 compte 149 blocs FR sur 230 (648/1311 fichiers). Les modules 1-12 sont **100 % complets**. Prochaine cible : relire `tools/translations/lab-markdown-to-html-converter.json` (`reviewed: false` — ne pas appliquer).
+Etat actuel : JavaScript v9 compte 149 blocs FR sur 230 (649/1311 fichiers). Les modules 1-12 sont **100 % complets**. Prochaine cible : relire `tools/translations/lecture-understanding-form-validation.json` (`reviewed: false` — ne pas appliquer).
 
 Workflow rapide mais relu manuellement :
 
