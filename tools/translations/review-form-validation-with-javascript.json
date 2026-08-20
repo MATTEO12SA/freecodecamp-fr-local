@@ -1,0 +1,95 @@
+{
+  "workshop": "review-form-validation-with-javascript",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723ce555ff2dfc0cc04b69a.md",
+      "id": "6723ce555ff2dfc0cc04b69a",
+      "dashedName": "review-form-validation-with-javascript",
+      "title": {
+        "en": "Form Validation with JavaScript Review",
+        "fr": "Révision de la validation de formulaires avec JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## Validating Forms with JavaScript",
+              "fr": "## Valider des formulaires avec JavaScript"
+            },
+            {
+              "en": "- **Constraint Validation API**: Certain HTML elements, such as the `textarea` and `input` elements, expose a constraint validation API. This API allows you to assert that the user's provided value for that element passes any HTML-level validation you have written, such as minimum length or pattern matching.\n- **`checkValidity()` method**: This method returns `true` if the element matches all HTML validation (based on its attributes), and `false` if it fails.",
+              "fr": "- **Constraint Validation API** : certains éléments HTML, comme les éléments `textarea` et `input`, exposent une Constraint Validation API. Cette API te permet de vérifier que la valeur fournie par l'utilisateur pour cet élément passe toute validation au niveau HTML que tu as écrite, comme une longueur minimale ou une correspondance de motif.\n- **Méthode `checkValidity()`** : cette méthode renvoie `true` si l'élément correspond à toute la validation HTML (selon ses attributs), et `false` s'il échoue."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`reportValidity()` Method**: This method tells the browser that the `input` is invalid.",
+              "fr": "- **Méthode `reportValidity()`** : cette méthode indique au navigateur que l'`input` est invalide."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`validity` Property**: This property is used to get or set the validity state of form controls (like `<input>`, `<select>`, etc.) and provides information about whether the user input meets the constraints defined for that element (e.g., `required` fields, pattern constraints, maximum length, etc.).",
+              "fr": "- **Propriété `validity`** : cette propriété sert à obtenir ou définir l'état de validité des contrôles de formulaire (comme `<input>`, `<select>`, etc.) et fournit des informations sur le fait que la saisie de l'utilisateur respecte les contraintes définies pour cet élément (par ex. champs `required`, contraintes de motif, longueur maximale, etc.)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`patternMismatch` Property**: This will be `true` if the value doesn't match the specified regular expression pattern.",
+              "fr": "- **Propriété `patternMismatch`** : elle vaudra `true` si la valeur ne correspond pas au motif d'expression régulière spécifié."
+            },
+            {
+              "en": "## `preventDefault()` Method",
+              "fr": "## Méthode `preventDefault()`"
+            },
+            {
+              "en": "- **Definition**: Every event that triggers in the DOM has some sort of default behavior. The click event on a checkbox toggles the state of that checkbox, by default. Pressing the space bar on a focused button activates the button. The `preventDefault()` method on these `Event` objects stops that behavior from happening.",
+              "fr": "- **Définition** : chaque événement déclenché dans le DOM a une sorte de comportement par défaut. L'événement click sur une case à cocher bascule l'état de cette case, par défaut. Appuyer sur la barre d'espace sur un bouton focalisé active le bouton. La méthode `preventDefault()` sur ces objets `Event` empêche ce comportement de se produire."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Submitting Forms",
+              "fr": "## Soumettre des formulaires"
+            },
+            {
+              "en": "- **Definition**: There are three ways a form can be submitted. The first is when the user clicks a button in the form which has the `type` attribute set to `submit`. The second is when the user presses the `Enter` key on any editable `input` field in the form. The third is through a JavaScript call to the `requestSubmit()` or `submit()` methods of the `form` element.\n- **`action` Attribute**: The `action` attribute should contain either a URL or a relative path for the current domain. This value determines where the form attempts to send data - if you do not set an `action` attribute, the form will send data to the current page's URL.",
+              "fr": "- **Définition** : il y a trois façons de soumettre un formulaire. La première est lorsque l'utilisateur clique sur un bouton du formulaire dont l'attribut `type` vaut `submit`. La deuxième est lorsque l'utilisateur appuie sur la touche `Enter` sur n'importe quel champ `input` éditable du formulaire. La troisième passe par un appel JavaScript aux méthodes `requestSubmit()` ou `submit()` de l'élément `form`.\n- **Attribut `action`** : l'attribut `action` doit contenir soit une URL, soit un chemin relatif pour le domaine actuel. Cette valeur détermine où le formulaire tente d'envoyer les données — si tu ne définis pas d'attribut `action`, le formulaire enverra les données à l'URL de la page actuelle."
+            },
+            {
+              "en": "- **`method` Attribute**: This attribute accepts a standard `HTTP` method, such as `GET` or `POST`, and uses that method when making the request to the action URL. When a method is not set, the form will default to a `GET` request. The data in the form will be URL encoded as `name=value` pairs and appended to the action URL as query parameters.",
+              "fr": "- **Attribut `method`** : cet attribut accepte une méthode `HTTP` standard, comme `GET` ou `POST`, et utilise cette méthode lors de la requête vers l'URL d'action. Lorsqu'aucune méthode n'est définie, le formulaire utilise par défaut une requête `GET`. Les données du formulaire seront encodées en URL sous forme de paires `name=value` et ajoutées à l'URL d'action comme paramètres de requête."
+            },
+            {
+              "en": "- **`enctype` Attribute**: The `form` element accepts an `enctype` attribute, which represents the encoding type to use for the data. This attribute only accepts three values: `application/x-www-form-urlencoded` (which is the default, sending the data as a URL-encoded form body), `text/plain` (which sends the data in plaintext form, in `name=value` pairs separated by new lines), or `multipart/form-data`, which is specifically for handling forms with a file upload.",
+              "fr": "- **Attribut `enctype`** : l'élément `form` accepte un attribut `enctype`, qui représente le type d'encodage à utiliser pour les données. Cet attribut n'accepte que trois valeurs : `application/x-www-form-urlencoded` (la valeur par défaut, qui envoie les données comme corps de formulaire encodé en URL), `text/plain` (qui envoie les données en texte brut, sous forme de paires `name=value` séparées par des sauts de ligne), ou `multipart/form-data`, destinée spécifiquement aux formulaires avec téléversement de fichier."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the Form Validation with JavaScript topics and concepts.",
+              "fr": "Révise les sujets et concepts de la validation de formulaires avec JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

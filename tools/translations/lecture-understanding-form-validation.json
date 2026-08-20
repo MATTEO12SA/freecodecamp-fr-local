@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-understanding-form-validation",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "what-are-some-ways-to-validate-forms-using-javascript",
       "title": {
         "en": "What Are Some Ways to Validate Forms Using JavaScript?",
-        "fr": ""
+        "fr": "Quelles sont quelques façons de valider des formulaires avec JavaScript ?"
       },
       "sections": [
         {
@@ -19,111 +19,111 @@
           "chunks": [
             {
               "en": "In a previous lesson, you've learned how to use HTML to restrict the values your users can submit in your form. But sometimes that's not enough. If you want to get more complex, such as displaying your own error messages to the user, you will need to use JavaScript.",
-              "fr": ""
+              "fr": "Dans une leçon précédente, tu as appris comment utiliser HTML pour restreindre les valeurs que tes utilisateurs peuvent soumettre dans ton formulaire. Mais parfois, ce n'est pas suffisant. Si tu veux aller plus loin, comme afficher tes propres messages d'erreur à l'utilisateur, tu auras besoin d'utiliser JavaScript."
             },
             {
               "en": "Certain HTML elements, such as the `textarea` and `input` elements, expose a Constraint Validation API. This API allows you to assert that the user's provided value for that element passes any HTML-level validation you have written, such as minimum length or pattern matching.",
-              "fr": ""
+              "fr": "Certains éléments HTML, comme les éléments `textarea` et `input`, exposent une Constraint Validation API. Cette API te permet de vérifier que la valeur fournie par l'utilisateur pour cet élément passe toute validation au niveau HTML que tu as écrite, comme une longueur minimale ou une correspondance de motif."
             },
             {
               "en": "But how can you actually use it? Let's say you wanted employees at a company to send feedback messages through a form like this:",
-              "fr": ""
+              "fr": "Mais comment peux-tu réellement l'utiliser ? Imaginons que tu veuilles que les employés d'une entreprise envoient des messages de feedback via un formulaire comme celui-ci :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "We are using the email `input` which comes with built in validation to check for basic validation like if the input includes the at (`@`) sign.",
-              "fr": ""
+              "fr": "Nous utilisons l'`input` email qui vient avec une validation intégrée pour vérifier des validations de base, comme si la saisie contient le signe arobase (`@`)."
             },
             {
               "en": "But what if the user provides an email address like `example@email.com`? This would pass the basic validation, but we want to be more specific about accepting emails from those with a company email address.",
-              "fr": ""
+              "fr": "Mais que se passe-t-il si l'utilisateur fournit une adresse e-mail comme `example@email.com` ? Cela passerait la validation de base, mais nous voulons être plus spécifiques en n'acceptant que les e-mails provenant d'une adresse e-mail d'entreprise."
             },
             {
               "en": "This is where we can use the `pattern` attribute to specify that the email address must end in a company email address. Here is what the updated example will look like:",
-              "fr": ""
+              "fr": "C'est là que nous pouvons utiliser l'attribut `pattern` pour spécifier que l'adresse e-mail doit se terminer par une adresse e-mail d'entreprise. Voici à quoi ressemblera l'exemple mis à jour :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Now, if you try to submit the feedback, you will see a message saying \"Please match the requested format.\"",
-              "fr": ""
+              "fr": "Maintenant, si tu essaies de soumettre le feedback, tu verras un message indiquant \"Please match the requested format.\""
             },
             {
               "en": "Even though the `input` does have placeholder text showing them the desired format, it would be better to also include a customized error message using JavaScript.",
-              "fr": ""
+              "fr": "Même si l'`input` a bien un texte d'espace réservé qui leur montre le format souhaité, il serait préférable d'inclure aussi un message d'erreur personnalisé avec JavaScript."
             },
             {
               "en": "Let's first take a look at the `checkValidity()` method:",
-              "fr": ""
+              "fr": "Regardons d'abord la méthode `checkValidity()` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "In the above example, we've queried our input from the DOM, and added an input event listener.",
-              "fr": ""
+              "fr": "Dans l'exemple ci-dessus, nous avons récupéré notre input depuis le DOM, et ajouté un écouteur d'événement input."
             },
             {
               "en": "We know that `e.target` refers to the element that triggered the event. In this case, our `input`. But what is the `checkValidity()` method?",
-              "fr": ""
+              "fr": "Nous savons que `e.target` fait référence à l'élément qui a déclenché l'événement. Dans ce cas, notre `input`. Mais qu'est-ce que la méthode `checkValidity()` ?"
             },
             {
               "en": "This is part of the Constraint Validation API. The `checkValidity()` method returns `true` if the element matches all HTML validation (based on its attributes), and `false` if it fails.",
-              "fr": ""
+              "fr": "Cela fait partie de la Constraint Validation API. La méthode `checkValidity()` renvoie `true` si l'élément correspond à toute la validation HTML (selon ses attributs), et `false` s'il échoue."
             },
             {
               "en": "When we try with an invalid input, we see `false` gets logged in the console. Now that we know the input is invalid, let's report the invalidity:",
-              "fr": ""
+              "fr": "Quand nous essayons avec une saisie invalide, nous voyons `false` s'afficher dans la console. Maintenant que nous savons que la saisie est invalide, reportons l'invalidité :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "And as a result, you will see the browser's error message \"Please match the requested format.\"",
-              "fr": ""
+              "fr": "Et en conséquence, tu verras le message d'erreur du navigateur \"Please match the requested format.\""
             },
             {
               "en": "It reports the invalid state immediately, instead of waiting for us to submit the form. But it's still using the default message. This is because the `reportValidity` method only tells the browser that the input is invalid. The browser still chooses how to display why it's invalid. That's where the `setCustomValidity` method comes in.",
-              "fr": ""
+              "fr": "Elle signale l'état invalide immédiatement, au lieu d'attendre que nous soumettions le formulaire. Mais elle utilise encore le message par défaut. C'est parce que la méthode `reportValidity` indique seulement au navigateur que la saisie est invalide. Le navigateur choisit encore comment afficher pourquoi elle est invalide. C'est là qu'intervient la méthode `setCustomValidity`."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This method accepts a custom error message, which is displayed to the user. As a result, you will see the custom error message `You must use a company email address that ends in @sampleCompany.com`.",
-              "fr": ""
+              "fr": "Cette méthode accepte un message d'erreur personnalisé, qui est affiché à l'utilisateur. En conséquence, tu verras le message d'erreur personnalisé `You must use a company email address that ends in @sampleCompany.com`."
             },
             {
               "en": "If you are interested in exploring more about the different types of validity states and why a particular validation has failed, you can log out the `validity` property like this:",
-              "fr": ""
+              "fr": "Si tu souhaites explorer davantage les différents types d'états de validité et pourquoi une validation particulière a échoué, tu peux afficher la propriété `validity` comme ceci :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The `validity` property is an instance of the `ValidityState` object. Here is an example of what the object might look like in the browser:",
-              "fr": ""
+              "fr": "La propriété `validity` est une instance de l'objet `ValidityState`. Voici un exemple de ce à quoi l'objet pourrait ressembler dans le navigateur :"
             },
             {
               "en": "There are several helpful properties which all hold the value of a boolean of `true` or `false`.",
-              "fr": ""
+              "fr": "Il y a plusieurs propriétés utiles qui contiennent toutes la valeur d'un booléen `true` ou `false`."
             },
             {
               "en": "Some of these helpful properties that you can explore more on your own would be the `valueMissing` property which is `true` when a required input field is left empty. Or the `patternMismatch` which is `true` if the value doesn't match the specified regular expression pattern.",
-              "fr": ""
+              "fr": "Parmi ces propriétés utiles que tu peux explorer par toi-même, il y a la propriété `valueMissing` qui vaut `true` quand un champ de saisie obligatoire est laissé vide. Ou la propriété `patternMismatch` qui vaut `true` si la valeur ne correspond pas au motif d'expression régulière spécifié."
             },
             {
               "en": "After this lesson, I encourage you to play around with the examples given in this lesson and explore more about the different validity properties.",
-              "fr": ""
+              "fr": "Après cette leçon, je t'encourage à jouer avec les exemples donnés dans cette leçon et à explorer davantage les différentes propriétés de validité."
             }
           ]
         },
@@ -133,7 +133,7 @@
           "chunks": [
             {
               "en": "Which method of the Constraint Validation API is used to check if an input element meets all its validation constraints?",
-              "fr": ""
+              "fr": "Quelle méthode de la Constraint Validation API est utilisée pour vérifier si un élément de saisie respecte toutes ses contraintes de validation ?"
             }
           ]
         },
@@ -143,7 +143,7 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this method when adding an event listener to the input element.",
-              "fr": ""
+              "fr": "La leçon démontre cette méthode lors de l'ajout d'un écouteur d'événement à l'élément de saisie."
             }
           ]
         },
@@ -153,7 +153,7 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this method when adding an event listener to the input element.",
-              "fr": ""
+              "fr": "La leçon démontre cette méthode lors de l'ajout d'un écouteur d'événement à l'élément de saisie."
             }
           ]
         },
@@ -163,7 +163,7 @@
           "chunks": [
             {
               "en": "The lesson demonstrates this method when adding an event listener to the input element.",
-              "fr": ""
+              "fr": "La leçon démontre cette méthode lors de l'ajout d'un écouteur d'événement à l'élément de saisie."
             }
           ]
         },
@@ -173,7 +173,7 @@
           "chunks": [
             {
               "en": "What is the purpose of the `setCustomValidity()` method in form validation?",
-              "fr": ""
+              "fr": "Quel est le but de la méthode `setCustomValidity()` dans la validation de formulaires ?"
             }
           ]
         },
@@ -183,7 +183,7 @@
           "chunks": [
             {
               "en": "To set custom CSS styles for invalid inputs.",
-              "fr": ""
+              "fr": "Définir des styles CSS personnalisés pour les saisies invalides."
             }
           ]
         },
@@ -193,11 +193,11 @@
           "chunks": [
             {
               "en": "The lesson explains how this method is used to provide more informative feedback to users.",
-              "fr": ""
+              "fr": "La leçon explique comment cette méthode est utilisée pour fournir un feedback plus informatif aux utilisateurs."
             },
             {
               "en": "To create custom validation rules.",
-              "fr": ""
+              "fr": "Créer des règles de validation personnalisées."
             }
           ]
         },
@@ -207,15 +207,15 @@
           "chunks": [
             {
               "en": "The lesson explains how this method is used to provide more informative feedback to users.",
-              "fr": ""
+              "fr": "La leçon explique comment cette méthode est utilisée pour fournir un feedback plus informatif aux utilisateurs."
             },
             {
               "en": "To display a custom error message for invalid inputs.",
-              "fr": ""
+              "fr": "Afficher un message d'erreur personnalisé pour les saisies invalides."
             },
             {
               "en": "To override the default HTML validation.",
-              "fr": ""
+              "fr": "Remplacer la validation HTML par défaut."
             }
           ]
         },
@@ -225,7 +225,7 @@
           "chunks": [
             {
               "en": "The lesson explains how this method is used to provide more informative feedback to users.",
-              "fr": ""
+              "fr": "La leçon explique comment cette méthode est utilisée pour fournir un feedback plus informatif aux utilisateurs."
             }
           ]
         },
@@ -235,7 +235,7 @@
           "chunks": [
             {
               "en": "Which property of the `validity` object becomes true when a required input field is left empty?",
-              "fr": ""
+              "fr": "Quelle propriété de l'objet `validity` devient true quand un champ de saisie obligatoire est laissé vide ?"
             }
           ]
         },
@@ -245,7 +245,7 @@
           "chunks": [
             {
               "en": "The lesson shows this property when logging the `validity` object for an empty required field.",
-              "fr": ""
+              "fr": "La leçon montre cette propriété en affichant l'objet `validity` pour un champ obligatoire vide."
             }
           ]
         },
@@ -255,7 +255,7 @@
           "chunks": [
             {
               "en": "The lesson shows this property when logging the `validity` object for an empty required field.",
-              "fr": ""
+              "fr": "La leçon montre cette propriété en affichant l'objet `validity` pour un champ obligatoire vide."
             }
           ]
         },
@@ -265,7 +265,7 @@
           "chunks": [
             {
               "en": "The lesson shows this property when logging the `validity` object for an empty required field.",
-              "fr": ""
+              "fr": "La leçon montre cette propriété en affichant l'objet `validity` pour un champ obligatoire vide."
             }
           ]
         }
@@ -277,7 +277,7 @@
       "dashedName": "what-is-the-purpose-of-e-preventdefault",
       "title": {
         "en": "What Is the Purpose of the preventDefault() Method?",
-        "fr": ""
+        "fr": "Quel est le but de la méthode preventDefault() ?"
       },
       "sections": [
         {
@@ -286,67 +286,67 @@
           "chunks": [
             {
               "en": "Let's learn about the purpose of the `preventDefault()` method on events.",
-              "fr": ""
+              "fr": "Apprenons le but de la méthode `preventDefault()` sur les événements."
             },
             {
               "en": "Every event that triggers in the DOM has some sort of default behavior. The `click` event on a checkbox toggles the state of that checkbox, by default. Pressing the space bar on a focused button activates the button. The `preventDefault()` method on these event objects stops that behavior from happening.",
-              "fr": ""
+              "fr": "Chaque événement déclenché dans le DOM a une sorte de comportement par défaut. L'événement `click` sur une case à cocher bascule l'état de cette case, par défaut. Appuyer sur la barre d'espace sur un bouton focalisé active le bouton. La méthode `preventDefault()` sur ces objets d'événement empêche ce comportement de se produire."
             },
             {
               "en": "Let's take a look at an example. Let's define an `input` element for a user to type in:",
-              "fr": ""
+              "fr": "Regardons un exemple. Définissons un élément `input` pour qu'un utilisateur puisse y taper :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "And if we look at the result, we can type in the input field as expected. But maybe we don't want that. Maybe, instead, we'd like to show the character the user types in a separate element. First, let's define our element for that:",
-              "fr": ""
+              "fr": "Et si nous regardons le résultat, nous pouvons taper dans le champ de saisie comme prévu. Mais peut-être que nous ne voulons pas cela. Peut-être, à la place, que nous aimerions afficher le caractère tapé par l'utilisateur dans un élément séparé. D'abord, définissons notre élément pour cela :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "And then, we need to hook into the `keydown` event to listen for a character being typed on the keyboard. Note that we do not want the `change` or `input` events here, because we need the keyboard information.",
-              "fr": ""
+              "fr": "Ensuite, nous devons nous brancher sur l'événement `keydown` pour écouter un caractère tapé au clavier. Note que nous ne voulons pas les événements `change` ou `input` ici, car nous avons besoin des informations du clavier."
             },
             {
               "en": "The `keydown` event fires when you press down on a keyboard key. When this happens, let's display the character in our `p` element.",
-              "fr": ""
+              "fr": "L'événement `keydown` se déclenche quand tu appuies sur une touche du clavier. Quand cela se produit, affichons le caractère dans notre élément `p`."
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "`e.key` gives you the value of the key pressed, such as `a` for the `a` key or `Enter` for the `Enter` key.",
-              "fr": ""
+              "fr": "`e.key` te donne la valeur de la touche pressée, comme `a` pour la touche `a` ou `Enter` pour la touche `Enter`."
             },
             {
               "en": "With the above code, when you type in the `input`, the character you type will be displayed in the `p` element.",
-              "fr": ""
+              "fr": "Avec le code ci-dessus, quand tu tapes dans l'`input`, le caractère que tu tapes sera affiché dans l'élément `p`."
             },
             {
               "en": "This is great, but we don't want to show the characters in the `input` as well. This is where our `preventDefault()` method comes in. The default behavior of a `keydown` is to render the character in the input. Let's avoid that by calling `e.preventDefault()`:",
-              "fr": ""
+              "fr": "C'est bien, mais nous ne voulons pas afficher les caractères dans l'`input` aussi. C'est là qu'intervient notre méthode `preventDefault()`. Le comportement par défaut d'un `keydown` est d'afficher le caractère dans l'input. Évitons cela en appelant `e.preventDefault()` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "And just like that, you have prevented the default behavior to allow yourself to implement your own custom event handling.",
-              "fr": ""
+              "fr": "Et voilà, tu as empêché le comportement par défaut pour te permettre d'implémenter ta propre gestion d'événement personnalisée."
             },
             {
               "en": "Another common example of when to use the `e.preventDefault` method has to deal with form submissions. By default, submitting a form sends data to the server and reloads the page. Using `e.preventDefault()` prevents this from happening.",
-              "fr": ""
+              "fr": "Un autre exemple courant d'utilisation de la méthode `e.preventDefault` concerne les soumissions de formulaire. Par défaut, soumettre un formulaire envoie les données au serveur et recharge la page. Utiliser `e.preventDefault()` empêche cela de se produire."
             },
             {
               "en": "Preventing the default behavior is great when you need more control over how a user interacts with the page, but it's important to keep things like accessibility in mind – your custom behavior should provide the same features as the default.",
-              "fr": ""
+              "fr": "Empêcher le comportement par défaut est utile quand tu as besoin de plus de contrôle sur la façon dont un utilisateur interagit avec la page, mais il est important de garder à l'esprit des aspects comme l'accessibilité – ton comportement personnalisé devrait offrir les mêmes fonctionnalités que le comportement par défaut."
             }
           ]
         },
@@ -356,7 +356,7 @@
           "chunks": [
             {
               "en": "What is the primary purpose of the `preventDefault()` method in event handling?",
-              "fr": ""
+              "fr": "Quel est le but principal de la méthode `preventDefault()` dans la gestion des événements ?"
             }
           ]
         },
@@ -366,7 +366,7 @@
           "chunks": [
             {
               "en": "To stop event propagation.",
-              "fr": ""
+              "fr": "Arrêter la propagation de l'événement."
             }
           ]
         },
@@ -376,11 +376,11 @@
           "chunks": [
             {
               "en": "The lesson explains what this method does to the default behavior of events.",
-              "fr": ""
+              "fr": "La leçon explique ce que cette méthode fait au comportement par défaut des événements."
             },
             {
               "en": "To remove event listeners.",
-              "fr": ""
+              "fr": "Supprimer les écouteurs d'événements."
             }
           ]
         },
@@ -390,15 +390,15 @@
           "chunks": [
             {
               "en": "The lesson explains what this method does to the default behavior of events.",
-              "fr": ""
+              "fr": "La leçon explique ce que cette méthode fait au comportement par défaut des événements."
             },
             {
               "en": "To stop the default behavior of an event.",
-              "fr": ""
+              "fr": "Arrêter le comportement par défaut d'un événement."
             },
             {
               "en": "To trigger custom events.",
-              "fr": ""
+              "fr": "Déclencher des événements personnalisés."
             }
           ]
         },
@@ -408,7 +408,7 @@
           "chunks": [
             {
               "en": "The lesson explains what this method does to the default behavior of events.",
-              "fr": ""
+              "fr": "La leçon explique ce que cette méthode fait au comportement par défaut des événements."
             }
           ]
         },
@@ -418,7 +418,7 @@
           "chunks": [
             {
               "en": "In the example given, what default behavior is being prevented when `preventDefault()` is called on a `keydown` event for an `input` element?",
-              "fr": ""
+              "fr": "Dans l'exemple donné, quel comportement par défaut est empêché quand `preventDefault()` est appelé sur un événement `keydown` pour un élément `input` ?"
             }
           ]
         },
@@ -428,7 +428,7 @@
           "chunks": [
             {
               "en": "The input losing focus.",
-              "fr": ""
+              "fr": "La perte de focus de l'input."
             }
           ]
         },
@@ -438,15 +438,15 @@
           "chunks": [
             {
               "en": "Think about what normally happens when you type in an input field.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui se passe normalement quand tu tapes dans un champ de saisie."
             },
             {
               "en": "The key being displayed in the input field.",
-              "fr": ""
+              "fr": "La touche affichée dans le champ de saisie."
             },
             {
               "en": "The form being submitted.",
-              "fr": ""
+              "fr": "La soumission du formulaire."
             }
           ]
         },
@@ -456,11 +456,11 @@
           "chunks": [
             {
               "en": "Think about what normally happens when you type in an input field.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui se passe normalement quand tu tapes dans un champ de saisie."
             },
             {
               "en": "The page scrolling.",
-              "fr": ""
+              "fr": "Le défilement de la page."
             }
           ]
         },
@@ -470,7 +470,7 @@
           "chunks": [
             {
               "en": "Think about what normally happens when you type in an input field.",
-              "fr": ""
+              "fr": "Réfléchis à ce qui se passe normalement quand tu tapes dans un champ de saisie."
             }
           ]
         },
@@ -480,7 +480,7 @@
           "chunks": [
             {
               "en": "When using `preventDefault()`, what important consideration should developers keep in mind?",
-              "fr": ""
+              "fr": "Quand on utilise `preventDefault()`, quelle considération importante les développeurs devraient-ils garder à l'esprit ?"
             }
           ]
         },
@@ -490,7 +490,7 @@
           "chunks": [
             {
               "en": "It should only be used on form submissions.",
-              "fr": ""
+              "fr": "Elle ne devrait être utilisée que sur les soumissions de formulaire."
             }
           ]
         },
@@ -500,11 +500,11 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific concern related to user interaction when using custom behaviors.",
-              "fr": ""
+              "fr": "La leçon mentionne une préoccupation spécifique liée à l'interaction utilisateur quand on utilise des comportements personnalisés."
             },
             {
               "en": "It will automatically improve performance.",
-              "fr": ""
+              "fr": "Elle améliorera automatiquement les performances."
             }
           ]
         },
@@ -514,15 +514,15 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific concern related to user interaction when using custom behaviors.",
-              "fr": ""
+              "fr": "La leçon mentionne une préoccupation spécifique liée à l'interaction utilisateur quand on utilise des comportements personnalisés."
             },
             {
               "en": "It should maintain the same features as the default behavior for accessibility.",
-              "fr": ""
+              "fr": "Elle devrait conserver les mêmes fonctionnalités que le comportement par défaut pour l'accessibilité."
             },
             {
               "en": "It will prevent all future events on the element.",
-              "fr": ""
+              "fr": "Elle empêchera tous les événements futurs sur l'élément."
             }
           ]
         },
@@ -532,7 +532,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific concern related to user interaction when using custom behaviors.",
-              "fr": ""
+              "fr": "La leçon mentionne une préoccupation spécifique liée à l'interaction utilisateur quand on utilise des comportements personnalisés."
             }
           ]
         }
@@ -544,7 +544,7 @@
       "dashedName": "how-does-the-submit-event-work-with-forms",
       "title": {
         "en": "How Does the Submit Event Work with Forms?",
-        "fr": ""
+        "fr": "Comment l'événement submit fonctionne-t-il avec les formulaires ?"
       },
       "sections": [
         {
@@ -553,91 +553,91 @@
           "chunks": [
             {
               "en": "Let's learn about how the `submit` event works with HTML forms. First, we need to understand how to submit a form. There are three ways a form can be submitted.",
-              "fr": ""
+              "fr": "Apprenons comment l'événement `submit` fonctionne avec les formulaires HTML. D'abord, nous devons comprendre comment soumettre un formulaire. Il y a trois façons de soumettre un formulaire."
             },
             {
               "en": "The first is when the user clicks a button in the form which has the `type` attribute set to `submit`.",
-              "fr": ""
+              "fr": "La première est quand l'utilisateur clique sur un bouton du formulaire dont l'attribut `type` est défini à `submit`."
             },
             {
               "en": "The second is when the user presses the Enter key on any editable input field in the form.",
-              "fr": ""
+              "fr": "La deuxième est quand l'utilisateur appuie sur la touche Entrée sur n'importe quel champ de saisie éditable du formulaire."
             },
             {
               "en": "The third is through a JavaScript call to the `requestSubmit()` or `submit()` methods of the form element.",
-              "fr": ""
+              "fr": "La troisième passe par un appel JavaScript aux méthodes `requestSubmit()` ou `submit()` de l'élément formulaire."
             },
             {
               "en": "But what happens when a form is submitted? There's a few things that happen, and the behavior of the form depends on its attributes.",
-              "fr": ""
+              "fr": "Mais que se passe-t-il quand un formulaire est soumis ? Plusieurs choses se produisent, et le comportement du formulaire dépend de ses attributs."
             },
             {
               "en": "The first attribute that we need to look at is the `action` attribute. The `action` attribute should contain either a URL or a relative path for the current domain. This value determines where the form attempts to send data. If you do not set an `action` attribute, the form will send data to the current page's URL. Here is an example of a form with an `action` attribute set to a specific URL:",
-              "fr": ""
+              "fr": "Le premier attribut que nous devons examiner est l'attribut `action`. L'attribut `action` doit contenir soit une URL, soit un chemin relatif pour le domaine actuel. Cette valeur détermine où le formulaire tente d'envoyer les données. Si tu ne définis pas d'attribut `action`, le formulaire enverra les données à l'URL de la page actuelle. Voici un exemple de formulaire avec un attribut `action` défini sur une URL spécifique :"
             },
             {
               "en": "When this form is submitted, it will send data to freeCodeCamp's homepage, which probably won't do anything.",
-              "fr": ""
+              "fr": "Quand ce formulaire est soumis, il enverra les données à la page d'accueil de freeCodeCamp, ce qui ne fera probablement rien."
             },
             {
               "en": "Here's another form, which submits to a relative path:",
-              "fr": ""
+              "fr": "Voici un autre formulaire, qui soumet vers un chemin relatif :"
             },
             {
               "en": "This one submits to the `/data` path on the current domain. In our case, it would submit to `http://127.0.0.1:5500/data`.",
-              "fr": ""
+              "fr": "Celui-ci soumet vers le chemin `/data` sur le domaine actuel. Dans notre cas, il soumettrait vers `http://127.0.0.1:5500/data`."
             },
             {
               "en": "The second attribute to control how a submission behaves is the `method` attribute. This attribute accepts a standard HTTP method, such as `GET` or `POST`, and uses that method when making the request to the `action` URL.",
-              "fr": ""
+              "fr": "Le deuxième attribut pour contrôler le comportement d'une soumission est l'attribut `method`. Cet attribut accepte une méthode HTTP standard, comme `GET` ou `POST`, et utilise cette méthode lors de la requête vers l'URL `action`."
             },
             {
               "en": "HTTP stands for Hypertext Transfer Protocol and it is used to transfer data over the web.",
-              "fr": ""
+              "fr": "HTTP signifie Hypertext Transfer Protocol et il est utilisé pour transférer des données sur le web."
             },
             {
               "en": "HTTP methods are used to define the actions that can be performed on resources, such as `GET`, `POST`, `PUT`, `DELETE`, and so on. You will learn more about these methods in future lessons.",
-              "fr": ""
+              "fr": "Les méthodes HTTP sont utilisées pour définir les actions qui peuvent être effectuées sur des ressources, comme `GET`, `POST`, `PUT`, `DELETE`, et ainsi de suite. Tu en apprendras davantage sur ces méthodes dans de futures leçons."
             },
             {
               "en": "When a method is not set, the form will default to a `GET` request. A `GET` request is used to retrieve data from a specified resource without making any changes to it, and the parameters are typically appended to the URL in the form of a query string.",
-              "fr": ""
+              "fr": "Quand une méthode n'est pas définie, le formulaire utilisera par défaut une requête `GET`. Une requête `GET` est utilisée pour récupérer des données depuis une ressource spécifiée sans y apporter de modifications, et les paramètres sont typiquement ajoutés à l'URL sous forme de chaîne de requête."
             },
             {
               "en": "The data in the form will be URL encoded as `name=value` pairs and appended to the `action` URL as query parameters. For instance, by submitting the form from our previous example with the value of `3342` for the `input` field, the form would try to `GET` the URL `http://127.0.0.1:5500/data?number=3342`.",
-              "fr": ""
+              "fr": "Les données du formulaire seront encodées en URL sous forme de paires `name=value` et ajoutées à l'URL `action` comme paramètres de requête. Par exemple, en soumettant le formulaire de notre exemple précédent avec la valeur `3342` pour le champ `input`, le formulaire essaierait de faire un `GET` sur l'URL `http://127.0.0.1:5500/data?number=3342`."
             },
             {
               "en": "This is great for something like a search form, where your user is querying data. But if you want your user to submit new data, such as in a registration form, the idiomatic method to use would be the `POST` method. The `POST` method is used to send data to the server to create or update a resource.",
-              "fr": ""
+              "fr": "C'est idéal pour quelque chose comme un formulaire de recherche, où ton utilisateur interroge des données. Mais si tu veux que ton utilisateur soumette de nouvelles données, comme dans un formulaire d'inscription, la méthode idiomatique à utiliser serait la méthode `POST`. La méthode `POST` est utilisée pour envoyer des données au serveur afin de créer ou mettre à jour une ressource."
             },
             {
               "en": "Let's set the `method` attribute to the value of `POST`:",
-              "fr": ""
+              "fr": "Définissons l'attribut `method` à la valeur `POST` :"
             },
             {
               "en": "When you send a `POST` request, a body can be included which contains the data for your request. So unlike a `GET`, the data are not appended to the URL, and our form sends the `POST` request to `http://127.0.0.1:5500/data`. The data, instead, can be found in the body of the request, still as URL-encoded form data.",
-              "fr": ""
+              "fr": "Quand tu envoies une requête `POST`, un corps peut être inclus qui contient les données de ta requête. Donc contrairement à un `GET`, les données ne sont pas ajoutées à l'URL, et notre formulaire envoie la requête `POST` à `http://127.0.0.1:5500/data`. Les données, à la place, se trouvent dans le corps de la requête, toujours sous forme de données de formulaire encodées en URL."
             },
             {
               "en": "URL-encoded form data is when form data is converted into a string of key-value pairs, like `name=John+Doe&email=john%40example.com`, where special characters are replaced with encoded versions to safely send the data over the web. You will learn more about this in future lessons.",
-              "fr": ""
+              "fr": "Les données de formulaire encodées en URL, c'est quand les données du formulaire sont converties en une chaîne de paires clé-valeur, comme `name=John+Doe&email=john%40example.com`, où les caractères spéciaux sont remplacés par des versions encodées pour envoyer les données en toute sécurité sur le web. Tu en apprendras davantage à ce sujet dans de futures leçons."
             },
             {
               "en": "But maybe you don't want to send the data as a URL-encoded form payload?",
-              "fr": ""
+              "fr": "Mais peut-être que tu ne veux pas envoyer les données sous forme de charge utile de formulaire encodée en URL ?"
             },
             {
               "en": "The `form` element accepts an `enctype` attribute, which represents the encoding type to use for the data.",
-              "fr": ""
+              "fr": "L'élément `form` accepte un attribut `enctype`, qui représente le type d'encodage à utiliser pour les données."
             },
             {
               "en": "This attribute only accepts three values: `application/x-www-form-urlencoded` (which is the default, sending the data as a URL-encoded form body), `text/plain` (which sends the data in plaintext form, in `name=value` pairs separated by new lines), or `multipart/form-data`, which is specifically for handling forms with a file upload.",
-              "fr": ""
+              "fr": "Cet attribut n'accepte que trois valeurs : `application/x-www-form-urlencoded` (qui est la valeur par défaut, envoyant les données comme un corps de formulaire encodé en URL), `text/plain` (qui envoie les données en texte brut, en paires `name=value` séparées par des nouvelles lignes), ou `multipart/form-data`, qui est spécifiquement destiné à gérer les formulaires avec un téléversement de fichier."
             },
             {
               "en": "In this lesson, you've learned the basics of form submissions. In future lessons, we'll dive deeper into working with forms and how they interact with the server.",
-              "fr": ""
+              "fr": "Dans cette leçon, tu as appris les bases des soumissions de formulaires. Dans de futures leçons, nous irons plus loin dans le travail avec les formulaires et la façon dont ils interagissent avec le serveur."
             }
           ]
         },
@@ -647,7 +647,7 @@
           "chunks": [
             {
               "en": "Which of the following is NOT a way to submit an HTML form?",
-              "fr": ""
+              "fr": "Laquelle des options suivantes N'EST PAS une façon de soumettre un formulaire HTML ?"
             }
           ]
         },
@@ -657,7 +657,7 @@
           "chunks": [
             {
               "en": "Clicking a button with `type=\"submit\"`.",
-              "fr": ""
+              "fr": "Cliquer sur un bouton avec `type=\"submit\"`."
             }
           ]
         },
@@ -667,11 +667,11 @@
           "chunks": [
             {
               "en": "The lesson mentions three specific ways to submit a form.",
-              "fr": ""
+              "fr": "La leçon mentionne trois façons spécifiques de soumettre un formulaire."
             },
             {
               "en": "Pressing Enter on an editable input field.",
-              "fr": ""
+              "fr": "Appuyer sur Entrée sur un champ de saisie éditable."
             }
           ]
         },
@@ -681,11 +681,11 @@
           "chunks": [
             {
               "en": "The lesson mentions three specific ways to submit a form.",
-              "fr": ""
+              "fr": "La leçon mentionne trois façons spécifiques de soumettre un formulaire."
             },
             {
               "en": "Calling the form's `requestSubmit()` method.",
-              "fr": ""
+              "fr": "Appeler la méthode `requestSubmit()` du formulaire."
             }
           ]
         },
@@ -695,11 +695,11 @@
           "chunks": [
             {
               "en": "The lesson mentions three specific ways to submit a form.",
-              "fr": ""
+              "fr": "La leçon mentionne trois façons spécifiques de soumettre un formulaire."
             },
             {
               "en": "Double-clicking anywhere within the form.",
-              "fr": ""
+              "fr": "Double-cliquer n'importe où dans le formulaire."
             }
           ]
         },
@@ -709,7 +709,7 @@
           "chunks": [
             {
               "en": "What happens when a form's `action` attribute is not set?",
-              "fr": ""
+              "fr": "Que se passe-t-il quand l'attribut `action` d'un formulaire n'est pas défini ?"
             }
           ]
         },
@@ -719,7 +719,7 @@
           "chunks": [
             {
               "en": "The form submission is prevented.",
-              "fr": ""
+              "fr": "La soumission du formulaire est empêchée."
             }
           ]
         },
@@ -729,15 +729,15 @@
           "chunks": [
             {
               "en": "The lesson explains the default behavior when the `action` attribute is missing.",
-              "fr": ""
+              "fr": "La leçon explique le comportement par défaut quand l'attribut `action` est manquant."
             },
             {
               "en": "The form data is sent to the current page's URL.",
-              "fr": ""
+              "fr": "Les données du formulaire sont envoyées à l'URL de la page actuelle."
             },
             {
               "en": "An error is thrown.",
-              "fr": ""
+              "fr": "Une erreur est levée."
             }
           ]
         },
@@ -747,11 +747,11 @@
           "chunks": [
             {
               "en": "The lesson explains the default behavior when the `action` attribute is missing.",
-              "fr": ""
+              "fr": "La leçon explique le comportement par défaut quand l'attribut `action` est manquant."
             },
             {
               "en": "The form data is sent to a default server.",
-              "fr": ""
+              "fr": "Les données du formulaire sont envoyées à un serveur par défaut."
             }
           ]
         },
@@ -761,7 +761,7 @@
           "chunks": [
             {
               "en": "The lesson explains the default behavior when the `action` attribute is missing.",
-              "fr": ""
+              "fr": "La leçon explique le comportement par défaut quand l'attribut `action` est manquant."
             }
           ]
         },
@@ -771,7 +771,7 @@
           "chunks": [
             {
               "en": "Which `enctype` value should be used when a form includes file uploads?",
-              "fr": ""
+              "fr": "Quelle valeur `enctype` devrait être utilisée quand un formulaire inclut des téléversements de fichiers ?"
             }
           ]
         },
@@ -781,7 +781,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific `enctype` for handling forms with file uploads.",
-              "fr": ""
+              "fr": "La leçon mentionne un `enctype` spécifique pour gérer les formulaires avec téléversement de fichiers."
             }
           ]
         },
@@ -791,7 +791,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific `enctype` for handling forms with file uploads.",
-              "fr": ""
+              "fr": "La leçon mentionne un `enctype` spécifique pour gérer les formulaires avec téléversement de fichiers."
             }
           ]
         },
@@ -801,7 +801,7 @@
           "chunks": [
             {
               "en": "The lesson mentions a specific enctype for handling forms with file uploads.",
-              "fr": ""
+              "fr": "La leçon mentionne un enctype spécifique pour gérer les formulaires avec téléversement de fichiers."
             }
           ]
         }

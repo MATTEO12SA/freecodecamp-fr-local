@@ -1,6 +1,6 @@
 import { faCheckSquare, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation, withTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
@@ -9,6 +9,7 @@ import { Link } from '../../helpers';
 import { LocalStorageThemes } from '../../../redux/types';
 import { themeSelector } from '../../../redux/selectors';
 import { isDevelopmentMode } from '../../../../config/runtime-mode';
+import { getContinuePath } from '../../../utils/local-continue';
 
 export interface NavLinksProps {
   displayMenu: boolean;
@@ -35,6 +36,11 @@ function NavLinks({
   toggleTheme
 }: NavLinksProps) {
   const { t } = useTranslation();
+  const [continuePath, setContinuePathState] = useState<string | null>(null);
+
+  useEffect(() => {
+    setContinuePathState(getContinuePath());
+  }, [displayMenu]);
 
   const closeAndFocus = () => {
     menuButtonRef.current?.classList.add('force-show');
@@ -60,6 +66,20 @@ function NavLinks({
       data-playwright-test-label='header-menu'
       className={`nav-list${displayMenu ? ' display-menu' : ''}`}
     >
+      {continuePath && (
+        <li key='continue'>
+          <Link
+            className='nav-link'
+            onClick={hideMenu}
+            onKeyDown={handleMenuKeyDown}
+            to={continuePath}
+            title='Reprendre le dernier défi ouvert'
+            data-playwright-test-label='nav-continue'
+          >
+            {t('buttons.continue')}
+          </Link>
+        </li>
+      )}
       <li key='learn'>
         <Link
           className='nav-link'

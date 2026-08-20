@@ -218,7 +218,7 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 150/230 blocs, 649/1311 fichiers — modules 1-12 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-understanding-form-validation.json` (`reviewed: false` — ne pas appliquer). Le pipeline gère lectures, workshops/labs, reviews et quizzes.
+- **JavaScript v9** : 155/230 blocs, 752/1311 fichiers — modules 1-12 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-working-with-dates.json` (`reviewed: false` — ne pas appliquer). Le pipeline gère lectures, workshops/labs, reviews et quizzes.
 
 ## Pièges
 

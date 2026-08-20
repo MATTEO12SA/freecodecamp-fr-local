@@ -1,0 +1,500 @@
+{
+  "workshop": "lecture-working-with-dates",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733aafb9c0802f66cc1e056.md",
+      "id": "6733aafb9c0802f66cc1e056",
+      "dashedName": "how-does-the-javascript-data-object-work-and-what-are-some-common-methods",
+      "title": {
+        "en": "How Does the JavaScript Date Object Work, and What Are Some Common Methods?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "Dates and times in JavaScript have not always been easy to work with. In a professional codebase, you will probably be using a library that has solved a lot of those issues for you.",
+              "fr": ""
+            },
+            {
+              "en": "But there will be times where you will need to work JavaScript's built-in `Date` object.",
+              "fr": ""
+            },
+            {
+              "en": "In this lesson, we will go over the basics of the `Date` object and some of the most common methods that you will use when working with dates and times in JavaScript.",
+              "fr": ""
+            },
+            {
+              "en": "The `Date` object is a built-in object in JavaScript that allows you to work with dates and times. Here is the basic syntax for creating a new `Date` object:",
+              "fr": ""
+            },
+            {
+              "en": "The `new` keyword is used to create a new instance of the `Date` object, and the `Date` object is then assigned to the variable `now`. If you were to log the value of `now` to the console, you would see the current date and time based on the system clock of the computer running the code.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example response you would see if you logged the value of `now` to the console:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "For the time, it is using the military time format, so `14:30` is `2:30 PM`. `GMT-0700` is the timezone offset, and `Pacific Daylight Time` is the timezone name.",
+              "fr": ""
+            },
+            {
+              "en": "You can also pass in a specific date and time to the `Date` object by providing the year, month, day, hour, minute, second, and millisecond values as arguments.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of creating a new `Date` object with a specific date and time:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "This is useful when you need to work with a specific date and time rather than the current date and time. The input always needs to be a string, and the format should be recognizable by the `Date` object.",
+              "fr": ""
+            },
+            {
+              "en": "To get the current date and time, you can use the `Date.now()` method, which returns the number of milliseconds since `January 1, 1970, 00:00:00 UTC`. This is known as the Unix epoch time.",
+              "fr": ""
+            },
+            {
+              "en": "Unix epoch time is a common way to represent dates and times in computer systems because it is an integer that can be easily stored and manipulated. UTC stands for Universal Time Coordinated, which is the primary time standard by which the world regulates clocks and time.",
+              "fr": ""
+            },
+            {
+              "en": "If you need to get a day of the month based on the current date, you can use the `getDate` method. Here is an example of using the `getDate` method:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "In this example, we create a new date instance using the `Date` object and assign it to the variable `now`. We then call the `getDate` method on the `now` object to get the day of the month and assign it to the variable `date`. Finally, we log the value of `date` to the console, which will output the current day of the month.",
+              "fr": ""
+            },
+            {
+              "en": "`getDate` will return an integer value between `1` and `31`, depending on the day of the month. If the date is invalid, it will return `NaN` (Not a Number).",
+              "fr": ""
+            },
+            {
+              "en": "To get the month, you can use the `getMonth` method like this:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The month is zero-based, so `January` is `0`, `February` is `1`, and so on. If the month is invalid, it will return `NaN`.",
+              "fr": ""
+            },
+            {
+              "en": "If you need to get the full year, then you can use the `getFullYear` method like this:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "If the year is invalid, it will return `NaN`.",
+              "fr": ""
+            },
+            {
+              "en": "There are many more methods available on the `Date` object including `getHours`, `getMinutes`, `getSeconds`, and so on. I encourage you to explore some more on your own through Mozilla's documentation or other resources.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `Date.now()` method return?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The current date in string format.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method provides a way to get the current time in a format that's often used in computing.",
+              "fr": ""
+            },
+            {
+              "en": "The number of milliseconds since January 1, 1970, 00:00:00 UTC.",
+              "fr": ""
+            },
+            {
+              "en": "The current day of the month.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method provides a way to get the current time in a format that's often used in computing.",
+              "fr": ""
+            },
+            {
+              "en": "The full year of the current date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method provides a way to get the current time in a format that's often used in computing.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "If you use the `getMonth` method and it returns `4`, which month is being represented?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that months are zero-based in JavaScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that months are zero-based in JavaScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that months are zero-based in JavaScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How would you create a `Date` object for July 4, 1776, at 12:00:00 PM?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "You can provide the date and time in a string format or as separate numeric values.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "You can provide the date and time in a string format or as separate numeric values.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d608654c17868e01c0a2.md",
+      "id": "6733d608654c17868e01c0a2",
+      "dashedName": "what-are-the-different-ways-to-format-dates",
+      "title": {
+        "en": "What Are the Different Ways to Format Dates?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you learned how to work with the `Date` object in JavaScript. But there are a few different ways to format dates in JavaScript.",
+              "fr": ""
+            },
+            {
+              "en": "In this lesson, we'll take a look at how to work with the `toISOString()`, `toString()`, and `toLocaleDateString()` methods to format dates in JavaScript.",
+              "fr": ""
+            },
+            {
+              "en": "Before we look at the different methods, let's first review what the `Date` object looks like:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "When you log the `date` object to the console, you will see the current date and time based on the user's system settings. Here is an example of the output you might see:",
+              "fr": ""
+            },
+            {
+              "en": "If you were to use the `toString()` method on the `date` object, you would see the same output as above.",
+              "fr": ""
+            },
+            {
+              "en": "To format the date in an extended ISO format (ISO 8601), you can use the `toISOString()` method like this:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "ISO 8601 is an international standard for representing dates and times. The format is `YYYY-MM-DDTHH:mm:ss.sssZ`.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of the output you might see:",
+              "fr": ""
+            },
+            {
+              "en": "Another way to format the date, would be to use the `toLocaleDateString()` method. This method allows you to format the date based on the user's locale. Here is the basic syntax for using the `toLocaleDateString()` method:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of the output you might see:",
+              "fr": ""
+            },
+            {
+              "en": "The `toLocaleDateString()` method accepts two optional parameters: `locales` and `options`.",
+              "fr": ""
+            },
+            {
+              "en": "The `locales` parameter is a string representing the locale to use. For example, you can pass in `en-US` for English (United States) or `fr-FR` for French (France). If you don't pass in a `locales` parameter, the default locale is used. Here is an example of how to use the `locales` parameter:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "The second optional parameter is the `options` parameter. This parameter is an object that allows you to specify the format of the date string. Here is an example of how to use the `options` parameter:",
+              "fr": ""
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ""
+            },
+            {
+              "en": "In the above example, we specified the options to be in English (Great Britain) and to include the full weekday, year, month, and day.",
+              "fr": ""
+            },
+            {
+              "en": "Here is an example of the output you might see:",
+              "fr": ""
+            },
+            {
+              "en": "In this lesson, we have only covered a few of the ways to format dates in JavaScript. There are many other methods and libraries available to help you format dates in JavaScript. But the `toISOString()`, and `toLocaleDateString()` methods are a good starting point for formatting dates in JavaScript.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What method would you use to format a date in the ISO 8601 format?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method returns a standardized string representation of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method returns a standardized string representation of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method returns a standardized string representation of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method formats the date based on the user's locale?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method allows for localized formatting of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method allows for localized formatting of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method allows for localized formatting of the date.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What optional parameters can you provide to the `toLocaleDateString()` method?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`locales` and `options`.",
+              "fr": ""
+            },
+            {
+              "en": "`format` and `timezone`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These parameters help customize the output format.",
+              "fr": ""
+            },
+            {
+              "en": "`day` and `month`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These parameters help customize the output format.",
+              "fr": ""
+            },
+            {
+              "en": "`style` and `language`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These parameters help customize the output format.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

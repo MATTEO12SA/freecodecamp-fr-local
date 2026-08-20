@@ -1,0 +1,173 @@
+{
+  "workshop": "lab-customer-complaint-form",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "67279fe50237291f80eed8b8.md",
+      "id": "67279fe50237291f80eed8b8",
+      "dashedName": "build-a-customer-complaint-form",
+      "title": {
+        "en": "Build a Customer Complaint Form",
+        "fr": "Construire un formulaire de réclamation client"
+      },
+      "description": [
+        {
+          "en": "For this lab, you have been provided with all the HTML and CSS. You will use JavaScript to validate the complaint form.",
+          "fr": "Pour ce lab, tout le HTML et le CSS te sont fournis. Tu vas utiliser JavaScript pour valider le formulaire de réclamation."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** réalise les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User stories :**"
+        },
+        {
+          "en": "1. When the form is submitted, you should ensure that:\n    - `#full-name` is not empty.\n    - `#email` is a valid email address format.\n    - `#order-no` is a sequence of ten numbers starting with `2024`.\n    - `#product-code` follows the pattern `XX##-X###-XX#`, where `X` represents either a lowercase letter or an uppercase letter and `#` represents a number.\n    - `#quantity` is a positive integer.\n    - at least one checkbox from `#complaints-group` is checked.\n    - `#complaint-description` contains at least twenty characters if the `Other` checkbox is checked.\n    - a radio button from `#solutions-group` is selected.\n    - `#solution-description` contains at least twenty characters if the `Other` radio button is selected.\n1. You should have a function named `validateForm` that returns an object containing the following keys: `full-name`, `email`, `order-no`, `product-code`, `quantity`, `complaints-group`, `complaint-description`, `solutions-group`, and `solution-description`. The value of each key should be `true` if the corresponding form field is correctly filled and `false` otherwise. The conditional description fields should be `true` when they are not required, and otherwise validated based on whether they contain at least twenty characters.\n1. You should have a function named `isValid` that takes the object returned by `validateForm` as argument and returns `true` if every form field is correctly filled and `false` otherwise.\n1. If a change event is triggered on a form field and it has a valid value, you should set its border color to `green`. In case of checkbox and radio button groups, you should set the border color of the parent `fieldset`.\n1. If a change event is triggered on a form field and it has an invalid value, you should set its border color to `red`. In case of checkbox and radio button groups, you should set the border color of the parent `fieldset`.\n1. When you try to submit the form you should call `isValid` to validate the form.\n1. When you try to submit the form, if the form has any invalid field, each invalid field should be highlighted by setting the border color of each invalid input, textarea or fieldset (in case of checkbox and radio button groups) to `red`.",
+          "fr": "1. Lorsque le formulaire est soumis, tu dois t'assurer que :\n    - `#full-name` n'est pas vide.\n    - `#email` est au format d'une adresse e-mail valide.\n    - `#order-no` est une séquence de dix chiffres commençant par `2024`.\n    - `#product-code` suit le motif `XX##-X###-XX#`, où `X` représente une lettre minuscule ou majuscule et `#` représente un chiffre.\n    - `#quantity` est un entier positif.\n    - au moins une case à cocher de `#complaints-group` est cochée.\n    - `#complaint-description` contient au moins vingt caractères si la case `Other` est cochée.\n    - un bouton radio de `#solutions-group` est sélectionné.\n    - `#solution-description` contient au moins vingt caractères si le bouton radio `Other` est sélectionné.\n1. Tu dois avoir une fonction nommée `validateForm` qui renvoie un objet contenant les clés suivantes : `full-name`, `email`, `order-no`, `product-code`, `quantity`, `complaints-group`, `complaint-description`, `solutions-group` et `solution-description`. La valeur de chaque clé doit être `true` si le champ de formulaire correspondant est correctement rempli, et `false` sinon. Les champs de description conditionnels doivent être `true` lorsqu'ils ne sont pas requis, et sinon être validés selon qu'ils contiennent au moins vingt caractères.\n1. Tu dois avoir une fonction nommée `isValid` qui prend l'objet renvoyé par `validateForm` en argument et renvoie `true` si chaque champ du formulaire est correctement rempli, et `false` sinon.\n1. Si un événement change est déclenché sur un champ de formulaire et qu'il a une valeur valide, tu dois définir sa couleur de bordure à `green`. Dans le cas des groupes de cases à cocher et de boutons radio, tu dois définir la couleur de bordure du `fieldset` parent.\n1. Si un événement change est déclenché sur un champ de formulaire et qu'il a une valeur invalide, tu dois définir sa couleur de bordure à `red`. Dans le cas des groupes de cases à cocher et de boutons radio, tu dois définir la couleur de bordure du `fieldset` parent.\n1. Lorsque tu essaies de soumettre le formulaire, tu dois appeler `isValid` pour valider le formulaire.\n1. Lorsque tu essaies de soumettre le formulaire, s'il contient un champ invalide, chaque champ invalide doit être mis en évidence en définissant la couleur de bordure de chaque input, textarea ou fieldset invalide (dans le cas des groupes de cases à cocher et de boutons radio) à `red`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `validateForm`.",
+          "fr": "Tu dois avoir une fonction nommée `validateForm`."
+        },
+        {
+          "en": "`validateForm` should return an object.",
+          "fr": "`validateForm` doit renvoyer un objet."
+        },
+        {
+          "en": "`validateForm()[\"full-name\"]` should be `false` when `#full-name` is empty, and `true` otherwise.",
+          "fr": "`validateForm()[\"full-name\"]` doit être `false` lorsque `#full-name` est vide, et `true` sinon."
+        },
+        {
+          "en": "When a `change` event is triggered on `#full-name`, you should set its border color to `green` if it contains a valid value, and `red` otherwise.",
+          "fr": "Lorsqu'un événement `change` est déclenché sur `#full-name`, tu dois définir sa couleur de bordure à `green` s'il contient une valeur valide, et à `red` sinon."
+        },
+        {
+          "en": "`validateForm()[\"email\"]` should be `true` when `#email` contains a valid email address, and `false` otherwise.",
+          "fr": "`validateForm()[\"email\"]` doit être `true` lorsque `#email` contient une adresse e-mail valide, et `false` sinon."
+        },
+        {
+          "en": "When a `change` event is triggered on `#email`, you should set its border color to `green` if it contains a valid email address, and `red` otherwise.",
+          "fr": "Lorsqu'un événement `change` est déclenché sur `#email`, tu dois définir sa couleur de bordure à `green` s'il contient une adresse e-mail valide, et à `red` sinon."
+        },
+        {
+          "en": "`validateForm()[\"order-no\"]` should be `true` when `#order-no` contains a valid value, and `false` otherwise.",
+          "fr": "`validateForm()[\"order-no\"]` doit être `true` lorsque `#order-no` contient une valeur valide, et `false` sinon."
+        },
+        {
+          "en": "When a `change` event is triggered on `#order-no`, you should set its border color to `green` if it contains a valid value, and `red` otherwise.",
+          "fr": "Lorsqu'un événement `change` est déclenché sur `#order-no`, tu dois définir sa couleur de bordure à `green` s'il contient une valeur valide, et à `red` sinon."
+        },
+        {
+          "en": "`validateForm()[\"product-code\"]` should be `true` when `#product-code` contains a valid value, and `false` otherwise.",
+          "fr": "`validateForm()[\"product-code\"]` doit être `true` lorsque `#product-code` contient une valeur valide, et `false` sinon."
+        },
+        {
+          "en": "When a `change` event is triggered on `#product-code`, you should set its border color to `green` if it contains a valid value, and `red` otherwise.",
+          "fr": "Lorsqu'un événement `change` est déclenché sur `#product-code`, tu dois définir sa couleur de bordure à `green` s'il contient une valeur valide, et à `red` sinon."
+        },
+        {
+          "en": "`validateForm()[\"quantity\"]` should be `true` when `#quantity` contains a valid value, and `false` otherwise.",
+          "fr": "`validateForm()[\"quantity\"]` doit être `true` lorsque `#quantity` contient une valeur valide, et `false` sinon."
+        },
+        {
+          "en": "When a `change` event is triggered on `#quantity`, you should set its border color to `green` if it contains a valid value, and `red` otherwise.",
+          "fr": "Lorsqu'un événement `change` est déclenché sur `#quantity`, tu dois définir sa couleur de bordure à `green` s'il contient une valeur valide, et à `red` sinon."
+        },
+        {
+          "en": "When at least one checkbox from `#complaints-group` is checked, `validateForm()[\"complaints-group\"]` should be `true`.",
+          "fr": "Lorsqu'au moins une case à cocher de `#complaints-group` est cochée, `validateForm()[\"complaints-group\"]` doit être `true`."
+        },
+        {
+          "en": "When none of the checkboxes from `#complaints-group` is checked, `validateForm()[\"complaints-group\"]` should be `false`.",
+          "fr": "Lorsqu'aucune des cases à cocher de `#complaints-group` n'est cochée, `validateForm()[\"complaints-group\"]` doit être `false`."
+        },
+        {
+          "en": "Once one checkbox from `#complaints-group` is checked, you should set `#complaints-group`'s border color to `green`.",
+          "fr": "Dès qu'une case à cocher de `#complaints-group` est cochée, tu dois définir la couleur de bordure de `#complaints-group` à `green`."
+        },
+        {
+          "en": "When all of the checkboxes from `#complaints-group` are changed to the unchecked state, you should set `#complaints-group`'s border color to `red`.",
+          "fr": "Lorsque toutes les cases à cocher de `#complaints-group` passent à l'état non coché, tu dois définir la couleur de bordure de `#complaints-group` à `red`."
+        },
+        {
+          "en": "When `#other-complaint` is not checked, `validateForm()[\"complaint-description\"]` should be `true`.",
+          "fr": "Lorsque `#other-complaint` n'est pas cochée, `validateForm()[\"complaint-description\"]` doit être `true`."
+        },
+        {
+          "en": "When `#other-complaint` is checked and `#complaint-description` contains at least twenty characters, `validateForm()[\"complaint-description\"]` should be `true`.",
+          "fr": "Lorsque `#other-complaint` est cochée et que `#complaint-description` contient au moins vingt caractères, `validateForm()[\"complaint-description\"]` doit être `true`."
+        },
+        {
+          "en": "When `#other-complaint` is checked and `#complaint-description` contains less than twenty characters, `validateForm()[\"complaint-description\"]` should be `false`.",
+          "fr": "Lorsque `#other-complaint` est cochée et que `#complaint-description` contient moins de vingt caractères, `validateForm()[\"complaint-description\"]` doit être `false`."
+        },
+        {
+          "en": "When `#other-complaint` is checked and the value of `#complaint-description` is changed to a valid value, you should set its border color to `green`.",
+          "fr": "Lorsque `#other-complaint` est cochée et que la valeur de `#complaint-description` est modifiée vers une valeur valide, tu dois définir sa couleur de bordure à `green`."
+        },
+        {
+          "en": "When `#other-complaint` is checked and the value of `#complaint-description` is changed to an invalid value, you should set its border color to `red`.",
+          "fr": "Lorsque `#other-complaint` est cochée et que la valeur de `#complaint-description` est modifiée vers une valeur invalide, tu dois définir sa couleur de bordure à `red`."
+        },
+        {
+          "en": "When a radio button from `#solutions-group` is checked, `validateForm()[\"solutions-group\"]` should be `true`.",
+          "fr": "Lorsqu'un bouton radio de `#solutions-group` est coché, `validateForm()[\"solutions-group\"]` doit être `true`."
+        },
+        {
+          "en": "When none of the radio buttons from `#solutions-group` is checked, `validateForm()[\"solutions-group\"]` should be `false`.",
+          "fr": "Lorsqu'aucun des boutons radio de `#solutions-group` n'est coché, `validateForm()[\"solutions-group\"]` doit être `false`."
+        },
+        {
+          "en": "Once a radio button from `#solutions-group` is checked, you should set `#solutions-group`'s border color to `green`.",
+          "fr": "Dès qu'un bouton radio de `#solutions-group` est coché, tu dois définir la couleur de bordure de `#solutions-group` à `green`."
+        },
+        {
+          "en": "When all of the radio buttons from `#solutions-group` are in the unchecked state after a change event, you should set `#solutions-group`'s border color to `red`.",
+          "fr": "Lorsque tous les boutons radio de `#solutions-group` sont à l'état non coché après un événement change, tu dois définir la couleur de bordure de `#solutions-group` à `red`."
+        },
+        {
+          "en": "When `#other-solution` is not checked, `validateForm()[\"solution-description\"]` should be `true`.",
+          "fr": "Lorsque `#other-solution` n'est pas coché, `validateForm()[\"solution-description\"]` doit être `true`."
+        },
+        {
+          "en": "When `#other-solution` is checked and `#solution-description` contains at least twenty characters, `validateForm()[\"solution-description\"]` should be `true`.",
+          "fr": "Lorsque `#other-solution` est coché et que `#solution-description` contient au moins vingt caractères, `validateForm()[\"solution-description\"]` doit être `true`."
+        },
+        {
+          "en": "When `#other-solution` is checked and `#solution-description` contains less than twenty characters, `validateForm()[\"solution-description\"]` should be `false`.",
+          "fr": "Lorsque `#other-solution` est coché et que `#solution-description` contient moins de vingt caractères, `validateForm()[\"solution-description\"]` doit être `false`."
+        },
+        {
+          "en": "When `#other-solution` is checked and the value of `#solution-description` is changed to a valid value, you should set its border color to `green`.",
+          "fr": "Lorsque `#other-solution` est coché et que la valeur de `#solution-description` est modifiée vers une valeur valide, tu dois définir sa couleur de bordure à `green`."
+        },
+        {
+          "en": "When `#other-solution` is checked and the value of `#solution-description` is changed to an invalid value, you should set its border color to `red`.",
+          "fr": "Lorsque `#other-solution` est coché et que la valeur de `#solution-description` est modifiée vers une valeur invalide, tu dois définir sa couleur de bordure à `red`."
+        },
+        {
+          "en": "You should have a function named `isValid`.",
+          "fr": "Tu dois avoir une fonction nommée `isValid`."
+        },
+        {
+          "en": "Your `isValid` function should take the `validateForm()` as its argument and return `true` when all the form fields have been filled correctly.",
+          "fr": "Ta fonction `isValid` doit prendre `validateForm()` comme argument et renvoyer `true` lorsque tous les champs du formulaire ont été correctement remplis."
+        },
+        {
+          "en": "Your `isValid` function should take the `validateForm()` as its argument and return `false` when not all the form fields have been filled correctly.",
+          "fr": "Ta fonction `isValid` doit prendre `validateForm()` comme argument et renvoyer `false` lorsque tous les champs du formulaire n'ont pas été correctement remplis."
+        },
+        {
+          "en": "You should call `isValid` when you try to submit the form.",
+          "fr": "Tu dois appeler `isValid` lorsque tu essaies de soumettre le formulaire."
+        }
+      ]
+    }
+  ]
+}

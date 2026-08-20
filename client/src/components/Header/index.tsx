@@ -6,6 +6,7 @@ import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import { examInProgressSelector } from '../../redux/selectors';
+import { setContinuePath } from '../../utils/local-continue';
 
 import UniversalNav from './components/universal-nav';
 import ExamNav from './components/exam-nav';
@@ -80,6 +81,16 @@ class Header extends React.Component<Props, { displayMenu: boolean }> {
     this.setState({ displayMenu: false }, () => {
       document.removeEventListener('click', this.handleClickOutside);
     });
+  }
+
+  componentDidMount(): void {
+    setContinuePath(this.props.pathname);
+  }
+
+  componentDidUpdate(prevProps: Props): void {
+    if (prevProps.pathname !== this.props.pathname) {
+      setContinuePath(this.props.pathname);
+    }
   }
 
   render(): JSX.Element {
