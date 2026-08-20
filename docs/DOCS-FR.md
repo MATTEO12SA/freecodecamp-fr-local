@@ -101,7 +101,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 149 blocs FR sur 230 (752/1311 fichiers) — modules 1-12 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-working-with-dates.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
+JavaScript v9 est en cours : 149 blocs FR sur 230 (757/1311 fichiers) — modules 1-12 **100 % complets**. Prochaine cible : relire `tools/translations/lecture-working-with-audio-and-video.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -135,7 +135,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (155/230), modules 1-12 **100 % complets**. Prochaine cible : relire `lecture-working-with-dates` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (159/230), modules 1-12 **100 % complets**. Prochaine cible : relire `lecture-working-with-audio-and-video` (`reviewed: false` — ne pas appliquer).
 
 ## Scripts Gardes
 

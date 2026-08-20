@@ -1,0 +1,1304 @@
+{
+  "workshop": "lecture-working-with-audio-and-video",
+  "kind": "lecture",
+  "reviewed": false,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6733ab12b60bd7f6b2b0b0c0.md",
+      "id": "6733ab12b60bd7f6b2b0b0c0",
+      "dashedName": "how-does-the-audio-constructor-work-and-what-are-some-common-methods",
+      "title": {
+        "en": "How Does the Audio Constructor Work, and What Are Some Common Methods?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's learn about the `Audio` constructor and its common methods.",
+              "fr": ""
+            },
+            {
+              "en": "The `Audio` constructor, like other constructors, is a special function called with the `new` keyword. It returns an `HTMLAudioElement`, which you can then use to play audio for the user, or append to the DOM for the user to control themselves.",
+              "fr": ""
+            },
+            {
+              "en": "When you call the constructor, you can optionally pass a URL as the (only) argument. This URL should point to the source of the audio file you want to play. Or, if you need to change the source dynamically, you can assign the URL to the `src` property of the returned audio element.",
+              "fr": ""
+            },
+            {
+              "en": "The returned audio element offers various methods for controlling the audio. You'll most likely use the `play()` method, which begins audio playback. There is also the `pause()` method, which pauses the audio playback but preserves the current location in the track allowing `play()` to resume playback from that point.",
+              "fr": ""
+            },
+            {
+              "en": "You might expect there to be a `stop()` method, to pause audio playback and reset the track to the beginning. But instead, you should call `pause()` and set the `currentTime` property directly.",
+              "fr": ""
+            },
+            {
+              "en": "Finally, the `canPlayType()` method can be used to determine if a browser is likely to be able to play your specific audio format. You will learn about audio and video formats in the next lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `Audio` constructor return when called with the `new` keyword?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "An `AudioContext` object.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The constructor returns a specific type of HTML element.",
+              "fr": ""
+            },
+            {
+              "en": "A `MediaElement`.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The constructor returns a specific type of HTML element.",
+              "fr": ""
+            },
+            {
+              "en": "An `HTMLAudioElement`.",
+              "fr": ""
+            },
+            {
+              "en": "A Promise that resolves to an audio file.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The constructor returns a specific type of HTML element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you set the source of an audio file for an `Audio` object?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By passing a URL as an argument to the `Audio` constructor.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "There are two ways to set the audio source.",
+              "fr": ""
+            },
+            {
+              "en": "By assigning a URL to the `src` property of the `audio` element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "There are two ways to set the audio source.",
+              "fr": ""
+            },
+            {
+              "en": "By using the `setSource()` method.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "There are two ways to set the audio source.",
+              "fr": ""
+            },
+            {
+              "en": "By either passing a URL to the constructor or setting the `src` property.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method should you use to pause audio playback and reset the track to the beginning?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Call the `stop()` method.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions the two things you need to do to pause and reset the audio back to the beginning.",
+              "fr": ""
+            },
+            {
+              "en": "Call the `reset()` method.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions the two things you need to do to pause and reset the audio back to the beginning.",
+              "fr": ""
+            },
+            {
+              "en": "Call the `pause()` method, and then set `currentTime` property.",
+              "fr": ""
+            },
+            {
+              "en": "Call the `pause()` method, and then call the `reset()` method.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions the two things you need to do to pause and reset the audio back to the beginning.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d8203da84a08a0f5eab4.md",
+      "id": "6733d8203da84a08a0f5eab4",
+      "dashedName": "what-are-the-different-types-of-video-and-audio-formats",
+      "title": {
+        "en": "What Are the Different Types of Video and Audio Formats?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's learn about the different types of audio and video formats.",
+              "fr": ""
+            },
+            {
+              "en": "You have probably heard of, or even used, a few common ones. If the terms MP3, MP4, MOV, or WebM are familiar to you, those are all different formats for video and audio. And there are quite a few more that are available.",
+              "fr": ""
+            },
+            {
+              "en": "Before we dive in to file formats, we need to talk about MIME types. A MIME type, standing for Multipurpose Internet Mail Extensions, is a standardized way to programmatically indicate a file type.",
+              "fr": ""
+            },
+            {
+              "en": "Nearly every file format has a MIME type. HTML, for example, has the type `text/html`. A JSON object has the type `application/json`. Even a Windows `.exe` installer has a MIME type: `application/vnd.microsoft.portable-executable`.",
+              "fr": ""
+            },
+            {
+              "en": "The MIME type can tell an application, such as your browser, how to handle a specific file. In the case of audio and video, the MIME type indicates it is a multimedia format that can be embedded in the web page.",
+              "fr": ""
+            },
+            {
+              "en": "An MP3 file has the MIME type `audio/mpeg`. An MP4, however, can have the MIME type `audio/mp4` OR `video/mp4`, depending on whether it's a video file or audio-only. This distinction tells the browser how to handle the file.",
+              "fr": ""
+            },
+            {
+              "en": "There are plenty of other file formats, such as the waveform format WAV, the multipurpose OGG, WMV for the Windows media player, the open source MKV, and many more.",
+              "fr": ""
+            },
+            {
+              "en": "Knowing the differences between these file formats can help you ensure your users get the best experience, but sometimes you can't know what format a user's computer will support (or not support). Thankfully, `video` and `audio` elements both support the `source` element.",
+              "fr": ""
+            },
+            {
+              "en": "With the `source` element, you can specify a file type and `source` and can include multiple different types by using multiple `source` elements. When you do this, the browser will determine the best format to use for the user's current environment.",
+              "fr": ""
+            },
+            {
+              "en": "This takes away the guess work and allows you to focus on building engaging applications.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does MIME stand for in the context of file types?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Multimedia Internet Media Extension.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where MIME is defined.",
+              "fr": ""
+            },
+            {
+              "en": "Multiple Internet Mail Extensions.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where MIME is defined.",
+              "fr": ""
+            },
+            {
+              "en": "Multipurpose Internet Mail Extensions.",
+              "fr": ""
+            },
+            {
+              "en": "Media Information and Metadata Encoding.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where MIME is defined.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary purpose of a MIME type?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To compress file sizes for faster internet transfer.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part that explains what a MIME type is used for.",
+              "fr": ""
+            },
+            {
+              "en": "To encrypt files for secure transmission.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part that explains what a MIME type is used for.",
+              "fr": ""
+            },
+            {
+              "en": "To standardize the way file types are indicated programmatically.",
+              "fr": ""
+            },
+            {
+              "en": "To convert files between different formats",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part that explains what a MIME type is used for.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the MIME type for an MP3 file?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where the MIME type for MP3 is discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where the MIME type for MP3 is discussed.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the part where the MIME type for MP3 is discussed.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d829d983c008d2db41a1.md",
+      "id": "6733d829d983c008d2db41a1",
+      "dashedName": "what-is-codecs-and-how-does-it-work",
+      "title": {
+        "en": "What Are Codecs and How Do They Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Let's learn about codecs and how they work.",
+              "fr": ""
+            },
+            {
+              "en": "If you have worked with videos or audio before, you may have heard about codecs. A codec, short for \"encoder/decoder\", is an algorithm or software that can convert audio and video between analogue and digital formats.",
+              "fr": ""
+            },
+            {
+              "en": "Codecs can be specified as part of the MIME type. The basic syntax to define a codec is to add a semi-colon after the media type, then `codecs=` and the codec.",
+              "fr": ""
+            },
+            {
+              "en": "For example, an OGG audio file which uses the Vorbis codec might have a MIME type of `audio/ogg; codecs=vorbis`. Or, if a file supports multiple codecs, you can specify them as comma separated, but must surround them with quotes: `video/webm; codecs=\"vp8, vorbis\"`.",
+              "fr": ""
+            },
+            {
+              "en": "But some file types have a much more complicated syntax for codecs. For example, an MP4 might have a codec of `codecs=\"avc1.4d002a\"`, indicating it was encoded with H.264.",
+              "fr": ""
+            },
+            {
+              "en": "But when might you actually use these? Well, you can include them in the `type` attribute for a `source` element. This allows you to specify different codecs for the same format, giving the browser more granular options when determining which format to use for that user's environment.",
+              "fr": ""
+            },
+            {
+              "en": "But you can also use them as part of the MIME type you pass to the global `MediaSource.isTypeSupported()` method. This method accepts a MIME-type, and returns `true` if the environment is likely to support it. Or rather, it returns `false` if it fails to instantiate a buffer for that file type. This approach allows you to programmatically select a source yourself, rather than relying on whatever the browser determines is \"best\".",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the term \"codec\" stand for in the context of multimedia?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Compress/Decompress",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "A codec denotes how a file has been encoded.",
+              "fr": ""
+            },
+            {
+              "en": "Code/Decode",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "A codec denotes how a file has been encoded.",
+              "fr": ""
+            },
+            {
+              "en": "Encoder/Decoder",
+              "fr": ""
+            },
+            {
+              "en": "Encrypt/Decrypt",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "A codec denotes how a file has been encoded.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How are codecs specified as part of the MIME type?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By adding a prefix before the media type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Codecs are specified in the MIME type, as an attribute after the media type.",
+              "fr": ""
+            },
+            {
+              "en": "By adding a suffix after the media type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Codecs are specified in the MIME type, as an attribute after the media type.",
+              "fr": ""
+            },
+            {
+              "en": "By adding a semi-colon after the media type, followed by `codecs=` and the codec name.",
+              "fr": ""
+            },
+            {
+              "en": "By replacing the media type entirely with the codec name.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Codecs are specified in the MIME type, as an attribute after the media type.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `MediaSource.isTypeSupported()` method?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To automatically convert a file to a supported format.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method tries to instantiate a buffer for the specified file type, to determine if the type is supported.",
+              "fr": ""
+            },
+            {
+              "en": "To check if a specific MIME type and codec are likely supported in the current environment.",
+              "fr": ""
+            },
+            {
+              "en": "To force the browser to use a specific codec.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method tries to instantiate a buffer for the specified file type, to determine if the type is supported.",
+              "fr": ""
+            },
+            {
+              "en": "To list all supported codecs in the current environment.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method tries to instantiate a buffer for the specified file type, to determine if the type is supported.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d83630e76f08ff49e6dc.md",
+      "id": "6733d83630e76f08ff49e6dc",
+      "dashedName": "what-is-the-htmlmediaelement-api-and-how-does-it-work",
+      "title": {
+        "en": "What Is the HTMLMediaElement API and How Does It Work?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The `HTMLMediaElement` API is a powerful tool to control the behavior of audio and video elements on your page. It extends the base `HTMLElement` interface, so you have access to the base properties as well as these helpful methods.",
+              "fr": ""
+            },
+            {
+              "en": "You've already explored some of the methods in a previous lesson about the `Audio` element, such as `play()` and `pause()`. These same methods are available on video elements as well.",
+              "fr": ""
+            },
+            {
+              "en": "There are some other helpful methods, such as the `addTextTrack()` method. This method allows you to specify a text track to associate with the media element which is especially helpful for adding subtitles to a video.",
+              "fr": ""
+            },
+            {
+              "en": "Or the `fastSeek()` method, which allows you to move the playback position to a specific time within the media.",
+              "fr": ""
+            },
+            {
+              "en": "The `HTMLMediaElement` API also provides access to some new events that a standard element does not have.",
+              "fr": ""
+            },
+            {
+              "en": "The `play` and `pause` events are fired when the media starts and stops playing. The `ended` event fires when the end of the media has been reached.",
+              "fr": ""
+            },
+            {
+              "en": "The `waiting` event fires when playback is automatically paused due to data buffering.",
+              "fr": ""
+            },
+            {
+              "en": "And the `canplay` and `canplaythrough` events fire when the media can be partially played, or played in totality.",
+              "fr": ""
+            },
+            {
+              "en": "The `HTMLMediaElement` offers a great deal of control over your interactive media, and we've only scratched the surface. I encourage you to explore and experiment with the API to find the best ways to integrate it with your applications.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `addTextTrack()` method do?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Adds background music to the media.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `addTextTrack()` method can be used to add subtitles to a video.",
+              "fr": ""
+            },
+            {
+              "en": "Allows you to specify a text track to associate with the media element.",
+              "fr": ""
+            },
+            {
+              "en": "Creates a new audio track.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `addTextTrack()` method can be used to add subtitles to a video.",
+              "fr": ""
+            },
+            {
+              "en": "Removes existing subtitles from a video.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `addTextTrack()` method can be used to add subtitles to a video.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which event fires when the media can be played in its entirety without interruption?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which event indicates the entire video can be played all the way through.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which event indicates the entire video can be played all the way through.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider which event indicates the entire video can be played all the way through.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which event fires when playback is automatically paused due to data buffering?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The event shares the name with what you do while a video is loading.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The event shares the name with what you do while a video is loading.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The event shares the name with what you do while a video is loading.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d852175df50937f06061.md",
+      "id": "6733d852175df50937f06061",
+      "dashedName": "how-can-you-work-with-the-media-streams-getusermedia-to-capture-video-and-audio-from-a-local-device",
+      "title": {
+        "en": "How Can You Work with the Media Streams to Capture Video and Audio from a Local Device?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Instead of playing audio and video, you may sometimes want to capture audio or video. The Media Capture and Streams API, or the MediaStream API, allows you to do this.",
+              "fr": ""
+            },
+            {
+              "en": "In order to use the API, however, you need to create the `MediaStream` object. You could do this with the constructor, but it would not be tied to the user's hardware. Instead, the `mediaDevices` property of the global `navigator` object has a `getUserMedia()` method for you to use.",
+              "fr": ""
+            },
+            {
+              "en": "This method accepts a single `constraints` object which defines the type of media you want to receive. This object has an `audio` and `video` property, reflecting audio and video streams. These properties can be `false`, if you do not want to receive that type of stream, `true` if you do, or objects defining additional constraints.",
+              "fr": ""
+            },
+            {
+              "en": "For example, you can require a specific resolution of video output:",
+              "fr": ""
+            },
+            {
+              "en": "This constraint object specifies minimum and maximum resolutions for the video feed. The `ideal` property specifies the resolution you'd most like to have – and the stream will provide the resolution closest to your ideal.",
+              "fr": ""
+            },
+            {
+              "en": "Once you've created your MediaStream (assuming the user approves the automated request to access their hardware), you can use the stream data however you need.",
+              "fr": ""
+            },
+            {
+              "en": "Note that `getUserMedia()` returns a Promise, which means you will either need a callback function to consume the stream, or use async/await syntax. You will learn more about Promises and asynchronous programming in future lessons.",
+              "fr": ""
+            },
+            {
+              "en": "Here's a basic example which renders the user's webcam feed to the page.",
+              "fr": ""
+            },
+            {
+              "en": "It is worth noting that this API does not offer access to screen capture. You'll learn about that API in the next lesson.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method is used to access the user's media devices?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method accesses the user's media devices.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method accesses the user's media devices.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This method accesses the user's media devices.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In the constraints object for video, what does the ideal property represent?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The minimum acceptable resolution.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the word ideal means.",
+              "fr": ""
+            },
+            {
+              "en": "The maximum possible resolution.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the word ideal means.",
+              "fr": ""
+            },
+            {
+              "en": "The preferred resolution.",
+              "fr": ""
+            },
+            {
+              "en": "The default resolution if no other constraints are met.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what the word ideal means.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is returned by the `getUserMedia()` method?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A `MediaStream` object.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `getUserMedia()` method is asynchronous.",
+              "fr": ""
+            },
+            {
+              "en": "A `constraints` object.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `getUserMedia()` method is asynchronous.",
+              "fr": ""
+            },
+            {
+              "en": "A Promise.",
+              "fr": ""
+            },
+            {
+              "en": "A `video` element.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The `getUserMedia()` method is asynchronous.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6733d8606fb893099e3d0df3.md",
+      "id": "6733d8606fb893099e3d0df3",
+      "dashedName": "what-are-some-other-examples-of-video-and-audio-apis",
+      "title": {
+        "en": "What Are Some Other Examples of Video and Audio APIs?",
+        "fr": ""
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "You've learned about the `HTMLMediaElement` and MediaStreams APIs, but there are a few more APIs that can be quite helpful in working with video and audio.",
+              "fr": ""
+            },
+            {
+              "en": "The first is the Screen Capture API. As the name might suggest, this API allows you to record a user's screen. This API is exposed by calling the `getDisplayMedia()` method of the `mediaDevices` object and consuming the returned media stream.",
+              "fr": ""
+            },
+            {
+              "en": "Then there is the MediaStream Recording API. This API works in tandem with the MediaStreams APIs, allowing you to record a MediaStream (or even an `HTMLMediaElement` directly). It then fires `dataavailable` events with Blob payloads you can write to the local file storage.",
+              "fr": ""
+            },
+            {
+              "en": "Underlying all of this technology is the Media Source Extensions API. The Media Source Extensions API is what allows you to directly pass a user's webcam feed to a video element with the `srcObject` property, for example.",
+              "fr": ""
+            },
+            {
+              "en": "And finally, the Web Audio API which powers everything audible on the web. This API includes important objects like an `AudioBuffer` (representing a Buffer specifically containing audio data) or the `AudioContext`.",
+              "fr": ""
+            },
+            {
+              "en": "And that wraps up our lessons on audio and video!",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary function of the Screen Capture API?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To play video files.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the meaning of \"screen capture\".",
+              "fr": ""
+            },
+            {
+              "en": "To record a user's screen.",
+              "fr": ""
+            },
+            {
+              "en": "To edit video content.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the meaning of \"screen capture\".",
+              "fr": ""
+            },
+            {
+              "en": "To stream video from external sources.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the meaning of \"screen capture\".",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method is used to access the Screen Capture API?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that screens are considered displays.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that screens are considered displays.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that screens are considered displays.",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which API allows you to pass a user's webcam feed directly to a `video` element's `srcObject` property?",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Screen Capture API",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This core API extends the behavior of media sources.",
+              "fr": ""
+            },
+            {
+              "en": "MediaStream Recording API",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This core API extends the behavior of media sources.",
+              "fr": ""
+            },
+            {
+              "en": "Media Source Extensions API",
+              "fr": ""
+            },
+            {
+              "en": "Web Audio API",
+              "fr": ""
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This core API extends the behavior of media sources.",
+              "fr": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

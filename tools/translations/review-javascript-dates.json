@@ -1,0 +1,103 @@
+{
+  "workshop": "review-javascript-dates",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6723ced0ba0b42c2a0ac14d2.md",
+      "id": "6723ced0ba0b42c2a0ac14d2",
+      "dashedName": "review-javascript-dates",
+      "title": {
+        "en": "JavaScript Dates Review",
+        "fr": "Révision des dates JavaScript"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "## The `date()` Object and Common Methods",
+              "fr": "## L'objet `date()` et les méthodes courantes"
+            },
+            {
+              "en": "- **Definition**: The `date()` object is used to create, manipulate, and format dates and times in JavaScript. In the following example, the `new` keyword is used to create a new instance of the `Date` object, and the `Date` object is then assigned to the variable `now`. If you were to log the value of `now` to the console, you would see the current date and time based on the system clock of the computer running the code.",
+              "fr": "- **Définition** : l'objet `date()` sert à créer, manipuler et formater les dates et heures en JavaScript. Dans l'exemple suivant, le mot-clé `new` est utilisé pour créer une nouvelle instance de l'objet `Date`, et l'objet `Date` est ensuite assigné à la variable `now`. Si tu affichais la valeur de `now` dans la console, tu verrais la date et l'heure actuelles basées sur l'horloge système de l'ordinateur qui exécute le code."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`Date.now()` Method**: This method is used to get the current date and time. `Date.now()` returns the number of milliseconds since January 1, 1970, 00:00:00 UTC. This is known as the Unix epoch time. Unix epoch time is a common way to represent dates and times in computer systems because it is an integer that can be easily stored and manipulated. UTC stands for Universal Time Coordinated, which is the primary time standard by which the world regulates clocks and time.\n- **`getDate()` Method**: This method is used to get a day of the month based on the current date. `getDate()` will return an integer value between 1 and 31, depending on the day of the month. If the date is invalid, it will return `NaN` (Not a Number).",
+              "fr": "- **Méthode `Date.now()`** : cette méthode sert à obtenir la date et l'heure actuelles. `Date.now()` renvoie le nombre de millisecondes depuis January 1, 1970, 00:00:00 UTC. C'est ce qu'on appelle le temps Unix epoch. Le temps Unix epoch est une façon courante de représenter les dates et heures dans les systèmes informatiques, car c'est un entier qui peut être facilement stocké et manipulé. UTC signifie Universal Time Coordinated (temps universel coordonné), qui est le standard horaire principal selon lequel le monde règle les horloges et le temps.\n- **Méthode `getDate()`** : cette méthode sert à obtenir un jour du mois basé sur la date actuelle. `getDate()` renvoie une valeur entière entre 1 et 31, selon le jour du mois. Si la date est invalide, elle renvoie `NaN` (Not a Number)."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`getMonth()` Method**: This method is used to get the month. The month is zero-based, so January is 0, February is 1, and so on. In this example, the output is 9, which corresponds to October. If the month is invalid, it will return `NaN`.",
+              "fr": "- **Méthode `getMonth()`** : cette méthode sert à obtenir le mois. Le mois est indexé à partir de zéro, donc January est 0, February est 1, et ainsi de suite. Dans cet exemple, la sortie est 9, ce qui correspond à October. Si le mois est invalide, elle renvoie `NaN`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`getFullYear()` Method**: This method is used to get the full year. If the year is invalid, it will return `NaN`.",
+              "fr": "- **Méthode `getFullYear()`** : cette méthode sert à obtenir l'année complète. Si l'année est invalide, elle renvoie `NaN`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "## Different Ways to Format Dates",
+              "fr": "## Différentes façons de formater les dates"
+            },
+            {
+              "en": "- **`toISOString()` Method**: This method is used to format the date in an extended `ISO` (ISO 8601) format. ISO 8601 is an international standard for representing dates and times. The format is `YYYY-MM-DDTHH:mm:ss.sssZ`.",
+              "fr": "- **Méthode `toISOString()`** : cette méthode sert à formater la date dans un format `ISO` étendu (ISO 8601). ISO 8601 est une norme internationale pour représenter les dates et heures. Le format est `YYYY-MM-DDTHH:mm:ss.sssZ`."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "- **`toLocaleDateString()` Method**: This method is used to format the date based on the user's locale.",
+              "fr": "- **Méthode `toLocaleDateString()`** : cette méthode sert à formater la date selon la locale de l'utilisateur."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "The `toLocaleDateString()` method accepts two optional parameters: locales and options.",
+              "fr": "La méthode `toLocaleDateString()` accepte deux paramètres optionnels : locales et options."
+            },
+            {
+              "en": "The locales parameter is a string representing the locale to use. For example, you can pass in `\"en-US\"` for English (United States) or `\"fr-FR\"` for French (France). If you don't pass in a locales parameter, the default locale is used. The second optional parameter is the options parameter. This parameter is an object that allows you to specify the format of the date string.",
+              "fr": "Le paramètre locales est une chaîne représentant la locale à utiliser. Par exemple, tu peux passer `\"en-US\"` pour l'anglais (États-Unis) ou `\"fr-FR\"` pour le français (France). Si tu ne passes pas de paramètre locales, la locale par défaut est utilisée. Le second paramètre optionnel est le paramètre options. Ce paramètre est un objet qui te permet de spécifier le format de la chaîne de date."
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the JavaScript Dates topics and concepts.",
+              "fr": "Révise les sujets et concepts des dates JavaScript."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

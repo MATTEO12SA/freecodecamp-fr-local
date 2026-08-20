@@ -1,7 +1,7 @@
 {
   "workshop": "lecture-working-with-dates",
   "kind": "lecture",
-  "reviewed": false,
+  "reviewed": true,
   "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
   "files": [
     {
@@ -10,7 +10,7 @@
       "dashedName": "how-does-the-javascript-data-object-work-and-what-are-some-common-methods",
       "title": {
         "en": "How Does the JavaScript Date Object Work, and What Are Some Common Methods?",
-        "fr": ""
+        "fr": "Comment fonctionne l'objet Date de JavaScript, et quelles sont quelques méthodes courantes ?"
       },
       "sections": [
         {
@@ -19,103 +19,103 @@
           "chunks": [
             {
               "en": "Dates and times in JavaScript have not always been easy to work with. In a professional codebase, you will probably be using a library that has solved a lot of those issues for you.",
-              "fr": ""
+              "fr": "Les dates et heures en JavaScript n'ont pas toujours été faciles à manipuler. Dans une base de code professionnelle, tu utiliseras probablement une bibliothèque qui a résolu beaucoup de ces problèmes pour toi."
             },
             {
               "en": "But there will be times where you will need to work JavaScript's built-in `Date` object.",
-              "fr": ""
+              "fr": "Mais il y aura des moments où tu auras besoin de travailler avec l'objet `Date` intégré de JavaScript."
             },
             {
               "en": "In this lesson, we will go over the basics of the `Date` object and some of the most common methods that you will use when working with dates and times in JavaScript.",
-              "fr": ""
+              "fr": "Dans cette leçon, nous allons couvrir les bases de l'objet `Date` et certaines des méthodes les plus courantes que tu utiliseras lorsque tu travailleras avec les dates et heures en JavaScript."
             },
             {
               "en": "The `Date` object is a built-in object in JavaScript that allows you to work with dates and times. Here is the basic syntax for creating a new `Date` object:",
-              "fr": ""
+              "fr": "L'objet `Date` est un objet intégré de JavaScript qui te permet de travailler avec les dates et heures. Voici la syntaxe de base pour créer un nouvel objet `Date` :"
             },
             {
               "en": "The `new` keyword is used to create a new instance of the `Date` object, and the `Date` object is then assigned to the variable `now`. If you were to log the value of `now` to the console, you would see the current date and time based on the system clock of the computer running the code.",
-              "fr": ""
+              "fr": "Le mot-clé `new` sert à créer une nouvelle instance de l'objet `Date`, et l'objet `Date` est ensuite assigné à la variable `now`. Si tu affichais la valeur de `now` dans la console, tu verrais la date et l'heure actuelles basées sur l'horloge système de l'ordinateur qui exécute le code."
             },
             {
               "en": "Here is an example response you would see if you logged the value of `now` to the console:",
-              "fr": ""
+              "fr": "Voici un exemple de réponse que tu verrais si tu affichais la valeur de `now` dans la console :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "For the time, it is using the military time format, so `14:30` is `2:30 PM`. `GMT-0700` is the timezone offset, and `Pacific Daylight Time` is the timezone name.",
-              "fr": ""
+              "fr": "Pour l'heure, elle utilise le format 24 heures, donc `14:30` correspond à `2:30 PM`. `GMT-0700` est le décalage horaire, et `Pacific Daylight Time` est le nom du fuseau horaire."
             },
             {
               "en": "You can also pass in a specific date and time to the `Date` object by providing the year, month, day, hour, minute, second, and millisecond values as arguments.",
-              "fr": ""
+              "fr": "Tu peux aussi passer une date et une heure spécifiques à l'objet `Date` en fournissant l'année, le mois, le jour, l'heure, la minute, la seconde et la milliseconde comme arguments."
             },
             {
               "en": "Here is an example of creating a new `Date` object with a specific date and time:",
-              "fr": ""
+              "fr": "Voici un exemple de création d'un nouvel objet `Date` avec une date et une heure spécifiques :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "This is useful when you need to work with a specific date and time rather than the current date and time. The input always needs to be a string, and the format should be recognizable by the `Date` object.",
-              "fr": ""
+              "fr": "C'est utile quand tu as besoin de travailler avec une date et une heure spécifiques plutôt que la date et l'heure actuelles. L'entrée doit toujours être une chaîne, et le format doit être reconnaissable par l'objet `Date`."
             },
             {
               "en": "To get the current date and time, you can use the `Date.now()` method, which returns the number of milliseconds since `January 1, 1970, 00:00:00 UTC`. This is known as the Unix epoch time.",
-              "fr": ""
+              "fr": "Pour obtenir la date et l'heure actuelles, tu peux utiliser la méthode `Date.now()`, qui renvoie le nombre de millisecondes depuis `January 1, 1970, 00:00:00 UTC`. C'est ce qu'on appelle le temps Unix epoch."
             },
             {
               "en": "Unix epoch time is a common way to represent dates and times in computer systems because it is an integer that can be easily stored and manipulated. UTC stands for Universal Time Coordinated, which is the primary time standard by which the world regulates clocks and time.",
-              "fr": ""
+              "fr": "Le temps Unix epoch est une façon courante de représenter les dates et heures dans les systèmes informatiques, car c'est un entier qui peut être facilement stocké et manipulé. UTC signifie Universal Time Coordinated (temps universel coordonné), qui est le standard horaire principal selon lequel le monde règle les horloges et le temps."
             },
             {
               "en": "If you need to get a day of the month based on the current date, you can use the `getDate` method. Here is an example of using the `getDate` method:",
-              "fr": ""
+              "fr": "Si tu as besoin d'obtenir un jour du mois basé sur la date actuelle, tu peux utiliser la méthode `getDate`. Voici un exemple d'utilisation de la méthode `getDate` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "In this example, we create a new date instance using the `Date` object and assign it to the variable `now`. We then call the `getDate` method on the `now` object to get the day of the month and assign it to the variable `date`. Finally, we log the value of `date` to the console, which will output the current day of the month.",
-              "fr": ""
+              "fr": "Dans cet exemple, nous créons une nouvelle instance de date avec l'objet `Date` et l'assignons à la variable `now`. Nous appelons ensuite la méthode `getDate` sur l'objet `now` pour obtenir le jour du mois et l'assignons à la variable `date`. Enfin, nous affichons la valeur de `date` dans la console, qui affichera le jour actuel du mois."
             },
             {
               "en": "`getDate` will return an integer value between `1` and `31`, depending on the day of the month. If the date is invalid, it will return `NaN` (Not a Number).",
-              "fr": ""
+              "fr": "`getDate` renverra une valeur entière entre `1` et `31`, selon le jour du mois. Si la date est invalide, elle renverra `NaN` (Not a Number)."
             },
             {
               "en": "To get the month, you can use the `getMonth` method like this:",
-              "fr": ""
+              "fr": "Pour obtenir le mois, tu peux utiliser la méthode `getMonth` comme ceci :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The month is zero-based, so `January` is `0`, `February` is `1`, and so on. If the month is invalid, it will return `NaN`.",
-              "fr": ""
+              "fr": "Le mois est indexé à partir de zéro, donc `January` est `0`, `February` est `1`, et ainsi de suite. Si le mois est invalide, elle renverra `NaN`."
             },
             {
               "en": "If you need to get the full year, then you can use the `getFullYear` method like this:",
-              "fr": ""
+              "fr": "Si tu as besoin d'obtenir l'année complète, tu peux utiliser la méthode `getFullYear` comme ceci :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "If the year is invalid, it will return `NaN`.",
-              "fr": ""
+              "fr": "Si l'année est invalide, elle renverra `NaN`."
             },
             {
               "en": "There are many more methods available on the `Date` object including `getHours`, `getMinutes`, `getSeconds`, and so on. I encourage you to explore some more on your own through Mozilla's documentation or other resources.",
-              "fr": ""
+              "fr": "Il existe bien d'autres méthodes disponibles sur l'objet `Date`, notamment `getHours`, `getMinutes`, `getSeconds`, et ainsi de suite. Je t'encourage à en explorer d'autres par toi-même via la documentation de Mozilla ou d'autres ressources."
             }
           ]
         },
@@ -125,7 +125,7 @@
           "chunks": [
             {
               "en": "What does the `Date.now()` method return?",
-              "fr": ""
+              "fr": "Que renvoie la méthode `Date.now()` ?"
             }
           ]
         },
@@ -135,7 +135,7 @@
           "chunks": [
             {
               "en": "The current date in string format.",
-              "fr": ""
+              "fr": "La date actuelle au format chaîne."
             }
           ]
         },
@@ -145,15 +145,15 @@
           "chunks": [
             {
               "en": "This method provides a way to get the current time in a format that's often used in computing.",
-              "fr": ""
+              "fr": "Cette méthode fournit un moyen d'obtenir l'heure actuelle dans un format souvent utilisé en informatique."
             },
             {
               "en": "The number of milliseconds since January 1, 1970, 00:00:00 UTC.",
-              "fr": ""
+              "fr": "Le nombre de millisecondes depuis January 1, 1970, 00:00:00 UTC."
             },
             {
               "en": "The current day of the month.",
-              "fr": ""
+              "fr": "Le jour actuel du mois."
             }
           ]
         },
@@ -163,11 +163,11 @@
           "chunks": [
             {
               "en": "This method provides a way to get the current time in a format that's often used in computing.",
-              "fr": ""
+              "fr": "Cette méthode fournit un moyen d'obtenir l'heure actuelle dans un format souvent utilisé en informatique."
             },
             {
               "en": "The full year of the current date.",
-              "fr": ""
+              "fr": "L'année complète de la date actuelle."
             }
           ]
         },
@@ -177,7 +177,7 @@
           "chunks": [
             {
               "en": "This method provides a way to get the current time in a format that's often used in computing.",
-              "fr": ""
+              "fr": "Cette méthode fournit un moyen d'obtenir l'heure actuelle dans un format souvent utilisé en informatique."
             }
           ]
         },
@@ -187,7 +187,7 @@
           "chunks": [
             {
               "en": "If you use the `getMonth` method and it returns `4`, which month is being represented?",
-              "fr": ""
+              "fr": "Si tu utilises la méthode `getMonth` et qu'elle renvoie `4`, quel mois est représenté ?"
             }
           ]
         },
@@ -197,7 +197,7 @@
           "chunks": [
             {
               "en": "Remember that months are zero-based in JavaScript.",
-              "fr": ""
+              "fr": "Souviens-toi que les mois sont indexés à partir de zéro en JavaScript."
             }
           ]
         },
@@ -207,7 +207,7 @@
           "chunks": [
             {
               "en": "Remember that months are zero-based in JavaScript.",
-              "fr": ""
+              "fr": "Souviens-toi que les mois sont indexés à partir de zéro en JavaScript."
             }
           ]
         },
@@ -217,7 +217,7 @@
           "chunks": [
             {
               "en": "Remember that months are zero-based in JavaScript.",
-              "fr": ""
+              "fr": "Souviens-toi que les mois sont indexés à partir de zéro en JavaScript."
             }
           ]
         },
@@ -227,7 +227,7 @@
           "chunks": [
             {
               "en": "How would you create a `Date` object for July 4, 1776, at 12:00:00 PM?",
-              "fr": ""
+              "fr": "Comment créerais-tu un objet `Date` pour le 4 juillet 1776, à 12:00:00 PM ?"
             }
           ]
         },
@@ -237,7 +237,7 @@
           "chunks": [
             {
               "en": "You can provide the date and time in a string format or as separate numeric values.",
-              "fr": ""
+              "fr": "Tu peux fournir la date et l'heure au format chaîne ou sous forme de valeurs numériques séparées."
             }
           ]
         },
@@ -247,7 +247,7 @@
           "chunks": [
             {
               "en": "You can provide the date and time in a string format or as separate numeric values.",
-              "fr": ""
+              "fr": "Tu peux fournir la date et l'heure au format chaîne ou sous forme de valeurs numériques séparées."
             }
           ]
         }
@@ -259,7 +259,7 @@
       "dashedName": "what-are-the-different-ways-to-format-dates",
       "title": {
         "en": "What Are the Different Ways to Format Dates?",
-        "fr": ""
+        "fr": "Quelles sont les différentes façons de formater les dates ?"
       },
       "sections": [
         {
@@ -268,87 +268,87 @@
           "chunks": [
             {
               "en": "In the previous lesson, you learned how to work with the `Date` object in JavaScript. But there are a few different ways to format dates in JavaScript.",
-              "fr": ""
+              "fr": "Dans la leçon précédente, tu as appris à travailler avec l'objet `Date` en JavaScript. Mais il y a plusieurs façons de formater les dates en JavaScript."
             },
             {
               "en": "In this lesson, we'll take a look at how to work with the `toISOString()`, `toString()`, and `toLocaleDateString()` methods to format dates in JavaScript.",
-              "fr": ""
+              "fr": "Dans cette leçon, nous allons voir comment travailler avec les méthodes `toISOString()`, `toString()` et `toLocaleDateString()` pour formater les dates en JavaScript."
             },
             {
               "en": "Before we look at the different methods, let's first review what the `Date` object looks like:",
-              "fr": ""
+              "fr": "Avant de regarder les différentes méthodes, revoyons d'abord à quoi ressemble l'objet `Date` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "When you log the `date` object to the console, you will see the current date and time based on the user's system settings. Here is an example of the output you might see:",
-              "fr": ""
+              "fr": "Quand tu affiches l'objet `date` dans la console, tu verras la date et l'heure actuelles basées sur les paramètres système de l'utilisateur. Voici un exemple de la sortie que tu pourrais voir :"
             },
             {
               "en": "If you were to use the `toString()` method on the `date` object, you would see the same output as above.",
-              "fr": ""
+              "fr": "Si tu utilisais la méthode `toString()` sur l'objet `date`, tu verrais la même sortie que ci-dessus."
             },
             {
               "en": "To format the date in an extended ISO format (ISO 8601), you can use the `toISOString()` method like this:",
-              "fr": ""
+              "fr": "Pour formater la date dans un format ISO étendu (ISO 8601), tu peux utiliser la méthode `toISOString()` comme ceci :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "ISO 8601 is an international standard for representing dates and times. The format is `YYYY-MM-DDTHH:mm:ss.sssZ`.",
-              "fr": ""
+              "fr": "ISO 8601 est une norme internationale pour représenter les dates et heures. Le format est `YYYY-MM-DDTHH:mm:ss.sssZ`."
             },
             {
               "en": "Here is an example of the output you might see:",
-              "fr": ""
+              "fr": "Voici un exemple de la sortie que tu pourrais voir :"
             },
             {
               "en": "Another way to format the date, would be to use the `toLocaleDateString()` method. This method allows you to format the date based on the user's locale. Here is the basic syntax for using the `toLocaleDateString()` method:",
-              "fr": ""
+              "fr": "Une autre façon de formater la date serait d'utiliser la méthode `toLocaleDateString()`. Cette méthode te permet de formater la date selon la locale de l'utilisateur. Voici la syntaxe de base pour utiliser la méthode `toLocaleDateString()` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "Here is an example of the output you might see:",
-              "fr": ""
+              "fr": "Voici un exemple de la sortie que tu pourrais voir :"
             },
             {
               "en": "The `toLocaleDateString()` method accepts two optional parameters: `locales` and `options`.",
-              "fr": ""
+              "fr": "La méthode `toLocaleDateString()` accepte deux paramètres optionnels : `locales` et `options`."
             },
             {
               "en": "The `locales` parameter is a string representing the locale to use. For example, you can pass in `en-US` for English (United States) or `fr-FR` for French (France). If you don't pass in a `locales` parameter, the default locale is used. Here is an example of how to use the `locales` parameter:",
-              "fr": ""
+              "fr": "Le paramètre `locales` est une chaîne représentant la locale à utiliser. Par exemple, tu peux passer `en-US` pour l'anglais (États-Unis) ou `fr-FR` pour le français (France). Si tu ne passes pas de paramètre `locales`, la locale par défaut est utilisée. Voici un exemple d'utilisation du paramètre `locales` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "The second optional parameter is the `options` parameter. This parameter is an object that allows you to specify the format of the date string. Here is an example of how to use the `options` parameter:",
-              "fr": ""
+              "fr": "Le second paramètre optionnel est le paramètre `options`. Ce paramètre est un objet qui te permet de spécifier le format de la chaîne de date. Voici un exemple d'utilisation du paramètre `options` :"
             },
             {
               "en": ":::interactive_editor",
-              "fr": ""
+              "fr": ":::interactive_editor"
             },
             {
               "en": "In the above example, we specified the options to be in English (Great Britain) and to include the full weekday, year, month, and day.",
-              "fr": ""
+              "fr": "Dans l'exemple ci-dessus, nous avons spécifié les options pour l'anglais (Grande-Bretagne) et pour inclure le jour de la semaine complet, l'année, le mois et le jour."
             },
             {
               "en": "Here is an example of the output you might see:",
-              "fr": ""
+              "fr": "Voici un exemple de la sortie que tu pourrais voir :"
             },
             {
               "en": "In this lesson, we have only covered a few of the ways to format dates in JavaScript. There are many other methods and libraries available to help you format dates in JavaScript. But the `toISOString()`, and `toLocaleDateString()` methods are a good starting point for formatting dates in JavaScript.",
-              "fr": ""
+              "fr": "Dans cette leçon, nous n'avons couvert que quelques façons de formater les dates en JavaScript. Il existe bien d'autres méthodes et bibliothèques pour t'aider à formater les dates en JavaScript. Mais les méthodes `toISOString()` et `toLocaleDateString()` sont un bon point de départ pour formater les dates en JavaScript."
             }
           ]
         },
@@ -358,7 +358,7 @@
           "chunks": [
             {
               "en": "What method would you use to format a date in the ISO 8601 format?",
-              "fr": ""
+              "fr": "Quelle méthode utiliserais-tu pour formater une date au format ISO 8601 ?"
             }
           ]
         },
@@ -368,7 +368,7 @@
           "chunks": [
             {
               "en": "This method returns a standardized string representation of the date.",
-              "fr": ""
+              "fr": "Cette méthode renvoie une représentation en chaîne standardisée de la date."
             }
           ]
         },
@@ -378,7 +378,7 @@
           "chunks": [
             {
               "en": "This method returns a standardized string representation of the date.",
-              "fr": ""
+              "fr": "Cette méthode renvoie une représentation en chaîne standardisée de la date."
             }
           ]
         },
@@ -388,7 +388,7 @@
           "chunks": [
             {
               "en": "This method returns a standardized string representation of the date.",
-              "fr": ""
+              "fr": "Cette méthode renvoie une représentation en chaîne standardisée de la date."
             }
           ]
         },
@@ -398,7 +398,7 @@
           "chunks": [
             {
               "en": "Which method formats the date based on the user's locale?",
-              "fr": ""
+              "fr": "Quelle méthode formate la date selon la locale de l'utilisateur ?"
             }
           ]
         },
@@ -408,7 +408,7 @@
           "chunks": [
             {
               "en": "This method allows for localized formatting of the date.",
-              "fr": ""
+              "fr": "Cette méthode permet un formatage localisé de la date."
             }
           ]
         },
@@ -418,7 +418,7 @@
           "chunks": [
             {
               "en": "This method allows for localized formatting of the date.",
-              "fr": ""
+              "fr": "Cette méthode permet un formatage localisé de la date."
             }
           ]
         },
@@ -428,7 +428,7 @@
           "chunks": [
             {
               "en": "This method allows for localized formatting of the date.",
-              "fr": ""
+              "fr": "Cette méthode permet un formatage localisé de la date."
             }
           ]
         },
@@ -438,7 +438,7 @@
           "chunks": [
             {
               "en": "What optional parameters can you provide to the `toLocaleDateString()` method?",
-              "fr": ""
+              "fr": "Quels paramètres optionnels peux-tu fournir à la méthode `toLocaleDateString()` ?"
             }
           ]
         },
@@ -448,11 +448,11 @@
           "chunks": [
             {
               "en": "`locales` and `options`.",
-              "fr": ""
+              "fr": "`locales` et `options`."
             },
             {
               "en": "`format` and `timezone`.",
-              "fr": ""
+              "fr": "`format` et `timezone`."
             }
           ]
         },
@@ -462,11 +462,11 @@
           "chunks": [
             {
               "en": "These parameters help customize the output format.",
-              "fr": ""
+              "fr": "Ces paramètres aident à personnaliser le format de sortie."
             },
             {
               "en": "`day` and `month`.",
-              "fr": ""
+              "fr": "`day` et `month`."
             }
           ]
         },
@@ -476,11 +476,11 @@
           "chunks": [
             {
               "en": "These parameters help customize the output format.",
-              "fr": ""
+              "fr": "Ces paramètres aident à personnaliser le format de sortie."
             },
             {
               "en": "`style` and `language`.",
-              "fr": ""
+              "fr": "`style` et `language`."
             }
           ]
         },
@@ -490,7 +490,7 @@
           "chunks": [
             {
               "en": "These parameters help customize the output format.",
-              "fr": ""
+              "fr": "Ces paramètres aident à personnaliser le format de sortie."
             }
           ]
         }
