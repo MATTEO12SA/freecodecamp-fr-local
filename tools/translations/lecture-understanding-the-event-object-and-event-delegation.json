@@ -1,0 +1,554 @@
+{
+  "workshop": "lecture-understanding-the-event-object-and-event-delegation",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "6732a06aed1b095f57b0bb82.md",
+      "id": "6732a06aed1b095f57b0bb82",
+      "dashedName": "what-is-the-change-event-and-how-does-it-work",
+      "title": {
+        "en": "What Is the Change Event, and How Does It Work?",
+        "fr": "Qu'est-ce que l'événement change, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --interactive--",
+          "chunks": [
+            {
+              "en": "The `change` event is a special event which is fired when the user modifies the value of certain input elements. More specifically:",
+              "fr": "L'événement `change` est un événement spécial déclenché quand l'utilisateur modifie la valeur de certains éléments de saisie. Plus précisément :"
+            },
+            {
+              "en": "- When a checkbox is ticked or unticked.",
+              "fr": "- Quand une case à cocher est cochée ou décochée."
+            },
+            {
+              "en": "- When a radio button is ticked.",
+              "fr": "- Quand un bouton radio est coché."
+            },
+            {
+              "en": "- When the user makes a selection from something like a date picker or dropdown menu.",
+              "fr": "- Quand l'utilisateur fait une sélection dans un sélecteur de date ou un menu déroulant, par exemple."
+            },
+            {
+              "en": "- When an input loses focus (the user tabs to the next field, or clicks out of the form) after the user has changed the value.",
+              "fr": "- Quand un champ perd le focus (l'utilisateur passe au champ suivant au clavier, ou clique hors du formulaire) après avoir modifié la valeur."
+            },
+            {
+              "en": "- When the user otherwise confirms the value, such as by hitting enter after typing some text.",
+              "fr": "- Quand l'utilisateur confirme autrement la valeur, par exemple en appuyant sur Entrée après avoir saisi du texte."
+            },
+            {
+              "en": "Note that the `change` event does NOT fire when your user types in an input. The `change` event will only fire after they have focused on another element.",
+              "fr": "Note que l'événement `change` ne se déclenche PAS quand ton utilisateur tape dans un champ. L'événement `change` ne se déclenchera qu'après qu'il ait porté le focus sur un autre élément."
+            },
+            {
+              "en": "Here is an example of using the `change` event with a dropdown menu:",
+              "fr": "Voici un exemple d'utilisation de l'événement `change` avec un menu déroulant :"
+            },
+            {
+              "en": ":::interactive_editor",
+              "fr": ":::interactive_editor"
+            },
+            {
+              "en": "Each time the user selects a different option from the dropdown menu, the `change` event will fire, and the selected value will be logged to the console.",
+              "fr": "Chaque fois que l'utilisateur sélectionne une option différente dans le menu déroulant, l'événement `change` se déclenche, et la valeur sélectionnée s'affiche dans la console."
+            },
+            {
+              "en": "The `change` event still generates an `Event` object, but unlike most other events it does not generate a custom implementation – the only properties and methods you will have access to are those on the base `Event` object.",
+              "fr": "L'événement `change` génère quand même un objet `Event`, mais contrairement à la plupart des autres événements, il ne génère pas d'implémentation personnalisée — les seules propriétés et méthodes auxquelles tu auras accès sont celles de l'objet `Event` de base."
+            },
+            {
+              "en": "This differs from the `input` event, which generates a dedicated `InputEvent` object. The change event also differs in a few ways. An `input` event WILL trigger when a user types content into a field, for example.",
+              "fr": "Cela diffère de l'événement `input`, qui génère un objet `InputEvent` dédié. L'événement change diffère aussi sur quelques points. Un événement `input` SE DÉCLENCHE quand un utilisateur tape du contenu dans un champ, par exemple."
+            },
+            {
+              "en": "These differences are important to remember, as you might get tripped up by the timing of these events firing.",
+              "fr": "Ces différences sont importantes à retenir, car tu pourrais être surpris par le moment où ces événements se déclenchent."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "When does the `change` event fire for a text input element?",
+              "fr": "Quand l'événement `change` se déclenche-t-il pour un élément de saisie texte ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "As soon as the user starts typing.",
+              "fr": "Dès que l'utilisateur commence à taper."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific condition for text inputs that differs from immediate typing.",
+              "fr": "La leçon mentionne une condition spécifique pour les champs texte qui diffère de la saisie immédiate."
+            },
+            {
+              "en": "Every time a character is typed.",
+              "fr": "À chaque caractère tapé."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific condition for text inputs that differs from immediate typing.",
+              "fr": "La leçon mentionne une condition spécifique pour les champs texte qui diffère de la saisie immédiate."
+            },
+            {
+              "en": "When the input loses focus after its value has been modified.",
+              "fr": "Quand le champ perd le focus après que sa valeur a été modifiée."
+            },
+            {
+              "en": "Only when the user presses the `Enter` key.",
+              "fr": "Seulement quand l'utilisateur appuie sur la touche `Enter`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific condition for text inputs that differs from immediate typing.",
+              "fr": "La leçon mentionne une condition spécifique pour les champs texte qui diffère de la saisie immédiate."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following will NOT trigger a `change` event?",
+              "fr": "Lequel des suivants ne déclenchera PAS un événement `change` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Selecting an option from a dropdown menu.",
+              "fr": "Sélectionner une option dans un menu déroulant."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson discusses several triggers for the `change` event, but mentions one common action that doesn't trigger it immediately.",
+              "fr": "La leçon parle de plusieurs déclencheurs de l'événement `change`, mais mentionne une action courante qui ne le déclenche pas immédiatement."
+            },
+            {
+              "en": "Typing text into an input field without leaving it.",
+              "fr": "Taper du texte dans un champ de saisie sans le quitter."
+            },
+            {
+              "en": "Ticking a checkbox.",
+              "fr": "Cocher une case à cocher."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson discusses several triggers for the `change` event, but mentions one common action that doesn't trigger it immediately.",
+              "fr": "La leçon parle de plusieurs déclencheurs de l'événement `change`, mais mentionne une action courante qui ne le déclenche pas immédiatement."
+            },
+            {
+              "en": "Selecting a date from a date picker.",
+              "fr": "Sélectionner une date dans un sélecteur de date."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson discusses several triggers for the `change` event, but mentions one common action that doesn't trigger it immediately.",
+              "fr": "La leçon parle de plusieurs déclencheurs de l'événement `change`, mais mentionne une action courante qui ne le déclenche pas immédiatement."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does the `Event` object for the `change` event differ from the `Event` object for the `input` event?",
+              "fr": "En quoi l'objet `Event` de l'événement `change` diffère-t-il de l'objet `Event` de l'événement `input` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The `change` event has more properties than the `input` event.",
+              "fr": "L'événement `change` a plus de propriétés que l'événement `input`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific difference in the `Event` object implementations for these two events.",
+              "fr": "La leçon mentionne une différence précise dans les implémentations de l'objet `Event` pour ces deux événements."
+            },
+            {
+              "en": "The `change` event uses a custom implementation of the `Event` object",
+              "fr": "L'événement `change` utilise une implémentation personnalisée de l'objet `Event`"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific difference in the `Event` object implementations for these two events.",
+              "fr": "La leçon mentionne une différence précise dans les implémentations de l'objet `Event` pour ces deux événements."
+            },
+            {
+              "en": "The `input` event uses a dedicated `InputEvent` object, while the `change` event uses the base `Event` object",
+              "fr": "L'événement `input` utilise un objet `InputEvent` dédié, alors que l'événement `change` utilise l'objet `Event` de base"
+            },
+            {
+              "en": "There is no difference between the two `Event` objects.",
+              "fr": "Il n'y a aucune différence entre les deux objets `Event`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson mentions a specific difference in the `Event` object implementations for these two events.",
+              "fr": "La leçon mentionne une différence précise dans les implémentations de l'objet `Event` pour ces deux événements."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67338e93b75977a344cf6d40.md",
+      "id": "67338e93b75977a344cf6d40",
+      "dashedName": "how-do-event-bubbling-and-event-delegation-work",
+      "title": {
+        "en": "How Do Event Bubbling, and Event Delegation Work?",
+        "fr": "Comment fonctionnent le bubbling et la délégation d'événements ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Event bubbling, or propagation, refers to how an event \"bubbles up\" to parent objects when triggered. For example, consider this code:",
+              "fr": "Le bubbling (ou propagation) d'événements désigne la façon dont un événement « remonte » vers les objets parents quand il est déclenché. Par exemple, considère ce code :"
+            },
+            {
+              "en": "The `p` element here would be considered the parent of the `span` element.",
+              "fr": "L'élément `p` ici serait considéré comme le parent de l'élément `span`."
+            },
+            {
+              "en": "When you click on the `span` element, like you are instructed to, the `span` element becomes the target of a `click` event. That event, however, also bubbles up to the parent – the `p` element can receive and consume that event as needed.",
+              "fr": "Quand tu cliques sur l'élément `span`, comme on te le demande, l'élément `span` devient la cible d'un événement `click`. Cet événement remonte aussi vers le parent — l'élément `p` peut recevoir et consommer cet événement au besoin."
+            },
+            {
+              "en": "But what does this actually mean? Well, you could attach an event listener to the `p` element:",
+              "fr": "Mais qu'est-ce que cela signifie concrètement ? Eh bien, tu pourrais attacher un écouteur d'événement à l'élément `p` :"
+            },
+            {
+              "en": "Then, when you click on the `span` element you will see the text `Click me~!` logged to the console.",
+              "fr": "Ensuite, quand tu cliques sur l'élément `span`, tu verras le texte `Click me~!` s'afficher dans la console."
+            },
+            {
+              "en": "The event propagates to the parent `p` element, which consumes it in an event listener to display the target of the event.",
+              "fr": "L'événement se propage vers l'élément parent `p`, qui le consomme dans un écouteur d'événement pour afficher la cible de l'événement."
+            },
+            {
+              "en": "Notice how the target is still the `span` element. This is because the `span` element received the initial click.",
+              "fr": "Remarque que la cible est toujours l'élément `span`. C'est parce que l'élément `span` a reçu le clic initial."
+            },
+            {
+              "en": "Just to be sure how things are working, let's expand our code:",
+              "fr": "Pour être sûr du fonctionnement, élargissons notre code :"
+            },
+            {
+              "en": "To give you an idea of how the event bubbles up, here's what you'll see in the console after clicking the `span` element:",
+              "fr": "Pour te donner une idée de la remontée de l'événement, voici ce que tu verras dans la console après avoir cliqué sur l'élément `span` :"
+            },
+            {
+              "en": "Now let's see what happens when you prevent the propagation of an event with `stopPropagation()`. We'll call it in our `span`'s event listener:",
+              "fr": "Voyons maintenant ce qui se passe quand tu empêches la propagation d'un événement avec `stopPropagation()`. On l'appellera dans l'écouteur d'événement de notre `span` :"
+            },
+            {
+              "en": "And then click our `span` again:",
+              "fr": "Puis clique à nouveau sur notre `span` :"
+            },
+            {
+              "en": "This time, we don't see our `p` listener trigger. The event never fires for the `p` element, because we told it to stop propagation while it was being processed for the child `span` element.",
+              "fr": "Cette fois, on ne voit pas notre écouteur `p` se déclencher. L'événement ne se déclenche jamais pour l'élément `p`, parce qu'on lui a dit d'arrêter la propagation pendant qu'il était traité pour l'élément enfant `span`."
+            },
+            {
+              "en": "Event delegation can be thought of as the opposite. It's the process of taking a captured event, and delegating it to another element.",
+              "fr": "La délégation d'événements peut être vue comme l'inverse. C'est le processus de prendre un événement capturé et de le déléguer à un autre élément."
+            },
+            {
+              "en": "Going back to our code, let's update it so clicking on a `span` element changes it to red:",
+              "fr": "En revenant à notre code, mettons-le à jour pour que le clic sur un élément `span` le passe en rouge :"
+            },
+            {
+              "en": "But what if you have twenty `span` elements? Or maybe you use JavaScript to create more `span` elements on the fly?",
+              "fr": "Mais et si tu as vingt éléments `span` ? Ou si tu utilises JavaScript pour créer d'autres éléments `span` à la volée ?"
+            },
+            {
+              "en": "Rather than having to attach an event listener to every single `span` element, you can actually use the listener on the `p` element for all of them. In other words, you can delegate the handling of the `span` clicks to the parent `p` element.",
+              "fr": "Plutôt que d'attacher un écouteur d'événement à chaque élément `span`, tu peux utiliser l'écouteur sur l'élément `p` pour tous. Autrement dit, tu peux déléguer la gestion des clics sur les `span` à l'élément parent `p`."
+            },
+            {
+              "en": "Our code might now look something like this:",
+              "fr": "Notre code pourrait maintenant ressembler à ceci :"
+            },
+            {
+              "en": "Notice how we no longer have any listener attached to the `span` element at all. You have properly delegated the event handling to the `p` element. But does it work?",
+              "fr": "Remarque qu'on n'a plus du tout d'écouteur attaché à l'élément `span`. Tu as correctement délégué la gestion de l'événement à l'élément `p`. Mais est-ce que ça fonctionne ?"
+            },
+            {
+              "en": "Let's generate a few extra `span` elements and see:",
+              "fr": "Générons quelques éléments `span` supplémentaires et voyons :"
+            },
+            {
+              "en": "Now, each time we click on a `span`, that element's text will become red.",
+              "fr": "Maintenant, chaque fois qu'on clique sur un `span`, le texte de cet élément passera en rouge."
+            },
+            {
+              "en": "And just like that, with a single event listener we've properly allowed a `click` event to bubble up from `span` elements to the parent `p`, and delegated the logic for that `click` event to the `p` element.",
+              "fr": "Et voilà : avec un seul écouteur d'événement, on a bien laissé un événement `click` remonter des éléments `span` vers le parent `p`, et délégué la logique de cet événement `click` à l'élément `p`."
+            },
+            {
+              "en": "Event propagation and delegation can be a complex topic, especially as you get into heavily nested elements like tables. You are encouraged to explore this further and experiment with some of the code we've written here.",
+              "fr": "La propagation et la délégation d'événements peuvent être un sujet complexe, surtout avec des éléments très imbriqués comme les tableaux. Tu es encouragé à explorer davantage et à expérimenter avec une partie du code qu'on a écrit ici."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is event bubbling in JavaScript?",
+              "fr": "Qu'est-ce que le bubbling d'événements en JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The process of creating new events.",
+              "fr": "Le processus de création de nouveaux événements."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the lesson describes the \"direction\" of event propagation.",
+              "fr": "Pense à la façon dont la leçon décrit la « direction » de la propagation des événements."
+            },
+            {
+              "en": "The way an event travels from child elements to parent elements.",
+              "fr": "La façon dont un événement voyage des éléments enfants vers les éléments parents."
+            },
+            {
+              "en": "A method to prevent default behavior of events.",
+              "fr": "Une méthode pour empêcher le comportement par défaut des événements."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the lesson describes the \"direction\" of event propagation.",
+              "fr": "Pense à la façon dont la leçon décrit la « direction » de la propagation des événements."
+            },
+            {
+              "en": "The process of attaching multiple event listeners to a single element.",
+              "fr": "Le processus d'attacher plusieurs écouteurs d'événements à un seul élément."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how the lesson describes the \"direction\" of event propagation.",
+              "fr": "Pense à la façon dont la leçon décrit la « direction » de la propagation des événements."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `stopPropagation()` method?",
+              "fr": "Quel est le rôle de la méthode `stopPropagation()` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To prevent the default behavior of an event.",
+              "fr": "Empêcher le comportement par défaut d'un événement."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson demonstrates this method's effect on event bubbling.",
+              "fr": "La leçon montre l'effet de cette méthode sur le bubbling d'événements."
+            },
+            {
+              "en": "To remove all event listeners from an element.",
+              "fr": "Retirer tous les écouteurs d'événements d'un élément."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson demonstrates this method's effect on event bubbling.",
+              "fr": "La leçon montre l'effet de cette méthode sur le bubbling d'événements."
+            },
+            {
+              "en": "To stop an event from bubbling up to parent elements.",
+              "fr": "Empêcher un événement de remonter vers les éléments parents."
+            },
+            {
+              "en": "To delegate event handling to child elements.",
+              "fr": "Déléguer la gestion des événements aux éléments enfants."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The lesson demonstrates this method's effect on event bubbling.",
+              "fr": "La leçon montre l'effet de cette méthode sur le bubbling d'événements."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main advantage of using event delegation?",
+              "fr": "Quel est le principal avantage de la délégation d'événements ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It allows events to bubble up to parent elements.",
+              "fr": "Elle permet aux événements de remonter vers les éléments parents."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the example with multiple `span` elements and how event handling was simplified.",
+              "fr": "Réfléchis à l'exemple avec plusieurs éléments `span` et à la façon dont la gestion des événements a été simplifiée."
+            },
+            {
+              "en": "It prevents the default behavior of events.",
+              "fr": "Elle empêche le comportement par défaut des événements."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the example with multiple `span` elements and how event handling was simplified.",
+              "fr": "Réfléchis à l'exemple avec plusieurs éléments `span` et à la façon dont la gestion des événements a été simplifiée."
+            },
+            {
+              "en": "It reduces the number of event listeners needed for multiple elements.",
+              "fr": "Elle réduit le nombre d'écouteurs d'événements nécessaires pour plusieurs éléments."
+            },
+            {
+              "en": "It stops event propagation automatically.",
+              "fr": "Elle arrête automatiquement la propagation des événements."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider the example with multiple `span` elements and how event handling was simplified.",
+              "fr": "Réfléchis à l'exemple avec plusieurs éléments `span` et à la façon dont la gestion des événements a été simplifiée."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

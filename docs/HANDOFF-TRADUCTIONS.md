@@ -12,9 +12,9 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — Module 9 En Cours (123/230)
+### JavaScript v9 — Module 9 En Cours (125/230)
 
-État actuel : 123 blocs FR sur 230 (504/1311 fichiers). Les modules 1-8 sont **100 % traduits**. Le module 9 `dom-manipulation-and-events` est à 5/12 : lecture DOM (`lecture-working-with-the-dom-click-events-and-web-apis`), `workshop-storytelling-app`, `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont terminés (contenus `.md`, titres et intros aux deux occurrences). Prochaine cible : relire `tools/translations/workshop-emoji-reactor.json` (`reviewed: false` — **ne pas appliquer**).
+État actuel : 125 blocs FR sur 230 (521/1311 fichiers). Les modules 1-8 sont **100 % traduits**. Le module 9 `dom-manipulation-and-events` est à 7/12 : lecture DOM, `workshop-storytelling-app`, `workshop-emoji-reactor`, lecture Event (`lecture-understanding-the-event-object-and-event-delegation`), `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont terminés. Prochaine cible : relire `tools/translations/workshop-music-instrument-filter.json` (`reviewed: false` — **ne pas appliquer**).
 
 Note pièges (vus module 5) : si une description de lab a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ligne « Example return value » suivie d'un bloc js), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige alors un fr non vide. Fix : supprimer ce chunk vide du JSON (replaceChunks ignore les chunks vides à l'origine, donc les comptes restent alignés). À ne pas confondre avec le faux positif d'espace dans `# --hints--` (module 3 loan-checker) où il faut au contraire garder le chunk avec fr=" ".
 
@@ -254,7 +254,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (123/230 blocs, 504/1311 fichiers). Modules 1-8 **100 % complets**, module 9 à 5/12. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `workshop-emoji-reactor` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (125/230 blocs, 521/1311 fichiers). Modules 1-8 **100 % complets**, module 9 à 7/12. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine cible : relire `workshop-music-instrument-filter` (`reviewed: false` — ne pas appliquer).
 
 ### Lister ce qui manque dans un module
 
@@ -286,7 +286,7 @@ timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; 
 compteurs sont affichés dans la sortie et protégés par
 `axe-test-regression.mjs`.
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 123/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 125/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -296,7 +296,7 @@ compteurs sont affichés dans la sortie et protégés par
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1-8 **100 % complets**, module 9 à 5/12 (123/230) ; prochaine cible = relire `workshop-emoji-reactor` (`reviewed: false` — ne pas appliquer).
+3. Continuer JavaScript v9 : modules 1-8 **100 % complets**, module 9 à 7/12 (125/230) ; prochaine cible = relire `workshop-music-instrument-filter` (`reviewed: false` — ne pas appliquer).
 4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
 5. Commit + push immédiats à la fin de chaque module.
 
@@ -310,6 +310,18 @@ Pour vérifier l'ordre exact des blocs/modules :
 Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le navigateur (Ctrl + Shift + R). Si tu crées un nouveau `.md` (nouveau bloc ou nouveau fichier dans un bloc existant), le `fs.watch` recursive le détecte automatiquement sans redémarrer le serveur — ET si c'est le premier fichier d'un block jamais vu, `has-french-intro.ts` est touché pour mettre à jour le filtre catalog + badge cours-fr.
 
 ---
+
+**Dernière session (2026-08-20, emoji-reactor + lecture Event)** :
+JS v9 à 125/230 blocs (521/1311 fichiers), module 9 à 7/12.
+`workshop-emoji-reactor` (15 étapes) et
+`lecture-understanding-the-event-object-and-event-delegation` (2 leçons)
+traduits, `reviewed: true`, apply/verify/QA verts. Textes testés
+(`How are you feeling today?`, `Happy face emoji`, `Button clicked!`, etc.)
+restent en anglais dans les backticks. Titres + intros mis à jour aux deux
+occurrences de `intro.json`. JSON suivant déjà extrait :
+`tools/translations/workshop-music-instrument-filter.json` (`reviewed: false`,
+14 fichiers) — **ne pas appliquer**. Ensuite : `workshop-rps-game`,
+`lab-football-team-cards`, review et quiz DOM.
 
 **Dernière session (2026-08-18, lecture DOM + storytelling)** :
 JS v9 à 123/230 blocs (504/1311 fichiers), module 9 à 5/12. Lecture

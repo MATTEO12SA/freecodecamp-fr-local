@@ -101,7 +101,7 @@ curriculum/i18n-curriculum/curriculum/challenges/french/
 
 Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
 
-JavaScript v9 est en cours : 123 blocs FR sur 230 (504/1311 fichiers) — modules 1-8 **100 % complets** et module 9 `dom-manipulation-and-events` à 5/12. Lecture DOM, `workshop-storytelling-app`, `lab-favorite-icon-toggler`, `lab-real-time-counter` et `lab-lightbox-viewer` sont traduits. Prochaine cible : relire `tools/translations/workshop-emoji-reactor.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
+JavaScript v9 est en cours : 125 blocs FR sur 230 (521/1311 fichiers) — modules 1-8 **100 % complets** et module 9 `dom-manipulation-and-events` à 7/12. Lecture DOM, storytelling, emoji-reactor, lecture Event, favorite-icon, real-time-counter et lightbox sont traduits. Prochaine cible : relire `tools/translations/workshop-music-instrument-filter.json` (`reviewed: false` — ne pas appliquer). Les lectures JS utilisent les sections `description`, `interactive`, `questions`, `answers` et `feedback`; le pipeline `tools/translate-workshop.js` les extrait/verifie avec `kind: "lecture"`, les reviews avec le meme mode (+ `# --assignment--`) et les quizzes avec `kind: "quiz"`.
 
 Regles de traduction :
 
@@ -135,7 +135,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (123/230), modules 1-8 **100 % complets**, module 9 à 5/12. Prochaine cible : relire `workshop-emoji-reactor` (`reviewed: false` — ne pas appliquer).
+Suite en cours : JavaScript v9 (125/230), modules 1-8 **100 % complets**, module 9 à 7/12. Prochaine cible : relire `workshop-music-instrument-filter` (`reviewed: false` — ne pas appliquer).
 
 ## Scripts Gardes
 
