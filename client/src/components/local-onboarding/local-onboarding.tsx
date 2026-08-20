@@ -16,6 +16,18 @@ export default function LocalOnboarding(): JSX.Element | null {
     }
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        markLocalOnboardingSeen();
+        setOpen(false);
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   if (!open) return null;
 
   const dismiss = () => {
