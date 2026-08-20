@@ -1,0 +1,958 @@
+{
+  "workshop": "workshop-shopping-list-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "67f63e58ce657ae05908d6c8.md",
+      "id": "67f63e58ce657ae05908d6c8",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you'll build a simple shopping list app to practice using the `useMemo()` and `useCallback()` hooks in React. You'll learn how to use these hooks to optimize the performance of your app by memoizing potentially expensive calculations and functions.",
+          "fr": "Dans cet atelier, tu vas construire une app de liste de courses simple pour pratiquer les Hooks `useMemo()` et `useCallback()` en React. Tu apprendras à utiliser ces Hooks pour optimiser les performances de ton app en mémoïsant des calculs et fonctions potentiellement coûteux."
+        },
+        {
+          "en": "All the basic HTML and CSS you'll need has been provided for you, along with the basic structure of a React component named `ShoppingList`.",
+          "fr": "Tout le HTML et CSS de base dont tu auras besoin a été fourni, ainsi que la structure de base d'un composant React nommé `ShoppingList`."
+        },
+        {
+          "en": "Within the `ShoppingList` component, return an empty pair of parentheses for now.",
+          "fr": "Dans le composant `ShoppingList`, renvoie pour l'instant une paire de parenthèses vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `export` keyword to export the `ShoppingList` component.",
+          "fr": "Tu dois utiliser le mot-clé `export` pour exporter le composant `ShoppingList`."
+        },
+        {
+          "en": "You should return an empty pair of round parentheses inside the `ShoppingList` function.",
+          "fr": "Tu dois renvoyer une paire de parenthèses rondes vide à l'intérieur de la fonction `ShoppingList`."
+        }
+      ]
+    },
+    {
+      "file": "67f647f3ce657ae05908d6c9.md",
+      "id": "67f647f3ce657ae05908d6c9",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Within the `return` statement of the `ShoppingList` component, add a `div` element with a `className` of `container`.",
+          "fr": "Dans l'instruction `return` du composant `ShoppingList`, ajoute un élément `div` avec un `className` de `container`."
+        },
+        {
+          "en": "Inside the `div`, nest an `h1` element with the text `Shopping List`, and below that, nest an empty `form` element.",
+          "fr": "À l'intérieur du `div`, imbrique un élément `h1` avec le texte `Shopping List`, et en dessous, imbrique un élément `form` vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `ShoppingList` component should return a `div` element with a `className` of `container`.",
+          "fr": "Ton composant `ShoppingList` doit renvoyer un élément `div` avec un `className` de `container`."
+        },
+        {
+          "en": "Your `div` should contain an `h1` element with the text `Shopping List`.",
+          "fr": "Ton `div` doit contenir un élément `h1` avec le texte `Shopping List`."
+        },
+        {
+          "en": "Your `div` should also contain an empty `form` element.",
+          "fr": "Ton `div` doit aussi contenir un élément `form` vide."
+        }
+      ]
+    },
+    {
+      "file": "67fcd561ae787aba05a9d917.md",
+      "id": "67fcd561ae787aba05a9d917",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Within the `form` element, add a `label` element with the text `Search for an item:`. Next, give the `label` an `htmlFor` attribute set to `search`. This will associate the label with an `input` element you'll add next.",
+          "fr": "Dans l'élément `form`, ajoute un élément `label` avec le texte `Search for an item:`. Ensuite, donne au `label` un attribut `htmlFor` défini à `search`. Cela associera le label à un élément `input` que tu ajouteras ensuite."
+        },
+        {
+          "en": "Below the `label`, add an `input` element with the `type` and `id` attributes set to `search`. Also, give the `input` a placeholder of `Search...`, and an `aria-describedby` attribute set to `search-description`.",
+          "fr": "Sous le `label`, ajoute un élément `input` avec les attributs `type` et `id` définis à `search`. Donne aussi à l'`input` un placeholder de `Search...`, et un attribut `aria-describedby` défini à `search-description`."
+        },
+        {
+          "en": "Finally, add a `p` element below the `input`, and give it the text `Type to filter the list below:` and an `id` of `search-description`. This will provide additional context for screen readers.",
+          "fr": "Enfin, ajoute un élément `p` sous l'`input`, avec le texte `Type to filter the list below:` et un `id` de `search-description`. Cela fournira du contexte supplémentaire pour les lecteurs d'écran."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `form` element should contain a `label` element with the text `Search for an item:`.",
+          "fr": "Ton élément `form` doit contenir un élément `label` avec le texte `Search for an item:`."
+        },
+        {
+          "en": "Your `label` should have an `htmlFor` attribute set to `search`.",
+          "fr": "Ton `label` doit avoir un attribut `htmlFor` défini à `search`."
+        },
+        {
+          "en": "Your `form` element should contain an `input` element with the `type` and `id` attributes set to `search`.",
+          "fr": "Ton élément `form` doit contenir un élément `input` avec les attributs `type` et `id` définis à `search`."
+        },
+        {
+          "en": "Your `input` should have a placeholder of `Search...` and an `aria-describedby` attribute set to `search-description`.",
+          "fr": "Ton `input` doit avoir un placeholder de `Search...` et un attribut `aria-describedby` défini à `search-description`."
+        },
+        {
+          "en": "Your `form` element should contain a `p` element with the text `Type to filter the list below:`.",
+          "fr": "Ton élément `form` doit contenir un élément `p` avec le texte `Type to filter the list below:`."
+        },
+        {
+          "en": "Your `p` element should have an `id` of `search-description`.",
+          "fr": "Ton élément `p` doit avoir un `id` de `search-description`."
+        }
+      ]
+    },
+    {
+      "file": "67fcd83e40fa32ca2c6af073.md",
+      "id": "67fcd83e40fa32ca2c6af073",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now that you have the basic structure of the app, it's time to add some items and get the search functionality working.",
+          "fr": "Maintenant que tu as la structure de base de l'app, il est temps d'ajouter des articles et de faire fonctionner la recherche."
+        },
+        {
+          "en": "Create an array and assign it to a variable named `items`. Within the array, add the strings `Apples`, `Bananas`, `Strawberries`, `Blueberries`, `Mangoes`, `Pineapple`, `Lettuce`, `Broccoli`, `Paper Towels`, and `Dish Soap`. This will be the list of items that will be displayed in the app.",
+          "fr": "Crée un tableau et assigne-le à une variable nommée `items`. Dans le tableau, ajoute les chaînes `Apples`, `Bananas`, `Strawberries`, `Blueberries`, `Mangoes`, `Pineapple`, `Lettuce`, `Broccoli`, `Paper Towels`, et `Dish Soap`. Ce sera la liste des articles affichés dans l'app."
+        }
+      ],
+      "hints": [
+        {
+          "en": "`items` is an array.",
+          "fr": "`items` est un tableau."
+        },
+        {
+          "en": "Your `items` array should contain the strings `Apples`, `Bananas`, `Strawberries`, `Blueberries`, `Mangoes`, `Pineapple`, `Lettuce`, `Broccoli`, `Paper Towels`, and `Dish Soap`.",
+          "fr": "Ton tableau `items` doit contenir les chaînes `Apples`, `Bananas`, `Strawberries`, `Blueberries`, `Mangoes`, `Pineapple`, `Lettuce`, `Broccoli`, `Paper Towels`, et `Dish Soap`."
+        }
+      ]
+    },
+    {
+      "file": "67fcdbea6714f8df73b83c86.md",
+      "id": "67fcdbea6714f8df73b83c86",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Next, you need to create a state variable, a setter function, and set the initial state with the `useState()` hook to store the user's input.",
+          "fr": "Ensuite, tu dois créer une variable d'état, une fonction setter, et définir l'état initial avec le Hook `useState()` pour stocker la saisie de l'utilisateur."
+        },
+        {
+          "en": "As a reminder, here's how to create a state variable named `age`, a setter function to update it named `setAge`, and initialize `age` to the number `0` with the `useState()` hook:",
+          "fr": "Pour rappel, voici comment créer une variable d'état nommée `age`, une fonction setter pour la mettre à jour nommée `setAge`, et initialiser `age` au nombre `0` avec le Hook `useState()` :"
+        },
+        {
+          "en": "At the top of the `ShoppingList` component, use the `useState()` hook to create a state variable named `query` and a setter function to update it named `setQuery`. Initialize `query` to an empty string. This will be used to store the user's search input.",
+          "fr": "En haut du composant `ShoppingList`, utilise le Hook `useState()` pour créer une variable d'état nommée `query` et une fonction setter pour la mettre à jour nommée `setQuery`. Initialise `query` à une chaîne vide. Cela servira à stocker la saisie de recherche de l'utilisateur."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a state variable named `query` and a setter function named `setQuery`.",
+          "fr": "Tu dois créer une variable d'état nommée `query` et une fonction setter nommée `setQuery`."
+        },
+        {
+          "en": "The initial value of `query` should be an empty string.",
+          "fr": "La valeur initiale de `query` doit être une chaîne vide."
+        }
+      ]
+    },
+    {
+      "file": "67fcde1677d474ebe61b4f2e.md",
+      "id": "67fcde1677d474ebe61b4f2e",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "In the input element, add a `value` attribute and set it to the `query` state variable. This will allow the input field to display the current value of `query`. Also, remember that you need to use curly braces (`{}`) to embed JavaScript expressions like `query` in JSX.",
+          "fr": "Dans l'élément input, ajoute un attribut `value` et définis-le à la variable d'état `query`. Cela permettra au champ de saisie d'afficher la valeur actuelle de `query`. Souviens-toi aussi que tu dois utiliser des accolades (`{}`) pour intégrer des expressions JavaScript comme `query` dans le JSX."
+        },
+        {
+          "en": "Then, add an `onChange` event handler to the input element. Pass it an anonymous function that takes `e` as an argument, which is the event object. Inside the anonymous function, call `setQuery()` and pass it `e.target.value`. This will update the `query` state variable with the current value of the input field whenever the user types in it.",
+          "fr": "Ensuite, ajoute un gestionnaire d'événement `onChange` à l'élément input. Passe-lui une fonction anonyme qui prend `e` en argument, qui est l'objet événement. Dans la fonction anonyme, appelle `setQuery()` et passe-lui `e.target.value`. Cela mettra à jour la variable d'état `query` avec la valeur actuelle du champ chaque fois que l'utilisateur tape."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `value` attribute to the input element and set it to the `query` state variable.",
+          "fr": "Tu dois ajouter un attribut `value` à l'élément input et le définir à la variable d'état `query`."
+        },
+        {
+          "en": "Your `onChange` event handler should be a function that takes `e` as an argument.",
+          "fr": "Ton gestionnaire d'événement `onChange` doit être une fonction qui prend `e` en argument."
+        },
+        {
+          "en": "Your `onChange` event handler should call `setQuery()` with `e.target.value`.",
+          "fr": "Ton gestionnaire d'événement `onChange` doit appeler `setQuery()` avec `e.target.value`."
+        }
+      ]
+    },
+    {
+      "file": "67fcdef983296ff197e9a1cf.md",
+      "id": "67fcdef983296ff197e9a1cf",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Create a variable named `filteredItems` and assign it the result of filtering the `items` array with the `filter()` method. Pass an anonymous function to the `filter()` method that takes `item` as an argument. Inside the anonymous function, just return `item` for now.",
+          "fr": "Crée une variable nommée `filteredItems` et assigne-lui le résultat du filtrage du tableau `items` avec la méthode `filter()`. Passe à `filter()` une fonction anonyme qui prend `item` en argument. Dans la fonction anonyme, renvoie juste `item` pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable named `filteredItems`.",
+          "fr": "Tu dois créer une variable nommée `filteredItems`."
+        },
+        {
+          "en": "You should use the `filter()` method on the `items` array.",
+          "fr": "Tu dois utiliser la méthode `filter()` sur le tableau `items`."
+        },
+        {
+          "en": "Your `filter()` method should take an anonymous function that takes `item` as an argument and returns `item`.",
+          "fr": "Ta méthode `filter()` doit prendre une fonction anonyme qui prend `item` en argument et renvoie `item`."
+        }
+      ]
+    },
+    {
+      "file": "67fe3fe8910ff7e2106ff340.md",
+      "id": "67fe3fe8910ff7e2106ff340",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "While you're not really filtering anything yet, and `filteredItems` matches the `items` array, it would be nice to see the list of items on the page.",
+          "fr": "Même si tu ne filtres pas vraiment encore, et que `filteredItems` correspond au tableau `items`, ce serait bien de voir la liste des articles sur la page."
+        },
+        {
+          "en": "First, add a `ul` element below the `p` element in the `form`. Inside the unordered list, use the `map()` method to iterate over the `filteredItems` array, and pass an anonymous function to it. The anonymous function should take `item` as an argument, and return an `li` element for each item. Each `li` should display the `item` text.",
+          "fr": "D'abord, ajoute un élément `ul` sous l'élément `p` dans le `form`. Dans la liste non ordonnée, utilise la méthode `map()` pour parcourir le tableau `filteredItems`, et passe-lui une fonction anonyme. La fonction anonyme doit prendre `item` en argument, et renvoyer un élément `li` pour chaque article. Chaque `li` doit afficher le texte de `item`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `form` element should contain a `ul` element.",
+          "fr": "Ton élément `form` doit contenir un élément `ul`."
+        },
+        {
+          "en": "You should use the `map()` method on the `filteredItems` array within the `ul` element.",
+          "fr": "Tu dois utiliser la méthode `map()` sur le tableau `filteredItems` dans l'élément `ul`."
+        },
+        {
+          "en": "Your `map()` method should take an anonymous function that takes `item` as an argument.",
+          "fr": "Ta méthode `map()` doit prendre une fonction anonyme qui prend `item` en argument."
+        },
+        {
+          "en": "The anonymous function for `map()` should return an `li` element with the `item` text for each element in the `filteredItems` array.",
+          "fr": "La fonction anonyme pour `map()` doit renvoyer un élément `li` avec le texte de `item` pour chaque élément du tableau `filteredItems`."
+        }
+      ]
+    },
+    {
+      "file": "67fe42e8e6bbaaf3f128004c.md",
+      "id": "67fe42e8e6bbaaf3f128004c",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "If you check the console, you'll see a warning about a missing `key` prop. This is because React needs a unique key for each element in a list to help it identify which items have changed, are added, or are removed. It is also important for performance reasons.",
+          "fr": "Si tu vérifies la console, tu verras un avertissement à propos d'une prop `key` manquante. C'est parce que React a besoin d'une clé unique pour chaque élément d'une liste pour identifier quels articles ont changé, sont ajoutés ou retirés. C'est aussi important pour les performances."
+        },
+        {
+          "en": "To fix this, add a `key` prop to the `li` element inside the `map()` method. Set the `key` to the value of `item`. Generally, you should use a unique identifier like an id as the `key`, but since the items are all unique strings, you can use the string itself in this case.",
+          "fr": "Pour corriger ça, ajoute une prop `key` à l'élément `li` dans la méthode `map()`. Définis la `key` à la valeur de `item`. En général, tu devrais utiliser un identifiant unique comme un id comme `key`, mais comme les articles sont toutes des chaînes uniques, tu peux utiliser la chaîne elle-même dans ce cas."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `key` prop for your `li` element should be set to the value of `item`.",
+          "fr": "La prop `key` de ton élément `li` doit être définie à la valeur de `item`."
+        }
+      ]
+    },
+    {
+      "file": "67fe45cc404a5604ea3a1eb9.md",
+      "id": "67fe45cc404a5604ea3a1eb9",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Now it's time to finish the search functionality.",
+          "fr": "Il est temps de terminer la fonctionnalité de recherche."
+        },
+        {
+          "en": "The search input should be case-insensitive, and should also match partial strings. For example, if a user types in `app`, it should match both `Apples` and `Pineapples`. This is because the lowercase version of `app` is a substring of the lowercase version of both `Apples` and `Pineapples`.",
+          "fr": "La saisie de recherche doit être insensible à la casse, et doit aussi correspondre à des sous-chaînes. Par exemple, si un utilisateur tape `app`, cela doit correspondre à la fois à `Apples` et `Pineapples`. C'est parce que la version en minuscules de `app` est une sous-chaîne de la version en minuscules de `Apples` et de `Pineapples`."
+        },
+        {
+          "en": "First, inside the `filter()` method, use the `toLowerCase()` method to convert `item` into a lowercase string.",
+          "fr": "D'abord, dans la méthode `filter()`, utilise la méthode `toLowerCase()` pour convertir `item` en chaîne minuscule."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `toLowerCase()` method on `item` within the `filter()` method.",
+          "fr": "Tu dois utiliser la méthode `toLowerCase()` sur `item` dans la méthode `filter()`."
+        }
+      ]
+    },
+    {
+      "file": "67fe49ea92b9fc1c09b6e314.md",
+      "id": "67fe49ea92b9fc1c09b6e314",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Next, use the `includes()` method to check if the lowercase version of `item` includes the lowercase version of `query` as a substring.",
+          "fr": "Ensuite, utilise la méthode `includes()` pour vérifier si la version minuscule de `item` inclut la version minuscule de `query` comme sous-chaîne."
+        },
+        {
+          "en": "For example, here's how to use the `toLowerCase()` and `includes()` methods to check if the string `freeCodeCamp` includes `code`:",
+          "fr": "Par exemple, voici comment utiliser les méthodes `toLowerCase()` et `includes()` pour vérifier si la chaîne `freeCodeCamp` inclut `code` :"
+        },
+        {
+          "en": "Chain the `includes()` method to the lowercase `item` and check if it includes the lowercase `query`. Remember to lowercase `query` as well.",
+          "fr": "Enchaîne la méthode `includes()` à l'`item` en minuscules et vérifie s'il inclut le `query` en minuscules. Souviens-toi de mettre aussi `query` en minuscules."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain the `includes()` method to the lowercase `item`.",
+          "fr": "Tu dois enchaîner la méthode `includes()` à l'`item` en minuscules."
+        },
+        {
+          "en": "You should check if the lowercase `item` string includes the lowercase `query` as a substring.",
+          "fr": "Tu dois vérifier si la chaîne `item` en minuscules inclut le `query` en minuscules comme sous-chaîne."
+        }
+      ]
+    },
+    {
+      "file": "67fe4adca39a9b224b72d642.md",
+      "id": "67fe4adca39a9b224b72d642",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Now the search input should work as expected, and filter the shopping list based on the user's input.",
+          "fr": "Maintenant la saisie de recherche devrait fonctionner comme prévu, et filtrer la liste de courses selon la saisie de l'utilisateur."
+        },
+        {
+          "en": "Next, we'll add a way to check off items in the list so users can keep track of what they've already purchased.",
+          "fr": "Ensuite, on ajoutera un moyen de cocher des articles dans la liste pour que les utilisateurs puissent suivre ce qu'ils ont déjà acheté."
+        },
+        {
+          "en": "To do this, we'll need another state variable and a setter function. Use the `useState` hook to create a state variable named `selectedItems` and a setter function named `setSelectedItems`. Initialize `selectedItems` as an empty array. This array will store the items the user has selected, and we'll apply some styling to those selected items later.",
+          "fr": "Pour cela, on aura besoin d'une autre variable d'état et d'une fonction setter. Utilise le Hook `useState` pour créer une variable d'état nommée `selectedItems` et une fonction setter nommée `setSelectedItems`. Initialise `selectedItems` comme un tableau vide. Ce tableau stockera les articles sélectionnés par l'utilisateur, et on appliquera un style à ces articles sélectionnés plus tard."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a state variable named `selectedItems` and a setter function named `setSelectedItems`.",
+          "fr": "Tu dois créer une variable d'état nommée `selectedItems` et une fonction setter nommée `setSelectedItems`."
+        },
+        {
+          "en": "The initial value of `selectedItems` should be an empty array.",
+          "fr": "La valeur initiale de `selectedItems` doit être un tableau vide."
+        }
+      ]
+    },
+    {
+      "file": "67fe4fa5e660453e884d6710.md",
+      "id": "67fe4fa5e660453e884d6710",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Create a function named `toggleItem` that takes `item` as an argument.",
+          "fr": "Crée une fonction nommée `toggleItem` qui prend `item` en argument."
+        },
+        {
+          "en": "Inside the function, just call the `setSelectedItems()` function for now. We'll come back a bit later to implement the logic to toggle selected items.",
+          "fr": "Dans la fonction, appelle juste la fonction `setSelectedItems()` pour l'instant. On reviendra un peu plus tard pour implémenter la logique de bascule des articles sélectionnés."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `toggleItem` that takes `item` as an argument.",
+          "fr": "Tu dois avoir une fonction nommée `toggleItem` qui prend `item` en argument."
+        },
+        {
+          "en": "You should call the `setSelectedItems()` function inside the `toggleItem()` function.",
+          "fr": "Tu dois appeler la fonction `setSelectedItems()` à l'intérieur de la fonction `toggleItem()`."
+        }
+      ]
+    },
+    {
+      "file": "67fe512b066c4a479f82d6bd.md",
+      "id": "67fe512b066c4a479f82d6bd",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Within the `li` element, above the `item` text, add an `input` element with the `type` attribute set to `checkbox`. Also, set its `onChange` attribute to an anonymous function that calls `toggleItem()` with `item` as an argument.",
+          "fr": "Dans l'élément `li`, au-dessus du texte de `item`, ajoute un élément `input` avec l'attribut `type` défini à `checkbox`. Définis aussi son attribut `onChange` à une fonction anonyme qui appelle `toggleItem()` avec `item` en argument."
+        },
+        {
+          "en": "Finally, wrap the `input` and the `item` text in a `label` element for better accessibility.",
+          "fr": "Enfin, enveloppe l'`input` et le texte de `item` dans un élément `label` pour une meilleure accessibilité."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add another `input` element with the `type` attribute set to `checkbox`.",
+          "fr": "Tu dois ajouter un autre élément `input` avec l'attribut `type` défini à `checkbox`."
+        },
+        {
+          "en": "Your new `input` should have an `onChange` attribute set to an anonymous function that calls `toggleItem()` with `item` as an argument.",
+          "fr": "Ton nouvel `input` doit avoir un attribut `onChange` défini à une fonction anonyme qui appelle `toggleItem()` avec `item` en argument."
+        },
+        {
+          "en": "Your new `input` and the `item` text should be wrapped in a `label` element.",
+          "fr": "Ton nouvel `input` et le texte de `item` doivent être enveloppés dans un élément `label`."
+        }
+      ]
+    },
+    {
+      "file": "67fe53c21e2f8956dcaef1c5.md",
+      "id": "67fe53c21e2f8956dcaef1c5",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "Back to the `toggleItem()` function.",
+          "fr": "Retour à la fonction `toggleItem()`."
+        },
+        {
+          "en": "If you recall from a past lesson, you can compare past and present states in React, and use that to determine an upcoming state. In this case, you'll use the past and present states to either add or remove items from the `selectedItems` array.",
+          "fr": "Si tu te souviens d'une leçon passée, tu peux comparer les états passé et présent en React, et t'en servir pour déterminer un état à venir. Ici, tu utiliseras les états passé et présent pour soit ajouter soit retirer des articles du tableau `selectedItems`."
+        },
+        {
+          "en": "First, call the `setSelectedItems()` function, and pass it an anonymous function as an argument. This anonymous function should take `prev` as an argument, which is the previous state of `selectedItems`.",
+          "fr": "D'abord, appelle la fonction `setSelectedItems()`, et passe-lui une fonction anonyme en argument. Cette fonction anonyme doit prendre `prev` en argument, qui est l'état précédent de `selectedItems`."
+        },
+        {
+          "en": "Inside the anonymous function, use the `includes` method to check if `prev` includes `item` and return the result.",
+          "fr": "Dans la fonction anonyme, utilise la méthode `includes` pour vérifier si `prev` inclut `item` et renvoie le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should pass an anonymous function that takes `prev` as an argument to the `setSelectedItems()` function.",
+          "fr": "Tu dois passer une fonction anonyme qui prend `prev` en argument à la fonction `setSelectedItems()`."
+        },
+        {
+          "en": "Use the `includes()` method inside the anonymous function to check if `prev` includes `item`, and return the result of that check.",
+          "fr": "Utilise la méthode `includes()` dans la fonction anonyme pour vérifier si `prev` inclut `item`, et renvoie le résultat de cette vérification."
+        }
+      ]
+    },
+    {
+      "file": "67fe5810b61de16e891dd02f.md",
+      "id": "67fe5810b61de16e891dd02f",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Rather than just returning `prev.includes(item)`, return a ternary operator with `prev.includes(item)` as the condition. Just return `null` for both cases for now.",
+          "fr": "Plutôt que de juste renvoyer `prev.includes(item)`, renvoie un opérateur ternaire avec `prev.includes(item)` comme condition. Renvoie juste `null` pour les deux cas pour l'instant."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Return a ternary operator that checks if `prev.includes(item)` is true. Return `null` for both the truthy and falsy cases.",
+          "fr": "Renvoie un opérateur ternaire qui vérifie si `prev.includes(item)` est vrai. Renvoie `null` pour les cas truthy et falsy."
+        }
+      ]
+    },
+    {
+      "file": "6808baa8f8dcaf4f50a7acaa.md",
+      "id": "6808baa8f8dcaf4f50a7acaa",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "For the truthy condition, if `prev` includes `item`, return a filtered array with `item` removed.",
+          "fr": "Pour la condition truthy, si `prev` inclut `item`, renvoie un tableau filtré avec `item` retiré."
+        },
+        {
+          "en": "Chain the `filter()` method to `prev` and pass it an anonymous function that takes `i` as an argument. Inside the function, check that `i` is not strictly equal to `item`. This will return a new array with all items except `item`.",
+          "fr": "Enchaîne la méthode `filter()` à `prev` et passe-lui une fonction anonyme qui prend `i` en argument. Dans la fonction, vérifie que `i` n'est pas strictement égal à `item`. Cela renverra un nouveau tableau avec tous les articles sauf `item`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should chain the `filter()` method to `prev` and pass it an anonymous function that takes `i` as an argument.",
+          "fr": "Tu dois enchaîner la méthode `filter()` à `prev` et lui passer une fonction anonyme qui prend `i` en argument."
+        },
+        {
+          "en": "Inside the anonymous `filter()` function, you should check that `i` is not strictly equal to `item`. Remember to return the result of that check.",
+          "fr": "Dans la fonction anonyme `filter()`, tu dois vérifier que `i` n'est pas strictement égal à `item`. Souviens-toi de renvoyer le résultat de cette vérification."
+        }
+      ]
+    },
+    {
+      "file": "6808bcac6bd35f568a19f21a.md",
+      "id": "6808bcac6bd35f568a19f21a",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "For the falsy condition, use the spread operator to return a copy of the `prev` array with `item` appended to the end. This will add `item` to the `selectedItems` array.",
+          "fr": "Pour la condition falsy, utilise l'opérateur spread pour renvoyer une copie du tableau `prev` avec `item` ajouté à la fin. Cela ajoutera `item` au tableau `selectedItems`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the spread operator to clone the `prev` array with `item` appended to the end.",
+          "fr": "Tu dois utiliser l'opérateur spread pour cloner le tableau `prev` avec `item` ajouté à la fin."
+        }
+      ]
+    },
+    {
+      "file": "67fe5f1eaea66710b08c03f1.md",
+      "id": "67fe5f1eaea66710b08c03f1",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now you'll work on some logic to cross off any selected items on the list.",
+          "fr": "Maintenant tu vas travailler sur une logique pour barrer les articles sélectionnés de la liste."
+        },
+        {
+          "en": "First off, since everything inside of this `filteredItems.map()` call is being implicitly returned, wrap all the code within it in curly braces, and return the `li` element explicitly.",
+          "fr": "D'abord, comme tout dans cet appel `filteredItems.map()` est renvoyé de façon implicite, enveloppe tout le code dedans dans des accolades, et renvoie l'élément `li` explicitement."
+        },
+        {
+          "en": "For example, here's how you would do this with a simple component that renders a list of names:",
+          "fr": "Par exemple, voici comment tu ferais ça avec un composant simple qui rend une liste de noms :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should wrap the code within the `filteredItems.map()` call in curly braces.",
+          "fr": "Tu dois envelopper le code dans l'appel `filteredItems.map()` dans des accolades."
+        },
+        {
+          "en": "You should return the `li` element explicitly.",
+          "fr": "Tu dois renvoyer l'élément `li` explicitement."
+        }
+      ]
+    },
+    {
+      "file": "67fe626cc464f1238514cd8b.md",
+      "id": "67fe626cc464f1238514cd8b",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "Before the `return` statement within the `filteredItems.map()` call, create a variable called `isChecked` and use the `includes()` method to check if the current `item` is in the `selectedItems` array.",
+          "fr": "Avant l'instruction `return` dans l'appel `filteredItems.map()`, crée une variable appelée `isChecked` et utilise la méthode `includes()` pour vérifier si l'`item` actuel est dans le tableau `selectedItems`."
+        },
+        {
+          "en": "Then, add a `style` prop to the `li` element, and use a ternary operator to set the `textDecoration` property to `line-through` if `isChecked` is true, or `none` if it is false. Remember that you need to wrap the ternary operator in curly braces since it's a JavaScript expression.",
+          "fr": "Ensuite, ajoute une prop `style` à l'élément `li`, et utilise un opérateur ternaire pour définir la propriété `textDecoration` à `line-through` si `isChecked` est vrai, ou `none` s'il est faux. Souviens-toi que tu dois envelopper l'opérateur ternaire dans des accolades car c'est une expression JavaScript."
+        },
+        {
+          "en": "For example, here's how you can use a ternary operator to conditionally set the color of a paragraph in a simple component:",
+          "fr": "Par exemple, voici comment tu peux utiliser un opérateur ternaire pour définir conditionnellement la couleur d'un paragraphe dans un composant simple :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should create a variable called `isChecked` which uses the `includes()` method on the `selectedItems` array to check if the current `item` is in the array.",
+          "fr": "Tu dois créer une variable appelée `isChecked` qui utilise la méthode `includes()` sur le tableau `selectedItems` pour vérifier si l'`item` actuel est dans le tableau."
+        },
+        {
+          "en": "You should add a `style` prop to the `li` element.",
+          "fr": "Tu dois ajouter une prop `style` à l'élément `li`."
+        },
+        {
+          "en": "Your `style` prop should include a ternary operator that sets the `textDecoration` property to `line-through` if `isChecked` is true, or `none` if it is false.",
+          "fr": "Ta prop `style` doit inclure un opérateur ternaire qui définit la propriété `textDecoration` à `line-through` si `isChecked` est vrai, ou `none` s'il est faux."
+        }
+      ]
+    },
+    {
+      "file": "67fe66d2490f143c510038bf.md",
+      "id": "67fe66d2490f143c510038bf",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Then, in the checkbox `input` element, add a `checked` attribute and set it to `isChecked`. While it's not strictly necessary to set the `checked` attribute, it's a good practice to ensure that each checkbox reflects the current state of the `selectedItems` array.",
+          "fr": "Ensuite, dans l'élément `input` checkbox, ajoute un attribut `checked` et définis-le à `isChecked`. Bien qu'il ne soit pas strictement nécessaire de définir l'attribut `checked`, c'est une bonne pratique pour s'assurer que chaque case à cocher reflète l'état actuel du tableau `selectedItems`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `checked` attribute to the checkbox `input` element.",
+          "fr": "Tu dois ajouter un attribut `checked` à l'élément `input` checkbox."
+        },
+        {
+          "en": "You should set the `checked` attribute to `isChecked`.",
+          "fr": "Tu dois définir l'attribut `checked` à `isChecked`."
+        }
+      ]
+    },
+    {
+      "file": "67fe694ebcafe94ab7451a8f.md",
+      "id": "67fe694ebcafe94ab7451a8f",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "Your app works! Go ahead and test it out.",
+          "fr": "Ton app fonctionne ! Va-y, teste-la."
+        },
+        {
+          "en": "However, it's not as efficient as it could be. While React is already very performant, there are some cases where it can be better to cache the results of potentially expensive calculations, or to ensure that functions are not recreated on every render.",
+          "fr": "Cependant, elle n'est pas aussi efficace qu'elle pourrait l'être. Même si React est déjà très performant, il y a des cas où il peut être mieux de mettre en cache les résultats de calculs potentiellement coûteux, ou de s'assurer que les fonctions ne sont pas recréées à chaque rendu."
+        },
+        {
+          "en": "We'll improve the performance of your app over the following steps. But first, let's add some logging so you can see the lifecycle of this component more clearly.",
+          "fr": "On améliorera les performances de ton app dans les étapes suivantes. Mais d'abord, ajoutons un peu de logging pour que tu puisses voir plus clairement le cycle de vie de ce composant."
+        },
+        {
+          "en": "Above `filteredItems`, add a `console.log()` statement that logs the string `Filtering items...` to the console.",
+          "fr": "Au-dessus de `filteredItems`, ajoute une instruction `console.log()` qui journalise la chaîne `Filtering items...` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a `console.log()` statement above `filteredItems` that logs the string `Filtering items...` to the console.",
+          "fr": "Tu dois ajouter une instruction `console.log()` au-dessus de `filteredItems` qui journalise la chaîne `Filtering items...` dans la console."
+        }
+      ]
+    },
+    {
+      "file": "67ff7500255008598207a70c.md",
+      "id": "67ff7500255008598207a70c",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Now you will see `Filtering items...` in the console every time you type in the search bar and check or uncheck an item. This is because those actions update the state of the component, which causes it to re-render.",
+          "fr": "Maintenant tu verras `Filtering items...` dans la console chaque fois que tu tapes dans la barre de recherche et coches ou décoches un article. C'est parce que ces actions mettent à jour l'état du composant, ce qui provoque un re-rendu."
+        },
+        {
+          "en": "This isn't usually a problem. But if you have a lot of items in the list, or if you're fetching a lot of data from an API and manipulating it, your app can feel slow.",
+          "fr": "Ce n'est généralement pas un problème. Mais si tu as beaucoup d'articles dans la liste, ou si tu récupères beaucoup de données depuis une API et les manipules, ton app peut sembler lente."
+        },
+        {
+          "en": "To improve performance, you can use the `useMemo()` hook to memoize, or in other words, cache, the result of the filtering operation. Then, React will only re-run the filtering operation when its dependency changes, rather than on every render.",
+          "fr": "Pour améliorer les performances, tu peux utiliser le Hook `useMemo()` pour mémoïser, autrement dit mettre en cache, le résultat de l'opération de filtrage. Ensuite, React ne relancera l'opération de filtrage que quand sa dépendance change, plutôt qu'à chaque rendu."
+        },
+        {
+          "en": "First, destructure the `useMemo()` hook from React at the top of your file.",
+          "fr": "D'abord, destructure le Hook `useMemo()` depuis React en haut de ton fichier."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should destructure `useMemo` from `React` at the top of the file. Make sure you aren't removing the `useState` hook you're already using.",
+          "fr": "Tu dois destructurer `useMemo` depuis `React` en haut du fichier. Assure-toi de ne pas retirer le Hook `useState` que tu utilises déjà."
+        }
+      ]
+    },
+    {
+      "file": "67ff838da1cb2927ae18a3f5.md",
+      "id": "67ff838da1cb2927ae18a3f5",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "`useMemo()` takes two arguments: a function that returns the value you want to memoize, and an array of dependencies. The memoized value will only be recomputed when one or more of its dependencies change.",
+          "fr": "`useMemo()` prend deux arguments : une fonction qui renvoie la valeur que tu veux mémoïser, et un tableau de dépendances. La valeur mémoïsée ne sera recalculée que quand une ou plusieurs de ses dépendances changent."
+        },
+        {
+          "en": "Here's the basic syntax for `useMemo()`:",
+          "fr": "Voici la syntaxe de base pour `useMemo()` :"
+        },
+        {
+          "en": "Set `filteredItems` equal to `useMemo()`, and pass it an anonymous function with curly braces. Inside the curly braces, use a `return` statement to explicitly return your existing filtering logic. Also, add `query` as the only dependency in the dependencies array. This ensures that the filtering operation is only re-run when `query` changes.",
+          "fr": "Assigne `filteredItems` à `useMemo()`, et passe-lui une fonction anonyme avec des accolades. Dans les accolades, utilise une instruction `return` pour renvoyer explicitement ta logique de filtrage existante. Ajoute aussi `query` comme seule dépendance dans le tableau de dépendances. Cela assure que l'opération de filtrage n'est relancée que quand `query` change."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `filteredItems` equal to calling the `useMemo()` hook.",
+          "fr": "Tu dois assigner `filteredItems` à l'appel du Hook `useMemo()`."
+        },
+        {
+          "en": "You should pass an anonymous function to `useMemo()` with curly braces.",
+          "fr": "Tu dois passer une fonction anonyme à `useMemo()` avec des accolades."
+        },
+        {
+          "en": "You should use a `return` statement to explicitly return your existing filtering logic.",
+          "fr": "Tu dois utiliser une instruction `return` pour renvoyer explicitement ta logique de filtrage existante."
+        },
+        {
+          "en": "You should add `query` as the only dependency in the dependencies array.",
+          "fr": "Tu dois ajouter `query` comme seule dépendance dans le tableau de dépendances."
+        }
+      ]
+    },
+    {
+      "file": "67ff89b745907449e0e5bae4.md",
+      "id": "67ff89b745907449e0e5bae4",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Finally, move your `console.log()` statement inside the `useMemo()` callback function, just above the `return` statement.",
+          "fr": "Enfin, déplace ton instruction `console.log()` à l'intérieur de la fonction callback de `useMemo()`, juste au-dessus de l'instruction `return`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should move your `Filtering items...` log before the `return` statement inside the `useMemo()` callback function.",
+          "fr": "Tu dois déplacer ton log `Filtering items...` avant l'instruction `return` à l'intérieur de la fonction callback de `useMemo()`."
+        }
+      ]
+    },
+    {
+      "file": "67ff7e6d04d17507e8923f46.md",
+      "id": "67ff7e6d04d17507e8923f46",
+      "dashedName": "step-26",
+      "title": {
+        "en": "Step 26",
+        "fr": "Étape 26"
+      },
+      "description": [
+        {
+          "en": "Another thing React does each time it re-renders a component is recreate the functions inside of it. Here, every time you check or uncheck an item, the `toggleItem()` function is recreated. This is not a problem in most cases, but can lead to performance issues in larger apps.",
+          "fr": "Une autre chose que React fait à chaque re-rendu d'un composant est de recréer les fonctions à l'intérieur. Ici, chaque fois que tu coches ou décoches un article, la fonction `toggleItem()` est recréée. Ce n'est pas un problème dans la plupart des cas, mais cela peut mener à des problèmes de performance dans de plus grandes apps."
+        },
+        {
+          "en": "Let's add some logging to track this.",
+          "fr": "Ajoutons un peu de logging pour suivre ça."
+        },
+        {
+          "en": "Above the `ShoppingList` component, use `let` to create a variable named `prevToggleItem` and set it to `null`. You'll use this to track the function definition of `toggleItem()` across renders.",
+          "fr": "Au-dessus du composant `ShoppingList`, utilise `let` pour créer une variable nommée `prevToggleItem` et définis-la à `null`. Tu l'utiliseras pour suivre la définition de la fonction `toggleItem()` d'un rendu à l'autre."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use `let` to create a variable named `prevToggleItem` and set it to `null`.",
+          "fr": "Tu dois utiliser `let` pour créer une variable nommée `prevToggleItem` et la définir à `null`."
+        }
+      ]
+    },
+    {
+      "file": "67ff8defd6747d621c4b838c.md",
+      "id": "67ff8defd6747d621c4b838c",
+      "dashedName": "step-27",
+      "title": {
+        "en": "Step 27",
+        "fr": "Étape 27"
+      },
+      "description": [
+        {
+          "en": "Next, write an `if` statement to check if `prevToggleItem` is not strictly equal to `toggleItem`. If they are not equal, log the string `New toggleItem function` to the console. Then, set `prevToggleItem` equal to `toggleItem`.",
+          "fr": "Ensuite, écris une instruction `if` pour vérifier si `prevToggleItem` n'est pas strictement égal à `toggleItem`. S'ils ne sont pas égaux, journalise la chaîne `New toggleItem function` dans la console. Ensuite, définis `prevToggleItem` égal à `toggleItem`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should write an `if` statement to check if `prevToggleItem` is not strictly equal to `toggleItem`.",
+          "fr": "Tu dois écrire une instruction `if` pour vérifier si `prevToggleItem` n'est pas strictement égal à `toggleItem`."
+        },
+        {
+          "en": "You should log the string `New toggleItem function` to the console inside the `if` statement if the condition is met.",
+          "fr": "Tu dois journaliser la chaîne `New toggleItem function` dans la console à l'intérieur de l'instruction `if` si la condition est remplie."
+        },
+        {
+          "en": "You should set `prevToggleItem` equal to `toggleItem` inside the `if` statement if the condition is met.",
+          "fr": "Tu dois définir `prevToggleItem` égal à `toggleItem` à l'intérieur de l'instruction `if` si la condition est remplie."
+        }
+      ]
+    },
+    {
+      "file": "67ff7f5515db250dc015f128.md",
+      "id": "67ff7f5515db250dc015f128",
+      "dashedName": "step-28",
+      "title": {
+        "en": "Step 28",
+        "fr": "Étape 28"
+      },
+      "description": [
+        {
+          "en": "Now that you can see when the `toggleItem()` function definition is first set or changes, you should also log when the function is the same across renders.",
+          "fr": "Maintenant que tu peux voir quand la définition de la fonction `toggleItem()` est d'abord définie ou change, tu devrais aussi journaliser quand la fonction est la même d'un rendu à l'autre."
+        },
+        {
+          "en": "Add an `else` statement to the `if` statement you just wrote. Inside the `else` block, log the string `Current toggleItem function` to the console.",
+          "fr": "Ajoute une instruction `else` à l'instruction `if` que tu viens d'écrire. Dans le bloc `else`, journalise la chaîne `Current toggleItem function` dans la console."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add an `else` statement to the `if` statement you wrote in the last step.",
+          "fr": "Tu dois ajouter une instruction `else` à l'instruction `if` que tu as écrite à l'étape précédente."
+        },
+        {
+          "en": "You should log the string `Current toggleItem function` to the console inside the `else` statement.",
+          "fr": "Tu dois journaliser la chaîne `Current toggleItem function` dans la console à l'intérieur de l'instruction `else`."
+        }
+      ]
+    },
+    {
+      "file": "67ff8059bac7f0146857c2b1.md",
+      "id": "67ff8059bac7f0146857c2b1",
+      "dashedName": "step-29",
+      "title": {
+        "en": "Step 29",
+        "fr": "Étape 29"
+      },
+      "description": [
+        {
+          "en": "If you use the app now, you'll see that the `toggleItem()` function is recreated every time you check or uncheck an item, or type in the search bar.",
+          "fr": "Si tu utilises l'app maintenant, tu verras que la fonction `toggleItem()` est recréée chaque fois que tu coches ou décoches un article, ou que tu tapes dans la barre de recherche."
+        },
+        {
+          "en": "To improve performance, you can use the `useCallback()` hook to memoize or cache the `toggleItem()` function. Then React will only recreate the function when its dependencies change.",
+          "fr": "Pour améliorer les performances, tu peux utiliser le Hook `useCallback()` pour mémoïser ou mettre en cache la fonction `toggleItem()`. Ensuite React ne recréera la fonction que quand ses dépendances changent."
+        },
+        {
+          "en": "First, destructure the `useCallback()` hook from React at the top of your file.",
+          "fr": "D'abord, destructure le Hook `useCallback()` depuis React en haut de ton fichier."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should destructure `useCallback` from `React` at the top of the file. Make sure you aren't removing any other hooks you're already using.",
+          "fr": "Tu dois destructurer `useCallback` depuis `React` en haut du fichier. Assure-toi de ne retirer aucun autre Hook que tu utilises déjà."
+        }
+      ]
+    },
+    {
+      "file": "67ff8eacd3d965670c9121f9.md",
+      "id": "67ff8eacd3d965670c9121f9",
+      "dashedName": "step-30",
+      "title": {
+        "en": "Step 30",
+        "fr": "Étape 30"
+      },
+      "description": [
+        {
+          "en": "The `useCallback()` hook takes two arguments: a function and an array of dependencies. The function will only be recreated if one of the dependencies changes.",
+          "fr": "Le Hook `useCallback()` prend deux arguments : une fonction et un tableau de dépendances. La fonction ne sera recréée que si une des dépendances change."
+        },
+        {
+          "en": "Here's the basic syntax for `useCallback()`:",
+          "fr": "Voici la syntaxe de base pour `useCallback()` :"
+        },
+        {
+          "en": "Set `toggleItem` equal to `useCallback()`, and pass it an anonymous function that takes `item` as an argument. Move your existing `toggleItem()` function logic inside the anonymous function, where `setSelectedItems` is called. Finally, add `setSelectedItems` as a dependency in the dependencies array.",
+          "fr": "Assigne `toggleItem` à `useCallback()`, et passe-lui une fonction anonyme qui prend `item` en argument. Déplace ta logique existante de `toggleItem()` dans la fonction anonyme, là où `setSelectedItems` est appelé. Enfin, ajoute `setSelectedItems` comme dépendance dans le tableau de dépendances."
+        },
+        {
+          "en": "After that, you're done optimizing! Your app should still work the same way, but you'll only see your console logs when the `query` state changes or when the `toggleItem()` function is recreated.",
+          "fr": "Après ça, tu as fini d'optimiser ! Ton app devrait toujours fonctionner de la même façon, mais tu ne verras tes logs console que quand l'état `query` change ou quand la fonction `toggleItem()` est recréée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `toggleItem` equal to calling the `useCallback()` hook.",
+          "fr": "Tu dois assigner `toggleItem` à l'appel du Hook `useCallback()`."
+        },
+        {
+          "en": "You should pass an anonymous function that takes `item` as an argument to `useCallback()`.",
+          "fr": "Tu dois passer une fonction anonyme qui prend `item` en argument à `useCallback()`."
+        },
+        {
+          "en": "You should move your existing `toggleItem()` function logic, starting with the call to `setSelectedItems()`, inside the anonymous function.",
+          "fr": "Tu dois déplacer ta logique existante de `toggleItem()`, en commençant par l'appel à `setSelectedItems()`, dans la fonction anonyme."
+        },
+        {
+          "en": "You should add `setSelectedItems` as the only dependency in the dependencies array.",
+          "fr": "Tu dois ajouter `setSelectedItems` comme seule dépendance dans le tableau de dépendances."
+        }
+      ]
+    }
+  ]
+}

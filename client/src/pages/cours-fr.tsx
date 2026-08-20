@@ -22,6 +22,7 @@ import {
   getCoursFrCertificationHref,
   parseCoursFrView
 } from '../utils/cours-fr-navigation';
+import LocalDataPanel from '../components/local-data-panel/local-data-panel';
 
 import './cours-fr.css';
 
@@ -240,6 +241,7 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                     </span>
                   </Link>
                 </div>
+                <LocalDataPanel />
               </>
             )}
 

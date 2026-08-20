@@ -67,3 +67,17 @@ export function importLocalProfile(raw: string): LocalProfileExport {
   }
   return profile;
 }
+
+/** Efface progression, continue, onboarding et sessions d'examen locales. */
+export function wipeLocalLearningData(): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.removeItem('fcc-local-user');
+    window.localStorage.removeItem('fcc-local-continue-path');
+    window.localStorage.removeItem('fcc-local-onboarding-seen');
+    window.localStorage.removeItem('fcc-exam-session');
+    window.localStorage.removeItem('fcc-exam-history');
+  } catch {
+    // ignore
+  }
+}

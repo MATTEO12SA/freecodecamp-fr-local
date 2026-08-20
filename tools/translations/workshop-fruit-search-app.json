@@ -1,0 +1,549 @@
+{
+  "workshop": "workshop-fruit-search-app",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "67ec2f7924ade2450c06bcd8.md",
+      "id": "67ec2f7924ade2450c06bcd8",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In previous lessons, you learned about handling side effects, like data fetching, with the `useEffect` Hook. In this workshop, you'll build an application that fetches fruit data from an API based on user input and displays the results dynamically.",
+          "fr": "Dans les leçons précédentes, tu as appris à gérer les effets de bord, comme la récupération de données, avec le Hook `useEffect`. Dans cet atelier, tu vas construire une application qui récupère des données de fruits depuis une API selon la saisie de l'utilisateur et affiche les résultats dynamiquement."
+        },
+        {
+          "en": "First, make your `FruitsSearch` component return a `div` element with an `id` of `search-container`.",
+          "fr": "D'abord, fais en sorte que ton composant `FruitsSearch` renvoie un élément `div` avec un `id` de `search-container`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `div` element.",
+          "fr": "Tu dois avoir un élément `div`."
+        },
+        {
+          "en": "Your `div` element should have an `id` called `search-container`.",
+          "fr": "Ton élément `div` doit avoir un `id` appelé `search-container`."
+        }
+      ]
+    },
+    {
+      "file": "67ec46b46f232344ebf3c114.md",
+      "id": "67ec46b46f232344ebf3c114",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Next, you will create a form where users can search for fruits. Inside the `#search-container` element, create a `form` element.",
+          "fr": "Ensuite, tu vas créer un formulaire où les utilisateurs peuvent chercher des fruits. À l'intérieur de l'élément `#search-container`, crée un élément `form`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `form` element inside the `search-container` element.",
+          "fr": "Tu dois avoir un élément `form` à l'intérieur de l'élément `search-container`."
+        }
+      ]
+    },
+    {
+      "file": "67ec4a95b609c071f7747be0.md",
+      "id": "67ec4a95b609c071f7747be0",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Inside the `form` element, add a `label` element. Your `label` element should have the text `Search for fruits:` and an `htmlFor` attribute with the value of `\"search-input\"`.",
+          "fr": "À l'intérieur de l'élément `form`, ajoute un élément `label`. Ton élément `label` doit avoir le texte `Search for fruits:` et un attribut `htmlFor` avec la valeur `\"search-input\"`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `label` element inside the `form` element.",
+          "fr": "Tu dois avoir un élément `label` à l'intérieur de l'élément `form`."
+        },
+        {
+          "en": "The `label` element should have an `htmlFor` attribute with the value of `\"search-input\"`.",
+          "fr": "L'élément `label` doit avoir un attribut `htmlFor` avec la valeur `\"search-input\"`."
+        },
+        {
+          "en": "Your `label` element should have the text `Search for fruits:`.",
+          "fr": "Ton élément `label` doit avoir le texte `Search for fruits:`."
+        }
+      ]
+    },
+    {
+      "file": "67ecfbfe17c7d24465e0de88.md",
+      "id": "67ecfbfe17c7d24465e0de88",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Inside the `form` element, after the label, add an input with an `id` of `search-input` and a `type` of `search`.",
+          "fr": "À l'intérieur de l'élément `form`, après le label, ajoute un input avec un `id` de `search-input` et un `type` de `search`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `input` inside the `form` element with an `id` of `search-input`.",
+          "fr": "Tu dois avoir un `input` à l'intérieur de l'élément `form` avec un `id` de `search-input`."
+        },
+        {
+          "en": "Your `input` should have a `type` value of `search`.",
+          "fr": "Ton `input` doit avoir une valeur `type` de `search`."
+        }
+      ]
+    },
+    {
+      "file": "67ed044dc76cf4a441618f2c.md",
+      "id": "67ed044dc76cf4a441618f2c",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "In React, <dfn>controlled inputs</dfn> are a standard way to handle form data, where the input's value is synced with the component's state.",
+          "fr": "En React, les <dfn>controlled inputs</dfn> (entrées contrôlées) sont une façon standard de gérer les données de formulaire, où la valeur de l'input est synchronisée avec l'état du composant."
+        },
+        {
+          "en": "You will learn more about this pattern in a future lesson.",
+          "fr": "Tu en apprendras plus sur ce modèle dans une leçon future."
+        },
+        {
+          "en": "To track what the user types into the search input field, create a state variable named `query` with an initial value of an empty string (`''`). Also define its corresponding setter function, `setQuery`, using the `useState` Hook.",
+          "fr": "Pour suivre ce que l'utilisateur tape dans le champ de recherche, crée une variable d'état nommée `query` avec une valeur initiale de chaîne vide (`''`). Définis aussi sa fonction setter correspondante, `setQuery`, avec le Hook `useState`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the array destructuring syntax for the `query` and `setQuery` variables.",
+          "fr": "Tu dois utiliser la syntaxe de déstructuration de tableau pour les variables `query` et `setQuery`."
+        },
+        {
+          "en": "You should use the `useState` Hook.",
+          "fr": "Tu dois utiliser le Hook `useState`."
+        },
+        {
+          "en": "Your `useState` Hook should have an initial value of an empty string (`''`).",
+          "fr": "Ton Hook `useState` doit avoir une valeur initiale de chaîne vide (`''`)."
+        }
+      ]
+    },
+    {
+      "file": "67ed0e7faf1f2d130a275a82.md",
+      "id": "67ed0e7faf1f2d130a275a82",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "When the user types into the input field, a list of fruits should appear that match their query.",
+          "fr": "Quand l'utilisateur tape dans le champ, une liste de fruits correspondant à sa requête doit apparaître."
+        },
+        {
+          "en": "To handle this, create a state variable called `results` with an initial value of an empty array (`[]`). Also define its setter function, `setResults`, using the `useState` Hook.",
+          "fr": "Pour gérer cela, crée une variable d'état appelée `results` avec une valeur initiale de tableau vide (`[]`). Définis aussi sa fonction setter, `setResults`, avec le Hook `useState`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the array destructuring syntax for the `results` and `setResults` variables.",
+          "fr": "Tu dois utiliser la syntaxe de déstructuration de tableau pour les variables `results` et `setResults`."
+        },
+        {
+          "en": "You should use the `useState` Hook.",
+          "fr": "Tu dois utiliser le Hook `useState`."
+        },
+        {
+          "en": "Your `useState` Hook should have an initial value of an empty array (`[]`).",
+          "fr": "Ton Hook `useState` doit avoir une valeur initiale de tableau vide (`[]`)."
+        }
+      ]
+    },
+    {
+      "file": "67ed4c13de85e0aa05df5145.md",
+      "id": "67ed4c13de85e0aa05df5145",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Bind the input's displayed value to your React state by adding a `value` attribute to your search input set to the `query` state's value.",
+          "fr": "Lie la valeur affichée de l'input à ton état React en ajoutant un attribut `value` à ton input de recherche égal à la valeur de l'état `query`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set the `value` attribute of your search input to the `query` state.",
+          "fr": "Tu dois définir l'attribut `value` de ton input de recherche à l'état `query`."
+        }
+      ]
+    },
+    {
+      "file": "67f8ec758a740e34432222db.md",
+      "id": "67f8ec758a740e34432222db",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "Add an `onChange` attribute to the input to capture what the user types. Set it to an arrow function that takes `e` as an argument. Inside the function, update the `query` state by passing `e.target.value` to the setter function, which holds the current value of the input. Here's an example:",
+          "fr": "Ajoute un attribut `onChange` à l'input pour capturer ce que l'utilisateur tape. Définis-le comme une fonction fléchée qui prend `e` en argument. À l'intérieur, mets à jour l'état `query` en passant `e.target.value` à la fonction setter, qui contient la valeur actuelle de l'input. Voici un exemple :"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should ensure that the `onChange` handler is defined.",
+          "fr": "Tu dois t'assurer que le gestionnaire `onChange` est défini."
+        },
+        {
+          "en": "Your `onChange` handler should have an `e` parameter.",
+          "fr": "Ton gestionnaire `onChange` doit avoir un paramètre `e`."
+        },
+        {
+          "en": "Your `onChange` handler should call `setQuery()` with `e.target.value`.",
+          "fr": "Ton gestionnaire `onChange` doit appeler `setQuery()` avec `e.target.value`."
+        }
+      ]
+    },
+    {
+      "file": "6813fe47f24095890691642f.md",
+      "id": "6813fe47f24095890691642f",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Next, you will need a function for when the form gets submitted. Define a `handleSubmit` function that accepts an event object, `e`, and calls `e.preventDefault()`.",
+          "fr": "Ensuite, tu auras besoin d'une fonction pour la soumission du formulaire. Définis une fonction `handleSubmit` qui accepte un objet événement, `e`, et appelle `e.preventDefault()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a `handleSubmit` function with an `e` parameter.",
+          "fr": "Tu dois définir une fonction `handleSubmit` avec un paramètre `e`."
+        },
+        {
+          "en": "You should call `e.preventDefault()` inside the `handleSubmit()` function.",
+          "fr": "Tu dois appeler `e.preventDefault()` à l'intérieur de la fonction `handleSubmit()`."
+        }
+      ]
+    },
+    {
+      "file": "68245535872ded3cc2900fa8.md",
+      "id": "68245535872ded3cc2900fa8",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "Pass the `handleSubmit` function to the `onSubmit` prop of the `form` element so the form submission can be handled correctly.",
+          "fr": "Passe la fonction `handleSubmit` à la prop `onSubmit` de l'élément `form` pour que la soumission soit gérée correctement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `handleSubmit` function should be the value of the `onSubmit` attribute of the `form` element.",
+          "fr": "La fonction `handleSubmit` doit être la valeur de l'attribut `onSubmit` de l'élément `form`."
+        }
+      ]
+    },
+    {
+      "file": "67f8eeab71f4f24ba1a3a7eb.md",
+      "id": "67f8eeab71f4f24ba1a3a7eb",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "After the form, add a `div` element with an `id` of `results` that will display the search results.",
+          "fr": "Après le formulaire, ajoute un élément `div` avec un `id` de `results` qui affichera les résultats de recherche."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `div` element with the `id` of `results` after the form.",
+          "fr": "Tu dois avoir un élément `div` avec l'`id` de `results` après le formulaire."
+        }
+      ]
+    },
+    {
+      "file": "67f8ef57b9974052e5ef6b30.md",
+      "id": "67f8ef57b9974052e5ef6b30",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Inside the `#results` element, use a ternary operator to check if the length of `results` array is greater than zero. If it is, map over the items and display each one in a `p` element with a class of `result-item`. Be sure to include a `key` attribute with each paragraph as well.",
+          "fr": "À l'intérieur de l'élément `#results`, utilise un opérateur ternaire pour vérifier si la longueur du tableau `results` est supérieure à zéro. Si c'est le cas, parcours les éléments avec `map` et affiche chacun dans un élément `p` avec une classe `result-item`. N'oublie pas d'inclure aussi un attribut `key` sur chaque paragraphe."
+        },
+        {
+          "en": "If `results` it's empty, render a `p` element with the message `No results found`.",
+          "fr": "Si `results` est vide, affiche un élément `p` avec le message `No results found`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `#results` container should contain a list of matching fruits based on the query. Each result should be a `p` element with the class of `result-item` and should show the name of the fruit.",
+          "fr": "Ton conteneur `#results` doit contenir une liste de fruits correspondant à la requête. Chaque résultat doit être un élément `p` avec la classe `result-item` et doit montrer le nom du fruit."
+        },
+        {
+          "en": "Your `#results` element should contain a `p` element with the text `No results found` when the `results` array is empty.",
+          "fr": "Ton élément `#results` doit contenir un élément `p` avec le texte `No results found` quand le tableau `results` est vide."
+        }
+      ]
+    },
+    {
+      "file": "67f8fd20d0afc3e03122453a.md",
+      "id": "67f8fd20d0afc3e03122453a",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Next, you will make your app get fruit names from the API when a user types in the input.",
+          "fr": "Ensuite, tu vas faire en sorte que ton app récupère les noms de fruits depuis l'API quand l'utilisateur tape dans l'input."
+        },
+        {
+          "en": "First, add a `useEffect` hook so that it runs whenever the `query` state changes. Make sure to pass an arrow function as the first argument to `useEffect`, and include `query` in the dependency array.",
+          "fr": "D'abord, ajoute un hook `useEffect` pour qu'il s'exécute à chaque changement de l'état `query`. Passe bien une fonction fléchée comme premier argument à `useEffect`, et inclus `query` dans le tableau de dépendances."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `useEffect` hook.",
+          "fr": "Tu dois utiliser le hook `useEffect`."
+        },
+        {
+          "en": "You should include `query` in the dependency array of your `useEffect` hook.",
+          "fr": "Tu dois inclure `query` dans le tableau de dépendances de ton hook `useEffect`."
+        }
+      ]
+    },
+    {
+      "file": "67f90485c192d92ba3ba7e34.md",
+      "id": "67f90485c192d92ba3ba7e34",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Inside the `useEffect` callback, add an `if` condition to check if `query.trim() === ''`. This checks if `query` is an empty string or contains only spaces. If so, call `setResults([])` and return early.",
+          "fr": "À l'intérieur du callback de `useEffect`, ajoute une condition `if` pour vérifier si `query.trim() === ''`. Cela vérifie si `query` est une chaîne vide ou ne contient que des espaces. Si c'est le cas, appelle `setResults([])` et sors tôt avec `return`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should check if `query.trim() === ''`.",
+          "fr": "Tu dois vérifier si `query.trim() === ''`."
+        },
+        {
+          "en": "If `query.trim() === ''` is true, call `setResults()` with an empty array, then use the `return` keyword after that.",
+          "fr": "Si `query.trim() === ''` est vrai, appelle `setResults()` avec un tableau vide, puis utilise le mot-clé `return` juste après."
+        }
+      ]
+    },
+    {
+      "file": "67f90574263ebf363f9edd1d.md",
+      "id": "67f90574263ebf363f9edd1d",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "If `query` is not empty, you want to get fruits that match the user input from the API, but only after users stop typing for a short period to avoid making the fetch call too frequently.",
+          "fr": "Si `query` n'est pas vide, tu veux récupérer les fruits qui correspondent à la saisie depuis l'API, mais seulement après que l'utilisateur ait arrêté de taper un court instant pour éviter d'appeler `fetch` trop souvent."
+        },
+        {
+          "en": "To start, after the `if` statement, call `setTimeout` with an empty arrow function and a delay value of `700` as arguments, and store it in a variable called `timeoutId`. This allows you to cancel the timeout later when the effect cleans up.",
+          "fr": "Pour commencer, après l'instruction `if`, appelle `setTimeout` avec une fonction fléchée vide et une valeur de délai de `700` comme arguments, et stocke-le dans une variable appelée `timeoutId`. Cela te permet d'annuler le timeout plus tard lors du nettoyage de l'effet."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `setTimeout` and store the return value in a variable called `timeoutId`.",
+          "fr": "Tu dois appeler `setTimeout` et stocker la valeur renvoyée dans une variable appelée `timeoutId`."
+        },
+        {
+          "en": "`setTimeout` should have an empty callback function and a delay value of `700`.",
+          "fr": "`setTimeout` doit avoir une fonction de callback vide et une valeur de délai de `700`."
+        }
+      ]
+    },
+    {
+      "file": "6813e49f0a3ec06c1e80c93b.md",
+      "id": "6813e49f0a3ec06c1e80c93b",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Update the first argument to `setTimeout` to an `async` arrow function. This allows you to use `await` inside the delayed logic. Inside that function, create a `try...catch` block to handle any potential errors when fetching data.",
+          "fr": "Mets à jour le premier argument de `setTimeout` pour en faire une fonction fléchée `async`. Cela te permet d'utiliser `await` dans la logique différée. À l'intérieur de cette fonction, crée un bloc `try...catch` pour gérer les erreurs potentielles lors de la récupération des données."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `async` arrow function as the first argument to `setTimeout`.",
+          "fr": "Tu dois avoir une fonction fléchée `async` comme premier argument de `setTimeout`."
+        },
+        {
+          "en": "Inside the `async` function, you should create a `try...catch` block.",
+          "fr": "À l'intérieur de la fonction `async`, tu dois créer un bloc `try...catch`."
+        }
+      ]
+    },
+    {
+      "file": "6813ee1963b142d3cce0889c.md",
+      "id": "6813ee1963b142d3cce0889c",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Inside the `try` block, call the `fetch` function with the `https://fruit-search.freecodecamp.rocks/api/fruits?q=${query}` URL, and store the result in a variable named `response`. Since you're inside an `async` function, you should use `await` before `fetch`.",
+          "fr": "À l'intérieur du bloc `try`, appelle la fonction `fetch` avec l'URL `https://fruit-search.freecodecamp.rocks/api/fruits?q=${query}`, et stocke le résultat dans une variable nommée `response`. Comme tu es dans une fonction `async`, tu dois utiliser `await` devant `fetch`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `fetch` with `https://fruit-search.freecodecamp.rocks/api/fruits?q=${query}` and store the result in a `response` variable.",
+          "fr": "Tu dois appeler `fetch` avec `https://fruit-search.freecodecamp.rocks/api/fruits?q=${query}` et stocker le résultat dans une variable `response`."
+        }
+      ]
+    },
+    {
+      "file": "6813f04ebe7476ed447c4c89.md",
+      "id": "6813f04ebe7476ed447c4c89",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Next, call `.json()` on the response and store the result in a variable called `data`. Since you're still inside an `async` function, you should use `await` before `response.json()`.",
+          "fr": "Ensuite, appelle `.json()` sur la réponse et stocke le résultat dans une variable appelée `data`. Comme tu es toujours dans une fonction `async`, tu dois utiliser `await` devant `response.json()`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should call `json()` on `response` and store it in a `data` variable.",
+          "fr": "Tu dois appeler `json()` sur `response` et le stocker dans une variable `data`."
+        }
+      ]
+    },
+    {
+      "file": "6813f4dc94d4a31c5702f594.md",
+      "id": "6813f4dc94d4a31c5702f594",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Now that you have the data from the API, update the `results` state by calling `setResults` and passing in an array that contains only the `name` property from each fruit in the `data` array. Use the `map()` method for this.",
+          "fr": "Maintenant que tu as les données de l'API, mets à jour l'état `results` en appelant `setResults` et en passant un tableau qui ne contient que la propriété `name` de chaque fruit du tableau `data`. Utilise la méthode `map()` pour cela."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update `setResults` with `data.map(fruit => fruit.name)`.",
+          "fr": "Tu dois mettre à jour `setResults` avec `data.map(fruit => fruit.name)`."
+        }
+      ]
+    },
+    {
+      "file": "6813f677aa1f742ec3808903.md",
+      "id": "6813f677aa1f742ec3808903",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "For the `catch` block, add an `error` parameter, then use `console.error` to log any error that occurs while fetching or processing the data.",
+          "fr": "Pour le bloc `catch`, ajoute un paramètre `error`, puis utilise `console.error` pour journaliser toute erreur survenue pendant la récupération ou le traitement des données."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `catch` block should have an `error` parameter.",
+          "fr": "Ton bloc `catch` doit avoir un paramètre `error`."
+        },
+        {
+          "en": "You should log any error in the `catch` block using `console.error`.",
+          "fr": "Tu dois journaliser toute erreur dans le bloc `catch` avec `console.error`."
+        }
+      ]
+    },
+    {
+      "file": "68140ab94fd0ea19c62ca87e.md",
+      "id": "68140ab94fd0ea19c62ca87e",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Below your `timeoutId` variable, return a cleanup function that clears the timeout using `clearTimeout(timeoutId)`. This prevents multiple delayed fetches from stacking up. Make sure your cleanup function is an arrow function with an implicit return.",
+          "fr": "Sous ta variable `timeoutId`, renvoie une fonction de nettoyage qui efface le timeout avec `clearTimeout(timeoutId)`. Cela empêche plusieurs fetch différés de s'empiler. Assure-toi que ta fonction de nettoyage est une fonction fléchée avec un retour implicite."
+        },
+        {
+          "en": "And with that your Fruit Search app is complete! Try out your fruit search app by typing in the name of a fruit like `apple` or `pear` to see the results appear.",
+          "fr": "Et avec ça, ton application Fruit Search est terminée ! Essaie-la en tapant le nom d'un fruit comme `apple` ou `pear` pour voir les résultats apparaître."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should return an arrow function that calls `clearTimeout(timeoutId)` at the end of the `useEffect` hook.",
+          "fr": "Tu dois renvoyer une fonction fléchée qui appelle `clearTimeout(timeoutId)` à la fin du hook `useEffect`."
+        }
+      ]
+    }
+  ]
+}

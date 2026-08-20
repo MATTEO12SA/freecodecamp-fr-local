@@ -1,0 +1,839 @@
+{
+  "workshop": "lecture-understanding-effects-and-referencing-values-in-react",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1a82dad69dc95546e5f0d.md",
+      "id": "67d1a82dad69dc95546e5f0d",
+      "dashedName": "how-do-you-reference-values-using-refs",
+      "title": {
+        "en": "How Do You Reference Values Using Refs?",
+        "fr": "Comment référencer des valeurs avec les refs ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In React, there may be situations where you need direct access to a DOM element. That's where \"refs\" come in handy. Refs can also store mutable values, but state is a better choice for that.",
+              "fr": "En React, il peut y avoir des situations où tu as besoin d'un accès direct à un élément du DOM. C'est là que les « refs » sont utiles. Les refs peuvent aussi stocker des valeurs mutables, mais le state est un meilleur choix pour cela."
+            },
+            {
+              "en": "In vanilla JavaScript, you used the `getElementById()` and `querySelector()` methods to access DOM elements. But in React, you use refs to access elements in the DOM.",
+              "fr": "En JavaScript vanilla, tu utilisais les méthodes `getElementById()` et `querySelector()` pour accéder aux éléments du DOM. Mais en React, tu utilises les refs pour accéder aux éléments dans le DOM."
+            },
+            {
+              "en": "One of the main differences is that, with refs, you don't need identifiers like IDs and classes to reference elements.",
+              "fr": "Une des principales différences est qu'avec les refs, tu n'as pas besoin d'identifiants comme des IDs et des classes pour référencer les éléments."
+            },
+            {
+              "en": "So, how can you create and use refs? React provides a `useRef()` hook that lets you do just that.",
+              "fr": "Alors, comment peux-tu créer et utiliser des refs ? React fournit un hook `useRef()` qui te permet de faire exactement cela."
+            },
+            {
+              "en": "The first step is to import the hook from React:",
+              "fr": "La première étape est d'importer le hook depuis React :"
+            },
+            {
+              "en": "Next, you need to create a variable that holds the ref with the initial value of the ref inside the `useRef` hook, say a `sectionRef` initialized to `null`:",
+              "fr": "Ensuite, tu dois créer une variable qui détient la ref avec la valeur initiale de la ref à l'intérieur du hook `useRef`, disons une `sectionRef` initialisée à `null` :"
+            },
+            {
+              "en": "The final thing to do is to attach the ref variable to the element in your JSX by using the `ref` attribute:",
+              "fr": "La dernière chose à faire est d'attacher la variable ref à l'élément dans ton JSX en utilisant l'attribut `ref` :"
+            },
+            {
+              "en": "If you log the ref to the console, you'll see it's an object with the current value, in this case, `null`:",
+              "fr": "Si tu journalises la ref dans la console, tu verras que c'est un objet avec la valeur actuelle, dans ce cas, `null` :"
+            },
+            {
+              "en": "You can also log the current value to the console with the `current` property so you can see the value directly:",
+              "fr": "Tu peux aussi journaliser la valeur actuelle dans la console avec la propriété `current` pour voir la valeur directement :"
+            },
+            {
+              "en": "The subsequent values of the ref depend on the component lifecycle.",
+              "fr": "Les valeurs suivantes de la ref dépendent du cycle de vie du composant."
+            },
+            {
+              "en": "For example, the initial value of `sectionRef` will always be `null` because that's what it was initialized to. After the component is mounted, the value of the ref will be the `section` element the ref is attached to.",
+              "fr": "Par exemple, la valeur initiale de `sectionRef` sera toujours `null` car c'est à cela qu'elle a été initialisée. Après le montage du composant, la valeur de la ref sera l'élément `section` auquel la ref est attachée."
+            },
+            {
+              "en": "If the component is unmounted, the ref's value goes back to the initial value of `null`.",
+              "fr": "Si le composant est démonté, la valeur de la ref revient à la valeur initiale de `null`."
+            },
+            {
+              "en": "A typical example to showcase a ref is to focus an input element on render, or by clicking a button.",
+              "fr": "Un exemple typique pour illustrer une ref est de mettre le focus sur un élément input au rendu, ou en cliquant sur un bouton."
+            },
+            {
+              "en": "Here's how to do that when you click a button:",
+              "fr": "Voici comment le faire quand tu cliques sur un bouton :"
+            },
+            {
+              "en": "In the code above, the `inputRef` is created and attached to the `input` element. There's also a button with an `onClick` event that calls a `handleFocus` function.",
+              "fr": "Dans le code ci-dessus, la `inputRef` est créée et attachée à l'élément `input`. Il y a aussi un bouton avec un événement `onClick` qui appelle une fonction `handleFocus`."
+            },
+            {
+              "en": "All the `handleFocus` function does is call the `focus()` method on the `input` element. Note that, because `input` is a built-in component that comes with React, the actual `input` DOM element is set to the `current` property of the ref. So you call the `focus()` method with `input.current.focus()`.",
+              "fr": "Tout ce que fait la fonction `handleFocus`, c'est appeler la méthode `focus()` sur l'élément `input`. Note que, comme `input` est un composant intégré fourni avec React, l'élément DOM `input` réel est défini sur la propriété `current` de la ref. Tu appelles donc la méthode `focus()` avec `input.current.focus()`."
+            },
+            {
+              "en": "Here are some best practices you should be aware of while working with refs:",
+              "fr": "Voici quelques bonnes pratiques dont tu devrais être conscient en travaillant avec les refs :"
+            },
+            {
+              "en": "- Use refs mainly to interact with the DOM. You can also use them for mutable data, but state is a better choice for that.",
+              "fr": "- Utilise les refs surtout pour interagir avec le DOM. Tu peux aussi les utiliser pour des données mutables, mais le state est un meilleur choix pour cela."
+            },
+            {
+              "en": "- Don't use refs for basic state management – that is what `useState` is for.",
+              "fr": "- N'utilise pas les refs pour la gestion basique du state – c'est à cela que sert `useState`."
+            },
+            {
+              "en": "- Make sure you check that `ref.current` exists before accessing its properties. Here's how to do that again:",
+              "fr": "- Assure-toi de vérifier que `ref.current` existe avant d'accéder à ses propriétés. Voici comment le faire à nouveau :"
+            },
+            {
+              "en": "This prevents errors in case the ref is accessed before it is attached to the DOM or after it is removed.",
+              "fr": "Cela évite les erreurs au cas où la ref serait accédée avant d'être attachée au DOM ou après avoir été retirée."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you create and use refs in React?",
+              "fr": "Comment peux-tu créer et utiliser des refs en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By importing and using the `useState` hook.",
+              "fr": "En important et en utilisant le hook `useState`."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the hook that provides a way to manage mutable references in React components.",
+              "fr": "Repère le hook qui fournit une façon de gérer des références mutables dans les composants React."
+            },
+            {
+              "en": "By importing and using the `useEffect` hook.",
+              "fr": "En important et en utilisant le hook `useEffect`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the hook that provides a way to manage mutable references in React components.",
+              "fr": "Repère le hook qui fournit une façon de gérer des références mutables dans les composants React."
+            },
+            {
+              "en": "By importing and using the `useRef` hook.",
+              "fr": "En important et en utilisant le hook `useRef`."
+            },
+            {
+              "en": "By importing and using the `useMemo` hook.",
+              "fr": "En important et en utilisant le hook `useMemo`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Look out for the hook that provides a way to manage mutable references in React components.",
+              "fr": "Repère le hook qui fournit une façon de gérer des références mutables dans les composants React."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does a ref look like if you log it to the console?",
+              "fr": "À quoi ressemble une ref si tu la journalises dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "An object with a `current` property.",
+              "fr": "Un objet avec une propriété `current`."
+            },
+            {
+              "en": "A primitive value like a string or number.",
+              "fr": "Une valeur primitive comme une chaîne ou un nombre."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how refs store a mutable object with a key for accessing the `current` value.",
+              "fr": "Pense à comment les refs stockent un objet mutable avec une clé pour accéder à la valeur `current`."
+            },
+            {
+              "en": "A function that tracks component state.",
+              "fr": "Une fonction qui suit le state du composant."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how refs store a mutable object with a key for accessing the `current` value.",
+              "fr": "Pense à comment les refs stockent un objet mutable avec une clé pour accéder à la valeur `current`."
+            },
+            {
+              "en": "A list of all DOM nodes in the component.",
+              "fr": "Une liste de tous les nœuds DOM du composant."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how refs store a mutable object with a key for accessing the `current` value.",
+              "fr": "Pense à comment les refs stockent un objet mutable avec une clé pour accéder à la valeur `current`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the value of the ref after the component is mounted?",
+              "fr": "Quelle est la valeur de la ref après le montage du composant ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Always `null`.",
+              "fr": "Toujours `null`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what a ref points to once it's attached to a DOM element.",
+              "fr": "Considère ce vers quoi pointe une ref une fois attachée à un élément DOM."
+            },
+            {
+              "en": "The props of the component.",
+              "fr": "Les props du composant."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what a ref points to once it's attached to a DOM element.",
+              "fr": "Considère ce vers quoi pointe une ref une fois attachée à un élément DOM."
+            },
+            {
+              "en": "A random value generated by React.",
+              "fr": "Une valeur aléatoire générée par React."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider what a ref points to once it's attached to a DOM element.",
+              "fr": "Considère ce vers quoi pointe une ref une fois attachée à un élément DOM."
+            },
+            {
+              "en": "The DOM element the ref is attached to.",
+              "fr": "L'élément DOM auquel la ref est attachée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1ec6711b62f1cc5cc52e1.md",
+      "id": "67d1ec6711b62f1cc5cc52e1",
+      "dashedName": "what-are-effects-in-react-and-how-does-the-useeffect-hook-work",
+      "title": {
+        "en": "What Are Effects in React, and How Does the useEffect Hook Work?",
+        "fr": "Que sont les effets en React, et comment fonctionne le hook useEffect ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In React, an effect is anything that happens outside the component rendering process. That is, anything React does not handle directly as part of rendering the UI.",
+              "fr": "En React, un effet est tout ce qui se produit en dehors du processus de rendu du composant. C'est-à-dire, tout ce que React ne gère pas directement dans le cadre du rendu de l'UI."
+            },
+            {
+              "en": "Common examples include fetching data, updating the browser tab's title, reading from or writing to the browser's local storage, getting the user's location, and much more. These operations interact with the outside world and are known as side effects.",
+              "fr": "Des exemples courants incluent la récupération de données, la mise à jour du titre de l'onglet du navigateur, la lecture ou l'écriture dans le local storage du navigateur, obtenir la localisation de l'utilisateur, et bien plus. Ces opérations interagissent avec le monde extérieur et sont appelées side effects."
+            },
+            {
+              "en": "React provides the `useEffect` hook to let you handle those side effects. `useEffect` lets you run a function after the component renders or updates.",
+              "fr": "React fournit le hook `useEffect` pour te laisser gérer ces side effects. `useEffect` te permet d'exécuter une fonction après que le composant se rende ou se mette à jour."
+            },
+            {
+              "en": "Let's see how the `useEffect` hook works and why it's essential for modern React development.",
+              "fr": "Voyons comment le hook `useEffect` fonctionne et pourquoi il est essentiel pour le développement React moderne."
+            },
+            {
+              "en": "To use the `useEffect` hook, you first need to import it:",
+              "fr": "Pour utiliser le hook `useEffect`, tu dois d'abord l'importer :"
+            },
+            {
+              "en": "Then you use it as a function, like this:",
+              "fr": "Ensuite tu l'utilises comme une fonction, comme ceci :"
+            },
+            {
+              "en": "The effect function runs after the component renders, while the optional `dependencies` argument controls when the effect runs.",
+              "fr": "La fonction d'effet s'exécute après le rendu du composant, tandis que l'argument optionnel `dependencies` contrôle quand l'effet s'exécute."
+            },
+            {
+              "en": "Note that `dependencies` can be an array of \"reactive values\" (state, props, functions, variables, and so on), an empty array, or omitted entirely. Here's how all of those options control how `useEffect` works:",
+              "fr": "Note que `dependencies` peut être un tableau de « valeurs réactives » (state, props, fonctions, variables, et ainsi de suite), un tableau vide, ou entièrement omis. Voici comment toutes ces options contrôlent le fonctionnement de `useEffect` :"
+            },
+            {
+              "en": "- If `dependencies` is an array that includes one or more reactive values, the effect will run whenever they change.",
+              "fr": "- Si `dependencies` est un tableau qui inclut une ou plusieurs valeurs réactives, l'effet s'exécutera chaque fois qu'elles changent."
+            },
+            {
+              "en": "- If `dependencies` is an empty array, `useEffect` runs only once when the component first renders.",
+              "fr": "- Si `dependencies` est un tableau vide, `useEffect` ne s'exécute qu'une fois quand le composant se rend pour la première fois."
+            },
+            {
+              "en": "- If you omit `dependencies`, the effect runs every time the component renders or updates.",
+              "fr": "- Si tu omets `dependencies`, l'effet s'exécute à chaque fois que le composant se rend ou se met à jour."
+            },
+            {
+              "en": "For example, in this `Counter` application, we don't pass in a `dependencies` argument, so the effect runs when the component renders and every time it updates:",
+              "fr": "Par exemple, dans cette application `Counter`, nous ne passons pas d'argument `dependencies`, donc l'effet s'exécute quand le composant se rend et à chaque mise à jour :"
+            },
+            {
+              "en": "But if we pass in an empty array as a dependency, the effect only runs on the first render:",
+              "fr": "Mais si nous passons un tableau vide comme dépendance, l'effet ne s'exécute que lors du premier rendu :"
+            },
+            {
+              "en": "If you pass in the `count` state as a dependency, the effect runs when the component first renders, and when `count` changes:",
+              "fr": "Si tu passes le state `count` comme dépendance, l'effet s'exécute quand le composant se rend pour la première fois, et quand `count` change :"
+            },
+            {
+              "en": "Note that, if the effect you set up persists beyond the component's rendering lifecycle, you might need another function to \"clean up\" that function after the component renders or updates.",
+              "fr": "Note que, si l'effet que tu configures persiste au-delà du cycle de vie de rendu du composant, tu pourrais avoir besoin d'une autre fonction pour « nettoyer » cette fonction après que le composant se rende ou se mette à jour."
+            },
+            {
+              "en": "For example, if your effect function uses `setInterval()`, sets an event listener like `window.addEventListener()`, or connects to a server, you'll need a cleanup function to run `clearInterval()`, `window.removeEventListener()`, and disconnect from the server, respectively.",
+              "fr": "Par exemple, si ta fonction d'effet utilise `setInterval()`, définit un écouteur d'événement comme `window.addEventListener()`, ou se connecte à un serveur, tu auras besoin d'une fonction de nettoyage pour exécuter `clearInterval()`, `window.removeEventListener()`, et te déconnecter du serveur, respectivement."
+            },
+            {
+              "en": "Here's the syntax for returning a cleanup function from the `useEffect` hook:",
+              "fr": "Voici la syntaxe pour renvoyer une fonction de nettoyage depuis le hook `useEffect` :"
+            },
+            {
+              "en": "For instance, if you add a scroll event listener, you can clean it up by removing it in your cleanup function:",
+              "fr": "Par exemple, si tu ajoutes un écouteur d'événement scroll, tu peux le nettoyer en le retirant dans ta fonction de nettoyage :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is considered an effect in React?",
+              "fr": "Qu'est-ce qui est considéré comme un effet en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Any update to the component's state.",
+              "fr": "Toute mise à jour du state du composant."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Effects involve actions React doesn't control during rendering.",
+              "fr": "Les effets impliquent des actions que React ne contrôle pas pendant le rendu."
+            },
+            {
+              "en": "Operations outside the rendering process that React doesn't manage.",
+              "fr": "Des opérations en dehors du processus de rendu que React ne gère pas."
+            },
+            {
+              "en": "Rendering the UI after each state update.",
+              "fr": "Rendre l'UI après chaque mise à jour du state."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Effects involve actions React doesn't control during rendering.",
+              "fr": "Les effets impliquent des actions que React ne contrôle pas pendant le rendu."
+            },
+            {
+              "en": "Updating the component's props.",
+              "fr": "Mettre à jour les props du composant."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Effects involve actions React doesn't control during rendering.",
+              "fr": "Les effets impliquent des actions que React ne contrôle pas pendant le rendu."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What determines how side effects run in a React app?",
+              "fr": "Qu'est-ce qui détermine comment les side effects s'exécutent dans une app React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Effects always run once, regardless of dependencies.",
+              "fr": "Les effets s'exécutent toujours une fois, indépendamment des dépendances."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The behavior of the effect depends on the contents of the dependency array.",
+              "fr": "Le comportement de l'effet dépend du contenu du tableau de dépendances."
+            },
+            {
+              "en": "Effects run only when props change, ignoring state.",
+              "fr": "Les effets ne s'exécutent que quand les props changent, en ignorant le state."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The behavior of the effect depends on the contents of the dependency array.",
+              "fr": "Le comportement de l'effet dépend du contenu du tableau de dépendances."
+            },
+            {
+              "en": "The dependency array determines when effects run.",
+              "fr": "Le tableau de dépendances détermine quand les effets s'exécutent."
+            },
+            {
+              "en": "Effects always run on every render unless explicitly disabled.",
+              "fr": "Les effets s'exécutent toujours à chaque rendu sauf s'ils sont explicitement désactivés."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The behavior of the effect depends on the contents of the dependency array.",
+              "fr": "Le comportement de l'effet dépend du contenu du tableau de dépendances."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are common examples of side effects in React?",
+              "fr": "Quels sont des exemples courants de side effects en React ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Rendering components and updating state.",
+              "fr": "Rendre des composants et mettre à jour le state."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Side effects involve interacting with the world outside the React rendering process.",
+              "fr": "Les side effects impliquent d'interagir avec le monde extérieur au processus de rendu React."
+            },
+            {
+              "en": "Passing props to child components.",
+              "fr": "Passer des props à des composants enfants."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Side effects involve interacting with the world outside the React rendering process.",
+              "fr": "Les side effects impliquent d'interagir avec le monde extérieur au processus de rendu React."
+            },
+            {
+              "en": "Defining component styles and layout.",
+              "fr": "Définir les styles et la mise en page du composant."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Side effects involve interacting with the world outside the React rendering process.",
+              "fr": "Les side effects impliquent d'interagir avec le monde extérieur au processus de rendu React."
+            },
+            {
+              "en": "Fetching data, updating tab titles, and reading from storage.",
+              "fr": "Récupérer des données, mettre à jour les titres d'onglet, et lire depuis le stockage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1ec87b34cee1d9219f7e9.md",
+      "id": "67d1ec87b34cee1d9219f7e9",
+      "dashedName": "how-can-you-create-custom-hooks-in-react",
+      "title": {
+        "en": "How Can You Create Custom Hooks in React?",
+        "fr": "Comment peux-tu créer des hooks personnalisés en React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "React provides many built-in hooks that let you implement different features in your projects. These include `useState`, `useEffect`, `useContext`, and others.",
+              "fr": "React fournit de nombreux hooks intégrés qui te permettent d'implémenter différentes fonctionnalités dans tes projets. Parmi eux : `useState`, `useEffect`, `useContext`, et d'autres."
+            },
+            {
+              "en": "But sometimes, you'll need to add a feature that none of the built-in hooks can help with. Fortunately, you can create your own custom hooks in React.",
+              "fr": "Mais parfois, tu auras besoin d'ajouter une fonctionnalité qu'aucun des hooks intégrés ne peut aider. Heureusement, tu peux créer tes propres hooks personnalisés en React."
+            },
+            {
+              "en": "Custom hooks are not as complicated as they might seem. They're just reusable functions that let you share logic across multiple components. That means reusability is another reason why you would want to build your own hook.",
+              "fr": "Les hooks personnalisés ne sont pas aussi compliqués qu'ils peuvent sembler. Ce sont juste des fonctions réutilisables qui te permettent de partager de la logique entre plusieurs composants. Cela signifie que la réutilisabilité est une autre raison pour laquelle tu voudrais construire ton propre hook."
+            },
+            {
+              "en": "With a custom hook, you can extract logic away from any components that use them, like data fetching, state management, toggling, side effects like checking for the online or offline status of users, and so on.",
+              "fr": "Avec un hook personnalisé, tu peux extraire la logique hors de tous les composants qui l'utilisent, comme la récupération de données, la gestion du state, le basculement, des side effects comme vérifier le statut en ligne ou hors ligne des utilisateurs, et ainsi de suite."
+            },
+            {
+              "en": "You can then import the hook to use in any component, so you can focus on rendering and presentation within those components. That means fewer repetitions and less duplication, which means fewer places to make changes when you want to make any updates.",
+              "fr": "Tu peux ensuite importer le hook pour l'utiliser dans n'importe quel composant, afin de te concentrer sur le rendu et la présentation dans ces composants. Cela signifie moins de répétitions et moins de duplication, donc moins d'endroits à modifier quand tu veux faire des mises à jour."
+            },
+            {
+              "en": "Now, let's take a look at how you can make your own custom hook.",
+              "fr": "Maintenant, regardons comment tu peux créer ton propre hook personnalisé."
+            },
+            {
+              "en": "In React, all built-in hooks start with the word `use`, so your custom hook should follow the same convention. Your custom hook's name should also clearly communicate what it does.",
+              "fr": "En React, tous les hooks intégrés commencent par le mot `use`, donc ton hook personnalisé devrait suivre la même convention. Le nom de ton hook personnalisé devrait aussi communiquer clairement ce qu'il fait."
+            },
+            {
+              "en": "So, if your custom hook…",
+              "fr": "Donc, si ton hook personnalisé…"
+            },
+            {
+              "en": "- fetches data, you can call it `useFetch`",
+              "fr": "- récupère des données, tu peux l'appeler `useFetch`"
+            },
+            {
+              "en": "- toggles something on and off, you can call it `useToggle`",
+              "fr": "- bascule quelque chose on et off, tu peux l'appeler `useToggle`"
+            },
+            {
+              "en": "- or if it implements debouncing, `useDebounce` is a good name",
+              "fr": "- ou s'il implémente le debouncing, `useDebounce` est un bon nom"
+            },
+            {
+              "en": "Let's say you want to build a custom hook to add debouncing to your app.",
+              "fr": "Disons que tu veux construire un hook personnalisé pour ajouter le debouncing à ton app."
+            },
+            {
+              "en": "Debouncing is a programming technique that limits how often a function runs. It works by waiting until a user stops performing an action for a specified period of time before executing the function. For example, in a search box, instead of making an API call for every keystroke, debouncing waits until the user pauses typing for, say, 500 milliseconds.",
+              "fr": "Le debouncing est une technique de programmation qui limite la fréquence d'exécution d'une fonction. Elle fonctionne en attendant que l'utilisateur arrête une action pendant une période spécifiée avant d'exécuter la fonction. Par exemple, dans une boîte de recherche, au lieu de faire un appel API à chaque frappe, le debouncing attend que l'utilisateur pause la saisie pendant, disons, 500 millisecondes."
+            },
+            {
+              "en": "To create a debouncing custom hook, you first need to create a `useDebounce.jsx` or `useDebounce.js` file. Conventionally, files for any custom hooks you create are saved to a `hooks` folder.",
+              "fr": "Pour créer un hook personnalisé de debouncing, tu dois d'abord créer un fichier `useDebounce.jsx` ou `useDebounce.js`. Conventionnellement, les fichiers pour tous les hooks personnalisés que tu crées sont enregistrés dans un dossier `hooks`."
+            },
+            {
+              "en": "You can use some built-in hooks within your own custom hook. For debouncing, you need the `useState` and `useEffect` hooks, so import them at the top of your file:",
+              "fr": "Tu peux utiliser certains hooks intégrés dans ton propre hook personnalisé. Pour le debouncing, tu as besoin des hooks `useState` et `useEffect`, donc importe-les en haut de ton fichier :"
+            },
+            {
+              "en": "Next, create a `useDebounce` function that takes `value` and `delay` as parameters. `value` is the resource you want to wait for, and `delay` is the period of time you want to wait for. Since you want to wait for some period of time, the `setTimeout` and `clearTimeout` functions would be useful:",
+              "fr": "Ensuite, crée une fonction `useDebounce` qui prend `value` et `delay` comme paramètres. `value` est la ressource pour laquelle tu veux attendre, et `delay` est la période d'attente. Comme tu veux attendre un certain temps, les fonctions `setTimeout` et `clearTimeout` seraient utiles :"
+            },
+            {
+              "en": "The `debouncedValue` state holds and returns the delayed value, which only updates after the specified timeout period.",
+              "fr": "Le state `debouncedValue` détient et renvoie la valeur retardée, qui ne se met à jour qu'après la période de timeout spécifiée."
+            },
+            {
+              "en": "`useEffect` is where the magic really happens. If you recall from the previous lesson, anything that exists outside the React rendering cycle, like setting and clearing a timer, is a side effect, and you should use the `useEffect` hook to handle them.",
+              "fr": "`useEffect` est là où la magie opère vraiment. Si tu te souviens de la leçon précédente, tout ce qui existe en dehors du cycle de rendu React, comme définir et effacer un timer, est un side effect, et tu devrais utiliser le hook `useEffect` pour les gérer."
+            },
+            {
+              "en": "Within the `useEffect` hook here, you use `setTimeout` to set the `debouncedValue`. You then return a cleanup function that uses `clearTimeout` to clear the previous timeout whenever `value` or `delay` changes, or the component unmounts.",
+              "fr": "Dans le hook `useEffect` ici, tu utilises `setTimeout` pour définir le `debouncedValue`. Tu renvoies ensuite une fonction de nettoyage qui utilise `clearTimeout` pour effacer le timeout précédent chaque fois que `value` ou `delay` change, ou que le composant se démonte."
+            },
+            {
+              "en": "To use this hook, we've prepared a `footballers` array to filter through with a simple search bar:",
+              "fr": "Pour utiliser ce hook, nous avons préparé un tableau `footballers` à filtrer avec une simple barre de recherche :"
+            },
+            {
+              "en": "And here's a `FootballerSearch` component that uses the `useDebounce` hook to delay searching for 1 second after the user stops typing:",
+              "fr": "Et voici un composant `FootballerSearch` qui utilise le hook `useDebounce` pour retarder la recherche de 1 seconde après que l'utilisateur arrête de taper :"
+            },
+            {
+              "en": "As you can see, the `debouncedQuery` variable is what initializes the `useDebounce` hook with the query state (what the user types), and the delay for 1,000 milliseconds, or 1 second. The search itself is handled inside the `useEffect` hook, and search results are logged to the console.",
+              "fr": "Comme tu peux le voir, la variable `debouncedQuery` est ce qui initialise le hook `useDebounce` avec le state query (ce que l'utilisateur tape), et le délai de 1 000 millisecondes, ou 1 seconde. La recherche elle-même est gérée dans le hook `useEffect`, et les résultats de recherche sont journalisés dans la console."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a notable benefit of creating a custom hook in React?",
+              "fr": "Quel est un avantage notable de créer un hook personnalisé en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It makes components render faster.",
+              "fr": "Ça fait rendre les composants plus vite."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks help avoid repeating the same logic in different components.",
+              "fr": "Les hooks personnalisés aident à éviter de répéter la même logique dans différents composants."
+            },
+            {
+              "en": "It allows you to reuse logic across multiple components.",
+              "fr": "Ça te permet de réutiliser la logique entre plusieurs composants."
+            },
+            {
+              "en": "It replaces the need for built-in hooks.",
+              "fr": "Ça remplace le besoin de hooks intégrés."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks help avoid repeating the same logic in different components.",
+              "fr": "Les hooks personnalisés aident à éviter de répéter la même logique dans différents composants."
+            },
+            {
+              "en": "It forces components to share the same state.",
+              "fr": "Ça force les composants à partager le même state."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks help avoid repeating the same logic in different components.",
+              "fr": "Les hooks personnalisés aident à éviter de répéter la même logique dans différents composants."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the correct naming convention for a custom hook in React?",
+              "fr": "Quelle est la convention de nommage correcte pour un hook personnalisé en React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It should start with \"`use`\".",
+              "fr": "Il devrait commencer par \"`use`\"."
+            },
+            {
+              "en": "It can have any name.",
+              "fr": "Il peut avoir n'importe quel nom."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a specific prefix for hooks.",
+              "fr": "Pense à un préfixe spécifique pour les hooks."
+            },
+            {
+              "en": "It should end with \"`Hook`\".",
+              "fr": "Il devrait se terminer par \"`Hook`\"."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a specific prefix for hooks.",
+              "fr": "Pense à un préfixe spécifique pour les hooks."
+            },
+            {
+              "en": "It must match a built-in hook name.",
+              "fr": "Il doit correspondre à un nom de hook intégré."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a specific prefix for hooks.",
+              "fr": "Pense à un préfixe spécifique pour les hooks."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What would you call a custom hook that toggles a value on and off?",
+              "fr": "Comment appellerais-tu un hook personnalisé qui bascule une valeur on et off ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks should follow React's naming convention and describe their purpose clearly.",
+              "fr": "Les hooks personnalisés devraient suivre la convention de nommage de React et décrire clairement leur but."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks should follow React's naming convention and describe their purpose clearly.",
+              "fr": "Les hooks personnalisés devraient suivre la convention de nommage de React et décrire clairement leur but."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Custom hooks should follow React's naming convention and describe their purpose clearly.",
+              "fr": "Les hooks personnalisés devraient suivre la convention de nommage de React et décrire clairement leur but."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1188 @@
+{
+  "workshop": "lecture-working-with-data-fetching-and-memoization-in-react",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1a99d10fd509c88faf3bf.md",
+      "id": "67d1a99d10fd509c88faf3bf",
+      "dashedName": "how-does-data-fetching-work-in-react",
+      "title": {
+        "en": "How Does Data Fetching Work in React?",
+        "fr": "Comment fonctionne la récupération de données en React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "React apps often rely on external APIs and databases for dynamic content. To access the data from those APIs and databases, you need to use some data fetching techniques.",
+              "fr": "Les apps React s'appuient souvent sur des API externes et des bases de données pour du contenu dynamique. Pour accéder aux données de ces API et bases, tu dois utiliser des techniques de récupération de données."
+            },
+            {
+              "en": "Let's take a look at how data fetching works in React and the different options available to you for fetching data.",
+              "fr": "Voyons comment la récupération de données fonctionne en React et les différentes options à ta disposition pour récupérer des données."
+            },
+            {
+              "en": "React is not opinionated about how you fetch your data, this means on a basic level, you can use the built-in Fetch API, which all modern browsers support.",
+              "fr": "React n'impose pas comment tu récupères tes données : à un niveau basique, tu peux utiliser l'API Fetch intégrée, supportée par tous les navigateurs modernes."
+            },
+            {
+              "en": "You can also use Axios and SWR. Axios is promise-based HTTP request library built on top of the XMLHttpRequest object, and SWR is a React hook for data fetching created by the Vercel team.",
+              "fr": "Tu peux aussi utiliser Axios et SWR. Axios est une bibliothèque de requêtes HTTP basée sur les promesses, construite sur l'objet XMLHttpRequest, et SWR est un Hook React de récupération de données créé par l'équipe Vercel."
+            },
+            {
+              "en": "Let's start with an example. You first need to import the `useState` and `useEffect` hooks:",
+              "fr": "Commençons par un exemple. Tu dois d'abord importer les Hooks `useState` et `useEffect` :"
+            },
+            {
+              "en": "Then you will need to create three state variables called `loading`, `data`, and `error`:",
+              "fr": "Ensuite tu dois créer trois variables d'état appelées `loading`, `data` et `error` :"
+            },
+            {
+              "en": "The `loading` variable will track whether the data is still being fetched. The `data` variable represents the data itself, and the `error` variable will capture any errors that might occur during the data fetching process.",
+              "fr": "La variable `loading` indique si les données sont encore en cours de récupération. La variable `data` représente les données elles-mêmes, et la variable `error` capturera toute erreur pouvant survenir pendant la récupération."
+            },
+            {
+              "en": "Since data fetching is a side effect, it's best to use the Fetch API inside of a `useEffect` hook.",
+              "fr": "Comme la récupération de données est un effet de bord, il vaut mieux utiliser l'API Fetch dans un Hook `useEffect`."
+            },
+            {
+              "en": "Here's an example of that:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "This `useEffect` fetches the data with the Fetch API and sets all the states.",
+              "fr": "Ce `useEffect` récupère les données avec l'API Fetch et met à jour tous les états."
+            },
+            {
+              "en": "You can make things better by using `async`/`await` instead of the `.then()` syntax. That means you have to have a separate function inside the `useEffect` because you cannot prefix `useEffect` with the `async` keyword:",
+              "fr": "Tu peux améliorer ça en utilisant `async`/`await` au lieu de la syntaxe `.then()`. Cela signifie que tu dois avoir une fonction séparée dans le `useEffect`, car tu ne peux pas préfixer `useEffect` avec le mot-clé `async` :"
+            },
+            {
+              "en": "You can then go ahead and use all of those states to render the data from the API.",
+              "fr": "Tu peux ensuite utiliser tous ces états pour afficher les données de l'API."
+            },
+            {
+              "en": "Here's the full code:",
+              "fr": "Voici le code complet :"
+            },
+            {
+              "en": "In the UI, you would see `Loading...` on the screen when the data is being fetched, and then the data or error would show depending on if the data fetch was successful.",
+              "fr": "Dans l'UI, tu verrais `Loading...` à l'écran pendant la récupération, puis les données ou l'erreur selon le succès de la récupération."
+            },
+            {
+              "en": "Remember we talked about data fetching with Axios and SWR too. Let's take a look at an example using Axios.",
+              "fr": "Souviens-toi qu'on a aussi parlé de récupération avec Axios et SWR. Voyons un exemple avec Axios."
+            },
+            {
+              "en": "You will first need to install Axios from the command line like this:",
+              "fr": "Tu dois d'abord installer Axios depuis la ligne de commande comme ceci :"
+            },
+            {
+              "en": "Then you will need to import Axios like this:",
+              "fr": "Ensuite tu dois importer Axios comme ceci :"
+            },
+            {
+              "en": "Then you can use the same state variables from earlier and fetch data from the API using `axios.get`:",
+              "fr": "Puis tu peux utiliser les mêmes variables d'état qu'avant et récupérer les données de l'API avec `axios.get` :"
+            },
+            {
+              "en": "You might have noticed that there is no `await res.json()` line in this example. That's because Axios automatically parses JSON, so there's no need for that.",
+              "fr": "Tu as peut-être remarqué qu'il n'y a pas de ligne `await res.json()` dans cet exemple. C'est parce qu'Axios parse automatiquement le JSON, donc ce n'est pas nécessaire."
+            },
+            {
+              "en": "The last example we will look at is to use the `useSWR` hook to fetch data.",
+              "fr": "Le dernier exemple que nous verrons utilise le Hook `useSWR` pour récupérer des données."
+            },
+            {
+              "en": "Just like with Axios, you will need to install SWR like this:",
+              "fr": "Comme avec Axios, tu dois installer SWR comme ceci :"
+            },
+            {
+              "en": "Then you will need to import the `useSWR` hook into the file like this:",
+              "fr": "Ensuite tu dois importer le Hook `useSWR` dans le fichier comme ceci :"
+            },
+            {
+              "en": "In comparison to the previous examples, the SWR syntax is way shorter. What you need to do is to create a fetcher function and pass it into the `useSWR` hook as its second parameter (the endpoint is the first parameter).",
+              "fr": "Par rapport aux exemples précédents, la syntaxe SWR est bien plus courte. Tu dois créer une fonction fetcher et la passer au Hook `useSWR` comme second paramètre (l'endpoint est le premier)."
+            },
+            {
+              "en": "You also get to destructure both the data and error states from the `useSWR` hook, so you don't need the `useState` hook.",
+              "fr": "Tu peux aussi destructurer les états data et error depuis le Hook `useSWR`, donc tu n'as pas besoin du Hook `useState`."
+            },
+            {
+              "en": "Here is the syntax:",
+              "fr": "Voici la syntaxe :"
+            },
+            {
+              "en": "Note that the \"fetcher\" name here is only a convention, so you're free to name the variable whatever you want.",
+              "fr": "Note que le nom « fetcher » ici n'est qu'une convention, tu es libre de nommer la variable comme tu veux."
+            },
+            {
+              "en": "Here's a component fetching todos from the JSON Placeholder API:",
+              "fr": "Voici un composant qui récupère des todos depuis l'API JSON Placeholder :"
+            },
+            {
+              "en": "As you learned in a previous lesson on custom hooks, data fetching is a logic you can extract into a custom hook. So, if you're fetching data in multiple components and pages, it is best to create a `useFetch` hook.",
+              "fr": "Comme tu l'as appris dans une leçon précédente sur les Hooks personnalisés, la récupération de données est une logique que tu peux extraire dans un Hook personnalisé. Donc, si tu récupères des données dans plusieurs composants et pages, il vaut mieux créer un Hook `useFetch`."
+            },
+            {
+              "en": "Here's a `useFetch` hook that uses SWR for data fetching:",
+              "fr": "Voici un Hook `useFetch` qui utilise SWR pour la récupération de données :"
+            },
+            {
+              "en": "And here's how to use the `useFetch` hook to rewrite the first example that fetches posts from the JSON Placeholder API:",
+              "fr": "Et voici comment utiliser le Hook `useFetch` pour réécrire le premier exemple qui récupère des posts depuis l'API JSON Placeholder :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are the two parameters of the `useSWR` hook in the given example?",
+              "fr": "Quels sont les deux paramètres du Hook `useSWR` dans l'exemple donné ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "URL and cache policy.",
+              "fr": "URL et politique de cache."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The first parameter represents the data source and the second handles data retrieval.",
+              "fr": "Le premier paramètre représente la source de données et le second gère la récupération."
+            },
+            {
+              "en": "API route and fetcher function.",
+              "fr": "Route API et fonction fetcher."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The first parameter represents the data source and the second handles data retrieval.",
+              "fr": "Le premier paramètre représente la source de données et le second gère la récupération."
+            },
+            {
+              "en": "Endpoint and fetcher function.",
+              "fr": "Endpoint et fonction fetcher."
+            },
+            {
+              "en": "Key and configuration object.",
+              "fr": "Clé et objet de configuration."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The first parameter represents the data source and the second handles data retrieval.",
+              "fr": "Le premier paramètre représente la source de données et le second gère la récupération."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why do you have to handle data fetching logic inside a `useEffect`?",
+              "fr": "Pourquoi dois-tu gérer la logique de récupération de données dans un `useEffect` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Because data fetching should only run once.",
+              "fr": "Parce que la récupération de données ne doit s'exécuter qu'une fois."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Fetching data affects things outside the component and should not block rendering.",
+              "fr": "Récupérer des données affecte des choses hors du composant et ne doit pas bloquer le rendu."
+            },
+            {
+              "en": "Because data fetching should not be part of the rendering process.",
+              "fr": "Parce que la récupération de données ne doit pas faire partie du processus de rendu."
+            },
+            {
+              "en": "Because `useEffect` executes before the component renders.",
+              "fr": "Parce que `useEffect` s'exécute avant le rendu du composant."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Fetching data affects things outside the component and should not block rendering.",
+              "fr": "Récupérer des données affecte des choses hors du composant et ne doit pas bloquer le rendu."
+            },
+            {
+              "en": "Because `useEffect` runs synchronously with the render cycle.",
+              "fr": "Parce que `useEffect` s'exécute de façon synchrone avec le cycle de rendu."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Fetching data affects things outside the component and should not block rendering.",
+              "fr": "Récupérer des données affecte des choses hors du composant et ne doit pas bloquer le rendu."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is Axios built upon?",
+              "fr": "Sur quoi Axios est-il construit ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The Fetch API.",
+              "fr": "L'API Fetch."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's an older API used for making HTTP requests before Fetch.",
+              "fr": "C'est une API plus ancienne utilisée pour les requêtes HTTP avant Fetch."
+            },
+            {
+              "en": "The XMLHttpRequest object.",
+              "fr": "L'objet XMLHttpRequest."
+            },
+            {
+              "en": "The WebSocket API.",
+              "fr": "L'API WebSocket."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's an older API used for making HTTP requests before Fetch.",
+              "fr": "C'est une API plus ancienne utilisée pour les requêtes HTTP avant Fetch."
+            },
+            {
+              "en": "The DOM API.",
+              "fr": "L'API DOM."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's an older API used for making HTTP requests before Fetch.",
+              "fr": "C'est une API plus ancienne utilisée pour les requêtes HTTP avant Fetch."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f4ddb4a4306fdf5bbaee.md",
+      "id": "67d2f4ddb4a4306fdf5bbaee",
+      "dashedName": "what-is-memoization-and-how-does-the-usememo-hook-work",
+      "title": {
+        "en": "What Is Memoization, and How Does the useMemo Hook Work?",
+        "fr": "Qu'est-ce que la mémoïsation, et comment fonctionne le Hook useMemo ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As your React app gets larger, unnecessary re-renders and expensive calculations can slow down performance, leading to slow UI updates and increased resource usage.",
+              "fr": "À mesure que ton app React grossit, des re-rendus inutiles et des calculs coûteux peuvent ralentir les performances, causant des mises à jour UI lentes et une consommation de ressources accrue."
+            },
+            {
+              "en": "This can be especially problematic in apps with complex state management, large lists, functions that require heavy computations, and many components with a single parent.",
+              "fr": "Cela peut être surtout problématique dans des apps avec une gestion d'état complexe, de grandes listes, des fonctions à calculs lourds, et de nombreux composants avec un seul parent."
+            },
+            {
+              "en": "This gives rise to the need to optimize your React app for better performance by minimizing redundant computations and ensuring smoother interactions.",
+              "fr": "D'où le besoin d'optimiser ton app React pour de meilleures performances en minimisant les calculs redondants et en assurant des interactions plus fluides."
+            },
+            {
+              "en": "React solves this problem with a process called memoization, a technique which caches values and functions to prevent unnecessary recalculations, so your app can be faster and more responsive.",
+              "fr": "React résout ce problème avec un processus appelé mémoïsation, une technique qui met en cache valeurs et fonctions pour éviter des recalculs inutiles, afin que ton app soit plus rapide et plus réactive."
+            },
+            {
+              "en": "By definition, memoization is an optimization technique in which the result of expensive function calls are cached (remembered) based on specific arguments. When the same arguments are provided again, the cached result is returned instead of re-computing the function.",
+              "fr": "Par définition, la mémoïsation est une technique d'optimisation où le résultat d'appels de fonctions coûteux est mis en cache (mémorisé) selon des arguments précis. Quand les mêmes arguments sont fournis à nouveau, le résultat en cache est renvoyé au lieu de recalculer la fonction."
+            },
+            {
+              "en": "The memoization process happens this way:",
+              "fr": "Le processus de mémoïsation se déroule ainsi :"
+            },
+            {
+              "en": "- Store the results of function calls along with their input arguments.",
+              "fr": "- Stocker les résultats des appels de fonction avec leurs arguments d'entrée."
+            },
+            {
+              "en": "- Before executing the function, check if the result for the current arguments already exists in the cache.",
+              "fr": "- Avant d'exécuter la fonction, vérifier si le résultat pour les arguments actuels existe déjà dans le cache."
+            },
+            {
+              "en": "- If it exists, return the cached result instead of running the computation again.",
+              "fr": "- S'il existe, renvoyer le résultat en cache au lieu de relancer le calcul."
+            },
+            {
+              "en": "- If it doesn't exist, compute the result, store it in the cache, and then return it.",
+              "fr": "- S'il n'existe pas, calculer le résultat, le stocker dans le cache, puis le renvoyer."
+            },
+            {
+              "en": "To improve developer experience with memoization, React provides three tools – `React.memo` (or `memo`), `useMemo` and `useCallback`.",
+              "fr": "Pour améliorer l'expérience développeur avec la mémoïsation, React fournit trois outils – `React.memo` (ou `memo`), `useMemo` et `useCallback`."
+            },
+            {
+              "en": "As you might guess, both `useMemo` and `useCallback` are hooks, but `React.memo` is a component wrapper, a higher-order component (HOC).",
+              "fr": "Comme tu peux le deviner, `useMemo` et `useCallback` sont des Hooks, mais `React.memo` est un wrapper de composant, un higher-order component (HOC)."
+            },
+            {
+              "en": "In the next lesson, we will take a look at how the `useCallback` hook and `React.memo` work.",
+              "fr": "Dans la prochaine leçon, nous verrons comment le Hook `useCallback` et `React.memo` fonctionnent."
+            },
+            {
+              "en": "`useMemo` lets you memoize computed values while `useCallback` does the same for function references.",
+              "fr": "`useMemo` te permet de mémoïser des valeurs calculées tandis que `useCallback` fait de même pour les références de fonctions."
+            },
+            {
+              "en": "If you're wondering what computed values and function references are, computed values refer to the result of executing a function, while function references are the pointers to functions – the function object in memory.",
+              "fr": "Si tu te demandes ce que sont les valeurs calculées et les références de fonctions : les valeurs calculées désignent le résultat d'exécution d'une fonction, tandis que les références de fonctions sont les pointeurs vers les fonctions – l'objet fonction en mémoire."
+            },
+            {
+              "en": "Let's see how to use the `useMemo` hook first. Here's the basic syntax of the `useMemo` hook:",
+              "fr": "Voyons d'abord comment utiliser le Hook `useMemo`. Voici la syntaxe de base du Hook `useMemo` :"
+            },
+            {
+              "en": "You can see all that's needed is to wrap the `useMemo` hook around the function.",
+              "fr": "Tu vois que tout ce qu'il faut, c'est envelopper le Hook `useMemo` autour de la fonction."
+            },
+            {
+              "en": "This `ExpensiveSquare` component will receive a `num` prop which it will use to calculate the square:",
+              "fr": "Ce composant `ExpensiveSquare` recevra une prop `num` qu'il utilisera pour calculer le carré :"
+            },
+            {
+              "en": "Here's the `App` component where the `ExpensiveSquare` is being used:",
+              "fr": "Voici le composant `App` où `ExpensiveSquare` est utilisé :"
+            },
+            {
+              "en": "The `timer` in the `useEffect`, running every second, will make the `calculateSquare` function run any time it runs, even when you don't increase the `num` state variable.",
+              "fr": "Le `timer` dans le `useEffect`, qui tourne chaque seconde, fera exécuter la fonction `calculateSquare` à chaque fois qu'il tourne, même quand tu n'augmentes pas la variable d'état `num`."
+            },
+            {
+              "en": "To solve this problem, we can use the `useMemo` hook by wrapping the function call in it and specifying the `num` variable as the dependency:",
+              "fr": "Pour résoudre ce problème, on peut utiliser le Hook `useMemo` en enveloppant l'appel de fonction dedans et en spécifiant la variable `num` comme dépendance :"
+            },
+            {
+              "en": "This will make sure the function is memoized by caching the result, so calculation happens only when the `num` variable changes, not when anything changes in the component it's being used in.",
+              "fr": "Cela garantit que la fonction est mémoïsée en mettant le résultat en cache, donc le calcul n'a lieu que quand la variable `num` change, pas quand n'importe quoi change dans le composant où elle est utilisée."
+            },
+            {
+              "en": "The `calculateSquare` function call is not running any time `timer` changes anymore but on the initial render and when `num` changes.",
+              "fr": "L'appel à `calculateSquare` ne s'exécute plus à chaque changement de `timer`, mais au rendu initial et quand `num` change."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is memoization in React?",
+              "fr": "Qu'est-ce que la mémoïsation en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A technique that caches values and functions to prevent unnecessary recalculations.",
+              "fr": "Une technique qui met en cache valeurs et fonctions pour éviter des recalculs inutiles."
+            },
+            {
+              "en": "A technique that lets you manage component state updates to prevent unnecessary recalculations.",
+              "fr": "Une technique qui te laisse gérer les mises à jour d'état du composant pour éviter des recalculs inutiles."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps optimize performance by storing previously computed results.",
+              "fr": "Elle aide à optimiser les performances en stockant des résultats déjà calculés."
+            },
+            {
+              "en": "A process of reconciling the Virtual DOM with the actual DOM.",
+              "fr": "Un processus de réconciliation du Virtual DOM avec le DOM réel."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps optimize performance by storing previously computed results.",
+              "fr": "Elle aide à optimiser les performances en stockant des résultats déjà calculés."
+            },
+            {
+              "en": "A way to handle side effects in functional components.",
+              "fr": "Une façon de gérer les effets de bord dans les composants fonctionnels."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps optimize performance by storing previously computed results.",
+              "fr": "Elle aide à optimiser les performances en stockant des résultats déjà calculés."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between computed values and function references?",
+              "fr": "Quelle est la différence entre valeurs calculées et références de fonctions ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Computed values are function objects, while function references are execution results.",
+              "fr": "Les valeurs calculées sont des objets fonction, tandis que les références de fonctions sont des résultats d'exécution."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One is the output of a function, while the other is just a pointer to it.",
+              "fr": "L'une est la sortie d'une fonction, tandis que l'autre n'est qu'un pointeur vers elle."
+            },
+            {
+              "en": "Computed values are the result of executing a function, while function references are the function objects in memory.",
+              "fr": "Les valeurs calculées sont le résultat d'exécution d'une fonction, tandis que les références de fonctions sont les objets fonction en mémoire."
+            },
+            {
+              "en": "Computed values and function references are the same thing.",
+              "fr": "Les valeurs calculées et les références de fonctions sont la même chose."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One is the output of a function, while the other is just a pointer to it.",
+              "fr": "L'une est la sortie d'une fonction, tandis que l'autre n'est qu'un pointeur vers elle."
+            },
+            {
+              "en": "Function references store computed values.",
+              "fr": "Les références de fonctions stockent des valeurs calculées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One is the output of a function, while the other is just a pointer to it.",
+              "fr": "L'une est la sortie d'une fonction, tandis que l'autre n'est qu'un pointeur vers elle."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is NOT one of the tools React provides for memoization?",
+              "fr": "Lequel de ces éléments N'EST PAS un des outils que React fournit pour la mémoïsation ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Memoization tools focus on caching values and functions, while this option handles side effects.",
+              "fr": "Les outils de mémoïsation se concentrent sur la mise en cache de valeurs et de fonctions, tandis que cette option gère les effets de bord."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Memoization tools focus on caching values and functions, while this option handles side effects.",
+              "fr": "Les outils de mémoïsation se concentrent sur la mise en cache de valeurs et de fonctions, tandis que cette option gère les effets de bord."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Memoization tools focus on caching values and functions, while this option handles side effects.",
+              "fr": "Les outils de mémoïsation se concentrent sur la mise en cache de valeurs et de fonctions, tandis que cette option gère les effets de bord."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d2f51ff2c927713caa24fa.md",
+      "id": "67d2f51ff2c927713caa24fa",
+      "dashedName": "how-do-the-usecallback-hook-and-react-memo-work",
+      "title": {
+        "en": "How Do the useCallback Hook and React.memo Work?",
+        "fr": "Comment fonctionnent le Hook useCallback et React.memo ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the last lesson, you learned about memoization and how the `useMemo` hook works.",
+              "fr": "Dans la leçon précédente, tu as appris la mémoïsation et le fonctionnement du Hook `useMemo`."
+            },
+            {
+              "en": "In this lesson, you'll learn how the `useCallback` hook and `React.memo` work.",
+              "fr": "Dans cette leçon, tu apprendras comment le Hook `useCallback` et `React.memo` fonctionnent."
+            },
+            {
+              "en": "In the last lesson, we also mentioned that `useCallback` is for memoizing function references.",
+              "fr": "Dans la leçon précédente, on a aussi mentionné que `useCallback` sert à mémoïser des références de fonctions."
+            },
+            {
+              "en": "For `React.memo`, it lets you memoize a component to prevent it from unnecessary re-renders when its prop has not changed.",
+              "fr": "Pour `React.memo`, il te laisse mémoïser un composant pour éviter des re-rendus inutiles quand sa prop n'a pas changé."
+            },
+            {
+              "en": "Here's the basic syntax of the `useCallback` hook:",
+              "fr": "Voici la syntaxe de base du Hook `useCallback` :"
+            },
+            {
+              "en": "And here's the basic syntax of `React.memo`:",
+              "fr": "Et voici la syntaxe de base de `React.memo` :"
+            },
+            {
+              "en": "Let's look at an example of the `useCallback` hook:",
+              "fr": "Voyons un exemple du Hook `useCallback` :"
+            },
+            {
+              "en": "In the component, the effect runs any time `handleClick` changes because the `handleClick` function is being recreated on every render.",
+              "fr": "Dans le composant, l'effet s'exécute à chaque fois que `handleClick` change parce que la fonction `handleClick` est recréée à chaque rendu."
+            },
+            {
+              "en": "To fix this, you need to tell React to treat the `handleClick` function as the same thing across renders by memoizing it with the `useCallback` hook, so it doesn't get recreated:",
+              "fr": "Pour corriger ça, tu dois dire à React de traiter la fonction `handleClick` comme la même chose d'un rendu à l'autre en la mémoïsant avec le Hook `useCallback`, pour qu'elle ne soit pas recréée :"
+            },
+            {
+              "en": "Now the `handleClick` function is not being recreated on every render.",
+              "fr": "Maintenant la fonction `handleClick` n'est plus recréée à chaque rendu."
+            },
+            {
+              "en": "To show you how the `React.memo` (or `memo`) higher-order function works and the `useCallback` hook work in tandem, here's a `Counter` component with a `handleClick` function that needs `useCallback` but is currently not using it:",
+              "fr": "Pour te montrer comment la higher-order function `React.memo` (ou `memo`) et le Hook `useCallback` fonctionnent ensemble, voici un composant `Counter` avec une fonction `handleClick` qui a besoin de `useCallback` mais ne l'utilise pas encore :"
+            },
+            {
+              "en": "This function also has a timer in state that updates every second. This makes the component re-render every time the `timer` changes, making the `handleClick` function get recreated on every render.",
+              "fr": "Cette fonction a aussi un timer dans l'état qui se met à jour chaque seconde. Cela fait re-rendre le composant à chaque changement de `timer`, ce qui recrée la fonction `handleClick` à chaque rendu."
+            },
+            {
+              "en": "That's why the `handleClick` needs to be memoized with `useCallback`.",
+              "fr": "C'est pourquoi `handleClick` doit être mémoïsé avec `useCallback`."
+            },
+            {
+              "en": "Here's the `CounterChild` component:",
+              "fr": "Voici le composant `CounterChild` :"
+            },
+            {
+              "en": "This `CounterChild` component takes an `onClick` prop, giving you the ability to also increment the counter from it.",
+              "fr": "Ce composant `CounterChild` prend une prop `onClick`, ce qui te permet aussi d'incrémenter le compteur depuis lui."
+            },
+            {
+              "en": "Since the `CounterChild` component is a child of the `Counter` component, it will also render any time the `Counter` re-renders due to the changing timer. So, the `CounterChild` also needs to be memoized.",
+              "fr": "Comme `CounterChild` est un enfant de `Counter`, il se rendra aussi chaque fois que `Counter` se re-rend à cause du timer qui change. Donc `CounterChild` doit aussi être mémoïsé."
+            },
+            {
+              "en": "Without memoization, because as the component re-renders due to the timer updating every second, the `CounterChild` component is also re-rendered.",
+              "fr": "Sans mémoïsation, parce que le composant se re-rend à cause du timer qui se met à jour chaque seconde, le composant `CounterChild` est aussi re-rendu."
+            },
+            {
+              "en": "To prevent this, you need to memoize the `CounterChild` component with `React.memo`:",
+              "fr": "Pour l'éviter, tu dois mémoïser le composant `CounterChild` avec `React.memo` :"
+            },
+            {
+              "en": "Things do not work optimally yet even after memoizing the `CounterChild` with `React.memo`.",
+              "fr": "Les choses ne fonctionnent pas encore de façon optimale même après avoir mémoïsé `CounterChild` avec `React.memo`."
+            },
+            {
+              "en": "This happens because the `handleClick` function is being recreated on every render, so it also needs to be memoized with `useCallback`, in order to tell React that you need the function to stay the same across renders:",
+              "fr": "Cela arrive parce que la fonction `handleClick` est recréée à chaque rendu, donc elle doit aussi être mémoïsée avec `useCallback`, pour dire à React que tu as besoin que la fonction reste la même d'un rendu à l'autre :"
+            },
+            {
+              "en": "Now, the component only re-renders when the `count` state changes.",
+              "fr": "Maintenant, le composant ne se re-rend que quand l'état `count` change."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `useCallback` hook memoize?",
+              "fr": "Que mémoïse le Hook `useCallback` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Computed values.",
+              "fr": "Des valeurs calculées."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps prevent a new function instance from being created on every render.",
+              "fr": "Il aide à empêcher qu'une nouvelle instance de fonction soit créée à chaque rendu."
+            },
+            {
+              "en": "Function references.",
+              "fr": "Des références de fonctions."
+            },
+            {
+              "en": "Component renders.",
+              "fr": "Des rendus de composants."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps prevent a new function instance from being created on every render.",
+              "fr": "Il aide à empêcher qu'une nouvelle instance de fonction soit créée à chaque rendu."
+            },
+            {
+              "en": "State updates.",
+              "fr": "Des mises à jour d'état."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps prevent a new function instance from being created on every render.",
+              "fr": "Il aide à empêcher qu'une nouvelle instance de fonction soit créée à chaque rendu."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is the correct syntax for the `useCallback` hook?",
+              "fr": "Laquelle de ces syntaxes est correcte pour le Hook `useCallback` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The second argument should be an array of dependencies.",
+              "fr": "Le second argument doit être un tableau de dépendances."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The second argument should be an array of dependencies.",
+              "fr": "Le second argument doit être un tableau de dépendances."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The second argument should be an array of dependencies.",
+              "fr": "Le second argument doit être un tableau de dépendances."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does `React.memo` memoize?",
+              "fr": "Que mémoïse `React.memo` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Function references.",
+              "fr": "Des références de fonctions."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It prevents re-renders when props remain the same.",
+              "fr": "Il empêche les re-rendus quand les props restent les mêmes."
+            },
+            {
+              "en": "Component state.",
+              "fr": "L'état du composant."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It prevents re-renders when props remain the same.",
+              "fr": "Il empêche les re-rendus quand les props restent les mêmes."
+            },
+            {
+              "en": "Component renders based on unchanged props.",
+              "fr": "Les rendus du composant basés sur des props inchangées."
+            },
+            {
+              "en": "DOM elements.",
+              "fr": "Des éléments DOM."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It prevents re-renders when props remain the same.",
+              "fr": "Il empêche les re-rendus quand les props restent les mêmes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67e2a513dbffdc8dcf1700af.md",
+      "id": "67e2a513dbffdc8dcf1700af",
+      "dashedName": "what-is-the-useoptimistic-hook-and-how-does-it-work",
+      "title": {
+        "en": "What Is the useOptimistic Hook, and How Does It Work?",
+        "fr": "Qu'est-ce que le Hook useOptimistic, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Recent versions of React introduced server components and server actions to shift some of the rendering and logic responsibilities to the server.",
+              "fr": "Les versions récentes de React ont introduit les server components et les server actions pour déplacer une partie du rendu et de la logique vers le serveur."
+            },
+            {
+              "en": "Along with those updates, React added a new hook called `useOptimistic` to keep UIs responsive while waiting for an async action to complete in the background.",
+              "fr": "Avec ces mises à jour, React a ajouté un nouveau Hook appelé `useOptimistic` pour garder les UI réactives en attendant qu'une action asynchrone se termine en arrière-plan."
+            },
+            {
+              "en": "While this is often used for fetching data from a server, it's not limited to that. The hook is generally useful for handling async operations, ensuring the UI remains smooth and interactive while the action runs.",
+              "fr": "Bien que ce soit souvent utilisé pour récupérer des données depuis un serveur, ce n'est pas limité à ça. Le Hook est utile en général pour gérer des opérations asynchrones, en assurant que l'UI reste fluide et interactive pendant l'action."
+            },
+            {
+              "en": "Let's take a look at what the `useOptimistic` hook is and how it contributes to making snappy and responsive UIs.",
+              "fr": "Voyons ce qu'est le Hook `useOptimistic` et comment il contribue à des UI snappy et réactives."
+            },
+            {
+              "en": "The `useOptimistic` hook helps manage \"optimistic updates\" in the UI, a strategy in which you provide immediate updates to the UI based on the expected outcome of an action, like waiting for a server response.",
+              "fr": "Le Hook `useOptimistic` aide à gérer les « mises à jour optimistes » dans l'UI, une stratégie où tu fournis des mises à jour immédiates à l'UI selon le résultat attendu d'une action, comme attendre une réponse serveur."
+            },
+            {
+              "en": "Here's the basic syntax of the `useOptimistic` hook:",
+              "fr": "Voici la syntaxe de base du Hook `useOptimistic` :"
+            },
+            {
+              "en": "- `optimisticState` is the temporary state that updates right away for a better user experience.",
+              "fr": "- `optimisticState` est l'état temporaire qui se met à jour tout de suite pour une meilleure expérience utilisateur."
+            },
+            {
+              "en": "- `addOptimistic` is the function that applies the optimistic update before the actual state changes.",
+              "fr": "- `addOptimistic` est la fonction qui applique la mise à jour optimiste avant que l'état réel ne change."
+            },
+            {
+              "en": "- `actualState` is the real state value that comes from the result of an action, like fetching data from a server.",
+              "fr": "- `actualState` est la vraie valeur d'état qui vient du résultat d'une action, comme récupérer des données depuis un serveur."
+            },
+            {
+              "en": "- `updateFunction` is the function that determines how the optimistic state should update when called.",
+              "fr": "- `updateFunction` est la fonction qui détermine comment l'état optimiste doit se mettre à jour quand elle est appelée."
+            },
+            {
+              "en": "At first glance, it might seem like the `useOptimistic` hook is just another way to handle loading states in React. But it's more than that.",
+              "fr": "À première vue, on pourrait croire que le Hook `useOptimistic` n'est qu'une autre façon de gérer les états de chargement en React. Mais c'est plus que ça."
+            },
+            {
+              "en": "A loading state controls whether you see a spinner, message, or some other indicator in the UI while something happens in the background.",
+              "fr": "Un état de chargement contrôle si tu vois un spinner, un message, ou un autre indicateur dans l'UI pendant qu'un truc se passe en arrière-plan."
+            },
+            {
+              "en": "However, the `useOptimistic` hook updates the UI instantaneously based on an expected outcome, even before you, say, make a call to an API. This hook gives you a chance to show a loading indicator or message, handle potential errors gracefully, and show instant feedback to make the UI feel snappy.",
+              "fr": "Cependant, le Hook `useOptimistic` met à jour l'UI instantanément selon un résultat attendu, même avant que tu fasses, par exemple, un appel à une API. Ce Hook te donne une chance d'afficher un indicateur ou un message de chargement, de gérer les erreurs potentielles avec élégance, et de montrer un retour instantané pour que l'UI paraisse snappy."
+            },
+            {
+              "en": "This will become clearer as we go through some examples showing how the `useOptimistic` hook works.",
+              "fr": "Cela deviendra plus clair en passant par des exemples qui montrent comment le Hook `useOptimistic` fonctionne."
+            },
+            {
+              "en": "Here's an action that simulates saving a task to a server. It returns the task after a 1 second delay, as it could happen with a real-world API request:",
+              "fr": "Voici une action qui simule la sauvegarde d'une tâche sur un serveur. Elle renvoie la tâche après un délai d'1 seconde, comme cela pourrait arriver avec une vraie requête API :"
+            },
+            {
+              "en": "Here's the code that sets up the `useOptimistic` hook by importing and initializing it, with an `handleSubmit` function that sends an input to the action:",
+              "fr": "Voici le code qui configure le Hook `useOptimistic` en l'important et l'initialisant, avec une fonction `handleSubmit` qui envoie une saisie à l'action :"
+            },
+            {
+              "en": "In the code, the `useOptimistic` hook keeps a temporary list of tasks that updates immediately when you add a new task.",
+              "fr": "Dans le code, le Hook `useOptimistic` garde une liste temporaire de tâches qui se met à jour immédiatement quand tu ajoutes une nouvelle tâche."
+            },
+            {
+              "en": "The line, `(state, newTask) => [...state, { text: newTask, pending: true }]` ensures that a new task appears with a pending status even before the server confirms something is coming from the form.",
+              "fr": "La ligne `(state, newTask) => [...state, { text: newTask, pending: true }]` assure qu'une nouvelle tâche apparaît avec un statut pending même avant que le serveur confirme que quelque chose vient du formulaire."
+            },
+            {
+              "en": "When the form is submitted, the `handleSubmit` function extracts the task and adds it \"optimistically\" with the `addOptimisticTask` parameter. Then `addTask` is passed as a prop which sends the task to the server. Finally, the form is reset by calling `e.target.reset()`.",
+              "fr": "Quand le formulaire est soumis, la fonction `handleSubmit` extrait la tâche et l'ajoute « de façon optimiste » avec le paramètre `addOptimisticTask`. Ensuite `addTask` est passé en prop et envoie la tâche au serveur. Enfin, le formulaire est réinitialisé en appelant `e.target.reset()`."
+            },
+            {
+              "en": "Here's the `TaskList` component:",
+              "fr": "Voici le composant `TaskList` :"
+            },
+            {
+              "en": "Here, we are looping through the `optimisticTask` parameter to display the task. When `task.pending` is `true`, the text `Adding Task...` is displayed next to the task, confirming that the task has been added optimistically before the server confirms it.",
+              "fr": "Ici, on parcourt le paramètre `optimisticTask` pour afficher la tâche. Quand `task.pending` est `true`, le texte `Adding Task...` s'affiche à côté de la tâche, confirmant qu'elle a été ajoutée de façon optimiste avant la confirmation du serveur."
+            },
+            {
+              "en": "Here's the `Task` component that manages the state for the form. It calls the `saveTask` function from the action so it can add the task, and appends the new task once it is received by the server:",
+              "fr": "Voici le composant `Task` qui gère l'état du formulaire. Il appelle la fonction `saveTask` de l'action pour pouvoir ajouter la tâche, et ajoute la nouvelle tâche une fois reçue par le serveur :"
+            },
+            {
+              "en": "This ensures snappy UI updates by showing instant feedback instead of waiting for a response. Once the task is saved, the `pending` property is removed, and the final task list updates accordingly.",
+              "fr": "Cela assure des mises à jour UI snappy en montrant un retour instantané au lieu d'attendre une réponse. Une fois la tâche sauvegardée, la propriété `pending` est retirée, et la liste finale des tâches se met à jour en conséquence."
+            },
+            {
+              "en": "In the UI, there are two things happening that are not supposed to happen. First, you can't see the `Adding Task...` text since it appears and disappears too quickly. Next, there's an error occurring after adding the task.",
+              "fr": "Dans l'UI, deux choses se passent qui ne devraient pas. D'abord, tu ne peux pas voir le texte `Adding Task...` car il apparaît et disparaît trop vite. Ensuite, une erreur survient après l'ajout de la tâche."
+            },
+            {
+              "en": "There are two things we need to do to address those issues.",
+              "fr": "Il y a deux choses à faire pour corriger ces problèmes."
+            },
+            {
+              "en": "First, we need to import `startTransition` from React and use it to wrap the line `addOptimisticTask(formData.get('task'))`:",
+              "fr": "D'abord, on doit importer `startTransition` depuis React et l'utiliser pour envelopper la ligne `addOptimisticTask(formData.get('task'))` :"
+            },
+            {
+              "en": "Second, we need to make the `Adding Task...` text visible for some time before it goes away.",
+              "fr": "Ensuite, on doit rendre le texte `Adding Task...` visible un moment avant qu'il disparaisse."
+            },
+            {
+              "en": "To do this, we can modify the `addTask` function with a pending state and simulate a delay of a few seconds before marking the task as completed. `setTimeout()` is ideal for this:",
+              "fr": "Pour cela, on peut modifier la fonction `addTask` avec un état pending et simuler un délai de quelques secondes avant de marquer la tâche comme terminée. `setTimeout()` est idéal pour ça :"
+            },
+            {
+              "en": "And once you do that, everything works fine.",
+              "fr": "Et une fois que tu fais ça, tout fonctionne bien."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `useOptimistic` hook?",
+              "fr": "Quel est le but du Hook `useOptimistic` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It allows components to fetch data from the server before rendering the UI.",
+              "fr": "Il permet aux composants de récupérer des données du serveur avant de rendre l'UI."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This hook ensures the UI reflects expected changes before an async operation completes.",
+              "fr": "Ce Hook assure que l'UI reflète les changements attendus avant qu'une opération asynchrone se termine."
+            },
+            {
+              "en": "It helps manage optimistic updates by updating the UI immediately while waiting for an async operation, like a server response.",
+              "fr": "Il aide à gérer les mises à jour optimistes en mettant à jour l'UI immédiatement en attendant une opération asynchrone, comme une réponse serveur."
+            },
+            {
+              "en": "It enables automatic error handling and rollback for failed API requests in React applications.",
+              "fr": "Il active la gestion automatique des erreurs et le rollback pour les requêtes API échouées dans les apps React."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This hook ensures the UI reflects expected changes before an async operation completes.",
+              "fr": "Ce Hook assure que l'UI reflète les changements attendus avant qu'une opération asynchrone se termine."
+            },
+            {
+              "en": "It optimizes state updates by batching them together to improve performance.",
+              "fr": "Il optimise les mises à jour d'état en les regroupant pour améliorer les performances."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This hook ensures the UI reflects expected changes before an async operation completes.",
+              "fr": "Ce Hook assure que l'UI reflète les changements attendus avant qu'une opération asynchrone se termine."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How is the `useOptimistic` hook different from a loading state?",
+              "fr": "En quoi le Hook `useOptimistic` diffère-t-il d'un état de chargement ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A loading state shows UI feedback while waiting for a response, whereas `useOptimistic` updates the UI immediately based on an expected outcome.",
+              "fr": "Un état de chargement montre un retour UI en attendant une réponse, alors que `useOptimistic` met à jour l'UI immédiatement selon un résultat attendu."
+            },
+            {
+              "en": "A loading state modifies server data instantly while `useOptimistic` only updates the client UI.",
+              "fr": "Un état de chargement modifie instantanément les données serveur tandis que `useOptimistic` ne met à jour que l'UI client."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the UI before the server even knows about the request.",
+              "fr": "L'un met à jour l'UI avant même que le serveur sache pour la requête."
+            },
+            {
+              "en": "The `useOptimistic` hook is used for handling errors, whereas a loading state is only for showing spinners.",
+              "fr": "Le Hook `useOptimistic` sert à gérer les erreurs, tandis qu'un état de chargement ne sert qu'à montrer des spinners."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the UI before the server even knows about the request.",
+              "fr": "L'un met à jour l'UI avant même que le serveur sache pour la requête."
+            },
+            {
+              "en": "Both are the same, but `useOptimistic` provides automatic retries for failed requests.",
+              "fr": "Les deux sont la même chose, mais `useOptimistic` fournit des nouvelles tentatives automatiques pour les requêtes échouées."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One updates the UI before the server even knows about the request.",
+              "fr": "L'un met à jour l'UI avant même que le serveur sache pour la requête."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does `addOptimistic` do in the `useOptimistic` hook syntax below?",
+              "fr": "Que fait `addOptimistic` dans la syntaxe du Hook `useOptimistic` ci-dessous ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It applies the optimistic update before the actual state changes, providing a smoother user experience.",
+              "fr": "Il applique la mise à jour optimiste avant que l'état réel ne change, offrant une expérience utilisateur plus fluide."
+            },
+            {
+              "en": "It fetches the real state from the server and updates the UI accordingly.",
+              "fr": "Il récupère l'état réel depuis le serveur et met à jour l'UI en conséquence."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This function updates the UI before the actual state changes.",
+              "fr": "Cette fonction met à jour l'UI avant que l'état réel ne change."
+            },
+            {
+              "en": "It replaces the actual state with a temporary state after receiving a server response.",
+              "fr": "Il remplace l'état réel par un état temporaire après avoir reçu une réponse serveur."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This function updates the UI before the actual state changes.",
+              "fr": "Cette fonction met à jour l'UI avant que l'état réel ne change."
+            },
+            {
+              "en": "It validates server data before applying the optimistic update to the UI.",
+              "fr": "Il valide les données serveur avant d'appliquer la mise à jour optimiste à l'UI."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This function updates the UI before the actual state changes.",
+              "fr": "Cette fonction met à jour l'UI avant que l'état réel ne change."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

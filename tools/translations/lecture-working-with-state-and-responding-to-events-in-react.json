@@ -1,0 +1,1287 @@
+{
+  "workshop": "lecture-working-with-state-and-responding-to-events-in-react",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1a3fea729e274dc33d04d.md",
+      "id": "67d1a3fea729e274dc33d04d",
+      "dashedName": "how-do-events-work-in-react",
+      "title": {
+        "en": "How Do Events Work in React?",
+        "fr": "Comment fonctionnent les événements en React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Event handling is an essential part of every interactive website.",
+              "fr": "La gestion des événements est une partie essentielle de tout site web interactif."
+            },
+            {
+              "en": "React provides a powerful and consistent way to handle events through its Synthetic Event System, which is a wrapper around native events like `click`, `keydown`, and `submit` you learned about in earlier lessons.",
+              "fr": "React fournit une façon puissante et cohérente de gérer les événements grâce à son Synthetic Event System, qui est une enveloppe autour des événements natifs comme `click`, `keydown`, et `submit` que tu as appris dans les leçons précédentes."
+            },
+            {
+              "en": "This cross-browser wrapper ensures that events work the same across all browsers so there are no inconsistencies.",
+              "fr": "Cette enveloppe multi-navigateurs garantit que les événements fonctionnent de la même façon dans tous les navigateurs, sans incohérences."
+            },
+            {
+              "en": "Let's see how events work in React so you can start using them in your projects.",
+              "fr": "Voyons comment les événements fonctionnent en React pour que tu puisses commencer à les utiliser dans tes projets."
+            },
+            {
+              "en": "In React, event handlers work in a similar way to native browser events, but with a few tweaks.",
+              "fr": "En React, les gestionnaires d'événements fonctionnent de façon similaire aux événements natifs du navigateur, mais avec quelques ajustements."
+            },
+            {
+              "en": "Instead of using lowercase event attribute names like `onclick` and `onsubmit`, React uses camelCase, like `onClick` and `onSubmit`.",
+              "fr": "Au lieu d'utiliser des noms d'attributs d'événement en minuscules comme `onclick` et `onsubmit`, React utilise le camelCase, comme `onClick` et `onSubmit`."
+            },
+            {
+              "en": "In addition, instead of using strings to specify the kind of event, React expects a function for the event handler.",
+              "fr": "De plus, au lieu d'utiliser des chaînes pour spécifier le type d'événement, React attend une fonction pour le gestionnaire d'événement."
+            },
+            {
+              "en": "The event handler function is passed to the element as a prop, and the event type like `onClick` or `onSubmit` is used as an attribute in JSX.",
+              "fr": "La fonction gestionnaire d'événement est passée à l'élément comme prop, et le type d'événement comme `onClick` ou `onSubmit` est utilisé comme attribut dans le JSX."
+            },
+            {
+              "en": "Here is a reminder of how to work with a click event in regular HTML:",
+              "fr": "Voici un rappel de comment travailler avec un événement click en HTML classique :"
+            },
+            {
+              "en": "And here is how you do the same in React:",
+              "fr": "Et voici comment tu fais la même chose en React :"
+            },
+            {
+              "en": "In this example, `handleClick` logs a message to the console when the user clicks the button.",
+              "fr": "Dans cet exemple, `handleClick` journalise un message dans la console quand l'utilisateur clique sur le bouton."
+            },
+            {
+              "en": "Note that you don't need parentheses after `handleClick` in the `onClick` attribute, as you're passing a reference to the function, not calling it.",
+              "fr": "Note que tu n'as pas besoin de parenthèses après `handleClick` dans l'attribut `onClick`, car tu passes une référence à la fonction, sans l'appeler."
+            },
+            {
+              "en": "In React, event handler functions usually start with the prefix `handle` to indicate they are responsible for handling events, like `handleClick` or `handleSubmit`.",
+              "fr": "En React, les fonctions gestionnaires d'événements commencent généralement par le préfixe `handle` pour indiquer qu'elles sont responsables de la gestion des événements, comme `handleClick` ou `handleSubmit`."
+            },
+            {
+              "en": "When a user action triggers an event, React passes a Synthetic Event object to your handler. This object behaves much like the native event object in vanilla JavaScript, providing properties like `type`, `target`, and `currentTarget`.",
+              "fr": "Quand une action utilisateur déclenche un événement, React passe un objet Synthetic Event à ton gestionnaire. Cet objet se comporte beaucoup comme l'objet événement natif en JavaScript vanilla, en fournissant des propriétés comme `type`, `target`, et `currentTarget`."
+            },
+            {
+              "en": "You can pass `event` as a parameter to the handler function and log it to the console to take a look at its structure:",
+              "fr": "Tu peux passer `event` comme paramètre à la fonction gestionnaire et le journaliser dans la console pour regarder sa structure :"
+            },
+            {
+              "en": "To prevent default behaviors like browser refresh during an `onSubmit` event, for example, you can call the `preventDefault()` method:",
+              "fr": "Pour empêcher les comportements par défaut comme le rafraîchissement du navigateur pendant un événement `onSubmit`, par exemple, tu peux appeler la méthode `preventDefault()` :"
+            },
+            {
+              "en": "You can also stop an event from bubbling up to parent elements by calling `event.stopPropagation()`.",
+              "fr": "Tu peux aussi empêcher un événement de remonter vers les éléments parents en appelant `event.stopPropagation()`."
+            },
+            {
+              "en": "Sometimes, while handling special cases like delete and edit features, you might want to pass extra data to an event handler. You can do this by wrapping the handler in an inline arrow function:",
+              "fr": "Parfois, en gérant des cas spéciaux comme des fonctionnalités de suppression et d'édition, tu pourrais vouloir passer des données supplémentaires à un gestionnaire d'événement. Tu peux le faire en enveloppant le gestionnaire dans une fonction fléchée en ligne :"
+            },
+            {
+              "en": "It's fine to use inline event handlers in React because React efficiently manages re-renders and avoids performance issues.",
+              "fr": "Il est acceptable d'utiliser des gestionnaires d'événements en ligne en React car React gère efficacement les re-renders et évite les problèmes de performance."
+            },
+            {
+              "en": "In vanilla JavaScript, inline event handlers can lead to performance issues by creating new functions on every render, as there is no virtual DOM to optimize the process.",
+              "fr": "En JavaScript vanilla, les gestionnaires d'événements en ligne peuvent entraîner des problèmes de performance en créant de nouvelles fonctions à chaque rendu, car il n'y a pas de virtual DOM pour optimiser le processus."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does React handle events consistently across different browsers?",
+              "fr": "Comment React gère-t-il les événements de façon cohérente entre différents navigateurs ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By only using native browser events.",
+              "fr": "En n'utilisant que les événements natifs du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            },
+            {
+              "en": "By creating custom events for each browser.",
+              "fr": "En créant des événements personnalisés pour chaque navigateur."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            },
+            {
+              "en": "Through its Synthetic Event System.",
+              "fr": "Grâce à son Synthetic Event System."
+            },
+            {
+              "en": "By directly modifying the DOM for each event.",
+              "fr": "En modifiant directement le DOM pour chaque événement."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you prevent default behaviors, like a browser refresh in React?",
+              "fr": "Comment peux-tu empêcher les comportements par défaut, comme un rafraîchissement du navigateur en React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the `stopPropagation()` method.",
+              "fr": "En utilisant la méthode `stopPropagation()`."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that stops the default browser actions.",
+              "fr": "Pense à la méthode qui arrête les actions par défaut du navigateur."
+            },
+            {
+              "en": "By calling the `preventDefault()` method.",
+              "fr": "En appelant la méthode `preventDefault()`."
+            },
+            {
+              "en": "By setting the event to `false`.",
+              "fr": "En définissant l'événement à `false`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that stops the default browser actions.",
+              "fr": "Pense à la méthode qui arrête les actions par défaut du navigateur."
+            },
+            {
+              "en": "By using a `return` statement.",
+              "fr": "En utilisant une instruction `return`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that stops the default browser actions.",
+              "fr": "Pense à la méthode qui arrête les actions par défaut du navigateur."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does React differ from standard HTML in naming event attributes?",
+              "fr": "En quoi React diffère-t-il du HTML standard pour nommer les attributs d'événement ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "React uses lowercase event names like `onclick` and `onsubmit`.",
+              "fr": "React utilise des noms d'événement en minuscules comme `onclick` et `onsubmit`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript naming conventions are applied to events in React.",
+              "fr": "Pense à comment les conventions de nommage JavaScript s'appliquent aux événements en React."
+            },
+            {
+              "en": "React uses camelCase event names like `onClick` and `onSubmit`.",
+              "fr": "React utilise des noms d'événement en camelCase comme `onClick` et `onSubmit`."
+            },
+            {
+              "en": "React capitalizes all event names.",
+              "fr": "React met en majuscules tous les noms d'événement."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript naming conventions are applied to events in React.",
+              "fr": "Pense à comment les conventions de nommage JavaScript s'appliquent aux événements en React."
+            },
+            {
+              "en": "React uses hyphens in event names like `on-click` and `on-submit`.",
+              "fr": "React utilise des tirets dans les noms d'événement comme `on-click` et `on-submit`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how JavaScript naming conventions are applied to events in React.",
+              "fr": "Pense à comment les conventions de nommage JavaScript s'appliquent aux événements en React."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1eaf77f510e15dfed7c14.md",
+      "id": "67d1eaf77f510e15dfed7c14",
+      "dashedName": "what-is-state-and-how-does-the-usestate-hook-work",
+      "title": {
+        "en": "What is State, and How Does the useState Hook Work?",
+        "fr": "Qu'est-ce que le state, et comment fonctionne le hook useState ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "State is one of the most important fundamentals of React and other front-end frameworks. It's like the brain of a component, meaning it holds information that can change over time and controls how the components behave and look.",
+              "fr": "Le state est l'un des fondamentaux les plus importants de React et des autres frameworks front-end. C'est comme le cerveau d'un composant : il détient des informations qui peuvent changer au fil du temps et contrôle comment les composants se comportent et apparaissent."
+            },
+            {
+              "en": "Let's look into what state is and how the `useState` hook lets you work with it.",
+              "fr": "Regardons ce qu'est le state et comment le hook `useState` te permet de travailler avec."
+            },
+            {
+              "en": "State represents the dynamic data in your React component, like the value from a user input, data fetched from an API, or an item in a to-do list.",
+              "fr": "Le state représente les données dynamiques dans ton composant React, comme la valeur d'une saisie utilisateur, des données récupérées depuis une API, ou un élément dans une liste de tâches."
+            },
+            {
+              "en": "Whenever the state changes, React re-renders the component without reloading the page to reflect those changes in the user interface. This reactivity makes your app interactive.",
+              "fr": "Chaque fois que le state change, React re-rend le composant sans recharger la page pour refléter ces changements dans l'interface utilisateur. Cette réactivité rend ton app interactive."
+            },
+            {
+              "en": "The `useState` hook is a function that lets you declare state variables in functional components.",
+              "fr": "Le hook `useState` est une fonction qui te permet de déclarer des variables d'état dans des composants fonctionnels."
+            },
+            {
+              "en": "Before hooks, you could only use state in class components. But with the introduction of hooks since React 16.8, you can use state in functional components by using the `useState` hook.",
+              "fr": "Avant les hooks, tu ne pouvais utiliser le state que dans des composants classe. Mais avec l'introduction des hooks depuis React 16.8, tu peux utiliser le state dans des composants fonctionnels en utilisant le hook `useState`."
+            },
+            {
+              "en": "To use the `useState` hook, you need to import it from React:",
+              "fr": "Pour utiliser le hook `useState`, tu dois l'importer depuis React :"
+            },
+            {
+              "en": "You can also import React itself and get access to the `useState` hook as a property:",
+              "fr": "Tu peux aussi importer React lui-même et accéder au hook `useState` comme propriété :"
+            },
+            {
+              "en": "Here's how you can declare a state variable when you import `useState`:",
+              "fr": "Voici comment tu peux déclarer une variable d'état quand tu importes `useState` :"
+            },
+            {
+              "en": "And here's how you can declare a state variable when you import React:",
+              "fr": "Et voici comment tu peux déclarer une variable d'état quand tu importes React :"
+            },
+            {
+              "en": "In the state variable you have the following:",
+              "fr": "Dans la variable d'état tu as ce qui suit :"
+            },
+            {
+              "en": "- `stateVariable` holds the current state value\n- `setStateFunction` (the setter function) updates the state variable\n- `initialValue` sets the initial state",
+              "fr": "- `stateVariable` détient la valeur actuelle du state\n- `setStateFunction` (la fonction setter) met à jour la variable d'état\n- `initialValue` définit le state initial"
+            },
+            {
+              "en": "Note that the state in a React component is private, and is isolated to each component instance. This means that, if you render the same component twice, the state component of one does not affect the other. This also means that, if you'd like to share state between components, then you'd need to lift the state up to a common parent and pass it down as props.",
+              "fr": "Note que le state dans un composant React est privé, et isolé à chaque instance de composant. Cela signifie que, si tu rends le même composant deux fois, le state d'un composant n'affecte pas l'autre. Cela signifie aussi que, si tu veux partager le state entre composants, tu devras remonter le state vers un parent commun et le passer en props."
+            },
+            {
+              "en": "Another thing is that hooks must be called at the top level of a component, just before the `return` keyword, to keep the state and effects consistent across renders. This means you can't use state inside loops, conditions, or nested functions.",
+              "fr": "Autre point : les hooks doivent être appelés au niveau supérieur d'un composant, juste avant le mot-clé `return`, pour garder le state et les effets cohérents entre les rendus. Cela signifie que tu ne peux pas utiliser le state dans des boucles, des conditions, ou des fonctions imbriquées."
+            },
+            {
+              "en": "Here's an example of managing state with the `useState` hook in a `Counter` component:",
+              "fr": "Voici un exemple de gestion du state avec le hook `useState` dans un composant `Counter` :"
+            },
+            {
+              "en": "In the code above, we have the `useState` hook imported from React. In the `Counter` component, the `count` represents the current state while `setCount` is the set function responsible for updating state. The current state value is `0`. The `return` statement contains the count and two buttons to decrement and increment the count by `1`.",
+              "fr": "Dans le code ci-dessus, nous avons le hook `useState` importé depuis React. Dans le composant `Counter`, `count` représente le state actuel tandis que `setCount` est la fonction set responsable de la mise à jour du state. La valeur actuelle du state est `0`. L'instruction `return` contient le compteur et deux boutons pour décrémenter et incrémenter le compteur de `1`."
+            },
+            {
+              "en": "You can manage multiple pieces of state by calling the `useState` hook multiple times. This is especially important when you have unrelated state variables:",
+              "fr": "Tu peux gérer plusieurs morceaux de state en appelant le hook `useState` plusieurs fois. C'est particulièrement important quand tu as des variables d'état sans rapport :"
+            },
+            {
+              "en": "You can also call the `useState` hook multiple times when managing multiple states that update separately, like form fields:",
+              "fr": "Tu peux aussi appeler le hook `useState` plusieurs fois quand tu gères plusieurs états qui se mettent à jour séparément, comme des champs de formulaire :"
+            },
+            {
+              "en": "But in this case, it's best to combine the states since they're all part of the same form:",
+              "fr": "Mais dans ce cas, il vaut mieux combiner les états puisqu'ils font tous partie du même formulaire :"
+            },
+            {
+              "en": "That's what state is and how you can use the `useState` hook.",
+              "fr": "Voilà ce qu'est le state et comment tu peux utiliser le hook `useState`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "In which version of React were hooks introduced, allowing state to be used in functional components?",
+              "fr": "Dans quelle version de React les hooks ont-ils été introduits, permettant d'utiliser le state dans les composants fonctionnels ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "React 15.6",
+              "fr": "React 15.6"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            },
+            {
+              "en": "React 16.8",
+              "fr": "React 16.8"
+            },
+            {
+              "en": "React 17.0",
+              "fr": "React 17.0"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            },
+            {
+              "en": "React 18.2",
+              "fr": "React 18.2"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where the answer was discussed.",
+              "fr": "Relis le début de la leçon où la réponse a été discutée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does state represent in a React component?",
+              "fr": "Que représente le state dans un composant React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Dynamic data that triggers re-renders when changed.",
+              "fr": "Des données dynamiques qui déclenchent des re-renders quand elles changent."
+            },
+            {
+              "en": "Only static data that doesn’t change.",
+              "fr": "Uniquement des données statiques qui ne changent pas."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about data that makes the UI interactive and updates without page reloads.",
+              "fr": "Pense aux données qui rendent l'UI interactive et se mettent à jour sans recharger la page."
+            },
+            {
+              "en": "The component's styling information.",
+              "fr": "Les informations de style du composant."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about data that makes the UI interactive and updates without page reloads.",
+              "fr": "Pense aux données qui rendent l'UI interactive et se mettent à jour sans recharger la page."
+            },
+            {
+              "en": "Fixed values set at the beginning of the app.",
+              "fr": "Des valeurs fixes définies au début de l'app."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about data that makes the UI interactive and updates without page reloads.",
+              "fr": "Pense aux données qui rendent l'UI interactive et se mettent à jour sans recharger la page."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to work with the `useState` hook?",
+              "fr": "Laquelle des options suivantes est la bonne façon de travailler avec le hook `useState` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where the answer was discussed.",
+              "fr": "Relis la fin de la leçon où la réponse a été discutée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where the answer was discussed.",
+              "fr": "Relis la fin de la leçon où la réponse a été discutée."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson where the answer was discussed.",
+              "fr": "Relis la fin de la leçon où la réponse a été discutée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1eb6929e68117faa6717f.md",
+      "id": "67d1eb6929e68117faa6717f",
+      "dashedName": "what-is-rendering-in-react-and-how-are-components-displayed-on-the-screen",
+      "title": {
+        "en": "What Is Rendering in React, and How Are Components Displayed on the Screen?",
+        "fr": "Qu'est-ce que le rendu en React, et comment les composants s'affichent-ils à l'écran ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In React, rendering is the process by which components appear in the user interface (UI), usually the browser.",
+              "fr": "En React, le rendu est le processus par lequel les composants apparaissent dans l'interface utilisateur (UI), généralement le navigateur."
+            },
+            {
+              "en": "React takes all your JavaScript, JSX, and CSS code, figures out how it should look, and then displays it in the user interface.",
+              "fr": "React prend tout ton code JavaScript, JSX et CSS, figure comment ça devrait apparaître, puis l'affiche dans l'interface utilisateur."
+            },
+            {
+              "en": "The rendering process consists of three stages: trigger, render, and commit. Let's take a look at these in more detail.",
+              "fr": "Le processus de rendu comporte trois étapes : trigger, render, et commit. Regardons-les plus en détail."
+            },
+            {
+              "en": "The trigger stage occurs when React detects that something has changed and that the user interface might need to be updated. This change is often due to an update in the state or props.",
+              "fr": "L'étape trigger se produit quand React détecte que quelque chose a changé et que l'interface utilisateur pourrait devoir être mise à jour. Ce changement est souvent dû à une mise à jour du state ou des props."
+            },
+            {
+              "en": "For instance, noticing that it's time for dinner can trigger you to go into the kitchen to start cooking.",
+              "fr": "Par exemple, remarquer qu'il est l'heure du dîner peut te déclencher à aller dans la cuisine pour commencer à cuisiner."
+            },
+            {
+              "en": "In the `Counter` example below, clicking the increment or decrement button triggers React to show the new `count` value:",
+              "fr": "Dans l'exemple `Counter` ci-dessous, cliquer sur le bouton d'incrémentation ou de décrémentation déclenche React pour afficher la nouvelle valeur de `count` :"
+            },
+            {
+              "en": "Once the trigger happens, React enters the render stage. Here, React re-evaluates your components and figures out what to display.",
+              "fr": "Une fois le trigger survenu, React entre dans l'étape render. Ici, React réévalue tes composants et figure ce qu'il faut afficher."
+            },
+            {
+              "en": "To do this, React uses a lightweight copy of the \"real\" DOM. This is called the virtual DOM. With the virtual DOM, React can quickly check what needs to change in the component.",
+              "fr": "Pour cela, React utilise une copie légère du « vrai » DOM. C'est ce qu'on appelle le virtual DOM. Avec le virtual DOM, React peut rapidement vérifier ce qui doit changer dans le composant."
+            },
+            {
+              "en": "Think of this stage as the point where you're in the kitchen, you've gathered your ingredients, and you cook your dinner.",
+              "fr": "Pense à cette étape comme le moment où tu es dans la cuisine, tu as rassemblé tes ingrédients, et tu cuisines ton dîner."
+            },
+            {
+              "en": "For the `Counter` component, the render stage is the point where React runs the functions again with the new `count` value. React recalculates what the `<h1>{count}</h1>` part of the component should look like based on the updated `count` value, but you won't see any changes on the screen until the next stage – commit.",
+              "fr": "Pour le composant `Counter`, l'étape render est le moment où React exécute à nouveau les fonctions avec la nouvelle valeur de `count`. React recalcule à quoi la partie `<h1>{count}</h1>` du composant devrait ressembler d'après la valeur mise à jour de `count`, mais tu ne verras aucun changement à l'écran avant la prochaine étape – commit."
+            },
+            {
+              "en": "The commit stage is where React takes the prepared changes from the virtual DOM and applies them to the real DOM. In other words, this is the stage where you see the final result on the screen.",
+              "fr": "L'étape commit est celle où React prend les changements préparés depuis le virtual DOM et les applique au vrai DOM. Autrement dit, c'est l'étape où tu vois le résultat final à l'écran."
+            },
+            {
+              "en": "To make this happen, React compares the virtual DOM to the actual DOM, identifies only the parts that need updates, and applies those changes to the real DOM to update the user interface.",
+              "fr": "Pour y parvenir, React compare le virtual DOM au DOM réel, identifie uniquement les parties qui ont besoin de mises à jour, et applique ces changements au vrai DOM pour mettre à jour l'interface utilisateur."
+            },
+            {
+              "en": "You can think of this stage as the point where you serve the food you cooked, making it visible just like React does when it commits updates to the actual DOM.",
+              "fr": "Tu peux penser à cette étape comme le moment où tu sers la nourriture que tu as cuisinée, la rendant visible tout comme React le fait quand il commit les mises à jour au DOM réel."
+            },
+            {
+              "en": "As for the `Counter` component, the commit stage is the point in which the new `count` value is applied to the `h1` element, and you can see the change on the page.",
+              "fr": "Quant au composant `Counter`, l'étape commit est le moment où la nouvelle valeur de `count` est appliquée à l'élément `h1`, et tu peux voir le changement sur la page."
+            },
+            {
+              "en": "These three processes are extremely fast because React minimizes direct DOM manipulation by calculating changes in the virtual DOM first, then it updates only the parts that need to change in the real DOM.",
+              "fr": "Ces trois processus sont extrêmement rapides car React minimise la manipulation directe du DOM en calculant d'abord les changements dans le virtual DOM, puis il ne met à jour que les parties qui doivent changer dans le vrai DOM."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are the three stages of the rendering process in React?",
+              "fr": "Quelles sont les trois étapes du processus de rendu en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Start, load, and finish.",
+              "fr": "Start, load, et finish."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour la réponse."
+            },
+            {
+              "en": "Initialize, update, and complete.",
+              "fr": "Initialize, update, et complete."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour la réponse."
+            },
+            {
+              "en": "Trigger, render, and commit.",
+              "fr": "Trigger, render, et commit."
+            },
+            {
+              "en": "Begin, process, and end.",
+              "fr": "Begin, process, et end."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which technology does React use to perfect the render stage by efficiently calculating changes?",
+              "fr": "Quelle technologie React utilise-t-il pour perfectionner l'étape render en calculant efficacement les changements ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Shadow DOM",
+              "fr": "Shadow DOM"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the lightweight version of the DOM that helps React optimize updates.",
+              "fr": "Pense à la version légère du DOM qui aide React à optimiser les mises à jour."
+            },
+            {
+              "en": "Service Workers",
+              "fr": "Service Workers"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the lightweight version of the DOM that helps React optimize updates.",
+              "fr": "Pense à la version légère du DOM qui aide React à optimiser les mises à jour."
+            },
+            {
+              "en": "Virtual DOM",
+              "fr": "Virtual DOM"
+            },
+            {
+              "en": "Web Components",
+              "fr": "Web Components"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the lightweight version of the DOM that helps React optimize updates.",
+              "fr": "Pense à la version légère du DOM qui aide React à optimiser les mises à jour."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens during the commit stage in React's rendering process?",
+              "fr": "Que se passe-t-il pendant l'étape commit dans le processus de rendu de React ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "React prepares changes in the virtual DOM.",
+              "fr": "React prépare les changements dans le virtual DOM."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the final step where changes appear on the screen.",
+              "fr": "Pense à l'étape finale où les changements apparaissent à l'écran."
+            },
+            {
+              "en": "React applies changes from the virtual DOM to the real DOM.",
+              "fr": "React applique les changements du virtual DOM au vrai DOM."
+            },
+            {
+              "en": "React decides which components need re-rendering.",
+              "fr": "React décide quels composants ont besoin d'un re-render."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the final step where changes appear on the screen.",
+              "fr": "Pense à l'étape finale où les changements apparaissent à l'écran."
+            },
+            {
+              "en": "React only checks for component errors.",
+              "fr": "React vérifie seulement les erreurs de composant."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the final step where changes appear on the screen.",
+              "fr": "Pense à l'étape finale où les changements apparaissent à l'écran."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1ebb595f4f619c0e35d1a.md",
+      "id": "67d1ebb595f4f619c0e35d1a",
+      "dashedName": "how-do-you-update-objects-in-state",
+      "title": {
+        "en": "How Do You Update Objects in State?",
+        "fr": "Comment mets-tu à jour des objets dans le state ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Updating objects in state in React can be tricky if you're used to changing object property values directly.",
+              "fr": "Mettre à jour des objets dans le state en React peut être délicat si tu as l'habitude de changer directement les valeurs des propriétés d'objet."
+            },
+            {
+              "en": "React treats state as immutable, meaning you should not modify it directly.",
+              "fr": "React traite le state comme immuable, ce qui signifie que tu ne devrais pas le modifier directement."
+            },
+            {
+              "en": "Let's look at what happens if you try to change objects in React state directly, and then dive into the correct way to do it.",
+              "fr": "Voyons ce qui se passe si tu essaies de changer des objets dans le state React directement, puis plongeons dans la bonne façon de le faire."
+            },
+            {
+              "en": "Let's say you have an object in your component state that represents a user's profile, and you want the user to update their age:",
+              "fr": "Disons que tu as un objet dans le state de ton composant qui représente le profil d'un utilisateur, et tu veux que l'utilisateur mette à jour son âge :"
+            },
+            {
+              "en": "This code will not work because you're directly modifying the `user.age` property.",
+              "fr": "Ce code ne marchera pas car tu modifies directement la propriété `user.age`."
+            },
+            {
+              "en": "Even though `console.log(user)` will show the new age in the console, React won't re-render the component to show it in the user interface because you didn't use the setter function, `setUser`.",
+              "fr": "Même si `console.log(user)` montrera le nouvel âge dans la console, React ne re-rendra pas le composant pour l'afficher dans l'interface utilisateur car tu n'as pas utilisé la fonction setter, `setUser`."
+            },
+            {
+              "en": "To update an object directly in the state, you need to use the setter function to create a new object with the updated value. For example:",
+              "fr": "Pour mettre à jour un objet directement dans le state, tu dois utiliser la fonction setter pour créer un nouvel objet avec la valeur mise à jour. Par exemple :"
+            },
+            {
+              "en": "That works. But if you look at the page now, the user's age gets updated, but the values for the name and city are lost.",
+              "fr": "Ça marche. Mais si tu regardes la page maintenant, l'âge de l'utilisateur est mis à jour, mais les valeurs pour le nom et la ville sont perdues."
+            },
+            {
+              "en": "This is because the new object you passed to the setter function only contained a key/value pair for `age`.",
+              "fr": "C'est parce que le nouvel objet que tu as passé à la fonction setter ne contenait qu'une paire clé/valeur pour `age`."
+            },
+            {
+              "en": "To prevent this from happening, you can copy the existing object first, then update only the property you want to update, in this case, `age`.",
+              "fr": "Pour empêcher cela, tu peux d'abord copier l'objet existant, puis mettre à jour uniquement la propriété que tu veux mettre à jour, dans ce cas, `age`."
+            },
+            {
+              "en": "To do this, you can pass a special function called an updater function to your setter function, `setUser`. The updater function takes the pending state as an argument, here, called `prevUser`, and should return the next state:",
+              "fr": "Pour cela, tu peux passer une fonction spéciale appelée updater function à ta fonction setter, `setUser`. L'updater function prend le state en attente comme argument, ici appelé `prevUser`, et devrait renvoyer le prochain state :"
+            },
+            {
+              "en": "As you can see, we create a new user object called `updatedUser` by using the spread syntax to copy the pending user object, `...prevUser`. We then update the age based on the form input and return `updatedUser` at the bottom of the function as the next state.",
+              "fr": "Comme tu peux le voir, nous créons un nouvel objet utilisateur appelé `updatedUser` en utilisant la syntaxe spread pour copier l'objet utilisateur en attente, `...prevUser`. Nous mettons ensuite à jour l'âge d'après la saisie du formulaire et renvoyons `updatedUser` en bas de la fonction comme prochain state."
+            },
+            {
+              "en": "Now your project works as expected, and updates to the age input don't affect the user's name or city name. You can also see the previous and updated states in the console.",
+              "fr": "Maintenant ton projet fonctionne comme prévu, et les mises à jour de la saisie d'âge n'affectent pas le nom de l'utilisateur ni le nom de la ville. Tu peux aussi voir les états précédent et mis à jour dans la console."
+            },
+            {
+              "en": "This is the ideal way to update an object in state, especially when you're not updating all the properties.",
+              "fr": "C'est la façon idéale de mettre à jour un objet dans le state, surtout quand tu ne mets pas à jour toutes les propriétés."
+            },
+            {
+              "en": "To update the remaining `name` and `city` properties, you can write them as separate setting functions and connect them to their respective inputs:",
+              "fr": "Pour mettre à jour les propriétés restantes `name` et `city`, tu peux les écrire comme des fonctions de définition séparées et les connecter à leurs saisies respectives :"
+            },
+            {
+              "en": "Or you can combine them into a single setter function like this:",
+              "fr": "Ou tu peux les combiner en une seule fonction setter comme ceci :"
+            },
+            {
+              "en": "To make this work, each input field has to have a `name` attribute.",
+              "fr": "Pour que ça marche, chaque champ de saisie doit avoir un attribut `name`."
+            },
+            {
+              "en": "Here's the full code now:",
+              "fr": "Voici le code complet maintenant :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How does React treat state in a component?",
+              "fr": "Comment React traite-t-il le state dans un composant ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "As mutable, allowing direct modification.",
+              "fr": "Comme mutable, permettant une modification directe."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about React's approach to ensuring predictable state changes.",
+              "fr": "Pense à l'approche de React pour assurer des changements de state prévisibles."
+            },
+            {
+              "en": "As immutable, meaning it should not be modified directly.",
+              "fr": "Comme immuable, ce qui signifie qu'il ne devrait pas être modifié directement."
+            },
+            {
+              "en": "As a global variable accessible in all components.",
+              "fr": "Comme une variable globale accessible dans tous les composants."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about React's approach to ensuring predictable state changes.",
+              "fr": "Pense à l'approche de React pour assurer des changements de state prévisibles."
+            },
+            {
+              "en": "As a temporary variable that resets on each render.",
+              "fr": "Comme une variable temporaire qui se réinitialise à chaque rendu."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about React's approach to ensuring predictable state changes.",
+              "fr": "Pense à l'approche de React pour assurer des changements de state prévisibles."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How should you update an object stored in React state?",
+              "fr": "Comment devrais-tu mettre à jour un objet stocké dans le state React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Use the setter function to create a new object.",
+              "fr": "Utiliser la fonction setter pour créer un nouvel objet."
+            },
+            {
+              "en": "Modify the object directly in the state.",
+              "fr": "Modifier l'objet directement dans le state."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React treats state as immutable, so avoid direct modification.",
+              "fr": "React traite le state comme immuable, donc évite la modification directe."
+            },
+            {
+              "en": "Use `Object.assign()` without calling the setter.",
+              "fr": "Utiliser `Object.assign()` sans appeler le setter."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React treats state as immutable, so avoid direct modification.",
+              "fr": "React traite le state comme immuable, donc évite la modification directe."
+            },
+            {
+              "en": "Use the `push()` method to add properties to the object.",
+              "fr": "Utiliser la méthode `push()` pour ajouter des propriétés à l'objet."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React treats state as immutable, so avoid direct modification.",
+              "fr": "React traite le state comme immuable, donc évite la modification directe."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the setter function in this code?",
+              "fr": "Quelle est la fonction setter dans ce code ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The setter function updates the `state` variable.",
+              "fr": "La fonction setter met à jour la variable `state`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The setter function updates the `state` variable.",
+              "fr": "La fonction setter met à jour la variable `state`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The setter function updates the `state` variable.",
+              "fr": "La fonction setter met à jour la variable `state`."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d1ebcab4e0521a6654bb64.md",
+      "id": "67d1ebcab4e0521a6654bb64",
+      "dashedName": "how-do-you-update-arrays-in-state",
+      "title": {
+        "en": "How Do You Update Arrays in State?",
+        "fr": "Comment mettre à jour des tableaux dans le state ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In React, updating arrays in state is quite straightforward, but it can be easy to make a mistake, especially if you're coming from vanilla JavaScript where you can modify arrays directly.",
+              "fr": "En React, mettre à jour des tableaux dans le state est assez simple, mais il est facile de se tromper, surtout si tu viens du JavaScript vanilla où tu peux modifier les tableaux directement."
+            },
+            {
+              "en": "In React, state is treated as immutable so it can recognize changes and make the proper updates to the user interface.",
+              "fr": "En React, le state est traité comme immuable pour que React puisse reconnaître les changements et mettre correctement à jour l'interface utilisateur."
+            },
+            {
+              "en": "Let's look at how you can update arrays held in state in React.",
+              "fr": "Voyons comment tu peux mettre à jour des tableaux stockés dans le state en React."
+            },
+            {
+              "en": "One of the most common mistakes when updating arrays in a React state is to directly modify the array using methods like `push()`, `pop()`, or `splice()`. These methods mutate the original array, and React does not allow that.",
+              "fr": "Une des erreurs les plus courantes quand on met à jour des tableaux dans un state React est de modifier directement le tableau avec des méthodes comme `push()`, `pop()`, ou `splice()`. Ces méthodes mutent le tableau d'origine, et React ne l'autorise pas."
+            },
+            {
+              "en": "React relies on a new array reference to detect changes, so directly modifying the array can prevent the component from re-rendering as expected.",
+              "fr": "React s'appuie sur une nouvelle référence de tableau pour détecter les changements, donc modifier directement le tableau peut empêcher le composant de se re-rendre comme prévu."
+            },
+            {
+              "en": "Here's an example of using the `push()` method to add to an array in state, which won't work:",
+              "fr": "Voici un exemple qui utilise la méthode `push()` pour ajouter à un tableau dans le state, ce qui ne marchera pas :"
+            },
+            {
+              "en": "If you click the `Add Item` button, nothing happens in the user interface.",
+              "fr": "Si tu cliques sur le bouton `Add Item`, rien ne se passe dans l'interface utilisateur."
+            },
+            {
+              "en": "It might also be tempting to remove items from the array with the `pop()` method:",
+              "fr": "Il peut aussi être tentant de retirer des éléments du tableau avec la méthode `pop()` :"
+            },
+            {
+              "en": "To update an array in state, the key is to create a new array, do your operations, and pass that to React, rather than mutate the existing array.",
+              "fr": "Pour mettre à jour un tableau dans le state, l'essentiel est de créer un nouveau tableau, faire tes opérations, et le passer à React, plutôt que de muter le tableau existant."
+            },
+            {
+              "en": "Because it's a new array, React will know that the state has been changed, and trigger a re-render.",
+              "fr": "Comme c'est un nouveau tableau, React saura que le state a changé, et déclenchera un re-render."
+            },
+            {
+              "en": "Here's how you can add to the `items` array using the spread operator:",
+              "fr": "Voici comment tu peux ajouter au tableau `items` avec l'opérateur spread :"
+            },
+            {
+              "en": "`[...prevItems, newItem]` creates a new array by copying all items in the existing `items` array held in state, then adds `newItem` at the end, which increments the `id` and the item number.",
+              "fr": "`[...prevItems, newItem]` crée un nouveau tableau en copiant tous les éléments du tableau `items` existant dans le state, puis ajoute `newItem` à la fin, ce qui incrémente l'`id` et le numéro d'élément."
+            },
+            {
+              "en": "If you want to remove something from the array, you can use the `filter()` method, which returns a new array after filtering out whatever you want to remove:",
+              "fr": "Si tu veux retirer quelque chose du tableau, tu peux utiliser la méthode `filter()`, qui renvoie un nouveau tableau après avoir filtré ce que tu veux retirer :"
+            },
+            {
+              "en": "Here's the full code:",
+              "fr": "Voici le code complet :"
+            },
+            {
+              "en": "Those are some common ways you can update an array in state.",
+              "fr": "Voilà quelques façons courantes de mettre à jour un tableau dans le state."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to update state and add new items to an array?",
+              "fr": "Laquelle des options suivantes est la bonne façon de mettre à jour le state et d'ajouter de nouveaux éléments à un tableau ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "To update arrays in state you need to use the setter function and proper syntax for adding new items to an array.",
+              "fr": "Pour mettre à jour des tableaux dans le state, tu dois utiliser la fonction setter et la bonne syntaxe pour ajouter de nouveaux éléments à un tableau."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "To update arrays in state you need to use the setter function and proper syntax for adding new items to an array.",
+              "fr": "Pour mettre à jour des tableaux dans le state, tu dois utiliser la fonction setter et la bonne syntaxe pour ajouter de nouveaux éléments à un tableau."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "To update arrays in state you need to use the setter function and proper syntax for adding new items to an array.",
+              "fr": "Pour mettre à jour des tableaux dans le state, tu dois utiliser la fonction setter et la bonne syntaxe pour ajouter de nouveaux éléments à un tableau."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why should you NOT directly modify an array in React state?",
+              "fr": "Pourquoi ne dois-tu PAS modifier directement un tableau dans le state React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It automatically clears the array.",
+              "fr": "Ça vide automatiquement le tableau."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React relies on immutability to detect changes in state.",
+              "fr": "React s'appuie sur l'immutabilité pour détecter les changements dans le state."
+            },
+            {
+              "en": "It adds unwanted duplicates to the array.",
+              "fr": "Ça ajoute des doublons non désirés au tableau."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React relies on immutability to detect changes in state.",
+              "fr": "React s'appuie sur l'immutabilité pour détecter les changements dans le state."
+            },
+            {
+              "en": "It causes errors in the component.",
+              "fr": "Ça provoque des erreurs dans le composant."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "React relies on immutability to detect changes in state.",
+              "fr": "React s'appuie sur l'immutabilité pour détecter les changements dans le state."
+            },
+            {
+              "en": "It prevents React from detecting changes.",
+              "fr": "Ça empêche React de détecter les changements."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method is best for removing an item from an array in React state?",
+              "fr": "Quelle méthode est la meilleure pour retirer un élément d'un tableau dans le state React ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a method that creates a new array without modifying the original.",
+              "fr": "Pense à une méthode qui crée un nouveau tableau sans modifier l'original."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a method that creates a new array without modifying the original.",
+              "fr": "Pense à une méthode qui crée un nouveau tableau sans modifier l'original."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about a method that creates a new array without modifying the original.",
+              "fr": "Pense à une méthode qui crée un nouveau tableau sans modifier l'original."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

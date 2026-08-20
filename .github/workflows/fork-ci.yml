@@ -46,8 +46,17 @@ jobs:
       - name: Typecheck shared
         run: pnpm --filter @freecodecamp/shared type-check
 
+      - name: Typecheck client
+        run: pnpm -C client exec tsc --noEmit --pretty false
+
       - name: Translation drift (EN -> FR)
         run: node tools/check-translation-drift.js
+
+      - name: Translation quality javascript-v9
+        run: node tools/check-translation-quality.js --superblock javascript-v9
+
+      - name: Local feature tests
+        run: pnpm -C client test local-profile local-continue fire-confetti local-onboarding sanitize-quiz-html
 
       - name: External navigation links guard
         run: node tools/check-external-links.js

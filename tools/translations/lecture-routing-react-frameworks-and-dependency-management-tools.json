@@ -1,0 +1,739 @@
+{
+  "workshop": "lecture-routing-react-frameworks-and-dependency-management-tools",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1ab248317a5a29058a763.md",
+      "id": "67d1ab248317a5a29058a763",
+      "dashedName": "what-is-dependency-management-and-how-does-it-work-with-libraries-like-react",
+      "title": {
+        "en": "What Is Dependency Management, and How Does It Work with Libraries Like React?",
+        "fr": "Qu'est-ce que la gestion des dépendances, et comment ça marche avec des bibliothèques comme React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In software, a dependency is where one component or module in an application relies on another to function properly. Dependencies are common in software applications because it allows developers to use pre-built functions or tools created by others.",
+              "fr": "En logiciel, une dépendance est le cas où un composant ou module d'une application s'appuie sur un autre pour fonctionner correctement. Les dépendances sont courantes dans les applications logicielles car elles permettent aux développeurs d'utiliser des fonctions ou outils préconstruits créés par d'autres."
+            },
+            {
+              "en": "If you want to build out a React application, you will need to install the React dependencies. Without these dependencies, none of your code will work correctly and the application will display a list of errors.",
+              "fr": "Si tu veux construire une application React, tu devras installer les dépendances React. Sans ces dépendances, aucun de tes codes ne fonctionnera correctement et l'application affichera une liste d'erreurs."
+            },
+            {
+              "en": "When you are working with more complex projects, you will often need to rely on many dependencies. If a set of dependencies is not well managed or defined in a project, then that will lead to what is known as dependency hell.",
+              "fr": "Quand tu travailles sur des projets plus complexes, tu auras souvent besoin de t'appuyer sur de nombreuses dépendances. Si un ensemble de dépendances n'est pas bien géré ou défini dans un projet, cela mènera à ce qu'on appelle l'enfer des dépendances."
+            },
+            {
+              "en": "To manage software dependencies in a project, you will need to use a package manager. A package manager is a tool used for installation, updates, and removal of dependencies. Many popular programming languages like JavaScript, Python, Ruby and Java, all use package managers.",
+              "fr": "Pour gérer les dépendances logicielles d'un projet, tu devras utiliser un gestionnaire de paquets. Un gestionnaire de paquets est un outil utilisé pour l'installation, les mises à jour et la suppression des dépendances. De nombreux langages populaires comme JavaScript, Python, Ruby et Java utilisent tous des gestionnaires de paquets."
+            },
+            {
+              "en": "In an earlier lesson, you were briefly introduced to one popular package manager called npm.",
+              "fr": "Dans une leçon précédente, on t'a brièvement présenté un gestionnaire de paquets populaire appelé npm."
+            },
+            {
+              "en": "To create a new React project using Vite and npm you can run the following command:",
+              "fr": "Pour créer un nouveau projet React avec Vite et npm, tu peux exécuter la commande suivante :"
+            },
+            {
+              "en": "As you recall from the prior lessons, this will create all of the necessary boilerplate code needed to launch a new React application. Before you can launch the application, you will need to install the dependencies by running `npm install` or `npm i` for short.",
+              "fr": "Comme tu te souviens des leçons précédentes, cela créera tout le code de base nécessaire pour lancer une nouvelle application React. Avant de pouvoir lancer l'application, tu devras installer les dépendances en exécutant `npm install` ou `npm i` en abrégé."
+            },
+            {
+              "en": "You can view all of the dependencies in the `package.json` file which is located in the root directory of your project.",
+              "fr": "Tu peux voir toutes les dépendances dans le fichier `package.json` situé à la racine de ton projet."
+            },
+            {
+              "en": "The `package.json` file is a key configuration file in projects that contains metadata about your project, including its name, version, and dependencies. It also defines scripts, licensing information, and other settings that help manage the project and its dependencies.",
+              "fr": "Le fichier `package.json` est un fichier de configuration clé dans les projets qui contient des métadonnées sur ton projet, y compris son nom, sa version et ses dépendances. Il définit aussi des scripts, des infos de licence, et d'autres réglages qui aident à gérer le projet et ses dépendances."
+            },
+            {
+              "en": "When you install dependencies, a `node_modules` folder will be added to your project.",
+              "fr": "Quand tu installes des dépendances, un dossier `node_modules` sera ajouté à ton projet."
+            },
+            {
+              "en": "The `node_modules` folder is where all the packages and libraries required by your project are stored. This folder contains the actual code for the dependencies listed in the `package.json` file, including both your project's direct dependencies and any dependencies of those dependencies.",
+              "fr": "Le dossier `node_modules` est l'endroit où tous les paquets et bibliothèques requis par ton projet sont stockés. Ce dossier contient le code réel des dépendances listées dans le fichier `package.json`, y compris les dépendances directes de ton projet et les dépendances de ces dépendances."
+            },
+            {
+              "en": "The two core dependencies needed for a React project will be the `react` and `react-dom` packages:",
+              "fr": "Les deux dépendances centrales nécessaires pour un projet React seront les paquets `react` et `react-dom` :"
+            },
+            {
+              "en": "The `package.json` will list the current versions you are using for those packages. If you need to update any packages locally, you can run the `npm update` command. Or you can update all packages globally by running the `npm update -g` command.",
+              "fr": "Le `package.json` listera les versions actuelles que tu utilises pour ces paquets. Si tu dois mettre à jour des paquets localement, tu peux exécuter la commande `npm update`. Ou tu peux mettre à jour tous les paquets globalement en exécutant la commande `npm update -g`."
+            },
+            {
+              "en": "In addition to the `package.json` file, you will also have a `package-lock.json` file. This file will lock down the exact versions of all packages that your project is using. When you update a package, then the new versions will be updated in the lock file as well.",
+              "fr": "En plus du fichier `package.json`, tu auras aussi un fichier `package-lock.json`. Ce fichier verrouille les versions exactes de tous les paquets que ton projet utilise. Quand tu mets à jour un paquet, les nouvelles versions seront aussi mises à jour dans le fichier lock."
+            },
+            {
+              "en": "Another important aspect of the `package.json` file are the dev dependencies:",
+              "fr": "Un autre aspect important du fichier `package.json` sont les dépendances de développement :"
+            },
+            {
+              "en": "Dev dependencies are packages that are only used for development and not in production. An example of this would be a testing library like Jest. You would install Jest as a dev dependency because you only use it to test your project locally, and isn't needed for the application to run in production.",
+              "fr": "Les dépendances de développement (dev dependencies) sont des paquets utilisés seulement pour le développement et pas en production. Un exemple serait une bibliothèque de tests comme Jest. Tu installerais Jest comme dépendance de développement parce que tu ne l'utilises que pour tester ton projet localement, et ce n'est pas nécessaire pour que l'application tourne en production."
+            },
+            {
+              "en": "For the majority of this lesson, we have been focusing on npm. But there are other package managers like yarn and pnpm. So which package manager should you use for your project?",
+              "fr": "Pendant la majeure partie de cette leçon, on s'est concentré sur npm. Mais il y a d'autres gestionnaires de paquets comme yarn et pnpm. Alors quel gestionnaire de paquets devrais-tu utiliser pour ton projet ?"
+            },
+            {
+              "en": "Well, the short answer is it depends.",
+              "fr": "Eh bien, la réponse courte est : ça dépend."
+            },
+            {
+              "en": "If you are joining an existing project with a team, then all of those decisions will be made for you and you will use the existing package manager. If you are building out a project from scratch, then you will need to research the pros and cons of each manager and decide which one will better suit your needs.",
+              "fr": "Si tu rejoins un projet existant avec une équipe, alors toutes ces décisions seront déjà prises et tu utiliseras le gestionnaire de paquets existant. Si tu construis un projet from scratch, tu devras rechercher les avantages et inconvénients de chaque gestionnaire et décider lequel conviendra mieux à tes besoins."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is a dependency?",
+              "fr": "Qu'est-ce qu'une dépendance ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "A special type of testing software used in JavaScript and Python applications.",
+              "fr": "Un type spécial de logiciel de test utilisé dans les applications JavaScript et Python."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where multiple tasks are running simultaneously in the background.",
+              "fr": "C'est le cas où plusieurs tâches tournent simultanément en arrière-plan."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "This is where one component in an application relies on another to function properly.",
+              "fr": "C'est le cas où un composant d'une application s'appuie sur un autre pour fonctionner correctement."
+            },
+            {
+              "en": "A special type of compiler used to run JavaScript code in the browser.",
+              "fr": "Un type spécial de compilateur utilisé pour exécuter du code JavaScript dans le navigateur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the very beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au tout début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are dev dependencies?",
+              "fr": "Que sont les dépendances de développement ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Packages that are only used in production and not in development.",
+              "fr": "Des paquets utilisés seulement en production et pas en développement."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the packages that aren't needed in production.",
+              "fr": "Pense aux paquets qui ne sont pas nécessaires en production."
+            },
+            {
+              "en": "Packages that are only specific to testing libraries.",
+              "fr": "Des paquets spécifiques seulement aux bibliothèques de tests."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the packages that aren't needed in production.",
+              "fr": "Pense aux paquets qui ne sont pas nécessaires en production."
+            },
+            {
+              "en": "Packages that are only specific to animation libraries.",
+              "fr": "Des paquets spécifiques seulement aux bibliothèques d'animation."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the packages that aren't needed in production.",
+              "fr": "Pense aux paquets qui ne sont pas nécessaires en production."
+            },
+            {
+              "en": "Packages that are only used for development and not in production.",
+              "fr": "Des paquets utilisés seulement pour le développement et pas en production."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT mentioned in the lesson as an example of a popular package manager for JavaScript?",
+              "fr": "Lequel des éléments suivants N'EST PAS mentionné dans la leçon comme exemple de gestionnaire de paquets populaire pour JavaScript ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the last minute of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the last minute of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the last minute of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d311627010a0efa127b651.md",
+      "id": "67d311627010a0efa127b651",
+      "dashedName": "how-does-routing-work-in-react",
+      "title": {
+        "en": "How Does Routing Work in React?",
+        "fr": "Comment fonctionne le routage en React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In earlier lessons, you learned that React is a single page application. Single page applications are applications that contain one HTML file and use JavaScript to dynamically update any content on the page.",
+              "fr": "Dans les leçons précédentes, tu as appris que React est une application monopage. Les applications monopages sont des applications qui contiennent un fichier HTML et utilisent JavaScript pour mettre à jour dynamiquement tout contenu sur la page."
+            },
+            {
+              "en": "So what happens when you need to add multiple \"pages\" to your React application? How would you go about navigating to those different views?",
+              "fr": "Alors que se passe-t-il quand tu dois ajouter plusieurs « pages » à ton application React ? Comment naviguerais-tu vers ces différentes vues ?"
+            },
+            {
+              "en": "Well, that is where React Router comes in.",
+              "fr": "Eh bien, c'est là qu'intervient React Router."
+            },
+            {
+              "en": "React Router is a third party library that allows you to add routing to your React applications. To begin, you will need to install React Router in an existing React project like this:",
+              "fr": "React Router est une bibliothèque tierce qui te permet d'ajouter du routage à tes applications React. Pour commencer, tu devras installer React Router dans un projet React existant comme ceci :"
+            },
+            {
+              "en": "If you check the `package.json` file, you will see that `react-router` was added to the list of dependencies:",
+              "fr": "Si tu vérifies le fichier `package.json`, tu verras que `react-router` a été ajouté à la liste des dépendances :"
+            },
+            {
+              "en": "Then inside of your `main.jsx` or `index.jsx` file, you will need to import `BrowserRouter` and render `BrowserRouter` around your `App` component:",
+              "fr": "Ensuite, dans ton fichier `main.jsx` ou `index.jsx`, tu devras importer `BrowserRouter` et rendre `BrowserRouter` autour de ton composant `App` :"
+            },
+            {
+              "en": "To enable routes in your application, you will need to update your `import` statement to include the `Routes` and `Route` components like this:",
+              "fr": "Pour activer les routes dans ton application, tu devras mettre à jour ton instruction `import` pour inclure les composants `Routes` et `Route` comme ceci :"
+            },
+            {
+              "en": "Then inside of the `BrowserRouter`, add the `Routes` and `Route` components:",
+              "fr": "Ensuite, à l'intérieur de `BrowserRouter`, ajoute les composants `Routes` et `Route` :"
+            },
+            {
+              "en": "The `path` and `element` are used to couple the URL and UI components together. In this case, we are setting up a route for the homepage that points to the `App` component.",
+              "fr": "Le `path` et l'`element` servent à coupler l'URL et les composants UI. Dans ce cas, on configure une route pour la page d'accueil qui pointe vers le composant `App`."
+            },
+            {
+              "en": "It is common in larger applications to have multiple views and routes setup like this:",
+              "fr": "Il est courant dans les plus grandes applications d'avoir plusieurs vues et routes configurées comme ceci :"
+            },
+            {
+              "en": "The `index` prop in these examples is meant to represent the default route for a given path segment. So the `Home` component will be shown at the root path (`/`) while the `ProductsHome` component will be shown at the `products` path.",
+              "fr": "La prop `index` dans ces exemples représente la route par défaut pour un segment de chemin donné. Donc le composant `Home` sera affiché au chemin racine (`/`) tandis que le composant `ProductsHome` sera affiché au chemin `products`."
+            },
+            {
+              "en": "You may have also noticed that we are nesting a few routes inside another route like this:",
+              "fr": "Tu as peut-être aussi remarqué qu'on imbrique quelques routes à l'intérieur d'une autre route comme ceci :"
+            },
+            {
+              "en": "This means that the path of the child route will be appended to the parent route's path. So in this example, the `path` for the trending products will be `products/trending`.",
+              "fr": "Cela signifie que le chemin de la route enfant sera ajouté au chemin de la route parent. Donc dans cet exemple, le `path` pour les produits tendance sera `products/trending`."
+            },
+            {
+              "en": "If the `path` begins with a colon (`:`) then that represents a dynamic segment in the route:",
+              "fr": "Si le `path` commence par un deux-points (`:`) alors cela représente un segment dynamique dans la route :"
+            },
+            {
+              "en": "In this example we have a dynamic segment called `category`. When a user navigates to a URL like `products/brass-instruments`, then the view will change to the `Category` component and you can dynamically fetch the appropriate data based on the segment.",
+              "fr": "Dans cet exemple on a un segment dynamique appelé `category`. Quand un utilisateur navigue vers une URL comme `products/brass-instruments`, alors la vue changera vers le composant `Category` et tu pourras récupérer dynamiquement les données appropriées selon le segment."
+            },
+            {
+              "en": "You can access the value of the dynamic segment by using the `useParams` hook inside the child component like this:",
+              "fr": "Tu peux accéder à la valeur du segment dynamique en utilisant le Hook `useParams` dans le composant enfant comme ceci :"
+            },
+            {
+              "en": "Dynamic routes are helpful because they allow you to create flexible and reusable components that can render different content based on the parameters in the URL. Instead of defining a fixed list of paths for every possible route, you can use dynamic segments to render various content based on what the user has requested.",
+              "fr": "Les routes dynamiques sont utiles car elles te permettent de créer des composants flexibles et réutilisables qui peuvent rendre un contenu différent selon les paramètres dans l'URL. Au lieu de définir une liste fixe de chemins pour chaque route possible, tu peux utiliser des segments dynamiques pour rendre divers contenus selon ce que l'utilisateur a demandé."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is React Router used for?",
+              "fr": "À quoi sert React Router ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is used to remove dynamic routes from your React applications.",
+              "fr": "Il sert à retirer les routes dynamiques de tes applications React."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where React Router was discussed.",
+              "fr": "Revois le début de la leçon où React Router a été discuté."
+            },
+            {
+              "en": "It is used to setup static routes only for your React applications.",
+              "fr": "Il sert à configurer uniquement des routes statiques pour tes applications React."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where React Router was discussed.",
+              "fr": "Revois le début de la leçon où React Router a été discuté."
+            },
+            {
+              "en": "It is used to remove routes from your React applications.",
+              "fr": "Il sert à retirer des routes de tes applications React."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson where React Router was discussed.",
+              "fr": "Revois le début de la leçon où React Router a été discuté."
+            },
+            {
+              "en": "It is used to add routing to your React applications.",
+              "fr": "Il sert à ajouter du routage à tes applications React."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which hook is used to retrieve a dynamic parameter for a URL?",
+              "fr": "Quel Hook est utilisé pour récupérer un paramètre dynamique d'une URL ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to represent a dynamic segment in a path?",
+              "fr": "Laquelle des façons suivantes est la bonne pour représenter un segment dynamique dans un chemin ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last minute of the lesson where this was discussed.",
+              "fr": "Revois la dernière minute de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67d311d256c58ef01e0d62ec.md",
+      "id": "67d311d256c58ef01e0d62ec",
+      "dashedName": "what-are-react-frameworks-and-why-are-they-commonly-used-in-the-industry",
+      "title": {
+        "en": "What Are React Frameworks, and Why Are They Commonly Used in the Industry?",
+        "fr": "Que sont les frameworks React, et pourquoi sont-ils couramment utilisés dans l'industrie ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Up until this point, you have been using React to build out user interfaces. If you needed additional features like routing, then you had to import a third party library like React Router to be able to switch between the different views.",
+              "fr": "Jusqu'ici, tu as utilisé React pour construire des interfaces utilisateur. Si tu avais besoin de fonctionnalités supplémentaires comme le routage, tu devais importer une bibliothèque tierce comme React Router pour pouvoir basculer entre les différentes vues."
+            },
+            {
+              "en": "But what happens when you need to build out a full-stack web application? Well you could use React for the front-end and use Node and Express for the back-end logic if you just want to stick with JavaScript. Or you could use other languages like Go, Python, or Java for your back-end.",
+              "fr": "Mais que se passe-t-il quand tu dois construire une application web full-stack ? Eh bien tu pourrais utiliser React pour le front-end et Node et Express pour la logique back-end si tu veux rester avec JavaScript. Ou tu pourrais utiliser d'autres langages comme Go, Python ou Java pour ton back-end."
+            },
+            {
+              "en": "While all of these are viable options, there are times where you might want to use a React framework instead. React frameworks provide features like routing, image optimizations, data fetching, authentication and more. This means that you might not need to set up separate front-end and back-end applications for certain use cases.",
+              "fr": "Bien que toutes ces options soient viables, il y a des moments où tu pourrais vouloir utiliser un framework React à la place. Les frameworks React fournissent des fonctionnalités comme le routage, l'optimisation d'images, la récupération de données, l'authentification et plus. Cela signifie que tu pourrais ne pas avoir besoin de configurer des applications front-end et back-end séparées pour certains cas d'usage."
+            },
+            {
+              "en": "Let's take a closer look at Next.js which is a popular React framework. One of the main features for Next.js is the file-system based router. This routing system includes support for dynamic routes, parallel routes, route handlers, redirects, internalization and more.",
+              "fr": "Regardons de plus près Next.js qui est un framework React populaire. Une des fonctionnalités principales de Next.js est le routeur basé sur le système de fichiers. Ce système de routage inclut le support des routes dynamiques, routes parallèles, gestionnaires de routes, redirections, internationalisation et plus."
+            },
+            {
+              "en": "Here is an example of creating a custom request handler:",
+              "fr": "Voici un exemple de création d'un gestionnaire de requête personnalisé :"
+            },
+            {
+              "en": "You can define route handlers like GET or POST requests in a file called `route.js` inside the `app/api` directory.",
+              "fr": "Tu peux définir des gestionnaires de routes comme des requêtes GET ou POST dans un fichier appelé `route.js` dans le répertoire `app/api`."
+            },
+            {
+              "en": "Another feature of Next.js are the automatic image and font optimizations.",
+              "fr": "Une autre fonctionnalité de Next.js sont les optimisations automatiques d'images et de polices."
+            },
+            {
+              "en": "Here is an example of working with the `Image` component inside a `page.js` file:",
+              "fr": "Voici un exemple de travail avec le composant `Image` dans un fichier `page.js` :"
+            },
+            {
+              "en": "The `Image` component extends the native HTML `img` element and allows for faster page loads and size optimizations. This means that images will only load when they enter the viewport and the `Image` component will automatically serve correctly sized images for each device.",
+              "fr": "Le composant `Image` étend l'élément HTML natif `img` et permet des chargements de page plus rapides et des optimisations de taille. Cela signifie que les images ne se chargeront que quand elles entrent dans le viewport et le composant `Image` servira automatiquement des images correctement dimensionnées pour chaque appareil."
+            },
+            {
+              "en": "While those are just a few features of Next.js, there are many more features that you can use to build robust full-stack web applications. There are also other React frameworks like Remix that will provide the same ability to build out modern full-stack web applications.",
+              "fr": "Bien que ce ne soient que quelques fonctionnalités de Next.js, il y en a bien d'autres que tu peux utiliser pour construire des applications web full-stack robustes. Il y a aussi d'autres frameworks React comme Remix qui fourniront la même capacité à construire des applications web full-stack modernes."
+            },
+            {
+              "en": "Even though the JavaScript library and framework landscape is constantly changing, it is important to be aware of the available options to you and learn about each framework's pros and cons.",
+              "fr": "Même si le paysage des bibliothèques et frameworks JavaScript évolue constamment, il est important d'être conscient des options disponibles et d'apprendre les avantages et inconvénients de chaque framework."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is an example of a React framework?",
+              "fr": "Lequel des éléments suivants est un exemple de framework React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Spring",
+              "fr": "Spring"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Laravel",
+              "fr": "Laravel"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Next.js",
+              "fr": "Next.js"
+            },
+            {
+              "en": "Django",
+              "fr": "Django"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT a feature of a React framework?",
+              "fr": "Laquelle des fonctionnalités suivantes N'EST PAS une fonctionnalité d'un framework React ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Automatic CSS cleanup.",
+              "fr": "Nettoyage CSS automatique."
+            },
+            {
+              "en": "Routing.",
+              "fr": "Routage."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Image optimization.",
+              "fr": "Optimisation d'images."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            },
+            {
+              "en": "Data fetching.",
+              "fr": "Récupération de données."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson where this was discussed.",
+              "fr": "Reporte-toi au début de la leçon où cela a été discuté."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What are some benefits to working with the Next.js `Image` component?",
+              "fr": "Quels sont certains avantages à travailler avec le composant `Image` de Next.js ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It automatically increases the size of all images to improve quality.",
+              "fr": "Il augmente automatiquement la taille de toutes les images pour améliorer la qualité."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "It results in faster page loads and size optimizations.",
+              "fr": "Il entraîne des chargements de page plus rapides et des optimisations de taille."
+            },
+            {
+              "en": "It guarantees zero performance impact when loading images.",
+              "fr": "Il garantit zéro impact sur les performances lors du chargement d'images."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            },
+            {
+              "en": "It has zero support for lazy loading for images.",
+              "fr": "Il n'a aucun support du lazy loading pour les images."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the end of the lesson where this was discussed.",
+              "fr": "Reporte-toi à la fin de la leçon où cela a été discuté."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

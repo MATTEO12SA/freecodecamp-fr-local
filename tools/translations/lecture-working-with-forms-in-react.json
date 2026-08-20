@@ -1,0 +1,614 @@
+{
+  "workshop": "lecture-working-with-forms-in-react",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67d1a928ae86929a85c1bb6b.md",
+      "id": "67d1a928ae86929a85c1bb6b",
+      "dashedName": "how-do-forms-work-in-react",
+      "title": {
+        "en": "How Do Forms Work in React?",
+        "fr": "Comment fonctionnent les formulaires en React ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Forms are fundamental to every web application because they let you handle user input, collect data, and trigger actions.",
+              "fr": "Les formulaires sont fondamentaux dans toute application web car ils te permettent de gérer les saisies, collecter des données et déclencher des actions."
+            },
+            {
+              "en": "In React, forms are managed using state or refs, giving you full control over their behavior and validation. These two ways to manage forms are called \"controlled\" and \"uncontrolled\" input.",
+              "fr": "En React, les formulaires sont gérés avec le state ou les refs, ce qui te donne un contrôle total sur leur comportement et leur validation. Ces deux façons de gérer les formulaires s'appellent entrées « contrôlées » et « non contrôlées »."
+            },
+            {
+              "en": "Let's look at what controlled and uncontrolled inputs are.",
+              "fr": "Regardons ce que sont les entrées contrôlées et non contrôlées."
+            },
+            {
+              "en": "Controlled input is the most \"React-like\" way to handle form inputs. With controlled inputs, you store the input field value in state and update it through `onChange` events. This gives you complete control over the form data and allows instant validation and conditional rendering.",
+              "fr": "L'entrée contrôlée est la façon la plus « React » de gérer les champs de formulaire. Avec les entrées contrôlées, tu stockes la valeur du champ dans le state et tu la mets à jour via les événements `onChange`. Cela te donne un contrôle total sur les données du formulaire et permet une validation instantanée et un rendu conditionnel."
+            },
+            {
+              "en": "The process works like this: React maintains the form state with the `useState` hook, and you update it on every change. When a user types in an input field, the `onChange` event fires, updates the state, and React re-renders the component with the new value.",
+              "fr": "Le processus fonctionne ainsi : React maintient le state du formulaire avec le hook `useState`, et tu le mets à jour à chaque changement. Quand un utilisateur tape dans un champ, l'événement `onChange` se déclenche, met à jour le state, et React re-rend le composant avec la nouvelle valeur."
+            },
+            {
+              "en": "The benefits of controlled inputs include the following:",
+              "fr": "Les avantages des entrées contrôlées incluent les suivants :"
+            },
+            {
+              "en": "- Immediate access to the form data.",
+              "fr": "- Accès immédiat aux données du formulaire."
+            },
+            {
+              "en": "- You can implement instant validation.",
+              "fr": "- Tu peux implémenter une validation instantanée."
+            },
+            {
+              "en": "- You can conditionally disable the submit button.",
+              "fr": "- Tu peux désactiver conditionnellement le bouton d'envoi."
+            },
+            {
+              "en": "- You can control the input value programmatically.",
+              "fr": "- Tu peux contrôler la valeur de l'entrée par programme."
+            },
+            {
+              "en": "Uncontrolled inputs on the other hand are seen more in traditional HTML forms. So, instead of handling the inputs through the `useState` hook, uncontrolled inputs in HTML maintain their own internal state with the help of the DOM.",
+              "fr": "Les entrées non contrôlées, elles, se rencontrent davantage dans les formulaires HTML traditionnels. Donc, au lieu de gérer les entrées via le hook `useState`, les entrées non contrôlées en HTML maintiennent leur propre état interne avec l'aide du DOM."
+            },
+            {
+              "en": "Since the DOM controls the input values, what you need is to pull in the values of the input fields with ref. This approach requires less code and performs better because refs do not make React re-render.",
+              "fr": "Comme le DOM contrôle les valeurs des entrées, ce dont tu as besoin c'est de récupérer les valeurs des champs avec une ref. Cette approche demande moins de code et est plus performante car les refs ne forcent pas React à re-rendre."
+            },
+            {
+              "en": "Here's an example of uncontrolled inputs:",
+              "fr": "Voici un exemple d'entrées non contrôlées :"
+            },
+            {
+              "en": "One very noticeable advantage of uncontrolled inputs is that they require less code. They also perform better and feel more natural to React beginners who are familiar with HTML.",
+              "fr": "Un avantage très notable des entrées non contrôlées est qu'elles demandent moins de code. Elles sont aussi plus performantes et paraissent plus naturelles aux débutants React familiarisés avec le HTML."
+            },
+            {
+              "en": "So, which should you use between controlled and uncontrolled inputs?",
+              "fr": "Alors, laquelle utiliser entre les entrées contrôlées et non contrôlées ?"
+            },
+            {
+              "en": "Use controlled inputs when you need dynamic form updates, real-time validation, or when you want to sync input values with state. They provide better control but require more re-renders.",
+              "fr": "Utilise les entrées contrôlées quand tu as besoin de mises à jour dynamiques, de validation en temps réel, ou quand tu veux synchroniser les valeurs avec le state. Elles offrent un meilleur contrôle mais demandent plus de re-renders."
+            },
+            {
+              "en": "Use uncontrolled inputs when you need simpler forms, want to access values only on submission, or when you're working with non-React code.",
+              "fr": "Utilise les entrées non contrôlées pour des formulaires plus simples, quand tu veux accéder aux valeurs seulement à l'envoi, ou quand tu travailles avec du code non-React."
+            },
+            {
+              "en": "Regardless of which you use between controlled and uncontrolled inputs, here are some best practices you should adhere to while making forms in React:",
+              "fr": "Quelle que soit celle que tu utilises entre contrôlées et non contrôlées, voici quelques bonnes pratiques à suivre en créant des formulaires en React :"
+            },
+            {
+              "en": "- Always prevent the default form submission.",
+              "fr": "- Empêche toujours la soumission par défaut du formulaire."
+            },
+            {
+              "en": "- Ensure you validate inputs before submission.",
+              "fr": "- Assure-toi de valider les entrées avant la soumission."
+            },
+            {
+              "en": "- Always provide clear feedback to users with loading, validation errors or other related states.",
+              "fr": "- Fournis toujours un retour clair aux utilisateurs avec chargement, erreurs de validation ou autres états associés."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do you manage input field values in a controlled input?",
+              "fr": "Comment gères-tu les valeurs des champs dans une entrée contrôlée ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By storing the value in state and updating it through `onChange` events.",
+              "fr": "En stockant la valeur dans le state et en la mettant à jour via les événements `onChange`."
+            },
+            {
+              "en": "By directly modifying the DOM input value and using JavaScript to get the values.",
+              "fr": "En modifiant directement la valeur de l'entrée DOM et en utilisant JavaScript pour obtenir les valeurs."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The state holds the value, and changes trigger updates.",
+              "fr": "Le state détient la valeur, et les changements déclenchent des mises à jour."
+            },
+            {
+              "en": "By using refs to track changes and assigning the ref attribute to each input.",
+              "fr": "En utilisant des refs pour suivre les changements et en assignant l'attribut ref à chaque entrée."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The state holds the value, and changes trigger updates.",
+              "fr": "Le state détient la valeur, et les changements déclenchent des mises à jour."
+            },
+            {
+              "en": "By setting the input value to `null` for a start and writing a function to get them later.",
+              "fr": "En définissant la valeur de l'entrée à `null` au départ et en écrivant une fonction pour les obtenir plus tard."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "The state holds the value, and changes trigger updates.",
+              "fr": "Le state détient la valeur, et les changements déclenchent des mises à jour."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is a benefit of controlled inputs?",
+              "fr": "Lequel de ceux-ci est un avantage des entrées contrôlées ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They update the DOM directly without state management.",
+              "fr": "Elles mettent à jour le DOM directement sans gestion du state."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Controlled inputs give you more control over form data and behavior.",
+              "fr": "Les entrées contrôlées te donnent plus de contrôle sur les données et le comportement du formulaire."
+            },
+            {
+              "en": "They allow more control over the form data.",
+              "fr": "Elles permettent plus de contrôle sur les données du formulaire."
+            },
+            {
+              "en": "They prevent form validation.",
+              "fr": "Elles empêchent la validation du formulaire."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Controlled inputs give you more control over form data and behavior.",
+              "fr": "Les entrées contrôlées te donnent plus de contrôle sur les données et le comportement du formulaire."
+            },
+            {
+              "en": "They disable the `onChange` event handler.",
+              "fr": "Elles désactivent le gestionnaire d'événement `onChange`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Controlled inputs give you more control over form data and behavior.",
+              "fr": "Les entrées contrôlées te donnent plus de contrôle sur les données et le comportement du formulaire."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How do uncontrolled inputs handle form data in React?",
+              "fr": "Comment les entrées non contrôlées gèrent-elles les données de formulaire en React ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They store the input value in the component state.",
+              "fr": "Elles stockent la valeur de l'entrée dans le state du composant."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Uncontrolled inputs rely on the browser's default form behavior instead of React state.",
+              "fr": "Les entrées non contrôlées s'appuient sur le comportement de formulaire par défaut du navigateur plutôt que sur le state React."
+            },
+            {
+              "en": "They use the `useReducer` hook for state management.",
+              "fr": "Elles utilisent le hook `useReducer` pour la gestion du state."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Uncontrolled inputs rely on the browser's default form behavior instead of React state.",
+              "fr": "Les entrées non contrôlées s'appuient sur le comportement de formulaire par défaut du navigateur plutôt que sur le state React."
+            },
+            {
+              "en": "React updates the input value through `onChange` events.",
+              "fr": "React met à jour la valeur de l'entrée via les événements `onChange`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Uncontrolled inputs rely on the browser's default form behavior instead of React state.",
+              "fr": "Les entrées non contrôlées s'appuient sur le comportement de formulaire par défaut du navigateur plutôt que sur le state React."
+            },
+            {
+              "en": "The DOM manages the form data internally.",
+              "fr": "Le DOM gère les données du formulaire en interne."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67e2a4cab99d4e8bc795e99d.md",
+      "id": "67e2a4cab99d4e8bc795e99d",
+      "dashedName": "what-is-the-useactionstate-hook-and-how-does-it-work",
+      "title": {
+        "en": "What Is the useActionState Hook, and How Does It Work?",
+        "fr": "Qu'est-ce que le hook useActionState, et comment fonctionne-t-il ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "React 19 came with two notable new features called server components and server actions.",
+              "fr": "React 19 est arrivé avec deux nouvelles fonctionnalités notables appelées server components et server actions."
+            },
+            {
+              "en": "From that version onwards, server components became the default in frameworks like Next.js that readily support them.",
+              "fr": "À partir de cette version, les server components sont devenus la valeur par défaut dans des frameworks comme Next.js qui les prennent déjà en charge."
+            },
+            {
+              "en": "Server actions on the other hand, are functions that run on the server to allow form handling right on the server without the need for API endpoints.",
+              "fr": "Les server actions, elles, sont des fonctions qui s'exécutent sur le serveur pour permettre la gestion des formulaires directement sur le serveur sans besoin de points d'API."
+            },
+            {
+              "en": "A server action looks like this:",
+              "fr": "Une server action ressemble à ceci :"
+            },
+            {
+              "en": "This server action extracts a `name` field from a form and returns a string greeting that name.",
+              "fr": "Cette server action extrait un champ `name` d'un formulaire et renvoie une chaîne de salutation avec ce nom."
+            },
+            {
+              "en": "To simplify state management for server actions and remove the need for client-side JavaScript for simple forms, the React team introduced the `useActionState` hook in version 19.",
+              "fr": "Pour simplifier la gestion du state des server actions et supprimer le besoin de JavaScript côté client pour des formulaires simples, l'équipe React a introduit le hook `useActionState` en version 19."
+            },
+            {
+              "en": "Let's take a closer look at this hook and see how it works.",
+              "fr": "Regardons de plus près ce hook et voyons comment il fonctionne."
+            },
+            {
+              "en": "The React documentation describes the `useActionState` hook as a hook that \"allows you to update state based on the result of a form action.\"",
+              "fr": "La documentation React décrit le hook `useActionState` comme un hook qui « te permet de mettre à jour le state selon le résultat d'une action de formulaire. »"
+            },
+            {
+              "en": "But this doesn't mean that you can only use the `useActionState` hook with forms. You can also use it to manage button clicks and other events, as long as you have an action in place.",
+              "fr": "Mais cela ne signifie pas que tu ne peux utiliser le hook `useActionState` qu'avec des formulaires. Tu peux aussi l'utiliser pour gérer des clics de bouton et d'autres événements, tant que tu as une action en place."
+            },
+            {
+              "en": "And keep in mind that, since `useActionState` is a hook, you cannot use it inside a server component.",
+              "fr": "Et garde à l'esprit que, comme `useActionState` est un hook, tu ne peux pas l'utiliser dans un server component."
+            },
+            {
+              "en": "Here's the basic syntax of the `useActionState` hook:",
+              "fr": "Voici la syntaxe de base du hook `useActionState` :"
+            },
+            {
+              "en": "- `state` is the current state the action returns.",
+              "fr": "- `state` est le state actuel que l'action renvoie."
+            },
+            {
+              "en": "- `action` is the function that triggers the server action.",
+              "fr": "- `action` est la fonction qui déclenche la server action."
+            },
+            {
+              "en": "- `isPending` is a boolean that indicates whether the action is currently running or not.",
+              "fr": "- `isPending` est un booléen qui indique si l'action est en cours d'exécution ou non."
+            },
+            {
+              "en": "- The `actionFunction` parameter is the server action itself.",
+              "fr": "- Le paramètre `actionFunction` est la server action elle-même."
+            },
+            {
+              "en": "- `initialState` is the parameter that represents the starting point for the state before the action runs.",
+              "fr": "- `initialState` est le paramètre qui représente le point de départ du state avant que l'action ne s'exécute."
+            },
+            {
+              "en": "- `permalink` is an optional string that contains the unique page URL the form modifies.",
+              "fr": "- `permalink` est une chaîne optionnelle qui contient l'URL unique de la page que le formulaire modifie."
+            },
+            {
+              "en": "To use the `useActionState` hook, make sure you have an action in place first. Let's use the action from the previous example for this, with a bit of a twist:",
+              "fr": "Pour utiliser le hook `useActionState`, assure-toi d'avoir d'abord une action en place. Utilisons l'action de l'exemple précédent pour cela, avec une petite variante :"
+            },
+            {
+              "en": "In your component, you then need to import the `useActionState` hook and call it at the top level of the component body (before the return statement) just like other hooks. You should also import the action:",
+              "fr": "Dans ton composant, tu dois ensuite importer le hook `useActionState` et l'appeler au niveau supérieur du corps du composant (avant le return) comme les autres hooks. Tu dois aussi importer l'action :"
+            },
+            {
+              "en": "Here's what the full code looks like with a bit of styling:",
+              "fr": "Voici à quoi ressemble le code complet avec un peu de style :"
+            },
+            {
+              "en": "In the browser, you would see your form button change from `Greet` to `Greeting...` while the action `isPending` - and the greeting would show `Good morning, {name}`, `Good afternoon, {name}`, or `Good evening, {name}`, depending on what time of day the form was submitted.",
+              "fr": "Dans le navigateur, tu verrais ton bouton de formulaire passer de `Greet` à `Greeting...` pendant que l'action `isPending` - et la salutation afficherait `Good morning, {name}`, `Good afternoon, {name}`, ou `Good evening, {name}`, selon l'heure de soumission du formulaire."
+            },
+            {
+              "en": "Remember how we mentioned that you can also use the `useActionState` hook outside of a form?",
+              "fr": "Tu te souviens que nous avons mentionné que tu peux aussi utiliser le hook `useActionState` hors d'un formulaire ?"
+            },
+            {
+              "en": "In this example, we'll fetch five users from JSONPlaceholder with a button click:",
+              "fr": "Dans cet exemple, nous récupérerons cinq utilisateurs depuis JSONPlaceholder avec un clic de bouton :"
+            },
+            {
+              "en": "Here's the styled UI:",
+              "fr": "Voici l'UI stylisée :"
+            },
+            {
+              "en": "In the browser, you would see that the button text is never updated to `Fetching Users...` after it's clicked.",
+              "fr": "Dans le navigateur, tu verrais que le texte du bouton n'est jamais mis à jour en `Fetching Users...` après le clic."
+            },
+            {
+              "en": "This happens because React treats data fetching and rendering as a higher priority than the `isPending` state, which blocks `isPending` in the process and throws an error.",
+              "fr": "Cela arrive car React traite la récupération de données et le rendu comme une priorité plus haute que le state `isPending`, ce qui bloque `isPending` dans le processus et lance une erreur."
+            },
+            {
+              "en": "To fix this issue, you need to wrap the action in `startTransition`:",
+              "fr": "Pour corriger ce problème, tu dois envelopper l'action dans `startTransition` :"
+            },
+            {
+              "en": "If you're wondering what `startTransition` is, it's a function that tells React that a state update is of low-priority and can be interrupted. This keeps the UI responsive while handling asynchronous updates like server actions.",
+              "fr": "Si tu te demandes ce qu'est `startTransition`, c'est une fonction qui dit à React qu'une mise à jour de state est de faible priorité et peut être interrompue. Cela garde l'UI réactive pendant les mises à jour asynchrones comme les server actions."
+            },
+            {
+              "en": "That's how to use the `useActionState` hook inside and outside a form.",
+              "fr": "Voilà comment utiliser le hook `useActionState` dans et hors d'un formulaire."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the `useActionState` hook in React?",
+              "fr": "Quel est le but du hook `useActionState` en React ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It manages state based on the result of an action, including form submissions, button clicks, and other event-driven updates.",
+              "fr": "Il gère le state selon le résultat d'une action, y compris les soumissions de formulaire, les clics de bouton et d'autres mises à jour liées aux événements."
+            },
+            {
+              "en": "It only updates state when a form is submitted and does not support other types of actions like button clicks or custom event handlers.",
+              "fr": "Il ne met à jour le state que quand un formulaire est soumis et ne prend pas en charge d'autres types d'actions comme les clics de bouton ou les gestionnaires d'événements personnalisés."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It works with actions, not just forms.",
+              "fr": "Il fonctionne avec les actions, pas seulement les formulaires."
+            },
+            {
+              "en": "It handles global state management across multiple components, making it a replacement for state management libraries like Redux or Zustand.",
+              "fr": "Il gère le state global sur plusieurs composants, ce qui en fait un remplacement des bibliothèques de state comme Redux ou Zustand."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It works with actions, not just forms.",
+              "fr": "Il fonctionne avec les actions, pas seulement les formulaires."
+            },
+            {
+              "en": "It replaces the `useState` hook entirely by providing a built-in way to manage both local and global state without additional dependencies.",
+              "fr": "Il remplace entièrement le hook `useState` en fournissant une façon intégrée de gérer le state local et global sans dépendances supplémentaires."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It works with actions, not just forms.",
+              "fr": "Il fonctionne avec les actions, pas seulement les formulaires."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why can't you use the `useActionState` hook inside a server component?",
+              "fr": "Pourquoi ne peux-tu pas utiliser le hook `useActionState` dans un server component ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Because server components do not support state management, making `useActionState` incompatible.",
+              "fr": "Parce que les server components ne prennent pas en charge la gestion du state, ce qui rend `useActionState` incompatible."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Hooks only work in a specific type of component.",
+              "fr": "Les hooks ne fonctionnent que dans un type spécifique de composant."
+            },
+            {
+              "en": "Because `useActionState` requires a database connection, which is only available in client components.",
+              "fr": "Parce que `useActionState` nécessite une connexion à une base de données, qui n'est disponible que dans les client components."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Hooks only work in a specific type of component.",
+              "fr": "Les hooks ne fonctionnent que dans un type spécifique de composant."
+            },
+            {
+              "en": "Because `useActionState` is a React hook, and hooks can only be used inside client components.",
+              "fr": "Parce que `useActionState` est un hook React, et les hooks ne peuvent être utilisés que dans les client components."
+            },
+            {
+              "en": "Because `useActionState` depends on browser APIs that are not available on the server.",
+              "fr": "Parce que `useActionState` dépend d'APIs du navigateur qui ne sont pas disponibles sur le serveur."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Hooks only work in a specific type of component.",
+              "fr": "Les hooks ne fonctionnent que dans un type spécifique de composant."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which version of React introduced server components and server actions?",
+              "fr": "Quelle version de React a introduit les server components et les server actions ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "React 17",
+              "fr": "React 17"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This version focused on improving server-side rendering.",
+              "fr": "Cette version s'est concentrée sur l'amélioration du rendu côté serveur."
+            },
+            {
+              "en": "React 18",
+              "fr": "React 18"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This version focused on improving server-side rendering.",
+              "fr": "Cette version s'est concentrée sur l'amélioration du rendu côté serveur."
+            },
+            {
+              "en": "React 19",
+              "fr": "React 19"
+            },
+            {
+              "en": "React 16",
+              "fr": "React 16"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This version focused on improving server-side rendering.",
+              "fr": "Cette version s'est concentrée sur l'amélioration du rendu côté serveur."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

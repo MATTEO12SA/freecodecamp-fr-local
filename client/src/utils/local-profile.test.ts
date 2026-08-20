@@ -5,7 +5,8 @@ import { setContinuePath, clearContinuePath } from './local-continue';
 import {
   exportLocalProfile,
   importLocalProfile,
-  serializeLocalProfile
+  serializeLocalProfile,
+  wipeLocalLearningData
 } from './local-profile';
 
 describe('local-profile', () => {
@@ -16,9 +17,7 @@ describe('local-profile', () => {
   });
 
   it('exports and re-imports completed challenges and continue path', () => {
-    setLocalCompletedChallenges([
-      { id: 'abc', completedDate: 1 } as never
-    ]);
+    setLocalCompletedChallenges([{ id: 'abc', completedDate: 1 } as never]);
     setContinuePath('/learn/javascript-v9/workshop-music-player/step-1');
 
     const exported = exportLocalProfile(Date.parse('2026-08-20T12:00:00.000Z'));
@@ -44,5 +43,17 @@ describe('local-profile', () => {
         })
       )
     ).toThrow(/Version/);
+  });
+
+  it('wipes local learning keys', () => {
+    setLocalCompletedChallenges([{ id: 'x', completedDate: 1 } as never]);
+    setContinuePath('/learn/javascript-v9/workshop-music-player/step-1');
+    window.localStorage.setItem('fcc-local-onboarding-seen', '1');
+    window.localStorage.setItem('fcc-exam-history', '{}');
+    wipeLocalLearningData();
+    expect(window.localStorage.getItem('fcc-local-user')).toBeNull();
+    expect(window.localStorage.getItem('fcc-local-continue-path')).toBeNull();
+    expect(window.localStorage.getItem('fcc-local-onboarding-seen')).toBeNull();
+    expect(window.localStorage.getItem('fcc-exam-history')).toBeNull();
   });
 });
