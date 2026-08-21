@@ -16,15 +16,15 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 État actuel (fichiers) :
 
-| Cert | Blocs | Fichiers FR/EN |
-|---|---:|---|
-| RWD v9 | 158/158 | 1553/1553 |
-| JS v9 | 230/230 | 1311/1311 |
-| FEL v9 | 62/62 | 532/532 |
-| APIs v9 | 16/16 | 48/48 |
-| Python v9 | 0/78 | 0/527 |
-| Relational DB v9 | 0/34 | 0/64 |
-| Full-stack v9 | 0/1 | 0/1 |
+| Cert             |   Blocs | Fichiers FR/EN |
+| ---------------- | ------: | -------------- |
+| RWD v9           | 158/158 | 1553/1553      |
+| JS v9            | 230/230 | 1311/1311      |
+| FEL v9           |   62/62 | 532/532        |
+| APIs v9          |   16/16 | 48/48          |
+| Python v9        |    0/78 | 0/527          |
+| Relational DB v9 |    0/34 | 0/64           |
+| Full-stack v9    |     0/1 | 0/1            |
 
 Prochaine cible de traduction : **`python-v9`**. Python / SQL / full-stack à 0 % n’est pas un bug.
 
@@ -341,7 +341,7 @@ Catalogue = 7 certs v9 (plus les micro-cours upstream) + badges FR + section « 
 JS v9 à 230/230 (1311/1311). Module audio/vidéo + lab drum-machine. Site : onboarding
 premier lancement, export/import profil (Dev FR), Continuer, confettis a11y.
 Piège music-player step-43 : fence EN indentée ` ```js` — préserver l'espace
-devant la fence FR. *(Cible maps-and-sets depuis livrée ; JS v9 est 230/230.)*
+devant la fence FR. _(Cible maps-and-sets depuis livrée ; JS v9 est 230/230.)_
 
 **Dernière session (2026-08-20, dates module)** :
 JS v9 à 230/230 (1311/1311). Module dates traduit. Prochaine cible : `lecture-working-with-audio-and-video.json` (`reviewed: false`).
