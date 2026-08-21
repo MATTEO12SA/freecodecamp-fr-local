@@ -39,12 +39,12 @@ Changements par rapport à avant :
 Boucle complète :
 
 ```text
-node tools/translate-workshop.js extract <block>     # fr vides
+node tools/translate-workshop.js extract <block>     # fr vides ; refuse d'écraser un JSON reviewed sans --force
+# ou : node tools/translate-workshop.js extract-missing python-v9
 # Claude traduit tous les fr du JSON (lexique-fr.md en référence)
 # passer "reviewed": true dans le JSON
-node tools/translate-workshop.js apply <block>
-node tools/translate-workshop.js verify <block>      # intégrité technique
-node tools/check-translation-quality.js <block>      # qualité FR
+node tools/translate-workshop.js ship <block>        # apply + verify + check-translation-quality
+node tools/sync-intro-copies.js --write <superblock> # copie le FR déjà rédigé vers les clés autonomes
 ```
 
 ## Retour D'Expérience Des Workshops Déjà Traduits
@@ -97,7 +97,7 @@ Ce qui a été validé sur les workshops déjà passés par le pipeline, jusqu'�
 - Ne pas oublier les docs. Sinon le prochain démarrage repart avec de mauvais compteurs ou une mauvaise prochaine cible.
 - Ne pas pousser si `verify`, `lint-challenges`, `git diff --check` ou les tests ciblés échouent.
 - Ne pas prendre un `HTTP 200` sur `/learn` comme preuve suffisante. Il faut aussi vérifier le JSON curriculum, les logs serveur et les validations.
-- Ne pas prendre `Theme > Francais` comme preuve que toute une carte est traduite : `hasFrenchIntro` valide seulement la presence d'au moins un `.md` FR dans le superblock.
+- Ne pas prendre `Theme > Francais` comme preuve que toute une carte est traduite : `hasFrenchIntro` valide seulement la presence d'au moins un `.md` FR dans le superblock. Le badge `100 %` exige `coverage.complete` (fichiers + intros + titres).
 - Ne pas accepter un résultat Axe incomplet : même si le garde-fou est corrigé,
   vérifier que `requested = loaded = scanned` et que `skipped = failed = 0`.
 
@@ -268,7 +268,7 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD / JS / FEL / APIs sont **100 % fichiers**. Prochaine traduction : **python-v9**. Vague 5 produit restante : SRS, XP, PWA.
+RWD / JS / FEL / APIs sont complets au niveau fichiers. `100 %` dans le status et l'UI exige aussi les labels intro (toutes copies) et les titres. Prochaine traduction : **python-v9**. Vague 5 produit restante : SRS, XP, PWA.
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>

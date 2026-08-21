@@ -59,6 +59,10 @@ async function main() {
       output: report.server.http.error || ''
     },
     runStep('translation status', 'node', ['tools/translation-status.js']),
+    runStep('curriculum-fr completeness', 'node', [
+      '--test',
+      'tools/lib/curriculum-fr.test.js'
+    ]),
     runStep('translation drift', 'node', ['tools/check-translation-drift.js']),
     runStep('catalog tests', 'pnpm', ['-C', 'client', 'test', 'catalog']),
     runStep('local feature tests', 'pnpm', [

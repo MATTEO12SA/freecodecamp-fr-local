@@ -6,13 +6,22 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : racine du depot `freecodecamp-fr-local`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : curriculum v9 en français, local-first. JS/RWD/FEL/APIs sont **100 % fichiers**. Prochaine cert : `python-v9` (puis `relational-databases-v9`).
+- **Objectif** : curriculum v9 en français, local-first. Un `100 %` n'est réel que si les fichiers, les labels `intro.json` (arbre v9 **et** copies autonomes) et les titres de challenges sont en français. RWD/JS/FEL/APIs affichent `COMPLET` avec ce critère. Prochaine cert : `python-v9` (puis `relational-databases-v9`).
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
 ## État Actuel — Ce Qui Est Fait
 
-### JavaScript v9 — TERMINÉ (230/230)
+### JavaScript v9 — Fichiers complets (230/230)
+
+`100 %` dans `translation-status.js`, `/cours-fr`, `/catalog` et `/dev-fr` n'est **plus** un comptage de `.md`. Une cert à 1311/1311 fichiers avec des intros encore anglaises s'affiche à **99 %**, jamais 100 %. Vérifier :
+
+```powershell
+node tools/translation-status.js
+node tools/translation-status.js --leftover javascript-v9
+```
+
+`COMPLET` n'apparaît que si fichiers + labels intro (y compris les clés autonomes du type `introduction-to-dates-in-javascript`) + titres de challenges sont français.
 
 État actuel (fichiers) :
 
@@ -26,7 +35,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 | Relational DB v9 |    0/34 | 0/64           |
 | Full-stack v9    |     0/1 | 0/1            |
 
-Prochaine cible de traduction : **`python-v9`**. Python / SQL / full-stack à 0 % n’est pas un bug.
+Prochaine cible de traduction : **`python-v9`**. Python / SQL / full-stack à 0 % n’est pas un bug. RWD/JS/FEL/APIs sont `COMPLET` (fichiers + intros + titres), pas seulement « 100 % fichiers ».
 
 Qualité (2026-08-21) : 15 `# --assignment--` EN sur reviews JS/FEL/APIs corrigés ; labels `/learn` JS+APIs traduits ; fausses notes « Coming 2026 » retirées sur les modules déjà livrés. RWD a encore des ERREUR de drift de chunks (`check-translation-quality`) — ne pas réécrire les workshops sans preuve. Chrome `translations.json` encore partiellement EN (hors scope immédiat).
 
@@ -275,9 +284,14 @@ git log --oneline -5
 node tools/translate-workshop.js extract <workshop>
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
+node tools/translate-workshop.js ship <workshop>
+node tools/translate-workshop.js extract-missing python-v9
+node tools/sync-intro-copies.js --write python-v9
 ```
 
-Suite : RWD/JS/FEL/APIs **100 % fichiers**. Pipeline gère lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine traduction : **python-v9**.
+Le pipeline **n'écrit jamais le français** : Claude traduit le JSON, `ship` enchaîne apply/verify/qualité, `extract-missing` prépare les JSON vides, `sync-intro-copies` recopie le français déjà rédigé vers la deuxième clé `intro.json`. `--phrasebook` reste un brouillon, jamais la source finale.
+
+Suite : RWD/JS/FEL/APIs complets au niveau fichiers. Prochaine traduction : **python-v9**. Ne pas traiter un 100 % fichiers comme une cert terminée.
 
 ### Lister ce qui manque dans un module
 
@@ -309,7 +323,7 @@ timeout, un scan ignoré ou zéro page scannée provoque désormais un échec ; 
 compteurs sont affichés dans la sortie et protégés par
 `axe-test-regression.mjs`.
 
-- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 230/230.
+- [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, affiche fichiers + labels intro + titres. `100 %` / `COMPLET` seulement si les trois sont français (y compris les copies autonomes d'`intro.json`). `--leftover` liste le reste anglais.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
 - [tools/local-dev-report.js](../tools/local-dev-report.js) : snapshot optionnel de `/dev-fr` (git/drift/logs). La table traductions et le HTTP sont live.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
@@ -318,9 +332,9 @@ compteurs sont affichés dans la sortie et protégés par
 ## Comment Démarrer La Prochaine Session
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
-2. Vérifier l'état réel avec la commande PowerShell ci-dessus (compare blocs EN vs FR).
-3. Continuer JavaScript v9 : modules 1–12 + form-validation **100 %** (230/230) ; prochaine cible = JavaScript v9 **100 % terminé** (230/230).
-4. Pour un workshop step-by-step ou une lecture JS, reprendre le pipeline `extract/apply/verify`; les champs `fr` du JSON restent a traduire et relire manuellement.
+2. Vérifier l'état réel avec `node tools/translation-status.js` (et `--leftover` sur la cert en cours). Ne pas se fier au seul comptage de fichiers.
+3. Continuer **python-v9**. JS/RWD/FEL/APIs n'avancent plus tant que `translation-status` ne dit pas `COMPLET` (fichiers + intros + titres).
+4. Pour un workshop, une lecture, une review ou un quiz : `extract` (ou `extract-missing`) → Claude traduit le JSON → `reviewed: true` → `ship`. Mettre à jour **les deux** copies `intro.json`, ou lancer `sync-intro-copies.js --write` après avoir rédigé l'arbre v9.
 5. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock

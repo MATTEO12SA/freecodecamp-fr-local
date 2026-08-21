@@ -83,7 +83,7 @@ confirment que Gatsby voit les fichiers `.md` FR.
 
 - `/cours-fr` : certifications FR, progression locale, acces examens.
 - `/catalog` : 7 certs v9, section FR en tête, badges de couverture, recherche/filtres, progression locale.
-- `/learn` : carte complète du curriculum local (beaucoup de blocs encore EN hors des 4 certs 100 %).
+- `/learn` : carte complète du curriculum local (beaucoup de blocs encore EN hors des certs v9 déjà livrées en fichiers).
 - `/dev-fr` : hub local. HTTP live, traductions v9 depuis le preval, snapshot optionnel pour git/drift. Menu : **Outils** (develop seulement).
 - `/exam-fr?cert=responsive-web-design-v9` : examen local FR, accessible depuis `/cours-fr` et `/dev-fr`.
 

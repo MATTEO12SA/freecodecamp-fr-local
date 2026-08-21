@@ -18,6 +18,7 @@ interface CatalogItemProps {
   translationStatus?: CatalogTranslationStatus;
   translatedFiles?: number;
   totalFiles?: number;
+  translationPercent?: number;
 }
 
 const CatalogItem: React.FC<CatalogItemProps> = ({
@@ -32,7 +33,8 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
   actionLabel,
   translationStatus,
   translatedFiles = 0,
-  totalFiles = 0
+  totalFiles = 0,
+  translationPercent
 }) => {
   const { t } = useTranslation();
 
@@ -54,7 +56,11 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
       ? [t('curriculum.catalog.partial-summary')]
       : introBody;
   const coveragePercent =
-    totalFiles > 0 ? Math.round((translatedFiles / totalFiles) * 100) : 0;
+    typeof translationPercent === 'number'
+      ? translationPercent
+      : totalFiles > 0
+        ? Math.round((translatedFiles / totalFiles) * 100)
+        : 0;
 
   const duration =
     hours === 1

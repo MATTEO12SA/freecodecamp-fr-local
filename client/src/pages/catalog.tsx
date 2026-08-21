@@ -21,6 +21,7 @@ import {
   getCatalogTranslationStatus,
   type CatalogTranslationStatus
 } from '../utils/catalog-translation-status';
+import { getTranslationPercent } from '../utils/translation-percent';
 
 import './catalog.css';
 
@@ -53,6 +54,7 @@ type CatalogCourse = (typeof catalog)[number] & {
   translationStatus: CatalogTranslationStatus;
   translatedFiles: number;
   totalFiles: number;
+  translationPercent: number;
 };
 
 const STATUS_ORDER: Record<CatalogTranslationStatus, number> = {
@@ -163,13 +165,15 @@ const CatalogPage = ({
           translatedFiles: coverage.translated,
           totalFiles: coverage.total,
           frenchIntro,
-          englishIntro: englishCourseIntro
+          englishIntro: englishCourseIntro,
+          labelsComplete: coverage.complete
         });
         return {
           ...course,
           translationStatus,
           translatedFiles: coverage.translated,
-          totalFiles: coverage.total
+          totalFiles: coverage.total,
+          translationPercent: getTranslationPercent(coverage)
         };
       })
       .sort(
@@ -333,6 +337,7 @@ const CatalogPage = ({
         translationStatus={course.translationStatus}
         translatedFiles={course.translatedFiles}
         totalFiles={course.totalFiles}
+        translationPercent={course.translationPercent}
       />
     );
   };

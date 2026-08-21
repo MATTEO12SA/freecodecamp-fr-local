@@ -1,65 +1,52 @@
 // Liste générée au build : tous les superblocks/modules qui ont au moins un
 // challenge .md traduit en français, plus les certifications dont au moins un
-// module est traduit. Évite les faux positifs (titre traduit dans intro.json
-// mais aucun challenge traduit) et la maintenance manuelle.
+// module est traduit. La couverture d'une cert v9 n'est 100 % que si les
+// fichiers ET les labels intro.json (y compris les copies autonomes) sont FR.
 declare const preval: (s: TemplateStringsArray) => {
   superblocks: string[];
   blocks: string[];
-  coverage: Record<string, { translated: number; total: number }>;
+  coverage: Record<
+    string,
+    {
+      translated: number;
+      total: number;
+      introTranslated: number;
+      introTotal: number;
+      pct: number;
+      complete: boolean;
+    }
+  >;
 };
 
 const FRENCH_DATA = preval`
   const fs = require('fs');
   const path = require('path');
+  const {
+    countBlockFiles,
+    frBlockHasContent,
+    getSuperblockTranslationReport
+  } = require(path.resolve(__dirname, '../../../tools/lib/curriculum-fr.js'));
 
   const frBlocksDir = path.resolve(
     __dirname,
     '../../../curriculum/i18n-curriculum/curriculum/challenges/french/blocks'
-  );
-  const enBlocksDir = path.resolve(
-    __dirname,
-    '../../../curriculum/challenges/english/blocks'
   );
   const superblocksDir = path.resolve(
     __dirname,
     '../../../curriculum/structure/superblocks'
   );
 
-  function listMd(dir) {
-    if (!fs.existsSync(dir)) return [];
-    try {
-      return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
-    } catch (_) {
-      return [];
-    }
-  }
-
-  function countBlockFiles(blockName) {
-    const enFiles = new Set(listMd(path.join(enBlocksDir, blockName)));
-    const frFiles = listMd(path.join(frBlocksDir, blockName));
-    return {
-      translated: frFiles.filter(file => enFiles.has(file)).length,
-      total: enFiles.size
-    };
-  }
-
   const translatedBlocks = new Set();
   if (fs.existsSync(frBlocksDir)) {
     for (const blockName of fs.readdirSync(frBlocksDir)) {
-      const blockPath = path.join(frBlocksDir, blockName);
-      try {
-        if (!fs.statSync(blockPath).isDirectory()) continue;
-      } catch (_) {
-        continue;
-      }
-      if (listMd(blockPath).length > 0) translatedBlocks.add(blockName);
+      if (frBlockHasContent(blockName)) translatedBlocks.add(blockName);
     }
   }
 
   const translatedSuperBlocks = new Set();
   const coverage = {};
 
-  function addCoverage(key, blockNames) {
+  function addFileCoverage(key, blockNames) {
     let translated = 0;
     let total = 0;
     for (const blockName of blockNames) {
@@ -67,7 +54,16 @@ const FRENCH_DATA = preval`
       translated += count.translated;
       total += count.total;
     }
-    coverage[key] = { translated, total };
+    const filePct = total > 0 ? Math.floor((100 * translated) / total) : 0;
+    coverage[key] = {
+      translated,
+      total,
+      introTranslated: 0,
+      introTotal: 0,
+      pct:
+        total > 0 && translated === total ? 99 : Math.min(99, filePct),
+      complete: false
+    };
   }
 
   if (fs.existsSync(superblocksDir)) {
@@ -90,7 +86,7 @@ const FRENCH_DATA = preval`
         for (const mod of modules) {
           const blocks = mod.blocks || [];
           certBlocks.push(...blocks);
-          addCoverage(mod.dashedName, blocks);
+          addFileCoverage(mod.dashedName, blocks);
           const moduleHasTranslated = blocks.some(b =>
             translatedBlocks.has(b)
           );
@@ -100,7 +96,17 @@ const FRENCH_DATA = preval`
           }
         }
       }
-      addCoverage(superBlockKey, certBlocks);
+      const report = getSuperblockTranslationReport(superBlockKey, {
+        includeTitles: true
+      });
+      coverage[superBlockKey] = {
+        translated: report.filesTranslated,
+        total: report.filesTotal,
+        introTranslated: report.introsTranslated,
+        introTotal: report.introsTotal,
+        pct: report.pct,
+        complete: report.complete
+      };
       if (certHasTranslated) translatedSuperBlocks.add(superBlockKey);
     }
   }
@@ -118,6 +124,10 @@ const FRENCH_TRANSLATED_BLOCKS = new Set<string>(FRENCH_DATA.blocks);
 export type FrenchFileCoverage = {
   translated: number;
   total: number;
+  introTranslated?: number;
+  introTotal?: number;
+  pct?: number;
+  complete?: boolean;
 };
 
 export const hasFrenchIntro = (superBlock: string): boolean =>
@@ -127,4 +137,11 @@ export const hasFrenchBlock = (block: string): boolean =>
   FRENCH_TRANSLATED_BLOCKS.has(block);
 
 export const getFrenchFileCoverage = (superBlock: string): FrenchFileCoverage =>
-  FRENCH_DATA.coverage[superBlock] ?? { translated: 0, total: 0 };
+  FRENCH_DATA.coverage[superBlock] ?? {
+    translated: 0,
+    total: 0,
+    introTranslated: 0,
+    introTotal: 0,
+    pct: 0,
+    complete: false
+  };

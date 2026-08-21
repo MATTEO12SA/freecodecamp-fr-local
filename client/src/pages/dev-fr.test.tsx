@@ -14,10 +14,10 @@ vi.mock('../utils/has-french-intro', () => ({
     key === 'responsive-web-design-v9' || key === 'javascript-v9',
   getFrenchFileCoverage: (key: string) =>
     key === 'responsive-web-design-v9'
-      ? { translated: 100, total: 100 }
+      ? { translated: 100, total: 100, pct: 100, complete: true }
       : key === 'javascript-v9'
-        ? { translated: 50, total: 100 }
-        : { translated: 0, total: 10 }
+        ? { translated: 50, total: 100, pct: 50, complete: false }
+        : { translated: 0, total: 10, pct: 0, complete: false }
 }));
 
 describe('DevFrPage', () => {

@@ -1,13 +1,72 @@
 // Mock pour les tests : preval ne s'exécute pas sous vitest.
 // Couverture alignée sur les certifications v9 du catalogue fork FR.
-const COVERAGE: Record<string, { translated: number; total: number }> = {
-  'responsive-web-design-v9': { translated: 1553, total: 1553 },
-  'javascript-v9': { translated: 1311, total: 1311 },
-  'front-end-development-libraries-v9': { translated: 532, total: 532 },
-  'back-end-development-and-apis-v9': { translated: 48, total: 48 },
-  'python-v9': { translated: 0, total: 527 },
-  'relational-databases-v9': { translated: 0, total: 64 },
-  'full-stack-developer-v9': { translated: 0, total: 1 }
+const COVERAGE: Record<
+  string,
+  {
+    translated: number;
+    total: number;
+    introTranslated: number;
+    introTotal: number;
+    pct: number;
+    complete: boolean;
+  }
+> = {
+  'responsive-web-design-v9': {
+    translated: 1553,
+    total: 1553,
+    introTranslated: 1,
+    introTotal: 1,
+    pct: 100,
+    complete: true
+  },
+  'javascript-v9': {
+    translated: 1311,
+    total: 1311,
+    introTranslated: 1,
+    introTotal: 1,
+    pct: 100,
+    complete: true
+  },
+  'front-end-development-libraries-v9': {
+    translated: 532,
+    total: 532,
+    introTranslated: 1,
+    introTotal: 1,
+    pct: 100,
+    complete: true
+  },
+  'back-end-development-and-apis-v9': {
+    translated: 48,
+    total: 48,
+    introTranslated: 1,
+    introTotal: 1,
+    pct: 100,
+    complete: true
+  },
+  'python-v9': {
+    translated: 0,
+    total: 527,
+    introTranslated: 0,
+    introTotal: 1,
+    pct: 0,
+    complete: false
+  },
+  'relational-databases-v9': {
+    translated: 0,
+    total: 64,
+    introTranslated: 0,
+    introTotal: 1,
+    pct: 0,
+    complete: false
+  },
+  'full-stack-developer-v9': {
+    translated: 0,
+    total: 1,
+    introTranslated: 0,
+    introTotal: 1,
+    pct: 0,
+    complete: false
+  }
 };
 
 export const hasFrenchIntro = (superBlock: string): boolean => {
@@ -28,5 +87,19 @@ export const hasFrenchBlock = (block: string): boolean =>
 
 export const getFrenchFileCoverage = (
   superBlock: string
-): { translated: number; total: number } =>
-  COVERAGE[superBlock] ?? { translated: 0, total: 0 };
+): {
+  translated: number;
+  total: number;
+  introTranslated: number;
+  introTotal: number;
+  pct: number;
+  complete: boolean;
+} =>
+  COVERAGE[superBlock] ?? {
+    translated: 0,
+    total: 0,
+    introTranslated: 0,
+    introTotal: 0,
+    pct: 0,
+    complete: false
+  };

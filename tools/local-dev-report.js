@@ -11,11 +11,11 @@ const {
   frBlocksDir,
   listMdFiles,
   frBlockHasContent,
-  countBlockFiles,
   listFrBlockDirs,
   listSuperblockFiles,
   readStructure,
-  listBlocksInStructure
+  listBlocksInStructure,
+  getSuperblockTranslationReport
 } = require('./lib/curriculum-fr');
 
 const rootDir = path.resolve(__dirname, '..');
@@ -75,28 +75,24 @@ function getTranslationStatus() {
       const key = file.replace(/\.json$/, '');
       const structure = readStructure(file);
       const blocks = structure ? listBlocksInStructure(structure) : [];
-      // Niveau bloc (presence) — conserve pour la compat du schema /dev-fr.
       const translated = blocks.filter(frBlockHasContent).length;
       const total = blocks.length;
-      const pct = total > 0 ? Math.round((translated / total) * 100) : 0;
-      // Niveau fichier (vraie completude) — champs additifs.
-      let translatedFiles = 0;
-      let totalFiles = 0;
-      for (const block of blocks) {
-        const counts = countBlockFiles(block);
-        translatedFiles += counts.translated;
-        totalFiles += counts.total;
-      }
-      const pctFiles =
-        totalFiles > 0 ? Math.round((translatedFiles / totalFiles) * 100) : 0;
+      const report = getSuperblockTranslationReport(key, {
+        includeTitles: true
+      });
       return {
         key,
         translated,
         total,
-        pct,
-        translatedFiles,
-        totalFiles,
-        pctFiles
+        pct: report.pct,
+        translatedFiles: report.filesTranslated,
+        totalFiles: report.filesTotal,
+        pctFiles: report.pct,
+        introsTranslated: report.introsTranslated,
+        introsTotal: report.introsTotal,
+        titlesTranslated: report.titlesTranslated,
+        titlesTotal: report.titlesTotal,
+        complete: report.complete
       };
     })
     .sort((a, b) => b.pctFiles - a.pctFiles || a.key.localeCompare(b.key));
