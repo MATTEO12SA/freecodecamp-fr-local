@@ -339,9 +339,7 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
                 <ReflexElement
                   name='codePane'
                   flex={
-                    displayEditorConsole
-                      ? Math.max(codePane.flex || 0, 0.5)
-                      : 1
+                    displayEditorConsole ? Math.max(codePane.flex || 0, 0.5) : 1
                   }
                   {...reflexProps}
                   {...resizeProps}
