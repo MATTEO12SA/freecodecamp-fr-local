@@ -99,7 +99,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont `COMPLET`. Python v9 a le module python-basics (16/16, 102/527). Un 100 % UI/status exige aussi les labels `intro.json` (arbre v9 + copies autonomes) et les titres. Prochaine traduction : **`lecture-working-with-loops-and-sequences`**.
+Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont `COMPLET`. Python v9 est à **25 %** (21/78 blocs, 133/527) : modules `python-basics` et `python-loops-and-sequences` livrés. Un 100 % UI/status exige aussi les labels `intro.json` (arbre v9 + copies autonomes) et les titres. Prochaine traduction : **`lecture-working-with-dictionaries-and-sets`**.
 
 Regles de traduction :
 
@@ -133,7 +133,9 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite : JavaScript v9 a 230/230 fichiers. Ne plus écrire « 100 % terminé » sans `translation-status.js` (`COMPLET` = fichiers + intros + titres). Prochaine certification : python-v9. Vague 5 produit (SRS, XP, PWA…) après fiabilité.
+Suite : JS/RWD/FEL/APIs `COMPLET`. Ne plus écrire « 100 % terminé » sans `translation-status.js`. Certification en cours : **python-v9** (25 %). Vague 5 produit (SRS, XP, PWA…) après fiabilité.
+
+Piège runtime : si les pages `/learn` restent en anglais alors que les `.md` FR existent, régénérer `curriculum/generated/curriculum.json` (`CURRICULUM_LOCALE=french`) puis `.\dev.ps1 -Clean`. Layout classic : le panneau Monaco des workshops/labs doit garder un `flex` ≥ 0.5 (`desktop-layout.tsx` / `learn.css`) — ne pas « corriger » en restaurant le flex 0 du layout project-style sans console.
 
 ## Scripts Gardes
 

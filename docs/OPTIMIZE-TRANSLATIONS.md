@@ -1,6 +1,6 @@
 # Plan d'Optimisation — Traductions Curriculum
 
-> **Doc historique et workflow actif.** Ce plan a été créé pour finir RWD v9, qui est maintenant terminé (158/158). Le travail actif est JavaScript v9 — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les règles ci-dessous restent la méthode de référence pour les workshops, lectures, reviews et quizzes JS.
+> **Doc historique et workflow actif.** Ce plan a été créé pour finir RWD v9 (158/158, `COMPLET`). Le travail actif est **python-v9** — voir [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md). Les règles ci-dessous restent la méthode de référence pour workshops, lectures, reviews et quizzes.
 
 > **Qualite produit separee.** Le pipeline ci-dessous garantit la prose et
 > l'integrite technique du curriculum, pas toute l'application. L'
@@ -15,7 +15,7 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Objectif actuel : continuer **python-v9** (module python-basics livré) avec le pipeline `extract → JSON relu → apply → verify → check-translation-quality`. Côté RWD/JS/FEL/APIs, les fichiers sont complets. Les 17 workshops RWD listés historiquement sont traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
+Objectif actuel : continuer **python-v9** à **25 %** (modules `python-basics` + `python-loops-and-sequences` livrés ; prochaine cible `lecture-working-with-dictionaries-and-sets`) avec le pipeline `extract → JSON relu → apply → verify → check-translation-quality`. Côté RWD/JS/FEL/APIs : `COMPLET`. Les 17 workshops RWD listés historiquement sont traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
 
 Les passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 
@@ -268,14 +268,14 @@ Résultat : 27 fichiers FR générés, `intro.json` mis à jour, `verify` OK, `l
 
 ## Prochaine Exécution
 
-RWD / JS / FEL / APIs sont complets au niveau fichiers. `100 %` dans le status et l'UI exige aussi les labels intro (toutes copies) et les titres. Prochaine traduction : **python-v9**. Vague 5 produit restante : SRS, XP, PWA.
+RWD / JS / FEL / APIs sont `COMPLET`. Python v9 à 25 % (133/527). Prochaine traduction : **`lecture-working-with-dictionaries-and-sets`**. Vague 5 produit restante : SRS, XP, PWA.
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>
 # traduire et relire tools/translations/<workshop>.json
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
-pnpm -C curriculum lint-challenges --superblock javascript-v9
+pnpm -C curriculum lint-challenges --superblock python-v9
 git diff --check
 git commit -m "translate <workshop-name> workshop"
 git push standalone main

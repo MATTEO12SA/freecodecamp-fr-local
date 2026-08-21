@@ -100,8 +100,8 @@ La CI du fork et les contrôles locaux restent deux sujets distincts :
   `check-translation-drift.js` contrôlent sans écrire la traduction.
 - Le catalogue combine présence FR automatique et statut
   `absent` / `partial` / `complete` par carte.
-- État curriculum : JS/RWD/FEL/APIs complets en **fichiers**. `100 %` réel = fichiers + labels intro (toutes copies) + titres (`node tools/translation-status.js`).
-  Prochaine cible : **python-v9**.
+- État curriculum : JS/RWD/FEL/APIs `COMPLET`. Python v9 à **25 %** (basics + loops livrés). `100 %` réel = fichiers + labels intro (toutes copies) + titres (`node tools/translation-status.js`).
+  Prochaine cible : **`lecture-working-with-dictionaries-and-sets`**.
 
 ## Principes Non Négociables
 

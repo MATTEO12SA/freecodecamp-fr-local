@@ -224,8 +224,11 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 `100 %` signifie fichiers FR + labels `intro.json` (arbre v9 **et** copies autonomes) + titres de challenges. Un certificat à 100 % de fichiers avec des titres encore anglais s'affiche à 99 %, jamais 100 %.
 
-- **JavaScript v9 / RWD v9 / FEL v9 / APIs v9** : fichiers complets ; le % réel est celui de `translation-status.js` (`COMPLET` seulement si labels et titres le sont aussi).
-- Prochaine traduction : **python-v9**, module `python-loops-and-sequences` (python-basics 16/16, 102/527 fichiers). Back End APIs **16/16**.
+- **JavaScript v9 / RWD v9 / FEL v9 / APIs v9** : `COMPLET` (fichiers + labels + titres).
+- **Python v9** : **25 %** (21/78 blocs, 133/527 fichiers). Modules `python-basics` (16/16) et `python-loops-and-sequences` (5/5) livrés.
+- Prochaine traduction : **`lecture-working-with-dictionaries-and-sets`** (module `python-dictionaries-and-sets`).
+
+Branche de travail : uniquement **`main`** → remote **`standalone`**. Pas de branches feature locales/remote à conserver.
 
 ## Pièges
 
@@ -240,3 +243,11 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 - Une session d'examen en cours est versionnée dans `fcc-exam-session`, par
   certification, avec une expiration de sept jours. Le dernier écran confirme
   les réponses manquantes avant de calculer le score.
+- **`curriculum/generated/curriculum.json` est git-ignored** : des `.md` FR présents
+  sur disque peuvent encore servir de l'anglais si ce JSON est stale. Après un
+  gros lot FR, régénérer (`$env:CURRICULUM_LOCALE='french'; pnpm -C curriculum build`)
+  puis `.\dev.ps1 -Clean` si le navigateur reste en anglais.
+- **Éditeur Monaco collapsé** (zone code ~5 px sur workshops/labs) : corrigé dans
+  `desktop-layout.tsx`, `learn.css` et `show.tsx` (flex code pane ≥ 0.5, pane
+  stretch). Si un utilisateur a un vieux layout localStorage à flex ≈ 0, hard
+  refresh ; le code ignore désormais les flex near-zero.

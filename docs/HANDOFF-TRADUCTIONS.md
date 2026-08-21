@@ -297,7 +297,7 @@ node tools/sync-intro-copies.js --write python-v9
 
 Le pipeline **n'écrit jamais le français** : Claude traduit le JSON, `ship` enchaîne apply/verify/qualité, `extract-missing` prépare les JSON vides, `sync-intro-copies` recopie le français déjà rédigé vers la deuxième clé `intro.json`. `--phrasebook` reste un brouillon, jamais la source finale.
 
-Suite : RWD/JS/FEL/APIs `COMPLET`. Python-basics 16/16. Prochaine traduction : **`lecture-working-with-loops-and-sequences`**. Ne pas traiter un 100 % fichiers comme une cert terminée.
+Suite : RWD/JS/FEL/APIs `COMPLET`. Python v9 **25 %** (basics + loops livrés). Prochaine traduction : **`lecture-working-with-dictionaries-and-sets`**. Ne pas traiter un 100 % fichiers comme une cert terminée.
 
 ### Lister ce qui manque dans un module
 
@@ -354,12 +354,19 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
-**Dernière session (2026-08-21, python-loops-and-sequences 5/5)** :
+**Dernière session (2026-08-21, docs + main propre)** :
+Travail Python + fix Monaco fusionnés sur **`main`** (`standalone/main`).
+Branches `cursor/*` locales et remote `standalone` supprimées — ne rester que
+`main`. Docs alignées sur `translation-status.js` (Python **25 %**). Pièges
+ajoutés : `curriculum.json` stale → pages EN malgré `.md` FR ; éditeur Monaco
+collapsé corrigé (`desktop-layout` / `learn.css` / `show.tsx`). Prochaine
+cible inchangée : `lecture-working-with-dictionaries-and-sets`.
+
+**Session (2026-08-21, python-loops-and-sequences 5/5)** :
 Python v9 à **21/78** blocs (**133/527** fichiers), **25 %**. Module
 `python-loops-and-sequences` traduit et shippé : lecture, workshop-pin-extractor
 (19 étapes), lab-number-pattern-generator, review, quiz. Intros v9 + copie
-`learn-python-loops-and-sequences`. Prochaine cible :
-`lecture-working-with-dictionaries-and-sets`.
+`learn-python-loops-and-sequences`.
 
 **Dernière session (2026-08-21, python-basics 16/16)** :
 Python v9 à 16/78 blocs (102/527 fichiers), **19 %**. Module python-basics

@@ -47,7 +47,7 @@ Juillet mesuré : 6,7 / 10. 18 août : 8,3 / 10.
 
 ## Ce qui empêche 9+
 
-- Python / SQL / full-stack encore 0 % (prochaine cible : `python-v9`).
+- Python v9 à 25 % (prochaine cible : `lecture-working-with-dictionaries-and-sets`) ; SQL / full-stack encore 0 %.
 - Chrome `translations.json` encore partiellement EN (`Reset this lesson?`,
   footer legal, Socrates).
 - `/exam-fr` et `/learn` ont encore `Col mdOffset`.

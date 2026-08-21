@@ -119,9 +119,10 @@ Les traductions vivent dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est entierement traduit au niveau fichiers (158/158 blocs). La priorite actuelle est **python-v9**.
-
-JavaScript v9, FEL v9 et APIs v9 sont complets en fichiers. Un affichage `100 %` n'est vrai que si `node tools/translation-status.js` affiche `COMPLET` (fichiers + labels intro, y compris les copies autonomes, + titres). Ne pas relire un 100 % fichiers comme une cert terminee.
+RWD / JS / FEL / APIs v9 sont `COMPLET` (`node tools/translation-status.js`).
+Python v9 est a **25 %** (modules basics + loops livrés). Prochaine cible :
+**`lecture-working-with-dictionaries-and-sets`**. Un affichage `100 %` n'est vrai
+que si fichiers + labels intro (y compris copies autonomes) + titres sont FR.
 
 Pour continuer les workshops sans toucher au code technique :
 
