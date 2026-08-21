@@ -322,35 +322,42 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
           data-playwright-test-label='editor-pane'
           className='editor-pane'
         >
-          {!isEmpty(challengeFiles) && (
-            <ReflexContainer
-              key='codePane'
-              orientation='horizontal'
-              className='editor-pane-code'
-            >
-              <ReflexElement
-                name='codePane'
-                {...(displayEditorConsole && { flex: codePane.flex })}
-                {...reflexProps}
-                {...resizeProps}
+          {/*
+            Keep ReflexElement as a normal stretch target. Putting display:flex
+            directly on .editor-pane collapses its height to the lower-jaw
+            (~70px) and leaves Monaco at ~5px — the script looks missing.
+          */}
+          <div className='editor-pane-inner'>
+            {!isEmpty(challengeFiles) && (
+              <ReflexContainer
+                key='codePane'
+                orientation='horizontal'
+                className='editor-pane-code'
               >
-                {editor}
-              </ReflexElement>
-              {displayEditorConsole && (
-                <ReflexSplitter propagate={true} {...resizeProps} />
-              )}
-              {displayEditorConsole && (
                 <ReflexElement
-                  flex={testsPane.flex}
+                  name='codePane'
+                  {...(displayEditorConsole && { flex: codePane.flex })}
                   {...reflexProps}
                   {...resizeProps}
                 >
-                  {testOutput}
+                  {editor}
                 </ReflexElement>
-              )}
-            </ReflexContainer>
-          )}
-          {showIndependentLowerJaw && <IndependentLowerJaw />}
+                {displayEditorConsole && (
+                  <ReflexSplitter propagate={true} {...resizeProps} />
+                )}
+                {displayEditorConsole && (
+                  <ReflexElement
+                    flex={testsPane.flex}
+                    {...reflexProps}
+                    {...resizeProps}
+                  >
+                    {testOutput}
+                  </ReflexElement>
+                )}
+              </ReflexContainer>
+            )}
+            {showIndependentLowerJaw && <IndependentLowerJaw />}
+          </div>
         </ReflexElement>
         {displayNotes && <ReflexSplitter propagate={true} {...resizeProps} />}
         {displayNotes && (

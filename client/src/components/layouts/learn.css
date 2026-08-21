@@ -14,9 +14,20 @@
   flex-direction: column;
 }
 
+/*
+ * Do not set display:flex on .editor-pane itself — it is a ReflexElement in a
+ * horizontal row. Flex on that node shrink-wraps it to the lower-jaw height
+ * (~70px) and collapses Monaco (~5px), so the script looks missing/uneditable.
+ * Column layout lives on the inner wrapper instead.
+ */
 .learn-app-wrapper .editor-pane {
+  min-width: 0;
+}
+
+.learn-app-wrapper .editor-pane-inner {
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 0;
   width: 100%;
 }
@@ -24,8 +35,10 @@
 .learn-app-wrapper .editor-pane-code {
   flex: 1 1 auto;
   min-height: 0;
+  height: 100%;
 }
-.learn-app-wrapper .editor-pane > .independent-lower-jaw {
+
+.learn-app-wrapper .editor-pane-inner > .independent-lower-jaw {
   flex: 0 0 auto;
   margin-top: auto;
 }
