@@ -127,7 +127,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : RWD/JS/FEL/APIs complets au niveau **fichiers**. `100 %` affiché n'est vrai que si labels `intro.json` (toutes copies) et titres le sont aussi — `node tools/translation-status.js`. Prochaine traduction : **python-v9**. Back End APIs **16/16**. FEL **62/62**.
+Etat actuel : RWD/JS/FEL/APIs `COMPLET`. Python v9 : module python-basics 16/16 (102/527 fichiers, 19 %). `100 %` affiché n'est vrai que si labels `intro.json` (toutes copies) et titres le sont aussi — `node tools/translation-status.js`. Prochaine traduction : **`lecture-working-with-loops-and-sequences`**. Back End APIs **16/16**. FEL **62/62**.
 
 Workflow rapide mais relu manuellement :
 

@@ -225,7 +225,7 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 `100 %` signifie fichiers FR + labels `intro.json` (arbre v9 **et** copies autonomes) + titres de challenges. Un certificat à 100 % de fichiers avec des titres encore anglais s'affiche à 99 %, jamais 100 %.
 
 - **JavaScript v9 / RWD v9 / FEL v9 / APIs v9** : fichiers complets ; le % réel est celui de `translation-status.js` (`COMPLET` seulement si labels et titres le sont aussi).
-- Prochaine traduction : **python-v9**. Back End APIs **16/16**.
+- Prochaine traduction : **python-v9**, module `python-loops-and-sequences` (python-basics 16/16, 102/527 fichiers). Back End APIs **16/16**.
 
 ## Pièges
 

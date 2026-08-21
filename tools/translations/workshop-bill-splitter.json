@@ -1,0 +1,304 @@
+{
+  "workshop": "workshop-bill-splitter",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "69757cc0faae0152c1418aad.md",
+      "id": "69757cc0faae0152c1418aad",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will practice working with numbers and mathematical operations to build a bill splitter. This tool will calculate how much each person owes after adding meal costs and a tip.",
+          "fr": "Dans cet atelier, tu vas t'entraîner à travailler avec les nombres et les opérations mathématiques en construisant un répartiteur d'addition. Cet outil calculera ce que chaque personne doit après avoir ajouté le coût des plats et un pourboire."
+        },
+        {
+          "en": "To start, you need a way to keep track of the total amount as costs are added.",
+          "fr": "Pour commencer, tu as besoin d'un moyen de suivre le montant total au fur et à mesure que les coûts sont ajoutés."
+        },
+        {
+          "en": "Create a variable named `running_total` and assign it the value `0`.",
+          "fr": "Crée une variable nommée `running_total` et assigne-lui la valeur `0`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `running_total`.",
+          "fr": "Tu devrais avoir une variable nommée `running_total`."
+        },
+        {
+          "en": "You should assign the integer `0` to your `running_total` variable.",
+          "fr": "Tu devrais assigner l'entier `0` à ta variable `running_total`."
+        }
+      ]
+    },
+    {
+      "file": "6976cc0b0c135686a4620b94.md",
+      "id": "6976cc0b0c135686a4620b94",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Next, you need to account for the number of people sharing the bill. Store this value in a variable, as you did in the previous step.",
+          "fr": "Ensuite, tu dois prendre en compte le nombre de personnes qui partagent l'addition. Stocke cette valeur dans une variable, comme à l'étape précédente."
+        },
+        {
+          "en": "Create a variable named `num_of_friends` and assign it the value of `4`. This will be used later in the workshop to calculate the final split.",
+          "fr": "Crée une variable nommée `num_of_friends` et assigne-lui la valeur `4`. Elle servira plus tard dans l'atelier à calculer la répartition finale."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `num_of_friends`.",
+          "fr": "Tu devrais avoir une variable nommée `num_of_friends`."
+        },
+        {
+          "en": "You should assign the integer `4` to your `num_of_friends` variable.",
+          "fr": "Tu devrais assigner l'entier `4` à ta variable `num_of_friends`."
+        }
+      ]
+    },
+    {
+      "file": "6976d8a7cd2a1a5ffcd7f9c4.md",
+      "id": "6976d8a7cd2a1a5ffcd7f9c4",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "Each course has a cost. You need to store these amounts in variables to use them later. Since these amounts include cents, you will use the float type, which is used to represent decimal numbers. Here's an example of a variable with a float value:",
+          "fr": "Chaque plat a un coût. Tu dois stocker ces montants dans des variables pour les utiliser plus tard. Comme ces montants incluent des centimes, tu vas utiliser le type float, qui sert à représenter les nombres décimaux. Voici un exemple de variable avec une valeur float :"
+        },
+        {
+          "en": "Create four variables: `appetizers` set to `37.89`, `main_courses` set to `57.34`, `desserts` set to `39.39`, and `drinks` set to `64.21`.",
+          "fr": "Crée quatre variables : `appetizers` égale à `37.89`, `main_courses` égale à `57.34`, `desserts` égale à `39.39`, et `drinks` égale à `64.21`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a variable named `appetizers` and assign it the value `37.89`.",
+          "fr": "Tu devrais définir une variable nommée `appetizers` et lui assigner la valeur `37.89`."
+        },
+        {
+          "en": "You should define a variable named `main_courses` and assign it the value `57.34`.",
+          "fr": "Tu devrais définir une variable nommée `main_courses` et lui assigner la valeur `57.34`."
+        },
+        {
+          "en": "You should define a variable named `desserts` and assign it the value `39.39`.",
+          "fr": "Tu devrais définir une variable nommée `desserts` et lui assigner la valeur `39.39`."
+        },
+        {
+          "en": "You should define a variable named `drinks` and assign it the value `64.21`.",
+          "fr": "Tu devrais définir une variable nommée `drinks` et lui assigner la valeur `64.21`."
+        }
+      ]
+    },
+    {
+      "file": "6982684f3a25f379e195a5fc.md",
+      "id": "6982684f3a25f379e195a5fc",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now that you have stored the individual costs, you can calculate the total.",
+          "fr": "Maintenant que tu as stocké les coûts individuels, tu peux calculer le total."
+        },
+        {
+          "en": "Recall that the `+=` operator adds a value to an existing variable and updates it at the same time. For example:",
+          "fr": "Rappelle-toi que l'opérateur `+=` ajoute une valeur à une variable existante et la met à jour en même temps. Par exemple :"
+        },
+        {
+          "en": "Use the `+=` operator once to add `appetizers`, `main_courses`, `desserts`, and `drinks` to `running_total`.",
+          "fr": "Utilise l'opérateur `+=` une seule fois pour ajouter `appetizers`, `main_courses`, `desserts` et `drinks` à `running_total`."
+        },
+        {
+          "en": "Finally, use `print()` to display the string `Total bill so far:` followed by a space and the value of `running_total`.",
+          "fr": "Enfin, utilise `print()` pour afficher la chaîne `Total bill so far:` suivie d'un espace et de la valeur de `running_total`."
+        },
+        {
+          "en": "**Note:** You might notice that the output has more decimal digits than expected. As you learned in a previous lesson, this happens because numbers are stored in binary, and many decimal values cannot be represented exactly in this format, which leads to rounding errors.",
+          "fr": "**Note :** tu remarqueras peut-être que la sortie a plus de chiffres décimaux que prévu. Comme tu l'as appris dans une leçon précédente, cela arrive parce que les nombres sont stockés en binaire, et de nombreuses valeurs décimales ne peuvent pas être représentées exactement dans ce format, ce qui entraîne des erreurs d'arrondi."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should update `running_total` using the `+=` operator once to add all four course costs.",
+          "fr": "Tu devrais mettre à jour `running_total` avec l'opérateur `+=` une seule fois pour ajouter les quatre coûts de plats."
+        },
+        {
+          "en": "You should print the string `Total bill so far:` followed by a space and the value of `running_total`.",
+          "fr": "Tu devrais afficher la chaîne `Total bill so far:` suivie d'un espace et de la valeur de `running_total`."
+        }
+      ]
+    },
+    {
+      "file": "69779dcb44016eccc05c15a4.md",
+      "id": "69779dcb44016eccc05c15a4",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "The service was excellent, so the group decides to leave a 25% tip. To calculate a percentage in Python, you can multiply the total by the decimal equivalent of the percentage.",
+          "fr": "Le service était excellent, donc le groupe décide de laisser un pourboire de 25 %. Pour calculer un pourcentage en Python, tu peux multiplier le total par l'équivalent décimal du pourcentage."
+        },
+        {
+          "en": "For example, to find 10% of a value, you would multiply it by `0.10` using the `*` operator:",
+          "fr": "Par exemple, pour trouver 10 % d'une valeur, tu la multiplierais par `0.10` avec l'opérateur `*` :"
+        },
+        {
+          "en": "Create a variable named `tip` and assign it the result of multiplying `running_total` by `0.25`.",
+          "fr": "Crée une variable nommée `tip` et assigne-lui le résultat de la multiplication de `running_total` par `0.25`."
+        },
+        {
+          "en": "Finally, use `print()` to display the string `Tip amount:` followed by a space and the value of your `tip` variable.",
+          "fr": "Enfin, utilise `print()` pour afficher la chaîne `Tip amount:` suivie d'un espace et de la valeur de ta variable `tip`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `tip`.",
+          "fr": "Tu devrais avoir une variable nommée `tip`."
+        },
+        {
+          "en": "Your `tip` variable should be the result of `running_total * 0.25`.",
+          "fr": "Ta variable `tip` devrait être le résultat de `running_total * 0.25`."
+        },
+        {
+          "en": "You should print the string `Tip amount:` followed by a space and the `tip` variable.",
+          "fr": "Tu devrais afficher la chaîne `Tip amount:` suivie d'un espace et de la variable `tip`."
+        }
+      ]
+    },
+    {
+      "file": "6977a4306bb3e856690a4890.md",
+      "id": "6977a4306bb3e856690a4890",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "Now that you have calculated the tip, you need to add it to your `running_total` to find the final bill amount.",
+          "fr": "Maintenant que tu as calculé le pourboire, tu dois l'ajouter à ton `running_total` pour obtenir le montant final de l'addition."
+        },
+        {
+          "en": "Use the `+=` operator to add the value of `tip` to your `running_total`. Finally, use `print()` to display the string `Total with tip:` followed by a space and the value of `running_total`.",
+          "fr": "Utilise l'opérateur `+=` pour ajouter la valeur de `tip` à ton `running_total`. Enfin, utilise `print()` pour afficher la chaîne `Total with tip:` suivie d'un espace et de la valeur de `running_total`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `+=` operator to add the value of `tip` to your `running_total`.",
+          "fr": "Tu devrais utiliser l'opérateur `+=` pour ajouter la valeur de `tip` à ton `running_total`."
+        },
+        {
+          "en": "You should print the string `Total with tip:` followed by a space and the `running_total` variable.",
+          "fr": "Tu devrais afficher la chaîne `Total with tip:` suivie d'un espace et de la variable `running_total`."
+        }
+      ]
+    },
+    {
+      "file": "6977a8bbcbdd557886bd0718.md",
+      "id": "6977a8bbcbdd557886bd0718",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "With the tip now included, you have the final amount for the entire group. You have to determine how much each person owes by dividing the total bill by the number of friends.",
+          "fr": "Avec le pourboire maintenant inclus, tu as le montant final pour tout le groupe. Tu dois déterminer ce que chaque personne doit en divisant l'addition totale par le nombre d'ami(e)s."
+        },
+        {
+          "en": "In Python, you use the forward slash `/` to perform division. For example:",
+          "fr": "En Python, tu utilises la barre oblique `/` pour effectuer une division. Par exemple :"
+        },
+        {
+          "en": "Create a variable named `final_bill` and assign it the result of dividing `running_total` by `num_of_friends`.",
+          "fr": "Crée une variable nommée `final_bill` et assigne-lui le résultat de la division de `running_total` par `num_of_friends`."
+        },
+        {
+          "en": "Finally, use the `print()` function to display the string `Bill per person:` followed by a space and the value of `final_bill`.",
+          "fr": "Enfin, utilise la fonction `print()` pour afficher la chaîne `Bill per person:` suivie d'un espace et de la valeur de `final_bill`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a variable named `final_bill`.",
+          "fr": "Tu devrais définir une variable nommée `final_bill`."
+        },
+        {
+          "en": "You should use the `/` operator to divide `running_total` by `num_of_friends` and assign the result to your `final_bill` variable.",
+          "fr": "Tu devrais utiliser l'opérateur `/` pour diviser `running_total` par `num_of_friends` et assigner le résultat à ta variable `final_bill`."
+        },
+        {
+          "en": "You should print the string `Bill per person:` followed by a space and the `final_bill` variable.",
+          "fr": "Tu devrais afficher la chaîne `Bill per person:` suivie d'un espace et de la variable `final_bill`."
+        }
+      ]
+    },
+    {
+      "file": "697a7f71ebfcd9e4cacd69c2.md",
+      "id": "697a7f71ebfcd9e4cacd69c2",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "The bill is split, but division often results in long decimal numbers. Since money is typically represented with two decimal places, you should round the final result.",
+          "fr": "L'addition est répartie, mais la division donne souvent de longs nombres décimaux. Comme l'argent est généralement représenté avec deux décimales, tu devrais arrondir le résultat final."
+        },
+        {
+          "en": "In an earlier lesson, you learned about the `round()` function which takes two arguments: the number you want to round and the number of decimal places to keep. Here's an example:",
+          "fr": "Dans une leçon précédente, tu as appris la fonction `round()`, qui prend deux arguments : le nombre que tu veux arrondir et le nombre de décimales à garder. Voici un exemple :"
+        },
+        {
+          "en": "Use the `round()` function to round `final_bill` to two decimal places and assign the result to a new variable named `each_pays`.",
+          "fr": "Utilise la fonction `round()` pour arrondir `final_bill` à deux décimales et assigne le résultat à une nouvelle variable nommée `each_pays`."
+        },
+        {
+          "en": "Finally, use `print()` to display the string `Each person pays:` followed by a space and your `each_pays` variable.",
+          "fr": "Enfin, utilise `print()` pour afficher la chaîne `Each person pays:` suivie d'un espace et de ta variable `each_pays`."
+        },
+        {
+          "en": "With that, the bill splitter workshop is complete.",
+          "fr": "Avec ça, l'atelier du répartiteur d'addition est terminé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should define a variable named `each_pays`.",
+          "fr": "Tu devrais définir une variable nommée `each_pays`."
+        },
+        {
+          "en": "You should use the `round()` function to round `final_bill` to two decimal places and assign the result to your `each_pays` variable.",
+          "fr": "Tu devrais utiliser la fonction `round()` pour arrondir `final_bill` à deux décimales et assigner le résultat à ta variable `each_pays`."
+        },
+        {
+          "en": "You should use `print()` to display the string `Each person pays:` followed by a space and your `each_pays` variable.",
+          "fr": "Tu devrais utiliser `print()` pour afficher la chaîne `Each person pays:` suivie d'un espace et de ta variable `each_pays`."
+        }
+      ]
+    }
+  ]
+}

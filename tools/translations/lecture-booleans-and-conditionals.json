@@ -1,0 +1,552 @@
+{
+  "workshop": "lecture-booleans-and-conditionals",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67fe85a3db9bad35f2b6a2bd.md",
+      "id": "67fe85a3db9bad35f2b6a2bd",
+      "dashedName": "how-do-conditional-statements-and-logical-operators-work",
+      "title": {
+        "en": "How Do Conditional Statements and Logical Operators Work?",
+        "fr": "Comment fonctionnent les instructions conditionnelles et les opérateurs logiques ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Conditional statements, or conditionals, let you control the flow of your program based on whether certain conditions are true or false.",
+              "fr": "Les instructions conditionnelles, ou conditionnelles, te permettent de contrôler le déroulement de ton programme selon que certaines conditions sont vraies ou fausses."
+            },
+            {
+              "en": "But before we get into all that, let's go over the basic building blocks of conditional statements, starting with comparison operators. Comparison operators are operators that let you compare two or more values, and return a boolean value.",
+              "fr": "Mais avant d'entrer dans tout ça, passons en revue les éléments de base des instructions conditionnelles, en commençant par les opérateurs de comparaison. Les opérateurs de comparaison te permettent de comparer deux valeurs ou plus, et de renvoyer une valeur booléenne."
+            },
+            {
+              "en": "In a previous lesson, you learned that booleans are one of the data types in Python, and can only be `True` or `False`.",
+              "fr": "Dans une leçon précédente, tu as appris que les booléens sont l'un des types de données en Python, et qu'ils ne peuvent valoir que `True` ou `False`."
+            },
+            {
+              "en": "Here's a table with the comparison operators in Python:",
+              "fr": "Voici un tableau des opérateurs de comparaison en Python :"
+            },
+            {
+              "en": "| Operator | Name | Description |\n| --- | --- | --- |\n| `==` | Equal | Checks if two values are equal |\n| `!=` | Not equal | Checks if two values are not equal |\n| `>` | Greater than | Checks if the value on the left is greater than the value on the right |\n| `<` | Less than | Checks if the value on the left is less than the value on the right |\n| `>=` | Greater than or equal | Checks if the value on the left is greater than or equal to the value on the right |\n| `<=` | Less than or equal | Checks if the value on the left is less than or equal to the value on the right |",
+              "fr": "| Opérateur | Nom | Description |\n| --- | --- | --- |\n| `==` | Égal | Vérifie si deux valeurs sont égales |\n| `!=` | Différent | Vérifie si deux valeurs ne sont pas égales |\n| `>` | Supérieur à | Vérifie si la valeur de gauche est supérieure à la valeur de droite |\n| `<` | Inférieur à | Vérifie si la valeur de gauche est inférieure à la valeur de droite |\n| `>=` | Supérieur ou égal | Vérifie si la valeur de gauche est supérieure ou égale à la valeur de droite |\n| `<=` | Inférieur ou égal | Vérifie si la valeur de gauche est inférieure ou égale à la valeur de droite |"
+            },
+            {
+              "en": "Here are some of those expressions that evaluate to `True` or `False`:",
+              "fr": "Voici quelques-unes de ces expressions qui s'évaluent à `True` ou `False` :"
+            },
+            {
+              "en": "These operators can be used in conditionals to compare values and run certain code based on whether the conditional evaluates to `True` or `False`.",
+              "fr": "Ces opérateurs peuvent servir dans des conditionnelles pour comparer des valeurs et exécuter du code selon que la conditionnelle s'évalue à `True` ou `False`."
+            },
+            {
+              "en": "In Python, the most basic conditional is the `if` statement. Here's the basic syntax:",
+              "fr": "En Python, la conditionnelle la plus basique est l'instruction `if`. Voici la syntaxe de base :"
+            },
+            {
+              "en": "* `if` statements start with the `if` keyword.\n    \n* `condition` is an expression that evaluates to `True` or `False`, followed by a colon (`:`).",
+              "fr": "* Les instructions `if` commencent par le mot-clé `if`.\n    \n* `condition` est une expression qui s'évalue à `True` ou `False`, suivie d'un deux-points (`:`)."
+            },
+            {
+              "en": "* The body of the `if` statement constitutes a <dfn>code block</dfn>, which is a group of statements that belong together. In Python, the level of indentation is what defines a code block.\n    \nIn the example above, the body of the `if` statement contains a `pass` statement. When a `pass` statement is executed, nothing happens. This is a special keyword that can be used as a placeholder for future code and it is useful when empty code blocks are not allowed.",
+              "fr": "* Le corps de l'instruction `if` constitue un <dfn>bloc de code</dfn>, c'est-à-dire un groupe d'instructions qui vont ensemble. En Python, c'est le niveau d'indentation qui définit un bloc de code.\n    \nDans l'exemple ci-dessus, le corps de l'instruction `if` contient une instruction `pass`. Quand une instruction `pass` s'exécute, rien ne se passe. C'est un mot-clé spécial qui peut servir d'espace réservé pour du code à venir, et il est utile quand les blocs de code vides ne sont pas autorisés."
+            },
+            {
+              "en": "The code within the body of the `if` statement runs only when the condition evaluates to `True`. For example:",
+              "fr": "Le code dans le corps de l'instruction `if` ne s'exécute que lorsque la condition s'évalue à `True`. Par exemple :"
+            },
+            {
+              "en": "Notice the indentation before `print('You are an adult')`. While other programming languages use characters like curly braces to define code blocks, and just use indentation for readability, in Python, code blocks are determined by indentation.",
+              "fr": "Remarque l'indentation avant `print('You are an adult')`. Alors que d'autres langages de programmation utilisent des caractères comme les accolades pour définir les blocs de code, et n'utilisent l'indentation que pour la lisibilité, en Python, les blocs de code sont déterminés par l'indentation."
+            },
+            {
+              "en": "The following code would raise an `IndentationError`, which is Python's way to signal that indentation is required at a certain point of the code:",
+              "fr": "Le code suivant lèverait une `IndentationError`, c'est la façon dont Python signale qu'une indentation est requise à un certain endroit du code :"
+            },
+            {
+              "en": "Though you can use any number spaces (as long as you are consistent) to determine each level of indentation, the Python style guide recommends using four spaces.",
+              "fr": "Même si tu peux utiliser n'importe quel nombre d'espaces (tant que tu restes cohérent) pour déterminer chaque niveau d'indentation, le guide de style Python recommande d'en utiliser quatre."
+            },
+            {
+              "en": "Blocks are also found in loops and functions, which you'll learn about in future lessons.",
+              "fr": "On trouve aussi des blocs dans les boucles et les fonctions, que tu découvriras dans les leçons à venir."
+            },
+            {
+              "en": "Going back to our example, if `age` is anything less than `18`, nothing is printed in the terminal:",
+              "fr": "Pour revenir à notre exemple, si `age` est inférieur à `18`, rien n'est affiché dans le terminal :"
+            },
+            {
+              "en": "But what if you also want to print something if `age` is less than `18`? That's where the `else` clause comes in. The `else` clause runs when the `if` condition is false. Here's the syntax for an `if…else` statement:",
+              "fr": "Et si tu veux aussi afficher quelque chose si `age` est inférieur à `18` ? C'est là qu'intervient la clause `else`. La clause `else` s'exécute quand la condition du `if` est fausse. Voici la syntaxe d'une instruction `if…else` :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "Note that you cannot place any statements between the `if` block and the `else` clause. The following code would raise a `SyntaxError`:",
+              "fr": "Note que tu ne peux placer aucune instruction entre le bloc `if` et la clause `else`. Le code suivant lèverait une `SyntaxError` :"
+            },
+            {
+              "en": "There might be situations in which you want to account for multiple conditions. To do that, Python lets you extend your if statement with the `elif` (else if) keyword.",
+              "fr": "Il peut y avoir des situations où tu veux prendre en compte plusieurs conditions. Pour cela, Python te permet d'étendre ton instruction if avec le mot-clé `elif` (else if, sinon si)."
+            },
+            {
+              "en": "Here's the syntax:",
+              "fr": "Voici la syntaxe :"
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "Note that you can use as many `elif` clauses as you want:",
+              "fr": "Note que tu peux utiliser autant de clauses `elif` que tu veux :"
+            },
+            {
+              "en": "Now that you understand how comparison operators and conditional statements work in Python, you can start writing programs that make decisions based on logic and input. Whether you’re comparing values or branching through multiple conditions, these tools are the foundation to writing flexible, responsive code.",
+              "fr": "Maintenant que tu comprends comment fonctionnent les opérateurs de comparaison et les instructions conditionnelles en Python, tu peux commencer à écrire des programmes qui prennent des décisions en fonction de la logique et des entrées. Que tu compares des valeurs ou que tu suives différentes branches selon plusieurs conditions, ces outils sont la base pour écrire du code souple et réactif."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What do comparison operators do?",
+              "fr": "Que font les opérateurs de comparaison ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Perform mathematical calculations with boolean values",
+              "fr": "Effectuer des calculs mathématiques avec des valeurs booléennes"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These operators check things like equality or which value is greater, and the result is either `True` or `False`.",
+              "fr": "Ces opérateurs vérifient des choses comme l'égalité ou quelle valeur est plus grande, et le résultat est soit `True`, soit `False`."
+            },
+            {
+              "en": "Convert strings to boolean values.",
+              "fr": "Convertir des chaînes en valeurs booléennes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These operators check things like equality or which value is greater, and the result is either `True` or `False`.",
+              "fr": "Ces opérateurs vérifient des choses comme l'égalité ou quelle valeur est plus grande, et le résultat est soit `True`, soit `False`."
+            },
+            {
+              "en": "Compare two values and return a boolean value.",
+              "fr": "Comparer deux valeurs et renvoyer une valeur booléenne."
+            },
+            {
+              "en": "Create loops and iterations.",
+              "fr": "Créer des boucles et des itérations."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "These operators check things like equality or which value is greater, and the result is either `True` or `False`.",
+              "fr": "Ces opérateurs vérifient des choses comme l'égalité ou quelle valeur est plus grande, et le résultat est soit `True`, soit `False`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result for the following code?",
+              "fr": "Quel sera le résultat du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "`You are an adult` will be printed to the console.",
+              "fr": "`You are an adult` sera affiché dans la console."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the correct answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la bonne réponse."
+            },
+            {
+              "en": "`You are a teenager` will be printed to the console.",
+              "fr": "`You are a teenager` sera affiché dans la console."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the correct answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la bonne réponse."
+            },
+            {
+              "en": "`You are a child` will be printed to the console.",
+              "fr": "`You are a child` sera affiché dans la console."
+            },
+            {
+              "en": "An error will be printed to the console.",
+              "fr": "Une erreur sera affichée dans la console."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the correct answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la bonne réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the expression `3 >= 4` evaluate to?",
+              "fr": "À quoi s'évaluera l'expression `3 >= 4` ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "3 is not greater than or equal to 4.",
+              "fr": "3 n'est pas supérieur ou égal à 4."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "3 is not greater than or equal to 4.",
+              "fr": "3 n'est pas supérieur ou égal à 4."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "3 is not greater than or equal to 4.",
+              "fr": "3 n'est pas supérieur ou égal à 4."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "68480f431e8568b2056b140b.md",
+      "id": "68480f431e8568b2056b140b",
+      "dashedName": "what-are-truthy-and-falsy-values-and-how-do-boolean-operators-and-short-circuiting-work",
+      "title": {
+        "en": "What Are Truthy and Falsy Values, and How Do Boolean Operators and Short-Circuiting Work?",
+        "fr": "Que sont les valeurs truthy et falsy, et comment fonctionnent les opérateurs booléens et le court-circuit ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you learned how to use comparison operators and conditional statements to control the flow of your programs.",
+              "fr": "Dans la leçon précédente, tu as appris à utiliser les opérateurs de comparaison et les instructions conditionnelles pour contrôler le déroulement de tes programmes."
+            },
+            {
+              "en": "While those are very powerful, you will often run into situations where you need to compare multiple values at once. This can lead to nested conditional statements, for example:",
+              "fr": "Même si ces outils sont très puissants, tu rencontreras souvent des situations où tu dois comparer plusieurs valeurs à la fois. Cela peut mener à des instructions conditionnelles imbriquées, par exemple :"
+            },
+            {
+              "en": "The above example will first check if `is_citizen` is `True`. If so, it will then go to the nested `if` statement and check if `age` is greater than or equal to `18`. Since `age` is greater than or equal to `18`, the message printed to the terminal will be `You are eligible to vote`. If `is_citizen` were `False`, then the message printed to the terminal would have been `You are not eligible to vote`.",
+              "fr": "L'exemple ci-dessus vérifie d'abord si `is_citizen` vaut `True`. Si c'est le cas, il passe ensuite à l'instruction `if` imbriquée et vérifie si `age` est supérieur ou égal à `18`. Comme `age` est supérieur ou égal à `18`, le message affiché dans le terminal sera `You are eligible to vote`. Si `is_citizen` valait `False`, le message affiché dans le terminal aurait été `You are not eligible to vote`."
+            },
+            {
+              "en": "If you are working with more complex conditional statements, then you can use Python’s `and`, `or`, and `not` operators.",
+              "fr": "Si tu travailles avec des instructions conditionnelles plus complexes, tu peux utiliser les opérateurs `and`, `or` et `not` de Python."
+            },
+            {
+              "en": "But before we dive into those operators, let’s take a look at what truthy and falsy values are.",
+              "fr": "Mais avant de plonger dans ces opérateurs, voyons ce que sont les valeurs truthy et falsy."
+            },
+            {
+              "en": "In Python, every value has an inherent boolean value, or a built-in sense of whether it should be treated as `True` or `False` in a logical context. Many values are considered **truthy**, that is, they evaluate to `True` in a logical context. Others are **falsy**, meaning they evaluate to `False`.",
+              "fr": "En Python, chaque valeur a une valeur booléenne inhérente, c'est-à-dire une notion intégrée indiquant si elle doit être traitée comme `True` ou `False` dans un contexte logique. De nombreuses valeurs sont considérées comme **truthy**, c'est-à-dire qu'elles s'évaluent à `True` dans un contexte logique. D'autres sont **falsy**, ce qui signifie qu'elles s'évaluent à `False`."
+            },
+            {
+              "en": "Here are a few falsy values:",
+              "fr": "Voici quelques valeurs falsy :"
+            },
+            {
+              "en": "- `None`\n- `False`\n- Integer `0`\n- Float `0.0`\n- Empty strings `\"\"`",
+              "fr": "- `None`\n- `False`\n- L'entier `0`\n- Le flottant `0.0`\n- Les chaînes vides `\"\"`"
+            },
+            {
+              "en": "Other values like non-zero numbers, and non-empty strings are truthy.",
+              "fr": "D'autres valeurs comme les nombres non nuls et les chaînes non vides sont truthy."
+            },
+            {
+              "en": "If you want to check whether a value is truthy or falsy, you can use the built-in `bool()` function. It explicitly converts a value to its boolean equivalent and returns `True` for truthy values and `False` for falsy values. Here are a few examples:",
+              "fr": "Si tu veux vérifier si une valeur est truthy ou falsy, tu peux utiliser la fonction intégrée `bool()`. Elle convertit explicitement une valeur en son équivalent booléen et renvoie `True` pour les valeurs truthy et `False` pour les valeurs falsy. Voici quelques exemples :"
+            },
+            {
+              "en": "Now that you understand truthy and falsy values, we can take a look at Boolean operators, which are also known as logical operators or Boolean operators. These are special operators that allow you to combine multiple expressions to create more complex decision-making logic in your code.",
+              "fr": "Maintenant que tu comprends les valeurs truthy et falsy, on peut s'intéresser aux opérateurs booléens, aussi appelés opérateurs logiques. Ce sont des opérateurs spéciaux qui te permettent de combiner plusieurs expressions pour créer une logique de décision plus complexe dans ton code."
+            },
+            {
+              "en": "There are three Boolean operators in Python: `and`, `or`, and `not`.",
+              "fr": "Il y a trois opérateurs booléens en Python : `and`, `or` et `not`."
+            },
+            {
+              "en": "Let’s first take a look at the `and` operator.",
+              "fr": "Commençons par l'opérateur `and`."
+            },
+            {
+              "en": "The `and` operator takes two operands and returns the first operand if it is falsy, otherwise, it returns the second operand. Both operands must be truthy for an expression to result in a truthy value.",
+              "fr": "L'opérateur `and` prend deux opérandes et renvoie le premier opérande s'il est falsy, sinon il renvoie le second opérande. Les deux opérandes doivent être truthy pour qu'une expression donne une valeur truthy."
+            },
+            {
+              "en": "Here is an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "In the above example, the number 25 is printed to the terminal because the `and` operator will evaluate the second operand if the first operand is `True`. The `and` operator is known as a short-circuit operator. Short-circuiting means Python checks values from left to right and stops as soon as it determines the final result.",
+              "fr": "Dans l'exemple ci-dessus, le nombre 25 est affiché dans le terminal parce que l'opérateur `and` évaluera le second opérande si le premier opérande est `True`. L'opérateur `and` est connu comme un opérateur à court-circuit. Le court-circuit signifie que Python vérifie les valeurs de gauche à droite et s'arrête dès qu'il détermine le résultat final."
+            },
+            {
+              "en": "You'll often use `and` within `if` statements to check if multiple conditions are met. Here’s how you can refactor the earlier example to use the `and` operator instead of nested `if` statements:",
+              "fr": "Tu utiliseras souvent `and` dans des instructions `if` pour vérifier si plusieurs conditions sont remplies. Voici comment tu peux réécrire l'exemple précédent pour utiliser l'opérateur `and` au lieu d'instructions `if` imbriquées :"
+            },
+            {
+              "en": "In the example above, `is_citizen` is `True`, and `age >= 18` evaluates to `True`. Since both operands of the `and` operator are truthy, the condition `is_citizen and age >= 18` evaluates to `True`, and the `print` call in the `if` block is executed.",
+              "fr": "Dans l'exemple ci-dessus, `is_citizen` vaut `True`, et `age >= 18` s'évalue à `True`. Comme les deux opérandes de l'opérateur `and` sont truthy, la condition `is_citizen and age >= 18` s'évalue à `True`, et l'appel `print` dans le bloc `if` s'exécute."
+            },
+            {
+              "en": "Now let's take a look at the `or` operator. This operator returns the first operand if it is truthy, otherwise, it returns the second operand. An `or` expression results in a truthy value if at least one operand is truthy. The `or` operator is also known as a short-circuit operator. Here is an example:",
+              "fr": "Regardons maintenant l'opérateur `or`. Cet opérateur renvoie le premier opérande s'il est truthy, sinon il renvoie le second opérande. Une expression `or` donne une valeur truthy si au moins un opérande est truthy. L'opérateur `or` est aussi connu comme un opérateur à court-circuit. Voici un exemple :"
+            },
+            {
+              "en": "The following code will print the number 19 because the first operand `age` is `True`.",
+              "fr": "Le code suivant affichera le nombre 19 parce que le premier opérande `age` est `True`."
+            },
+            {
+              "en": "If you need to check if one or more expressions is `True`, then you can use the `or` operator in a conditional like this:",
+              "fr": "Si tu as besoin de vérifier si une ou plusieurs expressions valent `True`, tu peux utiliser l'opérateur `or` dans une conditionnelle comme ceci :"
+            },
+            {
+              "en": "In this case, `age < 18` is `False`, but `is_student` is `True`. Since at least one condition is true, the entire `or` expression evaluates to `True`, and the discount message in the `if` block is printed.",
+              "fr": "Dans ce cas, `age < 18` vaut `False`, mais `is_student` vaut `True`. Comme au moins une condition est vraie, toute l'expression `or` s'évalue à `True`, et le message de réduction dans le bloc `if` s'affiche."
+            },
+            {
+              "en": "The last operator we will look at is the `not` operator which takes a single operand and inverts its boolean value. It converts truthy values to `False` and falsy values to `True`. Unlike the previous operators we looked at, `not` always returns `True` or `False`.",
+              "fr": "Le dernier opérateur que nous allons voir est l'opérateur `not`, qui prend un seul opérande et inverse sa valeur booléenne. Il convertit les valeurs truthy en `False` et les valeurs falsy en `True`. Contrairement aux opérateurs précédents, `not` renvoie toujours `True` ou `False`."
+            },
+            {
+              "en": "Here are a few examples:",
+              "fr": "Voici quelques exemples :"
+            },
+            {
+              "en": "It is common to use the `not` operator in conditionals to check if something is not `True` or `False`, like this:",
+              "fr": "Il est courant d'utiliser l'opérateur `not` dans les conditionnelles pour vérifier si quelque chose n'est pas `True` ou `False`, comme ceci :"
+            },
+            {
+              "en": "Since `is_admin` is `False`, then `not is_admin` is saying not `False` which is `True`. So the message `Access denied for non-administrators.` will be printed.",
+              "fr": "Comme `is_admin` vaut `False`, `not is_admin` revient à dire non `False`, ce qui vaut `True`. Donc le message `Access denied for non-administrators.` sera affiché."
+            },
+            {
+              "en": "Now that you understand truthy and falsy values, the `and`, `or`, and `not` operators, and short-circuiting work, you can write more flexible and readable conditional logic.",
+              "fr": "Maintenant que tu comprends les valeurs truthy et falsy, les opérateurs `and`, `or` et `not`, et le fonctionnement du court-circuit, tu peux écrire une logique conditionnelle plus souple et plus lisible."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code output?",
+              "fr": "Que va afficher le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what happens when both conditions are `True`.",
+              "fr": "Souviens-toi de ce qui se passe quand les deux conditions valent `True`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what happens when both conditions are `True`.",
+              "fr": "Souviens-toi de ce qui se passe quand les deux conditions valent `True`."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember what happens when both conditions are `True`.",
+              "fr": "Souviens-toi de ce qui se passe quand les deux conditions valent `True`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is NOT considered a falsy value in Python?",
+              "fr": "Laquelle des valeurs suivantes N'EST PAS considérée comme une valeur falsy en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that non-empty strings are considered truthy.",
+              "fr": "Souviens-toi que les chaînes non vides sont considérées comme truthy."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that non-empty strings are considered truthy.",
+              "fr": "Souviens-toi que les chaînes non vides sont considérées comme truthy."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that non-empty strings are considered truthy.",
+              "fr": "Souviens-toi que les chaînes non vides sont considérées comme truthy."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when Python evaluates the expression `x or y`?",
+              "fr": "Que se passe-t-il quand Python évalue l'expression `x or y` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It returns `x` only if both `x` and `y` evaluate to `True`",
+              "fr": "Il renvoie `x` seulement si `x` et `y` s'évaluent tous les deux à `True`"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about \"short-circuiting\" and when Python might not need to check the second value.",
+              "fr": "Pense au « court-circuit » et au moment où Python n'a peut-être pas besoin de vérifier la seconde valeur."
+            },
+            {
+              "en": "It returns `x` if it evaluates to `True`, and skips evaluating `y`",
+              "fr": "Il renvoie `x` si celui-ci s'évalue à `True`, et saute l'évaluation de `y`"
+            },
+            {
+              "en": "It always evaluates both `x` and `y` regardless of their values",
+              "fr": "Il évalue toujours à la fois `x` et `y`, quelles que soient leurs valeurs"
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about \"short-circuiting\" and when Python might not need to check the second value.",
+              "fr": "Pense au « court-circuit » et au moment où Python n'a peut-être pas besoin de vérifier la seconde valeur."
+            },
+            {
+              "en": "It returns `False` if either `x` or `y` is `False`",
+              "fr": "Il renvoie `False` si `x` ou `y` vaut `False`"
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about \"short-circuiting\" and when Python might not need to check the second value.",
+              "fr": "Pense au « court-circuit » et au moment où Python n'a peut-être pas besoin de vérifier la seconde valeur."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

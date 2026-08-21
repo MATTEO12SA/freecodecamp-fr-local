@@ -15,7 +15,7 @@ Principe non négociable : les traductions finales sont rédigées et relues par
 
 ## Objectif
 
-Objectif actuel : continuer JavaScript v9 avec le pipeline `extract → JSON relu → apply → verify → check-translation-quality`. Côté RWD, il reste 0 workshop à traduire. Les 17 workshops RWD listés historiquement sont maintenant traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
+Objectif actuel : continuer **python-v9** (module python-basics livré) avec le pipeline `extract → JSON relu → apply → verify → check-translation-quality`. Côté RWD/JS/FEL/APIs, les fichiers sont complets. Les 17 workshops RWD listés historiquement sont traduits, dont 15 passés par ce pipeline et 2 (game-settings-panel, flexbox-photo-gallery) faits avant.
 
 Les passages du pipeline sont terminés : `workshop-greeting-card`, `workshop-ferris-wheel`, `workshop-piano`, `workshop-parent-teacher-conference-form`, `workshop-colorful-boxes`, `workshop-rothko-painting`, `workshop-registration-form`, `workshop-balance-sheet`, `workshop-accessibility-quiz`, `workshop-nutritional-label`, `workshop-magazine`, `workshop-cat-painting`, `workshop-colored-markers`, `workshop-flappy-penguin` et `workshop-city-skyline` ont été extraits, traduits, appliqués, vérifiés, commit et pushés. Le pipeline `tools/translate-workshop.js` et `tools/translations/phrasebook.json` existent déjà.
 

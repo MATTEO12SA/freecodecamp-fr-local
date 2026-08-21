@@ -293,7 +293,9 @@ function detectKind(sections) {
   }
   if (
     sections.some(section =>
-      ['# --interactive--', '# --questions--'].includes(section.marker)
+      ['# --interactive--', '# --questions--', '# --assignment--'].includes(
+        section.marker
+      )
     )
   ) {
     return 'lecture';

@@ -1,0 +1,121 @@
+{
+  "workshop": "lab-rpg-character",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "67d83df6f82eda3868dd2a84.md",
+      "id": "67d83df6f82eda3868dd2a84",
+      "dashedName": "build-an-rpg-character",
+      "title": {
+        "en": "Build an RPG Character",
+        "fr": "Crée un personnage de JDR"
+      },
+      "description": [
+        {
+          "en": "In this lab you will practice the basics of Python by building a small app that creates a character for an RPG adventure.",
+          "fr": "Dans ce laboratoire, tu vas t'entraîner aux bases de Python en construisant une petite appli qui crée un personnage pour une aventure de JDR."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below and get all the tests to pass to complete the lab.",
+          "fr": "**Objectif :** remplis les user stories ci-dessous et fais passer tous les tests pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should have a function named `create_character`.\n1. The function should accept, in order, a character name followed by three stats: strength, intelligence, and charisma.\n1. The character name should be validated:\n   - If the character name is not a string, the function should return `The character name should be a string`.\n   - If the character name is an empty string, the function should return `The character should have a name`.\n   - If the character name is longer than 10 characters, the function should return `The character name is too long`.\n   - If the character name contains spaces, the function should return `The character name should not contain spaces`.\n1. The stats should also be validated:\n   - If one or more stats are not integers, the function should return `All stats should be integers`.\n   - If one or more stats are less than 1, the function should return `All stats should be no less than 1`.\n   - If one or more stats are more than 4, the function should return `All stats should be no more than 4`.\n   - If the sum of all stats is different than 7, the function should return `The character should start with 7 points`.\n1. If all values pass the verification, the function should return a string with four lines:\n   - the first line should contain the character name\n   - lines 2-4 should start with the stat abbreviation, `STR`, `INT` or `CHA` (in this order), then a space, and then a number of full dots (`●`) equal to the value of the stat, and a number of empty dots (`○`) to reach 10. Example: if the value of strength is 3 there must be 3 full dots followed by 7 empty dots. The dots are given in the editor.",
+          "fr": "1. Tu devrais avoir une fonction nommée `create_character`.\n1. La fonction devrait accepter, dans l'ordre, un nom de personnage suivi de trois stats : force, intelligence et charisme.\n1. Le nom du personnage devrait être validé :\n   - Si le nom n'est pas une chaîne, la fonction devrait renvoyer `The character name should be a string`.\n   - Si le nom est une chaîne vide, la fonction devrait renvoyer `The character should have a name`.\n   - Si le nom fait plus de 10 caractères, la fonction devrait renvoyer `The character name is too long`.\n   - Si le nom contient des espaces, la fonction devrait renvoyer `The character name should not contain spaces`.\n1. Les stats devraient aussi être validées :\n   - Si une ou plusieurs stats ne sont pas des entiers, la fonction devrait renvoyer `All stats should be integers`.\n   - Si une ou plusieurs stats sont inférieures à 1, la fonction devrait renvoyer `All stats should be no less than 1`.\n   - Si une ou plusieurs stats sont supérieures à 4, la fonction devrait renvoyer `All stats should be no more than 4`.\n   - Si la somme de toutes les stats est différente de 7, la fonction devrait renvoyer `The character should start with 7 points`.\n1. Si toutes les valeurs passent la vérification, la fonction devrait renvoyer une chaîne de quatre lignes :\n   - la première ligne devrait contenir le nom du personnage\n   - les lignes 2 à 4 devraient commencer par l'abréviation de la stat, `STR`, `INT` ou `CHA` (dans cet ordre), puis un espace, puis un nombre de points pleins (`●`) égal à la valeur de la stat, et un nombre de points vides (`○`) pour atteindre 10. Exemple : si la force vaut 3, il doit y avoir 3 points pleins suivis de 7 points vides. Les points sont donnés dans l'éditeur."
+        },
+        {
+          "en": "Here's the string that should be returned by `create_character('ren', 4, 2, 1)`:",
+          "fr": "Voici la chaîne que devrait renvoyer `create_character('ren', 4, 2, 1)` :"
+        },
+        {
+          "en": "NOTE: while `str` and `int` are common abbreviations for the stats, remember that those are reserved keywords in Python and should not be used as variable names.",
+          "fr": "NOTE : même si `str` et `int` sont des abréviations courantes pour les stats, rappelle-toi que ce sont des mots-clés réservés en Python et qu'ils ne doivent pas servir de noms de variables."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `create_character`.",
+          "fr": "Tu devrais avoir une fonction nommée `create_character`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that is **not** a string it should return `The character name should be a string`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui n'est **pas** une chaîne, elle devrait renvoyer `The character name should be a string`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that is a string it **should not** return `The character name should be a string`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui est une chaîne, elle **ne devrait pas** renvoyer `The character name should be a string`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that is an empty string, it should return `The character should have a name`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui est une chaîne vide, elle devrait renvoyer `The character should have a name`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that is **not** an empty string, it **should not** return `The character should have a name`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui n'est **pas** une chaîne vide, elle **ne devrait pas** renvoyer `The character should have a name`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that is longer than 10 characters it should return `The character name is too long`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument de plus de 10 caractères, elle devrait renvoyer `The character name is too long`."
+        },
+        {
+          "en": "The `create_character` function **should not** say that the character is too long when it's not longer than 10 characters.",
+          "fr": "La fonction `create_character` **ne devrait pas** dire que le nom est trop long quand il ne dépasse pas 10 caractères."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that contains a space it should return `The character name should not contain spaces`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui contient un espace, elle devrait renvoyer `The character name should not contain spaces`."
+        },
+        {
+          "en": "When `create_character` is called with a first argument that *does not* contain a space it *should not* return `The character name should not contain spaces`.",
+          "fr": "Quand `create_character` est appelée avec un premier argument qui *ne contient pas* d'espace, elle *ne devrait pas* renvoyer `The character name should not contain spaces`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third or fourth argument that is **not** an integer it should return `All stats should be integers`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième ou quatrième argument qui n'est **pas** un entier, elle devrait renvoyer `All stats should be integers`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third and fourth argument that are all integers it **should not** return `All stats should be integers`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième et quatrième argument qui sont tous des entiers, elle **ne devrait pas** renvoyer `All stats should be integers`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third or fourth argument that is lower than `1` it should return `All stats should be no less than 1`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième ou quatrième argument inférieur à `1`, elle devrait renvoyer `All stats should be no less than 1`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third and fourth argument that are all no less than `1` it **should not** return `All stats should be no less than 1`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième et quatrième argument tous au moins égaux à `1`, elle **ne devrait pas** renvoyer `All stats should be no less than 1`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third or fourth argument that is higher than `4` it should return `All stats should be no more than 4`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième ou quatrième argument supérieur à `4`, elle devrait renvoyer `All stats should be no more than 4`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third and fourth argument that are all no more than `4` it **should not** return `All stats should be no more than 4`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième et quatrième argument tous au plus égaux à `4`, elle **ne devrait pas** renvoyer `All stats should be no more than 4`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third or fourth argument that **do not** sum to `7` it should return `The character should start with 7 points`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième ou quatrième argument dont la somme **n'est pas** `7`, elle devrait renvoyer `The character should start with 7 points`."
+        },
+        {
+          "en": "When `create_character` is called with a second, third and fourth argument that sum to `7` it **should not** return `The character should start with 7 points`.",
+          "fr": "Quand `create_character` est appelée avec un deuxième, troisième et quatrième argument dont la somme est `7`, elle **ne devrait pas** renvoyer `The character should start with 7 points`."
+        },
+        {
+          "en": "`create_character('ren', 4, 2, 1)` should return `ren\\nSTR ●●●●○○○○○○\\nINT ●●○○○○○○○○\\nCHA ●○○○○○○○○○`.",
+          "fr": "`create_character('ren', 4, 2, 1)` devrait renvoyer `ren\\nSTR ●●●●○○○○○○\\nINT ●●○○○○○○○○\\nCHA ●○○○○○○○○○`."
+        },
+        {
+          "en": "When `create_character` is called with valid values it should output the character stats as required.",
+          "fr": "Quand `create_character` est appelée avec des valeurs valides, elle devrait afficher les stats du personnage comme demandé."
+        }
+      ]
+    }
+  ]
+}
