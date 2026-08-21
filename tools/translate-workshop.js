@@ -52,9 +52,15 @@ function proseMarkersForKind(kind) {
 }
 
 function usage() {
-  console.error(
-    'Usage: node tools/translate-workshop.js <extract|apply|verify> <workshop>'
-  );
+  console.error(`Usage:
+  node tools/translate-workshop.js extract <block> [--phrasebook] [--force]
+  node tools/translate-workshop.js apply <block>
+  node tools/translate-workshop.js verify <block>
+  node tools/translate-workshop.js ship <block>
+  node tools/translate-workshop.js extract-missing <superblock> [--dry-run] [--force]
+
+Claude rédige chaque champ fr. Ces commandes extraient, reconstruisent et
+vérifient : elles ne traduisent pas.`);
   process.exit(1);
 }
 
@@ -357,8 +363,26 @@ function validateTranslationFile(data, workshop) {
 
 function extract(workshop, options = {}) {
   const { sourceDir, translationPath } = getWorkshopPaths(workshop);
+  if (fs.existsSync(translationPath) && !options.force) {
+    let reviewed = false;
+    try {
+      reviewed = Boolean(JSON.parse(readText(translationPath)).reviewed);
+    } catch {
+      reviewed = false;
+    }
+    if (reviewed) {
+      throw new Error(
+        `${workshop}.json est déjà reviewed. Passe --force pour ré-extraire (cela écrase le travail relu).`
+      );
+    }
+  }
   // Par defaut AUCUNE phrase predefinie : Claude redige chaque champ `fr`.
   // Le phrasebook ne sert qu'en option explicite (`--phrasebook`).
+  if (options.usePhrasebook) {
+    console.warn(
+      'ATTENTION: --phrasebook pré-remplit des brouillons. Ce n’est PAS la traduction finale. Claude doit relire et réécrire chaque champ fr.'
+    );
+  }
   const phrasebook = options.usePhrasebook ? readPhrasebook() : [];
   const sourceFiles = sortByStep(
     fs
@@ -690,15 +714,81 @@ function verify(workshop) {
   console.log(`Verified ${sourceFiles.length} files for ${workshop}`);
 }
 
+function extractMissing(superblockKey, options = {}) {
+  const {
+    listBlocksInStructure,
+    readStructure,
+    countBlockFiles
+  } = require('./lib/curriculum-fr');
+  const structure = readStructure(`${superblockKey}.json`);
+  if (!structure) {
+    throw new Error(`Superblock introuvable: ${superblockKey}`);
+  }
+
+  const blocks = listBlocksInStructure(structure);
+  let extracted = 0;
+  let skipped = 0;
+
+  for (const block of blocks) {
+    const { translated, total } = countBlockFiles(block);
+    if (total > 0 && translated === total) {
+      skipped += 1;
+      continue;
+    }
+
+    const translationPath = path.join(translationsDir, `${block}.json`);
+    if (fs.existsSync(translationPath) && !options.force) {
+      console.log(`skip ${block}: JSON déjà présent`);
+      skipped += 1;
+      continue;
+    }
+
+    if (options.dryRun) {
+      console.log(`would extract ${block}`);
+      extracted += 1;
+      continue;
+    }
+
+    extract(block, options);
+    extracted += 1;
+  }
+
+  console.log(
+    `extract-missing ${superblockKey}: ${extracted} extraits, ${skipped} ignorés`
+  );
+}
+
+function ship(workshop) {
+  const { spawnSync } = require('child_process');
+  apply(workshop);
+  verify(workshop);
+  const result = spawnSync(
+    process.execPath,
+    [path.join(rootDir, 'tools', 'check-translation-quality.js'), workshop],
+    { cwd: rootDir, stdio: 'inherit' }
+  );
+  if (result.status !== 0) {
+    process.exit(result.status || 1);
+  }
+}
+
 function main() {
   const args = process.argv.slice(2);
   const usePhrasebook = args.includes('--phrasebook');
+  const force = args.includes('--force');
+  const dryRun = args.includes('--dry-run');
   const [command, workshop] = args.filter(arg => !arg.startsWith('--'));
   if (!command || !workshop) usage();
 
-  if (command === 'extract') return extract(workshop, { usePhrasebook });
+  if (command === 'extract') {
+    return extract(workshop, { usePhrasebook, force });
+  }
   if (command === 'apply') return apply(workshop);
   if (command === 'verify') return verify(workshop);
+  if (command === 'ship') return ship(workshop);
+  if (command === 'extract-missing') {
+    return extractMissing(workshop, { usePhrasebook, force, dryRun });
+  }
   usage();
 }
 

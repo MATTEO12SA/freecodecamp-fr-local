@@ -26,7 +26,7 @@ et Google Analytics ainsi que l'import Stripe.
 - La home pointe vers `/cours-fr`.
 - `/cours-fr` sépare les certifications « Disponibles maintenant » des « Traductions à venir ». Les premières ouvrent l'accordéon; les secondes sont informatives et non cliquables.
 - `/cours-fr` synchronise sa vue et la certification sélectionnée dans l'URL, donc Retour, partage et rechargement conservent le contexte.
-- `/catalog` liste les 7 certifications v9 (pas les micro-cours upstream). Section « Disponibles en français » en tête, badges `Français · %` / `FR partiel · %` / `À traduire`. `hasFrenchIntro(superBlock)` fournit la présence FR, puis `catalog-translation-status.ts` calcule `absent` / `partial` / `complete`.
+- `/catalog` liste les 7 certifications v9 (pas les micro-cours upstream). Section « Disponibles en français » en tête, badges `Français · %` / `FR partiel · %` / `À traduire`. `hasFrenchIntro(superBlock)` fournit la présence FR, puis `catalog-translation-status.ts` calcule `absent` / `partial` / `complete`. `complete` exige aussi `coverage.complete` (intros et titres, pas seulement les fichiers).
 - `/catalog` conserve ses filtres dans `q`, `level` et `topic`, affiche 12 cartes initiales, charge la suite sur demande.
 - `/dev-fr` : hub local. HTTP **live** (`fetch('/')`), traductions v9 depuis le preval (pas `report.json`). Snapshot optionnel pour git/drift/logs (`pnpm local:report`, aussi lancé par `dev.ps1` une fois UP). Bouton **Actualiser**. GraphiQL derrière « Afficher debug ».
 - `/dev-fr`, l’entrée menu **Outils** et `/___graphql` existent en développement et sont supprimés du build public.
@@ -99,7 +99,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont **100 % fichiers**. Prochaine traduction : **python-v9**.
+Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont complets au niveau fichiers. Un 100 % UI/status exige aussi les labels `intro.json` (arbre v9 + copies autonomes) et les titres. Prochaine traduction : **python-v9**.
 
 Regles de traduction :
 
@@ -133,7 +133,7 @@ Regles specifiques au pipeline :
 - Apres `apply`, `verify` reste obligatoire : si un bloc technique a bouge, regenerer proprement plutot que corriger les `.md` au hasard.
 - Pour les gros workshops, garder `.husky/pre-push` avec `xargs -n 50` afin d'eviter le bug Windows "ligne de commande trop longue".
 
-Suite en cours : JavaScript v9 (230/230), modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine priorité produit : Vague 5 (SRS, XP, PWA…) après fiabilité.
+Suite : JavaScript v9 a 230/230 fichiers. Ne plus écrire « 100 % terminé » sans `translation-status.js` (`COMPLET` = fichiers + intros + titres). Prochaine certification : python-v9. Vague 5 produit (SRS, XP, PWA…) après fiabilité.
 
 ## Scripts Gardes
 

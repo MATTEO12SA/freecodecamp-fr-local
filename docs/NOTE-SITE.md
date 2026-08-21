@@ -38,8 +38,9 @@ Juillet mesuré : 6,7 / 10. 18 août : 8,3 / 10.
 - Menu dropdown compact, clic extérieur, labels Carte / Parcours / Catalogue /
   Outils.
 - `/dev-fr` : HTTP live, traductions = preval, snapshot optionnel (git/drift).
-- RWD / JS / FEL / APIs : **100 % fichiers**. Assignments reviews EN corrigés ;
-  labels `/learn` JS+APIs en FR.
+- RWD / JS / FEL / APIs : complets au niveau **fichiers**. Le % affiché n'est 100
+  que si intros (y compris copies autonomes) et titres le sont aussi.
+  Assignments reviews EN corrigés ; labels `/learn` JS+APIs en FR.
 - Examen : session v2, Reprendre / Recommencer, filtre « Sans réponse ».
 - Watcher : `fs.watch` récursif + touch preval sur **couverture** v9.
 - `dev.ps1` écrit `local:report` une fois le port UP.

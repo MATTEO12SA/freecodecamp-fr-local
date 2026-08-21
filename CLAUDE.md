@@ -60,7 +60,8 @@ comportement.
 Statut des traductions (lecture seule, pas de serveur nécessaire) :
 
 ```powershell
-node tools/translation-status.js        # Avancement FR par cert v9 — niveau fichier (.md FR/EN) + blocs
+node tools/translation-status.js        # Fichiers + labels intro (toutes copies) + titres. 100 % seulement si tout est français.
+node tools/translation-status.js --leftover [superblock]
 node tools/check-translation-drift.js   # .md EN modifié après son équivalent FR (repli mtime hors git) — exit 1 en cas de drift
 node tools/check-external-links.js      # Échoue si un lien de navigation externe non allowlisté apparaît dans client/src
 ```
@@ -87,6 +88,9 @@ node tools/translate-workshop.js extract <block>   # Écrit tools/translations/<
 # Traduire le JSON manuellement, mettre reviewed: true, scanner les restes
 node tools/translate-workshop.js apply <block>     # Reconstruit le .md FR depuis les templates EN + JSON
 node tools/translate-workshop.js verify <block>    # Diff des blocs techniques EN/FR
+node tools/translate-workshop.js ship <block>      # apply + verify + check-translation-quality
+node tools/translate-workshop.js extract-missing <superblock>  # Extrait les blocs encore sans JSON / sans FR
+node tools/sync-intro-copies.js [--write] [superblock] # Copie le FR déjà rédigé vers les clés intro.json autonomes
 ```
 
 Le JSON a trois modes : `kind: "workshop"` (description/hints), `kind: "lecture"` (description/interactive/questions/answers/feedback pour les lectures JS ; les reviews `challengeType 31` ajoutent `# --assignment--`) et `kind: "quiz"` (`challengeType 8` : `#### --text--`/`--distractors--`/`--answer--`). Les distracteurs en code ou backticks et les separateurs `---` restent verbatim.
@@ -218,7 +222,10 @@ Les docs détaillés vivent dans `docs/`. `README.md`, `LICENSE.md`, ce `CLAUDE.
 
 ## État Des Traductions (à la dernière mise à jour — vérifier avec `node tools/translation-status.js`)
 
-- **JavaScript v9** : 230/230 blocs, 1311/1311 fichiers — modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+`100 %` signifie fichiers FR + labels `intro.json` (arbre v9 **et** copies autonomes) + titres de challenges. Un certificat à 100 % de fichiers avec des titres encore anglais s'affiche à 99 %, jamais 100 %.
+
+- **JavaScript v9 / RWD v9 / FEL v9 / APIs v9** : fichiers complets ; le % réel est celui de `translation-status.js` (`COMPLET` seulement si labels et titres le sont aussi).
+- Prochaine traduction : **python-v9**. Back End APIs **16/16**.
 
 ## Pièges
 

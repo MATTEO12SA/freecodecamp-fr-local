@@ -70,6 +70,24 @@ describe('getCatalogTranslationStatus', () => {
     ).toBe('complete');
   });
 
+  test('reports partial when files and the card intro are done but leftover labels remain', () => {
+    expect(
+      getCatalogTranslationStatus({
+        translatedFiles: 10,
+        totalFiles: 10,
+        frenchIntro: {
+          title: 'Cours traduit',
+          intro: ['Résumé traduit.']
+        },
+        englishIntro: {
+          title: 'Translated course',
+          intro: ['Translated summary.']
+        },
+        labelsComplete: false
+      })
+    ).toBe('partial');
+  });
+
   test('still accepts summary as a fallback key', () => {
     expect(
       getCatalogTranslationStatus({

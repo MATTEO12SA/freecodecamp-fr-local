@@ -21,15 +21,18 @@ export function getCatalogTranslationStatus({
   translatedFiles,
   totalFiles,
   frenchIntro,
-  englishIntro
+  englishIntro,
+  labelsComplete
 }: {
   translatedFiles: number;
   totalFiles: number;
   frenchIntro: CatalogIntro;
   englishIntro: CatalogIntro;
+  labelsComplete?: boolean;
 }): CatalogTranslationStatus {
   if (totalFiles <= 0 || translatedFiles <= 0) return 'absent';
   if (translatedFiles < totalFiles) return 'partial';
+  if (labelsComplete === false) return 'partial';
 
   const frenchTitle = normalize(frenchIntro.title);
   const englishTitle = normalize(englishIntro.title);

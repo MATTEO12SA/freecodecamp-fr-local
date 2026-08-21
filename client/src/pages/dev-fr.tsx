@@ -11,6 +11,7 @@ import {
   getFrenchFileCoverage,
   hasFrenchIntro
 } from '../utils/has-french-intro';
+import { getTranslationPercent } from '../utils/translation-percent';
 import { formatSnapshotAge } from '../utils/snapshot-age';
 
 import './dev-fr.css';
@@ -143,15 +144,12 @@ function QuickLink({
 function buildLiveCoverageRows(): TranslationRow[] {
   return LOCAL_CERTS.map(key => {
     const coverage = getFrenchFileCoverage(key);
-    const pctFiles =
-      coverage.total > 0
-        ? Math.round((coverage.translated / coverage.total) * 100)
-        : 0;
+    const pctFiles = getTranslationPercent(coverage);
     return {
       key,
       translated: hasFrenchIntro(key) ? 1 : 0,
       total: 1,
-      pct: hasFrenchIntro(key) ? 100 : 0,
+      pct: coverage.complete ? 100 : pctFiles,
       translatedFiles: coverage.translated,
       totalFiles: coverage.total,
       pctFiles

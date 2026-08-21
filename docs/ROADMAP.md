@@ -100,9 +100,8 @@ La CI du fork et les contrôles locaux restent deux sujets distincts :
   `check-translation-drift.js` contrôlent sans écrire la traduction.
 - Le catalogue combine présence FR automatique et statut
   `absent` / `partial` / `complete` par carte.
-- État curriculum : JavaScript v9 `230/230` (1311/1311 fichiers) — **100 % terminé**.
-  Prochaine cible : relire `lecture-understanding-aria-expanded-aria-live-and-common-aria-states`
-  (`reviewed: false` — ne pas appliquer).
+- État curriculum : JS/RWD/FEL/APIs complets en **fichiers**. `100 %` réel = fichiers + labels intro (toutes copies) + titres (`node tools/translation-status.js`).
+  Prochaine cible : **python-v9**.
 
 ## Principes Non Négociables
 

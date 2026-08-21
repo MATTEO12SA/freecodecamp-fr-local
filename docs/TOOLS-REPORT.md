@@ -32,11 +32,12 @@ Le reste sert surtout au developpement upstream freeCodeCamp ou a des workflows 
 | `tools/translate-challenges.py`                  | Ancien script Argos. **Désactivé** (exit 2) : ce n'est pas une source FR acceptable.                                                                                                       | Non. Utiliser `translate-workshop.js`.                                                                                        |
 | `tools/translations/`                            | Stocke les JSON relus des workshops et le `phrasebook`.                                                                                                                                    | Oui. Les JSON gardent une trace du travail et permettent de regenerer/verifier.                                               |
 | `tools/check-translation-quality.js`             | Controle un bloc traduit : chunks vides, restes anglais, placeholders `$n`, spans inline. `--superblock javascript-v9` ou `--all`. Inclus dans `pnpm local:check`.                         | Oui. A lancer aussi apres `verify` sur chaque bloc.                                                                           |
-| `tools/translation-status.js`                    | Avancement FR par superblock `*-v9.json` : barre + % au **niveau fichier** (.md FR/EN, vraie completude) + compte de blocs. Lecture seule. S'appuie sur `tools/lib/curriculum-fr.js`.      | Oui. Remplace les comptages PowerShell ad-hoc tapes a chaque session.                                                         |
+| `tools/translation-status.js`                    | Avancement FR par superblock `*-v9.json` : fichiers + labels intro (arbre v9 et copies autonomes) + titres. `100 %` / `COMPLET` seulement si tout est français. `--leftover` liste le reste EN. | Oui. Ne plus lire un 100 % fichiers comme une cert terminée.                                                                 |
+| `tools/sync-intro-copies.js`                     | Recopie le français déjà rédigé dans l'arbre v9 vers les clés `intro.json` autonomes encore anglaises. Dry-run par défaut ; `--write` pour appliquer. Ne traduit rien.                         | Oui. Évite le piège des deux copies d'`intro.json`.                                                                          |
 | `tools/check-translation-drift.js`               | Compare le dernier commit git de chaque `.md` EN vs son equivalent FR (repli mtime disque hors git) et signale les FR potentiellement obsoletes. Exit 1 si drift. Lib `curriculum-fr.js`.  | Oui. Controle qualite anti-drift, utilisable en pre-commit.                                                                   |
 | `tools/local-dev-report.js`                      | Genere le snapshot JSON optionnel de `/dev-fr` : serveur, logs, traduction (bloc + fichier), drift, git. S'appuie sur `tools/lib/curriculum-fr.js`.                                        | Oui. Git/drift/logs. La table traductions de `/dev-fr` lit le preval, pas ce JSON. `dev.ps1` le regenere une fois le port UP. |
 | `tools/local-check.js`                           | Lance les checks locaux et affiche `READY` ou `BLOCKED`. Inclut typecheck client/shared, liens externes et régression Axe ; `--full` ajoute lints, parcours, réseau/console et Axe strict. | Oui. Garde locale principale avant livraison.                                                                                 |
-| `tools/lib/curriculum-fr.js`                     | Source unique du scan FR : chemins, blocs traduits, completude fichier, structure superblock. Module CommonJS pur.                                                                         | Oui. Importee par translation-status, check-translation-drift et local-dev-report.                                            |
+| `tools/lib/curriculum-fr.js`                     | Source unique du scan FR : chemins, blocs, labels intro, titres, % honnête. `100 %` n'est plus un comptage de fichiers.                                                                      | Oui. Importee par translation-status, has-french-intro, check-translation-drift et local-dev-report.                          |
 | `tools/check-external-links.js`                  | Garde anti-regression : echoue si un lien de navigation externe non allowliste apparait dans `client/src`. Baseline `tools/external-links-allowlist.json` (`--update`).                    | Oui. Controle les ancres ; `local-network-test.mjs` contrôle les requêtes.                                                    |
 | `axe-test.mjs` (racine)                          | Audit a11y strict de 10 pages/états, clair/sombre et examen dynamique. Compte demandé/chargé/scanné/ignoré/échoué et échoue si le scan est incomplet.                                      | Oui. Régression dédiée dans `axe-test-regression.mjs`.                                                                        |
 | `audit-regression-test.mjs` (racine)             | Parcours navigateur des états URL, examen, catalogue, chrome FR, footer, mobile et identité locale.                                                                                        | Oui. Produit un rapport JSON avec `--output`.                                                                                 |
@@ -66,6 +67,8 @@ Le reste sert surtout au developpement upstream freeCodeCamp ou a des workflows 
 node tools/translate-workshop.js extract <block>
 node tools/translate-workshop.js apply <block>
 node tools/translate-workshop.js verify <block>
+node tools/translate-workshop.js ship <block>
+node tools/translate-workshop.js extract-missing <superblock>
 ```
 
 Il protege la technique, mais il ne traduit pas a notre place. Le JSON doit etre relu, corrige et marque `reviewed: true`.
@@ -82,7 +85,9 @@ technique intacts.
 Deux scripts Node autonomes, en lecture seule, evitent de retaper des commandes a chaque session :
 
 ```powershell
-node tools/translation-status.js        # avancement FR par superblock v9 (barre + %)
+node tools/translation-status.js        # 100 % = fichiers + intros + titres
+node tools/translation-status.js --leftover
+node tools/sync-intro-copies.js         # copie le FR déjà rédigé vers les clés autonomes
 node tools/check-translation-drift.js   # .md EN modifie apres son FR -> a relire
 pnpm local:report                       # snapshot /dev-fr
 pnpm local:check                        # verification locale rapide

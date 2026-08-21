@@ -127,12 +127,13 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : RWD/JS/FEL/APIs **100 % fichiers**. Prochaine traduction : **python-v9**. Back End APIs **16/16**. FEL **62/62**.
+Etat actuel : RWD/JS/FEL/APIs complets au niveau **fichiers**. `100 %` affiché n'est vrai que si labels `intro.json` (toutes copies) et titres le sont aussi — `node tools/translation-status.js`. Prochaine traduction : **python-v9**. Back End APIs **16/16**. FEL **62/62**.
 
 Workflow rapide mais relu manuellement :
 
 ```powershell
 node tools/translate-workshop.js extract <workshop>
+# ou : node tools/translate-workshop.js extract-missing python-v9
 ```
 
 Traduis et relis `tools/translations/<workshop>.json`, puis applique :
@@ -140,7 +141,8 @@ Traduis et relis `tools/translations/<workshop>.json`, puis applique :
 ```powershell
 node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
-pnpm -C curriculum lint-challenges --superblock javascript-v9
+# ou : node tools/translate-workshop.js ship <workshop>
+pnpm -C curriculum lint-challenges --superblock python-v9
 ```
 
 Le script ne traduit pas a ta place : il protege le code, les tests, les seeds et les marqueurs, puis reconstruit les fichiers FR. Apres `apply`, `latest.log` doit montrer `watcher.added`, `challenge.integrating`, `challenge.integrated` et, si le bloc etait nouveau, `watcher.touched`. Pour les lectures JS, le JSON sort en `kind: "lecture"` et extrait aussi `description/interactive/questions/answers/feedback`.

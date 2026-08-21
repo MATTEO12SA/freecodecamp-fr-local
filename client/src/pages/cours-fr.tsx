@@ -18,6 +18,7 @@ import {
   getFrenchFileCoverage,
   hasFrenchIntro
 } from '../utils/has-french-intro';
+import { getTranslationPercent } from '../utils/translation-percent';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
 import { groupCertificationsByFrenchAvailability } from '../utils/french-certification-groups';
 import {
@@ -262,10 +263,7 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
               <div className='cours-fr-grid'>
                 {certificationGroups.available.map(cert => {
                   const coverage = getFrenchFileCoverage(cert.key);
-                  const pct =
-                    coverage.total > 0
-                      ? Math.round((coverage.translated / coverage.total) * 100)
-                      : 0;
+                  const pct = getTranslationPercent(coverage);
                   return (
                     <Link
                       key={cert.key}
@@ -273,7 +271,7 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                       to={getCoursFrCertificationHref(cert.key)}
                     >
                       <span className='cours-fr-card-kind'>
-                        Certification · {pct} % fichiers
+                        Certification · {pct} %
                       </span>
                       <span className='cours-fr-folder-label'>
                         {cert.title}
@@ -297,12 +295,7 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   <div className='cours-fr-grid'>
                     {certificationGroups.upcoming.map(cert => {
                       const coverage = getFrenchFileCoverage(cert.key);
-                      const pct =
-                        coverage.total > 0
-                          ? Math.round(
-                              (coverage.translated / coverage.total) * 100
-                            )
-                          : 0;
+                      const pct = getTranslationPercent(coverage);
                       return (
                         <article
                           key={cert.key}
