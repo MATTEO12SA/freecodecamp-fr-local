@@ -11,7 +11,7 @@ racine pour le demarrage.
 - [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md) : etat exact des traductions, prochaine cible, pieges connus.
 - [OPTIMIZE-TRANSLATIONS.md](OPTIMIZE-TRANSLATIONS.md) : retour d'experience et workflow qualite des workshops.
 - [TOOLS-REPORT.md](TOOLS-REPORT.md) : role de chaque script sous `tools/`.
-- [NOTE-SITE.md](NOTE-SITE.md) : note courante du site (8,3/10) et écart vs l'audit de juillet.
+- [NOTE-SITE.md](NOTE-SITE.md) : note courante du site (8,5/10, 21 août 2026) et écart vs l'audit de juillet.
 - [ROADMAP.md](ROADMAP.md) : priorites correctives issues du dernier audit, puis vagues produit.
 - [AUDIT-FIX-TRACKER.md](AUDIT-FIX-TRACKER.md) : statut, cause, tests et preuve des 29 constats.
 - [AUDIT-FIX-REPORT.md](AUDIT-FIX-REPORT.md) : synthese finale de la campagne de correction.
@@ -44,7 +44,7 @@ pnpm local:check        # HTTP + drift + qualité FR JS v9 + tests catalogue + l
 pnpm local:check:full   # + lint client/racine + parcours + reseau/console + Axe strict
 ```
 
-Ces commandes generent aussi le snapshot utilise par `/dev-fr`.
+Ces commandes generent aussi le snapshot optionnel (git/drift) de `/dev-fr`. La table traductions et le HTTP de la page sont live.
 
 `axe-test.mjs` affiche les compteurs demandés/chargés/scannés/ignorés/échoués.
 Le mode strict échoue dès qu'une page n'est pas réellement scannée ;
@@ -82,10 +82,10 @@ confirment que Gatsby voit les fichiers `.md` FR.
 ## Catalogue Et Pages Locales
 
 - `/cours-fr` : certifications FR, progression locale, acces examens.
-- `/catalog` : catalogue global, recherche, filtres niveau/theme, statut FR par carte, progression locale, chargement progressif et bouton continuer.
-- `/learn` : parcours complet local.
-- `/dev-fr` : hub local de developpement (serveur, logs, traduction, drift, git, liens, progression navigateur). Le snapshot reste statique jusqu'a `pnpm local:report`.
+- `/catalog` : 7 certs v9, section FR en tête, badges de couverture, recherche/filtres, progression locale.
+- `/learn` : carte complète du curriculum local (beaucoup de blocs encore EN hors des 4 certs 100 %).
+- `/dev-fr` : hub local. HTTP live, traductions v9 depuis le preval, snapshot optionnel pour git/drift. Menu : **Outils** (develop seulement).
 - `/exam-fr?cert=responsive-web-design-v9` : examen local FR, accessible depuis `/cours-fr` et `/dev-fr`.
 
-Le menu principal expose `/learn`, `/cours-fr`, `/catalog`, `/dev-fr`.
+Le menu principal expose Carte `/learn`, Parcours `/cours-fr`, Catalogue `/catalog`, Outils `/dev-fr`.
 L'entrée `/dev-fr` est conditionnée au mode développement.

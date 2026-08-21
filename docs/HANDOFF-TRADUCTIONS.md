@@ -6,7 +6,7 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 - **Repo local** : racine du depot `freecodecamp-fr-local`
 - **Remote** : `https://github.com/MATTEO12SA/freecodecamp-fr-local.git` (alias `standalone`, branche `main`)
-- **Objectif** : traduire le superblock `javascript-v9` du curriculum freeCodeCamp en français.
+- **Objectif** : curriculum v9 en français, local-first. JS/RWD/FEL/APIs sont **100 % fichiers**. Prochaine cert : `python-v9` (puis `relational-databases-v9`).
 - **Source EN** : `curriculum/challenges/english/blocks/<bloc>/<id>.md`
 - **Cible FR** : `curriculum/i18n-curriculum/curriculum/challenges/french/blocks/<bloc>/<id>.md` (même `id`, même nom de fichier)
 
@@ -14,7 +14,21 @@ Ce fichier contient toutes les informations nécessaires pour continuer le trava
 
 ### JavaScript v9 — TERMINÉ (230/230)
 
-État actuel : JS v9 **230/230**, RWD v9 **158/158**, Back End APIs v9 **16/16**. Front-end libraries v9 **62/62** (532/532) — TERMINÉ. Prochaine cible : prochaine cert v9 non traduite (ex. python-v9 / relational-databases-v9).
+État actuel (fichiers) :
+
+| Cert | Blocs | Fichiers FR/EN |
+|---|---:|---|
+| RWD v9 | 158/158 | 1553/1553 |
+| JS v9 | 230/230 | 1311/1311 |
+| FEL v9 | 62/62 | 532/532 |
+| APIs v9 | 16/16 | 48/48 |
+| Python v9 | 0/78 | 0/527 |
+| Relational DB v9 | 0/34 | 0/64 |
+| Full-stack v9 | 0/1 | 0/1 |
+
+Prochaine cible de traduction : **`python-v9`**. Python / SQL / full-stack à 0 % n’est pas un bug.
+
+Qualité (2026-08-21) : 15 `# --assignment--` EN sur reviews JS/FEL/APIs corrigés ; labels `/learn` JS+APIs traduits ; fausses notes « Coming 2026 » retirées sur les modules déjà livrés. RWD a encore des ERREUR de drift de chunks (`check-translation-quality`) — ne pas réécrire les workshops sans preuve. Chrome `translations.json` encore partiellement EN (hors scope immédiat).
 
 Note pièges (vus module 5 / module 10) : si une description ou un hint a un chunk de prose vide entre deux blocs de code (ex. cargo-manifest-validator, ou trailing space après une fence dans `workshop-planets-tablist`), l'extracteur crée un chunk `{en:"",fr:""}` — `apply` exige un fr non vide au sens `.trim()`. Fix : **supprimer** ce chunk vide du JSON (`replaceChunks` ignore déjà les prose vides à l'origine, donc les comptes restent alignés). Ne pas tenter `fr: " "` : `ensureAllTranslationsPresent` le refuse aussi via `.trim()`.
 
@@ -225,7 +239,7 @@ Pour les modules non-workshop, le workflow manuel reste possible, mais les works
 
 - `/cours-fr` — page des certifications françaises avec badge auto "🚧 Traduction à venir" sur celles sans contenu FR.
 - `/learn` — parcours complet local.
-- `/catalog` — catalogue global avec filtres ; `Theme > Francais` filtre les superblocks qui possedent au moins un `.md` FR, sans garantir une carte entierement traduite.
+- `/catalog` — 7 certs v9, section FR en tête, badges de couverture ; le thème Français filtre les certs avec au moins un `.md` FR.
 - `/exam-fr?cert=<superblock>` — examen local 100% FR (80 questions tirées des quizzes traduits).
 
 ### Statut serveur
@@ -263,7 +277,7 @@ node tools/translate-workshop.js apply <workshop>
 node tools/translate-workshop.js verify <workshop>
 ```
 
-Suite en cours : JavaScript v9 (230/230 blocs, 1311/1311 fichiers). Modules 1–12 + form-validation **100 %**. Pipeline gere lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+Suite : RWD/JS/FEL/APIs **100 % fichiers**. Pipeline gère lectures, workshops/labs, reviews (mode lecture + `# --assignment--`) et quizzes (`kind: "quiz"`). Prochaine traduction : **python-v9**.
 
 ### Lister ce qui manque dans un module
 
@@ -297,7 +311,7 @@ compteurs sont affichés dans la sortie et protégés par
 
 - [tools/translation-status.js](../tools/translation-status.js) : pour chaque `*-v9.json`, compte les blocs FR existants / total et dessine une barre ASCII. JS = 230/230.
 - [tools/check-translation-drift.js](../tools/check-translation-drift.js) : compare la date du dernier commit git de chaque `.md` EN vs son équivalent FR. Si l'EN a bougé après la trad → drift potentiel à relire. Exit 0 si aucun drift, 1 sinon (utilisable en pré-commit). État actuel : 0 drift sur 2180 fichiers.
-- [tools/local-dev-report.js](../tools/local-dev-report.js) : genere le snapshot JSON de `/dev-fr` avec serveur, logs, traduction, drift et git.
+- [tools/local-dev-report.js](../tools/local-dev-report.js) : snapshot optionnel de `/dev-fr` (git/drift/logs). La table traductions et le HTTP sont live.
 - [tools/local-check.js](../tools/local-check.js) : lance les checks locaux et affiche `READY` ou `BLOCKED`.
 - [tools/translate-workshop.js](../tools/translate-workshop.js) supporte maintenant `kind: "workshop"` et `kind: "lecture"` pour extraire/verifier les lectures JavaScript v9 (`description`, `interactive`, `questions`, `answers`, `feedback`).
 
@@ -320,12 +334,14 @@ Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le 
 
 ---
 
+**Dernière session (2026-08-21, UX fork + qualité 4 certs + arrêt local)** :
+Catalogue = 7 certs v9 (plus les micro-cours upstream) + badges FR + section « Disponibles en français ». Menu dropdown ≤ 18rem, clic extérieur, labels Carte / Parcours / Catalogue / Outils. `/dev-fr` : HTTP live (`fetch('/')`), table traductions = preval (plus le snapshot), GraphiQL derrière Debug. `/cours-fr` et `/catalog` sans `Col` offset. Watcher touche `has-french-intro.ts` aussi quand la couverture v9 change. `dev.ps1` écrit `local:report` une fois le port UP. 15 assignments EN → FR ; `intro.json` JS/APIs. Serveur local arrêté proprement (port 8000 DOWN). Prochaine traduction : `python-v9`.
+
 **Dernière session (2026-08-20, audio/vidéo + onboarding)** :
 JS v9 à 230/230 (1311/1311). Module audio/vidéo + lab drum-machine. Site : onboarding
 premier lancement, export/import profil (Dev FR), Continuer, confettis a11y.
 Piège music-player step-43 : fence EN indentée ` ```js` — préserver l'espace
-devant la fence FR. Prochaine cible : `lecture-working-with-maps-and-sets.json`
-(`reviewed: false`).
+devant la fence FR. *(Cible maps-and-sets depuis livrée ; JS v9 est 230/230.)*
 
 **Dernière session (2026-08-20, dates module)** :
 JS v9 à 230/230 (1311/1311). Module dates traduit. Prochaine cible : `lecture-working-with-audio-and-video.json` (`reviewed: false`).

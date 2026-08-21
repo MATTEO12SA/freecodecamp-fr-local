@@ -6,9 +6,13 @@ Commit audité : `8fa33f421b` sur `main`
 Tracker : [`AUDIT-FIX-TRACKER.md`](AUDIT-FIX-TRACKER.md)  
 Preuves : `screenshots/audit-fix-2026-07-26/`
 
-Ce rapport décrit l'état du workspace après correction. L'audit source reste un
-instantané historique de l'état antérieur. Conformément à la mission, aucun
-commit et aucun push n'ont été créés pendant cette campagne.
+Ce rapport décrit l'état du workspace après correction **au 26 juillet 2026**.
+L'audit source reste un instantané historique. **Mise à jour 21 août 2026** :
+catalogue v9, `/dev-fr` live, menu compact — voir [NOTE-SITE.md](NOTE-SITE.md)
+et [HANDOFF-TRADUCTIONS.md](HANDOFF-TRADUCTIONS.md).
+
+Conformément à la mission d'origine, aucun commit n'avait été créé pendant
+cette campagne de juillet.
 
 ## Résumé
 

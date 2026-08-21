@@ -26,12 +26,12 @@ et Google Analytics ainsi que l'import Stripe.
 - La home pointe vers `/cours-fr`.
 - `/cours-fr` sépare les certifications « Disponibles maintenant » des « Traductions à venir ». Les premières ouvrent l'accordéon; les secondes sont informatives et non cliquables.
 - `/cours-fr` synchronise sa vue et la certification sélectionnée dans l'URL, donc Retour, partage et rechargement conservent le contexte.
-- `/catalog` ajoute un theme synthetique `Francais`, une recherche texte, la progression locale et un bouton `Continuer`. `hasFrenchIntro(superBlock)` fournit la présence FR automatique, puis `catalog-translation-status.ts` calcule un état `absent`, `partial` ou `complete` par carte à partir des intros et fichiers réels.
-- `/catalog` conserve ses filtres dans `q`, `level` et `topic`, affiche 12 cartes initiales, charge la suite sur demande et utilise trois colonnes à 1440 px.
-- `/dev-fr` affiche le hub dev local : etat serveur, derniers logs, progression traduction, drift EN->FR, git, liens rapides et progression navigateur. Il lit `client/static/local-dev/report.json`, genere par `pnpm local:report`. Le bouton « Relire le snapshot » refetch ce fichier sans le regenerer.
-- `/dev-fr`, son entrée de menu et `/___graphql` existent en développement et sont supprimés du build public.
+- `/catalog` liste les 7 certifications v9 (pas les micro-cours upstream). Section « Disponibles en français » en tête, badges `Français · %` / `FR partiel · %` / `À traduire`. `hasFrenchIntro(superBlock)` fournit la présence FR, puis `catalog-translation-status.ts` calcule `absent` / `partial` / `complete`.
+- `/catalog` conserve ses filtres dans `q`, `level` et `topic`, affiche 12 cartes initiales, charge la suite sur demande.
+- `/dev-fr` : hub local. HTTP **live** (`fetch('/')`), traductions v9 depuis le preval (pas `report.json`). Snapshot optionnel pour git/drift/logs (`pnpm local:report`, aussi lancé par `dev.ps1` une fois UP). Bouton **Actualiser**. GraphiQL derrière « Afficher debug ».
+- `/dev-fr`, l’entrée menu **Outils** et `/___graphql` existent en développement et sont supprimés du build public.
 - `/exam-fr?cert=<superblock>` est une page d'examen locale 100% francaise (voir section dediee).
-- Le menu principal expose `/learn`, `/cours-fr`, `/catalog` et `/dev-fr`. L'examen reste accessible depuis `/cours-fr` et `/dev-fr`, pas depuis le menu.
+- Le menu principal expose **Carte** (`/learn`), **Parcours** (`/cours-fr`), **Catalogue** (`/catalog`) et **Outils** (`/dev-fr`, develop seulement). L'examen reste accessible depuis `/cours-fr` et `/dev-fr`.
 - Les contenus non compatibles avec le mode local sont filtres du dossier FR, notamment daily challenge, CodeAlly, Ona, Codespaces, MS Trophy et projets qui exigent des services externes. Note : `challengeTypes.exam` et `challengeTypes.examDownload` sont **autorises** maintenant pour que l'examen apparaisse dans l'accordeon.
 - Le layout principal neutralise les ancres externes restantes au rendu : elles ne gardent pas de `href`, pas de `target`, et ne peuvent pas sortir du site local. Le mode local neutralise également les SDK analytics/paiement avant import.
 
@@ -99,9 +99,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9 est entierement traduit (158/158 blocs). La priorite actuelle est JavaScript v9.
-
-JavaScript v9 est en cours : 149 blocs FR sur 230 (1311/1311 fichiers) — modules 1-12 **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont **100 % fichiers**. Prochaine traduction : **python-v9**.
 
 Regles de traduction :
 

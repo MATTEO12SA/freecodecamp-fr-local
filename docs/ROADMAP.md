@@ -212,8 +212,8 @@ sont couverts par tests unitaires et navigateur.
   erreurs/non-réponses.
 - `AUD-16` : synchroniser recherche et filtres du catalogue avec les paramètres
   `q`, `level` et `topic`.
-- `AUD-23` : remplacer le faux « Rafraîchir » par « Relire le snapshot », afficher
-  l'âge et la commande qui régénère réellement les données.
+- `AUD-23` : Vague 3 = « Relire le snapshot » + âge. **21 août 2026** : HTTP live,
+  table traductions depuis le preval, bouton **Actualiser**, snapshot optionnel.
 
 La logique pure extraite pour cette vague doit recevoir des tests unitaires :
 session, tirage, score, migration du stockage, historique et progression.

@@ -34,7 +34,7 @@ Le reste sert surtout au developpement upstream freeCodeCamp ou a des workflows 
 | `tools/check-translation-quality.js`             | Controle un bloc traduit : chunks vides, restes anglais, placeholders `$n`, spans inline. `--superblock javascript-v9` ou `--all`. Inclus dans `pnpm local:check`.                         | Oui. A lancer aussi apres `verify` sur chaque bloc.                                |
 | `tools/translation-status.js`                    | Avancement FR par superblock `*-v9.json` : barre + % au **niveau fichier** (.md FR/EN, vraie completude) + compte de blocs. Lecture seule. S'appuie sur `tools/lib/curriculum-fr.js`.      | Oui. Remplace les comptages PowerShell ad-hoc tapes a chaque session.              |
 | `tools/check-translation-drift.js`               | Compare le dernier commit git de chaque `.md` EN vs son equivalent FR (repli mtime disque hors git) et signale les FR potentiellement obsoletes. Exit 1 si drift. Lib `curriculum-fr.js`.  | Oui. Controle qualite anti-drift, utilisable en pre-commit.                        |
-| `tools/local-dev-report.js`                      | Genere le snapshot JSON de `/dev-fr` : serveur, logs, traduction (bloc + fichier), drift, git. S'appuie sur `tools/lib/curriculum-fr.js`.                                                  | Oui. Snapshot statique : le bouton navigateur ne le regenere pas.                  |
+| `tools/local-dev-report.js`                      | Genere le snapshot JSON optionnel de `/dev-fr` : serveur, logs, traduction (bloc + fichier), drift, git. S'appuie sur `tools/lib/curriculum-fr.js`.                                                  | Oui. Git/drift/logs. La table traductions de `/dev-fr` lit le preval, pas ce JSON. `dev.ps1` le regenere une fois le port UP. |
 | `tools/local-check.js`                           | Lance les checks locaux et affiche `READY` ou `BLOCKED`. Inclut typecheck client/shared, liens externes et régression Axe ; `--full` ajoute lints, parcours, réseau/console et Axe strict. | Oui. Garde locale principale avant livraison.                                      |
 | `tools/lib/curriculum-fr.js`                     | Source unique du scan FR : chemins, blocs traduits, completude fichier, structure superblock. Module CommonJS pur.                                                                         | Oui. Importee par translation-status, check-translation-drift et local-dev-report. |
 | `tools/check-external-links.js`                  | Garde anti-regression : echoue si un lien de navigation externe non allowliste apparait dans `client/src`. Baseline `tools/external-links-allowlist.json` (`--update`).                    | Oui. Controle les ancres ; `local-network-test.mjs` contrôle les requêtes.         |
@@ -91,10 +91,9 @@ pnpm local:check:full                   # verification locale longue
 
 `check-translation-drift.js` sort en code 1 s'il detecte un drift, donc il peut servir de garde-fou avant un commit. Aucun des deux n'ecrit quoi que ce soit ni n'a besoin du serveur.
 
-`local-dev-report.js` ecrit uniquement dans `client/static/local-dev/report.json`, ignore par git. `/dev-fr` lit ce fichier dans le navigateur.
+`local-dev-report.js` ecrit uniquement dans `client/static/local-dev/report.json`, ignore par git. `/dev-fr` s’en sert pour git/drift/logs. La table **Traductions v9** et le statut HTTP viennent du preval / `fetch('/')`.
 
-Le bouton « Relire le snapshot » de `/dev-fr` fait seulement un nouveau `fetch`
-de ce JSON. Pour actualiser son contenu, relancer `pnpm local:report`. Le lecteur
+Le bouton **Actualiser** relit le live + le snapshot s’il existe. Pour régénérer git/drift : `pnpm local:report` (aussi lancé par `dev.ps1` une fois UP). Le lecteur
 d'historique accepte le format versionné `{ version, byCert }`, l'ancien tableau
 et les données corrompues.
 

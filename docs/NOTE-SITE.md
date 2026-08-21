@@ -1,61 +1,65 @@
 # Note du site — freeCodeCamp FR Local
 
-Photo du 18 août 2026, après les correctifs d'audit, d'UI et de captures.
-Ce fichier est l'état **courant**. `AUDIT_COMPLET_APPLICATION.md` reste la
-photo navigateur du 26 juillet 2026 (notes plus basses, 29 constats).
+Photo du 21 août 2026, après UX fork FR, qualité des 4 certs 100 %, et arrêt
+propre du serveur local. `AUDIT_COMPLET_APPLICATION.md` reste la photo
+navigateur du 26 juillet 2026.
 
 La vue visuelle vit aussi dans le canvas d'audit du workspace Cursor
 (`audit-complet-fork.canvas.tsx`).
 
 ## Note globale
 
-**8,3 / 10** (estimation code + parcours Playwright, pas un nouveau Lighthouse).
+**8,5 / 10** (estimation code + parcours, pas un nouveau Lighthouse).
 
-Juillet mesuré : 6,7 / 10. Août matin (relecture code) : 7,8 / 10.
+Juillet mesuré : 6,7 / 10. 18 août : 8,3 / 10.
 
 ## Notes par domaine (/10)
 
-| Domaine        | 26 juillet (mesuré) | 18 août soir |
-| -------------- | ------------------- | ------------ |
-| Fonctionnement | 7,8                 | 8,6          |
-| Stabilité      | 7,6                 | 8,3          |
-| Design         | 6,8                 | 7,8          |
-| Cohérence      | 6,4                 | 8,2          |
-| UX             | 6,9                 | 8,5          |
-| Responsive     | 8,4                 | 8,6          |
-| A11y           | 5,8                 | 7,7          |
-| Perf           | 5,7                 | 7,1          |
-| Textes         | 6,1                 | 7,6          |
-| Confiance      | 5,8                 | 8,4          |
+| Domaine        | 26 juillet (mesuré) | 21 août |
+| -------------- | ------------------- | ------- |
+| Fonctionnement | 7,8                 | 8,7     |
+| Stabilité      | 7,6                 | 8,4     |
+| Design         | 6,8                 | 8,0     |
+| Cohérence      | 6,4                 | 8,4     |
+| UX             | 6,9                 | 8,6     |
+| Responsive     | 8,4                 | 8,5     |
+| A11y           | 5,8                 | 7,7     |
+| Perf           | 5,7                 | 7,1     |
+| Textes         | 6,1                 | 8,2     |
+| Confiance      | 5,8                 | 8,5     |
 
 ## Ce qui tient la note
 
 - Mode local : pas de compte, pas d'API obligatoire, pas de GTM/GA/Stripe.
-- 27/29 constats de juillet confirmés dans le code ; AUD-29 non reproduit en
-  production ; AUD-22 encore partiel (warnings Monaco/vidéo).
-- Examen : session v2 (seed, index, réponses — **pas** les solutions),
-  Reprendre / Recommencer, filtre « Sans réponse », liste limitée aux certs
-  qui ont des quiz FR.
-- Catalogue : statut FR d'après `intro` + couverture fichiers, pas un booléen.
-- Qualité FR JS v9 dans `pnpm local:check`. Argos (`translate-challenges.py`)
-  désactivé.
-- Watcher Windows : `fs.watch` récursif par défaut (`FCC_WATCHFILE=1` pour
-  l'ancien poller).
+- 28/29 constats de juillet corrigés ; AUD-29 non reproduit en production ;
+  AUD-22 encore partiel (warnings Monaco/vidéo possibles).
+- Catalogue = **7 certs v9** + badges FR + section française. Plus de liste
+  vide « Français ».
+- Menu dropdown compact, clic extérieur, labels Carte / Parcours / Catalogue /
+  Outils.
+- `/dev-fr` : HTTP live, traductions = preval, snapshot optionnel (git/drift).
+- RWD / JS / FEL / APIs : **100 % fichiers**. Assignments reviews EN corrigés ;
+  labels `/learn` JS+APIs en FR.
+- Examen : session v2, Reprendre / Recommencer, filtre « Sans réponse ».
+- Watcher : `fs.watch` récursif + touch preval sur **couverture** v9.
+- `dev.ps1` écrit `local:report` une fois le port UP.
 
 ## Ce qui empêche 9+
 
-- Curriculum JS v9 **230/230** (100 %).
-- Examen honor-system, HTML des quizzes rendu tel quel.
-- GitHub Actions ne lance pas qualité FR, tsc client, ni Axe.
-- JavaScript v9 **100 %**. Vague 5 partielle : Continuer, onboarding, export/import, confettis faits.
-- Confettis de complétion respectent `prefers-reduced-motion`.
-- Export/import profil + Continuer + onboarding + confettis faits. Restent Vague 5 : SRS, XP, streaks, badges, PWA.
+- Python / SQL / full-stack encore 0 % (prochaine cible : `python-v9`).
+- Chrome `translations.json` encore partiellement EN (`Reset this lesson?`,
+  footer legal, Socrates).
+- `/exam-fr` et `/learn` ont encore `Col mdOffset`.
+- RWD : drift de chunks (`check-translation-quality` ERREUR) non retouché.
+- Examen honor-system. Vague 5 restante : SRS, XP, streaks, badges, PWA.
 
-## Relancer les preuves
+## Relancer
 
 ```powershell
 .\dev.ps1
-pnpm -C client test exam-certifications catalog exam-session exam-history
-pnpm test:audit-regression
-pnpm screenshots
+pnpm -C client exec vitest run src/pages/catalog.test.tsx src/pages/dev-fr.test.tsx
+pnpm local:check
 ```
+
+Arrêt propre : tuer le process LISTENING sur le port 8000 (ou Ctrl+C dans le
+terminal `.\dev.ps1`). `dev-logs/status.json` doit passer à `DOWN`.

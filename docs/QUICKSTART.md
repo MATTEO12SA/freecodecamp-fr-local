@@ -104,18 +104,9 @@ http://localhost:8000/exam-fr?cert=responsive-web-design-v9
 
 `/cours-fr` affiche les certifications. Les certs sans contenu FR portent automatiquement un badge `🚧 Traduction a venir` calcule par `client/src/utils/has-french-intro.ts` (preval qui scanne le filesystem au build). En ouvrant une certification, une barre « X/Y challenges termines » et les coches ✓ refletent la progression sauvegardee dans `localStorage`.
 
-Dans `/catalog`, le menu `Theme > Francais` filtre automatiquement les modules
-dont au moins un challenge `.md` FR existe. Chaque carte calcule ensuite son
-statut `absent`, `partiel` ou `complet` à partir des fichiers de challenges et
-des intros FR réelles. Tu peux combiner ce thème avec
-`Niveau : Debutant/Intermediaire/Avance` et la recherche texte. Le catalogue
-affiche 12 cartes au départ, charge la suite sur demande et montre la progression
-locale avec un bouton `Continuer`.
+Dans `/catalog`, le fork liste les **7 certifications v9** (pas les micro-cours upstream). Une section « Disponibles en français » est en tête. Le thème `Français` filtre les certs avec au moins un `.md` FR. Chaque carte a un badge `Français · %` / `FR partiel · %` / `À traduire`. Tu peux combiner avec le niveau et la recherche. Pagination 12 cartes.
 
-`/dev-fr` affiche le hub local de developpement. Lance `pnpm local:report` si la
-page indique que le snapshot manque. Le bouton « Relire le snapshot » relit le
-fichier existant sans le regenerer. Gatsby supprime cette route, son menu et
-`/___graphql` du build public.
+`/dev-fr` est le hub local. Le statut HTTP est **live** (`fetch('/')`) : si tu vois la page, le serveur n’est pas OFF. La table « Traductions v9 » lit le preval disque, pas le snapshot. `pnpm local:report` reste optionnel (git/drift/logs). GraphiQL est dans **Afficher debug**. Le bouton **Actualiser** relit le live + le snapshot s’il existe. Gatsby retire `/dev-fr`, le menu Outils et `/___graphql` du build public.
 
 `/exam-fr?cert=<superblock>` lance l'examen local FR : 80 questions tirees au
 hasard parmi les quizzes traduits, 70% pour reussir. L'examen garde un
@@ -136,7 +127,7 @@ Tu dois voir : `watcher.touched [fcc-source-challenges] touched has-french-intro
 
 ## Traduire Un Prochain Bloc
 
-Etat actuel : JavaScript v9 compte 149 blocs FR sur 230 (1311/1311 fichiers). Les modules 1-12 sont **100 % complets**. JavaScript v9 **100 % terminé** (230/230). Prochaine traduction : ront-end-development-libraries-v9. Back End APIs **16/16**.
+Etat actuel : RWD/JS/FEL/APIs **100 % fichiers**. Prochaine traduction : **python-v9**. Back End APIs **16/16**. FEL **62/62**.
 
 Workflow rapide mais relu manuellement :
 
