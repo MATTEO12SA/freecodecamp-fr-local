@@ -22,21 +22,21 @@ pnpm screenshots
 
 ## Contenu
 
-| Fichier | Rôle |
-| --- | --- |
-| `human-qa-test.mjs` | Suite unifiée : hub / frappe Monaco + FR / persist |
-| `shared.mjs` | Helpers communs (browser, overlays, Monaco, assert FR) |
-| `scenarios.mjs` | Échantillon d'exercices v1 |
-| `smoke-test.mjs` | Stub → `--hub` |
-| `submit-test.mjs` | Stub → `--human --rwd-only` |
-| `persist-test.mjs` | Stub → `--persist` |
-| `full-flow-test.mjs` | Stub → `--human` |
-| `axe-test.mjs` | Audit accessibilité |
-| `axe-test-regression.mjs` | Garde : Axe doit échouer si page inaccessible |
-| `local-network-test.mjs` | Pas de GTM/GA/Stripe / :3000 |
-| `audit-regression-test.mjs` | Parcours UI FR |
-| `production-regression-test.mjs` | Build public sans `/dev-fr` |
-| `production-performance-test.mjs` | Mesures perf build public |
-| `screenshot-tour.mjs` | Captures `screenshots/current/` |
+| Fichier                           | Rôle                                                   |
+| --------------------------------- | ------------------------------------------------------ |
+| `human-qa-test.mjs`               | Suite unifiée : hub / frappe Monaco + FR / persist     |
+| `shared.mjs`                      | Helpers communs (browser, overlays, Monaco, assert FR) |
+| `scenarios.mjs`                   | Échantillon d'exercices v1                             |
+| `smoke-test.mjs`                  | Stub → `--hub`                                         |
+| `submit-test.mjs`                 | Stub → `--human --rwd-only`                            |
+| `persist-test.mjs`                | Stub → `--persist`                                     |
+| `full-flow-test.mjs`              | Stub → `--human`                                       |
+| `axe-test.mjs`                    | Audit accessibilité                                    |
+| `axe-test-regression.mjs`         | Garde : Axe doit échouer si page inaccessible          |
+| `local-network-test.mjs`          | Pas de GTM/GA/Stripe / :3000                           |
+| `audit-regression-test.mjs`       | Parcours UI FR                                         |
+| `production-regression-test.mjs`  | Build public sans `/dev-fr`                            |
+| `production-performance-test.mjs` | Mesures perf build public                              |
+| `screenshot-tour.mjs`             | Captures `screenshots/current/`                        |
 
 Rapports : `dev-logs/human-qa-report.json` (et autres outputs passés en `--output`).
