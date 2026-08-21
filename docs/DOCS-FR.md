@@ -140,11 +140,17 @@ Piège runtime : si les pages `/learn` restent en anglais alors que les `.md` FR
 ## Scripts Gardes
 
 ```text
-smoke-test.mjs
-submit-test.mjs
-persist-test.mjs
-full-flow-test.mjs
+tools/local-e2e/                  # tout le QA Playwright local
+  human-qa-test.mjs               # suite unifiee (hub + human + persist)
+  shared.mjs / scenarios.mjs
+  axe-test.mjs / local-network-test.mjs / …
+  smoke|submit|persist|full-flow  # stubs → human-qa
 ```
+
+`pnpm test:human-qa` (ou `node tools/local-e2e/human-qa-test.mjs --human`) clique
+et tape vraiment dans Monaco (pas de Redux `updateFile`, sauf `--cheat`).
+Il verifie le chrome FR et des marqueurs de prose FR. Rapport :
+`dev-logs/human-qa-report.json`. Voir [`tools/local-e2e/README.md`](../tools/local-e2e/README.md).
 
 Ces scripts utilisent `playwright` directement, sans chemin `.pnpm` fragile et sans dependance a Edge.
 

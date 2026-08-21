@@ -198,11 +198,14 @@ Les compteurs demandés/chargés/scannés/ignorés/échoués sont toujours affic
 Tests navigateur locaux, avec le serveur deja lance :
 
 ```powershell
-node smoke-test.mjs
-node submit-test.mjs
-node persist-test.mjs
-node full-flow-test.mjs
+pnpm test:human-qa                          # hub + clics/frappe Monaco/FR + persist
+node tools/local-e2e/human-qa-test.mjs --human
+node tools/local-e2e/human-qa-test.mjs --hub
+node tools/local-e2e/human-qa-test.mjs --persist
 ```
+
+Tout le QA navigateur est sous [`tools/local-e2e/`](../tools/local-e2e/README.md).
+Rapport : `dev-logs/human-qa-report.json`.
 
 ## Ce Qui Est Retire De La Navigation Locale
 

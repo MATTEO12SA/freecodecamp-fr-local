@@ -4,7 +4,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from '@playwright/test';
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const rootDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../..'
+);
 const outDir = path.join(rootDir, 'screenshots', 'current');
 const baseUrl = (
   process.env.AUDIT_BASE_URL || 'http://localhost:8000'

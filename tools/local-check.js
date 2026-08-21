@@ -110,17 +110,17 @@ async function main() {
     steps.push(runStep('root lint', 'pnpm', ['lint-root']));
     if (report.server.http.ok) {
       for (const test of [
-        { name: 'smoke-test.mjs', args: ['smoke-test.mjs'] },
-        { name: 'submit-test.mjs', args: ['submit-test.mjs'] },
-        { name: 'persist-test.mjs', args: ['persist-test.mjs'] },
-        { name: 'full-flow-test.mjs', args: ['full-flow-test.mjs'] },
+        {
+          name: 'human-qa-test.mjs',
+          args: ['tools/local-e2e/human-qa-test.mjs']
+        },
         {
           name: 'local-network-test.mjs',
-          args: ['local-network-test.mjs']
+          args: ['tools/local-e2e/local-network-test.mjs']
         },
         {
           name: 'axe-test.mjs --strict',
-          args: ['axe-test.mjs', '--strict']
+          args: ['tools/local-e2e/axe-test.mjs', '--strict']
         }
       ]) {
         steps.push(runStep(test.name, 'node', test.args));

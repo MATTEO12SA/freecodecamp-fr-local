@@ -164,10 +164,8 @@ La régression `pnpm test:axe-regression` vérifie explicitement ce garde-fou.
 Scripts locaux gardes :
 
 ```text
-smoke-test.mjs
-submit-test.mjs
-persist-test.mjs
-full-flow-test.mjs
+tools/local-e2e/          # QA Playwright (human-qa, axe, network, prod…)
+pnpm test:human-qa
 ```
 
 La documentation de reference vit dans `docs/`. Les points d'entree, la licence, les instructions agent et l'audit restent a la racine :

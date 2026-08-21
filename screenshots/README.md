@@ -9,7 +9,7 @@ Le serveur doit déjà répondre sur `http://localhost:8000`.
 
 ```powershell
 .\dev.ps1                 # ne relance rien s'il est déjà UP
-pnpm screenshots          # node tools/screenshot-tour.mjs
+pnpm screenshots          # node tools/local-e2e/screenshot-tour.mjs
 ```
 
 Le script clique vraiment : menu, parcours, certification, examen

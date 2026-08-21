@@ -71,10 +71,11 @@ Logique partagée de scan FR (chemins, blocs traduits, structure superblock) cen
 Smoke tests navigateur (le serveur doit tourner) :
 
 ```powershell
-node smoke-test.mjs
-node submit-test.mjs
-node persist-test.mjs
-node full-flow-test.mjs
+pnpm test:human-qa                          # hub + exercices humains + persist
+node tools/local-e2e/human-qa-test.mjs --human
+node tools/local-e2e/human-qa-test.mjs --hub
+node tools/local-e2e/human-qa-test.mjs --persist
+# stubs dans tools/local-e2e/ : smoke / submit / persist / full-flow
 ```
 
 ## Workflow De Traduction

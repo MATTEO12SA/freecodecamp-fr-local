@@ -46,7 +46,7 @@ pnpm local:check:full   # + lint client/racine + parcours + reseau/console + Axe
 
 Ces commandes generent aussi le snapshot optionnel (git/drift) de `/dev-fr`. La table traductions et le HTTP de la page sont live.
 
-`axe-test.mjs` affiche les compteurs demandés/chargés/scannés/ignorés/échoués.
+`tools/local-e2e/axe-test.mjs` affiche les compteurs demandés/chargés/scannés/ignorés/échoués.
 Le mode strict échoue dès qu'une page n'est pas réellement scannée ;
 `test:axe-regression` vérifie le cas inaccessible.
 
