@@ -201,258 +201,251 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
       <SEO title='Cours en français' />
       <main id='content-start' tabIndex={-1} className='cours-fr-page'>
         <div className='local-page-shell'>
-            <Spacer size='m' />
+          <Spacer size='m' />
 
-            {view.v === 'lang' && (
-              <>
-                <h1 className='cours-fr-title'>Choisis ton parcours</h1>
-                <p className='cours-fr-intro'>
-                  Trois portes d&apos;entrée, un seul but : apprendre. Le hub
-                  français liste ce qui est déjà traduit. La carte complète
-                  montre tout le curriculum local. Le catalogue sert à chercher
-                  et filtrer.
-                </p>
-                <div className='cours-fr-grid'>
-                  <Link
-                    className='cours-fr-folder-card cours-fr-folder-card-primary'
-                    to='/cours-fr?view=certifications'
-                  >
-                    <span className='cours-fr-card-kind'>Recommandé</span>
-                    <span className='cours-fr-folder-label'>
-                      Cours disponibles en français
-                    </span>
-                    <span className='cours-fr-folder-sub'>
-                      Certifications dont les exercices sont déjà traduits.
-                    </span>
-                  </Link>
-                  <Link className='cours-fr-folder-card' to='/learn'>
-                    <span className='cours-fr-card-kind'>Carte</span>
-                    <span className='cours-fr-folder-label'>
-                      Tous les parcours
-                    </span>
-                    <span className='cours-fr-folder-sub'>
-                      La carte complète, avec le français quand il existe.
-                    </span>
-                  </Link>
-                  <Link className='cours-fr-folder-card' to='/catalog'>
-                    <span className='cours-fr-card-kind'>Recherche</span>
-                    <span className='cours-fr-folder-label'>Catalogue</span>
-                    <span className='cours-fr-folder-sub'>
-                      Recherche, niveau, thème, et filtre Français.
-                    </span>
-                  </Link>
-                </div>
-                <LocalDataPanel />
-              </>
-            )}
+          {view.v === 'lang' && (
+            <>
+              <h1 className='cours-fr-title'>Choisis ton parcours</h1>
+              <p className='cours-fr-intro'>
+                Trois portes d&apos;entrée, un seul but : apprendre. Le hub
+                français liste ce qui est déjà traduit. La carte complète montre
+                tout le curriculum local. Le catalogue sert à chercher et
+                filtrer.
+              </p>
+              <div className='cours-fr-grid'>
+                <Link
+                  className='cours-fr-folder-card cours-fr-folder-card-primary'
+                  to='/cours-fr?view=certifications'
+                >
+                  <span className='cours-fr-card-kind'>Recommandé</span>
+                  <span className='cours-fr-folder-label'>
+                    Cours disponibles en français
+                  </span>
+                  <span className='cours-fr-folder-sub'>
+                    Certifications dont les exercices sont déjà traduits.
+                  </span>
+                </Link>
+                <Link className='cours-fr-folder-card' to='/learn'>
+                  <span className='cours-fr-card-kind'>Carte</span>
+                  <span className='cours-fr-folder-label'>
+                    Tous les parcours
+                  </span>
+                  <span className='cours-fr-folder-sub'>
+                    La carte complète, avec le français quand il existe.
+                  </span>
+                </Link>
+                <Link className='cours-fr-folder-card' to='/catalog'>
+                  <span className='cours-fr-card-kind'>Recherche</span>
+                  <span className='cours-fr-folder-label'>Catalogue</span>
+                  <span className='cours-fr-folder-sub'>
+                    Recherche, niveau, thème, et filtre Français.
+                  </span>
+                </Link>
+              </div>
+              <LocalDataPanel />
+            </>
+          )}
 
-            {view.v === 'fr-home' && (
-              <>
-                <BackBar
-                  href='/cours-fr'
-                  crumbs={['Cours disponibles en français']}
-                />
-                <h1 className='cours-fr-title'>
-                  Cours disponibles en français
-                </h1>
-                <p className='cours-fr-intro'>
-                  Ces certifications ont déjà des exercices en français.
-                  L&apos;examen se lance depuis la page de la certification.
-                </p>
+          {view.v === 'fr-home' && (
+            <>
+              <BackBar
+                href='/cours-fr'
+                crumbs={['Cours disponibles en français']}
+              />
+              <h1 className='cours-fr-title'>Cours disponibles en français</h1>
+              <p className='cours-fr-intro'>
+                Ces certifications ont déjà des exercices en français.
+                L&apos;examen se lance depuis la page de la certification.
+              </p>
 
-                <h2 className='cours-fr-section-title'>
-                  Disponibles maintenant
-                </h2>
-                <div className='cours-fr-grid'>
-                  {certificationGroups.available.map(cert => {
-                    const coverage = getFrenchFileCoverage(cert.key);
-                    const pct =
-                      coverage.total > 0
-                        ? Math.round(
-                            (coverage.translated / coverage.total) * 100
-                          )
-                        : 0;
-                    return (
-                      <Link
-                        key={cert.key}
-                        className='cours-fr-folder-card'
-                        to={getCoursFrCertificationHref(cert.key)}
-                      >
-                        <span className='cours-fr-card-kind'>
-                          Certification · {pct} % fichiers
-                        </span>
-                        <span className='cours-fr-folder-label'>
-                          {cert.title}
-                        </span>
-                        <span className='cours-fr-folder-sub'>
-                          {cert.subtitle}
-                        </span>
-                        <span className='cours-fr-file-coverage'>
-                          {coverage.translated}/{coverage.total} défis traduits
-                        </span>
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                {certificationGroups.upcoming.length > 0 && (
-                  <>
-                    <h2 className='cours-fr-section-title'>
-                      Traductions à venir
-                    </h2>
-                    <div className='cours-fr-grid'>
-                      {certificationGroups.upcoming.map(cert => {
-                        const coverage = getFrenchFileCoverage(cert.key);
-                        const pct =
-                          coverage.total > 0
-                            ? Math.round(
-                                (coverage.translated / coverage.total) * 100
-                              )
-                            : 0;
-                        return (
-                          <article
-                            key={cert.key}
-                            className='cours-fr-upcoming-card'
-                          >
-                            <span className='cours-fr-folder-label'>
-                              {cert.title}
-                            </span>
-                            <span className='cours-fr-folder-sub'>
-                              {cert.subtitle}
-                            </span>
-                            <span className='cours-fr-not-translated'>
-                              {pct > 0
-                                ? `FR partiel · ${pct} %`
-                                : 'Traduction à venir'}
-                            </span>
-                          </article>
-                        );
-                      })}
-                    </div>
-                  </>
-                )}
-              </>
-            )}
-
-            {view.v === 'fr-cert' &&
-              (() => {
-                const cert = CERTIFICATIONS.find(c => c.key === view.cert);
-                if (!cert) return <p>Certification introuvable.</p>;
-                const superBlock = cert.key as SuperBlocks;
-                const structure = data.allSuperBlockStructure.nodes.find(
-                  node => node.superBlock === superBlock
-                );
-                const localChallenges = data.allChallengeNode.nodes
-                  .map(({ challenge }) => challenge)
-                  .filter(
-                    challenge =>
-                      challenge.superBlock === superBlock &&
-                      isLocalChallenge(challenge)
+              <h2 className='cours-fr-section-title'>Disponibles maintenant</h2>
+              <div className='cours-fr-grid'>
+                {certificationGroups.available.map(cert => {
+                  const coverage = getFrenchFileCoverage(cert.key);
+                  const pct =
+                    coverage.total > 0
+                      ? Math.round((coverage.translated / coverage.total) * 100)
+                      : 0;
+                  return (
+                    <Link
+                      key={cert.key}
+                      className='cours-fr-folder-card'
+                      to={getCoursFrCertificationHref(cert.key)}
+                    >
+                      <span className='cours-fr-card-kind'>
+                        Certification · {pct} % fichiers
+                      </span>
+                      <span className='cours-fr-folder-label'>
+                        {cert.title}
+                      </span>
+                      <span className='cours-fr-folder-sub'>
+                        {cert.subtitle}
+                      </span>
+                      <span className='cours-fr-file-coverage'>
+                        {coverage.translated}/{coverage.total} défis traduits
+                      </span>
+                    </Link>
                   );
-                const superBlockChallenges = challengesInStructure(
-                  localChallenges,
-                  structure
-                );
-                const progressChallenges = challengesInStructure(
-                  localChallenges,
-                  structure,
-                  { includeExam: false }
-                ).filter(
-                  challenge =>
-                    challenge.challengeType !== challengeTypes.exam &&
-                    challenge.challengeType !== challengeTypes.examDownload
-                );
-                const completedSet = new Set(completedChallengeIds);
-                const totalChallenges = progressChallenges.length;
-                const doneChallenges = progressChallenges.filter(challenge =>
-                  completedSet.has(challenge.id)
-                ).length;
-                const progressPct =
-                  totalChallenges > 0
-                    ? Math.round((doneChallenges / totalChallenges) * 100)
-                    : 0;
-                return (
-                  <>
-                    <BackBar
-                      href='/cours-fr?view=certifications'
-                      crumbs={['Cours en français', cert.title]}
-                    />
-                    <h1 className='cours-fr-title text-center'>{cert.title}</h1>
-                    <p className='cours-fr-intro cours-fr-cert-note'>
-                      Les blocs qui demandent un backend ou un outil externe
-                      sont masqués en local. Le reste s&apos;ouvre dans
-                      l&apos;éditeur du navigateur.
-                    </p>
-                    <p className='cours-fr-exam-launch'>
-                      <Link
-                        className='cours-fr-exam-btn'
-                        to={`/exam-fr?cert=${encodeURIComponent(cert.key)}`}
-                      >
-                        Passer l&apos;examen
-                      </Link>
-                    </p>
-                    {cert.overview && (
-                      <section className='cours-fr-cert-overview'>
-                        <p className='cours-fr-cert-cta'>{cert.overview.cta}</p>
-                        {cert.overview.paragraphs.map(paragraph => (
-                          <p key={paragraph}>{paragraph}</p>
-                        ))}
-                        <p>
-                          <strong>{cert.overview.requirementsTitle}</strong>
-                        </p>
-                        <ul>
-                          {cert.overview.requirements.map(requirement => (
-                            <li key={requirement}>{requirement}</li>
-                          ))}
-                        </ul>
-                      </section>
-                    )}
+                })}
+              </div>
 
-                    {totalChallenges > 0 && (
-                      <div className='cours-fr-progress'>
-                        <div className='cours-fr-progress-head'>
-                          <span className='cours-fr-progress-label'>
-                            {doneChallenges}/{totalChallenges} exercices
-                            terminés
-                          </span>
-                          <span className='cours-fr-progress-pct'>
-                            {progressPct}%
-                          </span>
-                        </div>
-                        {/* Barre purement visuelle : la valeur est deja
-                            annoncee par le texte ci-dessus. */}
-                        <div
-                          className='cours-fr-progress-track'
-                          aria-hidden='true'
+              {certificationGroups.upcoming.length > 0 && (
+                <>
+                  <h2 className='cours-fr-section-title'>
+                    Traductions à venir
+                  </h2>
+                  <div className='cours-fr-grid'>
+                    {certificationGroups.upcoming.map(cert => {
+                      const coverage = getFrenchFileCoverage(cert.key);
+                      const pct =
+                        coverage.total > 0
+                          ? Math.round(
+                              (coverage.translated / coverage.total) * 100
+                            )
+                          : 0;
+                      return (
+                        <article
+                          key={cert.key}
+                          className='cours-fr-upcoming-card'
                         >
-                          <div
-                            className='cours-fr-progress-fill'
-                            style={{ width: `${progressPct}%` }}
-                          />
-                        </div>
-                      </div>
-                    )}
+                          <span className='cours-fr-folder-label'>
+                            {cert.title}
+                          </span>
+                          <span className='cours-fr-folder-sub'>
+                            {cert.subtitle}
+                          </span>
+                          <span className='cours-fr-not-translated'>
+                            {pct > 0
+                              ? `FR partiel · ${pct} %`
+                              : 'Traduction à venir'}
+                          </span>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
+            </>
+          )}
 
-                    {!structure ? (
-                      <div className='cours-fr-empty'>
-                        🚧 Structure de certification introuvable.
+          {view.v === 'fr-cert' &&
+            (() => {
+              const cert = CERTIFICATIONS.find(c => c.key === view.cert);
+              if (!cert) return <p>Certification introuvable.</p>;
+              const superBlock = cert.key as SuperBlocks;
+              const structure = data.allSuperBlockStructure.nodes.find(
+                node => node.superBlock === superBlock
+              );
+              const localChallenges = data.allChallengeNode.nodes
+                .map(({ challenge }) => challenge)
+                .filter(
+                  challenge =>
+                    challenge.superBlock === superBlock &&
+                    isLocalChallenge(challenge)
+                );
+              const superBlockChallenges = challengesInStructure(
+                localChallenges,
+                structure
+              );
+              const progressChallenges = challengesInStructure(
+                localChallenges,
+                structure,
+                { includeExam: false }
+              ).filter(
+                challenge =>
+                  challenge.challengeType !== challengeTypes.exam &&
+                  challenge.challengeType !== challengeTypes.examDownload
+              );
+              const completedSet = new Set(completedChallengeIds);
+              const totalChallenges = progressChallenges.length;
+              const doneChallenges = progressChallenges.filter(challenge =>
+                completedSet.has(challenge.id)
+              ).length;
+              const progressPct =
+                totalChallenges > 0
+                  ? Math.round((doneChallenges / totalChallenges) * 100)
+                  : 0;
+              return (
+                <>
+                  <BackBar
+                    href='/cours-fr?view=certifications'
+                    crumbs={['Cours en français', cert.title]}
+                  />
+                  <h1 className='cours-fr-title text-center'>{cert.title}</h1>
+                  <p className='cours-fr-intro cours-fr-cert-note'>
+                    Les blocs qui demandent un backend ou un outil externe sont
+                    masqués en local. Le reste s&apos;ouvre dans l&apos;éditeur
+                    du navigateur.
+                  </p>
+                  <p className='cours-fr-exam-launch'>
+                    <Link
+                      className='cours-fr-exam-btn'
+                      to={`/exam-fr?cert=${encodeURIComponent(cert.key)}`}
+                    >
+                      Passer l&apos;examen
+                    </Link>
+                  </p>
+                  {cert.overview && (
+                    <section className='cours-fr-cert-overview'>
+                      <p className='cours-fr-cert-cta'>{cert.overview.cta}</p>
+                      {cert.overview.paragraphs.map(paragraph => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                      <p>
+                        <strong>{cert.overview.requirementsTitle}</strong>
+                      </p>
+                      <ul>
+                        {cert.overview.requirements.map(requirement => (
+                          <li key={requirement}>{requirement}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  )}
+
+                  {totalChallenges > 0 && (
+                    <div className='cours-fr-progress'>
+                      <div className='cours-fr-progress-head'>
+                        <span className='cours-fr-progress-label'>
+                          {doneChallenges}/{totalChallenges} exercices terminés
+                        </span>
+                        <span className='cours-fr-progress-pct'>
+                          {progressPct}%
+                        </span>
                       </div>
-                    ) : (
-                      <div className='cours-fr-cert-map'>
-                        <SuperBlockAccordion
-                          challenges={superBlockChallenges}
-                          superBlock={superBlock}
-                          structure={structure}
-                          chosenBlock={superBlockChallenges[0]?.block ?? ''}
-                          completedChallengeIds={completedChallengeIds}
+                      {/* Barre purement visuelle : la valeur est deja
+                            annoncee par le texte ci-dessus. */}
+                      <div
+                        className='cours-fr-progress-track'
+                        aria-hidden='true'
+                      >
+                        <div
+                          className='cours-fr-progress-fill'
+                          style={{ width: `${progressPct}%` }}
                         />
                       </div>
-                    )}
-                  </>
-                );
-              })()}
+                    </div>
+                  )}
 
-            <Spacer size='l' />
+                  {!structure ? (
+                    <div className='cours-fr-empty'>
+                      🚧 Structure de certification introuvable.
+                    </div>
+                  ) : (
+                    <div className='cours-fr-cert-map'>
+                      <SuperBlockAccordion
+                        challenges={superBlockChallenges}
+                        superBlock={superBlock}
+                        structure={structure}
+                        chosenBlock={superBlockChallenges[0]?.block ?? ''}
+                        completedChallengeIds={completedChallengeIds}
+                      />
+                    </div>
+                  )}
+                </>
+              );
+            })()}
+
+          <Spacer size='l' />
         </div>
       </main>
     </>

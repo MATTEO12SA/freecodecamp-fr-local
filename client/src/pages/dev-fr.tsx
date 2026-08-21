@@ -274,9 +274,7 @@ function DevFrPage(): JSX.Element {
             </div>
             <div className='dev-fr-metric'>
               <span>HTTP</span>
-              <strong
-                className={statusClass(liveServer.ok ? 'UP' : 'DOWN')}
-              >
+              <strong className={statusClass(liveServer.ok ? 'UP' : 'DOWN')}>
                 {liveServer.statusCode || 'OFF'}
               </strong>
             </div>
@@ -449,7 +447,9 @@ function DevFrPage(): JSX.Element {
                           </div>
                         </td>
                         <td data-label='Lien'>
-                          <a href={`/cours-fr?view=certifications&cert=${row.key}`}>
+                          <a
+                            href={`/cours-fr?view=certifications&cert=${row.key}`}
+                          >
                             Ouvrir
                           </a>
                         </td>

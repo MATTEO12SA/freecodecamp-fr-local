@@ -500,7 +500,10 @@ const CatalogPage = ({
               </p>
 
               {showFrenchSection && frenchCourses.length > 0 && (
-                <section className='catalog-section' aria-labelledby='catalog-fr'>
+                <section
+                  className='catalog-section'
+                  aria-labelledby='catalog-fr'
+                >
                   <h2 id='catalog-fr' className='catalog-section-title'>
                     {t('curriculum.catalog.french-section')}
                   </h2>

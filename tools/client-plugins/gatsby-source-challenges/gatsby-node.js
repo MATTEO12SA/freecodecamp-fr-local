@@ -413,7 +413,9 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
       let total = 0;
       for (const blockName of blocks) {
         const enFiles = new Set(listMd(nodePath.join(enBlocksDir, blockName)));
-        const frFiles = listMd(nodePath.join(curriculumPath, 'blocks', blockName));
+        const frFiles = listMd(
+          nodePath.join(curriculumPath, 'blocks', blockName)
+        );
         total += enFiles.size;
         translated += frFiles.filter(name => enFiles.has(name)).length;
       }
