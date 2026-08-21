@@ -322,35 +322,48 @@ const DesktopLayout = (props: DesktopLayoutProps): JSX.Element => {
           data-playwright-test-label='editor-pane'
           className='editor-pane'
         >
-          {!isEmpty(challengeFiles) && (
-            <ReflexContainer
-              key='codePane'
-              orientation='horizontal'
-              className='editor-pane-code'
-            >
-              <ReflexElement
-                name='codePane'
-                {...(displayEditorConsole && { flex: codePane.flex })}
-                {...reflexProps}
-                {...resizeProps}
+          {/*
+            Inner wrapper keeps column layout (editor + lower jaw) without
+            putting display:flex on the ReflexElement itself.
+            Always set codePane flex: workshops/labs have editable boundaries
+            so displayEditorConsole is false; without flex the lone element
+            defaults to 0 and Monaco collapses (~5px) on every exercise.
+          */}
+          <div className='editor-pane-inner'>
+            {!isEmpty(challengeFiles) && (
+              <ReflexContainer
+                key='codePane'
+                orientation='horizontal'
+                className='editor-pane-code'
               >
-                {editor}
-              </ReflexElement>
-              {displayEditorConsole && (
-                <ReflexSplitter propagate={true} {...resizeProps} />
-              )}
-              {displayEditorConsole && (
                 <ReflexElement
-                  flex={testsPane.flex}
+                  name='codePane'
+                  flex={
+                    displayEditorConsole
+                      ? Math.max(codePane.flex || 0, 0.5)
+                      : 1
+                  }
                   {...reflexProps}
                   {...resizeProps}
                 >
-                  {testOutput}
+                  {editor}
                 </ReflexElement>
-              )}
-            </ReflexContainer>
-          )}
-          {showIndependentLowerJaw && <IndependentLowerJaw />}
+                {displayEditorConsole && (
+                  <ReflexSplitter propagate={true} {...resizeProps} />
+                )}
+                {displayEditorConsole && (
+                  <ReflexElement
+                    flex={testsPane.flex}
+                    {...reflexProps}
+                    {...resizeProps}
+                  >
+                    {testOutput}
+                  </ReflexElement>
+                )}
+              </ReflexContainer>
+            )}
+            {showIndependentLowerJaw && <IndependentLowerJaw />}
+          </div>
         </ReflexElement>
         {displayNotes && <ReflexSplitter propagate={true} {...resizeProps} />}
         {displayNotes && (

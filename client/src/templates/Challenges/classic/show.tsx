@@ -268,9 +268,23 @@ function ShowClassic({
     // Check that the layout values stored are valid (exist in base layout). If
     // not valid, it will fallback to the base layout values and be set on next
     // user resize.
-    const isValidLayout =
+    const hasExpectedKeys =
       reflexLayout &&
       isContained(Object.keys(BASE_LAYOUT), Object.keys(reflexLayout));
+
+    // A persisted flex of 0 collapses Monaco on every challenge (dragged
+    // splitter / bad save). Treat those as invalid.
+    const hasSaneFlex =
+      hasExpectedKeys &&
+      Object.values(reflexLayout).every(
+        pane =>
+          pane &&
+          typeof pane.flex === 'number' &&
+          Number.isFinite(pane.flex) &&
+          pane.flex > 0
+      );
+
+    const isValidLayout = hasExpectedKeys && hasSaneFlex;
 
     if (!isValidLayout) store.remove(REFLEX_LAYOUT);
 
@@ -286,6 +300,13 @@ function ShowClassic({
     setResizing(false);
     // 'name' is used to identify the Elements whose layout is stored.
     const { name, flex } = event.component.props;
+
+    // Ignore collapsed flex (≈0). Reflex can fire this on mount when a nested
+    // pane has not received height yet; persisting it hides Monaco on every
+    // challenge until localStorage is cleared.
+    if (typeof flex === 'number' && flex < 0.05) {
+      return;
+    }
 
     // onStopResize can be called multiple times before the state changes, so
     // we need an updater function to ensure all updates are applied.

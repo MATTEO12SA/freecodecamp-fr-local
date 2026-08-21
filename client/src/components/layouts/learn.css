@@ -7,16 +7,37 @@
 .learn-app-wrapper .desktop-layout,
 .learn-app-wrapper .reflex-container.vertical {
   height: 100%;
+  max-height: 100%;
+  min-height: 0;
 }
 
 .learn-app-wrapper .desktop-layout {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
+/*
+ * Never put display:flex on .editor-pane (a horizontal ReflexElement): it
+ * shrink-wraps to the lower-jaw (~70px) and Monaco collapses to ~5px on every
+ * workshop/lab. Column layout belongs on .editor-pane-inner.
+ *
+ * Use height:auto !important (not 100%). A percentage height blocks
+ * align-items:stretch, so the pane stays ~70px and the script looks missing.
+ */
 .learn-app-wrapper .editor-pane {
+  min-width: 0;
+  min-height: 0 !important;
+  height: auto !important;
+  align-self: stretch;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.learn-app-wrapper .editor-pane-inner {
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 0;
   width: 100%;
 }
@@ -24,8 +45,10 @@
 .learn-app-wrapper .editor-pane-code {
   flex: 1 1 auto;
   min-height: 0;
+  height: 100%;
 }
-.learn-app-wrapper .editor-pane > .independent-lower-jaw {
+
+.learn-app-wrapper .editor-pane-inner > .independent-lower-jaw {
   flex: 0 0 auto;
   margin-top: auto;
 }
@@ -33,6 +56,12 @@
 .learn-app-wrapper .reflex-container.vertical {
   min-height: 0;
   flex-grow: 1;
+  overflow: hidden;
+}
+
+.learn-app-wrapper .reflex-container.vertical > .reflex-element {
+  min-height: 0;
+  max-height: 100%;
 }
 
 .learn-app-wrapper .reflex-container.vertical > .reflex-splitter,
