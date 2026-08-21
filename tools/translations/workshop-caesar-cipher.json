@@ -1,0 +1,725 @@
+{
+  "workshop": "workshop-caesar-cipher",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "680a3d4c065557260de2ff33.md",
+      "id": "680a3d4c065557260de2ff33",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you will create a program called caesar cipher which is an encryption method that shifts letters in the alphabet to encode messages.",
+          "fr": "Dans ce workshop, tu vas créer un programme de chiffrement de César, une méthode de chiffrement qui décale les lettres de l'alphabet pour encoder des messages."
+        },
+        {
+          "en": "Start by creating a variable called `shift` and assign the value `5` to your new variable.",
+          "fr": "Commence par créer une variable appelée `shift` et assigne la valeur `5` à ta nouvelle variable."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable called `shift`. Pay attention to place the variable name at the beginning of the line.",
+          "fr": "Tu devrais déclarer une variable appelée `shift`. Place bien le nom de la variable au début de la ligne."
+        },
+        {
+          "en": "You should assign the value `5` to your `shift` variable.",
+          "fr": "Tu devrais assigner la valeur `5` à ta variable `shift`."
+        }
+      ]
+    },
+    {
+      "file": "680a41ef5bfdc059cfd9d4b5.md",
+      "id": "680a41ef5bfdc059cfd9d4b5",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "Declare another variable called `alphabet` and assign the string `abcdefghijklmnopqrstuvwxyz` to this variable.",
+          "fr": "Déclare une autre variable appelée `alphabet` et assigne-lui la chaîne `abcdefghijklmnopqrstuvwxyz`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable called `alphabet`. Pay attention to place the variable name at the beginning of the line.",
+          "fr": "Tu devrais déclarer une variable appelée `alphabet`. Place bien le nom de la variable au début de la ligne."
+        },
+        {
+          "en": "You should assign the string `abcdefghijklmnopqrstuvwxyz` to your `alphabet` variable. Remember to use either single or double quotes to enclose the string.",
+          "fr": "Tu devrais assigner la chaîne `abcdefghijklmnopqrstuvwxyz` à ta variable `alphabet`. N'oublie pas d'entourer la chaîne de quotes simples ou doubles."
+        }
+      ]
+    },
+    {
+      "file": "680a431692a5f863f726c438.md",
+      "id": "680a431692a5f863f726c438",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "In this workshop, you are going to build a *Caesar cipher*. This is one of the simplest techniques to encrypt text, which consists of substituting each letter of the plain text with the letter found at a fixed number of positions down the alphabet. For example, with a shift of 5, `a` would be replaced by `f`, `b` by `g` and so on.",
+          "fr": "Dans ce workshop, tu vas construire un *chiffrement de César*. C'est l'une des techniques les plus simples pour chiffrer du texte : elle consiste à remplacer chaque lettre du texte en clair par la lettre située un nombre fixe de positions plus loin dans l'alphabet. Par exemple, avec un décalage de 5, `a` serait remplacé par `f`, `b` par `g`, et ainsi de suite."
+        },
+        {
+          "en": "To implement this cipher, you'll need to create a new version of your alphabet that starts at the position indicated by the shift. As you learned in a previous lesson, you can extract part of a string using string slicing:",
+          "fr": "Pour implémenter ce chiffrement, tu vas créer une nouvelle version de ton alphabet qui commence à la position indiquée par le décalage. Comme tu l'as appris dans une leçon précédente, tu peux extraire une partie d'une chaîne avec le découpage de chaîne :"
+        },
+        {
+          "en": "Create a variable named `shifted_alphabet` and use the slicing syntax to assign it the portion of `alphabet` that starts at the index of `shift`. Then, call the built-in `print()` function to print `shifted_alphabet` on the terminal and look at the result.",
+          "fr": "Crée une variable nommée `shifted_alphabet` et utilise la syntaxe de découpage pour lui assigner la portion de `alphabet` qui commence à l'indice de `shift`. Puis appelle la fonction intégrée `print()` pour afficher `shifted_alphabet` dans le terminal et observe le résultat."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a new variable named `shifted_alphabet`.",
+          "fr": "Tu devrais déclarer une nouvelle variable nommée `shifted_alphabet`."
+        },
+        {
+          "en": "You should assign `alphabet[shift:]` to `shifted_alphabet`.",
+          "fr": "Tu devrais assigner `alphabet[shift:]` à `shifted_alphabet`."
+        },
+        {
+          "en": "You should call the `print()` function passing in `shifted_alphabet` as an argument.",
+          "fr": "Tu devrais appeler la fonction `print()` en lui passant `shifted_alphabet` comme argument."
+        }
+      ]
+    },
+    {
+      "file": "680a549f60f5a3fedfc0edd9.md",
+      "id": "680a549f60f5a3fedfc0edd9",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "As you can see from the output, the shifted alphabet starts at the letter `f` because `shift` has the value `5`. But now the first five letters of the alphabet – `a`, `b`, `c`, `d` and `e` – are missing from the shifted alphabet, so you'll need to add them at the end of the shifted alphabet. You can use the `+` operator to concatenate the missing portion of the alphabet.",
+          "fr": "Comme tu peux le voir dans la sortie, l'alphabet décalé commence à la lettre `f` parce que `shift` a la valeur `5`. Mais les cinq premières lettres de l'alphabet – `a`, `b`, `c`, `d` et `e` – manquent maintenant dans l'alphabet décalé, tu vas donc devoir les ajouter à la fin. Tu peux utiliser l'opérateur `+` pour concaténer la portion manquante de l'alphabet."
+        },
+        {
+          "en": "Modify the existing assignment of the `shifted_alphabet` variable: use the slicing syntax to extract the missing first portion of `alphabet` and concatenate it to `alphabet[shift:]`.",
+          "fr": "Modifie l'affectation existante de la variable `shifted_alphabet` : utilise la syntaxe de découpage pour extraire la première portion manquante de `alphabet` et concatène-la à `alphabet[shift:]`."
+        },
+        {
+          "en": "As a reminder, `sentence[start:stop]` returns the characters of `sentence` from position `start` (included) to `stop` (excluded).",
+          "fr": "Pour rappel, `sentence[start:stop]` renvoie les caractères de `sentence` de la position `start` (incluse) à `stop` (exclue)."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not directly modify the `alphabet` variable.",
+          "fr": "Tu ne devrais pas modifier directement la variable `alphabet`."
+        },
+        {
+          "en": "You should assign the concatenation of `alphabet[shift:]` and the missing first portion of `alphabet` to the `shifted_alphabet` variable on the same line it was declared. Use `shift` to specify where to stop the slicing.",
+          "fr": "Tu devrais assigner la concaténation de `alphabet[shift:]` et de la première portion manquante de `alphabet` à la variable `shifted_alphabet` sur la même ligne où elle a été déclarée. Utilise `shift` pour indiquer où arrêter le découpage."
+        }
+      ]
+    },
+    {
+      "file": "680a5e7f3d47715196b12ca0.md",
+      "id": "680a5e7f3d47715196b12ca0",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "Now that you have your entire shifted alphabet, remove the `print(shifted_alphabet)` call.",
+          "fr": "Maintenant que tu as ton alphabet décalé complet, supprime l'appel `print(shifted_alphabet)`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should remove `print(shifted_alphabet)` from your code.",
+          "fr": "Tu devrais supprimer `print(shifted_alphabet)` de ton code."
+        }
+      ]
+    },
+    {
+      "file": "680a7e200400089967b8b1f4.md",
+      "id": "680a7e200400089967b8b1f4",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "The `str.maketrans()` method takes two strings of equal length and returns a translation table that maps each character of the first string with the corresponding character of the second string. Each character in the translation table is stored as a Unicode ordinal, a number that uniquely identifies the character.",
+          "fr": "La méthode `str.maketrans()` prend deux chaînes de même longueur et renvoie une table de traduction qui associe chaque caractère de la première chaîne au caractère correspondant de la seconde. Chaque caractère de la table de traduction est stocké comme un ordinal Unicode, un nombre qui identifie le caractère de façon unique."
+        },
+        {
+          "en": "You'll learn more about the type of structure returned by `str.maketrans()` later on in the curriculum. For now, create a translation table that maps the characters in `alphabet` to the characters in `shifted_alphabet` and assign it to a variable named `translation_table`.",
+          "fr": "Plus tard dans le parcours, tu en apprendras davantage sur le type de structure renvoyé par `str.maketrans()`. Pour l'instant, crée une table de traduction qui associe les caractères de `alphabet` aux caractères de `shifted_alphabet` et assigne-la à une variable nommée `translation_table`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `translation_table`.",
+          "fr": "Tu devrais déclarer une variable nommée `translation_table`."
+        },
+        {
+          "en": "You should call `str.maketrans()` passing in `alphabet` and `shifted_alphabet` as the arguments, and assign the result to `translation_table`.",
+          "fr": "Tu devrais appeler `str.maketrans()` en lui passant `alphabet` et `shifted_alphabet` comme arguments, et assigner le résultat à `translation_table`."
+        }
+      ]
+    },
+    {
+      "file": "680a82806c4c6bc3567f2708.md",
+      "id": "680a82806c4c6bc3567f2708",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "Declare a new variable named `text` and assign it the string `hello world`. This will be the message to encrypt.",
+          "fr": "Déclare une nouvelle variable nommée `text` et assigne-lui la chaîne `hello world`. Ce sera le message à chiffrer."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should declare a variable named `text`.",
+          "fr": "Tu devrais déclarer une variable nommée `text`."
+        },
+        {
+          "en": "You should assign the string `hello world` to `text`. Remember to enclose the string in either single or double quotes and pay attention to the letter case.",
+          "fr": "Tu devrais assigner la chaîne `hello world` à `text`. N'oublie pas d'entourer la chaîne de quotes simples ou doubles et fais attention à la casse."
+        }
+      ]
+    },
+    {
+      "file": "680a836235461fce1ff53b3f.md",
+      "id": "680a836235461fce1ff53b3f",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "The `translate()` method takes as argument the translation table generated by `str.maketrans()`. It is called on a string and returns a copy of the original string where the characters have been replaced based on the translation table:",
+          "fr": "La méthode `translate()` prend comme argument la table de traduction générée par `str.maketrans()`. Elle s'appelle sur une chaîne et renvoie une copie de la chaîne d'origine où les caractères ont été remplacés d'après la table de traduction :"
+        },
+        {
+          "en": "Call the `translate()` method on `text` passing in the `translation_table` as the argument and assign the result to a variable named `encrypted_text`.",
+          "fr": "Appelle la méthode `translate()` sur `text` en lui passant `translation_table` comme argument et assigne le résultat à une variable nommée `encrypted_text`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `encrypted_text`.",
+          "fr": "Tu devrais avoir une variable nommée `encrypted_text`."
+        },
+        {
+          "en": "You should assign `text.translate(translation_table)` to `encrypted_text`.",
+          "fr": "Tu devrais assigner `text.translate(translation_table)` à `encrypted_text`."
+        }
+      ]
+    },
+    {
+      "file": "6810869355fa2468f9ebaf9c.md",
+      "id": "6810869355fa2468f9ebaf9c",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "Now print `encrypted_text` to see the output in the terminal.",
+          "fr": "Maintenant, affiche `encrypted_text` pour voir le résultat dans le terminal."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should print `encrypted_text`.",
+          "fr": "Tu devrais afficher `encrypted_text`."
+        }
+      ]
+    },
+    {
+      "file": "6810891bd6de8a87a833df42.md",
+      "id": "6810891bd6de8a87a833df42",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "As you can see from the output, the message has been encrypted. The next step will be making your code reusable in case you wanted to encrypt different messages.",
+          "fr": "Comme tu peux le voir dans la sortie, le message a été chiffré. La prochaine étape sera de rendre ton code réutilisable, au cas où tu voudrais chiffrer d'autres messages."
+        },
+        {
+          "en": "For that, you'll need to create a function. As a reminder, here's how to create a function named `spam` that prints `Spam!` on the terminal:",
+          "fr": "Pour ça, tu vas créer une fonction. Pour rappel, voici comment créer une fonction nommée `spam` qui affiche `Spam!` dans le terminal :"
+        },
+        {
+          "en": "Create a function named `caesar`. Put all your existing code within the function body. Pay attention to keep the same indentation level for all of the lines within the function body.",
+          "fr": "Crée une fonction nommée `caesar`. Place tout ton code existant dans le corps de la fonction. Veille à garder le même niveau d'indentation pour toutes les lignes du corps de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `caesar`.",
+          "fr": "Tu devrais avoir une fonction nommée `caesar`."
+        },
+        {
+          "en": "You should move all the code you wrote so far within the `caesar` function body. Make sure you keep the same indentation level for all of the lines within the function body...",
+          "fr": "Tu devrais déplacer tout le code que tu as écrit jusqu'ici dans le corps de la fonction `caesar`. Assure-toi de garder le même niveau d'indentation pour toutes les lignes du corps de la fonction..."
+        }
+      ]
+    },
+    {
+      "file": "6818b80519e6c6c47a8bb6e8.md",
+      "id": "6818b80519e6c6c47a8bb6e8",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "As you learned in a previous lesson, functions can have parameters, which are variables that can be referenced within the function. Here's a `sum` function with two parameters, `num1` and `num2`.",
+          "fr": "Comme tu l'as appris dans une leçon précédente, les fonctions peuvent avoir des paramètres, des variables que tu peux utiliser à l'intérieur de la fonction. Voici une fonction `sum` avec deux paramètres, `num1` et `num2`."
+        },
+        {
+          "en": "The message to encrypt and the shift are still hardcoded in your function. Give your function two parameters named `text` and `shift`, and delete the declarations of both the `text` and `shift` variables from the `caesar` function body.",
+          "fr": "Le message à chiffrer et le décalage sont encore écrits en dur dans ta fonction. Donne à ta fonction deux paramètres nommés `text` et `shift`, et supprime les déclarations des variables `text` et `shift` du corps de la fonction `caesar`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `caesar` function should have two parameters, `text` and `shift`.",
+          "fr": "Ta fonction `caesar` devrait avoir deux paramètres, `text` et `shift`."
+        },
+        {
+          "en": "You should not have a `text` variable declared within the `caesar` function body.",
+          "fr": "Tu ne devrais pas avoir de variable `text` déclarée dans le corps de la fonction `caesar`."
+        },
+        {
+          "en": "You should not have a `shift` variable declared within the `caesar` function body.",
+          "fr": "Tu ne devrais pas avoir de variable `shift` déclarée dans le corps de la fonction `caesar`."
+        }
+      ]
+    },
+    {
+      "file": "6818e9c7c8dc5694e8f64fc3.md",
+      "id": "6818e9c7c8dc5694e8f64fc3",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Now, test the `caesar` function by calling it with the string `freeCodeCamp` and the number `3` as the arguments. Assign the function call to a variable named `encrypted_text`.",
+          "fr": "Maintenant, teste la fonction `caesar` en l'appelant avec la chaîne `freeCodeCamp` et le nombre `3` comme arguments. Assigne l'appel de fonction à une variable nommée `encrypted_text`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `encrypted_text` in the global scope.",
+          "fr": "Tu devrais avoir une variable nommée `encrypted_text` dans la portée globale."
+        },
+        {
+          "en": "You should assign `caesar('freeCodeCamp', 3)` to the `encrypted_text` variable.",
+          "fr": "Tu devrais assigner `caesar('freeCodeCamp', 3)` à la variable `encrypted_text`."
+        }
+      ]
+    },
+    {
+      "file": "6818eb3f98c0bca5af7c8d03.md",
+      "id": "6818eb3f98c0bca5af7c8d03",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Now your code is reusable. However, the `caesar` function prints a message on the terminal and gives back `None` by default. To prove it, print `encrypted_text` at the end of your code.",
+          "fr": "Ton code est maintenant réutilisable. Pourtant, la fonction `caesar` affiche un message dans le terminal et renvoie `None` par défaut. Pour le vérifier, affiche `encrypted_text` à la fin de ton code."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should print `encrypted_text` outside of the function body.",
+          "fr": "Tu devrais afficher `encrypted_text` en dehors du corps de la fonction."
+        }
+      ]
+    },
+    {
+      "file": "6818ed1adc249bb91d373729.md",
+      "id": "6818ed1adc249bb91d373729",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "In previous lessons, you learned that the `return` statement is used to return a value from a function, so that you can use it elsewhere in your code:",
+          "fr": "Dans les leçons précédentes, tu as appris que l'instruction `return` sert à renvoyer une valeur depuis une fonction, pour que tu puisses l'utiliser ailleurs dans ton code :"
+        },
+        {
+          "en": "Remove the `print(encrypted_text)` call from your function. Then, delete the declaration of the `encrypted_text` variable and return directly `text.translate(translation_table)` from your function.",
+          "fr": "Supprime l'appel `print(encrypted_text)` de ta fonction. Puis, supprime la déclaration de la variable `encrypted_text` et renvoie directement `text.translate(translation_table)` depuis ta fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not have `print(encrypted_text)` within the `caesar` function.",
+          "fr": "Tu ne devrais pas avoir `print(encrypted_text)` dans la fonction `caesar`."
+        },
+        {
+          "en": "You should not have an `encrypted_text` variable within the `caesar` function.",
+          "fr": "Tu ne devrais pas avoir de variable `encrypted_text` dans la fonction `caesar`."
+        },
+        {
+          "en": "Your `caesar` function should return `text.translate(translation_table)`.",
+          "fr": "Ta fonction `caesar` devrait renvoyer `text.translate(translation_table)`."
+        }
+      ]
+    },
+    {
+      "file": "6818fcb250f34e62cab32c39.md",
+      "id": "6818fcb250f34e62cab32c39",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "You might have noticed that, although the message is encrypted, the uppercase characters have been left untouched. This happens because the translation table does not include uppercase letters.",
+          "fr": "Tu as peut-être remarqué que, même si le message est chiffré, les caractères en majuscules n'ont pas été touchés. Cela arrive parce que la table de traduction n'inclut pas les lettres majuscules."
+        },
+        {
+          "en": "To fix it, you'll need to modify the strings passed to your `str.maketrans()` call using the `upper()` method:",
+          "fr": "Pour corriger cela, tu vas modifier les chaînes passées à ton appel `str.maketrans()` avec la méthode `upper()` :"
+        },
+        {
+          "en": "Update your `str.maketrans()` call by concatenating to each argument the uppercase version of the argument itself.",
+          "fr": "Mets à jour ton appel `str.maketrans()` en concaténant à chaque argument la version en majuscules de l'argument lui-même."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should modify the arguments of your `str.maketrans()` call by concatenating to each argument the uppercase version of the argument itself.",
+          "fr": "Tu devrais modifier les arguments de ton appel `str.maketrans()` en concaténant à chaque argument la version en majuscules de l'argument lui-même."
+        }
+      ]
+    },
+    {
+      "file": "6819bc0637b80256a33adccc.md",
+      "id": "6819bc0637b80256a33adccc",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now that you've implemented the basic functionalities of the cipher, it's time to add some validation. For that, you'll need an `if` statement.",
+          "fr": "Maintenant que tu as implémenté les fonctionnalités de base du chiffrement, il est temps d'ajouter un peu de validation. Pour ça, tu vas avoir besoin d'une instruction `if`."
+        },
+        {
+          "en": "At the beginning of your function body, create an `if` statement. For now, use `True` as the condition, and within the `if` statement body return the string `Shift must be an integer value.`",
+          "fr": "Au début du corps de ta fonction, crée une instruction `if`. Pour l'instant, utilise `True` comme condition, et dans le corps de l'instruction `if` renvoie la chaîne `Shift must be an integer value.`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `if` statement inside your `caesar` function.",
+          "fr": "Tu devrais avoir une instruction `if` à l'intérieur de ta fonction `caesar`."
+        },
+        {
+          "en": "Your `if` statement should use `True` as its condition.",
+          "fr": "Ton instruction `if` devrait utiliser `True` comme condition."
+        },
+        {
+          "en": "You should return the string `Shift must be an integer value.` from your `if` statement.",
+          "fr": "Tu devrais renvoyer la chaîne `Shift must be an integer value.` depuis ton instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "6819be9055828d65c813eec5.md",
+      "id": "6819be9055828d65c813eec5",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "The `isinstance()` function returns `True` if its first argument is an instance of the second argument, and `False` otherwise:",
+          "fr": "La fonction `isinstance()` renvoie `True` si son premier argument est une instance du second, et `False` sinon :"
+        },
+        {
+          "en": "Replace the current condition of your `if` statement with an `isinstance()` call. Pass in `shift` as the first argument, and `int` as the second argument.",
+          "fr": "Remplace la condition actuelle de ton instruction `if` par un appel à `isinstance()`. Passe `shift` comme premier argument, et `int` comme second argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `if` statement should use `isinstance(shift, int)` as its condition.",
+          "fr": "Ton instruction `if` devrait utiliser `isinstance(shift, int)` comme condition."
+        }
+      ]
+    },
+    {
+      "file": "6819c5c9faf2548e556163d5.md",
+      "id": "6819c5c9faf2548e556163d5",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "As you recall from previous lessons, the `not` operator is a unary logical operator that negates an expression:",
+          "fr": "Comme tu t'en souviens des leçons précédentes, l'opérateur `not` est un opérateur logique unaire qui nie une expression :"
+        },
+        {
+          "en": "Use the `not` operator to fix the condition of the `if` statement so that your function returns `Shift must be an integer value.` when `shift` is *not* an integer.",
+          "fr": "Utilise l'opérateur `not` pour corriger la condition de l'instruction `if` afin que ta fonction renvoie `Shift must be an integer value.` quand `shift` n'est *pas* un entier."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `not` operator to negate `isinstance(shift, int)` in your `if` statement.",
+          "fr": "Tu devrais utiliser l'opérateur `not` pour nier `isinstance(shift, int)` dans ton instruction `if`."
+        }
+      ]
+    },
+    {
+      "file": "6819c7beb4a8289c2b4f24d5.md",
+      "id": "6819c7beb4a8289c2b4f24d5",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "A negative or null shift should not be accepted by your function. Therefore, after your first `if` statement, create another `if` statement that checks if `shift` is less than `1` and returns the string `Shift must be a positive integer.`",
+          "fr": "Ta fonction ne devrait pas accepter un décalage négatif ou nul. Donc, après ta première instruction `if`, crée une autre instruction `if` qui vérifie si `shift` est inférieur à `1` et renvoie la chaîne `Shift must be a positive integer.`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a second `if` statement that checks if `shift` is less than `1`.",
+          "fr": "Tu devrais avoir une seconde instruction `if` qui vérifie si `shift` est inférieur à `1`."
+        },
+        {
+          "en": "Your second `if` statement should return `Shift must be a positive integer.`",
+          "fr": "Ta seconde instruction `if` devrait renvoyer `Shift must be a positive integer.`"
+        }
+      ]
+    },
+    {
+      "file": "6819ca464db219ab86f37dc4.md",
+      "id": "6819ca464db219ab86f37dc4",
+      "dashedName": "step-20",
+      "title": {
+        "en": "Step 20",
+        "fr": "Étape 20"
+      },
+      "description": [
+        {
+          "en": "As you've already verified, the shift passed to encrypt the text should be a positive integer. It cannot exceed `25` (the last index of `alphabet`) though.",
+          "fr": "Comme tu l'as déjà vérifié, le décalage passé pour chiffrer le texte doit être un entier positif. Il ne peut toutefois pas dépasser `25` (le dernier indice de `alphabet`)."
+        },
+        {
+          "en": "Add a second condition to the `if` statement that checks if `shift` is greater than `25`. Remember that the logical OR operation in Python is implemented through the `or` operator.",
+          "fr": "Ajoute une seconde condition à l'instruction `if` qui vérifie si `shift` est supérieur à `25`. Souviens-toi que l'opération logique OU en Python s'écrit avec l'opérateur `or`."
+        },
+        {
+          "en": "Also, update the returned message to `Shift must be an integer between 1 and 25.`",
+          "fr": "Mets aussi à jour le message renvoyé pour qu'il soit `Shift must be an integer between 1 and 25.`"
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should use the `or` operator to add a second condition after `shift < 1` checking if `shift` is greater than `25`. You should not modify the existing condition.",
+          "fr": "Tu devrais utiliser l'opérateur `or` pour ajouter une seconde condition après `shift < 1` qui vérifie si `shift` est supérieur à `25`. Tu ne devrais pas modifier la condition existante."
+        },
+        {
+          "en": "Your second `if` statement should return `Shift must be an integer between 1 and 25.`",
+          "fr": "Ta seconde instruction `if` devrait renvoyer `Shift must be an integer between 1 and 25.`"
+        }
+      ]
+    },
+    {
+      "file": "6819cf38880d8cc9b9f6af7a.md",
+      "id": "6819cf38880d8cc9b9f6af7a",
+      "dashedName": "step-21",
+      "title": {
+        "en": "Step 21",
+        "fr": "Étape 21"
+      },
+      "description": [
+        {
+          "en": "Python allows you to specify a default value for the parameters in a function, creating a function that can be called with fewer or no arguments. Here's how to create a function with a `name` parameter that has a default value:",
+          "fr": "Python te permet de spécifier une valeur par défaut pour les paramètres d'une fonction, ce qui crée une fonction que tu peux appeler avec moins d'arguments, ou aucun. Voici comment créer une fonction avec un paramètre `name` qui a une valeur par défaut :"
+        },
+        {
+          "en": "Add a third parameter named `encrypt` to your function and give it a default value of `True`.",
+          "fr": "Ajoute un troisième paramètre nommé `encrypt` à ta fonction et donne-lui la valeur par défaut `True`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should add a third parameter named `encrypt` with a default value of `True` to your function. Do not modify the existing parameters.",
+          "fr": "Tu devrais ajouter un troisième paramètre nommé `encrypt` avec la valeur par défaut `True` à ta fonction. Ne modifie pas les paramètres existants."
+        }
+      ]
+    },
+    {
+      "file": "681a1d60e037127e7c8e0230.md",
+      "id": "681a1d60e037127e7c8e0230",
+      "dashedName": "step-22",
+      "title": {
+        "en": "Step 22",
+        "fr": "Étape 22"
+      },
+      "description": [
+        {
+          "en": "You are going to use the parameter added in the previous step to determine if the function should encrypt the text passed to it (default behavior, `encrypt=True`), or if it should decrypt an encrypted message.",
+          "fr": "Tu vas utiliser le paramètre ajouté à l'étape précédente pour déterminer si la fonction doit chiffrer le texte qu'on lui passe (comportement par défaut, `encrypt=True`), ou si elle doit déchiffrer un message chiffré."
+        },
+        {
+          "en": "Create an `if` statement that checks if `encrypt` is not truthy. Within the new `if` statement, set `shift` to `- shift`. This is necessary to enable the shift to take place in the opposite direction with respect to the encryption process.",
+          "fr": "Crée une instruction `if` qui vérifie si `encrypt` n'est pas truthy. Dans la nouvelle instruction `if`, définis `shift` à `- shift`. C'est nécessaire pour que le décalage se fasse dans le sens opposé au chiffrement."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should set `shift` to `- shift` when `encrypt` is not truthy.",
+          "fr": "Tu devrais définir `shift` à `- shift` quand `encrypt` n'est pas truthy."
+        }
+      ]
+    },
+    {
+      "file": "681a2a6cf95e82ca30866364.md",
+      "id": "681a2a6cf95e82ca30866364",
+      "dashedName": "step-23",
+      "title": {
+        "en": "Step 23",
+        "fr": "Étape 23"
+      },
+      "description": [
+        {
+          "en": "Declare two functions named `encrypt` and `decrypt`, both with `text` and `shift` parameters.",
+          "fr": "Déclare deux fonctions nommées `encrypt` et `decrypt`, toutes les deux avec les paramètres `text` et `shift`."
+        },
+        {
+          "en": "You'll use `encrypt` for the encryption process, and `decrypt` for the decryption, labeling the two actions with a descriptive name.",
+          "fr": "Tu utiliseras `encrypt` pour le chiffrement, et `decrypt` pour le déchiffrement, en donnant à chaque action un nom parlant."
+        },
+        {
+          "en": "Return a `caesar` call passing in `text` and `shift` from both your new functions, but make sure to pass in also `False` as the third argument for the `decrypt` function.",
+          "fr": "Renvoie un appel à `caesar` en lui passant `text` et `shift` depuis tes deux nouvelles fonctions, mais n'oublie pas de passer aussi `False` comme troisième argument pour la fonction `decrypt`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `encrypt` with two parameters, `text` and `shift`.",
+          "fr": "Tu devrais avoir une fonction nommée `encrypt` avec deux paramètres, `text` et `shift`."
+        },
+        {
+          "en": "Your `encrypt` function should return `caesar(text, shift)`.",
+          "fr": "Ta fonction `encrypt` devrait renvoyer `caesar(text, shift)`."
+        },
+        {
+          "en": "You should have a function named `decrypt` with two parameters, `text` and `shift`.",
+          "fr": "Tu devrais avoir une fonction nommée `decrypt` avec deux paramètres, `text` et `shift`."
+        },
+        {
+          "en": "Your `decrypt` function should return `caesar(text, shift, False)`.",
+          "fr": "Ta fonction `decrypt` devrait renvoyer `caesar(text, shift, False)`."
+        }
+      ]
+    },
+    {
+      "file": "681a2e35c406ade2f0a5f9b2.md",
+      "id": "681a2e35c406ade2f0a5f9b2",
+      "dashedName": "step-24",
+      "title": {
+        "en": "Step 24",
+        "fr": "Étape 24"
+      },
+      "description": [
+        {
+          "en": "It's time to test the `encrypt` function. Using the same arguments, replace your `caesar` call with a call to `encrypt`. You'll see the same output on the terminal.",
+          "fr": "Il est temps de tester la fonction `encrypt`. Avec les mêmes arguments, remplace ton appel à `caesar` par un appel à `encrypt`. Tu verras la même sortie dans le terminal."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Your `encrypted_text` variable should have the value of `encrypt('freeCodeCamp', 3)`.",
+          "fr": "Ta variable `encrypted_text` devrait avoir la valeur de `encrypt('freeCodeCamp', 3)`."
+        }
+      ]
+    },
+    {
+      "file": "681a44f4c3235f7d8f428545.md",
+      "id": "681a44f4c3235f7d8f428545",
+      "dashedName": "step-25",
+      "title": {
+        "en": "Step 25",
+        "fr": "Étape 25"
+      },
+      "description": [
+        {
+          "en": "Now you're going to test the `decrypt` function. Replace the value assigned to `encrypted_text` with the following string, which represents a message to decrypt: `Pbhentr vf sbhaq va hayvxryl cynprf.`",
+          "fr": "Maintenant, tu vas tester la fonction `decrypt`. Remplace la valeur assignée à `encrypted_text` par la chaîne suivante, qui représente un message à déchiffrer : `Pbhentr vf sbhaq va hayvxryl cynprf.`"
+        },
+        {
+          "en": "Then, declare a variable named `decrypted_text` and assign it a call to `decrypt` with `encrypted_text` as it first argument and a shift of `13` as the second argument.",
+          "fr": "Puis, déclare une variable nommée `decrypted_text` et assigne-lui un appel à `decrypt` avec `encrypted_text` comme premier argument et un décalage de `13` comme second argument."
+        },
+        {
+          "en": "Finally, print the `decrypted_text` on the terminal. With that, the Caesar cipher is complete.",
+          "fr": "Enfin, affiche `decrypted_text` dans le terminal. Avec ça, le chiffrement de César est terminé."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should assign `Pbhentr vf sbhaq va hayvxryl cynprf.` to `encrypted_text`.",
+          "fr": "Tu devrais assigner `Pbhentr vf sbhaq va hayvxryl cynprf.` à `encrypted_text`."
+        },
+        {
+          "en": "You should have a variable named `decrypted_text`.",
+          "fr": "Tu devrais avoir une variable nommée `decrypted_text`."
+        },
+        {
+          "en": "You should assign `decrypt(encrypted_text, 13)` to `decrypted_text`.",
+          "fr": "Tu devrais assigner `decrypt(encrypted_text, 13)` à `decrypted_text`."
+        },
+        {
+          "en": "You should print `decrypted_text`.",
+          "fr": "Tu devrais afficher `decrypted_text`."
+        }
+      ]
+    }
+  ]
+}

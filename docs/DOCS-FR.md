@@ -99,7 +99,7 @@ Les fichiers traduits sont dans :
 curriculum/i18n-curriculum/curriculum/challenges/french/
 ```
 
-Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont complets au niveau fichiers. Un 100 % UI/status exige aussi les labels `intro.json` (arbre v9 + copies autonomes) et les titres. Prochaine traduction : **python-v9**.
+Responsive Web Design v9, JavaScript v9, Front-end libraries v9 et Back End APIs v9 sont `COMPLET`. Python v9 a le module python-basics (16/16, 102/527). Un 100 % UI/status exige aussi les labels `intro.json` (arbre v9 + copies autonomes) et les titres. Prochaine traduction : **`lecture-working-with-loops-and-sequences`**.
 
 Regles de traduction :
 

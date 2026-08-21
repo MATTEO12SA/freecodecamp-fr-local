@@ -1,0 +1,751 @@
+{
+  "workshop": "lecture-understanding-variables-and-data-types",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67fe8597975ea634042cad8f.md",
+      "id": "67fe8597975ea634042cad8f",
+      "dashedName": "how-do-you-declare-variables-and-what-are-naming-conventions-to-name-variables",
+      "title": {
+        "en": "How Do You Declare Variables and What Are Naming Conventions to Name Variables?",
+        "fr": "Comment déclare-t-on des variables et quelles sont les conventions de nommage ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In Python, variables are like a labelled box for storing and referencing data of different types. To declare variables in Python, you assign a value to an identifier with the assignment (`=`) operator. You don't need to use special keywords like `let` or `const` in JavaScript, or `char` in C#.",
+              "fr": "En Python, les variables ressemblent à une boîte étiquetée pour stocker et référencer des données de différents types. Pour déclarer des variables en Python, tu assignes une valeur à un identifiant avec l'opérateur d'affectation (`=`). Tu n'as pas besoin d'utiliser des mots-clés spéciaux comme `let` ou `const` en JavaScript, ou `char` en C#."
+            },
+            {
+              "en": "In Python, you just write the name of the variable on the left, followed by the assignment operator, and the value you want to assign the variable on the right. Here's an example of how to declare `name` and `age` variables:",
+              "fr": "En Python, tu écris simplement le nom de la variable à gauche, suivi de l'opérateur d'affectation, et la valeur que tu veux assigner à la variable à droite. Voici un exemple de déclaration des variables `name` et `age` :"
+            },
+            {
+              "en": "In the example above, the variable `name` holds the value `'John Doe'`. This value is a string, which is a series of characters used to represent text. Strings are written with single or double quotes, for example `'Hello'` or `\"Hello\"`. In future lessons, you'll learn more about working with strings in Python.",
+              "fr": "Dans l'exemple ci-dessus, la variable `name` contient la valeur `'John Doe'`. Cette valeur est une chaîne, c'est-à-dire une série de caractères utilisée pour représenter du texte. Les chaînes s'écrivent avec des guillemets simples ou doubles, par exemple `'Hello'` ou `\"Hello\"`. Dans les leçons à venir, tu apprendras davantage sur le travail avec les chaînes en Python."
+            },
+            {
+              "en": "When naming variables in Python, there are some important rules you should keep in mind:",
+              "fr": "Lorsque tu nommes des variables en Python, voici des règles importantes à garder en tête :"
+            },
+            {
+              "en": "- Variable names can only start with a letter or an underscore (`_`), not a number.\n- Variable names can only contain alphanumeric characters (`a-z`, `A-Z`, `0-9`) and underscores (`_`).\n- Variable names are case-sensitive — `age`, `Age`, and `AGE` are all considered unique.\n- Variable names cannot be one of Python's reserved keywords such as `if`, `class`, or `def`.",
+              "fr": "- Les noms de variables ne peuvent commencer que par une lettre ou un tiret bas (`_`), pas par un chiffre.\n- Les noms de variables ne peuvent contenir que des caractères alphanumériques (`a-z`, `A-Z`, `0-9`) et des tirets bas (`_`).\n- Les noms de variables sont sensibles à la casse — `age`, `Age` et `AGE` sont tous considérés comme distincts.\n- Les noms de variables ne peuvent pas être l'un des mots-clés réservés de Python comme `if`, `class` ou `def`."
+            },
+            {
+              "en": "If you break any of those rules, your Python program will throw a `SyntaxError`:",
+              "fr": "Si tu enfreins l'une de ces règles, ton programme Python lève une `SyntaxError` :"
+            },
+            {
+              "en": "Now let's go over some common naming conventions for variables in Python.",
+              "fr": "Passons maintenant en revue quelques conventions de nommage courantes pour les variables en Python."
+            },
+            {
+              "en": "First, variables names should be in lowercase, with separate words separated by an underscore. This is called snake case:",
+              "fr": "D'abord, les noms de variables devraient être en minuscules, avec des mots séparés par un tiret bas. On appelle cela le snake case :"
+            },
+            {
+              "en": "Next, you should use descriptive names for variables. For example, if you want to save a user's age as a variable, `user_age` is better than `age` or an abbreviation like `ua`:",
+              "fr": "Ensuite, tu devrais utiliser des noms descriptifs pour les variables. Par exemple, si tu veux enregistrer l'âge d'un utilisateur dans une variable, `user_age` est meilleur que `age` ou une abréviation comme `ua` :"
+            },
+            {
+              "en": "This way, you can easily communicate the purpose of a variable to other team members (or to your future self) in a large codebase.",
+              "fr": "Ainsi, tu peux facilement communiquer le rôle d'une variable aux autres membres de l'équipe (ou à ton futur toi) dans une base de code volumineuse."
+            },
+            {
+              "en": "Another convention is to avoid using single-letter variable names. This is very common in Python, but should be avoided because variable names with a single letter communicate no purpose or meaning:",
+              "fr": "Une autre convention consiste à éviter les noms de variables d'une seule lettre. C'est très courant en Python, mais tu devrais l'éviter parce que les noms d'une seule lettre ne communiquent aucun rôle ni signification :"
+            },
+            {
+              "en": "The pound symbol (`#`) and the text that follows in the example above is called a comment. You might already be familiar with comments, so let's go over them quickly and explain how they work.",
+              "fr": "Le symbole dièse (`#`) et le texte qui suit dans l'exemple ci-dessus s'appelle un commentaire. Tu connais peut-être déjà les commentaires, passons donc rapidement en revue leur fonctionnement."
+            },
+            {
+              "en": "In Python, comments start with a pound symbol (`#`), and the language ignores everything after the `#` symbol on that line:",
+              "fr": "En Python, les commentaires commencent par un symbole dièse (`#`), et le langage ignore tout ce qui suit le symbole `#` sur cette ligne :"
+            },
+            {
+              "en": "Multi-line comments can be created by using consecutive single-line comments:",
+              "fr": "Tu peux créer des commentaires sur plusieurs lignes en utilisant des commentaires d'une seule ligne consécutifs :"
+            },
+            {
+              "en": "You can use comments to explain your code, leave reminders for yourself, or clarify why a line exists. Comments are especially helpful when you're learning or working in teams.",
+              "fr": "Tu peux utiliser les commentaires pour expliquer ton code, te laisser des rappels, ou clarifier pourquoi une ligne existe. Les commentaires sont particulièrement utiles quand tu apprends ou que tu travailles en équipe."
+            },
+            {
+              "en": "However, you shouldn't use comments to explain what your variable names mean. Instead, the names you choose for your variables should be descriptive and communicate what they're for, and follow the other naming rules mentioned earlier to prevent syntax errors.",
+              "fr": "Cependant, tu ne devrais pas utiliser les commentaires pour expliquer ce que signifient tes noms de variables. À la place, les noms que tu choisis pour tes variables devraient être descriptifs et communiquer leur rôle, et respecter les autres règles de nommage mentionnées plus tôt pour éviter les erreurs de syntaxe."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to declare a variable in Python?",
+              "fr": "Laquelle des options suivantes est la bonne façon de déclarer une variable en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python doesn't require keywords for variable declaration.",
+              "fr": "Python n'exige pas de mots-clés pour déclarer une variable."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python doesn't require keywords for variable declaration.",
+              "fr": "Python n'exige pas de mots-clés pour déclarer une variable."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python doesn't require keywords for variable declaration.",
+              "fr": "Python n'exige pas de mots-clés pour déclarer une variable."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of these is **not** a rule for naming variables?",
+              "fr": "Laquelle de ces règles **n'est pas** une règle pour nommer les variables ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Variable names must start with a letter or an underscore.",
+              "fr": "Les noms de variables doivent commencer par une lettre ou un tiret bas."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python treats uppercase and lowercase letters as different.",
+              "fr": "Python traite les lettres majuscules et minuscules comme différentes."
+            },
+            {
+              "en": "Variable names are case-insensitive.",
+              "fr": "Les noms de variables ne sont pas sensibles à la casse."
+            },
+            {
+              "en": "Variable names cannot use Python reserved keywords.",
+              "fr": "Les noms de variables ne peuvent pas utiliser les mots-clés réservés de Python."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python treats uppercase and lowercase letters as different.",
+              "fr": "Python traite les lettres majuscules et minuscules comme différentes."
+            },
+            {
+              "en": "Variable names can contain letters, numbers, and underscores.",
+              "fr": "Les noms de variables peuvent contenir des lettres, des chiffres et des tirets bas."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python treats uppercase and lowercase letters as different.",
+              "fr": "Python traite les lettres majuscules et minuscules comme différentes."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why should you avoid using single-letter variable names?",
+              "fr": "Pourquoi devrais-tu éviter d'utiliser des noms de variables d'une seule lettre ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They do not communicate the purpose of the variable.",
+              "fr": "Ils ne communiquent pas le rôle de la variable."
+            },
+            {
+              "en": "Python does not allow single-letter variable names.",
+              "fr": "Python n'autorise pas les noms de variables d'une seule lettre."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Meaningful variable names improve readability in large codebases.",
+              "fr": "Des noms de variables significatifs améliorent la lisibilité dans les grandes bases de code."
+            },
+            {
+              "en": "They increase the risk of syntax errors.",
+              "fr": "Ils augmentent le risque d'erreurs de syntaxe."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Meaningful variable names improve readability in large codebases.",
+              "fr": "Des noms de variables significatifs améliorent la lisibilité dans les grandes bases de code."
+            },
+            {
+              "en": "They use more memory than longer variable names.",
+              "fr": "Ils utilisent plus de mémoire que des noms de variables plus longs."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Meaningful variable names improve readability in large codebases.",
+              "fr": "Des noms de variables significatifs améliorent la lisibilité dans les grandes bases de code."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67fe8599c83979345ff9a91a.md",
+      "id": "67fe8599c83979345ff9a91a",
+      "dashedName": "how-does-the-print-function-work",
+      "title": {
+        "en": "How Does the Print Function Work?",
+        "fr": "Comment fonctionne la fonction print ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Every programming language has some way to output data to the terminal with a built-in method, function, property, or keyword. In Python, you can use the `print` function to print data to the terminal. Let's take a closer look at the `print` function so you can start using it with confidence.",
+              "fr": "Chaque langage de programmation propose un moyen d'afficher des données dans le terminal via une méthode, une fonction, une propriété ou un mot-clé intégré. En Python, tu peux utiliser la fonction `print` pour afficher des données dans le terminal. Examinons de plus près la fonction `print` pour que tu puisses commencer à l'utiliser en toute confiance."
+            },
+            {
+              "en": "One of the first things you do when you're learning any programming language is to write a simple `Hello world!` program. You can do that really easily in Python with just the `print` function.",
+              "fr": "L'une des premières choses que tu fais quand tu apprends un langage de programmation, c'est d'écrire un simple programme `Hello world!`. Tu peux le faire très facilement en Python avec uniquement la fonction `print`."
+            },
+            {
+              "en": "To do that, you just need to put the string `Hello world!` in between the opening and closing parentheses you use to call the `print` function:",
+              "fr": "Pour ce faire, tu dois simplement placer la chaîne `Hello world!` entre les parenthèses ouvrante et fermante que tu utilises pour appeler la fonction `print` :"
+            },
+            {
+              "en": "You will learn more about strings and functions in Python in future lessons. For now, just consider strings as a sequence of characters surrounded by either single (`'`) or double (`\"`) quotation marks.",
+              "fr": "Tu en apprendras davantage sur les chaînes et les fonctions en Python dans les leçons à venir. Pour l'instant, considère simplement les chaînes comme une séquence de caractères entourée de guillemets simples (`'`) ou doubles (`\"`)."
+            },
+            {
+              "en": "In the `print('Hello world!')` example, the string `'Hello world!'` is an **argument** passed to the `print` function. You can also use the `print` function to show multiple values, or arguments, at once by separating them with commas. For example:",
+              "fr": "Dans l'exemple `print('Hello world!')`, la chaîne `'Hello world!'` est un **argument** passé à la fonction `print`. Tu peux aussi utiliser la fonction `print` pour afficher plusieurs valeurs, ou arguments, à la fois en les séparant par des virgules. Par exemple :"
+            },
+            {
+              "en": "Python automatically adds a space between each item when you separate them with commas. This is helpful when you want to print several pieces of information together.",
+              "fr": "Python ajoute automatiquement un espace entre chaque élément quand tu les sépares par des virgules. C'est utile quand tu veux afficher plusieurs informations ensemble."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why does the following code print all the values on the same line with spaces?",
+              "fr": "Pourquoi le code suivant affiche-t-il toutes les valeurs sur la même ligne avec des espaces ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Because separating values with commas in `print()` adds spaces between them.",
+              "fr": "Parce que séparer les valeurs par des virgules dans `print()` ajoute des espaces entre elles."
+            },
+            {
+              "en": "Because strings are automatically joined together with no separator.",
+              "fr": "Parce que les chaînes sont automatiquement jointes sans séparateur."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review how Python formats output when multiple values are passed to `print()`.",
+              "fr": "Revise la façon dont Python formate la sortie quand plusieurs valeurs sont passées à `print()`."
+            },
+            {
+              "en": "Because each call to `print()` adds a space by default.",
+              "fr": "Parce que chaque appel à `print()` ajoute un espace par défaut."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review how Python formats output when multiple values are passed to `print()`.",
+              "fr": "Revise la façon dont Python formate la sortie quand plusieurs valeurs sont passées à `print()`."
+            },
+            {
+              "en": "Because Python automatically converts all strings to uppercase in output.",
+              "fr": "Parce que Python convertit automatiquement toutes les chaînes en majuscules dans la sortie."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review how Python formats output when multiple values are passed to `print()`.",
+              "fr": "Revise la façon dont Python formate la sortie quand plusieurs valeurs sont passées à `print()`."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What would the output of the following code be?",
+              "fr": "Quelle serait la sortie du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how multiple arguments are handled in the `print()` function.",
+              "fr": "Pense à la façon dont plusieurs arguments sont gérés dans la fonction `print()`."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how multiple arguments are handled in the `print()` function.",
+              "fr": "Pense à la façon dont plusieurs arguments sont gérés dans la fonction `print()`."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how multiple arguments are handled in the `print()` function.",
+              "fr": "Pense à la façon dont plusieurs arguments sont gérés dans la fonction `print()`."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the purpose of the quotation marks around `Hello world!` in the following code?",
+              "fr": "Quel est le rôle des guillemets autour de `Hello world!` dans le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They define a string to be printed by the `print()` function.",
+              "fr": "Ils définissent une chaîne à afficher par la fonction `print()`."
+            },
+            {
+              "en": "They are used to call a function named `Hello world!`.",
+              "fr": "Ils servent à appeler une fonction nommée `Hello world!`."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how Python identifies string values in code.",
+              "fr": "Réfléchis à la façon dont Python identifie les valeurs de type chaîne dans le code."
+            },
+            {
+              "en": "They are required only if the string contains spaces.",
+              "fr": "Ils ne sont requis que si la chaîne contient des espaces."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how Python identifies string values in code.",
+              "fr": "Réfléchis à la façon dont Python identifie les valeurs de type chaîne dans le code."
+            },
+            {
+              "en": "They let Python know to print a variable named `Hello world!`.",
+              "fr": "Ils indiquent à Python d'afficher une variable nommée `Hello world!`."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Consider how Python identifies string values in code.",
+              "fr": "Réfléchis à la façon dont Python identifie les valeurs de type chaîne dans le code."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67fe859a00971c34a23abd43.md",
+      "id": "67fe859a00971c34a23abd43",
+      "dashedName": "what-are-common-data-types-in-python-and-how-do-you-get-the-type-of-a-variable",
+      "title": {
+        "en": "What Are Common Data Types in Python and How Do You Get the Type of a Variable?",
+        "fr": "Quels sont les types de données courants en Python et comment obtient-on le type d'une variable ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Before working with Python variables, it's important to understand data types. A data type describes the kind of value a variable holds. For example, a number, a piece of text, or a list of items. Programming languages use data types so they know how to store and work with different kinds of information.",
+              "fr": "Avant de travailler avec des variables Python, il est important de comprendre les types de données. Un type de données décrit le genre de valeur qu'une variable contient. Par exemple, un nombre, un texte, ou une liste d'éléments. Les langages de programmation utilisent les types de données pour savoir comment stocker et manipuler différents types d'informations."
+            },
+            {
+              "en": "Python is a dynamically-typed language like JavaScript, meaning you don't need to explicitly declare types for variables. The language knows what data type a variable is based on what you assign to it.",
+              "fr": "Python est un langage à typage dynamique comme JavaScript, ce qui signifie que tu n'as pas besoin de déclarer explicitement les types des variables. Le langage sait quel type de données possède une variable en fonction de ce que tu lui assignes."
+            },
+            {
+              "en": "Here are some examples:",
+              "fr": "Voici quelques exemples :"
+            },
+            {
+              "en": "This is in contrast to some statically-typed languages like C#, Java, and C++, where you have to declare types with variables, like this:",
+              "fr": "C'est l'opposé de certains langages à typage statique comme C#, Java et C++, où tu dois déclarer les types avec les variables, comme ceci :"
+            },
+            {
+              "en": "The dynamic-typing nature of Python makes coding really fast and more flexible, but it can lead to unexpected bugs because type errors are detected only when a program runs, not when the program compiles.",
+              "fr": "La nature à typage dynamique de Python rend le codage très rapide et plus flexible, mais cela peut mener à des bugs inattendus parce que les erreurs de type ne sont détectées que lorsque le programme s'exécute, pas lors de la compilation."
+            },
+            {
+              "en": "Since Python determines data types while your program is **running**, type-related mistakes are only discovered at that moment. When a program runs, Python executes your code line by line. If it reaches a line where a certain object is expected to behave in a way it's not able to, Python will stop and show an error.",
+              "fr": "Comme Python détermine les types de données pendant que ton programme **s'exécute**, les erreurs liées au type ne sont découvertes qu'à ce moment-là. Quand un programme s'exécute, Python exécute ton code ligne par ligne. S'il atteint une ligne où un certain objet est censé se comporter d'une certaine manière mais ne le peut pas, Python s'arrête et affiche une erreur."
+            },
+            {
+              "en": "In contrast, some languages **compile** your program before it runs. Compiling means the computer checks your code in advance and prepares it to run. During this step, those languages can catch type errors before the program even starts.",
+              "fr": "En revanche, certains langages **compilent** ton programme avant son exécution. Compiler signifie que l'ordinateur vérifie ton code à l'avance et le prépare pour l'exécution. Pendant cette étape, ces langages peuvent détecter les erreurs de type avant même que le programme ne démarre."
+            },
+            {
+              "en": "You don't need to know those languages yet. The important idea is simply:",
+              "fr": "Tu n'as pas encore besoin de connaître ces langages. L'idée importante est simplement :"
+            },
+            {
+              "en": "- **In Python type errors can reveal themselves during execution**, when the program is actually running and using your code.",
+              "fr": "- **En Python, les erreurs de type peuvent se révéler pendant l'exécution**, quand le programme s'exécute réellement et utilise ton code."
+            },
+            {
+              "en": "- **Compiled languages catch type errors during the compile step**, before the program is allowed to run.",
+              "fr": "- **Les langages compilés détectent les erreurs de type pendant l'étape de compilation**, avant que le programme ne soit autorisé à s'exécuter."
+            },
+            {
+              "en": "Because of this, you might not learn about a type mistake in Python until the program reaches that specific line of code while running.",
+              "fr": "À cause de cela, tu pourrais ne pas découvrir une erreur de type en Python avant que le programme n'atteigne cette ligne de code précise pendant son exécution."
+            },
+            {
+              "en": "Here are the most common data types you'll use in Python:",
+              "fr": "Voici les types de données les plus courants que tu utiliseras en Python :"
+            },
+            {
+              "en": "- Integer: A whole number without decimals, for example, `10` or `-5`.",
+              "fr": "- Integer : un nombre entier sans décimales, par exemple `10` ou `-5`."
+            },
+            {
+              "en": "- Float: A number with a decimal point, like `4.41` or `-0.4`.",
+              "fr": "- Float : un nombre avec un point décimal, comme `4.41` ou `-0.4`."
+            },
+            {
+              "en": "- String: A sequence of characters enclosed in single or double quotation marks like `'Hello world!'`.",
+              "fr": "- String : une séquence de caractères entre guillemets simples ou doubles comme `'Hello world!'`."
+            },
+            {
+              "en": "- Boolean: A true or false type, written as `True` or `False`.",
+              "fr": "- Boolean : un type vrai ou faux, écrit comme `True` ou `False`."
+            },
+            {
+              "en": "- Set: An unordered collection of unique elements, like `{0.5, 4, 'apple'}`.",
+              "fr": "- Set : une collection non ordonnée d'éléments uniques, comme `{0.5, 4, 'apple'}`."
+            },
+            {
+              "en": "- Dictionary: A collection of key-value pairs enclosed in curly braces, like `{'name': 'John Doe', 'age': 28}`.",
+              "fr": "- Dictionary : une collection de paires clé-valeur entre accolades, comme `{'name': 'John Doe', 'age': 28}`."
+            },
+            {
+              "en": "- Tuple: An immutable ordered collection, enclosed in parentheses, like `('apple', 4.5, 7)`.",
+              "fr": "- Tuple : une collection ordonnée immuable, entre parenthèses, comme `('apple', 4.5, 7)`."
+            },
+            {
+              "en": "- Range: A sequence of numbers, often used in loops, for example, `range(5)`.",
+              "fr": "- Range : une séquence de nombres, souvent utilisée dans les boucles, par exemple `range(5)`."
+            },
+            {
+              "en": "- List: An ordered collection of elements that supports different data types.",
+              "fr": "- List : une collection ordonnée d'éléments qui accepte différents types de données."
+            },
+            {
+              "en": "- None: A special value that represents the absence of a value.",
+              "fr": "- None : une valeur spéciale qui représente l'absence de valeur."
+            },
+            {
+              "en": "To get the data type of a variable, you can use the `type()` function:",
+              "fr": "Pour obtenir le type de données d'une variable, tu peux utiliser la fonction `type()` :"
+            },
+            {
+              "en": "And here's are all the data types covered in this lesson, along with their types in the terminal:",
+              "fr": "Et voici tous les types de données couverts dans cette leçon, avec leurs types affichés dans le terminal :"
+            },
+            {
+              "en": "The built-in `isinstance()` function lets you  check if a variable matches a specific data type. It takes in an object and the type you want to check it against, then returns a boolean. Here are some examples:",
+              "fr": "La fonction intégrée `isinstance()` te permet de vérifier si une variable correspond à un type de données spécifique. Elle prend un objet et le type que tu veux vérifier, puis renvoie un booléen. Voici quelques exemples :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does it mean that Python is dynamically typed?",
+              "fr": "Que signifie le fait que Python soit à typage dynamique ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "You must manually specify the data type of every variable.",
+              "fr": "Tu dois spécifier manuellement le type de données de chaque variable."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python figures out the data type for you.",
+              "fr": "Pense à la façon dont Python détermine le type de données pour toi."
+            },
+            {
+              "en": "Python does not support different data types.",
+              "fr": "Python ne prend pas en charge différents types de données."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python figures out the data type for you.",
+              "fr": "Pense à la façon dont Python détermine le type de données pour toi."
+            },
+            {
+              "en": "Python automatically determines the data type based on the assigned value.",
+              "fr": "Python détermine automatiquement le type de données en fonction de la valeur assignée."
+            },
+            {
+              "en": "Variables in Python cannot change their data type after assignment.",
+              "fr": "Les variables en Python ne peuvent pas changer leur type de données après l'affectation."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python figures out the data type for you.",
+              "fr": "Pense à la façon dont Python détermine le type de données pour toi."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the difference between the integer and float data types?",
+              "fr": "Quelle est la différence entre les types de données integer et float ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Integers can store both positive and negative numbers, while floats can only store positive numbers.",
+              "fr": "Les integers peuvent stocker des nombres positifs et négatifs, tandis que les floats ne peuvent stocker que des nombres positifs."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One has decimals, the other doesn't.",
+              "fr": "L'un a des décimales, l'autre non."
+            },
+            {
+              "en": "Integers are whole numbers without decimals, while floats are numbers with decimal points.",
+              "fr": "Les integers sont des nombres entiers sans décimales, tandis que les floats sont des nombres avec un point décimal."
+            },
+            {
+              "en": "Floats take up less memory than integers in Python.",
+              "fr": "Les floats occupent moins de mémoire que les integers en Python."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One has decimals, the other doesn't.",
+              "fr": "L'un a des décimales, l'autre non."
+            },
+            {
+              "en": "Integers can only store numbers up to 1000, while floats have no limit.",
+              "fr": "Les integers ne peuvent stocker que des nombres jusqu'à 1000, tandis que les floats n'ont pas de limite."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One has decimals, the other doesn't.",
+              "fr": "L'un a des décimales, l'autre non."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "How can you check the data type of a variable in Python?",
+              "fr": "Comment peux-tu vérifier le type de données d'une variable en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "By using the `type()` function, like `type(my_var)`.",
+              "fr": "En utilisant la fonction `type()`, comme `type(my_var)`."
+            },
+            {
+              "en": "By checking the variable's value manually.",
+              "fr": "En vérifiant manuellement la valeur de la variable."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "There's a built-in function for this.",
+              "fr": "Il existe une fonction intégrée pour cela."
+            },
+            {
+              "en": "By using the `typeof` function, like `typeof(my_var)`.",
+              "fr": "En utilisant la fonction `typeof`, comme `typeof(my_var)`."
+            },
+            {
+              "en": "By converting the variable to a string and analyzing its characters.",
+              "fr": "En convertissant la variable en chaîne et en analysant ses caractères."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "There's a built-in function for this.",
+              "fr": "Il existe une fonction intégrée pour cela."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

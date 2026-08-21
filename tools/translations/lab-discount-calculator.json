@@ -1,0 +1,113 @@
+{
+  "workshop": "lab-discount-calculator",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "695774002591bbc5f8cf3e53.md",
+      "id": "695774002591bbc5f8cf3e53",
+      "dashedName": "build-a-discount-calculator",
+      "title": {
+        "en": "Build an Apply Discount Function",
+        "fr": "Crée une fonction d'application de remise"
+      },
+      "description": [
+        {
+          "en": "In this lab you will write a function that calculates the final price of an item after applying a percentage discount.",
+          "fr": "Dans ce laboratoire, tu vas écrire une fonction qui calcule le prix final d'un article après application d'une remise en pourcentage."
+        },
+        {
+          "en": "For example, if the price of an item is `50` and a discount of `20` is applied, the discount amount is `10`, and the final price is `40`.",
+          "fr": "Par exemple, si le prix d'un article est `50` et qu'une remise de `20` est appliquée, le montant de la remise est `10`, et le prix final est `40`."
+        },
+        {
+          "en": "**Objective:** Fulfill the user stories below to complete the lab.",
+          "fr": "**Objectif :** remplis les user stories ci-dessous pour terminer le lab."
+        },
+        {
+          "en": "**User Stories:**",
+          "fr": "**User Stories :**"
+        },
+        {
+          "en": "1. You should define a function named `apply_discount`.",
+          "fr": "1. Tu devrais définir une fonction nommée `apply_discount`."
+        },
+        {
+          "en": "2. The `apply_discount` function should take exactly two parameters: `price` and `discount`.",
+          "fr": "2. La fonction `apply_discount` devrait prendre exactement deux paramètres : `price` et `discount`."
+        },
+        {
+          "en": "3. If `price` is not a number (`int` or `float`), the function should return the string `The price should be a number`.",
+          "fr": "3. Si `price` n'est pas un nombre (`int` ou `float`), la fonction devrait renvoyer la chaîne `The price should be a number`."
+        },
+        {
+          "en": "4. If `discount` is not a number (`int` or `float`), the function should return the string `The discount should be a number`.",
+          "fr": "4. Si `discount` n'est pas un nombre (`int` ou `float`), la fonction devrait renvoyer la chaîne `The discount should be a number`."
+        },
+        {
+          "en": "5. If `price` is less than or equal to `0`, the function should return the string `The price should be greater than 0`.",
+          "fr": "5. Si `price` est inférieur ou égal à `0`, la fonction devrait renvoyer la chaîne `The price should be greater than 0`."
+        },
+        {
+          "en": "6. If `discount` is less than `0` or greater than `100`, the function should return the string `The discount should be between 0 and 100`.",
+          "fr": "6. Si `discount` est inférieur à `0` ou supérieur à `100`, la fonction devrait renvoyer la chaîne `The discount should be between 0 and 100`."
+        },
+        {
+          "en": "7. If both inputs are valid, the function should calculate the discount as a percentage of the price.",
+          "fr": "7. Si les deux entrées sont valides, la fonction devrait calculer la remise comme un pourcentage du prix."
+        },
+        {
+          "en": "8. The function should return the final price after applying the discount.",
+          "fr": "8. La fonction devrait renvoyer le prix final après application de la remise."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `apply_discount`.",
+          "fr": "Tu devrais avoir une fonction nommée `apply_discount`."
+        },
+        {
+          "en": "Your `apply_discount` function should take two parameters: `price` and `discount`.",
+          "fr": "Ta fonction `apply_discount` devrait prendre deux paramètres : `price` et `discount`."
+        },
+        {
+          "en": "When `apply_discount` is called with a `price` (first argument) that is not a number (`int` or `float`) it should return `The price should be a number`.",
+          "fr": "Quand `apply_discount` est appelée avec un `price` (premier argument) qui n'est pas un nombre (`int` ou `float`), elle devrait renvoyer `The price should be a number`."
+        },
+        {
+          "en": "When `apply_discount` is called with a `discount` (second argument) that is not a number (`int` or `float`) it should return `The discount should be a number`.",
+          "fr": "Quand `apply_discount` est appelée avec un `discount` (deuxième argument) qui n'est pas un nombre (`int` ou `float`), elle devrait renvoyer `The discount should be a number`."
+        },
+        {
+          "en": "When `apply_discount` is called with a `price` lower than or equal to `0`, it should return `The price should be greater than 0`.",
+          "fr": "Quand `apply_discount` est appelée avec un `price` inférieur ou égal à `0`, elle devrait renvoyer `The price should be greater than 0`."
+        },
+        {
+          "en": "When `apply_discount` is called with a `discount` lower than `0` or greater than `100`, it should return `The discount should be between 0 and 100`.",
+          "fr": "Quand `apply_discount` est appelée avec un `discount` inférieur à `0` ou supérieur à `100`, elle devrait renvoyer `The discount should be between 0 and 100`."
+        },
+        {
+          "en": "`apply_discount(100, 20)` should return `80`.",
+          "fr": "`apply_discount(100, 20)` devrait renvoyer `80`."
+        },
+        {
+          "en": "`apply_discount(200, 50)` should return `100`.",
+          "fr": "`apply_discount(200, 50)` devrait renvoyer `100`."
+        },
+        {
+          "en": "`apply_discount(50, 0)` should return `50`.",
+          "fr": "`apply_discount(50, 0)` devrait renvoyer `50`."
+        },
+        {
+          "en": "When `apply_discount` is called with a discount of `100`, it should return `0`.",
+          "fr": "Quand `apply_discount` est appelée avec une remise de `100`, elle devrait renvoyer `0`."
+        },
+        {
+          "en": "`apply_discount(74.5, 20.0)` should return `59.6`.",
+          "fr": "`apply_discount(74.5, 20.0)` devrait renvoyer `59.6`."
+        }
+      ]
+    }
+  ]
+}

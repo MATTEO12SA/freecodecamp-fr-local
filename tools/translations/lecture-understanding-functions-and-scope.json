@@ -1,0 +1,480 @@
+{
+  "workshop": "lecture-understanding-functions-and-scope",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67fe859f55cd33356e322fd3.md",
+      "id": "67fe859f55cd33356e322fd3",
+      "dashedName": "how-do-functions-work-in-python",
+      "title": {
+        "en": "How Do Functions Work in Python?",
+        "fr": "Comment fonctionnent les fonctions en Python ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Functions are reusable pieces of code that run when you call them. Many programming languages come with built-in functions that make it easier to get started. Python is no exception, and we've already covered some built-in functions like `print()` in previous lessons.",
+              "fr": "Les fonctions sont des morceaux de code réutilisables qui s'exécutent quand tu les appelles. De nombreux langages de programmation fournissent des fonctions intégrées qui facilitent les premiers pas. Python ne fait pas exception, et tu as déjà vu des fonctions intégrées comme `print()` dans les leçons précédentes."
+            },
+            {
+              "en": "Another helpful built-in function is `input()`, which lets you prompt the user for input:",
+              "fr": "Une autre fonction intégrée utile est `input()`, qui te permet de demander une saisie à l'utilisateur :"
+            },
+            {
+              "en": "On the other hand, `int()` converts a number, boolean, and a numeric string into an integer:",
+              "fr": "D'autre part, `int()` convertit un nombre, un booléen et une chaîne numérique en un entier :"
+            },
+            {
+              "en": "You can also write your own custom functions. To do that, you use the `def` keyword, followed by the name you want to give your function, a pair of parentheses, and a colon. Then on a new line, you write the code your function should run. The code the function runs is also referred to as the function's body.",
+              "fr": "Tu peux aussi écrire tes propres fonctions. Pour cela, tu utilises le mot-clé `def`, suivi du nom que tu veux donner à ta fonction, d'une paire de parenthèses et d'un deux-points. Puis, sur une nouvelle ligne, tu écris le code que ta fonction doit exécuter. Le code exécuté par la fonction est aussi appelé le corps de la fonction."
+            },
+            {
+              "en": "Here's an example of a custom function named `hello` that prints the string `Hello World` to the terminal:",
+              "fr": "Voici un exemple de fonction personnalisée nommée `hello` qui affiche la chaîne `Hello World` dans le terminal :"
+            },
+            {
+              "en": "To run the function, you need to call it with its name followed by a pair of parentheses:",
+              "fr": "Pour exécuter la fonction, tu dois l'appeler avec son nom suivi d'une paire de parenthèses :"
+            },
+            {
+              "en": "Notice the indentation before `print('Hello World')`. As you may recall from previous lessons, Python relies on indentation to determine which groups of statements belong together. These groups of statements are called code blocks.",
+              "fr": "Remarque l'indentation avant `print('Hello World')`. Comme tu t'en souviens peut-être des leçons précédentes, Python s'appuie sur l'indentation pour déterminer quels groupes d'instructions vont ensemble. Ces groupes d'instructions s'appellent des blocs de code."
+            },
+            {
+              "en": "Here's another simple function that prints the sum of two numbers to the terminal:",
+              "fr": "Voici une autre fonction simple qui affiche la somme de deux nombres dans le terminal :"
+            },
+            {
+              "en": "You can see that our function, `calculate_sum`, has `a` and `b` in its parentheses, separated by a comma. Those are called parameters. Think of parameters as placeholder variables that act as \"slots\" for the values you pass into functions when you call them.",
+              "fr": "Tu peux voir que notre fonction, `calculate_sum`, a `a` et `b` dans ses parenthèses, séparés par une virgule. On les appelle des paramètres. Imagine les paramètres comme des variables de substitution qui agissent comme des « emplacements » pour les valeurs que tu passes aux fonctions quand tu les appelles."
+            },
+            {
+              "en": "To use the parameters, you have to pass in \"arguments\". Arguments are the values you pass to a function when you call it.",
+              "fr": "Pour utiliser les paramètres, tu dois passer des « arguments ». Les arguments sont les valeurs que tu passes à une fonction quand tu l'appelles."
+            },
+            {
+              "en": "Here's how to call the `calculate_sum` function to sum together the numbers `3` and `1`:",
+              "fr": "Voici comment appeler la fonction `calculate_sum` pour additionner les nombres `3` et `1` :"
+            },
+            {
+              "en": "If you call the function without the correct number of arguments, you'll get a `TypeError`:",
+              "fr": "Si tu appelles la fonction sans le bon nombre d'arguments, tu obtiens une `TypeError` :"
+            },
+            {
+              "en": "Functions also use a special `return` keyword to exit the function and return a value. If you don't explicitly use `return`, Python will return `None` by default.",
+              "fr": "Les fonctions utilisent aussi un mot-clé spécial `return` pour quitter la fonction et renvoyer une valeur. Si tu n'utilises pas explicitement `return`, Python renvoie `None` par défaut."
+            },
+            {
+              "en": "Here's an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "You can see that the `calculate_sum` function prints the sum of `a` and `b`, but it doesn't return anything explicitly. So when we assign its result to `my_sum`, the value is actually `None`. To fix that, you can use the `return` keyword to send back the result:",
+              "fr": "Tu peux voir que la fonction `calculate_sum` affiche la somme de `a` et `b`, mais elle ne renvoie rien explicitement. Donc, quand on assigne son résultat à `my_sum`, la valeur est en réalité `None`. Pour corriger cela, tu peux utiliser le mot-clé `return` pour renvoyer le résultat :"
+            },
+            {
+              "en": "Now, `calculate_sum` returns the sum of `a` and `b`, which gets stored in `my_sum`.",
+              "fr": "Maintenant, `calculate_sum` renvoie la somme de `a` et `b`, qui est stockée dans `my_sum`."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the default return value of a function in Python?",
+              "fr": "Quelle est la valeur renvoyée par défaut d'une fonction en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "If a function has no `return` statement, it automatically returns this value.",
+              "fr": "Si une fonction n'a pas d'instruction `return`, elle renvoie automatiquement cette valeur."
+            },
+            {
+              "en": "`\"\"` (empty string)",
+              "fr": "`\"\"` (chaîne vide)"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "If a function has no `return` statement, it automatically returns this value.",
+              "fr": "Si une fonction n'a pas d'instruction `return`, elle renvoie automatiquement cette valeur."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "If a function has no `return` statement, it automatically returns this value.",
+              "fr": "Si une fonction n'a pas d'instruction `return`, elle renvoie automatiquement cette valeur."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the term for a placeholder variable in a function?",
+              "fr": "Quel terme désigne une variable de substitution dans une fonction ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Parameter",
+              "fr": "Paramètre"
+            },
+            {
+              "en": "Argument",
+              "fr": "Argument"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's defined in the function declaration, not when calling it.",
+              "fr": "Il est défini dans la déclaration de la fonction, pas lors de son appel."
+            },
+            {
+              "en": "Return value",
+              "fr": "Valeur renvoyée"
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's defined in the function declaration, not when calling it.",
+              "fr": "Il est défini dans la déclaration de la fonction, pas lors de son appel."
+            },
+            {
+              "en": "Decorator",
+              "fr": "Décorateur"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It's defined in the function declaration, not when calling it.",
+              "fr": "Il est défini dans la déclaration de la fonction, pas lors de son appel."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What keyword is used to define a custom function in Python?",
+              "fr": "Quel mot-clé est utilisé pour définir une fonction personnalisée en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python uses a specific keyword to start a function definition.",
+              "fr": "Python utilise un mot-clé précis pour commencer la définition d'une fonction."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python uses a specific keyword to start a function definition.",
+              "fr": "Python utilise un mot-clé précis pour commencer la définition d'une fonction."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Python uses a specific keyword to start a function definition.",
+              "fr": "Python utilise un mot-clé précis pour commencer la définition d'une fonction."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "67fe85a1b634a335b18ae09a.md",
+      "id": "67fe85a1b634a335b18ae09a",
+      "dashedName": "what-is-scope-in-python-and-how-does-it-work",
+      "title": {
+        "en": "What Is Scope in Python and How Does It Work?",
+        "fr": "Qu'est-ce que la portée en Python et comment fonctionne-t-elle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In Python, scope determines the point at which you can access a variable. It's what controls the lifetime of a variable and how it is resolved in different parts of the code.",
+              "fr": "En Python, la portée détermine l'endroit où tu peux accéder à une variable. C'est ce qui contrôle la durée de vie d'une variable et la façon dont elle est résolue dans les différentes parties du code."
+            },
+            {
+              "en": "To correctly determine scope, Python follows the **LEGB** rule, which stands for the following:",
+              "fr": "Pour déterminer correctement la portée, Python suit la règle **LEGB**, qui correspond à :"
+            },
+            {
+              "en": "- **Local scope (L)**: Variables defined in functions or classes.\n    \n- **Enclosing scope (E)**: Variables defined in enclosing or nested functions.\n    \n- **Global scope (G):** Variables defined at the top level of the module or file.\n    \n- **Built-in scope (B)**: Reserved names in Python for predefined functions, modules, keywords, and objects.",
+              "fr": "- **Portée locale (L)** : variables définies dans des fonctions ou des classes.\n    \n- **Portée englobante (E)** : variables définies dans des fonctions englobantes ou imbriquées.\n    \n- **Portée globale (G)** : variables définies au niveau supérieur du module ou du fichier.\n    \n- **Portée intégrée (B)** : noms réservés de Python pour les fonctions, modules, mots-clés et objets prédéfinis."
+            },
+            {
+              "en": "Python uses the LEGB rule to resolve the scope of the variables in your program. We'll dive into each of these rules so you get a better understanding of the process.",
+              "fr": "Python utilise la règle LEGB pour résoudre la portée des variables dans ton programme. Nous allons examiner chacun de ces niveaux pour que tu comprennes mieux le processus."
+            },
+            {
+              "en": "**Local scope** means that a variable declared inside a function or class can only be accessed within that function or class.",
+              "fr": "La **portée locale** signifie qu'une variable déclarée à l'intérieur d'une fonction ou d'une classe n'est accessible que dans cette fonction ou cette classe."
+            },
+            {
+              "en": "Here's an example:",
+              "fr": "Voici un exemple :"
+            },
+            {
+              "en": "In this case, the `my_func` function has its own scope which cannot be accessed from outside the function. Calling `my_func` will output `10`, but printing `my_var` outside the function will lead to a `NameError`:",
+              "fr": "Dans ce cas, la fonction `my_func` a sa propre portée, qui n'est pas accessible depuis l'extérieur de la fonction. Appeler `my_func` affichera `10`, mais afficher `my_var` en dehors de la fonction produira une `NameError` :"
+            },
+            {
+              "en": "**Enclosing scope** means that a function that's nested inside another function can access the variables of the function it's nested within.",
+              "fr": "La **portée englobante** signifie qu'une fonction imbriquée dans une autre fonction peut accéder aux variables de la fonction dans laquelle elle est imbriquée."
+            },
+            {
+              "en": "For example:",
+              "fr": "Par exemple :"
+            },
+            {
+              "en": "In this example, the inner function, `inner_func`, can freely access the `msg` variable defined in the outer function, `outer_func`. However, note that outer functions cannot access variables defined within any nested functions:",
+              "fr": "Dans cet exemple, la fonction interne, `inner_func`, peut librement accéder à la variable `msg` définie dans la fonction externe, `outer_func`. En revanche, note que les fonctions externes ne peuvent pas accéder aux variables définies dans des fonctions imbriquées :"
+            },
+            {
+              "en": "That's because `res` is locally scoped to `inner_func`. Also, notice that `outer_func` tries to print `res` before `inner_func` is called.",
+              "fr": "C'est parce que `res` a une portée locale à `inner_func`. Remarque aussi que `outer_func` essaie d'afficher `res` avant que `inner_func` ne soit appelée."
+            },
+            {
+              "en": "One solution is to initialize `res` as an empty string in the enclosing scope, which is within `outer_func`. Then within `inner_func`, make `res` a non-local variable with the `nonlocal` keyword:",
+              "fr": "Une solution consiste à initialiser `res` comme une chaîne vide dans la portée englobante, c'est-à-dire dans `outer_func`. Puis, dans `inner_func`, tu rends `res` non locale avec le mot-clé `nonlocal` :"
+            },
+            {
+              "en": "**Global scope** refers to variables that are declared outside any functions or classes which can be accessed from anywhere in the program. Here, `my_var` can be accessed anywhere, even inside a function it's not defined in:",
+              "fr": "La **portée globale** désigne les variables déclarées en dehors de toute fonction ou classe, et qui sont accessibles depuis n'importe où dans le programme. Ici, `my_var` est accessible partout, même à l'intérieur d'une fonction dans laquelle elle n'est pas définie :"
+            },
+            {
+              "en": "And if you want to make a locally scoped variable defined inside a function globally accessible, you can use the `global` keyword:",
+              "fr": "Et si tu veux rendre globalement accessible une variable de portée locale définie à l'intérieur d'une fonction, tu peux utiliser le mot-clé `global` :"
+            },
+            {
+              "en": "You can also use the `global` keyword to modify a global variable:",
+              "fr": "Tu peux aussi utiliser le mot-clé `global` pour modifier une variable globale :"
+            },
+            {
+              "en": "Finally, **built-in scope** refers to all of Python's built-in functions, modules, and keywords, and are available anywhere in your program:",
+              "fr": "Enfin, la **portée intégrée** désigne toutes les fonctions, modules et mots-clés intégrés de Python, disponibles partout dans ton programme :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the rule Python follows to determine the scope of a variable?",
+              "fr": "Quelle est la règle que Python suit pour déterminer la portée d'une variable ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "STACK: Static, Temporary, Active, Constant, Keyword",
+              "fr": "STACK : Statique, Temporaire, Actif, Constante, Mot-clé"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It consists of four levels, starting from the most specific to the most general.",
+              "fr": "Elle se compose de quatre niveaux, du plus spécifique au plus général."
+            },
+            {
+              "en": "TREE: Temporary, Reserved, Enclosing, External",
+              "fr": "TREE : Temporaire, Réservé, Englobant, Externe"
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It consists of four levels, starting from the most specific to the most general.",
+              "fr": "Elle se compose de quatre niveaux, du plus spécifique au plus général."
+            },
+            {
+              "en": "LEGB: Local, Enclosing, Global, Built-in",
+              "fr": "LEGB : Local, Englobant, Global, Built-in (intégré)"
+            },
+            {
+              "en": "SCOPE: Script, Constant, Outer, Python, Embedded",
+              "fr": "SCOPE : Script, Constante, Externe, Python, Embarqué"
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It consists of four levels, starting from the most specific to the most general.",
+              "fr": "Elle se compose de quatre niveaux, du plus spécifique au plus général."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `nonlocal` keyword do?",
+              "fr": "Que fait le mot-clé `nonlocal` ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Makes a variable global.",
+              "fr": "Rend une variable globale."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps modify variables in an outer function.",
+              "fr": "Il sert à modifier des variables dans une fonction englobante."
+            },
+            {
+              "en": "Creates a new local variable.",
+              "fr": "Crée une nouvelle variable locale."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps modify variables in an outer function.",
+              "fr": "Il sert à modifier des variables dans une fonction englobante."
+            },
+            {
+              "en": "Prevents variable reassignment.",
+              "fr": "Empêche la réaffectation d'une variable."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It helps modify variables in an outer function.",
+              "fr": "Il sert à modifier des variables dans une fonction englobante."
+            },
+            {
+              "en": "Allows modifying a variable from an enclosing function",
+              "fr": "Permet de modifier une variable d'une fonction englobante"
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which keyword can you use to modify a global variable in Python?",
+              "fr": "Quel mot-clé peux-tu utiliser pour modifier une variable globale en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It allows changes to a variable outside the function.",
+              "fr": "Il permet de modifier une variable en dehors de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It allows changes to a variable outside the function.",
+              "fr": "Il permet de modifier une variable en dehors de la fonction."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "It allows changes to a variable outside the function.",
+              "fr": "Il permet de modifier une variable en dehors de la fonction."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

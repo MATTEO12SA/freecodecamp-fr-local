@@ -31,11 +31,15 @@ node tools/translation-status.js --leftover javascript-v9
 | JS v9            | 230/230 | 1311/1311      |
 | FEL v9           |   62/62 | 532/532        |
 | APIs v9          |   16/16 | 48/48          |
-| Python v9        |    0/78 | 0/527          |
+| Python v9        |   21/78 | 133/527        |
 | Relational DB v9 |    0/34 | 0/64           |
 | Full-stack v9    |     0/1 | 0/1            |
 
-Prochaine cible de traduction : **`python-v9`**. Python / SQL / full-stack à 0 % n’est pas un bug. RWD/JS/FEL/APIs sont `COMPLET` (fichiers + intros + titres), pas seulement « 100 % fichiers ».
+Modules **python-basics** (16/16) + **python-loops-and-sequences** (5/5) livrés.
+Python cert à **25 %** (`translation-status.js`, 133/527 fichiers). Prochaine
+cible : **`lecture-working-with-dictionaries-and-sets`** (module
+`python-dictionaries-and-sets`). SQL / full-stack à 0 % n’est pas un bug.
+RWD/JS/FEL/APIs sont `COMPLET` (fichiers + intros + titres).
 
 Qualité (2026-08-21) : 15 `# --assignment--` EN sur reviews JS/FEL/APIs corrigés ; labels `/learn` JS+APIs traduits ; fausses notes « Coming 2026 » retirées sur les modules déjà livrés. RWD a encore des ERREUR de drift de chunks (`check-translation-quality`) — ne pas réécrire les workshops sans preuve. Chrome `translations.json` encore partiellement EN (hors scope immédiat).
 
@@ -234,6 +238,8 @@ Pour les modules non-workshop, le workflow manuel reste possible, mais les works
 
 5. **PowerShell quoting** : les paths contiennent un espace (`Nouveau dossier`). Toujours utiliser des chemins absolus entre guillemets.
 
+6. **Reviews Python sans `--interactive--`** : `detectKind` doit voir `# --assignment--` pour extraire en `kind: "lecture"`. Sinon `apply` copie l'assignment anglais tel quel. Ne pas extraire un review `challengeType 31` en workshop.
+
 ## Commandes Utiles
 
 ### Dev server
@@ -291,7 +297,7 @@ node tools/sync-intro-copies.js --write python-v9
 
 Le pipeline **n'écrit jamais le français** : Claude traduit le JSON, `ship` enchaîne apply/verify/qualité, `extract-missing` prépare les JSON vides, `sync-intro-copies` recopie le français déjà rédigé vers la deuxième clé `intro.json`. `--phrasebook` reste un brouillon, jamais la source finale.
 
-Suite : RWD/JS/FEL/APIs complets au niveau fichiers. Prochaine traduction : **python-v9**. Ne pas traiter un 100 % fichiers comme une cert terminée.
+Suite : RWD/JS/FEL/APIs `COMPLET`. Python-basics 16/16. Prochaine traduction : **`lecture-working-with-loops-and-sequences`**. Ne pas traiter un 100 % fichiers comme une cert terminée.
 
 ### Lister ce qui manque dans un module
 
@@ -333,20 +339,34 @@ compteurs sont affichés dans la sortie et protégés par
 
 1. Lire ce fichier (`HANDOFF-TRADUCTIONS.md`) en premier.
 2. Vérifier l'état réel avec `node tools/translation-status.js` (et `--leftover` sur la cert en cours). Ne pas se fier au seul comptage de fichiers.
-3. Continuer **python-v9**. JS/RWD/FEL/APIs n'avancent plus tant que `translation-status` ne dit pas `COMPLET` (fichiers + intros + titres).
+3. Continuer **python-v9** au module `python-dictionaries-and-sets` (`lecture-working-with-dictionaries-and-sets`). Module `python-loops-and-sequences` **terminé**. JS/RWD/FEL/APIs n'avancent plus tant que `translation-status` ne dit pas `COMPLET`.
 4. Pour un workshop, une lecture, une review ou un quiz : `extract` (ou `extract-missing`) → Claude traduit le JSON → `reviewed: true` → `ship`. Mettre à jour **les deux** copies `intro.json`, ou lancer `sync-intro-copies.js --write` après avoir rédigé l'arbre v9.
 5. Commit + push immédiats à la fin de chaque module.
 
 ## Fichier De Structure Du Superblock
 
 Pour vérifier l'ordre exact des blocs/modules :
-`curriculum/structure/superblocks/javascript-v9.json`
+`curriculum/structure/superblocks/python-v9.json` (cert en cours) ou `javascript-v9.json`.
 
 ## Hot-Reload Des Traductions
 
 Tu peux modifier n'importe quel `.md` FR et il sera hot-reloadé en ~5s dans le navigateur (Ctrl + Shift + R). Si tu crées un nouveau `.md` (nouveau bloc ou nouveau fichier dans un bloc existant), le `fs.watch` recursive le détecte automatiquement sans redémarrer le serveur — ET si c'est le premier fichier d'un block jamais vu, `has-french-intro.ts` est touché pour mettre à jour le filtre catalog + badge cours-fr.
 
 ---
+
+**Dernière session (2026-08-21, python-loops-and-sequences 5/5)** :
+Python v9 à **21/78** blocs (**133/527** fichiers), **25 %**. Module
+`python-loops-and-sequences` traduit et shippé : lecture, workshop-pin-extractor
+(19 étapes), lab-number-pattern-generator, review, quiz. Intros v9 + copie
+`learn-python-loops-and-sequences`. Prochaine cible :
+`lecture-working-with-dictionaries-and-sets`.
+
+**Dernière session (2026-08-21, python-basics 16/16)** :
+Python v9 à 16/78 blocs (102/527 fichiers), **19 %**. Module python-basics
+traduit (lectures, ateliers, labs, review, quiz) via extract → JSON relu →
+`ship`. Intros v9 + copies `introduction-to-python-basics`. `detectKind`
+traite `# --assignment--` comme lecture (reviews Python sans `--interactive--`).
+_(Cible loops depuis livrée.)_
 
 **Dernière session (2026-08-21, UX fork + qualité 4 certs + arrêt local)** :
 Catalogue = 7 certs v9 (plus les micro-cours upstream) + badges FR + section « Disponibles en français ». Menu dropdown ≤ 18rem, clic extérieur, labels Carte / Parcours / Catalogue / Outils. `/dev-fr` : HTTP live (`fetch('/')`), table traductions = preval (plus le snapshot), GraphiQL derrière Debug. `/cours-fr` et `/catalog` sans `Col` offset. Watcher touche `has-french-intro.ts` aussi quand la couverture v9 change. `dev.ps1` écrit `local:report` une fois le port UP. 15 assignments EN → FR ; `intro.json` JS/APIs. Serveur local arrêté proprement (port 8000 DOWN). Prochaine traduction : `python-v9`.

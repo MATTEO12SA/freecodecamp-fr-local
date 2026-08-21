@@ -1,0 +1,587 @@
+{
+  "workshop": "workshop-pin-extractor",
+  "kind": "workshop",
+  "reviewed": true,
+  "note": "Claude traduit chaque champ fr (aucune phrase predefinie par defaut). Reference de style: tools/translations/lexique-fr.md. Passer reviewed a true seulement apres relecture + check-translation-quality.",
+  "files": [
+    {
+      "file": "6852db755c9c1274d75aae9a.md",
+      "id": "6852db755c9c1274d75aae9a",
+      "dashedName": "step-1",
+      "title": {
+        "en": "Step 1",
+        "fr": "Étape 1"
+      },
+      "description": [
+        {
+          "en": "In this workshop you will create a pin extractor, the pin digits are hidden in each line of a poem.",
+          "fr": "Dans ce workshop, tu vas créer un extracteur de code PIN : les chiffres du code sont cachés dans chaque ligne d'un poème."
+        },
+        {
+          "en": "Start by creating a function called `pin_extractor` with a parameter `poem`. An empty function gives an error, so add `pass` inside the function momentarily to make it valid.",
+          "fr": "Commence par créer une fonction appelée `pin_extractor` avec un paramètre `poem`. Une fonction vide provoque une erreur, alors ajoute `pass` à l'intérieur de la fonction temporairement pour la rendre valide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a function named `pin_extractor`.",
+          "fr": "Tu devrais avoir une fonction nommée `pin_extractor`."
+        },
+        {
+          "en": "The `pin_extractor` function should have a parameter named `poem`.",
+          "fr": "La fonction `pin_extractor` devrait avoir un paramètre nommé `poem`."
+        }
+      ]
+    },
+    {
+      "file": "6852dd8486c7ee0171322950.md",
+      "id": "6852dd8486c7ee0171322950",
+      "dashedName": "step-2",
+      "title": {
+        "en": "Step 2",
+        "fr": "Étape 2"
+      },
+      "description": [
+        {
+          "en": "You will need a variable to hold the secret code while you decode it, so remove `pass` and create a variable called `secret_code` inside the function and assign to it an empty string.",
+          "fr": "Tu auras besoin d'une variable pour stocker le code secret pendant que tu le décodes, alors retire `pass` et crée une variable appelée `secret_code` à l'intérieur de la fonction, puis affecte-lui une chaîne vide."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `secret_code` variable inside the `pin_extractor` function.",
+          "fr": "Tu devrais avoir une variable `secret_code` à l'intérieur de la fonction `pin_extractor`."
+        },
+        {
+          "en": "The variable `secret_code` should have a value of an empty string.",
+          "fr": "La variable `secret_code` devrait avoir pour valeur une chaîne vide."
+        },
+        {
+          "en": "You should not have `pass` in your code anymore.",
+          "fr": "Tu ne devrais plus avoir `pass` dans ton code."
+        }
+      ]
+    },
+    {
+      "file": "68530231c05b93324e071104.md",
+      "id": "68530231c05b93324e071104",
+      "dashedName": "step-3",
+      "title": {
+        "en": "Step 3",
+        "fr": "Étape 3"
+      },
+      "description": [
+        {
+          "en": "While you work on the function it would be useful to have a function call for debugging purposes, so create a `poem` variable, outside the function, that contains this poem:",
+          "fr": "Pendant que tu travailles sur la fonction, il serait utile d'avoir un appel de fonction pour le débogage, alors crée une variable `poem`, en dehors de la fonction, qui contient ce poème :"
+        },
+        {
+          "en": "You can use a multi-line string for that.",
+          "fr": "Tu peux utiliser une chaîne multi-lignes pour cela."
+        },
+        {
+          "en": "And then, call the function with the `poem` variable as argument.",
+          "fr": "Ensuite, appelle la fonction avec la variable `poem` en argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a global variable named `poem`.",
+          "fr": "Tu devrais avoir une variable globale nommée `poem`."
+        },
+        {
+          "en": "The `poem` variable should have a value equal to `Stars and the moon\\nshine in the sky\\nwhite and bright\\nuntil the end of the night`.",
+          "fr": "La variable `poem` devrait avoir une valeur égale à `Stars and the moon\\nshine in the sky\\nwhite and bright\\nuntil the end of the night`."
+        },
+        {
+          "en": "You should call the function `pin_extractor` with `poem` as argument.",
+          "fr": "Tu devrais appeler la fonction `pin_extractor` avec `poem` en argument."
+        }
+      ]
+    },
+    {
+      "file": "68531fbb934d735415053274.md",
+      "id": "68531fbb934d735415053274",
+      "dashedName": "step-4",
+      "title": {
+        "en": "Step 4",
+        "fr": "Étape 4"
+      },
+      "description": [
+        {
+          "en": "Now that you have added a function call you can see any error created inside the function in the terminal, and you can always use `print` to see the value of things.",
+          "fr": "Maintenant que tu as ajouté un appel de fonction, tu peux voir dans le terminal toute erreur créée à l'intérieur de la fonction, et tu peux toujours utiliser `print` pour voir la valeur des choses."
+        },
+        {
+          "en": "There is a digit of the pin hidden in every line, so inside the function use the `split` method to divide the string in a list of lines. Split the lines on the newline character (`\\n`), and assign the resulting list to a variable called `lines`.",
+          "fr": "Il y a un chiffre du code PIN caché dans chaque ligne, alors à l'intérieur de la fonction, utilise la méthode `split` pour diviser la chaîne en une liste de lignes. Découpe les lignes sur le caractère de nouvelle ligne (`\\n`), et affecte la liste résultante à une variable appelée `lines`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a variable named `lines` within your `pin_extractor` function.",
+          "fr": "Tu devrais avoir une variable nommée `lines` dans ta fonction `pin_extractor`."
+        },
+        {
+          "en": "The variable `lines` should have a value of `poem.split('\\n')`.",
+          "fr": "La variable `lines` devrait avoir pour valeur `poem.split('\\n')`."
+        }
+      ]
+    },
+    {
+      "file": "68553423d775cc60134ac8bb.md",
+      "id": "68553423d775cc60134ac8bb",
+      "dashedName": "step-5",
+      "title": {
+        "en": "Step 5",
+        "fr": "Étape 5"
+      },
+      "description": [
+        {
+          "en": "You need to work on each line independently: create a loop over `lines` that uses `line` as loop variable. Inside the loop, print `line`.",
+          "fr": "Tu dois travailler sur chaque ligne indépendamment : crée une boucle sur `lines` qui utilise `line` comme variable de boucle. À l'intérieur de la boucle, affiche `line`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `for` loop in your `pin_extractor` function.",
+          "fr": "Tu devrais avoir une boucle `for` dans ta fonction `pin_extractor`."
+        },
+        {
+          "en": "The loop should iterate over `lines`.",
+          "fr": "La boucle devrait itérer sur `lines`."
+        },
+        {
+          "en": "The loop should have `line` as loop variable (`for line in lines`).",
+          "fr": "La boucle devrait avoir `line` comme variable de boucle (`for line in lines`)."
+        },
+        {
+          "en": "You should have `print(line)` inside the loop.",
+          "fr": "Tu devrais avoir `print(line)` à l'intérieur de la boucle."
+        }
+      ]
+    },
+    {
+      "file": "685535bf527b2c77236b3a9a.md",
+      "id": "685535bf527b2c77236b3a9a",
+      "dashedName": "step-6",
+      "title": {
+        "en": "Step 6",
+        "fr": "Étape 6"
+      },
+      "description": [
+        {
+          "en": "The nth digit of the pin is hidden as the length of the nth word in the nth line.",
+          "fr": "Le n-ième chiffre du code PIN est caché sous la forme de la longueur du n-ième mot de la n-ième ligne."
+        },
+        {
+          "en": "To find the length of the nth word, the next step is to separate the line of the poem into a list of words: inside the loop, create a variable `words` and assign to it the value of `line` split into words using the `split` method.",
+          "fr": "Pour trouver la longueur du n-ième mot, l'étape suivante est de séparer la ligne du poème en une liste de mots : à l'intérieur de la boucle, crée une variable `words` et affecte-lui la valeur de `line` découpée en mots avec la méthode `split`."
+        },
+        {
+          "en": "Then, add a `print` call with `words` as its argument.",
+          "fr": "Ensuite, ajoute un appel à `print` avec `words` comme argument."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `words` variable inside the loop.",
+          "fr": "Tu devrais avoir une variable `words` à l'intérieur de la boucle."
+        },
+        {
+          "en": "The `words` variable should have a value of `line.split()`.",
+          "fr": "La variable `words` devrait avoir pour valeur `line.split()`."
+        },
+        {
+          "en": "You should have `print(words)`.",
+          "fr": "Tu devrais avoir `print(words)`."
+        }
+      ]
+    },
+    {
+      "file": "685578aae65e4106ad2b4300.md",
+      "id": "685578aae65e4106ad2b4300",
+      "dashedName": "step-7",
+      "title": {
+        "en": "Step 7",
+        "fr": "Étape 7"
+      },
+      "description": [
+        {
+          "en": "As you learned in a previous lesson, the `enumerate` function allows you to keep track of the index while looping over an iterable:",
+          "fr": "Comme tu l'as appris dans une leçon précédente, la fonction `enumerate` te permet de suivre l'indice tout en parcourant un itérable :"
+        },
+        {
+          "en": "The nth digit of the secret code comes from the nth word of the nth line, so you need to know what is the number of each line.",
+          "fr": "Le n-ième chiffre du code secret vient du n-ième mot de la n-ième ligne, donc tu dois savoir quel est le numéro de chaque ligne."
+        },
+        {
+          "en": "Change the loop so that it iterates on `enumerate(lines)`, and add another loop variable before `line` named `line_index`.",
+          "fr": "Modifie la boucle pour qu'elle itère sur `enumerate(lines)`, et ajoute une autre variable de boucle avant `line` nommée `line_index`."
+        },
+        {
+          "en": "Also, update the `print` call to `print(line_index, line)`.",
+          "fr": "Aussi, mets à jour l'appel à `print` pour qu'il soit `print(line_index, line)`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The loop should iterate over `enumerate(lines)`.",
+          "fr": "La boucle devrait itérer sur `enumerate(lines)`."
+        },
+        {
+          "en": "The loop should have `line_index, line` as loop variable.",
+          "fr": "La boucle devrait avoir `line_index, line` comme variable de boucle."
+        },
+        {
+          "en": "You should have `print(line_index, line)` inside the loop.",
+          "fr": "Tu devrais avoir `print(line_index, line)` à l'intérieur de la boucle."
+        }
+      ]
+    },
+    {
+      "file": "68557bd29f7f3c1880f98836.md",
+      "id": "68557bd29f7f3c1880f98836",
+      "dashedName": "step-8",
+      "title": {
+        "en": "Step 8",
+        "fr": "Étape 8"
+      },
+      "description": [
+        {
+          "en": "In the last line of the loop, update the `print` call so that it prints the word inside the `words` list at index `line_index`.",
+          "fr": "À la dernière ligne de la boucle, mets à jour l'appel à `print` pour qu'il affiche le mot de la liste `words` à l'indice `line_index`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have `print(words[line_index])` at the end of the loop.",
+          "fr": "Tu devrais avoir `print(words[line_index])` à la fin de la boucle."
+        }
+      ]
+    },
+    {
+      "file": "685926db99041c5e619ead41.md",
+      "id": "685926db99041c5e619ead41",
+      "dashedName": "step-9",
+      "title": {
+        "en": "Step 9",
+        "fr": "Étape 9"
+      },
+      "description": [
+        {
+          "en": "The `len` function gives the length of a string. Update the second `print` call to print the length of that word.",
+          "fr": "La fonction `len` donne la longueur d'une chaîne. Mets à jour le second appel à `print` pour afficher la longueur de ce mot."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have `print(len(words[line_index]))` at the end of the loop.",
+          "fr": "Tu devrais avoir `print(len(words[line_index]))` à la fin de la boucle."
+        }
+      ]
+    },
+    {
+      "file": "68592730aaf34b61ae279168.md",
+      "id": "68592730aaf34b61ae279168",
+      "dashedName": "step-10",
+      "title": {
+        "en": "Step 10",
+        "fr": "Étape 10"
+      },
+      "description": [
+        {
+          "en": "The length returned from `len` is an integer, you need to convert it to a string using the `str` function to be able to add it to the `secret_code` string.",
+          "fr": "La longueur renvoyée par `len` est un entier ; tu dois la convertir en chaîne avec la fonction `str` pour pouvoir l'ajouter à la chaîne `secret_code`."
+        },
+        {
+          "en": "Update the `print` call to print the length as a string.",
+          "fr": "Mets à jour l'appel à `print` pour afficher la longueur sous forme de chaîne."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have `print(str(len(words[line_index])))` at the end of the loop.",
+          "fr": "Tu devrais avoir `print(str(len(words[line_index])))` à la fin de la boucle."
+        }
+      ]
+    },
+    {
+      "file": "68592807861cfb658c90f70f.md",
+      "id": "68592807861cfb658c90f70f",
+      "dashedName": "step-11",
+      "title": {
+        "en": "Step 11",
+        "fr": "Étape 11"
+      },
+      "description": [
+        {
+          "en": "Now you can concatenate `str(len(words[line_index]))` to `secret_code`. Remove the `print` call and use the augmented assignment `+=` for concatenation.",
+          "fr": "Maintenant, tu peux concaténer `str(len(words[line_index]))` à `secret_code`. Retire l'appel à `print` et utilise l'affectation augmentée `+=` pour la concaténation."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Inside the loop you should have `secret_code += str(len(words[line_index]))`.",
+          "fr": "À l'intérieur de la boucle, tu devrais avoir `secret_code += str(len(words[line_index]))`."
+        }
+      ]
+    },
+    {
+      "file": "6859290fc8e07e6b2a8d8523.md",
+      "id": "6859290fc8e07e6b2a8d8523",
+      "dashedName": "step-12",
+      "title": {
+        "en": "Step 12",
+        "fr": "Étape 12"
+      },
+      "description": [
+        {
+          "en": "Remove the two `print` calls and add a `return` statement that returns `secret_code` on the last line in the function.",
+          "fr": "Retire les deux appels à `print` et ajoute une instruction `return` qui renvoie `secret_code` à la dernière ligne de la fonction."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should not have a `print` call.",
+          "fr": "Tu ne devrais pas avoir d'appel à `print`."
+        },
+        {
+          "en": "The `pin_extractor` function should return `secret_code` at the end.",
+          "fr": "La fonction `pin_extractor` devrait renvoyer `secret_code` à la fin."
+        },
+        {
+          "en": "`pin_extractor(poem)` should return `5262`.",
+          "fr": "`pin_extractor(poem)` devrait renvoyer `5262`."
+        }
+      ]
+    },
+    {
+      "file": "685929ee6d500c6f2bce6751.md",
+      "id": "685929ee6d500c6f2bce6751",
+      "dashedName": "step-13",
+      "title": {
+        "en": "Step 13",
+        "fr": "Étape 13"
+      },
+      "description": [
+        {
+          "en": "Pass `pin_extractor(poem)` to the `print` function so you can see what the function is returning.",
+          "fr": "Passe `pin_extractor(poem)` à la fonction `print` pour voir ce que la fonction renvoie."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have the function call `print(pin_extractor(poem))`.",
+          "fr": "Tu devrais avoir l'appel de fonction `print(pin_extractor(poem))`."
+        }
+      ]
+    },
+    {
+      "file": "6855918e87c33c6979d21d3f.md",
+      "id": "6855918e87c33c6979d21d3f",
+      "dashedName": "step-14",
+      "title": {
+        "en": "Step 14",
+        "fr": "Étape 14"
+      },
+      "description": [
+        {
+          "en": "Now the function is doing a good job in extracting the code from the poem, but there is an edge case to consider: the line of the poem could be shorter than expected, and that would make the function error out (you can try this removing the word `bright` from the poem).",
+          "fr": "Maintenant, la fonction extrait correctement le code du poème, mais il y a un cas limite à considérer : la ligne du poème pourrait être plus courte que prévu, et cela ferait échouer la fonction (tu peux essayer en retirant le mot `bright` du poème)."
+        },
+        {
+          "en": "Put the line `secret_code += str(len(words[line_index]))` in an `if` statement that checks that there are enough words in the `words` list.",
+          "fr": "Place la ligne `secret_code += str(len(words[line_index]))` dans une instruction `if` qui vérifie qu'il y a assez de mots dans la liste `words`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "Inside the loop you should have an `if` statement.",
+          "fr": "À l'intérieur de la boucle, tu devrais avoir une instruction `if`."
+        },
+        {
+          "en": "The if statement condition should be `len(words) > line_index`.",
+          "fr": "La condition de l'instruction if devrait être `len(words) > line_index`."
+        },
+        {
+          "en": "Inside the `if` statement you should have `secret_code += str(len(words[line_index]))`.",
+          "fr": "À l'intérieur de l'instruction `if`, tu devrais avoir `secret_code += str(len(words[line_index]))`."
+        }
+      ]
+    },
+    {
+      "file": "68592b42b9c7f27cbe123203.md",
+      "id": "68592b42b9c7f27cbe123203",
+      "dashedName": "step-15",
+      "title": {
+        "en": "Step 15",
+        "fr": "Étape 15"
+      },
+      "description": [
+        {
+          "en": "The third line of the poem is missing a third word, so the pin is shorter than expected.",
+          "fr": "La troisième ligne du poème n'a pas de troisième mot, donc le code PIN est plus court que prévu."
+        },
+        {
+          "en": "Add an `else` clause that concatenates a `'0'` to `secret_code` when there are not enough words, so that all lines of the poem are used to find digits.",
+          "fr": "Ajoute une clause `else` qui concatène un `'0'` à `secret_code` lorsqu'il n'y a pas assez de mots, afin que toutes les lignes du poème servent à trouver des chiffres."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have an `else` clause.",
+          "fr": "Tu devrais avoir une clause `else`."
+        },
+        {
+          "en": "The `else` clause should contain `secret_code += '0'`.",
+          "fr": "La clause `else` devrait contenir `secret_code += '0'`."
+        },
+        {
+          "en": "`pin_extractor(poem)` should return `5202`.",
+          "fr": "`pin_extractor(poem)` devrait renvoyer `5202`."
+        },
+        {
+          "en": "`secret_code('There\\nonce\\nwas\\na\\ndragon')` should return `50000`.",
+          "fr": "`secret_code('There\\nonce\\nwas\\na\\ndragon')` devrait renvoyer `50000`."
+        }
+      ]
+    },
+    {
+      "file": "68559f3561d7df287586142e.md",
+      "id": "68559f3561d7df287586142e",
+      "dashedName": "step-16",
+      "title": {
+        "en": "Step 16",
+        "fr": "Étape 16"
+      },
+      "description": [
+        {
+          "en": "Now the pin extractor works, but it could be more efficient! It could extract the pin from many poems at the same time!",
+          "fr": "Maintenant, l'extracteur de code PIN fonctionne, mais il pourrait être plus efficace ! Il pourrait extraire le code PIN de plusieurs poèmes en même temps !"
+        },
+        {
+          "en": "Add two more poems in the global scope, `poem2 = 'The grass is green\\nhere and there\\nhoping for rain\\nbefore it turns yellow'` and `poem3 = 'There\\nonce\\nwas\\na\\ndragon'`, and for now, comment out the `print` with the call to `pin_extractor`.",
+          "fr": "Ajoute deux autres poèmes dans la portée globale, `poem2 = 'The grass is green\\nhere and there\\nhoping for rain\\nbefore it turns yellow'` et `poem3 = 'There\\nonce\\nwas\\na\\ndragon'`, et pour l'instant, commente le `print` avec l'appel à `pin_extractor`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The variables `poem2` and `poem3` should exist and have the correct value.",
+          "fr": "Les variables `poem2` et `poem3` devraient exister et avoir la bonne valeur."
+        },
+        {
+          "en": "You should comment out the `print(pin_extractor(poem))` call.",
+          "fr": "Tu devrais commenter l'appel `print(pin_extractor(poem))`."
+        }
+      ]
+    },
+    {
+      "file": "68599f0fc7479410b2269742.md",
+      "id": "68599f0fc7479410b2269742",
+      "dashedName": "step-17",
+      "title": {
+        "en": "Step 17",
+        "fr": "Étape 17"
+      },
+      "description": [
+        {
+          "en": "Update the function argument to be `poems`, then create a `for` loop around all the current content of the function that iterates over `poems` and uses `poem` as loop variable.",
+          "fr": "Modifie l'argument de la fonction pour qu'il soit `poems`, puis crée une boucle `for` autour de tout le contenu actuel de la fonction qui itère sur `poems` et utilise `poem` comme variable de boucle."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The `pin_extractor` function should have a parameter named `poems`.",
+          "fr": "La fonction `pin_extractor` devrait avoir un paramètre nommé `poems`."
+        },
+        {
+          "en": "You should have a `for` loop that loops over `poems`.",
+          "fr": "Tu devrais avoir une boucle `for` qui parcourt `poems`."
+        },
+        {
+          "en": "The loop should have `poem` as loop variable.",
+          "fr": "La boucle devrait avoir `poem` comme variable de boucle."
+        },
+        {
+          "en": "You should move the existing body of the function into the new `for` loop.",
+          "fr": "Tu devrais déplacer le corps existant de la fonction dans la nouvelle boucle `for`."
+        }
+      ]
+    },
+    {
+      "file": "6859a037b3d6721c7fbb8055.md",
+      "id": "6859a037b3d6721c7fbb8055",
+      "dashedName": "step-18",
+      "title": {
+        "en": "Step 18",
+        "fr": "Étape 18"
+      },
+      "description": [
+        {
+          "en": "Before the loop, create a new variable `secret_codes` that has a starting value of an empty list.",
+          "fr": "Avant la boucle, crée une nouvelle variable `secret_codes` qui a pour valeur initiale une liste vide."
+        },
+        {
+          "en": "Then replace the `return secret_code` line with a line that appends `secret_code` to the `secret_codes` list.",
+          "fr": "Puis remplace la ligne `return secret_code` par une ligne qui ajoute `secret_code` à la liste `secret_codes`."
+        }
+      ],
+      "hints": [
+        {
+          "en": "You should have a `secret_codes` variable inside the `pin_extractor` function.",
+          "fr": "Tu devrais avoir une variable `secret_codes` à l'intérieur de la fonction `pin_extractor`."
+        },
+        {
+          "en": "The variable `secret_codes` should have a value of an empty list.",
+          "fr": "La variable `secret_codes` devrait avoir pour valeur une liste vide."
+        },
+        {
+          "en": "At the end of the loop you should have `secret_codes.append(secret_code)`.",
+          "fr": "À la fin de la boucle, tu devrais avoir `secret_codes.append(secret_code)`."
+        },
+        {
+          "en": "You should not return `secret_code`.",
+          "fr": "Tu ne devrais pas renvoyer `secret_code`."
+        }
+      ]
+    },
+    {
+      "file": "6859a082915dae1e0eaaf962.md",
+      "id": "6859a082915dae1e0eaaf962",
+      "dashedName": "step-19",
+      "title": {
+        "en": "Step 19",
+        "fr": "Étape 19"
+      },
+      "description": [
+        {
+          "en": "Finally, return `secret_codes`, then uncomment the function call and update the argument to be `[poem, poem2, poem3]`. Now your function works with multiple poems at once, and can extract multiple pins!",
+          "fr": "Enfin, renvoie `secret_codes`, puis décommente l'appel de fonction et mets à jour l'argument pour qu'il soit `[poem, poem2, poem3]`. Maintenant, ta fonction fonctionne avec plusieurs poèmes à la fois, et peut extraire plusieurs codes PIN !"
+        },
+        {
+          "en": "The `pin_extractor` function is completed.",
+          "fr": "La fonction `pin_extractor` est terminée."
+        }
+      ],
+      "hints": [
+        {
+          "en": "The function should return `secret_codes` at the end.",
+          "fr": "La fonction devrait renvoyer `secret_codes` à la fin."
+        },
+        {
+          "en": "You should have the function call `print(pin_extractor([poem, poem2, poem3]))`.",
+          "fr": "Tu devrais avoir l'appel de fonction `print(pin_extractor([poem, poem2, poem3]))`."
+        },
+        {
+          "en": "`pin_extractor([poem, poem2, poem3])` should return `['5202', '3346', '50000']`.",
+          "fr": "`pin_extractor([poem, poem2, poem3])` devrait renvoyer `['5202', '3346', '50000']`."
+        },
+        {
+          "en": "The function should work correctly with other lists of poems.",
+          "fr": "La fonction devrait fonctionner correctement avec d'autres listes de poèmes."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,566 @@
+{
+  "workshop": "lecture-numbers-and-mathematical-operations",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67fe859e9d3b3635197781c8.md",
+      "id": "67fe859e9d3b3635197781c8",
+      "dashedName": "how-do-you-work-with-integers-and-floating-point-numbers",
+      "title": {
+        "en": "How Do You Work With Integers and Floating Point Numbers?",
+        "fr": "Comment travaille-t-on avec les entiers et les nombres à virgule flottante ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Integers and floats are the primary numeric data types in Python. With them, you can store numeric data and perform mathematical operations.",
+              "fr": "Les entiers et les flottants sont les principaux types de données numériques en Python. Avec eux, tu peux stocker des données numériques et effectuer des opérations mathématiques."
+            },
+            {
+              "en": "Let's look at what integers and floats are, how to perform arithmetic calculations with them, and at several methods Python provides for working with both.",
+              "fr": "Regardons ce que sont les entiers et les flottants, comment effectuer des calculs arithmétiques avec eux, et plusieurs méthodes que Python fournit pour travailler avec les deux."
+            },
+            {
+              "en": "Integers are whole numbers without decimal points, either positive or negative:",
+              "fr": "Les entiers sont des nombres sans partie décimale, positifs ou négatifs :"
+            },
+            {
+              "en": "Here's how to perform an addition operation with integers:",
+              "fr": "Voici comment effectuer une addition avec des entiers :"
+            },
+            {
+              "en": "Here's how to perform a subtraction with integers:",
+              "fr": "Voici comment effectuer une soustraction avec des entiers :"
+            },
+            {
+              "en": "Here's how to perform a multiplication operation with integers:",
+              "fr": "Voici comment effectuer une multiplication avec des entiers :"
+            },
+            {
+              "en": "And here's how to perform a division operation with integers:",
+              "fr": "Et voici comment effectuer une division avec des entiers :"
+            },
+            {
+              "en": "Floats are positive or negative numbers with decimal points, like `3.14`, `-0.5`, or `0.0`.",
+              "fr": "Les flottants sont des nombres positifs ou négatifs avec une virgule décimale, comme `3.14`, `-0.5` ou `0.0`."
+            },
+            {
+              "en": "Here's an addition operation with floats:",
+              "fr": "Voici une addition avec des flottants :"
+            },
+            {
+              "en": "Here's a subtraction operation with floats:",
+              "fr": "Voici une soustraction avec des flottants :"
+            },
+            {
+              "en": "Here's a multiplication operation with floats:",
+              "fr": "Voici une multiplication avec des flottants :"
+            },
+            {
+              "en": "And here's a division operation with floats:",
+              "fr": "Et voici une division avec des flottants :"
+            },
+            {
+              "en": "If you add an integer and a float, the result is automatically converted to a float:",
+              "fr": "Si tu additionnes un entier et un flottant, le résultat est automatiquement converti en flottant :"
+            },
+            {
+              "en": "This is true for other basic arithmetic operations, too, like subtraction, multiplication, and division. If you mix integers and floats, Python will return a float as the result.",
+              "fr": "C'est aussi vrai pour les autres opérations arithmétiques de base, comme la soustraction, la multiplication et la division. Si tu mélanges des entiers et des flottants, Python renvoie un flottant comme résultat."
+            },
+            {
+              "en": "You can also perform more complex arithmetic calculations such as getting the remainder of two numbers with the modulo operator, floor division, and exponentiation with both integers and floats.",
+              "fr": "Tu peux aussi effectuer des calculs arithmétiques plus complexes, comme obtenir le reste de deux nombres avec l'opérateur modulo, la division entière et l'exponentiation, aussi bien avec des entiers qu'avec des flottants."
+            },
+            {
+              "en": "The modulo operator (`%`) returns the remainder when the value on the left is divided by the value on the right:",
+              "fr": "L'opérateur modulo (`%`) renvoie le reste lorsque la valeur de gauche est divisée par la valeur de droite :"
+            },
+            {
+              "en": "Floor division divides two numbers and returns the greatest integer less than or equal to the result. This is done with the double forward slash operator (`//`):",
+              "fr": "La division entière divise deux nombres et renvoie le plus grand entier inférieur ou égal au résultat. On la réalise avec l'opérateur double slash (`//`) :"
+            },
+            {
+              "en": "Exponentiation raises a number to the power of another, and is done with the double asterisk operator (`**`):",
+              "fr": "L'exponentiation élève un nombre à la puissance d'un autre, et se fait avec l'opérateur double astérisque (`**`) :"
+            },
+            {
+              "en": "Sometimes, you might notice that the result of an operation involving floats has more decimal digits than expected. For example, the sum `0.1 + 0.2` equals `0.30000000000000004` instead of `0.3`.",
+              "fr": "Parfois, tu peux remarquer que le résultat d'une opération impliquant des flottants a plus de chiffres décimaux que prévu. Par exemple, la somme `0.1 + 0.2` vaut `0.30000000000000004` au lieu de `0.3`."
+            },
+            {
+              "en": "This happens because numbers are stored in binary format, and some fractions cannot be represented exactly in binary. As a result, they are stored as finite approximations, in the same way the fraction `1/3` cannot be represented with a finite number of digits in decimal and is truncated after a certain number of its infinite digits (`0.33333...`).",
+              "fr": "Cela se produit parce que les nombres sont stockés au format binaire, et certaines fractions ne peuvent pas être représentées exactement en binaire. Par conséquent, elles sont stockées comme des approximations finies, de la même façon que la fraction `1/3` ne peut pas être représentée avec un nombre fini de chiffres en décimal et est tronquée après un certain nombre de ses chiffres infinis (`0.33333...`)."
+            },
+            {
+              "en": "This leads to small rounding errors.",
+              "fr": "Cela entraîne de petites erreurs d'arrondi."
+            },
+            {
+              "en": "Python also provides built-in functions for converting either numeric data or strings into integers or floats.",
+              "fr": "Python fournit aussi des fonctions intégrées pour convertir des données numériques ou des chaînes en entiers ou en flottants."
+            },
+            {
+              "en": "The `float()` function returns a floating-point number constructed from the given number:",
+              "fr": "La fonction `float()` renvoie un nombre à virgule flottante construit à partir du nombre donné :"
+            },
+            {
+              "en": "The `int()` function returns an integer constructed from the given number:",
+              "fr": "La fonction `int()` renvoie un entier construit à partir du nombre donné :"
+            },
+            {
+              "en": "Also, you can use the same built-in functions to convert a string into either a float or integer:",
+              "fr": "Tu peux aussi utiliser les mêmes fonctions intégrées pour convertir une chaîne en flottant ou en entier :"
+            },
+            {
+              "en": "Here are some other methods Python provides for working with integers and floats.",
+              "fr": "Voici d'autres méthodes que Python fournit pour travailler avec les entiers et les flottants."
+            },
+            {
+              "en": "- `round()`: Rounds a number to the specified number of decimal places. By default this function rounds to the nearest integer, and returns a whole number with no decimal places:",
+              "fr": "- `round()` : arrondit un nombre au nombre de décimales spécifié. Par défaut, cette fonction arrondit à l'entier le plus proche et renvoie un nombre entier sans décimales :"
+            },
+            {
+              "en": "- `abs()`: returns the absolute value of a number,",
+              "fr": "- `abs()` : renvoie la valeur absolue d'un nombre,"
+            },
+            {
+              "en": "- `pow()`: raises a number to the power of another or performs modular exponentiation.",
+              "fr": "- `pow()` : élève un nombre à la puissance d'un autre ou effectue une exponentiation modulaire."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the double slash (`//`) operator do in Python?",
+              "fr": "Que fait l'opérateur double slash (`//`) en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It divides two numbers and returns the greatest integer less than or equal to the result.",
+              "fr": "Il divise deux nombres et renvoie le plus grand entier inférieur ou égal au résultat."
+            },
+            {
+              "en": "It performs regular division and returns a float.",
+              "fr": "Il effectue une division classique et renvoie un flottant."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This operator is used for a special kind of integer division.",
+              "fr": "Cet opérateur sert à un type particulier de division entière."
+            },
+            {
+              "en": "It represents a comment in Python.",
+              "fr": "Il représente un commentaire en Python."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This operator is used for a special kind of integer division.",
+              "fr": "Cet opérateur sert à un type particulier de division entière."
+            },
+            {
+              "en": "It raises a number to the power of another.",
+              "fr": "Il élève un nombre à la puissance d'un autre."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This operator is used for a special kind of integer division.",
+              "fr": "Cet opérateur sert à un type particulier de division entière."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which statement correctly describes integers in Python?",
+              "fr": "Quelle affirmation décrit correctement les entiers en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Integers can only store positive whole numbers.",
+              "fr": "Les entiers ne peuvent stocker que des nombres entiers positifs."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what integers represent, like whole values, not numbers with decimal points.",
+              "fr": "Pense à ce que représentent les entiers : des valeurs entières, pas des nombres avec une virgule décimale."
+            },
+            {
+              "en": "Integers are numbers with decimal points.",
+              "fr": "Les entiers sont des nombres avec une virgule décimale."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what integers represent, like whole values, not numbers with decimal points.",
+              "fr": "Pense à ce que représentent les entiers : des valeurs entières, pas des nombres avec une virgule décimale."
+            },
+            {
+              "en": "Integers are whole numbers without decimal points, either positive or negative.",
+              "fr": "Les entiers sont des nombres sans partie décimale, positifs ou négatifs."
+            },
+            {
+              "en": "Integers automatically convert to floats when performing division",
+              "fr": "Les entiers se convertissent automatiquement en flottants lors d'une division"
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about what integers represent, like whole values, not numbers with decimal points.",
+              "fr": "Pense à ce que représentent les entiers : des valeurs entières, pas des nombres avec une virgule décimale."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which method returns the absolute value of a number?",
+              "fr": "Quelle méthode renvoie la valeur absolue d'un nombre ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that always gives a non-negative result.",
+              "fr": "Pense à la méthode qui donne toujours un résultat non négatif."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that always gives a non-negative result.",
+              "fr": "Pense à la méthode qui donne toujours un résultat non négatif."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the method that always gives a non-negative result.",
+              "fr": "Pense à la méthode qui donne toujours un résultat non négatif."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839b3295323f563efc68f5c.md",
+      "id": "6839b3295323f563efc68f5c",
+      "dashedName": "how-do-augmented-assignments-work",
+      "title": {
+        "en": "How Do Augmented Assignments Work?",
+        "fr": "Comment fonctionnent les affectations augmentées ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Augmented assignment combines a binary operation with an assignment in one step. It takes a variable, applies an operation to it with another value, and stores the result back into the same variable.",
+              "fr": "L'affectation augmentée combine une opération binaire et une affectation en une seule étape. Elle prend une variable, lui applique une opération avec une autre valeur, et stocke le résultat dans la même variable."
+            },
+            {
+              "en": "If you're familiar with a language like JavaScript, you've probably heard of the addition assignment operator (`+=`) or subtraction assignment (`-=`), and others. Those exist in Python, too. The only difference is that they're referred to as **augmented assignments**.",
+              "fr": "Si tu connais un langage comme JavaScript, tu as probablement déjà entendu parler de l'opérateur d'affectation par addition (`+=`) ou d'affectation par soustraction (`-=`), et d'autres. Ils existent aussi en Python. La seule différence, c'est qu'on les appelle des **affectations augmentées**."
+            },
+            {
+              "en": "The basic syntax of an augmented assignment looks like this:",
+              "fr": "La syntaxe de base d'une affectation augmentée ressemble à ceci :"
+            },
+            {
+              "en": "Which is a more efficient way of doing this:",
+              "fr": "C'est une façon plus efficace de faire ceci :"
+            },
+            {
+              "en": "For example, here's an example of using augmented assignment to add `5` to an existing variable:",
+              "fr": "Par exemple, voici comment utiliser l'affectation augmentée pour ajouter `5` à une variable existante :"
+            },
+            {
+              "en": "And here is the same thing, but without augmented assignment:",
+              "fr": "Et voici la même chose, mais sans affectation augmentée :"
+            },
+            {
+              "en": "The advantage of augmented assignment is that it provides a concise and readable way to update a variable value without repeating the variable name. In turn, this reduces redundancy and potential errors that might arise from a typo or something similar.",
+              "fr": "L'avantage de l'affectation augmentée, c'est qu'elle offre une façon concise et lisible de mettre à jour la valeur d'une variable sans répéter son nom. Cela réduit la redondance et les erreurs potentielles qui pourraient venir d'une faute de frappe ou d'un oubli similaire."
+            },
+            {
+              "en": "Every operator can use an augmented assignment. We've looked at the addition assignment operator (`+=`), so let's look at others.",
+              "fr": "Chaque opérateur peut utiliser une affectation augmentée. On a déjà vu l'opérateur d'affectation par addition (`+=`), alors regardons les autres."
+            },
+            {
+              "en": "- The subtraction assignment operator (`-=`) subtracts the right operand from the left variable and stores the difference in the left variable:",
+              "fr": "- L'opérateur d'affectation par soustraction (`-=`) soustrait l'opérande de droite de la variable de gauche et stocke la différence dans la variable de gauche :"
+            },
+            {
+              "en": "- The multiplication assignment operator (`*=`) multiplies the left variable by the right operand and stores the product back in the left variable:",
+              "fr": "- L'opérateur d'affectation par multiplication (`*=`) multiplie la variable de gauche par l'opérande de droite et stocke le produit dans la variable de gauche :"
+            },
+            {
+              "en": "- The division assignment operator (`/=`) divides the left variable by the right and stores the result back in the left variable:",
+              "fr": "- L'opérateur d'affectation par division (`/=`) divise la variable de gauche par celle de droite et stocke le résultat dans la variable de gauche :"
+            },
+            {
+              "en": "- The floor division operator (`//=`) floor‑divides the left variable by the right and stores the result back in the left variable:",
+              "fr": "- L'opérateur de division entière (`//=`) applique la division entière de la variable de gauche par celle de droite et stocke le résultat dans la variable de gauche :"
+            },
+            {
+              "en": "- The modulo assignment operator (`%=`) computes the remainder of the left variable divided by the right and stores it back in the left variable:",
+              "fr": "- L'opérateur d'affectation par modulo (`%=`) calcule le reste de la variable de gauche divisée par celle de droite et le stocke dans la variable de gauche :"
+            },
+            {
+              "en": "- The exponentiation assignment operator (`**=`) raises the left variable to the power of the right and stores the result back in the left variable:",
+              "fr": "- L'opérateur d'affectation par exponentiation (`**=`) élève la variable de gauche à la puissance de celle de droite et stocke le résultat dans la variable de gauche :"
+            },
+            {
+              "en": "You can use some augmented assignment operators with strings, too. For example, the addition assignment operator makes it easy to concatenate strings:",
+              "fr": "Tu peux aussi utiliser certains opérateurs d'affectation augmentée avec des chaînes. Par exemple, l'opérateur d'affectation par addition facilite la concaténation de chaînes :"
+            },
+            {
+              "en": "And the multiplication assignment operator can be used to repeat a string:",
+              "fr": "Et l'opérateur d'affectation par multiplication peut servir à répéter une chaîne :"
+            },
+            {
+              "en": "Other augmented assignments throw a `TypeError` when you use them with strings:",
+              "fr": "Les autres affectations augmentées lèvent une `TypeError` quand tu les utilises avec des chaînes :"
+            },
+            {
+              "en": "If you're wondering if increment and decrement operators (`++` and  `--`) work in Python, they don't. That's because Python deliberately avoids C-style increment and decrement shortcuts in order to keep the language clear and explicit.",
+              "fr": "Si tu te demandes si les opérateurs d'incrémentation et de décrémentation (`++` et `--`) fonctionnent en Python, ce n'est pas le cas. C'est parce que Python évite volontairement les raccourcis d'incrémentation et de décrémentation de style C, afin de garder le langage clair et explicite."
+            },
+            {
+              "en": "Instead of `x++`, you can simply write `x += 1`, which makes it obvious that you're incrementing the value of `x` by `1`.",
+              "fr": "Au lieu de `x++`, tu peux simplement écrire `x += 1`, ce qui rend évident que tu incrémentes la valeur de `x` de `1`."
+            },
+            {
+              "en": "Writing `++x` in Python just applies the unary plus twice, and does not increment anything:",
+              "fr": "Écrire `++x` en Python applique simplement le plus unaire deux fois, et n'incrémente rien :"
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the main advantage of using augmented assignment operators?",
+              "fr": "Quel est le principal avantage des opérateurs d'affectation augmentée ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They automatically convert data types.",
+              "fr": "Ils convertissent automatiquement les types de données."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how augmented assignments help avoid redundancy and reduce typing mistakes.",
+              "fr": "Pense à la façon dont les affectations augmentées aident à éviter la redondance et à réduire les fautes de frappe."
+            },
+            {
+              "en": "They prevent all possible syntax errors.",
+              "fr": "Ils empêchent toutes les erreurs de syntaxe possibles."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how augmented assignments help avoid redundancy and reduce typing mistakes.",
+              "fr": "Pense à la façon dont les affectations augmentées aident à éviter la redondance et à réduire les fautes de frappe."
+            },
+            {
+              "en": "They provide a concise way to update variables without repeating the variable name.",
+              "fr": "Ils offrent une façon concise de mettre à jour des variables sans répéter le nom de la variable."
+            },
+            {
+              "en": "They make mathematical operations faster.",
+              "fr": "Ils rendent les opérations mathématiques plus rapides."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how augmented assignments help avoid redundancy and reduce typing mistakes.",
+              "fr": "Pense à la façon dont les affectations augmentées aident à éviter la redondance et à réduire les fautes de frappe."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What happens when you use the increment (`++`) and decrement (`--`) operators in Python?",
+              "fr": "Que se passe-t-il quand tu utilises les opérateurs d'incrémentation (`++`) et de décrémentation (`--`) en Python ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They work exactly like in C/C++.",
+              "fr": "Ils fonctionnent exactement comme en C/C++."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python avoids C-style increment and decrement operators.",
+              "fr": "Pense à la façon dont Python évite les opérateurs d'incrémentation et de décrémentation de style C."
+            },
+            {
+              "en": "They cause a syntax error and crash the program.",
+              "fr": "Ils provoquent une erreur de syntaxe et font planter le programme."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python avoids C-style increment and decrement operators.",
+              "fr": "Pense à la façon dont Python évite les opérateurs d'incrémentation et de décrémentation de style C."
+            },
+            {
+              "en": "They are interpreted as double unary operators with no actual increment/decrement.",
+              "fr": "Ils sont interprétés comme des opérateurs unaires appliqués deux fois, sans véritable incrémentation ni décrémentation."
+            },
+            {
+              "en": "They only work in Python 2 but were removed in Python 3.",
+              "fr": "Ils ne fonctionnent qu'en Python 2 mais ont été retirés en Python 3."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about how Python avoids C-style increment and decrement operators.",
+              "fr": "Pense à la façon dont Python évite les opérateurs d'incrémentation et de décrémentation de style C."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which augmented assignment operator raises a variable to a power and stores the result back to that variable?",
+              "fr": "Quel opérateur d'affectation augmentée élève une variable à une puissance et stocke le résultat dans cette même variable ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operator that uses the same symbol as exponentiation operator.",
+              "fr": "Pense à l'opérateur qui utilise le même symbole que l'opérateur d'exponentiation."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operator that uses the same symbol as exponentiation operator.",
+              "fr": "Pense à l'opérateur qui utilise le même symbole que l'opérateur d'exponentiation."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about the operator that uses the same symbol as exponentiation operator.",
+              "fr": "Pense à l'opérateur qui utilise le même symbole que l'opérateur d'exponentiation."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
