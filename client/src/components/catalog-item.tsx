@@ -61,6 +61,15 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
       ? t('curriculum.catalog.duration-singular', { duration: hours })
       : t('curriculum.catalog.duration', { duration: hours });
 
+  const badgeLabel =
+    translationStatus === 'complete'
+      ? t('curriculum.catalog.badge-complete', { percent: coveragePercent })
+      : translationStatus === 'partial'
+        ? t('curriculum.catalog.badge-partial', { percent: coveragePercent })
+        : translationStatus === 'absent'
+          ? t('curriculum.catalog.badge-absent')
+          : null;
+
   return (
     <article className='catalog-item'>
       <div className='catalog-item-top'>
@@ -68,16 +77,11 @@ const CatalogItem: React.FC<CatalogItemProps> = ({
           <div className={`block-label block-label-${topic}`}>
             {t(`curriculum.catalog.topic.${topic}`)}
           </div>
-          {translationStatus === 'partial' && (
-            <div className='catalog-item-translation-status'>
-              {t('curriculum.catalog.partial-translation')}
-              {totalFiles > 0
-                ? ` · ${t('curriculum.catalog.file-coverage', {
-                    percent: coveragePercent,
-                    translated: translatedFiles,
-                    total: totalFiles
-                  })}`
-                : ''}
+          {badgeLabel && (
+            <div
+              className={`catalog-item-translation-status catalog-item-translation-status--${translationStatus}`}
+            >
+              {badgeLabel}
             </div>
           )}
         </div>

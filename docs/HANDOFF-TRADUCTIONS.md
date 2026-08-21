@@ -65,13 +65,22 @@ superblock. Le catalogue complète ce booléen avec
 afficher `absent`, `partial` ou `complete` par carte. Ne pas remplacer ces deux
 sources par une liste manuelle.
 
-**Live update (sans restart)** : [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](../tools/client-plugins/gatsby-source-challenges/gatsby-node.js) détecte les nouveaux blocs FR via `fs.watch` recursive. Quand un block FR jamais vu apparaît, il `fs.utimesSync` sur `has-french-intro.ts` pour forcer Webpack à ré-évaluer le preval. Confirmation dans `dev-logs/latest.log` :
+**Live update (sans restart)** : [tools/client-plugins/gatsby-source-challenges/gatsby-node.js](../tools/client-plugins/gatsby-source-challenges/gatsby-node.js) détecte les nouveaux blocs FR via `fs.watch` recursive. Quand un block FR jamais vu apparaît **ou** que la couverture fichiers d’une cert v9 change (nouveaux `.md` dans un bloc déjà connu), il `fs.utimesSync` sur `has-french-intro.ts` pour forcer Webpack à ré-évaluer le preval. Confirmation dans `dev-logs/latest.log` :
 
 ```
 watcher.touched [fcc-source-challenges] touched has-french-intro.ts (new block <name>)
+watcher.touched [fcc-source-challenges] touched has-french-intro.ts (coverage change after ...)
 ```
 
 Test bout-en-bout vérifié : créer un nouveau dossier `blocks/<x>/` avec un `.md` → `watcher.added` + `watcher.touched` + Webpack `Re-building development bundle` en <1s.
+
+**Après un gros lot d’`apply` pendant que Gatsby tournait déjà** : si les pourcentages catalogue / `/cours-fr` / `/dev-fr` restent figés, **redémarrer Gatsby une fois** (`Ctrl+C` puis `.\dev.ps1`) pour recharger le preval. `.\dev.ps1` régénère aussi `client/static/local-dev/report.json` dès que le port `:8000` est UP.
+
+**Après édition de `client/i18n/locales/french/intro.json`** (titres modules `/learn`) : hard refresh navigateur ; si les titres restent EN, redémarrer Gatsby. Audit qualité 2026-08-21 : 15 `# --assignment--` EN sur reviews JS/FEL/APIs corrigés ; labels modules JS/APIs + fausses notes « Coming 2026 » sur modules déjà livrés corrigés dans `intro.json`.
+
+### Catalogue fork FR
+
+Le catalogue (`packages/shared/src/config/catalog.ts`) liste les **7 certifications v9** (pas les micro-cours upstream). Badges `Français · %` / `FR partiel · %` / `À traduire`, section « Disponibles en français » en tête.
 
 ### Examen Local FR
 

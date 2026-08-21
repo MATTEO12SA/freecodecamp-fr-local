@@ -2,20 +2,22 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import { useDispatch } from 'react-redux';
-import { Container, Col, Row, Spacer } from '@freecodecamp/ui';
+import { Spacer } from '@freecodecamp/ui';
 import { SuperBlocks } from '@freecodecamp/shared/config/curriculum';
 import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
 import {
   BlockLabel,
   type BlockLayouts
 } from '@freecodecamp/shared/config/blocks';
-import LearnLayout from '../components/layouts/learn';
 import { Link } from '../components/helpers';
 import SEO from '../components/seo';
 import type { ChapterBasedSuperBlockStructure } from '../redux/prop-types';
 import { SuperBlockAccordion } from '../templates/Introduction/components/super-block-accordion';
 import { resetExpansion, toggleBlock } from '../templates/Introduction/redux';
-import { hasFrenchIntro } from '../utils/has-french-intro';
+import {
+  getFrenchFileCoverage,
+  hasFrenchIntro
+} from '../utils/has-french-intro';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
 import { groupCertificationsByFrenchAvailability } from '../utils/french-certification-groups';
 import {
@@ -195,11 +197,10 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
   }, [data.allChallengeNode.nodes, dispatch, view]);
 
   return (
-    <LearnLayout contentId='content-start'>
+    <>
       <SEO title='Cours en français' />
-      <Container>
-        <Row>
-          <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
+      <main id='content-start' tabIndex={-1} className='cours-fr-page'>
+        <div className='local-page-shell'>
             <Spacer size='m' />
 
             {view.v === 'lang' && (
@@ -263,21 +264,35 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                   Disponibles maintenant
                 </h2>
                 <div className='cours-fr-grid'>
-                  {certificationGroups.available.map(cert => (
-                    <Link
-                      key={cert.key}
-                      className='cours-fr-folder-card'
-                      to={getCoursFrCertificationHref(cert.key)}
-                    >
-                      <span className='cours-fr-card-kind'>Certification</span>
-                      <span className='cours-fr-folder-label'>
-                        {cert.title}
-                      </span>
-                      <span className='cours-fr-folder-sub'>
-                        {cert.subtitle}
-                      </span>
-                    </Link>
-                  ))}
+                  {certificationGroups.available.map(cert => {
+                    const coverage = getFrenchFileCoverage(cert.key);
+                    const pct =
+                      coverage.total > 0
+                        ? Math.round(
+                            (coverage.translated / coverage.total) * 100
+                          )
+                        : 0;
+                    return (
+                      <Link
+                        key={cert.key}
+                        className='cours-fr-folder-card'
+                        to={getCoursFrCertificationHref(cert.key)}
+                      >
+                        <span className='cours-fr-card-kind'>
+                          Certification · {pct} % fichiers
+                        </span>
+                        <span className='cours-fr-folder-label'>
+                          {cert.title}
+                        </span>
+                        <span className='cours-fr-folder-sub'>
+                          {cert.subtitle}
+                        </span>
+                        <span className='cours-fr-file-coverage'>
+                          {coverage.translated}/{coverage.total} défis traduits
+                        </span>
+                      </Link>
+                    );
+                  })}
                 </div>
 
                 {certificationGroups.upcoming.length > 0 && (
@@ -286,22 +301,33 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
                       Traductions à venir
                     </h2>
                     <div className='cours-fr-grid'>
-                      {certificationGroups.upcoming.map(cert => (
-                        <article
-                          key={cert.key}
-                          className='cours-fr-upcoming-card'
-                        >
-                          <span className='cours-fr-folder-label'>
-                            {cert.title}
-                          </span>
-                          <span className='cours-fr-folder-sub'>
-                            {cert.subtitle}
-                          </span>
-                          <span className='cours-fr-not-translated'>
-                            Traduction à venir
-                          </span>
-                        </article>
-                      ))}
+                      {certificationGroups.upcoming.map(cert => {
+                        const coverage = getFrenchFileCoverage(cert.key);
+                        const pct =
+                          coverage.total > 0
+                            ? Math.round(
+                                (coverage.translated / coverage.total) * 100
+                              )
+                            : 0;
+                        return (
+                          <article
+                            key={cert.key}
+                            className='cours-fr-upcoming-card'
+                          >
+                            <span className='cours-fr-folder-label'>
+                              {cert.title}
+                            </span>
+                            <span className='cours-fr-folder-sub'>
+                              {cert.subtitle}
+                            </span>
+                            <span className='cours-fr-not-translated'>
+                              {pct > 0
+                                ? `FR partiel · ${pct} %`
+                                : 'Traduction à venir'}
+                            </span>
+                          </article>
+                        );
+                      })}
                     </div>
                   </>
                 )}
@@ -427,10 +453,9 @@ function CoursFrPage({ data, location }: PageProps<PageData>): JSX.Element {
               })()}
 
             <Spacer size='l' />
-          </Col>
-        </Row>
-      </Container>
-    </LearnLayout>
+        </div>
+      </main>
+    </>
   );
 }
 

@@ -86,9 +86,9 @@ function NavLinks({
           onClick={hideMenu}
           onKeyDown={handleMenuKeyDown}
           to='/learn'
-          title='Carte de tous les cours locaux'
+          title='Carte complète du curriculum local'
         >
-          {t('buttons.curriculum')}
+          Carte
         </Link>
       </li>
       <li key='cours-fr'>
@@ -113,18 +113,6 @@ function NavLinks({
           Catalogue
         </Link>
       </li>
-      {isDevelopmentMode() && (
-        <li className='nav-line' key='dev-fr'>
-          <Link
-            className='nav-link'
-            onClick={hideMenu}
-            onKeyDown={handleMenuKeyDown}
-            to='/dev-fr'
-          >
-            Dev FR
-          </Link>
-        </li>
-      )}
       <li className='nav-line' key='theme'>
         <button
           type='button'
@@ -140,6 +128,19 @@ function NavLinks({
           )}
         </button>
       </li>
+      {isDevelopmentMode() && (
+        <li key='dev-fr'>
+          <Link
+            className='nav-link nav-link-tools'
+            onClick={hideMenu}
+            onKeyDown={handleMenuKeyDown}
+            to='/dev-fr'
+            title='Outils développeur locaux'
+          >
+            Outils
+          </Link>
+        </li>
+      )}
     </ul>
   );
 }

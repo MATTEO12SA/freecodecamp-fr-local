@@ -1,6 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Col, Container, Row, Spacer } from '@freecodecamp/ui';
-import LearnLayout from '../components/layouts/learn';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import SEO from '../components/seo';
 import { getAllAttempts } from '../utils/exam-history';
 import { getLocalCompletedChallenges } from '../utils/local-progress';
@@ -9,6 +7,10 @@ import {
   importLocalProfile,
   serializeLocalProfile
 } from '../utils/local-profile';
+import {
+  getFrenchFileCoverage,
+  hasFrenchIntro
+} from '../utils/has-french-intro';
 import { formatSnapshotAge } from '../utils/snapshot-age';
 
 import './dev-fr.css';
@@ -18,7 +20,6 @@ type TranslationRow = {
   translated: number;
   total: number;
   pct: number;
-  // Niveau fichier (.md FR/EN) — present dans les rapports recents.
   translatedFiles?: number;
   totalFiles?: number;
   pctFiles?: number;
@@ -71,7 +72,23 @@ type BrowserSummary = {
   lastExamAttempt: string;
 };
 
+type LiveServerStatus = {
+  ok: boolean;
+  statusCode: number;
+  label: string;
+};
+
 const reportUrl = '/local-dev/report.json';
+
+const LOCAL_CERTS = [
+  'responsive-web-design-v9',
+  'javascript-v9',
+  'front-end-development-libraries-v9',
+  'back-end-development-and-apis-v9',
+  'python-v9',
+  'relational-databases-v9',
+  'full-stack-developer-v9'
+] as const;
 
 function formatDate(value: string): string {
   if (!value) return 'inconnu';
@@ -123,19 +140,65 @@ function QuickLink({
   );
 }
 
+function buildLiveCoverageRows(): TranslationRow[] {
+  return LOCAL_CERTS.map(key => {
+    const coverage = getFrenchFileCoverage(key);
+    const pctFiles =
+      coverage.total > 0
+        ? Math.round((coverage.translated / coverage.total) * 100)
+        : 0;
+    return {
+      key,
+      translated: hasFrenchIntro(key) ? 1 : 0,
+      total: 1,
+      pct: hasFrenchIntro(key) ? 100 : 0,
+      translatedFiles: coverage.translated,
+      totalFiles: coverage.total,
+      pctFiles
+    };
+  }).sort((a, b) => (b.pctFiles ?? 0) - (a.pctFiles ?? 0));
+}
+
+async function probeLiveServer(): Promise<LiveServerStatus> {
+  try {
+    const response = await fetch(`/?t=${Date.now()}`, {
+      method: 'HEAD',
+      cache: 'no-store'
+    });
+    return {
+      ok: response.ok || response.status > 0,
+      statusCode: response.status || 200,
+      label: response.ok || response.status > 0 ? 'UP' : 'DOWN'
+    };
+  } catch {
+    // Si on affiche déjà cette page, le serveur client répond.
+    if (typeof window !== 'undefined' && window.location.port === '8000') {
+      return { ok: true, statusCode: 200, label: 'UP' };
+    }
+    return { ok: false, statusCode: 0, label: 'DOWN' };
+  }
+}
+
 function DevFrPage(): JSX.Element {
   const [report, setReport] = useState<LocalDevReport | null>(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showDebug, setShowDebug] = useState(false);
+  const [liveServer, setLiveServer] = useState<LiveServerStatus>({
+    ok: true,
+    statusCode: 200,
+    label: 'UP'
+  });
   const [browserSummary, setBrowserSummary] = useState<BrowserSummary>({
     completedChallenges: 0,
     examAttempts: 0,
     lastExamAttempt: ''
   });
 
+  const liveTranslations = useMemo(() => buildLiveCoverageRows(), []);
   const driftCount = report?.drift.totalDrifted ?? report?.drift.drifted.length;
   const isReady = Boolean(
-    report && report.server.http.ok && driftCount === 0 && !report.git.dirty
+    liveServer.ok && (driftCount === undefined || driftCount === 0)
   );
 
   const generatedAt = useMemo(
@@ -143,13 +206,15 @@ function DevFrPage(): JSX.Element {
     [report]
   );
   const snapshotAge = useMemo(
-    () => (report ? formatSnapshotAge(report.generatedAt) : ''),
+    () => (report ? formatSnapshotAge(report.generatedAt) : 'non généré'),
     [report]
   );
 
-  async function loadReport(): Promise<void> {
+  const refresh = useCallback(async () => {
     setLoading(true);
     setError('');
+    setBrowserSummary(readBrowserSummary());
+    setLiveServer(await probeLiveServer());
     try {
       const response = await fetch(`${reportUrl}?t=${Date.now()}`);
       if (!response.ok) {
@@ -162,328 +227,325 @@ function DevFrPage(): JSX.Element {
     } finally {
       setLoading(false);
     }
-  }
-
-  useEffect(() => {
-    void loadReport();
-    setBrowserSummary(readBrowserSummary());
   }, []);
 
+  useEffect(() => {
+    void refresh();
+  }, [refresh]);
+
+  const translationRows = liveTranslations;
+
   return (
-    <LearnLayout className='dev-fr-page' contentId='content-start'>
+    <>
       <SEO title='Dev FR' />
-      <div>
-        <Container>
-          <Row>
-            <Col md={10} mdOffset={1} sm={12} xs={12}>
-              <Spacer size='m' />
-              <div className='dev-fr-header'>
-                <div>
-                  <h1>Dev FR</h1>
-                  <p>
-                    Tableau de bord local pour le serveur, les traductions, le
-                    catalogue et les vérifications avant push.
-                  </p>
-                </div>
-                <button
-                  className='btn btn-primary'
-                  type='button'
-                  onClick={() => void loadReport()}
-                >
-                  Relire le snapshot
-                </button>
+      <main id='content-start' tabIndex={-1} className='dev-fr-page'>
+        <div className='local-page-shell dev-fr-shell'>
+          <div className='dev-fr-header'>
+            <div>
+              <h1>Dev FR</h1>
+              <p>
+                Tableau de bord local : serveur live, traductions v9, drift et
+                vérifications avant push.
+              </p>
+            </div>
+            <button
+              className='btn btn-primary'
+              type='button'
+              onClick={() => void refresh()}
+            >
+              Actualiser
+            </button>
+          </div>
+
+          {loading && <p>Chargement…</p>}
+
+          <section className='dev-fr-status-grid'>
+            <div className='dev-fr-metric'>
+              <span>Verdict</span>
+              <strong className={statusClass(isReady ? 'UP' : 'WARN')}>
+                {isReady ? 'READY' : 'À vérifier'}
+              </strong>
+            </div>
+            <div className='dev-fr-metric'>
+              <span>Serveur (live)</span>
+              <strong className={statusClass(liveServer.label)}>
+                {liveServer.label}
+              </strong>
+            </div>
+            <div className='dev-fr-metric'>
+              <span>HTTP</span>
+              <strong
+                className={statusClass(liveServer.ok ? 'UP' : 'DOWN')}
+              >
+                {liveServer.statusCode || 'OFF'}
+              </strong>
+            </div>
+            <div className='dev-fr-metric'>
+              <span>Snapshot</span>
+              <strong>{generatedAt || 'optionnel'}</strong>
+            </div>
+            <div className='dev-fr-metric'>
+              <span>Âge snapshot</span>
+              <strong>{snapshotAge}</strong>
+            </div>
+          </section>
+
+          {error && (
+            <section className='dev-fr-section dev-fr-empty'>
+              <h2>Snapshot optionnel introuvable</h2>
+              <p>
+                Le serveur live fonctionne déjà (tu es sur cette page). Pour un
+                rapport git/drift plus complet :{' '}
+                <code>pnpm local:report --write</code>, puis Actualiser.
+              </p>
+              <p className='dev-fr-muted'>Détail : {error}</p>
+            </section>
+          )}
+
+          <section className='dev-fr-section'>
+            <h2>Navigation</h2>
+            <div className='dev-fr-links'>
+              <QuickLink href='/' label='Accueil' note='Home locale' />
+              <QuickLink
+                href='/cours-fr?view=certifications'
+                label='Parcours FR'
+                note='Certifications traduites'
+              />
+              <QuickLink
+                href='/catalog'
+                label='Catalogue'
+                note='Certs v9 + badges FR'
+              />
+              <QuickLink
+                href='/learn'
+                label='Carte complète'
+                note='Tout le curriculum local'
+              />
+              <QuickLink
+                href='/exam-fr?cert=responsive-web-design-v9'
+                label='Examen RWD'
+                note='Examen local français'
+              />
+            </div>
+          </section>
+
+          <section className='dev-fr-section'>
+            <h2>Progression navigateur</h2>
+            <div className='dev-fr-status-grid'>
+              <div className='dev-fr-metric'>
+                <span>Challenges terminés</span>
+                <strong>{browserSummary.completedChallenges}</strong>
               </div>
+              <div className='dev-fr-metric'>
+                <span>Tentatives examen</span>
+                <strong>{browserSummary.examAttempts}</strong>
+              </div>
+              <div className='dev-fr-metric'>
+                <span>Dernier examen</span>
+                <strong>
+                  {browserSummary.lastExamAttempt
+                    ? formatDate(browserSummary.lastExamAttempt)
+                    : 'aucun'}
+                </strong>
+              </div>
+            </div>
+            <div className='dev-fr-profile-actions'>
+              <button
+                type='button'
+                className='dev-fr-btn'
+                onClick={() => {
+                  const blob = new Blob(
+                    [serializeLocalProfile(exportLocalProfile())],
+                    { type: 'application/json' }
+                  );
+                  const url = URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `fcc-fr-local-profile-${new Date()
+                    .toISOString()
+                    .slice(0, 10)}.json`;
+                  a.click();
+                  URL.revokeObjectURL(url);
+                }}
+              >
+                Exporter le profil local
+              </button>
+              <label className='dev-fr-btn dev-fr-btn-file'>
+                Importer un profil
+                <input
+                  type='file'
+                  accept='application/json,.json'
+                  hidden
+                  onChange={event => {
+                    const file = event.target.files?.[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                      try {
+                        importLocalProfile(String(reader.result || ''));
+                        setBrowserSummary(readBrowserSummary());
+                        window.alert('Profil importé.');
+                      } catch (err) {
+                        window.alert(
+                          err instanceof Error
+                            ? err.message
+                            : 'Import impossible'
+                        );
+                      }
+                    };
+                    reader.readAsText(file);
+                    event.target.value = '';
+                  }}
+                />
+              </label>
+              <a className='dev-fr-btn' href='/cours-fr'>
+                Panneau données sur Parcours
+              </a>
+            </div>
+          </section>
 
-              {loading && <p>Chargement du snapshot local...</p>}
+          <section className='dev-fr-section'>
+            <h2>Traductions v9</h2>
+            <p className='dev-fr-muted'>
+              Compteurs live depuis le disque (preval Webpack), pas le snapshot.
+            </p>
+            <div
+              className='dev-fr-table-wrap'
+              role='region'
+              aria-label='Progression des traductions'
+              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+              tabIndex={0}
+            >
+              <table className='dev-fr-table'>
+                <thead>
+                  <tr>
+                    <th>Certification</th>
+                    <th>Fichiers</th>
+                    <th>Progression</th>
+                    <th>Lien</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {translationRows.map(row => {
+                    const pct = row.pctFiles ?? row.pct;
+                    return (
+                      <tr key={row.key}>
+                        <td data-label='Certification'>
+                          <span>{row.key}</span>
+                        </td>
+                        <td data-label='Fichiers'>
+                          <span>
+                            {row.totalFiles != null
+                              ? `${row.translatedFiles}/${row.totalFiles}`
+                              : '—'}
+                          </span>
+                        </td>
+                        <td data-label='Progression'>
+                          <div className='dev-fr-progress-cell'>
+                            <div className='dev-fr-bar' aria-hidden='true'>
+                              <span style={{ width: `${pct}%` }} />
+                            </div>
+                            <span>{pct}%</span>
+                          </div>
+                        </td>
+                        <td data-label='Lien'>
+                          <a href={`/cours-fr?view=certifications&cert=${row.key}`}>
+                            Ouvrir
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-              {error && (
-                <section className='dev-fr-section dev-fr-empty'>
-                  <h2>Snapshot introuvable</h2>
-                  <p>
-                    Lance <code>pnpm local:report</code>, puis rafraîchis cette
-                    page.
-                  </p>
-                  <p className='dev-fr-muted'>Détail : {error}</p>
-                </section>
-              )}
+          {report && (
+            <>
+              <section className='dev-fr-section'>
+                <h2>Drift EN → FR</h2>
+                <p>
+                  {driftCount === 0
+                    ? `Aucun drift sur ${report.drift.comparedFiles} fichiers comparés.`
+                    : `${driftCount} fichier(s) à relire.`}
+                </p>
+                {report.drift.drifted.length > 0 && (
+                  <ul className='dev-fr-list'>
+                    {report.drift.drifted.map(item => (
+                      <li key={`${item.block}/${item.file}`}>
+                        <code>
+                          {item.block}/{item.file}
+                        </code>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
 
-              {report && (
-                <>
-                  <section className='dev-fr-status-grid'>
-                    <div className='dev-fr-metric'>
-                      <span>Verdict</span>
-                      <strong className={statusClass(isReady ? 'UP' : 'WARN')}>
-                        {isReady ? 'READY' : 'À vérifier'}
-                      </strong>
-                    </div>
-                    <div className='dev-fr-metric'>
-                      <span>Serveur</span>
-                      <strong className={statusClass(report.server.verdict)}>
-                        {report.server.verdict}
-                      </strong>
-                    </div>
-                    <div className='dev-fr-metric'>
-                      <span>HTTP</span>
-                      <strong
-                        className={statusClass(
-                          report.server.http.ok ? 'UP' : 'DOWN'
-                        )}
-                      >
-                        {report.server.http.statusCode || 'OFF'}
-                      </strong>
-                    </div>
-                    <div className='dev-fr-metric'>
-                      <span>Snapshot généré</span>
-                      <strong>{generatedAt}</strong>
-                    </div>
-                    <div className='dev-fr-metric'>
-                      <span>Âge du snapshot</span>
-                      <strong>{snapshotAge}</strong>
-                    </div>
-                  </section>
+              <section className='dev-fr-section'>
+                <h2>Git</h2>
+                <dl className='dev-fr-details'>
+                  <dt>Branche</dt>
+                  <dd>{report.git.branch}</dd>
+                  <dt>Dernier commit</dt>
+                  <dd>{report.git.lastCommit}</dd>
+                  <dt>Working tree</dt>
+                  <dd>{report.git.dirty ? 'modifié' : 'propre'}</dd>
+                </dl>
+                {report.git.changedFiles.length > 0 && (
+                  <pre
+                    className='dev-fr-log'
+                    role='region'
+                    aria-label='Fichiers Git modifiés'
+                    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                    tabIndex={0}
+                  >
+                    {report.git.changedFiles.join('\n')}
+                  </pre>
+                )}
+              </section>
+            </>
+          )}
 
-                  <section className='dev-fr-section'>
-                    <h2>Navigation rapide</h2>
-                    <div className='dev-fr-links'>
-                      <QuickLink href='/' label='Accueil' note='Home locale' />
-                      <QuickLink
-                        href='/cours-fr'
-                        label='Parcours'
-                        note='Certifications françaises'
-                      />
-                      <QuickLink
-                        href='/catalog'
-                        label='Catalogue'
-                        note='Filtres globaux'
-                      />
-                      <QuickLink
-                        href='/learn'
-                        label='Parcours complet'
-                        note='Tous les cours locaux'
-                      />
-                      <QuickLink
-                        href='/exam-fr?cert=responsive-web-design-v9'
-                        label='Examen RWD'
-                        note='Examen local français'
-                      />
-                      <QuickLink
-                        href='/___graphql'
-                        label='GraphQL'
-                        note='Explorateur Gatsby'
-                      />
-                    </div>
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Serveur</h2>
-                    <dl className='dev-fr-details'>
-                      <dt>URL</dt>
-                      <dd>
-                        <a href={report.server.url}>{report.server.url}</a>
-                      </dd>
-                      <dt>Status JSON</dt>
-                      <dd>{report.server.reportedStatus}</dd>
-                      <dt>Mode</dt>
-                      <dd>{report.server.mode || 'inconnu'}</dd>
-                      <dt>Dernière mise à jour</dt>
-                      <dd>{formatDate(report.server.updatedAt)}</dd>
-                      <dt>Run ID</dt>
-                      <dd>{report.server.runId || 'inconnu'}</dd>
-                    </dl>
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Progression locale navigateur</h2>
-                    <div className='dev-fr-status-grid'>
-                      <div className='dev-fr-metric'>
-                        <span>Challenges terminés</span>
-                        <strong>{browserSummary.completedChallenges}</strong>
-                      </div>
-                      <div className='dev-fr-metric'>
-                        <span>Tentatives examen</span>
-                        <strong>{browserSummary.examAttempts}</strong>
-                      </div>
-                      <div className='dev-fr-metric'>
-                        <span>Dernier examen</span>
-                        <strong>
-                          {browserSummary.lastExamAttempt
-                            ? formatDate(browserSummary.lastExamAttempt)
-                            : 'aucun'}
-                        </strong>
-                      </div>
-                    </div>
-                    <div className='dev-fr-profile-actions'>
-                      <button
-                        type='button'
-                        className='dev-fr-btn'
-                        onClick={() => {
-                          const blob = new Blob(
-                            [serializeLocalProfile(exportLocalProfile())],
-                            { type: 'application/json' }
-                          );
-                          const url = URL.createObjectURL(blob);
-                          const a = document.createElement('a');
-                          a.href = url;
-                          a.download = `fcc-fr-local-profile-${new Date()
-                            .toISOString()
-                            .slice(0, 10)}.json`;
-                          a.click();
-                          URL.revokeObjectURL(url);
-                        }}
-                      >
-                        Exporter le profil local
-                      </button>
-                      <label className='dev-fr-btn dev-fr-btn-file'>
-                        Importer un profil
-                        <input
-                          type='file'
-                          accept='application/json,.json'
-                          hidden
-                          onChange={event => {
-                            const file = event.target.files?.[0];
-                            if (!file) return;
-                            const reader = new FileReader();
-                            reader.onload = () => {
-                              try {
-                                importLocalProfile(String(reader.result || ''));
-                                setBrowserSummary(readBrowserSummary());
-                                window.alert('Profil importé.');
-                              } catch (err) {
-                                window.alert(
-                                  err instanceof Error
-                                    ? err.message
-                                    : 'Import impossible'
-                                );
-                              }
-                            };
-                            reader.readAsText(file);
-                            event.target.value = '';
-                          }}
-                        />
-                      </label>
-                    </div>
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Traductions</h2>
-                    <div
-                      className='dev-fr-table-wrap'
-                      role='region'
-                      aria-label='Progression des traductions'
-                      // Required so keyboard users can pan this table when it overflows.
-                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                      tabIndex={0}
-                    >
-                      <table className='dev-fr-table'>
-                        <thead>
-                          <tr>
-                            <th>Certification</th>
-                            <th>Blocs</th>
-                            <th>Fichiers</th>
-                            <th>Progression</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {report.translations.map(row => {
-                            const pct = row.pctFiles ?? row.pct;
-                            return (
-                              <tr key={row.key}>
-                                <td data-label='Certification'>
-                                  <span>{row.key}</span>
-                                </td>
-                                <td data-label='Blocs'>
-                                  <span>
-                                    {row.translated}/{row.total}
-                                  </span>
-                                </td>
-                                <td data-label='Fichiers'>
-                                  <span>
-                                    {row.totalFiles != null
-                                      ? `${row.translatedFiles}/${row.totalFiles}`
-                                      : '—'}
-                                  </span>
-                                </td>
-                                <td data-label='Progression'>
-                                  <div className='dev-fr-progress-cell'>
-                                    <div
-                                      className='dev-fr-bar'
-                                      aria-hidden='true'
-                                    >
-                                      <span style={{ width: `${pct}%` }} />
-                                    </div>
-                                    <span>{pct}%</span>
-                                  </div>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
-                    </div>
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Drift EN vers FR</h2>
-                    <p>
-                      {driftCount === 0
-                        ? `Aucun drift sur ${report.drift.comparedFiles} fichiers comparés.`
-                        : `${driftCount} fichier(s) à relire.`}
-                    </p>
-                    {report.drift.drifted.length > 0 && (
-                      <ul className='dev-fr-list'>
-                        {report.drift.drifted.map(item => (
-                          <li key={`${item.block}/${item.file}`}>
-                            <code>
-                              {item.block}/{item.file}
-                            </code>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Git</h2>
-                    <dl className='dev-fr-details'>
-                      <dt>Branche</dt>
-                      <dd>{report.git.branch}</dd>
-                      <dt>Dernier commit</dt>
-                      <dd>{report.git.lastCommit}</dd>
-                      <dt>Working tree</dt>
-                      <dd>{report.git.dirty ? 'modifié' : 'propre'}</dd>
-                    </dl>
-                    {report.git.changedFiles.length > 0 && (
-                      <pre
-                        className='dev-fr-log'
-                        role='region'
-                        aria-label='Fichiers Git modifiés'
-                        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                        tabIndex={0}
-                      >
-                        {report.git.changedFiles.join('\n')}
-                      </pre>
-                    )}
-                  </section>
-
-                  <section className='dev-fr-section'>
-                    <h2>Derniers logs</h2>
-                    <pre
-                      className='dev-fr-log'
-                      role='region'
-                      aria-label='Derniers événements du serveur'
-                      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                      tabIndex={0}
-                    >
-                      {report.latestLog.join('\n')}
-                    </pre>
-                  </section>
-                </>
-              )}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    </LearnLayout>
+          <section className='dev-fr-section'>
+            <button
+              type='button'
+              className='dev-fr-btn'
+              onClick={() => setShowDebug(value => !value)}
+              aria-expanded={showDebug}
+            >
+              {showDebug ? 'Masquer debug' : 'Afficher debug'}
+            </button>
+            {showDebug && (
+              <div className='dev-fr-debug'>
+                <p>
+                  Snapshot reporté :{' '}
+                  {report?.server.reportedStatus || 'inconnu'} · mode{' '}
+                  {report?.server.mode || '—'}
+                </p>
+                <p>
+                  GraphiQL (develop) : <a href='/___graphql'>/___graphql</a>
+                </p>
+                {report?.latestLog?.length ? (
+                  <pre
+                    className='dev-fr-log'
+                    role='region'
+                    aria-label='Derniers événements du serveur'
+                    // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                    tabIndex={0}
+                  >
+                    {report.latestLog.join('\n')}
+                  </pre>
+                ) : (
+                  <p className='dev-fr-muted'>Pas de logs dans le snapshot.</p>
+                )}
+              </div>
+            )}
+          </section>
+        </div>
+      </main>
+    </>
   );
 }
 

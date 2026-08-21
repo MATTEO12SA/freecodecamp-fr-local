@@ -38,7 +38,6 @@ type Props = PropsFromRedux & {
 
 class Header extends React.Component<Props, { displayMenu: boolean }> {
   menuButtonRef: React.RefObject<HTMLButtonElement>;
-  searchBarRef: React.RefObject<any>;
   static displayName: string;
   constructor(props: Props) {
     super(props);
@@ -46,7 +45,6 @@ class Header extends React.Component<Props, { displayMenu: boolean }> {
       displayMenu: false
     };
     this.menuButtonRef = React.createRef();
-    this.searchBarRef = React.createRef();
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.showMenu = this.showMenu.bind(this);
     this.hideMenu = this.hideMenu.bind(this);
@@ -58,13 +56,7 @@ class Header extends React.Component<Props, { displayMenu: boolean }> {
       this.state.displayMenu &&
       this.menuButtonRef.current &&
       !this.menuButtonRef.current.contains(eventTarget) &&
-      // since the search bar is part of the menu on small screens, clicks on
-      // the search bar should not toggle the menu
-      this.searchBarRef.current &&
-      !this.searchBarRef.current.contains(eventTarget) &&
-      // don't count clicks on searcn bar inputs reset button
-      !eventTarget.closest('.ais-SearchBox-reset') &&
-      // don't count clicks on disabled elements
+      !eventTarget.closest('.nav-list') &&
       !eventTarget.closest('[aria-disabled="true"]')
     ) {
       this.hideMenu();
@@ -90,6 +82,9 @@ class Header extends React.Component<Props, { displayMenu: boolean }> {
   componentDidUpdate(prevProps: Props): void {
     if (prevProps.pathname !== this.props.pathname) {
       setContinuePath(this.props.pathname);
+      if (this.state.displayMenu) {
+        this.hideMenu();
+      }
     }
   }
 
@@ -115,7 +110,6 @@ class Header extends React.Component<Props, { displayMenu: boolean }> {
             hideMenu={this.hideMenu}
             pathname={pathname}
             menuButtonRef={this.menuButtonRef}
-            searchBarRef={this.searchBarRef}
             showMenu={this.showMenu}
             user={user}
           />

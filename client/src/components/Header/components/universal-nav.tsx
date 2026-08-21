@@ -19,7 +19,6 @@ type UniversalNavProps = {
     yearsTopContributor: string[];
   };
   fetchState: { pending: boolean };
-  searchBarRef: React.RefObject<HTMLDivElement>;
   pathname: string;
 };
 

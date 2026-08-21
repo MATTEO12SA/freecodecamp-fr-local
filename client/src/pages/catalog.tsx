@@ -1,7 +1,7 @@
 import { graphql, navigate } from 'gatsby';
 import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Col, Spacer, Dropdown, MenuItem, Alert } from '@freecodecamp/ui';
+import { Spacer, Dropdown, MenuItem, Alert } from '@freecodecamp/ui';
 import { catalog } from '@freecodecamp/shared/config/catalog';
 import { challengeTypes } from '@freecodecamp/shared/config/challenge-types';
 import englishIntro from '../../i18n/locales/english/intro.json';
@@ -17,7 +17,10 @@ import {
   parseCatalogFilters,
   toggleCatalogSelection
 } from '../utils/catalog-filters';
-import { getCatalogTranslationStatus } from '../utils/catalog-translation-status';
+import {
+  getCatalogTranslationStatus,
+  type CatalogTranslationStatus
+} from '../utils/catalog-translation-status';
 
 import './catalog.css';
 
@@ -44,6 +47,18 @@ type CatalogIntro = { title?: string; intro?: string[]; summary?: string[] };
 
 type CatalogPageData = {
   allChallengeNode?: { nodes: CatalogChallengeNode[] };
+};
+
+type CatalogCourse = (typeof catalog)[number] & {
+  translationStatus: CatalogTranslationStatus;
+  translatedFiles: number;
+  totalFiles: number;
+};
+
+const STATUS_ORDER: Record<CatalogTranslationStatus, number> = {
+  complete: 0,
+  partial: 1,
+  absent: 2
 };
 
 const UNSUPPORTED_LOCAL_BLOCKS = new Set<string>([
@@ -136,6 +151,33 @@ const CatalogPage = ({
     return map;
   }, [data?.allChallengeNode?.nodes]);
 
+  const enrichedCatalog = useMemo((): CatalogCourse[] => {
+    return catalog
+      .map(course => {
+        const frenchIntro = t(`intro:${course.superBlock}`, {
+          returnObjects: true
+        }) as Partial<CatalogIntro>;
+        const englishCourseIntro = englishCatalogIntro[course.superBlock] || {};
+        const coverage = getFrenchFileCoverage(course.superBlock);
+        const translationStatus = getCatalogTranslationStatus({
+          translatedFiles: coverage.translated,
+          totalFiles: coverage.total,
+          frenchIntro,
+          englishIntro: englishCourseIntro
+        });
+        return {
+          ...course,
+          translationStatus,
+          translatedFiles: coverage.translated,
+          totalFiles: coverage.total
+        };
+      })
+      .sort(
+        (a, b) =>
+          STATUS_ORDER[a.translationStatus] - STATUS_ORDER[b.translationStatus]
+      );
+  }, [t]);
+
   const persistFilters = (
     filters: {
       query: string;
@@ -147,7 +189,6 @@ const CatalogPage = ({
     void navigate(getCatalogHref(filters), { replace });
   };
 
-  // Handle level filter change
   const handleLevelChange = (level: string) => {
     const levels = toggleCatalogSelection(selectedLevels, level);
     setSelectedLevels(levels);
@@ -158,7 +199,6 @@ const CatalogPage = ({
     });
   };
 
-  // Handle topic filter change
   const handleTopicChange = (topic: string) => {
     const topics = toggleCatalogSelection(selectedTopics, topic);
     setSelectedTopics(topics);
@@ -172,7 +212,7 @@ const CatalogPage = ({
   const filteredCatalog = useMemo(() => {
     const normalizedSearch = searchQuery.trim().toLowerCase();
 
-    return catalog.filter(course => {
+    return enrichedCatalog.filter(course => {
       const intro = t(`intro:${course.superBlock}`, {
         returnObjects: true
       }) as Partial<{
@@ -180,20 +220,14 @@ const CatalogPage = ({
         intro: string[];
         summary: string[];
       }>;
-      const englishCourseIntro = englishCatalogIntro[course.superBlock] || {};
       const title = intro.title || course.superBlock;
       const summary = Array.isArray(intro.summary) ? intro.summary : [];
-      const coverage = getFrenchFileCoverage(course.superBlock);
-      const translationStatus = getCatalogTranslationStatus({
-        translatedFiles: coverage.translated,
-        totalFiles: coverage.total,
-        frenchIntro: intro,
-        englishIntro: englishCourseIntro
-      });
       const levelMatch =
         selectedLevels.includes('all') || selectedLevels.includes(course.level);
+      const frenchFilterActive = selectedTopics.includes(frenchTopic);
       const translatedMatch =
-        selectedTopics.includes(frenchTopic) && translationStatus !== 'absent';
+        frenchFilterActive &&
+        (hasFrenchIntro(course.superBlock) || course.translatedFiles > 0);
       const topicMatch =
         selectedTopics.includes('all') ||
         selectedTopics.includes(course.topic) ||
@@ -213,13 +247,41 @@ const CatalogPage = ({
         normalizedSearch.length === 0 || searchable.includes(normalizedSearch);
       return levelMatch && topicMatch && searchMatch;
     });
-  }, [searchQuery, selectedLevels, selectedTopics, t]);
+  }, [enrichedCatalog, searchQuery, selectedLevels, selectedTopics, t]);
 
   useEffect(() => {
     setVisibleCount(CATALOG_PAGE_SIZE);
   }, [searchQuery, selectedLevels, selectedTopics]);
 
-  const visibleCatalog = filteredCatalog.slice(0, visibleCount);
+  const frenchCourses = useMemo(
+    () =>
+      filteredCatalog.filter(
+        course =>
+          course.translationStatus === 'complete' ||
+          course.translationStatus === 'partial'
+      ),
+    [filteredCatalog]
+  );
+  const otherCourses = useMemo(
+    () =>
+      filteredCatalog.filter(course => course.translationStatus === 'absent'),
+    [filteredCatalog]
+  );
+
+  const showFrenchSection =
+    !selectedTopics.includes(frenchTopic) || frenchCourses.length > 0;
+  const showOtherSection =
+    !selectedTopics.includes(frenchTopic) && otherCourses.length > 0;
+
+  const visibleFrench = frenchCourses.slice(
+    0,
+    Math.min(visibleCount, frenchCourses.length)
+  );
+  const remainingSlots = Math.max(0, visibleCount - visibleFrench.length);
+  const visibleOther = showOtherSection
+    ? otherCourses.slice(0, remainingSlots)
+    : [];
+  const totalVisible = visibleFrench.length + visibleOther.length;
   const hasMoreResults = visibleCount < filteredCatalog.length;
 
   const restoreDropdownFocus = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -242,216 +304,226 @@ const CatalogPage = ({
   const levelFilterLabel = t('curriculum.catalog.filter-level');
   const topicFilterLabel = t('curriculum.catalog.filter-topic');
 
+  const renderCourse = (course: CatalogCourse) => {
+    const { superBlock, level, hours, topic } = course;
+    const courseChallenges = challengesBySuperBlock.get(superBlock) || [];
+    const completedCount = courseChallenges.filter(challenge =>
+      completedSet.has(challenge.id)
+    ).length;
+    const firstUnfinished = courseChallenges.find(
+      challenge => !completedSet.has(challenge.id)
+    );
+    const hasStarted = completedCount > 0;
+
+    return (
+      <CatalogItem
+        key={superBlock}
+        superBlock={superBlock}
+        level={level}
+        hours={hours}
+        topic={topic}
+        completedCount={completedCount}
+        totalCount={courseChallenges.length}
+        actionHref={firstUnfinished?.fields.slug}
+        actionLabel={t(
+          hasStarted
+            ? 'curriculum.catalog.continue'
+            : 'curriculum.catalog.start'
+        )}
+        translationStatus={course.translationStatus}
+        translatedFiles={course.translatedFiles}
+        totalFiles={course.totalFiles}
+      />
+    );
+  };
+
   return (
     <>
       <SEO title={t('curriculum.catalog.title')} />
-      <main id='content-start' tabIndex={-1}>
-        <Spacer size='l' />
-        <h1 className='text-center'>{t('curriculum.catalog.title')}</h1>
-        <Spacer size='l' />
+      <main id='content-start' tabIndex={-1} className='catalog-page'>
+        <div className='local-page-shell'>
+          <Spacer size='l' />
+          <h1 className='text-center'>{t('curriculum.catalog.title')}</h1>
+          <Spacer size='l' />
 
-        <Col md={8} mdOffset={2} sm={10} smOffset={1} xs={12}>
-          <div className='catalog-search'>
-            <label htmlFor='catalog-search-input'>
-              {t('curriculum.catalog.search-label')}
-            </label>
-            <input
-              id='catalog-search-input'
-              type='search'
-              value={searchQuery}
-              onChange={event => {
-                const query = event.target.value;
-                setSearchQuery(query);
-                persistFilters(
-                  {
-                    query,
-                    levels: selectedLevels,
-                    topics: selectedTopics
-                  },
-                  true
-                );
-              }}
-              placeholder={t('curriculum.catalog.search-placeholder')}
-            />
-          </div>
-          <div
-            className='catalog-filters'
-            onKeyDownCapture={restoreDropdownFocus}
-          >
-            <Dropdown block={true}>
-              <Dropdown.Toggle id='level-filter-dropdown'>
-                {levelFilterLabel} {getSelectionLabel(selectedLevels)}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <MenuItem onClick={() => handleLevelChange('all')}>
-                  <input
-                    type='checkbox'
-                    checked={selectedLevels.includes('all')}
-                    aria-label={getCheckboxLabel(
-                      levelFilterLabel,
-                      t('curriculum.catalog.all')
-                    )}
-                    title={getCheckboxLabel(
-                      levelFilterLabel,
-                      t('curriculum.catalog.all')
-                    )}
-                    onChange={() => {}}
-                    className='filter-checkbox'
-                  />
-                  {t('curriculum.catalog.all')}
-                </MenuItem>
-                {uniqueLevels.map(level => (
-                  <MenuItem
-                    key={level}
-                    onClick={() => handleLevelChange(level)}
-                  >
+          <div className='catalog-toolbar'>
+            <div className='catalog-search'>
+              <label htmlFor='catalog-search-input'>
+                {t('curriculum.catalog.search-label')}
+              </label>
+              <input
+                id='catalog-search-input'
+                type='search'
+                value={searchQuery}
+                onChange={event => {
+                  const query = event.target.value;
+                  setSearchQuery(query);
+                  persistFilters(
+                    {
+                      query,
+                      levels: selectedLevels,
+                      topics: selectedTopics
+                    },
+                    true
+                  );
+                }}
+                placeholder={t('curriculum.catalog.search-placeholder')}
+              />
+            </div>
+            <div
+              className='catalog-filters'
+              onKeyDownCapture={restoreDropdownFocus}
+            >
+              <Dropdown block={true}>
+                <Dropdown.Toggle id='level-filter-dropdown'>
+                  {levelFilterLabel} {getSelectionLabel(selectedLevels)}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <MenuItem onClick={() => handleLevelChange('all')}>
                     <input
                       type='checkbox'
-                      checked={selectedLevels.includes(level)}
+                      checked={selectedLevels.includes('all')}
                       aria-label={getCheckboxLabel(
                         levelFilterLabel,
-                        t(`curriculum.catalog.levels.${level}`)
+                        t('curriculum.catalog.all')
                       )}
                       title={getCheckboxLabel(
                         levelFilterLabel,
-                        t(`curriculum.catalog.levels.${level}`)
+                        t('curriculum.catalog.all')
                       )}
                       onChange={() => {}}
                       className='filter-checkbox'
                     />
-                    {t(`curriculum.catalog.levels.${level}`)}
+                    {t('curriculum.catalog.all')}
                   </MenuItem>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown block={true}>
-              <Dropdown.Toggle id='topic-filter-dropdown'>
-                {topicFilterLabel} {getSelectionLabel(selectedTopics)}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <MenuItem onClick={() => handleTopicChange('all')}>
-                  <input
-                    type='checkbox'
-                    checked={selectedTopics.includes('all')}
-                    aria-label={getCheckboxLabel(
-                      topicFilterLabel,
-                      t('curriculum.catalog.all')
-                    )}
-                    title={getCheckboxLabel(
-                      topicFilterLabel,
-                      t('curriculum.catalog.all')
-                    )}
-                    onChange={() => {}}
-                    className='filter-checkbox'
-                  />
-                  {t('curriculum.catalog.all')}
-                </MenuItem>
-                <MenuItem onClick={() => handleTopicChange(frenchTopic)}>
-                  <input
-                    type='checkbox'
-                    checked={selectedTopics.includes(frenchTopic)}
-                    aria-label={getCheckboxLabel(
-                      topicFilterLabel,
-                      t('curriculum.catalog.topic.french')
-                    )}
-                    title={getCheckboxLabel(
-                      topicFilterLabel,
-                      t('curriculum.catalog.topic.french')
-                    )}
-                    onChange={() => {}}
-                    className='filter-checkbox'
-                  />
-                  {t('curriculum.catalog.topic.french')}
-                </MenuItem>
-                {uniqueTopics.map(topic => (
-                  <MenuItem
-                    key={topic}
-                    onClick={() => handleTopicChange(topic)}
-                  >
+                  {uniqueLevels.map(level => (
+                    <MenuItem
+                      key={level}
+                      onClick={() => handleLevelChange(level)}
+                    >
+                      <input
+                        type='checkbox'
+                        checked={selectedLevels.includes(level)}
+                        aria-label={getCheckboxLabel(
+                          levelFilterLabel,
+                          t(`curriculum.catalog.levels.${level}`)
+                        )}
+                        title={getCheckboxLabel(
+                          levelFilterLabel,
+                          t(`curriculum.catalog.levels.${level}`)
+                        )}
+                        onChange={() => {}}
+                        className='filter-checkbox'
+                      />
+                      {t(`curriculum.catalog.levels.${level}`)}
+                    </MenuItem>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown block={true}>
+                <Dropdown.Toggle id='topic-filter-dropdown'>
+                  {topicFilterLabel} {getSelectionLabel(selectedTopics)}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <MenuItem onClick={() => handleTopicChange('all')}>
                     <input
                       type='checkbox'
-                      checked={selectedTopics.includes(topic)}
+                      checked={selectedTopics.includes('all')}
                       aria-label={getCheckboxLabel(
                         topicFilterLabel,
-                        t(`curriculum.catalog.topic.${topic}`)
+                        t('curriculum.catalog.all')
                       )}
                       title={getCheckboxLabel(
                         topicFilterLabel,
-                        t(`curriculum.catalog.topic.${topic}`)
+                        t('curriculum.catalog.all')
                       )}
                       onChange={() => {}}
                       className='filter-checkbox'
                     />
-                    {t(`curriculum.catalog.topic.${topic}`)}
+                    {t('curriculum.catalog.all')}
                   </MenuItem>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
+                  <MenuItem onClick={() => handleTopicChange(frenchTopic)}>
+                    <input
+                      type='checkbox'
+                      checked={selectedTopics.includes(frenchTopic)}
+                      aria-label={getCheckboxLabel(
+                        topicFilterLabel,
+                        t('curriculum.catalog.topic.french')
+                      )}
+                      title={getCheckboxLabel(
+                        topicFilterLabel,
+                        t('curriculum.catalog.topic.french')
+                      )}
+                      onChange={() => {}}
+                      className='filter-checkbox'
+                    />
+                    {t('curriculum.catalog.topic.french')}
+                  </MenuItem>
+                  {uniqueTopics.map(topic => (
+                    <MenuItem
+                      key={topic}
+                      onClick={() => handleTopicChange(topic)}
+                    >
+                      <input
+                        type='checkbox'
+                        checked={selectedTopics.includes(topic)}
+                        aria-label={getCheckboxLabel(
+                          topicFilterLabel,
+                          t(`curriculum.catalog.topic.${topic}`)
+                        )}
+                        title={getCheckboxLabel(
+                          topicFilterLabel,
+                          t(`curriculum.catalog.topic.${topic}`)
+                        )}
+                        onChange={() => {}}
+                        className='filter-checkbox'
+                      />
+                      {t(`curriculum.catalog.topic.${topic}`)}
+                    </MenuItem>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
           </div>
-        </Col>
-        <Spacer size='m' />
-        <Col md={12} sm={12} xs={12}>
+
+          <Spacer size='m' />
+
           {filteredCatalog.length === 0 ? (
             <Alert variant='info'>{t('curriculum.catalog.no-results')}</Alert>
           ) : (
             <>
               <p className='catalog-results-count' role='status'>
                 {t('curriculum.catalog.results-count', {
-                  shown: visibleCatalog.length,
+                  shown: totalVisible,
                   total: filteredCatalog.length
                 })}
               </p>
-              <section className='catalog-wrap'>
-                {visibleCatalog.map(course => {
-                  const { superBlock, level, hours, topic } = course;
-                  const courseChallenges =
-                    challengesBySuperBlock.get(superBlock) || [];
-                  const completedCount = courseChallenges.filter(challenge =>
-                    completedSet.has(challenge.id)
-                  ).length;
-                  const firstUnfinished = courseChallenges.find(
-                    challenge => !completedSet.has(challenge.id)
-                  );
-                  const hasStarted = completedCount > 0;
-                  const frenchIntro = t(`intro:${superBlock}`, {
-                    returnObjects: true
-                  }) as Partial<{
-                    title: string;
-                    intro: string[];
-                    summary: string[];
-                  }>;
-                  const englishCourseIntro =
-                    englishCatalogIntro[superBlock] || {};
-                  const coverage = getFrenchFileCoverage(superBlock);
-                  const translationStatus = getCatalogTranslationStatus({
-                    translatedFiles: coverage.translated,
-                    totalFiles: coverage.total,
-                    frenchIntro,
-                    englishIntro: englishCourseIntro
-                  });
 
-                  return (
-                    <CatalogItem
-                      key={superBlock}
-                      superBlock={superBlock}
-                      level={level}
-                      hours={hours}
-                      topic={topic}
-                      completedCount={completedCount}
-                      totalCount={courseChallenges.length}
-                      actionHref={firstUnfinished?.fields.slug}
-                      actionLabel={t(
-                        hasStarted
-                          ? 'curriculum.catalog.continue'
-                          : 'curriculum.catalog.start'
-                      )}
-                      translationStatus={translationStatus}
-                      translatedFiles={coverage.translated}
-                      totalFiles={coverage.total}
-                    />
-                  );
-                })}
-              </section>
+              {showFrenchSection && frenchCourses.length > 0 && (
+                <section className='catalog-section' aria-labelledby='catalog-fr'>
+                  <h2 id='catalog-fr' className='catalog-section-title'>
+                    {t('curriculum.catalog.french-section')}
+                  </h2>
+                  <div className='catalog-wrap'>
+                    {visibleFrench.map(renderCourse)}
+                  </div>
+                </section>
+              )}
+
+              {showOtherSection && visibleOther.length > 0 && (
+                <section
+                  className='catalog-section'
+                  aria-labelledby='catalog-other'
+                >
+                  <h2 id='catalog-other' className='catalog-section-title'>
+                    {t('curriculum.catalog.other-section')}
+                  </h2>
+                  <div className='catalog-wrap'>
+                    {visibleOther.map(renderCourse)}
+                  </div>
+                </section>
+              )}
+
               <div className='catalog-pagination'>
                 {hasMoreResults && (
                   <button
@@ -472,8 +544,8 @@ const CatalogPage = ({
               </div>
             </>
           )}
-        </Col>
-        <Spacer size='l' />
+          <Spacer size='l' />
+        </div>
       </main>
     </>
   );

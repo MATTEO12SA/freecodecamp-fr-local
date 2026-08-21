@@ -38,29 +38,40 @@ describe('CatalogPage', () => {
     expect(screen.getByRole('main')).toHaveAttribute('id', 'content-start');
   });
 
-  test('renders the first catalog page and progressively reveals more', () => {
+  test('lists v9 certifications including French-translated ones', () => {
     render(<CatalogPage />);
-    expect(screen.getAllByTestId('catalog-item')).toHaveLength(
-      CATALOG_PAGE_SIZE
+    const items = screen
+      .getAllByTestId('catalog-item')
+      .map(item => item.textContent);
+    expect(items).toEqual(
+      expect.arrayContaining([
+        'responsive-web-design-v9',
+        'javascript-v9',
+        'front-end-development-libraries-v9',
+        'back-end-development-and-apis-v9'
+      ])
     );
+    expect(items.length).toBeLessThanOrEqual(CATALOG_PAGE_SIZE);
+    expect(items.length).toBe(catalog.length);
+  });
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: 'curriculum.catalog.show-more'
-      })
-    );
-
-    expect(screen.getAllByTestId('catalog-item')).toHaveLength(
-      CATALOG_PAGE_SIZE * 2
-    );
+  test('renders French and other certification sections', () => {
+    render(<CatalogPage />);
     expect(
-      screen.getByRole('link', { name: 'curriculum.catalog.back-to-top' })
-    ).toHaveAttribute('href', '#content-start');
+      screen.getByRole('heading', {
+        name: 'curriculum.catalog.french-section'
+      })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        name: 'curriculum.catalog.other-section'
+      })
+    ).toBeInTheDocument();
   });
 
   test('visible catalog items link to their superblock learn pages', () => {
     render(<CatalogPage />);
-    for (const course of catalog.slice(0, CATALOG_PAGE_SIZE)) {
+    for (const course of catalog) {
       const item = screen.getByRole('link', { name: course.superBlock });
       expect(item).toHaveAttribute('href', `/learn/${course.superBlock}`);
     }
@@ -101,6 +112,7 @@ describe('CatalogPage', () => {
       .map(item => item.textContent);
 
     expect(items).toEqual(expectedCourses);
+    expect(items.length).toBeGreaterThan(0);
   });
 
   test('restores focus to a filter toggle after Escape', async () => {

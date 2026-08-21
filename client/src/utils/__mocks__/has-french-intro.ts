@@ -1,9 +1,19 @@
 // Mock pour les tests : preval ne s'exécute pas sous vitest.
-// La liste retournée doit refléter au moins une superblock présente dans
-// le catalogue pour que les tests qui appliquent le filtre Francais
-// trouvent des résultats à comparer.
-export const hasFrenchIntro = (superBlock: string): boolean =>
-  superBlock === 'responsive-design';
+// Couverture alignée sur les certifications v9 du catalogue fork FR.
+const COVERAGE: Record<string, { translated: number; total: number }> = {
+  'responsive-web-design-v9': { translated: 1553, total: 1553 },
+  'javascript-v9': { translated: 1311, total: 1311 },
+  'front-end-development-libraries-v9': { translated: 532, total: 532 },
+  'back-end-development-and-apis-v9': { translated: 48, total: 48 },
+  'python-v9': { translated: 0, total: 527 },
+  'relational-databases-v9': { translated: 0, total: 64 },
+  'full-stack-developer-v9': { translated: 0, total: 1 }
+};
+
+export const hasFrenchIntro = (superBlock: string): boolean => {
+  const coverage = COVERAGE[superBlock];
+  return Boolean(coverage && coverage.translated > 0);
+};
 
 export const hasFrenchBlock = (block: string): boolean =>
   block.startsWith('quiz-javascript') ||
@@ -19,6 +29,4 @@ export const hasFrenchBlock = (block: string): boolean =>
 export const getFrenchFileCoverage = (
   superBlock: string
 ): { translated: number; total: number } =>
-  superBlock === 'responsive-design'
-    ? { translated: 12, total: 12 }
-    : { translated: 0, total: 8 };
+  COVERAGE[superBlock] ?? { translated: 0, total: 0 };

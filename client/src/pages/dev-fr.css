@@ -1,5 +1,9 @@
 .dev-fr-page {
-  padding-bottom: 4rem;
+  padding: 1.5rem 0 4rem;
+}
+
+.dev-fr-shell {
+  max-width: 1100px;
 }
 
 .dev-fr-header {
@@ -26,13 +30,14 @@
 
 .dev-fr-empty {
   border: 1px solid var(--quaternary-background);
+  margin-bottom: 1rem;
   padding: 1rem;
 }
 
 .dev-fr-status-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   margin-bottom: 1.5rem;
 }
 
@@ -60,7 +65,7 @@
 }
 
 .dev-fr-warn {
-  color: var(--yellow-color);
+  color: var(--yellow-color, #ffbf00);
 }
 
 .dev-fr-bad {
@@ -70,7 +75,7 @@
 .dev-fr-links {
   display: grid;
   gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
 .dev-fr-link-card {
@@ -161,6 +166,36 @@
   margin-bottom: 0;
 }
 
+.dev-fr-debug {
+  margin-top: 1rem;
+}
+
+.dev-fr-profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.dev-fr-btn,
+.dev-fr-btn-file {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.5rem 0.85rem;
+  text-decoration: none;
+}
+
+.dev-fr-btn:hover,
+.dev-fr-btn-file:hover {
+  background: var(--primary-color);
+  color: var(--primary-background);
+  text-decoration: none;
+}
+
 @media (max-width: 600px) {
   .dev-fr-header {
     flex-direction: column;
@@ -222,28 +257,4 @@
     content: attr(data-label);
     font-weight: 700;
   }
-}
-
-.dev-fr-profile-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.dev-fr-btn,
-.dev-fr-btn-file {
-  background: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 700;
-  padding: 0.5rem 0.85rem;
-}
-
-.dev-fr-btn:hover,
-.dev-fr-btn-file:hover {
-  background: var(--primary-color);
-  color: var(--primary-background);
 }

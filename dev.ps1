@@ -606,6 +606,7 @@ function Test-ServerReadyFromOutput {
     if (Test-HttpReady) {
         $script:IsServerUp = $true
         Set-ServerStatus -Status "UP" -Message "Client pret sur $script:ServerUrl" -Data @{ port = $Port }
+        Write-LocalDevReport
         return
     }
 
@@ -621,6 +622,7 @@ function Wait-ForServerReadyStatus {
         if (Test-HttpReady) {
             $script:IsServerUp = $true
             Set-ServerStatus -Status "UP" -Message "$ServiceName pret sur $script:ServerUrl" -Data @{ port = $Port }
+            Write-LocalDevReport
             return $true
         }
 
@@ -628,6 +630,20 @@ function Wait-ForServerReadyStatus {
     }
 
     return $false
+}
+
+function Write-LocalDevReport {
+    if ($script:LocalDevReportWritten) {
+        return
+    }
+    try {
+        Write-Host "Generation du snapshot /local-dev/report.json..." -ForegroundColor Cyan
+        & pnpm local:report --write | Out-Host
+        $script:LocalDevReportWritten = $true
+        Write-Host "Snapshot local-dev ecrit." -ForegroundColor Green
+    } catch {
+        Write-Host "Avertissement: impossible d'ecrire local-dev/report.json: $_" -ForegroundColor Yellow
+    }
 }
 
 function Write-ProcessLine {
@@ -918,6 +934,7 @@ function Invoke-LoggedCommand {
 if (-not $Clean -and -not $Full -and (Test-HttpReady)) {
     Write-Host "Client deja pret sur $script:ServerUrl" -ForegroundColor Green
     Write-Host "Rien a relancer. Utilise .\dev-check.ps1 pour un verdict, ou .\dev.ps1 -Clean pour recreer le cache." -ForegroundColor Yellow
+    Write-LocalDevReport
     exit 0
 }
 

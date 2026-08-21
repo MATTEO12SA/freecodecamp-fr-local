@@ -249,14 +249,16 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
 
   // On file change, replace only the changed challenge. The key is ensuring
   // onSourceChange returns a challenge with complete metadata.
-  watcher.on('change', filePath =>
-    /\.md?$/.test(filePath) ? handleChallengeUpdate(filePath, 'changed') : null
-  );
+  watcher.on('change', filePath => {
+    if (!/\.md?$/.test(filePath)) return;
+    maybeTouchForCoverageChange(filePath);
+    handleChallengeUpdate(filePath, 'changed');
+  });
 
   // On file add, replace just the new challenge.
   watcher.on('add', filePath => {
     if (!/\.md?$/.test(filePath)) return;
-    maybeTouchForNewBlock(filePath);
+    maybeTouchForCoverageChange(filePath);
     handleChallengeUpdate(filePath, 'added');
   });
 
@@ -357,6 +359,71 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
   // has-french-intro.ts so Webpack re-evaluates its preval and the new block
   // enters the translated-superblocks Set live (no server restart). Shared by
   // the chokidar 'add' handler and the native fs.watch handler.
+  // Also touch when file coverage of a tracked v9 superblock changes (more
+  // challenges translated inside an already-known block).
+  const V9_SUPERBLOCK_FILES = [
+    'responsive-web-design-v9.json',
+    'javascript-v9.json',
+    'front-end-development-libraries-v9.json',
+    'back-end-development-and-apis-v9.json',
+    'python-v9.json',
+    'relational-databases-v9.json',
+    'full-stack-developer-v9.json'
+  ];
+  const superblocksDir = nodePath.resolve(
+    __dirname,
+    '../../../curriculum/structure/superblocks'
+  );
+  const enBlocksDir = nodePath.resolve(
+    __dirname,
+    '../../../curriculum/challenges/english/blocks'
+  );
+
+  function listMd(dir) {
+    if (!fs.existsSync(dir)) return [];
+    try {
+      return fs.readdirSync(dir).filter(file => file.endsWith('.md'));
+    } catch {
+      return [];
+    }
+  }
+
+  function getV9CoverageFingerprint() {
+    const parts = [];
+    for (const file of V9_SUPERBLOCK_FILES) {
+      const structurePath = nodePath.join(superblocksDir, file);
+      if (!fs.existsSync(structurePath)) {
+        parts.push(`${file}:0/0`);
+        continue;
+      }
+      let structure;
+      try {
+        structure = JSON.parse(fs.readFileSync(structurePath, 'utf8'));
+      } catch {
+        parts.push(`${file}:0/0`);
+        continue;
+      }
+      const blocks = [];
+      for (const chapter of structure.chapters || []) {
+        for (const mod of chapter.modules || []) {
+          blocks.push(...(mod.blocks || []));
+        }
+      }
+      let translated = 0;
+      let total = 0;
+      for (const blockName of blocks) {
+        const enFiles = new Set(listMd(nodePath.join(enBlocksDir, blockName)));
+        const frFiles = listMd(nodePath.join(curriculumPath, 'blocks', blockName));
+        total += enFiles.size;
+        translated += frFiles.filter(name => enFiles.has(name)).length;
+      }
+      parts.push(`${file}:${translated}/${total}`);
+    }
+    return parts.join('|');
+  }
+
+  let lastCoverageFingerprint = getV9CoverageFingerprint();
+
   function maybeTouchForNewBlock(relFilename) {
     const parts = relFilename.split(/[/\\]/);
     if (parts.length >= 3 && parts[0] === 'blocks') {
@@ -365,6 +432,15 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
         knownTranslatedBlocks.add(blockName);
         touchHasFrenchIntro(`new block ${blockName}`);
       }
+    }
+  }
+
+  function maybeTouchForCoverageChange(relFilename) {
+    maybeTouchForNewBlock(relFilename);
+    const nextFingerprint = getV9CoverageFingerprint();
+    if (nextFingerprint !== lastCoverageFingerprint) {
+      lastCoverageFingerprint = nextFingerprint;
+      touchHasFrenchIntro(`coverage change after ${relFilename}`);
     }
   }
 
@@ -413,7 +489,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
               'watcher.added',
               `[fcc-source-challenges fs.watch] new file detected ${filename}`
             );
-            maybeTouchForNewBlock(filename);
+            maybeTouchForCoverageChange(filename);
             handleChallengeUpdate(filename, 'added');
             return;
           }
@@ -422,6 +498,7 @@ exports.sourceNodes = function sourceChallengesSourceNodes(
             'watcher.changed',
             `[fcc-source-challenges fs.watch] change ${filename}`
           );
+          maybeTouchForCoverageChange(filename);
           handleChallengeUpdate(filename, 'changed');
         }
       );
