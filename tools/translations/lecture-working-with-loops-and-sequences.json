@@ -1,0 +1,2049 @@
+{
+  "workshop": "lecture-working-with-loops-and-sequences",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67fe8399c41a212871025f96.md",
+      "id": "67fe8399c41a212871025f96",
+      "dashedName": "what-are-lists-and-how-do-they-work",
+      "title": {
+        "en": "What Are Lists and How Do They Work?",
+        "fr": "Que sont les listes et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Over the next few lessons we are going to learn about lists, tuples, and ranges, which are three basic sequence types used in Python.",
+              "fr": "Dans les prochaines leçons, nous allons découvrir les listes, les tuples et les ranges, trois types de séquences de base utilisés en Python."
+            },
+            {
+              "en": "The list data type is an ordered sequence of elements that can be comprised of strings, numbers, or even other lists. Lists are mutable and use zero-based indexing, meaning that the first element of the list is at index zero.",
+              "fr": "Le type de données liste est une séquence ordonnée d'éléments qui peut être composée de chaînes, de nombres, ou même d'autres listes. Les listes sont mutables et utilisent une indexation commençant à zéro, ce qui signifie que le premier élément de la liste se trouve à l'indice zéro."
+            },
+            {
+              "en": "Here is the basic syntax for a list:",
+              "fr": "Voici la syntaxe de base d'une liste :"
+            },
+            {
+              "en": "To access an element from the `cities` list, you can reference its index number in the sequence. Here is an example of accessing the first element of the `cities` list:",
+              "fr": "Pour accéder à un élément de la liste `cities`, tu peux indiquer son numéro d'indice dans la séquence. Voici un exemple d'accès au premier élément de la liste `cities` :"
+            },
+            {
+              "en": "Negative indexing is used to access elements starting from the end of the list instead of the beginning at index `0`. To access the last element of any list, you can use `-1` like this:",
+              "fr": "L'indexation négative sert à accéder aux éléments en partant de la fin de la liste plutôt que du début à l'indice `0`. Pour accéder au dernier élément de n'importe quelle liste, tu peux utiliser `-1` comme ceci :"
+            },
+            {
+              "en": "Another way to create a list is to use the `list()` constructor. The `list()` constructor is used to convert an iterable into a list like this:",
+              "fr": "Une autre façon de créer une liste est d'utiliser le constructeur `list()`. Le constructeur `list()` sert à convertir un itérable en liste comme ceci :"
+            },
+            {
+              "en": "An iterable is a special type of object that can be looped over one item at a time. You will learn more about loops in Python later on.",
+              "fr": "Un itérable est un type d'objet spécial que l'on peut parcourir élément par élément. Tu en apprendras plus sur les boucles en Python plus tard."
+            },
+            {
+              "en": "To get the total number of elements in a list, you can use the `len()` function like this:",
+              "fr": "Pour obtenir le nombre total d'éléments d'une liste, tu peux utiliser la fonction `len()` comme ceci :"
+            },
+            {
+              "en": "If you wanted to update a value at a particular index, you can do something like this:",
+              "fr": "Si tu veux mettre à jour une valeur à un indice particulier, tu peux faire quelque chose comme ceci :"
+            },
+            {
+              "en": "Since lists are mutable, you can update any element in the list as long as you pass in a valid index number. If you pass in an index (either positive or negative) that is out of bounds for the list, then you will receive an `IndexError`:",
+              "fr": "Comme les listes sont mutables, tu peux mettre à jour n'importe quel élément de la liste tant que tu passes un numéro d'indice valide. Si tu passes un indice (positif ou négatif) qui est hors des limites de la liste, tu recevras une `IndexError` :"
+            },
+            {
+              "en": "If you want to remove an element from a list you can use the `del` keyword like this:",
+              "fr": "Si tu veux supprimer un élément d'une liste, tu peux utiliser le mot-clé `del` comme ceci :"
+            },
+            {
+              "en": "Sometimes it is helpful to check if an element is inside the list. To do that, you can use the `in` keyword like this:",
+              "fr": "Parfois, il est utile de vérifier si un élément se trouve dans la liste. Pour cela, tu peux utiliser le mot-clé `in` comme ceci :"
+            },
+            {
+              "en": "Sometimes it is common to have lists nested inside of other lists like this:",
+              "fr": "Il est parfois courant d'avoir des listes imbriquées dans d'autres listes comme ceci :"
+            },
+            {
+              "en": "In this example, we have one nested list containing three popular programming languages. To access the nested list, you will need to access it using index `2` since lists are zero based indexed:",
+              "fr": "Dans cet exemple, nous avons une liste imbriquée contenant trois langages de programmation populaires. Pour accéder à la liste imbriquée, tu devras l'atteindre avec l'indice `2`, car les listes sont indexées à partir de zéro :"
+            },
+            {
+              "en": "Then to access the second language from that nested list, you will need to access it using index `1` like this:",
+              "fr": "Ensuite, pour accéder au deuxième langage de cette liste imbriquée, tu devras l'atteindre avec l'indice `1` comme ceci :"
+            },
+            {
+              "en": "Another common technique used with lists is unpacking values.",
+              "fr": "Une autre technique courante avec les listes est le déballage de valeurs."
+            },
+            {
+              "en": "Unpacking values from a list is a technique used to assign values from a list to new variables. Here is an example of unpacking a `developer` list into new variables called `name`, `age` and `job`.",
+              "fr": "Déballer les valeurs d'une liste est une technique qui consiste à affecter les valeurs d'une liste à de nouvelles variables. Voici un exemple de déballage d'une liste `developer` dans de nouvelles variables appelées `name`, `age` et `job`."
+            },
+            {
+              "en": "Here, `name` has the value `'Alice'`, `age` has the value `34`, and `job` has the value `'Rust Developer'`.",
+              "fr": "Ici, `name` a la valeur `'Alice'`, `age` a la valeur `34`, et `job` a la valeur `'Rust Developer'`."
+            },
+            {
+              "en": "If you need to collect any remaining elements from a list, you can use the asterisk (`*`) operator like this:",
+              "fr": "Si tu as besoin de collecter les éléments restants d'une liste, tu peux utiliser l'opérateur astérisque (`*`) comme ceci :"
+            },
+            {
+              "en": "In this example, `name` will still have the value `'Alice'`, and `rest` is a list of two items: the number `34` and the string `'Rust Developer'`.",
+              "fr": "Dans cet exemple, `name` aura toujours la valeur `'Alice'`, et `rest` est une liste de deux éléments : le nombre `34` et la chaîne `'Rust Developer'`."
+            },
+            {
+              "en": "If the numbers of variables on the left side of the assignment operator doesn't match the total numbers of items in the list, then you will receive a `ValueError`:",
+              "fr": "Si le nombre de variables à gauche de l'opérateur d'affectation ne correspond pas au nombre total d'éléments de la liste, tu recevras une `ValueError` :"
+            },
+            {
+              "en": "The last concept we will look at is the slice operator (`:`). Similar to strings, you can access portions of a list by using the slice operator like this:",
+              "fr": "Le dernier concept que nous allons voir est l'opérateur de tranche (`:`). Comme pour les chaînes, tu peux accéder à des portions d'une liste avec l'opérateur de tranche comme ceci :"
+            },
+            {
+              "en": "In this example, the start index is `1` since that points to the second item in the list. Then we use the slice operator followed by an end index of `4`, which includes everything up to (but not including), the item at that index.",
+              "fr": "Dans cet exemple, l'indice de départ est `1` puisqu'il pointe vers le deuxième élément de la liste. Ensuite, nous utilisons l'opérateur de tranche suivi d'un indice de fin de `4`, qui inclut tout jusqu'à (mais sans inclure) l'élément à cet indice."
+            },
+            {
+              "en": "Another thing you can do with the slice operator `:` is specify a step interval which determines how much to increment between the indices. Let's say you had a list of numbers like this:",
+              "fr": "Une autre chose que tu peux faire avec l'opérateur de tranche `:` est de spécifier un intervalle de pas, qui détermine de combien incrémenter entre les indices. Disons que tu as une liste de nombres comme ceci :"
+            },
+            {
+              "en": "If you wanted to extract a list of just even numbers, you can use the slicing operator like this:",
+              "fr": "Si tu veux extraire une liste contenant seulement les nombres pairs, tu peux utiliser l'opérateur de tranche comme ceci :"
+            },
+            {
+              "en": "The first even number is at index `1`, so that will be the start index. Since we want to go through the end of the list, then we omit the end index. Lastly, we specify `2` for the optional step interval so it will only increment by `2` instead of the default `1`.",
+              "fr": "Le premier nombre pair se trouve à l'indice `1`, ce sera donc l'indice de départ. Comme nous voulons aller jusqu'à la fin de la liste, nous omettons l'indice de fin. Enfin, nous spécifions `2` pour l'intervalle de pas optionnel, afin d'incrémenter seulement de `2` au lieu de la valeur par défaut `1`."
+            },
+            {
+              "en": "Lists are a useful and flexible data structure that you will use a lot in your Python programs. In the next lesson, you will learn about common methods that you can use with lists.",
+              "fr": "Les listes sont une structure de données utile et flexible que tu utiliseras beaucoup dans tes programmes Python. Dans la prochaine leçon, tu apprendras les méthodes courantes que tu peux utiliser avec les listes."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is true about lists?",
+              "fr": "Laquelle des affirmations suivantes est vraie à propos des listes ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "They are two-based indexed.",
+              "fr": "Elles sont indexées à partir de deux."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "They are zero-based indexed.",
+              "fr": "Elles sont indexées à partir de zéro."
+            },
+            {
+              "en": "They are only used inside of classes.",
+              "fr": "Elles ne sont utilisées qu'à l'intérieur des classes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            },
+            {
+              "en": "They are rarely used in Python programs.",
+              "fr": "Elles sont rarement utilisées dans les programmes Python."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to access the second element in the list?",
+              "fr": "Quelle est la façon correcte d'accéder au deuxième élément de la liste ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Refer to the beginning of the lesson for the answer.",
+              "fr": "Reporte-toi au début de la leçon pour la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to access the second element from the end?",
+              "fr": "Quelle est la façon correcte d'accéder au deuxième élément en partant de la fin ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that negative indexing is used to access elements starting at the end.",
+              "fr": "Souviens-toi que l'indexation négative sert à accéder aux éléments en partant de la fin."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that negative indexing is used to access elements starting at the end.",
+              "fr": "Souviens-toi que l'indexation négative sert à accéder aux éléments en partant de la fin."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that negative indexing is used to access elements starting at the end.",
+              "fr": "Souviens-toi que l'indexation négative sert à accéder aux éléments en partant de la fin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e38cdf93ee5a00c79676.md",
+      "id": "6839e38cdf93ee5a00c79676",
+      "dashedName": "what-are-some-common-methods-used-for-lists",
+      "title": {
+        "en": "What Are Some Common Methods Used for Lists?",
+        "fr": "Quelles sont les méthodes courantes utilisées avec les listes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you were introduced to the list data type and learned how to access elements from a list as well as list slicing. In this lesson, you will continue to learn about lists and some common methods associated with them like `append()`, `pop()`, and `sort()`.",
+              "fr": "Dans la leçon précédente, tu as découvert le type de données liste et appris à accéder aux éléments d'une liste ainsi qu'aux tranches de liste. Dans cette leçon, tu vas continuer à apprendre les listes et quelques méthodes courantes associées, comme `append()`, `pop()` et `sort()`."
+            },
+            {
+              "en": "The first method we will look at is the `append()` method. This is used to add an item to the end of the list. Here is an example of using the `append()` method to add the number `6` to list of numbers:",
+              "fr": "La première méthode que nous allons voir est la méthode `append()`. Elle sert à ajouter un élément à la fin de la liste. Voici un exemple d'utilisation de la méthode `append()` pour ajouter le nombre `6` à une liste de nombres :"
+            },
+            {
+              "en": "If you want to add one list at the end of another, you can also use the `append()` method like this:",
+              "fr": "Si tu veux ajouter une liste à la fin d'une autre, tu peux aussi utiliser la méthode `append()` comme ceci :"
+            },
+            {
+              "en": "Notice how the entire `even_numbers` list is nested inside of the `numbers` list.",
+              "fr": "Remarque que la liste `even_numbers` entière est imbriquée dans la liste `numbers`."
+            },
+            {
+              "en": "But if you want to add all of the individual numbers from the `even_numbers` list at the end of the `numbers` list, then you can use the `extend()` method.",
+              "fr": "Mais si tu veux ajouter tous les nombres individuels de la liste `even_numbers` à la fin de la liste `numbers`, tu peux utiliser la méthode `extend()`."
+            },
+            {
+              "en": "The `extend()` method is similar to the `append()` method, but with `extend()` you can add multiple elements from one list to another. Here's an example of adding the numbers `6`, `8`, and `10` from one list to the end of the `numbers` list:",
+              "fr": "La méthode `extend()` ressemble à la méthode `append()`, mais avec `extend()` tu peux ajouter plusieurs éléments d'une liste à une autre. Voici un exemple d'ajout des nombres `6`, `8` et `10` d'une liste à la fin de la liste `numbers` :"
+            },
+            {
+              "en": "As you can see, the nested list is gone and it's just a list of numbers.",
+              "fr": "Comme tu peux le voir, la liste imbriquée a disparu et ce n'est plus qu'une liste de nombres."
+            },
+            {
+              "en": "To insert an element at a specific index in a list, you can use the `insert()` method. This method accepts two arguments: the index where you wish to insert the new item and the item you want to insert.",
+              "fr": "Pour insérer un élément à un indice précis dans une liste, tu peux utiliser la méthode `insert()`. Cette méthode accepte deux arguments : l'indice où tu souhaites insérer le nouvel élément, et l'élément que tu veux insérer."
+            },
+            {
+              "en": "Here is an example of using the `insert()` method:",
+              "fr": "Voici un exemple d'utilisation de la méthode `insert()` :"
+            },
+            {
+              "en": "The following code will insert the number `2.5` at index `2` in the `numbers` list.",
+              "fr": "Le code suivant insérera le nombre `2.5` à l'indice `2` dans la liste `numbers`."
+            },
+            {
+              "en": "If you want to remove an element from a list, you can use the `remove()` method. The `remove()` method takes the value of the element to remove as an argument:",
+              "fr": "Si tu veux supprimer un élément d'une liste, tu peux utiliser la méthode `remove()`. La méthode `remove()` prend comme argument la valeur de l'élément à supprimer :"
+            },
+            {
+              "en": "It is important to note that this method will only remove the first occurrence of an item. Not all of them:",
+              "fr": "Il est important de noter que cette méthode ne supprime que la première occurrence d'un élément. Pas toutes :"
+            },
+            {
+              "en": "To remove an element at a specific index in the list, you can use the `pop()` method like this:",
+              "fr": "Pour supprimer un élément à un indice précis dans la liste, tu peux utiliser la méthode `pop()` comme ceci :"
+            },
+            {
+              "en": "If you don't specify an element for the `pop` method, then the last element is removed.",
+              "fr": "Si tu ne spécifies pas d'élément pour la méthode `pop`, alors le dernier élément est supprimé."
+            },
+            {
+              "en": "If you need to empty the list, then you can use the `clear()` method like this:",
+              "fr": "Si tu as besoin de vider la liste, tu peux utiliser la méthode `clear()` comme ceci :"
+            },
+            {
+              "en": "The next method we will take a look at is the `sort()` method. This method is used to sort the elements in place. Here is an example of sorting a random list of numbers in place:",
+              "fr": "La méthode suivante que nous allons voir est la méthode `sort()`. Cette méthode sert à trier les éléments sur place. Voici un exemple de tri d'une liste aléatoire de nombres sur place :"
+            },
+            {
+              "en": "In contrast to the `sort()` method, there is the `sorted()` function which works for any iterable and returns a new sorted list instead of modifying the original list. For example:",
+              "fr": "Contrairement à la méthode `sort()`, il existe la fonction `sorted()` qui fonctionne pour n'importe quel itérable et renvoie une nouvelle liste triée au lieu de modifier la liste d'origine. Par exemple :"
+            },
+            {
+              "en": "As a reminder, an iterable is a special type of object that you can loop over, allowing you to access each item one at a time. You'll learn more about how loops work in Python in a future lesson.",
+              "fr": "Pour rappel, un itérable est un type d'objet spécial que tu peux parcourir en boucle, ce qui te permet d'accéder à chaque élément un par un. Tu en apprendras plus sur le fonctionnement des boucles en Python dans une leçon à venir."
+            },
+            {
+              "en": "Both the `sort()` method and `sorted()` function accept optional `key` and `reverse` parameters. You will learn more about these optional parameters in a future lesson when you learn about tuples. You'll also learn more about other built-in functions like `sorted()` in future lessons.",
+              "fr": "La méthode `sort()` et la fonction `sorted()` acceptent toutes les deux des paramètres optionnels `key` et `reverse`. Tu en apprendras plus sur ces paramètres optionnels dans une leçon à venir, quand tu découvriras les tuples. Tu en apprendras aussi plus sur d'autres fonctions intégrées comme `sorted()` dans les leçons à venir."
+            },
+            {
+              "en": "The next method we will take a look at is the `reverse()` method. This method, will reverse a list of elements in place like this:",
+              "fr": "La méthode suivante que nous allons voir est la méthode `reverse()`. Cette méthode inverse une liste d'éléments sur place comme ceci :"
+            },
+            {
+              "en": "The last method we will take a look at is the `index` method. This is used to find the first index where an element can be found in a list. Here is an example of using the `index` method to find the language `'Java'` in a `programming_languages` list:",
+              "fr": "La dernière méthode que nous allons voir est la méthode `index`. Elle sert à trouver le premier indice où un élément se trouve dans une liste. Voici un exemple d'utilisation de la méthode `index` pour trouver le langage `'Java'` dans une liste `programming_languages` :"
+            },
+            {
+              "en": "If the element cannot be found, then Python throws a `ValueError`:",
+              "fr": "Si l'élément est introuvable, Python lève une `ValueError` :"
+            },
+            {
+              "en": "There are a few more methods for Python lists, but this initial list of methods is a good place to start.",
+              "fr": "Il existe quelques autres méthodes pour les listes Python, mais cette première liste de méthodes est un bon point de départ."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following examples will correctly insert the number 2.5 at index 2 in the numbers list?",
+              "fr": "Lequel des exemples suivants insérera correctement le nombre 2.5 à l'indice 2 dans la liste numbers ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the first index represent the index where you want to insert into and the second index represents the item you want to insert.",
+              "fr": "Souviens-toi que le premier paramètre représente l'indice où tu veux insérer, et le second représente l'élément que tu veux insérer."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the first index represent the index where you want to insert into and the second index represents the item you want to insert.",
+              "fr": "Souviens-toi que le premier paramètre représente l'indice où tu veux insérer, et le second représente l'élément que tu veux insérer."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that the first index represent the index where you want to insert into and the second index represents the item you want to insert.",
+              "fr": "Souviens-toi que le premier paramètre représente l'indice où tu veux insérer, et le second représente l'élément que tu veux insérer."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following methods will reverse a list of elements in place?",
+              "fr": "Laquelle des méthodes suivantes inverse une liste d'éléments sur place ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is **NOT** a list method?",
+              "fr": "Laquelle des suivantes **N'EST PAS** une méthode de liste ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these methods is used in JavaScript. Not Python.",
+              "fr": "Une de ces méthodes est utilisée en JavaScript. Pas en Python."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these methods is used in JavaScript. Not Python.",
+              "fr": "Une de ces méthodes est utilisée en JavaScript. Pas en Python."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "One of these methods is used in JavaScript. Not Python.",
+              "fr": "Une de ces méthodes est utilisée en JavaScript. Pas en Python."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e3a99ba37f09b9d0059b.md",
+      "id": "6839e3a99ba37f09b9d0059b",
+      "dashedName": "what-are-tuples-and-how-do-they-work",
+      "title": {
+        "en": "What Are Tuples and How Do They Work?",
+        "fr": "Que sont les tuples et comment fonctionnent-ils ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "A tuple is a Python data type used to create an ordered sequence of values. Tuples can contain a mixed set of data types like this:",
+              "fr": "Un tuple est un type de données Python utilisé pour créer une séquence ordonnée de valeurs. Les tuples peuvent contenir un ensemble mixte de types de données comme ceci :"
+            },
+            {
+              "en": "Tuples are similar to lists, but while lists are a mutable data type, tuples are immutable. This means that the elements in a tuple cannot be changed once it's created.",
+              "fr": "Les tuples ressemblent aux listes, mais alors que les listes sont un type de données mutable, les tuples sont immuables. Cela signifie que les éléments d'un tuple ne peuvent pas être modifiés une fois qu'il est créé."
+            },
+            {
+              "en": "If you try to update one of the items in the tuple, you will get a `TypeError`:",
+              "fr": "Si tu essaies de mettre à jour l'un des éléments du tuple, tu obtiendras une `TypeError` :"
+            },
+            {
+              "en": "To access an element from a tuple, you can use bracket notation and the index number:",
+              "fr": "Pour accéder à un élément d'un tuple, tu peux utiliser la notation entre crochets et le numéro d'indice :"
+            },
+            {
+              "en": "If you need to access elements starting from the end of a tuple, then you can use negative indexing. Here is an example of using a negative index to access the second to last element in a tuple:",
+              "fr": "Si tu as besoin d'accéder aux éléments en partant de la fin d'un tuple, tu peux utiliser l'indexation négative. Voici un exemple d'utilisation d'un indice négatif pour accéder à l'avant-dernier élément d'un tuple :"
+            },
+            {
+              "en": "If you try to pass in an index number that exceeds or equals the length of the tuple, then you will receive an `IndexError` like this:",
+              "fr": "Si tu essaies de passer un numéro d'indice qui dépasse ou égale la longueur du tuple, tu recevras une `IndexError` comme ceci :"
+            },
+            {
+              "en": "Another way to create a tuple is by using the `tuple()` constructor like this:",
+              "fr": "Une autre façon de créer un tuple est d'utiliser le constructeur `tuple()` comme ceci :"
+            },
+            {
+              "en": "For the `tuple()` constructor, you can pass in different iterables like strings, lists and even other tuples.",
+              "fr": "Pour le constructeur `tuple()`, tu peux passer différents itérables comme des chaînes, des listes et même d'autres tuples."
+            },
+            {
+              "en": "To check if an item is in a tuple, you can use the `in` keyword like this:",
+              "fr": "Pour vérifier si un élément se trouve dans un tuple, tu peux utiliser le mot-clé `in` comme ceci :"
+            },
+            {
+              "en": "You can also unpack items from a tuple just like you did with lists:",
+              "fr": "Tu peux aussi déballer les éléments d'un tuple, comme tu l'as fait avec les listes :"
+            },
+            {
+              "en": "In this example, `name` has the value `'Alice'`, `age` has the value `34`, and `job` has the value `'Rust Developer'`.",
+              "fr": "Dans cet exemple, `name` a la valeur `'Alice'`, `age` a la valeur `34`, et `job` a la valeur `'Rust Developer'`."
+            },
+            {
+              "en": "If you need to collect any remaining elements from a tuple, you can use the asterisk (`*`) operator like this:",
+              "fr": "Si tu as besoin de collecter les éléments restants d'un tuple, tu peux utiliser l'opérateur astérisque (`*`) comme ceci :"
+            },
+            {
+              "en": "Here, `name` has the value `'Alice'`, and `rest` is a list comprised of the number `34` and the string `'Rust Developer'`.",
+              "fr": "Ici, `name` a la valeur `'Alice'`, et `rest` est une liste composée du nombre `34` et de la chaîne `'Rust Developer'`."
+            },
+            {
+              "en": "Just like with a list, you can use the slice operator on a tuple to extract a portion of it. Here is an example of extracting the items `'pie'` and `'cookies'` into a separate tuple:",
+              "fr": "Comme avec une liste, tu peux utiliser l'opérateur de tranche sur un tuple pour en extraire une portion. Voici un exemple d'extraction des éléments `'pie'` et `'cookies'` dans un tuple séparé :"
+            },
+            {
+              "en": "Remember that the first number represents the starting index for the extraction while the second number represents the ending index. But note that the item at the ending index is not included in the extracted tuple.",
+              "fr": "Souviens-toi que le premier nombre représente l'indice de départ de l'extraction, tandis que le second représente l'indice de fin. Mais note que l'élément à l'indice de fin n'est pas inclus dans le tuple extrait."
+            },
+            {
+              "en": "If you need to remove an item from a tuple, that isn't possible because tuples are immutable. So this example, will produce an error:",
+              "fr": "Si tu as besoin de supprimer un élément d'un tuple, ce n'est pas possible car les tuples sont immuables. Donc cet exemple produira une erreur :"
+            },
+            {
+              "en": "So when might you use a tuple over a list?",
+              "fr": "Alors, quand pourrais-tu utiliser un tuple plutôt qu'une liste ?"
+            },
+            {
+              "en": "If you need a dynamic collection of elements where you can add, remove and update elements, then you should use a list. If you know that you are working with a fixed and immutable collection of data, then you should use a tuple.",
+              "fr": "Si tu as besoin d'une collection dynamique d'éléments où tu peux ajouter, supprimer et mettre à jour des éléments, tu devrais utiliser une liste. Si tu sais que tu travailles avec une collection de données fixe et immuable, tu devrais utiliser un tuple."
+            },
+            {
+              "en": "In the next lesson, we will take a look at some common methods you will use when working with tuples.",
+              "fr": "Dans la prochaine leçon, nous allons voir quelques méthodes courantes que tu utiliseras en travaillant avec les tuples."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be output to the console?",
+              "fr": "Que va s'afficher dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result for the following code?",
+              "fr": "Quel sera le résultat du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result for the following code?",
+              "fr": "Quel sera le résultat du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "The first item will be deleted.",
+              "fr": "Le premier élément sera supprimé."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "You will get a `TypeError`.",
+              "fr": "Tu obtiendras une `TypeError`."
+            },
+            {
+              "en": "You will get an `IndexError`.",
+              "fr": "Tu obtiendras une `IndexError`."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "The second item will be deleted.",
+              "fr": "Le deuxième élément sera supprimé."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e3ea328b630cf5fca9ac.md",
+      "id": "6839e3ea328b630cf5fca9ac",
+      "dashedName": "how-do-loops-work",
+      "title": {
+        "en": "How Do Loops Work?",
+        "fr": "Comment fonctionnent les boucles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "As you learned in earlier modules, loops are used to repeat a block of code for a set number of times. In this lesson you will learn how to work with different types of loops in Python.",
+              "fr": "Comme tu l'as appris dans les modules précédents, les boucles servent à répéter un bloc de code un nombre défini de fois. Dans cette leçon, tu apprendras à travailler avec différents types de boucles en Python."
+            },
+            {
+              "en": "The first loop we will go over is the `for` loop. Here is an example of using a `for` loop to iterate through a list and print each item to the console:",
+              "fr": "La première boucle que nous allons voir est la boucle `for`. Voici un exemple d'utilisation d'une boucle `for` pour parcourir une liste et afficher chaque élément dans la console :"
+            },
+            {
+              "en": "The result would be:",
+              "fr": "Le résultat serait :"
+            },
+            {
+              "en": "Notice that the `print(language)` is indented inside of the loop. Without that indentation, you would get an `IndentationError`:",
+              "fr": "Remarque que `print(language)` est indenté à l'intérieur de la boucle. Sans cette indentation, tu obtiendrais une `IndentationError` :"
+            },
+            {
+              "en": "You can also use a `for` loop to iterate through other iterables like a string. Here is an example of using a `for` loop to loop through the string `code` and print out each character:",
+              "fr": "Tu peux aussi utiliser une boucle `for` pour parcourir d'autres itérables comme une chaîne. Voici un exemple d'utilisation d'une boucle `for` pour parcourir la chaîne `code` et afficher chaque caractère :"
+            },
+            {
+              "en": "The result would be:",
+              "fr": "Le résultat serait :"
+            },
+            {
+              "en": "Just like in JavaScript, you can also nest `for` loops in Python. Here is an example of using a nested `for` loop:",
+              "fr": "Comme en JavaScript, tu peux aussi imbriquer des boucles `for` en Python. Voici un exemple d'utilisation d'une boucle `for` imbriquée :"
+            },
+            {
+              "en": "The outer loop will iterate through each `category` in the `categories` list. For each `category`, the inner loop will iterate through each `food` in the `foods` list. Here is the result that will be printed to the console:",
+              "fr": "La boucle externe parcourra chaque `category` de la liste `categories`. Pour chaque `category`, la boucle interne parcourra chaque `food` de la liste `foods`. Voici le résultat qui s'affichera dans la console :"
+            },
+            {
+              "en": "Another type of loop you can use in Python is the `while` loop. This type of loop will repeat a block of code until the condition is `False`. Here is an example of using a `while` loop for a guessing game:",
+              "fr": "Un autre type de boucle que tu peux utiliser en Python est la boucle `while`. Ce type de boucle répète un bloc de code jusqu'à ce que la condition soit `False`. Voici un exemple d'utilisation d'une boucle `while` pour un jeu de devinettes :"
+            },
+            {
+              "en": "In this example we have a `secret_number` variable with the value of `3` and an initial guess of `0`. Then we use the `input` function to get input from the user, then convert the input string into an integer with the `int()` function, and assign it to the `guess` variable. If the user guesses correctly by inputting `3`, the `while` loop is broken out of and the message `You got it!` is printed to the console. Otherwise, the message `Wrong! Try again.` is printed to the console, and the loop repeats, prompting the user to guess again.",
+              "fr": "Dans cet exemple, nous avons une variable `secret_number` de valeur `3` et une tentative initiale de `0`. Ensuite, nous utilisons la fonction `input` pour obtenir une saisie de l'utilisateur, puis nous convertissons la chaîne saisie en entier avec la fonction `int()`, et nous l'affectons à la variable `guess`. Si l'utilisateur trouve la bonne réponse en saisissant `3`, on sort de la boucle `while` et le message `You got it!` s'affiche dans la console. Sinon, le message `Wrong! Try again.` s'affiche dans la console, et la boucle se répète, invitant l'utilisateur à essayer à nouveau."
+            },
+            {
+              "en": "Here's an example result:",
+              "fr": "Voici un exemple de résultat :"
+            },
+            {
+              "en": "Just like in JavaScript, Python supports the `break` and `continue` statements.",
+              "fr": "Comme en JavaScript, Python prend en charge les instructions `break` et `continue`."
+            },
+            {
+              "en": "The `break` statement is used to stop the execution of a loop. Here is an example of using the `break` statement for a list of `developer_names`:",
+              "fr": "L'instruction `break` sert à arrêter l'exécution d'une boucle. Voici un exemple d'utilisation de l'instruction `break` avec une liste `developer_names` :"
+            },
+            {
+              "en": "In this example, we iterate through a list of `developer_names` and print each name to the console. If the name is equal to `Naomi`, then we break out of the loop. This results in only the name `Jess` being printed to the console.",
+              "fr": "Dans cet exemple, nous parcourons une liste `developer_names` et affichons chaque nom dans la console. Si le nom est égal à `Naomi`, alors nous sortons de la boucle. Il en résulte que seul le nom `Jess` s'affiche dans la console."
+            },
+            {
+              "en": "The `continue` statement is used to skip the current iteration of a loop and move onto the next iteration. Let's modify the example from earlier to use the `continue` statement instead of `break`:",
+              "fr": "L'instruction `continue` sert à sauter l'itération actuelle d'une boucle et à passer à l'itération suivante. Modifions l'exemple précédent pour utiliser l'instruction `continue` au lieu de `break` :"
+            },
+            {
+              "en": "Now the result in the console will be different. The names `Jess` and `Tom` are printed because the `continue` statement skips the second iteration of the loop when `developer` is equal to `Naomi`, and does not print that name to the console.",
+              "fr": "Maintenant, le résultat dans la console sera différent. Les noms `Jess` et `Tom` s'affichent parce que l'instruction `continue` saute la deuxième itération de la boucle lorsque `developer` est égal à `Naomi`, et n'affiche pas ce nom dans la console."
+            },
+            {
+              "en": "Both `for` and `while` loops can be combined with an `else` clause, which is executed only when the loop is not terminated by a `break` statement. Here is an example of using multiple `for` loops:",
+              "fr": "Les boucles `for` et `while` peuvent toutes les deux être combinées avec une clause `else`, qui ne s'exécute que lorsque la boucle n'est pas interrompue par une instruction `break`. Voici un exemple d'utilisation de plusieurs boucles `for` :"
+            },
+            {
+              "en": "In this example we have a list of random words, and a `for` loop is used to loop through each word. Inside the outer `for` loop, we have another `for` loop to loop through each letter of each word. If the lowercase version of the letter is a vowel, we print the word followed by what vowels it contains, then break out of the inner loop. If the word contains no vowels, then we print a message indicating that.",
+              "fr": "Dans cet exemple, nous avons une liste de mots aléatoires, et une boucle `for` parcourt chaque mot. À l'intérieur de la boucle `for` externe, nous avons une autre boucle `for` pour parcourir chaque lettre de chaque mot. Si la version en minuscules de la lettre est une voyelle, nous affichons le mot suivi des voyelles qu'il contient, puis nous sortons de la boucle interne. Si le mot ne contient aucune voyelle, nous affichons un message l'indiquant."
+            },
+            {
+              "en": "Here is what the result looks like in the console:",
+              "fr": "Voici à quoi ressemble le résultat dans la console :"
+            },
+            {
+              "en": "Loops are very common in Python, so it's important to get comfortable with them. In the next few lessons, you will learn how to work with the `enumerate()` and `range()` functions in loops.",
+              "fr": "Les boucles sont très courantes en Python, il est donc important de te sentir à l'aise avec elles. Dans les prochaines leçons, tu apprendras à utiliser les fonctions `enumerate()` et `range()` dans les boucles."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code print to the console?",
+              "fr": "Qu'affichera le code suivant dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following loops is used to repeat a block of code until a condition is `False`?",
+              "fr": "Laquelle des boucles suivantes sert à répéter un bloc de code jusqu'à ce qu'une condition soit `False` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Only one of these options is a real type of loop used in both Python and JavaScript.",
+              "fr": "Une seule de ces options est un vrai type de boucle utilisé à la fois en Python et en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Only one of these options is a real type of loop used in both Python and JavaScript.",
+              "fr": "Une seule de ces options est un vrai type de boucle utilisé à la fois en Python et en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Only one of these options is a real type of loop used in both Python and JavaScript.",
+              "fr": "Une seule de ces options est un vrai type de boucle utilisé à la fois en Python et en JavaScript."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is used to stop the execution of a loop?",
+              "fr": "Lequel des éléments suivants sert à arrêter l'exécution d'une boucle ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e41fe8dac60f11f583db.md",
+      "id": "6839e41fe8dac60f11f583db",
+      "dashedName": "what-are-ranges-and-how-can-you-use-them-in-a-loop",
+      "title": {
+        "en": "What Are Ranges and How Can You Use Them in a Loop?",
+        "fr": "Que sont les ranges et comment les utiliser dans une boucle ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "The `range()` function is used to generate a sequence of integers. Here is the basic syntax for the `range()` function:",
+              "fr": "La fonction `range()` sert à générer une séquence d'entiers. Voici la syntaxe de base de la fonction `range()` :"
+            },
+            {
+              "en": "The required `stop` argument is an integer that represents the end point for the sequence of numbers being generated. Here is an example of using the `range()` function:",
+              "fr": "L'argument obligatoire `stop` est un entier qui représente le point d'arrivée de la séquence de nombres générée. Voici un exemple d'utilisation de la fonction `range()` :"
+            },
+            {
+              "en": "The following code generates a sequence of numbers between `0` and `2`. The integer `3` is not included because the `stop` argument is non-inclusive.",
+              "fr": "Le code suivant génère une séquence de nombres entre `0` et `2`. L'entier `3` n'est pas inclus parce que l'argument `stop` est non inclusif."
+            },
+            {
+              "en": "If a `start` argument is not specified, then the default is `0`. Otherwise, you can use the optional `start` argument to start the sequence of integers at a integer other than `0`. Here is an example of generating a sequence of integers between `1` and `4`:",
+              "fr": "Si un argument `start` n'est pas spécifié, la valeur par défaut est `0`. Sinon, tu peux utiliser l'argument optionnel `start` pour commencer la séquence d'entiers à un entier autre que `0`. Voici un exemple de génération d'une séquence d'entiers entre `1` et `4` :"
+            },
+            {
+              "en": "By default the sequence of integers will increment by `1`. But if you want to change that default, then you can use the optional `step` argument. Here is an example of generating a sequence of even integers between `2` and `10`:",
+              "fr": "Par défaut, la séquence d'entiers s'incrémente de `1`. Mais si tu veux changer cette valeur par défaut, tu peux utiliser l'argument optionnel `step`. Voici un exemple de génération d'une séquence d'entiers pairs entre `2` et `10` :"
+            },
+            {
+              "en": "As mentioned earlier, there is only one required argument for the `range()` function. If you don't provide any arguments to `range()`, then you'll get a `TypeError`:",
+              "fr": "Comme mentionné plus tôt, il n'y a qu'un seul argument obligatoire pour la fonction `range()`. Si tu ne fournis aucun argument à `range()`, tu obtiendras une `TypeError` :"
+            },
+            {
+              "en": "It is important to note that the `range()` function only accepts integers as arguments, not floats. Remember that floats are numbers with decimal points like `3.4`. If you try to pass floats as arguments, you'll get a `TypeError`:",
+              "fr": "Il est important de noter que la fonction `range()` n'accepte que des entiers comme arguments, pas des flottants. Souviens-toi que les flottants sont des nombres avec une partie décimale, comme `3.4`. Si tu essaies de passer des flottants comme arguments, tu obtiendras une `TypeError` :"
+            },
+            {
+              "en": "If you want to generate a sequence of integers in decrementing order, then you can use a negative integer for the `step` argument, like this:",
+              "fr": "Si tu veux générer une séquence d'entiers en ordre décroissant, tu peux utiliser un entier négatif pour l'argument `step`, comme ceci :"
+            },
+            {
+              "en": "The following code prints the numbers `40`, `30`, `20`, and `10` in that order to the console.",
+              "fr": "Le code suivant affiche les nombres `40`, `30`, `20` et `10` dans cet ordre dans la console."
+            },
+            {
+              "en": "Another thing you can do with the `range()` function is create a list of integers by using it with the `list` constructor. The `list` constructor is used to convert an iterable into a list. Here is an example of generating a list of even integers between `2` and `10`:",
+              "fr": "Une autre chose que tu peux faire avec la fonction `range()` est de créer une liste d'entiers en l'utilisant avec le constructeur `list`. Le constructeur `list` sert à convertir un itérable en liste. Voici un exemple de génération d'une liste d'entiers pairs entre `2` et `10` :"
+            },
+            {
+              "en": "The `range()` function is a very handy way to generate a sequence of integers in Python. Once you get the hang of it, you'll probably find yourself using it a lot in your Python programs.",
+              "fr": "La fonction `range()` est un moyen très pratique de générer une séquence d'entiers en Python. Une fois que tu l'auras bien en main, tu te retrouveras probablement à l'utiliser beaucoup dans tes programmes Python."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the `range()` function used for?",
+              "fr": "À quoi sert la fonction `range()` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "To generate a list of lists.",
+              "fr": "À générer une liste de listes."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "To generate list of strings.",
+              "fr": "À générer une liste de chaînes."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "To generate a sequence of integers.",
+              "fr": "À générer une séquence d'entiers."
+            },
+            {
+              "en": "To generate a list of characters.",
+              "fr": "À générer une liste de caractères."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the only required argument needed for the `range()` function?",
+              "fr": "Lequel des arguments suivants est le seul argument obligatoire de la fonction `range()` ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following errors will be returned from the following code?",
+              "fr": "Laquelle des erreurs suivantes sera renvoyée par le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This error occurs when an incompatible type is used for a given operation.",
+              "fr": "Cette erreur se produit lorsqu'un type incompatible est utilisé pour une opération donnée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This error occurs when an incompatible type is used for a given operation.",
+              "fr": "Cette erreur se produit lorsqu'un type incompatible est utilisé pour une opération donnée."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "This error occurs when an incompatible type is used for a given operation.",
+              "fr": "Cette erreur se produit lorsqu'un type incompatible est utilisé pour une opération donnée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e4b003571c149bcda122.md",
+      "id": "6839e4b003571c149bcda122",
+      "dashedName": "what-are-the-enumerate-and-zip-functions-and-how-do-they-work",
+      "title": {
+        "en": "What Are the Enumerate and Zip Functions and How Do They Work?",
+        "fr": "Que sont les fonctions enumerate et zip et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In previous lessons you learned how to work with the `for` loop, which is used to repeat a block of code a set number of times. Here is an example of using a `for` loop to print each language from the `languages` list to the console:",
+              "fr": "Dans les leçons précédentes, tu as appris à travailler avec la boucle `for`, qui sert à répéter un bloc de code un nombre défini de fois. Voici un exemple d'utilisation d'une boucle `for` pour afficher chaque langage de la liste `languages` dans la console :"
+            },
+            {
+              "en": "But what if you wanted to keep track of the index for each element? Well, one option is to create an `index` variable and increment it by `1` for each iteration of the loop, like this:",
+              "fr": "Mais si tu voulais suivre l'indice de chaque élément ? Eh bien, une option est de créer une variable `index` et de l'incrémenter de `1` à chaque itération de la boucle, comme ceci :"
+            },
+            {
+              "en": "While that works, an easier way to do that is by using the `enumerate()` function. The `enumerate()` function keeps track of the index for an iterable and returns an enumerate object.",
+              "fr": "Même si cela fonctionne, un moyen plus simple est d'utiliser la fonction `enumerate()`. La fonction `enumerate()` suit l'indice d'un itérable et renvoie un objet enumerate."
+            },
+            {
+              "en": "If we pass the `languages` list to the `enumerate()` function and convert its returned value into a list with the `list()` function, it looks like this:",
+              "fr": "Si nous passons la liste `languages` à la fonction `enumerate()` et convertissons la valeur renvoyée en liste avec la fonction `list()`, voici à quoi ça ressemble :"
+            },
+            {
+              "en": "Each entry in the enumerate object (now a list) is a tuple containing a count, followed by a value from the iterable passed to the `enumerate()` function.",
+              "fr": "Chaque entrée de l'objet enumerate (devenu une liste) est un tuple contenant un compteur, suivi d'une valeur de l'itérable passé à la fonction `enumerate()`."
+            },
+            {
+              "en": "Now, let's refactor the example from earlier to use the `enumerate()` function:",
+              "fr": "Maintenant, refactorisons l'exemple précédent pour utiliser la fonction `enumerate()` :"
+            },
+            {
+              "en": "We unpack the count and value for each tuple in the enumerate object into variables named `index` and `language`, respectively. Finally, both those variables are used in an f-string that's printed to the console in each iteration of the loop.",
+              "fr": "Nous déballons le compteur et la valeur de chaque tuple de l'objet enumerate dans des variables nommées `index` et `language`, respectivement. Enfin, ces deux variables sont utilisées dans une f-string affichée dans la console à chaque itération de la boucle."
+            },
+            {
+              "en": "This removes the need for manually creating and updating an `index` variable.",
+              "fr": "Cela évite d'avoir à créer et mettre à jour manuellement une variable `index`."
+            },
+            {
+              "en": "The `enumerate()` function also accepts an optional `start` argument that specifies the starting value for the count. If this argument is omitted, then the count will begin at `0`. Here is an example of using the optional `start` argument:",
+              "fr": "La fonction `enumerate()` accepte aussi un argument optionnel `start` qui spécifie la valeur de départ du compteur. Si cet argument est omis, le compteur commencera à `0`. Voici un exemple d'utilisation de l'argument optionnel `start` :"
+            },
+            {
+              "en": "And here is what the result will look like in the console:",
+              "fr": "Et voici à quoi ressemblera le résultat dans la console :"
+            },
+            {
+              "en": "So far we've only been iterating over one list. But what if you need to iterate over multiple iterables in parallel? Well, you can use the `zip()` function for that, which combines lists into pairs of elements and returns an iterator of tuples.",
+              "fr": "Jusqu'ici, nous n'avons parcouru qu'une seule liste. Mais si tu as besoin de parcourir plusieurs itérables en parallèle ? Eh bien, tu peux utiliser la fonction `zip()` pour cela : elle combine des listes en paires d'éléments et renvoie un itérateur de tuples."
+            },
+            {
+              "en": "If we pass a list of `developers` and `ids` to the `zip()` function and convert its returned value into a list with the `list()` function, here's what it looks like:",
+              "fr": "Si nous passons une liste `developers` et une liste `ids` à la fonction `zip()` et convertissons la valeur renvoyée en liste avec la fonction `list()`, voici à quoi ça ressemble :"
+            },
+            {
+              "en": "And here's an example of using the `zip()` function with a `for` loop to iterate over `developers` and `ids`:",
+              "fr": "Et voici un exemple d'utilisation de la fonction `zip()` avec une boucle `for` pour parcourir `developers` et `ids` :"
+            },
+            {
+              "en": "In this example, `zip()` combines the two lists into pairs of elements and returns an iterator of tuples. The `for` loop then unpacks each tuple into `name` and `id`. Finally, for each print statement, we are printing each `name` and `id` from the `ids` and `developers` lists respectively. Here is what the result looks like in the console:",
+              "fr": "Dans cet exemple, `zip()` combine les deux listes en paires d'éléments et renvoie un itérateur de tuples. La boucle `for` déballe ensuite chaque tuple dans `name` et `id`. Enfin, pour chaque instruction print, nous affichons chaque `name` et `id` provenant des listes `ids` et `developers` respectivement. Voici à quoi ressemble le résultat dans la console :"
+            },
+            {
+              "en": "The `enumerate()` and `zip()` functions are very powerful, and when combined with loops, can make your code much more concise.",
+              "fr": "Les fonctions `enumerate()` et `zip()` sont très puissantes, et combinées avec des boucles, elles peuvent rendre ton code beaucoup plus concis."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `enumerate()` function do?",
+              "fr": "Que fait la fonction `enumerate()` ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is used to print the memory addresses for each element in a list.",
+              "fr": "Elle sert à afficher les adresses mémoire de chaque élément d'une liste."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It is used to create tuples and sets from lists and return an `enumerate` object.",
+              "fr": "Elle sert à créer des tuples et des ensembles à partir de listes et à renvoyer un objet `enumerate`."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It is used to keep track of the index of an iterable and return an `enumerate` object.",
+              "fr": "Elle sert à suivre l'indice d'un itérable et à renvoyer un objet `enumerate`."
+            },
+            {
+              "en": "It is used to speed up the performance for your Python applications.",
+              "fr": "Elle sert à accélérer les performances de tes applications Python."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following optional arguments in the `enumerate()` function specifies the starting value for the count?",
+              "fr": "Lequel des arguments optionnels suivants de la fonction `enumerate()` spécifie la valeur de départ du compteur ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What does the `zip()` function do?",
+              "fr": "Que fait la fonction `zip()` ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It is used to iterate over multiple iterables in parallel.",
+              "fr": "Elle sert à parcourir plusieurs itérables en parallèle."
+            },
+            {
+              "en": "It is used to create zip files.",
+              "fr": "Elle sert à créer des fichiers zip."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It is used to break out of a nested loop.",
+              "fr": "Elle sert à sortir d'une boucle imbriquée."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It is used to create an iterable that saves memory starting from a list.",
+              "fr": "Elle sert à créer un itérable qui économise de la mémoire à partir d'une liste."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e4d62ae09d1661e4cf9b.md",
+      "id": "6839e4d62ae09d1661e4cf9b",
+      "dashedName": "what-are-list-comprehensions-and-what-are-some-useful-functions-to-work-with-lists",
+      "title": {
+        "en": "What Are List Comprehensions and What Are Some Useful Functions to Work With Lists?",
+        "fr": "Que sont les compréhensions de liste et quelles fonctions utiles permettent de travailler avec les listes ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "For the past few lessons, you have been getting comfortable working with loops like this:",
+              "fr": "Depuis quelques leçons, tu t'habitues à travailler avec des boucles comme celle-ci :"
+            },
+            {
+              "en": "This example creates a new empty list called `even_numbers` and loops through a sequence of numbers between `0` and `20`. Inside the loop, there's a condition that checks if the current number has a remainder of `0` when divided by `2`. This is used to determine if the number is even. If the condition is `True`, then the current `num` is appended at the end of the `even_numbers` list. Finally, we print the `even_numbers` list to the console.",
+              "fr": "Cet exemple crée une nouvelle liste vide appelée `even_numbers` et parcourt une séquence de nombres entre `0` et `20`. À l'intérieur de la boucle, une condition vérifie si le nombre actuel a un reste de `0` lorsqu'il est divisé par `2`. Cela sert à déterminer si le nombre est pair. Si la condition est `True`, alors le `num` actuel est ajouté à la fin de la liste `even_numbers`. Enfin, nous affichons la liste `even_numbers` dans la console."
+            },
+            {
+              "en": "While this code works, there is a more concise way to write this that uses list comprehension instead. List comprehension allows you to create a new list in a single line by combining a loop and condition directly within square brackets. This makes the code shorter and often easier to read.",
+              "fr": "Même si ce code fonctionne, il existe une façon plus concise de l'écrire, qui utilise une compréhension de liste à la place. La compréhension de liste te permet de créer une nouvelle liste en une seule ligne en combinant une boucle et une condition directement entre crochets. Cela rend le code plus court et souvent plus facile à lire."
+            },
+            {
+              "en": "Here is the refactored example from earlier using square brackets:",
+              "fr": "Voici l'exemple précédent refactorisé en utilisant des crochets :"
+            },
+            {
+              "en": "In this refactored example, the `even_numbers` list is created using a single line of code. The list comprehension loops through numbers from `0` to `20`, and includes only those that are divisible by `2`. This approach is more compact and eliminates the need for a separate loop and conditional block.",
+              "fr": "Dans cet exemple refactorisé, la liste `even_numbers` est créée en une seule ligne de code. La compréhension de liste parcourt les nombres de `0` à `20`, et n'inclut que ceux qui sont divisibles par `2`. Cette approche est plus compacte et élimine le besoin d'une boucle et d'un bloc conditionnel séparés."
+            },
+            {
+              "en": "Let's take a look at another example so we can better understand how list comprehension works:",
+              "fr": "Regardons un autre exemple pour mieux comprendre comment fonctionne la compréhension de liste :"
+            },
+            {
+              "en": "In this example, we have a list of numbers and want to create a new list of tuples indicating which numbers are even or odd. In the first part of the list comprehension, we use an `if` statement to check if the number is evenly divisible by `2`. If so, then the result is a tuple of that number followed by the word `Even`. Otherwise, the result is a tuple with the number followed by the word `Odd`.",
+              "fr": "Dans cet exemple, nous avons une liste de nombres et voulons créer une nouvelle liste de tuples indiquant quels nombres sont pairs ou impairs. Dans la première partie de la compréhension de liste, nous utilisons une instruction `if` pour vérifier si le nombre est divisible par `2`. Si c'est le cas, le résultat est un tuple de ce nombre suivi du mot `Even`. Sinon, le résultat est un tuple avec le nombre suivi du mot `Odd`."
+            },
+            {
+              "en": "Here is what the result looks like printed in the console:",
+              "fr": "Voici à quoi ressemble le résultat affiché dans la console :"
+            },
+            {
+              "en": "Another way to create a list starting from an existing iterable is the `filter()` function. Here is an example of creating a new list of just words longer than four characters:",
+              "fr": "Une autre façon de créer une liste à partir d'un itérable existant est la fonction `filter()`. Voici un exemple de création d'une nouvelle liste contenant seulement les mots de plus de quatre caractères :"
+            },
+            {
+              "en": "The `filter()` function is used to select elements from an iterable that meet a specific condition. The `filter()` function accepts a function and an iterable for its arguments. In this example, we are passing in an `is_long_word` function into the `filter()` function to check if the current word count is greater than `4`. All words that have a character count greater than `4` are added into a new list and assigned to the `long_words` variable.",
+              "fr": "La fonction `filter()` sert à sélectionner les éléments d'un itérable qui satisfont une condition précise. La fonction `filter()` accepte une fonction et un itérable comme arguments. Dans cet exemple, nous passons une fonction `is_long_word` à la fonction `filter()` pour vérifier si le nombre de caractères du mot actuel est supérieur à `4`. Tous les mots dont le nombre de caractères est supérieur à `4` sont ajoutés dans une nouvelle liste et affectés à la variable `long_words`."
+            },
+            {
+              "en": "Aside from the `filter()` function, there are a few more functions that are helpful when working with lists. Another function to be aware of is the `map()` function, which takes an iterable and applies a function to each of its elements. Here is an example of using the `map()` function to convert a list of temperatures from Celsius to Fahrenheit:",
+              "fr": "Outre la fonction `filter()`, quelques autres fonctions sont utiles quand tu travailles avec des listes. Une autre fonction à connaître est la fonction `map()`, qui prend un itérable et applique une fonction à chacun de ses éléments. Voici un exemple d'utilisation de la fonction `map()` pour convertir une liste de températures de Celsius en Fahrenheit :"
+            },
+            {
+              "en": "Just like the `filter()` function, `map()` accepts a function and an iterable for its arguments. The `to_fahrenheit` function takes a temperature and converts it from Celsius to Fahrenheit.",
+              "fr": "Comme la fonction `filter()`, `map()` accepte une fonction et un itérable comme arguments. La fonction `to_fahrenheit` prend une température et la convertit de Celsius en Fahrenheit."
+            },
+            {
+              "en": "The last function we will look at is the `sum()` function. This function is used to get the sum from an iterable like a list or tuple. Here is an example of using the `sum()` function:",
+              "fr": "La dernière fonction que nous allons voir est la fonction `sum()`. Cette fonction sert à obtenir la somme d'un itérable comme une liste ou un tuple. Voici un exemple d'utilisation de la fonction `sum()` :"
+            },
+            {
+              "en": "You can also pass in an optional `start` argument which sets the initial value for the summation. Here is an updated example using the `start` argument as a positional argument:",
+              "fr": "Tu peux aussi passer un argument optionnel `start` qui définit la valeur initiale de la sommation. Voici un exemple mis à jour utilisant l'argument `start` comme argument positionnel :"
+            },
+            {
+              "en": "You can also choose to use the `start` argument as a keyword argument like this instead:",
+              "fr": "Tu peux aussi choisir d'utiliser l'argument `start` comme argument nommé, comme ceci :"
+            },
+            {
+              "en": "Both versions will produce the same result, but the keyword argument is a little more explicit.",
+              "fr": "Les deux versions produiront le même résultat, mais l'argument nommé est un peu plus explicite."
+            },
+            {
+              "en": "List comprehension as well as other functions like `map()`, `filter()`, and `sum()` might seem a little confusing at first. But with enough practice and time, you will start to feel more comfortable using them in your Python programs.",
+              "fr": "La compréhension de liste ainsi que d'autres fonctions comme `map()`, `filter()` et `sum()` peuvent sembler un peu déroutantes au début. Mais avec assez de pratique et de temps, tu commenceras à te sentir plus à l'aise pour les utiliser dans tes programmes Python."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the correct way to use list comprehension?",
+              "fr": "Quelle est la façon correcte d'utiliser une compréhension de liste ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following functions takes an iterable and applies a function to each of its elements?",
+              "fr": "Laquelle des fonctions suivantes prend un itérable et applique une fonction à chacun de ses éléments ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of the function that \"maps\" a transformation onto every item in a list, one by one.",
+              "fr": "Pense à la fonction qui « mappe » une transformation sur chaque élément d'une liste, un par un."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of the function that \"maps\" a transformation onto every item in a list, one by one.",
+              "fr": "Pense à la fonction qui « mappe » une transformation sur chaque élément d'une liste, un par un."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think of the function that \"maps\" a transformation onto every item in a list, one by one.",
+              "fr": "Pense à la fonction qui « mappe » une transformation sur chaque élément d'une liste, un par un."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be printed to the console?",
+              "fr": "Qu'est-ce qui s'affichera dans la console ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the end of the lesson for the answer.",
+              "fr": "Relis la fin de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "6839e4ef24827717b838f54d.md",
+      "id": "6839e4ef24827717b838f54d",
+      "dashedName": "what-are-lambda-functions-and-how-do-they-work",
+      "title": {
+        "en": "What Are Lambda Functions and How Do They Work?",
+        "fr": "Que sont les fonctions lambda et comment fonctionnent-elles ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "Throughout the previous lessons, you have been used to defining functions by using the `def` keyword like this:",
+              "fr": "Tout au long des leçons précédentes, tu as pris l'habitude de définir des fonctions avec le mot-clé `def` comme ceci :"
+            },
+            {
+              "en": "But when it comes to working with high order functions like `map()` and `filter()`, you can use an anonymous inline function. This is where lambda functions come in.",
+              "fr": "Mais quand il s'agit de travailler avec des fonctions d'ordre supérieur comme `map()` et `filter()`, tu peux utiliser une fonction anonyme en ligne. C'est là qu'interviennent les fonctions lambda."
+            },
+            {
+              "en": "Here's what the `square()` function looks like when refactored into a lambda function:",
+              "fr": "Voici à quoi ressemble la fonction `square()` une fois refactorisée en fonction lambda :"
+            },
+            {
+              "en": "As mentioned earlier, lambda functions are anonymous, so this function no longer has the name `square` associated with it. Lambda functions are great when you need to use them in higher order functions like this:",
+              "fr": "Comme mentionné plus tôt, les fonctions lambda sont anonymes, donc cette fonction n'a plus le nom `square` associé. Les fonctions lambda sont très utiles quand tu as besoin de les utiliser dans des fonctions d'ordre supérieur comme ceci :"
+            },
+            {
+              "en": "In this example, we have a list of numbers and want to create a new list of even numbers. So we pass in a lambda function as one of the arguments to the `filter()` function to get a new list containing the numbers `2` and `4`.",
+              "fr": "Dans cet exemple, nous avons une liste de nombres et voulons créer une nouvelle liste de nombres pairs. Nous passons donc une fonction lambda comme l'un des arguments de la fonction `filter()` pour obtenir une nouvelle liste contenant les nombres `2` et `4`."
+            },
+            {
+              "en": "When working with lambda functions it is important to be aware of best practices. For example, it is not a good practice to assign a lambda function to a variable like this:",
+              "fr": "Quand tu travailles avec des fonctions lambda, il est important de connaître les bonnes pratiques. Par exemple, ce n'est pas une bonne pratique d'affecter une fonction lambda à une variable comme ceci :"
+            },
+            {
+              "en": "This defeats the purpose of using anonymous functions. In this case, you should use a regular function, like this:",
+              "fr": "Cela va à l'encontre de l'intérêt des fonctions anonymes. Dans ce cas, tu devrais utiliser une fonction ordinaire, comme ceci :"
+            },
+            {
+              "en": "Also, you should avoid creating lambda functions that are difficult to read or unnecessarily complicated, like this:",
+              "fr": "Tu devrais aussi éviter de créer des fonctions lambda difficiles à lire ou inutilement compliquées, comme ceci :"
+            },
+            {
+              "en": "While this function runs fine and produces the correct result of `14`, it is not easy to read or look at. In this case, it would be better to create a separate function with an `if/else` statement, and then call that function:",
+              "fr": "Même si cette fonction s'exécute correctement et produit le bon résultat de `14`, elle n'est pas facile à lire ni à regarder. Dans ce cas, il vaudrait mieux créer une fonction séparée avec une instruction `if/else`, puis appeler cette fonction :"
+            },
+            {
+              "en": "Both regular functions and lambda functions have their use cases in Python programs. If you are dealing with a single inline expressions, then you might consider using a lambda function. Otherwise, using a regular function would be the way to go.",
+              "fr": "Les fonctions ordinaires et les fonctions lambda ont chacune leurs cas d'usage dans les programmes Python. Si tu as affaire à une seule expression en ligne, tu pourrais envisager d'utiliser une fonction lambda. Sinon, utiliser une fonction ordinaire serait le bon choix."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following is the best use case for a lambda function?",
+              "fr": "Lequel des cas suivants est le meilleur usage d'une fonction lambda ?"
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "Defining a function with multiple lines and conditional logic.",
+              "fr": "Définir une fonction avec plusieurs lignes et de la logique conditionnelle."
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when an anonymous, one-line function is most appropriate.",
+              "fr": "Réfléchis au moment où une fonction anonyme d'une seule ligne est la plus appropriée."
+            },
+            {
+              "en": "Creating a reusable function across multiple modules.",
+              "fr": "Créer une fonction réutilisable dans plusieurs modules."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when an anonymous, one-line function is most appropriate.",
+              "fr": "Réfléchis au moment où une fonction anonyme d'une seule ligne est la plus appropriée."
+            },
+            {
+              "en": "Writing a small function for use inside a `map()` or `filter()` call.",
+              "fr": "Écrire une petite fonction à utiliser dans un appel à `map()` ou `filter()`."
+            },
+            {
+              "en": "Creating a function with a descriptive name for clarity.",
+              "fr": "Créer une fonction avec un nom descriptif pour plus de clarté."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about when an anonymous, one-line function is most appropriate.",
+              "fr": "Réfléchis au moment où une fonction anonyme d'une seule ligne est la plus appropriée."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Why is it generally considered bad practice to assign a lambda function to a variable?",
+              "fr": "Pourquoi considère-t-on généralement comme une mauvaise pratique d'affecter une fonction lambda à une variable ?"
+            }
+          ]
+        },
+        {
+          "index": 10,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It results in syntax errors.",
+              "fr": "Cela produit des erreurs de syntaxe."
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that anonymous functions are meant to be inline and not named.",
+              "fr": "Souviens-toi que les fonctions anonymes sont destinées à être en ligne et non nommées."
+            },
+            {
+              "en": "It defeats the purpose of using an anonymous function.",
+              "fr": "Cela va à l'encontre de l'intérêt d'utiliser une fonction anonyme."
+            },
+            {
+              "en": "Lambda functions are slower than regular functions.",
+              "fr": "Les fonctions lambda sont plus lentes que les fonctions ordinaires."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that anonymous functions are meant to be inline and not named.",
+              "fr": "Souviens-toi que les fonctions anonymes sont destinées à être en ligne et non nommées."
+            },
+            {
+              "en": "Python does not allow this in most versions.",
+              "fr": "Python ne l'autorise pas dans la plupart des versions."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Remember that anonymous functions are meant to be inline and not named.",
+              "fr": "Souviens-toi que les fonctions anonymes sont destinées à être en ligne et non nommées."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What is the primary disadvantage of using a complex lambda function like the one shown below?",
+              "fr": "Quel est le principal inconvénient d'utiliser une fonction lambda complexe comme celle ci-dessous ?"
+            }
+          ]
+        },
+        {
+          "index": 16,
+          "marker": "## --answers--",
+          "chunks": [
+            {
+              "en": "It makes the code more readable.",
+              "fr": "Cela rend le code plus lisible."
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It could lead to unexpected behavior due to ambiguity.",
+              "fr": "Cela pourrait entraîner un comportement inattendu à cause de l'ambiguïté."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            },
+            {
+              "en": "It is harder to understand and maintain.",
+              "fr": "C'est plus difficile à comprendre et à maintenir."
+            },
+            {
+              "en": "It requires too many resources to execute.",
+              "fr": "Cela demande trop de ressources pour s'exécuter."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "683d6a3fe8c1060ffb1f9b78.md",
+      "id": "683d6a3fe8c1060ffb1f9b78",
+      "dashedName": "what-are-some-common-methods-for-tuples",
+      "title": {
+        "en": "What Are Some Common Methods for Tuples?",
+        "fr": "Quelles sont les méthodes courantes pour les tuples ?"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "In the previous lesson, you learned how to work with the tuple data type. In this lesson, you'll learn about some common methods you'll use when working with tuples.",
+              "fr": "Dans la leçon précédente, tu as appris à travailler avec le type de données tuple. Dans cette leçon, tu vas découvrir quelques méthodes courantes que tu utiliseras en travaillant avec les tuples."
+            },
+            {
+              "en": "The first method we will cover is `count()`. This method is used to determine how many times an item appears in a tuple. Here is an example of checking how many times the string `Rust` appears in a tuple named `programming_languages`:",
+              "fr": "La première méthode que nous allons couvrir est `count()`. Cette méthode sert à déterminer combien de fois un élément apparaît dans un tuple. Voici un exemple pour vérifier combien de fois la chaîne `Rust` apparaît dans un tuple nommé `programming_languages` :"
+            },
+            {
+              "en": "Since `Rust` appears twice in the tuple, the `count()` method returns the number `2`. If the specified item in the `count()` function is not present at all in the tuple, then the return value is `0`:",
+              "fr": "Comme `Rust` apparaît deux fois dans le tuple, la méthode `count()` renvoie le nombre `2`. Si l'élément spécifié dans la fonction `count()` n'est pas du tout présent dans le tuple, alors la valeur renvoyée est `0` :"
+            },
+            {
+              "en": "If no arguments are passed into the `count()` function, then Python raises a `TypeError`:",
+              "fr": "Si aucun argument n'est passé à la fonction `count()`, Python lève une `TypeError` :"
+            },
+            {
+              "en": "The next method we will look at is the `index()` method. This method is used to find the index where a particular item is present in a tuple. Here is an example of using the `index()` method to find the index for the string `Java`:",
+              "fr": "La méthode suivante que nous allons voir est la méthode `index()`. Cette méthode sert à trouver l'indice où un élément particulier est présent dans un tuple. Voici un exemple d'utilisation de la méthode `index()` pour trouver l'indice de la chaîne `Java` :"
+            },
+            {
+              "en": "If the specified item cannot be found, then Python raises a `ValueError`:",
+              "fr": "Si l'élément spécifié est introuvable, Python lève une `ValueError` :"
+            },
+            {
+              "en": "Another thing you can do with the `index()` method is to pass in optional start and stop index arguments. Here is an example of passing in an optional start index:",
+              "fr": "Une autre chose que tu peux faire avec la méthode `index()` est de passer des arguments optionnels d'indice de début et de fin. Voici un exemple de passage d'un indice de départ optionnel :"
+            },
+            {
+              "en": "In this example, we are specifying where to start searching for the string `Python`. By passing in the number `3` as the second argument to the `index()` function, we are specifying to start searching at index `3`. Since `Python` appears twice in the tuple, the `index()` function will return index `5` instead of index `2` because of the use of the optional start index argument.",
+              "fr": "Dans cet exemple, nous spécifions où commencer la recherche de la chaîne `Python`. En passant le nombre `3` comme second argument de la fonction `index()`, nous indiquons de commencer la recherche à l'indice `3`. Comme `Python` apparaît deux fois dans le tuple, la fonction `index()` renverra l'indice `5` au lieu de l'indice `2` à cause de l'utilisation de l'argument optionnel d'indice de départ."
+            },
+            {
+              "en": "You can also pass in an optional stop index. Here is a modified example of specifying a start and stop index:",
+              "fr": "Tu peux aussi passer un indice de fin optionnel. Voici un exemple modifié spécifiant un indice de départ et un indice de fin :"
+            },
+            {
+              "en": "Now the result is index `2` because we are starting the search at index `2`, and searching up to, but not including, index `5`.",
+              "fr": "Maintenant, le résultat est l'indice `2` parce que nous commençons la recherche à l'indice `2`, et que nous cherchons jusqu'à, mais sans inclure, l'indice `5`."
+            },
+            {
+              "en": "Another commonly used function used with tuples is the `sorted()` function. In a previous lesson you learned about the `sort()` method for lists. Well, the `sorted()` function can be used on any iterable including tuples.",
+              "fr": "Une autre fonction couramment utilisée avec les tuples est la fonction `sorted()`. Dans une leçon précédente, tu as appris la méthode `sort()` pour les listes. Eh bien, la fonction `sorted()` peut s'utiliser sur n'importe quel itérable, y compris les tuples."
+            },
+            {
+              "en": "Here is an example of creating a new list of numbers using the `sorted()` function:",
+              "fr": "Voici un exemple de création d'une nouvelle liste de nombres avec la fonction `sorted()` :"
+            },
+            {
+              "en": "The `sorted()` function will always create a new list of the sorted values. This differs from the `sort()` method which sorts the elements of a list in place and does not return a new list.",
+              "fr": "La fonction `sorted()` créera toujours une nouvelle liste des valeurs triées. Cela diffère de la méthode `sort()` qui trie les éléments d'une liste sur place et ne renvoie pas de nouvelle liste."
+            },
+            {
+              "en": "If you need to customize the sorting behavior for an iterable, you can use the optional `reverse` and `key` arguments. Here is an example of using `key` argument to sort items in a tuple by length:",
+              "fr": "Si tu as besoin de personnaliser le comportement du tri pour un itérable, tu peux utiliser les arguments optionnels `reverse` et `key`. Voici un exemple d'utilisation de l'argument `key` pour trier les éléments d'un tuple par longueur :"
+            },
+            {
+              "en": "If you want to create a new list of values in reverse order, then you can use the `reverse` argument like this:",
+              "fr": "Si tu veux créer une nouvelle liste de valeurs en ordre inverse, tu peux utiliser l'argument `reverse` comme ceci :"
+            },
+            {
+              "en": "Tuples are a common data type in Python. Understanding how to work with them, along with some helpful methods and functions, will help you write more efficient code.",
+              "fr": "Les tuples sont un type de données courant en Python. Comprendre comment travailler avec eux, ainsi qu'avec quelques méthodes et fonctions utiles, t'aidera à écrire un code plus efficace."
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will the following code return?",
+              "fr": "Que renverra le code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the beginning of the lesson for the answer.",
+              "fr": "Relis le début de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "What will be the result for the following code?",
+              "fr": "Quel sera le résultat du code suivant ?"
+            }
+          ]
+        },
+        {
+          "index": 11,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of error is appropriate to communicate that a value cannot be found.",
+              "fr": "Réfléchis au type d'erreur approprié pour indiquer qu'une valeur est introuvable."
+            }
+          ]
+        },
+        {
+          "index": 12,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of error is appropriate to communicate that a value cannot be found.",
+              "fr": "Réfléchis au type d'erreur approprié pour indiquer qu'une valeur est introuvable."
+            }
+          ]
+        },
+        {
+          "index": 13,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Think about which type of error is appropriate to communicate that a value cannot be found.",
+              "fr": "Réfléchis au type d'erreur approprié pour indiquer qu'une valeur est introuvable."
+            }
+          ]
+        },
+        {
+          "index": 15,
+          "marker": "## --text--",
+          "chunks": [
+            {
+              "en": "Which of the following functions is used to return a new list of sorted results from an iterable?",
+              "fr": "Laquelle des fonctions suivantes sert à renvoyer une nouvelle liste de résultats triés à partir d'un itérable ?"
+            }
+          ]
+        },
+        {
+          "index": 17,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 18,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        },
+        {
+          "index": 19,
+          "marker": "### --feedback--",
+          "chunks": [
+            {
+              "en": "Review the last part of the lesson for the answer.",
+              "fr": "Relis la dernière partie de la leçon pour trouver la réponse."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

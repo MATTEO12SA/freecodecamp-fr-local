@@ -1,0 +1,399 @@
+{
+  "workshop": "review-loops-and-sequences",
+  "kind": "lecture",
+  "reviewed": true,
+  "note": "Mode lecture: Claude traduit title.fr et chaque chunk.fr. Code, marqueurs de structure, asserts, distracteurs en code et frontmatter technique restent copies depuis EN. Reference de style: tools/translations/lexique-fr.md.",
+  "files": [
+    {
+      "file": "67f39b91583dec1e1eddbb9e.md",
+      "id": "67f39b91583dec1e1eddbb9e",
+      "dashedName": "review-loops-and-sequences",
+      "title": {
+        "en": "Loops and Sequences Review",
+        "fr": "Révision des boucles et des séquences"
+      },
+      "sections": [
+        {
+          "index": 1,
+          "marker": "# --description--",
+          "chunks": [
+            {
+              "en": "## Python Lists",
+              "fr": "## Les listes Python"
+            },
+            {
+              "en": "- **Introduction**: In Python, the list data type is an ordered sequence of elements that can be composed of strings, numbers or even other lists. Lists are mutable and zero based indexed.",
+              "fr": "- **Introduction** : En Python, le type de données liste est une séquence ordonnée d'éléments qui peut être composée de chaînes, de nombres ou même d'autres listes. Les listes sont mutables et indexées à partir de zéro."
+            },
+            {
+              "en": "- **Accessing Elements in a List**: To access an element from the `cities` list, you can reference its index number in the sequence:",
+              "fr": "- **Accéder aux éléments d'une liste** : Pour accéder à un élément de la liste `cities`, tu peux indiquer son numéro d'indice dans la séquence :"
+            },
+            {
+              "en": "- **Accessing Elements Using Negative Indexing**: To access the last element of any list, you can use `-1` as the index number:",
+              "fr": "- **Accéder aux éléments avec l'indexation négative** : Pour accéder au dernier élément de n'importe quelle liste, tu peux utiliser `-1` comme numéro d'indice :"
+            },
+            {
+              "en": "- Negative indexing is used to access elements starting from the end of the list instead of the beginning at index `0`.",
+              "fr": "- L'indexation négative sert à accéder aux éléments en partant de la fin de la liste plutôt que du début à l'indice `0`."
+            },
+            {
+              "en": "- **Creating Lists Using the `list()` constructor**: Lists can also be created using the `list()` constructor. The `list()` constructor is used to convert an iterable into a list:",
+              "fr": "- **Créer des listes avec le constructeur `list()`** : Les listes peuvent aussi être créées avec le constructeur `list()`. Le constructeur `list()` sert à convertir un itérable en liste :"
+            },
+            {
+              "en": "- **Finding the Length of a List**: You can use the `len()` function to get the length of a list:",
+              "fr": "- **Trouver la longueur d'une liste** : Tu peux utiliser la fonction `len()` pour obtenir la longueur d'une liste :"
+            },
+            {
+              "en": "- **List Mutability**: Lists are mutable, meaning you can update any element in the list as long as you pass in a valid index number. To update lists at a particular index, you can assign a new value to that index:",
+              "fr": "- **Mutabilité des listes** : Les listes sont mutables, ce qui signifie que tu peux mettre à jour n'importe quel élément de la liste tant que tu fournis un numéro d'indice valide. Pour mettre à jour une liste à un indice donné, tu peux assigner une nouvelle valeur à cet indice :"
+            },
+            {
+              "en": "- **Index Out of Range Error**: If you pass in an index (either positive or negative) that is out of bounds for the list, then you will receive an `IndexError`:",
+              "fr": "- **Erreur d'indice hors limites** : Si tu fournis un indice (positif ou négatif) qui dépasse les limites de la liste, tu recevras une `IndexError` :"
+            },
+            {
+              "en": "- **Removing Elements from a List**: Elements can be removed from a list using the `del` keyword:",
+              "fr": "- **Retirer des éléments d'une liste** : Les éléments peuvent être retirés d'une liste avec le mot-clé `del` :"
+            },
+            {
+              "en": "- **Checking if an Element Exists in a List**: The `in` keyword can be used to check if an element exists in a list:",
+              "fr": "- **Vérifier si un élément existe dans une liste** : Le mot-clé `in` peut servir à vérifier si un élément existe dans une liste :"
+            },
+            {
+              "en": "- **Nesting Lists**: Lists can be nested inside other lists:",
+              "fr": "- **Imbriquer des listes** : Les listes peuvent être imbriquées dans d'autres listes :"
+            },
+            {
+              "en": "- To access the nested list, you will need to access it using index `2` since lists are zero-based indexed.",
+              "fr": "- Pour accéder à la liste imbriquée, tu devras l'atteindre avec l'indice `2`, car les listes sont indexées à partir de zéro."
+            },
+            {
+              "en": "- To further access the second language from that nested list, you will need to access it using index `1`:",
+              "fr": "- Pour accéder ensuite au deuxième langage de cette liste imbriquée, tu devras l'atteindre avec l'indice `1` :"
+            },
+            {
+              "en": "- **Unpacking Values from a List:** Unpacking values from a list is a technique used to assign values from a list to new variables. Here is an example to unpack the `developer` list into new variables called `name`, `age` and `job` like this:",
+              "fr": "- **Dépaquetage des valeurs d'une liste** : Dépaqueter les valeurs d'une liste est une technique qui consiste à assigner les valeurs d'une liste à de nouvelles variables. Voici un exemple pour dépaqueter la liste `developer` dans de nouvelles variables appelées `name`, `age` et `job` comme ceci :"
+            },
+            {
+              "en": "- If the number of variables on the left side of the assignment operator doesn't match the total number of items in the list, then you will receive a `ValueError`.",
+              "fr": "- Si le nombre de variables à gauche de l'opérateur d'affectation ne correspond pas au nombre total d'éléments dans la liste, tu recevras une `ValueError`."
+            },
+            {
+              "en": "- **Collecting Remaining Items From a List**: To collect any remaining elements from a list, you can use the asterisk (`*`) operator like this:",
+              "fr": "- **Collecter les éléments restants d'une liste** : Pour collecter les éléments restants d'une liste, tu peux utiliser l'opérateur astérisque (`*`) comme ceci :"
+            },
+            {
+              "en": "- **Slicing Lists**: Slicing is the concept of accessing a portion of a list by using the slice operator `:`. To slice a list that starts at index `1` and ends before index `3`, you can use the following syntax:",
+              "fr": "- **Découpage des listes** : Le découpage consiste à accéder à une portion d'une liste avec l'opérateur de tranche `:`. Pour découper une liste qui commence à l'indice `1` et se termine avant l'indice `3`, tu peux utiliser la syntaxe suivante :"
+            },
+            {
+              "en": "- **Step Intervals**: It is also possible to specify a step interval which determines how much to increment between the indices. Here is an example if you want to extract a list of just even numbers using slicing:",
+              "fr": "- **Intervalles de pas** : Il est aussi possible de spécifier un pas qui détermine de combien incrémenter entre les indices. Voici un exemple si tu veux extraire une liste contenant seulement les nombres pairs grâce au découpage :"
+            },
+            {
+              "en": "## List Methods",
+              "fr": "## Méthodes de liste"
+            },
+            {
+              "en": "- **append()**: Used to add an item to the end of the list.  Here is an example of using the `append()` method to add the number `6` to this `numbers` list:",
+              "fr": "- **append()** : Sert à ajouter un élément à la fin de la liste. Voici un exemple d'utilisation de la méthode `append()` pour ajouter le nombre `6` à cette liste `numbers` :"
+            },
+            {
+              "en": "- **Appending lists**: The `append()` method can also be used to add one list at the end of another:",
+              "fr": "- **Ajout de listes** : La méthode `append()` peut aussi servir à ajouter une liste à la fin d'une autre :"
+            },
+            {
+              "en": "- **extend()**: Used to add multiple items to the end of a list. Here is an example of adding the numbers `6`, `8`, and `10` to the end of the `numbers` list:",
+              "fr": "- **extend()** : Sert à ajouter plusieurs éléments à la fin d'une liste. Voici un exemple d'ajout des nombres `6`, `8` et `10` à la fin de la liste `numbers` :"
+            },
+            {
+              "en": "- **insert()**: Used to insert an item at a specific index in the list. Here is an example of using the `insert()` method:",
+              "fr": "- **insert()** : Sert à insérer un élément à un indice précis dans la liste. Voici un exemple d'utilisation de la méthode `insert()` :"
+            },
+            {
+              "en": "- **remove():** Used to remove an item from the list.  The `remove()` method will only remove the first occurrence of an item in the list:",
+              "fr": "- **remove()** : Sert à retirer un élément de la liste. La méthode `remove()` ne retire que la première occurrence d'un élément dans la liste :"
+            },
+            {
+              "en": "- **pop()**: Used to remove a specific item from the list and return it:",
+              "fr": "- **pop()** : Sert à retirer un élément précis de la liste et à le renvoyer :"
+            },
+            {
+              "en": "- If you don't specify an element for the `pop` method, then the last element is removed.",
+              "fr": "- Si tu ne spécifies pas d'élément pour la méthode `pop`, alors le dernier élément est retiré."
+            },
+            {
+              "en": "- **clear()**: Used to remove all items from the list:",
+              "fr": "- **clear()** : Sert à retirer tous les éléments de la liste :"
+            },
+            {
+              "en": "- **sort()**: The `sort()` method is used to sort the elements in place. Here is an example of sorting a random list of `numbers` in place:",
+              "fr": "- **sort()** : La méthode `sort()` sert à trier les éléments en place. Voici un exemple de tri en place d'une liste aléatoire de `numbers` :"
+            },
+            {
+              "en": "- **sorted()**: A built-in function that returns a new sorted list instead of modifying the original list:",
+              "fr": "- **sorted()** : Une fonction intégrée qui renvoie une nouvelle liste triée au lieu de modifier la liste d'origine :"
+            },
+            {
+              "en": "- **reverse()**: Used to reverse the order of the elements in a list:",
+              "fr": "- **reverse()** : Sert à inverser l'ordre des éléments d'une liste :"
+            },
+            {
+              "en": "- **index()**: Used to find the first index where an element can be found in a list:",
+              "fr": "- **index()** : Sert à trouver le premier indice où un élément se trouve dans une liste :"
+            },
+            {
+              "en": "- If the element cannot be found using the `index()` method, then the result will be a `ValueError`.",
+              "fr": "- Si l'élément ne peut pas être trouvé avec la méthode `index()`, le résultat sera une `ValueError`."
+            },
+            {
+              "en": "## Tuples in Python",
+              "fr": "## Les tuples en Python"
+            },
+            {
+              "en": "- **Definition**: A tuple is a Python data type used to create an ordered sequence of values. Tuples can contain a mixed set of data types:",
+              "fr": "- **Définition** : Un tuple est un type de données Python utilisé pour créer une séquence ordonnée de valeurs. Les tuples peuvent contenir un ensemble mixte de types de données :"
+            },
+            {
+              "en": "- Tuples are immutable, meaning the elements in the tuple cannot be changed once created. If you try to update one of the items in the tuple, you will get a `TypeError`:",
+              "fr": "- Les tuples sont immuables, ce qui signifie que les éléments du tuple ne peuvent pas être modifiés une fois créés. Si tu essaies de mettre à jour l'un des éléments du tuple, tu obtiendras une `TypeError` :"
+            },
+            {
+              "en": "- **Accessing Elements from a Tuple**: To access an element from a tuple, use bracket notation and the index number:",
+              "fr": "- **Accéder aux éléments d'un tuple** : Pour accéder à un élément d'un tuple, utilise la notation crochets et le numéro d'indice :"
+            },
+            {
+              "en": "- Negative indexing can be used to access elements starting from the end of the tuple:",
+              "fr": "- L'indexation négative peut servir à accéder aux éléments en partant de la fin du tuple :"
+            },
+            {
+              "en": "- If you try to pass in an index number that exceeds or equals the length of the tuple, then you will receive an `IndexError`:",
+              "fr": "- Si tu essaies de fournir un numéro d'indice qui dépasse ou égale la longueur du tuple, tu recevras une `IndexError` :"
+            },
+            {
+              "en": "- A tuple can also be created using the `tuple()` constructor. Within the constructor, you can pass in different iterables like strings, lists and even other tuples.",
+              "fr": "- Un tuple peut aussi être créé avec le constructeur `tuple()`. Dans le constructeur, tu peux passer différents itérables comme des chaînes, des listes et même d'autres tuples."
+            },
+            {
+              "en": "- **Verifying Items in a Tuple**: To check if an item is in a tuple, you can use the `in` keyword like this:",
+              "fr": "- **Vérifier la présence d'éléments dans un tuple** : Pour vérifier si un élément est dans un tuple, tu peux utiliser le mot-clé `in` comme ceci :"
+            },
+            {
+              "en": "- **Unpacking Tuples**: Items can be unpacked from a tuple like this:",
+              "fr": "- **Dépaquetage des tuples** : Les éléments peuvent être dépaquetés d'un tuple comme ceci :"
+            },
+            {
+              "en": "- If you need to collect any remaining elements from a tuple, you can use the asterisk (`*`) operator like this:",
+              "fr": "- Si tu as besoin de collecter les éléments restants d'un tuple, tu peux utiliser l'opérateur astérisque (`*`) comme ceci :"
+            },
+            {
+              "en": "- **Slicing Tuples**: Slicing can be used to extract a portion of a tuple. For example, the items `pie` and `cookies` can be sliced into a separate tuple:",
+              "fr": "- **Découpage des tuples** : Le découpage peut servir à extraire une portion d'un tuple. Par exemple, les éléments `pie` et `cookies` peuvent être découpés dans un tuple séparé :"
+            },
+            {
+              "en": "- **Removing Items from Tuples**: Removing an item from a tuple will raise a `TypeError` as tuples are immutable:",
+              "fr": "- **Retirer des éléments d'un tuple** : Retirer un élément d'un tuple lèvera une `TypeError` car les tuples sont immuables :"
+            },
+            {
+              "en": "- **When to use a Tuple vs a List?**: If you need a dynamic collection of elements where you can add, remove and update elements, then you should use a list. If you know that you are working with a fixed and immutable collection of data, then you should use a tuple.",
+              "fr": "- **Quand utiliser un tuple plutôt qu'une liste ?** : Si tu as besoin d'une collection dynamique d'éléments où tu peux ajouter, retirer et mettre à jour des éléments, alors tu dois utiliser une liste. Si tu sais que tu travailles avec une collection de données fixe et immuable, alors tu dois utiliser un tuple."
+            },
+            {
+              "en": "## Common Tuple Methods",
+              "fr": "## Méthodes courantes des tuples"
+            },
+            {
+              "en": "- **`count()`**: Used to determine how many times an item appears in a tuple. For example, you can check how many times the language `'Rust'` appears in the tuple:",
+              "fr": "- **`count()`** : Sert à déterminer combien de fois un élément apparaît dans un tuple. Par exemple, tu peux vérifier combien de fois le langage `'Rust'` apparaît dans le tuple :"
+            },
+            {
+              "en": "- If the specified item in the `count()` method is not present at all in the tuple, then the return value will be `0`:",
+              "fr": "- Si l'élément indiqué dans la méthode `count()` n'est pas du tout présent dans le tuple, alors la valeur renvoyée sera `0` :"
+            },
+            {
+              "en": "- If no arguments are passed to the `count()` method, then Python will return a `TypeError`.",
+              "fr": "- Si aucun argument n'est passé à la méthode `count()`, alors Python renverra une `TypeError`."
+            },
+            {
+              "en": "- **index()**: Used to find the index where a particular item is present in the tuple. Here is an example of using the `index()` method to find the index for the language `'Java'`:",
+              "fr": "- **index()** : Sert à trouver l'indice où un élément particulier est présent dans le tuple. Voici un exemple d'utilisation de la méthode `index()` pour trouver l'indice du langage `'Java'` :"
+            },
+            {
+              "en": "- If the specified item cannot be found, then Python will return a `ValueError`.",
+              "fr": "- Si l'élément indiqué ne peut pas être trouvé, alors Python renverra une `ValueError`."
+            },
+            {
+              "en": "- You can pass an optional start index to the `index()` method to specify where to start searching for the item in the tuple:",
+              "fr": "- Tu peux passer un indice de début optionnel à la méthode `index()` pour indiquer où commencer la recherche de l'élément dans le tuple :"
+            },
+            {
+              "en": "- You can also pass in an optional end index to the `index()` method to specify where to stop searching for the item in the tuple:",
+              "fr": "- Tu peux aussi passer un indice de fin optionnel à la méthode `index()` pour indiquer où arrêter la recherche de l'élément dans le tuple :"
+            },
+            {
+              "en": "- **`sorted()`**: Used to sort the elements in any iterable and return a new sorted list. Here is an example of creating a new list of numbers using the `sorted()` function:",
+              "fr": "- **`sorted()`** : Sert à trier les éléments de n'importe quel itérable et à renvoyer une nouvelle liste triée. Voici un exemple de création d'une nouvelle liste de nombres avec la fonction `sorted()` :"
+            },
+            {
+              "en": "- **Modifying Sorting Behavior**: You can customize the sorting behavior for an iterable using the optional `reverse` and `key` arguments. Here is an example of using the `key` argument to sort items in a tuple by length:",
+              "fr": "- **Modifier le comportement du tri** : Tu peux personnaliser le comportement du tri d'un itérable avec les arguments optionnels `reverse` et `key`. Voici un exemple d'utilisation de l'argument `key` pour trier les éléments d'un tuple par longueur :"
+            },
+            {
+              "en": "- You can create a new list of values in reverse order, using the `reverse` argument like this:",
+              "fr": "- Tu peux créer une nouvelle liste de valeurs dans l'ordre inverse, avec l'argument `reverse` comme ceci :"
+            },
+            {
+              "en": "## Loops in Python",
+              "fr": "## Les boucles en Python"
+            },
+            {
+              "en": "- **Definition**: Loops are used to repeat a block of code for a set number of times.",
+              "fr": "- **Définition** : Les boucles servent à répéter un bloc de code un nombre défini de fois."
+            },
+            {
+              "en": "- **`for` loop**: Used to iterate over a sequence (like a list, tuple or string) and execute a block of code for each item in that sequence.  Here is an example of using a `for` loop to iterate through a list and print each language to the console:",
+              "fr": "- **Boucle `for`** : Sert à parcourir une séquence (comme une liste, un tuple ou une chaîne) et à exécuter un bloc de code pour chaque élément de cette séquence. Voici un exemple d'utilisation d'une boucle `for` pour parcourir une liste et afficher chaque langage dans la console :"
+            },
+            {
+              "en": "- Here is an example of using a `for` loop to loop through the string `code` and print out each character:",
+              "fr": "- Voici un exemple d'utilisation d'une boucle `for` pour parcourir la chaîne `code` et afficher chaque caractère :"
+            },
+            {
+              "en": "- `for` loops can be nested. Here is an example of using a nested `for` loop:",
+              "fr": "- Les boucles `for` peuvent être imbriquées. Voici un exemple d'utilisation d'une boucle `for` imbriquée :"
+            },
+            {
+              "en": "- **`while` loop**: Repeats a block of code until the condition is `False`. Here is an example of using a `while` loop for a guessing game:",
+              "fr": "- **Boucle `while`** : Répète un bloc de code jusqu'à ce que la condition soit `False`. Voici un exemple d'utilisation d'une boucle `while` pour un jeu de devinettes :"
+            },
+            {
+              "en": "- **`break` and `continue` statements**: Used in loops to modify the execution of a loop.",
+              "fr": "- **Instructions `break` et `continue`** : Utilisées dans les boucles pour modifier l'exécution d'une boucle."
+            },
+            {
+              "en": "- The `break` statement is used to exit the loop immediately when a certain condition is met. Here is an example of using the `break` statement for a list of `developer_names`:",
+              "fr": "- L'instruction `break` sert à quitter la boucle immédiatement quand une certaine condition est remplie. Voici un exemple d'utilisation de l'instruction `break` pour une liste de `developer_names` :"
+            },
+            {
+              "en": "- The `continue` statement is used to skip that current iteration and move onto the next iteration of the loop. Here is an example to use the `continue` statement instead of a `break` statement:",
+              "fr": "- L'instruction `continue` sert à sauter l'itération courante et à passer à l'itération suivante de la boucle. Voici un exemple pour utiliser l'instruction `continue` à la place d'une instruction `break` :"
+            },
+            {
+              "en": "- Both `for` and `while` loops can be combined with an `else` clause, which is executed only when the loop was not terminated by a `break`:",
+              "fr": "- Les boucles `for` et `while` peuvent toutes les deux être combinées avec une clause `else`, qui n'est exécutée que lorsque la boucle n'a pas été interrompue par un `break` :"
+            },
+            {
+              "en": "## Ranges and Their Use in Loops",
+              "fr": "## Les ranges et leur utilisation dans les boucles"
+            },
+            {
+              "en": "- **The `range()` function**: Used to generate a sequence of integers.",
+              "fr": "- **La fonction `range()`** : Sert à générer une séquence d'entiers."
+            },
+            {
+              "en": "- The required `stop` argument is an integer(non-inclusive) that represents the end point for the sequence of numbers being generated. Here is an example of using the `range()` function:",
+              "fr": "- L'argument obligatoire `stop` est un entier (non inclus) qui représente le point de fin de la séquence de nombres générée. Voici un exemple d'utilisation de la fonction `range()` :"
+            },
+            {
+              "en": "- If a `start` argument is not specified, then the default will be `0`.  By default the sequence of integers will increment by `1`.  You can use the optional `step` argument to change the default increment value. Here is an example of generating a sequence of even integers from 2 up to but not including 11 (i.e., includes 10)",
+              "fr": "- Si un argument `start` n'est pas spécifié, alors la valeur par défaut sera `0`. Par défaut, la séquence d'entiers s'incrémente de `1`. Tu peux utiliser l'argument optionnel `step` pour changer la valeur d'incrément par défaut. Voici un exemple de génération d'une séquence d'entiers pairs de 2 jusqu'à 11 non inclus (c'est-à-dire qu'elle inclut 10)."
+            },
+            {
+              "en": "- If you don't provide any arguments to the `range()` function, then you will get a `TypeError`.",
+              "fr": "- Si tu ne fournis aucun argument à la fonction `range()`, tu obtiendras une `TypeError`."
+            },
+            {
+              "en": "- The `range()` function only accepts integers for arguments and not floats. Using floats will also result in a `TypeError`:",
+              "fr": "- La fonction `range()` n'accepte que des entiers comme arguments, pas des flottants. Utiliser des flottants produira aussi une `TypeError` :"
+            },
+            {
+              "en": "- You can use a negative integer for the `step` argument to generate a sequence of integers in decrementing order:",
+              "fr": "- Tu peux utiliser un entier négatif pour l'argument `step` afin de générer une séquence d'entiers dans l'ordre décroissant :"
+            },
+            {
+              "en": "- The `range()` function can also be used to create a list of integers by using it with the `list` constructor. The `list` constructor is used to convert an iterable into a list. Here is an example of generating a list of even integers between 2 and 10 inclusive:",
+              "fr": "- La fonction `range()` peut aussi servir à créer une liste d'entiers en l'utilisant avec le constructeur `list`. Le constructeur `list` sert à convertir un itérable en liste. Voici un exemple de génération d'une liste d'entiers pairs entre 2 et 10 inclus :"
+            },
+            {
+              "en": "## `enumerate()` and `zip()` functions in Python",
+              "fr": "## Les fonctions `enumerate()` et `zip()` en Python"
+            },
+            {
+              "en": "- **`enumerate()`**: used to iterate over a sequence and keep track of the index for each item in that sequence. The `enumerate()` function takes an iterable as an argument and returns an `enumerate` object that consist of the index and value of each item in the iterable.",
+              "fr": "- **`enumerate()`** : Sert à parcourir une séquence en suivant l'indice de chaque élément de cette séquence. La fonction `enumerate()` prend un itérable comme argument et renvoie un objet `enumerate` composé de l'indice et de la valeur de chaque élément de l'itérable."
+            },
+            {
+              "en": "- The `enumerate()` function can also be used outside of a `for` loop:",
+              "fr": "- La fonction `enumerate()` peut aussi être utilisée en dehors d'une boucle `for` :"
+            },
+            {
+              "en": "- The `enumerate()` function also accepts an optional `start` argument that specifies the starting value for the count. If this argument is omitted, then the count will begin at `0`.",
+              "fr": "- La fonction `enumerate()` accepte aussi un argument optionnel `start` qui indique la valeur de départ du compteur. Si cet argument est omis, alors le compteur commencera à `0`."
+            },
+            {
+              "en": "-  **`zip()`** : Used to iterate over multiple iterables in parallel.  Here's an example using the `zip()` function to iterate over `developers` and `ids`:",
+              "fr": "- **`zip()`** : Sert à parcourir plusieurs itérables en parallèle. Voici un exemple d'utilisation de la fonction `zip()` pour parcourir `developers` et `ids` :"
+            },
+            {
+              "en": "## List comprehensions in Python",
+              "fr": "## Les compréhensions de listes en Python"
+            },
+            {
+              "en": "- **Definition**: List comprehension allows you to create a new list in a single line by combining the loop and the condition directly within square brackets. This makes the code shorter and often easier to read.",
+              "fr": "- **Définition** : Une compréhension de liste te permet de créer une nouvelle liste en une seule ligne en combinant la boucle et la condition directement entre crochets. Cela rend le code plus court et souvent plus facile à lire."
+            },
+            {
+              "en": "## Iterable methods",
+              "fr": "## Méthodes d'itérables"
+            },
+            {
+              "en": "- **`filter()`**: Used to filter elements from an iterable based on a condition. It returns an iterator that contains only the elements that satisfy the condition. Here is an example of creating a new list of just words longer than four characters:",
+              "fr": "- **`filter()`** : Sert à filtrer les éléments d'un itérable selon une condition. Elle renvoie un itérateur qui ne contient que les éléments qui satisfont la condition. Voici un exemple de création d'une nouvelle liste contenant seulement les mots de plus de quatre caractères :"
+            },
+            {
+              "en": "- **`map()`**: Used to apply a function to each item in an iterable and return a new iterable with the results. Here is an example of using the `map()` function to convert a list of celsius temperatures to fahrenheit:",
+              "fr": "- **`map()`** : Sert à appliquer une fonction à chaque élément d'un itérable et à renvoyer un nouvel itérable avec les résultats. Voici un exemple d'utilisation de la fonction `map()` pour convertir une liste de températures Celsius en Fahrenheit :"
+            },
+            {
+              "en": "- **`sum()`**: Used to get the sum from an iterable like a list or tuple. Here is an example of using the `sum()` function:",
+              "fr": "- **`sum()`** : Sert à obtenir la somme d'un itérable comme une liste ou un tuple. Voici un exemple d'utilisation de la fonction `sum()` :"
+            },
+            {
+              "en": "- You can also pass in an optional `start` argument which sets the initial value for the summation. Here is an updated example using the `start` argument as a positional argument:",
+              "fr": "- Tu peux aussi passer un argument optionnel `start` qui définit la valeur initiale de la sommation. Voici un exemple mis à jour qui utilise l'argument `start` comme argument positionnel :"
+            },
+            {
+              "en": "- You can also choose to use the `start` argument as a keyword argument like this instead:",
+              "fr": "- Tu peux aussi choisir d'utiliser l'argument `start` comme argument nommé comme ceci à la place :"
+            },
+            {
+              "en": "## Lambda functions",
+              "fr": "## Les fonctions lambda"
+            },
+            {
+              "en": "- **Definition**: A lambda function in Python is a concise way to create a function without a name (an anonymous function). \n- Lambda functions are often used as an argument to another function. Here is an example of a lambda function:",
+              "fr": "- **Définition** : Une fonction lambda en Python est une façon concise de créer une fonction sans nom (une fonction anonyme).\n- Les fonctions lambda sont souvent utilisées comme argument d'une autre fonction. Voici un exemple de fonction lambda :"
+            },
+            {
+              "en": "- Best practices for using lambda functions include not assigning them to a variable, keeping them simple and readable, and using them for short, one-off functions.",
+              "fr": "- Les bonnes pratiques d'utilisation des fonctions lambda consistent à ne pas les assigner à une variable, à les garder simples et lisibles, et à les utiliser pour des fonctions courtes et ponctuelles."
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "marker": "# --assignment--",
+          "chunks": [
+            {
+              "en": "Review the Loops and Sequences topics and concepts.",
+              "fr": "Revois les sujets et les concepts des boucles et des séquences."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
